@@ -17,8 +17,8 @@ After uploading all batches, confirm:
 
 ## Status text
 
-- [ ] README says Not audited.
-- [ ] README says not mainnet authorized.
+- [ ] README says Not externally audited.
+- [ ] README says Ethereum Mainnet not authorized.
 - [ ] README identifies the existing AGIALPHA token.
 - [ ] README does not say guaranteed non-security.
 - [ ] README does not say mainnet ready.

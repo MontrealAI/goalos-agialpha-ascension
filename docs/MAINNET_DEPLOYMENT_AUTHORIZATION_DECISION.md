@@ -1,6 +1,6 @@
 # Mainnet Deployment Authorization Decision
 
-Generated: 2026-06-11T16:20:25.596247+00:00
+Generated: 2026-06-11T17:15:07.581056+00:00
 
 MAINNET_DEPLOYMENT_AUTHORIZED: **NO**
 
@@ -39,6 +39,7 @@ MAINNET_DEPLOYMENT_AUTHORIZED: **NO**
 - technical: actionlint is pending/environment-blocked or not internally accepted
 - technical: shellcheck is pending/environment-blocked or not internally accepted
 - technical: gitleaks is pending/environment-blocked or not internally accepted
+- technical: Public Ethereum Sepolia replay remains pending; only local chainId 11155111 rehearsal evidence is present
 - technical: AGIALPHA token verification requires Ethereum mainnet RPC evidence
 - technical: Treasury/founder address ceremony is not complete
 

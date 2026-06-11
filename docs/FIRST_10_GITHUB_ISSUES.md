@@ -3,7 +3,7 @@
 1. Run Ethereum Sepolia rehearsal and fill Evidence Docket.
 2. Run compile/tests and publish engineering evidence.
 3. Remove any stale JOBS/Base labels from active AGIALPHA repository surfaces.
-4. Prepare external audit closure package.
+4. Run automated security/toolchain clearance and prepare internal security review package.
 5. Prepare legal/token counsel review package.
 6. Prepare tax/accounting review package.
 7. Run public claims and promoter-disclosure review.

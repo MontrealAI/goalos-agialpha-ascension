@@ -1,0 +1,1 @@
+{"tool":"osv-scanner","status":"PENDING_ENVIRONMENT_BLOCKED","command":"osv-scanner --lockfile package-lock.json","reason":"osv-scanner executable is not installed in this environment","blocks_mainnet":true,"generated_at":"2026-06-11T16:35:29Z"}

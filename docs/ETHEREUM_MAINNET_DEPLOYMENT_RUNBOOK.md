@@ -34,7 +34,7 @@ npm run deploy:ethereum-mainnet:gated
 
 ## Do not deploy mainnet unless
 
-- external audit closure is complete
+- automated security/toolchain clearance and internal security review are complete
 - Sepolia rehearsal evidence is complete
 - legal/token counsel review is complete
 - tax/accounting review is complete

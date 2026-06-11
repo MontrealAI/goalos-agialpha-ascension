@@ -18,8 +18,13 @@ jobs:
   mainnet-gate-watch:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - name: Run mainnet authorization checker
-        run: python scripts/mainnet-authorization-check.py
+      - uses: actions/checkout@v5
       - name: Assert public status remains not authorized
         run: python scripts/assert_public_status.py
+      - name: Run mainnet authorization checker
+        run: python scripts/mainnet-authorization-check.py
+      - uses: actions/upload-artifact@v5
+        if: always()
+        with:
+          name: mainnet-gate-watch-decision
+          path: docs/MAINNET_AUTHORIZATION_DECISION.*

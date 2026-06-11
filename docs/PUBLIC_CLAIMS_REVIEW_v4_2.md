@@ -15,7 +15,7 @@ mainnet is gated
 ## Prohibited public claims
 
 ```text
-audited
+externally audited
 mainnet ready
 guaranteed non-security
 guaranteed value
@@ -29,5 +29,5 @@ Kardashev Type II achieved
 ## Required boundary statement
 
 ```text
-The intelligence stays private. The proof becomes verifiable. This package is not audited and is not mainnet authorized.
+The intelligence stays private. The proof becomes verifiable. This package is not externally audited, automated security/toolchain review is pending, and Ethereum Mainnet is not authorized.
 ```

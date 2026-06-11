@@ -2,17 +2,18 @@ name: Mainnet Authorization Gate
 on:
   pull_request:
   workflow_dispatch:
+permissions:
+  contents: read
 jobs:
   gate:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with: { node-version: '20' }
-      - run: npm install
-      - name: Read-only gate check; no deployment
-        run: npm run mainnet:authorization-check
-      - uses: actions/upload-artifact@v4
+      - uses: actions/checkout@v5
+      - name: Assert public status remains bounded
+        run: python scripts/assert_public_status.py
+      - name: Read-only gate check; no install and no deployment
+        run: python scripts/mainnet-authorization-check.py
+      - uses: actions/upload-artifact@v5
         if: always()
         with:
           name: mainnet-authorization-decision

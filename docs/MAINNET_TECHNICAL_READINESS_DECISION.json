@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-11T16:20:24.394520+00:00",
+  "generated_at": "2026-06-11T17:15:06.333469+00:00",
   "TECHNICALLY_MAINNET_READY": "NO",
   "blockers": [
     "slither is pending/environment-blocked or not internally accepted",
@@ -14,15 +14,16 @@
     "actionlint is pending/environment-blocked or not internally accepted",
     "shellcheck is pending/environment-blocked or not internally accepted",
     "gitleaks is pending/environment-blocked or not internally accepted",
+    "Public Ethereum Sepolia replay remains pending; only local chainId 11155111 rehearsal evidence is present",
     "AGIALPHA token verification requires Ethereum mainnet RPC evidence",
     "Treasury/founder address ceremony is not complete"
   ],
-  "audit_report": "audit/reports/2026-06-11-1619/audit-summary.json",
-  "toolchain_report_hash": "b61ec1bfe3eaf602e916abea19b65da7e50fb39e26175a8246a759caa204e903",
+  "audit_report": "audit/reports/2026-06-11-1635/audit-summary.json",
+  "toolchain_report_hash": "d4847d41433378eb2c1799b49aea67b44bebcd26fd789022f1a1a645675dcdf7",
   "sepolia_manifest": "deployments/ethereum-sepolia.agialpha.latest.json",
   "sepolia_manifest_hash": "6c855d2fdb97d4e333e092b7d515d787b5bf724cc15441d9f57a410314730dbe",
   "sepolia_evidence_docket": "evidence/sepolia/SEPOLIA_EVIDENCE_DOCKET.latest.json",
-  "sepolia_evidence_docket_hash": "be4f22b5e89a32b1359de00b9cbcb078636fee95e75208fc916ce92a3a419712",
+  "sepolia_evidence_docket_hash": "db7cb05c3061e41ad8f2588c704bf0931ff9584e2b3cd6ba95f997430de5f647",
   "agialpha_mainnet_token_required": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
   "deployment_command_if_ready": null,
   "final_founder_approval_required": true

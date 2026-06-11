@@ -24,7 +24,7 @@ Current package score: 9.6 / 10
 compile/tests in real engineering environment
 Ethereum Sepolia rehearsal
 filled Evidence Docket
-external audit closure
+automated security/toolchain clearance and internal security review
 legal/token counsel review
 tax/accounting review
 public-claims review
@@ -35,7 +35,8 @@ formal founder mainnet decision
 ## Correct public status
 
 ```text
-Not audited.
-Not mainnet authorized.
+Not externally audited.
+Automated security/toolchain review: pending.
+Ethereum Mainnet not authorized.
 Ethereum Sepolia rehearsal next.
 ```

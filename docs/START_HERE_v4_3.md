@@ -1,12 +1,12 @@
 # GoalOS AGIALPHA Ascension v4.3 — Gate-Clean Evidence-Ready Audit Candidate
 
-v4.3 is the corrected package to hand to engineers and auditors.
+v4.3 is the corrected package to hand to engineers and internal security/toolchain reviewers.
 
 ## What v4.3 fixes
 
 - Replaces stale `BASE_SEPOLIA_REHEARSAL` launch gate with `ETHEREUM_SEPOLIA_REHEARSAL`.
 - Adds `AGIALPHA_TOKEN_VERIFICATION` as a launch gate.
-- Adds `EXTERNAL_AUDIT_CLOSURE` as a launch gate.
+- Historical note: v4.3 previously referenced `EXTERNAL_AUDIT_CLOSURE`; v4.4 replaces that requirement with `AUTOMATED_SECURITY_TOOLCHAIN` and `INTERNAL_SECURITY_REVIEW`.
 - Adds `FOUNDER_APPROVAL` as a launch gate.
 - Requires `TREASURY_REVIEW_HASH` in mainnet gate checks.
 - Requires `AGIALPHA_TOKEN_VERIFICATION_HASH` in mainnet gate checks.
@@ -21,10 +21,11 @@ Gate-clean Ethereum launch hygiene: yes.
 Uses existing AGIALPHA on Ethereum mainnet: yes.
 Deploys new AGIALPHA token: no.
 Mints AGIALPHA: no.
-Audited: no.
-Mainnet authorized: no.
+Not externally audited.
+Automated security/toolchain review: pending.
+Ethereum Mainnet not authorized.
 ```
 
 ## Mainnet remains blocked
 
-Mainnet is not authorized until compile/tests, Ethereum Sepolia rehearsal, Evidence Docket, external audit closure, legal, tax, public-claims, treasury, AGIALPHA token verification, and founder approval gates are complete.
+Mainnet is not authorized until compile/tests, Ethereum Sepolia rehearsal, Evidence Docket, automated security/toolchain clearance, internal security review, legal, tax, public-claims, treasury, AGIALPHA token verification, and founder approval gates are complete.

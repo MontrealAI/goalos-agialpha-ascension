@@ -4,13 +4,13 @@
 
 Mainnet is not authorized by this package.
 
-This package is an implementation and audit-candidate package.
+This package is an implementation and automated/internal security-review candidate package. Not externally audited.
 
 ## Mainnet may be considered only after
 
 - local compile/tests pass;
 - Ethereum Sepolia rehearsal is complete;
-- external audit closure is complete;
+- automated security/toolchain clearance and internal security review are complete;
 - legal/token counsel review is complete;
 - tax/accounting review is complete;
 - public claims review is complete;
