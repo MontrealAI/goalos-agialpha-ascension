@@ -19,7 +19,7 @@
     "generate:vault-funding-instructions": "ts-node scripts/generate-vault-funding-instructions.ts ethereum-mainnet",
     "fund:vaults:gated": "hardhat run scripts/fund-vaults-agialpha-gated.ts --network mainnet",
     "test:aep": "hardhat test test/aepAscensionFlow.test.ts",
-    "test:all": "hardhat test test/agialphaAscensionFlow.test.ts test/aepAscensionFlow.test.ts test/v4InstitutionalControls.test.ts test/v4_3EthereumGateConsistency.test.ts",
+    "test:all": "hardhat test test/agialphaAscensionFlow.test.ts test/aepAscensionFlow.test.ts test/v4InstitutionalControls.test.ts test/v4_3EthereumGateConsistency.test.ts test/invariants/mainnetBoundary.invariant.test.ts",
     "test:v4": "hardhat test test/v4InstitutionalControls.test.ts",
     "evidence:docket:template": "python scripts/generate-evidence-docket-template.py",
     "mainnet:authorization-check": "python scripts/ethereum-mainnet-authorization-check.py --with-redacted-private-evidence",

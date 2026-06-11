@@ -1,0 +1,1 @@
+{"tool":"Medusa","status":"PENDING_ENVIRONMENT_BLOCKED","command":"medusa fuzz --config configs/medusa.json","reason":"medusa executable is not installed; run locally with Trail of Bits Medusa Docker/release","blocks_mainnet":true,"generated_at":"2026-06-11T23:04:32Z"}

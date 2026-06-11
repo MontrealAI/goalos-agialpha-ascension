@@ -38,10 +38,17 @@ def main():
     manifest=[]
     manifest_path=ROOT/'qa/MANIFEST_v4_3.json'
     manifest_excludes={ROOT/'qa/MANIFEST.json', ROOT/'qa/MANIFEST_v4_3.json'}
+    ignored_manifest_parts={'.git','.private','artifacts','cache','coverage','node_modules','typechain-types'}
     for p in sorted(ROOT.rglob('*')):
-        rel=p.relative_to(ROOT).as_posix() if p.is_file() else ''
-        if p.is_file() and 'node_modules' not in p.parts and '.git' not in p.parts and p not in manifest_excludes:
-            data=p.read_bytes(); manifest.append({'path':rel,'bytes':len(data),'sha256':hashlib.sha256(data).hexdigest()})
+        if not p.is_file() or p in manifest_excludes:
+            continue
+        rel_parts=p.relative_to(ROOT).parts
+        if ignored_manifest_parts.intersection(rel_parts):
+            continue
+        if rel_parts and rel_parts[0] == 'private':
+            continue
+        rel=p.relative_to(ROOT).as_posix()
+        data=p.read_bytes(); manifest.append({'path':rel,'bytes':len(data),'sha256':hashlib.sha256(data).hexdigest()})
     report['files_checked']=len(manifest)
     (ROOT/'qa/READINESS_REPORT_v4_3.json').write_text(json.dumps(report,indent=2),encoding='utf-8')
     # Re-hash the readiness report after files_checked is final so manifest entries
@@ -49,9 +56,15 @@ def main():
     # itself because a file cannot contain its own stable SHA-256.
     manifest=[]
     for p in sorted(ROOT.rglob('*')):
-        rel=p.relative_to(ROOT).as_posix() if p.is_file() else ''
-        if p.is_file() and 'node_modules' not in p.parts and '.git' not in p.parts and p not in manifest_excludes:
-            data=p.read_bytes(); manifest.append({'path':rel,'bytes':len(data),'sha256':hashlib.sha256(data).hexdigest()})
+        if not p.is_file() or p in manifest_excludes:
+            continue
+        rel_parts=p.relative_to(ROOT).parts
+        if ignored_manifest_parts.intersection(rel_parts):
+            continue
+        if rel_parts and rel_parts[0] == 'private':
+            continue
+        rel=p.relative_to(ROOT).as_posix()
+        data=p.read_bytes(); manifest.append({'path':rel,'bytes':len(data),'sha256':hashlib.sha256(data).hexdigest()})
     manifest_path.write_text(json.dumps({'generated_at':generated_at,'files':manifest},indent=2),encoding='utf-8')
     print(json.dumps(report,indent=2))
     if errors: raise SystemExit(1)
