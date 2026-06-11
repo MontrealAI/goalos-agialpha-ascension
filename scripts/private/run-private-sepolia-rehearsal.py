@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-from common import assert_private_path, pathlib, parser, read_json, load_env, write_json, sha256_file, public_base, PRIVATE, QA, non_placeholder, rpc_chain_id
+from common import assert_private_path, pathlib, parser, read_json, load_env, write_json, sha256_file, public_base, PRIVATE, QA, non_placeholder, rpc_chain_id, valid_hash
 
 args = parser().parse_args()
 assert_private_path(pathlib.Path(args.input))
@@ -31,6 +31,18 @@ if existing:
 else:
     errors.append("Missing .private/sepolia-rehearsal-private.json produced by the local Sepolia proof-work replay")
 
+def private_commitment_hash(primary_key: str, fallback_key: str | None = None) -> str:
+    for key in [primary_key, fallback_key]:
+        if not key:
+            continue
+        value = existing.get(key)
+        if value is None:
+            continue
+        if valid_hash(value):
+            return value
+        errors.append(f"Private Sepolia field {key} must be a 0x-prefixed sha256 commitment; raw values are not publishable")
+    return sha256_file(private)
+
 passed = not errors
 if not existing:
     write_json(private, {
@@ -51,16 +63,22 @@ pub.update({
     "sepoliaRehearsal": "PASSED" if passed else "PENDING",
     "sepoliaChainId": 11155111,
     "privateEvidenceHash": sha256_file(private),
-    "deploymentManifestHash": existing.get("deploymentManifestHash") or sha256_file(private),
-    "evidenceDocketHash": existing.get("evidenceDocketHash") or sha256_file(private),
-    "receiptBundleHash": existing.get("receiptBundleHash") or sha256_file(private),
-    "sepoliaEvidenceDocketHash": existing.get("sepoliaEvidenceDocketHash") or existing.get("evidenceDocketHash") or sha256_file(private),
-    "sepoliaReceiptVerificationHash": existing.get("sepoliaReceiptVerificationHash") or existing.get("receiptBundleHash") or sha256_file(private),
+    "deploymentManifestHash": private_commitment_hash("deploymentManifestHash"),
+    "evidenceDocketHash": private_commitment_hash("evidenceDocketHash"),
+    "receiptBundleHash": private_commitment_hash("receiptBundleHash"),
+    "sepoliaEvidenceDocketHash": private_commitment_hash("sepoliaEvidenceDocketHash", "evidenceDocketHash"),
+    "sepoliaReceiptVerificationHash": private_commitment_hash("sepoliaReceiptVerificationHash", "receiptBundleHash"),
     "contractsDeployed": int(existing.get("contractsDeployed") or 0),
     "proofWorkLoopCompleted": existing.get("proofWorkLoopCompleted") is True,
     "negativePathsCompleted": existing.get("negativePathsCompleted") is True,
     "blockers": errors,
 })
+# Recompute after optional commitment validation to ensure malformed private fields
+# make the public commitment pending and never leak verbatim into qa/.
+passed = not errors
+pub["status"] = "PASSED" if passed else "PENDING_PRIVATE_REHEARSAL"
+pub["sepoliaRehearsal"] = "PASSED" if passed else "PENDING"
+pub["blockers"] = errors
 write_json(QA / "public-sepolia-rehearsal-evidence.json", pub)
 print("Wrote redacted Sepolia evidence commitment; no RPC URL, key, or deployer address printed.")
 raise SystemExit(0 if passed else 1)
