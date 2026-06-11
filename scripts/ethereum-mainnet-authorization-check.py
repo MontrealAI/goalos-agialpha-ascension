@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 from __future__ import annotations
-import argparse, datetime, hashlib, json, pathlib, subprocess
+import argparse, datetime, hashlib, json, pathlib, re, subprocess
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 AGIALPHA = "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA"
+ADDRESS_RE = re.compile(r"(?<![0-9a-fA-F])0x[0-9a-fA-F]{40}(?![0-9a-fA-F])")
 
 def now(): return datetime.datetime.now(datetime.timezone.utc).isoformat()
 def sha256_file(path: pathlib.Path) -> str | None: return hashlib.sha256(path.read_bytes()).hexdigest() if path.exists() else None
@@ -13,8 +14,15 @@ def git_commit() -> str:
     try: return subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True).strip()
     except Exception: return "UNKNOWN"
 def safe(data: dict) -> bool:
-    text=json.dumps(data, sort_keys=True).upper()
-    return data.get("redacted") is True and data.get("containsSecrets") is False and data.get("containsPrivateAddresses") is False and "PRIVATE_KEY" not in text and "RPC_URL" not in text
+    text = json.dumps(data, sort_keys=True)
+    upper = text.upper()
+    if not (data.get("redacted") is True and data.get("containsSecrets") is False and data.get("containsPrivateAddresses") is False):
+        return False
+    if "PRIVATE_KEY" in upper or "RPC_URL" in upper:
+        return False
+    if any(addr.lower() != AGIALPHA.lower() for addr in ADDRESS_RE.findall(text)):
+        return False
+    return True
 
 def compute(with_redacted: bool) -> tuple[str, list[str], dict]:
     blockers=[]; evidence={"technicalReadinessSha256": sha256_file(ROOT/"docs/MAINNET_TECHNICAL_READINESS_DECISION.json"), "deploymentAuthorizationSha256": sha256_file(ROOT/"docs/MAINNET_DEPLOYMENT_AUTHORIZATION_DECISION.json")}

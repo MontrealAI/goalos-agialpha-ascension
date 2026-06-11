@@ -5,6 +5,7 @@ import argparse, datetime, hashlib, json, pathlib, re, subprocess
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 AGIALPHA = "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA"
 HEX32 = re.compile(r"^0x[0-9a-fA-F]{64}$")
+ADDRESS_RE = re.compile(r"(?<![0-9a-fA-F])0x[0-9a-fA-F]{40}(?![0-9a-fA-F])")
 
 
 def now() -> str: return datetime.datetime.now(datetime.timezone.utc).isoformat()
@@ -24,6 +25,9 @@ def evidence_has_no_private_data(data: dict) -> bool:
     if data.get("containsSecrets") is not False: return False
     if data.get("containsPrivateAddresses") is not False: return False
     if data.get("redacted") is not True: return False
+    for match in ADDRESS_RE.findall(text):
+        if match.lower() != AGIALPHA.lower():
+            return False
     return True
 
 def load_public_evidence() -> tuple[dict[str, dict], list[str]]:
