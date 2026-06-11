@@ -1,0 +1,1 @@
+{"tool":"shellcheck","status":"PENDING_ENVIRONMENT_BLOCKED","command":"shellcheck scripts/**/*.sh","reason":"shellcheck executable is not installed in this environment","blocks_mainnet":true,"generated_at":"2026-06-11T22:27:15Z"}
