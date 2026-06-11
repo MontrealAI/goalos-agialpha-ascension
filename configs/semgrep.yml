@@ -1,0 +1,22 @@
+rules:
+  - id: goalos-no-mainnet-deploy-in-ci
+    message: CI must not execute Ethereum mainnet deployment scripts.
+    severity: ERROR
+    languages: [yaml]
+    pattern-regex: "deploy:ethereum-mainnet|deploy-ethereum-mainnet-gated|--network mainnet"
+    paths:
+      include:
+        - /.github/workflows/*.yml
+  - id: goalos-no-secret-echo
+    message: Avoid echoing environment secrets in scripts/workflows.
+    severity: WARNING
+    languages: [yaml, typescript, bash]
+    pattern-regex: "echo .*\\$\\{?\\{?(PRIVATE_KEY|.*SECRET|.*API_KEY|.*RPC_URL)"
+    paths:
+      exclude:
+        - /configs/semgrep.yml
+  - id: goalos-mainnet-allow-env-literal
+    message: Mainnet deployment override literal must remain restricted to gate checks/deploy scripts.
+    severity: WARNING
+    languages: [typescript, python]
+    pattern: YES_ALL_GATES_APPROVED

@@ -1,6 +1,6 @@
 # Audit Summary
 
-Generated: 2026-06-11T15:29:36.953793+00:00
+Generated: 2026-06-11T15:57:08.970237+00:00
 Decision: **NOT_AUTHORIZED**
 
 ## Tool Results
@@ -9,6 +9,8 @@ Decision: **NOT_AUTHORIZED**
 - mythril: PENDING_ENVIRONMENT_BLOCKED (mythril execution pending)
 - medusa: PENDING_ENVIRONMENT_BLOCKED (medusa execution pending)
 - foundry: PENDING_ENVIRONMENT_BLOCKED (foundry execution pending)
+- semgrep: COMPLETED
+- npm-audit: COMPLETED_WITH_FINDINGS_REVIEW_REQUIRED
 
 ## Mainnet Blockers
 - external audit closure hash missing

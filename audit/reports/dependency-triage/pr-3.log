@@ -1,0 +1,181 @@
+## npm install
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+npm warn deprecated lodash.isequal@4.5.0: This package is deprecated. Use require('node:util').isDeepStrictEqual instead.
+npm warn deprecated glob@8.1.0: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+npm warn deprecated glob@5.0.15: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+npm warn deprecated glob@7.1.7: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+npm warn deprecated uuid@8.3.2: uuid@10 and below is no longer supported.  For ESM codebases, update to uuid@latest.  For CommonJS codebases, use uuid@11 (but be aware this version will likely be deprecated in 2028).
+
+added 597 packages, and audited 598 packages in 13s
+
+44 vulnerabilities (18 low, 22 moderate, 4 high)
+
+To address issues that do not require attention, run:
+  npm audit fix
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+## npm run repo:all
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> goalos-agialpha-ascension@4.3.0 repo:all
+> python scripts/repository_safety_check.py && python scripts/repository_status_check.py && python scripts/repository_production_readiness_check.py && python scripts/no_paid_products_check.py
+
+Repository safety check passed.
+Repository status check passed.
+{
+  "status": "passed",
+  "errors": [],
+  "warnings": [],
+  "message": "Repository is production-continuation ready as a GitHub starter candidate."
+}
+Paid/private product check passed.
+## npm run repo:no-paid-products
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> goalos-agialpha-ascension@4.3.0 repo:no-paid-products
+> python scripts/no_paid_products_check.py
+
+Paid/private product check passed.
+## npm run compile
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> goalos-agialpha-ascension@4.3.0 compile
+> hardhat compile
+
+Downloading compiler 0.8.24
+Generating typings for: 80 artifacts in dir: typechain-types for target: ethers-v6
+Successfully generated 190 typings!
+Compiled 78 Solidity files successfully (evm target: paris).
+## npm test
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> goalos-agialpha-ascension@4.3.0 test
+> hardhat test
+
+An unexpected error occurred:
+
+error TS5011: The common source directory of 'tsconfig.json' is './test'. The 'rootDir' setting must be explicitly set to this or another path to adjust your output's file layout.
+  Visit https://aka.ms/ts6 for migration information.
+
+## npm run test:all
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> goalos-agialpha-ascension@4.3.0 test:all
+> hardhat test test/agialphaAscensionFlow.test.ts test/aepAscensionFlow.test.ts test/v4InstitutionalControls.test.ts test/v4_3EthereumGateConsistency.test.ts
+
+An unexpected error occurred:
+
+error TS5011: The common source directory of 'tsconfig.json' is './test'. The 'rootDir' setting must be explicitly set to this or another path to adjust your output's file layout.
+  Visit https://aka.ms/ts6 for migration information.
+
+## npm run static-check
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> goalos-agialpha-ascension@4.3.0 static-check
+> python scripts/static_check.py
+
+Static QA passed.
+Files checked: 629
+## npm run readiness:v4.3
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> goalos-agialpha-ascension@4.3.0 readiness:v4.3
+> python scripts/verify-readiness-v4-3.py
+
+{
+  "package": "GoalOS_AGIALPHA_Ascension_Ethereum_Mainnet_Implementation_v4_3_GATE_CLEAN_EVIDENCE_READY",
+  "generated_at": "2026-06-11T15:46:42.157220+00:00",
+  "static_readiness": "passed",
+  "files_checked": 629,
+  "errors": [],
+  "warnings": [],
+  "status": "gate-clean evidence-ready audit candidate; mainnet not authorized",
+  "score_current_state": "9.6/10 audit-candidate package; not 10/10 until executed evidence exists",
+  "next_gate": "real Ethereum Sepolia rehearsal and filled Evidence Docket"
+}
+## npm run mainnet:authorization-check
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> goalos-agialpha-ascension@4.3.0 mainnet:authorization-check
+> python scripts/mainnet-authorization-check.py
+
+{
+  "generated_at": "2026-06-11T15:46:43.225330+00:00",
+  "decision": "NOT_AUTHORIZED",
+  "blockers": [
+    "MAINNET_TARGET must equal ethereum",
+    "ALLOW_MAINNET_DEPLOYMENT must equal YES_ALL_GATES_APPROVED only after all real gates are complete",
+    "LEGAL_SIGNOFF_HASH missing or not bytes32",
+    "TAX_SIGNOFF_HASH missing or not bytes32",
+    "SECURITY_REVIEW_HASH missing or not bytes32",
+    "PUBLIC_CLAIMS_REVIEW_HASH missing or not bytes32",
+    "TREASURY_REVIEW_HASH missing or not bytes32",
+    "AGIALPHA_TOKEN_VERIFICATION_HASH missing or not bytes32",
+    "SEPOLIA_REHEARSAL_EVIDENCE_HASH missing or not bytes32",
+    "EXTERNAL_AUDIT_CLOSURE_HASH missing or not bytes32",
+    "FOUNDER_APPROVAL_HASH missing or not bytes32",
+    "AGIALPHA_TOKEN_ADDRESS missing or not EVM address",
+    "FOUNDER_ADDRESS missing or not EVM address",
+    "TREASURY_ADDRESS missing or not EVM address",
+    "COMMERCIALIZATION_PERFORMANCE_ADMIN missing or not EVM address",
+    "PROOF_REWARDS_ADMIN missing or not EVM address",
+    "LIQUIDITY_ADMIN missing or not EVM address",
+    "SECURITY_ADMIN missing or not EVM address",
+    "COMMUNITY_ADMIN missing or not EVM address",
+    "AGIALPHA_TOKEN_ADDRESS must be the existing Ethereum mainnet AGIALPHA token"
+  ],
+  "mainnet": "blocked",
+  "agialpha_mainnet_token_required": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
+  "deploy_command_if_authorized": null,
+  "final_human_confirmation_required": true
+}
+## npx tsc --noEmit
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+scripts/rehearse-ethereum-sepolia.ts(44,84): error TS2339: Property 'approve' does not exist on type 'BaseContract'.
+scripts/rehearse-ethereum-sepolia.ts(45,72): error TS2339: Property 'createProofSeed' does not exist on type 'BaseContract'.
+scripts/rehearse-ethereum-sepolia.ts(48,80): error TS2339: Property 'approve' does not exist on type 'BaseContract'.
+scripts/rehearse-ethereum-sepolia.ts(49,71): error TS2339: Property 'postJob' does not exist on type 'BaseContract'.
+scripts/rehearse-ethereum-sepolia.ts(50,80): error TS2339: Property 'approve' does not exist on type 'BaseContract'.
+scripts/rehearse-ethereum-sepolia.ts(51,72): error TS2339: Property 'claimJob' does not exist on type 'BaseContract'.
+scripts/rehearse-ethereum-sepolia.ts(53,98): error TS2339: Property 'submitProof' does not exist on type 'BaseContract'.
+scripts/rehearse-ethereum-sepolia.ts(54,92): error TS2339: Property 'submitProof' does not exist on type 'BaseContract'.
+scripts/rehearse-ethereum-sepolia.ts(55,80): error TS2339: Property 'approve' does not exist on type 'BaseContract'.
+scripts/rehearse-ethereum-sepolia.ts(56,81): error TS2339: Property 'submitProof' does not exist on type 'BaseContract'.
+scripts/rehearse-ethereum-sepolia.ts(57,105): error TS2339: Property 'reviewSubmission' does not exist on type 'BaseContract'.
+scripts/rehearse-ethereum-sepolia.ts(58,76): error TS2339: Property 'approve' does not exist on type 'BaseContract'.
+scripts/rehearse-ethereum-sepolia.ts(59,74): error TS2339: Property 'bondAsReviewer' does not exist on type 'BaseContract'.
+scripts/rehearse-ethereum-sepolia.ts(60,83): error TS2339: Property 'reviewSubmission' does not exist on type 'BaseContract'.
+scripts/rehearse-ethereum-sepolia.ts(64,79): error TS2339: Property 'assignReferral' does not exist on type 'BaseContract'.
+scripts/rehearse-ethereum-sepolia.ts(65,95): error TS2339: Property 'assignReferral' does not exist on type 'BaseContract'.
+scripts/rehearse-ethereum-sepolia.ts(68,119): error TS2339: Property 'issueCredential' does not exist on type 'BaseContract'.
+scripts/rehearse-ethereum-sepolia.ts(69,111): error TS2339: Property 'setGate' does not exist on type 'BaseContract'.
+scripts/rehearse-ethereum-sepolia.ts(71,79): error TS2339: Property 'postJob' does not exist on type 'BaseContract'.
+scripts/rehearse-ethereum-sepolia.ts(72,86): error TS2339: Property 'claimJob' does not exist on type 'BaseContract'.
+scripts/rehearse-ethereum-sepolia.ts(73,89): error TS2339: Property 'submitProof' does not exist on type 'BaseContract'.
+scripts/rehearse-ethereum-sepolia.ts(74,82): error TS2339: Property 'reviewSubmission' does not exist on type 'BaseContract'.
+test/aepAscensionFlow.test.ts(41,38): error TS2339: Property 'approve' does not exist on type 'BaseContract'.
+test/aepAscensionFlow.test.ts(42,40): error TS2339: Property 'createCommit' does not exist on type 'BaseContract'.
+test/agialphaAscensionFlow.test.ts(76,37): error TS2339: Property 'approve' does not exist on type 'BaseContract'.
+test/agialphaAscensionFlow.test.ts(77,39): error TS2339: Property 'createProofSeed' does not exist on type 'BaseContract'.
+test/agialphaAscensionFlow.test.ts(89,37): error TS2339: Property 'approve' does not exist on type 'BaseContract'.
+test/agialphaAscensionFlow.test.ts(90,40): error TS2339: Property 'postJob' does not exist on type 'BaseContract'.
+test/agialphaAscensionFlow.test.ts(98,37): error TS2339: Property 'approve' does not exist on type 'BaseContract'.
+test/agialphaAscensionFlow.test.ts(99,38): error TS2339: Property 'claimJob' does not exist on type 'BaseContract'.
+test/agialphaAscensionFlow.test.ts(101,37): error TS2339: Property 'approve' does not exist on type 'BaseContract'.
+test/agialphaAscensionFlow.test.ts(102,38): error TS2339: Property 'submitProof' does not exist on type 'BaseContract'.
+test/agialphaAscensionFlow.test.ts(109,38): error TS2339: Property 'approve' does not exist on type 'BaseContract'.
+test/agialphaAscensionFlow.test.ts(110,43): error TS2339: Property 'bondAsReviewer' does not exist on type 'BaseContract'.
+test/agialphaAscensionFlow.test.ts(111,43): error TS2339: Property 'reviewSubmission' does not exist on type 'BaseContract'.
+test/v4InstitutionalControls.test.ts(72,47): error TS2339: Property 'reportFalsification' does not exist on type 'BaseContract'.
+test/v4InstitutionalControls.test.ts(85,47): error TS2339: Property 'commitVerdict' does not exist on type 'BaseContract'.
+test/v4InstitutionalControls.test.ts(88,47): error TS2339: Property 'revealVerdict' does not exist on type 'BaseContract'.
+test/v4InstitutionalControls.test.ts(97,40): error TS2339: Property 'approve' does not exist on type 'BaseContract'.
+test/v4InstitutionalControls.test.ts(98,42): error TS2339: Property 'stake' does not exist on type 'BaseContract'.
+test/v4InstitutionalControls.test.ts(103,39): error TS2339: Property 'approve' does not exist on type 'BaseContract'.
+test/v4InstitutionalControls.test.ts(104,40): error TS2339: Property 'fund' does not exist on type 'BaseContract'.

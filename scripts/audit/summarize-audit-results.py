@@ -4,9 +4,9 @@ import csv, json, sys, pathlib, datetime, hashlib
 report_dir = pathlib.Path(sys.argv[1] if len(sys.argv) > 1 else pathlib.Path('audit/reports/latest.txt').read_text().strip() if pathlib.Path('audit/reports/latest.txt').exists() else f"audit/reports/{datetime.datetime.utcnow():%Y-%m-%d-%H%M}")
 report_dir.mkdir(parents=True, exist_ok=True)
 tools=[]
-for name in ['slither','echidna','mythril','medusa','foundry']:
-    j=report_dir/(name+'.json' if name!='foundry' else 'foundry.json')
-    t=report_dir/({'foundry':'foundry-test.log'}.get(name,name+'.txt'))
+for name in ['slither','echidna','mythril','medusa','foundry','semgrep','npm-audit']:
+    j=report_dir/({'foundry':'foundry.json','npm-audit':'npm-audit.json'}.get(name, name+'.json'))
+    t=report_dir/({'foundry':'foundry-test.log','npm-audit':'npm-audit.txt'}.get(name,name+'.txt'))
     status='NOT_RUN'
     blockers=[]
     data={}
@@ -14,7 +14,10 @@ for name in ['slither','echidna','mythril','medusa','foundry']:
         try: data=json.loads(j.read_text()); status=data.get('status','COMPLETED')
         except Exception: status='COMPLETED_TEXT_ONLY'
     elif t.exists(): status='COMPLETED_TEXT_ONLY'
-    if status in {'PENDING_ENVIRONMENT_BLOCKED','NOT_RUN'}: blockers.append(f'{name} execution pending')
+    if status in {'PENDING_ENVIRONMENT_BLOCKED','NOT_RUN'}:
+        blockers.append(f'{name} execution pending')
+    if name == 'npm-audit' and status not in {'PENDING_ENVIRONMENT_BLOCKED','NOT_RUN'}:
+        status='COMPLETED_WITH_FINDINGS_REVIEW_REQUIRED'
     tools.append({'tool':name,'status':status,'json':str(j) if j.exists() else None,'text':str(t) if t.exists() else None,'blocks_mainnet': bool(blockers),'blockers':blockers})
 summary={'generated_at':datetime.datetime.now(datetime.timezone.utc).isoformat(),'report_dir':str(report_dir),'decision':'NOT_AUTHORIZED','critical_high_unresolved':0,'medium_unaccepted':0,'tools':tools,'mainnet_blockers':['external audit closure hash missing','legal/tax/public-claims/treasury/founder gates missing','Sepolia rehearsal requires real network evidence unless manifest/evidence are present','audit tools pending where environment-blocked']}
 (report_dir/'audit-summary.json').write_text(json.dumps(summary,indent=2))

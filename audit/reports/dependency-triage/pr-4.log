@@ -1,0 +1,270 @@
+## npm install
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+npm warn deprecated lodash.isequal@4.5.0: This package is deprecated. Use require('node:util').isDeepStrictEqual instead.
+npm warn deprecated glob@8.1.0: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+npm warn deprecated glob@5.0.15: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+npm warn deprecated glob@7.1.7: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+npm warn deprecated uuid@8.3.2: uuid@10 and below is no longer supported.  For ESM codebases, update to uuid@latest.  For CommonJS codebases, use uuid@11 (but be aware this version will likely be deprecated in 2028).
+
+added 597 packages, and audited 598 packages in 12s
+
+44 vulnerabilities (18 low, 22 moderate, 4 high)
+
+To address issues that do not require attention, run:
+  npm audit fix
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+## npm run repo:all
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> goalos-agialpha-ascension@4.3.0 repo:all
+> python scripts/repository_safety_check.py && python scripts/repository_status_check.py && python scripts/repository_production_readiness_check.py && python scripts/no_paid_products_check.py
+
+Repository safety check passed.
+Repository status check passed.
+{
+  "status": "passed",
+  "errors": [],
+  "warnings": [],
+  "message": "Repository is production-continuation ready as a GitHub starter candidate."
+}
+Paid/private product check passed.
+## npm run repo:no-paid-products
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> goalos-agialpha-ascension@4.3.0 repo:no-paid-products
+> python scripts/no_paid_products_check.py
+
+Paid/private product check passed.
+## npm run compile
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> goalos-agialpha-ascension@4.3.0 compile
+> hardhat compile
+
+Error HH404: File @openzeppelin/contracts/security/Pausable.sol, imported from contracts/access/GoalOSAccessControl.sol, not found.
+
+HardhatError: HH404: File @openzeppelin/contracts/security/Pausable.sol, imported from contracts/access/GoalOSAccessControl.sol, not found.
+    at Resolver.resolveImport (/tmp/goalos-dep-pr-4/node_modules/hardhat/src/internal/solidity/resolver.ts:221:17)
+    at async /tmp/goalos-dep-pr-4/node_modules/hardhat/src/internal/solidity/dependencyGraph.ts:188:28
+    at async Promise.all (index 1)
+    at async DependencyGraph._addDependenciesFrom (/tmp/goalos-dep-pr-4/node_modules/hardhat/src/internal/solidity/dependencyGraph.ts:186:5)
+    at async Promise.all (index 0)
+    at async Function.createFromResolvedFiles (/tmp/goalos-dep-pr-4/node_modules/hardhat/src/internal/solidity/dependencyGraph.ts:15:5)
+    at async Environment._runTaskDefinition (/tmp/goalos-dep-pr-4/node_modules/hardhat/src/internal/core/runtime-environment.ts:351:14)
+    at async Environment.run (/tmp/goalos-dep-pr-4/node_modules/hardhat/src/internal/core/runtime-environment.ts:184:14)
+    at async SimpleTaskDefinition.action (/tmp/goalos-dep-pr-4/node_modules/hardhat/src/builtin-tasks/compile.ts:1398:58)
+    at async Environment._runTaskDefinition (/tmp/goalos-dep-pr-4/node_modules/hardhat/src/internal/core/runtime-environment.ts:351:14)
+
+    Caused by: HardhatError: HH402: File @openzeppelin/contracts/security/Pausable.sol doesn't exist.
+        at Resolver._validateSourceNameExistenceAndCasing (/tmp/goalos-dep-pr-4/node_modules/hardhat/src/internal/solidity/resolver.ts:544:15)
+        at async Resolver._resolveLibrarySourceName (/tmp/goalos-dep-pr-4/node_modules/hardhat/src/internal/solidity/resolver.ts:354:7)
+        at async Resolver.resolveSourceName (/tmp/goalos-dep-pr-4/node_modules/hardhat/src/internal/solidity/resolver.ts:103:22)
+        at async Resolver.resolveImport (/tmp/goalos-dep-pr-4/node_modules/hardhat/src/internal/solidity/resolver.ts:194:24)
+        at async /tmp/goalos-dep-pr-4/node_modules/hardhat/src/internal/solidity/dependencyGraph.ts:188:28
+        at async Promise.all (index 1)
+        at async DependencyGraph._addDependenciesFrom (/tmp/goalos-dep-pr-4/node_modules/hardhat/src/internal/solidity/dependencyGraph.ts:186:5)
+        at async Promise.all (index 0)
+        at async Function.createFromResolvedFiles (/tmp/goalos-dep-pr-4/node_modules/hardhat/src/internal/solidity/dependencyGraph.ts:15:5)
+        at async Environment._runTaskDefinition (/tmp/goalos-dep-pr-4/node_modules/hardhat/src/internal/core/runtime-environment.ts:351:14)
+    
+        Caused by: HardhatError: HH1005: Solidity source file @openzeppelin/contracts/security/Pausable.sol not found
+            at getSourceNameTrueCase (/tmp/goalos-dep-pr-4/node_modules/hardhat/src/utils/source-names.ts:219:13)
+            at async validateSourceNameExistenceAndCasing (/tmp/goalos-dep-pr-4/node_modules/hardhat/src/utils/source-names.ts:102:30)
+            at async Resolver._validateSourceNameExistenceAndCasing (/tmp/goalos-dep-pr-4/node_modules/hardhat/src/internal/solidity/resolver.ts:536:7)
+            at async Resolver._resolveLibrarySourceName (/tmp/goalos-dep-pr-4/node_modules/hardhat/src/internal/solidity/resolver.ts:354:7)
+            at async Resolver.resolveSourceName (/tmp/goalos-dep-pr-4/node_modules/hardhat/src/internal/solidity/resolver.ts:103:22)
+            at async Resolver.resolveImport (/tmp/goalos-dep-pr-4/node_modules/hardhat/src/internal/solidity/resolver.ts:194:24)
+            at async /tmp/goalos-dep-pr-4/node_modules/hardhat/src/internal/solidity/dependencyGraph.ts:188:28
+            at async Promise.all (index 1)
+            at async DependencyGraph._addDependenciesFrom (/tmp/goalos-dep-pr-4/node_modules/hardhat/src/internal/solidity/dependencyGraph.ts:186:5)
+            at async Promise.all (index 0)
+        
+            Caused by: FileNotFoundError: File /tmp/goalos-dep-pr-4/node_modules/@openzeppelin/contracts/security/Pausable.sol not found
+                at getFileTrueCase (/tmp/goalos-dep-pr-4/node_modules/hardhat/src/internal/util/fs-utils.ts:152:9)
+                at async getFileTrueCase (/tmp/goalos-dep-pr-4/node_modules/hardhat/src/internal/util/fs-utils.ts:143:9)
+                at async getFileTrueCase (/tmp/goalos-dep-pr-4/node_modules/hardhat/src/internal/util/fs-utils.ts:143:9)
+                at async getSourceNameTrueCase (/tmp/goalos-dep-pr-4/node_modules/hardhat/src/utils/source-names.ts:215:22)
+                at async validateSourceNameExistenceAndCasing (/tmp/goalos-dep-pr-4/node_modules/hardhat/src/utils/source-names.ts:102:30)
+                at async Resolver._validateSourceNameExistenceAndCasing (/tmp/goalos-dep-pr-4/node_modules/hardhat/src/internal/solidity/resolver.ts:536:7)
+                at async Resolver._resolveLibrarySourceName (/tmp/goalos-dep-pr-4/node_modules/hardhat/src/internal/solidity/resolver.ts:354:7)
+                at async Resolver.resolveSourceName (/tmp/goalos-dep-pr-4/node_modules/hardhat/src/internal/solidity/resolver.ts:103:22)
+                at async Resolver.resolveImport (/tmp/goalos-dep-pr-4/node_modules/hardhat/src/internal/solidity/resolver.ts:194:24)
+                at async /tmp/goalos-dep-pr-4/node_modules/hardhat/src/internal/solidity/dependencyGraph.ts:188:28
+## npm test
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> goalos-agialpha-ascension@4.3.0 test
+> hardhat test
+
+Error HH404: File @openzeppelin/contracts/security/Pausable.sol, imported from contracts/access/GoalOSAccessControl.sol, not found.
+
+HardhatError: HH404: File @openzeppelin/contracts/security/Pausable.sol, imported from contracts/access/GoalOSAccessControl.sol, not found.
+    at Resolver.resolveImport (/tmp/goalos-dep-pr-4/node_modules/hardhat/src/internal/solidity/resolver.ts:221:17)
+    at async /tmp/goalos-dep-pr-4/node_modules/hardhat/src/internal/solidity/dependencyGraph.ts:188:28
+    at async Promise.all (index 1)
+    at async DependencyGraph._addDependenciesFrom (/tmp/goalos-dep-pr-4/node_modules/hardhat/src/internal/solidity/dependencyGraph.ts:186:5)
+    at async Promise.all (index 0)
+    at async Function.createFromResolvedFiles (/tmp/goalos-dep-pr-4/node_modules/hardhat/src/internal/solidity/dependencyGraph.ts:15:5)
+    at async Environment._runTaskDefinition (/tmp/goalos-dep-pr-4/node_modules/hardhat/src/internal/core/runtime-environment.ts:351:14)
+    at async Environment.run (/tmp/goalos-dep-pr-4/node_modules/hardhat/src/internal/core/runtime-environment.ts:184:14)
+    at async SimpleTaskDefinition.action (/tmp/goalos-dep-pr-4/node_modules/hardhat/src/builtin-tasks/compile.ts:1398:58)
+    at async Environment._runTaskDefinition (/tmp/goalos-dep-pr-4/node_modules/hardhat/src/internal/core/runtime-environment.ts:351:14)
+
+    Caused by: HardhatError: HH402: File @openzeppelin/contracts/security/Pausable.sol doesn't exist.
+        at Resolver._validateSourceNameExistenceAndCasing (/tmp/goalos-dep-pr-4/node_modules/hardhat/src/internal/solidity/resolver.ts:544:15)
+        at async Resolver._resolveLibrarySourceName (/tmp/goalos-dep-pr-4/node_modules/hardhat/src/internal/solidity/resolver.ts:354:7)
+        at async Resolver.resolveSourceName (/tmp/goalos-dep-pr-4/node_modules/hardhat/src/internal/solidity/resolver.ts:103:22)
+        at async Resolver.resolveImport (/tmp/goalos-dep-pr-4/node_modules/hardhat/src/internal/solidity/resolver.ts:194:24)
+        at async /tmp/goalos-dep-pr-4/node_modules/hardhat/src/internal/solidity/dependencyGraph.ts:188:28
+        at async Promise.all (index 1)
+        at async DependencyGraph._addDependenciesFrom (/tmp/goalos-dep-pr-4/node_modules/hardhat/src/internal/solidity/dependencyGraph.ts:186:5)
+        at async Promise.all (index 0)
+        at async Function.createFromResolvedFiles (/tmp/goalos-dep-pr-4/node_modules/hardhat/src/internal/solidity/dependencyGraph.ts:15:5)
+        at async Environment._runTaskDefinition (/tmp/goalos-dep-pr-4/node_modules/hardhat/src/internal/core/runtime-environment.ts:351:14)
+    
+        Caused by: HardhatError: HH1005: Solidity source file @openzeppelin/contracts/security/Pausable.sol not found
+            at getSourceNameTrueCase (/tmp/goalos-dep-pr-4/node_modules/hardhat/src/utils/source-names.ts:219:13)
+            at async validateSourceNameExistenceAndCasing (/tmp/goalos-dep-pr-4/node_modules/hardhat/src/utils/source-names.ts:102:30)
+            at async Resolver._validateSourceNameExistenceAndCasing (/tmp/goalos-dep-pr-4/node_modules/hardhat/src/internal/solidity/resolver.ts:536:7)
+            at async Resolver._resolveLibrarySourceName (/tmp/goalos-dep-pr-4/node_modules/hardhat/src/internal/solidity/resolver.ts:354:7)
+            at async Resolver.resolveSourceName (/tmp/goalos-dep-pr-4/node_modules/hardhat/src/internal/solidity/resolver.ts:103:22)
+            at async Resolver.resolveImport (/tmp/goalos-dep-pr-4/node_modules/hardhat/src/internal/solidity/resolver.ts:194:24)
+            at async /tmp/goalos-dep-pr-4/node_modules/hardhat/src/internal/solidity/dependencyGraph.ts:188:28
+            at async Promise.all (index 1)
+            at async DependencyGraph._addDependenciesFrom (/tmp/goalos-dep-pr-4/node_modules/hardhat/src/internal/solidity/dependencyGraph.ts:186:5)
+            at async Promise.all (index 0)
+        
+            Caused by: FileNotFoundError: File /tmp/goalos-dep-pr-4/node_modules/@openzeppelin/contracts/security/Pausable.sol not found
+                at getFileTrueCase (/tmp/goalos-dep-pr-4/node_modules/hardhat/src/internal/util/fs-utils.ts:152:9)
+                at async getFileTrueCase (/tmp/goalos-dep-pr-4/node_modules/hardhat/src/internal/util/fs-utils.ts:143:9)
+                at async getFileTrueCase (/tmp/goalos-dep-pr-4/node_modules/hardhat/src/internal/util/fs-utils.ts:143:9)
+                at async getSourceNameTrueCase (/tmp/goalos-dep-pr-4/node_modules/hardhat/src/utils/source-names.ts:215:22)
+                at async validateSourceNameExistenceAndCasing (/tmp/goalos-dep-pr-4/node_modules/hardhat/src/utils/source-names.ts:102:30)
+                at async Resolver._validateSourceNameExistenceAndCasing (/tmp/goalos-dep-pr-4/node_modules/hardhat/src/internal/solidity/resolver.ts:536:7)
+                at async Resolver._resolveLibrarySourceName (/tmp/goalos-dep-pr-4/node_modules/hardhat/src/internal/solidity/resolver.ts:354:7)
+                at async Resolver.resolveSourceName (/tmp/goalos-dep-pr-4/node_modules/hardhat/src/internal/solidity/resolver.ts:103:22)
+                at async Resolver.resolveImport (/tmp/goalos-dep-pr-4/node_modules/hardhat/src/internal/solidity/resolver.ts:194:24)
+                at async /tmp/goalos-dep-pr-4/node_modules/hardhat/src/internal/solidity/dependencyGraph.ts:188:28
+## npm run test:all
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> goalos-agialpha-ascension@4.3.0 test:all
+> hardhat test test/agialphaAscensionFlow.test.ts test/aepAscensionFlow.test.ts test/v4InstitutionalControls.test.ts test/v4_3EthereumGateConsistency.test.ts
+
+Error HH404: File @openzeppelin/contracts/security/Pausable.sol, imported from contracts/access/GoalOSAccessControl.sol, not found.
+
+HardhatError: HH404: File @openzeppelin/contracts/security/Pausable.sol, imported from contracts/access/GoalOSAccessControl.sol, not found.
+    at Resolver.resolveImport (/tmp/goalos-dep-pr-4/node_modules/hardhat/src/internal/solidity/resolver.ts:221:17)
+    at async /tmp/goalos-dep-pr-4/node_modules/hardhat/src/internal/solidity/dependencyGraph.ts:188:28
+    at async Promise.all (index 1)
+    at async DependencyGraph._addDependenciesFrom (/tmp/goalos-dep-pr-4/node_modules/hardhat/src/internal/solidity/dependencyGraph.ts:186:5)
+    at async Promise.all (index 0)
+    at async Function.createFromResolvedFiles (/tmp/goalos-dep-pr-4/node_modules/hardhat/src/internal/solidity/dependencyGraph.ts:15:5)
+    at async Environment._runTaskDefinition (/tmp/goalos-dep-pr-4/node_modules/hardhat/src/internal/core/runtime-environment.ts:351:14)
+    at async Environment.run (/tmp/goalos-dep-pr-4/node_modules/hardhat/src/internal/core/runtime-environment.ts:184:14)
+    at async SimpleTaskDefinition.action (/tmp/goalos-dep-pr-4/node_modules/hardhat/src/builtin-tasks/compile.ts:1398:58)
+    at async Environment._runTaskDefinition (/tmp/goalos-dep-pr-4/node_modules/hardhat/src/internal/core/runtime-environment.ts:351:14)
+
+    Caused by: HardhatError: HH402: File @openzeppelin/contracts/security/Pausable.sol doesn't exist.
+        at Resolver._validateSourceNameExistenceAndCasing (/tmp/goalos-dep-pr-4/node_modules/hardhat/src/internal/solidity/resolver.ts:544:15)
+        at async Resolver._resolveLibrarySourceName (/tmp/goalos-dep-pr-4/node_modules/hardhat/src/internal/solidity/resolver.ts:354:7)
+        at async Resolver.resolveSourceName (/tmp/goalos-dep-pr-4/node_modules/hardhat/src/internal/solidity/resolver.ts:103:22)
+        at async Resolver.resolveImport (/tmp/goalos-dep-pr-4/node_modules/hardhat/src/internal/solidity/resolver.ts:194:24)
+        at async /tmp/goalos-dep-pr-4/node_modules/hardhat/src/internal/solidity/dependencyGraph.ts:188:28
+        at async Promise.all (index 1)
+        at async DependencyGraph._addDependenciesFrom (/tmp/goalos-dep-pr-4/node_modules/hardhat/src/internal/solidity/dependencyGraph.ts:186:5)
+        at async Promise.all (index 0)
+        at async Function.createFromResolvedFiles (/tmp/goalos-dep-pr-4/node_modules/hardhat/src/internal/solidity/dependencyGraph.ts:15:5)
+        at async Environment._runTaskDefinition (/tmp/goalos-dep-pr-4/node_modules/hardhat/src/internal/core/runtime-environment.ts:351:14)
+    
+        Caused by: HardhatError: HH1005: Solidity source file @openzeppelin/contracts/security/Pausable.sol not found
+            at getSourceNameTrueCase (/tmp/goalos-dep-pr-4/node_modules/hardhat/src/utils/source-names.ts:219:13)
+            at async validateSourceNameExistenceAndCasing (/tmp/goalos-dep-pr-4/node_modules/hardhat/src/utils/source-names.ts:102:30)
+            at async Resolver._validateSourceNameExistenceAndCasing (/tmp/goalos-dep-pr-4/node_modules/hardhat/src/internal/solidity/resolver.ts:536:7)
+            at async Resolver._resolveLibrarySourceName (/tmp/goalos-dep-pr-4/node_modules/hardhat/src/internal/solidity/resolver.ts:354:7)
+            at async Resolver.resolveSourceName (/tmp/goalos-dep-pr-4/node_modules/hardhat/src/internal/solidity/resolver.ts:103:22)
+            at async Resolver.resolveImport (/tmp/goalos-dep-pr-4/node_modules/hardhat/src/internal/solidity/resolver.ts:194:24)
+            at async /tmp/goalos-dep-pr-4/node_modules/hardhat/src/internal/solidity/dependencyGraph.ts:188:28
+            at async Promise.all (index 1)
+            at async DependencyGraph._addDependenciesFrom (/tmp/goalos-dep-pr-4/node_modules/hardhat/src/internal/solidity/dependencyGraph.ts:186:5)
+            at async Promise.all (index 0)
+        
+            Caused by: FileNotFoundError: File /tmp/goalos-dep-pr-4/node_modules/@openzeppelin/contracts/security/Pausable.sol not found
+                at getFileTrueCase (/tmp/goalos-dep-pr-4/node_modules/hardhat/src/internal/util/fs-utils.ts:152:9)
+                at async getFileTrueCase (/tmp/goalos-dep-pr-4/node_modules/hardhat/src/internal/util/fs-utils.ts:143:9)
+                at async getFileTrueCase (/tmp/goalos-dep-pr-4/node_modules/hardhat/src/internal/util/fs-utils.ts:143:9)
+                at async getSourceNameTrueCase (/tmp/goalos-dep-pr-4/node_modules/hardhat/src/utils/source-names.ts:215:22)
+                at async validateSourceNameExistenceAndCasing (/tmp/goalos-dep-pr-4/node_modules/hardhat/src/utils/source-names.ts:102:30)
+                at async Resolver._validateSourceNameExistenceAndCasing (/tmp/goalos-dep-pr-4/node_modules/hardhat/src/internal/solidity/resolver.ts:536:7)
+                at async Resolver._resolveLibrarySourceName (/tmp/goalos-dep-pr-4/node_modules/hardhat/src/internal/solidity/resolver.ts:354:7)
+                at async Resolver.resolveSourceName (/tmp/goalos-dep-pr-4/node_modules/hardhat/src/internal/solidity/resolver.ts:103:22)
+                at async Resolver.resolveImport (/tmp/goalos-dep-pr-4/node_modules/hardhat/src/internal/solidity/resolver.ts:194:24)
+                at async /tmp/goalos-dep-pr-4/node_modules/hardhat/src/internal/solidity/dependencyGraph.ts:188:28
+## npm run static-check
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> goalos-agialpha-ascension@4.3.0 static-check
+> python scripts/static_check.py
+
+Static QA passed.
+Files checked: 277
+## npm run readiness:v4.3
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> goalos-agialpha-ascension@4.3.0 readiness:v4.3
+> python scripts/verify-readiness-v4-3.py
+
+{
+  "package": "GoalOS_AGIALPHA_Ascension_Ethereum_Mainnet_Implementation_v4_3_GATE_CLEAN_EVIDENCE_READY",
+  "generated_at": "2026-06-11T15:47:14.233659+00:00",
+  "static_readiness": "passed",
+  "files_checked": 277,
+  "errors": [],
+  "warnings": [],
+  "status": "gate-clean evidence-ready audit candidate; mainnet not authorized",
+  "score_current_state": "9.6/10 audit-candidate package; not 10/10 until executed evidence exists",
+  "next_gate": "real Ethereum Sepolia rehearsal and filled Evidence Docket"
+}
+## npm run mainnet:authorization-check
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> goalos-agialpha-ascension@4.3.0 mainnet:authorization-check
+> python scripts/mainnet-authorization-check.py
+
+{
+  "generated_at": "2026-06-11T15:47:15.277038+00:00",
+  "decision": "NOT_AUTHORIZED",
+  "blockers": [
+    "MAINNET_TARGET must equal ethereum",
+    "ALLOW_MAINNET_DEPLOYMENT must equal YES_ALL_GATES_APPROVED only after all real gates are complete",
+    "LEGAL_SIGNOFF_HASH missing or not bytes32",
+    "TAX_SIGNOFF_HASH missing or not bytes32",
+    "SECURITY_REVIEW_HASH missing or not bytes32",
+    "PUBLIC_CLAIMS_REVIEW_HASH missing or not bytes32",
+    "TREASURY_REVIEW_HASH missing or not bytes32",
+    "AGIALPHA_TOKEN_VERIFICATION_HASH missing or not bytes32",
+    "SEPOLIA_REHEARSAL_EVIDENCE_HASH missing or not bytes32",
+    "EXTERNAL_AUDIT_CLOSURE_HASH missing or not bytes32",
+    "FOUNDER_APPROVAL_HASH missing or not bytes32",
+    "AGIALPHA_TOKEN_ADDRESS missing or not EVM address",
+    "FOUNDER_ADDRESS missing or not EVM address",
+    "TREASURY_ADDRESS missing or not EVM address",
+    "COMMERCIALIZATION_PERFORMANCE_ADMIN missing or not EVM address",
+    "PROOF_REWARDS_ADMIN missing or not EVM address",
+    "LIQUIDITY_ADMIN missing or not EVM address",
+    "SECURITY_ADMIN missing or not EVM address",
+    "COMMUNITY_ADMIN missing or not EVM address",
+    "AGIALPHA_TOKEN_ADDRESS must be the existing Ethereum mainnet AGIALPHA token"
+  ],
+  "mainnet": "blocked",
+  "agialpha_mainnet_token_required": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
+  "deploy_command_if_authorized": null,
+  "final_human_confirmation_required": true
+}
