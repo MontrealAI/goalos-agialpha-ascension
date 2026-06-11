@@ -1,7 +1,7 @@
 {
   "status": "NO",
   "MAINNET_DEPLOYMENT_AUTHORIZED": "NO",
-  "commit": "cc1007f6c1c2b6d3f223f0ede250908dcdb3fe91",
+  "commit": "f31a9c2b7aab4091e8bfb8194a49081c4dfbed0b",
   "chain": "ethereum",
   "chainId": 1,
   "agialphaToken": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
@@ -24,7 +24,7 @@
     "PRIVATE_OPERATOR_EVIDENCE_PENDING: missing qa/public-mainnet-deployment-authorization-evidence.json",
     "PRIVATE_OPERATOR_EVIDENCE_PENDING: missing qa/public-mainnet-technical-readiness-evidence.json"
   ],
-  "generatedAt": "2026-06-11T18:56:08.165250+00:00",
+  "generatedAt": "2026-06-11T19:05:43.962099+00:00",
   "generatedBy": "scripts/mainnet-deployment-authorization-check.py",
   "mainnetDeploymentExecuted": false
 }
