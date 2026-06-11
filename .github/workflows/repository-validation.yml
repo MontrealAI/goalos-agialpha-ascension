@@ -9,33 +9,29 @@ permissions:
   contents: read
 
 jobs:
-  static-repository-checks:
+  public-validation:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-
+      - uses: actions/checkout@v5
       - uses: actions/setup-node@v5
         with:
           node-version: "20"
           cache: "npm"
-
       - name: Install locked dependencies
         run: npm ci
-
+      - name: Repository checks
+        run: npm run repo:all
+      - name: Assert public status
+        run: npm run assert:public-status
       - name: Compile contracts
         run: npm run compile
-
       - name: Unit tests
         run: npm test
-
-      - name: Check no obvious secrets / unsafe claims
-        run: python scripts/repository_safety_check.py
-
-      - name: Validate repository status files
-        run: python scripts/repository_status_check.py
-
-      - name: Production continuation readiness check
-        run: python scripts/repository_production_readiness_check.py
-
-      - name: No private operator data check
-        run: python scripts/no_private_operator_data_check.py
+      - name: Full supported Hardhat test suite
+        run: npm run test:all
+      - name: Static/security checks without secrets
+        run: npm run static-check
+      - name: Deterministic local rehearsal
+        run: npm run local:authorization-rehearsal
+      - name: Public-only authorization check
+        run: npm run mainnet:authorization-check:public

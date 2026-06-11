@@ -1,6 +1,6 @@
 {
-  "status": "PENDING_RPC",
-  "generatedAt": "2026-06-11T21:41:51.457Z",
+  "status": "PRIVATE_OPERATOR_PENDING",
+  "generatedAt": "2026-06-11T21:58:38.173Z",
   "generatedBy": "scripts/mainnet-fork-simulate.ts",
   "chain": "ethereum",
   "chainId": 1,
@@ -15,6 +15,7 @@
   "deployedContracts": 0,
   "checks": {
     "forkMainnet": false,
+    "MAINNET_FORK_SIMULATION": "PRIVATE_OPERATOR_PENDING",
     "usesExistingAGIALPHA": true,
     "deploysMockAGIALPHAOnMainnet": false,
     "deploysNewAGIALPHAOnMainnet": false,

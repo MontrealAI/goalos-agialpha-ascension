@@ -98,7 +98,7 @@ async function main() {
     }
   }
 
-  const status = blockers.length === 0 ? "PASSED" : "PENDING_RPC";
+  const status = blockers.length === 0 ? "PASSED" : "PRIVATE_OPERATOR_PENDING";
   const generatedAt = new Date().toISOString();
   const decision = {
     status,
@@ -117,6 +117,7 @@ async function main() {
     deployedContracts,
     checks: {
       forkMainnet: status === "PASSED",
+      MAINNET_FORK_SIMULATION: status === "PASSED" ? "PASSED" : "PRIVATE_OPERATOR_PENDING",
       usesExistingAGIALPHA: true,
       deploysMockAGIALPHAOnMainnet: false,
       deploysNewAGIALPHAOnMainnet: false,

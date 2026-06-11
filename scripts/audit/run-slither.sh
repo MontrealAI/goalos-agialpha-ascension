@@ -2,6 +2,11 @@
 set -uo pipefail
 source scripts/audit/_common.sh
 TXT="$AUDIT_REPORT_DIR/slither.txt"; JSON="$AUDIT_REPORT_DIR/slither.json"; SARIF="$AUDIT_REPORT_DIR/slither.sarif"
+if ! npm run compile > "$AUDIT_REPORT_DIR/hardhat-compile.log" 2>&1; then
+  write_pending "Slither" "npm run compile" "Hardhat compile failed; Slither clearance is impossible until compile passes" "$JSON" "$TXT"
+  echo '{"runs":[]}' > "$SARIF"
+  exit 1
+fi
 CMD="timeout 120 slither . --compile-force-framework hardhat --config-file configs/slither.config.json"
 if ! command -v slither >/dev/null 2>&1; then write_pending "Slither" "$CMD" "slither executable is not installed" "$JSON" "$TXT"; echo '{"runs":[]}' > "$SARIF"; exit 0; fi
 set +e
