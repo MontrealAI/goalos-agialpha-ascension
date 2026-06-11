@@ -1,0 +1,11 @@
+flowchart LR
+  Aim[GoalOSCommit / Aim] --> Act[RunCommitment / Act]
+  Act --> Proof[ProofRoot + ProofBundle]
+  Proof --> Replay[Replay Registry]
+  Replay --> Eval[Eval + Commit-Reveal Validation]
+  Eval --> Select[Selection Gate]
+  Select --> Rollout[Rollout / Rollback]
+  Rollout --> Docket[Evidence Docket]
+  Docket --> Chronicle[Chronicle]
+  Chronicle --> Conform[AEP Conformance]
+  Conform --> Reputation[Credentials + Reputation + alpha-WU]

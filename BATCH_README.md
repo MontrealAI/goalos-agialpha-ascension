@@ -1,5 +1,5 @@
 # Batch upload note
 
-Upload first. Commit: Initialize root files and GitHub governance metadata.
+Upload second. Commit: Add GoalOS AGIALPHA Ascension documentation.
 
 Select the contents of this folder, not the folder itself.

@@ -1,0 +1,28 @@
+contract,category,purpose
+AGIALPHA,existing token,utility coordination asset
+ProofSeedRegistry,proof work,reviewed opportunity artifacts
+JobRegistry,proof work,sponsor proof jobs
+JobClaimBondManager,proof work,builder accountability bond
+ProofSubmissionRegistry,proof work,proof submissions and approval/rejection
+ReviewerBondRegistry,proof work,reviewer bond and review execution
+ProofCardRegistry,proof work,public-safe proof-card hashes
+ProofCredentialRegistry,proof work,earned proof credentials
+ReputationRegistry,proof work,reputation from proof
+AEPGoalOSCommitRegistry,AEP,Aim commitment
+AEPRunCommitmentRegistry,AEP,Act commitment
+AEPProofLedger,AEP,proof roots
+AEPEvalRegistry,AEP,evaluation attestations
+AEPSelectionGate,AEP,evolution decision certificates
+AEPEvidenceDocketRegistry,AEP,institutional proof room
+AEPProofBundleRegistry,AEP,settlement-grade proof bundle records
+AlphaWorkUnitLedger,AEP,alpha-WU metrology
+MandateEpochRegistry,AGI ALPHA,epoch-level mandate batching
+AEPCommitRevealValidationRegistry,v4 control,commit-reveal validation
+AEPEvaluatorStakingRegistry,v4 control,evaluator stake and cooldown
+AEPSlashingCourt,v4 control,slashing cases
+AEPRewardVault,v4 control,AGIALPHA rewards for proof work
+AEPReplayRegistry,v4 control,replay records
+AEPChronicleRegistry,v4 control,durable chronicle entries
+AEPConformanceRegistry,v4 control,L0-L6 conformance records
+AEPClaimBoundaryRegistry,v4 control,claim/not-claim/evidence boundary
+AEPFalsificationRegistry,v4 control,falsification reports

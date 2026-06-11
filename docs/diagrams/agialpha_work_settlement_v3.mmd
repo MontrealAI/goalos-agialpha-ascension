@@ -1,0 +1,8 @@
+flowchart LR
+  Request[Request / Mandate] --> Escrow[Escrow / AGIALPHA]
+  Escrow --> Execute[Execute off-chain]
+  Execute --> Proof[ProofBundle]
+  Proof --> Validate[Reviewer / Commit-Reveal / Eval]
+  Validate --> Settle[Settlement Receipt]
+  Settle --> Chronicle[Evidence Docket / Proof Graph]
+  Chronicle --> AWU[alpha-Work Units]

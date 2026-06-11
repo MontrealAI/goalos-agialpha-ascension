@@ -1,0 +1,21 @@
+layer,contract,purpose
+AGIALPHA coordination,ProofSeedRegistry,Proof Seeds / opportunity artifacts
+AGIALPHA coordination,JobRegistry,Sponsor proof jobs
+AGIALPHA coordination,JobClaimBondManager,Builder claim bonds
+AGIALPHA coordination,ProofSubmissionRegistry,Proof submissions and settlement
+AGIALPHA coordination,ReviewerBondRegistry,Reviewer bonds and review execution
+AGIALPHA coordination,ProofCardRegistry,Public-safe proof card hashes
+AGIALPHA coordination,ProofCredentialRegistry,Credentials
+AGIALPHA coordination,ReputationRegistry,Reputation
+AEP proof-of-evolution,AEPGoalOSCommitRegistry,Aim / GoalOSCommit
+AEP proof-of-evolution,AEPRunCommitmentRegistry,Act / RunCommitment
+AEP proof-of-evolution,AEPProofLedger,Prove / ProofRoot
+AEP proof-of-evolution,AEPEvalRegistry,EvalAttestation
+AEP proof-of-evolution,AEPSelectionGate,Evolve / SelectionCertificate
+AEP proof-of-evolution,AEPRolloutRouter,RolloutReceipt
+AEP proof-of-evolution,AEPRollbackRegistry,RollbackReceipt
+AEP proof-of-evolution,AEPEvidenceDocketRegistry,Evidence Docket
+AGI ALPHA substrate,AEPProofBundleRegistry,Settlement-grade ProofBundle
+AGI ALPHA substrate,AlphaWorkUnitLedger,alpha-Work Unit metrology
+AGI ALPHA substrate,MandateEpochRegistry,MandateEpoch roots
+AGI ALPHA substrate,AGIEthNamespaceRegistry,AGI.Eth namespace environment roots

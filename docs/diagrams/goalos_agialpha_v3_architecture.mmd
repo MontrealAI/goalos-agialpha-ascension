@@ -1,0 +1,13 @@
+flowchart LR
+  Commit[GoalOSCommit / Aim] --> Run[RunCommitment / Act]
+  Run --> Proof[ProofRoot + ProofBundle / Prove]
+  Proof --> Eval[EvalAttestation]
+  Eval --> Select[SelectionCertificate / Evolve]
+  Select --> Rollout[RolloutReceipt]
+  Select --> Rollback[RollbackReceipt]
+  Proof --> Docket[Evidence Docket]
+  Proof --> Card[Proof Card]
+  Card --> Credential[Credential]
+  Credential --> Reputation[Reputation]
+  Reputation --> Jobs[Better AGIALPHA Proof Jobs]
+  Jobs --> Commit
