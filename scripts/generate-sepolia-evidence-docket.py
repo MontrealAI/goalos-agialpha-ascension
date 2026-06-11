@@ -9,11 +9,32 @@ if manifest_path.exists(): manifest=json.loads(manifest_path.read_text())
 else: manifest={}
 raw=json.loads(raw_path.read_text()) if raw_path.exists() else {}
 
+def max_rehearsal_block_number(raw_artifact: dict) -> int:
+    block_numbers = []
+    for tx in raw_artifact.get('transactions', []):
+        try:
+            block_numbers.append(int(tx.get('blockNumber') or 0))
+        except (TypeError, ValueError):
+            pass
+    return max(block_numbers, default=0)
+
+
+def has_public_sepolia_evidence(raw_artifact: dict) -> bool:
+    evidence = raw_artifact.get('networkEvidence')
+    if evidence == 'PUBLIC_SEPOLIA_RPC':
+        return True
+    if isinstance(evidence, dict) and evidence.get('publicSepolia') is True and evidence.get('marker') == 'PUBLIC_SEPOLIA_RPC':
+        return True
+    # Backward-compatible derivation for real Sepolia artifacts produced before
+    # networkEvidence was written: public Sepolia transaction blocks are far above
+    # local Hardhat/Anvil rehearsal block heights. This prevents valid public
+    # Sepolia runs from requiring hand-edited JSON while still keeping local
+    # chainId-11155111 runs pending.
+    return raw_artifact.get('chainId') == 11155111 and max_rehearsal_block_number(raw_artifact) >= 1_000_000
+
+
 if raw.get('status') == 'COMPLETED':
-    # The repository may contain a local Hardhat rehearsal with chainId 11155111.
-    # Treat it as useful rehearsal evidence, but do not call it public Sepolia unless
-    # the raw artifact was produced with an explicit public network marker.
-    status = 'COMPLETED_PUBLIC_SEPOLIA' if raw.get('networkEvidence') == 'PUBLIC_SEPOLIA_RPC' else 'COMPLETED_LOCAL_CHAINID_11155111_PUBLIC_SEPOLIA_PENDING'
+    status = 'COMPLETED_PUBLIC_SEPOLIA' if has_public_sepolia_evidence(raw) else 'COMPLETED_LOCAL_CHAINID_11155111_PUBLIC_SEPOLIA_PENDING'
 else:
     status = 'PENDING_REAL_REHEARSAL'
 

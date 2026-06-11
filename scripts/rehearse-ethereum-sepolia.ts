@@ -1,6 +1,5 @@
-import { ethers } from "hardhat";
+import { ethers, network } from "hardhat";
 import fs from "fs";
-import crypto from "crypto";
 import { deployGoalOSAGIALPHAAscension } from "./deploy-core";
 
 const MANIFEST = "deployments/ethereum-sepolia.agialpha.latest.json";
@@ -9,9 +8,21 @@ function stringify(value: any) { return JSON.stringify(value, (_k, v) => typeof 
 async function txrec(label: string, p: Promise<any>) { const tx=await p; const r=await tx.wait(); return { label, hash: tx.hash, blockNumber: r?.blockNumber, status: r?.status, gasUsed: r?.gasUsed?.toString() }; }
 async function expectRevert(label: string, p: Promise<any>) { try { const tx=await p; await tx.wait(); return { label, passed:false, error:"unexpected success" }; } catch (e:any) { return { label, passed:true, error:String(e.shortMessage || e.message).slice(0,300) }; } }
 async function futureDeadline(seconds=86400){ const b=await ethers.provider.getBlock('latest'); if(!b) throw new Error('no latest block'); return b.timestamp+seconds; }
+function classifyRpcEndpoint(url: string | undefined) {
+  if (!url) return "unset";
+  try {
+    const parsed = new URL(url);
+    const host = parsed.hostname.toLowerCase();
+    if (["127.0.0.1", "localhost", "0.0.0.0", "::1"].includes(host)) return "local";
+    return "remote";
+  } catch {
+    return "unknown";
+  }
+}
 
 async function main() {
   const net = await ethers.provider.getNetwork();
+  const latestBlock = await ethers.provider.getBlockNumber();
   const chainId = Number(net.chainId);
   if (chainId === 1) throw new Error("Refusing to rehearse on Ethereum mainnet");
   if (chainId !== 11155111) throw new Error(`Sepolia rehearsal requires chainId 11155111; got ${chainId}`);
@@ -75,7 +86,9 @@ async function main() {
   const evidenceHash = ethers.keccak256(ethers.toUtf8Bytes(JSON.stringify({txs: txs.map(t=>t.hash), negatives, chainId, manifest: MANIFEST})));
   txs.push(await txrec("set ETHEREUM_SEPOLIA_REHEARSAL gate", launchGates.setGate(await launchGates.ETHEREUM_SEPOLIA_REHEARSAL(), true, evidenceHash, "evidence/sepolia/SEPOLIA_EVIDENCE_DOCKET.latest.json")));
   observations.allCoreGatesPassed = await launchGates.allCoreGatesPassed();
-  const rehearsal = { status:"COMPLETED", chainId, deployer:deployer.address, sponsor:sponsor.address, builder:builder.address, reviewer:reviewer.address, outsider:outsider.address, manifest: MANIFEST, mockAGIALPHA: c.AGIALPHA, evidenceHash, transactions: txs, negativePaths: negatives, observations };
+  const rpcEndpointClass = classifyRpcEndpoint(process.env.ETHEREUM_SEPOLIA_RPC_URL);
+  const publicSepolia = network.name === "sepolia" && rpcEndpointClass === "remote" && latestBlock >= 1_000_000;
+  const rehearsal = { status:"COMPLETED", chainId, networkEvidence: { publicSepolia, marker: publicSepolia ? "PUBLIC_SEPOLIA_RPC" : "LOCAL_OR_UNVERIFIED_CHAINID_11155111", networkName: network.name, latestBlockNumber: latestBlock, rpcEndpointClass }, deployer:deployer.address, sponsor:sponsor.address, builder:builder.address, reviewer:reviewer.address, outsider:outsider.address, manifest: MANIFEST, mockAGIALPHA: c.AGIALPHA, evidenceHash, transactions: txs, negativePaths: negatives, observations };
   manifest.sepoliaRehearsal = rehearsal;
   manifest.blockNumbers = Object.fromEntries(txs.map(t=>[t.label,t.blockNumber]));
   manifest.transactionHashes = Object.fromEntries(txs.map(t=>[t.label,t.hash]));
