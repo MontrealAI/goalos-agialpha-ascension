@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-11T22:40:33.395749+00:00",
+  "generated_at": "2026-06-11T22:48:33.108974+00:00",
   "files": [
     {
       "path": ".editorconfig",
@@ -2424,12 +2424,12 @@
     {
       "path": "docs/ETHEREUM_MAINNET_AUTHORIZATION_DECISION.json",
       "bytes": 1228,
-      "sha256": "5838c2880a799d6eb603168ba2b73bbc2118d642fdaa90a66cde43fb3e6a331e"
+      "sha256": "3d9eec816dae5cc59a00e30cfb736a281f3381bceafe898a904d50db25db9eb1"
     },
     {
       "path": "docs/ETHEREUM_MAINNET_AUTHORIZATION_DECISION.md",
       "bytes": 555,
-      "sha256": "50e58962fd4317b936bb7e9d93b2cd8ca0d001cbb8659fd8d216f5d826e47d5d"
+      "sha256": "47b2fd0599c48743458070f92bfa598185d2a2b7c7b672fadcf630893939439e"
     },
     {
       "path": "docs/ETHEREUM_MAINNET_DEPLOYMENT_RUNBOOK.md",
