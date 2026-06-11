@@ -84,13 +84,26 @@ qa_report = {
 (qa / "QA_REPORT.json").write_text(json.dumps(qa_report, indent=2), encoding="utf-8")
 manifest = []
 manifest_excludes = {"qa/MANIFEST.json", "qa/MANIFEST_v4_3.json"}
+ignored_manifest_parts = {
+    ".git",
+    ".private",
+    "artifacts",
+    "cache",
+    "coverage",
+    "node_modules",
+    "private",
+    "typechain-types",
+}
 for p in sorted(ROOT.rglob("*")):
-    if p.is_file() and ".git" not in p.parts and "node_modules" not in p.parts:
-        rel = p.relative_to(ROOT).as_posix()
-        if rel in manifest_excludes:
-            continue
-        data = p.read_bytes()
-        manifest.append({"path": rel, "bytes": len(data), "sha256": hashlib.sha256(data).hexdigest()})
+    if not p.is_file():
+        continue
+    rel = p.relative_to(ROOT).as_posix()
+    if rel in manifest_excludes:
+        continue
+    if ignored_manifest_parts.intersection(p.relative_to(ROOT).parts):
+        continue
+    data = p.read_bytes()
+    manifest.append({"path": rel, "bytes": len(data), "sha256": hashlib.sha256(data).hexdigest()})
 (qa / "MANIFEST.json").write_text(json.dumps({"generated_at": generated_at, "files": manifest}, indent=2), encoding="utf-8")
 if errors:
     print("Static QA failed:")
