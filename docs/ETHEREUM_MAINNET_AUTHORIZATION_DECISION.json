@@ -1,13 +1,13 @@
 {
   "status": "NO",
   "ETHEREUM_MAINNET_AUTHORIZED": "NO",
-  "commit": "5e77af2077285c49f5d3197ee4f1d8c60b771619",
+  "commit": "a60b10b4748b3a680cc69cc217409e12ffa9a90d",
   "chain": "ethereum",
   "chainId": 1,
   "agialphaToken": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
   "evidence": {
-    "technicalReadinessSha256": "6479f5c68a1d485f126ace5947303c8cf4b131acf0f65445e41b55526d63ba4e",
-    "deploymentAuthorizationSha256": "6bc309e109f7758332798340be20660d4985a77157c8f32890fb3271a149e77e",
+    "technicalReadinessSha256": "f9a9be2141d4a675a59a15bdd1d4849959aa09914c7f255b6e042570c8b02e21",
+    "deploymentAuthorizationSha256": "ed6c63963065ed959911529ec515bf5c608b78e9c0eda5c0fb287022577cade0",
     "ethereumAuthorizationEvidence": {
       "path": "qa/public-ethereum-mainnet-authorization-evidence.json",
       "sha256": null,
@@ -23,7 +23,7 @@
     "PRIVATE_OPERATOR_EVIDENCE_PENDING: missing qa/public-ethereum-mainnet-authorization-evidence.json"
   ],
   "reason": "PRIVATE_OPERATOR_EVIDENCE_PENDING",
-  "generatedAt": "2026-06-11T20:31:37.501042+00:00",
+  "generatedAt": "2026-06-11T20:46:05.511492+00:00",
   "generatedBy": "scripts/ethereum-mainnet-authorization-check.py",
   "finalManualDeploymentCommand": null,
   "mainnetDeploymentExecuted": false

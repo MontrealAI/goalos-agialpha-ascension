@@ -4,6 +4,7 @@ import argparse, datetime, hashlib, json, pathlib, re, subprocess
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 AGIALPHA = "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA"
 HEX32 = re.compile(r"^0x[0-9a-fA-F]{64}$")
+ADDRESS_RE = re.compile(r"(?<![0-9a-fA-F])0x[0-9a-fA-F]{40}(?![0-9a-fA-F])")
 
 def now(): return datetime.datetime.now(datetime.timezone.utc).isoformat()
 def sha256_file(path: pathlib.Path) -> str | None: return hashlib.sha256(path.read_bytes()).hexdigest() if path.exists() else None
@@ -16,8 +17,15 @@ def git_commit() -> str:
 def valid_hash(v: object) -> bool: return isinstance(v, str) and bool(HEX32.fullmatch(v)) and v.lower() != "0x" + "0"*64
 
 def safe(data: dict) -> bool:
-    text = json.dumps(data, sort_keys=True).upper()
-    return data.get("redacted") is True and data.get("containsSecrets") is False and data.get("containsPrivateAddresses") is False and not any(x in text for x in ["PRIVATE_KEY", "RPC_URL", "FOUNDER_APPROVAL_SIGNATURE", "SEED_PHRASE"])
+    text = json.dumps(data, sort_keys=True)
+    upper = text.upper()
+    if not (data.get("redacted") is True and data.get("containsSecrets") is False and data.get("containsPrivateAddresses") is False):
+        return False
+    if any(x in upper for x in ["PRIVATE_KEY", "RPC_URL", "FOUNDER_APPROVAL_SIGNATURE", "SEED_PHRASE"]):
+        return False
+    if any(addr.lower() != AGIALPHA.lower() for addr in ADDRESS_RE.findall(text)):
+        return False
+    return True
 
 def load_evidence() -> tuple[dict, list[str]]:
     blockers: list[str] = []
