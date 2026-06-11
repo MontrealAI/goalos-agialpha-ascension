@@ -37,7 +37,7 @@
     "solc": "^0.8.24"
   },
   "devDependencies": {
-    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+    "@nomicfoundation/hardhat-toolbox": "^7.0.0",
     "hardhat": "^2.22.0",
     "typescript": "^5.4.0",
     "ts-node": "^10.9.2"
