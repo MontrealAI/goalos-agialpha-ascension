@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
-from common import pathlib, parser, read_json, load_env, ROOT, AGIALPHA, non_placeholder, valid_hash
+from common import assert_private_path, pathlib, parser, read_json, load_env, ROOT, AGIALPHA, non_placeholder, valid_hash
 
 CONFIRMATION = "DEPLOY_GOALOS_AGIALPHA_ASCENSION_TO_ETHEREUM_MAINNET"
 args = parser().parse_args()
+assert_private_path(pathlib.Path(args.input))
+assert_private_path(pathlib.Path(args.env))
 env = load_env(pathlib.Path(args.env))
 data = read_json(pathlib.Path(args.input))
 auth = read_json(ROOT / "docs/ETHEREUM_MAINNET_AUTHORIZATION_DECISION.json")

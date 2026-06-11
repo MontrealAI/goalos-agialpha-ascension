@@ -2,7 +2,13 @@
   "status": "PASSED",
   "scope": "LOCAL_SIMULATION_ONLY",
   "manifest": "deployments/local.agialpha.latest.json",
-  "manifestHash": "0x0080816309f1b8a8d18ee843cf485488b6b76ba431173f6c4a7787bd2c1a2ed7",
-  "generatedAt": "2026-06-11T19:23:44.164Z",
-  "mainnetEvidence": false
+  "manifestHash": "0x367037cb36fe999fe066abc23c3198c15f0fb74955941bb5d58762d9f5fef359",
+  "contractsDeployed": 17,
+  "proofWorkLoopCompleted": true,
+  "negativePathsCompleted": true,
+  "generatedAt": "2026-06-11T19:40:04.219Z",
+  "mainnetEvidence": false,
+  "publicSepoliaEvidence": false,
+  "containsSecrets": false,
+  "containsPrivateAddresses": false
 }
