@@ -1,0 +1,24 @@
+name: Repository Validation
+
+on:
+  pull_request:
+  push:
+    branches: [ main ]
+
+permissions:
+  contents: read
+
+jobs:
+  static-repository-checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check no obvious secrets / unsafe claims
+        run: python scripts/repository_safety_check.py
+
+      - name: Validate repository status files
+        run: python scripts/repository_status_check.py
+
+      - name: Production continuation readiness check
+        run: python scripts/repository_production_readiness_check.py

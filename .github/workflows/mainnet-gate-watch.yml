@@ -1,0 +1,28 @@
+name: Mainnet Gate Watch
+
+on:
+  pull_request:
+    paths:
+      - "scripts/**"
+      - "contracts/**"
+      - "schemas/**"
+      - "docs/**"
+      - ".env.example"
+      - "package.json"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  mainnet-gate-watch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run mainnet authorization checker
+        run: python scripts/mainnet-authorization-check.py
+      - name: Assert public status remains not authorized
+        run: |
+          grep -R "Ethereum Mainnet is NOT authorized" docs/MAINNET_NOT_AUTHORIZED_DECISION_v4_3.md
+          grep -R "Not audited" README.md
+          grep -R "not mainnet authorized" README.md

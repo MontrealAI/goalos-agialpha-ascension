@@ -1,0 +1,47 @@
+name: GoalOS AGIALPHA Audit-Candidate CI
+
+on:
+  pull_request:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  repository-readiness:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Repository safety check
+        run: python scripts/repository_safety_check.py
+      - name: Repository status check
+        run: python scripts/repository_status_check.py
+      - name: Production continuation readiness check
+        run: python scripts/repository_production_readiness_check.py
+      - name: No paid/private products check
+        run: python scripts/no_paid_products_check.py
+
+  contracts-advisory:
+    runs-on: ubuntu-latest
+    needs: repository-readiness
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Install
+        run: npm install
+      - name: Compile
+        run: npm run compile
+      - name: Tests
+        run: npm run test:all
+      - name: Static QA
+        run: npm run static-check
+      - name: v4.3 readiness
+        run: npm run readiness:v4.3
+      - name: Evidence Docket template
+        run: npm run evidence:docket:template
+      - name: Mainnet authorization check must remain blocked without gates
+        run: npm run mainnet:authorization-check
