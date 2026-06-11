@@ -1,8 +1,0 @@
-# Require owner review for sensitive paths.
-* @MontrealAI
-
-/contracts/ @MontrealAI
-/scripts/ @MontrealAI
-/.github/ @MontrealAI
-/docs/SAFE_CLAIMS.md @MontrealAI
-/docs/MAINNET_NOT_AUTHORIZED_DECISION_v4_3.md @MontrealAI
