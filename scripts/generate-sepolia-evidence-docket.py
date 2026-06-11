@@ -11,18 +11,22 @@ raw=json.loads(raw_path.read_text()) if raw_path.exists() else {}
 
 def has_public_sepolia_evidence(raw_artifact: dict) -> bool:
     evidence = raw_artifact.get('networkEvidence')
-    if evidence == 'PUBLIC_SEPOLIA_RPC':
-        return True
     if not isinstance(evidence, dict):
         return False
     client_version = str(evidence.get('clientVersion', ''))
     local_client = any(marker in client_version.lower() for marker in ['hardhat', 'anvil', 'ganache', 'ethereumjs', 'foundry'])
+    independent = evidence.get('independentVerification') if isinstance(evidence.get('independentVerification'), dict) else {}
+    expected_count = len(raw_artifact.get('transactions', []))
     return (
         raw_artifact.get('chainId') == 11155111
         and evidence.get('publicSepolia') is True
         and evidence.get('marker') == 'PUBLIC_SEPOLIA_RPC'
         and evidence.get('rpcEndpointClass') == 'remote'
         and not local_client
+        and independent.get('receiptsVerified') is True
+        and independent.get('publicVerificationChainId') == 11155111
+        and independent.get('verificationRpcEndpointClass') == 'remote'
+        and int(independent.get('verifiedTransactionCount') or 0) == expected_count
     )
 
 

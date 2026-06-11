@@ -1,6 +1,6 @@
 {
   "schema": "goalos-agialpha-sepolia-evidence-docket-v4.3+",
-  "generated_at": "2026-06-11T17:01:17.507515+00:00",
+  "generated_at": "2026-06-11T17:14:25.941915+00:00",
   "status": "COMPLETED_LOCAL_CHAINID_11155111_PUBLIC_SEPOLIA_PENDING",
   "chainId": 11155111,
   "deployment_manifest": "deployments/ethereum-sepolia.agialpha.latest.json",
@@ -248,5 +248,5 @@
   "all_core_gates_passed": false,
   "privacy_boundary": "public-safe transaction hashes, addresses, event references, hashes and URIs only; no private prompts, raw traces, customer data, legal memos, tax memos, or secrets included",
   "mainnet_authorization": "NOT_AUTHORIZED unless all legal/tax/security/public-claims/treasury/token/sepolia/automated-security/internal-security/founder gates are real and accepted",
-  "sha256": "0x106424764f046523dba62d020dfa44b18820c8fab8bbdabe40aea5e8dc33fbfb"
+  "sha256": "0x4b78cd6c19d798e8b0b7f59d89c3cc717f2180ede27f33efece03aab65813f21"
 }

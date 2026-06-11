@@ -22,11 +22,32 @@ function classifyRpcEndpoint(url: string | undefined) {
 function isLocalDevClient(clientVersion: string) {
   return /hardhat|anvil|ganache|ethereumjs|foundry/i.test(clientVersion);
 }
-async function clientVersion() {
+async function clientVersion(provider: any = ethers.provider) {
   try {
-    return String(await ethers.provider.send("web3_clientVersion", []));
+    return String(await provider.send("web3_clientVersion", []));
   } catch {
     return "unavailable";
+  }
+}
+async function verifyWithIndependentPublicSepoliaRpc(txs: any[]) {
+  const verificationUrl = process.env.ETHEREUM_SEPOLIA_PUBLIC_VERIFICATION_RPC_URL || process.env.SEPOLIA_PUBLIC_VERIFICATION_RPC_URL || "";
+  const verificationRpcEndpointClass = classifyRpcEndpoint(verificationUrl);
+  if (verificationRpcEndpointClass !== "remote") {
+    return { receiptsVerified: false, reason: "missing_remote_independent_verification_rpc", verificationRpcEndpointClass };
+  }
+  try {
+    const verificationProvider = new ethers.JsonRpcProvider(verificationUrl);
+    const verificationNetwork = await verificationProvider.getNetwork();
+    const publicVerificationChainId = Number(verificationNetwork.chainId);
+    const verificationClientVersion = await clientVersion(verificationProvider);
+    if (publicVerificationChainId !== 11155111 || isLocalDevClient(verificationClientVersion)) {
+      return { receiptsVerified: false, reason: "verification_rpc_not_public_sepolia", publicVerificationChainId, verificationRpcEndpointClass, verificationClientVersion };
+    }
+    const receipts = await Promise.all(txs.map((tx) => verificationProvider.getTransactionReceipt(tx.hash)));
+    const receiptsVerified = receipts.every((receipt, index) => receipt && Number(receipt.status) === Number(txs[index].status) && Number(receipt.blockNumber) === Number(txs[index].blockNumber));
+    return { receiptsVerified, reason: receiptsVerified ? "independent_public_sepolia_receipts_verified" : "transaction_receipts_missing_or_mismatched", publicVerificationChainId, verificationRpcEndpointClass, verificationClientVersion, verifiedTransactionCount: receipts.filter(Boolean).length, expectedTransactionCount: txs.length };
+  } catch (e: any) {
+    return { receiptsVerified: false, reason: "independent_verification_failed", verificationRpcEndpointClass, error: String(e.shortMessage || e.message).slice(0, 300) };
   }
 }
 
@@ -98,8 +119,9 @@ async function main() {
   txs.push(await txrec("set ETHEREUM_SEPOLIA_REHEARSAL gate", launchGates.setGate(await launchGates.ETHEREUM_SEPOLIA_REHEARSAL(), true, evidenceHash, "evidence/sepolia/SEPOLIA_EVIDENCE_DOCKET.latest.json")));
   observations.allCoreGatesPassed = await launchGates.allCoreGatesPassed();
   const rpcEndpointClass = classifyRpcEndpoint(process.env.ETHEREUM_SEPOLIA_RPC_URL);
-  const publicSepolia = network.name === "sepolia" && rpcEndpointClass === "remote" && latestBlock >= 1_000_000 && !isLocalDevClient(rpcClientVersion);
-  const rehearsal = { status:"COMPLETED", chainId, networkEvidence: { publicSepolia, marker: publicSepolia ? "PUBLIC_SEPOLIA_RPC" : "LOCAL_OR_UNVERIFIED_CHAINID_11155111", networkName: network.name, latestBlockNumber: latestBlock, rpcEndpointClass, clientVersion: rpcClientVersion }, deployer:deployer.address, sponsor:sponsor.address, builder:builder.address, reviewer:reviewer.address, outsider:outsider.address, manifest: MANIFEST, mockAGIALPHA: c.AGIALPHA, evidenceHash, transactions: txs, negativePaths: negatives, observations };
+  const independentVerification = await verifyWithIndependentPublicSepoliaRpc(txs);
+  const publicSepolia = network.name === "sepolia" && rpcEndpointClass === "remote" && latestBlock >= 1_000_000 && !isLocalDevClient(rpcClientVersion) && independentVerification.receiptsVerified === true;
+  const rehearsal = { status:"COMPLETED", chainId, networkEvidence: { publicSepolia, marker: publicSepolia ? "PUBLIC_SEPOLIA_RPC" : "LOCAL_OR_UNVERIFIED_CHAINID_11155111", networkName: network.name, latestBlockNumber: latestBlock, rpcEndpointClass, clientVersion: rpcClientVersion, independentVerification }, deployer:deployer.address, sponsor:sponsor.address, builder:builder.address, reviewer:reviewer.address, outsider:outsider.address, manifest: MANIFEST, mockAGIALPHA: c.AGIALPHA, evidenceHash, transactions: txs, negativePaths: negatives, observations };
   manifest.sepoliaRehearsal = rehearsal;
   manifest.blockNumbers = Object.fromEntries(txs.map(t=>[t.label,t.blockNumber]));
   manifest.transactionHashes = Object.fromEntries(txs.map(t=>[t.label,t.hash]));
