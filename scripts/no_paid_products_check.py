@@ -1,0 +1,46 @@
+from pathlib import Path
+import sys
+import re
+
+ROOT = Path(__file__).resolve().parents[1]
+errors = []
+
+SKIP_FILES = {
+    "no_paid_products_check.py",
+    "repository_production_readiness_check.py",
+    "repository_safety_check.py",
+}
+SKIP_PARTS = {"node_modules", ".git", "qa"}
+
+suspicious_patterns = [
+    r"GoalOS.*Sprint.*Kit.*\.zip$",
+    r"GoalOS.*RSI.*Lite.*\.zip$",
+    r"GoalOS.*Proof.*Room.*\.zip$",
+    r"buyer.*product",
+    r"paid.*product",
+    r"customer.*download",
+    r"stripe.*export",
+    r"squarespace.*orders",
+]
+
+allowed_zip_names = set()
+
+for path in ROOT.rglob("*"):
+    if not path.is_file() or any(part in SKIP_PARTS for part in path.parts):
+        continue
+    if path.name in SKIP_FILES:
+        continue
+    rel = path.relative_to(ROOT).as_posix()
+    for pat in suspicious_patterns:
+        if re.search(pat, rel, flags=re.IGNORECASE):
+            errors.append(f"Possible paid/private product file: {rel}")
+    if path.suffix.lower() == ".zip" and path.name not in allowed_zip_names:
+        errors.append(f"ZIP file should not be committed without explicit review: {rel}")
+
+if errors:
+    print("Paid/private product check failed:")
+    for e in errors:
+        print("-", e)
+    sys.exit(1)
+
+print("Paid/private product check passed.")

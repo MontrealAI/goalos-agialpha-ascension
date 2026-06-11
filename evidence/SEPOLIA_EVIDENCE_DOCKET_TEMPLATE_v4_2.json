@@ -1,0 +1,61 @@
+{
+  "contracts": {
+    "AEPEvidenceDocketRegistry": "TO_FILL",
+    "AEPSelectionGate": "TO_FILL",
+    "AGIALPHA_or_MockAGIALPHA": "TO_FILL",
+    "JobClaimBondManager": "TO_FILL",
+    "JobRegistry": "TO_FILL",
+    "ProofCardRegistry": "TO_FILL",
+    "ProofCredentialRegistry": "TO_FILL",
+    "ProofSubmissionRegistry": "TO_FILL",
+    "ReputationRegistry": "TO_FILL",
+    "ReviewerBondRegistry": "TO_FILL"
+  },
+  "gateEvidence": {
+    "auditClosureMemoSha256": "PENDING",
+    "claimsReviewSha256": "PENDING",
+    "compileLogSha256": "TO_FILL",
+    "deploymentJsonSha256": "TO_FILL",
+    "founderApprovalSha256": "PENDING",
+    "governanceRoleCeremonySha256": "PENDING",
+    "legalMemoSha256": "PENDING",
+    "staticQaReportSha256": "TO_FILL",
+    "taxMemoSha256": "PENDING",
+    "testLogSha256": "TO_FILL"
+  },
+  "generatedAtUtc": "2026-06-11T01:55:33Z",
+  "mainnetDecision": "NOT_AUTHORIZED",
+  "network": "ethereum-sepolia",
+  "notes": [
+    "Fill this after real Ethereum Sepolia execution.",
+    "Do not copy private workflow evidence into this public docket.",
+    "Use hashes/URIs for public-safe proof anchors."
+  ],
+  "package": "GoalOS_AGIALPHA_Ascension_Ethereum_Mainnet_Implementation_v4_2_EVIDENCE_READY_AUDIT_CANDIDATE",
+  "proofLoop": [
+    "Sponsor posts proof mission",
+    "Builder claims mission",
+    "Builder submits proof",
+    "Reviewer validates proof",
+    "Proof Card registers",
+    "Credential issues",
+    "Reputation updates",
+    "Rewards and bonds settle"
+  ],
+  "publicBoundary": "Evidence docket only. Not audited. Not mainnet authorized. Not legal, tax, investment, or security approval.",
+  "rootDoctrine": "GoalOS sets aim; AGIALPHA coordinates proof work; AEP-001 defines evidence; Proof Gradient decides what may evolve.",
+  "schema": "goalos.agialpha.ascension.evidence_docket.v4.2",
+  "status": "draft",
+  "transactions": {
+    "builderClaimsMission": "TO_FILL",
+    "builderSubmitsProof": "TO_FILL",
+    "credentialIssued": "TO_FILL",
+    "deployment": [],
+    "proofCardRegistered": "TO_FILL",
+    "reputationUpdated": "TO_FILL",
+    "reviewerApproves": "TO_FILL",
+    "reviewerBonds": "TO_FILL",
+    "rewardAndBondsSettled": "TO_FILL",
+    "sponsorPostsMission": "TO_FILL"
+  }
+}

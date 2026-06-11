@@ -1,5 +1,5 @@
 # Batch upload note
 
-Upload third. Commit: Add contracts, schemas, audit handoff, and QA artifacts.
+Upload fourth. Commit: Add scripts, tests, app shell, and deployment helpers.
 
 Select the contents of this folder, not the folder itself.
