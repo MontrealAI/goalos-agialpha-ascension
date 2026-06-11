@@ -35,3 +35,5 @@ Private operators run the custody-sensitive evidence workflow locally. Do not pa
 9. If authorization is `YES`, deployment still requires local founder/deployer execution of the gated deployment command.
 
 No raw private approvals, addresses, RPC URLs, keys, wallet metadata, or private ceremony details are required in GitHub.
+
+The committed private-operator scripts validate that private input paths resolve under `.private/` before reading local inputs. They print only status lines and redacted commitment locations, not sensitive values.

@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
-from common import pathlib, parser, load_env, write_json, sha256_file, public_base, PRIVATE, QA, AGIALPHA, non_placeholder
+from common import assert_private_path, pathlib, parser, load_env, write_json, sha256_file, public_base, PRIVATE, QA, AGIALPHA, non_placeholder
 
 args = parser().parse_args()
+assert_private_path(pathlib.Path(args.input))
+assert_private_path(pathlib.Path(args.env))
 env = load_env(pathlib.Path(args.env))
 PRIVATE.mkdir(exist_ok=True)
 QA.mkdir(exist_ok=True)

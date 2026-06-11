@@ -1,11 +1,84 @@
 {
   "status": "LOCAL_SIMULATION_ONLY",
-  "generatedAt": "2026-06-11T19:23:44.164Z",
+  "generatedAt": "2026-06-11T19:40:04.219Z",
   "chain": "hardhat-local",
-  "chainId": 31337,
+  "chainId": 11155111,
   "mockAGIALPHA": "LOCAL_MOCK_ONLY",
-  "contractsDeployed": "LOCAL_SIMULATION_PLACEHOLDER",
+  "contractsDeployed": 17,
+  "addressCommitments": [
+    {
+      "name": "MockAGIALPHA",
+      "addressCommitment": "0xc42f618affa28bf8b80592c8b8f5cad42b68473bdece4114a53d7c3b5398aeb8"
+    },
+    {
+      "name": "ReputationRegistry",
+      "addressCommitment": "0x2ed4b9b57cf7fd6e97a190e8a95a0ac7569ebac92780c49bf9e1d79528953d94"
+    },
+    {
+      "name": "ProofCardRegistry",
+      "addressCommitment": "0x5f602531c717673e7c8824d5d6f23edea4b6b49d97f5e6cbb53c682031b09ab5"
+    },
+    {
+      "name": "ProofCredentialRegistry",
+      "addressCommitment": "0xa6fdfe5b43787bb6d52577e4bcfb0f6829a0e8460295f1b2708711c79528bbde"
+    },
+    {
+      "name": "JobRegistry",
+      "addressCommitment": "0x3753b4dcfe755128aab08a0edf3afe32c900dba653152d56175a4c50de787ec8"
+    },
+    {
+      "name": "JobClaimBondManager",
+      "addressCommitment": "0xb2519a9a7241e16f319a2255b1b045831fee4291725f2fbcacd9524bc3bd6556"
+    },
+    {
+      "name": "ProofSubmissionRegistry",
+      "addressCommitment": "0xfd21d5aab8824f9dfc1d1f2ef820556602ca104082bb6f91f2369ad26b637a77"
+    },
+    {
+      "name": "ReviewerBondRegistry",
+      "addressCommitment": "0xbd614aae385477a4e812632aac94ed853ef05e450e09e2076e62a33bc4273db2"
+    },
+    {
+      "name": "ProofSeedRegistry",
+      "addressCommitment": "0x13c80824881bfa94b2139621d9745b864898442e0354bbe67a1e8f3924325025"
+    },
+    {
+      "name": "LegacyAGIJobManagerRegistry",
+      "addressCommitment": "0x6b3b8136176ef3099aab31c3b46758218c7bd57e17625c424ea2c7a51a68382d"
+    },
+    {
+      "name": "AEPConformanceRegistry",
+      "addressCommitment": "0x3210d4c23cd91b82a6e17910cea5bc2df4a5037449cc92aba48845d70a0887e7"
+    },
+    {
+      "name": "AEPClaimBoundaryRegistry",
+      "addressCommitment": "0x548405589b204e26e4e1cb5ff73d053595639392f9c3ea6ba970ebfb419f89e3"
+    },
+    {
+      "name": "AEPReplayRegistry",
+      "addressCommitment": "0x31621884532230f6ce69e4e160f81d0b1950206d46198a5eb79032ea4cd6eea0"
+    },
+    {
+      "name": "AEPCommitRevealValidationRegistry",
+      "addressCommitment": "0x4875ada43c71bb06091ebccde94d1dc8117480655087830a963ce51b5c5557e5"
+    },
+    {
+      "name": "AEPEvaluatorStakingRegistry",
+      "addressCommitment": "0x3083c7fb743597f720cce3b29595c14e97e9187723a545e18110da76872ee794"
+    },
+    {
+      "name": "AEPChronicleRegistry",
+      "addressCommitment": "0xaea7372dde99bad587682b4e448c7f9cfdd1c8ac438aa6d6ae9acf89152a30c7"
+    },
+    {
+      "name": "AEPFalsificationRegistry",
+      "addressCommitment": "0x2ca8c8f55d68fe7955150a68efe6e167c051683670505f26576950a21e5a52b6"
+    }
+  ],
   "proofWorkLoopCompleted": true,
   "negativePathsCompleted": true,
-  "mainnetEvidence": false
+  "mainnetEvidence": false,
+  "publicSepoliaEvidence": false,
+  "containsSecrets": false,
+  "containsPrivateAddresses": false
 }

@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
-from common import pathlib, parser, read_json, load_env, AGIALPHA, non_placeholder
+from common import assert_private_path, pathlib, parser, read_json, load_env, AGIALPHA, non_placeholder
 
 args = parser().parse_args()
+assert_private_path(pathlib.Path(args.input))
+assert_private_path(pathlib.Path(args.env))
 data = read_json(pathlib.Path(args.input))
 env = load_env(pathlib.Path(args.env))
 errors: list[str] = []

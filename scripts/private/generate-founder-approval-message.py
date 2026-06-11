@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
-from common import pathlib, parser, read_json, AGIALPHA, git_commit
+from common import assert_private_path, pathlib, parser, read_json, AGIALPHA, git_commit
 
 args = parser().parse_args()
+assert_private_path(pathlib.Path(args.input))
 _ = read_json(pathlib.Path(args.input))
 print(f'''I approve Ethereum Mainnet deployment authorization for GoalOS AGIALPHA Ascension.
 

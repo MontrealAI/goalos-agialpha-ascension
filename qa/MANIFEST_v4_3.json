@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-11T19:23:39.559787+00:00",
+  "generated_at": "2026-06-11T19:40:11.041263+00:00",
   "files": [
     {
       "path": ".editorconfig",
@@ -125,46 +125,6 @@
       "path": ".npmrc",
       "bytes": 83,
       "sha256": "5540c044f28876d3ef9695d4aebe0ff758ee3a1885cbb734b7d009a3c196149c"
-    },
-    {
-      "path": ".private/address-ceremony-private.json",
-      "bytes": 928,
-      "sha256": "e7f0649cde7c2afdd36dcca85e6efe3900441c4928bb93232d779ba7ec972dfb"
-    },
-    {
-      "path": ".private/founder-approval-private.json",
-      "bytes": 85,
-      "sha256": "1be81751b49c4b09651b560665425c58660d91c8ac75d19a43d1aac7fe58738f"
-    },
-    {
-      "path": ".private/mainnet-operator-input.example.json",
-      "bytes": 944,
-      "sha256": "4278259335fbd2cd635ef50eea29832c1b3851edfdb5221bc7d890eb4f44780d"
-    },
-    {
-      "path": ".private/mainnet-operator-input.json",
-      "bytes": 1252,
-      "sha256": "68763200f4b64f445374e8f0ca1043b890516686d45628295e7f9a0ad46192d4"
-    },
-    {
-      "path": ".private/mainnet-operator.env",
-      "bytes": 447,
-      "sha256": "9e14b1d6b61e704a87c7a464d8db7169eebc00118b46cb3a4718a6c9ba9c8e2a"
-    },
-    {
-      "path": ".private/mainnet-operator.env.example",
-      "bytes": 320,
-      "sha256": "6e546c1897c6cd2475469430833773e461f593eea47a14697383ebd76814a7df"
-    },
-    {
-      "path": ".private/mainnet-preflight-private.json",
-      "bytes": 294,
-      "sha256": "abe5b8448b24804cb70bb47472b929afc5da3199ac497afc1f3604d4e3cc8ac9"
-    },
-    {
-      "path": ".private/sepolia-rehearsal-private.json",
-      "bytes": 259,
-      "sha256": "d4c4ebbf265cda0b0625823b68364ff01ec4b3debaeb40f90f51d4a25494cffd"
     },
     {
       "path": ".solhint.json",
@@ -2149,7 +2109,7 @@
     {
       "path": "cache/solidity-files-cache.json",
       "bytes": 82958,
-      "sha256": "a2062ae9331b639dc8dfa3583b30a65a5ecaa0db92bfdf95173ce606e0b58260"
+      "sha256": "fc55fc37c119bfd610453ca2d76493652f131c9d9fcc6585b943284945aee536"
     },
     {
       "path": "configs/echidna.yaml",
@@ -2438,8 +2398,8 @@
     },
     {
       "path": "deployments/local.agialpha.latest.json",
-      "bytes": 321,
-      "sha256": "1c3d25f69ef92ad664c7fd2378e921c2158bcec6a7fc3bce67eeed3d4206479b"
+      "bytes": 2938,
+      "sha256": "82b134b376a5bd69baace852eb8beb77926ecf8e11baaa3fdc3549208c277a62"
     },
     {
       "path": "docs/AGIALPHA_ASCENSION_OVERVIEW.md",
@@ -2593,13 +2553,13 @@
     },
     {
       "path": "docs/ETHEREUM_MAINNET_AUTHORIZATION_DECISION.json",
-      "bytes": 1179,
-      "sha256": "66ad8465264a7fe891d4f472b1fb2f2b251065e4f4ea9ecbaf8e3345789aa5b4"
+      "bytes": 1228,
+      "sha256": "ec6b427e35f0b3350b4254bb3fc51ab2fe4b27e85c2883b4282a2abbdfd622e9"
     },
     {
       "path": "docs/ETHEREUM_MAINNET_AUTHORIZATION_DECISION.md",
       "bytes": 555,
-      "sha256": "3e64de5c300a8e204d3627e2b5305fad503fbadfc5b2fa6f114d0a0a38c635fe"
+      "sha256": "6fd776e1f006216996a7fe0fafb423967e2e1aae226d69fd87d36a73ac2e0ee8"
     },
     {
       "path": "docs/ETHEREUM_MAINNET_DEPLOYMENT_RUNBOOK.md",
@@ -2773,13 +2733,13 @@
     },
     {
       "path": "docs/MAINNET_AUTHORIZATION_DECISION.json",
-      "bytes": 1095,
-      "sha256": "6b45ae7ea00e75010b5a7570d65d8735de2e6fecbf03fae1bfcde8b6d3a8a6f8"
+      "bytes": 1144,
+      "sha256": "41a53352cdfa1f25429bc0a951fcb6e09abbd52801a164f4e77a5049c457bf36"
     },
     {
       "path": "docs/MAINNET_AUTHORIZATION_DECISION.md",
       "bytes": 641,
-      "sha256": "5e22ba5b15772ded78d858e6bde2a44438c2227d2f3e30b7c3a3f680eddf1cfa"
+      "sha256": "5c6b869e9cd964cb62dac8e80a2cedb359656903270746a84a15249603c95474"
     },
     {
       "path": "docs/MAINNET_AUTHORIZATION_INPUTS_REQUIRED.md",
@@ -2808,13 +2768,13 @@
     },
     {
       "path": "docs/MAINNET_DEPLOYMENT_AUTHORIZATION_DECISION.json",
-      "bytes": 1095,
-      "sha256": "6b45ae7ea00e75010b5a7570d65d8735de2e6fecbf03fae1bfcde8b6d3a8a6f8"
+      "bytes": 1144,
+      "sha256": "41a53352cdfa1f25429bc0a951fcb6e09abbd52801a164f4e77a5049c457bf36"
     },
     {
       "path": "docs/MAINNET_DEPLOYMENT_AUTHORIZATION_DECISION.md",
       "bytes": 641,
-      "sha256": "5e22ba5b15772ded78d858e6bde2a44438c2227d2f3e30b7c3a3f680eddf1cfa"
+      "sha256": "5c6b869e9cd964cb62dac8e80a2cedb359656903270746a84a15249603c95474"
     },
     {
       "path": "docs/MAINNET_GATE_DECISION_MEMO_v4_0.md",
@@ -2833,13 +2793,13 @@
     },
     {
       "path": "docs/MAINNET_TECHNICAL_READINESS_DECISION.json",
-      "bytes": 1535,
-      "sha256": "3f0a71c885addc4974137ca81f6009b0c3ad6c2db3cb66ebb1dbc95258a8ff38"
+      "bytes": 1584,
+      "sha256": "8435f4fbf72a6154842a0c3e9005e5e46f89321eb1777c89a384a5d021f4778b"
     },
     {
       "path": "docs/MAINNET_TECHNICAL_READINESS_DECISION.md",
       "bytes": 825,
-      "sha256": "c81f424453d80fb4ca450277b6870afe4c95eed6d323f27500266786ce955f54"
+      "sha256": "d25d87aeefc53967043775d25455fce63a68f56412d1073999d3eff37b9cb79a"
     },
     {
       "path": "docs/NEAR_10_SCORECARD_v4_3.md",
@@ -3149,17 +3109,17 @@
     {
       "path": "evidence/SEPOLIA_EVIDENCE_DOCKET_TEMPLATE_v4_2.json",
       "bytes": 2297,
-      "sha256": "0476632b24c099705e3c14b2657dfd5a276d0427d41c6e67cd86bec8bb76977b"
+      "sha256": "6550b9d4dee5986ab515393a53522c9654f299ac5940711e363d4df9d9751da8"
     },
     {
       "path": "evidence/local/EVIDENCE_DOCKET.json",
       "bytes": 299,
-      "sha256": "500fc3b2276ba1ade80fe8a9eca9c49187d03149ff93e583c6fe247ce4e6e572"
+      "sha256": "db5b3386dea629348b8d039e2f0cf51522a446e89dd5163e3c76f7d43303bbe4"
     },
     {
       "path": "evidence/local/EVIDENCE_DOCKET.md",
       "bytes": 213,
-      "sha256": "f93c9e6bf980eb29cb13e330b458753be6bffb2417fe4cb2504ac469cd95cf37"
+      "sha256": "2b2738004b833c0afcd7001bdb9035cb0878fc6e7f8bb6ce8b37263089a55c28"
     },
     {
       "path": "evidence/sepolia/.gitkeep",
@@ -3273,8 +3233,8 @@
     },
     {
       "path": "qa/MANIFEST.json",
-      "bytes": 176648,
-      "sha256": "e6d435b310d8bc3c52a5d85c68e5820749437eb01f60767c3ef89a2ac4595da5"
+      "bytes": 175278,
+      "sha256": "1a7ac3245c8a83c91fccbdf481619e7947c96d9bf66bd4edea613fcf4ed45604"
     },
     {
       "path": "qa/MANIFEST_v4_0.json",
@@ -3288,8 +3248,8 @@
     },
     {
       "path": "qa/MANIFEST_v4_3.json",
-      "bytes": 175617,
-      "sha256": "c39d1a82c17da711c3c08b71e19bdeb1e9f6c97502215bba835b8b7859a1b95d"
+      "bytes": 176648,
+      "sha256": "08e47dd625aaaae4b316574e70f8d95599a3d05bc809eae35e3ad7b951cb96c3"
     },
     {
       "path": "qa/MANIFEST_v4_3_FINAL.json",
@@ -3304,7 +3264,7 @@
     {
       "path": "qa/QA_REPORT.json",
       "bytes": 921,
-      "sha256": "6c702e62e42ea230caf3a509d4c13a0671d5764cf7187441329b0492d868aca7"
+      "sha256": "ae320dd31cfc7496fe820758e0a7c354fe0e456af5df37f10a927aca9c891030"
     },
     {
       "path": "qa/QA_REPORT_v4_0.json",
@@ -3319,7 +3279,7 @@
     {
       "path": "qa/READINESS_REPORT_v4_3.json",
       "bytes": 538,
-      "sha256": "82739afefdb9e2b3ae687917e14627ff495bc0fdfd8ec97ed94c4ca7f415ef3a"
+      "sha256": "743b7abe6a6abd4fb947339e6f137a475f5859082f96c34eed06b6f323b43c21"
     },
     {
       "path": "qa/REPOSITORY_STARTER_QA_OUTPUTS_v2_0.json",
@@ -3368,8 +3328,8 @@
     },
     {
       "path": "qa/local-rehearsal-report.json",
-      "bytes": 278,
-      "sha256": "51ae6492c274362b72496726068ec9d15a61fe41db992217b97f5ab69ef4c9fa"
+      "bytes": 472,
+      "sha256": "110a019c69dc86d83f7ccd083c323586397f6ca67f9a687a623465abfe897e6b"
     },
     {
       "path": "schemas/agialpha-mainnet-gate-v4.3.schema.json",
@@ -3563,8 +3523,8 @@
     },
     {
       "path": "scripts/ethereum-mainnet-authorization-check.py",
-      "bytes": 4356,
-      "sha256": "d5e56caa292ae2aad57ea43c5adc5d275f2c392704ef027fb2130da9dbcae320"
+      "bytes": 4409,
+      "sha256": "795a16dfe0aa6007ca885d40adf7f74b71253c48f62d296f78c02e5c12dd84d9"
     },
     {
       "path": "scripts/export-abis.js",
@@ -3613,8 +3573,8 @@
     },
     {
       "path": "scripts/mainnet-deployment-authorization-check.py",
-      "bytes": 4919,
-      "sha256": "808cf5a83a7a5f4bda102ba60de1b29be864c7d31841da4ecb37dd4a77b3ed6c"
+      "bytes": 4972,
+      "sha256": "5833ec9d631636925329dab77feab5b83604285e2870817e5a2f295b79889b29"
     },
     {
       "path": "scripts/mainnet-fork-simulate.ts",
@@ -3623,8 +3583,8 @@
     },
     {
       "path": "scripts/mainnet-readiness-check.py",
-      "bytes": 5894,
-      "sha256": "818f9e485e147816e7b07ebfc87e78f98640f7e5cb9e7912d01c23b94ed1ebfc"
+      "bytes": 5950,
+      "sha256": "f68416e20d8c85197e4f6a37fcd2dea9636a1139830cfe19530b1574af9ea4d1"
     },
     {
       "path": "scripts/no_paid_products_check.py",
@@ -3648,13 +3608,13 @@
     },
     {
       "path": "scripts/private/generate-address-ceremony-commitment.py",
-      "bytes": 1075,
-      "sha256": "6a4c476755c303680f28da74f64fa88b6fb40f4a458d26ba5c4078c059d7c3c2"
+      "bytes": 1142,
+      "sha256": "2f7cf7031b871a4682b91f2eb898d95b9b1b5beedc700842c9d36128e82330ea"
     },
     {
       "path": "scripts/private/generate-founder-approval-message.py",
-      "bytes": 773,
-      "sha256": "8319a0b021bcf509f538d0d426ed161b5ac94243715a4e0adae6537607ea0499"
+      "bytes": 840,
+      "sha256": "9fddd8bd7b5917bafd81a2c02e3c097a3f360b5bbc3e344477ea96d7f9722b62"
     },
     {
       "path": "scripts/private/generate-private-operator-template.py",
@@ -3663,8 +3623,8 @@
     },
     {
       "path": "scripts/private/generate-redacted-public-evidence.py",
-      "bytes": 4285,
-      "sha256": "a17cd9ce72368e9aaf69e9e4fada433c1fdbed0148950f89e04dcaffe060ea58"
+      "bytes": 4352,
+      "sha256": "c58c432329ed0f547c8b6e3b6ce2be0b2847e4d9f24c8490fafea403c0b5901f"
     },
     {
       "path": "scripts/private/prepare-final-local-deployment.py",
@@ -3673,28 +3633,28 @@
     },
     {
       "path": "scripts/private/run-final-local-mainnet-deployment.py",
-      "bytes": 1859,
-      "sha256": "290eee88e7038971c9e353dd673388b6995601aa00c2131e0861934782c78906"
+      "bytes": 1970,
+      "sha256": "8cb19efd5c03dc488084fbcd287c57f7f936cd776441d23c2e30e700b10b989d"
     },
     {
       "path": "scripts/private/run-private-mainnet-preflight.py",
-      "bytes": 1331,
-      "sha256": "7e97c4f70461811a054837293c33633d6512652685f351f7d776fcc744c30caf"
+      "bytes": 1442,
+      "sha256": "ad580c5d7484a6a5963a977fb9b9e9c62f79d2074cb5069afdb66a70b7775c7c"
     },
     {
       "path": "scripts/private/run-private-sepolia-rehearsal.py",
-      "bytes": 1724,
-      "sha256": "1cf44957d35d9870f2a4b802b6e5ee2a762944d4efeaaf0a037cf69630428e8b"
+      "bytes": 1835,
+      "sha256": "0c718d918dd2603116cb1224fd168ea377b8f6565c16ca614248377e8c657dcf"
     },
     {
       "path": "scripts/private/validate-private-operator-inputs.py",
-      "bytes": 992,
-      "sha256": "2506c7ab0cd50e3fdb60b46db4584ba72cca27659bfeb4bda6540e6a57ca42df"
+      "bytes": 1103,
+      "sha256": "368faeedcb6c1357a9d12162e5623b526cf38c33e4d1099496c6f7662f857f92"
     },
     {
       "path": "scripts/private/verify-founder-approval-private.py",
-      "bytes": 1144,
-      "sha256": "ab9ddc8a032008ff107b39401628cc1dbf25723fc1831d0f5a9cb494a80fdc7d"
+      "bytes": 1211,
+      "sha256": "de94e8f11a13e61d9bb2d155f66ce78532d84c5510695fc90a173d39e16312ac"
     },
     {
       "path": "scripts/rehearse-ethereum-sepolia.ts",
@@ -3703,8 +3663,8 @@
     },
     {
       "path": "scripts/rehearse-local-authorization-chain.ts",
-      "bytes": 1028,
-      "sha256": "97f26ac7ae88a4a2916d952d7857c453ffe811961f4c1ebc92fef05426b38de8"
+      "bytes": 7664,
+      "sha256": "e463f97710e35e70a2409d6000b5ca93511e490f919ff80210e98e16388e8e51"
     },
     {
       "path": "scripts/repository_production_readiness_check.py",

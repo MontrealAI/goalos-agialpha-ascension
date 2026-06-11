@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
-from common import pathlib, parser, read_json, write_json, sha256_file, public_base, PRIVATE, QA, non_placeholder
+from common import assert_private_path, pathlib, parser, read_json, write_json, sha256_file, public_base, PRIVATE, QA, non_placeholder
 
 args = parser().parse_args()
+assert_private_path(pathlib.Path(args.input))
 data = read_json(pathlib.Path(args.input))
 PRIVATE.mkdir(exist_ok=True)
 QA.mkdir(exist_ok=True)
