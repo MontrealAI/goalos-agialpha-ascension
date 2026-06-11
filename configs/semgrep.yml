@@ -19,4 +19,4 @@ rules:
     message: Mainnet deployment override literal must remain restricted to gate checks/deploy scripts.
     severity: WARNING
     languages: [typescript, python]
-    pattern: YES_ALL_GATES_APPROVED
+    pattern: YES_FOUNDER_APPROVED_MAINNET_AUTHORIZATION

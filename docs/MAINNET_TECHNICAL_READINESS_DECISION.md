@@ -1,6 +1,6 @@
 # Mainnet Technical Readiness Decision
 
-Generated: 2026-06-11T17:46:58.768346+00:00
+Generated: 2026-06-11T18:04:50.626415+00:00
 
 TECHNICALLY_MAINNET_READY: **NO**
 
@@ -17,12 +17,15 @@ TECHNICALLY_MAINNET_READY: **NO**
 - actionlint is pending/environment-blocked or not internally accepted
 - shellcheck is pending/environment-blocked or not internally accepted
 - gitleaks is pending/environment-blocked or not internally accepted
-- Public Ethereum Sepolia replay remains pending; only local chainId 11155111 rehearsal evidence is present
-- AGIALPHA token verification requires Ethereum mainnet RPC evidence
-- Treasury/founder address ceremony is not complete
+- Internal security review is missing or not PASSED
+- Public Ethereum Sepolia replay is not completed with public receipts
+- Public Sepolia independent RPC receipt verification is missing or not PASSED
+- AGIALPHA Ethereum Mainnet token verification is missing or not PASSED
+- Ethereum Mainnet read-only preflight is missing or not PASSED_READ_ONLY
+- Ethereum Mainnet fork simulation is missing or not PASSED
+- Main branch protection is not enabled and no explicit founder risk acceptance is recorded
 
 ## Evidence
-- Sepolia manifest: `deployments/ethereum-sepolia.agialpha.latest.json`
-- Sepolia Evidence Docket: `evidence/sepolia/SEPOLIA_EVIDENCE_DOCKET.latest.json`
+- Decision JSON: `docs/MAINNET_TECHNICAL_READINESS_DECISION.json`
 - Required AGIALPHA token: `0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA`
-- Not externally audited; readiness uses automated security/toolchain and internal review gates.
+- Not externally audited; readiness uses automated/internal security evidence.

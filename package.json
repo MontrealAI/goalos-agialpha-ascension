@@ -1,7 +1,7 @@
 {
   "name": "goalos-agialpha-ascension",
   "version": "4.3.0",
-  "description": "GoalOS-native reimplementation of \u03b1-AGI Ascension using existing AGIALPHA for proof-settled AI workflow work.",
+  "description": "GoalOS-native reimplementation of α-AGI Ascension using existing AGIALPHA for proof-settled AI workflow work.",
   "license": "MIT",
   "scripts": {
     "compile": "hardhat compile",
@@ -53,7 +53,10 @@
     "audit:shell": "bash scripts/audit/run-shellcheck.sh",
     "audit:secrets": "bash scripts/audit/run-gitleaks.sh",
     "audit:clearance-report": "python scripts/audit/generate-toolchain-clearance-report.py",
-    "mainnet:readiness-check": "python scripts/mainnet-readiness-check.py"
+    "mainnet:readiness-check": "python scripts/mainnet-readiness-check.py",
+    "mainnet:deployment-authorization-check": "python scripts/mainnet-deployment-authorization-check.py",
+    "ethereum-mainnet:authorization-check": "python scripts/ethereum-mainnet-authorization-check.py",
+    "mainnet:fork-simulate": "ts-node scripts/mainnet-fork-simulate.ts"
   },
   "dependencies": {
     "@openzeppelin/contracts": "4.9.6",

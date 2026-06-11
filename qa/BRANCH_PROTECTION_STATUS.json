@@ -1,0 +1,6 @@
+{
+  "status": "NOT_VERIFIED",
+  "branch": "main",
+  "blocker": "gh CLI/API branch-protection verification was not available in this environment",
+  "mainnetDeploymentAuthorized": false
+}

@@ -7,6 +7,7 @@ Dependency PRs: triaged, not blindly merged.
 Not externally audited.
 Ethereum Mainnet technical readiness: NO.
 Ethereum Mainnet deployment authorization: NO.
+Ethereum Mainnet authorization: NO.
 Ethereum Mainnet not authorized.
 
 Mainnet AGIALPHA token address: `0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA`. This repository must not deploy or mint a new AGIALPHA token on Ethereum Mainnet.
@@ -29,6 +30,7 @@ Ethereum Sepolia rehearsal: completed locally; public Sepolia replay pending unl
 Not externally audited.
 Ethereum Mainnet technical readiness: NO.
 Ethereum Mainnet deployment authorization: NO.
+Ethereum Mainnet authorization: NO.
 ```
 
 Do **not** call this repository externally audited, mainnet authorized, legally approved, tax reviewed, production deployed, or guaranteed non-security.
@@ -186,4 +188,5 @@ Not externally audited.
 Ethereum Mainnet not authorized.
 Ethereum Mainnet technical readiness: NO.
 Ethereum Mainnet deployment authorization: NO.
+Ethereum Mainnet authorization: NO.
 ```

@@ -36,7 +36,7 @@ function requireBytes32(name: string): string {
 function enforceEthereumMainnetGates(info: ChainInfo) {
   if (!info.isMainnet) return;
   if (process.env.MAINNET_TARGET !== "ethereum") throw new Error("MAINNET_TARGET must be ethereum.");
-  if (process.env.ALLOW_MAINNET_DEPLOYMENT !== "YES_ALL_GATES_APPROVED") throw new Error("Ethereum mainnet deployment blocked. Set ALLOW_MAINNET_DEPLOYMENT=YES_ALL_GATES_APPROVED only after all gates are complete.");
+  if (process.env.ALLOW_MAINNET_DEPLOYMENT !== "YES_FOUNDER_APPROVED_MAINNET_AUTHORIZATION") throw new Error("Ethereum mainnet deployment blocked. Set ALLOW_MAINNET_DEPLOYMENT=YES_FOUNDER_APPROVED_MAINNET_AUTHORIZATION only after all gates are complete, founder approval is explicit, and manual deployment is authorized.");
   const token = requireEnvAddress("AGIALPHA_TOKEN_ADDRESS");
   if (token.toLowerCase() !== AGIALPHA_MAINNET.toLowerCase()) throw new Error(`Ethereum mainnet deployment blocked. AGIALPHA_TOKEN_ADDRESS must equal ${AGIALPHA_MAINNET}.`);
   requireBytes32("LEGAL_SIGNOFF_HASH");

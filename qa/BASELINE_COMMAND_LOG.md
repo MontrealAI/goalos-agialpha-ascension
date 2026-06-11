@@ -1,6 +1,71 @@
 # Baseline Command Log
 
-Generated: 2026-06-11T17:45:25Z
+Generated: 2026-06-11T18:02:53Z
+
+## npm ci
+```text
+npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+npm warn deprecated lodash.isequal@4.5.0: This package is deprecated. Use require('node:util').isDeepStrictEqual instead.
+npm warn deprecated glob@8.1.0: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+npm warn deprecated glob@5.0.15: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+npm warn deprecated glob@7.1.7: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+npm warn deprecated uuid@8.3.2: uuid@10 and below is no longer supported.  For ESM codebases, update to uuid@latest.  For CommonJS codebases, use uuid@11 (but be aware this version will likely be deprecated in 2028).
+
+added 597 packages, and audited 598 packages in 8s
+
+44 vulnerabilities (18 low, 22 moderate, 4 high)
+
+To address issues that do not require attention, run:
+  npm audit fix
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+RESULT: PASS
+```
+
+## npm ls hardhat @nomicfoundation/hardhat-toolbox @nomicfoundation/hardhat-chai-matchers @openzeppelin/contracts typescript
+```text
+goalos-agialpha-ascension@4.3.0 /workspace/goalos-agialpha-ascension
+├─┬ @nomicfoundation/hardhat-toolbox@5.0.0
+│ ├─┬ @nomicfoundation/hardhat-chai-matchers@2.1.2
+│ │ └── hardhat@2.28.6 deduped
+│ ├─┬ @nomicfoundation/hardhat-ethers@3.1.3
+│ │ └── hardhat@2.28.6 deduped
+│ ├─┬ @nomicfoundation/hardhat-ignition-ethers@0.15.17
+│ │ ├─┬ @nomicfoundation/hardhat-ignition@0.15.16
+│ │ │ └── hardhat@2.28.6 deduped
+│ │ └── hardhat@2.28.6 deduped
+│ ├─┬ @nomicfoundation/hardhat-network-helpers@1.1.2
+│ │ └── hardhat@2.28.6 deduped
+│ ├─┬ @nomicfoundation/hardhat-verify@2.1.3
+│ │ └── hardhat@2.28.6 deduped
+│ ├─┬ @typechain/ethers-v6@0.5.1
+│ │ ├─┬ ts-essentials@7.0.3
+│ │ │ └── typescript@5.9.3 deduped
+│ │ └── typescript@5.9.3 deduped
+│ ├─┬ @typechain/hardhat@9.1.0
+│ │ └── hardhat@2.28.6 deduped
+│ ├─┬ hardhat-gas-reporter@1.0.10
+│ │ └── hardhat@2.28.6 deduped
+│ ├── hardhat@2.28.6 deduped
+│ ├─┬ solidity-coverage@0.8.17
+│ │ └── hardhat@2.28.6 deduped
+│ ├─┬ typechain@8.3.2
+│ │ └── typescript@5.9.3 deduped
+│ └── typescript@5.9.3 deduped
+├── @openzeppelin/contracts@4.9.6
+├─┬ hardhat@2.28.6
+│ └── typescript@5.9.3 deduped
+├─┬ ts-node@10.9.2
+│ └── typescript@5.9.3 deduped
+└── typescript@5.9.3
+
+RESULT: PASS
+```
 
 ## npm run repo:all
 ```text
@@ -30,6 +95,16 @@ Paid/private product check passed.
 RESULT: PASS
 ```
 
+## npm run assert:public-status
+```text
+
+> goalos-agialpha-ascension@4.3.0 assert:public-status
+> python scripts/assert_public_status.py
+
+Public status assertion passed: Ethereum Mainnet is not authorized, public claims are bounded, and external-audit closure is not an active required gate.
+RESULT: PASS
+```
+
 ## npm run compile
 ```text
 
@@ -50,23 +125,23 @@ RESULT: PASS
 
 
   AEP-001 / AGIALPHA Ascension proof-of-evolution spine
-    ✔ runs Aim -> Act -> Prove -> Evolve on-chain commitments (1418ms)
+    ✔ runs Aim -> Act -> Prove -> Evolve on-chain commitments (975ms)
 
   GoalOS AGIALPHA Ascension flow
-    ✔ creates a Proof Seed using AGIALPHA (253ms)
-    ✔ runs post -> claim -> submit -> review -> proof card -> credential -> reputation with AGIALPHA (229ms)
-    ✔ anchors a legacy AGIJobManager record as reviewed history (173ms)
+    ✔ creates a Proof Seed using AGIALPHA (166ms)
+    ✔ runs post -> claim -> submit -> review -> proof card -> credential -> reputation with AGIALPHA (137ms)
+    ✔ anchors a legacy AGIJobManager record as reviewed history (98ms)
 
   GoalOS AGIALPHA Ascension v4 institutional controls
-    ✔ records conformance, claim boundary, replay, chronicle and falsification records (142ms)
-    ✔ supports commit-reveal validation (142ms)
-    ✔ supports evaluator staking, slashing court, and reward vault (157ms)
+    ✔ records conformance, claim boundary, replay, chronicle and falsification records (85ms)
+    ✔ supports commit-reveal validation (91ms)
+    ✔ supports evaluator staking, slashing court, and reward vault (80ms)
 
   v4.3 Ethereum launch gate consistency
-    ✔ uses Ethereum Sepolia and complete institutional gates (67ms)
+    ✔ uses Ethereum Sepolia and complete institutional gates
 
 
-  8 passing (3s)
+  8 passing (2s)
 
 RESULT: PASS
 ```
@@ -80,23 +155,23 @@ RESULT: PASS
 
 
   GoalOS AGIALPHA Ascension flow
-    ✔ creates a Proof Seed using AGIALPHA (1502ms)
-    ✔ runs post -> claim -> submit -> review -> proof card -> credential -> reputation with AGIALPHA (249ms)
-    ✔ anchors a legacy AGIJobManager record as reviewed history (210ms)
+    ✔ creates a Proof Seed using AGIALPHA (956ms)
+    ✔ runs post -> claim -> submit -> review -> proof card -> credential -> reputation with AGIALPHA (146ms)
+    ✔ anchors a legacy AGIJobManager record as reviewed history (106ms)
 
   AEP-001 / AGIALPHA Ascension proof-of-evolution spine
-    ✔ runs Aim -> Act -> Prove -> Evolve on-chain commitments (322ms)
+    ✔ runs Aim -> Act -> Prove -> Evolve on-chain commitments (174ms)
 
   GoalOS AGIALPHA Ascension v4 institutional controls
-    ✔ records conformance, claim boundary, replay, chronicle and falsification records (160ms)
-    ✔ supports commit-reveal validation (153ms)
-    ✔ supports evaluator staking, slashing court, and reward vault (181ms)
+    ✔ records conformance, claim boundary, replay, chronicle and falsification records (93ms)
+    ✔ supports commit-reveal validation (86ms)
+    ✔ supports evaluator staking, slashing court, and reward vault (80ms)
 
   v4.3 Ethereum launch gate consistency
-    ✔ uses Ethereum Sepolia and complete institutional gates (81ms)
+    ✔ uses Ethereum Sepolia and complete institutional gates
 
 
-  8 passing (3s)
+  8 passing (2s)
 
 RESULT: PASS
 ```
@@ -108,7 +183,7 @@ RESULT: PASS
 > python scripts/static_check.py
 
 Static QA passed.
-Files checked: 829
+Files checked: 863
 RESULT: PASS
 ```
 
@@ -120,9 +195,9 @@ RESULT: PASS
 
 {
   "package": "GoalOS_AGIALPHA_Ascension_Ethereum_Mainnet_Implementation_v4_3_GATE_CLEAN_EVIDENCE_READY",
-  "generated_at": "2026-06-11T17:46:07.737976+00:00",
+  "generated_at": "2026-06-11T18:03:34.149694+00:00",
   "static_readiness": "passed",
-  "files_checked": 829,
+  "files_checked": 863,
   "errors": [],
   "warnings": [],
   "status": "gate-clean evidence-ready audit candidate; mainnet not authorized",
@@ -141,70 +216,7 @@ RESULT: PASS
 {
   "status": "EVIDENCE_DOCKET_TEMPLATE_WRITTEN",
   "path": "evidence/SEPOLIA_EVIDENCE_DOCKET_TEMPLATE_v4_2.json",
-  "sha256": "e9c687179b03069190845e456fa206fbe843ff5e0b90e2faaa837e1caaa25f65"
-}
-RESULT: PASS
-```
-
-## npm run assert:public-status
-```text
-
-> goalos-agialpha-ascension@4.3.0 assert:public-status
-> python scripts/assert_public_status.py
-
-Public status assertion passed: Ethereum Mainnet is not authorized, public claims are bounded, and external-audit closure is not an active required gate.
-RESULT: PASS
-```
-
-## python scripts/mainnet-authorization-check.py
-```text
-{
-  "generated_at": "2026-06-11T17:46:16.689214+00:00",
-  "MAINNET_DEPLOYMENT_AUTHORIZED": "NO",
-  "decision": "NOT_AUTHORIZED",
-  "blockers": [
-    "MAINNET_TARGET must equal ethereum",
-    "ALLOW_MAINNET_DEPLOYMENT must equal YES_ALL_GATES_APPROVED only after all real gates are complete and founder approval is explicit",
-    "LEGAL_SIGNOFF_HASH missing or not bytes32",
-    "TAX_SIGNOFF_HASH missing or not bytes32",
-    "SECURITY_REVIEW_HASH missing or not bytes32",
-    "PUBLIC_CLAIMS_REVIEW_HASH missing or not bytes32",
-    "TREASURY_REVIEW_HASH missing or not bytes32",
-    "AGIALPHA_TOKEN_VERIFICATION_HASH missing or not bytes32",
-    "SEPOLIA_REHEARSAL_EVIDENCE_HASH missing or not bytes32",
-    "AUTOMATED_SECURITY_TOOLCHAIN_HASH missing or not bytes32",
-    "INTERNAL_SECURITY_REVIEW_HASH missing or not bytes32",
-    "FOUNDER_APPROVAL_HASH missing or not bytes32",
-    "AGIALPHA_TOKEN_ADDRESS missing or not EVM address",
-    "FOUNDER_ADDRESS missing or not EVM address",
-    "TREASURY_ADDRESS missing or not EVM address",
-    "COMMERCIALIZATION_PERFORMANCE_ADMIN missing or not EVM address",
-    "PROOF_REWARDS_ADMIN missing or not EVM address",
-    "LIQUIDITY_ADMIN missing or not EVM address",
-    "SECURITY_ADMIN missing or not EVM address",
-    "COMMUNITY_ADMIN missing or not EVM address",
-    "AGIALPHA_TOKEN_ADDRESS must be the existing Ethereum mainnet AGIALPHA token",
-    "TECHNICALLY_MAINNET_READY is not YES",
-    "technical: slither is pending/environment-blocked or not internally accepted",
-    "technical: echidna is pending/environment-blocked or not internally accepted",
-    "technical: mythril is pending/environment-blocked or not internally accepted",
-    "technical: medusa is pending/environment-blocked or not internally accepted",
-    "technical: foundry is pending/environment-blocked or not internally accepted",
-    "technical: halmos is pending/environment-blocked or not internally accepted",
-    "technical: semgrep is pending/environment-blocked or not internally accepted",
-    "technical: smtchecker is pending/environment-blocked or not internally accepted",
-    "technical: osv-scanner is pending/environment-blocked or not internally accepted",
-    "technical: actionlint is pending/environment-blocked or not internally accepted",
-    "technical: shellcheck is pending/environment-blocked or not internally accepted",
-    "technical: gitleaks is pending/environment-blocked or not internally accepted",
-    "technical: Public Ethereum Sepolia replay remains pending; only local chainId 11155111 rehearsal evidence is present",
-    "technical: AGIALPHA token verification requires Ethereum mainnet RPC evidence",
-    "technical: Treasury/founder address ceremony is not complete"
-  ],
-  "agialpha_mainnet_token_required": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
-  "deploy_command_if_authorized": null,
-  "final_founder_confirmation_required": true,
-  "mainnet_deployment_executed": false
+  "sha256": "4264a4726ef0f9bc8983aa513bb3ba40ae1a1cc106e4aec3642da11804d1fd2d"
 }
 RESULT: PASS
 ```

@@ -1,6 +1,52 @@
 {
-  "generated_at": "2026-06-11T17:46:58.768346+00:00",
+  "status": "NO",
   "TECHNICALLY_MAINNET_READY": "NO",
+  "commit": "8e398a2e9a277932bda95c75f34b4b93c24cbe9c",
+  "chain": "ethereum",
+  "chainId": 1,
+  "agialphaToken": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
+  "evidence": {
+    "baselineGreenReport": {
+      "path": "qa/BASELINE_GREEN_REPORT.json",
+      "sha256": "ad932c45ad4f671b5c2723a3fcb9e1190d4056523582f9914d90b1bd0b75ea0f",
+      "status": "BASELINE_GREEN"
+    },
+    "automatedSecurityToolchain": {
+      "summary": "audit/reports/2026-06-11-1803/audit-summary.json",
+      "clearanceReport": "audit/reports/2026-06-11-1803/toolchain-clearance-report.md",
+      "sha256": "615385e1e909940f26433789b8cf633c8c092e9b78c5955f9b72f887fcb57179",
+      "decision": "TECHNICALLY_MAINNET_READY_NO"
+    },
+    "sepoliaEvidenceDocket": {
+      "path": "evidence/sepolia/EVIDENCE_DOCKET.json",
+      "sha256": "b831780175cdb307b07b5726cbd9a910d14755b61e48b6bb108660b5bbc5c98b",
+      "status": "PUBLIC_SEPOLIA_PENDING"
+    },
+    "agialphaTokenVerification": {
+      "path": "qa/AGIALPHA_TOKEN_VERIFICATION.json",
+      "sha256": "ff4a85c07580d253582259fa60698a2a1544f9d0875dca11b35313ae9df68842",
+      "status": "PENDING_RPC"
+    },
+    "mainnetPreflight": {
+      "path": "qa/ETHEREUM_MAINNET_PREFLIGHT.json",
+      "sha256": "1aa7fcf454971a4d3506e4d6deb5faaf4d8913aae75e223af6e977ef5845ea8d",
+      "status": "NOT_AUTHORIZED"
+    },
+    "mainnetForkSimulation": {
+      "path": "qa/ETHEREUM_MAINNET_FORK_SIMULATION.json",
+      "sha256": "1a4db9ef49e66ec1eeeefd71a75e13196906a70cd175598b112865c613e06dc6",
+      "status": "PENDING_RPC"
+    },
+    "dependencyTriage": {
+      "path": "docs/DEPENDABOT_TRIAGE_REPORT.md",
+      "sha256": "2e5e8d55eb2a926d8237027676e009d7b388eff65b200f219b276c83c4aaa62c"
+    },
+    "branchProtection": {
+      "path": "qa/BRANCH_PROTECTION_STATUS.json",
+      "sha256": "ee6957b841b920df2080cbb030c1e85e0f126dd6b7d26ab839ecf0130b0323f9",
+      "status": "NOT_VERIFIED"
+    }
+  },
   "blockers": [
     "slither is pending/environment-blocked or not internally accepted",
     "echidna is pending/environment-blocked or not internally accepted",
@@ -14,17 +60,16 @@
     "actionlint is pending/environment-blocked or not internally accepted",
     "shellcheck is pending/environment-blocked or not internally accepted",
     "gitleaks is pending/environment-blocked or not internally accepted",
-    "Public Ethereum Sepolia replay remains pending; only local chainId 11155111 rehearsal evidence is present",
-    "AGIALPHA token verification requires Ethereum mainnet RPC evidence",
-    "Treasury/founder address ceremony is not complete"
+    "Internal security review is missing or not PASSED",
+    "Public Ethereum Sepolia replay is not completed with public receipts",
+    "Public Sepolia independent RPC receipt verification is missing or not PASSED",
+    "AGIALPHA Ethereum Mainnet token verification is missing or not PASSED",
+    "Ethereum Mainnet read-only preflight is missing or not PASSED_READ_ONLY",
+    "Ethereum Mainnet fork simulation is missing or not PASSED",
+    "Main branch protection is not enabled and no explicit founder risk acceptance is recorded"
   ],
-  "audit_report": "audit/reports/2026-06-11-1743/audit-summary.json",
-  "toolchain_report_hash": "0bab55c736941d135eb457916bea45bee67d08a819f30a292828f694be8dad25",
-  "sepolia_manifest": "deployments/ethereum-sepolia.agialpha.latest.json",
-  "sepolia_manifest_hash": "6c855d2fdb97d4e333e092b7d515d787b5bf724cc15441d9f57a410314730dbe",
-  "sepolia_evidence_docket": "evidence/sepolia/SEPOLIA_EVIDENCE_DOCKET.latest.json",
-  "sepolia_evidence_docket_hash": "db7cb05c3061e41ad8f2588c704bf0931ff9584e2b3cd6ba95f997430de5f647",
-  "agialpha_mainnet_token_required": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
-  "deployment_command_if_ready": null,
-  "final_founder_approval_required": true
+  "generatedAt": "2026-06-11T18:04:50.626415+00:00",
+  "generatedBy": "scripts/mainnet-readiness-check.py",
+  "deploymentCommandIfReady": null,
+  "mainnetDeploymentExecuted": false
 }

@@ -1,0 +1,24 @@
+{
+  "status": "NO",
+  "ETHEREUM_MAINNET_AUTHORIZED": "NO",
+  "commit": "8e398a2e9a277932bda95c75f34b4b93c24cbe9c",
+  "chain": "ethereum",
+  "chainId": 1,
+  "agialphaToken": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
+  "evidence": {
+    "technicalReadinessSha256": "f304c7dca93e04be5462496662d5d129645ed73cd833989cea2c87bda0fe5de9",
+    "deploymentAuthorizationSha256": "060da5164adac55ca40d37e14ee758d990aa2c156450e8534bc2b50608cb05a4"
+  },
+  "blockers": [
+    "TECHNICALLY_MAINNET_READY is not YES",
+    "MAINNET_DEPLOYMENT_AUTHORIZED is not YES",
+    "MAINNET_TARGET must equal ethereum",
+    "AGIALPHA_TOKEN_ADDRESS must match the existing Ethereum Mainnet AGIALPHA token",
+    "ALLOW_MAINNET_DEPLOYMENT must equal YES_FOUNDER_APPROVED_MAINNET_AUTHORIZATION",
+    "FOUNDER_APPROVAL_HASH missing or not bytes32"
+  ],
+  "generatedAt": "2026-06-11T18:04:57.293621+00:00",
+  "generatedBy": "scripts/ethereum-mainnet-authorization-check.py",
+  "finalManualDeploymentCommand": null,
+  "mainnetDeploymentExecuted": false
+}

@@ -1,0 +1,7 @@
+{
+  "status": "PUBLIC_SEPOLIA_PENDING",
+  "chain": "ethereum-sepolia",
+  "chainId": 11155111,
+  "publicReceiptsVerified": false,
+  "blocker": "Real public Sepolia RPC/deployer evidence was not supplied"
+}

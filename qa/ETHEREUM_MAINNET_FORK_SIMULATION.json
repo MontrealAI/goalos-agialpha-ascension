@@ -1,0 +1,23 @@
+{
+  "status": "PENDING_RPC",
+  "generatedAt": "2026-06-11T18:04:12.398Z",
+  "generatedBy": "scripts/mainnet-fork-simulate.ts",
+  "chain": "ethereum",
+  "chainId": 1,
+  "agialphaToken": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
+  "mainnetBroadcast": false,
+  "expectedManifest": "deployments/ethereum-mainnet.agialpha.latest.json",
+  "checks": {
+    "forkMainnet": false,
+    "usesExistingAGIALPHA": true,
+    "deploysMockAGIALPHAOnMainnet": false,
+    "deploysNewAGIALPHAOnMainnet": false,
+    "launchGateChecks": false,
+    "emergencyAdminChecks": false,
+    "roleEscalationChecks": false
+  },
+  "blockers": [
+    "MAINNET_RPC_URL or ETHEREUM_MAINNET_RPC_URL is required for a real Ethereum mainnet fork simulation",
+    "Fork-only deployment simulation was not executed in this environment; no mainnet RPC evidence was supplied"
+  ]
+}
