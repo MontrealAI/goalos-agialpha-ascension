@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-11T22:25:42.543725+00:00",
+  "generated_at": "2026-06-11T22:40:33.395749+00:00",
   "files": [
     {
       "path": ".editorconfig",
@@ -237,811 +237,6 @@
       "sha256": "97e4fca3a513a2c81c5730885bead9033194c02faf3d3f811d70b0e0784f6065"
     },
     {
-      "path": "artifacts/@openzeppelin/contracts/access/AccessControl.sol/AccessControl.dbg.json",
-      "bytes": 111,
-      "sha256": "b7f71147cf18abf526b54d43f390912a44d8c61a3da08ef41979aa74648009e1"
-    },
-    {
-      "path": "artifacts/@openzeppelin/contracts/access/AccessControl.sol/AccessControl.json",
-      "bytes": 4524,
-      "sha256": "fd2698448ea5df5511308013919de69e35f91c9243949b93a503c7fd70f03078"
-    },
-    {
-      "path": "artifacts/@openzeppelin/contracts/access/IAccessControl.sol/IAccessControl.dbg.json",
-      "bytes": 111,
-      "sha256": "b7f71147cf18abf526b54d43f390912a44d8c61a3da08ef41979aa74648009e1"
-    },
-    {
-      "path": "artifacts/@openzeppelin/contracts/access/IAccessControl.sol/IAccessControl.json",
-      "bytes": 3886,
-      "sha256": "9a68b9a27ace48b1bcd7b3f58e8747a63203f11f745b7e672b0ba8eaa9fb6945"
-    },
-    {
-      "path": "artifacts/@openzeppelin/contracts/interfaces/IERC5267.sol/IERC5267.dbg.json",
-      "bytes": 111,
-      "sha256": "b7f71147cf18abf526b54d43f390912a44d8c61a3da08ef41979aa74648009e1"
-    },
-    {
-      "path": "artifacts/@openzeppelin/contracts/interfaces/IERC5267.sol/IERC5267.json",
-      "bytes": 1328,
-      "sha256": "4ef6c598cdc089b7f57fe204682d53cb836d3eec8f840a96643f9c91538947d7"
-    },
-    {
-      "path": "artifacts/@openzeppelin/contracts/security/Pausable.sol/Pausable.dbg.json",
-      "bytes": 111,
-      "sha256": "b7f71147cf18abf526b54d43f390912a44d8c61a3da08ef41979aa74648009e1"
-    },
-    {
-      "path": "artifacts/@openzeppelin/contracts/security/Pausable.sol/Pausable.json",
-      "bytes": 1005,
-      "sha256": "d31dbc8981da977089bb3d06a1ff571005494f4f3c21da9e527569baecb8e1a6"
-    },
-    {
-      "path": "artifacts/@openzeppelin/contracts/security/ReentrancyGuard.sol/ReentrancyGuard.dbg.json",
-      "bytes": 111,
-      "sha256": "b7f71147cf18abf526b54d43f390912a44d8c61a3da08ef41979aa74648009e1"
-    },
-    {
-      "path": "artifacts/@openzeppelin/contracts/security/ReentrancyGuard.sol/ReentrancyGuard.json",
-      "bytes": 263,
-      "sha256": "e1a32d753ba7a69a52a4128329302d202e88465308a8732c2ef7a69c3b68da62"
-    },
-    {
-      "path": "artifacts/@openzeppelin/contracts/token/ERC20/ERC20.sol/ERC20.dbg.json",
-      "bytes": 114,
-      "sha256": "9b93efa34de66a9c70c3194c8820aef6e4968347c96886d775e71f91ead5fada"
-    },
-    {
-      "path": "artifacts/@openzeppelin/contracts/token/ERC20/ERC20.sol/ERC20.json",
-      "bytes": 16119,
-      "sha256": "5ddb22b1c913eb5a201ffad56c71ba088e133f5da87077f298f2d9df2fc06ec8"
-    },
-    {
-      "path": "artifacts/@openzeppelin/contracts/token/ERC20/IERC20.sol/IERC20.dbg.json",
-      "bytes": 114,
-      "sha256": "9b93efa34de66a9c70c3194c8820aef6e4968347c96886d775e71f91ead5fada"
-    },
-    {
-      "path": "artifacts/@openzeppelin/contracts/token/ERC20/IERC20.sol/IERC20.json",
-      "bytes": 3998,
-      "sha256": "434b0cacb470a8c906227725346311c39da85973922ba5752f4e1e8731943717"
-    },
-    {
-      "path": "artifacts/@openzeppelin/contracts/token/ERC20/extensions/ERC20Permit.sol/ERC20Permit.dbg.json",
-      "bytes": 117,
-      "sha256": "9f7b08ce2d3f904feede579e2360e0911afffe37b49342a532dcbcd860066105"
-    },
-    {
-      "path": "artifacts/@openzeppelin/contracts/token/ERC20/extensions/ERC20Permit.sol/ERC20Permit.json",
-      "bytes": 8690,
-      "sha256": "63dd0779934e2a315674185eefaddffcd7eb0806157444844a6b4e14df49040d"
-    },
-    {
-      "path": "artifacts/@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol/IERC20Metadata.dbg.json",
-      "bytes": 117,
-      "sha256": "9f7b08ce2d3f904feede579e2360e0911afffe37b49342a532dcbcd860066105"
-    },
-    {
-      "path": "artifacts/@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol/IERC20Metadata.json",
-      "bytes": 4767,
-      "sha256": "4aa87fdb339b62b3bc58f9257a0811baf98086af28314ade8837ba95a7ffcaf0"
-    },
-    {
-      "path": "artifacts/@openzeppelin/contracts/token/ERC20/extensions/IERC20Permit.sol/IERC20Permit.dbg.json",
-      "bytes": 117,
-      "sha256": "9f7b08ce2d3f904feede579e2360e0911afffe37b49342a532dcbcd860066105"
-    },
-    {
-      "path": "artifacts/@openzeppelin/contracts/token/ERC20/extensions/IERC20Permit.sol/IERC20Permit.json",
-      "bytes": 1830,
-      "sha256": "f94cda8ef36b5399dbfd9ca3885bf92d3494ae56381a6a5fbac9cb9e7deafdb7"
-    },
-    {
-      "path": "artifacts/@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol/SafeERC20.dbg.json",
-      "bytes": 117,
-      "sha256": "9f7b08ce2d3f904feede579e2360e0911afffe37b49342a532dcbcd860066105"
-    },
-    {
-      "path": "artifacts/@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol/SafeERC20.json",
-      "bytes": 714,
-      "sha256": "79a2eb956405e11c1f97d4c7100670dead703a6204d94e9ced4d2a436cd9306c"
-    },
-    {
-      "path": "artifacts/@openzeppelin/contracts/token/ERC721/ERC721.sol/ERC721.dbg.json",
-      "bytes": 114,
-      "sha256": "9b93efa34de66a9c70c3194c8820aef6e4968347c96886d775e71f91ead5fada"
-    },
-    {
-      "path": "artifacts/@openzeppelin/contracts/token/ERC721/ERC721.sol/ERC721.json",
-      "bytes": 26268,
-      "sha256": "518f7ecac2afa0d4284c6acc702c9e54249f3e01cac3da0da500d62f37425f2d"
-    },
-    {
-      "path": "artifacts/@openzeppelin/contracts/token/ERC721/IERC721.sol/IERC721.dbg.json",
-      "bytes": 114,
-      "sha256": "9b93efa34de66a9c70c3194c8820aef6e4968347c96886d775e71f91ead5fada"
-    },
-    {
-      "path": "artifacts/@openzeppelin/contracts/token/ERC721/IERC721.sol/IERC721.json",
-      "bytes": 6217,
-      "sha256": "f37e7672a57e5cce24a8706e663a4e021e001acd828805f6b14de4aed33deb4a"
-    },
-    {
-      "path": "artifacts/@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol/IERC721Receiver.dbg.json",
-      "bytes": 114,
-      "sha256": "9b93efa34de66a9c70c3194c8820aef6e4968347c96886d775e71f91ead5fada"
-    },
-    {
-      "path": "artifacts/@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol/IERC721Receiver.json",
-      "bytes": 990,
-      "sha256": "f3db3eb53683157379a4fa3f5efb9987f25765d824437359e8d47c3063f49b2a"
-    },
-    {
-      "path": "artifacts/@openzeppelin/contracts/token/ERC721/extensions/IERC721Metadata.sol/IERC721Metadata.dbg.json",
-      "bytes": 117,
-      "sha256": "9f7b08ce2d3f904feede579e2360e0911afffe37b49342a532dcbcd860066105"
-    },
-    {
-      "path": "artifacts/@openzeppelin/contracts/token/ERC721/extensions/IERC721Metadata.sol/IERC721Metadata.json",
-      "bytes": 7109,
-      "sha256": "f6a9bce52932abb33218aee6f0870548b7863ac84a1e7fc922717bc8efb08d68"
-    },
-    {
-      "path": "artifacts/@openzeppelin/contracts/utils/Address.sol/Address.dbg.json",
-      "bytes": 111,
-      "sha256": "b7f71147cf18abf526b54d43f390912a44d8c61a3da08ef41979aa74648009e1"
-    },
-    {
-      "path": "artifacts/@openzeppelin/contracts/utils/Address.sol/Address.json",
-      "bytes": 698,
-      "sha256": "70192e0f3af5408d0e2be08c2aef14b9d1b022b85d6a2b6dafe27a799971493e"
-    },
-    {
-      "path": "artifacts/@openzeppelin/contracts/utils/Context.sol/Context.dbg.json",
-      "bytes": 111,
-      "sha256": "b7f71147cf18abf526b54d43f390912a44d8c61a3da08ef41979aa74648009e1"
-    },
-    {
-      "path": "artifacts/@openzeppelin/contracts/utils/Context.sol/Context.json",
-      "bytes": 244,
-      "sha256": "4e976e9054315918d801adab824f80a3c2ee91497df846161e264fb6cd42504b"
-    },
-    {
-      "path": "artifacts/@openzeppelin/contracts/utils/Counters.sol/Counters.dbg.json",
-      "bytes": 111,
-      "sha256": "b7f71147cf18abf526b54d43f390912a44d8c61a3da08ef41979aa74648009e1"
-    },
-    {
-      "path": "artifacts/@openzeppelin/contracts/utils/Counters.sol/Counters.json",
-      "bytes": 700,
-      "sha256": "9de24ea009e8b6ec7643edaa4798087d386d2735e72e4743288efcbd3b2e743a"
-    },
-    {
-      "path": "artifacts/@openzeppelin/contracts/utils/ShortStrings.sol/ShortStrings.dbg.json",
-      "bytes": 111,
-      "sha256": "b7f71147cf18abf526b54d43f390912a44d8c61a3da08ef41979aa74648009e1"
-    },
-    {
-      "path": "artifacts/@openzeppelin/contracts/utils/ShortStrings.sol/ShortStrings.json",
-      "bytes": 1002,
-      "sha256": "64c6d6bbb2e0a98e8a684a2bb675a08b2f8be14437330bc0cccbf7aac1d94f85"
-    },
-    {
-      "path": "artifacts/@openzeppelin/contracts/utils/StorageSlot.sol/StorageSlot.dbg.json",
-      "bytes": 111,
-      "sha256": "b7f71147cf18abf526b54d43f390912a44d8c61a3da08ef41979aa74648009e1"
-    },
-    {
-      "path": "artifacts/@openzeppelin/contracts/utils/StorageSlot.sol/StorageSlot.json",
-      "bytes": 706,
-      "sha256": "0293f47cbe974409b1e63a78801c673e5adae92f3e538e468b7ba9e23b7e5236"
-    },
-    {
-      "path": "artifacts/@openzeppelin/contracts/utils/Strings.sol/Strings.dbg.json",
-      "bytes": 111,
-      "sha256": "b7f71147cf18abf526b54d43f390912a44d8c61a3da08ef41979aa74648009e1"
-    },
-    {
-      "path": "artifacts/@openzeppelin/contracts/utils/Strings.sol/Strings.json",
-      "bytes": 698,
-      "sha256": "5351b44fccf7611779f8b21d5a9cb8448aa94ac188d27f2d386173cd5c8ddcb8"
-    },
-    {
-      "path": "artifacts/@openzeppelin/contracts/utils/cryptography/ECDSA.sol/ECDSA.dbg.json",
-      "bytes": 114,
-      "sha256": "9b93efa34de66a9c70c3194c8820aef6e4968347c96886d775e71f91ead5fada"
-    },
-    {
-      "path": "artifacts/@openzeppelin/contracts/utils/cryptography/ECDSA.sol/ECDSA.json",
-      "bytes": 707,
-      "sha256": "c66990336bedfc39585edd42152c334e21dd5fe5fba187c3f9391511e19d88f3"
-    },
-    {
-      "path": "artifacts/@openzeppelin/contracts/utils/cryptography/EIP712.sol/EIP712.dbg.json",
-      "bytes": 114,
-      "sha256": "9b93efa34de66a9c70c3194c8820aef6e4968347c96886d775e71f91ead5fada"
-    },
-    {
-      "path": "artifacts/@openzeppelin/contracts/utils/cryptography/EIP712.sol/EIP712.json",
-      "bytes": 1624,
-      "sha256": "97ef9e6f4be8c77c50145316d126040926310033626d944ad4a48944f1549a48"
-    },
-    {
-      "path": "artifacts/@openzeppelin/contracts/utils/introspection/ERC165.sol/ERC165.dbg.json",
-      "bytes": 114,
-      "sha256": "9b93efa34de66a9c70c3194c8820aef6e4968347c96886d775e71f91ead5fada"
-    },
-    {
-      "path": "artifacts/@openzeppelin/contracts/utils/introspection/ERC165.sol/ERC165.json",
-      "bytes": 636,
-      "sha256": "79ed90958154bf6c1db235ec5684c57e331c5692fab60cee07352af197cb0997"
-    },
-    {
-      "path": "artifacts/@openzeppelin/contracts/utils/introspection/IERC165.sol/IERC165.dbg.json",
-      "bytes": 114,
-      "sha256": "9b93efa34de66a9c70c3194c8820aef6e4968347c96886d775e71f91ead5fada"
-    },
-    {
-      "path": "artifacts/@openzeppelin/contracts/utils/introspection/IERC165.sol/IERC165.json",
-      "bytes": 638,
-      "sha256": "8416d9d840f76fa3bd66aaae68698eb8248c334364519659193ba22c1407b596"
-    },
-    {
-      "path": "artifacts/@openzeppelin/contracts/utils/math/Math.sol/Math.dbg.json",
-      "bytes": 114,
-      "sha256": "9b93efa34de66a9c70c3194c8820aef6e4968347c96886d775e71f91ead5fada"
-    },
-    {
-      "path": "artifacts/@openzeppelin/contracts/utils/math/Math.sol/Math.json",
-      "bytes": 697,
-      "sha256": "dcd878d618cf9330dbd2d3c9ab9457e72c1425b89b77af9822e42090c6501fd1"
-    },
-    {
-      "path": "artifacts/@openzeppelin/contracts/utils/math/SignedMath.sol/SignedMath.dbg.json",
-      "bytes": 114,
-      "sha256": "9b93efa34de66a9c70c3194c8820aef6e4968347c96886d775e71f91ead5fada"
-    },
-    {
-      "path": "artifacts/@openzeppelin/contracts/utils/math/SignedMath.sol/SignedMath.json",
-      "bytes": 709,
-      "sha256": "90f283d074cff63f94f97f9cb92c1dd3104735c7b8c4ff3dd1a71d13d25b3580"
-    },
-    {
-      "path": "artifacts/build-info/f365f5b492ff50d20aa933e393c9489a.json",
-      "bytes": 20059163,
-      "sha256": "ca545f4bec1d7955a5f29520b10d285879221abb19c6364b1f1d606e8ea94c61"
-    },
-    {
-      "path": "artifacts/contracts/access/GoalOSAccessControl.sol/GoalOSAccessControl.dbg.json",
-      "bytes": 108,
-      "sha256": "8ac629f19fae99e83ce118c727aa96af2c0e1d6a87a3d899e772d1d0178e3bf9"
-    },
-    {
-      "path": "artifacts/contracts/access/GoalOSAccessControl.sol/GoalOSAccessControl.json",
-      "bytes": 7119,
-      "sha256": "322a2dde031acd34983836b469f920b73bada8f1fef9bf94acf74ae2e237275e"
-    },
-    {
-      "path": "artifacts/contracts/aep/AEPAgentRegistry.sol/AEPAgentRegistry.dbg.json",
-      "bytes": 108,
-      "sha256": "8ac629f19fae99e83ce118c727aa96af2c0e1d6a87a3d899e772d1d0178e3bf9"
-    },
-    {
-      "path": "artifacts/contracts/aep/AEPAgentRegistry.sol/AEPAgentRegistry.json",
-      "bytes": 36354,
-      "sha256": "2c022cd478fbae1f95f4cbb6f449062d98220b2d1dba260b64996745f0e3a6a3"
-    },
-    {
-      "path": "artifacts/contracts/aep/AEPArtifactRegistry.sol/AEPArtifactRegistry.dbg.json",
-      "bytes": 108,
-      "sha256": "8ac629f19fae99e83ce118c727aa96af2c0e1d6a87a3d899e772d1d0178e3bf9"
-    },
-    {
-      "path": "artifacts/contracts/aep/AEPArtifactRegistry.sol/AEPArtifactRegistry.json",
-      "bytes": 34863,
-      "sha256": "0d5e4eca59020668c835ef928fb8a79811734e6896db42aa4642ed70038a352e"
-    },
-    {
-      "path": "artifacts/contracts/aep/AEPAttestationRegistry.sol/AEPAttestationRegistry.dbg.json",
-      "bytes": 108,
-      "sha256": "8ac629f19fae99e83ce118c727aa96af2c0e1d6a87a3d899e772d1d0178e3bf9"
-    },
-    {
-      "path": "artifacts/contracts/aep/AEPAttestationRegistry.sol/AEPAttestationRegistry.json",
-      "bytes": 31847,
-      "sha256": "d6d2eec3c25cc9b3076f2de583a15fffda1c3e73b0bf10dc33a87303cd999311"
-    },
-    {
-      "path": "artifacts/contracts/aep/AEPChronicleRegistry.sol/AEPChronicleRegistry.dbg.json",
-      "bytes": 108,
-      "sha256": "8ac629f19fae99e83ce118c727aa96af2c0e1d6a87a3d899e772d1d0178e3bf9"
-    },
-    {
-      "path": "artifacts/contracts/aep/AEPChronicleRegistry.sol/AEPChronicleRegistry.json",
-      "bytes": 29375,
-      "sha256": "bd886351268248b08a7436f6c99bed4f3d1722b039fa69492ba50a08b2a1a556"
-    },
-    {
-      "path": "artifacts/contracts/aep/AEPClaimBoundaryRegistry.sol/AEPClaimBoundaryRegistry.dbg.json",
-      "bytes": 108,
-      "sha256": "8ac629f19fae99e83ce118c727aa96af2c0e1d6a87a3d899e772d1d0178e3bf9"
-    },
-    {
-      "path": "artifacts/contracts/aep/AEPClaimBoundaryRegistry.sol/AEPClaimBoundaryRegistry.json",
-      "bytes": 32604,
-      "sha256": "a7520fc746967a4eb1574c43e400c1b4272d998e5f244deaf9fbf1e24f87c864"
-    },
-    {
-      "path": "artifacts/contracts/aep/AEPCommitRevealValidationRegistry.sol/AEPCommitRevealValidationRegistry.dbg.json",
-      "bytes": 108,
-      "sha256": "8ac629f19fae99e83ce118c727aa96af2c0e1d6a87a3d899e772d1d0178e3bf9"
-    },
-    {
-      "path": "artifacts/contracts/aep/AEPCommitRevealValidationRegistry.sol/AEPCommitRevealValidationRegistry.json",
-      "bytes": 51109,
-      "sha256": "1926f10aa722e9018b43140b6f2d6f92e7552ee43a6a9a912e5caf80a529da6a"
-    },
-    {
-      "path": "artifacts/contracts/aep/AEPConformanceRegistry.sol/AEPConformanceRegistry.dbg.json",
-      "bytes": 108,
-      "sha256": "8ac629f19fae99e83ce118c727aa96af2c0e1d6a87a3d899e772d1d0178e3bf9"
-    },
-    {
-      "path": "artifacts/contracts/aep/AEPConformanceRegistry.sol/AEPConformanceRegistry.json",
-      "bytes": 33521,
-      "sha256": "f6942d933700a402012aa18fd0843b0cf54c42f0c5475c5dc43a15e234863919"
-    },
-    {
-      "path": "artifacts/contracts/aep/AEPEvalRegistry.sol/AEPEvalRegistry.dbg.json",
-      "bytes": 108,
-      "sha256": "8ac629f19fae99e83ce118c727aa96af2c0e1d6a87a3d899e772d1d0178e3bf9"
-    },
-    {
-      "path": "artifacts/contracts/aep/AEPEvalRegistry.sol/AEPEvalRegistry.json",
-      "bytes": 36115,
-      "sha256": "ea23cd02bd903da19392613f849556f07ed63a92606a26f02f6e8241ae9d0e76"
-    },
-    {
-      "path": "artifacts/contracts/aep/AEPEvaluatorStakingRegistry.sol/AEPEvaluatorStakingRegistry.dbg.json",
-      "bytes": 108,
-      "sha256": "8ac629f19fae99e83ce118c727aa96af2c0e1d6a87a3d899e772d1d0178e3bf9"
-    },
-    {
-      "path": "artifacts/contracts/aep/AEPEvaluatorStakingRegistry.sol/AEPEvaluatorStakingRegistry.json",
-      "bytes": 44659,
-      "sha256": "6d8c423c934f53f8f578e059f9cf88409be56861807262c5d12008b36be7c5d5"
-    },
-    {
-      "path": "artifacts/contracts/aep/AEPEvidenceDocketRegistry.sol/AEPEvidenceDocketRegistry.dbg.json",
-      "bytes": 108,
-      "sha256": "8ac629f19fae99e83ce118c727aa96af2c0e1d6a87a3d899e772d1d0178e3bf9"
-    },
-    {
-      "path": "artifacts/contracts/aep/AEPEvidenceDocketRegistry.sol/AEPEvidenceDocketRegistry.json",
-      "bytes": 32711,
-      "sha256": "4c7f22a039115864842cbaaeb37c42bafb66ca9a811643ce35d8d3a3e31c13de"
-    },
-    {
-      "path": "artifacts/contracts/aep/AEPFalsificationRegistry.sol/AEPFalsificationRegistry.dbg.json",
-      "bytes": 108,
-      "sha256": "8ac629f19fae99e83ce118c727aa96af2c0e1d6a87a3d899e772d1d0178e3bf9"
-    },
-    {
-      "path": "artifacts/contracts/aep/AEPFalsificationRegistry.sol/AEPFalsificationRegistry.json",
-      "bytes": 32748,
-      "sha256": "bc45728174cfc5a4f1b2a5097ebf01a127af6ff5f84fcd5a48b103b1f6791a42"
-    },
-    {
-      "path": "artifacts/contracts/aep/AEPGoalOSCommitRegistry.sol/AEPGoalOSCommitRegistry.dbg.json",
-      "bytes": 108,
-      "sha256": "8ac629f19fae99e83ce118c727aa96af2c0e1d6a87a3d899e772d1d0178e3bf9"
-    },
-    {
-      "path": "artifacts/contracts/aep/AEPGoalOSCommitRegistry.sol/AEPGoalOSCommitRegistry.json",
-      "bytes": 40682,
-      "sha256": "51eab0426467498d769e106340596e3630171405c6ceee8abcc40f611308bcde"
-    },
-    {
-      "path": "artifacts/contracts/aep/AEPProofBundleRegistry.sol/AEPProofBundleRegistry.dbg.json",
-      "bytes": 108,
-      "sha256": "8ac629f19fae99e83ce118c727aa96af2c0e1d6a87a3d899e772d1d0178e3bf9"
-    },
-    {
-      "path": "artifacts/contracts/aep/AEPProofBundleRegistry.sol/AEPProofBundleRegistry.json",
-      "bytes": 30874,
-      "sha256": "bdd1c797992a27c225d4dcccc9e0600af2f25c373c45cdc9c713b35f6fb76fed"
-    },
-    {
-      "path": "artifacts/contracts/aep/AEPProofLedger.sol/AEPProofLedger.dbg.json",
-      "bytes": 108,
-      "sha256": "8ac629f19fae99e83ce118c727aa96af2c0e1d6a87a3d899e772d1d0178e3bf9"
-    },
-    {
-      "path": "artifacts/contracts/aep/AEPProofLedger.sol/AEPProofLedger.json",
-      "bytes": 30613,
-      "sha256": "05c2424ac6e9a69ec992dedee7d202d2ba3ed58c3c10c2753a223ca0667a645f"
-    },
-    {
-      "path": "artifacts/contracts/aep/AEPReplayRegistry.sol/AEPReplayRegistry.dbg.json",
-      "bytes": 108,
-      "sha256": "8ac629f19fae99e83ce118c727aa96af2c0e1d6a87a3d899e772d1d0178e3bf9"
-    },
-    {
-      "path": "artifacts/contracts/aep/AEPReplayRegistry.sol/AEPReplayRegistry.json",
-      "bytes": 31039,
-      "sha256": "8bbd631e45553157506b242d1186b8f59c595508a0ebc3eb91e6f3fc772f048a"
-    },
-    {
-      "path": "artifacts/contracts/aep/AEPRewardVault.sol/AEPRewardVault.dbg.json",
-      "bytes": 108,
-      "sha256": "8ac629f19fae99e83ce118c727aa96af2c0e1d6a87a3d899e772d1d0178e3bf9"
-    },
-    {
-      "path": "artifacts/contracts/aep/AEPRewardVault.sol/AEPRewardVault.json",
-      "bytes": 36943,
-      "sha256": "6579b9cdf00759d92463d0caabe8073caf3ead4e50e3857393244816bbbad343"
-    },
-    {
-      "path": "artifacts/contracts/aep/AEPRollbackRegistry.sol/AEPRollbackRegistry.dbg.json",
-      "bytes": 108,
-      "sha256": "8ac629f19fae99e83ce118c727aa96af2c0e1d6a87a3d899e772d1d0178e3bf9"
-    },
-    {
-      "path": "artifacts/contracts/aep/AEPRollbackRegistry.sol/AEPRollbackRegistry.json",
-      "bytes": 29451,
-      "sha256": "604cfdf0532daf256e46e5fc5ec4812d988e7ee1a78c9a0f25f61a695d99b325"
-    },
-    {
-      "path": "artifacts/contracts/aep/AEPRolloutRouter.sol/AEPRolloutRouter.dbg.json",
-      "bytes": 108,
-      "sha256": "8ac629f19fae99e83ce118c727aa96af2c0e1d6a87a3d899e772d1d0178e3bf9"
-    },
-    {
-      "path": "artifacts/contracts/aep/AEPRolloutRouter.sol/AEPRolloutRouter.json",
-      "bytes": 32790,
-      "sha256": "bc1bcdb59af0fbe293a7b68a4dc7b970e01b23184c83e812f37de5f771424385"
-    },
-    {
-      "path": "artifacts/contracts/aep/AEPRunCommitmentRegistry.sol/AEPRunCommitmentRegistry.dbg.json",
-      "bytes": 108,
-      "sha256": "8ac629f19fae99e83ce118c727aa96af2c0e1d6a87a3d899e772d1d0178e3bf9"
-    },
-    {
-      "path": "artifacts/contracts/aep/AEPRunCommitmentRegistry.sol/AEPRunCommitmentRegistry.json",
-      "bytes": 35233,
-      "sha256": "023c694f50a4a1eb440df64f100384e4f1ef1e3696944ac5cc173e4de3392a8f"
-    },
-    {
-      "path": "artifacts/contracts/aep/AEPSelectionGate.sol/AEPSelectionGate.dbg.json",
-      "bytes": 108,
-      "sha256": "8ac629f19fae99e83ce118c727aa96af2c0e1d6a87a3d899e772d1d0178e3bf9"
-    },
-    {
-      "path": "artifacts/contracts/aep/AEPSelectionGate.sol/AEPSelectionGate.json",
-      "bytes": 35453,
-      "sha256": "9a53441f86fe63c771773c26d45a413bfaf98fb424cd54fb0cf6c16b795fcb6b"
-    },
-    {
-      "path": "artifacts/contracts/aep/AEPSlashingCourt.sol/AEPSlashingCourt.dbg.json",
-      "bytes": 108,
-      "sha256": "8ac629f19fae99e83ce118c727aa96af2c0e1d6a87a3d899e772d1d0178e3bf9"
-    },
-    {
-      "path": "artifacts/contracts/aep/AEPSlashingCourt.sol/AEPSlashingCourt.json",
-      "bytes": 38201,
-      "sha256": "94c5a2894afa3a232b1256ce9e10be6c6620146c0021c0db5b0f5fcd595ecc32"
-    },
-    {
-      "path": "artifacts/contracts/aep/AEPSlashingCourt.sol/IAEPEvaluatorStakingRegistry.dbg.json",
-      "bytes": 108,
-      "sha256": "8ac629f19fae99e83ce118c727aa96af2c0e1d6a87a3d899e772d1d0178e3bf9"
-    },
-    {
-      "path": "artifacts/contracts/aep/AEPSlashingCourt.sol/IAEPEvaluatorStakingRegistry.json",
-      "bytes": 765,
-      "sha256": "3e7c256665cb9b21e38ea5692ee972b3f46728bd6c6519292d5e0cfdfc3cea66"
-    },
-    {
-      "path": "artifacts/contracts/aep/AGIEthNamespaceRegistry.sol/AGIEthNamespaceRegistry.dbg.json",
-      "bytes": 108,
-      "sha256": "8ac629f19fae99e83ce118c727aa96af2c0e1d6a87a3d899e772d1d0178e3bf9"
-    },
-    {
-      "path": "artifacts/contracts/aep/AGIEthNamespaceRegistry.sol/AGIEthNamespaceRegistry.json",
-      "bytes": 33197,
-      "sha256": "04993812492b71282e81a0cdad1bb79edd8c1e0d5392765587f10603162726f2"
-    },
-    {
-      "path": "artifacts/contracts/aep/AlphaWorkUnitLedger.sol/AlphaWorkUnitLedger.dbg.json",
-      "bytes": 108,
-      "sha256": "8ac629f19fae99e83ce118c727aa96af2c0e1d6a87a3d899e772d1d0178e3bf9"
-    },
-    {
-      "path": "artifacts/contracts/aep/AlphaWorkUnitLedger.sol/AlphaWorkUnitLedger.json",
-      "bytes": 28629,
-      "sha256": "0e72dbb717e788d5710e635893a558531482023ec6b3eee4cebefbd6c6a2904a"
-    },
-    {
-      "path": "artifacts/contracts/aep/MandateEpochRegistry.sol/MandateEpochRegistry.dbg.json",
-      "bytes": 108,
-      "sha256": "8ac629f19fae99e83ce118c727aa96af2c0e1d6a87a3d899e772d1d0178e3bf9"
-    },
-    {
-      "path": "artifacts/contracts/aep/MandateEpochRegistry.sol/MandateEpochRegistry.json",
-      "bytes": 49955,
-      "sha256": "ae66163d440b397275f9bbe7326e1b27a5b0ec06a14489c3d8622d0c002d489b"
-    },
-    {
-      "path": "artifacts/contracts/interfaces/IJobClaimBondManager.sol/IJobClaimBondManager.dbg.json",
-      "bytes": 108,
-      "sha256": "8ac629f19fae99e83ce118c727aa96af2c0e1d6a87a3d899e772d1d0178e3bf9"
-    },
-    {
-      "path": "artifacts/contracts/interfaces/IJobClaimBondManager.sol/IJobClaimBondManager.json",
-      "bytes": 921,
-      "sha256": "93c635907b8d31356fbcf32fb8766314d4aca742d435fddd78a6e2975f003fe3"
-    },
-    {
-      "path": "artifacts/contracts/interfaces/IJobRegistry.sol/IJobRegistry.dbg.json",
-      "bytes": 108,
-      "sha256": "8ac629f19fae99e83ce118c727aa96af2c0e1d6a87a3d899e772d1d0178e3bf9"
-    },
-    {
-      "path": "artifacts/contracts/interfaces/IJobRegistry.sol/IJobRegistry.json",
-      "bytes": 4340,
-      "sha256": "d70f9712f2ab12d30f2d187a1e6ee9fc29a552a14a9573bd9796634d848e9107"
-    },
-    {
-      "path": "artifacts/contracts/interfaces/IProofSubmissionRegistry.sol/IProofSubmissionRegistry.dbg.json",
-      "bytes": 108,
-      "sha256": "8ac629f19fae99e83ce118c727aa96af2c0e1d6a87a3d899e772d1d0178e3bf9"
-    },
-    {
-      "path": "artifacts/contracts/interfaces/IProofSubmissionRegistry.sol/IProofSubmissionRegistry.json",
-      "bytes": 2033,
-      "sha256": "790ce0330e32161c9b318a378d7b7e1a0dca9071e677ac8328b495a230600f6c"
-    },
-    {
-      "path": "artifacts/contracts/interfaces/IReputationRegistry.sol/IReputationRegistry.dbg.json",
-      "bytes": 108,
-      "sha256": "8ac629f19fae99e83ce118c727aa96af2c0e1d6a87a3d899e772d1d0178e3bf9"
-    },
-    {
-      "path": "artifacts/contracts/interfaces/IReputationRegistry.sol/IReputationRegistry.json",
-      "bytes": 2042,
-      "sha256": "adf580402880ad1c3cdafc16bdb5c0661c6812c7c80b769494ba1672d4fe7d70"
-    },
-    {
-      "path": "artifacts/contracts/optional/AppealRegistry.sol/AppealRegistry.dbg.json",
-      "bytes": 108,
-      "sha256": "8ac629f19fae99e83ce118c727aa96af2c0e1d6a87a3d899e772d1d0178e3bf9"
-    },
-    {
-      "path": "artifacts/contracts/optional/AppealRegistry.sol/AppealRegistry.json",
-      "bytes": 28116,
-      "sha256": "96a6482a79774399b6cfb7a95c53368e4ff0caf801d9761c23992025177d04d9"
-    },
-    {
-      "path": "artifacts/contracts/optional/BuilderProfileRegistry.sol/BuilderProfileRegistry.dbg.json",
-      "bytes": 108,
-      "sha256": "8ac629f19fae99e83ce118c727aa96af2c0e1d6a87a3d899e772d1d0178e3bf9"
-    },
-    {
-      "path": "artifacts/contracts/optional/BuilderProfileRegistry.sol/BuilderProfileRegistry.json",
-      "bytes": 28052,
-      "sha256": "1b503d84e28d41dcc1659e7f7a664f92db475f86b7fcf107623e5b73fb06f4f2"
-    },
-    {
-      "path": "artifacts/contracts/optional/CredentialRevocationRegistry.sol/CredentialRevocationRegistry.dbg.json",
-      "bytes": 108,
-      "sha256": "8ac629f19fae99e83ce118c727aa96af2c0e1d6a87a3d899e772d1d0178e3bf9"
-    },
-    {
-      "path": "artifacts/contracts/optional/CredentialRevocationRegistry.sol/CredentialRevocationRegistry.json",
-      "bytes": 28190,
-      "sha256": "d6970e6174401c1b1cb78ab6c55f31c610e2a612a244aaa421eda4ebeec39ebc"
-    },
-    {
-      "path": "artifacts/contracts/optional/DisputeRegistry.sol/DisputeRegistry.dbg.json",
-      "bytes": 108,
-      "sha256": "8ac629f19fae99e83ce118c727aa96af2c0e1d6a87a3d899e772d1d0178e3bf9"
-    },
-    {
-      "path": "artifacts/contracts/optional/DisputeRegistry.sol/DisputeRegistry.json",
-      "bytes": 29822,
-      "sha256": "e49eb2df7f860f0e6b5d8f6694942f1ff8cdd1d123fb2d56e0f18c89febf0273"
-    },
-    {
-      "path": "artifacts/contracts/optional/SponsorRegistry.sol/SponsorRegistry.dbg.json",
-      "bytes": 108,
-      "sha256": "8ac629f19fae99e83ce118c727aa96af2c0e1d6a87a3d899e772d1d0178e3bf9"
-    },
-    {
-      "path": "artifacts/contracts/optional/SponsorRegistry.sol/SponsorRegistry.json",
-      "bytes": 28038,
-      "sha256": "f5c351332b8c35c7056ec0b5558425c8b0f62cd20627d4c33e22234a20a38542"
-    },
-    {
-      "path": "artifacts/contracts/registry/JobClaimBondManager.sol/JobClaimBondManager.dbg.json",
-      "bytes": 108,
-      "sha256": "8ac629f19fae99e83ce118c727aa96af2c0e1d6a87a3d899e772d1d0178e3bf9"
-    },
-    {
-      "path": "artifacts/contracts/registry/JobClaimBondManager.sol/JobClaimBondManager.json",
-      "bytes": 45205,
-      "sha256": "da5bc1aeb9dd4759dd6b071fdb79d98bb7becbb9240b5c78f576e6ee2930ee23"
-    },
-    {
-      "path": "artifacts/contracts/registry/JobRegistry.sol/JobRegistry.dbg.json",
-      "bytes": 108,
-      "sha256": "8ac629f19fae99e83ce118c727aa96af2c0e1d6a87a3d899e772d1d0178e3bf9"
-    },
-    {
-      "path": "artifacts/contracts/registry/JobRegistry.sol/JobRegistry.json",
-      "bytes": 69126,
-      "sha256": "4daf3379293b09e934d17b48a3b7f24c6efec27c7668325c37f457e6969febf3"
-    },
-    {
-      "path": "artifacts/contracts/registry/LaunchGateRegistry.sol/LaunchGateRegistry.dbg.json",
-      "bytes": 108,
-      "sha256": "8ac629f19fae99e83ce118c727aa96af2c0e1d6a87a3d899e772d1d0178e3bf9"
-    },
-    {
-      "path": "artifacts/contracts/registry/LaunchGateRegistry.sol/LaunchGateRegistry.json",
-      "bytes": 36615,
-      "sha256": "e8cae0fb8c8e72e450bcf9cd77ecc24147f0bc0c465e97a0ff6a583d0fe868c8"
-    },
-    {
-      "path": "artifacts/contracts/registry/LegacyAGIJobManagerRegistry.sol/LegacyAGIJobManagerRegistry.dbg.json",
-      "bytes": 108,
-      "sha256": "8ac629f19fae99e83ce118c727aa96af2c0e1d6a87a3d899e772d1d0178e3bf9"
-    },
-    {
-      "path": "artifacts/contracts/registry/LegacyAGIJobManagerRegistry.sol/LegacyAGIJobManagerRegistry.json",
-      "bytes": 32778,
-      "sha256": "ee419ebb15c6d638eb218c5cbf6c458fe29aa11cde0e9f26cfdac61a3c938572"
-    },
-    {
-      "path": "artifacts/contracts/registry/PremiumAccessRegistry.sol/PremiumAccessRegistry.dbg.json",
-      "bytes": 108,
-      "sha256": "8ac629f19fae99e83ce118c727aa96af2c0e1d6a87a3d899e772d1d0178e3bf9"
-    },
-    {
-      "path": "artifacts/contracts/registry/PremiumAccessRegistry.sol/PremiumAccessRegistry.json",
-      "bytes": 28061,
-      "sha256": "f5038b9033dbfde602615b837ea8001bc48860f183ea90e66e980f0d9bc5ff7a"
-    },
-    {
-      "path": "artifacts/contracts/registry/ProofCardRegistry.sol/ProofCardRegistry.dbg.json",
-      "bytes": 108,
-      "sha256": "8ac629f19fae99e83ce118c727aa96af2c0e1d6a87a3d899e772d1d0178e3bf9"
-    },
-    {
-      "path": "artifacts/contracts/registry/ProofCardRegistry.sol/ProofCardRegistry.json",
-      "bytes": 33237,
-      "sha256": "f55d746c0758423459ae2c02d9679539607c8969d290fa237d4b0ccfbd18d84b"
-    },
-    {
-      "path": "artifacts/contracts/registry/ProofCredentialRegistry.sol/IERC5192.dbg.json",
-      "bytes": 108,
-      "sha256": "8ac629f19fae99e83ce118c727aa96af2c0e1d6a87a3d899e772d1d0178e3bf9"
-    },
-    {
-      "path": "artifacts/contracts/registry/ProofCredentialRegistry.sol/IERC5192.json",
-      "bytes": 1127,
-      "sha256": "8d0c7c18c4194020a481a40885a66ca2ff40bc37affe4b70f80a98a363d1eaec"
-    },
-    {
-      "path": "artifacts/contracts/registry/ProofCredentialRegistry.sol/ProofCredentialRegistry.dbg.json",
-      "bytes": 108,
-      "sha256": "8ac629f19fae99e83ce118c727aa96af2c0e1d6a87a3d899e772d1d0178e3bf9"
-    },
-    {
-      "path": "artifacts/contracts/registry/ProofCredentialRegistry.sol/ProofCredentialRegistry.json",
-      "bytes": 56690,
-      "sha256": "3312f0cb9f055092836ed2cde2d2a651f07156924a103b12f8490e23131b858a"
-    },
-    {
-      "path": "artifacts/contracts/registry/ProofSeedRegistry.sol/ProofSeedRegistry.dbg.json",
-      "bytes": 108,
-      "sha256": "8ac629f19fae99e83ce118c727aa96af2c0e1d6a87a3d899e772d1d0178e3bf9"
-    },
-    {
-      "path": "artifacts/contracts/registry/ProofSeedRegistry.sol/ProofSeedRegistry.json",
-      "bytes": 43571,
-      "sha256": "d692f13c96f69f02ed13605b29326c903f7ff111403387bacec92f393d7f97c3"
-    },
-    {
-      "path": "artifacts/contracts/registry/ProofSubmissionRegistry.sol/ProofSubmissionRegistry.dbg.json",
-      "bytes": 108,
-      "sha256": "8ac629f19fae99e83ce118c727aa96af2c0e1d6a87a3d899e772d1d0178e3bf9"
-    },
-    {
-      "path": "artifacts/contracts/registry/ProofSubmissionRegistry.sol/ProofSubmissionRegistry.json",
-      "bytes": 71887,
-      "sha256": "a7d93d835425b1da470146befa4dc8e5a47d8e41969687b9a6d4a5dcffd6c197"
-    },
-    {
-      "path": "artifacts/contracts/registry/ProtocolConfigRegistry.sol/ProtocolConfigRegistry.dbg.json",
-      "bytes": 108,
-      "sha256": "8ac629f19fae99e83ce118c727aa96af2c0e1d6a87a3d899e772d1d0178e3bf9"
-    },
-    {
-      "path": "artifacts/contracts/registry/ProtocolConfigRegistry.sol/ProtocolConfigRegistry.json",
-      "bytes": 29123,
-      "sha256": "2342551cc497442bdeb55b1da8183f9934792f161be521600bdd56bedb9f5b78"
-    },
-    {
-      "path": "artifacts/contracts/registry/ReferralRegistry.sol/ReferralRegistry.dbg.json",
-      "bytes": 108,
-      "sha256": "8ac629f19fae99e83ce118c727aa96af2c0e1d6a87a3d899e772d1d0178e3bf9"
-    },
-    {
-      "path": "artifacts/contracts/registry/ReferralRegistry.sol/ReferralRegistry.json",
-      "bytes": 28098,
-      "sha256": "8ac70cf5c166cb87af70ec198b01e4c1da33d6097ddec74d3822a7fc1f28e930"
-    },
-    {
-      "path": "artifacts/contracts/registry/ReputationRegistry.sol/ReputationRegistry.dbg.json",
-      "bytes": 108,
-      "sha256": "8ac629f19fae99e83ce118c727aa96af2c0e1d6a87a3d899e772d1d0178e3bf9"
-    },
-    {
-      "path": "artifacts/contracts/registry/ReputationRegistry.sol/ReputationRegistry.json",
-      "bytes": 36586,
-      "sha256": "6104e7fb7b3b8f3c65ac630e0c5a126995a95179e1065e979c664ca98f420672"
-    },
-    {
-      "path": "artifacts/contracts/registry/ReviewerBondRegistry.sol/ReviewerBondRegistry.dbg.json",
-      "bytes": 108,
-      "sha256": "8ac629f19fae99e83ce118c727aa96af2c0e1d6a87a3d899e772d1d0178e3bf9"
-    },
-    {
-      "path": "artifacts/contracts/registry/ReviewerBondRegistry.sol/ReviewerBondRegistry.json",
-      "bytes": 51797,
-      "sha256": "57a26cc9954b39483c67664a71113bba107cb94bea34479e8e48214c6b0ca4c9"
-    },
-    {
-      "path": "artifacts/contracts/registry/TreasuryRouter.sol/TreasuryRouter.dbg.json",
-      "bytes": 108,
-      "sha256": "8ac629f19fae99e83ce118c727aa96af2c0e1d6a87a3d899e772d1d0178e3bf9"
-    },
-    {
-      "path": "artifacts/contracts/registry/TreasuryRouter.sol/TreasuryRouter.json",
-      "bytes": 32137,
-      "sha256": "d2e278fa3325fd72abbcee50b258355893973074d0f581564785984afa62cf5a"
-    },
-    {
-      "path": "artifacts/contracts/token/MockAGIALPHA.sol/MockAGIALPHA.dbg.json",
-      "bytes": 108,
-      "sha256": "8ac629f19fae99e83ce118c727aa96af2c0e1d6a87a3d899e772d1d0178e3bf9"
-    },
-    {
-      "path": "artifacts/contracts/token/MockAGIALPHA.sol/MockAGIALPHA.json",
-      "bytes": 29705,
-      "sha256": "630dc04d1dab7ab987795a92bcacedbc0b89616f6c93911b72e072116b50aeca"
-    },
-    {
-      "path": "artifacts/contracts/vaults/CommercializationPerformanceVault.sol/CommercializationPerformanceVault.dbg.json",
-      "bytes": 108,
-      "sha256": "8ac629f19fae99e83ce118c727aa96af2c0e1d6a87a3d899e772d1d0178e3bf9"
-    },
-    {
-      "path": "artifacts/contracts/vaults/CommercializationPerformanceVault.sol/CommercializationPerformanceVault.json",
-      "bytes": 47970,
-      "sha256": "5c2deae8c2d23c782218114f79bac4dd846258bbc931013db734181069502c5f"
-    },
-    {
-      "path": "artifacts/contracts/vaults/TokenReserveVault.sol/TokenReserveVault.dbg.json",
-      "bytes": 108,
-      "sha256": "8ac629f19fae99e83ce118c727aa96af2c0e1d6a87a3d899e772d1d0178e3bf9"
-    },
-    {
-      "path": "artifacts/contracts/vaults/TokenReserveVault.sol/TokenReserveVault.json",
-      "bytes": 33386,
-      "sha256": "5cb5408e66f695d03d46d845322dfdc2ae19c5499c71e54eaf7f2f1b2343da4b"
-    },
-    {
       "path": "audit/AUDIT_FINDINGS_REGISTER.csv",
       "bytes": 523,
       "sha256": "6a706a52433d3c8cd3d44ac62231388ebc02beb372a0ba84a975b6f2929404bb"
@@ -1104,7 +299,7 @@
     {
       "path": "audit/TOOLCHAIN_CLEARANCE_REPORT.md",
       "bytes": 1288,
-      "sha256": "d3823c1d387370883d69afe5c63e183477679d01f95515010ad25511ad74a626"
+      "sha256": "237e6532f3ea76ad41de7a9e7a049b0d019d7c95b21e1d961ec993dec0ea4bd7"
     },
     {
       "path": "audit/reports/.gitkeep",
@@ -2282,6 +1477,221 @@
       "sha256": "a182596f7c6418fead32c5eb0627069ce20781fac64bb6247f62d4e39f439ae5"
     },
     {
+      "path": "audit/reports/2026-06-11-2226/actionlint.json",
+      "bytes": 214,
+      "sha256": "ec32c60d8a649d140962b374c0a17b42fffd4561b7e1536d053ee6dd57f1c98d"
+    },
+    {
+      "path": "audit/reports/2026-06-11-2226/actionlint.txt",
+      "bytes": 306,
+      "sha256": "b1e8ae829d7efcb033c0c5b72c5f8f5ef0e033b16c5e6361357f4e3766c8cd5e"
+    },
+    {
+      "path": "audit/reports/2026-06-11-2226/audit-summary.json",
+      "bytes": 5294,
+      "sha256": "d7a1f4372a68331b278ec1e243c0099b571417ef25de0bea7b842ff96521fb3f"
+    },
+    {
+      "path": "audit/reports/2026-06-11-2226/audit-summary.md",
+      "bytes": 1714,
+      "sha256": "1cb19e9c35644b66494aa41bdaaebb8ae1fca10d83655d5f2bae7f14badae323"
+    },
+    {
+      "path": "audit/reports/2026-06-11-2226/checksums.txt",
+      "bytes": 3426,
+      "sha256": "eac7c618a631f0acce9b3256e5d395cdd3e3ed89ef3eb416c854add238b98313"
+    },
+    {
+      "path": "audit/reports/2026-06-11-2226/coverage-report.txt",
+      "bytes": 55,
+      "sha256": "6f73a929f5da48eaf376ccfffb481fa05cb4f0f73b9eb192bd398a3273156aca"
+    },
+    {
+      "path": "audit/reports/2026-06-11-2226/dependency-triage-summary.md",
+      "bytes": 545,
+      "sha256": "2f665638fd7deedc01007bae184f5f52fa3e088f9a90b92374bb9496ac7da464"
+    },
+    {
+      "path": "audit/reports/2026-06-11-2226/echidna.json",
+      "bytes": 270,
+      "sha256": "f11bed3d936546b6c4ae2f7f5a4d73ce8be22ea6df4ceec5a3d4198c683666db"
+    },
+    {
+      "path": "audit/reports/2026-06-11-2226/echidna.txt",
+      "bytes": 362,
+      "sha256": "c10c064ff58a05b70f54f1fe8a90db64c685f42ce05e1197b597ef7874383479"
+    },
+    {
+      "path": "audit/reports/2026-06-11-2226/foundry-build.log",
+      "bytes": 53,
+      "sha256": "b2861c5b34ad1563d7a459e5d499d7c51abf159d657c8281b1c7b495326c1d40"
+    },
+    {
+      "path": "audit/reports/2026-06-11-2226/foundry-invariant.log",
+      "bytes": 57,
+      "sha256": "31b72b872ba00ba43e36f385eec84532638f6dfcb788b1be956853cf773f27b6"
+    },
+    {
+      "path": "audit/reports/2026-06-11-2226/foundry-test.log",
+      "bytes": 344,
+      "sha256": "423c0b259ebbfd6189348bee54075864889c901db09e79c0c74b7c506a729382"
+    },
+    {
+      "path": "audit/reports/2026-06-11-2226/foundry.json",
+      "bytes": 252,
+      "sha256": "fa1a7b50f506f44d652b56cbd104f328ee7fb022e0d4aa635a199fce278d8f02"
+    },
+    {
+      "path": "audit/reports/2026-06-11-2226/gas-report.txt",
+      "bytes": 50,
+      "sha256": "06643f71973057b00dfb28fe8b903133478ad26a77c59d7ce3ceb25867a08c14"
+    },
+    {
+      "path": "audit/reports/2026-06-11-2226/gitleaks.json",
+      "bytes": 235,
+      "sha256": "bdfad80eebf086adab8599c40e649e49b9b41ae4e0830573fa465d801c43fd42"
+    },
+    {
+      "path": "audit/reports/2026-06-11-2226/gitleaks.txt",
+      "bytes": 327,
+      "sha256": "f9d93f06ea27af06ac3efa20b4da832efb8354e5992f6bd43197e1a794cb9b2d"
+    },
+    {
+      "path": "audit/reports/2026-06-11-2226/halmos.json",
+      "bytes": 202,
+      "sha256": "ff77f53b7cead62a680c4f156284e64ad12e6c3c542891773ee8408a199e6cb8"
+    },
+    {
+      "path": "audit/reports/2026-06-11-2226/halmos.txt",
+      "bytes": 294,
+      "sha256": "28aefd2e8d045a62326a989b7bdd50bb93dfe63bcbed17fc7d09f0baa80d8a4a"
+    },
+    {
+      "path": "audit/reports/2026-06-11-2226/hardhat-compile.log",
+      "bytes": 219,
+      "sha256": "034f15583e1bf1dc06861bb58fa12a21752096882216b6191964df4b2c25da8c"
+    },
+    {
+      "path": "audit/reports/2026-06-11-2226/hardhat-test.log",
+      "bytes": 967,
+      "sha256": "81695d93f5532a495af871302f272afeaba3e0eb448d163c018149e36db49ee0"
+    },
+    {
+      "path": "audit/reports/2026-06-11-2226/medusa.json",
+      "bytes": 270,
+      "sha256": "59385ecfd91479c247bc63530bde2785e530e32b255af90619e429c0c6c1bbc6"
+    },
+    {
+      "path": "audit/reports/2026-06-11-2226/medusa.txt",
+      "bytes": 362,
+      "sha256": "8e3f9bd36d98235e7bd6f517e58466df0227a886666cfe62f01ee1e24e374747"
+    },
+    {
+      "path": "audit/reports/2026-06-11-2226/mythril.json",
+      "bytes": 304,
+      "sha256": "90644c0b01c87197a1f8f326648d903d14a13eca72bb6e4d1293bcee24487b20"
+    },
+    {
+      "path": "audit/reports/2026-06-11-2226/mythril.txt",
+      "bytes": 396,
+      "sha256": "8ea44cabf0c328819c31c81eed09b56d4b131b85d23bd0e195561bb352ac4db6"
+    },
+    {
+      "path": "audit/reports/2026-06-11-2226/npm-audit.json",
+      "bytes": 30144,
+      "sha256": "f31b6a9d25aaf1551f2d268386a44c07fe67ee16ae115ee25651c3373e7b47e4"
+    },
+    {
+      "path": "audit/reports/2026-06-11-2226/npm-audit.txt",
+      "bytes": 30243,
+      "sha256": "6297fc3d0cc5127750fbd46eabd6f9581e6e133b85a8aa10c16e6c529b9b6255"
+    },
+    {
+      "path": "audit/reports/2026-06-11-2226/osv-scanner.json",
+      "bytes": 246,
+      "sha256": "b171cbd335b2ccfc7f4ae122a59dfd0644d4577e465d1da4a04b1c21e37b56fa"
+    },
+    {
+      "path": "audit/reports/2026-06-11-2226/osv-scanner.txt",
+      "bytes": 338,
+      "sha256": "7cc95596f28444395fe41a4f89615ca72093bb2b856c2467529068401c1faa6b"
+    },
+    {
+      "path": "audit/reports/2026-06-11-2226/sbom.json",
+      "bytes": 59,
+      "sha256": "b34532d6a9d46aa8c3876245aa0da34751400019bb544c585e6f931e36243fa7"
+    },
+    {
+      "path": "audit/reports/2026-06-11-2226/sbom.txt",
+      "bytes": 805,
+      "sha256": "29d99c0888a4b06de61768770d0746fbf2f7b43cc670cf1b6f01bc4a1329e8a5"
+    },
+    {
+      "path": "audit/reports/2026-06-11-2226/semgrep.json",
+      "bytes": 292,
+      "sha256": "37f52924bcc55dfa2952a72e077f0f657e725cecbcbb59f37832a789902a8b97"
+    },
+    {
+      "path": "audit/reports/2026-06-11-2226/semgrep.txt",
+      "bytes": 255,
+      "sha256": "cf8b116fddac7b287a5b6a8061e07604754ce788b281abee5dc3c5461d2fa933"
+    },
+    {
+      "path": "audit/reports/2026-06-11-2226/semgrep.txt.pending",
+      "bytes": 384,
+      "sha256": "eb263359a496e8764a2bbbf940ee7d298e90da4e32fd1b3d7ea1605f477f5620"
+    },
+    {
+      "path": "audit/reports/2026-06-11-2226/shellcheck.json",
+      "bytes": 230,
+      "sha256": "16960b26ef4a4c1eefb1aa29f6abe5c2d8e1c331499c83f3712ef145542b1de8"
+    },
+    {
+      "path": "audit/reports/2026-06-11-2226/shellcheck.txt",
+      "bytes": 322,
+      "sha256": "03fcf9dc3f6e257b3b5ac8a8563b18a8beea07344c2a29b2c05323d16486c035"
+    },
+    {
+      "path": "audit/reports/2026-06-11-2226/slither.json",
+      "bytes": 275,
+      "sha256": "a79a1e893cebc4952862ec71266fe9d848aa0ba30b90eedfa6280d42d1501038"
+    },
+    {
+      "path": "audit/reports/2026-06-11-2226/slither.sarif",
+      "bytes": 12,
+      "sha256": "539ba24b9e8fe96285a81d59b05d091b093f25cb38595b414962b1a9cf30379c"
+    },
+    {
+      "path": "audit/reports/2026-06-11-2226/slither.txt",
+      "bytes": 367,
+      "sha256": "6ed2fb2a6871589e6c4a201e61213b2848dbb39191ed3ead8f3e4434bba22736"
+    },
+    {
+      "path": "audit/reports/2026-06-11-2226/smtchecker.json",
+      "bytes": 88,
+      "sha256": "a05b66d2adf5daeecced5babf243fce2323899d5d4c8c8214e5942243cb4605e"
+    },
+    {
+      "path": "audit/reports/2026-06-11-2226/smtchecker.txt",
+      "bytes": 441,
+      "sha256": "3e039a8be2b893dd670a6ca13874a7635ff07d91cc9845a91076cd88a862b0eb"
+    },
+    {
+      "path": "audit/reports/2026-06-11-2226/solhint.txt",
+      "bytes": 415380,
+      "sha256": "0e741ff26e328346ebc479ec1d7b556471bc12a5e66c0e66e091e3a80d06841c"
+    },
+    {
+      "path": "audit/reports/2026-06-11-2226/toolchain-clearance-report.md",
+      "bytes": 1288,
+      "sha256": "237e6532f3ea76ad41de7a9e7a049b0d019d7c95b21e1d961ec993dec0ea4bd7"
+    },
+    {
+      "path": "audit/reports/2026-06-11-2226/unresolved-findings.csv",
+      "bytes": 1534,
+      "sha256": "a182596f7c6418fead32c5eb0627069ce20781fac64bb6247f62d4e39f439ae5"
+    },
+    {
       "path": "audit/reports/dependency-triage/openzeppelin-pattern-scan.md",
       "bytes": 22240,
       "sha256": "e6c3695d9ac3f5ef083d276558156882842dc71e7e65e88f10ce80665c1ebd92"
@@ -2349,7 +1759,7 @@
     {
       "path": "audit/reports/latest.txt",
       "bytes": 30,
-      "sha256": "c291b373cee9b62890af5f81d6f8a3905a3d5199272fbcf492bceceb9b93caa9"
+      "sha256": "9589e173886144302e2555b4a0a7d4166a43137cb325efa55936211cd80fff29"
     },
     {
       "path": "audit/reports/mainnet-toolchain-latest/actionlint.txt",
@@ -2555,11 +1965,6 @@
       "path": "audit/reports/mainnet-toolchain-latest/unresolved-findings.csv",
       "bytes": 1042,
       "sha256": "4e027ac553ec6ea0038c5f82621900f8248879c3f5ddb463332cf77d4974c953"
-    },
-    {
-      "path": "cache/solidity-files-cache.json",
-      "bytes": 82958,
-      "sha256": "23cf15cef29630cf8739fcd425667ef4ea174056826acf919a685b8325e426de"
     },
     {
       "path": "configs/echidna.yaml",
@@ -2859,7 +2264,7 @@
     {
       "path": "deployments/local.agialpha.latest.json",
       "bytes": 2935,
-      "sha256": "3ec4979b252a26ae46fbc89d6401c1755f43b51db5fc226b219787b722385c63"
+      "sha256": "1c2436b82bb2f34a80c3001ab132a5330d10e673e363b125524c7299ecab02c6"
     },
     {
       "path": "docs/AGIALPHA_ASCENSION_OVERVIEW.md",
@@ -3019,12 +2424,12 @@
     {
       "path": "docs/ETHEREUM_MAINNET_AUTHORIZATION_DECISION.json",
       "bytes": 1228,
-      "sha256": "21216eff62547c194bedb45add3731492bd0808995412ffd9976a342fa58f9cd"
+      "sha256": "5838c2880a799d6eb603168ba2b73bbc2118d642fdaa90a66cde43fb3e6a331e"
     },
     {
       "path": "docs/ETHEREUM_MAINNET_AUTHORIZATION_DECISION.md",
       "bytes": 555,
-      "sha256": "ba2a6d3c110bef985570bb22fd7e0875ac704b900c534e162eb0b1fbbad1c3b4"
+      "sha256": "50e58962fd4317b936bb7e9d93b2cd8ca0d001cbb8659fd8d216f5d826e47d5d"
     },
     {
       "path": "docs/ETHEREUM_MAINNET_DEPLOYMENT_RUNBOOK.md",
@@ -3209,12 +2614,12 @@
     {
       "path": "docs/MAINNET_AUTHORIZATION_DECISION.json",
       "bytes": 1077,
-      "sha256": "82ba5d31bc11319943a806d2399115ba40795ec60ca406038a8ea7e3a205f974"
+      "sha256": "3a6b2a6e7c8bd09da953c7fb3523aa907df5cf00c9f09bd0d81eec3bdc0057f0"
     },
     {
       "path": "docs/MAINNET_AUTHORIZATION_DECISION.md",
       "bytes": 518,
-      "sha256": "744ed213771babf88b1443fa20b612987c3c3f7edce976b3905a39533e4d63a5"
+      "sha256": "de82bfff280a1041c09acdafb7308e8daae11d1b26ad4949aad406b46f7c60de"
     },
     {
       "path": "docs/MAINNET_AUTHORIZATION_INPUTS_REQUIRED.md",
@@ -3244,12 +2649,12 @@
     {
       "path": "docs/MAINNET_DEPLOYMENT_AUTHORIZATION_DECISION.json",
       "bytes": 1077,
-      "sha256": "82ba5d31bc11319943a806d2399115ba40795ec60ca406038a8ea7e3a205f974"
+      "sha256": "3a6b2a6e7c8bd09da953c7fb3523aa907df5cf00c9f09bd0d81eec3bdc0057f0"
     },
     {
       "path": "docs/MAINNET_DEPLOYMENT_AUTHORIZATION_DECISION.md",
       "bytes": 518,
-      "sha256": "744ed213771babf88b1443fa20b612987c3c3f7edce976b3905a39533e4d63a5"
+      "sha256": "de82bfff280a1041c09acdafb7308e8daae11d1b26ad4949aad406b46f7c60de"
     },
     {
       "path": "docs/MAINNET_GATE_DECISION_MEMO_v4_0.md",
@@ -3269,12 +2674,12 @@
     {
       "path": "docs/MAINNET_TECHNICAL_READINESS_DECISION.json",
       "bytes": 1512,
-      "sha256": "0dc43291d5e6195a917d5efbf3d36a5d3b582f14c0528120424ddee793d44c7e"
+      "sha256": "fcf1ffe7de346e64d13265f7b58f77d4ae30fd9ee89136f2cb49ef37e7743a80"
     },
     {
       "path": "docs/MAINNET_TECHNICAL_READINESS_DECISION.md",
       "bytes": 702,
-      "sha256": "1d41601847782b1256594f6fc27cfb2ef31e8ddd68db74499eff08dca035a571"
+      "sha256": "bb15507ac609d9b2db168d8c3b109db9ef2c002a1be28d8a94e0add4c4b8ab0b"
     },
     {
       "path": "docs/NEAR_10_SCORECARD_v4_3.md",
@@ -3584,17 +2989,17 @@
     {
       "path": "evidence/SEPOLIA_EVIDENCE_DOCKET_TEMPLATE_v4_2.json",
       "bytes": 2297,
-      "sha256": "fe9933b9b0f61c42a706e50681f90ba00b8a9ec0fbe2bf1f9e0c497a3784a80d"
+      "sha256": "ba4c166355fb15a9fe6f145c0b07d237bfb731257d19360123a27fc815274bff"
     },
     {
       "path": "evidence/local/EVIDENCE_DOCKET.json",
       "bytes": 299,
-      "sha256": "cfcab2711dfd68ef999fe19c6b1af42a1174ddb9efc608adcd528cd4da1298a0"
+      "sha256": "817342d40d6883014c0e1c0bb560c2067744a126dae4198fd57dfa76a9a4b56e"
     },
     {
       "path": "evidence/local/EVIDENCE_DOCKET.md",
       "bytes": 213,
-      "sha256": "d8c673a2b595e2894c216d26ae8dc817f13aa609475f4128086a4a240af5b3e8"
+      "sha256": "aca94493b5d6c3d6db6c6ae96adccc851bededfe99628f05062769d5206c8fbf"
     },
     {
       "path": "evidence/sepolia/.gitkeep",
@@ -3703,8 +3108,8 @@
     },
     {
       "path": "qa/COMMAND_RUN_LOG.md",
-      "bytes": 4441,
-      "sha256": "53e620dfe098e19789fb335f61dcdbb0f81fc135789e70b3e5ab0a526e379e7c"
+      "bytes": 23353,
+      "sha256": "f368fa3511a8cf9d08f573cd66c8bed35821b498e80440dc9a6d67948e5ec04a"
     },
     {
       "path": "qa/ETHEREUM_MAINNET_FORK_SIMULATION.json",
@@ -3727,11 +3132,6 @@
       "sha256": "56721f481899bdd080fc9acfe84b0896176fe28937c0805ee4ac659354fcf4e5"
     },
     {
-      "path": "qa/MANIFEST.json",
-      "bytes": 188156,
-      "sha256": "2600cff3dd1d9eeef466864ac67c0c2e49b1e9facc705992fae71a8a0d79e7ea"
-    },
-    {
       "path": "qa/MANIFEST_v4_0.json",
       "bytes": 21763,
       "sha256": "7133aeca6b0d236c44f29e75a39fb6a854cd088ecabf9dd50f1c22e155c44920"
@@ -3740,11 +3140,6 @@
       "path": "qa/MANIFEST_v4_2.json",
       "bytes": 26293,
       "sha256": "14a2f90ab020413f66e90e5ed201f1ed3887f1aae3332951e5dfdc1f8476c75f"
-    },
-    {
-      "path": "qa/MANIFEST_v4_3.json",
-      "bytes": 187998,
-      "sha256": "a5569f159acec54fbc4bec7d795cd5c3b3beedaf5a8d83fab50bb3c1c77d6ac4"
     },
     {
       "path": "qa/MANIFEST_v4_3_FINAL.json",
@@ -3759,7 +3154,7 @@
     {
       "path": "qa/QA_REPORT.json",
       "bytes": 921,
-      "sha256": "1f28c64204eb0ea2afe12a2b0e806f4c9d6619de39133b3e9e4012565d5c98be"
+      "sha256": "d6d91dd0b7a36f3eb55662763966f8350b6eb8135779582f5cdbee4528fd0943"
     },
     {
       "path": "qa/QA_REPORT_v4_0.json",
@@ -3773,8 +3168,8 @@
     },
     {
       "path": "qa/READINESS_REPORT_v4_3.json",
-      "bytes": 539,
-      "sha256": "c2f23d0ce4e0fc9d17857d1fe87dabcc0b111102028d19e93c2a98f3badb584b"
+      "bytes": 538,
+      "sha256": "23d928e5a2ce2a99bc5790d9ee1ad45785b8b73477a4c8976ce3545a2e592d0b"
     },
     {
       "path": "qa/REPOSITORY_STARTER_QA_OUTPUTS_v2_0.json",
@@ -3788,13 +3183,13 @@
     },
     {
       "path": "qa/REPO_DOCTOR_REPORT.json",
-      "bytes": 1212,
-      "sha256": "dfac54af3027f1e6888cd6e75ffa46a8775724683ea3335bf00844a0c72756fc"
+      "bytes": 1429,
+      "sha256": "ab2eeaa0d6d6b470282ae0727506a57fc1156e130e4e28cd14b0a62eec192ecd"
     },
     {
       "path": "qa/REPO_DOCTOR_REPORT.md",
-      "bytes": 1141,
-      "sha256": "7ce07da10f076ab1096410f160a54e6085bac6a5822caa2c338e43626e6162af"
+      "bytes": 1358,
+      "sha256": "c22b97ecc089a15b8b189bac133b7d7ed26daf100bb35bd73f1f024af8d4a19b"
     },
     {
       "path": "qa/SHA256SUMS_v4_0.txt",
@@ -3834,7 +3229,7 @@
     {
       "path": "qa/local-rehearsal-report.json",
       "bytes": 472,
-      "sha256": "69d46a42beecaa2246505944910ca5c40e7d1131b6e58d1b56d451a6435fcf2a"
+      "sha256": "fc763f2c04f1e2b924a58b95550490186b1c7cdce35e8ae3a04860b920de5dc9"
     },
     {
       "path": "schemas/agialpha-mainnet-gate-v4.3.schema.json",
@@ -3953,8 +3348,8 @@
     },
     {
       "path": "scripts/audit/run-all-audits.sh",
-      "bytes": 1925,
-      "sha256": "db5fb0dd9e74ed182e67e5d0f3f628a749b3ee04489995706e0fcd516aac0721"
+      "bytes": 2008,
+      "sha256": "9a00b404169aadcbb52377558cd4a3a6366ca008dffc7c8ccf95ffa2181054ff"
     },
     {
       "path": "scripts/audit/run-echidna.sh",
@@ -4248,8 +3643,8 @@
     },
     {
       "path": "scripts/static_check.py",
-      "bytes": 5305,
-      "sha256": "68a0acb6f2e27d9d6f8e7f4ac112f86d004456058a390ba76a822e836c6b46f8"
+      "bytes": 5461,
+      "sha256": "7024e6bd1052baf67202945777d98e5521c602abc979ea04ef4a59bd9334d5ba"
     },
     {
       "path": "scripts/verify-agialpha-token.ts",
@@ -4273,8 +3668,8 @@
     },
     {
       "path": "scripts/verify-readiness-v4-3.py",
-      "bytes": 5759,
-      "sha256": "20971778efb9f423d81e4189c3b1cd867a3ebe5ff5c1cb161aa04faa99d6d60d"
+      "bytes": 5853,
+      "sha256": "7e114d0a4ba1118feda846b5ccd095535eaf5001bc4b82a6ef5b5c3d057732fb"
     },
     {
       "path": "security/ACCESS_CONTROL_MATRIX.md",
@@ -4345,956 +3740,6 @@
       "path": "tsconfig.json",
       "bytes": 293,
       "sha256": "e6358cbad0d546c026b50abe512815f1bcc307be499fee46f1464e95d03e556a"
-    },
-    {
-      "path": "typechain-types/@openzeppelin/contracts/access/AccessControl.ts",
-      "bytes": 8716,
-      "sha256": "c587afca39dfcd4c2d3d3dc26e2f19623d0e818f36c60d215d23ff5d1308a2cf"
-    },
-    {
-      "path": "typechain-types/@openzeppelin/contracts/access/IAccessControl.ts",
-      "bytes": 7856,
-      "sha256": "8539135af353d898c2fc6a8e57051e02a7586ff33781adb696936d21951c5b4a"
-    },
-    {
-      "path": "typechain-types/@openzeppelin/contracts/access/index.ts",
-      "bytes": 200,
-      "sha256": "6dd12284c7cfc365bd342b309e8f57115b271b417cef25e4510fefc9489482fc"
-    },
-    {
-      "path": "typechain-types/@openzeppelin/contracts/index.ts",
-      "bytes": 427,
-      "sha256": "91318432444e52a3af4ec76909aeb878c13e717dda28e3bec51421518a27c920"
-    },
-    {
-      "path": "typechain-types/@openzeppelin/contracts/interfaces/IERC5267.ts",
-      "bytes": 4042,
-      "sha256": "bb233d2e9a146aa4cbdba341081ef4f24b7796f48fbada3843d40ca640db0de7"
-    },
-    {
-      "path": "typechain-types/@openzeppelin/contracts/interfaces/index.ts",
-      "bytes": 134,
-      "sha256": "bb44acdfcef755999fffb109b625ded7da5b6838041f9f93f859731e12eb0952"
-    },
-    {
-      "path": "typechain-types/@openzeppelin/contracts/security/Pausable.ts",
-      "bytes": 4227,
-      "sha256": "835781ace00d9285183d995e5be9eb6da33456d8cc86660303e470da6d6ba21f"
-    },
-    {
-      "path": "typechain-types/@openzeppelin/contracts/security/index.ts",
-      "bytes": 134,
-      "sha256": "97ca6901d6f30dc6bff5f81abdf49c8b05487ac97dfc43f2decdd8bdb19671fa"
-    },
-    {
-      "path": "typechain-types/@openzeppelin/contracts/token/ERC20/ERC20.ts",
-      "bytes": 9047,
-      "sha256": "9a63dcbd652292366b3d3e45609c3614e1fdb95a703b9f94bcc3a62d6cc42447"
-    },
-    {
-      "path": "typechain-types/@openzeppelin/contracts/token/ERC20/IERC20.ts",
-      "bytes": 6978,
-      "sha256": "99806b1131f040cc286dcd343b7bc5308a16aac11b65dd58c9868e8fd5329162"
-    },
-    {
-      "path": "typechain-types/@openzeppelin/contracts/token/ERC20/extensions/ERC20Permit.ts",
-      "bytes": 12587,
-      "sha256": "7da8ce3dad85c84b66b76b8155b40232aeaab8436bfd3eb033954b9afd614206"
-    },
-    {
-      "path": "typechain-types/@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.ts",
-      "bytes": 7970,
-      "sha256": "76d5942139f71ab59dadccf4a1bceec5be8dbbd17e3bba8df3d021938b9d4a49"
-    },
-    {
-      "path": "typechain-types/@openzeppelin/contracts/token/ERC20/extensions/IERC20Permit.ts",
-      "bytes": 3704,
-      "sha256": "da324196ef08d40bed6563643c5ae2b45f7a0f308b135cadbf79079da9c5cb9b"
-    },
-    {
-      "path": "typechain-types/@openzeppelin/contracts/token/ERC20/extensions/index.ts",
-      "bytes": 248,
-      "sha256": "bd8877d9bb41eea7dcb72fedc48566fa157fd8e54d2d9198a5582467022c2ff8"
-    },
-    {
-      "path": "typechain-types/@openzeppelin/contracts/token/ERC20/index.ts",
-      "bytes": 245,
-      "sha256": "9f39f5d454c0ba2fe25a9da45e801df55d0fbbd469661f98699a6ba6dc829a0d"
-    },
-    {
-      "path": "typechain-types/@openzeppelin/contracts/token/ERC721/ERC721.ts",
-      "bytes": 11664,
-      "sha256": "50cf79b132c7756224eceeb710ad486a0d912a20e056f35dcf941e5119a62f7b"
-    },
-    {
-      "path": "typechain-types/@openzeppelin/contracts/token/ERC721/IERC721.ts",
-      "bytes": 10653,
-      "sha256": "0827c3ee6534f3e01060f77d317f6b8fd35bcc1a1b4e2bc013e18059fb73086c"
-    },
-    {
-      "path": "typechain-types/@openzeppelin/contracts/token/ERC721/IERC721Receiver.ts",
-      "bytes": 2809,
-      "sha256": "8f4a31ca045d131b9b1a505505535ffc10ee22154da5818d027e38355662e68e"
-    },
-    {
-      "path": "typechain-types/@openzeppelin/contracts/token/ERC721/extensions/IERC721Metadata.ts",
-      "bytes": 11703,
-      "sha256": "f9213c175097b81bc21ce62ca135a42d6cfd7c608efcfbd0d3c5ae9da0419fca"
-    },
-    {
-      "path": "typechain-types/@openzeppelin/contracts/token/ERC721/extensions/index.ts",
-      "bytes": 148,
-      "sha256": "cb5ed2db28b43e3e7bbedb88fbc4f60954835afc10e6e7ee19fe70c6971a7e58"
-    },
-    {
-      "path": "typechain-types/@openzeppelin/contracts/token/ERC721/index.ts",
-      "bytes": 307,
-      "sha256": "630c3120fb065c6af2aadb21179d4c3d20c8e11fa7513ff6b7010beec434c616"
-    },
-    {
-      "path": "typechain-types/@openzeppelin/contracts/token/index.ts",
-      "bytes": 217,
-      "sha256": "304c449fc5bc538a5b67bbbd75f01c1829898af8a464906fde9b8747487a0d1c"
-    },
-    {
-      "path": "typechain-types/@openzeppelin/contracts/utils/ShortStrings.ts",
-      "bytes": 1972,
-      "sha256": "9cffb2f512610f154b36b78f74283b26e435bc17dffcea2bf05395c1e83e9779"
-    },
-    {
-      "path": "typechain-types/@openzeppelin/contracts/utils/cryptography/EIP712.ts",
-      "bytes": 4037,
-      "sha256": "a6d7e8ee8d57bb072e6778f68507cfdf091582ed28ad933b8e395e56bf0f894d"
-    },
-    {
-      "path": "typechain-types/@openzeppelin/contracts/utils/cryptography/index.ts",
-      "bytes": 130,
-      "sha256": "8a54ee9211380a50776509d38c711160b73ac826bd299a3f29e329845c010c9b"
-    },
-    {
-      "path": "typechain-types/@openzeppelin/contracts/utils/index.ts",
-      "bytes": 311,
-      "sha256": "7ce10167d9ad6b5f0407401eedd6047c8de031bf66a7b8c746b81634cb35361d"
-    },
-    {
-      "path": "typechain-types/@openzeppelin/contracts/utils/introspection/ERC165.ts",
-      "bytes": 2505,
-      "sha256": "7e07abd83f092d72a0cf251f6c6d61d34a262bf6cd6fe9f58bdec4d73dff60e9"
-    },
-    {
-      "path": "typechain-types/@openzeppelin/contracts/utils/introspection/IERC165.ts",
-      "bytes": 2509,
-      "sha256": "0fdaef3a960486721a2225143237eeb0c3beb31fb99407ebadfbedd58febc3c3"
-    },
-    {
-      "path": "typechain-types/@openzeppelin/contracts/utils/introspection/index.ts",
-      "bytes": 172,
-      "sha256": "00d63b7ca0b1e8f3ac4ebfe454a36e56be0559673570e91a4084e19a05f2d701"
-    },
-    {
-      "path": "typechain-types/@openzeppelin/index.ts",
-      "bytes": 164,
-      "sha256": "514058c15a832c38d8111ced11167fcb833f606febe918d4b9eac19c90a8c538"
-    },
-    {
-      "path": "typechain-types/common.ts",
-      "bytes": 3718,
-      "sha256": "731e0081f38d42ce515f768bfea9cb5e671ec00b7d168033af39d5c62f8cf9eb"
-    },
-    {
-      "path": "typechain-types/contracts/access/GoalOSAccessControl.ts",
-      "bytes": 13845,
-      "sha256": "da11a04bd1a5c7cac1a5693d34961986f414127d951f17a58f00ddba6f26db1b"
-    },
-    {
-      "path": "typechain-types/contracts/access/index.ts",
-      "bytes": 156,
-      "sha256": "a36fca1f7983347af58ae476bb0f04543717f0fefe35bf69f433e21fb8004850"
-    },
-    {
-      "path": "typechain-types/contracts/aep/AEPAgentRegistry.ts",
-      "bytes": 19828,
-      "sha256": "1df168e098074e50f2215a4b7fbdff18839142b66b1b9f61a1c1780d12175a50"
-    },
-    {
-      "path": "typechain-types/contracts/aep/AEPArtifactRegistry.ts",
-      "bytes": 20264,
-      "sha256": "9bb2682392c1be6f1ea2fc2e9d0eaf4ae34123445666b45c44cc80a78f5d243b"
-    },
-    {
-      "path": "typechain-types/contracts/aep/AEPAttestationRegistry.ts",
-      "bytes": 19018,
-      "sha256": "a4b0421b8c076487ddcd897ed87a95fa26efd7c0737d123523bbe4dff59e73dc"
-    },
-    {
-      "path": "typechain-types/contracts/aep/AEPChronicleRegistry.ts",
-      "bytes": 17703,
-      "sha256": "2ba0d5c4ebc4cf87af9009e8cf054cdcbe9599437af82a73861fa8f8e9e3b69d"
-    },
-    {
-      "path": "typechain-types/contracts/aep/AEPClaimBoundaryRegistry.ts",
-      "bytes": 19817,
-      "sha256": "a1161c47ce414c6acb8b81b261970a17b84233786be22edd465e13fa076ec1c1"
-    },
-    {
-      "path": "typechain-types/contracts/aep/AEPCommitRevealValidationRegistry.ts",
-      "bytes": 28845,
-      "sha256": "3325a67ab0c177871ab8fc1ac33891b2e0edc89d22bc585e1e0644655135a7b7"
-    },
-    {
-      "path": "typechain-types/contracts/aep/AEPConformanceRegistry.ts",
-      "bytes": 19771,
-      "sha256": "4712b358eaabf1fc95a4fb8ab092c565790c1125ac6831fb18645452d88fb234"
-    },
-    {
-      "path": "typechain-types/contracts/aep/AEPEvalRegistry.ts",
-      "bytes": 20562,
-      "sha256": "114ce28940dab66aa88929db8117e61425043637257c0d60d1fa61926bd6ffbc"
-    },
-    {
-      "path": "typechain-types/contracts/aep/AEPEvaluatorStakingRegistry.ts",
-      "bytes": 27179,
-      "sha256": "7b210578f8c5102e1075b24b1622cedf559bcad32fb112ab1a7d14a588b54630"
-    },
-    {
-      "path": "typechain-types/contracts/aep/AEPEvidenceDocketRegistry.ts",
-      "bytes": 19998,
-      "sha256": "a62b9eaf78d3477bcb189ab85a8e4b025bb17d97e02d784b664f9a724482b1e9"
-    },
-    {
-      "path": "typechain-types/contracts/aep/AEPFalsificationRegistry.ts",
-      "bytes": 19576,
-      "sha256": "acc4de8c4ef2e6baf56d5735531db5cce36cb306c47a45e9a345a30e25cea09c"
-    },
-    {
-      "path": "typechain-types/contracts/aep/AEPGoalOSCommitRegistry.ts",
-      "bytes": 22910,
-      "sha256": "306a98f4191e073993c5f73f9aafb198dc347f71dca3b3b3127f2fcbb02cd5ac"
-    },
-    {
-      "path": "typechain-types/contracts/aep/AEPProofBundleRegistry.ts",
-      "bytes": 18491,
-      "sha256": "39d37f53de5be134354f3b21b7c2881c1df85f674aa8d404952d9233f1febda0"
-    },
-    {
-      "path": "typechain-types/contracts/aep/AEPProofLedger.ts",
-      "bytes": 18010,
-      "sha256": "5b9ca89050236f854f00bd54628fbb5258fa52bfb15f67a4996e5aef83b8ca33"
-    },
-    {
-      "path": "typechain-types/contracts/aep/AEPReplayRegistry.ts",
-      "bytes": 17875,
-      "sha256": "3e9f48b0f1d0c46fbc37b43298b1bfa29cf5fe44e54c70a9cb6545256179703f"
-    },
-    {
-      "path": "typechain-types/contracts/aep/AEPRewardVault.ts",
-      "bytes": 19296,
-      "sha256": "cded126f622e49e943d458a3fbe2d4dbc240d6a2d7944473d4cdd3bd0ca9c6e6"
-    },
-    {
-      "path": "typechain-types/contracts/aep/AEPRollbackRegistry.ts",
-      "bytes": 17602,
-      "sha256": "ff42ba788c53383ddaf5bd9879660ca041ccfba8f3dee0be69a8630369df7b11"
-    },
-    {
-      "path": "typechain-types/contracts/aep/AEPRolloutRouter.ts",
-      "bytes": 19657,
-      "sha256": "c650ed0e74e17ca0e9d886c654a7a3adf038f006254a3683ba7610c02bb2c201"
-    },
-    {
-      "path": "typechain-types/contracts/aep/AEPRunCommitmentRegistry.ts",
-      "bytes": 20262,
-      "sha256": "961e761368f3a5002e30a99cf6f3afc7f293bc4b9605ba877c75e85c738a4536"
-    },
-    {
-      "path": "typechain-types/contracts/aep/AEPSelectionGate.ts",
-      "bytes": 21370,
-      "sha256": "b804e279d30f610941bbb96b837abecaef7e30854f0c79bb2b18e79fbc3487a7"
-    },
-    {
-      "path": "typechain-types/contracts/aep/AEPSlashingCourt.sol/AEPSlashingCourt.ts",
-      "bytes": 21727,
-      "sha256": "f2c023dc8510afc0cc2ed3f4c4055fcb97daf796a12f6a03b411220c2e6bcce0"
-    },
-    {
-      "path": "typechain-types/contracts/aep/AEPSlashingCourt.sol/IAEPEvaluatorStakingRegistry.ts",
-      "bytes": 2745,
-      "sha256": "304b648e1b940f068d84b6d8260a3a0991e326333811df4ef2818f65845b4e8a"
-    },
-    {
-      "path": "typechain-types/contracts/aep/AEPSlashingCourt.sol/index.ts",
-      "bytes": 234,
-      "sha256": "83a8dcbb1631ae77a6294068eb9671d02dec9b98710406dc9b9ffbe7c80dd972"
-    },
-    {
-      "path": "typechain-types/contracts/aep/AGIEthNamespaceRegistry.ts",
-      "bytes": 19679,
-      "sha256": "58b73f83af4212840d6884ecbff90c672cf67705674f324927f1ffd1c90574f6"
-    },
-    {
-      "path": "typechain-types/contracts/aep/AlphaWorkUnitLedger.ts",
-      "bytes": 18550,
-      "sha256": "2e5fd27c506f6d7c74c466f64d82e23485d13439f61a18385f36e7f17832de78"
-    },
-    {
-      "path": "typechain-types/contracts/aep/MandateEpochRegistry.ts",
-      "bytes": 26782,
-      "sha256": "b3e8c65ac0382c120cca1fc5ffa9d5b11ad25b5ed4f647d0e6f20a3f4db7a36a"
-    },
-    {
-      "path": "typechain-types/contracts/aep/index.ts",
-      "bytes": 1787,
-      "sha256": "b8b44078bc7ec8b743f9113356356505c4337691503decf53c73aa3782412506"
-    },
-    {
-      "path": "typechain-types/contracts/index.ts",
-      "bytes": 557,
-      "sha256": "ce6461ebbc37591aea93f17f41d5816d2af3fa97de41882000b1f5ea3ee12a5b"
-    },
-    {
-      "path": "typechain-types/contracts/interfaces/IJobClaimBondManager.ts",
-      "bytes": 3093,
-      "sha256": "94d04901b0dbc149e0dd63599ddfaf5b9a6bd34be6fa9c9e53bbd8fb456b0052"
-    },
-    {
-      "path": "typechain-types/contracts/interfaces/IJobRegistry.ts",
-      "bytes": 7255,
-      "sha256": "b4af2665e9777eab3c0ae96a5d2e3fae86e11039c14ae587779781f42e904de8"
-    },
-    {
-      "path": "typechain-types/contracts/interfaces/IProofSubmissionRegistry.ts",
-      "bytes": 4082,
-      "sha256": "5008ee9e951fe8922adae96dae9c10c6e09b23a8052616f29b03daf881df78fc"
-    },
-    {
-      "path": "typechain-types/contracts/interfaces/IReputationRegistry.ts",
-      "bytes": 4277,
-      "sha256": "6b1d576e5a4e62844056acb5156527e5c4de7889026be142ca2e8cf0e2e76b7c"
-    },
-    {
-      "path": "typechain-types/contracts/interfaces/index.ts",
-      "bytes": 352,
-      "sha256": "d276aa9ea625ca3f5817d0c5459051a08757ba56c56ca72a9149af2831511ff8"
-    },
-    {
-      "path": "typechain-types/contracts/optional/AppealRegistry.ts",
-      "bytes": 18514,
-      "sha256": "0453033f7dd432415979da382e850307602e5a38578bfb5d5d0d231466a13b30"
-    },
-    {
-      "path": "typechain-types/contracts/optional/BuilderProfileRegistry.ts",
-      "bytes": 17964,
-      "sha256": "e19c039b4c15fe5f3af970689688e37944777e66bb1a7544e7ef5b876d368ba4"
-    },
-    {
-      "path": "typechain-types/contracts/optional/CredentialRevocationRegistry.ts",
-      "bytes": 19380,
-      "sha256": "66312b7f94f5f6888d8396a18e3bbf664286991f6d5ff100224d2fe94816bfd6"
-    },
-    {
-      "path": "typechain-types/contracts/optional/DisputeRegistry.ts",
-      "bytes": 19227,
-      "sha256": "cbe3187324b78e5326ab14aa3e670e8d7894f982772e80825fd79eb6ab012cd7"
-    },
-    {
-      "path": "typechain-types/contracts/optional/SponsorRegistry.ts",
-      "bytes": 17936,
-      "sha256": "8a2a193485bf6b464352cafd72b41c4d372be29ba7198296caab9377a1589336"
-    },
-    {
-      "path": "typechain-types/contracts/optional/index.ts",
-      "bytes": 418,
-      "sha256": "9d8e31e9d2ff2341aa0091ae07aed2a1c61b2096c93e3594356a0c95ac538f6a"
-    },
-    {
-      "path": "typechain-types/contracts/registry/JobClaimBondManager.ts",
-      "bytes": 25973,
-      "sha256": "4fe25161290678a427145ff72b4a555d4a5362f29658f6a77ba885112866a2c0"
-    },
-    {
-      "path": "typechain-types/contracts/registry/JobRegistry.ts",
-      "bytes": 40907,
-      "sha256": "9c310e3c504aed24c0d54d1f377f4a41518ad3e14a033a8179d4278f03ed7646"
-    },
-    {
-      "path": "typechain-types/contracts/registry/LaunchGateRegistry.ts",
-      "bytes": 21077,
-      "sha256": "715969dfddf3bb48d639e5a81770ae2aced49a6bb63a04c4cc8a92f605dd4c22"
-    },
-    {
-      "path": "typechain-types/contracts/registry/LegacyAGIJobManagerRegistry.ts",
-      "bytes": 19673,
-      "sha256": "92a85b6fb45139e21b8c36ba2aec317db45cc17244e0e7cfeb4bf4fdd2a9d442"
-    },
-    {
-      "path": "typechain-types/contracts/registry/PremiumAccessRegistry.ts",
-      "bytes": 17837,
-      "sha256": "16cbf3d423c164f8764b22a3109ab3311f21fd0042658c21d23395f69f449d55"
-    },
-    {
-      "path": "typechain-types/contracts/registry/ProofCardRegistry.ts",
-      "bytes": 19678,
-      "sha256": "05a081693c2b710ebd4c0371496b197dbd8845f35cbdccbed14b6023fef73043"
-    },
-    {
-      "path": "typechain-types/contracts/registry/ProofCredentialRegistry.sol/IERC5192.ts",
-      "bytes": 4288,
-      "sha256": "862988744877fb0091d7e7a277eb1d8f6e869d6e5bcf58568a9d659eae5b0f9e"
-    },
-    {
-      "path": "typechain-types/contracts/registry/ProofCredentialRegistry.sol/ProofCredentialRegistry.ts",
-      "bytes": 30349,
-      "sha256": "3c7b2b43e035e19895166a828abfc2630afc252332c010b32207ae96ebaefbe1"
-    },
-    {
-      "path": "typechain-types/contracts/registry/ProofCredentialRegistry.sol/index.ts",
-      "bytes": 208,
-      "sha256": "2c0df7ed7d0640ef139206b2aba124141b0a32c52c91ee40a9fd572f03a4e1b1"
-    },
-    {
-      "path": "typechain-types/contracts/registry/ProofSeedRegistry.ts",
-      "bytes": 25098,
-      "sha256": "8fb73261b54f6bfee0ddede0864e24b5da059276f78383a431a65f49eefa2711"
-    },
-    {
-      "path": "typechain-types/contracts/registry/ProofSubmissionRegistry.ts",
-      "bytes": 33088,
-      "sha256": "d856885690baff67ffb1a24c8f9f21eda31da51d4afefde9f3a9703665539de3"
-    },
-    {
-      "path": "typechain-types/contracts/registry/ProtocolConfigRegistry.ts",
-      "bytes": 16954,
-      "sha256": "15c8f7dce56abee7c3fcccc57c52d196d9119dac86a5fad77a2a4eaf062fa20a"
-    },
-    {
-      "path": "typechain-types/contracts/registry/ReferralRegistry.ts",
-      "bytes": 18845,
-      "sha256": "7b90e0710304be8f74a26071cbca33dfb22f238036a3328f4c204314e29897ba"
-    },
-    {
-      "path": "typechain-types/contracts/registry/ReputationRegistry.ts",
-      "bytes": 24211,
-      "sha256": "8b6f4b8b496a0309f5d428ad7cf3ecf5651bc8a053f1b07b350d597a9f145385"
-    },
-    {
-      "path": "typechain-types/contracts/registry/ReviewerBondRegistry.ts",
-      "bytes": 30696,
-      "sha256": "2ba60492adeeb50d63eff64b86a1998efb7d3f5f027ecdbbb77362f602d8b1bb"
-    },
-    {
-      "path": "typechain-types/contracts/registry/TreasuryRouter.ts",
-      "bytes": 17929,
-      "sha256": "b4132ce605c3b1fa763005190d537dc3308dfbeb49445d0ac75d9d91ca493ed9"
-    },
-    {
-      "path": "typechain-types/contracts/registry/index.ts",
-      "bytes": 1066,
-      "sha256": "8ca76e904cdbeff70336fcda714a1f1a1cc6691235323cc4b553e98a66c7b176"
-    },
-    {
-      "path": "typechain-types/contracts/token/MockAGIALPHA.ts",
-      "bytes": 12965,
-      "sha256": "d5985961c1b6d510457c19214516b4919fc8b48c8f8814c3b4c1024192e4f8b6"
-    },
-    {
-      "path": "typechain-types/contracts/token/index.ts",
-      "bytes": 142,
-      "sha256": "9435794459dc95ebfca96d2cf9dbc9a4970ddb2a9187ae60797e3aaddf32185a"
-    },
-    {
-      "path": "typechain-types/contracts/vaults/CommercializationPerformanceVault.ts",
-      "bytes": 25732,
-      "sha256": "6c22f7fc202381af9f0f732b5469a79eab0ae5bedb4f44ee20549be92f68716c"
-    },
-    {
-      "path": "typechain-types/contracts/vaults/TokenReserveVault.ts",
-      "bytes": 17664,
-      "sha256": "03cc14f07b32fd0d609f794944567ca8cef7e780f456d9575fb0fecfd7c44579"
-    },
-    {
-      "path": "typechain-types/contracts/vaults/index.ts",
-      "bytes": 246,
-      "sha256": "04d906d79047966eba49000a7251b117fec7444b56ffa415c8d0d6ce4c006c2e"
-    },
-    {
-      "path": "typechain-types/factories/@openzeppelin/contracts/access/AccessControl__factory.ts",
-      "bytes": 4324,
-      "sha256": "247be20febc8adde5b75fddf33de8ffd8a3c21f144a0a34978888786f7d4836c"
-    },
-    {
-      "path": "typechain-types/factories/@openzeppelin/contracts/access/IAccessControl__factory.ts",
-      "bytes": 3786,
-      "sha256": "d8cbde25d4282b235a6f5b5b04505c9b6e50ee69e2e76355b15e97d7b68b0be0"
-    },
-    {
-      "path": "typechain-types/factories/@openzeppelin/contracts/access/index.ts",
-      "bytes": 226,
-      "sha256": "739fcdf7927117fedb62ec0e07d7217b3488e54e791ecaf9158310fdf6bb992a"
-    },
-    {
-      "path": "typechain-types/factories/@openzeppelin/contracts/index.ts",
-      "bytes": 278,
-      "sha256": "0c285afdccd63bcaee3c0b2d79f8434490ff45cca1115bf62b6254f35ee86fbf"
-    },
-    {
-      "path": "typechain-types/factories/@openzeppelin/contracts/interfaces/IERC5267__factory.ts",
-      "bytes": 1550,
-      "sha256": "504b856ad92db60d89006afa73718403338e3dff1278678fb22b346615be5d5e"
-    },
-    {
-      "path": "typechain-types/factories/@openzeppelin/contracts/interfaces/index.ts",
-      "bytes": 147,
-      "sha256": "a0c0103eeff45fc05980c8bdb05a58e1b30104de62ff91b0dd82b89792037fed"
-    },
-    {
-      "path": "typechain-types/factories/@openzeppelin/contracts/security/Pausable__factory.ts",
-      "bytes": 1258,
-      "sha256": "b3600cdd8e8856ad024388cc84be99616d25c17ad9c3c80ff93357b9611fd73f"
-    },
-    {
-      "path": "typechain-types/factories/@openzeppelin/contracts/security/index.ts",
-      "bytes": 147,
-      "sha256": "e7c4440d5c0784296a828ef405ac5f55603d6a88f0d390bc7c91d2fc556fd836"
-    },
-    {
-      "path": "typechain-types/factories/@openzeppelin/contracts/token/ERC20/ERC20__factory.ts",
-      "bytes": 12688,
-      "sha256": "8b8ba6456df1ad77b3ce9965865539070fbb788740859098f228703d6768e010"
-    },
-    {
-      "path": "typechain-types/factories/@openzeppelin/contracts/token/ERC20/IERC20__factory.ts",
-      "bytes": 3816,
-      "sha256": "dc859e3e4738a44156a377e1d39c7352833628958dce3fdf0b4726c73dae324c"
-    },
-    {
-      "path": "typechain-types/factories/@openzeppelin/contracts/token/ERC20/extensions/ERC20Permit__factory.ts",
-      "bytes": 7867,
-      "sha256": "d64c5a074d2b40ea7b90fe89e8df4c8b469da9f12fe1c02bd28c1ce4ac9dd843"
-    },
-    {
-      "path": "typechain-types/factories/@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata__factory.ts",
-      "bytes": 4531,
-      "sha256": "566bd2603c6b2474eb23394e67413ddb56e9b03de2eb6b429751e7fbdadd85cb"
-    },
-    {
-      "path": "typechain-types/factories/@openzeppelin/contracts/token/ERC20/extensions/IERC20Permit__factory.ts",
-      "bytes": 2019,
-      "sha256": "272568ed33f88508530b77aa52a3dbff42327ce603a2321fe729c276c9bc476d"
-    },
-    {
-      "path": "typechain-types/factories/@openzeppelin/contracts/token/ERC20/extensions/index.ts",
-      "bytes": 287,
-      "sha256": "789f2f5e5d3ab811b9a26219271831c04aa3be0da4dda36500fc580a6797e1bd"
-    },
-    {
-      "path": "typechain-types/factories/@openzeppelin/contracts/token/ERC20/index.ts",
-      "bytes": 238,
-      "sha256": "6a99782800b8baf29824c93473b569198bc1618478180d7a1a088c5a1e0bdb4d"
-    },
-    {
-      "path": "typechain-types/factories/@openzeppelin/contracts/token/ERC721/ERC721__factory.ts",
-      "bytes": 18249,
-      "sha256": "fb1efb2dbac4a8be38a0492857a36e50ea2fcb677744fcea46bff6ad57cca622"
-    },
-    {
-      "path": "typechain-types/factories/@openzeppelin/contracts/token/ERC721/IERC721Receiver__factory.ts",
-      "bytes": 1317,
-      "sha256": "a7e14bcc8ebe0d490b60f18916fad39cbb46f9c1940280d63935ce36092e4949"
-    },
-    {
-      "path": "typechain-types/factories/@openzeppelin/contracts/token/ERC721/IERC721__factory.ts",
-      "bytes": 5733,
-      "sha256": "08fc5a8fdaeb6cf8bd34244235076b71bf99e52e7429b8100fc054ff08c4e1f6"
-    },
-    {
-      "path": "typechain-types/factories/@openzeppelin/contracts/token/ERC721/extensions/IERC721Metadata__factory.ts",
-      "bytes": 6555,
-      "sha256": "55da49a74a5a4a054a67f4f15156406850994377a2c35acbeea682de467ef57c"
-    },
-    {
-      "path": "typechain-types/factories/@openzeppelin/contracts/token/ERC721/extensions/index.ts",
-      "bytes": 161,
-      "sha256": "6f5807240a8fc96d52102824a8de498637da104f68083f1563d628b264eb61e7"
-    },
-    {
-      "path": "typechain-types/factories/@openzeppelin/contracts/token/ERC721/index.ts",
-      "bytes": 313,
-      "sha256": "2b285005933d042f2ec1b5549db0f2484c2833033ad8616503a035f914c6a824"
-    },
-    {
-      "path": "typechain-types/factories/@openzeppelin/contracts/token/index.ts",
-      "bytes": 160,
-      "sha256": "b33d2f7a05250932bebdd9233b4cdf89f84469af06d54091de494aadd53beb8d"
-    },
-    {
-      "path": "typechain-types/factories/@openzeppelin/contracts/utils/ShortStrings__factory.ts",
-      "bytes": 2431,
-      "sha256": "e71b4b86a50fe1eb75f59588ef2a890fe02af97b2b7f41fd8434de80316e9b82"
-    },
-    {
-      "path": "typechain-types/factories/@openzeppelin/contracts/utils/cryptography/EIP712__factory.ts",
-      "bytes": 1791,
-      "sha256": "a8abe4782cc99a2fcd4cff48fd3326cb7b09f9c73f012e448c9eefe952cf8e80"
-    },
-    {
-      "path": "typechain-types/factories/@openzeppelin/contracts/utils/cryptography/index.ts",
-      "bytes": 143,
-      "sha256": "d8541f65ca142531af8e98ec2608fe6cbb68c770bc7c24da47fe247f6d50731d"
-    },
-    {
-      "path": "typechain-types/factories/@openzeppelin/contracts/utils/index.ts",
-      "bytes": 253,
-      "sha256": "be7c7eb6ef445652d7e6dd8032e046c30a0eed4f42cc179aacc9fb776c19eabe"
-    },
-    {
-      "path": "typechain-types/factories/@openzeppelin/contracts/utils/introspection/ERC165__factory.ts",
-      "bytes": 942,
-      "sha256": "7b0c049e338a9eff4a32b765ef0be8c959d2079bda811252c20e85c29ba17dc9"
-    },
-    {
-      "path": "typechain-types/factories/@openzeppelin/contracts/utils/introspection/IERC165__factory.ts",
-      "bytes": 950,
-      "sha256": "3faa443f532d2c11d24875154328253c3b3dd10264cb8661aa022da9e6255887"
-    },
-    {
-      "path": "typechain-types/factories/@openzeppelin/contracts/utils/introspection/index.ts",
-      "bytes": 198,
-      "sha256": "8420ef51e6dc0cc43f1e32dcc04e3a9c37a67b12d30948d7af615dbf60ab1354"
-    },
-    {
-      "path": "typechain-types/factories/@openzeppelin/index.ts",
-      "bytes": 132,
-      "sha256": "9d1874b1d273f1d4d9646ea2c320b18ce1edb6e0e441cc8b532ed252378fea88"
-    },
-    {
-      "path": "typechain-types/factories/contracts/access/GoalOSAccessControl__factory.ts",
-      "bytes": 6579,
-      "sha256": "1c71f19d5a6e9747958ba835178345a31687121393772bbc073c179bf6fe7399"
-    },
-    {
-      "path": "typechain-types/factories/contracts/access/index.ts",
-      "bytes": 169,
-      "sha256": "d946983d344b3727a30dce9340062e7b71951a6dae8bfbd29f8e519ee3894a46"
-    },
-    {
-      "path": "typechain-types/factories/contracts/aep/AEPAgentRegistry__factory.ts",
-      "bytes": 25164,
-      "sha256": "dbaecee243a563ce43e13a7594ee1ab3b2f1edc94a96b47f8cb6e01af152b970"
-    },
-    {
-      "path": "typechain-types/factories/contracts/aep/AEPArtifactRegistry__factory.ts",
-      "bytes": 24465,
-      "sha256": "ce4534b48cbd76629a3342f0f30068af0b81b8dc02c894bbd2d19738535aabdf"
-    },
-    {
-      "path": "typechain-types/factories/contracts/aep/AEPAttestationRegistry__factory.ts",
-      "bytes": 22551,
-      "sha256": "493c23c9bf4ec2e6b13ff54cd8f0866a45b668ad7c6b90979f6b9ba1c49c9305"
-    },
-    {
-      "path": "typechain-types/factories/contracts/aep/AEPChronicleRegistry__factory.ts",
-      "bytes": 20996,
-      "sha256": "55ed41b0ce04cfb9ed54e4ffc9d265852c673166104e8c4b5bd96ddc72f5a23f"
-    },
-    {
-      "path": "typechain-types/factories/contracts/aep/AEPClaimBoundaryRegistry__factory.ts",
-      "bytes": 23109,
-      "sha256": "9d0a8a605bb15220412ff637ca461b5f7269c6b81a045fec8d299a8bbac45326"
-    },
-    {
-      "path": "typechain-types/factories/contracts/aep/AEPCommitRevealValidationRegistry__factory.ts",
-      "bytes": 34632,
-      "sha256": "69d785f0d88ac49612db539204acbd129c3dcf89004c78f46e95894dd8927f62"
-    },
-    {
-      "path": "typechain-types/factories/contracts/aep/AEPConformanceRegistry__factory.ts",
-      "bytes": 23676,
-      "sha256": "a6e390e7609bd2640381d9e3fef49ea7f81a3331bcbaf8bada1449e51c35ac07"
-    },
-    {
-      "path": "typechain-types/factories/contracts/aep/AEPEvalRegistry__factory.ts",
-      "bytes": 25274,
-      "sha256": "2dd52492f22dc5f719b2658d52bdfe3399374c30c831668c65f023aa6ab6c23b"
-    },
-    {
-      "path": "typechain-types/factories/contracts/aep/AEPEvaluatorStakingRegistry__factory.ts",
-      "bytes": 30678,
-      "sha256": "b940bde9813789610258bcc26ce499dec37ce7046f399fad2c8fa4d59016291a"
-    },
-    {
-      "path": "typechain-types/factories/contracts/aep/AEPEvidenceDocketRegistry__factory.ts",
-      "bytes": 23260,
-      "sha256": "0e0f7431dd281f50075d954e6aab031717393b6d64eab57808798b31e7e45ef0"
-    },
-    {
-      "path": "typechain-types/factories/contracts/aep/AEPFalsificationRegistry__factory.ts",
-      "bytes": 23173,
-      "sha256": "179f2f4454f65dfb66c89fd85576d91efe5bee0321003d6f0daa701ccdb1bb21"
-    },
-    {
-      "path": "typechain-types/factories/contracts/aep/AEPGoalOSCommitRegistry__factory.ts",
-      "bytes": 28541,
-      "sha256": "d733da5ace6ba687c9fde4a82a595475f4dccc870435a49e73f96ede2dbac83e"
-    },
-    {
-      "path": "typechain-types/factories/contracts/aep/AEPProofBundleRegistry__factory.ts",
-      "bytes": 22170,
-      "sha256": "5dbbc82a8cef63df03fd705501d52b9c543e55db850c04693e5c5e6464b88b79"
-    },
-    {
-      "path": "typechain-types/factories/contracts/aep/AEPProofLedger__factory.ts",
-      "bytes": 21763,
-      "sha256": "de89741f6a8d39f1f81c0cd41f3776a9c9fbcf2d23cda8ab09a8092742ebab05"
-    },
-    {
-      "path": "typechain-types/factories/contracts/aep/AEPReplayRegistry__factory.ts",
-      "bytes": 21948,
-      "sha256": "f6731689ffa62f46af02d50f68b279cfb25ea5049b59de2b12394cb6b0d7dad6"
-    },
-    {
-      "path": "typechain-types/factories/contracts/aep/AEPRewardVault__factory.ts",
-      "bytes": 25437,
-      "sha256": "c7c0d74867533a7504b720b1f63eb5337c425f139dda2bc047ce63c793b69f98"
-    },
-    {
-      "path": "typechain-types/factories/contracts/aep/AEPRollbackRegistry__factory.ts",
-      "bytes": 21078,
-      "sha256": "a92409b89336aa550f2a3d10bae593016f14014a9cb560e3c903a327bf5fb1bc"
-    },
-    {
-      "path": "typechain-types/factories/contracts/aep/AEPRolloutRouter__factory.ts",
-      "bytes": 23102,
-      "sha256": "0777c65ee8c2a54f4ab776b84b6996129d1110ecc5301428b87c0a7ddd1e0f3f"
-    },
-    {
-      "path": "typechain-types/factories/contracts/aep/AEPRunCommitmentRegistry__factory.ts",
-      "bytes": 24906,
-      "sha256": "150766783d58d7b91e689b702de6b837cd567d61861dcb9d850c4b6a972d1f47"
-    },
-    {
-      "path": "typechain-types/factories/contracts/aep/AEPSelectionGate__factory.ts",
-      "bytes": 25110,
-      "sha256": "658c0fd48c1d7d84febae77c5b7260005806cfda6cabd502204104f241626a3f"
-    },
-    {
-      "path": "typechain-types/factories/contracts/aep/AEPSlashingCourt.sol/AEPSlashingCourt__factory.ts",
-      "bytes": 26655,
-      "sha256": "821677c1219ca650cdfb7e03fb1f1c983248623970ab5ccb65e669c5a7c8f8fd"
-    },
-    {
-      "path": "typechain-types/factories/contracts/aep/AEPSlashingCourt.sol/IAEPEvaluatorStakingRegistry__factory.ts",
-      "bytes": 1255,
-      "sha256": "386d3b820408f7a31cfe4a036d00a6d8ce6fee4acd463a4d2657ba3c9124d4ea"
-    },
-    {
-      "path": "typechain-types/factories/contracts/aep/AEPSlashingCourt.sol/index.ts",
-      "bytes": 260,
-      "sha256": "3bd4dac37417d9fe6f4b632ad0498bfa7aa00558c1666f4c77ddbcb71a7cb500"
-    },
-    {
-      "path": "typechain-types/factories/contracts/aep/AGIEthNamespaceRegistry__factory.ts",
-      "bytes": 23513,
-      "sha256": "31763a364a52feb5a7e299ec5dc717994e0cad057bf69cb3db783f3f35de4341"
-    },
-    {
-      "path": "typechain-types/factories/contracts/aep/AlphaWorkUnitLedger__factory.ts",
-      "bytes": 20924,
-      "sha256": "7e6a21c371e9fbd3209cdfd37ecac666f4ffb976b0c4adcf2ff80f6349e0a137"
-    },
-    {
-      "path": "typechain-types/factories/contracts/aep/MandateEpochRegistry__factory.ts",
-      "bytes": 34612,
-      "sha256": "65f91bef601337c63630960347a94db3632bf60492b3068e19bbdbb18890bdb9"
-    },
-    {
-      "path": "typechain-types/factories/contracts/aep/index.ts",
-      "bytes": 2044,
-      "sha256": "dd37c0a47cf49d1f91287ba1660b164d39b0ce885bacf635e99759d33124b323"
-    },
-    {
-      "path": "typechain-types/factories/contracts/index.ts",
-      "bytes": 350,
-      "sha256": "0a5f30dda2b74adb32308800db56c35752975e9c9e8d5da665b6aad64cf4e36e"
-    },
-    {
-      "path": "typechain-types/factories/contracts/interfaces/IJobClaimBondManager__factory.ts",
-      "bytes": 1303,
-      "sha256": "8ded6f635b650e8ae3ca03bbc4ac87c2056e1510c4c98304d7b814cbde16760c"
-    },
-    {
-      "path": "typechain-types/factories/contracts/interfaces/IJobRegistry__factory.ts",
-      "bytes": 4160,
-      "sha256": "451f39d185bce6ca684fded2fd60bc2052ac75f3093ee395afac03cccc3accd7"
-    },
-    {
-      "path": "typechain-types/factories/contracts/interfaces/IProofSubmissionRegistry__factory.ts",
-      "bytes": 2294,
-      "sha256": "1e995d210ead80c7ed9d16fc280a91af1749b984ff1dde5d5f18043083ee0343"
-    },
-    {
-      "path": "typechain-types/factories/contracts/interfaces/IReputationRegistry__factory.ts",
-      "bytes": 2264,
-      "sha256": "d12f1635f0cdb3692edb5d756b94e1280f4c1b07ebb2300fa679661c94169eb1"
-    },
-    {
-      "path": "typechain-types/factories/contracts/interfaces/index.ts",
-      "bytes": 404,
-      "sha256": "154c11b00bcb453685e6c6b5522bdf43fa53b47cc6153f68e83a2969a6359518"
-    },
-    {
-      "path": "typechain-types/factories/contracts/optional/AppealRegistry__factory.ts",
-      "bytes": 20376,
-      "sha256": "35bce0cbca87e9bc33b87df9955799be283216d6d9f214e75cd97e289b465f06"
-    },
-    {
-      "path": "typechain-types/factories/contracts/optional/BuilderProfileRegistry__factory.ts",
-      "bytes": 20082,
-      "sha256": "c33e81335f960e30528224313bbe16ecc2f53a4fc90019209860b6534b713843"
-    },
-    {
-      "path": "typechain-types/factories/contracts/optional/CredentialRevocationRegistry__factory.ts",
-      "bytes": 20941,
-      "sha256": "d44bb5a3dd979faf3f490c197282c63b46241b419aed496df0f209c6d0e5a294"
-    },
-    {
-      "path": "typechain-types/factories/contracts/optional/DisputeRegistry__factory.ts",
-      "bytes": 21757,
-      "sha256": "7c00331c476232c599731805da025863e4523c02ea7c049ab6138f8d68bfb873"
-    },
-    {
-      "path": "typechain-types/factories/contracts/optional/SponsorRegistry__factory.ts",
-      "bytes": 19952,
-      "sha256": "9a1bb06e9ca7b85948f675d2b3f4eb0c2fca180e309abf0d1663f39deaa03837"
-    },
-    {
-      "path": "typechain-types/factories/contracts/optional/index.ts",
-      "bytes": 483,
-      "sha256": "a4f0be8eb78ee582b96ab2e3eb2fc859fb0da9a31cc3a9658f75157a7886d463"
-    },
-    {
-      "path": "typechain-types/factories/contracts/registry/JobClaimBondManager__factory.ts",
-      "bytes": 31008,
-      "sha256": "4748006ffcac0383537ffeaba672777e80cc4e93e5349502efd9a11022f5dd20"
-    },
-    {
-      "path": "typechain-types/factories/contracts/registry/JobRegistry__factory.ts",
-      "bytes": 46115,
-      "sha256": "39dcad395a6f3478b3c223862b6abbca967845ca5f2c990382816e8994958c2e"
-    },
-    {
-      "path": "typechain-types/factories/contracts/registry/LaunchGateRegistry__factory.ts",
-      "bytes": 25235,
-      "sha256": "e006c8dd66fb6d3cf58af053382221b850c4bbb883b7e005015314c75614bce5"
-    },
-    {
-      "path": "typechain-types/factories/contracts/registry/LegacyAGIJobManagerRegistry__factory.ts",
-      "bytes": 23597,
-      "sha256": "c5414d433326c23bc5dbaf29933f788f4c3bc0eaf15c772e4bc99036c7a6793d"
-    },
-    {
-      "path": "typechain-types/factories/contracts/registry/PremiumAccessRegistry__factory.ts",
-      "bytes": 20903,
-      "sha256": "c755a9df8bc6cc39f55e6b31e4085d1f1d848e4893241591d19118b3a822b00b"
-    },
-    {
-      "path": "typechain-types/factories/contracts/registry/ProofCardRegistry__factory.ts",
-      "bytes": 23380,
-      "sha256": "899b7481a4ccc382f9dc0e869d3e08dcc60f3fd3e7aedb82bfa5b6f77c4bc24b"
-    },
-    {
-      "path": "typechain-types/factories/contracts/registry/ProofCredentialRegistry.sol/IERC5192__factory.ts",
-      "bytes": 1377,
-      "sha256": "a83908b92f90c6a7126127ee9a696cf438336816b163db84ce8cda6f634cff90"
-    },
-    {
-      "path": "typechain-types/factories/contracts/registry/ProofCredentialRegistry.sol/ProofCredentialRegistry__factory.ts",
-      "bytes": 38069,
-      "sha256": "7b2e78c676b8e9551695316af5b29b4cb08310af6e33355b1e75116188ed119e"
-    },
-    {
-      "path": "typechain-types/factories/contracts/registry/ProofCredentialRegistry.sol/index.ts",
-      "bytes": 234,
-      "sha256": "18ec19b4519948e49b9c1e64494d4aa2d6ee2c9a65fb9264a297dd489a1e9772"
-    },
-    {
-      "path": "typechain-types/factories/contracts/registry/ProofSeedRegistry__factory.ts",
-      "bytes": 29932,
-      "sha256": "c4d566e8f879784497c2ff2350237c64ccf391d82678c4ccf8e728dccaf2006a"
-    },
-    {
-      "path": "typechain-types/factories/contracts/registry/ProofSubmissionRegistry__factory.ts",
-      "bytes": 48003,
-      "sha256": "7752888f448c7bb8087accea5fb5804b98c398a266fb741655f89711e8ebd3a9"
-    },
-    {
-      "path": "typechain-types/factories/contracts/registry/ProtocolConfigRegistry__factory.ts",
-      "bytes": 20673,
-      "sha256": "affe69efe1c5199fd15dfbdf532a60dc55d2e5b9f90f053cdd4d8ff4de30f0e8"
-    },
-    {
-      "path": "typechain-types/factories/contracts/registry/ReferralRegistry__factory.ts",
-      "bytes": 20220,
-      "sha256": "c3b1c020bf6f162de161ceb8707e10abe57184704ffb570646a66df648ae60af"
-    },
-    {
-      "path": "typechain-types/factories/contracts/registry/ReputationRegistry__factory.ts",
-      "bytes": 25783,
-      "sha256": "e95b9a3f67fd4e4a48df8f5024dc5e2d34694c2c008fd7cd214e017aafcec658"
-    },
-    {
-      "path": "typechain-types/factories/contracts/registry/ReviewerBondRegistry__factory.ts",
-      "bytes": 35291,
-      "sha256": "2531cced77bff5ebec42dc1bd84e8860e56e0d03a8c239746cc7af82723964b6"
-    },
-    {
-      "path": "typechain-types/factories/contracts/registry/TreasuryRouter__factory.ts",
-      "bytes": 22343,
-      "sha256": "78beceda426cd44700baa78862836c50b120d302e0ea7e1d07d565440b639cef"
-    },
-    {
-      "path": "typechain-types/factories/contracts/registry/index.ts",
-      "bytes": 1186,
-      "sha256": "29138fbb97e15f37e8c302256b5dd8c7fd5aebbe259c82b24eb4fbab2a803bd6"
-    },
-    {
-      "path": "typechain-types/factories/contracts/token/MockAGIALPHA__factory.ts",
-      "bytes": 21421,
-      "sha256": "cf4257eaefb7750d66b67496aae285cd1fb1045b674cf09874062aafceca9d7e"
-    },
-    {
-      "path": "typechain-types/factories/contracts/token/index.ts",
-      "bytes": 155,
-      "sha256": "174424b4d314e1e764343697e2f2e39ad15f194095b3889cec27582e4d34a177"
-    },
-    {
-      "path": "typechain-types/factories/contracts/vaults/CommercializationPerformanceVault__factory.ts",
-      "bytes": 32509,
-      "sha256": "da4900ea2fc34562311811b2df7df447793f7aa9b47e743916edca0fa1690c0c"
-    },
-    {
-      "path": "typechain-types/factories/contracts/vaults/TokenReserveVault__factory.ts",
-      "bytes": 23533,
-      "sha256": "88cadcc21ea8270ca04dad273861d35e69f9ee3e15724537a050fbe299e73cb9"
-    },
-    {
-      "path": "typechain-types/factories/contracts/vaults/index.ts",
-      "bytes": 272,
-      "sha256": "35b00491baae93f51d3398fb015c5c07cc0fc89ec78aae8a716b29b4e2ac803b"
-    },
-    {
-      "path": "typechain-types/factories/index.ts",
-      "bytes": 181,
-      "sha256": "3af4fb8565ae637077dda511ecfab5adb85f4db45a71f5fc4fc854ed7875b1fb"
-    },
-    {
-      "path": "typechain-types/hardhat.d.ts",
-      "bytes": 48567,
-      "sha256": "53754ce7c90129e9fb3c0cd6af43ea53b2a02552b7fc327f77400610273069bd"
-    },
-    {
-      "path": "typechain-types/index.ts",
-      "bytes": 13932,
-      "sha256": "677c87566ede5fc3f6281ab6926ccb381db475c0f8595256c6a98c5d4a0849d6"
     }
   ]
 }

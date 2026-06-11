@@ -27,4 +27,4 @@ See audit/reports/dependency-triage/ for PR #2/#3/#4 controlled triage. No depen
 python scripts/audit/summarize-audit-results.py "$AUDIT_REPORT_DIR"
 python scripts/audit/generate-toolchain-clearance-report.py "$AUDIT_REPORT_DIR"
 python scripts/audit/fail-on-critical-findings.py "$AUDIT_REPORT_DIR/audit-summary.json" summary
-( cd "$AUDIT_REPORT_DIR" && sha256sum * > checksums.txt 2>/dev/null || true )
+( cd "$AUDIT_REPORT_DIR" && find . -maxdepth 1 -type f ! -name checksums.txt -printf "%f\0" | sort -z | xargs -0 sha256sum > checksums.txt 2>/dev/null || true )

@@ -65,16 +65,12 @@ launch = (ROOT / "contracts/registry/LaunchGateRegistry.sol").read_text(encoding
 if "BASE_SEPOLIA_REHEARSAL" in launch: errors.append("LaunchGateRegistry must not contain BASE_SEPOLIA_REHEARSAL for Ethereum AGIALPHA package")
 for needle in ["ETHEREUM_SEPOLIA_REHEARSAL", "AGIALPHA_TOKEN_VERIFICATION", "AUTOMATED_SECURITY_TOOLCHAIN", "INTERNAL_SECURITY_REVIEW", "FOUNDER_APPROVAL"]:
     if needle not in launch: errors.append(f"LaunchGateRegistry missing {needle}")
-manifest = []
-for p in sorted(ROOT.rglob("*")):
-    if p.is_file() and ".git" not in p.parts and "node_modules" not in p.parts:
-        data = p.read_bytes()
-        manifest.append({"path": p.relative_to(ROOT).as_posix(), "bytes": len(data), "sha256": hashlib.sha256(data).hexdigest()})
-qa = ROOT / "qa"; qa.mkdir(exist_ok=True)
-(qa / "MANIFEST.json").write_text(json.dumps({"generated_at": datetime.datetime.now(datetime.UTC).isoformat(), "files": manifest}, indent=2), encoding="utf-8")
-(qa / "QA_REPORT.json").write_text(json.dumps({
+qa = ROOT / "qa"
+qa.mkdir(exist_ok=True)
+generated_at = datetime.datetime.now(datetime.UTC).isoformat()
+qa_report = {
     "package": "GoalOS_AGIALPHA_Ascension_Ethereum_Mainnet_Implementation_v4_3_GATE_CLEAN_EVIDENCE_READY",
-    "generated_at": datetime.datetime.now(datetime.UTC).isoformat(),
+    "generated_at": generated_at,
     "static_checks": "passed" if not errors else "failed",
     "errors": errors,
     "notes": [
@@ -84,7 +80,18 @@ qa = ROOT / "qa"; qa.mkdir(exist_ok=True)
         "Adds AEP conformance, claim boundary, replay, commit-reveal validation, evaluator staking/slashing, reward vault, chronicle and falsification registries.",
         "Ethereum mainnet remains gated until compile/tests, automated security/toolchain review, internal security review, Sepolia rehearsal, AGIALPHA token verification, legal, tax, public claims, treasury and founder approvals are complete."
     ]
-}, indent=2), encoding="utf-8")
+}
+(qa / "QA_REPORT.json").write_text(json.dumps(qa_report, indent=2), encoding="utf-8")
+manifest = []
+manifest_excludes = {"qa/MANIFEST.json", "qa/MANIFEST_v4_3.json"}
+for p in sorted(ROOT.rglob("*")):
+    if p.is_file() and ".git" not in p.parts and "node_modules" not in p.parts:
+        rel = p.relative_to(ROOT).as_posix()
+        if rel in manifest_excludes:
+            continue
+        data = p.read_bytes()
+        manifest.append({"path": rel, "bytes": len(data), "sha256": hashlib.sha256(data).hexdigest()})
+(qa / "MANIFEST.json").write_text(json.dumps({"generated_at": generated_at, "files": manifest}, indent=2), encoding="utf-8")
 if errors:
     print("Static QA failed:")
     for e in errors: print("-", e)
