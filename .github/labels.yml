@@ -1,0 +1,48 @@
+- name: priority-critical
+  color: B60205
+  description: Must be addressed before next gate
+- name: priority-high
+  color: D93F0B
+  description: High-priority production continuation work
+- name: sepolia
+  color: 5319E7
+  description: Ethereum Sepolia rehearsal
+- name: evidence-docket
+  color: 0E8A16
+  description: Evidence Docket work
+- name: audit
+  color: 1D76DB
+  description: External audit or security review
+- name: security
+  color: BFD4F2
+  description: Security-sensitive work
+- name: legal
+  color: FEF2C0
+  description: Legal/token counsel review
+- name: tax
+  color: C2E0C6
+  description: Tax/accounting review
+- name: claims
+  color: FBCA04
+  description: Public claims review
+- name: treasury
+  color: 0052CC
+  description: Treasury/admin address ceremony
+- name: mainnet-blocked
+  color: B60205
+  description: Mainnet not authorized
+- name: proof-mission
+  color: 0E8A16
+  description: Proof mission use case
+- name: proof-card
+  color: 0E8A16
+  description: Proof Card work
+- name: docs
+  color: 0075CA
+  description: Documentation
+- name: ci
+  color: 5319E7
+  description: Continuous integration
+- name: founder-decision
+  color: D4C5F9
+  description: Requires founder decision
