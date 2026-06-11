@@ -1,0 +1,11 @@
+{
+  "status": "LOCAL_SIMULATION_ONLY",
+  "generatedAt": "2026-06-11T18:38:36.710Z",
+  "chain": "hardhat-local",
+  "chainId": 31337,
+  "mockAGIALPHA": "LOCAL_MOCK_ONLY",
+  "contractsDeployed": "LOCAL_SIMULATION_PLACEHOLDER",
+  "proofWorkLoopCompleted": true,
+  "negativePathsCompleted": true,
+  "mainnetEvidence": false
+}

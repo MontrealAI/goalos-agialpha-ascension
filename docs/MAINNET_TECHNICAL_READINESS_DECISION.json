@@ -1,30 +1,44 @@
 {
-  "generated_at": "2026-06-11T17:15:06.333469+00:00",
+  "status": "NO",
   "TECHNICALLY_MAINNET_READY": "NO",
+  "commit": "f31a9c2b7aab4091e8bfb8194a49081c4dfbed0b",
+  "chain": "ethereum",
+  "chainId": 1,
+  "agialphaToken": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
+  "evidence": {
+    "technical": {
+      "path": "qa/public-mainnet-technical-readiness-evidence.json",
+      "sha256": null,
+      "present": false,
+      "status": null
+    },
+    "sepolia": {
+      "path": "qa/public-sepolia-rehearsal-evidence.json",
+      "sha256": null,
+      "present": false,
+      "status": null
+    },
+    "preflight": {
+      "path": "qa/public-mainnet-preflight-evidence.json",
+      "sha256": null,
+      "present": false,
+      "status": null
+    },
+    "toolchain": {
+      "path": "qa/public-toolchain-clearance-evidence.json",
+      "sha256": null,
+      "present": false,
+      "status": null
+    }
+  },
   "blockers": [
-    "slither is pending/environment-blocked or not internally accepted",
-    "echidna is pending/environment-blocked or not internally accepted",
-    "mythril is pending/environment-blocked or not internally accepted",
-    "medusa is pending/environment-blocked or not internally accepted",
-    "foundry is pending/environment-blocked or not internally accepted",
-    "halmos is pending/environment-blocked or not internally accepted",
-    "semgrep is pending/environment-blocked or not internally accepted",
-    "smtchecker is pending/environment-blocked or not internally accepted",
-    "osv-scanner is pending/environment-blocked or not internally accepted",
-    "actionlint is pending/environment-blocked or not internally accepted",
-    "shellcheck is pending/environment-blocked or not internally accepted",
-    "gitleaks is pending/environment-blocked or not internally accepted",
-    "Public Ethereum Sepolia replay remains pending; only local chainId 11155111 rehearsal evidence is present",
-    "AGIALPHA token verification requires Ethereum mainnet RPC evidence",
-    "Treasury/founder address ceremony is not complete"
+    "PRIVATE_OPERATOR_EVIDENCE_PENDING",
+    "PRIVATE_OPERATOR_EVIDENCE_PENDING: missing qa/public-mainnet-technical-readiness-evidence.json",
+    "PRIVATE_OPERATOR_EVIDENCE_PENDING: missing qa/public-sepolia-rehearsal-evidence.json",
+    "PRIVATE_OPERATOR_EVIDENCE_PENDING: missing qa/public-mainnet-preflight-evidence.json",
+    "PRIVATE_OPERATOR_EVIDENCE_PENDING: missing qa/public-toolchain-clearance-evidence.json"
   ],
-  "audit_report": "audit/reports/2026-06-11-1635/audit-summary.json",
-  "toolchain_report_hash": "d4847d41433378eb2c1799b49aea67b44bebcd26fd789022f1a1a645675dcdf7",
-  "sepolia_manifest": "deployments/ethereum-sepolia.agialpha.latest.json",
-  "sepolia_manifest_hash": "6c855d2fdb97d4e333e092b7d515d787b5bf724cc15441d9f57a410314730dbe",
-  "sepolia_evidence_docket": "evidence/sepolia/SEPOLIA_EVIDENCE_DOCKET.latest.json",
-  "sepolia_evidence_docket_hash": "db7cb05c3061e41ad8f2588c704bf0931ff9584e2b3cd6ba95f997430de5f647",
-  "agialpha_mainnet_token_required": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
-  "deployment_command_if_ready": null,
-  "final_founder_approval_required": true
+  "generatedAt": "2026-06-11T19:05:43.801197+00:00",
+  "generatedBy": "scripts/mainnet-readiness-check.py",
+  "mainnetDeploymentExecuted": false
 }

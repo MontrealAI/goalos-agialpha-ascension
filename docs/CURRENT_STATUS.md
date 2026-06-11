@@ -9,6 +9,7 @@ Ethereum Sepolia rehearsal: completed locally on chainId 11155111; public Sepoli
 Not externally audited.
 Technical mainnet readiness: NO.
 Ethereum Mainnet deployment authorization: NO.
+Ethereum Mainnet authorization: NO.
 Ethereum Mainnet not authorized.
 
 Dependency PRs: major upgrades triaged and deferred to controlled migration branches; not blindly merged.

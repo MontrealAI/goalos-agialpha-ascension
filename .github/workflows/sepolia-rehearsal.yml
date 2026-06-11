@@ -1,16 +1,15 @@
 name: Ethereum Sepolia Rehearsal
+
 on:
+  pull_request:
   workflow_dispatch:
-    inputs:
-      run_real_sepolia:
-        type: boolean
-        required: true
-        default: false
+
+permissions:
+  contents: read
+
 jobs:
-  rehearsal:
+  local-rehearsal:
     runs-on: ubuntu-latest
-    if: ${{ inputs.run_real_sepolia == true }}
-    environment: sepolia-rehearsal
     steps:
       - uses: actions/checkout@v5
       - uses: actions/setup-node@v5
@@ -19,27 +18,16 @@ jobs:
           cache: 'npm'
       - run: npm ci
       - run: npm run compile
-      - name: Run Sepolia rehearsal
-        env:
-          ETHEREUM_SEPOLIA_RPC_URL: ${{ secrets.ETHEREUM_SEPOLIA_RPC_URL }}
-          # Required for public-Sepolia clearance: this must be an independent
-          # public Sepolia RPC, not a local fork/simulator and preferably not the
-          # same endpoint used for broadcasting the rehearsal transactions.
-          ETHEREUM_SEPOLIA_PUBLIC_VERIFICATION_RPC_URL: ${{ secrets.ETHEREUM_SEPOLIA_PUBLIC_VERIFICATION_RPC_URL }}
-          PRIVATE_KEY: ${{ secrets.SEPOLIA_PRIVATE_KEY }}
-          FOUNDER_ADDRESS: ${{ vars.FOUNDER_ADDRESS }}
-          TREASURY_ADDRESS: ${{ vars.TREASURY_ADDRESS }}
-          COMMERCIALIZATION_PERFORMANCE_ADMIN: ${{ vars.COMMERCIALIZATION_PERFORMANCE_ADMIN }}
-          PROOF_REWARDS_ADMIN: ${{ vars.PROOF_REWARDS_ADMIN }}
-          LIQUIDITY_ADMIN: ${{ vars.LIQUIDITY_ADMIN }}
-          SECURITY_ADMIN: ${{ vars.SECURITY_ADMIN }}
-          COMMUNITY_ADMIN: ${{ vars.COMMUNITY_ADMIN }}
-        run: npm run sepolia:rehearsal && npm run sepolia:evidence
+      - name: Deterministic local authorization rehearsal (no secrets)
+        run: npm run local:authorization-rehearsal
+      - name: Public-only authorization check (private evidence may be pending)
+        run: python scripts/mainnet-authorization-check.py --public-only
       - uses: actions/upload-artifact@v5
         if: always()
         with:
-          name: sepolia-rehearsal-evidence
+          name: local-authorization-rehearsal-public-evidence
           path: |
-            deployments/ethereum-sepolia.agialpha.latest.json
-            evidence/sepolia/**
-            docs/ETHEREUM_SEPOLIA_REHEARSAL_REPORT.md
+            deployments/local.agialpha.latest.json
+            evidence/local/**
+            qa/local-rehearsal-report.json
+            docs/ETHEREUM_MAINNET_AUTHORIZATION_DECISION.*

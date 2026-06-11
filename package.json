@@ -1,7 +1,7 @@
 {
   "name": "goalos-agialpha-ascension",
   "version": "4.3.0",
-  "description": "GoalOS-native reimplementation of \u03b1-AGI Ascension using existing AGIALPHA for proof-settled AI workflow work.",
+  "description": "GoalOS-native reimplementation of α-AGI Ascension using existing AGIALPHA for proof-settled AI workflow work.",
   "license": "MIT",
   "scripts": {
     "compile": "hardhat compile",
@@ -29,7 +29,7 @@
     "repo:safety": "python scripts/repository_safety_check.py",
     "repo:status": "python scripts/repository_status_check.py",
     "repo:production-readiness": "python scripts/repository_production_readiness_check.py",
-    "repo:all": "python scripts/repository_safety_check.py && python scripts/repository_status_check.py && python scripts/repository_production_readiness_check.py && python scripts/no_paid_products_check.py",
+    "repo:all": "python scripts/repository_safety_check.py && python scripts/repository_status_check.py && python scripts/repository_production_readiness_check.py && python scripts/no_paid_products_check.py && python scripts/no_private_operator_data_check.py",
     "repo:no-paid-products": "python scripts/no_paid_products_check.py",
     "audit:slither": "bash scripts/audit/run-slither.sh",
     "audit:echidna": "bash scripts/audit/run-echidna.sh",
@@ -53,7 +53,13 @@
     "audit:shell": "bash scripts/audit/run-shellcheck.sh",
     "audit:secrets": "bash scripts/audit/run-gitleaks.sh",
     "audit:clearance-report": "python scripts/audit/generate-toolchain-clearance-report.py",
-    "mainnet:readiness-check": "python scripts/mainnet-readiness-check.py"
+    "mainnet:readiness-check": "python scripts/mainnet-readiness-check.py",
+    "mainnet:deployment-authorization-check": "python scripts/mainnet-deployment-authorization-check.py",
+    "ethereum-mainnet:authorization-check": "python scripts/ethereum-mainnet-authorization-check.py",
+    "mainnet:fork-simulate": "HARDHAT_FORK_MAINNET=1 hardhat run scripts/mainnet-fork-simulate.ts --network hardhat",
+    "repo:no-private-operator-data": "python scripts/no_private_operator_data_check.py",
+    "local:authorization-rehearsal": "hardhat run scripts/rehearse-local-authorization-chain.ts --network hardhat && python scripts/generate-local-evidence-docket.py",
+    "deploy:ethereum-mainnet:gated:local": "python scripts/private/run-final-local-mainnet-deployment.py --env .private/mainnet-operator.env --input .private/mainnet-operator-input.json"
   },
   "dependencies": {
     "@openzeppelin/contracts": "4.9.6",

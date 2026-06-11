@@ -1,0 +1,16 @@
+{
+  "status": "PRIVATE_OPERATOR_EVIDENCE_PENDING",
+  "chain": "ethereum",
+  "chainId": 1,
+  "agialphaToken": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
+  "publicGitHubRequiresRpc": false,
+  "publicGitHubRequiresPrivateAddresses": false,
+  "privateOperatorOutput": ".private/mainnet-preflight-private.json",
+  "publicRedactedOutput": "qa/public-mainnet-preflight-evidence.json",
+  "blockers": [
+    "PRIVATE_OPERATOR_EVIDENCE_PENDING: private operator must run local mainnet preflight and commit only redacted public evidence commitments"
+  ],
+  "mainnetDeployment": "not executed",
+  "generatedAt": "2026-06-11T18:40:33.032528+00:00",
+  "generatedBy": "public no-secrets baseline"
+}

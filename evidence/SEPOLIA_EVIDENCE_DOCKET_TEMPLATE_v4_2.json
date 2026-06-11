@@ -12,18 +12,19 @@
     "ReviewerBondRegistry": "TO_FILL"
   },
   "gateEvidence": {
-    "auditClosureMemoSha256": "PENDING",
+    "automatedSecurityToolchainSha256": "PENDING",
     "claimsReviewSha256": "PENDING",
     "compileLogSha256": "TO_FILL",
     "deploymentJsonSha256": "TO_FILL",
     "founderApprovalSha256": "PENDING",
     "governanceRoleCeremonySha256": "PENDING",
+    "internalSecurityReviewSha256": "PENDING",
     "legalMemoSha256": "PENDING",
     "staticQaReportSha256": "TO_FILL",
     "taxMemoSha256": "PENDING",
     "testLogSha256": "TO_FILL"
   },
-  "generatedAtUtc": "2026-06-11T17:00:50Z",
+  "generatedAtUtc": "2026-06-11T18:43:10Z",
   "mainnetDecision": "NOT_AUTHORIZED",
   "network": "ethereum-sepolia",
   "notes": [

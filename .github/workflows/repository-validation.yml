@@ -22,3 +22,6 @@ jobs:
 
       - name: Production continuation readiness check
         run: python scripts/repository_production_readiness_check.py
+
+      - name: No private operator data check
+        run: python scripts/no_private_operator_data_check.py

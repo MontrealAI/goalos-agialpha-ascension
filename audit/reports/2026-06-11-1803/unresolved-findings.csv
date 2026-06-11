@@ -1,0 +1,13 @@
+id,tool,severity,status,summary,technical_mainnet_blocker
+ENV-SLITHER,slither,Medium,Pending,slither needs executable available for full run or internal security acceptance,true
+ENV-ECHIDNA,echidna,Medium,Pending,echidna needs executable available for full run or internal security acceptance,true
+ENV-MYTHRIL,mythril,Medium,Pending,mythril needs executable available for full run or internal security acceptance,true
+ENV-MEDUSA,medusa,Medium,Pending,medusa needs executable available for full run or internal security acceptance,true
+ENV-FOUNDRY,foundry,Medium,Pending,foundry needs executable available for full run or internal security acceptance,true
+ENV-HALMOS,halmos,Medium,Pending,halmos needs executable available for full run or internal security acceptance,true
+ENV-SEMGREP,semgrep,Medium,Pending,semgrep needs executable available for full run or internal security acceptance,true
+ENV-SMTCHECKER,smtchecker,Medium,Pending,smtchecker needs executable available for full run or internal security acceptance,true
+ENV-OSV-SCANNER,osv-scanner,Medium,Pending,osv-scanner needs executable available for full run or internal security acceptance,true
+ENV-ACTIONLINT,actionlint,Medium,Pending,actionlint needs executable available for full run or internal security acceptance,true
+ENV-SHELLCHECK,shellcheck,Medium,Pending,shellcheck needs executable available for full run or internal security acceptance,true
+ENV-GITLEAKS,gitleaks,Medium,Pending,gitleaks needs executable available for full run or internal security acceptance,true

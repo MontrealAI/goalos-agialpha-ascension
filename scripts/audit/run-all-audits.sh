@@ -19,6 +19,7 @@ bash scripts/audit/run-osv-scanner.sh || true
 bash scripts/audit/run-actionlint.sh || true
 bash scripts/audit/run-shellcheck.sh || true
 bash scripts/audit/run-gitleaks.sh || true
+npm sbom --json > "$AUDIT_REPORT_DIR/sbom.json" 2> "$AUDIT_REPORT_DIR/sbom.txt" || echo "{\"status\":\"PENDING_ENVIRONMENT_BLOCKED\",\"tool\":\"npm-sbom\"}" > "$AUDIT_REPORT_DIR/sbom.json"
 for f in foundry-build.log foundry-test.log foundry-invariant.log gas-report.txt coverage-report.txt; do [ -f "$AUDIT_REPORT_DIR/$f" ] || echo "$f not generated in this environment." > "$AUDIT_REPORT_DIR/$f"; done
 [ -f "$AUDIT_REPORT_DIR/dependency-triage-summary.md" ] || echo "# Dependency triage summary
 

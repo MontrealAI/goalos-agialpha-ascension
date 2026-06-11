@@ -11,8 +11,9 @@ GoalOS AGIALPHA Ascension is a GoalOS-native reimplementation of α‑AGI Ascens
 ```text
 Gate-clean evidence-ready audit candidate.
 Ethereum Sepolia rehearsal-ready after compile/tests pass.
-Not audited.
-Not mainnet authorized.
+Not externally audited.
+Automated security/toolchain review pending.
+Ethereum Mainnet not authorized.
 ```
 
 ## Read in this order
@@ -29,5 +30,5 @@ Not mainnet authorized.
 ## Next real step
 
 ```text
-Compile/tests → Ethereum Sepolia rehearsal → filled Evidence Docket → external audit closure.
+Compile/tests → automated security/toolchain review → internal security review → Ethereum Sepolia rehearsal → filled Evidence Docket → AGIALPHA token verification → founder authorization decision.
 ```
