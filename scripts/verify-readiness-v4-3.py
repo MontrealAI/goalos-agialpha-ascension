@@ -31,14 +31,27 @@ def main():
         txt=sol.read_text(encoding='utf-8', errors='ignore')
         if 'pragma solidity ^0.8.24;' not in txt: errors.append(f'missing pragma: {sol.relative_to(ROOT)}')
         if txt.count('{')!=txt.count('}'): errors.append(f'brace mismatch: {sol.relative_to(ROOT)}')
+    (ROOT/'qa').mkdir(exist_ok=True)
+    generated_at=datetime.datetime.now(datetime.UTC).isoformat()
+    report={'package':'GoalOS_AGIALPHA_Ascension_Ethereum_Mainnet_Implementation_v4_3_GATE_CLEAN_EVIDENCE_READY','generated_at':generated_at,'static_readiness':'passed' if not errors else 'failed','files_checked':0,'errors':errors,'warnings':warnings,'status':'gate-clean evidence-ready audit candidate; mainnet not authorized','score_current_state':'9.6/10 audit-candidate package; not 10/10 until executed evidence and internal security review exist','next_gate':'real Ethereum Sepolia rehearsal and filled Evidence Docket'}
+    (ROOT/'qa/READINESS_REPORT_v4_3.json').write_text(json.dumps(report,indent=2),encoding='utf-8')
+    manifest=[]
+    manifest_path=ROOT/'qa/MANIFEST_v4_3.json'
+    for p in sorted(ROOT.rglob('*')):
+        rel=p.relative_to(ROOT).as_posix() if p.is_file() else ''
+        if p.is_file() and 'node_modules' not in p.parts and '.git' not in p.parts and p != manifest_path:
+            data=p.read_bytes(); manifest.append({'path':rel,'bytes':len(data),'sha256':hashlib.sha256(data).hexdigest()})
+    report['files_checked']=len(manifest)
+    (ROOT/'qa/READINESS_REPORT_v4_3.json').write_text(json.dumps(report,indent=2),encoding='utf-8')
+    # Re-hash the readiness report after files_checked is final so manifest entries
+    # match the committed evidence bundle. The manifest intentionally excludes
+    # itself because a file cannot contain its own stable SHA-256.
     manifest=[]
     for p in sorted(ROOT.rglob('*')):
-        if p.is_file() and 'node_modules' not in p.parts and '.git' not in p.parts:
-            data=p.read_bytes(); manifest.append({'path':p.relative_to(ROOT).as_posix(),'bytes':len(data),'sha256':hashlib.sha256(data).hexdigest()})
-    (ROOT/'qa').mkdir(exist_ok=True)
-    (ROOT/'qa/MANIFEST_v4_3.json').write_text(json.dumps({'generated_at':datetime.datetime.now(datetime.UTC).isoformat(),'files':manifest},indent=2),encoding='utf-8')
-    report={'package':'GoalOS_AGIALPHA_Ascension_Ethereum_Mainnet_Implementation_v4_3_GATE_CLEAN_EVIDENCE_READY','generated_at':datetime.datetime.now(datetime.UTC).isoformat(),'static_readiness':'passed' if not errors else 'failed','files_checked':len(manifest),'errors':errors,'warnings':warnings,'status':'gate-clean evidence-ready audit candidate; mainnet not authorized','score_current_state':'9.6/10 audit-candidate package; not 10/10 until executed evidence and internal security review exist','next_gate':'real Ethereum Sepolia rehearsal and filled Evidence Docket'}
-    (ROOT/'qa/READINESS_REPORT_v4_3.json').write_text(json.dumps(report,indent=2),encoding='utf-8')
+        rel=p.relative_to(ROOT).as_posix() if p.is_file() else ''
+        if p.is_file() and 'node_modules' not in p.parts and '.git' not in p.parts and p != manifest_path:
+            data=p.read_bytes(); manifest.append({'path':rel,'bytes':len(data),'sha256':hashlib.sha256(data).hexdigest()})
+    manifest_path.write_text(json.dumps({'generated_at':generated_at,'files':manifest},indent=2),encoding='utf-8')
     print(json.dumps(report,indent=2))
     if errors: raise SystemExit(1)
 if __name__=='__main__': main()
