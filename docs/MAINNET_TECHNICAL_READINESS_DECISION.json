@@ -1,75 +1,44 @@
 {
   "status": "NO",
   "TECHNICALLY_MAINNET_READY": "NO",
-  "commit": "84e36a3f1f6de34426cb30f71668c7923bf9a5c8",
+  "commit": "22df48dbbcee033b402e077819234a220e3c64ae",
   "chain": "ethereum",
   "chainId": 1,
   "agialphaToken": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
   "evidence": {
-    "baselineGreenReport": {
-      "path": "qa/BASELINE_GREEN_REPORT.json",
-      "sha256": "ad932c45ad4f671b5c2723a3fcb9e1190d4056523582f9914d90b1bd0b75ea0f",
-      "status": "BASELINE_GREEN"
+    "technical": {
+      "path": "qa/public-mainnet-technical-readiness-evidence.json",
+      "sha256": null,
+      "present": false,
+      "status": null
     },
-    "automatedSecurityToolchain": {
-      "summary": "audit/reports/2026-06-11-1803/audit-summary.json",
-      "clearanceReport": "audit/reports/2026-06-11-1803/toolchain-clearance-report.md",
-      "sha256": "615385e1e909940f26433789b8cf633c8c092e9b78c5955f9b72f887fcb57179",
-      "decision": "TECHNICALLY_MAINNET_READY_NO"
+    "sepolia": {
+      "path": "qa/public-sepolia-rehearsal-evidence.json",
+      "sha256": null,
+      "present": false,
+      "status": null
     },
-    "sepoliaEvidenceDocket": {
-      "path": "evidence/sepolia/EVIDENCE_DOCKET.json",
-      "sha256": "b831780175cdb307b07b5726cbd9a910d14755b61e48b6bb108660b5bbc5c98b",
-      "status": "PUBLIC_SEPOLIA_PENDING"
+    "preflight": {
+      "path": "qa/public-mainnet-preflight-evidence.json",
+      "sha256": null,
+      "present": false,
+      "status": null
     },
-    "agialphaTokenVerification": {
-      "path": "qa/AGIALPHA_TOKEN_VERIFICATION.json",
-      "sha256": "ff4a85c07580d253582259fa60698a2a1544f9d0875dca11b35313ae9df68842",
-      "status": "PENDING_RPC"
-    },
-    "mainnetPreflight": {
-      "path": "qa/ETHEREUM_MAINNET_PREFLIGHT.json",
-      "sha256": "1aa7fcf454971a4d3506e4d6deb5faaf4d8913aae75e223af6e977ef5845ea8d",
-      "status": "NOT_AUTHORIZED"
-    },
-    "mainnetForkSimulation": {
-      "path": "qa/ETHEREUM_MAINNET_FORK_SIMULATION.json",
-      "sha256": "c8f82b56ad6c1a59b712db05e58349607be42449b47dbfc02fd531abca31060e",
-      "status": "PENDING_RPC"
-    },
-    "dependencyTriage": {
-      "path": "docs/DEPENDABOT_TRIAGE_REPORT.md",
-      "sha256": "2e5e8d55eb2a926d8237027676e009d7b388eff65b200f219b276c83c4aaa62c"
-    },
-    "branchProtection": {
-      "path": "qa/BRANCH_PROTECTION_STATUS.json",
-      "sha256": "ee6957b841b920df2080cbb030c1e85e0f126dd6b7d26ab839ecf0130b0323f9",
-      "status": "NOT_VERIFIED"
+    "toolchain": {
+      "path": "qa/public-toolchain-clearance-evidence.json",
+      "sha256": null,
+      "present": false,
+      "status": null
     }
   },
   "blockers": [
-    "slither is pending/environment-blocked or not internally accepted",
-    "echidna is pending/environment-blocked or not internally accepted",
-    "mythril is pending/environment-blocked or not internally accepted",
-    "medusa is pending/environment-blocked or not internally accepted",
-    "foundry is pending/environment-blocked or not internally accepted",
-    "halmos is pending/environment-blocked or not internally accepted",
-    "semgrep is pending/environment-blocked or not internally accepted",
-    "smtchecker is pending/environment-blocked or not internally accepted",
-    "osv-scanner is pending/environment-blocked or not internally accepted",
-    "actionlint is pending/environment-blocked or not internally accepted",
-    "shellcheck is pending/environment-blocked or not internally accepted",
-    "gitleaks is pending/environment-blocked or not internally accepted",
-    "Internal security review is missing or not PASSED",
-    "Public Ethereum Sepolia replay is not completed with public receipts",
-    "Public Sepolia independent RPC receipt verification is missing or not PASSED",
-    "AGIALPHA Ethereum Mainnet token verification is missing or not PASSED",
-    "Ethereum Mainnet read-only preflight is missing or not PASSED_READ_ONLY",
-    "Ethereum Mainnet fork simulation is missing or not PASSED",
-    "Main branch protection is not enabled and no explicit founder risk acceptance is recorded"
+    "PRIVATE_OPERATOR_EVIDENCE_PENDING",
+    "PRIVATE_OPERATOR_EVIDENCE_PENDING: missing qa/public-mainnet-technical-readiness-evidence.json",
+    "PRIVATE_OPERATOR_EVIDENCE_PENDING: missing qa/public-sepolia-rehearsal-evidence.json",
+    "PRIVATE_OPERATOR_EVIDENCE_PENDING: missing qa/public-mainnet-preflight-evidence.json",
+    "PRIVATE_OPERATOR_EVIDENCE_PENDING: missing qa/public-toolchain-clearance-evidence.json"
   ],
-  "generatedAt": "2026-06-11T18:15:47.382437+00:00",
+  "generatedAt": "2026-06-11T18:43:57.504916+00:00",
   "generatedBy": "scripts/mainnet-readiness-check.py",
-  "deploymentCommandIfReady": null,
   "mainnetDeploymentExecuted": false
 }

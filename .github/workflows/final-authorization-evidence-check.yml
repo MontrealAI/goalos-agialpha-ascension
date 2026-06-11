@@ -1,0 +1,23 @@
+name: Final Authorization Evidence Check
+on:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  public-redacted-evidence:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Public-only status assertion
+        run: python scripts/assert_public_status.py
+      - name: Public-only authorization check (no secrets required)
+        run: python scripts/mainnet-authorization-check.py --public-only
+      - uses: actions/upload-artifact@v5
+        if: always()
+        with:
+          name: public-mainnet-authorization-decision
+          path: |
+            docs/MAINNET_TECHNICAL_READINESS_DECISION.*
+            docs/MAINNET_DEPLOYMENT_AUTHORIZATION_DECISION.*
+            docs/ETHEREUM_MAINNET_AUTHORIZATION_DECISION.*

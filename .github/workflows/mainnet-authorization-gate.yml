@@ -12,7 +12,7 @@ jobs:
       - name: Assert public status remains bounded
         run: python scripts/assert_public_status.py
       - name: Read-only gate check; no install and no deployment
-        run: python scripts/mainnet-authorization-check.py
+        run: python scripts/mainnet-authorization-check.py --public-only
       - uses: actions/upload-artifact@v5
         if: always()
         with:

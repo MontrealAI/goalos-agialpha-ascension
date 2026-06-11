@@ -1,16 +1,9 @@
 # Ethereum Mainnet Fork Simulation Report
 
-Status: **PENDING_RPC**
+Status: **PRIVATE_OPERATOR_EVIDENCE_PENDING**.
 
-SHA-256: `c639db16f9e812d162d2501cc4faf87b9ba68ee5d3dcaf0fb9f7500c1f31cf23`
+Mainnet fork simulation is a private operator task because it uses local RPC configuration. Public GitHub does not require or store RPC URLs, private addresses, private wallet metadata, or deployment ceremony details.
 
-## Checks
-- Fork RPC supplied: false
-- Existing AGIALPHA token code verified on fork: false
-- Contracts deployed to fork: 0
-- Mainnet broadcast: false
+The private simulation report remains under `.private/`; only the redacted hash commitment in `qa/public-mainnet-preflight-evidence.json` may be committed.
 
-## Blockers
-- MAINNET_RPC_URL or ETHEREUM_MAINNET_RPC_URL is required for a real Ethereum mainnet fork simulation
-
-No Ethereum Mainnet broadcast occurred.
+No Ethereum Mainnet deployment occurred.

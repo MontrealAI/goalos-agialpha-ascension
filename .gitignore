@@ -6,3 +6,23 @@ typechain-types/
 deployments/*.local.json
 coverage/
 .DS_Store
+
+# Private operator inputs/evidence (never commit)
+.private/
+/private/
+*.private.json
+*.private.env
+*.secret
+*.key
+*.pem
+*.p12
+.env.*
+!.env.example
+wallets/
+keys/
+founder-approval-private.*
+address-ceremony-private.*
+mainnet-operator-input.json
+mainnet-operator.env
+sepolia-operator.env
+deployment-private.env

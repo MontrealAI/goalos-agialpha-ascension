@@ -1,10 +1,7 @@
-# Sepolia Inputs Required
+# Private Sepolia Inputs Required (Not Committed)
 
-Public Ethereum Sepolia rehearsal cannot be upgraded from local-only evidence to public evidence until these inputs are supplied securely:
+Status: **PRIVATE_OPERATOR_EVIDENCE_PENDING**.
 
-- `SEPOLIA_RPC_URL`
-- `SEPOLIA_RPC_URL_SECONDARY` when available
-- `SEPOLIA_DEPLOYER_PRIVATE_KEY`
-- `ETHERSCAN_API_KEY` if source verification is used
+Ethereum Sepolia replay inputs are private operator inputs. They must stay in `.private/` or the operator's local environment and must not be committed, added to public workflow logs, or uploaded as public artifacts.
 
-No secrets may be committed. Until public receipts and independent verification exist, `TECHNICALLY_MAINNET_READY` must remain NO.
+Public GitHub stores only the sanitized commitment output `qa/public-sepolia-rehearsal-evidence.json` after the private operator run completes.

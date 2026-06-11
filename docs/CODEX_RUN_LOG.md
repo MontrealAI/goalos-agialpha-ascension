@@ -43,7 +43,7 @@
 | `npm run audit:all` | Passed with documented pending tools | `audit/reports/2026-06-11-1553/audit-summary.json` |
 | `npm run audit:summarize` | Passed | audit summary generated |
 | `npm run audit:fail-on-critical` | Passed | no unresolved critical/high findings in summary |
-| `npm run verify:agialpha-token` | Warning / pending RPC | no `ETHEREUM_MAINNET_RPC_URL`; read-only verification not performed |
+| `npm run verify:agialpha-token` | Warning / pending RPC | private operator preflight evidence pending; public GitHub does not require RPC |
 | `npm run preflight:ethereum-mainnet` | Passed, expected `NOT_AUTHORIZED` | missing real gate env vars and RPC |
 
 ## Sepolia/public-network note

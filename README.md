@@ -1,8 +1,10 @@
 # GoalOS AGIALPHA Ascension
 
 GoalOS AGIALPHA Ascension v4.4 candidate.
-Automated security/toolchain review: completed with blockers.
-Ethereum Sepolia rehearsal: completed locally on chainId 11155111; public Sepolia replay pending unless real RPC/deployer evidence is supplied.
+Automated/internal security toolchain: completed with blockers, based on public evidence.
+Local deterministic rehearsal: available for public CI.
+Private Sepolia evidence: pending private operator run; only redacted commitments may be committed.
+Private mainnet preflight: pending private operator run; only redacted commitments may be committed.
 Dependency PRs: triaged, not blindly merged.
 Not externally audited.
 Ethereum Mainnet technical readiness: NO.
@@ -34,6 +36,13 @@ Ethereum Mainnet authorization: NO.
 ```
 
 Do **not** call this repository externally audited, mainnet authorized, legally approved, tax reviewed, production deployed, or guaranteed non-security.
+
+
+## No-public-secrets authorization model
+
+Public GitHub does **not** require or store RPC URLs, private keys, founder signatures, founder/treasury/admin addresses, wallet metadata, or private operator notes. Ethereum Mainnet readiness can become YES only after the private operator runs local private workflows and commits redacted public evidence commitments under `qa/public-*.json`.
+
+Private inputs stay under `.private/` and are gitignored. Public evidence contains hashes, pass/fail summaries, commit SHA, chain target, and the fixed AGIALPHA token address only.
 
 ## Existing AGIALPHA token
 

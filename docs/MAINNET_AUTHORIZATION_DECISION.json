@@ -1,78 +1,30 @@
 {
   "status": "NO",
   "MAINNET_DEPLOYMENT_AUTHORIZED": "NO",
-  "commit": "84e36a3f1f6de34426cb30f71668c7923bf9a5c8",
+  "commit": "22df48dbbcee033b402e077819234a220e3c64ae",
   "chain": "ethereum",
   "chainId": 1,
   "agialphaToken": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
   "evidence": {
-    "technicalReadinessDecision": {
-      "path": "docs/MAINNET_TECHNICAL_READINESS_DECISION.json",
-      "sha256": "78774d6331c0970d5d8f26fe3e8df65359a9637d0aec0629667e6572ba2d0831",
-      "status": "NO"
+    "deployment": {
+      "path": "qa/public-mainnet-deployment-authorization-evidence.json",
+      "sha256": null,
+      "present": false,
+      "status": null
     },
-    "addressCeremony": {
-      "path": "qa/ADDRESS_CEREMONY.json",
-      "sha256": "aaf632b74a3668608828db6f8844296bb5ce96dd2f9f2ee13549a65559a171dc",
-      "status": "NOT_COMPLETE"
-    },
-    "founderApproval": {
-      "path": "qa/FOUNDER_APPROVAL.json",
-      "sha256": "5bec23f6f81501b3e8b32a9e28d0c68df4e06a968b56b67e1218cca399f84629",
-      "status": "NOT_COMPLETE"
-    },
-    "policySignoffsOrWaivers": {
-      "path": "qa/POLICY_SIGNOFFS_OR_WAIVERS.json",
-      "sha256": "fdea7172b1a785fd8d108888eacee4e2caef4a8a4375658a1119ee49be7774cb",
-      "status": "REQUIRED_BLOCKER"
+    "technical": {
+      "path": "qa/public-mainnet-technical-readiness-evidence.json",
+      "sha256": null,
+      "present": false,
+      "status": null
     }
   },
   "blockers": [
-    "TECHNICALLY_MAINNET_READY is not YES",
-    "technical: slither is pending/environment-blocked or not internally accepted",
-    "technical: echidna is pending/environment-blocked or not internally accepted",
-    "technical: mythril is pending/environment-blocked or not internally accepted",
-    "technical: medusa is pending/environment-blocked or not internally accepted",
-    "technical: foundry is pending/environment-blocked or not internally accepted",
-    "technical: halmos is pending/environment-blocked or not internally accepted",
-    "technical: semgrep is pending/environment-blocked or not internally accepted",
-    "technical: smtchecker is pending/environment-blocked or not internally accepted",
-    "technical: osv-scanner is pending/environment-blocked or not internally accepted",
-    "technical: actionlint is pending/environment-blocked or not internally accepted",
-    "technical: shellcheck is pending/environment-blocked or not internally accepted",
-    "technical: gitleaks is pending/environment-blocked or not internally accepted",
-    "technical: Internal security review is missing or not PASSED",
-    "technical: Public Ethereum Sepolia replay is not completed with public receipts",
-    "technical: Public Sepolia independent RPC receipt verification is missing or not PASSED",
-    "technical: AGIALPHA Ethereum Mainnet token verification is missing or not PASSED",
-    "technical: Ethereum Mainnet read-only preflight is missing or not PASSED_READ_ONLY",
-    "technical: Ethereum Mainnet fork simulation is missing or not PASSED",
-    "technical: Main branch protection is not enabled and no explicit founder risk acceptance is recorded",
-    "Treasury/founder/admin address ceremony is missing or not PASSED",
-    "Address ceremony missing valid founderAddress",
-    "Address ceremony missing valid deployerAddress",
-    "Address ceremony missing valid treasuryAddress",
-    "Address ceremony missing valid commercializationPerformanceAdmin",
-    "Address ceremony missing valid proofRewardsAdmin",
-    "Address ceremony missing valid liquidityAdmin",
-    "Address ceremony missing valid securityAdmin",
-    "Address ceremony missing valid communityAdmin",
-    "Address ceremony missing valid emergencyAdmin",
-    "Founder deployment approval is missing or not PASSED",
-    "Founder approval message hash missing or invalid",
-    "Founder approval signer missing or invalid",
-    "Founder approval signature is not verified",
-    "Policy signoffs/waivers are missing or not PASSED",
-    "Policy gate LEGAL_TOKEN_COUNSEL is REQUIRED_BLOCKER",
-    "Policy gate TAX_ACCOUNTING is REQUIRED_BLOCKER",
-    "Policy gate PUBLIC_CLAIMS is REQUIRED_BLOCKER",
-    "Policy gate TREASURY is REQUIRED_BLOCKER",
-    "Policy gate AUTOMATED_SECURITY_TOOLCHAIN is REQUIRED_BLOCKER",
-    "Policy gate INTERNAL_SECURITY_REVIEW is REQUIRED_BLOCKER",
-    "ALLOW_MAINNET_DEPLOYMENT must equal YES_FOUNDER_APPROVED_MAINNET_AUTHORIZATION only after all evidence and founder approval are complete",
-    "FOUNDER_APPROVAL_HASH missing or not bytes32"
+    "PRIVATE_OPERATOR_EVIDENCE_PENDING",
+    "PRIVATE_OPERATOR_EVIDENCE_PENDING: missing qa/public-mainnet-deployment-authorization-evidence.json",
+    "PRIVATE_OPERATOR_EVIDENCE_PENDING: missing qa/public-mainnet-technical-readiness-evidence.json"
   ],
-  "generatedAt": "2026-06-11T18:15:48.366699+00:00",
+  "generatedAt": "2026-06-11T18:43:57.696634+00:00",
   "generatedBy": "scripts/mainnet-deployment-authorization-check.py",
   "mainnetDeploymentExecuted": false
 }

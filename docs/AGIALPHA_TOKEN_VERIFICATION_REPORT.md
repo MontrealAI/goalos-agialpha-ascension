@@ -1,12 +1,9 @@
 # AGIALPHA Token Verification Report
 
-Status: **PENDING_RPC**
+Status: **PRIVATE_OPERATOR_EVIDENCE_PENDING**.
 
-```json
-{
-  "status": "PENDING_RPC",
-  "address": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
-  "blocker": "ETHEREUM_MAINNET_RPC_URL is required for read-only token code verification",
-  "mainnetAuthorized": false
-}
-```
+The canonical Ethereum Mainnet AGIALPHA token address remains `0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA`.
+
+Token-code and ERC20 metadata verification are performed locally by the private operator using local RPC configuration. Public GitHub stores only the redacted verification commitment in `qa/public-mainnet-preflight-evidence.json`.
+
+No new AGIALPHA token is deployed or minted by this repository.

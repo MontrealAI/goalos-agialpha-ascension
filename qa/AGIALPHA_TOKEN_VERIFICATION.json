@@ -1,6 +1,8 @@
 {
-  "status": "PENDING_RPC",
+  "status": "PRIVATE_OPERATOR_EVIDENCE_PENDING",
   "address": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
-  "blocker": "ETHEREUM_MAINNET_RPC_URL is required for read-only token code verification",
+  "publicGitHubRequiresRpc": false,
+  "publicRedactedOutput": "qa/public-mainnet-preflight-evidence.json",
+  "blocker": "PRIVATE_OPERATOR_EVIDENCE_PENDING: token verification is performed locally by the private operator and committed only as a redacted hash commitment",
   "mainnetAuthorized": false
 }

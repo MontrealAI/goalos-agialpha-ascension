@@ -22,7 +22,7 @@ jobs:
       - name: Assert public status remains not authorized
         run: python scripts/assert_public_status.py
       - name: Run mainnet authorization checker
-        run: python scripts/mainnet-authorization-check.py
+        run: python scripts/mainnet-authorization-check.py --public-only
       - uses: actions/upload-artifact@v5
         if: always()
         with:

@@ -1,23 +1,27 @@
 {
   "status": "NO",
   "ETHEREUM_MAINNET_AUTHORIZED": "NO",
-  "commit": "84e36a3f1f6de34426cb30f71668c7923bf9a5c8",
+  "commit": "22df48dbbcee033b402e077819234a220e3c64ae",
   "chain": "ethereum",
   "chainId": 1,
   "agialphaToken": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
   "evidence": {
-    "technicalReadinessSha256": "78774d6331c0970d5d8f26fe3e8df65359a9637d0aec0629667e6572ba2d0831",
-    "deploymentAuthorizationSha256": "5a401fa845b445d8130e4457e20a71f171b790abd30b6547b3bf9f8a693d96e4"
+    "technicalReadinessSha256": "e01e1eb39bfbbf8d613915c919441d0491ac481cd9bffb41e62edbab31af135d",
+    "deploymentAuthorizationSha256": "386a4ae1b29630f9ec7187b627681afdd840fbf5e865be8f3f5b318fa2f16473",
+    "ethereumAuthorizationEvidence": {
+      "path": "qa/public-ethereum-mainnet-authorization-evidence.json",
+      "sha256": null,
+      "present": false,
+      "status": null
+    }
   },
   "blockers": [
+    "PRIVATE_OPERATOR_EVIDENCE_PENDING",
     "TECHNICALLY_MAINNET_READY is not YES",
     "MAINNET_DEPLOYMENT_AUTHORIZED is not YES",
-    "MAINNET_TARGET must equal ethereum",
-    "AGIALPHA_TOKEN_ADDRESS must match the existing Ethereum Mainnet AGIALPHA token",
-    "ALLOW_MAINNET_DEPLOYMENT must equal YES_FOUNDER_APPROVED_MAINNET_AUTHORIZATION",
-    "FOUNDER_APPROVAL_HASH missing or not bytes32"
+    "PRIVATE_OPERATOR_EVIDENCE_PENDING: missing qa/public-ethereum-mainnet-authorization-evidence.json"
   ],
-  "generatedAt": "2026-06-11T18:15:49.423158+00:00",
+  "generatedAt": "2026-06-11T18:43:57.880362+00:00",
   "generatedBy": "scripts/ethereum-mainnet-authorization-check.py",
   "finalManualDeploymentCommand": null,
   "mainnetDeploymentExecuted": false
