@@ -1,7 +1,7 @@
 {
   "status": "NO",
   "TECHNICALLY_MAINNET_READY": "NO",
-  "commit": "8e398a2e9a277932bda95c75f34b4b93c24cbe9c",
+  "commit": "84e36a3f1f6de34426cb30f71668c7923bf9a5c8",
   "chain": "ethereum",
   "chainId": 1,
   "agialphaToken": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
@@ -34,7 +34,7 @@
     },
     "mainnetForkSimulation": {
       "path": "qa/ETHEREUM_MAINNET_FORK_SIMULATION.json",
-      "sha256": "1a4db9ef49e66ec1eeeefd71a75e13196906a70cd175598b112865c613e06dc6",
+      "sha256": "c8f82b56ad6c1a59b712db05e58349607be42449b47dbfc02fd531abca31060e",
       "status": "PENDING_RPC"
     },
     "dependencyTriage": {
@@ -68,7 +68,7 @@
     "Ethereum Mainnet fork simulation is missing or not PASSED",
     "Main branch protection is not enabled and no explicit founder risk acceptance is recorded"
   ],
-  "generatedAt": "2026-06-11T18:04:50.626415+00:00",
+  "generatedAt": "2026-06-11T18:15:47.382437+00:00",
   "generatedBy": "scripts/mainnet-readiness-check.py",
   "deploymentCommandIfReady": null,
   "mainnetDeploymentExecuted": false

@@ -56,7 +56,7 @@
     "mainnet:readiness-check": "python scripts/mainnet-readiness-check.py",
     "mainnet:deployment-authorization-check": "python scripts/mainnet-deployment-authorization-check.py",
     "ethereum-mainnet:authorization-check": "python scripts/ethereum-mainnet-authorization-check.py",
-    "mainnet:fork-simulate": "ts-node scripts/mainnet-fork-simulate.ts"
+    "mainnet:fork-simulate": "HARDHAT_FORK_MAINNET=1 hardhat run scripts/mainnet-fork-simulate.ts --network hardhat"
   },
   "dependencies": {
     "@openzeppelin/contracts": "4.9.6",
