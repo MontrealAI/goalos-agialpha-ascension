@@ -11,8 +11,19 @@ jobs:
       - uses: actions/checkout@v5
       - name: Public-only status assertion
         run: python scripts/assert_public_status.py
-      - name: Public-only authorization check (no secrets required)
-        run: python scripts/mainnet-authorization-check.py --public-only
+      - name: No private operator data in public repo
+        run: python scripts/no_private_operator_data_check.py
+      - name: Public or redacted authorization check (no secrets required)
+        shell: bash
+        run: |
+          if test -f qa/public-mainnet-technical-readiness-evidence.json \
+             && test -f qa/public-mainnet-deployment-authorization-evidence.json \
+             && test -f qa/public-ethereum-mainnet-authorization-evidence.json; then
+            python scripts/mainnet-authorization-check.py --with-redacted-private-evidence
+          else
+            echo "PRIVATE_EVIDENCE_PENDING"
+            python scripts/mainnet-authorization-check.py --public-only
+          fi
       - uses: actions/upload-artifact@v5
         if: always()
         with:

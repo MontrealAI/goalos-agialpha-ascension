@@ -8,10 +8,10 @@ python scripts/private/validate-private-operator-inputs.py --env .private/mainne
 python scripts/private/run-private-sepolia-rehearsal.py --env .private/mainnet-operator.env --input .private/mainnet-operator-input.json
 python scripts/private/run-private-mainnet-preflight.py --env .private/mainnet-operator.env --input .private/mainnet-operator-input.json
 python scripts/private/generate-founder-approval-message.py --input .private/mainnet-operator-input.json
-python scripts/private/verify-founder-approval-private.py --input .private/mainnet-operator-input.json
-python scripts/private/generate-address-ceremony-commitment.py --input .private/mainnet-operator-input.json
-python scripts/private/generate-redacted-public-evidence.py --input .private/mainnet-operator-input.json
+python scripts/private/verify-founder-approval-private.py --env .private/mainnet-operator.env --input .private/mainnet-operator-input.json
+python scripts/private/generate-address-ceremony-commitment.py --env .private/mainnet-operator.env --input .private/mainnet-operator-input.json
+python scripts/private/generate-redacted-public-evidence.py --env .private/mainnet-operator.env --input .private/mainnet-operator-input.json
 python scripts/mainnet-authorization-check.py --with-redacted-private-evidence
 ```
 
-Do not commit `.private/`.
+Only redacted public `qa/public-*.json` files may be committed. Do not commit `.private/`.

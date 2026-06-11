@@ -22,6 +22,8 @@ jobs:
         run: python scripts/repository_production_readiness_check.py
       - name: No paid/private products check
         run: python scripts/no_paid_products_check.py
+      - name: No private operator data check
+        run: python scripts/no_private_operator_data_check.py
 
   contracts-advisory:
     runs-on: ubuntu-latest
@@ -44,5 +46,5 @@ jobs:
         run: npm run readiness:v4.3
       - name: Evidence Docket template
         run: npm run evidence:docket:template
-      - name: Mainnet authorization check must remain blocked without gates
-        run: npm run mainnet:authorization-check
+      - name: Public-only mainnet authorization check (private evidence pending is expected)
+        run: npm run mainnet:authorization-check -- --public-only

@@ -1,7 +1,7 @@
 {
   "status": "NO",
   "TECHNICALLY_MAINNET_READY": "NO",
-  "commit": "f31a9c2b7aab4091e8bfb8194a49081c4dfbed0b",
+  "commit": "4b1f8aa9d264898b8d3b3aae5e95d3e29baf8286",
   "chain": "ethereum",
   "chainId": 1,
   "agialphaToken": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
@@ -33,12 +33,14 @@
   },
   "blockers": [
     "PRIVATE_OPERATOR_EVIDENCE_PENDING",
+    "Run --with-redacted-private-evidence to evaluate committed redacted private evidence",
     "PRIVATE_OPERATOR_EVIDENCE_PENDING: missing qa/public-mainnet-technical-readiness-evidence.json",
     "PRIVATE_OPERATOR_EVIDENCE_PENDING: missing qa/public-sepolia-rehearsal-evidence.json",
     "PRIVATE_OPERATOR_EVIDENCE_PENDING: missing qa/public-mainnet-preflight-evidence.json",
     "PRIVATE_OPERATOR_EVIDENCE_PENDING: missing qa/public-toolchain-clearance-evidence.json"
   ],
-  "generatedAt": "2026-06-11T19:05:43.801197+00:00",
+  "reason": "PRIVATE_OPERATOR_EVIDENCE_PENDING",
+  "generatedAt": "2026-06-11T19:24:24.250909+00:00",
   "generatedBy": "scripts/mainnet-readiness-check.py",
   "mainnetDeploymentExecuted": false
 }

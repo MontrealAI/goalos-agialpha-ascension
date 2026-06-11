@@ -1,27 +1,118 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "Public Redacted Mainnet Authorization Evidence",
+  "title": "Public Redacted Mainnet Deployment Authorization Evidence",
   "type": "object",
-  "required": ["redacted", "containsSecrets", "containsPrivateAddresses", "chain", "chainId", "agialphaToken", "commit", "generatedAt"],
+  "additionalProperties": true,
+  "required": [
+    "redacted",
+    "containsSecrets",
+    "containsPrivateAddresses",
+    "chain",
+    "chainId",
+    "agialphaToken",
+    "commit",
+    "toolchainClearanceHash",
+    "sepoliaEvidenceDocketHash",
+    "sepoliaReceiptVerificationHash",
+    "mainnetPreflightHash",
+    "addressCeremonyCommitmentHash",
+    "founderApprovalCommitmentHash",
+    "policyDecisionCommitmentHash",
+    "technicalReadiness",
+    "deploymentAuthorization",
+    "ethereumMainnetAuthorization",
+    "blockers",
+    "generatedAt"
+  ],
   "properties": {
-    "redacted": {"const": true},
-    "containsSecrets": {"const": false},
-    "containsPrivateAddresses": {"const": false},
-    "chain": {"const": "ethereum"},
-    "chainId": {"const": 1},
-    "agialphaToken": {"const": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA"},
-    "commit": {"type": "string"},
-    "toolchainClearanceHash": {"type": "string", "pattern": "^0x[0-9a-fA-F]{64}$"},
-    "sepoliaEvidenceDocketHash": {"type": "string", "pattern": "^0x[0-9a-fA-F]{64}$"},
-    "sepoliaReceiptVerificationHash": {"type": "string", "pattern": "^0x[0-9a-fA-F]{64}$"},
-    "mainnetPreflightHash": {"type": "string", "pattern": "^0x[0-9a-fA-F]{64}$"},
-    "addressCeremonyCommitmentHash": {"type": "string", "pattern": "^0x[0-9a-fA-F]{64}$"},
-    "founderApprovalCommitmentHash": {"type": "string", "pattern": "^0x[0-9a-fA-F]{64}$"},
-    "policyDecisionCommitmentHash": {"type": "string", "pattern": "^0x[0-9a-fA-F]{64}$"},
-    "technicalReadiness": {"enum": ["YES", "NO"]},
-    "deploymentAuthorization": {"enum": ["YES", "NO"]},
-    "ethereumMainnetAuthorization": {"enum": ["YES", "NO"]},
-    "blockers": {"type": "array", "items": {"type": "string"}},
-    "generatedAt": {"type": "string"}
+    "redacted": {
+      "const": true
+    },
+    "containsSecrets": {
+      "const": false
+    },
+    "containsPrivateAddresses": {
+      "const": false
+    },
+    "chain": {
+      "const": "ethereum"
+    },
+    "chainId": {
+      "const": 1
+    },
+    "agialphaToken": {
+      "const": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA"
+    },
+    "commit": {
+      "type": "string",
+      "minLength": 7
+    },
+    "toolchainClearanceHash": {
+      "type": "string",
+      "pattern": "^0x[0-9a-fA-F]{64}$"
+    },
+    "sepoliaEvidenceDocketHash": {
+      "type": "string",
+      "pattern": "^0x[0-9a-fA-F]{64}$"
+    },
+    "sepoliaReceiptVerificationHash": {
+      "type": "string",
+      "pattern": "^0x[0-9a-fA-F]{64}$"
+    },
+    "mainnetPreflightHash": {
+      "type": "string",
+      "pattern": "^0x[0-9a-fA-F]{64}$"
+    },
+    "addressCeremonyCommitmentHash": {
+      "type": "string",
+      "pattern": "^0x[0-9a-fA-F]{64}$"
+    },
+    "founderApprovalCommitmentHash": {
+      "type": "string",
+      "pattern": "^0x[0-9a-fA-F]{64}$"
+    },
+    "policyDecisionCommitmentHash": {
+      "type": "string",
+      "pattern": "^0x[0-9a-fA-F]{64}$"
+    },
+    "technicalReadiness": {
+      "enum": [
+        "YES",
+        "NO"
+      ]
+    },
+    "deploymentAuthorization": {
+      "enum": [
+        "YES",
+        "NO"
+      ]
+    },
+    "ethereumMainnetAuthorization": {
+      "enum": [
+        "YES",
+        "NO"
+      ]
+    },
+    "blockers": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "generatedAt": {
+      "type": "string"
+    },
+    "booleans": {
+      "type": "object"
+    },
+    "founderApprovalHeldPrivately": {
+      "type": "boolean"
+    },
+    "founderApprovalVerified": {
+      "type": "boolean"
+    },
+    "publicClaimsBoundaryClean": {
+      "type": "boolean"
+    }
   }
 }

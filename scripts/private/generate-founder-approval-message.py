@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 from common import pathlib, parser, read_json, AGIALPHA, git_commit
-args=parser().parse_args(); data=read_json(pathlib.Path(args.input))
+
+args = parser().parse_args()
+_ = read_json(pathlib.Path(args.input))
 print(f'''I approve Ethereum Mainnet deployment authorization for GoalOS AGIALPHA Ascension.
 
 Repository: MontrealAI/goalos-agialpha-ascension

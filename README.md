@@ -110,9 +110,10 @@ Avoid claims about investment, yield, revenue-share, price-target, guaranteed re
 
 ## Quick start for engineers
 
+Public CI and local public checks require no RPC URL, no private key, no founder signature, and no private addresses.
+
 ```bash
-npm install
-cp .env.example .env
+npm ci
 npm run compile
 npm test
 npm run test:all
@@ -120,13 +121,32 @@ npm run static-check
 npm run readiness:v4.3
 npm run assert:public-status
 npm run evidence:docket:template
+npm run repo:no-private-operator-data
+python scripts/mainnet-authorization-check.py --public-only
 ```
 
-Ethereum Sepolia rehearsal:
+Deterministic public rehearsal uses a local chain simulation only and does not count as public Sepolia evidence:
 
 ```bash
-npm run sepolia:rehearsal
-npm run sepolia:evidence
+npm run local:authorization-rehearsal
+```
+
+Private Sepolia replay, mainnet read-only preflight, founder approval verification, address ceremony, and final deployment are local-only private operator workflows documented in `docs/PRIVATE_OPERATOR_LOCAL_COMMANDS.md`.
+
+After redacted private evidence is generated and committed, the status model becomes:
+
+```text
+GoalOS AGIALPHA Ascension v4.4 mainnet authorization candidate.
+Automated/internal security toolchain: passed.
+Local deterministic rehearsal: passed.
+Private Sepolia evidence commitment: present.
+Private mainnet preflight commitment: present.
+Founder/address ceremony commitments: present.
+Not externally audited.
+Ethereum Mainnet technical readiness can become YES only after accepted redacted private evidence; otherwise NO.
+Ethereum Mainnet deployment authorization can become YES only after accepted redacted private evidence; otherwise NO.
+Ethereum Mainnet authorization can become YES only after accepted redacted private evidence; otherwise NO.
+Mainnet deployment still requires local founder/deployer execution of the gated deployment command.
 ```
 
 Automated security/toolchain:
@@ -136,15 +156,6 @@ npm run audit:all
 npm run audit:summarize
 npm run audit:clearance-report
 npm run audit:fail-on-critical
-```
-
-Ethereum Mainnet remains blocked unless all computed gates are real and founder deployment approval is explicit:
-
-```bash
-npm run preflight:ethereum-mainnet
-npm run verify:agialpha-token
-npm run mainnet:readiness-check
-npm run mainnet:authorization-check
 ```
 
 ## Mainnet gate law
