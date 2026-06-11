@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-11T16:50:00.652649+00:00",
+  "generated_at": "2026-06-11T17:01:24.740349+00:00",
   "TECHNICALLY_MAINNET_READY": "NO",
   "blockers": [
     "slither is pending/environment-blocked or not internally accepted",
@@ -23,7 +23,7 @@
   "sepolia_manifest": "deployments/ethereum-sepolia.agialpha.latest.json",
   "sepolia_manifest_hash": "6c855d2fdb97d4e333e092b7d515d787b5bf724cc15441d9f57a410314730dbe",
   "sepolia_evidence_docket": "evidence/sepolia/SEPOLIA_EVIDENCE_DOCKET.latest.json",
-  "sepolia_evidence_docket_hash": "abcae6ab4eba7025c8100eef057f183d7d07fa5528435d687e09e9a8c039edf6",
+  "sepolia_evidence_docket_hash": "6ec48fea4b8e9c5b85d2c46720188303ae08165d53de344bc10bd04295336ba6",
   "agialpha_mainnet_token_required": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
   "deployment_command_if_ready": null,
   "final_founder_approval_required": true

@@ -1,0 +1,32 @@
+{
+  "status": "BASELINE_GREEN",
+  "branch": "codex/stabilize-ci-deps-toolchain-sepolia-readiness",
+  "dependency_baseline": {
+    "hardhat": "2.28.6",
+    "@nomicfoundation/hardhat-toolbox": "5.0.0",
+    "@nomicfoundation/hardhat-chai-matchers": "2.1.2",
+    "@openzeppelin/contracts": "4.9.6",
+    "typescript": "5.9.3"
+  },
+  "commands": {
+    "npm install": "PASS_WITH_AUDIT_WARNINGS",
+    "npm ci": "PASS_WITH_AUDIT_WARNINGS",
+    "npm ls hardhat @nomicfoundation/hardhat-toolbox @nomicfoundation/hardhat-chai-matchers @openzeppelin/contracts typescript": "PASS",
+    "npm run repo:all": "PASS",
+    "npm run repo:no-paid-products": "PASS",
+    "npm run compile": "PASS",
+    "npm test": "PASS",
+    "npm run test:all": "PASS",
+    "npm run static-check": "PASS",
+    "npm run readiness:v4.3": "PASS",
+    "npm run assert:public-status": "PASS",
+    "npm run evidence:docket:template": "PASS",
+    "python scripts/mainnet-authorization-check.py": "PASS_EXPECTED_NOT_AUTHORIZED",
+    "npm run audit:fail-on-critical": "PASS",
+    "npm run mainnet:readiness-check": "PASS_EXPECTED_NOT_READY",
+    "npm run mainnet:authorization-check": "PASS_EXPECTED_NOT_AUTHORIZED"
+  },
+  "mainnet_deployment_executed": false,
+  "technical_mainnet_readiness": "NO",
+  "mainnet_deployment_authorization": "NO"
+}

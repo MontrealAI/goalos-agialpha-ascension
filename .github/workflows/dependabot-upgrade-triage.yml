@@ -1,0 +1,41 @@
+name: Dependabot Upgrade Triage
+on:
+  pull_request:
+    paths:
+      - package.json
+      - package-lock.json
+      - .github/dependabot.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  dependency-triage:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '20'
+          cache: 'npm'
+      - name: npm ci dependency graph check
+        id: npm-ci
+        continue-on-error: true
+        run: npm ci
+      - name: Dependency graph snapshot
+        if: always()
+        continue-on-error: true
+        run: |
+          mkdir -p audit/reports/dependency-triage
+          npm ls hardhat @nomicfoundation/hardhat-toolbox @nomicfoundation/hardhat-chai-matchers @openzeppelin/contracts typescript > audit/reports/dependency-triage/npm-ls-current.txt 2>&1
+      - name: Compile/test triage
+        if: always() && steps.npm-ci.outcome == 'success'
+        continue-on-error: true
+        run: |
+          npm run compile
+          npm test
+          npm run static-check
+      - uses: actions/upload-artifact@v5
+        if: always()
+        with:
+          name: dependabot-upgrade-triage
+          path: audit/reports/dependency-triage/**

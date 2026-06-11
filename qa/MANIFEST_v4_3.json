@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-11T16:37:07.442025+00:00",
+  "generated_at": "2026-06-11T17:00:48.383117+00:00",
   "files": [
     {
       "path": ".editorconfig",
@@ -58,8 +58,8 @@
     },
     {
       "path": ".github/dependabot.yml",
-      "bytes": 367,
-      "sha256": "6aeff01913d534188e115e4afd679c85b3e1be5d8ccd627aba6bd76e0fed1c58"
+      "bytes": 779,
+      "sha256": "8f2e38b3290573787716eedc18819fe41ae2b448237d9520b4ec4c621fddf587"
     },
     {
       "path": ".github/labels.yml",
@@ -73,18 +73,23 @@
     },
     {
       "path": ".github/workflows/agialpha-audit-candidate-ci.yml",
-      "bytes": 1343,
-      "sha256": "b66c5405bda074b2d62d5621f89a31724bcbc3ca2bda0796f87266bd6e4345fa"
+      "bytes": 1361,
+      "sha256": "868eca289d2cdd8c4d275135c612a65d9db2fcd0d0f5010459358fbb78aee705"
+    },
+    {
+      "path": ".github/workflows/dependabot-upgrade-triage.yml",
+      "bytes": 1241,
+      "sha256": "e45826518192b23d0960aac0efcd36d0be878f1e96414d15f9fabf9b21c959f9"
     },
     {
       "path": ".github/workflows/mainnet-authorization-gate.yml",
-      "bytes": 534,
-      "sha256": "5d1338d0f23b9813fd481c081bf900ba1fd239ab18bb8f1dd611a5061cd17c75"
+      "bytes": 594,
+      "sha256": "f107de309801a597e32804c9f39d4b096237f652ceb14e406b082cc0ba562da9"
     },
     {
       "path": ".github/workflows/mainnet-gate-watch.yml",
-      "bytes": 556,
-      "sha256": "85361ac3994b805bafc6f5301543ff231ee89db5da5b218cf3204da9ad3c077a"
+      "bytes": 730,
+      "sha256": "4f52063f6d52e436fcc73aaa453dc8bd4d47e303906f609ca0c3801a9bd8762a"
     },
     {
       "path": ".github/workflows/repository-validation.yml",
@@ -98,8 +103,8 @@
     },
     {
       "path": ".github/workflows/solidity-audit-toolchain.yml",
-      "bytes": 478,
-      "sha256": "36670956d34722dbc007d564ad9f233985b5eac8be23a8c8a0390dbecd89d12a"
+      "bytes": 502,
+      "sha256": "a0f521e320bc5a356e3743df0ebb397f267ebce8b1688385c8caa200357cee85"
     },
     {
       "path": ".gitignore",
@@ -108,8 +113,8 @@
     },
     {
       "path": ".npmrc",
-      "bytes": 40,
-      "sha256": "82ec10e542055cb298f986af195e08e18081bf4940a7df57e27a5284240b56e2"
+      "bytes": 83,
+      "sha256": "5540c044f28876d3ef9695d4aebe0ff758ee3a1885cbb734b7d009a3c196149c"
     },
     {
       "path": ".solhint.json",
@@ -1598,13 +1603,18 @@
     },
     {
       "path": "audit/reports/2026-06-11-1635/unresolved-findings.csv",
-      "bytes": 1547,
-      "sha256": "108b44a9bb718a46ba00ffaff143940b537050301924c0750bbc2fd510d311d6"
+      "bytes": 1534,
+      "sha256": "a182596f7c6418fead32c5eb0627069ce20781fac64bb6247f62d4e39f439ae5"
     },
     {
       "path": "audit/reports/dependency-triage/openzeppelin-pattern-scan.md",
       "bytes": 22240,
       "sha256": "e6c3695d9ac3f5ef083d276558156882842dc71e7e65e88f10ce80665c1ebd92"
+    },
+    {
+      "path": "audit/reports/dependency-triage/pr-1-12-hardhat.md",
+      "bytes": 1119,
+      "sha256": "779966ecb270b481266569cbef282159b4e97f4ac19ba031760700118cf83110"
     },
     {
       "path": "audit/reports/dependency-triage/pr-2-hardhat-toolbox.md",
@@ -1659,7 +1669,7 @@
     {
       "path": "cache/solidity-files-cache.json",
       "bytes": 82958,
-      "sha256": "756fd1eb3e8ac40ec47d2792fc610fbe5357ca3b097851874dc059793fc438b1"
+      "sha256": "c865904e87eb1ebcba4b9f879f8e9fcf20d193f305b123b5c0a6e652e976e526"
     },
     {
       "path": "configs/echidna.yaml",
@@ -2068,8 +2078,13 @@
     },
     {
       "path": "docs/DEPENDABOT_TRIAGE_REPORT.md",
-      "bytes": 1262,
-      "sha256": "03bd423b851c0431f606a9c7f0d0f79418881ac40c6d7bd07603237f7300de98"
+      "bytes": 1515,
+      "sha256": "30a70229e51f20d0491d1485897b22f518a7969eb5fe92fc88620484fa58458f"
+    },
+    {
+      "path": "docs/DEPENDENCY_FREEZE_AND_TRIAGE_POLICY.md",
+      "bytes": 1366,
+      "sha256": "f0c8cd710d5e8ec7192e59193971037c526f8356218917ff5650971bd215bba9"
     },
     {
       "path": "docs/DEPENDENCY_UPGRADE_POLICY.md",
@@ -2103,8 +2118,8 @@
     },
     {
       "path": "docs/ETHEREUM_SEPOLIA_REHEARSAL_REPORT.md",
-      "bytes": 375,
-      "sha256": "1c4241e602169e3a4ca2a57306faecbc5fa097737aa9076a93aeb716d964db27"
+      "bytes": 578,
+      "sha256": "22677abbda31625c4fef01ac2982a03b60a01f853a5d6e6e82b20ca130c3efe2"
     },
     {
       "path": "docs/ETHEREUM_SEPOLIA_REHEARSAL_RUNBOOK.md",
@@ -2137,6 +2152,11 @@
       "sha256": "ff0d9f887c3ba61c47eaf16052ff0725d1aca898052ab45a9897dd563a3c7815"
     },
     {
+      "path": "docs/GITHUB_ACTIONS_NODE_VERSION_DECISION.md",
+      "bytes": 819,
+      "sha256": "b3518ddde98da24ad6fcd8c557a9da3c395a67efde9d909f0514042451e5bdea"
+    },
+    {
       "path": "docs/GITHUB_DAY_0_CHECKLIST.md",
       "bytes": 1171,
       "sha256": "a249ceb12684e19307527f7073e37b9722a0d4b9f5dc70d6e36dfc7576dca007"
@@ -2150,6 +2170,11 @@
       "path": "docs/GOVERNANCE_ROLE_CEREMONY_v4_2.md",
       "bytes": 775,
       "sha256": "943e89d262dfcaebf1d4feccec19bb6c3c63b3c67abf54ad4493161bd36e710e"
+    },
+    {
+      "path": "docs/HARDHAT_3_MIGRATION_DECISION.md",
+      "bytes": 1007,
+      "sha256": "5cd083444e1f532b69a1dc84d053f58cbac04cd6667ad12367fa3f58beaafdf0"
     },
     {
       "path": "docs/HARDHAT_TOOLBOX_7_MIGRATION_ASSESSMENT.md",
@@ -2183,23 +2208,23 @@
     },
     {
       "path": "docs/MAINNET_AUTHORIZATION_DECISION.json",
-      "bytes": 2826,
-      "sha256": "b392a25e6f815441a57248bd6508d7fbdc02394f9520534e0940d4b1ba183c62"
+      "bytes": 2950,
+      "sha256": "abed7bac67c07df0e261e3e289f8229b6a564ed5430a99ca336c3917bec21db6"
     },
     {
       "path": "docs/MAINNET_AUTHORIZATION_DECISION.md",
-      "bytes": 2726,
-      "sha256": "ea04f0ae1f4a4a60bab0ce2c58f9be86027598f4f38ecc5b4bb32a30e6105da0"
+      "bytes": 2845,
+      "sha256": "6cfe916f10e91b90b49103a809721308939bc598dfa79c395720192bbc9ddbf4"
     },
     {
       "path": "docs/MAINNET_DEPLOYMENT_AUTHORIZATION_DECISION.json",
-      "bytes": 2826,
-      "sha256": "b392a25e6f815441a57248bd6508d7fbdc02394f9520534e0940d4b1ba183c62"
+      "bytes": 2950,
+      "sha256": "abed7bac67c07df0e261e3e289f8229b6a564ed5430a99ca336c3917bec21db6"
     },
     {
       "path": "docs/MAINNET_DEPLOYMENT_AUTHORIZATION_DECISION.md",
-      "bytes": 2726,
-      "sha256": "ea04f0ae1f4a4a60bab0ce2c58f9be86027598f4f38ecc5b4bb32a30e6105da0"
+      "bytes": 2845,
+      "sha256": "6cfe916f10e91b90b49103a809721308939bc598dfa79c395720192bbc9ddbf4"
     },
     {
       "path": "docs/MAINNET_GATE_DECISION_MEMO_v4_0.md",
@@ -2218,18 +2243,23 @@
     },
     {
       "path": "docs/MAINNET_TECHNICAL_READINESS_DECISION.json",
-      "bytes": 1820,
-      "sha256": "b2c3d6b61c73814e93326aaf8eb454e8a44dc3ecde7002ec8a61db95196b13e6"
+      "bytes": 1933,
+      "sha256": "4c4e6fcc9cc63bfd827ed4d3e342a4a2562e10a8bcf519689b270c98e00ac59c"
     },
     {
       "path": "docs/MAINNET_TECHNICAL_READINESS_DECISION.md",
-      "bytes": 1417,
-      "sha256": "c4a9a8cf1cb6e4cee27172649da1bb7a23a3d12add31c9aeba904987ea22311a"
+      "bytes": 1525,
+      "sha256": "6a272f74146b6f80ae636e4b94aac9998674cc938b8f475a32a9fa96dcffefe0"
     },
     {
       "path": "docs/NEAR_10_SCORECARD_v4_3.md",
       "bytes": 411,
       "sha256": "ec79b26fcf05aa4603745920539c951199abbb81f1f92dfb3fa8d8e42658b462"
+    },
+    {
+      "path": "docs/OPENZEPPELIN_5_MIGRATION_DECISION.md",
+      "bytes": 1065,
+      "sha256": "be414e9297e9fe8646dab9661c3ed1abe2ca542cb82a4028906758b8f016fff9"
     },
     {
       "path": "docs/OPERATOR_DAILY_RUNBOOK_v4_2.md",
@@ -2402,6 +2432,11 @@
       "sha256": "1e2dd12308e9428a8e527bd5687c0a00bc3bf31068a15e3ca433f06a3914206e"
     },
     {
+      "path": "docs/TYPESCRIPT_6_MIGRATION_DECISION.md",
+      "bytes": 853,
+      "sha256": "f9fbf3c408771691d75bee7f96d6992c6d7add8e846637251b793df5d4b2fb15"
+    },
+    {
       "path": "docs/UPLOAD_BATCH_GUIDE.md",
       "bytes": 932,
       "sha256": "714550d5f3eb624afca5bf02f6f6892c85b9c9d2f4478af73cc51784722cb011"
@@ -2463,8 +2498,8 @@
     },
     {
       "path": "evidence/sepolia/SEPOLIA_EVIDENCE_DOCKET.latest.json",
-      "bytes": 10450,
-      "sha256": "ea78ed7c5582f011f11676928db8f123b8b661db9eb44903a9c3fd70323ace6a"
+      "bytes": 10527,
+      "sha256": "abcae6ab4eba7025c8100eef057f183d7d07fa5528435d687e09e9a8c039edf6"
     },
     {
       "path": "evidence/sepolia/SEPOLIA_REHEARSAL_RAW.latest.json",
@@ -2483,13 +2518,13 @@
     },
     {
       "path": "package-lock.json",
-      "bytes": 288759,
-      "sha256": "a1c4c41e10366e5c0991dc7b5c7c881303a530f7e5ce5e01a668fa73afd03744"
+      "bytes": 288753,
+      "sha256": "6980b3d9989a6462f1464d00053412735279b4778b04fd018c69edb6cd79823e"
     },
     {
       "path": "package.json",
-      "bytes": 4718,
-      "sha256": "ddc8d4794f84f2cb104d2fb518bc5a4d60836a5bc305f06c682b157bb263c645"
+      "bytes": 4712,
+      "sha256": "119c4442003239136c47491aca258f7993fd5dd1ead96673534690d178f6986d"
     },
     {
       "path": "qa/BASELINE_MAIN_COMMAND_LOG.md",
@@ -2513,8 +2548,8 @@
     },
     {
       "path": "qa/MANIFEST.json",
-      "bytes": 145377,
-      "sha256": "378973db1a683ff81152b327bffed633043e4bd5e906ca3a22b839277f4b4c44"
+      "bytes": 146621,
+      "sha256": "d71b9570e3514c8fff205ead9712104c34ee6a11c1130636ead36828c0a46f3b"
     },
     {
       "path": "qa/MANIFEST_v4_0.json",
@@ -2528,8 +2563,8 @@
     },
     {
       "path": "qa/MANIFEST_v4_3.json",
-      "bytes": 138038,
-      "sha256": "e998e05a07fc6dbc0d1ced7630fa0d89e743b7d085c7c427bc098a9f4a75655c"
+      "bytes": 145377,
+      "sha256": "85ca4bbbfdfea0d07537000fc4c4705fc93179a49bbd16c87835e2d310a12254"
     },
     {
       "path": "qa/MANIFEST_v4_3_FINAL.json",
@@ -2539,7 +2574,7 @@
     {
       "path": "qa/QA_REPORT.json",
       "bytes": 821,
-      "sha256": "fb5414ec5c061c7174f1cd18f2f980343ecb90a84649e3447a8b937d95e0f948"
+      "sha256": "c6c9c2b042cb80d26449480548cc671a9aaa7a33f4db5a865a081ef6bddee30c"
     },
     {
       "path": "qa/QA_REPORT_v4_0.json",
@@ -2554,7 +2589,7 @@
     {
       "path": "qa/READINESS_REPORT_v4_3.json",
       "bytes": 538,
-      "sha256": "19d318daf141bc8fc2365165e505f9f3a9ee8b16f7acc6bcc0db5743fb4239c7"
+      "sha256": "0e93de5b414bd2588ded58d55f4ff2758382da78a0fdaad6b7f48f65a4444d8d"
     },
     {
       "path": "qa/REPOSITORY_STARTER_QA_OUTPUTS_v2_0.json",
@@ -2798,8 +2833,8 @@
     },
     {
       "path": "scripts/generate-sepolia-evidence-docket.py",
-      "bytes": 2151,
-      "sha256": "cbb6588340fc18796713fadb86ce03ef36b06c7d7318f66950b0407a2e50d321"
+      "bytes": 3165,
+      "sha256": "196f77a327d0c31c92bd8703925f7a4faa6d5ebe8f6eabc1f97db3ba5f5bf00f"
     },
     {
       "path": "scripts/generate-vault-funding-instructions.ts",
@@ -2828,8 +2863,8 @@
     },
     {
       "path": "scripts/rehearse-ethereum-sepolia.ts",
-      "bytes": 9112,
-      "sha256": "a3e7a97b8a7016e334b961a9cb711a84bbe0d4f327e9d57415e12781ec0449a6"
+      "bytes": 10279,
+      "sha256": "29ef9a25289106187e6b1edeb3319d4d098bc0e70c0d78b35f7bbeb9d90f35d1"
     },
     {
       "path": "scripts/repository_production_readiness_check.py",

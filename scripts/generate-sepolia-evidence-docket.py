@@ -9,28 +9,21 @@ if manifest_path.exists(): manifest=json.loads(manifest_path.read_text())
 else: manifest={}
 raw=json.loads(raw_path.read_text()) if raw_path.exists() else {}
 
-def max_rehearsal_block_number(raw_artifact: dict) -> int:
-    block_numbers = []
-    for tx in raw_artifact.get('transactions', []):
-        try:
-            block_numbers.append(int(tx.get('blockNumber') or 0))
-        except (TypeError, ValueError):
-            pass
-    return max(block_numbers, default=0)
-
-
 def has_public_sepolia_evidence(raw_artifact: dict) -> bool:
     evidence = raw_artifact.get('networkEvidence')
     if evidence == 'PUBLIC_SEPOLIA_RPC':
         return True
-    if isinstance(evidence, dict) and evidence.get('publicSepolia') is True and evidence.get('marker') == 'PUBLIC_SEPOLIA_RPC':
-        return True
-    # Backward-compatible derivation for real Sepolia artifacts produced before
-    # networkEvidence was written: public Sepolia transaction blocks are far above
-    # local Hardhat/Anvil rehearsal block heights. This prevents valid public
-    # Sepolia runs from requiring hand-edited JSON while still keeping local
-    # chainId-11155111 runs pending.
-    return raw_artifact.get('chainId') == 11155111 and max_rehearsal_block_number(raw_artifact) >= 1_000_000
+    if not isinstance(evidence, dict):
+        return False
+    client_version = str(evidence.get('clientVersion', ''))
+    local_client = any(marker in client_version.lower() for marker in ['hardhat', 'anvil', 'ganache', 'ethereumjs', 'foundry'])
+    return (
+        raw_artifact.get('chainId') == 11155111
+        and evidence.get('publicSepolia') is True
+        and evidence.get('marker') == 'PUBLIC_SEPOLIA_RPC'
+        and evidence.get('rpcEndpointClass') == 'remote'
+        and not local_client
+    )
 
 
 if raw.get('status') == 'COMPLETED':

@@ -19,10 +19,21 @@ function classifyRpcEndpoint(url: string | undefined) {
     return "unknown";
   }
 }
+function isLocalDevClient(clientVersion: string) {
+  return /hardhat|anvil|ganache|ethereumjs|foundry/i.test(clientVersion);
+}
+async function clientVersion() {
+  try {
+    return String(await ethers.provider.send("web3_clientVersion", []));
+  } catch {
+    return "unavailable";
+  }
+}
 
 async function main() {
   const net = await ethers.provider.getNetwork();
   const latestBlock = await ethers.provider.getBlockNumber();
+  const rpcClientVersion = await clientVersion();
   const chainId = Number(net.chainId);
   if (chainId === 1) throw new Error("Refusing to rehearse on Ethereum mainnet");
   if (chainId !== 11155111) throw new Error(`Sepolia rehearsal requires chainId 11155111; got ${chainId}`);
@@ -87,8 +98,8 @@ async function main() {
   txs.push(await txrec("set ETHEREUM_SEPOLIA_REHEARSAL gate", launchGates.setGate(await launchGates.ETHEREUM_SEPOLIA_REHEARSAL(), true, evidenceHash, "evidence/sepolia/SEPOLIA_EVIDENCE_DOCKET.latest.json")));
   observations.allCoreGatesPassed = await launchGates.allCoreGatesPassed();
   const rpcEndpointClass = classifyRpcEndpoint(process.env.ETHEREUM_SEPOLIA_RPC_URL);
-  const publicSepolia = network.name === "sepolia" && rpcEndpointClass === "remote" && latestBlock >= 1_000_000;
-  const rehearsal = { status:"COMPLETED", chainId, networkEvidence: { publicSepolia, marker: publicSepolia ? "PUBLIC_SEPOLIA_RPC" : "LOCAL_OR_UNVERIFIED_CHAINID_11155111", networkName: network.name, latestBlockNumber: latestBlock, rpcEndpointClass }, deployer:deployer.address, sponsor:sponsor.address, builder:builder.address, reviewer:reviewer.address, outsider:outsider.address, manifest: MANIFEST, mockAGIALPHA: c.AGIALPHA, evidenceHash, transactions: txs, negativePaths: negatives, observations };
+  const publicSepolia = network.name === "sepolia" && rpcEndpointClass === "remote" && latestBlock >= 1_000_000 && !isLocalDevClient(rpcClientVersion);
+  const rehearsal = { status:"COMPLETED", chainId, networkEvidence: { publicSepolia, marker: publicSepolia ? "PUBLIC_SEPOLIA_RPC" : "LOCAL_OR_UNVERIFIED_CHAINID_11155111", networkName: network.name, latestBlockNumber: latestBlock, rpcEndpointClass, clientVersion: rpcClientVersion }, deployer:deployer.address, sponsor:sponsor.address, builder:builder.address, reviewer:reviewer.address, outsider:outsider.address, manifest: MANIFEST, mockAGIALPHA: c.AGIALPHA, evidenceHash, transactions: txs, negativePaths: negatives, observations };
   manifest.sepoliaRehearsal = rehearsal;
   manifest.blockNumbers = Object.fromEntries(txs.map(t=>[t.label,t.blockNumber]));
   manifest.transactionHashes = Object.fromEntries(txs.map(t=>[t.label,t.hash]));
