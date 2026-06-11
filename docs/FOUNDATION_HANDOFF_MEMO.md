@@ -13,7 +13,7 @@ Use this repository starter pack as the foundation for continuing GoalOS AGIALPH
 - It includes gate-clean launch hygiene.
 - It includes Evidence Docket and ProofBundle schemas.
 - It includes CI, safety checks, issue templates, branch-protection guidance, and production continuation docs.
-- It preserves the correct status: not audited, not mainnet authorized.
+- It preserves the correct status: not externally audited, automated security/toolchain review pending, Ethereum Mainnet not authorized.
 
 ## Next decisive milestone
 

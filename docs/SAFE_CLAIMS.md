@@ -16,14 +16,15 @@ Reputation unlocks better jobs.
 ```text
 Gate-clean evidence-ready audit candidate.
 Ethereum Sepolia rehearsal-ready after compile/tests pass.
-Not audited.
-Not mainnet authorized.
+Not externally audited.
+Automated security/toolchain review: pending.
+Ethereum Mainnet not authorized.
 ```
 
 ## Prohibited without signed evidence
 
 ```text
-audited
+externally audited
 mainnet authorized
 legally approved
 tax reviewed

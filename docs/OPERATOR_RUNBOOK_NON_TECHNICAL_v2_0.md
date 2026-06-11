@@ -19,5 +19,6 @@ It does not replace legal/tax/audit review.
 - Sepolia deployment manifest
 - Sepolia proof-work loop evidence
 - AGIALPHA token verification output
-- external audit closure
+- automated security/toolchain clearance
+- internal security review
 - mainnet preflight output

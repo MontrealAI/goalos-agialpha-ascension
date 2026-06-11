@@ -14,8 +14,9 @@ Current status:
 GoalOS AGIALPHA Ascension v4.3
 Gate-clean evidence-ready audit candidate.
 Ethereum Sepolia rehearsal-ready after compile/tests pass.
-Not audited.
-Not mainnet authorized.
+Not externally audited.
+Automated security/toolchain review pending.
+Ethereum Mainnet not authorized.
 ```
 
 Non-negotiables:
@@ -24,7 +25,7 @@ Non-negotiables:
 - Do not remove or bypass mainnet gates.
 - Do not upload paid buyer products.
 - Do not commit `.env`, private keys, seed phrases, RPC secrets, API keys, legal memos, tax memos, private Evidence Dockets, or customer data.
-- Do not use investment, yield, revenue-share, price-target, guaranteed resale-value, or guaranteed non-security language.
+- Do not use investment, yield, revenue-share, price-target, guaranteed resale-value, externally audited, mainnet-authorized, or guaranteed non-security language.
 - Preserve the existing AGIALPHA token address: `0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA`.
 
 First objective:

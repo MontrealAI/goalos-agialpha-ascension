@@ -2,7 +2,7 @@ issue_title,labels,first_action
 Run Ethereum Sepolia rehearsal and fill Evidence Docket,"sepolia,evidence-docket,priority-critical",Run compile/test and prepare Sepolia deployment.
 Run compile/tests and publish engineering evidence,"engineering,ci,priority-critical",Attach compile and test logs.
 Remove stale JOBS/Base labels from active AGIALPHA surfaces,"docs,hygiene,priority-high",Search active docs and schemas.
-Prepare external audit closure package,"audit,security,priority-high",Create audit evidence folder.
+Run automated security/toolchain clearance and prepare internal security review package,"audit,security,priority-high",Create audit evidence folder.
 Prepare legal/token counsel review package,"legal,claims,priority-high",Prepare public claim inventory.
 Prepare tax/accounting review package,"tax,accounting,priority-high",Prepare transaction/event assumptions.
 Run public claims and promoter-disclosure review,"claims,priority-high",Review README and public docs.

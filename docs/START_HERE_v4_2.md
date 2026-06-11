@@ -9,7 +9,7 @@ engineering handoff
 local compile/test
 Sepolia rehearsal
 Evidence Docket production
-external audit closure review
+automated security/toolchain and internal security review
 mainnet gate review
 ```
 
@@ -22,8 +22,9 @@ Evidence-ready institutional audit candidate: yes.
 Uses existing AGIALPHA on Ethereum mainnet: yes.
 Sepolia rehearsal path: yes.
 Mainnet deployment script: gated.
-Audited: no.
-Mainnet authorized: no.
+Not externally audited.
+Automated security/toolchain review: pending.
+Ethereum Mainnet not authorized.
 Legally approved: no.
 Tax reviewed: no.
 Security reviewed: no.
@@ -61,7 +62,7 @@ mainnet authorization checker
 expanded readiness verifier
 no-secret static scan
 Sepolia proof-loop evidence checklist
-external-auditor closure request
+automated security/toolchain clearance request
 governance role ceremony checklist
 public claims review checklist
 mainnet NOT AUTHORIZED decision memo
@@ -78,7 +79,7 @@ all tests pass
 Sepolia deploys
 proof-work loop completes
 Evidence Docket is filled
-external audit closure is complete
+automated security/toolchain clearance and internal security review are complete
 legal/tax/security/claims gates are complete
 founder approval is signed
 ```

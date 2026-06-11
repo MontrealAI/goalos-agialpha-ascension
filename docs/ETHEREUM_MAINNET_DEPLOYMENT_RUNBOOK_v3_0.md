@@ -57,7 +57,8 @@ npm run verify:deployment
 
 ## Mainnet gates
 
-- external audit closure
+- automated security/toolchain clearance
+- internal security review
 - Ethereum Sepolia evidence docket
 - legal/token counsel memo
 - tax/accounting memo

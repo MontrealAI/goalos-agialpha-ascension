@@ -26,7 +26,8 @@ and adds:
 
 ```text
 AGIALPHA_TOKEN_VERIFICATION
-EXTERNAL_AUDIT_CLOSURE
+AUTOMATED_SECURITY_TOOLCHAIN
+INTERNAL_SECURITY_REVIEW
 FOUNDER_APPROVAL
 ```
 
@@ -41,4 +42,4 @@ AGIALPHA_TOKEN_VERIFICATION_HASH
 
 ## Result
 
-v4.3 is cleaner for an external auditor because every active launch gate now matches the Ethereum AGIALPHA deployment path.
+v4.4 supersedes the historical external-audit gate with automated security/toolchain and internal security-review gates while preserving Ethereum AGIALPHA launch discipline.

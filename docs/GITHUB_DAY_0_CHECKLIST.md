@@ -32,5 +32,5 @@
 
 - [ ] Run Ethereum Sepolia rehearsal and fill Evidence Docket.
 - [ ] Run compile/tests and publish engineering evidence.
-- [ ] Prepare external audit closure package.
+- [ ] Run automated security/toolchain clearance and prepare internal security review package.
 - [ ] Public claims review before public repository visibility.

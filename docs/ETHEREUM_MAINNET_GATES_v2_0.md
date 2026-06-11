@@ -15,7 +15,8 @@ Ethereum mainnet remains blocked unless all gates pass.
 
 ## Security
 
-- external audit closure
+- automated security/toolchain clearance
+- internal security review
 - remediation review
 - deployment verification
 

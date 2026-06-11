@@ -1,6 +1,6 @@
 # Mainnet Technical Readiness Decision
 
-Generated: 2026-06-11T16:20:24.394520+00:00
+Generated: 2026-06-11T16:37:53.292984+00:00
 
 TECHNICALLY_MAINNET_READY: **NO**
 
@@ -17,6 +17,7 @@ TECHNICALLY_MAINNET_READY: **NO**
 - actionlint is pending/environment-blocked or not internally accepted
 - shellcheck is pending/environment-blocked or not internally accepted
 - gitleaks is pending/environment-blocked or not internally accepted
+- Public Ethereum Sepolia replay remains pending; only local chainId 11155111 rehearsal evidence is present
 - AGIALPHA token verification requires Ethereum mainnet RPC evidence
 - Treasury/founder address ceremony is not complete
 
