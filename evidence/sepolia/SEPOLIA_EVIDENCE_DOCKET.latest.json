@@ -1,0 +1,254 @@
+{
+  "schema": "goalos-agialpha-sepolia-evidence-docket-v4.3+",
+  "generated_at": "2026-06-11T15:18:12.633177+00:00",
+  "status": "COMPLETED_LOCAL_REHEARSAL_PUBLIC_SEPOLIA_PENDING",
+  "chainId": 11155111,
+  "deployment_manifest": "deployments/ethereum-sepolia.agialpha.latest.json",
+  "contracts": {
+    "AGIALPHA": "0x6F6f570F45833E249e27022648a26F4076F48f78",
+    "CommercializationPerformanceVault": "0xCA8c8688914e0F7096c920146cd0Ad85cD7Ae8b9",
+    "ProofRewardsVault": "0xB0f05d25e41FbC2b52013099ED9616f1206Ae21B",
+    "LiquidityVault": "0x5FeaeBfB4439F3516c74939A9D04e95AFE82C4ae",
+    "SecurityVault": "0x976fcd02f7C4773dd89C309fBF55D5923B4c98a1",
+    "CommunityVault": "0x19cEcCd6942ad38562Ee10bAfd44776ceB67e923",
+    "ProofSeedRegistry": "0xD42912755319665397FF090fBB63B1a31aE87Cee",
+    "LegacyAGIJobManagerRegistry": "0xfcDB4564c18A9134002b9771816092C9693622e3",
+    "ReputationRegistry": "0x927b167526bAbB9be047421db732C663a0b77B11",
+    "ReferralRegistry": "0x32EEce76C2C2e8758584A83Ee2F522D4788feA0f",
+    "ProofCardRegistry": "0x01c1DeF3b91672704716159C9041Aeca392DdFfb",
+    "ProofCredentialRegistry": "0x02b0B4EFd909240FCB2Eb5FAe060dC60D112E3a4",
+    "JobRegistry": "0x638A246F0Ec8883eF68280293FFE8Cfbabe61B44",
+    "JobClaimBondManager": "0x6C2d83262fF84cBaDb3e416D527403135D757892",
+    "PremiumAccessRegistry": "0xFD6F7A6a5c21A3f503EBaE7a473639974379c351",
+    "ProofSubmissionRegistry": "0xa6e99A4ED7498b3cdDCBB61a6A607a4925Faa1B7",
+    "ReviewerBondRegistry": "0x5302E909d1e93e30F05B5D6Eea766363D14F9892",
+    "TreasuryRouter": "0x0ed64d01D0B4B655E410EF1441dD677B695639E7",
+    "ProtocolConfigRegistry": "0x4bf010f1b9beDA5450a8dD702ED602A104ff65EE",
+    "LaunchGateRegistry": "0x40a42Baf86Fc821f972Ad2aC878729063CeEF403",
+    "DisputeRegistry": "0x96F3Ce39Ad2BfDCf92C0F6E2C2CAbF83874660Fc",
+    "AppealRegistry": "0x986aaa537b8cc170761FDAC6aC4fc7F9d8a20A8C",
+    "SponsorRegistry": "0xde2Bd2ffEA002b8E84ADeA96e5976aF664115E2c",
+    "BuilderProfileRegistry": "0xefc1aB2475ACb7E60499Efb171D173be19928a05",
+    "CredentialRevocationRegistry": "0x870526b7973b56163a6997bB7C886F5E4EA53638",
+    "AEPAgentRegistry": "0xD49a0e9A4CD5979aE36840f542D2d7f02C4817Be",
+    "AEPArtifactRegistry": "0xe1Fd27F4390DcBE165f4D60DBF821e4B9Bb02dEd",
+    "AEPGoalOSCommitRegistry": "0xc582Bc0317dbb0908203541971a358c44b1F3766",
+    "AEPRunCommitmentRegistry": "0xB2b580ce436E6F77A5713D80887e14788Ef49c9A",
+    "AEPProofLedger": "0xB377a2EeD7566Ac9fCb0BA673604F9BF875e2Bab",
+    "AEPEvalRegistry": "0x66F625B8c4c635af8b74ECe2d7eD0D58b4af3C3d",
+    "AEPAttestationRegistry": "0x8bCe54ff8aB45CB075b044AE117b8fD91F9351aB",
+    "AEPSelectionGate": "0x74Cf9087AD26D541930BaC724B7ab21bA8F00a27",
+    "AEPRolloutRouter": "0xefAB0Beb0A557E452b398035eA964948c750b2Fd",
+    "AEPRollbackRegistry": "0xaca81583840B1bf2dDF6CDe824ada250C1936B4D",
+    "AEPEvidenceDocketRegistry": "0x70bDA08DBe07363968e9EE53d899dFE48560605B",
+    "AEPProofBundleRegistry": "0x26B862f640357268Bd2d9E95bc81553a2Aa81D7E",
+    "AlphaWorkUnitLedger": "0xA56F946D6398Dd7d9D4D9B337Cf9E0F68982ca5B",
+    "MandateEpochRegistry": "0x5D42EBdBBa61412295D7b0302d6F50aC449Ddb4F",
+    "AGIEthNamespaceRegistry": "0xddE78e6202518FF4936b5302cC2891ec180E8bFf",
+    "AEPConformanceRegistry": "0xB06c856C8eaBd1d8321b687E188204C1018BC4E5",
+    "AEPClaimBoundaryRegistry": "0xaB7B4c595d3cE8C85e16DA86630f2fc223B05057",
+    "AEPReplayRegistry": "0xAD523115cd35a8d4E60B3C0953E0E0ac10418309",
+    "AEPCommitRevealValidationRegistry": "0x045857BDEAE7C1c7252d611eB24eB55564198b4C",
+    "AEPEvaluatorStakingRegistry": "0x2b5A4e5493d4a54E717057B127cf0C000C876f9B",
+    "AEPSlashingCourt": "0x413b1AfCa96a3df5A686d8BFBF93d30688a7f7D9",
+    "AEPRewardVault": "0x02df3a3F960393F5B349E40A599FEda91a7cc1A7",
+    "AEPChronicleRegistry": "0x821f3361D454cc98b7555221A06Be563a7E2E0A6",
+    "AEPFalsificationRegistry": "0x1780bCf4103D3F501463AD3414c7f4b654bb7aFd"
+  },
+  "agialpha_or_mock": "0x6F6f570F45833E249e27022648a26F4076F48f78",
+  "proof_work_loop": [
+    {
+      "label": "fund 0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC",
+      "hash": "0xba5929a93c3e9c761206febb9d3d41859fd23c55bebb0f6709542aae327aa745",
+      "blockNumber": 222,
+      "status": 1,
+      "gasUsed": "51438"
+    },
+    {
+      "label": "fund 0x90F79bf6EB2c4f870365E785982E1f101E93b906",
+      "hash": "0x415b5eaf06134cca0901be30246f73d8a5c50e0dc45cd8b0d0d4d187d867262d",
+      "blockNumber": 223,
+      "status": 1,
+      "gasUsed": "51450"
+    },
+    {
+      "label": "fund 0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65",
+      "hash": "0x8b15887e5d87da88d89df0364dec86d77108772c2828e0bdec5d2200d4fee2a0",
+      "blockNumber": 224,
+      "status": 1,
+      "gasUsed": "51450"
+    },
+    {
+      "label": "sponsor approve proof seed fee",
+      "hash": "0xb3e41865b7845ad37b1288865e0b72a2abee95849769bfc4acfd97ac0b3899b1",
+      "blockNumber": 225,
+      "status": 1,
+      "gasUsed": "46295"
+    },
+    {
+      "label": "create ProofSeed",
+      "hash": "0x91e3f82d193ea5dcef690c987451924fafd55b4d3d963f54f5c3d2ede0315b79",
+      "blockNumber": 226,
+      "status": 1,
+      "gasUsed": "217745"
+    },
+    {
+      "label": "mark ProofSeed reviewed",
+      "hash": "0x6243b3ad087842230af363e1ff4a18c63c03c4e49611431576e7db62889e07c4",
+      "blockNumber": 227,
+      "status": 1,
+      "gasUsed": "33601"
+    },
+    {
+      "label": "sponsor approve job reward",
+      "hash": "0x91a31a608b666efa067ff49f14775b4dcd103ceda01ab6080f84c4a5692bcff9",
+      "blockNumber": 228,
+      "status": 1,
+      "gasUsed": "46295"
+    },
+    {
+      "label": "post Proof Job",
+      "hash": "0x55a1d8a24f9fb15b5771801f64819d52eb5b9d7062e947c5353f75859121c88f",
+      "blockNumber": 229,
+      "status": 1,
+      "gasUsed": "282245"
+    },
+    {
+      "label": "builder approve claim bond",
+      "hash": "0xf46b729787369faf9ab7ec2bb1db074d8aa1795f1e0d25a32021187b9fa7c8c1",
+      "blockNumber": 230,
+      "status": 1,
+      "gasUsed": "46295"
+    },
+    {
+      "label": "builder claim job",
+      "hash": "0x37716743a497f6254dd2bc2ffa2cc356c0f170c55b7e086321f2b78613f25f73",
+      "blockNumber": 231,
+      "status": 1,
+      "gasUsed": "158826"
+    },
+    {
+      "label": "builder approve proof bond",
+      "hash": "0xf044cfb4eedbc7c9ab92dfc30b4ea7bbd3be986e0f1fc23ccfb493fc6a092b7d",
+      "blockNumber": 232,
+      "status": 1,
+      "gasUsed": "46295"
+    },
+    {
+      "label": "builder submit ProofBundle",
+      "hash": "0x6009e4ecc64efab726dc52e8c70262fbf2132f06f58c69f9b0c5113db5936243",
+      "blockNumber": 233,
+      "status": 1,
+      "gasUsed": "355338"
+    },
+    {
+      "label": "reviewer approve bond",
+      "hash": "0x29de16c38b8c52eac0f4a143fa706d41e22391cbae59edfc5c93451e2996a9f0",
+      "blockNumber": 234,
+      "status": 1,
+      "gasUsed": "46295"
+    },
+    {
+      "label": "reviewer bonds",
+      "hash": "0x45c87fbfbdd8e3e5b40a8441a9c038f3f9e946f558466378da48558d7874dd7c",
+      "blockNumber": 235,
+      "status": 1,
+      "gasUsed": "162114"
+    },
+    {
+      "label": "reviewer approves proof",
+      "hash": "0xcbb4c642ce0bb8e6f6d09f35417bdf90f4f7f5279c8ff5b08b1a037b913f0798",
+      "blockNumber": 236,
+      "status": 1,
+      "gasUsed": "815998"
+    },
+    {
+      "label": "builder assigns referral",
+      "hash": "0x0083bfba7585ab295c1923ef3ce00f6f4199d1ffe2c30381d50da561dfab9ab6",
+      "blockNumber": 237,
+      "status": 1,
+      "gasUsed": "70430"
+    },
+    {
+      "label": "set premium tier",
+      "hash": "0x0faf7400497f32f2309d5c253107bc592499dea5d643a5c74275f494d1fcaf18",
+      "blockNumber": 238,
+      "status": 1,
+      "gasUsed": "93246"
+    },
+    {
+      "label": "post rejected-path job",
+      "hash": "0xa6e8d45ce7b2ebe20c7c8fc1825acffedc4d165889dc9dff6f9afee445000b52",
+      "blockNumber": 239,
+      "status": 1,
+      "gasUsed": "282320"
+    },
+    {
+      "label": "builder claim rejected-path job",
+      "hash": "0x3501e687dc7f95dbfc19b85daca661e4b11d87407d4ff66d3b81cfef19b89488",
+      "blockNumber": 240,
+      "status": 1,
+      "gasUsed": "158826"
+    },
+    {
+      "label": "builder submit rejected-path proof",
+      "hash": "0x37107be9474e3e441655710a3ea21f4b61d5cfe1ede99674c2046cf7f8b1d2db",
+      "blockNumber": 241,
+      "status": 1,
+      "gasUsed": "355422"
+    },
+    {
+      "label": "reviewer rejects proof",
+      "hash": "0xb72bf9a3b82f8ab34a84fb09f264aec16fc081e7c9f687a812fbcfc529a00d4b",
+      "blockNumber": 242,
+      "status": 1,
+      "gasUsed": "277463"
+    },
+    {
+      "label": "set ETHEREUM_SEPOLIA_REHEARSAL gate",
+      "hash": "0x98435228d192b220b0e1258dbbdb6eb3f054ed15653b4187b7f9bc4031358523",
+      "blockNumber": 243,
+      "status": 1,
+      "gasUsed": "185518"
+    }
+  ],
+  "negative_paths": [
+    {
+      "label": "unauthorized proof submission",
+      "passed": true,
+      "error": "Error: VM Exception while processing transaction: reverted with reason string 'SUB_NOT_ASSIGNEE'"
+    },
+    {
+      "label": "zero proof hash rejected",
+      "passed": true,
+      "error": "Error: VM Exception while processing transaction: reverted with reason string 'SUB_ZERO_PROOF'"
+    },
+    {
+      "label": "unauthorized reviewer validation",
+      "passed": true,
+      "error": "Error: VM Exception while processing transaction: reverted with reason string 'REV_NOT_ACTIVE'"
+    },
+    {
+      "label": "referral overwrite rejected",
+      "passed": true,
+      "error": "Error: VM Exception while processing transaction: reverted with reason string 'REF_ALREADY_SET'"
+    },
+    {
+      "label": "credential issuance without operator proof fails",
+      "passed": true,
+      "error": "Error: VM Exception while processing transaction: reverted with reason string 'GOALOS_NOT_OPERATOR'"
+    },
+    {
+      "label": "launch gate unauthorized caller rejected",
+      "passed": true,
+      "error": "Error: VM Exception while processing transaction: reverted with reason string 'GOALOS_NOT_OPERATOR'"
+    }
+  ],
+  "launch_gate_evidence_hash": "0x15577060306ef263f148e17091646e33fd009b17d716e1ce62d27f7150187c6a",
+  "all_core_gates_passed": false,
+  "privacy_boundary": "public-safe transaction hashes, addresses, event references, hashes and URIs only; no private prompts, raw traces, customer data, legal memos, tax memos, or secrets included",
+  "mainnet_authorization": "NOT_AUTHORIZED unless all legal/tax/security/public-claims/treasury/token/sepolia/audit/founder gates are real and accepted",
+  "sha256": "0xd2bf3aa2d2da837c6472e5c69cba9bd990f26bc4cb1750b7b52f0dc374f013e0",
+  "execution_mode": "LOCAL_HARDHAT_CHAINID_11155111_REHEARSAL",
+  "public_sepolia_blocker": "ETHEREUM_SEPOLIA_RPC_URL and funded Sepolia deployer are required to repeat on public Sepolia"
+}

@@ -1,0 +1,63 @@
+{
+  "generated_at": "2026-06-11T15:29:36.953793+00:00",
+  "report_dir": "audit/reports/2026-06-11-1528",
+  "decision": "NOT_AUTHORIZED",
+  "critical_high_unresolved": 0,
+  "medium_unaccepted": 0,
+  "tools": [
+    {
+      "tool": "slither",
+      "status": "COMPLETED",
+      "json": "audit/reports/2026-06-11-1528/slither.json",
+      "text": "audit/reports/2026-06-11-1528/slither.txt",
+      "blocks_mainnet": false,
+      "blockers": []
+    },
+    {
+      "tool": "echidna",
+      "status": "PENDING_ENVIRONMENT_BLOCKED",
+      "json": "audit/reports/2026-06-11-1528/echidna.json",
+      "text": "audit/reports/2026-06-11-1528/echidna.txt",
+      "blocks_mainnet": true,
+      "blockers": [
+        "echidna execution pending"
+      ]
+    },
+    {
+      "tool": "mythril",
+      "status": "PENDING_ENVIRONMENT_BLOCKED",
+      "json": "audit/reports/2026-06-11-1528/mythril.json",
+      "text": "audit/reports/2026-06-11-1528/mythril.txt",
+      "blocks_mainnet": true,
+      "blockers": [
+        "mythril execution pending"
+      ]
+    },
+    {
+      "tool": "medusa",
+      "status": "PENDING_ENVIRONMENT_BLOCKED",
+      "json": "audit/reports/2026-06-11-1528/medusa.json",
+      "text": "audit/reports/2026-06-11-1528/medusa.txt",
+      "blocks_mainnet": true,
+      "blockers": [
+        "medusa execution pending"
+      ]
+    },
+    {
+      "tool": "foundry",
+      "status": "PENDING_ENVIRONMENT_BLOCKED",
+      "json": "audit/reports/2026-06-11-1528/foundry.json",
+      "text": "audit/reports/2026-06-11-1528/foundry-test.log",
+      "blocks_mainnet": true,
+      "blockers": [
+        "foundry execution pending"
+      ]
+    }
+  ],
+  "mainnet_blockers": [
+    "external audit closure hash missing",
+    "legal/tax/public-claims/treasury/founder gates missing",
+    "Sepolia rehearsal requires real network evidence unless manifest/evidence are present",
+    "audit tools pending where environment-blocked"
+  ]
+}

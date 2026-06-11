@@ -25,12 +25,18 @@ contract TreasuryRouter is GoalOSAccessControl {
         emit TreasuryUpdated(treasury_);
     }
 
-    function routeFrom(address token, address from, uint256 amount, bytes32 reasonHash) external onlyOperator {
-        IERC20(token).safeTransferFrom(from, treasury, amount);
-        emit TokensRouted(token, from, treasury, amount, reasonHash);
+    function routeFrom(address token, uint256 amount, bytes32 reasonHash) external onlyOperator {
+        require(token != address(0), "TREASURY_ZERO_TOKEN");
+        require(amount > 0, "TREASURY_ZERO_AMOUNT");
+        require(reasonHash != bytes32(0), "TREASURY_ZERO_REASON");
+        IERC20(token).safeTransferFrom(msg.sender, treasury, amount);
+        emit TokensRouted(token, msg.sender, treasury, amount, reasonHash);
     }
 
     function routeHeld(address token, uint256 amount, bytes32 reasonHash) external onlyOperator {
+        require(token != address(0), "TREASURY_ZERO_TOKEN");
+        require(amount > 0, "TREASURY_ZERO_AMOUNT");
+        require(reasonHash != bytes32(0), "TREASURY_ZERO_REASON");
         IERC20(token).safeTransfer(treasury, amount);
         emit TokensRouted(token, address(this), treasury, amount, reasonHash);
     }

@@ -1,0 +1,5 @@
+id,tool,severity,status,summary,mainnet_blocker
+ENV-ECHIDNA,echidna,Medium,Pending,echidna needs executable available for full run,true
+ENV-MYTHRIL,mythril,Medium,Pending,mythril needs executable available for full run,true
+ENV-MEDUSA,medusa,Medium,Pending,medusa needs executable available for full run,true
+ENV-FOUNDRY,foundry,Medium,Pending,foundry needs executable available for full run,true

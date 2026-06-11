@@ -1,5 +1,15 @@
 # GoalOS AGIALPHA Ascension
 
+GoalOS AGIALPHA Ascension v4.3+
+Ethereum Sepolia rehearsal: completed / pending, based on evidence.
+Audit toolchain: implemented and run / pending, based on evidence.
+External audit: not closed unless real audit closure exists.
+Ethereum Mainnet: NOT AUTHORIZED unless all gates pass.
+
+Mainnet AGIALPHA token address: `0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA`. This repository must not deploy or mint a new AGIALPHA token on Ethereum Mainnet.
+
+# GoalOS AGIALPHA Ascension
+
 **GoalOS AGIALPHA Ascension** is a GoalOS-native reimplementation of **α‑AGI Ascension** using the existing Ethereum Mainnet `$AGIALPHA` token as the utility coordination asset for proof-settled AI workflow work.
 
 ```text

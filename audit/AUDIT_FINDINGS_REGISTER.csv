@@ -1,0 +1,5 @@
+id,tool,severity,status,summary,owner,mainnet_blocker
+ENV-ECHIDNA,echidna,Medium,Pending if executable unavailable,Echidna must run in audit environment or Docker,Security,true
+ENV-FOUNDRY,foundry,Medium,Pending if executable unavailable,Foundry must run in audit environment,Security,true
+ENV-MYTHRIL,mythril,Medium,Pending if executable unavailable,Mythril must run in audit environment,Security,true
+ENV-MEDUSA,medusa,Medium,Pending if executable unavailable,Medusa must run in audit environment or Docker,Security,true

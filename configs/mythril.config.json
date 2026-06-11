@@ -1,0 +1,10 @@
+{
+  "executionTimeout": 120,
+  "maxDepth": 22,
+  "strategy": "dfs",
+  "targets": [
+    "contracts/registry/LaunchGateRegistry.sol",
+    "contracts/registry/ProofSubmissionRegistry.sol",
+    "contracts/vaults/CommercializationPerformanceVault.sol"
+  ]
+}
