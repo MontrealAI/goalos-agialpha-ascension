@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-11T19:40:11.041263+00:00",
+  "generated_at": "2026-06-11T20:16:17.433477+00:00",
   "files": [
     {
       "path": ".editorconfig",
@@ -2109,7 +2109,7 @@
     {
       "path": "cache/solidity-files-cache.json",
       "bytes": 82958,
-      "sha256": "fc55fc37c119bfd610453ca2d76493652f131c9d9fcc6585b943284945aee536"
+      "sha256": "cac3958a9eca63eaa0b871a44523ed0d7c04cbfaa7f40241b8686057ce7a1da9"
     },
     {
       "path": "configs/echidna.yaml",
@@ -2554,12 +2554,12 @@
     {
       "path": "docs/ETHEREUM_MAINNET_AUTHORIZATION_DECISION.json",
       "bytes": 1228,
-      "sha256": "ec6b427e35f0b3350b4254bb3fc51ab2fe4b27e85c2883b4282a2abbdfd622e9"
+      "sha256": "9f759d72735346b3b870cc4cb629103caf67468d2a394f2f219fbf8ac2701eff"
     },
     {
       "path": "docs/ETHEREUM_MAINNET_AUTHORIZATION_DECISION.md",
       "bytes": 555,
-      "sha256": "6fd776e1f006216996a7fe0fafb423967e2e1aae226d69fd87d36a73ac2e0ee8"
+      "sha256": "9b91757344771ebf4e307f26fa2ffb6a2746d7818580cb4bea7773853adffbd3"
     },
     {
       "path": "docs/ETHEREUM_MAINNET_DEPLOYMENT_RUNBOOK.md",
@@ -2734,12 +2734,12 @@
     {
       "path": "docs/MAINNET_AUTHORIZATION_DECISION.json",
       "bytes": 1144,
-      "sha256": "41a53352cdfa1f25429bc0a951fcb6e09abbd52801a164f4e77a5049c457bf36"
+      "sha256": "6eec4a1162f577405ceaf4b235b489b7eadefc756cbe76dc0260efc5aae7ca84"
     },
     {
       "path": "docs/MAINNET_AUTHORIZATION_DECISION.md",
       "bytes": 641,
-      "sha256": "5c6b869e9cd964cb62dac8e80a2cedb359656903270746a84a15249603c95474"
+      "sha256": "cef2af1f17dae44f2394a8933b1c16f5ac5baf25b9591fbb4d8bf2b809338b6e"
     },
     {
       "path": "docs/MAINNET_AUTHORIZATION_INPUTS_REQUIRED.md",
@@ -2769,12 +2769,12 @@
     {
       "path": "docs/MAINNET_DEPLOYMENT_AUTHORIZATION_DECISION.json",
       "bytes": 1144,
-      "sha256": "41a53352cdfa1f25429bc0a951fcb6e09abbd52801a164f4e77a5049c457bf36"
+      "sha256": "6eec4a1162f577405ceaf4b235b489b7eadefc756cbe76dc0260efc5aae7ca84"
     },
     {
       "path": "docs/MAINNET_DEPLOYMENT_AUTHORIZATION_DECISION.md",
       "bytes": 641,
-      "sha256": "5c6b869e9cd964cb62dac8e80a2cedb359656903270746a84a15249603c95474"
+      "sha256": "cef2af1f17dae44f2394a8933b1c16f5ac5baf25b9591fbb4d8bf2b809338b6e"
     },
     {
       "path": "docs/MAINNET_GATE_DECISION_MEMO_v4_0.md",
@@ -2794,12 +2794,12 @@
     {
       "path": "docs/MAINNET_TECHNICAL_READINESS_DECISION.json",
       "bytes": 1584,
-      "sha256": "8435f4fbf72a6154842a0c3e9005e5e46f89321eb1777c89a384a5d021f4778b"
+      "sha256": "829d9a60b2a4765dc496338e11e014da627d1712f100f19ed44dd284d18e0dd6"
     },
     {
       "path": "docs/MAINNET_TECHNICAL_READINESS_DECISION.md",
       "bytes": 825,
-      "sha256": "d25d87aeefc53967043775d25455fce63a68f56412d1073999d3eff37b9cb79a"
+      "sha256": "31f204099167ef20d103d8c4f0df86a04fe31b74ee5bb1cb0636e07bbeeada85"
     },
     {
       "path": "docs/NEAR_10_SCORECARD_v4_3.md",
@@ -2808,8 +2808,8 @@
     },
     {
       "path": "docs/NO_PUBLIC_SECRETS_MAINNET_AUTHORIZATION_MODEL.md",
-      "bytes": 2320,
-      "sha256": "9d92e525f9eaeb1d6f3be6cd081acd6886573f21f1f43f6ca780f30fbf2b5b64"
+      "bytes": 2607,
+      "sha256": "3f6cafc675ae450f1511adf6eec822653c35f538e8ea5c235b675bc0eeb9494d"
     },
     {
       "path": "docs/OPENZEPPELIN_5_MIGRATION_DECISION.md",
@@ -2888,8 +2888,8 @@
     },
     {
       "path": "docs/PRIVATE_OPERATOR_HANDOFF.md",
-      "bytes": 1745,
-      "sha256": "3d7799f8c4e01b4c56d2a90ecab27c8bcdc0d47dddcd3eee70d72f0e734dad59"
+      "bytes": 1960,
+      "sha256": "db943276b4cfc20ee726c047ea1456e5cb8e370f3e81c8fb8faf55d18e96491a"
     },
     {
       "path": "docs/PRIVATE_OPERATOR_LOCAL_COMMANDS.md",
@@ -3109,7 +3109,7 @@
     {
       "path": "evidence/SEPOLIA_EVIDENCE_DOCKET_TEMPLATE_v4_2.json",
       "bytes": 2297,
-      "sha256": "6550b9d4dee5986ab515393a53522c9654f299ac5940711e363d4df9d9751da8"
+      "sha256": "85944fb4a2b291a3605ae3d8a6c5bce5cd1269a9840a45807741e6efb0b3bb2b"
     },
     {
       "path": "evidence/local/EVIDENCE_DOCKET.json",
@@ -3234,7 +3234,7 @@
     {
       "path": "qa/MANIFEST.json",
       "bytes": 175278,
-      "sha256": "1a7ac3245c8a83c91fccbdf481619e7947c96d9bf66bd4edea613fcf4ed45604"
+      "sha256": "315d7cca6fe54c872ea93fddbdac6654f20d9f2105c9d1d84718565e2af5577b"
     },
     {
       "path": "qa/MANIFEST_v4_0.json",
@@ -3248,8 +3248,8 @@
     },
     {
       "path": "qa/MANIFEST_v4_3.json",
-      "bytes": 176648,
-      "sha256": "08e47dd625aaaae4b316574e70f8d95599a3d05bc809eae35e3ad7b951cb96c3"
+      "bytes": 175278,
+      "sha256": "b949e1ec8f55b47eff206ef09f03736fdb52bd823cb10f42d7af353cf9827953"
     },
     {
       "path": "qa/MANIFEST_v4_3_FINAL.json",
@@ -3264,7 +3264,7 @@
     {
       "path": "qa/QA_REPORT.json",
       "bytes": 921,
-      "sha256": "ae320dd31cfc7496fe820758e0a7c354fe0e456af5df37f10a927aca9c891030"
+      "sha256": "aadf3af211479b0096c272cec2dfd21d7eb7ea67144f98e8709146b5ba13c4c4"
     },
     {
       "path": "qa/QA_REPORT_v4_0.json",
@@ -3279,7 +3279,7 @@
     {
       "path": "qa/READINESS_REPORT_v4_3.json",
       "bytes": 538,
-      "sha256": "743b7abe6a6abd4fb947339e6f137a475f5859082f96c34eed06b6f323b43c21"
+      "sha256": "13716ba29e271e2982735dfae32642bcbd7e14c9633c15be2a11ea3ce02c1d6f"
     },
     {
       "path": "qa/REPOSITORY_STARTER_QA_OUTPUTS_v2_0.json",

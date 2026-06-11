@@ -7,6 +7,7 @@ import os
 import pathlib
 import re
 import subprocess
+import urllib.request
 from typing import Any
 
 ROOT = pathlib.Path(__file__).resolve().parents[2]
@@ -114,3 +115,21 @@ def public_safe(data: dict[str, Any]) -> bool:
 
 def valid_hash(value: object) -> bool:
     return isinstance(value, str) and bool(HEX32_RE.fullmatch(value)) and value.lower() != "0x" + "0" * 64
+
+
+def rpc_call(rpc_url: str, method: str, params: list[Any] | None = None, timeout: int = 30) -> Any:
+    """Small JSON-RPC helper for private scripts. Never logs the URL or request body."""
+    if not non_placeholder(rpc_url):
+        raise RuntimeError("private RPC URL missing")
+    payload = json.dumps({"jsonrpc": "2.0", "id": 1, "method": method, "params": params or []}).encode()
+    request = urllib.request.Request(rpc_url, data=payload, headers={"Content-Type": "application/json"})
+    with urllib.request.urlopen(request, timeout=timeout) as response:  # nosec - private operator supplied endpoint
+        decoded = json.loads(response.read().decode())
+    if "error" in decoded:
+        raise RuntimeError(f"RPC method failed: {method}")
+    return decoded.get("result")
+
+
+def rpc_chain_id(rpc_url: str) -> int:
+    result = rpc_call(rpc_url, "eth_chainId")
+    return int(str(result), 16)
