@@ -2,7 +2,7 @@
 
 Status: **PENDING_RPC**
 
-SHA-256: `554772e5cf0b032dc3849fa4e978eb20d55150643e673667ce1bbbb9bb523332`
+SHA-256: `bde01d66f7dd301ec5fdac11fceda019bebadb84122b142048fbc7ab3db1b8a5`
 
 ## Checks
 - Fork RPC supplied: false

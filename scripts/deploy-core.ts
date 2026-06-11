@@ -11,6 +11,31 @@ const transactions: string[] = [];
 const constructorArgs: Record<string, any[]> = {};
 function sha256Hex(text: string) { return "0x" + crypto.createHash("sha256").update(text).digest("hex"); }
 
+function jsonReplacer(_key: string, value: any) {
+  return typeof value === "bigint" ? value.toString() : value;
+}
+
+function redactConstructorArg(value: any): any {
+  if (typeof value === "bigint") return value.toString();
+  if (typeof value === "string" && ethers.isAddress(value)) {
+    if (value.toLowerCase() === AGIALPHA_MAINNET.toLowerCase()) return value;
+    return { redactedAddress: true, commitmentHash: sha256Hex(value.toLowerCase()) };
+  }
+  if (Array.isArray(value)) return value.map(redactConstructorArg);
+  if (value && typeof value === "object") {
+    return Object.fromEntries(Object.entries(value).map(([key, nested]) => [key, redactConstructorArg(nested)]));
+  }
+  return value;
+}
+
+function publicConstructorArgs(info: ChainInfo) {
+  return info.isMainnet ? redactConstructorArg(constructorArgs) : constructorArgs;
+}
+
+function constructorArgsCommitmentHash() {
+  return sha256Hex(JSON.stringify(constructorArgs, jsonReplacer));
+}
+
 function chainInfo(chainId: number): ChainInfo {
   if (chainId === 1) return { label: "ethereum-mainnet", file: "ethereum-mainnet.agialpha.latest.json", chainId, isMainnet: true };
   if (chainId === 11155111) return { label: "ethereum-sepolia", file: "ethereum-sepolia.agialpha.latest.json", chainId, isMainnet: false };
@@ -209,8 +234,10 @@ export async function deployGoalOSAGIALPHAAscension() {
     newAgialphaTokenDeployed: false,
     legacyAGIJobManager,
     transactions,
-    constructorArgs,
-    roleAssignmentsCommitmentHash: sha256Hex(JSON.stringify({ commercializationAdmin, proofRewardsAdmin, liquidityAdmin, securityAdmin, communityAdmin })),
+    constructorArgs: publicConstructorArgs(info),
+    constructorArgsRedacted: info.isMainnet,
+    constructorArgsCommitmentHash: constructorArgsCommitmentHash(),
+    roleAssignmentsCommitmentHash: sha256Hex(JSON.stringify({ commercializationAdmin, proofRewardsAdmin, liquidityAdmin, securityAdmin, communityAdmin }, jsonReplacer)),
     authorizationDecisionHash: (info.isMainnet ? requireBytes32("AUTHORIZATION_DECISION_HASH") : undefined),
     toolchainClearanceHash: (info.isMainnet ? requireBytes32("TOOLCHAIN_CLEARANCE_HASH") : undefined),
     sepoliaEvidenceHash: (info.isMainnet ? requireBytes32("SEPOLIA_EVIDENCE_HASH") : undefined),

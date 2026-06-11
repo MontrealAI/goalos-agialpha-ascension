@@ -12,3 +12,7 @@
 - Custom scripts: yes, under `scripts/` and `scripts/private/`.
 
 The chosen path preserves the stable working dependency baseline while adding Ethereum Mainnet and Sepolia network aliases that do not require secrets during config load. Private RPC URLs and deployer keys are loaded only by local operator scripts or explicit deployment/preflight commands.
+
+## Ignition decision
+
+Ignition remains available only as a public-safe example module and Sepolia/local template path. The mainnet Ignition package script is disabled by design so it cannot bypass the private operator wrapper, authorization JSON checks, typed confirmation, canonical-token code check, or CI deployment guard.
