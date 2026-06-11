@@ -1,3 +1,5 @@
-# Legal / Tax / Public Claims Gate Memo
+# Legal, Tax, and Public Claims Gate Memo
 
-No legal, tax, or public-claims approval is asserted by this repository. Operators must obtain real counsel/accounting review, store only public-safe hashes in gate variables, and avoid investment, yield, price-target, guaranteed resale-value, guaranteed non-security, audited, mainnet-ready, or mainnet-authorized claims without signed evidence.
+No legal, tax, or public-claims approval hash is fabricated in this repository.
+
+Public status: Not externally audited. Ethereum Mainnet not authorized. AGIALPHA is a utility coordination token only, not equity, dividends, profit rights, yield, ownership, or an investment claim.

@@ -1,3 +1,5 @@
-# External Auditor Handoff
+# Historical External Auditor Handoff Note
 
-Provide auditors with `contracts/`, `scripts/`, `test/`, `security/`, `audit/`, `deployments/ethereum-sepolia.agialpha.latest.json`, `evidence/sepolia/SEPOLIA_EVIDENCE_DOCKET.latest.json`, and the latest `audit/reports/` directory. Mainnet is not authorized until external audit closure is signed and hashed.
+No external audit is planned for the current release path. This file is retained only as a historical placeholder; active gates use automated security/toolchain clearance plus internal security review.
+
+Not externally audited.

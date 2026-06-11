@@ -41,9 +41,19 @@
     "audit:fail-on-critical": "python scripts/audit/fail-on-critical-findings.py",
     "sepolia:rehearsal": "hardhat run scripts/rehearse-ethereum-sepolia.ts --network sepolia",
     "sepolia:evidence": "python scripts/generate-sepolia-evidence-docket.py",
-    "mainnet:technical-preflight": "npm run preflight:ethereum-mainnet && npm run verify:agialpha-token && npm run mainnet:authorization-check",
+    "mainnet:technical-preflight": "npm run preflight:ethereum-mainnet && npm run verify:agialpha-token && npm run mainnet:readiness-check && npm run mainnet:authorization-check",
     "audit:semgrep": "bash scripts/audit/run-semgrep.sh",
-    "audit:npm": "bash scripts/audit/run-npm-audit.sh"
+    "audit:npm": "bash scripts/audit/run-npm-audit.sh",
+    "assert:public-status": "python scripts/assert_public_status.py",
+    "audit:halmos": "bash scripts/audit/run-halmos.sh",
+    "audit:solhint": "bash scripts/audit/run-solhint.sh",
+    "audit:smt": "bash scripts/audit/run-solc-smtchecker.sh",
+    "audit:osv": "bash scripts/audit/run-osv-scanner.sh",
+    "audit:actions": "bash scripts/audit/run-actionlint.sh",
+    "audit:shell": "bash scripts/audit/run-shellcheck.sh",
+    "audit:secrets": "bash scripts/audit/run-gitleaks.sh",
+    "audit:clearance-report": "python scripts/audit/generate-toolchain-clearance-report.py",
+    "mainnet:readiness-check": "python scripts/mainnet-readiness-check.py"
   },
   "dependencies": {
     "@openzeppelin/contracts": "^4.9.6",

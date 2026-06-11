@@ -23,7 +23,7 @@
     "taxMemoSha256": "PENDING",
     "testLogSha256": "TO_FILL"
   },
-  "generatedAtUtc": "2026-06-11T01:55:33Z",
+  "generatedAtUtc": "2026-06-11T16:18:58Z",
   "mainnetDecision": "NOT_AUTHORIZED",
   "network": "ethereum-sepolia",
   "notes": [
@@ -42,7 +42,7 @@
     "Reputation updates",
     "Rewards and bonds settle"
   ],
-  "publicBoundary": "Evidence docket only. Not audited. Not mainnet authorized. Not legal, tax, investment, or security approval.",
+  "publicBoundary": "Evidence docket only. Not externally audited. Ethereum Mainnet not authorized. Not legal, tax, investment, or security approval.",
   "rootDoctrine": "GoalOS sets aim; AGIALPHA coordinates proof work; AEP-001 defines evidence; Proof Gradient decides what may evolve.",
   "schema": "goalos.agialpha.ascension.evidence_docket.v4.2",
   "status": "draft",

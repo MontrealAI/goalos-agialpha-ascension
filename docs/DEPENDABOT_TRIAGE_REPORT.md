@@ -19,4 +19,4 @@ Missing Dependabot labels are documented in `docs/DEPENDABOT_LABEL_FIX.md` becau
 
 ## Mainnet impact
 
-Dependency PRs do not authorize mainnet. Ethereum Mainnet remains `NOT_AUTHORIZED` until all real gates and audit closure are complete.
+Dependency PRs do not authorize mainnet. Ethereum Mainnet remains `NOT_AUTHORIZED` until all real gates, automated/internal security clearance, and founder deployment approval are complete.

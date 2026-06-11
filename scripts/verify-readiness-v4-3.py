@@ -14,10 +14,10 @@ def main():
     for s in ['readiness:v4.3','test:v4.3','evidence:docket:template','mainnet:authorization-check','compile','test','test:all','static-check','deploy:ethereum-sepolia','deploy:ethereum-mainnet:gated']:
         if s not in scripts: errors.append(f'package.json missing script: {s}')
     env=read('.env.example') if (ROOT/'.env.example').exists() else ''
-    for key in ['AGIALPHA_TOKEN_ADDRESS','LEGAL_SIGNOFF_HASH','TAX_SIGNOFF_HASH','SECURITY_REVIEW_HASH','PUBLIC_CLAIMS_REVIEW_HASH','TREASURY_REVIEW_HASH','AGIALPHA_TOKEN_VERIFICATION_HASH','SEPOLIA_REHEARSAL_EVIDENCE_HASH','EXTERNAL_AUDIT_CLOSURE_HASH','FOUNDER_APPROVAL_HASH']:
+    for key in ['AGIALPHA_TOKEN_ADDRESS','LEGAL_SIGNOFF_HASH','TAX_SIGNOFF_HASH','SECURITY_REVIEW_HASH','PUBLIC_CLAIMS_REVIEW_HASH','TREASURY_REVIEW_HASH','AGIALPHA_TOKEN_VERIFICATION_HASH','SEPOLIA_REHEARSAL_EVIDENCE_HASH','AUTOMATED_SECURITY_TOOLCHAIN_HASH','INTERNAL_SECURITY_REVIEW_HASH','FOUNDER_APPROVAL_HASH']:
         if key not in env: errors.append(f'.env.example missing {key}')
     launch=read('contracts/registry/LaunchGateRegistry.sol') if (ROOT/'contracts/registry/LaunchGateRegistry.sol').exists() else ''
-    for needle in ['ETHEREUM_SEPOLIA_REHEARSAL','AGIALPHA_TOKEN_VERIFICATION','EXTERNAL_AUDIT_CLOSURE','FOUNDER_APPROVAL']:
+    for needle in ['ETHEREUM_SEPOLIA_REHEARSAL','AGIALPHA_TOKEN_VERIFICATION','AUTOMATED_SECURITY_TOOLCHAIN','INTERNAL_SECURITY_REVIEW','FOUNDER_APPROVAL']:
         if needle not in launch: errors.append(f'LaunchGateRegistry missing {needle}')
     if 'BASE_SEPOLIA_REHEARSAL' in launch: errors.append('LaunchGateRegistry must not contain BASE_SEPOLIA_REHEARSAL')
     deploy=read('scripts/deploy-core.ts') if (ROOT/'scripts/deploy-core.ts').exists() else ''
@@ -37,7 +37,7 @@ def main():
             data=p.read_bytes(); manifest.append({'path':p.relative_to(ROOT).as_posix(),'bytes':len(data),'sha256':hashlib.sha256(data).hexdigest()})
     (ROOT/'qa').mkdir(exist_ok=True)
     (ROOT/'qa/MANIFEST_v4_3.json').write_text(json.dumps({'generated_at':datetime.datetime.now(datetime.UTC).isoformat(),'files':manifest},indent=2),encoding='utf-8')
-    report={'package':'GoalOS_AGIALPHA_Ascension_Ethereum_Mainnet_Implementation_v4_3_GATE_CLEAN_EVIDENCE_READY','generated_at':datetime.datetime.now(datetime.UTC).isoformat(),'static_readiness':'passed' if not errors else 'failed','files_checked':len(manifest),'errors':errors,'warnings':warnings,'status':'gate-clean evidence-ready audit candidate; mainnet not authorized','score_current_state':'9.6/10 audit-candidate package; not 10/10 until executed evidence exists','next_gate':'real Ethereum Sepolia rehearsal and filled Evidence Docket'}
+    report={'package':'GoalOS_AGIALPHA_Ascension_Ethereum_Mainnet_Implementation_v4_3_GATE_CLEAN_EVIDENCE_READY','generated_at':datetime.datetime.now(datetime.UTC).isoformat(),'static_readiness':'passed' if not errors else 'failed','files_checked':len(manifest),'errors':errors,'warnings':warnings,'status':'gate-clean evidence-ready audit candidate; mainnet not authorized','score_current_state':'9.6/10 audit-candidate package; not 10/10 until executed evidence and internal security review exist','next_gate':'real Ethereum Sepolia rehearsal and filled Evidence Docket'}
     (ROOT/'qa/READINESS_REPORT_v4_3.json').write_text(json.dumps(report,indent=2),encoding='utf-8')
     print(json.dumps(report,indent=2))
     if errors: raise SystemExit(1)

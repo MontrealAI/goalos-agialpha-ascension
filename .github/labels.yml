@@ -12,7 +12,7 @@
   description: Evidence Docket work
 - name: audit
   color: 1D76DB
-  description: External audit or security review
+  description: Automated/internal security review and findings
 - name: security
   color: BFD4F2
   description: Security-sensitive work
@@ -46,3 +46,6 @@
 - name: founder-decision
   color: D4C5F9
   description: Requires founder decision
+- name: dependencies
+  color: 0366D6
+  description: Dependency updates

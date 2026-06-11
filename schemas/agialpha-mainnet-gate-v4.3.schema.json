@@ -12,7 +12,8 @@
     "treasuryReviewHash",
     "agialphaTokenVerificationHash",
     "sepoliaRehearsalEvidenceHash",
-    "externalAuditClosureHash",
+    "automatedSecurityToolchainHash",
+    "internalSecurityReviewHash",
     "founderApprovalHash"
   ],
   "properties": {
@@ -42,7 +43,7 @@
       "type": "string",
       "pattern": "^0x[0-9a-fA-F]{64}$"
     },
-    "externalAuditClosureHash": {
+    "automatedSecurityToolchainHash": {
       "type": "string",
       "pattern": "^0x[0-9a-fA-F]{64}$"
     },
@@ -55,6 +56,10 @@
       "pattern": "^0x[0-9a-fA-F]{64}$"
     },
     "agialphaTokenVerificationHash": {
+      "type": "string",
+      "pattern": "^0x[0-9a-fA-F]{64}$"
+    },
+    "internalSecurityReviewHash": {
       "type": "string",
       "pattern": "^0x[0-9a-fA-F]{64}$"
     }

@@ -1,5 +1,7 @@
 # Post-Rehearsal Mainnet Decision
 
-Decision: **NOT_AUTHORIZED**.
+Decision: Ethereum Mainnet deployment authorization is NO.
 
-The local chainId-11155111 rehearsal produced a manifest and public-safe Evidence Docket, but mainnet remains blocked because public Sepolia replay, external audit closure, legal, tax, public-claims, treasury, AGIALPHA mainnet token verification, and founder approval gates are not present as real signed evidence. The decision is produced by `npm run mainnet:authorization-check` and written to `docs/MAINNET_AUTHORIZATION_DECISION.md/json`.
+The local chainId 11155111 Sepolia rehearsal artifact and Evidence Docket exist, but technical readiness remains NO until all automated/security toolchain blockers, public Sepolia replay requirements if applicable, AGIALPHA mainnet token verification, internal security review, and address ceremony requirements are complete.
+
+Not externally audited.

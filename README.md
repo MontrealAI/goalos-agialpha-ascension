@@ -1,17 +1,15 @@
 # GoalOS AGIALPHA Ascension
 
-GoalOS AGIALPHA Ascension v4.3+
-Ethereum Sepolia rehearsal: completed / pending, based on evidence.
-Audit toolchain: implemented and run / pending, based on evidence.
+GoalOS AGIALPHA Ascension v4.4 candidate.
+Automated security/toolchain review: completed with blockers.
+Ethereum Sepolia rehearsal: completed locally on chainId 11155111; public Sepolia replay pending unless real RPC/deployer evidence is supplied.
 Dependency PRs: triaged, not blindly merged.
-External audit: not closed unless real audit closure exists.
-Ethereum Mainnet: NOT_AUTHORIZED unless all gates pass.
-Not audited.
-This repository is not mainnet authorized.
+Not externally audited.
+Ethereum Mainnet technical readiness: NO.
+Ethereum Mainnet deployment authorization: NO.
+Ethereum Mainnet not authorized.
 
 Mainnet AGIALPHA token address: `0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA`. This repository must not deploy or mint a new AGIALPHA token on Ethereum Mainnet.
-
-# GoalOS AGIALPHA Ascension
 
 **GoalOS AGIALPHA Ascension** is a GoalOS-native reimplementation of **α‑AGI Ascension** using the existing Ethereum Mainnet `$AGIALPHA` token as the utility coordination asset for proof-settled AI workflow work.
 
@@ -24,15 +22,16 @@ Evidence Dockets make claims auditable.
 ## Current status
 
 ```text
-Repository status: initial institutional repository candidate.
-Implementation package: v4.3 gate-clean evidence-ready audit candidate.
-Ethereum Sepolia rehearsal: next.
-Ethereum Mainnet authorization: no.
-External audit closure: not complete.
-Legal / tax / public-claims review: not complete.
+Repository status: v4.4 candidate with automated/internal security gates.
+Implementation package: gate-clean evidence-ready audit candidate.
+Automated security/toolchain review: completed with blockers.
+Ethereum Sepolia rehearsal: completed locally; public Sepolia replay pending unless real network evidence is supplied.
+Not externally audited.
+Ethereum Mainnet technical readiness: NO.
+Ethereum Mainnet deployment authorization: NO.
 ```
 
-Do **not** call this repository audited, mainnet authorized, legally approved, tax reviewed, production deployed, or guaranteed non-security.
+Do **not** call this repository externally audited, mainnet authorized, legally approved, tax reviewed, production deployed, or guaranteed non-security.
 
 ## Existing AGIALPHA token
 
@@ -46,39 +45,20 @@ The implementation does **not** deploy or mint a new AGIALPHA token on Ethereum 
 
 ## Source doctrine
 
-GoalOS AGIALPHA Ascension combines two reference doctrines:
-
-1. **GoalOS / AEP-001**  
-   A proof-of-evolution constitution: `Aim → Act → Prove → Evolve`.  
-   The public/private boundary is: do not put intelligence on-chain; put proof of intelligence on-chain.
-
-2. **AGI ALPHA / α‑AGI Ascension**  
-   A proof-settled organizational substrate: `Request → Escrow → Execute → Proof → Validate → Settle → Chronicle`.  
-   Settlement requires replayable ProofBundles, validator review, and claim boundaries.
+1. **GoalOS / AEP-001**: `Aim → Act → Prove → Evolve`; do not put intelligence on-chain, put proof of intelligence on-chain.
+2. **AGI ALPHA / α‑AGI Ascension**: `Request → Escrow → Execute → Proof → Validate → Settle → Chronicle`; settlement requires replayable ProofBundles, validator review, and claim boundaries.
 
 ## What this repository contains
 
 ```text
 contracts/        Ethereum Solidity contracts and registries
-scripts/          deployment, verification, readiness, and evidence scripts
+scripts/          deployment, verification, readiness, audit, and evidence scripts
 schemas/          Evidence Docket, ProofBundle, and mainnet gate schemas
 test/             Hardhat tests
-docs/             operator, auditor, architecture, claim-boundary, and gate docs
-audit/            audit handoff templates and gate matrices
+docs/             operator, architecture, claim-boundary, and gate docs
+audit/            automated/internal security toolchain workspace
 qa/               generated manifests and readiness reports
 .github/          issue templates, workflows, and repository governance
-```
-
-## Core implementation layers
-
-```text
-AGIALPHA proof-work coordination
-AEP-001 proof-of-evolution registries
-Evidence Docket 6.1
-Settlement-grade ProofBundle schema
-Reviewer / evaluator / slashing controls
-Launch gates and mainnet authorization checks
-Legacy AGIJobManager continuity registry
 ```
 
 ## High-level loop
@@ -111,22 +91,11 @@ Evidence Dockets make claims auditable.
 Proof Cards create trust.
 Credentials create reputation.
 Reputation unlocks better jobs.
+Not externally audited.
+Ethereum Mainnet not authorized.
 ```
 
-Avoid:
-
-```text
-investment
-yield
-revenue share
-price target
-guaranteed resale value
-guaranteed non-security
-achieved AGI / ASI
-autonomous enterprise without governance
-mainnet authorized
-audited
-```
+Avoid claims about investment, yield, revenue-share, price-target, guaranteed resale value, guaranteed non-security, achieved AGI/ASI, autonomous enterprise without governance, mainnet authorization, production deployment, or external audit status.
 
 ## Quick start for engineers
 
@@ -138,22 +107,33 @@ npm test
 npm run test:all
 npm run static-check
 npm run readiness:v4.3
+npm run assert:public-status
 npm run evidence:docket:template
 ```
 
 Ethereum Sepolia rehearsal:
 
 ```bash
-npm run deploy:ethereum-sepolia
+npm run sepolia:rehearsal
+npm run sepolia:evidence
 ```
 
-Ethereum Mainnet remains blocked unless all gates are real:
+Automated security/toolchain:
+
+```bash
+npm run audit:all
+npm run audit:summarize
+npm run audit:clearance-report
+npm run audit:fail-on-critical
+```
+
+Ethereum Mainnet remains blocked unless all computed gates are real and founder deployment approval is explicit:
 
 ```bash
 npm run preflight:ethereum-mainnet
 npm run verify:agialpha-token
-npm run deploy:ethereum-mainnet:gated
-npm run verify:deployment
+npm run mainnet:readiness-check
+npm run mainnet:authorization-check
 ```
 
 ## Mainnet gate law
@@ -162,41 +142,28 @@ Ethereum Mainnet deployment is not authorized until all required gates are compl
 
 ```text
 compile/tests
-Ethereum Sepolia rehearsal
+Ethereum Sepolia rehearsal evidence
 filled Evidence Docket
-external audit closure
-legal/token counsel review
-tax/accounting review
+automated security/toolchain clearance
+internal security review and findings remediation
+legal/token counsel review if required by founder policy
+tax/accounting review if required by founder policy
 public-claims review
 treasury/founder/admin ceremony
 AGIALPHA token verification
 AGIALPHA vault-funding approval, if funding is planned
-formal founder approval
+formal founder deployment approval
 ```
 
-## Recommended first use cases
-
-```text
-1. Customer Support Proof Room
-2. Claims-Safe Launch Content
-3. Repository + Website Documentation QA
-4. Commercialization Proof-of-Value
-5. Builder / Reviewer Credentialing
-```
-
-## License / rights
-
-This repository contains a strategic implementation candidate. Do not assume open-source licensing until the founder and counsel approve the final license posture. See `LICENSE_DECISION.md`.
+Technical mainnet readiness is computed separately from deployment authorization. Deployment authorization remains NO until founder approval and every deployment gate is real.
 
 ## Security
 
-Never commit private keys, `.env`, wallet seed phrases, RPC secrets, API keys, private buyer products, private Evidence Dockets, customer data, legal memos, tax memos, or unpaid product ZIPs.
+Never commit private keys, `.env`, wallet seed phrases, RPC secrets, API keys, private buyer products, private Evidence Dockets, customer data, legal memos, tax memos, or paid buyer products.
 
 See `SECURITY.md`.
 
 ## Production continuation repository
-
-This GitHub repository is intended to become the production-continuation source of truth for GoalOS AGIALPHA Ascension.
 
 ```text
 Repository upload
@@ -205,14 +172,18 @@ Repository upload
 → compile/tests
 → Ethereum Sepolia rehearsal
 → filled Evidence Docket
-→ external audit closure
-→ legal / tax / claims / treasury / founder gates
-→ mainnet decision
+→ automated security/toolchain clearance
+→ internal security review
+→ legal / tax / claims / treasury / founder gates as required
+→ technical mainnet-readiness decision
+→ founder deployment authorization decision
 ```
 
 Current status remains:
 
 ```text
-Not audited.
-Not mainnet authorized.
+Not externally audited.
+Ethereum Mainnet not authorized.
+Ethereum Mainnet technical readiness: NO.
+Ethereum Mainnet deployment authorization: NO.
 ```
