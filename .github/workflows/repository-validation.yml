@@ -14,6 +14,20 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - uses: actions/setup-node@v5
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install locked dependencies
+        run: npm ci
+
+      - name: Compile contracts
+        run: npm run compile
+
+      - name: Unit tests
+        run: npm test
+
       - name: Check no obvious secrets / unsafe claims
         run: python scripts/repository_safety_check.py
 

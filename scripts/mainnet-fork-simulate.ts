@@ -74,6 +74,11 @@ async function main() {
     setDefaultEnv("AUTOMATED_SECURITY_TOOLCHAIN_HASH", bytes32("9"));
     setDefaultEnv("INTERNAL_SECURITY_REVIEW_HASH", `0x${"a".repeat(64)}`);
     setDefaultEnv("FOUNDER_APPROVAL_HASH", `0x${"b".repeat(64)}`);
+    setDefaultEnv("ADDRESS_CEREMONY_HASH", `0x${"c".repeat(64)}`);
+    setDefaultEnv("TOOLCHAIN_CLEARANCE_HASH", process.env.AUTOMATED_SECURITY_TOOLCHAIN_HASH || `0x${"9".repeat(64)}`);
+    setDefaultEnv("SEPOLIA_EVIDENCE_HASH", process.env.SEPOLIA_REHEARSAL_EVIDENCE_HASH || `0x${"8".repeat(64)}`);
+    setDefaultEnv("MAINNET_PREFLIGHT_HASH", `0x${"d".repeat(64)}`);
+    setDefaultEnv("AUTHORIZATION_DECISION_HASH", `0x${"e".repeat(64)}`);
 
     try {
       const deployment = await deployGoalOSAGIALPHAAscension();

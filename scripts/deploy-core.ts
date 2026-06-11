@@ -1,11 +1,15 @@
 import { ethers } from "hardhat";
 import fs from "fs";
 import path from "path";
+import crypto from "crypto";
 
 const AGIALPHA_MAINNET = "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA";
 const LEGACY_AGI_JOB_MANAGER_MAINNET = "0xb3aaeb69b630f0299791679c063d68d6687481d1";
 
 type ChainInfo = { label: string; file: string; chainId: number; isMainnet: boolean };
+const transactions: string[] = [];
+const constructorArgs: Record<string, any[]> = {};
+function sha256Hex(text: string) { return "0x" + crypto.createHash("sha256").update(text).digest("hex"); }
 
 function chainInfo(chainId: number): ChainInfo {
   if (chainId === 1) return { label: "ethereum-mainnet", file: "ethereum-mainnet.agialpha.latest.json", chainId, isMainnet: true };
@@ -60,7 +64,10 @@ function enforceEthereumMainnetGates(info: ChainInfo) {
 
 async function deploy(name: string, args: any[] = []) {
   const Factory = await ethers.getContractFactory(name);
+  constructorArgs[name] = args;
   const contract = await Factory.deploy(...args);
+  const tx = contract.deploymentTransaction();
+  if (tx?.hash) transactions.push(tx.hash);
   await contract.waitForDeployment();
   const address = await contract.getAddress();
   console.log(`${name}: ${address}`);
@@ -69,6 +76,7 @@ async function deploy(name: string, args: any[] = []) {
 
 async function grant(contract: any, role: string, account: string, label: string) {
   const tx = await contract.grantRole(role, account);
+  transactions.push(tx.hash);
   await tx.wait();
   console.log(`grant ${label}: ${account}`);
 }
@@ -110,7 +118,11 @@ export async function deployGoalOSAGIALPHAAscension() {
   const legacyAGIJobManager = optionalEnvAddress("LEGACY_AGI_JOB_MANAGER_ADDRESS") || LEGACY_AGI_JOB_MANAGER_MAINNET;
 
   console.log(`Deploying GoalOS AGIALPHA Ascension v4.3 to ${info.label}`);
-  console.log({ deployer: deployer.address, admin, founder, treasury, agialphaToken, legacyAGIJobManager });
+  if (info.isMainnet) {
+    console.log({ deployerCommitmentHash: sha256Hex(deployer.address), adminCommitmentHash: sha256Hex(admin), founderCommitmentHash: sha256Hex(founder), treasuryCommitmentHash: sha256Hex(treasury), agialphaToken, legacyAGIJobManager });
+  } else {
+    console.log({ deployer: deployer.address, admin, founder, treasury, agialphaToken, legacyAGIJobManager });
+  }
 
   const performanceVault = await deploy("CommercializationPerformanceVault", [commercializationAdmin, agialphaToken]);
   const proofRewardsVault = await deploy("TokenReserveVault", [proofRewardsAdmin, agialphaToken, "AGIALPHA Proof Jobs / Builder Rewards"]);
@@ -183,14 +195,28 @@ export async function deployGoalOSAGIALPHAAscension() {
   const deployment = {
     package: "GoalOS_AGIALPHA_Ascension_Ethereum_Mainnet_Implementation_v4_3_GATE_CLEAN_EVIDENCE_READY",
     network: info.label,
+    chain: info.isMainnet ? "ethereum" : "ethereum-sepolia-or-local",
     chainId: info.chainId,
     deployedAt: new Date().toISOString(),
-    deployer: deployer.address,
-    admin,
-    founder,
-    treasury,
+    commit: process.env.GITHUB_SHA || "LOCAL_PRIVATE_OPERATOR",
+    deployer: info.isMainnet ? undefined : deployer.address,
+    deployerCommitmentHash: sha256Hex(deployer.address),
+    admin: info.isMainnet ? undefined : admin,
+    founder: info.isMainnet ? undefined : founder,
+    treasury: info.isMainnet ? undefined : treasury,
     agialphaToken,
+    mockAgialphaUsed: false,
+    newAgialphaTokenDeployed: false,
     legacyAGIJobManager,
+    transactions,
+    constructorArgs,
+    roleAssignmentsCommitmentHash: sha256Hex(JSON.stringify({ commercializationAdmin, proofRewardsAdmin, liquidityAdmin, securityAdmin, communityAdmin })),
+    authorizationDecisionHash: (info.isMainnet ? requireBytes32("AUTHORIZATION_DECISION_HASH") : undefined),
+    toolchainClearanceHash: (info.isMainnet ? requireBytes32("TOOLCHAIN_CLEARANCE_HASH") : undefined),
+    sepoliaEvidenceHash: (info.isMainnet ? requireBytes32("SEPOLIA_EVIDENCE_HASH") : undefined),
+    mainnetPreflightHash: (info.isMainnet ? requireBytes32("MAINNET_PREFLIGHT_HASH") : undefined),
+    founderApprovalCommitmentHash: (info.isMainnet ? requireBytes32("FOUNDER_APPROVAL_HASH") : undefined),
+    addressCeremonyCommitmentHash: (info.isMainnet ? requireBytes32("ADDRESS_CEREMONY_HASH") : undefined),
     mainnetGates: info.isMainnet ? {
       legalSignoffHash: process.env.LEGAL_SIGNOFF_HASH,
       taxSignoffHash: process.env.TAX_SIGNOFF_HASH,
@@ -258,8 +284,12 @@ export async function deployGoalOSAGIALPHAAscension() {
   };
 
   fs.mkdirSync(path.join(__dirname, "..", "deployments"), { recursive: true });
-  fs.writeFileSync(path.join(__dirname, "..", "deployments", info.file), JSON.stringify(deployment, null, 2));
+  const manifest = JSON.stringify(deployment, null, 2) + "\n";
+  const manifestPath = path.join(__dirname, "..", "deployments", info.file);
+  fs.writeFileSync(manifestPath, manifest);
+  if (info.isMainnet) fs.writeFileSync(path.join(__dirname, "..", "deployments", "ethereum-mainnet.agialpha.latest.sha256"), crypto.createHash("sha256").update(manifest).digest("hex") + "\n");
   console.log(`Deployment written to deployments/${info.file}`);
+  return deployment;
 }
 
 if (require.main === module) {
