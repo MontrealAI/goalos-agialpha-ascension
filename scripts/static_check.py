@@ -91,7 +91,6 @@ ignored_manifest_parts = {
     "cache",
     "coverage",
     "node_modules",
-    "private",
     "typechain-types",
 }
 for p in sorted(ROOT.rglob("*")):
@@ -100,7 +99,10 @@ for p in sorted(ROOT.rglob("*")):
     rel = p.relative_to(ROOT).as_posix()
     if rel in manifest_excludes:
         continue
-    if ignored_manifest_parts.intersection(p.relative_to(ROOT).parts):
+    rel_parts = p.relative_to(ROOT).parts
+    if ignored_manifest_parts.intersection(rel_parts):
+        continue
+    if rel_parts and rel_parts[0] == "private":
         continue
     data = p.read_bytes()
     manifest.append({"path": rel, "bytes": len(data), "sha256": hashlib.sha256(data).hexdigest()})

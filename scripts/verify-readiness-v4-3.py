@@ -38,12 +38,14 @@ def main():
     manifest=[]
     manifest_path=ROOT/'qa/MANIFEST_v4_3.json'
     manifest_excludes={ROOT/'qa/MANIFEST.json', ROOT/'qa/MANIFEST_v4_3.json'}
-    ignored_manifest_parts={'.git','.private','artifacts','cache','coverage','node_modules','private','typechain-types'}
+    ignored_manifest_parts={'.git','.private','artifacts','cache','coverage','node_modules','typechain-types'}
     for p in sorted(ROOT.rglob('*')):
         if not p.is_file() or p in manifest_excludes:
             continue
         rel_parts=p.relative_to(ROOT).parts
         if ignored_manifest_parts.intersection(rel_parts):
+            continue
+        if rel_parts and rel_parts[0] == 'private':
             continue
         rel=p.relative_to(ROOT).as_posix()
         data=p.read_bytes(); manifest.append({'path':rel,'bytes':len(data),'sha256':hashlib.sha256(data).hexdigest()})
@@ -58,6 +60,8 @@ def main():
             continue
         rel_parts=p.relative_to(ROOT).parts
         if ignored_manifest_parts.intersection(rel_parts):
+            continue
+        if rel_parts and rel_parts[0] == 'private':
             continue
         rel=p.relative_to(ROOT).as_posix()
         data=p.read_bytes(); manifest.append({'path':rel,'bytes':len(data),'sha256':hashlib.sha256(data).hexdigest()})

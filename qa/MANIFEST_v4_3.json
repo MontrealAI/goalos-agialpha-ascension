@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-11T23:14:43.595455+00:00",
+  "generated_at": "2026-06-11T23:24:03.334670+00:00",
   "files": [
     {
       "path": ".editorconfig",
@@ -3374,7 +3374,7 @@
     {
       "path": "qa/QA_REPORT.json",
       "bytes": 921,
-      "sha256": "1e3e38f0b7dca12077021506fe1b12008b0854aee38c69be0faa57b665adba90"
+      "sha256": "8be7095e6eb34e1a2100e9d4a19c60d280568f8a734a99d8d2aa1177e47e660d"
     },
     {
       "path": "qa/QA_REPORT_v4_0.json",
@@ -3389,7 +3389,7 @@
     {
       "path": "qa/READINESS_REPORT_v4_3.json",
       "bytes": 538,
-      "sha256": "e20be28380e784f06e2d575a606eb5993b0b7be3f513d76740109b265f569a45"
+      "sha256": "af2eb2f68bbf1f63a43f9ba239ae2769552ad28dfd49589677f8615aad2634ea"
     },
     {
       "path": "qa/REPOSITORY_STARTER_QA_OUTPUTS_v2_0.json",
@@ -3777,6 +3777,66 @@
       "sha256": "de03e538eb69ac6d88bea93468d63b6ee57781e452a88a47da4cb1393ee26d37"
     },
     {
+      "path": "scripts/private/common.py",
+      "bytes": 4406,
+      "sha256": "bdc8a476fdd790d6e147e2c8f1d15b1aa6567643932eda6167f54935c6c73871"
+    },
+    {
+      "path": "scripts/private/generate-address-ceremony-commitment.py",
+      "bytes": 1142,
+      "sha256": "2f7cf7031b871a4682b91f2eb898d95b9b1b5beedc700842c9d36128e82330ea"
+    },
+    {
+      "path": "scripts/private/generate-founder-approval-message.py",
+      "bytes": 840,
+      "sha256": "9fddd8bd7b5917bafd81a2c02e3c097a3f360b5bbc3e344477ea96d7f9722b62"
+    },
+    {
+      "path": "scripts/private/generate-private-operator-template.py",
+      "bytes": 1611,
+      "sha256": "737c63df87ec0049b0dfed0d8f3847433315634427250640da49177cbe46740f"
+    },
+    {
+      "path": "scripts/private/generate-redacted-public-evidence.py",
+      "bytes": 4352,
+      "sha256": "c58c432329ed0f547c8b6e3b6ce2be0b2847e4d9f24c8490fafea403c0b5901f"
+    },
+    {
+      "path": "scripts/private/post-deployment-verify-mainnet.py",
+      "bytes": 2267,
+      "sha256": "44f4bc8ba14de5a4db2bd989a254045c4cdc86690d7e7bcbfb41ebcdda1f52be"
+    },
+    {
+      "path": "scripts/private/prepare-final-local-deployment.py",
+      "bytes": 186,
+      "sha256": "f1a6ee5c0f2590e7f1deaf49969b3747f63a893d6d9c1352f2e3e05ced0db05b"
+    },
+    {
+      "path": "scripts/private/run-final-local-mainnet-deployment.py",
+      "bytes": 4401,
+      "sha256": "24e62e90064353e5a7a1a07b7d07f20613a3150fc6eac2f326235e0295cab5f0"
+    },
+    {
+      "path": "scripts/private/run-private-mainnet-preflight.py",
+      "bytes": 2164,
+      "sha256": "563ae71268f0d97dc3be18c1fa31d8bb1d5f02e12766e0003f7154a74f45550f"
+    },
+    {
+      "path": "scripts/private/run-private-sepolia-rehearsal.py",
+      "bytes": 4010,
+      "sha256": "687b248358907c1482b7a65a4755d5d2f5abaacab84bb568d1e8a3a6ee97c8e0"
+    },
+    {
+      "path": "scripts/private/validate-private-operator-inputs.py",
+      "bytes": 1103,
+      "sha256": "368faeedcb6c1357a9d12162e5623b526cf38c33e4d1099496c6f7662f857f92"
+    },
+    {
+      "path": "scripts/private/verify-founder-approval-private.py",
+      "bytes": 1211,
+      "sha256": "de94e8f11a13e61d9bb2d155f66ce78532d84c5510695fc90a173d39e16312ac"
+    },
+    {
       "path": "scripts/rehearse-ethereum-sepolia.ts",
       "bytes": 12361,
       "sha256": "199203ba400c62126e7b639e452115942ac7dc792ab57c938c7e7ea54fffc4c3"
@@ -3803,8 +3863,8 @@
     },
     {
       "path": "scripts/static_check.py",
-      "bytes": 5651,
-      "sha256": "77510e3ecd5cbe5596db2041ce7f953911237beb60322c55f492004326a45866"
+      "bytes": 5727,
+      "sha256": "d8e3e0b82c3f0352c2aee519c2ace14b12b62f6b823eb7cd3422468b6694b6a4"
     },
     {
       "path": "scripts/verify-agialpha-token.ts",
@@ -3828,8 +3888,8 @@
     },
     {
       "path": "scripts/verify-readiness-v4-3.py",
-      "bytes": 6088,
-      "sha256": "c8f411dac5cd1a6981dbb659a70a8018e34d9fb6bb0f9aaf13784c3be4774d66"
+      "bytes": 6224,
+      "sha256": "506af43cb504d8e612b3232ad24355c0cf0f7c92a6f93500e046bbce3d46bbe5"
     },
     {
       "path": "security/ACCESS_CONTROL_MATRIX.md",
