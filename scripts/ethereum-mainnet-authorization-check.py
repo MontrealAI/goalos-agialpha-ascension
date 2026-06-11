@@ -27,11 +27,12 @@ def compute(with_redacted: bool) -> tuple[str, list[str], dict]:
     elif not safe(auth): blockers.append("Redacted Ethereum authorization evidence failed public-safety validation")
     elif auth.get("ethereumMainnetAuthorization") != "YES": blockers.append("Redacted Ethereum Mainnet authorization evidence is not YES")
     if auth and (auth.get("chain") != "ethereum" or auth.get("chainId") != 1 or str(auth.get("agialphaToken", "")).lower() != AGIALPHA.lower()): blockers.append("Redacted Ethereum authorization target chain/token mismatch")
-    if blockers and not with_redacted: blockers = ["PRIVATE_OPERATOR_EVIDENCE_PENDING"] + blockers
+    if not with_redacted:
+        blockers = ["PRIVATE_OPERATOR_EVIDENCE_PENDING", "Run --with-redacted-private-evidence to evaluate committed redacted private evidence"] + blockers
     return ("NO" if blockers else "YES"), blockers, evidence
 
 def write(status: str, blockers: list[str], evidence: dict) -> dict:
-    generated=now(); decision={"status":status,"ETHEREUM_MAINNET_AUTHORIZED":status,"commit":git_commit(),"chain":"ethereum","chainId":1,"agialphaToken":AGIALPHA,"evidence":evidence,"blockers":blockers,"generatedAt":generated,"generatedBy":"scripts/ethereum-mainnet-authorization-check.py","finalManualDeploymentCommand":"npm run deploy:ethereum-mainnet:gated:local" if status=="YES" else None,"mainnetDeploymentExecuted":False}
+    generated=now(); decision={"status":status,"ETHEREUM_MAINNET_AUTHORIZED":status,"commit":git_commit(),"chain":"ethereum","chainId":1,"agialphaToken":AGIALPHA,"evidence":evidence,"blockers":blockers,"reason": blockers[0] if blockers else "AUTHORIZED", "generatedAt":generated,"generatedBy":"scripts/ethereum-mainnet-authorization-check.py","finalManualDeploymentCommand":"npm run deploy:ethereum-mainnet:gated:local" if status=="YES" else None,"mainnetDeploymentExecuted":False}
     (ROOT/"docs/ETHEREUM_MAINNET_AUTHORIZATION_DECISION.json").write_text(json.dumps(decision, indent=2)+"\n")
     md=["# Ethereum Mainnet Authorization Decision","",f"Generated: {generated}","",f"ETHEREUM_MAINNET_AUTHORIZED: **{status}**","","## Blockers"]
     md += [f"- {b}" for b in blockers] or ["- None."]

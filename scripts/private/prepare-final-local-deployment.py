@@ -1,2 +1,3 @@
 #!/usr/bin/env python3
-print('Final local deployment preparation is documented in docs/FINAL_LOCAL_MAINNET_DEPLOYMENT_RUNBOOK.md. No secrets printed.')
+from common import ROOT
+print(f"Final local deployment preparation is documented in {ROOT/'docs/FINAL_LOCAL_MAINNET_DEPLOYMENT_RUNBOOK.md'}. No secrets printed.")

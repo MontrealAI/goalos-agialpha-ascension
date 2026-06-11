@@ -1,11 +1,12 @@
 # Mainnet Technical Readiness Decision
 
-Generated: 2026-06-11T19:05:43.801197+00:00
+Generated: 2026-06-11T19:24:24.250909+00:00
 
 TECHNICALLY_MAINNET_READY: **NO**
 
 ## Blockers
 - PRIVATE_OPERATOR_EVIDENCE_PENDING
+- Run --with-redacted-private-evidence to evaluate committed redacted private evidence
 - PRIVATE_OPERATOR_EVIDENCE_PENDING: missing qa/public-mainnet-technical-readiness-evidence.json
 - PRIVATE_OPERATOR_EVIDENCE_PENDING: missing qa/public-sepolia-rehearsal-evidence.json
 - PRIVATE_OPERATOR_EVIDENCE_PENDING: missing qa/public-mainnet-preflight-evidence.json

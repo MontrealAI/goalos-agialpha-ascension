@@ -1,32 +1,109 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "Private Mainnet Operator Input (not committed)",
+  "title": "Private Mainnet Operator Input (gitignored; not committed)",
   "type": "object",
-  "required": ["chain", "chainId", "agialphaToken"],
+  "additionalProperties": true,
+  "required": [
+    "chain",
+    "chainId",
+    "agialphaToken",
+    "founderAddress",
+    "deployerAddress",
+    "treasuryAddress",
+    "commercializationPerformanceAdmin",
+    "proofRewardsAdmin",
+    "liquidityAdmin",
+    "securityAdmin",
+    "communityAdmin",
+    "emergencyAdmin",
+    "founderApprovalSignature",
+    "founderApprovalMessage",
+    "sepoliaRpcUrl",
+    "mainnetRpcUrl",
+    "etherscanApiKey",
+    "policyWaivers"
+  ],
   "properties": {
-    "chain": {"const": "ethereum"},
-    "chainId": {"const": 1},
-    "agialphaToken": {"const": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA"},
-    "founderAddress": {"type": "string"},
-    "deployerAddress": {"type": "string"},
-    "treasuryAddress": {"type": "string"},
-    "commercializationPerformanceAdmin": {"type": "string"},
-    "proofRewardsAdmin": {"type": "string"},
-    "liquidityAdmin": {"type": "string"},
-    "securityAdmin": {"type": "string"},
-    "communityAdmin": {"type": "string"},
-    "emergencyAdmin": {"type": "string"},
-    "founderApprovalSignature": {"type": "string"},
-    "founderApprovalMessage": {"type": "string"},
-    "sepoliaRpcUrl": {"type": "string"},
-    "mainnetRpcUrl": {"type": "string"},
-    "etherscanApiKey": {"type": "string"},
+    "chain": {
+      "const": "ethereum"
+    },
+    "chainId": {
+      "const": 1
+    },
+    "agialphaToken": {
+      "const": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA"
+    },
+    "founderAddress": {
+      "type": "string"
+    },
+    "deployerAddress": {
+      "type": "string"
+    },
+    "treasuryAddress": {
+      "type": "string"
+    },
+    "commercializationPerformanceAdmin": {
+      "type": "string"
+    },
+    "proofRewardsAdmin": {
+      "type": "string"
+    },
+    "liquidityAdmin": {
+      "type": "string"
+    },
+    "securityAdmin": {
+      "type": "string"
+    },
+    "communityAdmin": {
+      "type": "string"
+    },
+    "emergencyAdmin": {
+      "type": "string"
+    },
+    "founderApprovalSignature": {
+      "type": "string"
+    },
+    "founderApprovalMessage": {
+      "type": "string"
+    },
+    "sepoliaRpcUrl": {
+      "type": "string"
+    },
+    "mainnetRpcUrl": {
+      "type": "string"
+    },
+    "etherscanApiKey": {
+      "type": "string"
+    },
     "policyWaivers": {
       "type": "object",
+      "required": [
+        "legalTokenCounsel",
+        "taxAccounting",
+        "publicClaims"
+      ],
       "properties": {
-        "legalTokenCounsel": {"enum": ["passed", "waived_by_founder", "required_blocker"]},
-        "taxAccounting": {"enum": ["passed", "waived_by_founder", "required_blocker"]},
-        "publicClaims": {"enum": ["passed", "waived_by_founder", "required_blocker"]}
+        "legalTokenCounsel": {
+          "enum": [
+            "passed",
+            "waived_by_founder",
+            "required_blocker"
+          ]
+        },
+        "taxAccounting": {
+          "enum": [
+            "passed",
+            "waived_by_founder",
+            "required_blocker"
+          ]
+        },
+        "publicClaims": {
+          "enum": [
+            "passed",
+            "waived_by_founder",
+            "required_blocker"
+          ]
+        }
       }
     }
   }

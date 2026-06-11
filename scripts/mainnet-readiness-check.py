@@ -71,6 +71,7 @@ def write_decision(status: str, blockers: list[str], evidence: dict) -> dict:
         "agialphaToken": AGIALPHA,
         "evidence": evidence,
         "blockers": blockers,
+        "reason": blockers[0] if blockers else "READY",
         "generatedAt": generated,
         "generatedBy": "scripts/mainnet-readiness-check.py",
         "mainnetDeploymentExecuted": False,
@@ -91,8 +92,7 @@ def main() -> None:
         evidence, blockers = validate_redacted_yes()
     else:
         evidence, blockers = load_public_evidence()
-        if blockers:
-            blockers = ["PRIVATE_OPERATOR_EVIDENCE_PENDING"] + blockers
+        blockers = ["PRIVATE_OPERATOR_EVIDENCE_PENDING", "Run --with-redacted-private-evidence to evaluate committed redacted private evidence"] + blockers
     status = "NO" if blockers else "YES"
     print(json.dumps(write_decision(status, blockers, evidence), indent=2))
 if __name__ == "__main__": main()

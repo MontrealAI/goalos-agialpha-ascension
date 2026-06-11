@@ -9,6 +9,7 @@ on:
       - "docs/**"
       - ".env.example"
       - "package.json"
+      - "qa/public-*.json"
   workflow_dispatch:
 
 permissions:
@@ -19,12 +20,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
-      - name: Assert public status remains not authorized
+      - name: Assert public status remains bounded
         run: python scripts/assert_public_status.py
-      - name: Run mainnet authorization checker
+      - name: Public-only mainnet authorization check without npm install or secrets
         run: python scripts/mainnet-authorization-check.py --public-only
       - uses: actions/upload-artifact@v5
         if: always()
         with:
           name: mainnet-gate-watch-decision
-          path: docs/MAINNET_AUTHORIZATION_DECISION.*
+          path: |
+            docs/MAINNET_AUTHORIZATION_DECISION.*
+            docs/ETHEREUM_MAINNET_AUTHORIZATION_DECISION.*

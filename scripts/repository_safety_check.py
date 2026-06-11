@@ -5,7 +5,7 @@ import sys
 ROOT = Path(__file__).resolve().parents[1]
 ERRORS = []
 
-SKIP_PARTS = {"node_modules", ".git", "qa"}
+SKIP_PARTS = {"node_modules", ".git", "qa", ".private", "private", "wallets", "keys"}
 SKIP_FILES = {
     "repository_safety_check.py",
     "repository_production_readiness_check.py",

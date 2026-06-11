@@ -1,11 +1,12 @@
 # Ethereum Mainnet Authorization Decision
 
-Generated: 2026-06-11T19:05:44.115685+00:00
+Generated: 2026-06-11T19:24:24.525580+00:00
 
 ETHEREUM_MAINNET_AUTHORIZED: **NO**
 
 ## Blockers
 - PRIVATE_OPERATOR_EVIDENCE_PENDING
+- Run --with-redacted-private-evidence to evaluate committed redacted private evidence
 - TECHNICALLY_MAINNET_READY is not YES
 - MAINNET_DEPLOYMENT_AUTHORIZED is not YES
 - PRIVATE_OPERATOR_EVIDENCE_PENDING: missing qa/public-ethereum-mainnet-authorization-evidence.json

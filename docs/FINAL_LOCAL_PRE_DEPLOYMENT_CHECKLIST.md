@@ -1,9 +1,11 @@
 # Final Local Pre-Deployment Checklist
 
-- Public authorization JSON files are YES.
-- Private authorization bundle is YES and held locally.
-- Founder approval commitment exists.
-- Address ceremony commitment exists.
-- Rollback/incident plan is reviewed.
-- AGIALPHA token address is exact.
-- Not externally audited status remains visible.
+- Public authorization check with redacted evidence returns YES.
+- Private Sepolia rehearsal commitment is present.
+- Private mainnet read-only preflight commitment is present.
+- Founder approval commitment or private-custody attestation is present.
+- Address ceremony commitment is present.
+- Policy signoff/waiver commitment is present.
+- No critical/high blockers are unresolved.
+- Rollback and incident plan has been reviewed locally.
+- Deployment is local-only and not run by CI.

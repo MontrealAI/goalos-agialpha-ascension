@@ -1,11 +1,12 @@
 # Mainnet Deployment Authorization Decision
 
-Generated: 2026-06-11T19:05:43.962099+00:00
+Generated: 2026-06-11T19:24:24.390080+00:00
 
 MAINNET_DEPLOYMENT_AUTHORIZED: **NO**
 
 ## Blockers
 - PRIVATE_OPERATOR_EVIDENCE_PENDING
+- Run --with-redacted-private-evidence to evaluate committed redacted private evidence
 - PRIVATE_OPERATOR_EVIDENCE_PENDING: missing qa/public-mainnet-deployment-authorization-evidence.json
 - PRIVATE_OPERATOR_EVIDENCE_PENDING: missing qa/public-mainnet-technical-readiness-evidence.json
 

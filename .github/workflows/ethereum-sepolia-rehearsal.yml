@@ -1,4 +1,4 @@
-name: Ethereum Sepolia Rehearsal
+name: Ethereum Sepolia Rehearsal (Public Local Simulation)
 
 on:
   pull_request:
@@ -18,7 +18,16 @@ jobs:
           cache: 'npm'
       - run: npm ci
       - run: npm run compile
-      - name: Deterministic local authorization rehearsal (no secrets)
+      - name: Deterministic local authorization rehearsal (no RPC, no keys, no private addresses)
         run: npm run local:authorization-rehearsal
       - name: Public-only authorization check (private evidence may be pending)
         run: python scripts/mainnet-authorization-check.py --public-only
+      - uses: actions/upload-artifact@v5
+        if: always()
+        with:
+          name: local-authorization-rehearsal-public-evidence
+          path: |
+            deployments/local.agialpha.latest.json
+            evidence/local/**
+            qa/local-rehearsal-report.json
+            docs/ETHEREUM_MAINNET_AUTHORIZATION_DECISION.*

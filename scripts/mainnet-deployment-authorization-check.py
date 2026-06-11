@@ -48,7 +48,7 @@ def validate_yes() -> tuple[dict, list[str]]:
 
 def write(status: str, blockers: list[str], evidence: dict) -> dict:
     generated = now()
-    decision = {"status": status, "MAINNET_DEPLOYMENT_AUTHORIZED": status, "commit": git_commit(), "chain":"ethereum", "chainId":1, "agialphaToken":AGIALPHA, "evidence": evidence, "blockers": blockers, "generatedAt": generated, "generatedBy":"scripts/mainnet-deployment-authorization-check.py", "mainnetDeploymentExecuted": False}
+    decision = {"status": status, "MAINNET_DEPLOYMENT_AUTHORIZED": status, "commit": git_commit(), "chain":"ethereum", "chainId":1, "agialphaToken":AGIALPHA, "evidence": evidence, "blockers": blockers, "reason": blockers[0] if blockers else "AUTHORIZED", "generatedAt": generated, "generatedBy":"scripts/mainnet-deployment-authorization-check.py", "mainnetDeploymentExecuted": False}
     for p in [ROOT/"docs/MAINNET_DEPLOYMENT_AUTHORIZATION_DECISION.json", ROOT/"docs/MAINNET_AUTHORIZATION_DECISION.json"]: p.write_text(json.dumps(decision, indent=2)+"\n")
     md=["# Mainnet Deployment Authorization Decision", "", f"Generated: {generated}", "", f"MAINNET_DEPLOYMENT_AUTHORIZED: **{status}**", "", "## Blockers"]
     md += [f"- {b}" for b in blockers] or ["- None."]
@@ -59,6 +59,7 @@ def write(status: str, blockers: list[str], evidence: dict) -> dict:
 def main():
     parser=argparse.ArgumentParser(); parser.add_argument("--public-only", action="store_true"); parser.add_argument("--with-redacted-private-evidence", action="store_true"); args=parser.parse_args()
     evidence, blockers = validate_yes() if args.with_redacted_private_evidence else load_evidence()
-    if blockers and not args.with_redacted_private_evidence: blockers = ["PRIVATE_OPERATOR_EVIDENCE_PENDING"] + blockers
+    if not args.with_redacted_private_evidence:
+        blockers = ["PRIVATE_OPERATOR_EVIDENCE_PENDING", "Run --with-redacted-private-evidence to evaluate committed redacted private evidence"] + blockers
     print(json.dumps(write("NO" if blockers else "YES", blockers, evidence), indent=2))
 if __name__ == "__main__": main()
