@@ -82,7 +82,7 @@ qa = ROOT / "qa"; qa.mkdir(exist_ok=True)
         "Uses the existing AGIALPHA token on Ethereum mainnet.",
         "Does not deploy or mint AGIALPHA on mainnet.",
         "Adds AEP conformance, claim boundary, replay, commit-reveal validation, evaluator staking/slashing, reward vault, chronicle and falsification registries.",
-        "Ethereum mainnet remains gated until Sepolia rehearsal, audit, legal, tax, public claims, treasury and founder approvals are complete."
+        "Ethereum mainnet remains gated until compile/tests, automated security/toolchain review, internal security review, Sepolia rehearsal, AGIALPHA token verification, legal, tax, public claims, treasury and founder approvals are complete."
     ]
 }, indent=2), encoding="utf-8")
 if errors:

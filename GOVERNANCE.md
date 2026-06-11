@@ -16,8 +16,9 @@ Approved current status:
 
 ```text
 Gate-clean evidence-ready audit candidate.
-Not audited.
-Not mainnet authorized.
+Not externally audited.
+Automated security/toolchain review pending.
+Ethereum Mainnet not authorized.
 ```
 
 ## Required review areas

@@ -8,7 +8,7 @@
     "SECURITY_REVIEW_HASH missing or not bytes32",
     "PUBLIC_CLAIMS_REVIEW_HASH missing or not bytes32",
     "SEPOLIA_REHEARSAL_EVIDENCE_HASH missing or not bytes32",
-    "EXTERNAL_AUDIT_CLOSURE_HASH missing or not bytes32",
+    "AUTOMATED_SECURITY_TOOLCHAIN_HASH missing or not bytes32\n    INTERNAL_SECURITY_REVIEW_HASH missing or not bytes32",
     "FOUNDER_APPROVAL_HASH missing or not bytes32",
     "AGIALPHA_TOKEN_ADDRESS missing or not EVM address",
     "FOUNDER_ADDRESS missing or not EVM address",

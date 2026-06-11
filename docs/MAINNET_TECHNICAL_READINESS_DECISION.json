@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-11T17:15:06.333469+00:00",
+  "generated_at": "2026-06-11T17:46:58.768346+00:00",
   "TECHNICALLY_MAINNET_READY": "NO",
   "blockers": [
     "slither is pending/environment-blocked or not internally accepted",
@@ -18,8 +18,8 @@
     "AGIALPHA token verification requires Ethereum mainnet RPC evidence",
     "Treasury/founder address ceremony is not complete"
   ],
-  "audit_report": "audit/reports/2026-06-11-1635/audit-summary.json",
-  "toolchain_report_hash": "d4847d41433378eb2c1799b49aea67b44bebcd26fd789022f1a1a645675dcdf7",
+  "audit_report": "audit/reports/2026-06-11-1743/audit-summary.json",
+  "toolchain_report_hash": "0bab55c736941d135eb457916bea45bee67d08a819f30a292828f694be8dad25",
   "sepolia_manifest": "deployments/ethereum-sepolia.agialpha.latest.json",
   "sepolia_manifest_hash": "6c855d2fdb97d4e333e092b7d515d787b5bf724cc15441d9f57a410314730dbe",
   "sepolia_evidence_docket": "evidence/sepolia/SEPOLIA_EVIDENCE_DOCKET.latest.json",
