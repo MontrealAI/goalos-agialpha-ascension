@@ -1,0 +1,1 @@
+{"tool":"Foundry","status":"PENDING_ENVIRONMENT_BLOCKED","command":"forge build && forge test && forge test -vvv","reason":"forge executable is not installed; install Foundry with foundryup","blocks_mainnet":true,"generated_at":"2026-06-11T22:27:03Z"}

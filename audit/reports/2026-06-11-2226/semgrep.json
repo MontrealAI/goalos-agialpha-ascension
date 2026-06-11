@@ -1,0 +1,1 @@
+{"tool":"Semgrep","status":"PENDING_ENVIRONMENT_BLOCKED","command":"semgrep --config configs/semgrep.yml --json --output audit/reports/2026-06-11-2226/semgrep.json .","reason":"semgrep did not produce JSON output; see semgrep.txt","blocks_mainnet":true,"generated_at":"2026-06-11T22:26:18Z"}
