@@ -1,0 +1,46 @@
+{
+  "name": "goalos-agialpha-ascension",
+  "version": "4.3.0",
+  "description": "GoalOS-native reimplementation of \u03b1-AGI Ascension using existing AGIALPHA for proof-settled AI workflow work.",
+  "license": "MIT",
+  "scripts": {
+    "compile": "hardhat compile",
+    "test": "hardhat test",
+    "test:agialpha": "hardhat test test/agialphaAscensionFlow.test.ts",
+    "static-check": "python scripts/static_check.py",
+    "direct-solc-compile": "node scripts/direct-solc-compile.js",
+    "generate-artifacts-from-solc": "node scripts/generate-artifacts-from-solc.js",
+    "test:no-compile": "hardhat test --no-compile",
+    "deploy:ethereum-sepolia": "hardhat run scripts/deploy-ethereum-sepolia.ts --network sepolia",
+    "preflight:ethereum-mainnet": "ts-node scripts/preflight-ethereum-mainnet-gates.ts",
+    "deploy:ethereum-mainnet:gated": "hardhat run scripts/deploy-ethereum-mainnet-gated.ts --network mainnet",
+    "verify:agialpha-token": "hardhat run scripts/verify-agialpha-token.ts --network mainnet",
+    "verify:deployment": "hardhat run scripts/verify-deployment.ts --network mainnet",
+    "generate:vault-funding-instructions": "ts-node scripts/generate-vault-funding-instructions.ts ethereum-mainnet",
+    "fund:vaults:gated": "hardhat run scripts/fund-vaults-agialpha-gated.ts --network mainnet",
+    "test:aep": "hardhat test test/aepAscensionFlow.test.ts",
+    "test:all": "hardhat test test/agialphaAscensionFlow.test.ts test/aepAscensionFlow.test.ts test/v4InstitutionalControls.test.ts test/v4_3EthereumGateConsistency.test.ts",
+    "test:v4": "hardhat test test/v4InstitutionalControls.test.ts",
+    "evidence:docket:template": "python scripts/generate-evidence-docket-template.py",
+    "mainnet:authorization-check": "python scripts/mainnet-authorization-check.py",
+    "ci:advisory": "python scripts/repository_safety_check.py && python scripts/repository_status_check.py && python scripts/repository_production_readiness_check.py && python scripts/no_paid_products_check.py && python scripts/static_check.py && python scripts/verify-readiness-v4-3.py && python scripts/generate-evidence-docket-template.py && python scripts/mainnet-authorization-check.py",
+    "readiness:v4.3": "python scripts/verify-readiness-v4-3.py",
+    "test:v4.3": "hardhat test test/v4_3EthereumGateConsistency.test.ts",
+    "repo:safety": "python scripts/repository_safety_check.py",
+    "repo:status": "python scripts/repository_status_check.py",
+    "repo:production-readiness": "python scripts/repository_production_readiness_check.py",
+    "repo:all": "python scripts/repository_safety_check.py && python scripts/repository_status_check.py && python scripts/repository_production_readiness_check.py && python scripts/no_paid_products_check.py",
+    "repo:no-paid-products": "python scripts/no_paid_products_check.py"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "^4.9.6",
+    "solc": "^0.8.24"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+    "hardhat": "^2.22.0",
+    "typescript": "^5.4.0",
+    "ts-node": "^10.9.2"
+  },
+  "private": true
+}

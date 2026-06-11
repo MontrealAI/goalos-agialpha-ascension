@@ -1,0 +1,6 @@
+<!doctype html><html><head><meta charset="utf-8"><title>GoalOS AGIALPHA Ascension v4.3</title></head><body style="font-family:-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif;max-width:900px;margin:40px auto;line-height:1.55"><h1>GoalOS AGIALPHA Ascension v4.3</h1><p><strong>Open this first.</strong></p><p>This is the institutional audit-candidate package for re-implementing α-AGI Ascension with GoalOS and the existing AGIALPHA token on Ethereum.</p><h2>Status</h2><ul><li>Audit candidate: yes.</li><li>Ethereum Sepolia rehearsal path: yes.</li><li>Uses existing AGIALPHA on mainnet: yes.</li><li>Mainnet authorized: no.</li></ul><h2>First commands</h2><pre>npm install
+cp .env.example .env
+npm run compile
+npm test
+npm run test:all
+npm run static-check</pre><h2>Sepolia</h2><p>For Sepolia rehearsal, leave <code>AGIALPHA_TOKEN_ADDRESS</code> blank to deploy MockAGIALPHA automatically.</p><pre>npm run deploy:ethereum-sepolia</pre><h2>Mainnet</h2><p>Mainnet remains blocked until audit, legal, tax, security, treasury, public-claims, Sepolia evidence, and founder approval gates are complete.</p></body></html>

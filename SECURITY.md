@@ -1,0 +1,59 @@
+# Security Policy
+
+## Current security status
+
+```text
+Audit-candidate package: yes
+Externally audited: no
+Mainnet authorized: no
+```
+
+## Reporting security issues
+
+For now, report issues privately to the repository owner / maintainers. Do not create public issues containing exploitable details, private keys, RPC secrets, API keys, or customer data.
+
+## Never commit
+
+```text
+.env
+private keys
+seed phrases
+wallet backups
+RPC credentials
+API keys
+secret JSON files
+customer data
+private Evidence Dockets
+paid buyer products
+legal/tax memos
+unredacted audit findings
+```
+
+## Security scope
+
+In scope:
+
+```text
+Solidity contract issues
+deployment script issues
+mainnet gate bypasses
+role/permission bugs
+secret exposure risks
+unsafe public claims
+Evidence Docket integrity issues
+ProofBundle/replay integrity issues
+```
+
+Out of scope for public disclosure:
+
+```text
+attacks against third-party systems
+external target scanning
+social engineering
+malware
+private key recovery attempts
+```
+
+## Safe disclosure rule
+
+If in doubt, disclose privately and redact sensitive details.
