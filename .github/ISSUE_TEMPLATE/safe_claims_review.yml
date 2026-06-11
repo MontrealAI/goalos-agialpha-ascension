@@ -1,0 +1,22 @@
+name: Safe Claims Review
+description: Review public-facing copy for safe claims.
+title: "[Claims Review]: "
+labels: ["claims", "priority-high"]
+body:
+  - type: textarea
+    id: copy
+    attributes:
+      label: Copy to review
+    validations:
+      required: true
+  - type: checkboxes
+    id: prohibited
+    attributes:
+      label: Confirm absent
+      options:
+        - label: No investment language
+        - label: No yield language
+        - label: No revenue-share language
+        - label: No price target
+        - label: No guaranteed non-security claim
+        - label: No audited/mainnet-authorized claim unless supported

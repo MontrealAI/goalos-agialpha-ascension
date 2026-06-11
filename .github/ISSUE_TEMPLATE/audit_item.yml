@@ -1,0 +1,29 @@
+name: Audit Item
+description: Track an audit, security, or gate item.
+title: "[Audit]: "
+labels: ["audit", "security"]
+body:
+  - type: textarea
+    id: finding
+    attributes:
+      label: Finding / concern
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence
+    validations:
+      required: false
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Severity
+      options:
+        - info
+        - low
+        - medium
+        - high
+        - critical
+    validations:
+      required: true

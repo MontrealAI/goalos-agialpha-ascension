@@ -1,0 +1,26 @@
+name: Mainnet Gate
+description: Track a required Ethereum Mainnet gate.
+title: "[Mainnet Gate]: "
+labels: ["mainnet-blocked", "priority-critical"]
+body:
+  - type: dropdown
+    id: gate
+    attributes:
+      label: Gate
+      options:
+        - compile-tests
+        - ethereum-sepolia-rehearsal
+        - evidence-docket
+        - external-audit-closure
+        - legal-token-counsel
+        - tax-accounting
+        - public-claims
+        - treasury-ceremony
+        - agialpha-token-verification
+        - founder-approval
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence link/hash

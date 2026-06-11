@@ -1,0 +1,36 @@
+name: Proof Mission
+description: Propose a GoalOS AGIALPHA Ascension proof mission.
+title: "[Proof Mission]: "
+labels: ["proof-mission"]
+body:
+  - type: textarea
+    id: goal
+    attributes:
+      label: Goal
+      description: What work should be proven?
+    validations:
+      required: true
+  - type: textarea
+    id: success
+    attributes:
+      label: Success metric
+      description: How will success be measured?
+    validations:
+      required: true
+  - type: textarea
+    id: proof
+    attributes:
+      label: Required proof
+      description: What Evidence Docket / ProofBundle / Proof Card is expected?
+    validations:
+      required: true
+  - type: dropdown
+    id: risk
+    attributes:
+      label: Risk level
+      options:
+        - low
+        - medium
+        - high
+    validations:
+      required: true

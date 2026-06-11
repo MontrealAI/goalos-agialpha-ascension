@@ -1,0 +1,21 @@
+name: Repository Hygiene / File Safety
+description: Check repository contents for secrets, paid products, unsafe claims, or stale labels.
+title: "[Repo Hygiene]: "
+labels: ["security", "docs", "priority-high"]
+body:
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Confirm checks
+      options:
+        - label: No .env or secrets
+        - label: No private keys or seed phrases
+        - label: No paid buyer products
+        - label: No private Evidence Dockets
+        - label: No legal or tax memos
+        - label: No stale $JOBS/Base active workflow labels
+        - label: No audited/mainnet-authorized claims
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes / evidence

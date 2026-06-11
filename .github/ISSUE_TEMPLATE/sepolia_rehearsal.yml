@@ -1,0 +1,34 @@
+name: Ethereum Sepolia Rehearsal
+description: Track Ethereum Sepolia rehearsal and evidence docket completion.
+title: "[Sepolia]: "
+labels: ["sepolia", "evidence-docket", "priority-critical"]
+body:
+  - type: textarea
+    id: goal
+    attributes:
+      label: Goal
+      value: "Compile, test, deploy to Ethereum Sepolia, execute proof-work loop, and fill Evidence Docket."
+    validations:
+      required: true
+  - type: checkboxes
+    id: evidence
+    attributes:
+      label: Required evidence
+      options:
+        - label: npm install output
+        - label: compile output
+        - label: test output
+        - label: static-check output
+        - label: deployment manifest
+        - label: transaction hashes
+        - label: proof seed created
+        - label: proof job posted
+        - label: builder claim
+        - label: proof submission
+        - label: reviewer validation
+        - label: proof card registration
+        - label: credential issuance
+        - label: reputation update
+        - label: rejected proof refund
+        - label: expired claim reclaim
+        - label: filled Evidence Docket
