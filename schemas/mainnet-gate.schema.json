@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GoalOS AGIALPHA Mainnet Gate Evidence",
+  "type": "object",
+  "required": [
+    "mainnetTarget",
+    "legalSignoffHash",
+    "taxSignoffHash",
+    "securityReviewHash",
+    "publicClaimsReviewHash",
+    "sepoliaRehearsalEvidenceHash",
+    "externalAuditClosureHash",
+    "founderApprovalHash"
+  ],
+  "properties": {
+    "mainnetTarget": {
+      "enum": [
+        "base",
+        "ethereum"
+      ]
+    },
+    "legalSignoffHash": {
+      "type": "string",
+      "pattern": "^0x[0-9a-fA-F]{64}$"
+    },
+    "taxSignoffHash": {
+      "type": "string",
+      "pattern": "^0x[0-9a-fA-F]{64}$"
+    },
+    "securityReviewHash": {
+      "type": "string",
+      "pattern": "^0x[0-9a-fA-F]{64}$"
+    },
+    "publicClaimsReviewHash": {
+      "type": "string",
+      "pattern": "^0x[0-9a-fA-F]{64}$"
+    },
+    "sepoliaRehearsalEvidenceHash": {
+      "type": "string",
+      "pattern": "^0x[0-9a-fA-F]{64}$"
+    },
+    "externalAuditClosureHash": {
+      "type": "string",
+      "pattern": "^0x[0-9a-fA-F]{64}$"
+    },
+    "founderApprovalHash": {
+      "type": "string",
+      "pattern": "^0x[0-9a-fA-F]{64}$"
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "package": "GoalOS_AGIALPHA_Ascension_Ethereum_Mainnet_Implementation_v4_2_EVIDENCE_READY_AUDIT_CANDIDATE",
+  "generated_at": "2026-06-11T01:30:01.071406+00:00",
+  "static_readiness": "passed",
+  "files_checked": 154,
+  "errors": [],
+  "warnings": [
+    "review public claims phrase in docs/AGIALPHA_PUBLIC_LAUNCH_BOUNDARY_v2_0.md: guaranteed non-security",
+    "review public claims phrase in docs/MAINNET_GATE_DECISION_MEMO_v4_0.md: guaranteed non-security",
+    "review public claims phrase in docs/SAFE_CLAIMS_AND_TOKEN_BOUNDARY.md: guaranteed non-security",
+    "review public claims phrase in docs/SAFE_CLAIMS_AND_TOKEN_BOUNDARY_v3_0.md: guaranteed non-security",
+    "review public claims phrase in docs/SAFE_PUBLIC_POSITIONING_v4_0.md: guaranteed non-security",
+    "review public claims phrase in docs/START_HERE_v4_2.md: guaranteed non-security",
+    "review public claims phrase in docs/MAINNET_NOT_AUTHORIZED_DECISION_v4_2.md: guaranteed non-security",
+    "review public claims phrase in docs/PUBLIC_CLAIMS_REVIEW_v4_2.md: guaranteed non-security"
+  ],
+  "status": "evidence-ready audit candidate; mainnet not authorized",
+  "next_gate": "real Ethereum Sepolia rehearsal and Evidence Docket"
+}

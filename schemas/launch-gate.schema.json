@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GoalOS AGIALPHA Launch Gate Evidence",
+  "type": "object",
+  "required": [
+    "gateId",
+    "passed",
+    "evidenceHash",
+    "evidenceURI",
+    "reviewer",
+    "reviewedAt"
+  ],
+  "properties": {
+    "gateId": {
+      "type": "string"
+    },
+    "passed": {
+      "type": "boolean"
+    },
+    "evidenceHash": {
+      "type": "string"
+    },
+    "evidenceURI": {
+      "type": "string"
+    },
+    "reviewer": {
+      "type": "string"
+    },
+    "reviewedAt": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,13 @@
+gate,status,evidence_required
+Compile pass,open,Compile log
+Full tests pass,open,Test log
+Static QA pass,open,Static QA report
+Sepolia deployment,open,Deployment JSON and tx hashes
+Sepolia proof loop,open,Completed Evidence Docket
+External audit closure,open,Audit closure memo
+Legal review,open,Legal counsel memo hash
+Tax review,open,Tax/accounting memo hash
+Treasury address ceremony,open,Signer/address ceremony hash
+Public claims review,open,Claims memo hash
+Founder approval,open,Founder approval hash
+Mainnet authorization,blocked until all above complete,Formal go/no-go decision

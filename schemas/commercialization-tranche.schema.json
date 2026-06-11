@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Commercialization Performance Vault Tranche",
+  "type": "object",
+  "required": ["recipient", "amount", "milestoneHash", "evidenceHash", "valueHash", "releaseAfter"],
+  "properties": {
+    "recipient": {"type": "string"},
+    "amount": {"type": "string"},
+    "milestoneHash": {"type": "string"},
+    "evidenceHash": {"type": "string"},
+    "valueHash": {"type": "string"},
+    "releaseAfter": {"type": "integer"},
+    "memoURI": {"type": "string"}
+  }
+}

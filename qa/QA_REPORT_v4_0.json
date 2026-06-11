@@ -1,0 +1,13 @@
+{
+  "package": "GoalOS_AGIALPHA_Ascension_Ethereum_Mainnet_Implementation_v4_0_INSTITUTIONAL_AUDIT_CANDIDATE_GATED",
+  "generated_at": "2026-06-11T00:32:26.444997+00:00",
+  "static_checks": "passed",
+  "errors": [],
+  "notes": [
+    "v4.0 supersedes v3.0 for audit and engineering handoff.",
+    "Adds AEP conformance, claim boundary, replay, commit-reveal validation, evaluator staking/slashing, reward vault, chronicle and falsification registries.",
+    "Uses the existing AGIALPHA token on Ethereum mainnet and does not mint or deploy AGIALPHA.",
+    "Hardhat compile/tests were not run in this generation environment.",
+    "Ethereum mainnet remains gated until Sepolia rehearsal, audit, legal, tax, public claims, treasury and founder approvals are complete."
+  ]
+}

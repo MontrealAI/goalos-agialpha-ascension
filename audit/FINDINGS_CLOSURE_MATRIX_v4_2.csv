@@ -1,0 +1,9 @@
+id,severity,title,status,required_evidence
+H-01,High,Rejected jobs can lock sponsor rewards,requires test evidence,Rejected proof refund test and Sepolia transaction
+H-02,High,Expired claimed jobs can strand funds,requires test evidence,Expired claim reclaim test and Sepolia transaction
+H-03,High,Critical addresses may default to deployer,source closed,Fail-closed deployment script output
+M-01,Medium,Reviewer can unbond too early,requires test evidence,Challenge window / cooldown test
+M-02,Medium,Reward token accounting mismatch risk,requires test evidence,Allowlist / received-balance accounting test
+M-03,Medium,Fee changes can brick pending submissions,requires test evidence,Fee snapshot test
+M-04,Medium,Privileged roles remain sensitive,accepted with conditions,Governance role ceremony and signer roster
+M-05,Medium,Commercialization vault needs dual-control delay,requires test evidence,Delay / proposer-approver test

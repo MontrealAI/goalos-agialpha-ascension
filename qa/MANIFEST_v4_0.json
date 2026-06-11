@@ -1,0 +1,640 @@
+{
+  "generated_at": "2026-06-11T00:32:26.444005+00:00",
+  "files": [
+    {
+      "path": ".env.example",
+      "bytes": 1437,
+      "sha256": "7ecebb825328ef4e36aaec20093317846ea367895e162329ad5b09aff6571a7e"
+    },
+    {
+      "path": ".github/workflows/goalos-jobs-production-rc-ci.yml",
+      "bytes": 456,
+      "sha256": "2f5116c67121ad8bd5706cc9beca4205652a488bf6b5d8df7966284283261f6d"
+    },
+    {
+      "path": ".gitignore",
+      "bytes": 99,
+      "sha256": "24ce7c574147897a61619f24fe44d71f103597295c7019ba4347a54aeaf52104"
+    },
+    {
+      "path": ".solhint.json",
+      "bytes": 164,
+      "sha256": "fad31bc3cfa133be2a0a847b266950b13fa3c6ab2685e1a1a686a8cba59b45d7"
+    },
+    {
+      "path": "README.md",
+      "bytes": 4285,
+      "sha256": "c6b2d8b595408b01de95c5b4bc8749744464cc83334154aa3451fe991da6386e"
+    },
+    {
+      "path": "app/index.html",
+      "bytes": 858,
+      "sha256": "97e4fca3a513a2c81c5730885bead9033194c02faf3d3f811d70b0e0784f6065"
+    },
+    {
+      "path": "contracts/access/GoalOSAccessControl.sol",
+      "bytes": 1874,
+      "sha256": "38a987d1fcf2803dea064e2a31641e7abc364d1c6681f55adb854fc42d5843f3"
+    },
+    {
+      "path": "contracts/aep/AEPAgentRegistry.sol",
+      "bytes": 2186,
+      "sha256": "3737a9de121e892864dcc38721aee0230108b6beab540d4b596c3837fe287ba9"
+    },
+    {
+      "path": "contracts/aep/AEPArtifactRegistry.sol",
+      "bytes": 2302,
+      "sha256": "a2e68f1471d89718375a26f601451bda0543aadc52341ebaeaa623d7130c34c8"
+    },
+    {
+      "path": "contracts/aep/AEPAttestationRegistry.sol",
+      "bytes": 1718,
+      "sha256": "e627b4ec4c418b2a4f617dc16755e5a28749cccda8048a0cfa5ecdf15b97b7a1"
+    },
+    {
+      "path": "contracts/aep/AEPChronicleRegistry.sol",
+      "bytes": 1369,
+      "sha256": "70b41b824fc5e345db02eb7f6ccbf3674b01ffd08f0b2398b208c8bc8ca349b0"
+    },
+    {
+      "path": "contracts/aep/AEPClaimBoundaryRegistry.sol",
+      "bytes": 1945,
+      "sha256": "b8f5901e2ce4fc4c561441d306ed3b12ecf6d3b3f2c4eda5de0bc0cd6c7135a1"
+    },
+    {
+      "path": "contracts/aep/AEPCommitRevealValidationRegistry.sol",
+      "bytes": 5907,
+      "sha256": "4edf627e01f35c29386f5f3490256348372a6f50fc54938d4e899f51a3dbbbc1"
+    },
+    {
+      "path": "contracts/aep/AEPConformanceRegistry.sol",
+      "bytes": 2104,
+      "sha256": "9b909b6e6f4abf4455dddcefd3f0d335cac5eb48a07c4e51e236444a63f39eae"
+    },
+    {
+      "path": "contracts/aep/AEPEvalRegistry.sol",
+      "bytes": 2162,
+      "sha256": "85183bb9b6c29fd28c2fc45a4bb2f74b78ed0dd5d5f9da782cd89a18508976e0"
+    },
+    {
+      "path": "contracts/aep/AEPEvaluatorStakingRegistry.sol",
+      "bytes": 4196,
+      "sha256": "72231a60ba05d1c8987e4097564473da991090befe7e0fb101926756f6295952"
+    },
+    {
+      "path": "contracts/aep/AEPEvidenceDocketRegistry.sol",
+      "bytes": 1762,
+      "sha256": "41a2a75173c71037228f98f410a4daaa4fb2f729132ebfa2be5979c45929583f"
+    },
+    {
+      "path": "contracts/aep/AEPFalsificationRegistry.sol",
+      "bytes": 2140,
+      "sha256": "aa6a42114de4029a958e5bb888b24fde3d19d2a4b5fe36d72d3f9a9e1872509b"
+    },
+    {
+      "path": "contracts/aep/AEPGoalOSCommitRegistry.sol",
+      "bytes": 2959,
+      "sha256": "f92f004af2d836ab5a56a08d2a857b469d34ebf716b22c8d3b36ef0e2257c9d4"
+    },
+    {
+      "path": "contracts/aep/AEPProofBundleRegistry.sol",
+      "bytes": 1516,
+      "sha256": "d1a896da947c9ee020161f2b297e50fecaf823173a3813b0433b12d5776c7882"
+    },
+    {
+      "path": "contracts/aep/AEPProofLedger.sol",
+      "bytes": 1418,
+      "sha256": "3f213ef2e32864c3d6b37a7485f3d83a8fd65b710eac7f6157566f097e4fe003"
+    },
+    {
+      "path": "contracts/aep/AEPReplayRegistry.sol",
+      "bytes": 1676,
+      "sha256": "08020673fd36dd357b514d659a003c41c9733b83128234c1a3cfd4f1a44acc34"
+    },
+    {
+      "path": "contracts/aep/AEPRewardVault.sol",
+      "bytes": 2224,
+      "sha256": "6960558154389dbf4159b382fab422020c16c5dc4a020c13727ee789bb5e80a9"
+    },
+    {
+      "path": "contracts/aep/AEPRollbackRegistry.sol",
+      "bytes": 1338,
+      "sha256": "fd824c789e538ac1870a8104d54741f30ccbd4fbe3c87e582f771d9bf0499c66"
+    },
+    {
+      "path": "contracts/aep/AEPRolloutRouter.sol",
+      "bytes": 1768,
+      "sha256": "6662e41b6699ed4c45f8a8b009674c00e8314c3993bef45701e8052889476515"
+    },
+    {
+      "path": "contracts/aep/AEPRunCommitmentRegistry.sol",
+      "bytes": 2203,
+      "sha256": "3b2dcc657b8e695faf16d18898247c530c202e8091b9c6f89ee19e72d808f8bd"
+    },
+    {
+      "path": "contracts/aep/AEPSelectionGate.sol",
+      "bytes": 2356,
+      "sha256": "19ea55d3227a831e0a9fb7274947197a667884c565009dfb5c4a5ecacaee4e8f"
+    },
+    {
+      "path": "contracts/aep/AEPSlashingCourt.sol",
+      "bytes": 3228,
+      "sha256": "c490276fded553e4dbcdc5a0ca0ffeab1a70800c5cb9e2f3816a3cdde5cd86e4"
+    },
+    {
+      "path": "contracts/aep/AGIEthNamespaceRegistry.sol",
+      "bytes": 1868,
+      "sha256": "ee161300dc8155a359fe91249aa71ee65c8cb9a6edc407fffb30c173dcfbe0b6"
+    },
+    {
+      "path": "contracts/aep/AlphaWorkUnitLedger.sol",
+      "bytes": 1464,
+      "sha256": "449052a1a4f969cecd9eb8fa00c05e82725c4faf6de1738885ff6b8a778db8cf"
+    },
+    {
+      "path": "contracts/aep/MandateEpochRegistry.sol",
+      "bytes": 4368,
+      "sha256": "5699586573f8adefb68df1b00cd8c640ec0e9501a750abf92b67ab560da9a9f1"
+    },
+    {
+      "path": "contracts/interfaces/IJobClaimBondManager.sol",
+      "bytes": 221,
+      "sha256": "ed871159d7b0944e60231b6a7e87558d463299fff3971a4d69593adab2dc9cde"
+    },
+    {
+      "path": "contracts/interfaces/IJobRegistry.sol",
+      "bytes": 1023,
+      "sha256": "1b402492e622350f6cbba34f5c529fd9069b694e5fd34d7e83028217a31bc8ce"
+    },
+    {
+      "path": "contracts/interfaces/IProofSubmissionRegistry.sol",
+      "bytes": 539,
+      "sha256": "b85eb761fa324e407f54dcade012a4c9ac3a301b9c297012f8ede5fad79eed7c"
+    },
+    {
+      "path": "contracts/interfaces/IReputationRegistry.sol",
+      "bytes": 434,
+      "sha256": "25585c2f0056292a57a75c9a0bdf5a4cb961c0b99756eecc350460b2d435f287"
+    },
+    {
+      "path": "contracts/optional/AppealRegistry.sol",
+      "bytes": 1597,
+      "sha256": "4aae2d6e324a7cbd763b74b0873c2db88291888807a482a2d3148b73d24d7412"
+    },
+    {
+      "path": "contracts/optional/BuilderProfileRegistry.sol",
+      "bytes": 1007,
+      "sha256": "d63bc8e5f6709d7ae1c271eb8bb7bc0e805c4b7983ca65a970e140cdcb29900d"
+    },
+    {
+      "path": "contracts/optional/CredentialRevocationRegistry.sol",
+      "bytes": 1893,
+      "sha256": "7693a385eae209a3c8f01fd3587c8da88ad740dd48a289346f6ca967cdfbb0eb"
+    },
+    {
+      "path": "contracts/optional/DisputeRegistry.sol",
+      "bytes": 2113,
+      "sha256": "37ce52e98b973577fe14025bb6968c46fa1fce1b063c0261cb82e00fa43b1f05"
+    },
+    {
+      "path": "contracts/optional/SponsorRegistry.sol",
+      "bytes": 1000,
+      "sha256": "299662e4cb52b4002b829c0aa9a35604fc7bcfd1f992f52352b1433535766dbe"
+    },
+    {
+      "path": "contracts/registry/JobClaimBondManager.sol",
+      "bytes": 4511,
+      "sha256": "c9f8e9329010d8f355462fc4c23538947f2bf8d6b0cc5808d6aff218fba5c56b"
+    },
+    {
+      "path": "contracts/registry/JobRegistry.sol",
+      "bytes": 9333,
+      "sha256": "80e2c0c1d7ea4a892a8a0e4a85d47e8a770d7cfdcb30f0135345f754d6cf3ba6"
+    },
+    {
+      "path": "contracts/registry/LaunchGateRegistry.sol",
+      "bytes": 1818,
+      "sha256": "f40b2c475e5f94c3261b8eab5109802c0a6cc55ecd2a85f054d574cd85f11930"
+    },
+    {
+      "path": "contracts/registry/LegacyAGIJobManagerRegistry.sol",
+      "bytes": 2130,
+      "sha256": "33f0cde7f0a56e3cb769811554894ff4997fdd38b663d0f082e3b77076d49028"
+    },
+    {
+      "path": "contracts/registry/PremiumAccessRegistry.sol",
+      "bytes": 1698,
+      "sha256": "77f8c99f411429c3bb768fc3fbbf088255bffce8eb993ee259d34bbeede3aebd"
+    },
+    {
+      "path": "contracts/registry/ProofCardRegistry.sol",
+      "bytes": 2101,
+      "sha256": "fe5f342ac20065230f14b4e63888e406699a3aaee8e51cc9429dcd8482759f25"
+    },
+    {
+      "path": "contracts/registry/ProofCredentialRegistry.sol",
+      "bytes": 2917,
+      "sha256": "1fe443d3694fec2bf2874269720b606f43cf62350614f2520150a74f1623091f"
+    },
+    {
+      "path": "contracts/registry/ProofSeedRegistry.sol",
+      "bytes": 3853,
+      "sha256": "01ff1144d03116f917647e22b02664de3103713a4c8992880ffd09f3fffd6a9e"
+    },
+    {
+      "path": "contracts/registry/ProofSubmissionRegistry.sol",
+      "bytes": 10030,
+      "sha256": "04513fd5c3af07cf2aa7461b9ee23181b8a961a8551116a784bf0ce8b710a81b"
+    },
+    {
+      "path": "contracts/registry/ProtocolConfigRegistry.sol",
+      "bytes": 1173,
+      "sha256": "95f4dd2f16990a9533d84cc2a610db007f5bb4988e5348e0aabe811d1721f765"
+    },
+    {
+      "path": "contracts/registry/ReferralRegistry.sol",
+      "bytes": 1551,
+      "sha256": "c945ff2a38380b4ee39a3dad3e78f91245dda29c8991182db0d467e13e1ac849"
+    },
+    {
+      "path": "contracts/registry/ReputationRegistry.sol",
+      "bytes": 3611,
+      "sha256": "dea903faaee65b19faabfede666fb931c1f7f56d58b7e2f876ecfec0caceb333"
+    },
+    {
+      "path": "contracts/registry/ReviewerBondRegistry.sol",
+      "bytes": 5914,
+      "sha256": "6560070c176f983cb675c3e048bd6d9f30ab658c9567d88465a30484be4cdefe"
+    },
+    {
+      "path": "contracts/registry/TreasuryRouter.sol",
+      "bytes": 1427,
+      "sha256": "2dbf6439760702471a75bb40778336f0f9f7353245e4347bf02aeac968ab5df2"
+    },
+    {
+      "path": "contracts/token/MockAGIALPHA.sol",
+      "bytes": 465,
+      "sha256": "d03d1b6f202897bad116240de0b449c93a981f87afb4c265cc7162b16c93a3fe"
+    },
+    {
+      "path": "contracts/vaults/CommercializationPerformanceVault.sol",
+      "bytes": 5043,
+      "sha256": "9187688c54699200b9f3130919cfca8931bd652dada66d2dd000900b946d20ec"
+    },
+    {
+      "path": "contracts/vaults/TokenReserveVault.sol",
+      "bytes": 1390,
+      "sha256": "557e6082fc48b48c1506a6885bf3b716a878d948384f240b086f6939d3413872"
+    },
+    {
+      "path": "docs/AGIALPHA_ASCENSION_OVERVIEW.md",
+      "bytes": 793,
+      "sha256": "a250e5bd2d249be6db3e3616a8cd7ad27d3467aae6f82167936a902c636e5ada"
+    },
+    {
+      "path": "docs/AGIALPHA_PUBLIC_LAUNCH_BOUNDARY_v2_0.md",
+      "bytes": 589,
+      "sha256": "337d25bf4899319d41f184145b6bad7618bed5e7be78e7254ad0ed1ec868ac81"
+    },
+    {
+      "path": "docs/AGIALPHA_TOKEN_INTEGRATION.md",
+      "bytes": 955,
+      "sha256": "9687157ca29f4a78fece496cabc13cafb4d25d85de73635b355860fd70ee74d3"
+    },
+    {
+      "path": "docs/AGIALPHA_UTILITY_SAME_AS_JOBS_v3_0.md",
+      "bytes": 1133,
+      "sha256": "88c6c3db223037c9247d634c198685fda877445d81ec3daad160ffbba11c6ced"
+    },
+    {
+      "path": "docs/AGIALPHA_VAULT_FUNDING_RUNBOOK_v2_0.md",
+      "bytes": 1153,
+      "sha256": "daa42072c3adc7fcc1b62821ebeefaf64069cf99ddca87b5e945ffff8c554515"
+    },
+    {
+      "path": "docs/ALPHA_TO_GOALOS_MAPPING.md",
+      "bytes": 611,
+      "sha256": "193f3477fd4b0ae4a2a11a05f88e238f72742c3f68d07c8a65ac8492cea0a048"
+    },
+    {
+      "path": "docs/AUDITOR_HANDOFF_v3_0.md",
+      "bytes": 1053,
+      "sha256": "6c05d385778501168900188bc5d4ae71a47791ef332292920408f8b6d0103a97"
+    },
+    {
+      "path": "docs/AUDITOR_HANDOFF_v4_0.md",
+      "bytes": 1008,
+      "sha256": "6844cd99ac9a2dc6a8c19169711542e4198048ae98c729e5035b733c06bce3ac"
+    },
+    {
+      "path": "docs/AUDIT_SCOPE_v2_0.md",
+      "bytes": 819,
+      "sha256": "bcb1520f18ef53eaac97cc36348af17fa46c89a7436978d43c11260f3ed6d3eb"
+    },
+    {
+      "path": "docs/CONTRACT_SUITE_INDEX_v3_0.csv",
+      "bytes": 1324,
+      "sha256": "a40083b60497c355264326a48be98e4b6699ceb4ebbc617415f7174110374924"
+    },
+    {
+      "path": "docs/CONTRACT_SUITE_INDEX_v3_0.md",
+      "bytes": 2479,
+      "sha256": "56f7ecc06781137a66e4a850209150468ae99e198435750e450687faaa4ce253"
+    },
+    {
+      "path": "docs/CONTRACT_SUITE_INDEX_v4_0.csv",
+      "bytes": 1519,
+      "sha256": "0ecb29d0a4e0d358bde4f7af02dbc70737fd7afc8eb6162d5bade5a11925a66b"
+    },
+    {
+      "path": "docs/CONTRACT_SUITE_INDEX_v4_0.md",
+      "bytes": 1337,
+      "sha256": "4d3bd46207fe7977c38479da880658f8391347096a011910b457c1249e3b5b0d"
+    },
+    {
+      "path": "docs/ETHEREUM_MAINNET_DEPLOYMENT_RUNBOOK.md",
+      "bytes": 749,
+      "sha256": "d8a36b8303fc66e4d85673bf66b9dea340ddf95dd496675fab473f6205f7b25c"
+    },
+    {
+      "path": "docs/ETHEREUM_MAINNET_DEPLOYMENT_RUNBOOK_v3_0.md",
+      "bytes": 1500,
+      "sha256": "23a608d280a98895fa131f1228bae7f0e2c19660d4c80c4c527d801f3c356ec1"
+    },
+    {
+      "path": "docs/ETHEREUM_MAINNET_GATES_v2_0.md",
+      "bytes": 667,
+      "sha256": "d4f92f328938779bb88f12bf1e2948638a8f2f4dbde7097fd7f3f4297c0e3a96"
+    },
+    {
+      "path": "docs/ETHEREUM_SEPOLIA_REHEARSAL_PLAN_v4_0.md",
+      "bytes": 1310,
+      "sha256": "a83a5b294587f3cb86b008db82a039e2e2dcac49bbeb2300493b91979d2d6bf4"
+    },
+    {
+      "path": "docs/FOUNDER_OPERATOR_GUIDE_v3_0.md",
+      "bytes": 813,
+      "sha256": "ff0d9f887c3ba61c47eaf16052ff0725d1aca898052ab45a9897dd563a3c7815"
+    },
+    {
+      "path": "docs/INSTITUTIONAL_HANDOFF_v2_0.md",
+      "bytes": 621,
+      "sha256": "a56569faaf4ab3f5a0b7c13090e83a6b14c7e5ebbca7d6a3edd9700e681340f3"
+    },
+    {
+      "path": "docs/LEGACY_AGIJOBMANAGER_BRIDGE.md",
+      "bytes": 498,
+      "sha256": "8e668daa13489c3853a8df1e0d0818497b21d75512faaa4c9d961dc25bd2a7e8"
+    },
+    {
+      "path": "docs/LEGACY_AGIJOBMANAGER_TO_GOALOS_ASCENSION_v2_0.md",
+      "bytes": 428,
+      "sha256": "286c22419700f2e52b81f1f53116090b031dc73de80ca6a1e5caf79c6400ec74"
+    },
+    {
+      "path": "docs/MAINNET_GATE_DECISION_MEMO_v4_0.md",
+      "bytes": 906,
+      "sha256": "b59faf8ab5fa6f341c2f3a1986dacda9757b755f68ba54647a7bf18402e6c2e8"
+    },
+    {
+      "path": "docs/OPERATOR_RUNBOOK_NON_TECHNICAL_v2_0.md",
+      "bytes": 590,
+      "sha256": "0736adf9a036bfa8b8b5121b150a7a21ade66f889e7e104d2c98b4d7d8b0867f"
+    },
+    {
+      "path": "docs/POST_DEPLOYMENT_EVIDENCE_DOCKET_v2_0.csv",
+      "bytes": 483,
+      "sha256": "dc73a89bb6ad4c3e73db64ee5f0122e0a941f2920105ea83e63ebfc75e4615df"
+    },
+    {
+      "path": "docs/POST_DEPLOYMENT_EVIDENCE_DOCKET_v3_0.csv",
+      "bytes": 708,
+      "sha256": "79bbc981c4d78cc4c8a16d47b8fa05f9db47d6277b13c5163e18a593c1e50587"
+    },
+    {
+      "path": "docs/POST_DEPLOYMENT_EVIDENCE_DOCKET_v4_0.csv",
+      "bytes": 870,
+      "sha256": "44dc0bfc6016aec9319c37ade06986148a4acc22ef532a91d5467a27fddc2e46"
+    },
+    {
+      "path": "docs/POST_DEPLOYMENT_VERIFICATION_CHECKLIST.csv",
+      "bytes": 685,
+      "sha256": "0c7ca6b16a160baa2e8c426a0ed8c2add5c40faffa74ee52293f90e667af4a28"
+    },
+    {
+      "path": "docs/REFERENCE_GROUNDED_ARCHITECTURE_v3_0.md",
+      "bytes": 2308,
+      "sha256": "aa1a0bea76c1f1f71582906c032284484ed91bafb94cd9a22d24820b20923ade"
+    },
+    {
+      "path": "docs/SAFE_CLAIMS_AND_TOKEN_BOUNDARY.md",
+      "bytes": 657,
+      "sha256": "62338d08648e556727b5ad5c58230d5a6f2c0ca738ed993d45d23c04df61b8e0"
+    },
+    {
+      "path": "docs/SAFE_CLAIMS_AND_TOKEN_BOUNDARY_v3_0.md",
+      "bytes": 840,
+      "sha256": "0153cf9b586ed2d9436ef796d1238ee8039e07ee6fa6cfad4f91b162f8112413"
+    },
+    {
+      "path": "docs/SAFE_PUBLIC_POSITIONING_v4_0.md",
+      "bytes": 1096,
+      "sha256": "4a12783794d4aa76e27cd3ed316bbf2e71d8f966b6b222b1889e71f21532cdf3"
+    },
+    {
+      "path": "docs/SEASON_001_MANDATE_EPOCH_PLAYBOOK_v3_0.md",
+      "bytes": 1151,
+      "sha256": "97a0b7cd89e3d4457fb46a38657febf7d08e8ab46be280ee76c257c8e7f22abc"
+    },
+    {
+      "path": "docs/SEASON_001_PROOF_WORKFLOW_PLAN.md",
+      "bytes": 410,
+      "sha256": "5c342fca59d134a5cce9126321642003d6d02727c9be04c2e4f8b6d9abd4a842"
+    },
+    {
+      "path": "docs/START_HERE_v3_0.md",
+      "bytes": 638,
+      "sha256": "8c4c9ef6a89b283796de8fee93de60738dcc6547ed29c0827a7300794f28b593"
+    },
+    {
+      "path": "docs/START_HERE_v4_0.md",
+      "bytes": 1271,
+      "sha256": "d12373959be3d06a6b3819be1894b630d0b94121a15440933c0900a583ed41ee"
+    },
+    {
+      "path": "docs/V4_AUDIT_CANDIDATE_DELTA.md",
+      "bytes": 1221,
+      "sha256": "c61b59672e5bc34b15480d659c75507cde47ffd35a87d63b6efb3e1edfcd91b6"
+    },
+    {
+      "path": "docs/diagrams/agialpha_work_settlement_v3.mmd",
+      "bytes": 333,
+      "sha256": "a513c8499607bcf16b93176c26936058744e9fc29230b55c2577fb372606a672"
+    },
+    {
+      "path": "docs/diagrams/goalos_agialpha_v3_architecture.mmd",
+      "bytes": 486,
+      "sha256": "f73265d43c5408dac5d40f0706b367b301285c07ab42bc5e86a6d7b8266d8e4f"
+    },
+    {
+      "path": "docs/diagrams/v4_reference_grounded_control_loop.mmd",
+      "bytes": 446,
+      "sha256": "5f2f41d080a09871f6652bd2d6638b491971cdf074c5c1103b66ab0d4f14e661"
+    },
+    {
+      "path": "hardhat.config.ts",
+      "bytes": 916,
+      "sha256": "5ea6484b921d93e06d673c6c366062d08a15a17eb03d33f297ffc6d300d1611e"
+    },
+    {
+      "path": "package.json",
+      "bytes": 1959,
+      "sha256": "bb06847874b70e97d0f9f9ef69b431c4def8e14290a0250c6eac575f7bb61769"
+    },
+    {
+      "path": "qa/MANIFEST.json",
+      "bytes": 18305,
+      "sha256": "7a12962fb27d6e57459831e8312219b65d125c8dbce2c3ad11aa8158a5bc2e0d"
+    },
+    {
+      "path": "qa/QA_REPORT.json",
+      "bytes": 625,
+      "sha256": "843e4f10740ead73e163d97f625b84e06f1962ba9369fd45e3566267c22aa7d0"
+    },
+    {
+      "path": "qa/STATIC_QA_OUTPUT.txt",
+      "bytes": 37,
+      "sha256": "c83e4162625e626fae698a48895557d07573b004e71da81699abb176a7ac70fc"
+    },
+    {
+      "path": "schemas/agialpha-mainnet-gate.schema.json",
+      "bytes": 1286,
+      "sha256": "b1b3fe8a461f74cc294321e55292d21f383e788cc57c709e9f79f3726dfecbee"
+    },
+    {
+      "path": "schemas/commercialization-tranche.schema.json",
+      "bytes": 530,
+      "sha256": "b1bdcb06a0cf301f35afaa948ed304186626dfdf2580f0081aec1005bebba6b1"
+    },
+    {
+      "path": "schemas/credential.schema.json",
+      "bytes": 391,
+      "sha256": "10c52410e50123b3655c9565420665ec68cb12b3416b248105f2bbf123acbaf6"
+    },
+    {
+      "path": "schemas/job.schema.json",
+      "bytes": 467,
+      "sha256": "a6df2b81ad8a80cac9d824d24e46490ceb1441ec9e733fefb0e0566da067a2b0"
+    },
+    {
+      "path": "schemas/launch-gate.schema.json",
+      "bytes": 469,
+      "sha256": "0a29a0bea98e28fbbfc13c65d233b21d81295c7539aaeb351461a2341dbf08ed"
+    },
+    {
+      "path": "schemas/mainnet-gate.schema.json",
+      "bytes": 1037,
+      "sha256": "fdb9369e49cec8447f154d6e5b92ea150ee96e30200a4255071ebb13606b72ed"
+    },
+    {
+      "path": "schemas/proof-submission.schema.json",
+      "bytes": 572,
+      "sha256": "2c4236c2f24a80789648e73f629f5e51663197d096798913b4552dd644a26497"
+    },
+    {
+      "path": "schemas/review.schema.json",
+      "bytes": 414,
+      "sha256": "98ff1f12df1d0b8e7d7720d4278b5e5f8edc53ef5d2023dde6b12658c8a3ced9"
+    },
+    {
+      "path": "scripts/deploy-core.ts",
+      "bytes": 15406,
+      "sha256": "eca5d6ff673fdbae19ee1869286b987b08a4606f5ebc620db4b7a6ccf5324818"
+    },
+    {
+      "path": "scripts/deploy-ethereum-mainnet-gated.ts",
+      "bytes": 541,
+      "sha256": "59b8d88effbc11039d1c66307e4f9afe653a341b09eb0a0e12a5ae615ae0d1c5"
+    },
+    {
+      "path": "scripts/deploy-ethereum-sepolia.ts",
+      "bytes": 163,
+      "sha256": "fc5603770f9cc48681b04c20bbe7931b01808c7677e16a361af826b9a22ce8d1"
+    },
+    {
+      "path": "scripts/direct-solc-compile.js",
+      "bytes": 1902,
+      "sha256": "3f5d4a902744d82f4f32e5bc6897e1efa8e0a8a711b736d0852ef46b6201dcc5"
+    },
+    {
+      "path": "scripts/export-abis.js",
+      "bytes": 806,
+      "sha256": "4795440d0bbecf1ceeff5261507414ee4fd3dc582483ca9df2ae1e1ee7881a14"
+    },
+    {
+      "path": "scripts/fund-vaults-agialpha-gated.ts",
+      "bytes": 2091,
+      "sha256": "e08e4a5883b5ba5700832d4ac78d1164809617854889d577088396c067d74309"
+    },
+    {
+      "path": "scripts/generate-artifacts-from-solc.js",
+      "bytes": 54,
+      "sha256": "ca86c376a858bb1d267b2416d39709eebf3f32716575578c868ce508a9e6d227"
+    },
+    {
+      "path": "scripts/generate-hardhat-artifacts-from-solc.js",
+      "bytes": 1288,
+      "sha256": "19583a73ce27b1021208b3784def96fdba417a22dcea2d6135df7d604ac5a72e"
+    },
+    {
+      "path": "scripts/generate-vault-funding-instructions.ts",
+      "bytes": 1560,
+      "sha256": "3db4b4daf7e88d8a9591ace2137d5e72ecaede1aedb6c925406e683bc10d3325"
+    },
+    {
+      "path": "scripts/preflight-ethereum-mainnet-gates.ts",
+      "bytes": 1673,
+      "sha256": "02a659a90f5eb105e9466a7dcc0050dd542f8a42ef140429a22c24ecd9bd8edc"
+    },
+    {
+      "path": "scripts/static_check.py",
+      "bytes": 3946,
+      "sha256": "37e68fa200c68c8883b6cd40f249d05a5f7caaf78f8d4162dcda461790ea4e2e"
+    },
+    {
+      "path": "scripts/verify-agialpha-token.ts",
+      "bytes": 1409,
+      "sha256": "d48cc22af4255d1df0b7f9be294167b15ff62287c17695d1ea925e47176fe2eb"
+    },
+    {
+      "path": "scripts/verify-deployment.ts",
+      "bytes": 1482,
+      "sha256": "7c038032ab2e5a24f83b9dd0154bfc6d1b073a97dc38bfb12e67a776038e4e60"
+    },
+    {
+      "path": "slither.config.json",
+      "bytes": 110,
+      "sha256": "e5a4dcfb4f147e0b723ff1738d2c0098b8ebdaaae7dfc96f531c7b57977b01d8"
+    },
+    {
+      "path": "test/aepAscensionFlow.test.ts",
+      "bytes": 5558,
+      "sha256": "8dc79b3de923677a70daf5d44e5578eb91fdd4d45ac672dbf706a5e81b76c398"
+    },
+    {
+      "path": "test/agialphaAscensionFlow.test.ts",
+      "bytes": 6197,
+      "sha256": "520bd764bbbdbda365f4038f2abce34ce839b64e194ff86f4a8d12e66a888e88"
+    },
+    {
+      "path": "test/v4InstitutionalControls.test.ts",
+      "bytes": 6561,
+      "sha256": "804deec03fde73342784ca5f4400d7454d658407c5ac7116552fa620291784ac"
+    },
+    {
+      "path": "tsconfig.json",
+      "bytes": 293,
+      "sha256": "e6358cbad0d546c026b50abe512815f1bcc307be499fee46f1464e95d03e556a"
+    }
+  ]
+}

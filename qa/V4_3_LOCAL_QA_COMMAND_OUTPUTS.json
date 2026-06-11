@@ -1,0 +1,18 @@
+{
+  "python scripts/static_check.py": {
+    "returncode": 0,
+    "output": "Static QA passed.\nFiles checked: 163\n"
+  },
+  "python scripts/verify-readiness-v4-3.py": {
+    "returncode": 0,
+    "output": "{\n  \"package\": \"GoalOS_AGIALPHA_Ascension_Ethereum_Mainnet_Implementation_v4_3_GATE_CLEAN_EVIDENCE_READY\",\n  \"generated_at\": \"2026-06-11T01:55:31.556264+00:00\",\n  \"static_readiness\": \"passed\",\n  \"files_checked\": 163,\n  \"errors\": [],\n  \"warnings\": [],\n  \"status\": \"gate-clean evidence-ready audit candidate; mainnet not authorized\",\n  \"score_current_state\": \"9.6/10 audit-candidate package; not 10/10 until executed evidence exists\",\n  \"next_gate\": \"real Ethereum Sepolia rehearsal and filled Evidence Docket\"\n}\n"
+  },
+  "python scripts/generate-evidence-docket-template.py": {
+    "returncode": 0,
+    "output": "{\n  \"status\": \"EVIDENCE_DOCKET_TEMPLATE_WRITTEN\",\n  \"path\": \"evidence/SEPOLIA_EVIDENCE_DOCKET_TEMPLATE_v4_2.json\",\n  \"sha256\": \"44be7d28c2a3e35f72320a23c4e3ec88f4361e2297025ac4474e6508bc307752\"\n}\n"
+  },
+  "python scripts/mainnet-authorization-check.py": {
+    "returncode": 1,
+    "output": "{\n  \"status\": \"NOT_AUTHORIZED\",\n  \"errors\": [\n    \"MAINNET_TARGET must equal ethereum\",\n    \"ALLOW_MAINNET_DEPLOYMENT must equal YES_ALL_GATES_APPROVED\",\n    \"LEGAL_SIGNOFF_HASH missing or not bytes32\",\n    \"TAX_SIGNOFF_HASH missing or not bytes32\",\n    \"SECURITY_REVIEW_HASH missing or not bytes32\",\n    \"PUBLIC_CLAIMS_REVIEW_HASH missing or not bytes32\",\n    \"AGIALPHA_TOKEN_VERIFICATION_HASH missing or not bytes32\",\n    \"TREASURY_REVIEW_HASH missing or not bytes32\",\n    \"SEPOLIA_REHEARSAL_EVIDENCE_HASH missing or not bytes32\",\n    \"EXTERNAL_AUDIT_CLOSURE_HASH missing or not bytes32\",\n    \"FOUNDER_APPROVAL_HASH missing or not bytes32\",\n    \"AGIALPHA_TOKEN_ADDRESS missing or not EVM address\",\n    \"FOUNDER_ADDRESS missing or not EVM address\",\n    \"TREASURY_ADDRESS missing or not EVM address\",\n    \"COMMERCIALIZATION_PERFORMANCE_ADMIN missing or not EVM address\",\n    \"PROOF_REWARDS_ADMIN missing or not EVM address\",\n    \"LIQUIDITY_ADMIN missing or not EVM address\",\n    \"SECURITY_ADMIN missing or not EVM address\",\n    \"COMMUNITY_ADMIN missing or not EVM address\",\n    \"AGIALPHA_TOKEN_ADDRESS must be the existing Ethereum mainnet AGIALPHA token\"\n  ],\n  \"mainnet\": \"blocked\"\n}\n"
+  }
+}

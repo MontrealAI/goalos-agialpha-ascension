@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GoalOS AGIALPHA Ascension Sepolia Evidence Docket v4.2",
+  "type": "object",
+  "required": ["schema", "package", "network", "status", "contracts", "transactions", "gateEvidence", "publicBoundary"],
+  "properties": {
+    "schema": {"const": "goalos.agialpha.ascension.evidence_docket.v4.2"},
+    "package": {"type": "string"},
+    "network": {"type": "string"},
+    "status": {"enum": ["draft", "complete", "rejected"]},
+    "contracts": {"type": "object"},
+    "transactions": {"type": "object"},
+    "gateEvidence": {"type": "object"},
+    "publicBoundary": {"type": "string"},
+    "notes": {"type": "array", "items": {"type": "string"}}
+  }
+}

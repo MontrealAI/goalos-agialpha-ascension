@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GoalOS AGIALPHA Ethereum Mainnet Gate Evidence",
+  "type": "object",
+  "required": [
+    "mainnetTarget",
+    "agialphaTokenAddress",
+    "legalSignoffHash",
+    "taxSignoffHash",
+    "securityReviewHash",
+    "publicClaimsReviewHash",
+    "treasuryReviewHash",
+    "agialphaTokenVerificationHash",
+    "sepoliaRehearsalEvidenceHash",
+    "externalAuditClosureHash",
+    "founderApprovalHash"
+  ],
+  "properties": {
+    "mainnetTarget": {
+      "const": "ethereum"
+    },
+    "agialphaTokenAddress": {
+      "const": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA"
+    },
+    "legalSignoffHash": {
+      "type": "string",
+      "pattern": "^0x[0-9a-fA-F]{64}$"
+    },
+    "taxSignoffHash": {
+      "type": "string",
+      "pattern": "^0x[0-9a-fA-F]{64}$"
+    },
+    "securityReviewHash": {
+      "type": "string",
+      "pattern": "^0x[0-9a-fA-F]{64}$"
+    },
+    "publicClaimsReviewHash": {
+      "type": "string",
+      "pattern": "^0x[0-9a-fA-F]{64}$"
+    },
+    "sepoliaRehearsalEvidenceHash": {
+      "type": "string",
+      "pattern": "^0x[0-9a-fA-F]{64}$"
+    },
+    "externalAuditClosureHash": {
+      "type": "string",
+      "pattern": "^0x[0-9a-fA-F]{64}$"
+    },
+    "founderApprovalHash": {
+      "type": "string",
+      "pattern": "^0x[0-9a-fA-F]{64}$"
+    },
+    "treasuryReviewHash": {
+      "type": "string",
+      "pattern": "^0x[0-9a-fA-F]{64}$"
+    },
+    "agialphaTokenVerificationHash": {
+      "type": "string",
+      "pattern": "^0x[0-9a-fA-F]{64}$"
+    }
+  }
+}

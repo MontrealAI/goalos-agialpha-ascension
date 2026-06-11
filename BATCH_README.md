@@ -1,5 +1,5 @@
 # Batch upload note
 
-Upload second. Commit: Add GoalOS AGIALPHA Ascension documentation.
+Upload third. Commit: Add contracts, schemas, audit handoff, and QA artifacts.
 
 Select the contents of this folder, not the folder itself.

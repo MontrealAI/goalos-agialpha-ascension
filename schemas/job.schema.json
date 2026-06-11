@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GoalOS AGIALPHA Proof Job",
+  "type": "object",
+  "required": [
+    "title",
+    "sponsor",
+    "category",
+    "reward",
+    "requiredProof",
+    "claimsBoundary"
+  ],
+  "properties": {
+    "title": {
+      "type": "string"
+    },
+    "sponsor": {
+      "type": "string"
+    },
+    "category": {
+      "type": "string"
+    },
+    "reward": {
+      "type": "object"
+    },
+    "requiredProof": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "claimsBoundary": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "publicSafe": {
+      "type": "boolean"
+    }
+  }
+}
