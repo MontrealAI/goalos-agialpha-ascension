@@ -1,0 +1,19 @@
+name: Mainnet Authorization Gate
+on:
+  pull_request:
+  workflow_dispatch:
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: '20' }
+      - run: npm install
+      - name: Read-only gate check; no deployment
+        run: npm run mainnet:authorization-check
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mainnet-authorization-decision
+          path: docs/MAINNET_AUTHORIZATION_DECISION.*

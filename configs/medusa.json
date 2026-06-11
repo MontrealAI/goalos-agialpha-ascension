@@ -1,0 +1,5 @@
+{
+  "fuzzing": { "workers": 2, "timeout": 120, "testLimit": 5000 },
+  "compilation": { "platform": "hardhat", "basePath": "." },
+  "logging": { "level": "info" }
+}

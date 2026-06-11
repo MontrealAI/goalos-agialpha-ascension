@@ -52,7 +52,7 @@ if (ROOT / ".github/workflows/goalos-jobs-production-rc-ci.yml").exists():
     errors.append("Stale JOBS workflow must not exist: .github/workflows/goalos-jobs-production-rc-ci.yml")
 
 readme = (ROOT / "README.md").read_text(encoding="utf-8", errors="ignore") if (ROOT / "README.md").exists() else ""
-for phrase in ["GoalOS AGIALPHA Ascension", "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA", "Not audited", "not mainnet authorized", "Ethereum Sepolia rehearsal"]:
+for phrase in ["GoalOS AGIALPHA Ascension", "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA", "Not externally audited", "Ethereum Mainnet not authorized", "Ethereum Sepolia rehearsal"]:
     if phrase.lower() not in readme.lower():
         errors.append(f"README missing required phrase: {phrase}")
 
@@ -73,7 +73,7 @@ if wf.exists():
             errors.append(f"AGIALPHA CI workflow missing: {must}")
 
 launch = (ROOT / "contracts/registry/LaunchGateRegistry.sol").read_text(encoding="utf-8", errors="ignore") if (ROOT / "contracts/registry/LaunchGateRegistry.sol").exists() else ""
-for must in ["ETHEREUM_SEPOLIA_REHEARSAL", "AGIALPHA_TOKEN_VERIFICATION", "EXTERNAL_AUDIT_CLOSURE", "FOUNDER_APPROVAL"]:
+for must in ["ETHEREUM_SEPOLIA_REHEARSAL", "AGIALPHA_TOKEN_VERIFICATION", "AUTOMATED_SECURITY_TOOLCHAIN", "INTERNAL_SECURITY_REVIEW", "FOUNDER_APPROVAL"]:
     if must not in launch:
         errors.append(f"LaunchGateRegistry missing {must}")
 if "BASE_SEPOLIA_REHEARSAL" in launch:

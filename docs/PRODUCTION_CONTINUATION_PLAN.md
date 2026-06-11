@@ -1,45 +1,13 @@
 # Production Continuation Plan
 
-This repository becomes the source of truth for continuing **GoalOS AGIALPHA Ascension** toward production.
-
-## Current status
-
-```text
+GoalOS AGIALPHA Ascension v4.4 candidate.
 Gate-clean evidence-ready audit candidate.
-Ethereum Sepolia rehearsal-ready after compile/tests pass.
-Not audited.
-Not mainnet authorized.
-```
+Not externally audited.
+Automated security/toolchain review: completed with blockers.
+Ethereum Mainnet not authorized.
+Technical mainnet readiness: NO.
+Ethereum Mainnet deployment authorization: NO.
 
-## Path to production
+Continuation path:
 
-```text
-Repository creation
-→ GitHub security/rulesets
-→ CI and repository validation
-→ compile/tests
-→ Ethereum Sepolia rehearsal
-→ filled Evidence Docket
-→ external audit closure
-→ legal/token counsel review
-→ tax/accounting review
-→ public-claims/promoter review
-→ treasury/founder/admin ceremony
-→ formal founder mainnet go/no-go
-→ Ethereum Mainnet only if all gates pass
-```
-
-## Next real milestone
-
-```text
-Ethereum Sepolia rehearsal + filled Evidence Docket.
-```
-
-## Production law
-
-```text
-No proof, no evolution.
-No eval, no propagation.
-No rollback, no release.
-No gates, no mainnet.
-```
+local/Sepolia rehearsal evidence → automated security/toolchain clearance → internal security review → AGIALPHA token verification → treasury/founder address ceremony → founder deployment approval.

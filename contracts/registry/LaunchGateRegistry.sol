@@ -12,7 +12,8 @@ contract LaunchGateRegistry is GoalOSAccessControl {
     bytes32 public constant TREASURY_REVIEW = keccak256("TREASURY_REVIEW");
     bytes32 public constant AGIALPHA_TOKEN_VERIFICATION = keccak256("AGIALPHA_TOKEN_VERIFICATION");
     bytes32 public constant ETHEREUM_SEPOLIA_REHEARSAL = keccak256("ETHEREUM_SEPOLIA_REHEARSAL");
-    bytes32 public constant EXTERNAL_AUDIT_CLOSURE = keccak256("EXTERNAL_AUDIT_CLOSURE");
+    bytes32 public constant AUTOMATED_SECURITY_TOOLCHAIN = keccak256("AUTOMATED_SECURITY_TOOLCHAIN");
+    bytes32 public constant INTERNAL_SECURITY_REVIEW = keccak256("INTERNAL_SECURITY_REVIEW");
     bytes32 public constant FOUNDER_APPROVAL = keccak256("FOUNDER_APPROVAL");
     mapping(bytes32 => Gate) public gateOf;
     event LaunchGateUpdated(bytes32 indexed gateId, bool passed, bytes32 indexed evidenceHash, string evidenceURI, address indexed reviewer);
@@ -23,6 +24,6 @@ contract LaunchGateRegistry is GoalOSAccessControl {
         emit LaunchGateUpdated(gateId, passed, evidenceHash, evidenceURI, msg.sender);
     }
     function allCoreGatesPassed() external view returns (bool) {
-        return gateOf[LEGAL_REVIEW].passed && gateOf[TAX_REVIEW].passed && gateOf[SECURITY_REVIEW].passed && gateOf[PUBLIC_CLAIMS_REVIEW].passed && gateOf[TREASURY_REVIEW].passed && gateOf[AGIALPHA_TOKEN_VERIFICATION].passed && gateOf[ETHEREUM_SEPOLIA_REHEARSAL].passed && gateOf[EXTERNAL_AUDIT_CLOSURE].passed && gateOf[FOUNDER_APPROVAL].passed;
+        return gateOf[LEGAL_REVIEW].passed && gateOf[TAX_REVIEW].passed && gateOf[SECURITY_REVIEW].passed && gateOf[PUBLIC_CLAIMS_REVIEW].passed && gateOf[TREASURY_REVIEW].passed && gateOf[AGIALPHA_TOKEN_VERIFICATION].passed && gateOf[ETHEREUM_SEPOLIA_REHEARSAL].passed && gateOf[AUTOMATED_SECURITY_TOOLCHAIN].passed && gateOf[INTERNAL_SECURITY_REVIEW].passed && gateOf[FOUNDER_APPROVAL].passed;
     }
 }

@@ -1,0 +1,8 @@
+testMode: assertion
+corpusDir: audit/reports/echidna-corpus
+coverage: true
+format: json
+seqLen: 100
+workers: 2
+testLimit: 5000
+cryticArgs: ["--hardhat-compile-all"]

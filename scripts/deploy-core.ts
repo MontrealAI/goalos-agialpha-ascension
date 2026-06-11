@@ -46,7 +46,8 @@ function enforceEthereumMainnetGates(info: ChainInfo) {
   requireBytes32("TREASURY_REVIEW_HASH");
   requireBytes32("AGIALPHA_TOKEN_VERIFICATION_HASH");
   requireBytes32("SEPOLIA_REHEARSAL_EVIDENCE_HASH");
-  requireBytes32("EXTERNAL_AUDIT_CLOSURE_HASH");
+  requireBytes32("AUTOMATED_SECURITY_TOOLCHAIN_HASH");
+  requireBytes32("INTERNAL_SECURITY_REVIEW_HASH");
   requireBytes32("FOUNDER_APPROVAL_HASH");
   requireEnvAddress("FOUNDER_ADDRESS");
   requireEnvAddress("TREASURY_ADDRESS");
@@ -195,8 +196,11 @@ export async function deployGoalOSAGIALPHAAscension() {
       taxSignoffHash: process.env.TAX_SIGNOFF_HASH,
       securityReviewHash: process.env.SECURITY_REVIEW_HASH,
       publicClaimsReviewHash: process.env.PUBLIC_CLAIMS_REVIEW_HASH,
+      treasuryReviewHash: process.env.TREASURY_REVIEW_HASH,
+      agialphaTokenVerificationHash: process.env.AGIALPHA_TOKEN_VERIFICATION_HASH,
       sepoliaRehearsalEvidenceHash: process.env.SEPOLIA_REHEARSAL_EVIDENCE_HASH,
-      externalAuditClosureHash: process.env.EXTERNAL_AUDIT_CLOSURE_HASH,
+      automatedSecurityToolchainHash: process.env.AUTOMATED_SECURITY_TOOLCHAIN_HASH,
+      internalSecurityReviewHash: process.env.INTERNAL_SECURITY_REVIEW_HASH,
       founderApprovalHash: process.env.FOUNDER_APPROVAL_HASH
     } : null,
     contracts: {

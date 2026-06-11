@@ -1,0 +1,18 @@
+{
+  "status": "BASELINE_GREEN",
+  "branch_context": "local main branch unavailable; baseline established from current repository foundation branch",
+  "dependency_prs_merged": false,
+  "commands": {
+    "npm install": "PASS_WITH_NPM_AUDIT_WARNINGS",
+    "npm run repo:all": "PASS",
+    "npm run repo:no-paid-products": "PASS",
+    "npm run compile": "PASS",
+    "npm test": "PASS",
+    "npm run test:all": "PASS",
+    "npm run static-check": "PASS",
+    "npm run readiness:v4.3": "PASS",
+    "npm run evidence:docket:template": "PASS",
+    "npm run mainnet:authorization-check": "PASS_EXPECTED_NOT_AUTHORIZED"
+  },
+  "mainnet": "NOT_AUTHORIZED"
+}

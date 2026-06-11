@@ -1,0 +1,15 @@
+{
+  "generated_at": "2026-06-11T15:30:00Z",
+  "branch": "codex/sepolia-rehearsal-audit-toolchain-mainnet-decision",
+  "base_commit": "cc359b8755640e09aebc79b7bf75e2296dcbe8bc",
+  "checks": [
+    {"command": "npm install", "status": "passed", "note": "completed with npm audit vulnerability warnings"},
+    {"command": "npm run repo:all", "status": "passed"},
+    {"command": "npm run repo:no-paid-products", "status": "passed"},
+    {"command": "npm run static-check", "status": "passed"},
+    {"command": "npm run readiness:v4.3", "status": "passed"},
+    {"command": "npm run evidence:docket:template", "status": "passed"},
+    {"command": "npm run mainnet:authorization-check", "status": "passed_expected_not_authorized"}
+  ],
+  "mainnet": "NOT_AUTHORIZED"
+}

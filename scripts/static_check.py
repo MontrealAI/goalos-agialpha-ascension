@@ -39,7 +39,7 @@ required = [
     "docs/START_HERE_v4_2.md",
     "docs/MAINNET_NOT_AUTHORIZED_DECISION_v4_2.md",
     "docs/SEPOLIA_REHEARSAL_EVIDENCE_DOCKET_v4_2.md",
-    "docs/EXTERNAL_AUDIT_CLOSURE_REQUEST_v4_2.md",
+    "docs/AUTOMATED_SECURITY_TOOLCHAIN_REQUEST_v4_2.md",
     "docs/GOVERNANCE_ROLE_CEREMONY_v4_2.md",
     "scripts/verify-readiness-v4-2.py",
     "scripts/generate-evidence-docket-template.py",
@@ -63,7 +63,7 @@ for needle in ["0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA", "ALLOW_MAINNET_DEPL
 if "|| deployer.address" in deploy: errors.append("deploy-core.ts should not default critical addresses to deployer")
 launch = (ROOT / "contracts/registry/LaunchGateRegistry.sol").read_text(encoding="utf-8", errors="ignore")
 if "BASE_SEPOLIA_REHEARSAL" in launch: errors.append("LaunchGateRegistry must not contain BASE_SEPOLIA_REHEARSAL for Ethereum AGIALPHA package")
-for needle in ["ETHEREUM_SEPOLIA_REHEARSAL", "AGIALPHA_TOKEN_VERIFICATION", "EXTERNAL_AUDIT_CLOSURE", "FOUNDER_APPROVAL"]:
+for needle in ["ETHEREUM_SEPOLIA_REHEARSAL", "AGIALPHA_TOKEN_VERIFICATION", "AUTOMATED_SECURITY_TOOLCHAIN", "INTERNAL_SECURITY_REVIEW", "FOUNDER_APPROVAL"]:
     if needle not in launch: errors.append(f"LaunchGateRegistry missing {needle}")
 manifest = []
 for p in sorted(ROOT.rglob("*")):

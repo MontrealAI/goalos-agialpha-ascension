@@ -22,7 +22,4 @@ jobs:
       - name: Run mainnet authorization checker
         run: python scripts/mainnet-authorization-check.py
       - name: Assert public status remains not authorized
-        run: |
-          grep -R "Ethereum Mainnet is NOT authorized" docs/MAINNET_NOT_AUTHORIZED_DECISION_v4_3.md
-          grep -R "Not audited" README.md
-          grep -R "not mainnet authorized" README.md
+        run: python scripts/assert_public_status.py

@@ -24,8 +24,8 @@ if missing:
 
 readme = (ROOT / "README.md").read_text(encoding="utf-8")
 must_include = [
-    "Not audited",
-    "not mainnet authorized",
+    "Not externally audited",
+    "Ethereum Mainnet not authorized",
     "AGIALPHA",
     "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
 ]

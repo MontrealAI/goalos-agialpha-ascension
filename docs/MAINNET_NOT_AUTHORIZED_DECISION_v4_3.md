@@ -1,19 +1,12 @@
-# Mainnet Not Authorized Decision v4.3
+# Mainnet Not Authorized Decision v4.3+
 
-Ethereum Mainnet is NOT authorized.
+Ethereum Mainnet not authorized.
 
-The package is evidence-ready and gate-clean, but execution evidence is not complete.
+Not externally audited.
+Automated security/toolchain review pending or completed with blockers until all tool outputs are present and internally accepted.
+Technical mainnet readiness: NO.
+Ethereum Mainnet deployment authorization: NO.
 
-Required before mainnet:
+Required active gates include legal review, tax review, security review, public claims review, treasury review, AGIALPHA token verification, Ethereum Sepolia rehearsal, automated security/toolchain clearance, internal security review, and founder approval.
 
-- compile/tests pass in a real engineering environment
-- Ethereum Sepolia rehearsal completes
-- Evidence Docket is filled
-- external audit closure
-- legal/token counsel review
-- tax/accounting review
-- public-claims review
-- treasury/founder/admin ceremony
-- AGIALPHA token verification
-- AGIALPHA vault-funding approval, if funding is planned
-- formal founder approval
+No Ethereum Mainnet deployment may occur from this repository unless all computed gates pass and explicit founder deployment approval is recorded.

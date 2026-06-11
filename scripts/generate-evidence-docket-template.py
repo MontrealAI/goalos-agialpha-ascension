@@ -16,7 +16,7 @@ docket = {
     "network": "ethereum-sepolia",
     "status": "draft",
     "rootDoctrine": "GoalOS sets aim; AGIALPHA coordinates proof work; AEP-001 defines evidence; Proof Gradient decides what may evolve.",
-    "publicBoundary": "Evidence docket only. Not audited. Not mainnet authorized. Not legal, tax, investment, or security approval.",
+    "publicBoundary": "Evidence docket only. Not externally audited. Ethereum Mainnet not authorized. Not legal, tax, investment, or security approval.",
     "contracts": {
         "AGIALPHA_or_MockAGIALPHA": "TO_FILL",
         "JobRegistry": "TO_FILL",
