@@ -20,10 +20,16 @@ ALLOWLIST_FILES = {
 errors: list[str] = []
 for path in ROOT.rglob("*"):
     if not path.is_file(): continue
-    rel = path.relative_to(ROOT).as_posix()
-    if any(part in SKIP_PARTS for part in path.parts): continue
+    rel_path = path.relative_to(ROOT)
+    rel_parts = rel_path.parts
+    rel = rel_path.as_posix()
+    if any(part in SKIP_PARTS for part in rel_parts): continue
     if path.name in FORBIDDEN_NAMES and path.name != ".env.example": errors.append(f"Forbidden private/env file committed: {rel}")
-    if path.parts[0] in FORBIDDEN_PARTS or (len(path.parts) > 1 and path.parts[0] == "private"):
+    # Check repository-relative path components. ROOT.rglob() yields absolute
+    # paths, so path.parts[0] is the filesystem root, not the repo component.
+    # Keep scripts/private/ available for safe tooling while blocking root
+    # private operator custody dirs and sensitive nested wallet/key dirs.
+    if any(part in FORBIDDEN_PARTS for part in rel_parts) or (rel_parts and rel_parts[0] == "private"):
         errors.append(f"Forbidden private operator path committed: {rel}")
     if path.suffix in {".key", ".pem", ".p12", ".secret"} or rel.endswith((".private.json", ".private.env")):
         errors.append(f"Forbidden private secret file pattern committed: {rel}")
