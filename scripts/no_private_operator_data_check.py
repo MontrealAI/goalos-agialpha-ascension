@@ -13,7 +13,7 @@ FORBIDDEN_PARTS = {".private", "wallets", "keys"}
 SECRET_PATTERNS = [
     re.compile(r"https?://[^\s\"']*(alchemy|infura|quicknode|ankr|blast|drpc|chainstack)[^\s\"']*", re.I),
     re.compile(r"\b(?:0x)?[0-9a-fA-F]{64}\b.*(?:private|secret|key|signature)", re.I),
-    re.compile(r"(?:PRIVATE_KEY|SEED_PHRASE|MNEMONIC|ETHERSCAN_API_KEY|FOUNDER_APPROVAL_SIGNATURE)[ \t]*[:=][ \t]*(?!$|PRIVATE_LOCAL_ONLY|PRIVATE_LOCAL_ONLY_OR_EMPTY|<|\$|process\.env)[^\s\"']+", re.I),
+    re.compile(r"(?:PRIVATE_KEY|SEED_PHRASE|MNEMONIC|ETHERSCAN_API_KEY|FOUNDER_APPROVAL_SIGNATURE)[ \t]*[:=][ \t]*(?!$|PRIVATE_LOCAL_ONLY|PRIVATE_LOCAL_ONLY_OR_EMPTY|DO_NOT_COMMIT_FILL_LOCALLY|TYPE_CONFIRMATION_LOCALLY_ONLY|<|\$|process\.env)[^\s\"']+", re.I),
 ]
 PRIVATE_ADDRESS_CONTEXT = re.compile(r"(founder|treasury|deployer|admin|vault|security|community|operator|ceremony).{0,80}0x[0-9a-fA-F]{40}", re.I)
 ADDRESS_RE = re.compile(r"0x[0-9a-fA-F]{40}")

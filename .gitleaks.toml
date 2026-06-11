@@ -1,0 +1,13 @@
+title = "GoalOS AGIALPHA public-safe gitleaks config"
+
+[allowlist]
+description = "Public constants and generated public evidence that are not secrets"
+regexes = [
+  '''0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA'''
+]
+paths = [
+  '''audit/reports/.*''',
+  '''artifacts/.*''',
+  '''cache/.*''',
+  '''typechain-types/.*'''
+]

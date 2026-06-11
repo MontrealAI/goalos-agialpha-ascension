@@ -26,3 +26,5 @@ mainnet-operator-input.json
 mainnet-operator.env
 sepolia-operator.env
 deployment-private.env
+
+ignition/parameters/*.local.json

@@ -26,3 +26,14 @@ Required gates:
 - local typed confirmation is present in the private env.
 
 No mainnet deployment occurred in this PR.
+
+
+## v4.4 final gated command
+
+The safest final command remains local-only:
+
+```bash
+npm run deploy:ethereum-mainnet:gated:local
+```
+
+It loads `.private/mainnet-operator.env` and `.private/mainnet-operator-input.json`, verifies redacted YES decisions, rejects CI, requires `DEPLOY_GOALOS_AGIALPHA_ASCENSION_TO_ETHEREUM_MAINNET`, then calls the Hardhat gated deployment. The public repository stores only `qa/public-mainnet-deployment-commitment.json`; the private transcript remains `.private/deployment-transcript-private.json`.

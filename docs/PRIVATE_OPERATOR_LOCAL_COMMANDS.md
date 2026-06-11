@@ -15,3 +15,17 @@ python scripts/mainnet-authorization-check.py --with-redacted-private-evidence
 ```
 
 Only redacted public `qa/public-*.json` files may be committed. Do not commit `.private/`.
+
+
+## v4.4 private local package commands
+
+```bash
+python scripts/private/run-private-sepolia-rehearsal.py --env .private/mainnet-operator.env --input .private/mainnet-operator-input.json
+python scripts/private/run-private-mainnet-preflight.py --env .private/mainnet-operator.env --input .private/mainnet-operator-input.json
+python scripts/mainnet-readiness-check.py --with-redacted-private-evidence
+python scripts/mainnet-deployment-authorization-check.py --with-redacted-private-evidence
+python scripts/ethereum-mainnet-authorization-check.py --with-redacted-private-evidence
+npm run deploy:ethereum-mainnet:gated:local
+```
+
+Do not run the final deployment from GitHub Actions. Do not commit filled `.private/` files, RPC URLs, private keys, founder signatures, private addresses, or private ceremony appendices.

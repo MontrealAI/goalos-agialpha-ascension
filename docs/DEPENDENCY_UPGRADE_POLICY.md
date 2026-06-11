@@ -10,7 +10,7 @@ GoalOS AGIALPHA Ascension does not merge dependency updates blindly. Dependency 
 
 ## Required gates before merging dependency PRs
 
-1. `npm install`
+1. `npm ci` when `package-lock.json` exists.
 2. `npm run repo:all`
 3. `npm run repo:no-paid-products`
 4. `npm run compile`
@@ -18,12 +18,16 @@ GoalOS AGIALPHA Ascension does not merge dependency updates blindly. Dependency 
 6. `npm run test:all`
 7. `npm run static-check`
 8. `npm run readiness:v4.3`
-9. `npm run mainnet:authorization-check` returns expected `NOT_AUTHORIZED` without real gates
-10. Audit-tool impact reviewed and documented
+9. `npm run mainnet:authorization-check:public` returns expected private-evidence-pending NO without real gates.
+10. Audit-tool impact reviewed and documented.
 
 ## Decision rules
 
+- Do not use `--legacy-peer-deps` as a permanent fix.
+- Do not merge Hardhat 3, Hardhat Toolbox 7, TypeScript 6, or OpenZeppelin 5 into the mainnet path without a dedicated migration branch, updated runbooks, and passing evidence.
 - If install/compile/test/static/readiness fails: **DO_NOT_MERGE**.
 - If a major upgrade touches deployed bytecode or security primitives: **DEFER** or **REPLACE_WITH_CONTROLLED_BRANCH** unless migration and audit are complete.
 - If a devDependency upgrade changes compiler/test/deploy behavior: defer unless Hardhat, ts-node, TypeChain, deploy scripts, CI, and audit scripts are green.
 - Mainnet remains blocked regardless of dependency status until all real launch gates are complete.
+- Public CI must not require RPC URLs, private keys, private addresses, founder signatures, or API keys.
+- Any dependency vulnerability waiver must be documented in the findings register and the toolchain clearance report.

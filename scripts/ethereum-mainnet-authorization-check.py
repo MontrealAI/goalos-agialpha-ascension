@@ -50,6 +50,6 @@ def write(status: str, blockers: list[str], evidence: dict) -> dict:
 
 def main():
     parser=argparse.ArgumentParser(); parser.add_argument("--public-only", action="store_true"); parser.add_argument("--with-redacted-private-evidence", action="store_true"); args=parser.parse_args()
-    status, blockers, evidence=compute(args.with_redacted_private_evidence)
+    status, blockers, evidence=compute(args.with_redacted_private_evidence and not args.public_only)
     print(json.dumps(write(status, blockers, evidence), indent=2))
 if __name__ == "__main__": main()

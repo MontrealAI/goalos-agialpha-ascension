@@ -35,3 +35,8 @@ The private tools emit only redacted public commitments into `qa/`. The redacted
 The deterministic local rehearsal runs on the non-forked Hardhat local chain, deploys MockAGIALPHA plus the proof-work registries, completes the proof-work loop and a negative path, and writes only local-simulation manifests with address commitments rather than raw operator addresses.
 
 GitHub Actions never deploys Ethereum Mainnet and never mints or deploys a new AGIALPHA token. Ethereum Mainnet AGIALPHA remains `0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA`.
+
+
+## v4.4 implementation note
+
+`hardhat.config.ts` never throws during public config load for missing private RPC URLs or private keys. Private values are required only by explicit preflight/deployment scripts. Public GitHub may contain schemas, templates, reports, and hashes; `.private/` contains filled operator inputs and remains ignored.
