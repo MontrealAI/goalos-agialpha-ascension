@@ -1,8 +1,8 @@
 {
   "status": "LOCAL_SIMULATION_ONLY",
-  "generatedAt": "2026-06-11T20:41:49.155Z",
+  "generatedAt": "2026-06-11T21:55:51.745Z",
   "chain": "hardhat-local",
-  "chainId": 11155111,
+  "chainId": 31337,
   "mockAGIALPHA": "LOCAL_MOCK_ONLY",
   "contractsDeployed": 17,
   "addressCommitments": [

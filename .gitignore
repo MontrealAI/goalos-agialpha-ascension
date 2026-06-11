@@ -28,3 +28,9 @@ sepolia-operator.env
 deployment-private.env
 
 ignition/parameters/*.local.json
+
+private/
+
+*.local.json
+!scripts/private/
+!scripts/private/*.py

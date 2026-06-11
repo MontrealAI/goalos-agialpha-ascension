@@ -9,12 +9,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
-      - name: Assert public status remains bounded
-        run: python scripts/assert_public_status.py
-      - name: No private operator data in public repo
-        run: python scripts/no_private_operator_data_check.py
-      - name: Read-only public gate check; no install, secrets, or deployment
-        run: python scripts/mainnet-authorization-check.py --public-only
+      - uses: actions/setup-node@v5
+        with:
+          node-version: "20"
+          cache: "npm"
+      - run: npm ci
+      - run: npm run repo:all
+      - run: npm run assert:public-status
+      - name: Read-only public gate check; no secrets or deployment
+        run: npm run mainnet:authorization-check:public
       - uses: actions/upload-artifact@v5
         if: always()
         with:

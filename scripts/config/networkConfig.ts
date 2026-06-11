@@ -1,11 +1,13 @@
 import { ethers } from "ethers";
 
+export const EXPECTED_ETHEREUM_MAINNET_CHAIN_ID = 1;
+export const EXPECTED_ETHEREUM_SEPOLIA_CHAIN_ID = 11155111;
 export const AGIALPHA_MAINNET_TOKEN = "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA";
 const NETWORKS: Record<string, { chainId: number; rpcEnv: string[]; keyEnv: string[] }> = {
-  ethereumSepolia: { chainId: 11155111, rpcEnv: ["PRIVATE_SEPOLIA_RPC_URL", "SEPOLIA_RPC_URL", "ETHEREUM_SEPOLIA_RPC_URL"], keyEnv: ["PRIVATE_SEPOLIA_DEPLOYER_PRIVATE_KEY", "SEPOLIA_DEPLOYER_PRIVATE_KEY", "PRIVATE_DEPLOYER_PRIVATE_KEY", "DEPLOYER_PRIVATE_KEY", "PRIVATE_KEY"] },
-  sepolia: { chainId: 11155111, rpcEnv: ["PRIVATE_SEPOLIA_RPC_URL", "SEPOLIA_RPC_URL", "ETHEREUM_SEPOLIA_RPC_URL"], keyEnv: ["PRIVATE_SEPOLIA_DEPLOYER_PRIVATE_KEY", "SEPOLIA_DEPLOYER_PRIVATE_KEY", "PRIVATE_DEPLOYER_PRIVATE_KEY", "DEPLOYER_PRIVATE_KEY", "PRIVATE_KEY"] },
-  ethereumMainnet: { chainId: 1, rpcEnv: ["PRIVATE_MAINNET_RPC_URL", "MAINNET_RPC_URL", "ETHEREUM_MAINNET_RPC_URL"], keyEnv: ["PRIVATE_MAINNET_DEPLOYER_PRIVATE_KEY", "MAINNET_DEPLOYER_PRIVATE_KEY", "PRIVATE_DEPLOYER_PRIVATE_KEY", "DEPLOYER_PRIVATE_KEY", "PRIVATE_KEY"] },
-  mainnet: { chainId: 1, rpcEnv: ["PRIVATE_MAINNET_RPC_URL", "MAINNET_RPC_URL", "ETHEREUM_MAINNET_RPC_URL"], keyEnv: ["PRIVATE_MAINNET_DEPLOYER_PRIVATE_KEY", "MAINNET_DEPLOYER_PRIVATE_KEY", "PRIVATE_DEPLOYER_PRIVATE_KEY", "DEPLOYER_PRIVATE_KEY", "PRIVATE_KEY"] },
+  ethereumSepolia: { chainId: EXPECTED_ETHEREUM_SEPOLIA_CHAIN_ID, rpcEnv: ["PRIVATE_SEPOLIA_RPC_URL", "SEPOLIA_RPC_URL", "ETHEREUM_SEPOLIA_RPC_URL"], keyEnv: ["PRIVATE_SEPOLIA_DEPLOYER_PRIVATE_KEY", "SEPOLIA_DEPLOYER_PRIVATE_KEY", "PRIVATE_DEPLOYER_PRIVATE_KEY", "DEPLOYER_PRIVATE_KEY", "PRIVATE_KEY"] },
+  sepolia: { chainId: EXPECTED_ETHEREUM_SEPOLIA_CHAIN_ID, rpcEnv: ["PRIVATE_SEPOLIA_RPC_URL", "SEPOLIA_RPC_URL", "ETHEREUM_SEPOLIA_RPC_URL"], keyEnv: ["PRIVATE_SEPOLIA_DEPLOYER_PRIVATE_KEY", "SEPOLIA_DEPLOYER_PRIVATE_KEY", "PRIVATE_DEPLOYER_PRIVATE_KEY", "DEPLOYER_PRIVATE_KEY", "PRIVATE_KEY"] },
+  ethereumMainnet: { chainId: EXPECTED_ETHEREUM_MAINNET_CHAIN_ID, rpcEnv: ["PRIVATE_MAINNET_RPC_URL", "MAINNET_RPC_URL", "ETHEREUM_MAINNET_RPC_URL"], keyEnv: ["PRIVATE_MAINNET_DEPLOYER_PRIVATE_KEY", "MAINNET_DEPLOYER_PRIVATE_KEY", "PRIVATE_DEPLOYER_PRIVATE_KEY", "DEPLOYER_PRIVATE_KEY", "PRIVATE_KEY"] },
+  mainnet: { chainId: EXPECTED_ETHEREUM_MAINNET_CHAIN_ID, rpcEnv: ["PRIVATE_MAINNET_RPC_URL", "MAINNET_RPC_URL", "ETHEREUM_MAINNET_RPC_URL"], keyEnv: ["PRIVATE_MAINNET_DEPLOYER_PRIVATE_KEY", "MAINNET_DEPLOYER_PRIVATE_KEY", "PRIVATE_DEPLOYER_PRIVATE_KEY", "DEPLOYER_PRIVATE_KEY", "PRIVATE_KEY"] },
   hardhat: { chainId: 31337, rpcEnv: [], keyEnv: [] },
   localhost: { chainId: 31337, rpcEnv: ["LOCALHOST_RPC_URL"], keyEnv: ["LOCALHOST_PRIVATE_KEY"] }
 };
@@ -43,6 +45,19 @@ export async function assertExpectedChain(networkName: string, provider: { getNe
   const expected = getExpectedChainId(networkName);
   if (actual !== expected) throw new Error(`Wrong chain for ${networkName}: expected ${expected}, got ${actual}.`);
 }
+
+export async function assertEthereumMainnet(provider: { getNetwork(): Promise<{ chainId: bigint | number }> }) {
+  await assertExpectedChain("ethereumMainnet", provider);
+}
+export async function assertEthereumSepolia(provider: { getNetwork(): Promise<{ chainId: bigint | number }> }) {
+  await assertExpectedChain("ethereumSepolia", provider);
+}
+export function assertNoGitHubActionsMainnetDeployment() {
+  if (process.env.GITHUB_ACTIONS === "true" || process.env.CI === "true") {
+    throw new Error("Ethereum Mainnet deployment is forbidden from GitHub Actions/CI; use the private local wrapper.");
+  }
+}
+
 export function maskSecret(value: string | undefined): string { return value ? `${value.slice(0, 4)}…${value.slice(-4)}` : "<unset>"; }
 export function assertNoMockTokenOnMainnet(chainId: number, tokenAddress: string) {
   if (chainId === 1 && tokenAddress.toLowerCase() !== AGIALPHA_MAINNET_TOKEN.toLowerCase()) throw new Error("Ethereum Mainnet deployment must use the canonical AGIALPHA token; MockAGIALPHA is forbidden.");

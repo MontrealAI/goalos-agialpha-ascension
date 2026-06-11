@@ -2,6 +2,8 @@ name: Solidity Audit Toolchain
 on:
   pull_request:
   workflow_dispatch:
+permissions:
+  contents: read
 jobs:
   audit:
     runs-on: ubuntu-latest
@@ -9,12 +11,14 @@ jobs:
       - uses: actions/checkout@v5
       - uses: actions/setup-node@v5
         with:
-          node-version: '20'
-          cache: 'npm'
+          node-version: "20"
+          cache: "npm"
       - run: npm ci
+      - run: npm run repo:all
       - run: npm run compile
       - run: npm test
-      - run: npm run audit:all
+      - name: Slither-first automated/internal security toolchain
+        run: npm run audit:all
       - uses: actions/upload-artifact@v5
         if: always()
         with:

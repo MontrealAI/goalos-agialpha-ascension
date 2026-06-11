@@ -14,14 +14,15 @@ jobs:
       - uses: actions/checkout@v5
       - uses: actions/setup-node@v5
         with:
-          node-version: '20'
-          cache: 'npm'
+          node-version: "20"
+          cache: "npm"
       - run: npm ci
+      - run: npm run repo:all
       - run: npm run compile
       - name: Deterministic local authorization rehearsal (no RPC, no keys, no private addresses)
         run: npm run local:authorization-rehearsal
-      - name: Public-only authorization check (private evidence may be pending)
-        run: python scripts/mainnet-authorization-check.py --public-only
+      - name: Public-only authorization check (PRIVATE_OPERATOR_EVIDENCE_PENDING is expected)
+        run: npm run mainnet:authorization-check:public
       - uses: actions/upload-artifact@v5
         if: always()
         with:

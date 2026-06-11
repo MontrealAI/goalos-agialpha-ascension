@@ -10,41 +10,25 @@ permissions:
   contents: read
 
 jobs:
-  repository-readiness:
+  audit-candidate-public-ci:
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v5
-      - name: Repository safety check
-        run: python scripts/repository_safety_check.py
-      - name: Repository status check
-        run: python scripts/repository_status_check.py
-      - name: Production continuation readiness check
-        run: python scripts/repository_production_readiness_check.py
-      - name: No paid/private products check
-        run: python scripts/no_paid_products_check.py
-      - name: No private operator data check
-        run: python scripts/no_private_operator_data_check.py
-
-  contracts-advisory:
-    runs-on: ubuntu-latest
-    needs: repository-readiness
     steps:
       - uses: actions/checkout@v5
       - uses: actions/setup-node@v5
         with:
           node-version: "20"
           cache: "npm"
-      - name: Install
-        run: npm ci
-      - name: Compile
-        run: npm run compile
-      - name: Tests
-        run: npm run test:all
-      - name: Static QA
-        run: npm run static-check
-      - name: v4.3 readiness
-        run: npm run readiness:v4.3
-      - name: Evidence Docket template
-        run: npm run evidence:docket:template
-      - name: Public-only mainnet authorization check (private evidence pending is expected)
-        run: npm run mainnet:authorization-check -- --public-only
+      - run: npm ci
+      - run: npm run repo:all
+      - name: Production continuation readiness check
+        run: python scripts/repository_production_readiness_check.py
+      - run: npm run assert:public-status
+      - run: npm run compile
+      - run: npm test
+      - run: npm run test:all
+      - run: npm run static-check
+      - run: npm run readiness:v4.3
+      - run: npm run evidence:docket:template
+      - run: npm run local:authorization-rehearsal
+      - name: Public-only mainnet authorization check (private evidence pending is not a CI failure)
+        run: npm run mainnet:authorization-check:public # npm run mainnet:authorization-check

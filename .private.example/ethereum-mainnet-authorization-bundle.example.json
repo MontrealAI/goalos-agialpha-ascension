@@ -1,0 +1,17 @@
+{
+  "redacted": false,
+  "privateLocalOnly": true,
+  "status": "YES_OR_NO_FILLED_LOCALLY",
+  "chain": "ethereum",
+  "chainId": 1,
+  "agialphaToken": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
+  "technicalReadinessAccepted": "YES_OR_NO_FILLED_LOCALLY",
+  "deploymentAuthorizationAccepted": "YES_OR_NO_FILLED_LOCALLY",
+  "ethereumMainnetAuthorizationAccepted": "YES_OR_NO_FILLED_LOCALLY",
+  "founderApprovalCommitmentHash": "<FOUNDER_APPROVAL_COMMITMENT_HASH_FILLED_LOCALLY>",
+  "addressCeremonyCommitmentHash": "<ADDRESS_CEREMONY_COMMITMENT_HASH_FILLED_LOCALLY>",
+  "toolchainClearanceHash": "<TOOLCHAIN_CLEARANCE_HASH_FILLED_LOCALLY>",
+  "sepoliaEvidenceHash": "<SEPOLIA_EVIDENCE_HASH_FILLED_LOCALLY>",
+  "mainnetPreflightHash": "<MAINNET_PREFLIGHT_HASH_FILLED_LOCALLY>",
+  "notes": "Template only. Keep the real bundle in .private/ and never commit private addresses, signatures, RPC URLs, private keys, or ceremony artifacts."
+}

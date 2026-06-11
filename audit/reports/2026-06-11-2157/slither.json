@@ -1,0 +1,1 @@
+{"tool":"Slither","status":"PENDING_ENVIRONMENT_BLOCKED","command":"timeout 120 slither . --compile-force-framework hardhat --config-file configs/slither.config.json","reason":"slither executable is not installed","blocks_mainnet":true,"generated_at":"2026-06-11T21:57:48Z"}
