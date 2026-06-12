@@ -2,7 +2,7 @@
   "status": "YES",
   "MAINNET_DEPLOYMENT_AUTHORIZED": "YES",
   "mainnetDeploymentAuthorized": "YES",
-  "commit": "5dca98050896950c26a10f89618ecd0dd4bdecbc",
+  "commit": "693a68eb0f917da1483a5da5c5b1b9a4ef64c49c",
   "chain": "ethereum",
   "chainId": 1,
   "agialphaToken": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
@@ -106,10 +106,10 @@
     },
     "mainnetSimulation": {
       "path": "qa/ETHEREUM_MAINNET_FORK_SIMULATION.json",
-      "sha256": "0x91fa1803a3c687a0266ea6039deb2c27572a299d62e4a32cf544c017e804e62c"
+      "sha256": "0xe7239cb673d8fec43305a8ba7efa5a18ba207ab25cd28b1e9adf7a6280f3d76a"
     }
   },
   "blockers": [],
-  "generatedAt": "2026-06-12T04:13:16.629048+00:00",
+  "generatedAt": "2026-06-12T14:51:43.516616+00:00",
   "generatedBy": "scripts/mainnet-deployment-authorization-check.py"
 }

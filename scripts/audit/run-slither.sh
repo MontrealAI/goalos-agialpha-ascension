@@ -15,11 +15,26 @@ fi
 if ! command -v slither >/dev/null 2>&1; then write_pending "Slither" "$CMD" "slither executable remains unavailable after install" "$JSON" "$TXT"; echo '{"runs":[]}' > "$SARIF"; exit 1; fi
 set +e
 timeout 120 slither . --compile-force-framework hardhat --config-file configs/slither.config.json --json "$JSON" > "$TXT" 2>&1
-for printer in human-summary contract-summary vars-and-auth; do timeout 15 slither . --print "$printer" --compile-force-framework hardhat --config-file configs/slither.config.json > "$AUDIT_REPORT_DIR/slither-$printer.txt" 2>&1 || true; done
-STATUS=$?
-if [ $STATUS -eq 124 ]; then write_pending "Slither" "$CMD" "slither exceeded 120 second CI timeout; run locally with larger timeout" "$JSON" "$TXT"; echo '{"runs":[]}' > "$SARIF"; exit 1; fi
-if [ ! -s "$JSON" ]; then write_pending "Slither" "$CMD" "slither failed before JSON output; see slither.txt" "$JSON" "$TXT.pending"; echo '{"runs":[]}' > "$SARIF"; exit 1; fi
-echo '{"version":"2.1.0","runs":[]}' > "$SARIF"
+SLITHER_STATUS=$?
 set -e
+
+if [ "$SLITHER_STATUS" -eq 124 ]; then
+  write_pending "Slither" "$CMD" "slither exceeded 120 second CI timeout; run locally with larger timeout" "$JSON" "$TXT"
+  echo '{"runs":[]}' > "$SARIF"
+  exit 1
+fi
+if [ ! -s "$JSON" ]; then
+  write_pending "Slither" "$CMD" "slither failed before JSON output; see slither.txt" "$JSON" "$TXT.pending"
+  echo '{"runs":[]}' > "$SARIF"
+  exit 1
+fi
+
+set +e
+for printer in human-summary contract-summary vars-and-auth; do
+  timeout 15 slither . --print "$printer" --compile-force-framework hardhat --config-file configs/slither.config.json > "$AUDIT_REPORT_DIR/slither-$printer.txt" 2>&1 || true
+done
+set -e
+
+echo '{"version":"2.1.0","runs":[]}' > "$SARIF"
 python scripts/audit/fail-on-critical-findings.py "$JSON" slither || exit $?
 exit 0

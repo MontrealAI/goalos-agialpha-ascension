@@ -2,9 +2,9 @@
 
 Generated from `qa/mainnet-authorization-certificate.json`.
 
-- TECHNICALLY_MAINNET_READY: **NO**
-- MAINNET_DEPLOYMENT_AUTHORIZED: **NO**
-- ETHEREUM_MAINNET_AUTHORIZED: **NO**
+- TECHNICALLY_MAINNET_READY: **YES**
+- MAINNET_DEPLOYMENT_AUTHORIZED: **YES**
+- ETHEREUM_MAINNET_AUTHORIZED: **YES**
 - MAINNET_DEPLOYED: **NO**
 - Private operator authorization package required: **False**
 - Runtime secrets stored in GitHub: **False**
@@ -14,4 +14,4 @@ This certificate authorizes only manual, local, gated Ethereum Mainnet deploymen
 
 ## Next action
 
-B. Blocked, with exact blockers.
+Founder/deployer may run npm run deploy:ethereum-mainnet:gated with local runtime RPC/key.

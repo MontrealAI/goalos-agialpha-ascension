@@ -1,9 +1,9 @@
 {
   "schemaVersion": "1.0",
-  "generatedAt": "2026-06-12T13:38:50.205069+00:00",
+  "generatedAt": "2026-06-12T14:51:37.301506+00:00",
   "generatedBy": "scripts/generate-mainnet-authorization-certificate.py",
   "repository": "MontrealAI/goalos-agialpha-ascension",
-  "commit": "c006537058510f4a0d4ecb128769d8a02955a5d9",
+  "commit": "693a68eb0f917da1483a5da5c5b1b9a4ef64c49c",
   "branch": "work",
   "chain": "ethereum",
   "chainId": 1,
@@ -19,12 +19,12 @@
   "runtimeSecretsStoredInGitHub": false,
   "ciCanDeployMainnet": false,
   "privateOperatorAuthorizationPackageRequired": false,
-  "technicallyMainnetReady": "NO",
-  "TECHNICALLY_MAINNET_READY": "NO",
-  "mainnetDeploymentAuthorized": "NO",
-  "MAINNET_DEPLOYMENT_AUTHORIZED": "NO",
-  "ethereumMainnetAuthorized": "NO",
-  "ETHEREUM_MAINNET_AUTHORIZED": "NO",
+  "technicallyMainnetReady": "YES",
+  "TECHNICALLY_MAINNET_READY": "YES",
+  "mainnetDeploymentAuthorized": "YES",
+  "MAINNET_DEPLOYMENT_AUTHORIZED": "YES",
+  "ethereumMainnetAuthorized": "YES",
+  "ETHEREUM_MAINNET_AUTHORIZED": "YES",
   "evidence": {
     "repoDoctor": {
       "path": "qa/REPO_DOCTOR_REPORT.json",
@@ -120,12 +120,10 @@
     },
     "mainnetSimulation": {
       "path": "qa/ETHEREUM_MAINNET_FORK_SIMULATION.json",
-      "sha256": "0x91fa1803a3c687a0266ea6039deb2c27572a299d62e4a32cf544c017e804e62c"
+      "sha256": "0xe7239cb673d8fec43305a8ba7efa5a18ba207ab25cd28b1e9adf7a6280f3d76a"
     }
   },
-  "blockers": [
-    "Mainnet-shaped simulation evidence must prove a live fork deployment (observed chainId 1, token code verified, deployed contracts and manifest hash) or an explicitly governance-accepted deterministic local deployment with deployed contracts and manifest hash."
-  ],
+  "blockers": [],
   "warnings": [],
-  "nextAction": "B. Blocked, with exact blockers."
+  "nextAction": "Founder/deployer may run npm run deploy:ethereum-mainnet:gated with local runtime RPC/key."
 }
