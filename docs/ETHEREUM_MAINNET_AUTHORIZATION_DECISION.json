@@ -2,7 +2,7 @@
   "status": "YES",
   "ETHEREUM_MAINNET_AUTHORIZED": "YES",
   "ethereumMainnetAuthorized": "YES",
-  "commit": "9b58929fad7f55f78a879abc48404bd3eaba272a",
+  "commit": "806e769962a1fea6ea4b25dcf5528ebe36d3d6f8",
   "chain": "ethereum",
   "chainId": 1,
   "agialphaToken": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
@@ -59,7 +59,7 @@
     },
     "tier1SecurityToolchain": {
       "path": "audit/TOOLCHAIN_CLEARANCE_REPORT.md",
-      "sha256": "0xfcefe5b4fcf7aa29bcd994e832aa54438b0715429fd0fe5d4792107b19c03ec2"
+      "sha256": "0x112b961da82aa0c3f6b814d03d69ecc67103178237cdec55060482b77390e212"
     },
     "tier2SecurityToolchain": {
       "path": "audit/AUTOMATED_SECURITY_TOOLCHAIN.md",
@@ -67,7 +67,7 @@
     },
     "toolchainClearance": {
       "path": "qa/public-toolchain-clearance-evidence.json",
-      "sha256": "0x31e7c16fa8482d142291dada425e448ea30850765934debdfc79e7963d3c6edb"
+      "sha256": "0xdc447d856fd2f07d1a16d8f0ad4a06cf2a1be13226eb2e6d9fefbfeaf85be569"
     },
     "unresolvedFindings": {
       "path": "audit/AUDIT_FINDINGS_REGISTER.csv",
@@ -103,7 +103,7 @@
     },
     "packageScripts": {
       "path": "package.json",
-      "sha256": "0x938619519fd070282bb6d72cd84fe7a66b11c2b373e26f5c0858d5cd26901ed3"
+      "sha256": "0xbd6f42a29c237566b309f6cd06bf3a0f31f2e6e7ebf6d8190a8db2c80487b748"
     },
     "branchProtectionOrRiskAcceptance": {
       "path": "qa/public-branch-protection-evidence.json",
@@ -123,6 +123,6 @@
     }
   },
   "blockers": [],
-  "generatedAt": "2026-06-12T21:37:03.202288+00:00",
+  "generatedAt": "2026-06-12T21:55:05.094928+00:00",
   "generatedBy": "scripts/ethereum-mainnet-authorization-check.py"
 }

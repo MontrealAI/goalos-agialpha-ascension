@@ -6,7 +6,8 @@ rules:
     pattern-regex: "deploy:ethereum-mainnet|deploy-ethereum-mainnet-gated|--network mainnet"
     paths:
       include:
-        - /.github/workflows/*.yml
+        - .github/workflows/*.yml
+        - .github/workflows/*.yaml
   - id: goalos-no-secret-echo
     message: Avoid echoing environment secrets in scripts/workflows.
     severity: WARNING

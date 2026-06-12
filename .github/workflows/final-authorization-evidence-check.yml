@@ -17,6 +17,7 @@ jobs:
       - run: npm run mainnet:certificate
       - run: npm run mainnet:certificate:validate
       - run: npm run docs:status
+      - run: npm run papers:verify
       - name: Public-only status assertion
         run: npm run assert:public-status
       - name: No private operator data in public repo
@@ -32,3 +33,5 @@ jobs:
             docs/MAINNET_TECHNICAL_READINESS_DECISION.*
             docs/MAINNET_DEPLOYMENT_AUTHORIZATION_DECISION.*
             docs/ETHEREUM_MAINNET_AUTHORIZATION_DECISION.*
+            docs/papers/sovereign-rsi/v6.3/PAPER_ASSET_MANIFEST.json
+            docs/papers/sovereign-rsi/v6.3/CHECKSUMS.sha256
