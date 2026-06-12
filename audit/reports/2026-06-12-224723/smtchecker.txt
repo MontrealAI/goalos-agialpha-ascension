@@ -1,0 +1,5 @@
+solc SMTChecker: PENDING_ENVIRONMENT_BLOCKED
+Command attempted: selected solc --model-checker-engine checks
+Reason: SMTChecker needs a pinned solc binary and solver configuration for selected properties; Hardhat compile remains the active compiler gate.
+Environment: Linux 872b3bd7537e 6.12.47 #1 SMP Mon Oct 27 10:01:15 UTC 2025 x86_64 x86_64 x86_64 GNU/Linux
+Blocks technical mainnet readiness until configured/run or internally accepted.

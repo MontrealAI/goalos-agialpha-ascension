@@ -2,7 +2,7 @@
   "status": "YES",
   "TECHNICALLY_MAINNET_READY": "YES",
   "technicallyMainnetReady": "YES",
-  "commit": "c88e4ecfd7c6c9d94d0adc6d0cdf810317419714",
+  "commit": "2f17dab8306d2277a81874fd77a036a111b9cf7a",
   "chain": "ethereum",
   "chainId": 1,
   "agialphaToken": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
@@ -57,7 +57,7 @@
     },
     "tier1SecurityToolchain": {
       "path": "audit/TOOLCHAIN_CLEARANCE_REPORT.md",
-      "sha256": "0x943983e7e9d8c7ab9630ae83be74e0638f0422a5f24744858b9d16c886f73fe8"
+      "sha256": "0x5c1a89158c607e8d072395d5e994a3dfe47bb0078213e048518fcb9b900704df"
     },
     "tier2SecurityToolchain": {
       "path": "audit/AUTOMATED_SECURITY_TOOLCHAIN.md",
@@ -65,7 +65,7 @@
     },
     "toolchainClearance": {
       "path": "qa/public-toolchain-clearance-evidence.json",
-      "sha256": "0x932234ba828b08bad5b8edd3a25331ea2aaabe135fc2042fc5483565f36c757f"
+      "sha256": "0x8bffc244b32b9893bd796191220a2cbdfa91f70521c35eea6c6e8d2ed8b5fbcf"
     },
     "unresolvedFindings": {
       "path": "audit/AUDIT_FINDINGS_REGISTER.csv",
@@ -77,15 +77,15 @@
     },
     "localRehearsal": {
       "path": "qa/local-rehearsal-report.json",
-      "sha256": "0xcd1782e9a2d02cc42c40c8caeffea2723feef7852406427b7eddb858501b2ed9"
+      "sha256": "0x939569e088eeddb4eeceb93dd35f3ebdf2a001913ffd8c70a47979dbf9d8e213"
     },
     "localEvidenceDocket": {
       "path": "evidence/local/EVIDENCE_DOCKET.json",
-      "sha256": "0x951a5b1421ba3c9d2854cb10b517dce05788e74b1b9cdac78367977a67fe895b"
+      "sha256": "0xab95f4d0310b27b4166d30877843f7b76af35dc82ae9beb98bfc60b02178b040"
     },
     "agialphaTokenVerification": {
       "path": "qa/public-agialpha-token-verification.json",
-      "sha256": "0x1d4eec4acc497989c333f82cee357b663cb84375cdfacb36acdca60c8a633cb2"
+      "sha256": "0x5961ec050aa9c363b9d2e6a056019240d8b005d08000c14ecd6f01f446fdf742"
     },
     "mainnetGuardrails": {
       "path": "scripts/deploy-ethereum-mainnet-gated.ts",
@@ -121,6 +121,6 @@
     }
   },
   "blockers": [],
-  "generatedAt": "2026-06-12T20:02:27.959513+00:00",
+  "generatedAt": "2026-06-12T22:58:13.262134+00:00",
   "generatedBy": "scripts/mainnet-readiness-check.py"
 }

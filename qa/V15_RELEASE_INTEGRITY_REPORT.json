@@ -14,7 +14,7 @@
   },
   "qaManifestFreshness": {
     "status": "PASSED",
-    "manifestHash": "0xc07a8b11a6021f503e34c4974432fdf9095c974d8f1c7ff24677a5eff5941924"
+    "manifestHash": "see qa/MANIFEST.json active latest manifest"
   },
   "assertPublicStatusPasses": true,
   "noPrivateOperatorDataPassesWithoutNoisyFatalGitOutput": true,
@@ -386,5 +386,9 @@
     "npm run qa:manifest:verify": 0,
     "npm run mainnet:status": 0,
     "npm run mainnet:next": 0
+  },
+  "mainnetAuthorizationCertificate": {
+    "status": "PRESENT",
+    "certificateHash": "0x11d779b69373ee3ff2b55f4e0a8f30a092ddb522c04231983bc67a963f0722b1"
   }
 }
