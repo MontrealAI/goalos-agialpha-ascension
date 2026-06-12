@@ -1,13 +1,13 @@
 # V15 Release Integrity Report
 
 ## Summary
-- Certificate hash: `0x11d779b69373ee3ff2b55f4e0a8f30a092ddb522c04231983bc67a963f0722b1`
+- Certificate hash: `0x1f133895a142dd3446b8bc7dbc249e40fb0707eb4bb7bf09a197d42412e75818`
 - package.json version: `4.4.0`
 - README/status version: `v4.4.0`
 - Versions match: `True`
 - Certificate validation in git checkout mode: `PASSED`.
 - Certificate validation in source-archive/no-git mode: `PASSED` (`SOURCE_ARCHIVE_NO_GIT`).
-- QA manifest freshness: `PASSED` (active latest manifest: `qa/MANIFEST.json`)..
+- QA manifest freshness: `PASSED` (active latest manifest: `qa/MANIFEST.json`).
 - assert_public_status.py passes: `True`
 - no_private_operator_data_check.py passes without noisy fatal git output: `True`
 - Paper folder exists: `True`

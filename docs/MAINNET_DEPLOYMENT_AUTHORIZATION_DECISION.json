@@ -2,15 +2,12 @@
   "status": "YES",
   "MAINNET_DEPLOYMENT_AUTHORIZED": "YES",
   "mainnetDeploymentAuthorized": "YES",
-  "commit": "2f17dab8306d2277a81874fd77a036a111b9cf7a",
+  "commit": "08c396a388f70e8c98bce02d56aae8307e238401",
   "chain": "ethereum",
   "chainId": 1,
   "agialphaToken": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
   "mainnetDeployed": "NO",
   "MAINNET_DEPLOYED": "NO",
-  "runtimeSecretsRequiredForBroadcast": true,
-  "runtimeSecretsStoredInGitHub": false,
-  "privateOperatorAuthorizationPackageRequired": false,
   "evidence": {
     "repoDoctor": {
       "path": "qa/REPO_DOCTOR_REPORT.json",
@@ -58,7 +55,7 @@
     },
     "tier1SecurityToolchain": {
       "path": "audit/TOOLCHAIN_CLEARANCE_REPORT.md",
-      "sha256": "0x5c1a89158c607e8d072395d5e994a3dfe47bb0078213e048518fcb9b900704df"
+      "sha256": "0x54dd93d5633811ca7772a360a9d6f0bc26512bb803d565c1463ab15babb3397c"
     },
     "tier2SecurityToolchain": {
       "path": "audit/AUTOMATED_SECURITY_TOOLCHAIN.md",
@@ -66,7 +63,7 @@
     },
     "toolchainClearance": {
       "path": "qa/public-toolchain-clearance-evidence.json",
-      "sha256": "0x8bffc244b32b9893bd796191220a2cbdfa91f70521c35eea6c6e8d2ed8b5fbcf"
+      "sha256": "0x8a5958a3d9fe915dbc3a7a81d9c1dcb372802068c7076ec8a661793dcb7b10d3"
     },
     "unresolvedFindings": {
       "path": "audit/AUDIT_FINDINGS_REGISTER.csv",
@@ -122,6 +119,6 @@
     }
   },
   "blockers": [],
-  "generatedAt": "2026-06-12T22:58:14.342270+00:00",
-  "generatedBy": "scripts/mainnet-deployment-authorization-check.py"
+  "generatedAt": "2026-06-12T23:19:33.063626+00:00",
+  "generatedBy": "scripts/generate-public-status-docs.py"
 }

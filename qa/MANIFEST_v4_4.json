@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-12T22:59:47.377798+00:00",
+  "generated_at": "2026-06-12T23:21:44.210205+00:00",
   "files": [
     {
       "path": ".editorconfig",
@@ -344,7 +344,7 @@
     {
       "path": "audit/TOOLCHAIN_CLEARANCE_REPORT.md",
       "bytes": 873,
-      "sha256": "5c1a89158c607e8d072395d5e994a3dfe47bb0078213e048518fcb9b900704df"
+      "sha256": "54dd93d5633811ca7772a360a9d6f0bc26512bb803d565c1463ab15babb3397c"
     },
     {
       "path": "audit/reports/.gitkeep",
@@ -4399,225 +4399,10 @@
     {
       "path": "audit/reports/2026-06-12-194945/toolchain-clearance-report.md",
       "bytes": 873,
-      "sha256": "943983e7e9d8c7ab9630ae83be74e0638f0422a5f24744858b9d16c886f73fe8"
+      "sha256": "54dd93d5633811ca7772a360a9d6f0bc26512bb803d565c1463ab15babb3397c"
     },
     {
       "path": "audit/reports/2026-06-12-194945/unresolved-findings.csv",
-      "bytes": 58,
-      "sha256": "a2e0d0601362438e6b3a6fa8872c010cd3e00fe07eb2130523707cce864ae9aa"
-    },
-    {
-      "path": "audit/reports/2026-06-12-224723/actionlint.json",
-      "bytes": 865,
-      "sha256": "1d50616f03fbd4ca9ab56d5feddd881abdee613360f9cecbe583a20261e31617"
-    },
-    {
-      "path": "audit/reports/2026-06-12-224723/actionlint.txt",
-      "bytes": 731,
-      "sha256": "92fd6a9cf85f62e9e19f22dcdba7336337ed145ade932cf94bcef81980322e67"
-    },
-    {
-      "path": "audit/reports/2026-06-12-224723/actionlint.txt.tmp",
-      "bytes": 0,
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
-    },
-    {
-      "path": "audit/reports/2026-06-12-224723/audit-summary.json",
-      "bytes": 6050,
-      "sha256": "8ddd3d2aef35c417b8854bd00b6f4eeda5d976dbdca3d4aea1df0889bdc23ee4"
-    },
-    {
-      "path": "audit/reports/2026-06-12-224723/audit-summary.md",
-      "bytes": 1558,
-      "sha256": "e6bf1715d105ab725edf6b8f126f6edda00314150d5cb2b77209e343f9fd8388"
-    },
-    {
-      "path": "audit/reports/2026-06-12-224723/dependency-triage-summary.md",
-      "bytes": 545,
-      "sha256": "2f665638fd7deedc01007bae184f5f52fa3e088f9a90b92374bb9496ac7da464"
-    },
-    {
-      "path": "audit/reports/2026-06-12-224723/deterministic-compile.log",
-      "bytes": 7583,
-      "sha256": "77d9896cc1f4e78d329eded33166c7123253f3e7349b8b48a10d551141c2a966"
-    },
-    {
-      "path": "audit/reports/2026-06-12-224723/echidna.json",
-      "bytes": 270,
-      "sha256": "d2c913a6e33a1ac01a9b9042bdcb39106133d318e3171c64f4868cdd490a5b83"
-    },
-    {
-      "path": "audit/reports/2026-06-12-224723/echidna.txt",
-      "bytes": 362,
-      "sha256": "5cf86ccbdf55c5d7dad9701da8ed35bc7ee36f3f93cb50251e4543365ab198bb"
-    },
-    {
-      "path": "audit/reports/2026-06-12-224723/foundry-test.log",
-      "bytes": 344,
-      "sha256": "c469b716963cdde5ae099a597bd64e65e878e8359968183175960ae2c9d52f2e"
-    },
-    {
-      "path": "audit/reports/2026-06-12-224723/foundry.json",
-      "bytes": 252,
-      "sha256": "8972d9cca3422135db1443992cec45c25aa9e6d36dbf98323d1852283af122d0"
-    },
-    {
-      "path": "audit/reports/2026-06-12-224723/gitleaks.json",
-      "bytes": 3767,
-      "sha256": "6524080066fc3d117e06d58a97abe91eb034df49767d371bc88bb7f1616ca075"
-    },
-    {
-      "path": "audit/reports/2026-06-12-224723/gitleaks.json.tmp",
-      "bytes": 3,
-      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
-    },
-    {
-      "path": "audit/reports/2026-06-12-224723/gitleaks.txt",
-      "bytes": 3507,
-      "sha256": "8ae7b0e0894146929fd8d838f73d3277f49ee3ccd4780bcd9cf0eda9276ad393"
-    },
-    {
-      "path": "audit/reports/2026-06-12-224723/halmos.json",
-      "bytes": 202,
-      "sha256": "8916699018d75ab7d6243de0b01f60cc862a9b9afa16db0746232e0a1946f032"
-    },
-    {
-      "path": "audit/reports/2026-06-12-224723/halmos.txt",
-      "bytes": 294,
-      "sha256": "2d44d0025ddae57eae5417278d9cc2ecb6c6d2e81ca5adb342dff97ba06c9b75"
-    },
-    {
-      "path": "audit/reports/2026-06-12-224723/medusa.json",
-      "bytes": 270,
-      "sha256": "9b382f5e0200e50396815b6b7a4d89724223fbc496378b691fe41ddb222ddb76"
-    },
-    {
-      "path": "audit/reports/2026-06-12-224723/medusa.txt",
-      "bytes": 362,
-      "sha256": "4127da986a09f55a9cecf3118bab4d230dc5c113ea2e25062c415f7cc558accc"
-    },
-    {
-      "path": "audit/reports/2026-06-12-224723/mythril.json",
-      "bytes": 304,
-      "sha256": "3f0b9f6f6d8bbc8c51f44bff514ad71f300d7ef98511e91e38fda8dd8e4ee586"
-    },
-    {
-      "path": "audit/reports/2026-06-12-224723/mythril.txt",
-      "bytes": 396,
-      "sha256": "c1284ac0bb5b735423020737f59d97289e26465387dcd9cab84e4ab8e26a0fcc"
-    },
-    {
-      "path": "audit/reports/2026-06-12-224723/npm-audit.json",
-      "bytes": 29998,
-      "sha256": "1bedccbbc59f240ec5b349517a7a38a8cfa15d989f3b32478e7762912e068bcf"
-    },
-    {
-      "path": "audit/reports/2026-06-12-224723/npm-audit.txt",
-      "bytes": 30097,
-      "sha256": "53efe4c9b269e7cd10a690b73aae48fa42ece5ea416a1152cb7e3c773d9b0e30"
-    },
-    {
-      "path": "audit/reports/2026-06-12-224723/osv-scanner.json",
-      "bytes": 115187,
-      "sha256": "a9edda40bd4e7f4b8af81d62309c08fceccd016dd3729147316eaad2a4be8063"
-    },
-    {
-      "path": "audit/reports/2026-06-12-224723/osv-scanner.raw.json",
-      "bytes": 110560,
-      "sha256": "e729321480e0137ef2e1681ca43b5a95e59bce8805c98a52425cf72f8390f8a6"
-    },
-    {
-      "path": "audit/reports/2026-06-12-224723/osv-scanner.stderr.txt",
-      "bytes": 91,
-      "sha256": "8557a809bb7270568c80595405061c85e6407b3f747582551e02fda41ef41313"
-    },
-    {
-      "path": "audit/reports/2026-06-12-224723/osv-scanner.txt",
-      "bytes": 225,
-      "sha256": "e76f1ab8386dd7d58ce61a5622dfb49fa63f9de2f512adc1499bb5f8fa781eb8"
-    },
-    {
-      "path": "audit/reports/2026-06-12-224723/semgrep.json",
-      "bytes": 7273,
-      "sha256": "f0c9f8f27fe0119d8ef1aa653833b7011aad81d7fd67eb3c45eb8186d2586291"
-    },
-    {
-      "path": "audit/reports/2026-06-12-224723/semgrep.txt",
-      "bytes": 4248,
-      "sha256": "cba895e433ed623bc4abfce7a12dd3db874d00ba1ef0e751e134fde758d7a2cd"
-    },
-    {
-      "path": "audit/reports/2026-06-12-224723/shellcheck.json",
-      "bytes": 774,
-      "sha256": "124289104094992c65690afc6ac05f09683432fe1898351d0a8397bf21fa64bf"
-    },
-    {
-      "path": "audit/reports/2026-06-12-224723/shellcheck.txt",
-      "bytes": 0,
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
-    },
-    {
-      "path": "audit/reports/2026-06-12-224723/slither-contract-summary.txt",
-      "bytes": 359,
-      "sha256": "475b56953df9a285fc446ef9b26902cac3e600613923bdc3ab20c9ace5045893"
-    },
-    {
-      "path": "audit/reports/2026-06-12-224723/slither-human-summary.txt",
-      "bytes": 359,
-      "sha256": "475b56953df9a285fc446ef9b26902cac3e600613923bdc3ab20c9ace5045893"
-    },
-    {
-      "path": "audit/reports/2026-06-12-224723/slither-install.log",
-      "bytes": 13756,
-      "sha256": "16681df54e3ed6206ea59fd0b33b18fd111914b045e2ae77205edd99bdd24b43"
-    },
-    {
-      "path": "audit/reports/2026-06-12-224723/slither-vars-and-auth.txt",
-      "bytes": 359,
-      "sha256": "475b56953df9a285fc446ef9b26902cac3e600613923bdc3ab20c9ace5045893"
-    },
-    {
-      "path": "audit/reports/2026-06-12-224723/slither.json",
-      "bytes": 1426438,
-      "sha256": "73a9a6101892e40752af7047114ec04f9353f331b16c3bab68dbe1e3b6bb303f"
-    },
-    {
-      "path": "audit/reports/2026-06-12-224723/slither.sarif",
-      "bytes": 30,
-      "sha256": "4dad3a11f4ff4bcd1ee5d0dc950e783ed5ab9b792fe585a5adacac823e3bdd9b"
-    },
-    {
-      "path": "audit/reports/2026-06-12-224723/slither.txt",
-      "bytes": 36287,
-      "sha256": "c65e1ae2eeb7b5466e37c0cb0579e902e8bf4381047b2c9940fb466c655037c8"
-    },
-    {
-      "path": "audit/reports/2026-06-12-224723/smtchecker.json",
-      "bytes": 88,
-      "sha256": "a05b66d2adf5daeecced5babf243fce2323899d5d4c8c8214e5942243cb4605e"
-    },
-    {
-      "path": "audit/reports/2026-06-12-224723/smtchecker.txt",
-      "bytes": 441,
-      "sha256": "185b8a8f17e7f9c986c72ef04e8b89544b24b692ecc0a81ee0bafadcae7cafc2"
-    },
-    {
-      "path": "audit/reports/2026-06-12-224723/solhint.json",
-      "bytes": 136,
-      "sha256": "dc5e9c14d0288a6f04357979cc0217164b0f31ca96aff51981de010eafc50251"
-    },
-    {
-      "path": "audit/reports/2026-06-12-224723/solhint.txt",
-      "bytes": 415569,
-      "sha256": "05bc1053093942b4c26217bc8d3f9bb9d43b1494e55bbd7bfddc697ca0801201"
-    },
-    {
-      "path": "audit/reports/2026-06-12-224723/toolchain-clearance-report.md",
-      "bytes": 873,
-      "sha256": "5c1a89158c607e8d072395d5e994a3dfe47bb0078213e048518fcb9b900704df"
-    },
-    {
-      "path": "audit/reports/2026-06-12-224723/unresolved-findings.csv",
       "bytes": 58,
       "sha256": "a2e0d0601362438e6b3a6fa8872c010cd3e00fe07eb2130523707cce864ae9aa"
     },
@@ -4699,7 +4484,7 @@
     {
       "path": "audit/reports/latest.txt",
       "bytes": 32,
-      "sha256": "daa65a07c8fbc7c5e835ba49379277ece909a9ebb72360d496150dedbcdc63ea"
+      "sha256": "34ae09daf0da05777f7dfde36fee02205df515de14edbba626f483fc4565ad9f"
     },
     {
       "path": "audit/reports/mainnet-toolchain-latest/actionlint.txt",
@@ -5354,7 +5139,7 @@
     {
       "path": "docs/CURRENT_STATUS.md",
       "bytes": 1252,
-      "sha256": "e71e0914fe350ab9edf7ca24faaa8090f236ffe11521627eac00ef729f2b472c"
+      "sha256": "897a919a639e468c298196c2f373ae4f220e99b9641f916578c24994774e65bf"
     },
     {
       "path": "docs/DEPENDABOT_LABEL_FIX.md",
@@ -5393,13 +5178,13 @@
     },
     {
       "path": "docs/ETHEREUM_MAINNET_AUTHORIZATION_DECISION.json",
-      "bytes": 5277,
-      "sha256": "b9ddd37f8c83cdd97f1d6e1fee57da54f287e083610f0abb733ce20b170e64ae"
+      "bytes": 5150,
+      "sha256": "5063037712b6eb6f7db33b869da756f6b20d31235b5070d20ad914e6858b43c0"
     },
     {
       "path": "docs/ETHEREUM_MAINNET_AUTHORIZATION_DECISION.md",
-      "bytes": 310,
-      "sha256": "304e18a4425f98cf98088534a2cc39cd3d59cf64c0a4f4498203cdebcf97d2df"
+      "bytes": 315,
+      "sha256": "b4f57b3214fdc0cb95a4fa4ed4b2a15bfd071dd018d3fd9bfd9769f95f418345"
     },
     {
       "path": "docs/ETHEREUM_MAINNET_DEPLOYMENT_REPORT.md",
@@ -5638,13 +5423,13 @@
     },
     {
       "path": "docs/MAINNET_DEPLOYMENT_AUTHORIZATION_DECISION.json",
-      "bytes": 5233,
-      "sha256": "1461df0e15bc5ffa93e6f4c19cf1f6bf76a9d120a43554426a2246fc92deb87a"
+      "bytes": 5079,
+      "sha256": "1f13bb6a767364e1f614fe0cc86ff039618ab763b94a153c472014c03b4c5a5d"
     },
     {
       "path": "docs/MAINNET_DEPLOYMENT_AUTHORIZATION_DECISION.md",
-      "bytes": 324,
-      "sha256": "573c9580f9eb811ea226370e4c263f6d7feec703d379377d25ae01aa4a934e1d"
+      "bytes": 339,
+      "sha256": "b2c0ce623fd4f60148b2217d497ba5b00b555d9c086ced42341596f6cd5f0021"
     },
     {
       "path": "docs/MAINNET_GATE_DECISION_MEMO_v4_0.md",
@@ -5663,13 +5448,13 @@
     },
     {
       "path": "docs/MAINNET_TECHNICAL_READINESS_DECISION.json",
-      "bytes": 5157,
-      "sha256": "a7ec787fc563b99954e2cd06b91bd1938e5fe1f1962d82b752fcc18211b21c0c"
+      "bytes": 5071,
+      "sha256": "9f33c877fa79d5cb1c441a8c36df5a5f7c1a3299c259d20d3db8770db828468c"
     },
     {
       "path": "docs/MAINNET_TECHNICAL_READINESS_DECISION.md",
-      "bytes": 337,
-      "sha256": "3634aa4dddfb8a9f67137834d8fd7358c90df93e66ddcbdf5b64b4025e18cd48"
+      "bytes": 325,
+      "sha256": "be6051dbbca665e8b8e4f523e538d071afb667f235f984210bc9794dc724955e"
     },
     {
       "path": "docs/NEAR_10_SCORECARD_v4_3.md",
@@ -6373,13 +6158,13 @@
     },
     {
       "path": "qa/V15_RELEASE_INTEGRITY_REPORT.json",
-      "bytes": 16542,
-      "sha256": "dad690a5681763a804dbcfc8c097e0bb2637d4362a18fd2992a1fb06fbc22025"
+      "bytes": 16511,
+      "sha256": "a3031fb6da3dc6008bd08333a462ed15f1c9d7578b660acf2f1fbc4ba3b23f33"
     },
     {
       "path": "qa/V15_RELEASE_INTEGRITY_REPORT.md",
-      "bytes": 1929,
-      "sha256": "7e32ccecc9c85981353600215ceb646bb347900f64b9eeb17398d8293f097cfc"
+      "bytes": 1928,
+      "sha256": "f5bdfa0b0e20f134ec3ee280b1284e00a7603e8d4a26ab1f70652482834107ae"
     },
     {
       "path": "qa/V4_4_0_PUBLIC_CERTIFICATE_AUTHORIZATION_COMMAND_OUTPUTS.json",
@@ -6423,8 +6208,8 @@
     },
     {
       "path": "qa/mainnet-authorization-certificate.json",
-      "bytes": 6678,
-      "sha256": "1da6ee54aa2e0a95fd49a25e7cb955e8101afca7e2a4fb7532b9594f969d1d96"
+      "bytes": 6590,
+      "sha256": "48fbdba20a5525da8fd2bb9a68fe3ecf5c77abbbdf4d74c6ef91fe19c71522da"
     },
     {
       "path": "qa/public-agialpha-token-code-evidence.json",
@@ -6464,7 +6249,7 @@
     {
       "path": "qa/public-toolchain-clearance-evidence.json",
       "bytes": 482,
-      "sha256": "8bffc244b32b9893bd796191220a2cbdfa91f70521c35eea6c6e8d2ed8b5fbcf"
+      "sha256": "8a5958a3d9fe915dbc3a7a81d9c1dcb372802068c7076ec8a661793dcb7b10d3"
     },
     {
       "path": "schemas/agialpha-mainnet-gate-v4.3.schema.json",
