@@ -1,27 +1,45 @@
-name: Usage Example Website Smoke Test
+name: Proof Card 001 Usage Example Smoke Test
 
 on:
-  workflow_dispatch:
-  pull_request:
+  push:
+    branches: [ main ]
     paths:
       - "docs/examples/**"
       - "data/examples/**"
-      - "scripts/add_goalos_usage_example_to_site.py"
+      - "scripts/add_goalos_agialpha_usage_example_to_site.py"
+      - "scripts/build_goalos_agialpha_usage_example_preview.py"
+      - "scripts/verify_goalos_agialpha_usage_example_site.py"
       - ".github/workflows/usage-example-website-smoke-test.yml"
+  pull_request:
+    branches: [ main ]
+    paths:
+      - "docs/examples/**"
+      - "data/examples/**"
+      - "scripts/add_goalos_agialpha_usage_example_to_site.py"
+      - "scripts/build_goalos_agialpha_usage_example_preview.py"
+      - "scripts/verify_goalos_agialpha_usage_example_site.py"
+      - ".github/workflows/usage-example-website-smoke-test.yml"
+  workflow_dispatch:
 
 permissions:
   contents: read
 
 jobs:
   smoke-test:
+    name: Build website and verify usage example without deploying
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
-      - name: Build tiny local site and apply usage example
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Build site with Proof Card 001 pages
+        shell: bash
         run: |
-          mkdir -p site
-          cp app/index.html site/index.html || printf '<main></main>' > site/index.html
-          python3 scripts/add_goalos_usage_example_to_site.py --site site
-          test -f site/usage-example.html
-          test -f site/proof-card-001.html
-          test -f site/data/usage-example-proof-card-001.json
+          python3 scripts/build_goalos_agialpha_usage_example_preview.py --site site
+          python3 scripts/verify_goalos_agialpha_usage_example_site.py --site site
+
+      - name: Upload smoke-test website artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: proof-card-001-site-preview
+          path: site

@@ -11,9 +11,8 @@ on:
       - "audit/**"
       - "deployments/**"
       - "package.json"
-      - "docs/examples/**"
-      - "data/examples/**"
-      - "scripts/add_goalos_usage_example_to_site.py"
+      - "scripts/**"
+      - "data/**"
       - ".github/workflows/autonomous-github-pages.yml"
   workflow_dispatch:
 
@@ -1622,10 +1621,11 @@ jobs:
           print(f"Evidence artifacts copied: {len(copied_evidence)}")
           PY
 
-      - name: Add GoalOS AGIALPHA usage example to website
+
+      - name: Add Proof Card 001 usage example pages
         shell: bash
         run: |
-          python3 scripts/add_goalos_usage_example_to_site.py --site site
+          python3 scripts/add_goalos_agialpha_usage_example_to_site.py --site site
 
       - name: Validate generated website artifact
         shell: bash
@@ -1635,12 +1635,16 @@ jobs:
           test -f site/authorization.html
           test -f site/evidence.html
           test -f site/release.html
-          test -f site/usage-example.html
-          test -f site/proof-card-001.html
-          test -f site/data/usage-example-proof-card-001.json
           test -f site/assets/site.css
           test -f site/assets/site.js
           test -f site/.nojekyll
+
+          test -f site/usage-example.html
+          test -f site/proof-card-001.html
+          test -f site/proof-mission-001.html
+          test -f site/share.html
+          test -f site/data/usage-example-proof-card-001.json
+          python3 scripts/verify_goalos_agialpha_usage_example_site.py --site site
 
           if grep -RniE "PRIVATE_KEY|SEED_PHRASE|MNEMONIC|MAINNET_RPC_URL=|SEPOLIA_RPC_URL=|DEPLOYER_PRIVATE_KEY" site; then
             echo "Potential secret-like text found in generated website."
