@@ -1,0 +1,182 @@
+{
+  "generated_at": "2026-06-12T16:01:00.238461+00:00",
+  "report_dir": "audit/reports/2026-06-12-155334",
+  "decision": "TECHNICALLY_MAINNET_READY_NO_UNRESOLVED_CRITICAL_HIGH",
+  "critical_high_unresolved": 0,
+  "medium_unaccepted": 0,
+  "tier1_blocked_tools": [],
+  "tier2_environment_unavailable": [
+    "echidna",
+    "mythril",
+    "medusa",
+    "foundry",
+    "halmos",
+    "smtchecker"
+  ],
+  "tools": [
+    {
+      "tool": "slither",
+      "tier": "1",
+      "status": "COMPLETED",
+      "raw_status": "COMPLETED",
+      "json": "audit/reports/2026-06-12-155334/slither.json",
+      "text": "audit/reports/2026-06-12-155334/slither.txt",
+      "critical_high_unresolved": 0,
+      "blocks_technical_mainnet_readiness": false,
+      "blockers": []
+    },
+    {
+      "tool": "echidna",
+      "tier": "2",
+      "status": "TIER2_ENVIRONMENT_UNAVAILABLE_DOCUMENTED",
+      "raw_status": "PENDING_ENVIRONMENT_BLOCKED",
+      "json": "audit/reports/2026-06-12-155334/echidna.json",
+      "text": "audit/reports/2026-06-12-155334/echidna.txt",
+      "critical_high_unresolved": 0,
+      "blocks_technical_mainnet_readiness": false,
+      "blockers": []
+    },
+    {
+      "tool": "mythril",
+      "tier": "2",
+      "status": "TIER2_ENVIRONMENT_UNAVAILABLE_DOCUMENTED",
+      "raw_status": "PENDING_ENVIRONMENT_BLOCKED",
+      "json": "audit/reports/2026-06-12-155334/mythril.json",
+      "text": "audit/reports/2026-06-12-155334/mythril.txt",
+      "critical_high_unresolved": 0,
+      "blocks_technical_mainnet_readiness": false,
+      "blockers": []
+    },
+    {
+      "tool": "medusa",
+      "tier": "2",
+      "status": "TIER2_ENVIRONMENT_UNAVAILABLE_DOCUMENTED",
+      "raw_status": "PENDING_ENVIRONMENT_BLOCKED",
+      "json": "audit/reports/2026-06-12-155334/medusa.json",
+      "text": "audit/reports/2026-06-12-155334/medusa.txt",
+      "critical_high_unresolved": 0,
+      "blocks_technical_mainnet_readiness": false,
+      "blockers": []
+    },
+    {
+      "tool": "foundry",
+      "tier": "2",
+      "status": "TIER2_ENVIRONMENT_UNAVAILABLE_DOCUMENTED",
+      "raw_status": "PENDING_ENVIRONMENT_BLOCKED",
+      "json": "audit/reports/2026-06-12-155334/foundry.json",
+      "text": "audit/reports/2026-06-12-155334/foundry-test.log",
+      "critical_high_unresolved": 0,
+      "blocks_technical_mainnet_readiness": false,
+      "blockers": []
+    },
+    {
+      "tool": "halmos",
+      "tier": "2",
+      "status": "TIER2_ENVIRONMENT_UNAVAILABLE_DOCUMENTED",
+      "raw_status": "PENDING_ENVIRONMENT_BLOCKED",
+      "json": "audit/reports/2026-06-12-155334/halmos.json",
+      "text": "audit/reports/2026-06-12-155334/halmos.txt",
+      "critical_high_unresolved": 0,
+      "blocks_technical_mainnet_readiness": false,
+      "blockers": []
+    },
+    {
+      "tool": "semgrep",
+      "tier": "1",
+      "status": "COMPLETED",
+      "raw_status": "COMPLETED",
+      "json": "audit/reports/2026-06-12-155334/semgrep.json",
+      "text": "audit/reports/2026-06-12-155334/semgrep.txt",
+      "critical_high_unresolved": 0,
+      "blocks_technical_mainnet_readiness": false,
+      "blockers": []
+    },
+    {
+      "tool": "solhint",
+      "tier": "1",
+      "status": "COMPLETED",
+      "raw_status": "COMPLETED",
+      "json": "audit/reports/2026-06-12-155334/solhint.json",
+      "text": "audit/reports/2026-06-12-155334/solhint.txt",
+      "critical_high_unresolved": 0,
+      "blocks_technical_mainnet_readiness": false,
+      "blockers": []
+    },
+    {
+      "tool": "smtchecker",
+      "tier": "2",
+      "status": "TIER2_ENVIRONMENT_UNAVAILABLE_DOCUMENTED",
+      "raw_status": "PENDING_ENVIRONMENT_BLOCKED",
+      "json": "audit/reports/2026-06-12-155334/smtchecker.json",
+      "text": "audit/reports/2026-06-12-155334/smtchecker.txt",
+      "critical_high_unresolved": 0,
+      "blocks_technical_mainnet_readiness": false,
+      "blockers": []
+    },
+    {
+      "tool": "npm-audit",
+      "tier": "1",
+      "status": "COMPLETED_FINDINGS_REVIEWED_NO_CRITICAL_HIGH_BLOCKER",
+      "raw_status": "COMPLETED",
+      "json": "audit/reports/2026-06-12-155334/npm-audit.json",
+      "text": "audit/reports/2026-06-12-155334/npm-audit.txt",
+      "critical_high_unresolved": 0,
+      "blocks_technical_mainnet_readiness": false,
+      "blockers": []
+    },
+    {
+      "tool": "osv-scanner",
+      "tier": "1",
+      "status": "COMPLETED_TRIAGED",
+      "raw_status": "COMPLETED_TRIAGED",
+      "json": "audit/reports/2026-06-12-155334/osv-scanner.json",
+      "text": "audit/reports/2026-06-12-155334/osv-scanner.txt",
+      "critical_high_unresolved": 0,
+      "blocks_technical_mainnet_readiness": false,
+      "blockers": []
+    },
+    {
+      "tool": "actionlint",
+      "tier": "1",
+      "status": "COMPLETED",
+      "raw_status": "COMPLETED",
+      "json": "audit/reports/2026-06-12-155334/actionlint.json",
+      "text": "audit/reports/2026-06-12-155334/actionlint.txt",
+      "critical_high_unresolved": 0,
+      "blocks_technical_mainnet_readiness": false,
+      "blockers": []
+    },
+    {
+      "tool": "shellcheck",
+      "tier": "1",
+      "status": "COMPLETED",
+      "raw_status": "COMPLETED",
+      "json": "audit/reports/2026-06-12-155334/shellcheck.json",
+      "text": "audit/reports/2026-06-12-155334/shellcheck.txt",
+      "critical_high_unresolved": 0,
+      "blocks_technical_mainnet_readiness": false,
+      "blockers": []
+    },
+    {
+      "tool": "gitleaks",
+      "tier": "1",
+      "status": "COMPLETED",
+      "raw_status": "COMPLETED",
+      "json": "audit/reports/2026-06-12-155334/gitleaks.json",
+      "text": "audit/reports/2026-06-12-155334/gitleaks.txt",
+      "critical_high_unresolved": 0,
+      "blocks_technical_mainnet_readiness": false,
+      "blockers": []
+    }
+  ],
+  "mainnet_blockers": [],
+  "environment_blocked_tools_documented": [
+    "echidna",
+    "mythril",
+    "medusa",
+    "foundry",
+    "halmos",
+    "smtchecker"
+  ],
+  "public_governance_acceptance": "Tier 2 unavailable tools are documented and not counted as passed; Tier 1 tools must pass or provide accepted triage."
+}

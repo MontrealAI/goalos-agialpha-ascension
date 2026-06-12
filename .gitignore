@@ -37,3 +37,5 @@ private/
 __pycache__/
 # Local audit run pointer
 audit/reports/current-run.txt
+# Local direct solc compiler output
+direct-solc-output/
