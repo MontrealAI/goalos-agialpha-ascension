@@ -1,7 +1,7 @@
 {
   "status": "NO",
   "TECHNICALLY_MAINNET_READY": "NO",
-  "commit": "50d7d92bacd6b8b58a7dfa4a080ffd3b299fd841",
+  "commit": "52835afd36e69a8227c5ca483649bd7ffaec2fda",
   "chain": "ethereum",
   "chainId": 1,
   "agialphaToken": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
@@ -38,7 +38,7 @@
     "PRIVATE_OPERATOR_EVIDENCE_PENDING: missing qa/public-toolchain-clearance-evidence.json"
   ],
   "reason": "PRIVATE_OPERATOR_EVIDENCE_PENDING: missing qa/public-mainnet-technical-readiness-evidence.json",
-  "generatedAt": "2026-06-11T23:05:10.962875+00:00",
+  "generatedAt": "2026-06-11T23:51:05.425138+00:00",
   "generatedBy": "scripts/mainnet-readiness-check.py",
   "mainnetDeploymentExecuted": false
 }

@@ -40,3 +40,7 @@ GitHub Actions never deploys Ethereum Mainnet and never mints or deploys a new A
 ## v4.4 implementation note
 
 `hardhat.config.ts` never throws during public config load for missing private RPC URLs or private keys. Private values are required only by explicit preflight/deployment scripts. Public GitHub may contain schemas, templates, reports, and hashes; `.private/` contains filled operator inputs and remains ignored.
+
+## v4.4 command-center shortcut
+
+`npm run mainnet:command-center` prints a public-safe menu. It never asks the user to paste secrets into GitHub; it directs private operators to keep private inputs under `.private/` and commit only redacted `qa/public-*.json` commitments.

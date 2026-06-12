@@ -103,7 +103,12 @@ async function grant(contract: any, role: string, account: string, label: string
   const tx = await contract.grantRole(role, account);
   transactions.push(tx.hash);
   await tx.wait();
-  console.log(`grant ${label}: ${account}`);
+  const net = await ethers.provider.getNetwork();
+  if (Number(net.chainId) === 1) {
+    console.log(`grant ${label}: commitment ${sha256Hex(account.toLowerCase())}`);
+  } else {
+    console.log(`grant ${label}: ${account}`);
+  }
 }
 
 export async function deployGoalOSAGIALPHAAscension() {

@@ -29,3 +29,20 @@ npm run deploy:ethereum-mainnet:gated:local
 ```
 
 Do not run the final deployment from GitHub Actions. Do not commit filled `.private/` files, RPC URLs, private keys, founder signatures, private addresses, or private ceremony appendices.
+
+## v4.4 command-center shortcut
+
+The same private workflow is available through the public-safe command center:
+
+```bash
+npm run mainnet:command-center
+npm run mainnet:prepare-private
+npm run mainnet:local-checks
+npm run mainnet:security
+npm run mainnet:local-rehearsal
+npm run mainnet:private-authorize
+npm run mainnet:final-check
+npm run deploy:ethereum-mainnet:gated:local
+```
+
+The final deployment wrapper requires the exact local typed phrase `DEPLOY_GOALOS_AGIALPHA_ASCENSION_TO_ETHEREUM_MAINNET` and refuses CI.

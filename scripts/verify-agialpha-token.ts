@@ -10,7 +10,7 @@ async function writeReport(report: any) {
   fs.writeFileSync("docs/AGIALPHA_TOKEN_VERIFICATION_REPORT.md", `# AGIALPHA Token Verification Report\n\nStatus: **${report.status}**\n\n\`\`\`json\n${JSON.stringify(report, null, 2)}\n\`\`\`\n`);
 }
 async function main() {
-  if (!process.env.ETHEREUM_MAINNET_RPC_URL) { const report={status:"PENDING_RPC", address:AGIALPHA_MAINNET, blocker:"ETHEREUM_MAINNET_RPC_URL is required for read-only token code verification", mainnetAuthorized:false}; await writeReport(report); console.log(JSON.stringify(report,null,2)); return; }
+  if (!process.env.ETHEREUM_MAINNET_RPC_URL && !process.env.MAINNET_RPC_URL && !process.env.PRIVATE_MAINNET_RPC_URL) { const report={status:"PENDING_RPC", address:AGIALPHA_MAINNET, blocker:"MAINNET_RPC_URL or ETHEREUM_MAINNET_RPC_URL is required for read-only token code verification", mainnetAuthorized:false}; await writeReport(report); console.log(JSON.stringify(report,null,2)); return; }
   const net = await ethers.provider.getNetwork();
   if (Number(net.chainId) !== 1) throw new Error(`verify:agialpha-token must run on Ethereum mainnet chainId 1; got ${net.chainId}`);
   const configured = process.env.AGIALPHA_TOKEN_ADDRESS || AGIALPHA_MAINNET;
