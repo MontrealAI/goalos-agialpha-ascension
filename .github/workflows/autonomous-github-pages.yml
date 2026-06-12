@@ -1,0 +1,1073 @@
+name: Autonomous GitHub Pages Website
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "README.md"
+      - "docs/**"
+      - "qa/**"
+      - "audit/**"
+      - "deployments/**"
+      - "package.json"
+      - ".github/workflows/autonomous-github-pages.yml"
+  workflow_dispatch:
+
+concurrency:
+  group: autonomous-github-pages
+  cancel-in-progress: false
+
+permissions: {}
+
+jobs:
+  build:
+    name: Build autonomous static website
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Build website from repository evidence
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import json
+          import html
+          import shutil
+          import hashlib
+          import datetime
+          import re
+
+          ROOT = Path(".")
+          OUT = Path("site")
+          ASSETS = OUT / "assets"
+          PAPERS_OUT = OUT / "papers" / "sovereign-rsi" / "v6.3"
+
+          REPO_URL = "https://github.com/MontrealAI/goalos-agialpha-ascension"
+          SITE_URL = "https://montrealai.github.io/goalos-agialpha-ascension/"
+          AGIALPHA_TOKEN = "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA"
+
+          if OUT.exists():
+              shutil.rmtree(OUT)
+          OUT.mkdir(parents=True, exist_ok=True)
+          ASSETS.mkdir(parents=True, exist_ok=True)
+          PAPERS_OUT.mkdir(parents=True, exist_ok=True)
+
+          def exists(path):
+              return (ROOT / path).exists()
+
+          def read_text(path, default=""):
+              p = ROOT / path
+              if not p.exists():
+                  return default
+              return p.read_text(encoding="utf-8", errors="replace")
+
+          def load_json(path, default=None):
+              p = ROOT / path
+              if default is None:
+                  default = {}
+              if not p.exists():
+                  return default
+              try:
+                  return json.loads(p.read_text(encoding="utf-8", errors="replace"))
+              except Exception:
+                  return default
+
+          def sha256_file(path):
+              p = Path(path)
+              h = hashlib.sha256()
+              with p.open("rb") as f:
+                  for chunk in iter(lambda: f.read(1024 * 1024), b""):
+                      h.update(chunk)
+              return h.hexdigest()
+
+          def esc(value):
+              return html.escape(str(value), quote=True)
+
+          def norm(value):
+              if value is None:
+                  return "UNKNOWN"
+              if isinstance(value, bool):
+                  return "YES" if value else "NO"
+              return str(value).strip() or "UNKNOWN"
+
+          def slugify(value):
+              value = re.sub(r"[^a-zA-Z0-9]+", "-", value.lower()).strip("-")
+              return value or "section"
+
+          def markdown_to_html(md):
+              lines = md.splitlines()
+              out = []
+              i = 0
+              in_code = False
+              in_ul = False
+
+              def close_ul():
+                  nonlocal in_ul
+                  if in_ul:
+                      out.append("</ul>")
+                      in_ul = False
+
+              while i < len(lines):
+                  line = lines[i].rstrip()
+
+                  if line.strip().startswith("```"):
+                      close_ul()
+                      if not in_code:
+                          out.append("<pre><code>")
+                          in_code = True
+                      else:
+                          out.append("</code></pre>")
+                          in_code = False
+                      i += 1
+                      continue
+
+                  if in_code:
+                      out.append(esc(line))
+                      i += 1
+                      continue
+
+                  if not line.strip():
+                      close_ul()
+                      i += 1
+                      continue
+
+                  if line.startswith("|") and i + 1 < len(lines) and set(lines[i + 1].replace("|", "").replace(":", "").replace("-", "").strip()) == set():
+                      close_ul()
+                      table_lines = [line]
+                      i += 2
+                      while i < len(lines) and lines[i].startswith("|"):
+                          table_lines.append(lines[i].rstrip())
+                          i += 1
+                      rows = []
+                      for row in table_lines:
+                          cells = [c.strip() for c in row.strip("|").split("|")]
+                          rows.append(cells)
+                      if rows:
+                          out.append("<div class='table-wrap'><table>")
+                          out.append("<thead><tr>" + "".join(f"<th>{esc(c)}</th>" for c in rows[0]) + "</tr></thead>")
+                          out.append("<tbody>")
+                          for row in rows[1:]:
+                              out.append("<tr>" + "".join(f"<td>{esc(c)}</td>" for c in row) + "</tr>")
+                          out.append("</tbody></table></div>")
+                      continue
+
+                  if line.startswith("#"):
+                      close_ul()
+                      level = min(len(line) - len(line.lstrip("#")), 4)
+                      text = line[level:].strip()
+                      anchor = slugify(text)
+                      out.append(f"<h{level} id='{anchor}'>{esc(text)}</h{level}>")
+                      i += 1
+                      continue
+
+                  if line.lstrip().startswith(("- ", "* ")):
+                      if not in_ul:
+                          out.append("<ul>")
+                          in_ul = True
+                      item = line.lstrip()[2:].strip()
+                      out.append(f"<li>{esc(item)}</li>")
+                      i += 1
+                      continue
+
+                  close_ul()
+                  safe = esc(line)
+                  safe = re.sub(r"`([^`]+)`", r"<code>\1</code>", safe)
+                  out.append(f"<p>{safe}</p>")
+                  i += 1
+
+              close_ul()
+              if in_code:
+                  out.append("</code></pre>")
+              return "\n".join(out)
+
+          cert = load_json("qa/mainnet-authorization-certificate.json")
+          current_status = read_text("docs/CURRENT_STATUS.md")
+          root_readme = read_text("README.md")
+          paper_readme = read_text("docs/papers/sovereign-rsi/v6.3/README.md")
+          paper_manifest = load_json("docs/papers/sovereign-rsi/v6.3/PAPER_ASSET_MANIFEST.json")
+          toolchain_report = read_text("audit/TOOLCHAIN_CLEARANCE_REPORT.md")
+          mainnet_decision = load_json("docs/ETHEREUM_MAINNET_AUTHORIZATION_DECISION.json")
+          technical_decision = load_json("docs/MAINNET_TECHNICAL_READINESS_DECISION.json")
+          deployment_decision = load_json("docs/MAINNET_DEPLOYMENT_AUTHORIZATION_DECISION.json")
+
+          def pick(*keys, default="UNKNOWN"):
+              for key in keys:
+                  if isinstance(cert, dict) and key in cert:
+                      return cert[key]
+                  if isinstance(mainnet_decision, dict) and key in mainnet_decision:
+                      return mainnet_decision[key]
+                  if isinstance(technical_decision, dict) and key in technical_decision:
+                      return technical_decision[key]
+                  if isinstance(deployment_decision, dict) and key in deployment_decision:
+                      return deployment_decision[key]
+              return default
+
+          technical_ready = norm(pick("technicallyMainnetReady", "technicalMainnetReady", "ethereumMainnetTechnicalReadiness"))
+          deployment_authorized = norm(pick("mainnetDeploymentAuthorized", "ethereumMainnetDeploymentAuthorization"))
+          ethereum_authorized = norm(pick("ethereumMainnetAuthorized", "ethereumMainnetAuthorization"))
+          mainnet_deployed = norm(pick("mainnetDeployed", "ethereumMainnetDeployed", default="NO"))
+
+          source_commit = cert.get("sourceCommit") or cert.get("commit") or "UNKNOWN"
+          certificate_hash = cert.get("certificateHash") or cert.get("sha256") or "GENERATED_FROM_REPOSITORY"
+          generated_at = datetime.datetime.utcnow().replace(microsecond=0).isoformat() + "Z"
+
+          def status_class(label, value):
+              value = norm(value).upper()
+              if "DEPLOYED" in label.upper():
+                  return "ok" if value == "NO" else "warn"
+              if value == "YES":
+                  return "ok"
+              if value == "NO":
+                  return "warn"
+              return "neutral"
+
+          def status_card(label, value, detail):
+              cls = status_class(label, value)
+              return f"""
+              <article class="status-card {cls}">
+                <div class="status-label">{esc(label)}</div>
+                <div class="status-value">{esc(norm(value))}</div>
+                <p>{esc(detail)}</p>
+              </article>
+              """
+
+          def file_link(path, label):
+              p = ROOT / path
+              if p.exists():
+                  return f"<a href='{esc(path)}'>{esc(label)}</a>"
+              return f"<span class='muted'>{esc(label)} pending</span>"
+
+          css = r"""
+          :root {
+            --bg: #060b18;
+            --bg2: #0b1430;
+            --panel: rgba(10, 20, 45, 0.82);
+            --panel2: rgba(13, 30, 68, 0.78);
+            --text: #f7fbff;
+            --muted: #a8b6ce;
+            --line: rgba(255,255,255,0.12);
+            --gold: #ffd66b;
+            --cyan: #65e8ff;
+            --green: #55f0b2;
+            --red: #ff6e91;
+            --violet: #b79cff;
+            --shadow: 0 24px 80px rgba(0,0,0,.35);
+          }
+
+          * { box-sizing: border-box; }
+
+          body {
+            margin: 0;
+            color: var(--text);
+            background:
+              radial-gradient(circle at top right, rgba(101,232,255,.20), transparent 30rem),
+              radial-gradient(circle at 10% 10%, rgba(255,214,107,.13), transparent 26rem),
+              linear-gradient(135deg, #050916 0%, #08112a 45%, #11103a 100%);
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            line-height: 1.5;
+          }
+
+          body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            background-image:
+              linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px);
+            background-size: 42px 42px;
+            mask-image: linear-gradient(to bottom, rgba(0,0,0,.85), transparent);
+          }
+
+          a { color: var(--cyan); text-decoration: none; }
+          a:hover { text-decoration: underline; }
+
+          .site-shell {
+            width: min(1180px, calc(100% - 32px));
+            margin: 0 auto;
+          }
+
+          .topbar {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            backdrop-filter: blur(18px);
+            background: rgba(5, 9, 22, .74);
+            border-bottom: 1px solid var(--line);
+          }
+
+          .topbar-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 16px 0;
+          }
+
+          .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--text);
+            font-weight: 900;
+            letter-spacing: .02em;
+          }
+
+          .brand-mark {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            border: 1px solid rgba(255,214,107,.7);
+            box-shadow: 0 0 28px rgba(255,214,107,.18);
+            color: var(--gold);
+          }
+
+          nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            font-size: 14px;
+          }
+
+          nav a {
+            color: var(--muted);
+            padding: 8px 10px;
+            border: 1px solid transparent;
+            border-radius: 999px;
+          }
+
+          nav a:hover {
+            color: var(--text);
+            border-color: var(--line);
+            background: rgba(255,255,255,.04);
+            text-decoration: none;
+          }
+
+          .hero {
+            padding: 72px 0 42px;
+          }
+
+          .hero-card {
+            border: 1px solid rgba(255,214,107,.48);
+            background:
+              linear-gradient(145deg, rgba(9,18,42,.95), rgba(16,23,56,.80)),
+              radial-gradient(circle at 80% 20%, rgba(101,232,255,.22), transparent 28rem);
+            border-radius: 28px;
+            box-shadow: var(--shadow);
+            padding: clamp(28px, 5vw, 56px);
+            position: relative;
+            overflow: hidden;
+          }
+
+          .hero-card::after {
+            content: "α";
+            position: absolute;
+            right: clamp(24px, 6vw, 80px);
+            top: clamp(18px, 5vw, 72px);
+            font-size: clamp(80px, 18vw, 240px);
+            color: rgba(255,214,107,.08);
+            font-weight: 900;
+            line-height: 1;
+          }
+
+          .eyebrow {
+            color: var(--gold);
+            text-transform: uppercase;
+            font-weight: 900;
+            letter-spacing: .16em;
+            font-size: 13px;
+          }
+
+          h1 {
+            font-size: clamp(42px, 7vw, 82px);
+            line-height: .96;
+            letter-spacing: -.055em;
+            margin: 14px 0 18px;
+            max-width: 880px;
+          }
+
+          h2 {
+            font-size: clamp(28px, 4vw, 46px);
+            letter-spacing: -.035em;
+            margin: 0 0 18px;
+          }
+
+          h3 { margin-top: 0; }
+
+          .hero-subtitle {
+            font-size: clamp(18px, 2.2vw, 25px);
+            color: var(--muted);
+            max-width: 790px;
+          }
+
+          .loop {
+            margin-top: 28px;
+            padding: 18px 20px;
+            border: 1px solid rgba(101,232,255,.35);
+            border-radius: 18px;
+            background: rgba(0,0,0,.18);
+            color: var(--green);
+            font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+            overflow-x: auto;
+          }
+
+          .cta-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 28px;
+          }
+
+          .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 16px;
+            border-radius: 999px;
+            border: 1px solid rgba(255,255,255,.16);
+            color: var(--text);
+            background: rgba(255,255,255,.06);
+            font-weight: 800;
+          }
+
+          .button.primary {
+            background: linear-gradient(135deg, rgba(255,214,107,.95), rgba(255,185,78,.92));
+            color: #061026;
+            border-color: rgba(255,214,107,.95);
+          }
+
+          .section {
+            padding: 34px 0;
+          }
+
+          .grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 18px;
+          }
+
+          .card {
+            grid-column: span 4;
+            background: var(--panel);
+            border: 1px solid var(--line);
+            border-radius: 24px;
+            padding: 22px;
+            box-shadow: 0 16px 48px rgba(0,0,0,.18);
+          }
+
+          .card.wide { grid-column: span 8; }
+          .card.full { grid-column: 1 / -1; }
+
+          .status-card {
+            grid-column: span 3;
+            padding: 20px;
+            border-radius: 22px;
+            border: 1px solid var(--line);
+            background: var(--panel2);
+          }
+
+          .status-card.ok { border-color: rgba(85,240,178,.42); }
+          .status-card.warn { border-color: rgba(255,110,145,.42); }
+          .status-card.neutral { border-color: rgba(183,156,255,.42); }
+
+          .status-label {
+            color: var(--muted);
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: .12em;
+            font-weight: 800;
+          }
+
+          .status-value {
+            font-size: 34px;
+            font-weight: 950;
+            letter-spacing: -.04em;
+            margin: 8px 0;
+          }
+
+          .ok .status-value { color: var(--green); }
+          .warn .status-value { color: var(--red); }
+          .neutral .status-value { color: var(--violet); }
+
+          .muted { color: var(--muted); }
+
+          .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 7px 11px;
+            border-radius: 999px;
+            border: 1px solid rgba(255,255,255,.14);
+            background: rgba(255,255,255,.055);
+            color: var(--muted);
+            font-size: 13px;
+            font-weight: 700;
+            margin: 4px 6px 4px 0;
+          }
+
+          .badge.gold { color: var(--gold); border-color: rgba(255,214,107,.34); }
+          .badge.green { color: var(--green); border-color: rgba(85,240,178,.34); }
+          .badge.cyan { color: var(--cyan); border-color: rgba(101,232,255,.34); }
+
+          pre {
+            padding: 18px;
+            border-radius: 18px;
+            background: rgba(0,0,0,.32);
+            border: 1px solid var(--line);
+            overflow-x: auto;
+          }
+
+          code {
+            font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+          }
+
+          .table-wrap {
+            overflow-x: auto;
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            margin: 16px 0;
+          }
+
+          table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 640px;
+          }
+
+          th, td {
+            padding: 12px 14px;
+            border-bottom: 1px solid rgba(255,255,255,.09);
+            text-align: left;
+            vertical-align: top;
+          }
+
+          th {
+            color: var(--gold);
+            background: rgba(0,0,0,.22);
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: .08em;
+          }
+
+          .footer {
+            padding: 38px 0 54px;
+            color: var(--muted);
+            border-top: 1px solid var(--line);
+            margin-top: 44px;
+            font-size: 14px;
+          }
+
+          .doc-list {
+            display: grid;
+            gap: 12px;
+          }
+
+          .doc-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 14px;
+            padding: 14px;
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            background: rgba(255,255,255,.04);
+          }
+
+          @media (max-width: 900px) {
+            .card, .card.wide, .status-card { grid-column: 1 / -1; }
+            .topbar-inner { align-items: flex-start; flex-direction: column; }
+          }
+          """
+          (ASSETS / "site.css").write_text(css, encoding="utf-8")
+
+          nav = """
+          <nav>
+            <a href="index.html">Home</a>
+            <a href="paper.html">Sovereign RSI Paper</a>
+            <a href="authorization.html">Mainnet Authorization</a>
+            <a href="protocol.html">Protocol Doctrine</a>
+            <a href="docs.html">Docs</a>
+            <a href="releases.html">Release Readiness</a>
+          </nav>
+          """
+
+          def shell(title, body, description="GoalOS-native alpha-AGI Ascension using AGIALPHA"):
+              return f"""<!doctype html>
+          <html lang="en">
+          <head>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <title>{esc(title)}</title>
+            <meta name="description" content="{esc(description)}">
+            <meta property="og:title" content="{esc(title)}">
+            <meta property="og:description" content="{esc(description)}">
+            <meta property="og:type" content="website">
+            <meta property="og:url" content="{SITE_URL}">
+            <link rel="stylesheet" href="assets/site.css">
+          </head>
+          <body>
+            <header class="topbar">
+              <div class="site-shell topbar-inner">
+                <a class="brand" href="index.html">
+                  <span class="brand-mark">α</span>
+                  <span>GoalOS AGIALPHA Ascension</span>
+                </a>
+                {nav}
+              </div>
+            </header>
+            <main class="site-shell">
+              {body}
+            </main>
+            <footer class="footer">
+              <div class="site-shell">
+                <strong>Publication-safe boundary:</strong>
+                architecture, protocol, benchmark, and implementation-doctrine material only.
+                No claim of achieved AGI, ASI, empirical SOTA, legal/tax/security approval, guaranteed economic return,
+                or achieved Kardashev-scale capability.
+                <br>
+                Generated automatically from repository evidence at {esc(generated_at)}.
+              </div>
+            </footer>
+          </body>
+          </html>"""
+
+          def write_page(name, title, body, description=None):
+              (OUT / name).write_text(shell(title, body, description or title), encoding="utf-8")
+
+          status_cards = "\n".join([
+              status_card("Technical mainnet readiness", technical_ready, "Repository package evidence for manual gated Ethereum Mainnet deployment."),
+              status_card("Deployment authorization", deployment_authorized, "Public certificate-backed authorization for local manual deployment."),
+              status_card("Ethereum Mainnet authorization", ethereum_authorized, "Ethereum Mainnet target authorization state."),
+              status_card("Ethereum Mainnet deployed", mainnet_deployed, "Must remain NO until real transaction evidence exists.")
+          ])
+
+          paper_assets = []
+          paper_dir = ROOT / "docs" / "papers" / "sovereign-rsi" / "v6.3"
+          if paper_dir.exists():
+              for f in sorted(paper_dir.iterdir()):
+                  if not f.is_file():
+                      continue
+                  allowed_names = {
+                      "README.md",
+                      "PAPER_PUBLICATION_CHECKLIST.md",
+                      "PAPER_ASSET_MANIFEST.json",
+                      "CHECKSUMS.sha256"
+                  }
+                  if "v6.3" in f.name or f.name in allowed_names:
+                      dst = PAPERS_OUT / f.name
+                      shutil.copy2(f, dst)
+                      paper_assets.append((f.name, f"papers/sovereign-rsi/v6.3/{f.name}", sha256_file(dst)))
+
+          asset_buttons = []
+          for name, link, digest in paper_assets:
+              label = name
+              if name.endswith(".pdf"):
+                  label = "Download PDF"
+              elif name.endswith(".md"):
+                  label = "Read Markdown"
+              elif name.endswith(".docx"):
+                  label = "Download DOCX"
+              elif name.endswith(".tex"):
+                  label = "View TeX"
+              asset_buttons.append(f"<a class='button' href='{esc(link)}'>{esc(label)}</a>")
+
+          if not asset_buttons:
+              asset_buttons = ["<span class='muted'>Paper assets pending in docs/papers/sovereign-rsi/v6.3/</span>"]
+
+          hero = f"""
+          <section class="hero">
+            <div class="hero-card">
+              <div class="eyebrow">Sovereign RSI · Proof-Carrying Intelligence Organizations</div>
+              <h1>GoalOS-native α‑AGI Ascension using AGIALPHA</h1>
+              <p class="hero-subtitle">
+                A publication-safe, evidence-governed architecture for converting bounded machine labor
+                into reusable capability, audited proof, reputation, and future productive capacity.
+              </p>
+              <div class="loop">
+                Aim -> Act -> Prove -> Evolve<br>
+                Request -> Escrow -> Execute -> Proof -> Validate -> Settle -> Chronicle
+              </div>
+              <div class="cta-row">
+                <a class="button primary" href="paper.html">Read the Sovereign RSI paper</a>
+                <a class="button" href="authorization.html">View mainnet authorization</a>
+                <a class="button" href="{REPO_URL}">Open GitHub repository</a>
+              </div>
+            </div>
+          </section>
+          """
+
+          index_body = f"""
+          {hero}
+          <section class="section">
+            <h2>Live repository status</h2>
+            <div class="grid">{status_cards}</div>
+          </section>
+
+          <section class="section">
+            <div class="grid">
+              <article class="card wide">
+                <h2>Core thesis</h2>
+                <p>
+                  GoalOS sets sovereign aims. AGIALPHA coordinates proof-settled work.
+                  AEP-001 defines valid evidence. The Proof Gradient decides what may evolve.
+                  The intelligence stays private. The proof becomes verifiable.
+                </p>
+                <span class="badge gold">Proof before propagation</span>
+                <span class="badge cyan">Private intelligence / public proof</span>
+                <span class="badge green">Rollback before release</span>
+              </article>
+              <article class="card">
+                <h3>AGIALPHA boundary</h3>
+                <p>
+                  AGIALPHA is presented as a utility coordination asset for staking,
+                  settlement, epoch accounting, validator coordination, and protocol operations.
+                  It is not equity, dividends, yield, ownership, or an investment claim.
+                </p>
+              </article>
+              <article class="card">
+                <h3>Research paper</h3>
+                <p>Sovereign RSI Edition v6.3 is the canonical paper package.</p>
+                <div class="cta-row">{''.join(asset_buttons)}</div>
+              </article>
+              <article class="card">
+                <h3>Mainnet posture</h3>
+                <p>
+                  Manual, local, gated Ethereum Mainnet deployment authorization is certificate-backed.
+                  The site must not imply deployment has occurred.
+                </p>
+              </article>
+              <article class="card">
+                <h3>Developer path</h3>
+                <p>
+                  Use the repository’s command center, evidence dockets, QA manifests, and
+                  authorization certificate for verifiable release operations.
+                </p>
+              </article>
+            </div>
+          </section>
+          """
+
+          write_page("index.html", "GoalOS AGIALPHA Ascension", index_body)
+
+          paper_rows = ""
+          for name, link, digest in paper_assets:
+              paper_rows += f"""
+              <tr>
+                <td><a href="{esc(link)}">{esc(name)}</a></td>
+                <td><code>{esc(digest[:16])}…</code></td>
+              </tr>
+              """
+
+          paper_body = f"""
+          <section class="hero">
+            <div class="hero-card">
+              <div class="eyebrow">Canonical research paper</div>
+              <h1>Sovereign RSI Edition v6.3</h1>
+              <p class="hero-subtitle">
+                GoalOS-native alpha‑AGI Ascension using AGIALPHA:
+                a sovereign RSI architecture for evidence-governed intelligence organizations.
+              </p>
+              <div class="cta-row">{''.join(asset_buttons)}</div>
+            </div>
+          </section>
+
+          <section class="section">
+            <div class="grid">
+              <article class="card full">
+                <h2>Paper index</h2>
+                {markdown_to_html(paper_readme or "# Paper README pending")}
+              </article>
+              <article class="card full">
+                <h2>Canonical paper assets</h2>
+                <div class="table-wrap">
+                  <table>
+                    <thead><tr><th>File</th><th>SHA-256 prefix</th></tr></thead>
+                    <tbody>{paper_rows or "<tr><td colspan='2'>No v6.3 paper assets found.</td></tr>"}</tbody>
+                  </table>
+                </div>
+              </article>
+            </div>
+          </section>
+          """
+
+          write_page("paper.html", "Sovereign RSI Paper v6.3", paper_body)
+
+          cert_rows = ""
+          if cert:
+              important_keys = [
+                  "schemaVersion",
+                  "repository",
+                  "chain",
+                  "chainId",
+                  "agialphaToken",
+                  "sourceCommit",
+                  "commit",
+                  "notExternallyAudited",
+                  "externalAuditRequired",
+                  "runtimeSecretsStoredInGitHub",
+                  "ciCanDeployMainnet",
+                  "privateOperatorAuthorizationPackageRequired",
+                  "technicallyMainnetReady",
+                  "mainnetDeploymentAuthorized",
+                  "ethereumMainnetAuthorized",
+                  "mainnetDeployed",
+                  "certificateHash",
+              ]
+              seen = set()
+              for key in important_keys:
+                  if key in cert and key not in seen:
+                      cert_rows += f"<tr><td><code>{esc(key)}</code></td><td>{esc(norm(cert.get(key)))}</td></tr>"
+                      seen.add(key)
+          else:
+              cert_rows = "<tr><td colspan='2'>Certificate not found.</td></tr>"
+
+          authorization_body = f"""
+          <section class="hero">
+            <div class="hero-card">
+              <div class="eyebrow">Certificate-backed public authorization</div>
+              <h1>Mainnet Authorization</h1>
+              <p class="hero-subtitle">
+                The source of truth is <code>qa/mainnet-authorization-certificate.json</code>.
+                Deployment remains manual, local, typed-confirmation gated, and runtime-secret protected.
+              </p>
+            </div>
+          </section>
+
+          <section class="section">
+            <h2>Authorization state</h2>
+            <div class="grid">{status_cards}</div>
+          </section>
+
+          <section class="section">
+            <div class="grid">
+              <article class="card full">
+                <h2>Mainnet Authorization Certificate</h2>
+                <div class="table-wrap">
+                  <table>
+                    <thead><tr><th>Field</th><th>Value</th></tr></thead>
+                    <tbody>{cert_rows}</tbody>
+                  </table>
+                </div>
+                <p class="muted">
+                  AGIALPHA token address: <code>{AGIALPHA_TOKEN}</code>
+                </p>
+              </article>
+            </div>
+          </section>
+          """
+
+          write_page("authorization.html", "Mainnet Authorization", authorization_body)
+
+          protocol_body = f"""
+          <section class="hero">
+            <div class="hero-card">
+              <div class="eyebrow">Protocol doctrine</div>
+              <h1>Aim. Act. Prove. Evolve.</h1>
+              <p class="hero-subtitle">
+                The site publishes the proof surface, not private intelligence execution.
+                It treats every stronger claim as evidence-gated, challengeable, scoped, and rollbackable.
+              </p>
+              <div class="loop">
+                A model can answer. An agent can act. An institution must prove.
+              </div>
+            </div>
+          </section>
+
+          <section class="section">
+            <div class="grid">
+              <article class="card">
+                <h3>GoalOS</h3>
+                <p>Converts sovereign intent into signed, auditable commitments with success criteria, constraints, authority, risk, budget, evaluators, and rollback obligations.</p>
+              </article>
+              <article class="card">
+                <h3>AGIALPHA</h3>
+                <p>Coordinates proof-settled work: request, escrow, execute, proof, validate, settle, chronicle.</p>
+              </article>
+              <article class="card">
+                <h3>Proof Gradient</h3>
+                <p>Promotes only evidenced, evaluated, scoped, reversible improvements. Score is advisory; gates are mandatory.</p>
+              </article>
+              <article class="card">
+                <h3>Evidence Dockets</h3>
+                <p>Turn claims into inspectable proof rooms: baselines, proof packets, evaluations, cost/risk ledgers, replay paths, and rollback plans.</p>
+              </article>
+              <article class="card">
+                <h3>Public/private boundary</h3>
+                <p>Public commitments, hashes, attestations, and proof cards are published. Private prompts, traces, customer data, keys, and privileged workpapers stay private.</p>
+              </article>
+              <article class="card">
+                <h3>Claim discipline</h3>
+                <p>No achieved AGI/ASI, empirical SOTA, legal/tax/security approval, guaranteed return, or deployed-mainnet claim without direct evidence.</p>
+              </article>
+            </div>
+          </section>
+          """
+
+          write_page("protocol.html", "Protocol Doctrine", protocol_body)
+
+          docs = [
+              ("README.md", "Repository README"),
+              ("docs/CURRENT_STATUS.md", "Current Status"),
+              ("docs/MAINNET_AUTHORIZATION_CERTIFICATE.md", "Mainnet Authorization Certificate"),
+              ("docs/MAINNET_TECHNICAL_READINESS_DECISION.md", "Technical Readiness Decision"),
+              ("docs/MAINNET_DEPLOYMENT_AUTHORIZATION_DECISION.md", "Deployment Authorization Decision"),
+              ("docs/ETHEREUM_MAINNET_AUTHORIZATION_DECISION.md", "Ethereum Mainnet Authorization Decision"),
+              ("docs/START_HERE_MAINNET.md", "Start Here: Mainnet"),
+              ("docs/PUBLIC_MAINNET_AUTHORIZATION_RUNBOOK.md", "Public Mainnet Authorization Runbook"),
+              ("docs/BRANCH_PROTECTION_NEXT_ACTION.md", "Branch Protection Next Action"),
+              ("docs/RELEASE_NOTES_MAINNET_AUTHORIZATION_v4_4_0.md", "Mainnet Authorization Release Notes"),
+              ("audit/TOOLCHAIN_CLEARANCE_REPORT.md", "Toolchain Clearance Report"),
+              ("qa/mainnet-authorization-certificate.json", "Authorization Certificate JSON"),
+              ("qa/MANIFEST.json", "QA Manifest")
+          ]
+
+          doc_rows = ""
+          for path, label in docs:
+              if exists(path):
+                  repo_link = f"{REPO_URL}/blob/main/{path}"
+                  doc_rows += f"""
+                  <div class="doc-row">
+                    <div>
+                      <strong>{esc(label)}</strong><br>
+                      <span class="muted">{esc(path)}</span>
+                    </div>
+                    <a href="{esc(repo_link)}">Open on GitHub</a>
+                  </div>
+                  """
+
+          docs_body = f"""
+          <section class="hero">
+            <div class="hero-card">
+              <div class="eyebrow">Repository evidence library</div>
+              <h1>Docs and Evidence</h1>
+              <p class="hero-subtitle">
+                Public-safe documents, decisions, manifests, and reports used by the repository website.
+              </p>
+            </div>
+          </section>
+
+          <section class="section">
+            <div class="card full">
+              <h2>Key documents</h2>
+              <div class="doc-list">{doc_rows or "<p>No key documents found.</p>"}</div>
+            </div>
+          </section>
+          """
+
+          write_page("docs.html", "Docs and Evidence", docs_body)
+
+          release_body = f"""
+          <section class="hero">
+            <div class="hero-card">
+              <div class="eyebrow">Release readiness</div>
+              <h1>Release and Deployment Boundaries</h1>
+              <p class="hero-subtitle">
+                Release-ready means the package is coherent and evidence-backed. It does not mean Ethereum Mainnet deployment has occurred.
+              </p>
+            </div>
+          </section>
+
+          <section class="section">
+            <div class="grid">
+              <article class="card wide">
+                <h2>Mainnet authorization release</h2>
+                <p><strong>Target tag:</strong> <code>mainnet-authorization-v4.4.0</code></p>
+                <p>
+                  Authorized for manual, local, gated Ethereum Mainnet deployment only when the certificate remains valid,
+                  runtime RPC/key are supplied locally, and typed confirmation is provided.
+                </p>
+              </article>
+              <article class="card">
+                <h3>Manual deployment command</h3>
+                <pre><code>npm run deploy:ethereum-mainnet:gated</code></pre>
+              </article>
+              <article class="card">
+                <h3>Canonical AGIALPHA token</h3>
+                <pre><code>{AGIALPHA_TOKEN}</code></pre>
+              </article>
+              <article class="card">
+                <h3>Not included</h3>
+                <p>No CI mainnet deployment. No private keys. No legal/tax/security approval claim. No external audit claim.</p>
+              </article>
+              <article class="card">
+                <h3>Paper release</h3>
+                <p><strong>Target tag:</strong> <code>sovereign-rsi-v6.3</code></p>
+                <p>Publishes Markdown, PDF, DOCX, TeX, checksum, and paper asset manifest.</p>
+              </article>
+            </div>
+          </section>
+          """
+
+          write_page("releases.html", "Release Readiness", release_body)
+
+          not_found = """
+          <section class="hero">
+            <div class="hero-card">
+              <div class="eyebrow">404</div>
+              <h1>Page not found</h1>
+              <p class="hero-subtitle">Return to the GoalOS AGIALPHA Ascension homepage.</p>
+              <a class="button primary" href="index.html">Go home</a>
+            </div>
+          </section>
+          """
+          write_page("404.html", "Page not found", not_found)
+
+          sitemap = f"""<?xml version="1.0" encoding="UTF-8"?>
+          <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+            <url><loc>{SITE_URL}</loc></url>
+            <url><loc>{SITE_URL}paper.html</loc></url>
+            <url><loc>{SITE_URL}authorization.html</loc></url>
+            <url><loc>{SITE_URL}protocol.html</loc></url>
+            <url><loc>{SITE_URL}docs.html</loc></url>
+            <url><loc>{SITE_URL}releases.html</loc></url>
+          </urlset>
+          """
+          (OUT / "sitemap.xml").write_text(sitemap, encoding="utf-8")
+
+          robots = f"""User-agent: *
+          Allow: /
+
+          Sitemap: {SITE_URL}sitemap.xml
+          """
+          (OUT / "robots.txt").write_text(robots, encoding="utf-8")
+
+          (OUT / ".nojekyll").write_text("", encoding="utf-8")
+
+          print("Autonomous website built successfully.")
+          print(f"Output directory: {OUT.resolve()}")
+          print(f"Pages generated: {len(list(OUT.glob('*.html')))}")
+          print(f"Paper assets copied: {len(paper_assets)}")
+          PY
+
+      - name: Upload GitHub Pages artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: site
+
+  deploy:
+    name: Deploy website to GitHub Pages
+    runs-on: ubuntu-latest
+    needs: build
+    permissions:
+      pages: write
+      id-token: write
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
