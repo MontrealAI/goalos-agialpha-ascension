@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-06-12T02:54:38.762022+00:00",
-  "source": "audit/reports/latest-npm-audit.json",
+  "generatedAt": "2026-06-12T17:01:40.183509+00:00",
+  "source": "audit/reports/2026-06-12-164431/npm-audit.json",
   "policy": "npm audit findings are triaged as development-toolchain reachable only; no runtime production contracts include npm packages. High findings are tracked but not mainnet blockers unless production-impacting or untriaged. Do not use npm audit fix --force without review.",
   "summary": {
     "info": 0,
@@ -139,11 +139,7 @@
       "severity": "low",
       "isDirect": false,
       "range": "5.0.8 - 5.8.0",
-      "fixAvailable": {
-        "name": "@nomicfoundation/hardhat-toolbox",
-        "version": "7.0.0",
-        "isSemVerMajor": true
-      },
+      "fixAvailable": true,
       "triage": "dev dependency/tooling path; not deployed contract runtime; monitored for controlled upgrade"
     },
     {

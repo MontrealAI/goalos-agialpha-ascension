@@ -1,0 +1,36 @@
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+
+[notice] A new release of pip is available: 26.1 -> 26.1.2
+[notice] To update, run: pip install --upgrade pip
+
+
+┌─────────────┐
+│ Scan Status │
+└─────────────┘
+  Scanning 1158 files tracked by git with 3 Code rules:
+
+  Language   Rules   Files          Origin   Rules
+ ──────────────────────────        ────────────────
+  python         1      41          Custom       3
+  ts             2      21
+  yaml           2      20
+  bash           1      16
+
+
+
+┌──────────────┐
+│ Scan Summary │
+└──────────────┘
+✅ Scan completed successfully.
+ • Findings: 0 (0 blocking)
+ • Rules run: 3
+ • Targets scanned: 98
+ • Parsed lines: ~100.0%
+ • Scan skipped:
+   ◦ Files larger than  files 1.0 MB: 9
+   ◦ Files matching .semgrepignore patterns: 6
+ • Scan was limited to files tracked by git
+ • For a detailed list of skipped files and lines, run semgrep with the --verbose flag
+Ran 3 rules on 98 files: 0 findings.
+If Semgrep missed a finding, please send us feedback to let us know!
+See https://semgrep.dev/docs/reporting-false-negatives/
