@@ -1,21 +1,19 @@
 {
-  "status": "PUBLIC_CERTIFICATE_AUTHORIZATION_READY",
-  "version": "4.4.0",
+  "schemaVersion": "1.0",
+  "version": "v4.4.0",
   "publicCertificateModelActive": true,
+  "privateOperatorPackageRequired": false,
   "privateOperatorPackageOptional": true,
   "publicYesRequiresPrivateRpcKeyFounderSignatureOrAddressCeremony": false,
   "runtimeRpcKeyRequiredOnlyForActualBroadcast": true,
-  "mainnetDeployed": "NO",
-  "commands": [
-    "npm run mainnet:certificate",
-    "npm run mainnet:certificate:validate",
-    "npm run docs:status",
-    "npm run assert:public-status",
-    "npm run qa:manifest",
-    "npm run qa:manifest:verify"
-  ],
-  "finalManualDeploymentCommand": "npm run deploy:ethereum-mainnet:gated",
-  "containsSecrets": false,
-  "containsPrivateAddresses": false,
-  "redacted": true
+  "ethereumMainnetDeployed": "NO",
+  "mainnetPreflightWithoutRuntimeRpc": "PUBLIC_AUTHORIZATION_MODE_NO_RUNTIME_RPC",
+  "agialphaTokenVerificationEvidence": "qa/public-agialpha-token-verification.json",
+  "commands": {
+    "papersVerify": "npm run papers:verify",
+    "certificate": "npm run mainnet:certificate",
+    "certificateValidate": "npm run mainnet:certificate:validate",
+    "qaManifest": "npm run qa:manifest",
+    "qaManifestVerify": "npm run qa:manifest:verify"
+  }
 }

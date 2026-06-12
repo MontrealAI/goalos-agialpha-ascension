@@ -1,0 +1,46 @@
+{
+  "paper": "GoalOS-native alpha-AGI Ascension using AGIALPHA",
+  "edition": "Sovereign RSI Edition",
+  "version": "v6.3",
+  "canonical": true,
+  "publicationSafe": true,
+  "claimBoundary": {
+    "achievedAGI": false,
+    "achievedASI": false,
+    "achievedSuperintelligence": false,
+    "empiricalSOTA": false,
+    "guaranteedEconomicReturn": false,
+    "legalApproval": false,
+    "taxApproval": false,
+    "securityApproval": false,
+    "energyAbundance": false,
+    "kardashevTypeIIAchieved": false
+  },
+  "files": [
+    {
+      "path": "docs/papers/sovereign-rsi/v6.3/GoalOS_native_alpha_AGI_Ascension_using_AGIALPHA_v6.3_Sovereign_RSI.md",
+      "role": "canonical-markdown-source",
+      "sha256": "2ff4a176015a812b7361bc1573ef59d1dbbe5aadc25e0c6efc5ed4c809b4f2ae"
+    },
+    {
+      "path": "docs/papers/sovereign-rsi/v6.3/GoalOS_native_alpha_AGI_Ascension_using_AGIALPHA_v6.3_Sovereign_RSI.pdf",
+      "role": "institutional-reading-edition",
+      "sha256": "86129a87705984d2ab4be987f5c791f12cdd978b8ae7be1f0cbedd46a0ed3914"
+    },
+    {
+      "path": "docs/papers/sovereign-rsi/v6.3/GoalOS_native_alpha_AGI_Ascension_using_AGIALPHA_v6.3_Sovereign_RSI.docx",
+      "role": "editable-working-edition",
+      "sha256": "fdf85f44cc9fca7a8afc510c9f1c8ecee2b79795863b236fd99249c10f39f04b"
+    },
+    {
+      "path": "docs/papers/sovereign-rsi/v6.3/GoalOS_native_alpha_AGI_Ascension_using_AGIALPHA_v6.3_Sovereign_RSI.tex",
+      "role": "typesetting-source",
+      "sha256": "f2babd54b8f4622663665ecd18f193d8b86d0ad6844cd1001b41b5b94c1dbedf"
+    }
+  ],
+  "supersedes": [
+    "v5",
+    "v6.1"
+  ],
+  "releaseTag": "sovereign-rsi-v6.3"
+}

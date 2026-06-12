@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-12T20:04:14.609416+00:00",
+  "generated_at": "2026-06-12T21:56:27.375551+00:00",
   "files": [
     {
       "path": ".editorconfig",
@@ -63,8 +63,8 @@
     },
     {
       "path": ".github/labels.yml",
-      "bytes": 1914,
-      "sha256": "c943ed6e5dd806739bfc220294ff69d01d882d914bcca7788897038a486a821d"
+      "bytes": 2228,
+      "sha256": "8536add089fa6dae87299aa0ead6014592f683c9c32493283c237449e22464f3"
     },
     {
       "path": ".github/pull_request_template.md",
@@ -73,8 +73,8 @@
     },
     {
       "path": ".github/workflows/agialpha-audit-candidate-ci.yml",
-      "bytes": 2175,
-      "sha256": "bce6ab94368650eab075c66b7677b85d49b6b8f3a7f2140976cc5bc6560ace33"
+      "bytes": 2339,
+      "sha256": "e36417201d3541da741d228e72e750700f664ac24115f07f66937a53da1d3f57"
     },
     {
       "path": ".github/workflows/dependabot-upgrade-triage.yml",
@@ -83,33 +83,33 @@
     },
     {
       "path": ".github/workflows/ethereum-sepolia-rehearsal.yml",
-      "bytes": 2167,
-      "sha256": "f0d1c15d2ebf244269f19b58c4cdc02d8e8a26d16b2472b049dd2bbc48b807c7"
+      "bytes": 2331,
+      "sha256": "5ca73789e9af3ee84849b412d63b71fdbd2fd2ec1bf69ccbfdfe2220ded3faee"
     },
     {
       "path": ".github/workflows/final-authorization-evidence-check.yml",
-      "bytes": 1168,
-      "sha256": "533e16158c867ce60727c7fcf5028aa42843c7fe4c0ae1e459778d998c56e427"
+      "bytes": 1332,
+      "sha256": "55648d7ebff737f305eff7eaefbcefd3d604ced84ad9b548eacb5c65cf85b42b"
     },
     {
       "path": ".github/workflows/final-public-mainnet-authorization.yml",
-      "bytes": 2175,
-      "sha256": "a8cd1488fca92fefd07b3122961b7e2a084da9c71e6d3cdd551825f5d9b0d824"
+      "bytes": 2339,
+      "sha256": "3f9bc80ee15e7716f597fc74fe67d5d77d94c7bad501d12b91d62ac691057156"
     },
     {
       "path": ".github/workflows/mainnet-authorization-gate.yml",
-      "bytes": 2167,
-      "sha256": "4a283e9297541361f83c359c3ad3bdc59851af3a7715f502cf7b79856a380a1d"
+      "bytes": 2331,
+      "sha256": "ecbabd5d9462a05459fd392d70b89943a9acacc0df974b6e2870eb17516058f6"
     },
     {
       "path": ".github/workflows/mainnet-gate-watch.yml",
-      "bytes": 2159,
-      "sha256": "a77ca63c4505b97b5fc3f401227f545aa939b4bb6ac7d1226644386f34073af3"
+      "bytes": 2323,
+      "sha256": "db738de91913391ac94a2d8977a262a5cfba18573fd13a1e7e8250afa22c42eb"
     },
     {
       "path": ".github/workflows/repository-validation.yml",
-      "bytes": 2162,
-      "sha256": "310f0ccefb3951e3f84d1f1dc6f94067e45536ce27abfe087fd3bd11ac990e82"
+      "bytes": 2326,
+      "sha256": "0480df6572fd14e24da6a74ba6f9712241b16706aeee039e09c6d92372d64a55"
     },
     {
       "path": ".github/workflows/sepolia-rehearsal.yml",
@@ -118,8 +118,8 @@
     },
     {
       "path": ".github/workflows/solidity-audit-toolchain.yml",
-      "bytes": 2165,
-      "sha256": "2833a0a7274a2cb166dce1c82d59f9ca7c4b1f6eef63add332f62c97bc75684b"
+      "bytes": 2329,
+      "sha256": "e336b536c96a09e9b7966890ee129fc4cec19079924c227b34ee3d508bcbcb7f"
     },
     {
       "path": ".gitignore",
@@ -233,8 +233,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 3131,
-      "sha256": "31a4fd89e6136b9a7e3d3f5440fe11cccdcfd9660ace388d1cc07b9d684666b0"
+      "bytes": 3299,
+      "sha256": "d657fec9b7390bbd88ac1095bd30ead0cd4d6c0e0edbed7e56bdde100caec947"
     },
     {
       "path": "SECURITY.md",
@@ -339,7 +339,7 @@
     {
       "path": "audit/TOOLCHAIN_CLEARANCE_REPORT.md",
       "bytes": 873,
-      "sha256": "943983e7e9d8c7ab9630ae83be74e0638f0422a5f24744858b9d16c886f73fe8"
+      "sha256": "112b961da82aa0c3f6b814d03d69ecc67103178237cdec55060482b77390e212"
     },
     {
       "path": "audit/reports/.gitkeep",
@@ -4398,13 +4398,223 @@
     },
     {
       "path": "audit/reports/2026-06-12-194945/unresolved-findings.csv",
-      "bytes": 59,
-      "sha256": "6fa6ff6a376e34a9ea37c3fb031e9f0e57dae8a6b98355711fd51c88af2715b4"
+      "bytes": 58,
+      "sha256": "a2e0d0601362438e6b3a6fa8872c010cd3e00fe07eb2130523707cce864ae9aa"
     },
     {
-      "path": "audit/reports/current-run.txt",
-      "bytes": 32,
-      "sha256": "34ae09daf0da05777f7dfde36fee02205df515de14edbba626f483fc4565ad9f"
+      "path": "audit/reports/2026-06-12-212158/actionlint.json",
+      "bytes": 865,
+      "sha256": "1d50616f03fbd4ca9ab56d5feddd881abdee613360f9cecbe583a20261e31617"
+    },
+    {
+      "path": "audit/reports/2026-06-12-212158/actionlint.txt",
+      "bytes": 731,
+      "sha256": "92fd6a9cf85f62e9e19f22dcdba7336337ed145ade932cf94bcef81980322e67"
+    },
+    {
+      "path": "audit/reports/2026-06-12-212158/actionlint.txt.tmp",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "audit/reports/2026-06-12-212158/audit-summary.json",
+      "bytes": 6050,
+      "sha256": "3195826e6ce97880c4672ee77111fd95a9d7774e72ec91dc773781fffbd48075"
+    },
+    {
+      "path": "audit/reports/2026-06-12-212158/audit-summary.md",
+      "bytes": 1558,
+      "sha256": "dc46ee536e794e7d0cb13085e98f49a39f490344d59c3d535cfc1c36588c3442"
+    },
+    {
+      "path": "audit/reports/2026-06-12-212158/dependency-triage-summary.md",
+      "bytes": 545,
+      "sha256": "2f665638fd7deedc01007bae184f5f52fa3e088f9a90b92374bb9496ac7da464"
+    },
+    {
+      "path": "audit/reports/2026-06-12-212158/deterministic-compile.log",
+      "bytes": 7583,
+      "sha256": "77d9896cc1f4e78d329eded33166c7123253f3e7349b8b48a10d551141c2a966"
+    },
+    {
+      "path": "audit/reports/2026-06-12-212158/echidna.json",
+      "bytes": 270,
+      "sha256": "b38968ce2be67135fcb057ba9532b65c3d1a1ebf8c1f8605879caeeb860dd09a"
+    },
+    {
+      "path": "audit/reports/2026-06-12-212158/echidna.txt",
+      "bytes": 362,
+      "sha256": "133ab987ad282b6bf3ed90d37e633f7901d78fb65845328f2a8673963065f06b"
+    },
+    {
+      "path": "audit/reports/2026-06-12-212158/foundry-test.log",
+      "bytes": 344,
+      "sha256": "4e61bcfe7c37ded00b28e49bb79952e5289b2f0ad20e3cc74bd1c18b6196a0c4"
+    },
+    {
+      "path": "audit/reports/2026-06-12-212158/foundry.json",
+      "bytes": 252,
+      "sha256": "eb03eea412c6d571b33ee17fd02e7976dcdcc72a62b82f0139b2e4823fd822b2"
+    },
+    {
+      "path": "audit/reports/2026-06-12-212158/gitleaks.json",
+      "bytes": 3765,
+      "sha256": "a5f0fd01d2e84ba7e8eab2ff2990c32e5c2abb549b1e851237d2f80fba711048"
+    },
+    {
+      "path": "audit/reports/2026-06-12-212158/gitleaks.json.tmp",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "audit/reports/2026-06-12-212158/gitleaks.txt",
+      "bytes": 3505,
+      "sha256": "bbbd51d311618ea8d220e739a658ef58f721ea8efe0920e194662065359c4da9"
+    },
+    {
+      "path": "audit/reports/2026-06-12-212158/halmos.json",
+      "bytes": 202,
+      "sha256": "f205ac2d32eb2530cd715d725acbcf71ba665027432f72696f4054547f6a8669"
+    },
+    {
+      "path": "audit/reports/2026-06-12-212158/halmos.txt",
+      "bytes": 294,
+      "sha256": "3476bc88a5dfab541920ffa0d9a237d4c5a9e71207ec8d7998ccd71ba87ca7bb"
+    },
+    {
+      "path": "audit/reports/2026-06-12-212158/medusa.json",
+      "bytes": 270,
+      "sha256": "c447d2f1cbe40bbe782e1b5ca52aa80378e356794c778c8655939b59e947b961"
+    },
+    {
+      "path": "audit/reports/2026-06-12-212158/medusa.txt",
+      "bytes": 362,
+      "sha256": "001885c5d70e201b11085803548cf568653f9bed2796a789aec0f67cfe40adbd"
+    },
+    {
+      "path": "audit/reports/2026-06-12-212158/mythril.json",
+      "bytes": 304,
+      "sha256": "b48f6bfe1386cedc91b2b12293ce04f9d5901f2ead45960e7487836875506cb0"
+    },
+    {
+      "path": "audit/reports/2026-06-12-212158/mythril.txt",
+      "bytes": 396,
+      "sha256": "5c6e1aad5d1c04e0e04f6f20a43ee89cbe27eb579bde659fb1a433908e0537c6"
+    },
+    {
+      "path": "audit/reports/2026-06-12-212158/npm-audit.json",
+      "bytes": 30023,
+      "sha256": "9b26c528959a5cb66aad5c63c1138f3f1f1222616e4af6caa07026a038dd1c23"
+    },
+    {
+      "path": "audit/reports/2026-06-12-212158/npm-audit.txt",
+      "bytes": 30122,
+      "sha256": "5fdc67ed47ad95acaf184bf80114e74b4cf8640354ac34c8d162a5d8f799a216"
+    },
+    {
+      "path": "audit/reports/2026-06-12-212158/osv-scanner.json",
+      "bytes": 115187,
+      "sha256": "a9edda40bd4e7f4b8af81d62309c08fceccd016dd3729147316eaad2a4be8063"
+    },
+    {
+      "path": "audit/reports/2026-06-12-212158/osv-scanner.raw.json",
+      "bytes": 110560,
+      "sha256": "e729321480e0137ef2e1681ca43b5a95e59bce8805c98a52425cf72f8390f8a6"
+    },
+    {
+      "path": "audit/reports/2026-06-12-212158/osv-scanner.stderr.txt",
+      "bytes": 91,
+      "sha256": "8557a809bb7270568c80595405061c85e6407b3f747582551e02fda41ef41313"
+    },
+    {
+      "path": "audit/reports/2026-06-12-212158/osv-scanner.txt",
+      "bytes": 225,
+      "sha256": "e76f1ab8386dd7d58ce61a5622dfb49fa63f9de2f512adc1499bb5f8fa781eb8"
+    },
+    {
+      "path": "audit/reports/2026-06-12-212158/semgrep.json",
+      "bytes": 7263,
+      "sha256": "70c8dbb504e50eaa860b5e6ad6a2d158e7e2da3bec3e03086ee239ba2464e16e"
+    },
+    {
+      "path": "audit/reports/2026-06-12-212158/semgrep.txt",
+      "bytes": 2424,
+      "sha256": "c6b4b4ce596aff7add5dba3f10d35a6cb13f4113c43e945ab015221e05d5f1f3"
+    },
+    {
+      "path": "audit/reports/2026-06-12-212158/shellcheck.json",
+      "bytes": 774,
+      "sha256": "124289104094992c65690afc6ac05f09683432fe1898351d0a8397bf21fa64bf"
+    },
+    {
+      "path": "audit/reports/2026-06-12-212158/shellcheck.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "audit/reports/2026-06-12-212158/slither-contract-summary.txt",
+      "bytes": 359,
+      "sha256": "475b56953df9a285fc446ef9b26902cac3e600613923bdc3ab20c9ace5045893"
+    },
+    {
+      "path": "audit/reports/2026-06-12-212158/slither-human-summary.txt",
+      "bytes": 359,
+      "sha256": "475b56953df9a285fc446ef9b26902cac3e600613923bdc3ab20c9ace5045893"
+    },
+    {
+      "path": "audit/reports/2026-06-12-212158/slither-install.log",
+      "bytes": 13753,
+      "sha256": "8d11195d5d67b456c26aea42a593c5ef3ac2c0871d30281b4c80873b203dbebf"
+    },
+    {
+      "path": "audit/reports/2026-06-12-212158/slither-vars-and-auth.txt",
+      "bytes": 359,
+      "sha256": "475b56953df9a285fc446ef9b26902cac3e600613923bdc3ab20c9ace5045893"
+    },
+    {
+      "path": "audit/reports/2026-06-12-212158/slither.json",
+      "bytes": 1426438,
+      "sha256": "73a9a6101892e40752af7047114ec04f9353f331b16c3bab68dbe1e3b6bb303f"
+    },
+    {
+      "path": "audit/reports/2026-06-12-212158/slither.sarif",
+      "bytes": 30,
+      "sha256": "4dad3a11f4ff4bcd1ee5d0dc950e783ed5ab9b792fe585a5adacac823e3bdd9b"
+    },
+    {
+      "path": "audit/reports/2026-06-12-212158/slither.txt",
+      "bytes": 36287,
+      "sha256": "c65e1ae2eeb7b5466e37c0cb0579e902e8bf4381047b2c9940fb466c655037c8"
+    },
+    {
+      "path": "audit/reports/2026-06-12-212158/smtchecker.json",
+      "bytes": 88,
+      "sha256": "a05b66d2adf5daeecced5babf243fce2323899d5d4c8c8214e5942243cb4605e"
+    },
+    {
+      "path": "audit/reports/2026-06-12-212158/smtchecker.txt",
+      "bytes": 441,
+      "sha256": "b409eb49be78194c2d7776e1314e3f84e1e72eed684a1254c2f2c4cf67aab17c"
+    },
+    {
+      "path": "audit/reports/2026-06-12-212158/solhint.json",
+      "bytes": 136,
+      "sha256": "dc5e9c14d0288a6f04357979cc0217164b0f31ca96aff51981de010eafc50251"
+    },
+    {
+      "path": "audit/reports/2026-06-12-212158/solhint.txt",
+      "bytes": 415569,
+      "sha256": "05bc1053093942b4c26217bc8d3f9bb9d43b1494e55bbd7bfddc697ca0801201"
+    },
+    {
+      "path": "audit/reports/2026-06-12-212158/toolchain-clearance-report.md",
+      "bytes": 873,
+      "sha256": "112b961da82aa0c3f6b814d03d69ecc67103178237cdec55060482b77390e212"
+    },
+    {
+      "path": "audit/reports/2026-06-12-212158/unresolved-findings.csv",
+      "bytes": 59,
+      "sha256": "6fa6ff6a376e34a9ea37c3fb031e9f0e57dae8a6b98355711fd51c88af2715b4"
     },
     {
       "path": "audit/reports/dependency-triage/README.md",
@@ -4484,7 +4694,7 @@
     {
       "path": "audit/reports/latest.txt",
       "bytes": 32,
-      "sha256": "34ae09daf0da05777f7dfde36fee02205df515de14edbba626f483fc4565ad9f"
+      "sha256": "6666b3b9aad5ae65c56589773ea64326362978998ee8e13715455b03af965fff"
     },
     {
       "path": "audit/reports/mainnet-toolchain-latest/actionlint.txt",
@@ -4708,8 +4918,8 @@
     },
     {
       "path": "configs/semgrep.yml",
-      "bytes": 870,
-      "sha256": "5f52df28b82e07a5cd0c578e99b0e20d80526e328537ae3424e0f58a35844d7b"
+      "bytes": 904,
+      "sha256": "b72d09657761b4708a8c19dee39e83c7f5e8b450ebbea949db93a7072dad3787"
     },
     {
       "path": "configs/slither.config.json",
@@ -5004,12 +5214,7 @@
     {
       "path": "deployments/local.agialpha.latest.json",
       "bytes": 2935,
-      "sha256": "917e3f778f28e79b3bd2698c5907f0901c40474c0f596baf507fa6e6c5190d3d"
-    },
-    {
-      "path": "direct-solc-output/output.json",
-      "bytes": 12703676,
-      "sha256": "e0020725adc0a72cafc1faec8704ce2a7cb3c77936ff244003cd7eccfbfb7d2b"
+      "sha256": "f21dcdcae3dfaed30e409b641d8049a7b962029a94261367da4e0161a3f305e6"
     },
     {
       "path": "docs/AGIALPHA_ASCENSION_OVERVIEW.md",
@@ -5088,8 +5293,8 @@
     },
     {
       "path": "docs/BRANCH_PROTECTION_NEXT_ACTION.md",
-      "bytes": 723,
-      "sha256": "da5da2aa9e285711ab5db5bd475f283bf89f07d1429670e98b993b9b3851edfc"
+      "bytes": 731,
+      "sha256": "e59fd516da6f55d0c97f0fd270c5295c5468971c9292fcff706202f4ca346382"
     },
     {
       "path": "docs/BRANCH_PROTECTION_PUBLIC_RISK_ACCEPTANCE.md",
@@ -5144,7 +5349,7 @@
     {
       "path": "docs/CURRENT_STATUS.md",
       "bytes": 1252,
-      "sha256": "f259a627d242679ef8bf7b1b8c979b2e294d1ea387ebb961c6b66899eb3e83c7"
+      "sha256": "e02c2901de90b1d3cf33b1b1122636999356b8ffe8af29756f59167d203fcabc"
     },
     {
       "path": "docs/DEPENDABOT_LABEL_FIX.md",
@@ -5184,7 +5389,7 @@
     {
       "path": "docs/ETHEREUM_MAINNET_AUTHORIZATION_DECISION.json",
       "bytes": 5277,
-      "sha256": "f1a499052cde3b3ba65da5084a24643918058054659987834711152bb878f2ee"
+      "sha256": "6e33de5241b315d3392511a5cf97f2e8a101bfae347b896d1c32832691b6c29d"
     },
     {
       "path": "docs/ETHEREUM_MAINNET_AUTHORIZATION_DECISION.md",
@@ -5268,8 +5473,8 @@
     },
     {
       "path": "docs/FINAL_LOCAL_OPERATOR_RUNBOOK.md",
-      "bytes": 2086,
-      "sha256": "0e774a90bdfa9f04d797ca0f4c82ff8770415b5d20aa251aefdde62b29659002"
+      "bytes": 2261,
+      "sha256": "89e97eaa64aea6628a062176ed88dfcb0d202492a304ef95e73a08a295c60f9d"
     },
     {
       "path": "docs/FINAL_LOCAL_PRE_DEPLOYMENT_CHECKLIST.md",
@@ -5394,7 +5599,7 @@
     {
       "path": "docs/MAINNET_AUTHORIZATION_DECISION.json",
       "bytes": 5233,
-      "sha256": "60050a9530aa551384a3c3d43abc1ef1d635cb6bd11798d49f87cb13407fbd22"
+      "sha256": "a1a98e0911b069476f36a2fd5e186cfa78ce056d490c1298beabe33e4219e90a"
     },
     {
       "path": "docs/MAINNET_AUTHORIZATION_DECISION.md",
@@ -5429,7 +5634,7 @@
     {
       "path": "docs/MAINNET_DEPLOYMENT_AUTHORIZATION_DECISION.json",
       "bytes": 5233,
-      "sha256": "60050a9530aa551384a3c3d43abc1ef1d635cb6bd11798d49f87cb13407fbd22"
+      "sha256": "a1a98e0911b069476f36a2fd5e186cfa78ce056d490c1298beabe33e4219e90a"
     },
     {
       "path": "docs/MAINNET_DEPLOYMENT_AUTHORIZATION_DECISION.md",
@@ -5454,7 +5659,7 @@
     {
       "path": "docs/MAINNET_TECHNICAL_READINESS_DECISION.json",
       "bytes": 5157,
-      "sha256": "8accee5dc52ea9f8bcc48833045eadef5d6875f545f71fbff33371c84686b199"
+      "sha256": "1a46d798ea8dcde8348c819e9c71fc84e23f78c9e50b6d954160b67398f9cdd0"
     },
     {
       "path": "docs/MAINNET_TECHNICAL_READINESS_DECISION.md",
@@ -5553,13 +5758,13 @@
     },
     {
       "path": "docs/PRIVATE_OPERATOR_HANDOFF.md",
-      "bytes": 1960,
-      "sha256": "db943276b4cfc20ee726c047ea1456e5cb8e370f3e81c8fb8faf55d18e96491a"
+      "bytes": 2135,
+      "sha256": "5ab04b114dd086934cd382e6dfbca486c5594bdc461f83bcf9a4098e0b357f69"
     },
     {
       "path": "docs/PRIVATE_OPERATOR_LOCAL_COMMANDS.md",
-      "bytes": 2712,
-      "sha256": "b698d6c629e9d937219699ffbbbd8a51c9aee19bf2c79814ab8530dcc306f5d2"
+      "bytes": 2887,
+      "sha256": "9633ea8e1d4949d6f41a1c2c9238ad468d1fea37738afa63b88e2744cf82b0ea"
     },
     {
       "path": "docs/PRIVATE_SEPOLIA_REHEARSAL_RUNBOOK.md",
@@ -5628,23 +5833,33 @@
     },
     {
       "path": "docs/RELEASE_CANDIDATE_STATUS.md",
-      "bytes": 593,
-      "sha256": "99c19d86ed42f49eb378f9129f3b4eaa437645eaf780297a2e1ac46de33759c3"
+      "bytes": 768,
+      "sha256": "2b45a4c09c57d8dcf06f1bfa8b3b7361c724cd83ebe20b9d0af034870a481a1a"
     },
     {
       "path": "docs/RELEASE_CHECKLIST_MAINNET_AUTHORIZATION_v4_4_0.md",
-      "bytes": 853,
-      "sha256": "19426a43144fbfb5b01c90d228bf0865fefe376e9e989bcf29ac2692abf3ef16"
+      "bytes": 735,
+      "sha256": "156cbf19abd526a360847b43bb0168c214f49147807dbc84cdc792d122c9dcbd"
     },
     {
       "path": "docs/RELEASE_NOTES_MAINNET_AUTHORIZATION_v4_4_0.md",
-      "bytes": 1087,
-      "sha256": "a53a8f0c184aea55fc32501cce4544923b68c08d6e4782fa6a65f70c04cec32a"
+      "bytes": 1121,
+      "sha256": "0422c3554bdb4968a8a4a73fc814c1ff6c034443d1a7fb2210e312c650c1caae"
+    },
+    {
+      "path": "docs/RELEASE_NOTES_SOVEREIGN_RSI_v6_3.md",
+      "bytes": 672,
+      "sha256": "5a32e2e7af9b587d11f703246bae1ea8002212a31dabf1fe64cf784faedd6892"
     },
     {
       "path": "docs/RELEASE_PLAN_MAINNET_AUTHORIZATION_v4_4_0.md",
-      "bytes": 1026,
-      "sha256": "5215012ec606d5b3f0d75e976512ada2a1ad845c8130eb367e70f795eed05262"
+      "bytes": 802,
+      "sha256": "fce63de20772ca6f9812eecf59f9d8a5721a8ea4afa86eaca234fec9ee939f3b"
+    },
+    {
+      "path": "docs/RELEASE_PLAN_SOVEREIGN_RSI_v6_3.md",
+      "bytes": 748,
+      "sha256": "1318b24977ec7a0c44f56a3572792215d240fd9189c0282932e17f22098891de"
     },
     {
       "path": "docs/REPOSITORY_ABOUT_AND_TOPICS.md",
@@ -5668,8 +5883,8 @@
     },
     {
       "path": "docs/REPOSITORY_STATUS.md",
-      "bytes": 570,
-      "sha256": "095d9c8d9cb4db41adb3f28716cebf1f981fa9c1662f1446e9d1e9458daaf1af"
+      "bytes": 745,
+      "sha256": "7cd7cc862145a975d194e658d454c6d5c225e8a00aad5db22e0e66b03e215a8c"
     },
     {
       "path": "docs/RUNTIME_ADDRESS_POLICY.md",
@@ -5683,8 +5898,8 @@
     },
     {
       "path": "docs/SAFE_CLAIMS.md",
-      "bytes": 1029,
-      "sha256": "1fcd9d5c951ddfd8eb798e0e2b6b2287272da5832bdac6c7e4dd7926ed708622"
+      "bytes": 1204,
+      "sha256": "589797bfba29b4c4ecf1bd397cf10975d2116a0f1af8695cf18bdd79546756a4"
     },
     {
       "path": "docs/SAFE_CLAIMS_AND_TOKEN_BOUNDARY.md",
@@ -5733,8 +5948,8 @@
     },
     {
       "path": "docs/SOVEREIGN_RSI_V6_3_PUBLICATION_RELEASE_PLAN.md",
-      "bytes": 658,
-      "sha256": "3f3bef8b48b1dfda233e2e73e1c880c3e913cf88b720907dbdfb0a69b0decca9"
+      "bytes": 748,
+      "sha256": "1318b24977ec7a0c44f56a3572792215d240fd9189c0282932e17f22098891de"
     },
     {
       "path": "docs/START_HERE_MAINNET.md",
@@ -5743,8 +5958,8 @@
     },
     {
       "path": "docs/START_HERE_v3_0.md",
-      "bytes": 638,
-      "sha256": "8c4c9ef6a89b283796de8fee93de60738dcc6547ed29c0827a7300794f28b593"
+      "bytes": 813,
+      "sha256": "641a3b1bb8b30378c8232bdd094a704a8bcb76ed6c8fd94bca4b204e0ad72647"
     },
     {
       "path": "docs/START_HERE_v4_0.md",
@@ -5803,8 +6018,8 @@
     },
     {
       "path": "docs/V4_2_EVIDENCE_READY_DELTA.md",
-      "bytes": 1143,
-      "sha256": "0faaee6f8ec0d56a33b137671ae5da810073dde0d66412fdb857a4681b0b326f"
+      "bytes": 1318,
+      "sha256": "054d90ed87fa5a662961a2a1efa38bdf3e3c907f8d184fd6215ec6e11d6d37a4"
     },
     {
       "path": "docs/V4_3_GATE_CLEAN_DELTA.md",
@@ -5842,39 +6057,59 @@
       "sha256": "5f2f41d080a09871f6652bd2d6638b491971cdf074c5c1103b66ab0d4f14e661"
     },
     {
-      "path": "docs/papers/sovereign-rsi/v6.3/GoalOS_native_alpha_AGI_Ascension_using_AGIALPHA_Sovereign_RSI_Paper_v5.docx",
+      "path": "docs/papers/sovereign-rsi/README.md",
+      "bytes": 731,
+      "sha256": "d2831a58bce0218b060eac6214db9bb9818b22ca074281d1fbf3614137298932"
+    },
+    {
+      "path": "docs/papers/sovereign-rsi/archive/v5/GoalOS_native_alpha_AGI_Ascension_using_AGIALPHA_Sovereign_RSI_Paper_v5.docx",
       "bytes": 1790196,
       "sha256": "2bb1af0eb5be3ec210f4b1325b640069f48fcbf21ddd90b3298096b60fb5fa43"
     },
     {
-      "path": "docs/papers/sovereign-rsi/v6.3/GoalOS_native_alpha_AGI_Ascension_using_AGIALPHA_Sovereign_RSI_Paper_v5.md",
+      "path": "docs/papers/sovereign-rsi/archive/v5/GoalOS_native_alpha_AGI_Ascension_using_AGIALPHA_Sovereign_RSI_Paper_v5.md",
       "bytes": 24726,
       "sha256": "a94657e5f40c85b01b3cfb0b02cb11b887ead8ec7ae105ff4dc471112e895074"
     },
     {
-      "path": "docs/papers/sovereign-rsi/v6.3/GoalOS_native_alpha_AGI_Ascension_using_AGIALPHA_Sovereign_RSI_Paper_v5.pdf",
+      "path": "docs/papers/sovereign-rsi/archive/v5/GoalOS_native_alpha_AGI_Ascension_using_AGIALPHA_Sovereign_RSI_Paper_v5.pdf",
       "bytes": 2422336,
       "sha256": "0ea86d1077a90b822f4860feb632c5dcb98206497817958ecb31b76e02c8cd32"
     },
     {
-      "path": "docs/papers/sovereign-rsi/v6.3/GoalOS_native_alpha_AGI_Ascension_using_AGIALPHA_v6.1_Sovereign_RSI.docx",
+      "path": "docs/papers/sovereign-rsi/archive/v5/README.md",
+      "bytes": 331,
+      "sha256": "4466b08069a4f23f6d32e5cb07dfbae7ded3426d9991c240d1f19504d38c959a"
+    },
+    {
+      "path": "docs/papers/sovereign-rsi/archive/v6.1/GoalOS_native_alpha_AGI_Ascension_using_AGIALPHA_v6.1_Sovereign_RSI.docx",
       "bytes": 1074339,
       "sha256": "4e7e22c033b7b451efbc83fadc5dca47ce67b99637b3738877a1be01b066d84b"
     },
     {
-      "path": "docs/papers/sovereign-rsi/v6.3/GoalOS_native_alpha_AGI_Ascension_using_AGIALPHA_v6.1_Sovereign_RSI.md",
+      "path": "docs/papers/sovereign-rsi/archive/v6.1/GoalOS_native_alpha_AGI_Ascension_using_AGIALPHA_v6.1_Sovereign_RSI.md",
       "bytes": 6906,
       "sha256": "f2a662e10bf3860d6abe4aa7a636622a9f04f72e6558410e4cb9dec0152f00eb"
     },
     {
-      "path": "docs/papers/sovereign-rsi/v6.3/GoalOS_native_alpha_AGI_Ascension_using_AGIALPHA_v6.1_Sovereign_RSI.pdf",
+      "path": "docs/papers/sovereign-rsi/archive/v6.1/GoalOS_native_alpha_AGI_Ascension_using_AGIALPHA_v6.1_Sovereign_RSI.pdf",
       "bytes": 1049946,
       "sha256": "1256742e82015173ac19193a1c217ad43bea03c2c3600f33a413673902c71b97"
     },
     {
-      "path": "docs/papers/sovereign-rsi/v6.3/GoalOS_native_alpha_AGI_Ascension_using_AGIALPHA_v6.1_Sovereign_RSI.tex",
+      "path": "docs/papers/sovereign-rsi/archive/v6.1/GoalOS_native_alpha_AGI_Ascension_using_AGIALPHA_v6.1_Sovereign_RSI.tex",
       "bytes": 1998,
       "sha256": "fb8f29b6f76e868d19d0438d61914eea4f22edc9f9e0b4d46e404205ecd08364"
+    },
+    {
+      "path": "docs/papers/sovereign-rsi/archive/v6.1/README.md",
+      "bytes": 337,
+      "sha256": "7dfb8d4cbe1d166ede3c36d0e63ede9bd3def28e0fc2530bc6142b9c0241015b"
+    },
+    {
+      "path": "docs/papers/sovereign-rsi/v6.3/CHECKSUMS.sha256",
+      "bytes": 676,
+      "sha256": "6f0ac4241a07dd7ac20b40bda17a25dec127197d7b2c7814b71a075c735e1aa3"
     },
     {
       "path": "docs/papers/sovereign-rsi/v6.3/GoalOS_native_alpha_AGI_Ascension_using_AGIALPHA_v6.3_Sovereign_RSI.docx",
@@ -5897,29 +6132,34 @@
       "sha256": "f2babd54b8f4622663665ecd18f193d8b86d0ad6844cd1001b41b5b94c1dbedf"
     },
     {
+      "path": "docs/papers/sovereign-rsi/v6.3/PAPER_ASSET_MANIFEST.json",
+      "bytes": 1641,
+      "sha256": "d56d000d1853ea2d36d2c7c1a2431861d8077e5b9177526fbbeb27b362714dda"
+    },
+    {
       "path": "docs/papers/sovereign-rsi/v6.3/PAPER_PUBLICATION_CHECKLIST.md",
-      "bytes": 884,
-      "sha256": "d0b0b585629cd8c9c3a6f59132705c89fc743092a89adf013ce0cc0b9f2e9573"
+      "bytes": 762,
+      "sha256": "58a94f0e61c431b192a5f8bc3a5211ad14054d2096b2841516dba26488187f4a"
     },
     {
       "path": "docs/papers/sovereign-rsi/v6.3/README.md",
-      "bytes": 1479,
-      "sha256": "33e793b07ab171d4875bd2a300d48dd6d2f3a9ce41a0c458e1d206072a73b786"
+      "bytes": 1490,
+      "sha256": "547891da2e4d7de484472b3c298606f6e14fb3e51293c13a2dac12375e9703ca"
     },
     {
       "path": "evidence/SEPOLIA_EVIDENCE_DOCKET_TEMPLATE_v4_2.json",
       "bytes": 2446,
-      "sha256": "cb67f9cc0c2724976d248e4c98ff338940563880a299659476ce419372dc967f"
+      "sha256": "eb9712b3583a87b4ba871e77ae9e9b4cea24d4006c56fe067c1e9c7f92743648"
     },
     {
       "path": "evidence/local/EVIDENCE_DOCKET.json",
       "bytes": 384,
-      "sha256": "951a5b1421ba3c9d2854cb10b517dce05788e74b1b9cdac78367977a67fe895b"
+      "sha256": "edb7e3e58bc36a9178e057ce1cf57387a5eb63a654de2c9d927082f8c5530430"
     },
     {
       "path": "evidence/local/EVIDENCE_DOCKET.md",
       "bytes": 213,
-      "sha256": "1a2b09b47c5a23f5091ae8214939695c2658058d7500e1f91ba05f02fca9008c"
+      "sha256": "c727f8bf3322f04762cd117c607cd483a242ed24e5e852977b060f5e5a903d4e"
     },
     {
       "path": "evidence/sepolia/.gitkeep",
@@ -5983,8 +6223,8 @@
     },
     {
       "path": "package.json",
-      "bytes": 9682,
-      "sha256": "22089f1b6dae4b655f3acaf035531c01155c701dfb932ab3f7043fbe4adf1b60"
+      "bytes": 9774,
+      "sha256": "bd6f42a29c237566b309f6cd06bf3a0f31f2e6e7ebf6d8190a8db2c80487b748"
     },
     {
       "path": "qa/ADDRESS_CEREMONY.json",
@@ -5992,24 +6232,19 @@
       "sha256": "aaf632b74a3668608828db6f8844296bb5ce96dd2f9f2ee13549a65559a171dc"
     },
     {
-      "path": "qa/AGIALPHA_TOKEN_VERIFICATION.json",
-      "bytes": 505,
-      "sha256": "d4a684b6bbc91fbee3c28a24030cccda0ddf5b428619e03616fb37e1c1a41c4e"
-    },
-    {
       "path": "qa/AGIALPHA_TOKEN_VERIFICATION_v4_4_0.json",
-      "bytes": 505,
-      "sha256": "d4a684b6bbc91fbee3c28a24030cccda0ddf5b428619e03616fb37e1c1a41c4e"
+      "bytes": 397,
+      "sha256": "c446e7ec999c9a6740d8997e873f8437dc5f9bc6209ee48e8cf9b9663ec21cd4"
     },
     {
       "path": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json",
-      "bytes": 12132,
-      "sha256": "d8145bc7336966c268723893182fb319a534f8c8ea2d7e521c8541c76c3a703b"
+      "bytes": 76138,
+      "sha256": "7eb8845f6ea18368027bf9c70cf01e971c3ef811c7a6bdb92ede7103d072e57b"
     },
     {
       "path": "qa/AUTHORIZATION_CONTRADICTION_REPORT.md",
-      "bytes": 767,
-      "sha256": "5bf97cffd532ddb49c1aee20adf90fea9144674e36f912f81709a3ed1ef98c3a"
+      "bytes": 192,
+      "sha256": "26250012ac1e0a31e1b27d9a5961310e23f3eeb9c90c6c915290980ccef952db"
     },
     {
       "path": "qa/BASELINE_COMMAND_LOG.md",
@@ -6052,14 +6287,9 @@
       "sha256": "5eeb1089b2b99c6f36b6e243aaa87aef1b7207e51b3c531a49afe9623947fd65"
     },
     {
-      "path": "qa/ETHEREUM_MAINNET_PREFLIGHT.json",
-      "bytes": 702,
-      "sha256": "d656061799508636f2f31dda62524b389a4130021d8638054cc9732fa64d93aa"
-    },
-    {
       "path": "qa/ETHEREUM_MAINNET_PREFLIGHT_v4_4_0.json",
-      "bytes": 702,
-      "sha256": "d656061799508636f2f31dda62524b389a4130021d8638054cc9732fa64d93aa"
+      "bytes": 616,
+      "sha256": "dfe6dd5e94e80d269ea50a936fa0fd0244761015255b38c2fc73a8cc5be445b1"
     },
     {
       "path": "qa/FOUNDER_APPROVAL.json",
@@ -6078,8 +6308,8 @@
     },
     {
       "path": "qa/MANIFEST_v4_3.json",
-      "bytes": 236099,
-      "sha256": "d932bdb980686ae87d6a8390cc9469e04b2615b57cb1b05dea58a3ce6a40c57d"
+      "bytes": 245660,
+      "sha256": "bc2d40b973dff9e6a65b5de2f7966c0f999cbae03ae68ff12cc045a64d77c190"
     },
     {
       "path": "qa/MANIFEST_v4_3_FINAL.json",
@@ -6094,7 +6324,7 @@
     {
       "path": "qa/QA_REPORT.json",
       "bytes": 921,
-      "sha256": "cb21d8eeb64f5ee5d2e577997cb9886e0f20de5b93c2797138a5119b0b59d356"
+      "sha256": "b1c9c8760457c6732790d97415711ac6afea99c0b467284df013ad477e0c7437"
     },
     {
       "path": "qa/QA_REPORT_v4_0.json",
@@ -6109,7 +6339,7 @@
     {
       "path": "qa/READINESS_REPORT_v4_3.json",
       "bytes": 645,
-      "sha256": "d6159c5c58685382a88ac3d906daf944f7c42a8f3c5b10f913dda583ee9fa08f"
+      "sha256": "1170676d8fc5ed1ffe0dbbae5cc47bbef966e500646156bc1f5aeeb7a8ea90e3"
     },
     {
       "path": "qa/REPOSITORY_STARTER_QA_OUTPUTS_v2_0.json",
@@ -6172,9 +6402,19 @@
       "sha256": "16a81177da0d54a0907cbb1a5c2b2b5589e4a6e6f264a61be5ee34859b938aae"
     },
     {
+      "path": "qa/V16_PUBLICATION_AND_RELEASE_INTEGRITY_REPORT.json",
+      "bytes": 6922,
+      "sha256": "4beda87ca6d281dbeb767273f99765decca88fdebffc9230b0095f1ccc5da3e3"
+    },
+    {
+      "path": "qa/V16_PUBLICATION_AND_RELEASE_INTEGRITY_REPORT.md",
+      "bytes": 1352,
+      "sha256": "cbbed7e0362e8b0b5cc8041559e57b7c3ffba736a8fabb4c4b4362ef66ad7ae0"
+    },
+    {
       "path": "qa/V4_4_0_PUBLIC_CERTIFICATE_AUTHORIZATION_COMMAND_OUTPUTS.json",
-      "bytes": 702,
-      "sha256": "0791dd40a9060877e7f2f2a25477519975f6407672f05a6749de79f0400de7a8"
+      "bytes": 788,
+      "sha256": "0c21a48319e1cda0b9aef0612f7f0d330a39bc09b80fdfeeb93f3e8d8f0dab1f"
     },
     {
       "path": "qa/codex-required-commands.log",
@@ -6197,6 +6437,16 @@
       "sha256": "6e26d461a64eb5f6a79a408d14d58b58ddb426f67d9b03b17c486048794ff865"
     },
     {
+      "path": "qa/historical/AGIALPHA_TOKEN_VERIFICATION.json",
+      "bytes": 505,
+      "sha256": "d4a684b6bbc91fbee3c28a24030cccda0ddf5b428619e03616fb37e1c1a41c4e"
+    },
+    {
+      "path": "qa/historical/ETHEREUM_MAINNET_PREFLIGHT.json",
+      "bytes": 702,
+      "sha256": "d656061799508636f2f31dda62524b389a4130021d8638054cc9732fa64d93aa"
+    },
+    {
       "path": "qa/historical/MAINNET_AUTHORIZATION_CHECK_EXPECTED_BLOCKED.json",
       "bytes": 401,
       "sha256": "56721f481899bdd080fc9acfe84b0896176fe28937c0805ee4ac659354fcf4e5"
@@ -6209,32 +6459,32 @@
     {
       "path": "qa/local-rehearsal-report.json",
       "bytes": 472,
-      "sha256": "cd1782e9a2d02cc42c40c8caeffea2723feef7852406427b7eddb858501b2ed9"
+      "sha256": "a716756f2f50f8f4ddd3df3124e98ebd5ff63284cdc39f0ccae24270723e1829"
     },
     {
       "path": "qa/mainnet-authorization-certificate.json",
-      "bytes": 6678,
-      "sha256": "036a5850ab703ef4e0e2119c4b8b0df44ddca9aadc9c8df704020cca87be664d"
+      "bytes": 6590,
+      "sha256": "9bf9100ec888f8895f1e8f495fca5cdfba386360968373a1bfe8014399dffe04"
     },
     {
       "path": "qa/public-agialpha-token-code-evidence.json",
       "bytes": 474,
-      "sha256": "5ec68d4d184a7d819a61e361e0c1c04466a9a361b2c292fc8685460504f97678"
+      "sha256": "041482df96a1b24043e1f83f933525285a4a39e182c88e9aa27bf47fff47a733"
     },
     {
       "path": "qa/public-agialpha-token-verification.json",
       "bytes": 787,
-      "sha256": "1d4eec4acc497989c333f82cee357b663cb84375cdfacb36acdca60c8a633cb2"
+      "sha256": "d47e7830af7b1312421311bbc1b04c869ce62b1564335a95ec114a5fcbd6c405"
     },
     {
       "path": "qa/public-branch-protection-evidence.json",
-      "bytes": 721,
-      "sha256": "34d98704b31ff021b2458c3c49aadea6ab034fb93ffc03e8df059c6c337f7445"
+      "bytes": 660,
+      "sha256": "4b18a855729d47c4db357d9f97197596ca93ec4b0093dfa4eac1f94be85e17fc"
     },
     {
       "path": "qa/public-ethereum-mainnet-authorization-evidence.json",
       "bytes": 5362,
-      "sha256": "827dfde55f753786ffd52bfe4a36467c9d46a7f6d57ece600c80569f4ff2517e"
+      "sha256": "83e8dd5da4ecaf7e4c3ac9ee1c6bb3726d8119dcdfa94d25611b59890025ad09"
     },
     {
       "path": "qa/public-governance-approval-evidence.json",
@@ -6244,17 +6494,17 @@
     {
       "path": "qa/public-mainnet-deployment-authorization-evidence.json",
       "bytes": 5318,
-      "sha256": "79d7c78c8351d646d9d9a23da3e21a06f0c0d9c58dab71196b8b63e01255e081"
+      "sha256": "e75ebbc6e103f8d8de38599e716402b6d02a77177420a1b259caaa27aa58697d"
     },
     {
       "path": "qa/public-mainnet-technical-readiness-evidence.json",
       "bytes": 5242,
-      "sha256": "16d14de488433216141bf9c86fa860435b338ccbd44e9d721a671cbab7bec7bc"
+      "sha256": "2c31d45e58a67413326a1f81ee9b043d591c251d5831e75bb1f090b3b58f9d49"
     },
     {
       "path": "qa/public-toolchain-clearance-evidence.json",
       "bytes": 482,
-      "sha256": "932234ba828b08bad5b8edd3a25331ea2aaabe135fc2042fc5483565f36c757f"
+      "sha256": "dc447d856fd2f07d1a16d8f0ad4a06cf2a1be13226eb2e6d9fefbfeaf85be569"
     },
     {
       "path": "schemas/agialpha-mainnet-gate-v4.3.schema.json",
@@ -6367,26 +6617,6 @@
       "sha256": "98ff1f12df1d0b8e7d7720d4278b5e5f8edc53ef5d2023dde6b12658c8a3ced9"
     },
     {
-      "path": "scripts/__pycache__/generate-mainnet-authorization-certificate.cpython-312.pyc",
-      "bytes": 15003,
-      "sha256": "67b12946550e7f29abf5778c5421adad74e9fb32b5555ea922ee9a9d6c9a48b2"
-    },
-    {
-      "path": "scripts/__pycache__/no_private_operator_data_check.cpython-312.pyc",
-      "bytes": 6039,
-      "sha256": "7044416845e0cbbc0e6036e4f3cdcc097e5e3a972c977a67feb90ed1d8559c93"
-    },
-    {
-      "path": "scripts/__pycache__/validate-mainnet-authorization-certificate.cpython-312.pyc",
-      "bytes": 8247,
-      "sha256": "b8c8f6189989894c80e9277bfe257fd64ab0d4988a5ba9b91feafcb5daa62543"
-    },
-    {
-      "path": "scripts/__pycache__/verify-readiness-v4-3.cpython-312.pyc",
-      "bytes": 8471,
-      "sha256": "63ad9747d6d4a7ca4409efb2b92234ad1eb5ace087af0bcf801e9525e67c1300"
-    },
-    {
       "path": "scripts/assert_public_status.py",
       "bytes": 4699,
       "sha256": "b4ce73eedf6c9ce0ef107e46163e06fa385e21c2e9b2826934032a3df5542e02"
@@ -6458,8 +6688,8 @@
     },
     {
       "path": "scripts/audit/run-semgrep.sh",
-      "bytes": 1348,
-      "sha256": "f42d8ecacb056e54b6ac8f1e234b0a6563828ffa2dec22433bb6f1c5035fc7b0"
+      "bytes": 2731,
+      "sha256": "44c4910a27d6e12b29dc82cf1905b9977c9b8e99883aa0c4b2a1fc621b90c6c5"
     },
     {
       "path": "scripts/audit/run-shellcheck.sh",
@@ -6573,8 +6803,8 @@
     },
     {
       "path": "scripts/generate-public-status-docs.py",
-      "bytes": 7753,
-      "sha256": "7ddc304baf763fb8cfccded93f0c6b5e98bf410d42456648305ca80765dd96ad"
+      "bytes": 7921,
+      "sha256": "3d91a979006564546a8af6c3570eaf89cb818599ca351cf931f8b6aa9c6d603e"
     },
     {
       "path": "scripts/generate-sepolia-evidence-docket.py",
@@ -6703,8 +6933,8 @@
     },
     {
       "path": "scripts/refresh-qa-manifests.py",
-      "bytes": 3761,
-      "sha256": "cf441e322a4b17ed1bb86a24fd77b219861273d333de49cf09a13f9a7f918112"
+      "bytes": 3955,
+      "sha256": "be9b5cee8a842a05f67db95199167306251d005c46a56bcf8ccd20dad852bdeb"
     },
     {
       "path": "scripts/rehearse-ethereum-sepolia.ts",
@@ -6780,6 +7010,11 @@
       "path": "scripts/verify_agialpha_token_public.py",
       "bytes": 5524,
       "sha256": "c273a1d6aafbe86faa2932c20f795fb1443431c0262173ea00ebcbfa5309f922"
+    },
+    {
+      "path": "scripts/verify_paper_publication.py",
+      "bytes": 5851,
+      "sha256": "6fc1b6cf88c319b93d7322467a4848085ac032ca34bedd15faa91a3525ee1fe0"
     },
     {
       "path": "scripts/wizard/mainnet-command-center.py",

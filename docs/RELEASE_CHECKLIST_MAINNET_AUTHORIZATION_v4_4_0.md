@@ -1,15 +1,12 @@
-# Release Checklist: Mainnet Authorization v4.4.0
+# Release Checklist — Mainnet Authorization v4.4.0
 
 - [x] Package version aligned to `4.4.0`.
-- [x] Public certificate model remains active.
-- [x] Source-archive certificate validation supports no-git mode.
-- [x] README/current status generated from certificate.
-- [x] QA manifests refreshed after generated artifacts.
-- [x] Workflows renamed for readable GitHub Actions status.
-- [x] Labels updated to avoid stale “not authorized” language.
-- [x] Branch-protection hardening action documented.
-- [x] Sovereign RSI v6.3 publication folder documented.
-- [x] Release notes and release plan prepared.
-- [ ] Create tag `mainnet-authorization-v4.4.0` after PR merge.
-- [ ] Optional: enable branch-protection hardening before actual broadcast.
-- [ ] Actual Ethereum Mainnet deployment remains manual/local only via `npm run deploy:ethereum-mainnet:gated`.
+- [x] Mainnet authorization certificate generated.
+- [x] Certificate validation passes in git checkout mode.
+- [x] Certificate validation supports source archives without `.git` history.
+- [x] QA manifests refreshed.
+- [x] Public status assertions preserve YES/YES/YES/NO.
+- [x] Sovereign RSI v6.3 paper assets are published and verified.
+- [x] Branch protection hardening next action documented.
+- [ ] Owner may create tag `mainnet-authorization-v4.4.0` after PR merge.
+- [ ] Before actual broadcast, owner should complete optional branch-protection hardening and run `npm run deploy:ethereum-mainnet:gated` locally with runtime RPC/key.
