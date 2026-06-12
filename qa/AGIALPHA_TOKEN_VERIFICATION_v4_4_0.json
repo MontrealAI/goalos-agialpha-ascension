@@ -1,15 +1,11 @@
 {
-  "status": "PUBLIC_CERTIFICATE_MODEL_ACTIVE",
-  "evidence": "qa/public-agialpha-token-verification.json",
-  "address": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
-  "chain": "ethereum",
-  "chainId": 1,
-  "privateOperatorPackageRequiredForPublicYes": false,
-  "runtimeRpcKeyRequiredOnlyForActualBroadcast": true,
-  "newAgialphaTokenDeployed": false,
-  "mockAgialphaUsedOnMainnet": false,
+  "schemaVersion": "1.0",
+  "version": "v4.4.0",
+  "publicCertificateModelActive": true,
+  "activeEvidence": "qa/public-agialpha-token-verification.json",
+  "canonicalAgialphaToken": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
+  "noNewAgialphaTokenDeployment": true,
   "mainnetDeployed": "NO",
-  "containsSecrets": false,
-  "containsPrivateAddresses": false,
-  "redacted": true
+  "privateOperatorPackageRequired": false,
+  "runtimeRpcKeyRequiredOnlyForActualBroadcast": true
 }

@@ -1,0 +1,133 @@
+{
+  "packageJsonVersion": "4.4.0",
+  "readmeStatusVersion": "v4.4.0",
+  "versionsMatch": true,
+  "certificateValidationGitCheckout": "PASSED",
+  "certificateValidationSourceArchiveNoGit": "PASSED",
+  "qaManifestFreshness": "PASSED",
+  "assertPublicStatusPasses": true,
+  "noPrivateOperatorDataCheckPassesWithoutNoisyFatalGitOutput": true,
+  "paperFolderExists": true,
+  "canonicalV63PaperAssetsExist": {
+    "GoalOS_native_alpha_AGI_Ascension_using_AGIALPHA_v6.3_Sovereign_RSI.md": true,
+    "GoalOS_native_alpha_AGI_Ascension_using_AGIALPHA_v6.3_Sovereign_RSI.pdf": true,
+    "GoalOS_native_alpha_AGI_Ascension_using_AGIALPHA_v6.3_Sovereign_RSI.docx": true,
+    "GoalOS_native_alpha_AGI_Ascension_using_AGIALPHA_v6.3_Sovereign_RSI.tex": true
+  },
+  "oldPaperAssetLocations": {
+    "v5": [
+      "docs/papers/sovereign-rsi/archive/v5/GoalOS_native_alpha_AGI_Ascension_using_AGIALPHA_Sovereign_RSI_Paper_v5.docx",
+      "docs/papers/sovereign-rsi/archive/v5/GoalOS_native_alpha_AGI_Ascension_using_AGIALPHA_Sovereign_RSI_Paper_v5.pdf",
+      "docs/papers/sovereign-rsi/archive/v5/GoalOS_native_alpha_AGI_Ascension_using_AGIALPHA_Sovereign_RSI_Paper_v5.md"
+    ],
+    "v6.1": [
+      "docs/papers/sovereign-rsi/archive/v6.1/GoalOS_native_alpha_AGI_Ascension_using_AGIALPHA_v6.1_Sovereign_RSI.docx",
+      "docs/papers/sovereign-rsi/archive/v6.1/GoalOS_native_alpha_AGI_Ascension_using_AGIALPHA_v6.1_Sovereign_RSI.tex",
+      "docs/papers/sovereign-rsi/archive/v6.1/GoalOS_native_alpha_AGI_Ascension_using_AGIALPHA_v6.1_Sovereign_RSI.pdf",
+      "docs/papers/sovereign-rsi/archive/v6.1/GoalOS_native_alpha_AGI_Ascension_using_AGIALPHA_v6.1_Sovereign_RSI.md"
+    ]
+  },
+  "oldV5V61AssetsIncorrectlyInsideV63Folder": false,
+  "rootReadmeLinksV63Paper": true,
+  "paperFolderReadmeLinksCorrect": true,
+  "paperChecksumsExist": true,
+  "paperReleasePlanExists": true,
+  "activeStaleDocsArtifactsContradictingPublicYES": [],
+  "historicalStaleDocsArtifactsAcceptableIfBannered": [
+    {
+      "classification": "HISTORICAL_DOC_OK_WITH_BANNER",
+      "line": "docs/START_HERE_v3_0.md:23:Implementation complete. Mainnet not authorized until all gates pass."
+    },
+    {
+      "classification": "HISTORICAL_DOC_OK_WITH_BANNER",
+      "line": "docs/PRIVATE_OPERATOR_HANDOFF.md:36:8. Run the public checkers with `--with-redacted-private-evidence`."
+    },
+    {
+      "classification": "HISTORICAL_DOC_OK_WITH_BANNER",
+      "line": "docs/PRIVATE_OPERATOR_LOCAL_COMMANDS.md:16:python scripts/mainnet-authorization-check.py --with-redacted-private-evidence"
+    },
+    {
+      "classification": "HISTORICAL_DOC_OK_WITH_BANNER",
+      "line": "docs/PRIVATE_OPERATOR_LOCAL_COMMANDS.md:27:python scripts/mainnet-readiness-check.py --with-redacted-private-evidence"
+    },
+    {
+      "classification": "HISTORICAL_DOC_OK_WITH_BANNER",
+      "line": "docs/PRIVATE_OPERATOR_LOCAL_COMMANDS.md:28:python scripts/mainnet-deployment-authorization-check.py --with-redacted-private-evidence"
+    },
+    {
+      "classification": "HISTORICAL_DOC_OK_WITH_BANNER",
+      "line": "docs/PRIVATE_OPERATOR_LOCAL_COMMANDS.md:29:python scripts/ethereum-mainnet-authorization-check.py --with-redacted-private-evidence"
+    },
+    {
+      "classification": "HISTORICAL_DOC_OK_WITH_BANNER",
+      "line": "docs/POST_UPLOAD_VALIDATION_RUNBOOK.md:23:- [ ] README says Ethereum Mainnet not authorized."
+    },
+    {
+      "classification": "HISTORICAL_DOC_OK_WITH_BANNER",
+      "line": "docs/MAINNET_AUTHORIZATION_WITH_REDACTED_EVIDENCE.md:18:- blocker `PRIVATE_OPERATOR_EVIDENCE_PENDING`."
+    },
+    {
+      "classification": "HISTORICAL_DOC_OK_WITH_BANNER",
+      "line": "docs/MAINNET_AUTHORIZATION_WITH_REDACTED_EVIDENCE.md:25:python scripts/mainnet-readiness-check.py --with-redacted-private-evidence"
+    },
+    {
+      "classification": "HISTORICAL_DOC_OK_WITH_BANNER",
+      "line": "docs/MAINNET_AUTHORIZATION_WITH_REDACTED_EVIDENCE.md:26:python scripts/mainnet-deployment-authorization-check.py --with-redacted-private-evidence"
+    },
+    {
+      "classification": "HISTORICAL_DOC_OK_WITH_BANNER",
+      "line": "docs/MAINNET_AUTHORIZATION_WITH_REDACTED_EVIDENCE.md:27:python scripts/ethereum-mainnet-authorization-check.py --with-redacted-private-evidence"
+    },
+    {
+      "classification": "HISTORICAL_DOC_OK_WITH_BANNER",
+      "line": "docs/V4_2_EVIDENCE_READY_DELTA.md:16:- `docs/EXTERNAL_AUDIT_CLOSURE_REQUEST_v4_2.md`"
+    },
+    {
+      "classification": "HISTORICAL_DOC_OK_WITH_BANNER",
+      "line": "docs/START_HERE_v4_2.md:29:Ethereum Mainnet not authorized."
+    },
+    {
+      "classification": "HISTORICAL_DOC_OK_WITH_BANNER",
+      "line": "docs/START_HERE_v4_3.md:11:- Historical note: v4.3 previously referenced `EXTERNAL_AUDIT_CLOSURE`; v4.4 replaces that requirement with `AUTOMATED_SECURITY_TOOLCHAIN` and `INTERNAL_SECURITY_REVIEW`."
+    },
+    {
+      "classification": "HISTORICAL_DOC_OK_WITH_BANNER",
+      "line": "docs/START_HERE_v4_3.md:28:Ethereum Mainnet not authorized."
+    },
+    {
+      "classification": "HISTORICAL_DOC_OK_WITH_BANNER",
+      "line": "docs/MAINNET_NOT_AUTHORIZED_DECISION_v4_3.md:5:Ethereum Mainnet not authorized."
+    },
+    {
+      "classification": "HISTORICAL_DOC_OK_WITH_BANNER",
+      "line": "docs/MAINNET_NOT_AUTHORIZED_DECISION_v4_3.md:10:Ethereum Mainnet deployment authorization: NO."
+    },
+    {
+      "classification": "HISTORICAL_DOC_OK_WITH_BANNER",
+      "line": "docs/FINAL_LOCAL_OPERATOR_RUNBOOK.md:27:python scripts/mainnet-authorization-check.py --with-redacted-private-evidence"
+    }
+  ],
+  "workflowNames": {
+    ".github/workflows/sepolia-rehearsal.yml": "Local/Sepolia Rehearsal",
+    ".github/workflows/mainnet-authorization-gate.yml": "Mainnet Authorization Gate",
+    ".github/workflows/final-authorization-evidence-check.yml": "Final Authorization Evidence Check",
+    ".github/workflows/final-public-mainnet-authorization.yml": "Final Public Mainnet Authorization",
+    ".github/workflows/dependabot-upgrade-triage.yml": "Dependabot Upgrade Triage",
+    ".github/workflows/solidity-audit-toolchain.yml": "Solidity Audit Toolchain",
+    ".github/workflows/mainnet-gate-watch.yml": "Mainnet Gate Watch",
+    ".github/workflows/agialpha-audit-candidate-ci.yml": "GoalOS AGIALPHA Audit-Candidate CI",
+    ".github/workflows/repository-validation.yml": "Repository Validation",
+    ".github/workflows/ethereum-sepolia-rehearsal.yml": "Ethereum Sepolia Rehearsal"
+  },
+  "workflowNameDuplicationOrMislabeling": "NONE_DETECTED_FOR_REQUIRED_WORKFLOWS",
+  "releaseDocsExist": true,
+  "branchProtection": "PUBLIC_RISK_ACCEPTED_WITH_PRE_DEPLOYMENT_HARDENING_RECOMMENDED",
+  "finalPublicStates": {
+    "TECHNICALLY_MAINNET_READY": "YES",
+    "MAINNET_DEPLOYMENT_AUTHORIZED": "YES",
+    "ETHEREUM_MAINNET_AUTHORIZED": "YES",
+    "MAINNET_DEPLOYED": "NO"
+  },
+  "certificateHash": "0x26b14fc6d28ffe1ef1ae4c091976bfe7991e8805441f270c2d7deb6f7a91df47",
+  "status": "PASSED"
+}

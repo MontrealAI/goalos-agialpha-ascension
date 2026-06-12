@@ -51,15 +51,18 @@ The source of truth is `qa/mainnet-authorization-certificate.json`. README/statu
 
 CI cannot deploy Ethereum Mainnet. Runtime RPC URL, deployer key, and runtime addresses are local broadcast inputs only and are not stored in GitHub. MockAGIALPHA is local/Sepolia-only and is forbidden on Ethereum Mainnet. No new AGIALPHA token is deployed on Ethereum Mainnet.
 
-## Sovereign RSI v6.3 research paper
+## Research paper
 
-The Sovereign RSI v6.3 publication folder is `docs/papers/sovereign-rsi/v6.3/`. Paper assets may be pending upload if they are not present in the tree; do not fabricate missing PDF/DOCX/source files.
+**GoalOS-native alpha-AGI Ascension using AGIALPHA — Sovereign RSI Edition v6.3**
 
-Core thesis: GoalOS sets sovereign aims. AGIALPHA coordinates proof-settled work. AEP-001 defines valid evidence. The Proof Gradient decides what may evolve. The intelligence stays private. The proof becomes verifiable.
+This paper defines the GoalOS-native reimplementation of alpha-AGI Ascension using AGIALPHA as a sovereign RSI architecture for evidence-governed intelligence organizations.
 
-RSI means proof-backed upgrade rights. An artifact may influence future work only after evidence, evaluation, reviewer validation, scope control, challenge window, canary rollout, monitoring, rollback readiness, and chronicle memory.
+- [Read the paper](docs/papers/sovereign-rsi/v6.3/GoalOS_native_alpha_AGI_Ascension_using_AGIALPHA_v6.3_Sovereign_RSI.md)
+- [Download the PDF](docs/papers/sovereign-rsi/v6.3/GoalOS_native_alpha_AGI_Ascension_using_AGIALPHA_v6.3_Sovereign_RSI.pdf)
+- [Download the editable DOCX](docs/papers/sovereign-rsi/v6.3/GoalOS_native_alpha_AGI_Ascension_using_AGIALPHA_v6.3_Sovereign_RSI.docx)
+- [View the TeX source](docs/papers/sovereign-rsi/v6.3/GoalOS_native_alpha_AGI_Ascension_using_AGIALPHA_v6.3_Sovereign_RSI.tex)
 
-Claim boundary: this paper does not claim achieved AGI, ASI, superintelligence, autonomous sovereignty, guaranteed ROI, safety certification, legal approval, tax approval, security approval, energy abundance, or Kardashev Type II achievement.
+Publication-safe boundary: this is an architecture, protocol, benchmark, and implementation-doctrine paper. It does not claim achieved AGI, ASI, superintelligence, empirical SOTA, guaranteed economic return, legal approval, tax approval, security approval, energy abundance, or achieved Kardashev-scale capability.
 """
 
 # Decision JSON/Markdown documents are generated from the same certificate so docs:status is sufficient before assert/checker steps.

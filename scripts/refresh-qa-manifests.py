@@ -24,6 +24,8 @@ IGNORED_PARTS = {
     "coverage",
     "node_modules",
     "typechain-types",
+    "__pycache__",
+    "direct-solc-output",
 }
 
 
@@ -34,6 +36,10 @@ def should_include(path: Path) -> bool:
         return False
     rel_parts = path.relative_to(ROOT).parts
     if IGNORED_PARTS.intersection(rel_parts):
+        return False
+    if path.suffix == ".pyc":
+        return False
+    if path.relative_to(ROOT).as_posix() == "audit/reports/current-run.txt":
         return False
     if rel_parts and rel_parts[0] == "private":
         return False

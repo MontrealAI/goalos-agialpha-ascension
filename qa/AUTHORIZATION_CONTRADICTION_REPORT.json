@@ -1,264 +1,982 @@
 {
-  "status": "COMPLETED",
-  "activeSourceOfTruth": "qa/mainnet-authorization-certificate.json",
-  "summary": {
-    "HISTORICAL_DOC_OK_WITH_BANNER": 22,
-    "STALE_QA_ARTIFACT_MOVE_TO_HISTORICAL": 2,
-    "SCRIPT_BACKWARD_COMPATIBILITY_OK": 8,
-    "OLD_AUDIT_REPORT_OK_AS_ARCHIVED": 10
-  },
-  "findings": [
+  "status": "PASSED",
+  "activeContradictions": [],
+  "classifiedResults": [
     {
-      "path": "qa/COMMAND_RUN_LOG.md",
-      "line": 644,
-      "text": "\"PRIVATE_OPERATOR_EVIDENCE_PENDING\",",
-      "classification": "HISTORICAL_DOC_OK_WITH_BANNER"
+      "classification": "STALE_QA_ARTIFACT_MOVE_TO_HISTORICAL",
+      "line": "qa/historical/MAINNET_AUTHORIZATION_CHECK_EXPECTED_BLOCKED.json:4:    \"PRIVATE_OPERATOR_EVIDENCE_PENDING\","
     },
     {
-      "path": "qa/COMMAND_RUN_LOG.md",
-      "line": 645,
-      "text": "\"Run --with-redacted-private-evidence to evaluate committed redacted private evidence\",",
-      "classification": "HISTORICAL_DOC_OK_WITH_BANNER"
+      "classification": "STALE_QA_ARTIFACT_MOVE_TO_HISTORICAL",
+      "line": "qa/historical/V4_3_LOCAL_QA_COMMAND_OUTPUTS.json:8:      \"summary\": \"Outputs one parseable JSON decision with PRIVATE_OPERATOR_EVIDENCE_PENDING when redacted private commitments are absent.\""
     },
     {
-      "path": "qa/COMMAND_RUN_LOG.md",
-      "line": 648,
-      "text": "\"PRIVATE_OPERATOR_EVIDENCE_PENDING: missing qa/public-ethereum-mainnet-authorization-evidence.json\"",
-      "classification": "HISTORICAL_DOC_OK_WITH_BANNER"
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/MANIFEST.json:5465:      \"path\": \"docs/EXTERNAL_AUDIT_CLOSURE_REQUEST_v4_2.md\","
     },
     {
-      "path": "qa/COMMAND_RUN_LOG.md",
-      "line": 650,
-      "text": "\"reason\": \"PRIVATE_OPERATOR_EVIDENCE_PENDING\",",
-      "classification": "HISTORICAL_DOC_OK_WITH_BANNER"
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/MANIFEST_v4_3_FINAL.json:400:      \"path\": \"docs/EXTERNAL_AUDIT_CLOSURE_REQUEST_v4_2.md\","
     },
     {
-      "path": "qa/historical/MAINNET_AUTHORIZATION_CHECK_EXPECTED_BLOCKED.json",
-      "line": 4,
-      "text": "\"PRIVATE_OPERATOR_EVIDENCE_PENDING\",",
-      "classification": "STALE_QA_ARTIFACT_MOVE_TO_HISTORICAL"
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/MANIFEST_v4_2.json:395:      \"path\": \"docs/EXTERNAL_AUDIT_CLOSURE_REQUEST_v4_2.md\","
     },
     {
-      "path": "qa/historical/V4_3_LOCAL_QA_COMMAND_OUTPUTS.json",
-      "line": 8,
-      "text": "\"summary\": \"Outputs one parseable JSON decision with PRIVATE_OPERATOR_EVIDENCE_PENDING when redacted private commitments are absent.\"",
-      "classification": "STALE_QA_ARTIFACT_MOVE_TO_HISTORICAL"
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:7:      \"line\": \"qa/historical/MAINNET_AUTHORIZATION_CHECK_EXPECTED_BLOCKED.json:4:    \\\"PRIVATE_OPERATOR_EVIDENCE_PENDING\\\",\""
     },
     {
-      "path": "scripts/verify-readiness-v4-2.py",
-      "line": 36,
-      "text": "\"docs/EXTERNAL_AUDIT_CLOSURE_REQUEST_v4_2.md\",",
-      "classification": "SCRIPT_BACKWARD_COMPATIBILITY_OK"
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:11:      \"line\": \"qa/historical/V4_3_LOCAL_QA_COMMAND_OUTPUTS.json:8:      \\\"summary\\\": \\\"Outputs one parseable JSON decision with PRIVATE_OPERATOR_EVIDENCE_PENDING when redacted private commitments are absent.\\\"\""
     },
     {
-      "path": "scripts/verify-readiness-v4-2.py",
-      "line": 73,
-      "text": "for key in [\"LEGAL_SIGNOFF_HASH\", \"TAX_SIGNOFF_HASH\", \"SECURITY_REVIEW_HASH\", \"PUBLIC_CLAIMS_REVIEW_HASH\", \"SEPOLIA_REHEARSAL_EVIDENCE_HASH\", \"EXTERNAL_AUDIT_CLOSURE_HASH\", \"FOUNDER_APPROVAL_HASH\"]:",
-      "classification": "SCRIPT_BACKWARD_COMPATIBILITY_OK"
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:15:      \"line\": \"qa/MANIFEST.json:5250:      \\\"path\\\": \\\"docs/EXTERNAL_AUDIT_CLOSURE_REQUEST_v4_2.md\\\",\""
     },
     {
-      "path": "scripts/mainnet-readiness-check.py",
-      "line": 17,
-      "text": "parser.add_argument('--with-redacted-private-evidence', action='store_true', help='Deprecated no-op; private evidence is not required.')",
-      "classification": "SCRIPT_BACKWARD_COMPATIBILITY_OK"
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:19:      \"line\": \"qa/MANIFEST_v4_3_FINAL.json:400:      \\\"path\\\": \\\"docs/EXTERNAL_AUDIT_CLOSURE_REQUEST_v4_2.md\\\",\""
     },
     {
-      "path": "scripts/assert_public_status.py",
-      "line": 49,
-      "text": "if 'external audit closure' in l or 'external_audit_closure' in line:",
-      "classification": "SCRIPT_BACKWARD_COMPATIBILITY_OK"
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:23:      \"line\": \"qa/MANIFEST_v4_2.json:395:      \\\"path\\\": \\\"docs/EXTERNAL_AUDIT_CLOSURE_REQUEST_v4_2.md\\\",\""
     },
     {
-      "path": "scripts/assert_public_status.py",
-      "line": 50,
-      "text": "errors.append(f'{rel}:{i}: stale external audit closure active-gate language')",
-      "classification": "SCRIPT_BACKWARD_COMPATIBILITY_OK"
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:27:      \"line\": \"qa/AUTHORIZATION_CONTRADICTION_REPORT.json:14:      \\\"text\\\": \\\"\\\\\\\"PRIVATE_OPERATOR_EVIDENCE_PENDING\\\\\\\",\\\",\""
     },
     {
-      "path": "scripts/mainnet-deployment-authorization-check.py",
-      "line": 10,
-      "text": "parser.add_argument('--with-redacted-private-evidence', action='store_true', help='Deprecated no-op; private evidence is not required.')",
-      "classification": "SCRIPT_BACKWARD_COMPATIBILITY_OK"
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:31:      \"line\": \"qa/AUTHORIZATION_CONTRADICTION_REPORT.json:20:      \\\"text\\\": \\\"\\\\\\\"Run --with-redacted-private-evidence to evaluate committed redacted private evidence\\\\\\\",\\\",\""
     },
     {
-      "path": "scripts/mainnet-authorization-check.py",
-      "line": 32,
-      "text": "parser.add_argument(\"--with-redacted-private-evidence\", action=\"store_true\", help=\"Deprecated; public-only final mode ignores private evidence.\")",
-      "classification": "SCRIPT_BACKWARD_COMPATIBILITY_OK"
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:35:      \"line\": \"qa/AUTHORIZATION_CONTRADICTION_REPORT.json:26:      \\\"text\\\": \\\"\\\\\\\"PRIVATE_OPERATOR_EVIDENCE_PENDING: missing qa/public-ethereum-mainnet-authorization-evidence.json\\\\\\\"\\\",\""
     },
     {
-      "path": "scripts/ethereum-mainnet-authorization-check.py",
-      "line": 11,
-      "text": "parser.add_argument('--with-redacted-private-evidence', action='store_true', help='Deprecated no-op; private evidence is not required.')",
-      "classification": "SCRIPT_BACKWARD_COMPATIBILITY_OK"
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:39:      \"line\": \"qa/AUTHORIZATION_CONTRADICTION_REPORT.json:32:      \\\"text\\\": \\\"\\\\\\\"reason\\\\\\\": \\\\\\\"PRIVATE_OPERATOR_EVIDENCE_PENDING\\\\\\\",\\\",\""
     },
     {
-      "path": "audit/reports/dependency-triage/pr-4.log",
-      "line": 254,
-      "text": "\"EXTERNAL_AUDIT_CLOSURE_HASH missing or not bytes32\",",
-      "classification": "OLD_AUDIT_REPORT_OK_AS_ARCHIVED"
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:43:      \"line\": \"qa/AUTHORIZATION_CONTRADICTION_REPORT.json:38:      \\\"text\\\": \\\"\\\\\\\"PRIVATE_OPERATOR_EVIDENCE_PENDING\\\\\\\",\\\",\""
     },
     {
-      "path": "audit/reports/dependency-triage/pr-2.log",
-      "line": 138,
-      "text": "\"EXTERNAL_AUDIT_CLOSURE_HASH missing or not bytes32\",",
-      "classification": "OLD_AUDIT_REPORT_OK_AS_ARCHIVED"
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:47:      \"line\": \"qa/AUTHORIZATION_CONTRADICTION_REPORT.json:44:      \\\"text\\\": \\\"\\\\\\\"summary\\\\\\\": \\\\\\\"Outputs one parseable JSON decision with PRIVATE_OPERATOR_EVIDENCE_PENDING when redacted private commitments are absent.\\\\\\\"\\\",\""
     },
     {
-      "path": "audit/reports/dependency-triage/pr-3.log",
-      "line": 121,
-      "text": "\"EXTERNAL_AUDIT_CLOSURE_HASH missing or not bytes32\",",
-      "classification": "OLD_AUDIT_REPORT_OK_AS_ARCHIVED"
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:51:      \"line\": \"qa/AUTHORIZATION_CONTRADICTION_REPORT.json:50:      \\\"text\\\": \\\"\\\\\\\"docs/EXTERNAL_AUDIT_CLOSURE_REQUEST_v4_2.md\\\\\\\",\\\",\""
     },
     {
-      "path": "audit/reports/2026-06-11-1553/audit-summary.md",
-      "line": 16,
-      "text": "- external audit closure hash missing",
-      "classification": "OLD_AUDIT_REPORT_OK_AS_ARCHIVED"
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:55:      \"line\": \"qa/AUTHORIZATION_CONTRADICTION_REPORT.json:56:      \\\"text\\\": \\\"for key in [\\\\\\\"LEGAL_SIGNOFF_HASH\\\\\\\", \\\\\\\"TAX_SIGNOFF_HASH\\\\\\\", \\\\\\\"SECURITY_REVIEW_HASH\\\\\\\", \\\\\\\"PUBLIC_CLAIMS_REVIEW_HASH\\\\\\\", \\\\\\\"SEPOLIA_REHEARSAL_EVIDENCE_HASH\\\\\\\", \\\\\\\"EXTERNAL_AUDIT_CLOSURE_HASH\\\\\\\", \\\\\\\"FOUNDER_APPROVAL_HASH\\\\\\\"]:\\\",\""
     },
     {
-      "path": "audit/reports/2026-06-11-1553/slither.json",
-      "line": 42106,
-      "text": "\"name\": \"gateOf[LEGAL_REVIEW].passed && gateOf[TAX_REVIEW].passed && gateOf[SECURITY_REVIEW].passed && gateOf[PUBLIC_CLAIMS_REVIEW].passed && gateOf[TREASURY_REVIEW].passed && gateOf[AGIALPHA_TOKEN_VERIFICATION].passed && gateOf[ETHEREUM_SEPOLIA_REHEARSAL].passed && gateOf[EXTERNAL_AUDIT_CLOSURE].passed && gateOf[FOUNDER_APPROVAL].passed\",",
-      "classification": "OLD_AUDIT_REPORT_OK_AS_ARCHIVED"
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:59:      \"line\": \"qa/AUTHORIZATION_CONTRADICTION_REPORT.json:62:      \\\"text\\\": \\\"parser.add_argument('--with-redacted-private-evidence', action='store_true', help='Deprecated no-op; private evidence is not required.')\\\",\""
     },
     {
-      "path": "audit/reports/2026-06-11-1553/slither.json",
-      "line": 42185,
-      "text": "\"description\": \"LaunchGateRegistry.allCoreGatesPassed() (contracts/registry/LaunchGateRegistry.sol#25-27) uses timestamp for comparisons\\n\\tDangerous comparisons:\\n\\t- gateOf[LEGAL_REVIEW].passed && gateOf[TAX_REVIEW].passed && gateOf[SECURITY_REVIEW].passed && gateOf[PUBLIC_CLAIMS_REVIEW].passed && gateOf[TREASURY_REVIEW].passed && gateOf[AGIALPHA_TOKEN_VERIFICATION].passed && gateOf[ETHEREUM_SEPOLIA_REHEARSAL].passed && gateOf[EXTERNAL_AUDIT_CLOSURE].passed && gateOf[FOUNDER_APPROVAL].passed (contracts/registry/LaunchGateRegistry.sol#26)\\n\",",
-      "classification": "OLD_AUDIT_REPORT_OK_AS_ARCHIVED"
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:63:      \"line\": \"qa/AUTHORIZATION_CONTRADICTION_REPORT.json:68:      \\\"text\\\": \\\"if 'external audit closure' in l or 'external_audit_closure' in line:\\\",\""
     },
     {
-      "path": "audit/reports/2026-06-11-1553/slither.json",
-      "line": 42186,
-      "text": "\"markdown\": \"[LaunchGateRegistry.allCoreGatesPassed()](contracts/registry/LaunchGateRegistry.sol#L25-L27) uses timestamp for comparisons\\n\\tDangerous comparisons:\\n\\t- [gateOf[LEGAL_REVIEW].passed && gateOf[TAX_REVIEW].passed && gateOf[SECURITY_REVIEW].passed && gateOf[PUBLIC_CLAIMS_REVIEW].passed && gateOf[TREASURY_REVIEW].passed && gateOf[AGIALPHA_TOKEN_VERIFICATION].passed && gateOf[ETHEREUM_SEPOLIA_REHEARSAL].passed && gateOf[EXTERNAL_AUDIT_CLOSURE].passed && gateOf[FOUNDER_APPROVAL].passed](contracts/registry/LaunchGateRegistry.sol#L26)\\n\",",
-      "classification": "OLD_AUDIT_REPORT_OK_AS_ARCHIVED"
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:67:      \"line\": \"qa/AUTHORIZATION_CONTRADICTION_REPORT.json:74:      \\\"text\\\": \\\"errors.append(f'{rel}:{i}: stale external audit closure active-gate language')\\\",\""
     },
     {
-      "path": "audit/reports/2026-06-11-1553/slither.txt",
-      "line": 294,
-      "text": "- gateOf[LEGAL_REVIEW].passed && gateOf[TAX_REVIEW].passed && gateOf[SECURITY_REVIEW].passed && gateOf[PUBLIC_CLAIMS_REVIEW].passed && gateOf[TREASURY_REVIEW].passed && gateOf[AGIALPHA_TOKEN_VERIFICATION].passed && gateOf[ETHEREUM_SEPOLIA_REHEARSAL].passed && gateOf[EXTERNAL_AUDIT_CLOSURE].passed && gateOf[FOUNDER_APPROVAL].passed (contracts/registry/LaunchGateRegistry.sol#26)",
-      "classification": "OLD_AUDIT_REPORT_OK_AS_ARCHIVED"
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:71:      \"line\": \"qa/AUTHORIZATION_CONTRADICTION_REPORT.json:80:      \\\"text\\\": \\\"parser.add_argument('--with-redacted-private-evidence', action='store_true', help='Deprecated no-op; private evidence is not required.')\\\",\""
     },
     {
-      "path": "audit/reports/2026-06-11-1553/toolchain-clearance-report.md",
-      "line": 7,
-      "text": "- external audit closure hash missing",
-      "classification": "OLD_AUDIT_REPORT_OK_AS_ARCHIVED"
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:75:      \"line\": \"qa/AUTHORIZATION_CONTRADICTION_REPORT.json:86:      \\\"text\\\": \\\"parser.add_argument(\\\\\\\"--with-redacted-private-evidence\\\\\\\", action=\\\\\\\"store_true\\\\\\\", help=\\\\\\\"Deprecated; public-only final mode ignores private evidence.\\\\\\\")\\\",\""
     },
     {
-      "path": "audit/reports/2026-06-11-1553/audit-summary.json",
-      "line": 74,
-      "text": "\"external audit closure hash missing\",",
-      "classification": "OLD_AUDIT_REPORT_OK_AS_ARCHIVED"
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:79:      \"line\": \"qa/AUTHORIZATION_CONTRADICTION_REPORT.json:92:      \\\"text\\\": \\\"parser.add_argument('--with-redacted-private-evidence', action='store_true', help='Deprecated no-op; private evidence is not required.')\\\",\""
     },
     {
-      "path": "docs/POST_UPLOAD_VALIDATION_RUNBOOK.md",
-      "line": 23,
-      "text": "- [ ] README says Ethereum Mainnet not authorized.",
-      "classification": "HISTORICAL_DOC_OK_WITH_BANNER"
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:83:      \"line\": \"qa/AUTHORIZATION_CONTRADICTION_REPORT.json:98:      \\\"text\\\": \\\"\\\\\\\"EXTERNAL_AUDIT_CLOSURE_HASH missing or not bytes32\\\\\\\",\\\",\""
     },
     {
-      "path": "docs/START_HERE_v4_3.md",
-      "line": 11,
-      "text": "- Historical note: v4.3 previously referenced `EXTERNAL_AUDIT_CLOSURE`; v4.4 replaces that requirement with `AUTOMATED_SECURITY_TOOLCHAIN` and `INTERNAL_SECURITY_REVIEW`.",
-      "classification": "HISTORICAL_DOC_OK_WITH_BANNER"
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:87:      \"line\": \"qa/AUTHORIZATION_CONTRADICTION_REPORT.json:104:      \\\"text\\\": \\\"\\\\\\\"EXTERNAL_AUDIT_CLOSURE_HASH missing or not bytes32\\\\\\\",\\\",\""
     },
     {
-      "path": "docs/START_HERE_v4_3.md",
-      "line": 28,
-      "text": "Ethereum Mainnet not authorized.",
-      "classification": "HISTORICAL_DOC_OK_WITH_BANNER"
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:91:      \"line\": \"qa/AUTHORIZATION_CONTRADICTION_REPORT.json:110:      \\\"text\\\": \\\"\\\\\\\"EXTERNAL_AUDIT_CLOSURE_HASH missing or not bytes32\\\\\\\",\\\",\""
     },
     {
-      "path": "docs/PRIVATE_OPERATOR_HANDOFF.md",
-      "line": 34,
-      "text": "8. Run the public checkers with `--with-redacted-private-evidence`.",
-      "classification": "HISTORICAL_DOC_OK_WITH_BANNER"
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:95:      \"line\": \"qa/AUTHORIZATION_CONTRADICTION_REPORT.json:116:      \\\"text\\\": \\\"- external audit closure hash missing\\\",\""
     },
     {
-      "path": "docs/START_HERE_v4_2.md",
-      "line": 29,
-      "text": "Ethereum Mainnet not authorized.",
-      "classification": "HISTORICAL_DOC_OK_WITH_BANNER"
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:99:      \"line\": \"qa/AUTHORIZATION_CONTRADICTION_REPORT.json:122:      \\\"text\\\": \\\"\\\\\\\"name\\\\\\\": \\\\\\\"gateOf[LEGAL_REVIEW].passed && gateOf[TAX_REVIEW].passed && gateOf[SECURITY_REVIEW].passed && gateOf[PUBLIC_CLAIMS_REVIEW].passed && gateOf[TREASURY_REVIEW].passed && gateOf[AGIALPHA_TOKEN_VERIFICATION].passed && gateOf[ETHEREUM_SEPOLIA_REHEARSAL].passed && gateOf[EXTERNAL_AUDIT_CLOSURE].passed && gateOf[FOUNDER_APPROVAL].passed\\\\\\\",\\\",\""
     },
     {
-      "path": "docs/FINAL_LOCAL_OPERATOR_RUNBOOK.md",
-      "line": 25,
-      "text": "python scripts/mainnet-authorization-check.py --with-redacted-private-evidence",
-      "classification": "HISTORICAL_DOC_OK_WITH_BANNER"
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:103:      \"line\": \"qa/AUTHORIZATION_CONTRADICTION_REPORT.json:128:      \\\"text\\\": \\\"\\\\\\\"description\\\\\\\": \\\\\\\"LaunchGateRegistry.allCoreGatesPassed() (contracts/registry/LaunchGateRegistry.sol#25-27) uses timestamp for comparisons\\\\\\\\n\\\\\\\\tDangerous comparisons:\\\\\\\\n\\\\\\\\t- gateOf[LEGAL_REVIEW].passed && gateOf[TAX_REVIEW].passed && gateOf[SECURITY_REVIEW].passed && gateOf[PUBLIC_CLAIMS_REVIEW].passed && gateOf[TREASURY_REVIEW].passed && gateOf[AGIALPHA_TOKEN_VERIFICATION].passed && gateOf[ETHEREUM_SEPOLIA_REHEARSAL].passed && gateOf[EXTERNAL_AUDIT_CLOSURE].passed && gateOf[FOUNDER_APPROVAL].passed (contracts/registry/LaunchGateRegistry.sol#26)\\\\\\\\n\\\\\\\",\\\",\""
     },
     {
-      "path": "docs/MAINNET_NOT_AUTHORIZED_DECISION_v4_3.md",
-      "line": 5,
-      "text": "Ethereum Mainnet not authorized.",
-      "classification": "HISTORICAL_DOC_OK_WITH_BANNER"
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:107:      \"line\": \"qa/AUTHORIZATION_CONTRADICTION_REPORT.json:134:      \\\"text\\\": \\\"\\\\\\\"markdown\\\\\\\": \\\\\\\"[LaunchGateRegistry.allCoreGatesPassed()](contracts/registry/LaunchGateRegistry.sol#L25-L27) uses timestamp for comparisons\\\\\\\\n\\\\\\\\tDangerous comparisons:\\\\\\\\n\\\\\\\\t- [gateOf[LEGAL_REVIEW].passed && gateOf[TAX_REVIEW].passed && gateOf[SECURITY_REVIEW].passed && gateOf[PUBLIC_CLAIMS_REVIEW].passed && gateOf[TREASURY_REVIEW].passed && gateOf[AGIALPHA_TOKEN_VERIFICATION].passed && gateOf[ETHEREUM_SEPOLIA_REHEARSAL].passed && gateOf[EXTERNAL_AUDIT_CLOSURE].passed && gateOf[FOUNDER_APPROVAL].passed](contracts/registry/LaunchGateRegistry.sol#L26)\\\\\\\\n\\\\\\\",\\\",\""
     },
     {
-      "path": "docs/MAINNET_NOT_AUTHORIZED_DECISION_v4_3.md",
-      "line": 10,
-      "text": "Ethereum Mainnet deployment authorization: NO.",
-      "classification": "HISTORICAL_DOC_OK_WITH_BANNER"
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:111:      \"line\": \"qa/AUTHORIZATION_CONTRADICTION_REPORT.json:140:      \\\"text\\\": \\\"- gateOf[LEGAL_REVIEW].passed && gateOf[TAX_REVIEW].passed && gateOf[SECURITY_REVIEW].passed && gateOf[PUBLIC_CLAIMS_REVIEW].passed && gateOf[TREASURY_REVIEW].passed && gateOf[AGIALPHA_TOKEN_VERIFICATION].passed && gateOf[ETHEREUM_SEPOLIA_REHEARSAL].passed && gateOf[EXTERNAL_AUDIT_CLOSURE].passed && gateOf[FOUNDER_APPROVAL].passed (contracts/registry/LaunchGateRegistry.sol#26)\\\",\""
     },
     {
-      "path": "docs/PRIVATE_OPERATOR_LOCAL_COMMANDS.md",
-      "line": 14,
-      "text": "python scripts/mainnet-authorization-check.py --with-redacted-private-evidence",
-      "classification": "HISTORICAL_DOC_OK_WITH_BANNER"
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:115:      \"line\": \"qa/AUTHORIZATION_CONTRADICTION_REPORT.json:146:      \\\"text\\\": \\\"- external audit closure hash missing\\\",\""
     },
     {
-      "path": "docs/PRIVATE_OPERATOR_LOCAL_COMMANDS.md",
-      "line": 25,
-      "text": "python scripts/mainnet-readiness-check.py --with-redacted-private-evidence",
-      "classification": "HISTORICAL_DOC_OK_WITH_BANNER"
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:119:      \"line\": \"qa/AUTHORIZATION_CONTRADICTION_REPORT.json:152:      \\\"text\\\": \\\"\\\\\\\"external audit closure hash missing\\\\\\\",\\\",\""
     },
     {
-      "path": "docs/PRIVATE_OPERATOR_LOCAL_COMMANDS.md",
-      "line": 26,
-      "text": "python scripts/mainnet-deployment-authorization-check.py --with-redacted-private-evidence",
-      "classification": "HISTORICAL_DOC_OK_WITH_BANNER"
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:123:      \"line\": \"qa/AUTHORIZATION_CONTRADICTION_REPORT.json:158:      \\\"text\\\": \\\"- [ ] README says Ethereum Mainnet not authorized.\\\",\""
     },
     {
-      "path": "docs/PRIVATE_OPERATOR_LOCAL_COMMANDS.md",
-      "line": 27,
-      "text": "python scripts/ethereum-mainnet-authorization-check.py --with-redacted-private-evidence",
-      "classification": "HISTORICAL_DOC_OK_WITH_BANNER"
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:127:      \"line\": \"qa/AUTHORIZATION_CONTRADICTION_REPORT.json:164:      \\\"text\\\": \\\"- Historical note: v4.3 previously referenced `EXTERNAL_AUDIT_CLOSURE`; v4.4 replaces that requirement with `AUTOMATED_SECURITY_TOOLCHAIN` and `INTERNAL_SECURITY_REVIEW`.\\\",\""
     },
     {
-      "path": "docs/START_HERE_v3_0.md",
-      "line": 21,
-      "text": "Implementation complete. Mainnet not authorized until all gates pass.",
-      "classification": "HISTORICAL_DOC_OK_WITH_BANNER"
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:131:      \"line\": \"qa/AUTHORIZATION_CONTRADICTION_REPORT.json:170:      \\\"text\\\": \\\"Ethereum Mainnet not authorized.\\\",\""
     },
     {
-      "path": "docs/MAINNET_AUTHORIZATION_WITH_REDACTED_EVIDENCE.md",
-      "line": 18,
-      "text": "- blocker `PRIVATE_OPERATOR_EVIDENCE_PENDING`.",
-      "classification": "HISTORICAL_DOC_OK_WITH_BANNER"
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:135:      \"line\": \"qa/AUTHORIZATION_CONTRADICTION_REPORT.json:176:      \\\"text\\\": \\\"8. Run the public checkers with `--with-redacted-private-evidence`.\\\",\""
     },
     {
-      "path": "docs/MAINNET_AUTHORIZATION_WITH_REDACTED_EVIDENCE.md",
-      "line": 25,
-      "text": "python scripts/mainnet-readiness-check.py --with-redacted-private-evidence",
-      "classification": "HISTORICAL_DOC_OK_WITH_BANNER"
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:139:      \"line\": \"qa/AUTHORIZATION_CONTRADICTION_REPORT.json:182:      \\\"text\\\": \\\"Ethereum Mainnet not authorized.\\\",\""
     },
     {
-      "path": "docs/MAINNET_AUTHORIZATION_WITH_REDACTED_EVIDENCE.md",
-      "line": 26,
-      "text": "python scripts/mainnet-deployment-authorization-check.py --with-redacted-private-evidence",
-      "classification": "HISTORICAL_DOC_OK_WITH_BANNER"
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:143:      \"line\": \"qa/AUTHORIZATION_CONTRADICTION_REPORT.json:188:      \\\"text\\\": \\\"python scripts/mainnet-authorization-check.py --with-redacted-private-evidence\\\",\""
     },
     {
-      "path": "docs/MAINNET_AUTHORIZATION_WITH_REDACTED_EVIDENCE.md",
-      "line": 27,
-      "text": "python scripts/ethereum-mainnet-authorization-check.py --with-redacted-private-evidence",
-      "classification": "HISTORICAL_DOC_OK_WITH_BANNER"
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:147:      \"line\": \"qa/AUTHORIZATION_CONTRADICTION_REPORT.json:194:      \\\"text\\\": \\\"Ethereum Mainnet not authorized.\\\",\""
     },
     {
-      "path": "docs/V4_2_EVIDENCE_READY_DELTA.md",
-      "line": 14,
-      "text": "- `docs/EXTERNAL_AUDIT_CLOSURE_REQUEST_v4_2.md`",
-      "classification": "HISTORICAL_DOC_OK_WITH_BANNER"
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:151:      \"line\": \"qa/AUTHORIZATION_CONTRADICTION_REPORT.json:200:      \\\"text\\\": \\\"Ethereum Mainnet deployment authorization: NO.\\\",\""
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:155:      \"line\": \"qa/AUTHORIZATION_CONTRADICTION_REPORT.json:206:      \\\"text\\\": \\\"python scripts/mainnet-authorization-check.py --with-redacted-private-evidence\\\",\""
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:159:      \"line\": \"qa/AUTHORIZATION_CONTRADICTION_REPORT.json:212:      \\\"text\\\": \\\"python scripts/mainnet-readiness-check.py --with-redacted-private-evidence\\\",\""
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:163:      \"line\": \"qa/AUTHORIZATION_CONTRADICTION_REPORT.json:218:      \\\"text\\\": \\\"python scripts/mainnet-deployment-authorization-check.py --with-redacted-private-evidence\\\",\""
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:167:      \"line\": \"qa/AUTHORIZATION_CONTRADICTION_REPORT.json:224:      \\\"text\\\": \\\"python scripts/ethereum-mainnet-authorization-check.py --with-redacted-private-evidence\\\",\""
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:171:      \"line\": \"qa/AUTHORIZATION_CONTRADICTION_REPORT.json:230:      \\\"text\\\": \\\"Implementation complete. Mainnet not authorized until all gates pass.\\\",\""
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:175:      \"line\": \"qa/AUTHORIZATION_CONTRADICTION_REPORT.json:236:      \\\"text\\\": \\\"- blocker `PRIVATE_OPERATOR_EVIDENCE_PENDING`.\\\",\""
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:179:      \"line\": \"qa/AUTHORIZATION_CONTRADICTION_REPORT.json:242:      \\\"text\\\": \\\"python scripts/mainnet-readiness-check.py --with-redacted-private-evidence\\\",\""
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:183:      \"line\": \"qa/AUTHORIZATION_CONTRADICTION_REPORT.json:248:      \\\"text\\\": \\\"python scripts/mainnet-deployment-authorization-check.py --with-redacted-private-evidence\\\",\""
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:187:      \"line\": \"qa/AUTHORIZATION_CONTRADICTION_REPORT.json:254:      \\\"text\\\": \\\"python scripts/ethereum-mainnet-authorization-check.py --with-redacted-private-evidence\\\",\""
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:191:      \"line\": \"qa/AUTHORIZATION_CONTRADICTION_REPORT.json:260:      \\\"text\\\": \\\"- `docs/EXTERNAL_AUDIT_CLOSURE_REQUEST_v4_2.md`\\\",\""
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:195:      \"line\": \"audit/reports/2026-06-11-1553/toolchain-clearance-report.md:7:- external audit closure hash missing\""
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:199:      \"line\": \"qa/SHA256SUMS_v4_2.txt:79:175eba5cc72b26122d0fd276d6fc785b52e8d8f8adef6794607f3db326a9d800  docs/EXTERNAL_AUDIT_CLOSURE_REQUEST_v4_2.md\""
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:203:      \"line\": \"audit/reports/2026-06-11-1553/slither.txt:294:\\t- gateOf[LEGAL_REVIEW].passed && gateOf[TAX_REVIEW].passed && gateOf[SECURITY_REVIEW].passed && gateOf[PUBLIC_CLAIMS_REVIEW].passed && gateOf[TREASURY_REVIEW].passed && gateOf[AGIALPHA_TOKEN_VERIFICATION].passed && gateOf[ETHEREUM_SEPOLIA_REHEARSAL].passed && gateOf[EXTERNAL_AUDIT_CLOSURE].passed && gateOf[FOUNDER_APPROVAL].passed (contracts/registry/LaunchGateRegistry.sol#26)\""
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:207:      \"line\": \"qa/MANIFEST_MAINNET_AUTHORIZATION_v4_4_0.json:5250:      \\\"path\\\": \\\"docs/EXTERNAL_AUDIT_CLOSURE_REQUEST_v4_2.md\\\",\""
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:211:      \"line\": \"audit/reports/2026-06-11-1553/audit-summary.md:16:- external audit closure hash missing\""
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:215:      \"line\": \"audit/reports/2026-06-11-1553/audit-summary.json:74:    \\\"external audit closure hash missing\\\",\""
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:219:      \"line\": \"qa/COMMAND_RUN_LOG.md:644:    \\\"PRIVATE_OPERATOR_EVIDENCE_PENDING\\\",\""
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:223:      \"line\": \"qa/COMMAND_RUN_LOG.md:645:    \\\"Run --with-redacted-private-evidence to evaluate committed redacted private evidence\\\",\""
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:227:      \"line\": \"qa/COMMAND_RUN_LOG.md:648:    \\\"PRIVATE_OPERATOR_EVIDENCE_PENDING: missing qa/public-ethereum-mainnet-authorization-evidence.json\\\"\""
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:231:      \"line\": \"qa/COMMAND_RUN_LOG.md:650:  \\\"reason\\\": \\\"PRIVATE_OPERATOR_EVIDENCE_PENDING\\\",\""
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:235:      \"line\": \"qa/MANIFEST_v4_3.json:5040:      \\\"path\\\": \\\"docs/EXTERNAL_AUDIT_CLOSURE_REQUEST_v4_2.md\\\",\""
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:239:      \"line\": \"qa/SHA256SUMS_v4_3.txt:80:175eba5cc72b26122d0fd276d6fc785b52e8d8f8adef6794607f3db326a9d800  docs/EXTERNAL_AUDIT_CLOSURE_REQUEST_v4_2.md\""
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:243:      \"line\": \"qa/MANIFEST_v4_4.json:5250:      \\\"path\\\": \\\"docs/EXTERNAL_AUDIT_CLOSURE_REQUEST_v4_2.md\\\",\""
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:247:      \"line\": \"audit/reports/2026-06-11-1553/slither.json:42106:            \\\"name\\\": \\\"gateOf[LEGAL_REVIEW].passed && gateOf[TAX_REVIEW].passed && gateOf[SECURITY_REVIEW].passed && gateOf[PUBLIC_CLAIMS_REVIEW].passed && gateOf[TREASURY_REVIEW].passed && gateOf[AGIALPHA_TOKEN_VERIFICATION].passed && gateOf[ETHEREUM_SEPOLIA_REHEARSAL].passed && gateOf[EXTERNAL_AUDIT_CLOSURE].passed && gateOf[FOUNDER_APPROVAL].passed\\\",\""
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:251:      \"line\": \"audit/reports/2026-06-11-1553/slither.json:42185:        \\\"description\\\": \\\"LaunchGateRegistry.allCoreGatesPassed() (contracts/registry/LaunchGateRegistry.sol#25-27) uses timestamp for comparisons\\\\n\\\\tDangerous comparisons:\\\\n\\\\t- gateOf[LEGAL_REVIEW].passed && gateOf[TAX_REVIEW].passed && gateOf[SECURITY_REVIEW].passed && gateOf[PUBLIC_CLAIMS_REVIEW].passed && gateOf[TREASURY_REVIEW].passed && gateOf[AGIALPHA_TOKEN_VERIFICATION].passed && gateOf[ETHEREUM_SEPOLIA_REHEARSAL].passed && gateOf[EXTERNAL_AUDIT_CLOSURE].passed && gateOf[FOUNDER_APPROVAL].passed (contracts/registry/LaunchGateRegistry.sol#26)\\\\n\\\",\""
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:255:      \"line\": \"audit/reports/2026-06-11-1553/slither.json:42186:        \\\"markdown\\\": \\\"[LaunchGateRegistry.allCoreGatesPassed()](contracts/registry/LaunchGateRegistry.sol#L25-L27) uses timestamp for comparisons\\\\n\\\\tDangerous comparisons:\\\\n\\\\t- [gateOf[LEGAL_REVIEW].passed && gateOf[TAX_REVIEW].passed && gateOf[SECURITY_REVIEW].passed && gateOf[PUBLIC_CLAIMS_REVIEW].passed && gateOf[TREASURY_REVIEW].passed && gateOf[AGIALPHA_TOKEN_VERIFICATION].passed && gateOf[ETHEREUM_SEPOLIA_REHEARSAL].passed && gateOf[EXTERNAL_AUDIT_CLOSURE].passed && gateOf[FOUNDER_APPROVAL].passed](contracts/registry/LaunchGateRegistry.sol#L26)\\\\n\\\",\""
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:259:      \"line\": \"audit/reports/dependency-triage/pr-3.log:121:    \\\"EXTERNAL_AUDIT_CLOSURE_HASH missing or not bytes32\\\",\""
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:263:      \"line\": \"audit/reports/dependency-triage/pr-2.log:138:    \\\"EXTERNAL_AUDIT_CLOSURE_HASH missing or not bytes32\\\",\""
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:267:      \"line\": \"audit/reports/dependency-triage/pr-4.log:254:    \\\"EXTERNAL_AUDIT_CLOSURE_HASH missing or not bytes32\\\",\""
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:271:      \"line\": \"qa/V15_RELEASE_INTEGRITY_REPORT.json:26:      \\\"text\\\": \\\"\\\\\\\"PRIVATE_OPERATOR_EVIDENCE_PENDING\\\\\\\",\\\",\""
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:275:      \"line\": \"qa/V15_RELEASE_INTEGRITY_REPORT.json:32:      \\\"text\\\": \\\"\\\\\\\"Run --with-redacted-private-evidence to evaluate committed redacted private evidence\\\\\\\",\\\",\""
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:279:      \"line\": \"qa/V15_RELEASE_INTEGRITY_REPORT.json:38:      \\\"text\\\": \\\"\\\\\\\"PRIVATE_OPERATOR_EVIDENCE_PENDING: missing qa/public-ethereum-mainnet-authorization-evidence.json\\\\\\\"\\\",\""
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:283:      \"line\": \"qa/V15_RELEASE_INTEGRITY_REPORT.json:44:      \\\"text\\\": \\\"\\\\\\\"reason\\\\\\\": \\\\\\\"PRIVATE_OPERATOR_EVIDENCE_PENDING\\\\\\\",\\\",\""
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:287:      \"line\": \"qa/V15_RELEASE_INTEGRITY_REPORT.json:50:      \\\"text\\\": \\\"\\\\\\\"PRIVATE_OPERATOR_EVIDENCE_PENDING\\\\\\\",\\\",\""
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:291:      \"line\": \"qa/V15_RELEASE_INTEGRITY_REPORT.json:56:      \\\"text\\\": \\\"\\\\\\\"summary\\\\\\\": \\\\\\\"Outputs one parseable JSON decision with PRIVATE_OPERATOR_EVIDENCE_PENDING when redacted private commitments are absent.\\\\\\\"\\\",\""
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:295:      \"line\": \"qa/V15_RELEASE_INTEGRITY_REPORT.json:62:      \\\"text\\\": \\\"\\\\\\\"docs/EXTERNAL_AUDIT_CLOSURE_REQUEST_v4_2.md\\\\\\\",\\\",\""
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:299:      \"line\": \"qa/V15_RELEASE_INTEGRITY_REPORT.json:68:      \\\"text\\\": \\\"for key in [\\\\\\\"LEGAL_SIGNOFF_HASH\\\\\\\", \\\\\\\"TAX_SIGNOFF_HASH\\\\\\\", \\\\\\\"SECURITY_REVIEW_HASH\\\\\\\", \\\\\\\"PUBLIC_CLAIMS_REVIEW_HASH\\\\\\\", \\\\\\\"SEPOLIA_REHEARSAL_EVIDENCE_HASH\\\\\\\", \\\\\\\"EXTERNAL_AUDIT_CLOSURE_HASH\\\\\\\", \\\\\\\"FOUNDER_APPROVAL_HASH\\\\\\\"]:\\\",\""
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:303:      \"line\": \"qa/V15_RELEASE_INTEGRITY_REPORT.json:74:      \\\"text\\\": \\\"parser.add_argument('--with-redacted-private-evidence', action='store_true', help='Deprecated no-op; private evidence is not required.')\\\",\""
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:307:      \"line\": \"qa/V15_RELEASE_INTEGRITY_REPORT.json:80:      \\\"text\\\": \\\"if 'external audit closure' in l or 'external_audit_closure' in line:\\\",\""
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:311:      \"line\": \"qa/V15_RELEASE_INTEGRITY_REPORT.json:86:      \\\"text\\\": \\\"errors.append(f'{rel}:{i}: stale external audit closure active-gate language')\\\",\""
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:315:      \"line\": \"qa/V15_RELEASE_INTEGRITY_REPORT.json:92:      \\\"text\\\": \\\"parser.add_argument('--with-redacted-private-evidence', action='store_true', help='Deprecated no-op; private evidence is not required.')\\\",\""
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:319:      \"line\": \"qa/V15_RELEASE_INTEGRITY_REPORT.json:98:      \\\"text\\\": \\\"parser.add_argument(\\\\\\\"--with-redacted-private-evidence\\\\\\\", action=\\\\\\\"store_true\\\\\\\", help=\\\\\\\"Deprecated; public-only final mode ignores private evidence.\\\\\\\")\\\",\""
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:323:      \"line\": \"qa/V15_RELEASE_INTEGRITY_REPORT.json:104:      \\\"text\\\": \\\"parser.add_argument('--with-redacted-private-evidence', action='store_true', help='Deprecated no-op; private evidence is not required.')\\\",\""
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:327:      \"line\": \"qa/V15_RELEASE_INTEGRITY_REPORT.json:110:      \\\"text\\\": \\\"\\\\\\\"EXTERNAL_AUDIT_CLOSURE_HASH missing or not bytes32\\\\\\\",\\\",\""
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:331:      \"line\": \"qa/V15_RELEASE_INTEGRITY_REPORT.json:116:      \\\"text\\\": \\\"\\\\\\\"EXTERNAL_AUDIT_CLOSURE_HASH missing or not bytes32\\\\\\\",\\\",\""
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:335:      \"line\": \"qa/V15_RELEASE_INTEGRITY_REPORT.json:122:      \\\"text\\\": \\\"\\\\\\\"EXTERNAL_AUDIT_CLOSURE_HASH missing or not bytes32\\\\\\\",\\\",\""
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:339:      \"line\": \"qa/V15_RELEASE_INTEGRITY_REPORT.json:128:      \\\"text\\\": \\\"- external audit closure hash missing\\\",\""
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:343:      \"line\": \"qa/V15_RELEASE_INTEGRITY_REPORT.json:134:      \\\"text\\\": \\\"\\\\\\\"name\\\\\\\": \\\\\\\"gateOf[LEGAL_REVIEW].passed && gateOf[TAX_REVIEW].passed && gateOf[SECURITY_REVIEW].passed && gateOf[PUBLIC_CLAIMS_REVIEW].passed && gateOf[TREASURY_REVIEW].passed && gateOf[AGIALPHA_TOKEN_VERIFICATION].passed && gateOf[ETHEREUM_SEPOLIA_REHEARSAL].passed && gateOf[EXTERNAL_AUDIT_CLOSURE].passed && gateOf[FOUNDER_APPROVAL].passed\\\\\\\",\\\",\""
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:347:      \"line\": \"qa/V15_RELEASE_INTEGRITY_REPORT.json:140:      \\\"text\\\": \\\"\\\\\\\"description\\\\\\\": \\\\\\\"LaunchGateRegistry.allCoreGatesPassed() (contracts/registry/LaunchGateRegistry.sol#25-27) uses timestamp for comparisons\\\\\\\\n\\\\\\\\tDangerous comparisons:\\\\\\\\n\\\\\\\\t- gateOf[LEGAL_REVIEW].passed && gateOf[TAX_REVIEW].passed && gateOf[SECURITY_REVIEW].passed && gateOf[PUBLIC_CLAIMS_REVIEW].passed && gateOf[TREASURY_REVIEW].passed && gateOf[AGIALPHA_TOKEN_VERIFICATION].passed && gateOf[ETHEREUM_SEPOLIA_REHEARSAL].passed && gateOf[EXTERNAL_AUDIT_CLOSURE].passed && gateOf[FOUNDER_APPROVAL].passed (contracts/registry/LaunchGateRegistry.sol#26)\\\\\\\\n\\\\\\\",\\\",\""
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:351:      \"line\": \"qa/V15_RELEASE_INTEGRITY_REPORT.json:146:      \\\"text\\\": \\\"\\\\\\\"markdown\\\\\\\": \\\\\\\"[LaunchGateRegistry.allCoreGatesPassed()](contracts/registry/LaunchGateRegistry.sol#L25-L27) uses timestamp for comparisons\\\\\\\\n\\\\\\\\tDangerous comparisons:\\\\\\\\n\\\\\\\\t- [gateOf[LEGAL_REVIEW].passed && gateOf[TAX_REVIEW].passed && gateOf[SECURITY_REVIEW].passed && gateOf[PUBLIC_CLAIMS_REVIEW].passed && gateOf[TREASURY_REVIEW].passed && gateOf[AGIALPHA_TOKEN_VERIFICATION].passed && gateOf[ETHEREUM_SEPOLIA_REHEARSAL].passed && gateOf[EXTERNAL_AUDIT_CLOSURE].passed && gateOf[FOUNDER_APPROVAL].passed](contracts/registry/LaunchGateRegistry.sol#L26)\\\\\\\\n\\\\\\\",\\\",\""
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:355:      \"line\": \"qa/V15_RELEASE_INTEGRITY_REPORT.json:152:      \\\"text\\\": \\\"- gateOf[LEGAL_REVIEW].passed && gateOf[TAX_REVIEW].passed && gateOf[SECURITY_REVIEW].passed && gateOf[PUBLIC_CLAIMS_REVIEW].passed && gateOf[TREASURY_REVIEW].passed && gateOf[AGIALPHA_TOKEN_VERIFICATION].passed && gateOf[ETHEREUM_SEPOLIA_REHEARSAL].passed && gateOf[EXTERNAL_AUDIT_CLOSURE].passed && gateOf[FOUNDER_APPROVAL].passed (contracts/registry/LaunchGateRegistry.sol#26)\\\",\""
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:359:      \"line\": \"qa/V15_RELEASE_INTEGRITY_REPORT.json:158:      \\\"text\\\": \\\"- external audit closure hash missing\\\",\""
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:363:      \"line\": \"qa/V15_RELEASE_INTEGRITY_REPORT.json:164:      \\\"text\\\": \\\"\\\\\\\"external audit closure hash missing\\\\\\\",\\\",\""
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:367:      \"line\": \"qa/V15_RELEASE_INTEGRITY_REPORT.json:170:      \\\"text\\\": \\\"- [ ] README says Ethereum Mainnet not authorized.\\\",\""
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:371:      \"line\": \"qa/V15_RELEASE_INTEGRITY_REPORT.json:176:      \\\"text\\\": \\\"- Historical note: v4.3 previously referenced `EXTERNAL_AUDIT_CLOSURE`; v4.4 replaces that requirement with `AUTOMATED_SECURITY_TOOLCHAIN` and `INTERNAL_SECURITY_REVIEW`.\\\",\""
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:375:      \"line\": \"qa/V15_RELEASE_INTEGRITY_REPORT.json:182:      \\\"text\\\": \\\"Ethereum Mainnet not authorized.\\\",\""
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:379:      \"line\": \"qa/V15_RELEASE_INTEGRITY_REPORT.json:188:      \\\"text\\\": \\\"8. Run the public checkers with `--with-redacted-private-evidence`.\\\",\""
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:383:      \"line\": \"qa/V15_RELEASE_INTEGRITY_REPORT.json:194:      \\\"text\\\": \\\"Ethereum Mainnet not authorized.\\\",\""
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:387:      \"line\": \"qa/V15_RELEASE_INTEGRITY_REPORT.json:200:      \\\"text\\\": \\\"python scripts/mainnet-authorization-check.py --with-redacted-private-evidence\\\",\""
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:391:      \"line\": \"qa/V15_RELEASE_INTEGRITY_REPORT.json:206:      \\\"text\\\": \\\"Ethereum Mainnet not authorized.\\\",\""
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:395:      \"line\": \"qa/V15_RELEASE_INTEGRITY_REPORT.json:212:      \\\"text\\\": \\\"Ethereum Mainnet deployment authorization: NO.\\\",\""
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:399:      \"line\": \"qa/V15_RELEASE_INTEGRITY_REPORT.json:218:      \\\"text\\\": \\\"python scripts/mainnet-authorization-check.py --with-redacted-private-evidence\\\",\""
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:403:      \"line\": \"qa/V15_RELEASE_INTEGRITY_REPORT.json:224:      \\\"text\\\": \\\"python scripts/mainnet-readiness-check.py --with-redacted-private-evidence\\\",\""
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:407:      \"line\": \"qa/V15_RELEASE_INTEGRITY_REPORT.json:230:      \\\"text\\\": \\\"python scripts/mainnet-deployment-authorization-check.py --with-redacted-private-evidence\\\",\""
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:411:      \"line\": \"qa/V15_RELEASE_INTEGRITY_REPORT.json:236:      \\\"text\\\": \\\"python scripts/ethereum-mainnet-authorization-check.py --with-redacted-private-evidence\\\",\""
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:415:      \"line\": \"qa/V15_RELEASE_INTEGRITY_REPORT.json:242:      \\\"text\\\": \\\"Implementation complete. Mainnet not authorized until all gates pass.\\\",\""
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:419:      \"line\": \"qa/V15_RELEASE_INTEGRITY_REPORT.json:248:      \\\"text\\\": \\\"- blocker `PRIVATE_OPERATOR_EVIDENCE_PENDING`.\\\",\""
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:423:      \"line\": \"qa/V15_RELEASE_INTEGRITY_REPORT.json:254:      \\\"text\\\": \\\"python scripts/mainnet-readiness-check.py --with-redacted-private-evidence\\\",\""
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:427:      \"line\": \"qa/V15_RELEASE_INTEGRITY_REPORT.json:260:      \\\"text\\\": \\\"python scripts/mainnet-deployment-authorization-check.py --with-redacted-private-evidence\\\",\""
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:431:      \"line\": \"qa/V15_RELEASE_INTEGRITY_REPORT.json:266:      \\\"text\\\": \\\"python scripts/ethereum-mainnet-authorization-check.py --with-redacted-private-evidence\\\",\""
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:435:      \"line\": \"qa/V15_RELEASE_INTEGRITY_REPORT.json:272:      \\\"text\\\": \\\"- `docs/EXTERNAL_AUDIT_CLOSURE_REQUEST_v4_2.md`\\\",\""
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:439:      \"line\": \"scripts/verify-readiness-v4-2.py:36:    \\\"docs/EXTERNAL_AUDIT_CLOSURE_REQUEST_v4_2.md\\\",\""
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:443:      \"line\": \"scripts/verify-readiness-v4-2.py:73:    for key in [\\\"LEGAL_SIGNOFF_HASH\\\", \\\"TAX_SIGNOFF_HASH\\\", \\\"SECURITY_REVIEW_HASH\\\", \\\"PUBLIC_CLAIMS_REVIEW_HASH\\\", \\\"SEPOLIA_REHEARSAL_EVIDENCE_HASH\\\", \\\"EXTERNAL_AUDIT_CLOSURE_HASH\\\", \\\"FOUNDER_APPROVAL_HASH\\\"]:\""
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:447:      \"line\": \"scripts/ethereum-mainnet-authorization-check.py:11:    parser.add_argument('--with-redacted-private-evidence', action='store_true', help='Deprecated no-op; private evidence is not required.')\""
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:451:      \"line\": \"scripts/mainnet-readiness-check.py:17:    parser.add_argument('--with-redacted-private-evidence', action='store_true', help='Deprecated no-op; private evidence is not required.')\""
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:455:      \"line\": \"scripts/mainnet-authorization-check.py:32:    parser.add_argument(\\\"--with-redacted-private-evidence\\\", action=\\\"store_true\\\", help=\\\"Deprecated; public-only final mode ignores private evidence.\\\")\""
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:459:      \"line\": \"scripts/mainnet-deployment-authorization-check.py:10:    parser.add_argument('--with-redacted-private-evidence', action='store_true', help='Deprecated no-op; private evidence is not required.')\""
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:463:      \"line\": \"scripts/assert_public_status.py:49:            if 'external audit closure' in l or 'external_audit_closure' in line:\""
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:467:      \"line\": \"scripts/assert_public_status.py:50:                errors.append(f'{rel}:{i}: stale external audit closure active-gate language')\""
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:471:      \"line\": \"docs/START_HERE_v3_0.md:23:Implementation complete. Mainnet not authorized until all gates pass.\""
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:475:      \"line\": \"docs/PRIVATE_OPERATOR_HANDOFF.md:36:8. Run the public checkers with `--with-redacted-private-evidence`.\""
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:479:      \"line\": \"docs/PRIVATE_OPERATOR_LOCAL_COMMANDS.md:16:python scripts/mainnet-authorization-check.py --with-redacted-private-evidence\""
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:483:      \"line\": \"docs/PRIVATE_OPERATOR_LOCAL_COMMANDS.md:27:python scripts/mainnet-readiness-check.py --with-redacted-private-evidence\""
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:487:      \"line\": \"docs/PRIVATE_OPERATOR_LOCAL_COMMANDS.md:28:python scripts/mainnet-deployment-authorization-check.py --with-redacted-private-evidence\""
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:491:      \"line\": \"docs/PRIVATE_OPERATOR_LOCAL_COMMANDS.md:29:python scripts/ethereum-mainnet-authorization-check.py --with-redacted-private-evidence\""
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:495:      \"line\": \"docs/POST_UPLOAD_VALIDATION_RUNBOOK.md:23:- [ ] README says Ethereum Mainnet not authorized.\""
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:499:      \"line\": \"docs/MAINNET_AUTHORIZATION_WITH_REDACTED_EVIDENCE.md:18:- blocker `PRIVATE_OPERATOR_EVIDENCE_PENDING`.\""
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:503:      \"line\": \"docs/MAINNET_AUTHORIZATION_WITH_REDACTED_EVIDENCE.md:25:python scripts/mainnet-readiness-check.py --with-redacted-private-evidence\""
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:507:      \"line\": \"docs/MAINNET_AUTHORIZATION_WITH_REDACTED_EVIDENCE.md:26:python scripts/mainnet-deployment-authorization-check.py --with-redacted-private-evidence\""
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:511:      \"line\": \"docs/MAINNET_AUTHORIZATION_WITH_REDACTED_EVIDENCE.md:27:python scripts/ethereum-mainnet-authorization-check.py --with-redacted-private-evidence\""
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:515:      \"line\": \"docs/V4_2_EVIDENCE_READY_DELTA.md:16:- `docs/EXTERNAL_AUDIT_CLOSURE_REQUEST_v4_2.md`\""
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:519:      \"line\": \"docs/START_HERE_v4_2.md:29:Ethereum Mainnet not authorized.\""
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:523:      \"line\": \"docs/FINAL_LOCAL_OPERATOR_RUNBOOK.md:27:python scripts/mainnet-authorization-check.py --with-redacted-private-evidence\""
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:527:      \"line\": \"docs/MAINNET_NOT_AUTHORIZED_DECISION_v4_3.md:5:Ethereum Mainnet not authorized.\""
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:531:      \"line\": \"docs/MAINNET_NOT_AUTHORIZED_DECISION_v4_3.md:10:Ethereum Mainnet deployment authorization: NO.\""
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:535:      \"line\": \"docs/START_HERE_v4_3.md:11:- Historical note: v4.3 previously referenced `EXTERNAL_AUDIT_CLOSURE`; v4.4 replaces that requirement with `AUTOMATED_SECURITY_TOOLCHAIN` and `INTERNAL_SECURITY_REVIEW`.\""
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/AUTHORIZATION_CONTRADICTION_REPORT.json:539:      \"line\": \"docs/START_HERE_v4_3.md:28:Ethereum Mainnet not authorized.\""
+    },
+    {
+      "classification": "SCRIPT_BACKWARD_COMPATIBILITY_OK",
+      "line": "qa/SHA256SUMS_v4_2.txt:79:175eba5cc72b26122d0fd276d6fc785b52e8d8f8adef6794607f3db326a9d800  docs/EXTERNAL_AUDIT_CLOSURE_REQUEST_v4_2.md"
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/MANIFEST_MAINNET_AUTHORIZATION_v4_4_0.json:5465:      \"path\": \"docs/EXTERNAL_AUDIT_CLOSURE_REQUEST_v4_2.md\","
+    },
+    {
+      "classification": "SCRIPT_BACKWARD_COMPATIBILITY_OK",
+      "line": "qa/COMMAND_RUN_LOG.md:644:    \"PRIVATE_OPERATOR_EVIDENCE_PENDING\","
+    },
+    {
+      "classification": "SCRIPT_BACKWARD_COMPATIBILITY_OK",
+      "line": "qa/COMMAND_RUN_LOG.md:645:    \"Run --with-redacted-private-evidence to evaluate committed redacted private evidence\","
+    },
+    {
+      "classification": "SCRIPT_BACKWARD_COMPATIBILITY_OK",
+      "line": "qa/COMMAND_RUN_LOG.md:648:    \"PRIVATE_OPERATOR_EVIDENCE_PENDING: missing qa/public-ethereum-mainnet-authorization-evidence.json\""
+    },
+    {
+      "classification": "SCRIPT_BACKWARD_COMPATIBILITY_OK",
+      "line": "qa/COMMAND_RUN_LOG.md:650:  \"reason\": \"PRIVATE_OPERATOR_EVIDENCE_PENDING\","
+    },
+    {
+      "classification": "SCRIPT_BACKWARD_COMPATIBILITY_OK",
+      "line": "qa/V16_PUBLICATION_AND_RELEASE_INTEGRITY_REPORT.json:39:      \"line\": \"docs/START_HERE_v3_0.md:23:Implementation complete. Mainnet not authorized until all gates pass.\""
+    },
+    {
+      "classification": "SCRIPT_BACKWARD_COMPATIBILITY_OK",
+      "line": "qa/V16_PUBLICATION_AND_RELEASE_INTEGRITY_REPORT.json:43:      \"line\": \"docs/PRIVATE_OPERATOR_HANDOFF.md:36:8. Run the public checkers with `--with-redacted-private-evidence`.\""
+    },
+    {
+      "classification": "SCRIPT_BACKWARD_COMPATIBILITY_OK",
+      "line": "qa/V16_PUBLICATION_AND_RELEASE_INTEGRITY_REPORT.json:47:      \"line\": \"docs/PRIVATE_OPERATOR_LOCAL_COMMANDS.md:16:python scripts/mainnet-authorization-check.py --with-redacted-private-evidence\""
+    },
+    {
+      "classification": "SCRIPT_BACKWARD_COMPATIBILITY_OK",
+      "line": "qa/V16_PUBLICATION_AND_RELEASE_INTEGRITY_REPORT.json:51:      \"line\": \"docs/PRIVATE_OPERATOR_LOCAL_COMMANDS.md:27:python scripts/mainnet-readiness-check.py --with-redacted-private-evidence\""
+    },
+    {
+      "classification": "SCRIPT_BACKWARD_COMPATIBILITY_OK",
+      "line": "qa/V16_PUBLICATION_AND_RELEASE_INTEGRITY_REPORT.json:55:      \"line\": \"docs/PRIVATE_OPERATOR_LOCAL_COMMANDS.md:28:python scripts/mainnet-deployment-authorization-check.py --with-redacted-private-evidence\""
+    },
+    {
+      "classification": "SCRIPT_BACKWARD_COMPATIBILITY_OK",
+      "line": "qa/V16_PUBLICATION_AND_RELEASE_INTEGRITY_REPORT.json:59:      \"line\": \"docs/PRIVATE_OPERATOR_LOCAL_COMMANDS.md:29:python scripts/ethereum-mainnet-authorization-check.py --with-redacted-private-evidence\""
+    },
+    {
+      "classification": "SCRIPT_BACKWARD_COMPATIBILITY_OK",
+      "line": "qa/V16_PUBLICATION_AND_RELEASE_INTEGRITY_REPORT.json:63:      \"line\": \"docs/POST_UPLOAD_VALIDATION_RUNBOOK.md:23:- [ ] README says Ethereum Mainnet not authorized.\""
+    },
+    {
+      "classification": "SCRIPT_BACKWARD_COMPATIBILITY_OK",
+      "line": "qa/V16_PUBLICATION_AND_RELEASE_INTEGRITY_REPORT.json:67:      \"line\": \"docs/MAINNET_AUTHORIZATION_WITH_REDACTED_EVIDENCE.md:18:- blocker `PRIVATE_OPERATOR_EVIDENCE_PENDING`.\""
+    },
+    {
+      "classification": "SCRIPT_BACKWARD_COMPATIBILITY_OK",
+      "line": "qa/V16_PUBLICATION_AND_RELEASE_INTEGRITY_REPORT.json:71:      \"line\": \"docs/MAINNET_AUTHORIZATION_WITH_REDACTED_EVIDENCE.md:25:python scripts/mainnet-readiness-check.py --with-redacted-private-evidence\""
+    },
+    {
+      "classification": "SCRIPT_BACKWARD_COMPATIBILITY_OK",
+      "line": "qa/V16_PUBLICATION_AND_RELEASE_INTEGRITY_REPORT.json:75:      \"line\": \"docs/MAINNET_AUTHORIZATION_WITH_REDACTED_EVIDENCE.md:26:python scripts/mainnet-deployment-authorization-check.py --with-redacted-private-evidence\""
+    },
+    {
+      "classification": "SCRIPT_BACKWARD_COMPATIBILITY_OK",
+      "line": "qa/V16_PUBLICATION_AND_RELEASE_INTEGRITY_REPORT.json:79:      \"line\": \"docs/MAINNET_AUTHORIZATION_WITH_REDACTED_EVIDENCE.md:27:python scripts/ethereum-mainnet-authorization-check.py --with-redacted-private-evidence\""
+    },
+    {
+      "classification": "SCRIPT_BACKWARD_COMPATIBILITY_OK",
+      "line": "qa/V16_PUBLICATION_AND_RELEASE_INTEGRITY_REPORT.json:83:      \"line\": \"docs/V4_2_EVIDENCE_READY_DELTA.md:16:- `docs/EXTERNAL_AUDIT_CLOSURE_REQUEST_v4_2.md`\""
+    },
+    {
+      "classification": "SCRIPT_BACKWARD_COMPATIBILITY_OK",
+      "line": "qa/V16_PUBLICATION_AND_RELEASE_INTEGRITY_REPORT.json:87:      \"line\": \"docs/START_HERE_v4_2.md:29:Ethereum Mainnet not authorized.\""
+    },
+    {
+      "classification": "SCRIPT_BACKWARD_COMPATIBILITY_OK",
+      "line": "qa/V16_PUBLICATION_AND_RELEASE_INTEGRITY_REPORT.json:91:      \"line\": \"docs/FINAL_LOCAL_OPERATOR_RUNBOOK.md:27:python scripts/mainnet-authorization-check.py --with-redacted-private-evidence\""
+    },
+    {
+      "classification": "SCRIPT_BACKWARD_COMPATIBILITY_OK",
+      "line": "qa/V16_PUBLICATION_AND_RELEASE_INTEGRITY_REPORT.json:95:      \"line\": \"docs/MAINNET_NOT_AUTHORIZED_DECISION_v4_3.md:5:Ethereum Mainnet not authorized.\""
+    },
+    {
+      "classification": "SCRIPT_BACKWARD_COMPATIBILITY_OK",
+      "line": "qa/V16_PUBLICATION_AND_RELEASE_INTEGRITY_REPORT.json:99:      \"line\": \"docs/MAINNET_NOT_AUTHORIZED_DECISION_v4_3.md:10:Ethereum Mainnet deployment authorization: NO.\""
+    },
+    {
+      "classification": "SCRIPT_BACKWARD_COMPATIBILITY_OK",
+      "line": "qa/V16_PUBLICATION_AND_RELEASE_INTEGRITY_REPORT.json:103:      \"line\": \"docs/START_HERE_v4_3.md:11:- Historical note: v4.3 previously referenced `EXTERNAL_AUDIT_CLOSURE`; v4.4 replaces that requirement with `AUTOMATED_SECURITY_TOOLCHAIN` and `INTERNAL_SECURITY_REVIEW`.\""
+    },
+    {
+      "classification": "SCRIPT_BACKWARD_COMPATIBILITY_OK",
+      "line": "qa/V16_PUBLICATION_AND_RELEASE_INTEGRITY_REPORT.json:107:      \"line\": \"docs/START_HERE_v4_3.md:28:Ethereum Mainnet not authorized.\""
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/MANIFEST_v4_3.json:5255:      \"path\": \"docs/EXTERNAL_AUDIT_CLOSURE_REQUEST_v4_2.md\","
+    },
+    {
+      "classification": "SCRIPT_BACKWARD_COMPATIBILITY_OK",
+      "line": "qa/SHA256SUMS_v4_3.txt:80:175eba5cc72b26122d0fd276d6fc785b52e8d8f8adef6794607f3db326a9d800  docs/EXTERNAL_AUDIT_CLOSURE_REQUEST_v4_2.md"
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/MANIFEST_v4_4.json:5465:      \"path\": \"docs/EXTERNAL_AUDIT_CLOSURE_REQUEST_v4_2.md\","
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/V15_RELEASE_INTEGRITY_REPORT.json:26:      \"text\": \"\\\"PRIVATE_OPERATOR_EVIDENCE_PENDING\\\",\","
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/V15_RELEASE_INTEGRITY_REPORT.json:32:      \"text\": \"\\\"Run --with-redacted-private-evidence to evaluate committed redacted private evidence\\\",\","
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/V15_RELEASE_INTEGRITY_REPORT.json:38:      \"text\": \"\\\"PRIVATE_OPERATOR_EVIDENCE_PENDING: missing qa/public-ethereum-mainnet-authorization-evidence.json\\\"\","
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/V15_RELEASE_INTEGRITY_REPORT.json:44:      \"text\": \"\\\"reason\\\": \\\"PRIVATE_OPERATOR_EVIDENCE_PENDING\\\",\","
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/V15_RELEASE_INTEGRITY_REPORT.json:50:      \"text\": \"\\\"PRIVATE_OPERATOR_EVIDENCE_PENDING\\\",\","
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/V15_RELEASE_INTEGRITY_REPORT.json:56:      \"text\": \"\\\"summary\\\": \\\"Outputs one parseable JSON decision with PRIVATE_OPERATOR_EVIDENCE_PENDING when redacted private commitments are absent.\\\"\","
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/V15_RELEASE_INTEGRITY_REPORT.json:62:      \"text\": \"\\\"docs/EXTERNAL_AUDIT_CLOSURE_REQUEST_v4_2.md\\\",\","
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/V15_RELEASE_INTEGRITY_REPORT.json:68:      \"text\": \"for key in [\\\"LEGAL_SIGNOFF_HASH\\\", \\\"TAX_SIGNOFF_HASH\\\", \\\"SECURITY_REVIEW_HASH\\\", \\\"PUBLIC_CLAIMS_REVIEW_HASH\\\", \\\"SEPOLIA_REHEARSAL_EVIDENCE_HASH\\\", \\\"EXTERNAL_AUDIT_CLOSURE_HASH\\\", \\\"FOUNDER_APPROVAL_HASH\\\"]:\","
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/V15_RELEASE_INTEGRITY_REPORT.json:74:      \"text\": \"parser.add_argument('--with-redacted-private-evidence', action='store_true', help='Deprecated no-op; private evidence is not required.')\","
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/V15_RELEASE_INTEGRITY_REPORT.json:80:      \"text\": \"if 'external audit closure' in l or 'external_audit_closure' in line:\","
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/V15_RELEASE_INTEGRITY_REPORT.json:86:      \"text\": \"errors.append(f'{rel}:{i}: stale external audit closure active-gate language')\","
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/V15_RELEASE_INTEGRITY_REPORT.json:92:      \"text\": \"parser.add_argument('--with-redacted-private-evidence', action='store_true', help='Deprecated no-op; private evidence is not required.')\","
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/V15_RELEASE_INTEGRITY_REPORT.json:98:      \"text\": \"parser.add_argument(\\\"--with-redacted-private-evidence\\\", action=\\\"store_true\\\", help=\\\"Deprecated; public-only final mode ignores private evidence.\\\")\","
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/V15_RELEASE_INTEGRITY_REPORT.json:104:      \"text\": \"parser.add_argument('--with-redacted-private-evidence', action='store_true', help='Deprecated no-op; private evidence is not required.')\","
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/V15_RELEASE_INTEGRITY_REPORT.json:110:      \"text\": \"\\\"EXTERNAL_AUDIT_CLOSURE_HASH missing or not bytes32\\\",\","
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/V15_RELEASE_INTEGRITY_REPORT.json:116:      \"text\": \"\\\"EXTERNAL_AUDIT_CLOSURE_HASH missing or not bytes32\\\",\","
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/V15_RELEASE_INTEGRITY_REPORT.json:122:      \"text\": \"\\\"EXTERNAL_AUDIT_CLOSURE_HASH missing or not bytes32\\\",\","
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/V15_RELEASE_INTEGRITY_REPORT.json:128:      \"text\": \"- external audit closure hash missing\","
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/V15_RELEASE_INTEGRITY_REPORT.json:134:      \"text\": \"\\\"name\\\": \\\"gateOf[LEGAL_REVIEW].passed && gateOf[TAX_REVIEW].passed && gateOf[SECURITY_REVIEW].passed && gateOf[PUBLIC_CLAIMS_REVIEW].passed && gateOf[TREASURY_REVIEW].passed && gateOf[AGIALPHA_TOKEN_VERIFICATION].passed && gateOf[ETHEREUM_SEPOLIA_REHEARSAL].passed && gateOf[EXTERNAL_AUDIT_CLOSURE].passed && gateOf[FOUNDER_APPROVAL].passed\\\",\","
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/V15_RELEASE_INTEGRITY_REPORT.json:140:      \"text\": \"\\\"description\\\": \\\"LaunchGateRegistry.allCoreGatesPassed() (contracts/registry/LaunchGateRegistry.sol#25-27) uses timestamp for comparisons\\\\n\\\\tDangerous comparisons:\\\\n\\\\t- gateOf[LEGAL_REVIEW].passed && gateOf[TAX_REVIEW].passed && gateOf[SECURITY_REVIEW].passed && gateOf[PUBLIC_CLAIMS_REVIEW].passed && gateOf[TREASURY_REVIEW].passed && gateOf[AGIALPHA_TOKEN_VERIFICATION].passed && gateOf[ETHEREUM_SEPOLIA_REHEARSAL].passed && gateOf[EXTERNAL_AUDIT_CLOSURE].passed && gateOf[FOUNDER_APPROVAL].passed (contracts/registry/LaunchGateRegistry.sol#26)\\\\n\\\",\","
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/V15_RELEASE_INTEGRITY_REPORT.json:146:      \"text\": \"\\\"markdown\\\": \\\"[LaunchGateRegistry.allCoreGatesPassed()](contracts/registry/LaunchGateRegistry.sol#L25-L27) uses timestamp for comparisons\\\\n\\\\tDangerous comparisons:\\\\n\\\\t- [gateOf[LEGAL_REVIEW].passed && gateOf[TAX_REVIEW].passed && gateOf[SECURITY_REVIEW].passed && gateOf[PUBLIC_CLAIMS_REVIEW].passed && gateOf[TREASURY_REVIEW].passed && gateOf[AGIALPHA_TOKEN_VERIFICATION].passed && gateOf[ETHEREUM_SEPOLIA_REHEARSAL].passed && gateOf[EXTERNAL_AUDIT_CLOSURE].passed && gateOf[FOUNDER_APPROVAL].passed](contracts/registry/LaunchGateRegistry.sol#L26)\\\\n\\\",\","
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/V15_RELEASE_INTEGRITY_REPORT.json:152:      \"text\": \"- gateOf[LEGAL_REVIEW].passed && gateOf[TAX_REVIEW].passed && gateOf[SECURITY_REVIEW].passed && gateOf[PUBLIC_CLAIMS_REVIEW].passed && gateOf[TREASURY_REVIEW].passed && gateOf[AGIALPHA_TOKEN_VERIFICATION].passed && gateOf[ETHEREUM_SEPOLIA_REHEARSAL].passed && gateOf[EXTERNAL_AUDIT_CLOSURE].passed && gateOf[FOUNDER_APPROVAL].passed (contracts/registry/LaunchGateRegistry.sol#26)\","
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/V15_RELEASE_INTEGRITY_REPORT.json:158:      \"text\": \"- external audit closure hash missing\","
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/V15_RELEASE_INTEGRITY_REPORT.json:164:      \"text\": \"\\\"external audit closure hash missing\\\",\","
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/V15_RELEASE_INTEGRITY_REPORT.json:170:      \"text\": \"- [ ] README says Ethereum Mainnet not authorized.\","
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/V15_RELEASE_INTEGRITY_REPORT.json:176:      \"text\": \"- Historical note: v4.3 previously referenced `EXTERNAL_AUDIT_CLOSURE`; v4.4 replaces that requirement with `AUTOMATED_SECURITY_TOOLCHAIN` and `INTERNAL_SECURITY_REVIEW`.\","
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/V15_RELEASE_INTEGRITY_REPORT.json:182:      \"text\": \"Ethereum Mainnet not authorized.\","
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/V15_RELEASE_INTEGRITY_REPORT.json:188:      \"text\": \"8. Run the public checkers with `--with-redacted-private-evidence`.\","
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/V15_RELEASE_INTEGRITY_REPORT.json:194:      \"text\": \"Ethereum Mainnet not authorized.\","
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/V15_RELEASE_INTEGRITY_REPORT.json:200:      \"text\": \"python scripts/mainnet-authorization-check.py --with-redacted-private-evidence\","
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/V15_RELEASE_INTEGRITY_REPORT.json:206:      \"text\": \"Ethereum Mainnet not authorized.\","
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/V15_RELEASE_INTEGRITY_REPORT.json:212:      \"text\": \"Ethereum Mainnet deployment authorization: NO.\","
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/V15_RELEASE_INTEGRITY_REPORT.json:218:      \"text\": \"python scripts/mainnet-authorization-check.py --with-redacted-private-evidence\","
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/V15_RELEASE_INTEGRITY_REPORT.json:224:      \"text\": \"python scripts/mainnet-readiness-check.py --with-redacted-private-evidence\","
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/V15_RELEASE_INTEGRITY_REPORT.json:230:      \"text\": \"python scripts/mainnet-deployment-authorization-check.py --with-redacted-private-evidence\","
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/V15_RELEASE_INTEGRITY_REPORT.json:236:      \"text\": \"python scripts/ethereum-mainnet-authorization-check.py --with-redacted-private-evidence\","
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/V15_RELEASE_INTEGRITY_REPORT.json:242:      \"text\": \"Implementation complete. Mainnet not authorized until all gates pass.\","
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/V15_RELEASE_INTEGRITY_REPORT.json:248:      \"text\": \"- blocker `PRIVATE_OPERATOR_EVIDENCE_PENDING`.\","
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/V15_RELEASE_INTEGRITY_REPORT.json:254:      \"text\": \"python scripts/mainnet-readiness-check.py --with-redacted-private-evidence\","
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/V15_RELEASE_INTEGRITY_REPORT.json:260:      \"text\": \"python scripts/mainnet-deployment-authorization-check.py --with-redacted-private-evidence\","
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/V15_RELEASE_INTEGRITY_REPORT.json:266:      \"text\": \"python scripts/ethereum-mainnet-authorization-check.py --with-redacted-private-evidence\","
+    },
+    {
+      "classification": "HISTORICAL_QA_REPORT_OR_MANIFEST_REFERENCE_OK",
+      "line": "qa/V15_RELEASE_INTEGRITY_REPORT.json:272:      \"text\": \"- `docs/EXTERNAL_AUDIT_CLOSURE_REQUEST_v4_2.md`\","
+    },
+    {
+      "classification": "OLD_AUDIT_REPORT_OK_AS_ARCHIVED",
+      "line": "audit/reports/2026-06-11-1553/toolchain-clearance-report.md:7:- external audit closure hash missing"
+    },
+    {
+      "classification": "SCRIPT_BACKWARD_COMPATIBILITY_OK",
+      "line": "scripts/verify-readiness-v4-2.py:36:    \"docs/EXTERNAL_AUDIT_CLOSURE_REQUEST_v4_2.md\","
+    },
+    {
+      "classification": "SCRIPT_BACKWARD_COMPATIBILITY_OK",
+      "line": "scripts/verify-readiness-v4-2.py:73:    for key in [\"LEGAL_SIGNOFF_HASH\", \"TAX_SIGNOFF_HASH\", \"SECURITY_REVIEW_HASH\", \"PUBLIC_CLAIMS_REVIEW_HASH\", \"SEPOLIA_REHEARSAL_EVIDENCE_HASH\", \"EXTERNAL_AUDIT_CLOSURE_HASH\", \"FOUNDER_APPROVAL_HASH\"]:"
+    },
+    {
+      "classification": "OLD_AUDIT_REPORT_OK_AS_ARCHIVED",
+      "line": "audit/reports/2026-06-11-1553/slither.txt:294:\t- gateOf[LEGAL_REVIEW].passed && gateOf[TAX_REVIEW].passed && gateOf[SECURITY_REVIEW].passed && gateOf[PUBLIC_CLAIMS_REVIEW].passed && gateOf[TREASURY_REVIEW].passed && gateOf[AGIALPHA_TOKEN_VERIFICATION].passed && gateOf[ETHEREUM_SEPOLIA_REHEARSAL].passed && gateOf[EXTERNAL_AUDIT_CLOSURE].passed && gateOf[FOUNDER_APPROVAL].passed (contracts/registry/LaunchGateRegistry.sol#26)"
+    },
+    {
+      "classification": "OLD_AUDIT_REPORT_OK_AS_ARCHIVED",
+      "line": "audit/reports/2026-06-11-1553/audit-summary.md:16:- external audit closure hash missing"
+    },
+    {
+      "classification": "SCRIPT_BACKWARD_COMPATIBILITY_OK",
+      "line": "scripts/ethereum-mainnet-authorization-check.py:11:    parser.add_argument('--with-redacted-private-evidence', action='store_true', help='Deprecated no-op; private evidence is not required.')"
+    },
+    {
+      "classification": "OLD_AUDIT_REPORT_OK_AS_ARCHIVED",
+      "line": "audit/reports/2026-06-11-1553/audit-summary.json:74:    \"external audit closure hash missing\","
+    },
+    {
+      "classification": "SCRIPT_BACKWARD_COMPATIBILITY_OK",
+      "line": "scripts/mainnet-readiness-check.py:17:    parser.add_argument('--with-redacted-private-evidence', action='store_true', help='Deprecated no-op; private evidence is not required.')"
+    },
+    {
+      "classification": "SCRIPT_BACKWARD_COMPATIBILITY_OK",
+      "line": "scripts/mainnet-authorization-check.py:32:    parser.add_argument(\"--with-redacted-private-evidence\", action=\"store_true\", help=\"Deprecated; public-only final mode ignores private evidence.\")"
+    },
+    {
+      "classification": "SCRIPT_BACKWARD_COMPATIBILITY_OK",
+      "line": "scripts/mainnet-deployment-authorization-check.py:10:    parser.add_argument('--with-redacted-private-evidence', action='store_true', help='Deprecated no-op; private evidence is not required.')"
+    },
+    {
+      "classification": "SCRIPT_BACKWARD_COMPATIBILITY_OK",
+      "line": "scripts/assert_public_status.py:49:            if 'external audit closure' in l or 'external_audit_closure' in line:"
+    },
+    {
+      "classification": "SCRIPT_BACKWARD_COMPATIBILITY_OK",
+      "line": "scripts/assert_public_status.py:50:                errors.append(f'{rel}:{i}: stale external audit closure active-gate language')"
+    },
+    {
+      "classification": "OLD_AUDIT_REPORT_OK_AS_ARCHIVED",
+      "line": "audit/reports/2026-06-11-1553/slither.json:42106:            \"name\": \"gateOf[LEGAL_REVIEW].passed && gateOf[TAX_REVIEW].passed && gateOf[SECURITY_REVIEW].passed && gateOf[PUBLIC_CLAIMS_REVIEW].passed && gateOf[TREASURY_REVIEW].passed && gateOf[AGIALPHA_TOKEN_VERIFICATION].passed && gateOf[ETHEREUM_SEPOLIA_REHEARSAL].passed && gateOf[EXTERNAL_AUDIT_CLOSURE].passed && gateOf[FOUNDER_APPROVAL].passed\","
+    },
+    {
+      "classification": "OLD_AUDIT_REPORT_OK_AS_ARCHIVED",
+      "line": "audit/reports/2026-06-11-1553/slither.json:42185:        \"description\": \"LaunchGateRegistry.allCoreGatesPassed() (contracts/registry/LaunchGateRegistry.sol#25-27) uses timestamp for comparisons\\n\\tDangerous comparisons:\\n\\t- gateOf[LEGAL_REVIEW].passed && gateOf[TAX_REVIEW].passed && gateOf[SECURITY_REVIEW].passed && gateOf[PUBLIC_CLAIMS_REVIEW].passed && gateOf[TREASURY_REVIEW].passed && gateOf[AGIALPHA_TOKEN_VERIFICATION].passed && gateOf[ETHEREUM_SEPOLIA_REHEARSAL].passed && gateOf[EXTERNAL_AUDIT_CLOSURE].passed && gateOf[FOUNDER_APPROVAL].passed (contracts/registry/LaunchGateRegistry.sol#26)\\n\","
+    },
+    {
+      "classification": "OLD_AUDIT_REPORT_OK_AS_ARCHIVED",
+      "line": "audit/reports/2026-06-11-1553/slither.json:42186:        \"markdown\": \"[LaunchGateRegistry.allCoreGatesPassed()](contracts/registry/LaunchGateRegistry.sol#L25-L27) uses timestamp for comparisons\\n\\tDangerous comparisons:\\n\\t- [gateOf[LEGAL_REVIEW].passed && gateOf[TAX_REVIEW].passed && gateOf[SECURITY_REVIEW].passed && gateOf[PUBLIC_CLAIMS_REVIEW].passed && gateOf[TREASURY_REVIEW].passed && gateOf[AGIALPHA_TOKEN_VERIFICATION].passed && gateOf[ETHEREUM_SEPOLIA_REHEARSAL].passed && gateOf[EXTERNAL_AUDIT_CLOSURE].passed && gateOf[FOUNDER_APPROVAL].passed](contracts/registry/LaunchGateRegistry.sol#L26)\\n\","
+    },
+    {
+      "classification": "OLD_AUDIT_REPORT_OK_AS_ARCHIVED",
+      "line": "audit/reports/dependency-triage/pr-3.log:121:    \"EXTERNAL_AUDIT_CLOSURE_HASH missing or not bytes32\","
+    },
+    {
+      "classification": "OLD_AUDIT_REPORT_OK_AS_ARCHIVED",
+      "line": "audit/reports/dependency-triage/pr-2.log:138:    \"EXTERNAL_AUDIT_CLOSURE_HASH missing or not bytes32\","
+    },
+    {
+      "classification": "OLD_AUDIT_REPORT_OK_AS_ARCHIVED",
+      "line": "audit/reports/dependency-triage/pr-4.log:254:    \"EXTERNAL_AUDIT_CLOSURE_HASH missing or not bytes32\","
+    },
+    {
+      "classification": "HISTORICAL_DOC_OK_WITH_BANNER",
+      "line": "docs/START_HERE_v3_0.md:23:Implementation complete. Mainnet not authorized until all gates pass."
+    },
+    {
+      "classification": "HISTORICAL_DOC_OK_WITH_BANNER",
+      "line": "docs/PRIVATE_OPERATOR_HANDOFF.md:36:8. Run the public checkers with `--with-redacted-private-evidence`."
+    },
+    {
+      "classification": "HISTORICAL_DOC_OK_WITH_BANNER",
+      "line": "docs/PRIVATE_OPERATOR_LOCAL_COMMANDS.md:16:python scripts/mainnet-authorization-check.py --with-redacted-private-evidence"
+    },
+    {
+      "classification": "HISTORICAL_DOC_OK_WITH_BANNER",
+      "line": "docs/PRIVATE_OPERATOR_LOCAL_COMMANDS.md:27:python scripts/mainnet-readiness-check.py --with-redacted-private-evidence"
+    },
+    {
+      "classification": "HISTORICAL_DOC_OK_WITH_BANNER",
+      "line": "docs/PRIVATE_OPERATOR_LOCAL_COMMANDS.md:28:python scripts/mainnet-deployment-authorization-check.py --with-redacted-private-evidence"
+    },
+    {
+      "classification": "HISTORICAL_DOC_OK_WITH_BANNER",
+      "line": "docs/PRIVATE_OPERATOR_LOCAL_COMMANDS.md:29:python scripts/ethereum-mainnet-authorization-check.py --with-redacted-private-evidence"
+    },
+    {
+      "classification": "HISTORICAL_DOC_OK_WITH_BANNER",
+      "line": "docs/POST_UPLOAD_VALIDATION_RUNBOOK.md:23:- [ ] README says Ethereum Mainnet not authorized."
+    },
+    {
+      "classification": "HISTORICAL_DOC_OK_WITH_BANNER",
+      "line": "docs/MAINNET_AUTHORIZATION_WITH_REDACTED_EVIDENCE.md:18:- blocker `PRIVATE_OPERATOR_EVIDENCE_PENDING`."
+    },
+    {
+      "classification": "HISTORICAL_DOC_OK_WITH_BANNER",
+      "line": "docs/MAINNET_AUTHORIZATION_WITH_REDACTED_EVIDENCE.md:25:python scripts/mainnet-readiness-check.py --with-redacted-private-evidence"
+    },
+    {
+      "classification": "HISTORICAL_DOC_OK_WITH_BANNER",
+      "line": "docs/MAINNET_AUTHORIZATION_WITH_REDACTED_EVIDENCE.md:26:python scripts/mainnet-deployment-authorization-check.py --with-redacted-private-evidence"
+    },
+    {
+      "classification": "HISTORICAL_DOC_OK_WITH_BANNER",
+      "line": "docs/MAINNET_AUTHORIZATION_WITH_REDACTED_EVIDENCE.md:27:python scripts/ethereum-mainnet-authorization-check.py --with-redacted-private-evidence"
+    },
+    {
+      "classification": "HISTORICAL_DOC_OK_WITH_BANNER",
+      "line": "docs/V4_2_EVIDENCE_READY_DELTA.md:16:- `docs/EXTERNAL_AUDIT_CLOSURE_REQUEST_v4_2.md`"
+    },
+    {
+      "classification": "HISTORICAL_DOC_OK_WITH_BANNER",
+      "line": "docs/START_HERE_v4_2.md:29:Ethereum Mainnet not authorized."
+    },
+    {
+      "classification": "HISTORICAL_DOC_OK_WITH_BANNER",
+      "line": "docs/START_HERE_v4_3.md:11:- Historical note: v4.3 previously referenced `EXTERNAL_AUDIT_CLOSURE`; v4.4 replaces that requirement with `AUTOMATED_SECURITY_TOOLCHAIN` and `INTERNAL_SECURITY_REVIEW`."
+    },
+    {
+      "classification": "HISTORICAL_DOC_OK_WITH_BANNER",
+      "line": "docs/START_HERE_v4_3.md:28:Ethereum Mainnet not authorized."
+    },
+    {
+      "classification": "HISTORICAL_DOC_OK_WITH_BANNER",
+      "line": "docs/MAINNET_NOT_AUTHORIZED_DECISION_v4_3.md:5:Ethereum Mainnet not authorized."
+    },
+    {
+      "classification": "HISTORICAL_DOC_OK_WITH_BANNER",
+      "line": "docs/MAINNET_NOT_AUTHORIZED_DECISION_v4_3.md:10:Ethereum Mainnet deployment authorization: NO."
+    },
+    {
+      "classification": "HISTORICAL_DOC_OK_WITH_BANNER",
+      "line": "docs/FINAL_LOCAL_OPERATOR_RUNBOOK.md:27:python scripts/mainnet-authorization-check.py --with-redacted-private-evidence"
     }
   ],
   "finalPublicStates": {

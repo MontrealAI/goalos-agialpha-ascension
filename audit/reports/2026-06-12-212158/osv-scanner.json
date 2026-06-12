@@ -1,0 +1,2183 @@
+{
+  "tool": "osv-scanner",
+  "status": "COMPLETED_TRIAGED",
+  "scannerExitStatus": 1,
+  "rawResults": {
+    "results": [
+      {
+        "source": {
+          "path": "/workspace/goalos-agialpha-ascension/package-lock.json",
+          "type": "lockfile"
+        },
+        "packages": [
+          {
+            "package": {
+              "name": "bn.js",
+              "version": "4.11.6",
+              "ecosystem": "npm"
+            },
+            "dependency_groups": [
+              "dev"
+            ],
+            "vulnerabilities": [
+              {
+                "modified": "2026-02-25T13:44:03Z",
+                "published": "2026-02-20T06:30:39Z",
+                "schema_version": "1.7.3",
+                "id": "GHSA-378v-28hj-76wf",
+                "aliases": [
+                  "CVE-2026-2739"
+                ],
+                "related": [
+                  "CGA-j9mh-7wr6-2qqr"
+                ],
+                "summary": "bn.js affected by an infinite loop",
+                "details": "This affects versions of the package bn.js before 4.12.3 and 5.2.3. Calling maskn(0) on any BN instance corrupts the internal state, causing toString(), divmod(), and other methods to enter an infinite loop, hanging the process indefinitely.",
+                "affected": [
+                  {
+                    "package": {
+                      "ecosystem": "npm",
+                      "name": "bn.js",
+                      "purl": "pkg:npm/bn.js"
+                    },
+                    "ranges": [
+                      {
+                        "type": "SEMVER",
+                        "events": [
+                          {
+                            "introduced": "0"
+                          },
+                          {
+                            "fixed": "4.12.3"
+                          }
+                        ]
+                      }
+                    ],
+                    "database_specific": {
+                      "source": "https://github.com/github/advisory-database/blob/main/advisories/github-reviewed/2026/02/GHSA-378v-28hj-76wf/GHSA-378v-28hj-76wf.json"
+                    }
+                  },
+                  {
+                    "package": {
+                      "ecosystem": "npm",
+                      "name": "bn.js",
+                      "purl": "pkg:npm/bn.js"
+                    },
+                    "ranges": [
+                      {
+                        "type": "SEMVER",
+                        "events": [
+                          {
+                            "introduced": "5.0.0"
+                          },
+                          {
+                            "fixed": "5.2.3"
+                          }
+                        ]
+                      }
+                    ],
+                    "database_specific": {
+                      "source": "https://github.com/github/advisory-database/blob/main/advisories/github-reviewed/2026/02/GHSA-378v-28hj-76wf/GHSA-378v-28hj-76wf.json"
+                    }
+                  }
+                ],
+                "severity": [
+                  {
+                    "type": "CVSS_V3",
+                    "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L"
+                  },
+                  {
+                    "type": "CVSS_V4",
+                    "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N/E:P"
+                  }
+                ],
+                "references": [
+                  {
+                    "type": "ADVISORY",
+                    "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-2739"
+                  },
+                  {
+                    "type": "WEB",
+                    "url": "https://github.com/indutny/bn.js/issues/186"
+                  },
+                  {
+                    "type": "WEB",
+                    "url": "https://github.com/indutny/bn.js/issues/316"
+                  },
+                  {
+                    "type": "WEB",
+                    "url": "https://github.com/indutny/bn.js/issues/316#issuecomment-3924217358"
+                  },
+                  {
+                    "type": "WEB",
+                    "url": "https://github.com/indutny/bn.js/pull/317"
+                  },
+                  {
+                    "type": "WEB",
+                    "url": "https://github.com/indutny/bn.js/commit/33df26b5771e824f303a79ec6407409376baa64b"
+                  },
+                  {
+                    "type": "WEB",
+                    "url": "https://gist.github.com/Kr0emer/02370d18328c28b5dd7f9ac880d22a91"
+                  },
+                  {
+                    "type": "PACKAGE",
+                    "url": "https://github.com/indutny/bn.js"
+                  },
+                  {
+                    "type": "WEB",
+                    "url": "https://github.com/indutny/bn.js/releases/tag/v5.2.3"
+                  },
+                  {
+                    "type": "WEB",
+                    "url": "https://security.snyk.io/vuln/SNYK-JS-BNJS-15274301"
+                  }
+                ],
+                "database_specific": {
+                  "cwe_ids": [
+                    "CWE-835"
+                  ],
+                  "github_reviewed": true,
+                  "github_reviewed_at": "2026-02-20T21:18:31Z",
+                  "nvd_published_at": "2026-02-20T05:17:53Z",
+                  "severity": "MODERATE"
+                }
+              }
+            ],
+            "groups": [
+              {
+                "ids": [
+                  "GHSA-378v-28hj-76wf"
+                ],
+                "aliases": [
+                  "CVE-2026-2739",
+                  "GHSA-378v-28hj-76wf"
+                ],
+                "max_severity": "5.5"
+              }
+            ]
+          },
+          {
+            "package": {
+              "name": "cookie",
+              "version": "0.4.2",
+              "ecosystem": "npm"
+            },
+            "dependency_groups": [
+              "dev"
+            ],
+            "vulnerabilities": [
+              {
+                "modified": "2026-02-04T03:19:35Z",
+                "published": "2024-10-04T20:31:00Z",
+                "schema_version": "1.7.3",
+                "id": "GHSA-pxg6-pf52-xh8x",
+                "aliases": [
+                  "CVE-2024-47764"
+                ],
+                "related": [
+                  "CGA-83ph-66p4-qvqj"
+                ],
+                "summary": "cookie accepts cookie name, path, and domain with out of bounds characters",
+                "details": "### Impact\n\nThe cookie name could be used to set other fields of the cookie, resulting in an unexpected cookie value. For example, `serialize(\"userName=<script>alert('XSS3')</script>; Max-Age=2592000; a\", value)` would result in `\"userName=<script>alert('XSS3')</script>; Max-Age=2592000; a=test\"`, setting `userName` cookie to `<script>` and ignoring `value`.\n\nA similar escape can be used for `path` and `domain`, which could be abused to alter other fields of the cookie.\n\n### Patches\n\nUpgrade to 0.7.0, which updates the validation for `name`, `path`, and `domain`.\n\n### Workarounds\n\nAvoid passing untrusted or arbitrary values for these fields, ensure they are set by the application instead of user input.\n\n### References\n\n* https://github.com/jshttp/cookie/pull/167",
+                "affected": [
+                  {
+                    "package": {
+                      "ecosystem": "npm",
+                      "name": "cookie",
+                      "purl": "pkg:npm/cookie"
+                    },
+                    "ranges": [
+                      {
+                        "type": "SEMVER",
+                        "events": [
+                          {
+                            "introduced": "0"
+                          },
+                          {
+                            "fixed": "0.7.0"
+                          }
+                        ]
+                      }
+                    ],
+                    "database_specific": {
+                      "source": "https://github.com/github/advisory-database/blob/main/advisories/github-reviewed/2024/10/GHSA-pxg6-pf52-xh8x/GHSA-pxg6-pf52-xh8x.json"
+                    }
+                  }
+                ],
+                "references": [
+                  {
+                    "type": "WEB",
+                    "url": "https://github.com/jshttp/cookie/security/advisories/GHSA-pxg6-pf52-xh8x"
+                  },
+                  {
+                    "type": "WEB",
+                    "url": "https://github.com/jshttp/cookie/pull/167"
+                  },
+                  {
+                    "type": "WEB",
+                    "url": "https://github.com/jshttp/cookie/commit/e10042845354fea83bd8f34af72475eed1dadf5c"
+                  },
+                  {
+                    "type": "PACKAGE",
+                    "url": "https://github.com/jshttp/cookie"
+                  }
+                ],
+                "database_specific": {
+                  "cwe_ids": [
+                    "CWE-74"
+                  ],
+                  "github_reviewed": true,
+                  "github_reviewed_at": "2024-10-04T20:31:00Z",
+                  "nvd_published_at": null,
+                  "severity": "LOW"
+                }
+              }
+            ],
+            "groups": [
+              {
+                "ids": [
+                  "GHSA-pxg6-pf52-xh8x"
+                ],
+                "aliases": [
+                  "CVE-2024-47764",
+                  "GHSA-pxg6-pf52-xh8x"
+                ],
+                "max_severity": ""
+              }
+            ]
+          },
+          {
+            "package": {
+              "name": "elliptic",
+              "version": "6.6.1",
+              "ecosystem": "npm"
+            },
+            "dependency_groups": [
+              "dev"
+            ],
+            "vulnerabilities": [
+              {
+                "modified": "2026-02-17T18:29:01Z",
+                "published": "2026-01-08T21:30:34Z",
+                "schema_version": "1.7.3",
+                "id": "GHSA-848j-6mx2-7j84",
+                "aliases": [
+                  "CVE-2025-14505"
+                ],
+                "related": [
+                  "CGA-mg79-6j8j-pfpr"
+                ],
+                "summary": "Elliptic Uses a Cryptographic Primitive with a Risky Implementation",
+                "details": "The ECDSA implementation of the Elliptic package generates incorrect signatures if an interim value of 'k' (as computed based on step 3.2 of  RFC 6979 https://datatracker.ietf.org/doc/html/rfc6979 ) has leading zeros and is susceptible to cryptanalysis, which can lead to secret key exposure. This happens, because the byte-length of 'k' is incorrectly computed, resulting in its getting truncated during the computation. Legitimate transactions or communications will be broken as a result.\u00a0Furthermore, due to the nature of the fault, attackers could\u2013under certain conditions\u2013derive the secret key, if they could get their hands on both a faulty signature generated by a vulnerable version of Elliptic and a correct signature for the same inputs.\n\nThis issue affects all known versions of Elliptic (at the time of writing, versions less than or equal to 6.6.1).",
+                "affected": [
+                  {
+                    "package": {
+                      "ecosystem": "npm",
+                      "name": "elliptic",
+                      "purl": "pkg:npm/elliptic"
+                    },
+                    "ranges": [
+                      {
+                        "type": "SEMVER",
+                        "events": [
+                          {
+                            "introduced": "0"
+                          },
+                          {
+                            "last_affected": "6.6.1"
+                          }
+                        ]
+                      }
+                    ],
+                    "database_specific": {
+                      "source": "https://github.com/github/advisory-database/blob/main/advisories/github-reviewed/2026/01/GHSA-848j-6mx2-7j84/GHSA-848j-6mx2-7j84.json"
+                    }
+                  }
+                ],
+                "severity": [
+                  {
+                    "type": "CVSS_V3",
+                    "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:L/A:L"
+                  },
+                  {
+                    "type": "CVSS_V4",
+                    "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:L/VI:L/VA:L/SC:N/SI:N/SA:N/E:P"
+                  }
+                ],
+                "references": [
+                  {
+                    "type": "ADVISORY",
+                    "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-14505"
+                  },
+                  {
+                    "type": "WEB",
+                    "url": "https://github.com/indutny/elliptic/issues/321"
+                  },
+                  {
+                    "type": "PACKAGE",
+                    "url": "https://github.com/indutny/elliptic"
+                  },
+                  {
+                    "type": "WEB",
+                    "url": "https://www.herodevs.com/vulnerability-directory/cve-2025-14505"
+                  }
+                ],
+                "database_specific": {
+                  "cwe_ids": [
+                    "CWE-1240"
+                  ],
+                  "github_reviewed": true,
+                  "github_reviewed_at": "2026-01-09T20:19:43Z",
+                  "nvd_published_at": "2026-01-08T21:15:42Z",
+                  "severity": "LOW"
+                }
+              }
+            ],
+            "groups": [
+              {
+                "ids": [
+                  "GHSA-848j-6mx2-7j84"
+                ],
+                "aliases": [
+                  "CVE-2025-14505",
+                  "GHSA-848j-6mx2-7j84"
+                ],
+                "max_severity": "5.6"
+              }
+            ]
+          },
+          {
+            "package": {
+              "name": "lodash",
+              "version": "4.17.21",
+              "ecosystem": "npm"
+            },
+            "dependency_groups": [
+              "dev"
+            ],
+            "vulnerabilities": [
+              {
+                "modified": "2026-04-02T17:29:51Z",
+                "published": "2026-04-01T23:50:27Z",
+                "schema_version": "1.7.5",
+                "id": "GHSA-f23m-r3pf-42rh",
+                "aliases": [
+                  "CVE-2026-2950"
+                ],
+                "related": [
+                  "CGA-w8p3-8q8v-32x5"
+                ],
+                "summary": "lodash vulnerable to Prototype Pollution via array path bypass in `_.unset` and `_.omit`",
+                "details": "### Impact\n\nLodash versions 4.17.23 and earlier are vulnerable to prototype pollution in the `_.unset` and `_.omit` functions. The fix for [CVE-2025-13465](https://github.com/lodash/lodash/security/advisories/GHSA-xxjr-mmjv-4gpg) only guards against string key members, so an attacker can bypass the check by passing array-wrapped path segments. This allows deletion of properties from built-in prototypes such as `Object.prototype`, `Number.prototype`, and `String.prototype`.\n\nThe issue permits deletion of prototype properties but does not allow overwriting their original behavior.\n\n### Patches\n\nThis issue is patched in 4.18.0.\n\n### Workarounds\n\nNone. Upgrade to the patched version.",
+                "affected": [
+                  {
+                    "package": {
+                      "ecosystem": "npm",
+                      "name": "lodash",
+                      "purl": "pkg:npm/lodash"
+                    },
+                    "ranges": [
+                      {
+                        "type": "SEMVER",
+                        "events": [
+                          {
+                            "introduced": "0"
+                          },
+                          {
+                            "fixed": "4.18.0"
+                          }
+                        ]
+                      }
+                    ],
+                    "database_specific": {
+                      "last_known_affected_version_range": "<= 4.17.23",
+                      "source": "https://github.com/github/advisory-database/blob/main/advisories/github-reviewed/2026/04/GHSA-f23m-r3pf-42rh/GHSA-f23m-r3pf-42rh.json"
+                    }
+                  },
+                  {
+                    "package": {
+                      "ecosystem": "npm",
+                      "name": "lodash-es",
+                      "purl": "pkg:npm/lodash-es"
+                    },
+                    "ranges": [
+                      {
+                        "type": "SEMVER",
+                        "events": [
+                          {
+                            "introduced": "0"
+                          },
+                          {
+                            "fixed": "4.18.0"
+                          }
+                        ]
+                      }
+                    ],
+                    "database_specific": {
+                      "last_known_affected_version_range": "<= 4.17.23",
+                      "source": "https://github.com/github/advisory-database/blob/main/advisories/github-reviewed/2026/04/GHSA-f23m-r3pf-42rh/GHSA-f23m-r3pf-42rh.json"
+                    }
+                  },
+                  {
+                    "package": {
+                      "ecosystem": "npm",
+                      "name": "lodash-amd",
+                      "purl": "pkg:npm/lodash-amd"
+                    },
+                    "ranges": [
+                      {
+                        "type": "SEMVER",
+                        "events": [
+                          {
+                            "introduced": "0"
+                          },
+                          {
+                            "fixed": "4.18.0"
+                          }
+                        ]
+                      }
+                    ],
+                    "database_specific": {
+                      "last_known_affected_version_range": "<= 4.17.23",
+                      "source": "https://github.com/github/advisory-database/blob/main/advisories/github-reviewed/2026/04/GHSA-f23m-r3pf-42rh/GHSA-f23m-r3pf-42rh.json"
+                    }
+                  },
+                  {
+                    "package": {
+                      "ecosystem": "npm",
+                      "name": "lodash.unset",
+                      "purl": "pkg:npm/lodash.unset"
+                    },
+                    "ranges": [
+                      {
+                        "type": "SEMVER",
+                        "events": [
+                          {
+                            "introduced": "4.0.0"
+                          },
+                          {
+                            "fixed": "4.18.0"
+                          }
+                        ]
+                      }
+                    ],
+                    "database_specific": {
+                      "source": "https://github.com/github/advisory-database/blob/main/advisories/github-reviewed/2026/04/GHSA-f23m-r3pf-42rh/GHSA-f23m-r3pf-42rh.json"
+                    }
+                  }
+                ],
+                "severity": [
+                  {
+                    "type": "CVSS_V3",
+                    "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:L"
+                  }
+                ],
+                "references": [
+                  {
+                    "type": "WEB",
+                    "url": "https://github.com/lodash/lodash/security/advisories/GHSA-f23m-r3pf-42rh"
+                  },
+                  {
+                    "type": "WEB",
+                    "url": "https://github.com/lodash/lodash/security/advisories/GHSA-xxjr-mmjv-4gpg"
+                  },
+                  {
+                    "type": "ADVISORY",
+                    "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-2950"
+                  },
+                  {
+                    "type": "PACKAGE",
+                    "url": "https://github.com/lodash/lodash"
+                  }
+                ],
+                "database_specific": {
+                  "cwe_ids": [
+                    "CWE-1321"
+                  ],
+                  "github_reviewed": true,
+                  "github_reviewed_at": "2026-04-01T23:50:27Z",
+                  "nvd_published_at": "2026-03-31T20:16:26Z",
+                  "severity": "MODERATE"
+                }
+              },
+              {
+                "modified": "2026-04-02T17:29:57Z",
+                "published": "2026-04-01T23:51:12Z",
+                "schema_version": "1.7.5",
+                "id": "GHSA-r5fr-rjxr-66jc",
+                "aliases": [
+                  "CVE-2026-4800"
+                ],
+                "related": [
+                  "CGA-738g-g4gp-hqw4"
+                ],
+                "summary": "lodash vulnerable to Code Injection via `_.template` imports key names",
+                "details": "### Impact\n\nThe fix for [CVE-2021-23337](https://github.com/advisories/GHSA-35jh-r3h4-6jhm) added validation for the `variable` option in `_.template` but did not apply the same validation to `options.imports` key names. Both paths flow into the same `Function()` constructor sink.\n\nWhen an application passes untrusted input as `options.imports` key names, an attacker can inject default-parameter expressions that execute arbitrary code at template compilation time.\n\nAdditionally, `_.template` uses `assignInWith` to merge imports, which enumerates inherited properties via `for..in`. If `Object.prototype` has been polluted by any other vector, the polluted keys are copied into the imports object and passed to `Function()`.\n\n### Patches\n\nUsers should upgrade to version 4.18.0.\n\nThe fix applies two changes:\n1. Validate `importsKeys` against the existing `reForbiddenIdentifierChars` regex (same check already used for the `variable` option)\n2. Replace `assignInWith` with `assignWith` when merging imports, so only own properties are enumerated\n\n### Workarounds\n\nDo not pass untrusted input as key names in `options.imports`. Only use developer-controlled, static key names.",
+                "affected": [
+                  {
+                    "package": {
+                      "ecosystem": "npm",
+                      "name": "lodash",
+                      "purl": "pkg:npm/lodash"
+                    },
+                    "ranges": [
+                      {
+                        "type": "SEMVER",
+                        "events": [
+                          {
+                            "introduced": "4.0.0"
+                          },
+                          {
+                            "fixed": "4.18.0"
+                          }
+                        ]
+                      }
+                    ],
+                    "database_specific": {
+                      "last_known_affected_version_range": "<= 4.17.23",
+                      "source": "https://github.com/github/advisory-database/blob/main/advisories/github-reviewed/2026/04/GHSA-r5fr-rjxr-66jc/GHSA-r5fr-rjxr-66jc.json"
+                    }
+                  },
+                  {
+                    "package": {
+                      "ecosystem": "npm",
+                      "name": "lodash-es",
+                      "purl": "pkg:npm/lodash-es"
+                    },
+                    "ranges": [
+                      {
+                        "type": "SEMVER",
+                        "events": [
+                          {
+                            "introduced": "4.0.0"
+                          },
+                          {
+                            "fixed": "4.18.0"
+                          }
+                        ]
+                      }
+                    ],
+                    "database_specific": {
+                      "last_known_affected_version_range": "<= 4.17.23",
+                      "source": "https://github.com/github/advisory-database/blob/main/advisories/github-reviewed/2026/04/GHSA-r5fr-rjxr-66jc/GHSA-r5fr-rjxr-66jc.json"
+                    }
+                  },
+                  {
+                    "package": {
+                      "ecosystem": "npm",
+                      "name": "lodash-amd",
+                      "purl": "pkg:npm/lodash-amd"
+                    },
+                    "ranges": [
+                      {
+                        "type": "SEMVER",
+                        "events": [
+                          {
+                            "introduced": "4.0.0"
+                          },
+                          {
+                            "fixed": "4.18.0"
+                          }
+                        ]
+                      }
+                    ],
+                    "database_specific": {
+                      "last_known_affected_version_range": "<= 4.17.23",
+                      "source": "https://github.com/github/advisory-database/blob/main/advisories/github-reviewed/2026/04/GHSA-r5fr-rjxr-66jc/GHSA-r5fr-rjxr-66jc.json"
+                    }
+                  },
+                  {
+                    "package": {
+                      "ecosystem": "npm",
+                      "name": "lodash.template",
+                      "purl": "pkg:npm/lodash.template"
+                    },
+                    "ranges": [
+                      {
+                        "type": "SEMVER",
+                        "events": [
+                          {
+                            "introduced": "4.0.0"
+                          },
+                          {
+                            "fixed": "4.18.0"
+                          }
+                        ]
+                      }
+                    ],
+                    "database_specific": {
+                      "source": "https://github.com/github/advisory-database/blob/main/advisories/github-reviewed/2026/04/GHSA-r5fr-rjxr-66jc/GHSA-r5fr-rjxr-66jc.json"
+                    }
+                  }
+                ],
+                "severity": [
+                  {
+                    "type": "CVSS_V3",
+                    "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H"
+                  }
+                ],
+                "references": [
+                  {
+                    "type": "WEB",
+                    "url": "https://github.com/lodash/lodash/security/advisories/GHSA-r5fr-rjxr-66jc"
+                  },
+                  {
+                    "type": "ADVISORY",
+                    "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-4800"
+                  },
+                  {
+                    "type": "WEB",
+                    "url": "https://github.com/lodash/lodash/commit/3469357cff396a26c363f8c1b5a91dde28ba4b1c"
+                  },
+                  {
+                    "type": "WEB",
+                    "url": "https://cna.openjsf.org/security-advisories.html"
+                  },
+                  {
+                    "type": "ADVISORY",
+                    "url": "https://github.com/advisories/GHSA-35jh-r3h4-6jhm"
+                  },
+                  {
+                    "type": "PACKAGE",
+                    "url": "https://github.com/lodash/lodash"
+                  }
+                ],
+                "database_specific": {
+                  "cwe_ids": [
+                    "CWE-94"
+                  ],
+                  "github_reviewed": true,
+                  "github_reviewed_at": "2026-04-01T23:51:12Z",
+                  "nvd_published_at": "2026-03-31T20:16:29Z",
+                  "severity": "HIGH"
+                }
+              },
+              {
+                "modified": "2026-06-09T11:15:10Z",
+                "published": "2026-01-21T23:01:22Z",
+                "schema_version": "1.7.5",
+                "id": "GHSA-xxjr-mmjv-4gpg",
+                "aliases": [
+                  "CVE-2025-13465"
+                ],
+                "related": [
+                  "CGA-4chh-8c7h-pcpx"
+                ],
+                "summary": "Lodash has Prototype Pollution Vulnerability in `_.unset` and `_.omit` functions",
+                "details": "### Impact\n\nLodash versions 4.0.0 through 4.17.22 are vulnerable to prototype pollution in the `_.unset` and `_.omit` functions. An attacker can pass crafted paths which cause Lodash to delete methods from global prototypes. \n\nThe issue permits deletion of properties but does not allow overwriting their original behavior.  \n\n### Patches\n\nThis issue is patched on 4.17.23.",
+                "affected": [
+                  {
+                    "package": {
+                      "ecosystem": "npm",
+                      "name": "lodash",
+                      "purl": "pkg:npm/lodash"
+                    },
+                    "ranges": [
+                      {
+                        "type": "SEMVER",
+                        "events": [
+                          {
+                            "introduced": "4.0.0"
+                          },
+                          {
+                            "fixed": "4.17.23"
+                          }
+                        ]
+                      }
+                    ],
+                    "database_specific": {
+                      "last_known_affected_version_range": "<= 4.17.22",
+                      "source": "https://github.com/github/advisory-database/blob/main/advisories/github-reviewed/2026/01/GHSA-xxjr-mmjv-4gpg/GHSA-xxjr-mmjv-4gpg.json"
+                    }
+                  },
+                  {
+                    "package": {
+                      "ecosystem": "npm",
+                      "name": "lodash.unset",
+                      "purl": "pkg:npm/lodash.unset"
+                    },
+                    "ranges": [
+                      {
+                        "type": "SEMVER",
+                        "events": [
+                          {
+                            "introduced": "4.0.0"
+                          },
+                          {
+                            "last_affected": "4.5.2"
+                          }
+                        ]
+                      }
+                    ],
+                    "database_specific": {
+                      "source": "https://github.com/github/advisory-database/blob/main/advisories/github-reviewed/2026/01/GHSA-xxjr-mmjv-4gpg/GHSA-xxjr-mmjv-4gpg.json"
+                    }
+                  },
+                  {
+                    "package": {
+                      "ecosystem": "npm",
+                      "name": "lodash-es",
+                      "purl": "pkg:npm/lodash-es"
+                    },
+                    "ranges": [
+                      {
+                        "type": "SEMVER",
+                        "events": [
+                          {
+                            "introduced": "4.0.0"
+                          },
+                          {
+                            "fixed": "4.17.23"
+                          }
+                        ]
+                      }
+                    ],
+                    "database_specific": {
+                      "last_known_affected_version_range": "<= 4.17.22",
+                      "source": "https://github.com/github/advisory-database/blob/main/advisories/github-reviewed/2026/01/GHSA-xxjr-mmjv-4gpg/GHSA-xxjr-mmjv-4gpg.json"
+                    }
+                  },
+                  {
+                    "package": {
+                      "ecosystem": "npm",
+                      "name": "lodash-amd",
+                      "purl": "pkg:npm/lodash-amd"
+                    },
+                    "ranges": [
+                      {
+                        "type": "SEMVER",
+                        "events": [
+                          {
+                            "introduced": "4.0.0"
+                          },
+                          {
+                            "fixed": "4.17.23"
+                          }
+                        ]
+                      }
+                    ],
+                    "database_specific": {
+                      "last_known_affected_version_range": "<= 4.17.22",
+                      "source": "https://github.com/github/advisory-database/blob/main/advisories/github-reviewed/2026/01/GHSA-xxjr-mmjv-4gpg/GHSA-xxjr-mmjv-4gpg.json"
+                    }
+                  }
+                ],
+                "severity": [
+                  {
+                    "type": "CVSS_V3",
+                    "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:L"
+                  },
+                  {
+                    "type": "CVSS_V4",
+                    "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:L/VA:L/SC:H/SI:H/SA:H/E:P"
+                  }
+                ],
+                "references": [
+                  {
+                    "type": "WEB",
+                    "url": "https://github.com/lodash/lodash/security/advisories/GHSA-xxjr-mmjv-4gpg"
+                  },
+                  {
+                    "type": "ADVISORY",
+                    "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-13465"
+                  },
+                  {
+                    "type": "WEB",
+                    "url": "https://github.com/lodash/lodash/commit/edadd452146f7e4bad4ea684e955708931d84d81"
+                  },
+                  {
+                    "type": "WEB",
+                    "url": "https://cert-portal.siemens.com/productcert/html/ssa-253495.html"
+                  },
+                  {
+                    "type": "PACKAGE",
+                    "url": "https://github.com/lodash/lodash"
+                  }
+                ],
+                "database_specific": {
+                  "cwe_ids": [
+                    "CWE-1321"
+                  ],
+                  "github_reviewed": true,
+                  "github_reviewed_at": "2026-01-21T23:01:22Z",
+                  "nvd_published_at": "2026-01-21T20:16:05Z",
+                  "severity": "MODERATE"
+                }
+              }
+            ],
+            "groups": [
+              {
+                "ids": [
+                  "GHSA-f23m-r3pf-42rh"
+                ],
+                "aliases": [
+                  "CVE-2026-2950",
+                  "GHSA-f23m-r3pf-42rh"
+                ],
+                "max_severity": "6.5"
+              },
+              {
+                "ids": [
+                  "GHSA-r5fr-rjxr-66jc"
+                ],
+                "aliases": [
+                  "CVE-2026-4800",
+                  "GHSA-r5fr-rjxr-66jc"
+                ],
+                "max_severity": "8.1"
+              },
+              {
+                "ids": [
+                  "GHSA-xxjr-mmjv-4gpg"
+                ],
+                "aliases": [
+                  "CVE-2025-13465",
+                  "GHSA-xxjr-mmjv-4gpg"
+                ],
+                "max_severity": "6.9"
+              }
+            ]
+          },
+          {
+            "package": {
+              "name": "serialize-javascript",
+              "version": "6.0.2",
+              "ecosystem": "npm"
+            },
+            "dependency_groups": [
+              "dev"
+            ],
+            "vulnerabilities": [
+              {
+                "modified": "2026-03-04T15:06:48Z",
+                "published": "2026-02-28T02:50:45Z",
+                "schema_version": "1.7.3",
+                "id": "GHSA-5c6j-r48x-rmvq",
+                "related": [
+                  "CGA-2jg9-9ccq-wcm4"
+                ],
+                "summary": "Serialize JavaScript is Vulnerable to RCE via RegExp.flags and Date.prototype.toISOString()",
+                "details": "### Impact\n\nThe serialize-javascript npm package (versions <= 7.0.2) contains a code injection vulnerability. It is an incomplete fix for CVE-2020-7660.\n\nWhile `RegExp.source` is sanitized, `RegExp.flags` is interpolated directly into the generated output without escaping. A similar issue exists in `Date.prototype.toISOString()`.\n\nIf an attacker can control the input object passed to `serialize()`, they can inject malicious JavaScript via the flags property of a RegExp object. When the serialized string is later evaluated (via `eval`, `new Function`, or `<script>` tags), the injected code executes.\n\n```javascript\nconst serialize = require('serialize-javascript');\n// Create an object that passes instanceof RegExp with a spoofed .flags\nconst fakeRegex = Object.create(RegExp.prototype);\nObject.defineProperty(fakeRegex, 'source', { get: () => 'x' });\nObject.defineProperty(fakeRegex, 'flags', {\n  get: () => '\"+(global.PWNED=\"CODE_INJECTION_VIA_FLAGS\")+\"'\n});\nfakeRegex.toJSON = function() { return '@placeholder'; };\nconst output = serialize({ re: fakeRegex });\n// Output: {\"re\":new RegExp(\"x\", \"\"+(global.PWNED=\"CODE_INJECTION_VIA_FLAGS\")+\"\")}\nlet obj;\neval('obj = ' + output);\nconsole.log(global.PWNED); // \"CODE_INJECTION_VIA_FLAGS\" \u2014 injected code executed!\n#h2. PoC 2: Code Injection via Date.toISOString()\n```\n\n```javascript\nconst serialize = require('serialize-javascript');\nconst fakeDate = Object.create(Date.prototype);\nfakeDate.toISOString = function() { return '\"+(global.DATE_PWNED=\"DATE_INJECTION\")+\"'; };\nfakeDate.toJSON = function() { return '2024-01-01'; };\nconst output = serialize({ d: fakeDate });\n// Output: {\"d\":new Date(\"\"+(global.DATE_PWNED=\"DATE_INJECTION\")+\"\")}\neval('obj = ' + output);\nconsole.log(global.DATE_PWNED); // \"DATE_INJECTION\" \u2014 injected code executed!\n#h2. PoC 3: Remote Code Execution\n```\n\n```javascript\nconst serialize = require('serialize-javascript');\nconst rceRegex = Object.create(RegExp.prototype);\nObject.defineProperty(rceRegex, 'source', { get: () => 'x' });\nObject.defineProperty(rceRegex, 'flags', {\n  get: () => '\"+require(\"child_process\").execSync(\"id\").toString()+\"'\n});\nrceRegex.toJSON = function() { return '@rce'; };\nconst output = serialize({ re: rceRegex });\n// Output: {\"re\":new RegExp(\"x\", \"\"+require(\"child_process\").execSync(\"id\").toString()+\"\")}\n// When eval'd on a Node.js server, executes the \"id\" system command\n```\n\n### Patches\n\nThe fix has been published in version 7.0.3. https://github.com/yahoo/serialize-javascript/releases/tag/v7.0.3",
+                "affected": [
+                  {
+                    "package": {
+                      "ecosystem": "npm",
+                      "name": "serialize-javascript",
+                      "purl": "pkg:npm/serialize-javascript"
+                    },
+                    "ranges": [
+                      {
+                        "type": "SEMVER",
+                        "events": [
+                          {
+                            "introduced": "0"
+                          },
+                          {
+                            "fixed": "7.0.3"
+                          }
+                        ]
+                      }
+                    ],
+                    "database_specific": {
+                      "last_known_affected_version_range": "<= 7.0.2",
+                      "source": "https://github.com/github/advisory-database/blob/main/advisories/github-reviewed/2026/02/GHSA-5c6j-r48x-rmvq/GHSA-5c6j-r48x-rmvq.json"
+                    }
+                  }
+                ],
+                "severity": [
+                  {
+                    "type": "CVSS_V3",
+                    "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H"
+                  }
+                ],
+                "references": [
+                  {
+                    "type": "WEB",
+                    "url": "https://github.com/yahoo/serialize-javascript/security/advisories/GHSA-5c6j-r48x-rmvq"
+                  },
+                  {
+                    "type": "ADVISORY",
+                    "url": "https://nvd.nist.gov/vuln/detail/CVE-2020-7660"
+                  },
+                  {
+                    "type": "WEB",
+                    "url": "https://github.com/yahoo/serialize-javascript/commit/2e609d0a9f4f5b097f0945af88bd45b9c7fb48d9"
+                  },
+                  {
+                    "type": "ADVISORY",
+                    "url": "https://github.com/advisories/GHSA-hxcc-f52p-wc94"
+                  },
+                  {
+                    "type": "PACKAGE",
+                    "url": "https://github.com/yahoo/serialize-javascript"
+                  },
+                  {
+                    "type": "WEB",
+                    "url": "https://github.com/yahoo/serialize-javascript/releases/tag/v7.0.3"
+                  }
+                ],
+                "database_specific": {
+                  "cwe_ids": [
+                    "CWE-96"
+                  ],
+                  "github_reviewed": true,
+                  "github_reviewed_at": "2026-02-28T02:50:45Z",
+                  "nvd_published_at": null,
+                  "severity": "HIGH"
+                }
+              },
+              {
+                "modified": "2026-05-21T18:45:18Z",
+                "published": "2026-03-27T18:18:54Z",
+                "schema_version": "1.7.5",
+                "id": "GHSA-qj8w-gfj5-8c6v",
+                "aliases": [
+                  "CVE-2026-34043"
+                ],
+                "related": [
+                  "CGA-2p7j-rwc3-5x9r"
+                ],
+                "summary": "Serialize JavaScript has CPU Exhaustion Denial of Service via crafted array-like objects",
+                "details": "### Impact\n\n**What kind of vulnerability is it?**\n\nIt is a **Denial of Service (DoS)** vulnerability caused by CPU exhaustion. When serializing a specially crafted \"array-like\" object (an object that inherits from `Array.prototype` but has a very large `length` property), the process enters an intensive loop that consumes 100% CPU and hangs indefinitely.\n\n**Who is impacted?**\n\nApplications that use `serialize-javascript` to serialize untrusted or user-controlled objects are at risk. While direct exploitation is difficult, it becomes a high-priority threat if the application is also vulnerable to **Prototype Pollution** or handles untrusted data via **YAML Deserialization**, as these could be used to inject the malicious object.\n\n### Patches\n\n**Has the problem been patched?**\n\nYes, the issue has been patched by replacing `instanceof Array` checks with `Array.isArray()` and using `Object.keys()` for sparse array detection.\n\n**What versions should users upgrade to?**\n\nUsers should upgrade to **`v7.0.5`** or later.\n\n### Workarounds\n\n**Is there a way for users to fix or remediate the vulnerability without upgrading?**\n\nThere is no direct code-level workaround within the library itself. However, users can mitigate the risk by:\n\n* Validating and sanitizing all input before passing it to the `serialize()` function.\n* Ensuring the environment is protected against Prototype Pollution.\n* Upgrading to **`v7.0.5`** as soon as possible.\n\n### Acknowledgements\n\nSerialize JavaScript thanks **Tomer Aberbach** (@TomerAberbach) for discovering and privately disclosing this issue.",
+                "affected": [
+                  {
+                    "package": {
+                      "ecosystem": "npm",
+                      "name": "serialize-javascript",
+                      "purl": "pkg:npm/serialize-javascript"
+                    },
+                    "ranges": [
+                      {
+                        "type": "SEMVER",
+                        "events": [
+                          {
+                            "introduced": "5.0.0"
+                          },
+                          {
+                            "fixed": "7.0.5"
+                          }
+                        ]
+                      }
+                    ],
+                    "database_specific": {
+                      "source": "https://github.com/github/advisory-database/blob/main/advisories/github-reviewed/2026/03/GHSA-qj8w-gfj5-8c6v/GHSA-qj8w-gfj5-8c6v.json"
+                    }
+                  }
+                ],
+                "severity": [
+                  {
+                    "type": "CVSS_V3",
+                    "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H"
+                  }
+                ],
+                "references": [
+                  {
+                    "type": "WEB",
+                    "url": "https://github.com/yahoo/serialize-javascript/security/advisories/GHSA-qj8w-gfj5-8c6v"
+                  },
+                  {
+                    "type": "ADVISORY",
+                    "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-34043"
+                  },
+                  {
+                    "type": "WEB",
+                    "url": "https://github.com/yahoo/serialize-javascript/commit/f147e90269b58bb6e539cfdf3d0e20d6ad14204b"
+                  },
+                  {
+                    "type": "PACKAGE",
+                    "url": "https://github.com/yahoo/serialize-javascript"
+                  },
+                  {
+                    "type": "WEB",
+                    "url": "https://github.com/yahoo/serialize-javascript/releases/tag/v5.0.0"
+                  },
+                  {
+                    "type": "WEB",
+                    "url": "https://github.com/yahoo/serialize-javascript/releases/tag/v7.0.5"
+                  }
+                ],
+                "database_specific": {
+                  "cwe_ids": [
+                    "CWE-400",
+                    "CWE-834"
+                  ],
+                  "github_reviewed": true,
+                  "github_reviewed_at": "2026-03-27T18:18:54Z",
+                  "nvd_published_at": "2026-03-31T03:15:58Z",
+                  "severity": "MODERATE"
+                }
+              }
+            ],
+            "groups": [
+              {
+                "ids": [
+                  "GHSA-5c6j-r48x-rmvq"
+                ],
+                "aliases": [
+                  "GHSA-5c6j-r48x-rmvq"
+                ],
+                "max_severity": "8.1"
+              },
+              {
+                "ids": [
+                  "GHSA-qj8w-gfj5-8c6v"
+                ],
+                "aliases": [
+                  "CVE-2026-34043",
+                  "GHSA-qj8w-gfj5-8c6v"
+                ],
+                "max_severity": "5.9"
+              }
+            ]
+          },
+          {
+            "package": {
+              "name": "tmp",
+              "version": "0.0.33",
+              "ecosystem": "npm"
+            },
+            "vulnerabilities": [
+              {
+                "modified": "2026-02-04T03:28:37Z",
+                "published": "2025-08-06T17:06:04Z",
+                "schema_version": "1.7.3",
+                "id": "GHSA-52f5-9888-hmc6",
+                "aliases": [
+                  "CVE-2025-54798"
+                ],
+                "related": [
+                  "CGA-p46q-ggqg-hq5j"
+                ],
+                "summary": "tmp allows arbitrary temporary file / directory write via symbolic link `dir` parameter",
+                "details": "### Summary\n\n`tmp@0.2.3` is vulnerable to an Arbitrary temporary file / directory write via symbolic link `dir` parameter.\n\n\n### Details\n\nAccording to the documentation there are some conditions that must be held:\n\n```\n// https://github.com/raszi/node-tmp/blob/v0.2.3/README.md?plain=1#L41-L50\n\nOther breaking changes, i.e.\n\n- template must be relative to tmpdir\n- name must be relative to tmpdir\n- dir option must be relative to tmpdir //<-- this assumption can be bypassed using symlinks\n\nare still in place.\n\nIn order to override the system's tmpdir, you will have to use the newly\nintroduced tmpdir option.\n\n\n// https://github.com/raszi/node-tmp/blob/v0.2.3/README.md?plain=1#L375\n* `dir`: the optional temporary directory that must be relative to the system's default temporary directory.\n     absolute paths are fine as long as they point to a location under the system's default temporary directory.\n     Any directories along the so specified path must exist, otherwise a ENOENT error will be thrown upon access, \n     as tmp will not check the availability of the path, nor will it establish the requested path for you.\n```\n\nRelated issue: https://github.com/raszi/node-tmp/issues/207.\n\n\nThe issue occurs because `_resolvePath` does not properly handle symbolic link when resolving paths:\n```js\n// https://github.com/raszi/node-tmp/blob/v0.2.3/lib/tmp.js#L573-L579\nfunction _resolvePath(name, tmpDir) {\n  if (name.startsWith(tmpDir)) {\n    return path.resolve(name);\n  } else {\n    return path.resolve(path.join(tmpDir, name));\n  }\n}\n```\n\nIf the `dir` parameter points to a symlink that resolves to a folder outside the `tmpDir`, it's possible to bypass the `_assertIsRelative` check used in `_assertAndSanitizeOptions`:\n```js\n// https://github.com/raszi/node-tmp/blob/v0.2.3/lib/tmp.js#L590-L609\nfunction _assertIsRelative(name, option, tmpDir) {\n  if (option === 'name') {\n    // assert that name is not absolute and does not contain a path\n    if (path.isAbsolute(name))\n      throw new Error(`${option} option must not contain an absolute path, found \"${name}\".`);\n    // must not fail on valid .<name> or ..<name> or similar such constructs\n    let basename = path.basename(name);\n    if (basename === '..' || basename === '.' || basename !== name)\n      throw new Error(`${option} option must not contain a path, found \"${name}\".`);\n  }\n  else { // if (option === 'dir' || option === 'template') {\n    // assert that dir or template are relative to tmpDir\n    if (path.isAbsolute(name) && !name.startsWith(tmpDir)) {\n      throw new Error(`${option} option must be relative to \"${tmpDir}\", found \"${name}\".`);\n    }\n    let resolvedPath = _resolvePath(name, tmpDir); //<--- \n    if (!resolvedPath.startsWith(tmpDir))\n      throw new Error(`${option} option must be relative to \"${tmpDir}\", found \"${resolvedPath}\".`);\n  }\n}\n```\n\n\n### PoC\n\nThe following PoC demonstrates how writing a tmp file on a folder outside the `tmpDir` is possible.\nTested on a Linux machine.\n\n- Setup: create a symbolic link inside the `tmpDir` that points to a directory outside of it\n```bash\nmkdir $HOME/mydir1\n\nln -s $HOME/mydir1 ${TMPDIR:-/tmp}/evil-dir\n```\n\n- check the folder is empty:\n```bash\nls -lha $HOME/mydir1 | grep \"tmp-\"\n```\n\n- run the poc\n```bash\nnode main.js\nFile:  /tmp/evil-dir/tmp-26821-Vw87SLRaBIlf\ntest 1: ENOENT: no such file or directory, open '/tmp/mydir1/tmp-[random-id]'\ntest 2: dir option must be relative to \"/tmp\", found \"/foo\".\ntest 3: dir option must be relative to \"/tmp\", found \"/home/user/mydir1\".\n```\n\n- the temporary file is created under `$HOME/mydir1` (outside the `tmpDir`):\n```bash\nls -lha $HOME/mydir1 | grep \"tmp-\"\n-rw------- 1 user user    0 Apr  X XX:XX tmp-[random-id]\n```\n\n\n- `main.js`\n```js\n// npm i tmp@0.2.3\n\nconst tmp = require('tmp');\n\nconst tmpobj = tmp.fileSync({ 'dir': 'evil-dir'});\nconsole.log('File: ', tmpobj.name);\n\ntry {\n    tmp.fileSync({ 'dir': 'mydir1'});\n} catch (err) {\n    console.log('test 1:', err.message)\n}\n\ntry {\n    tmp.fileSync({ 'dir': '/foo'});\n} catch (err) {\n    console.log('test 2:', err.message)\n}\n\ntry {\n    const fs = require('node:fs');\n    const resolved = fs.realpathSync('/tmp/evil-dir');\n    tmp.fileSync({ 'dir': resolved});\n} catch (err) {\n    console.log('test 3:', err.message)\n}\n```\n\n\nA Potential fix could be to call `fs.realpathSync` (or similar) that resolves also symbolic links.\n```js\nfunction _resolvePath(name, tmpDir) {\n  let resolvedPath;\n  if (name.startsWith(tmpDir)) {\n    resolvedPath = path.resolve(name);\n  } else {\n    resolvedPath = path.resolve(path.join(tmpDir, name));\n  }\n  return fs.realpathSync(resolvedPath);\n}\n```\n\n\n### Impact\n\nArbitrary temporary file / directory write via symlink",
+                "affected": [
+                  {
+                    "package": {
+                      "ecosystem": "npm",
+                      "name": "tmp",
+                      "purl": "pkg:npm/tmp"
+                    },
+                    "ranges": [
+                      {
+                        "type": "SEMVER",
+                        "events": [
+                          {
+                            "introduced": "0"
+                          },
+                          {
+                            "fixed": "0.2.4"
+                          }
+                        ]
+                      }
+                    ],
+                    "database_specific": {
+                      "last_known_affected_version_range": "<= 0.2.3",
+                      "source": "https://github.com/github/advisory-database/blob/main/advisories/github-reviewed/2025/08/GHSA-52f5-9888-hmc6/GHSA-52f5-9888-hmc6.json"
+                    }
+                  }
+                ],
+                "severity": [
+                  {
+                    "type": "CVSS_V3",
+                    "score": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:N/I:L/A:N"
+                  }
+                ],
+                "references": [
+                  {
+                    "type": "WEB",
+                    "url": "https://github.com/raszi/node-tmp/security/advisories/GHSA-52f5-9888-hmc6"
+                  },
+                  {
+                    "type": "ADVISORY",
+                    "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-54798"
+                  },
+                  {
+                    "type": "WEB",
+                    "url": "https://github.com/raszi/node-tmp/issues/207"
+                  },
+                  {
+                    "type": "WEB",
+                    "url": "https://github.com/raszi/node-tmp/commit/188b25e529496e37adaf1a1d9dccb40019a08b1b"
+                  },
+                  {
+                    "type": "PACKAGE",
+                    "url": "https://github.com/raszi/node-tmp"
+                  },
+                  {
+                    "type": "WEB",
+                    "url": "https://lists.debian.org/debian-lts-announce/2025/08/msg00007.html"
+                  }
+                ],
+                "database_specific": {
+                  "cwe_ids": [
+                    "CWE-59"
+                  ],
+                  "github_reviewed": true,
+                  "github_reviewed_at": "2025-08-06T17:06:04Z",
+                  "nvd_published_at": "2025-08-07T01:15:26Z",
+                  "severity": "LOW"
+                }
+              },
+              {
+                "modified": "2026-06-12T19:30:08Z",
+                "published": "2026-05-27T00:34:06Z",
+                "schema_version": "1.7.5",
+                "id": "GHSA-ph9p-34f9-6g65",
+                "aliases": [
+                  "CVE-2026-44705"
+                ],
+                "related": [
+                  "CGA-pffx-8c7q-p732"
+                ],
+                "summary": "tmp has Path Traversal via unsanitized prefix/postfix that enables directory escape",
+                "details": "### Summary\n\nThe tmp npm package contains a path traversal vulnerability that allows escaping the intended temporary directory when untrusted data flows into the `prefix`, `postfix`, or `dir` options. By embedding traversal sequences (e.g., `../`) or path separators in these parameters, attackers can cause files to be created outside the configured temporary base directory at attacker-controlled locations with the privileges of the running process. This vulnerability affects applications that pass user-controlled data to tmp's file/directory creation functions without proper input sanitization.\n\n### Details\n\n**Root Cause:**\nThe vulnerability exists in tmp's path construction logic where user-supplied options are directly concatenated into file paths without sanitization or validation.\n\n**Technical Flow:**\n1. **Filename Construction:** tmp builds filenames as `<prefix>-<pid>-<random>-<postfix>`\n2. **Path Composition:** Final path computed as `path.join(tmpDir, opts.dir, name)`\n3. **Path Normalization:** Node.js `path.join()` normalizes traversal sequences, allowing escape\n4. **File Creation:** File created at the resulting (potentially escaped) path\n\n**Vulnerable Pattern:**\n```javascript\n// In tmp package internals\nconst name = `${opts.prefix || ''}-${process.pid}-${randomString}-${opts.postfix || ''}`;\nconst finalPath = path.join(tmpDir, opts.dir || '', name);\n// No validation that finalPath remains within tmpDir\n```\n\n**Path Traversal Mechanics:**\n- **prefix/postfix traversal:** `../../../evil` in prefix escapes directory structure\n- **Absolute path bypass:** If `opts.dir` is absolute, `path.join()` ignores `tmpDir` completely\n- **Normalization exploitation:** `path.join()` resolves `../` sequences regardless of surrounding text\n- **Cross-platform impact:** Works on Windows (`..\\\\`), Unix (`../`), and mixed path systems\n\n**Key Vulnerability Points:**\n- No input validation on `prefix`, `postfix`, or `dir` parameters\n- Direct use of user input in path construction\n- Reliance on `path.join()` normalization without containment checks\n- Missing post-construction validation that final path remains within intended directory\n\n### PoC\n\n**Basic Path Traversal via prefix:**\n```javascript\nconst tmp = require('tmp');\nconst path = require('path');\nconst fs = require('fs');\n\n// Create a controlled base directory\nconst baseDir = fs.mkdtempSync('/tmp/safe-base-');\nconsole.log('Base directory:', baseDir);\n\n// Escape via prefix\ntmp.file({ \n  tmpdir: baseDir, \n  prefix: '../escaped' \n}, (err, filepath, fd, cleanup) => {\n  if (err) throw err;\n  \n  console.log('Created file:', filepath);\n  console.log('Relative to base:', path.relative(baseDir, filepath));\n  // Output shows: ../escaped-<pid>-<random>\n  \n  cleanup();\n});\n```\n\n**Directory Escape via postfix:**\n```javascript\ntmp.file({ \n  tmpdir: baseDir, \n  postfix: '/../../pwned.txt' \n}, (err, filepath, fd, cleanup) => {\n  if (err) throw err;\n  \n  console.log('Escaped file:', filepath);\n  console.log('Escaped outside base:', !filepath.startsWith(baseDir));\n  \n  cleanup();\n});\n```\n\n**Absolute Path Bypass via dir:**\n```javascript\ntmp.file({ \n  tmpdir: '/safe/tmp/dir', \n  dir: '/tmp/evil-location',\n  prefix: 'bypassed'\n}, (err, filepath, fd, cleanup) => {\n  if (err) throw err;\n  \n  console.log('Bypassed to:', filepath);\n  // File created in /tmp/evil-location instead of /safe/tmp/dir\n  \n  cleanup();\n});\n```\n\n**Advanced Multi-Vector Attack:**\n```javascript\nconst maliciousOpts = {\n  tmpdir: '/app/safe-tmp',\n  dir: '../../../tmp',           // Escape base\n  prefix: '../sensitive-area/',   // Further traversal\n  postfix: 'malicious.config'     // Controlled filename\n};\n\ntmp.file(maliciousOpts, (err, filepath, fd, cleanup) => {\n  // Results in file creation at: /tmp/sensitive-area/malicious.config\n  console.log('Final malicious path:', filepath);\n  cleanup();\n});\n```\n\n**Real-World Attack Simulation:**\n```javascript\n// Simulate web API that accepts user file prefix\nfunction createUserTempFile(userPrefix, content) {\n  return new Promise((resolve, reject) => {\n    tmp.file({ prefix: userPrefix }, (err, path, fd, cleanup) => {\n      if (err) return reject(err);\n      \n      fs.writeSync(fd, content);\n      console.log('User file created at:', path);\n      resolve({ path, cleanup });\n    });\n  });\n}\n\n// Attacker input\nconst attackerPrefix = '../../../var/www/html/backdoor';\ncreateUserTempFile(attackerPrefix, '<?php system($_GET[\"cmd\"]); ?>');\n// Creates PHP backdoor in web root instead of temp directory\n```\n\n### Impact\n\n**Arbitrary File Creation:**\n- Files created outside intended temporary directories\n- Attacker control over file placement location\n- Potential to overwrite existing files (depending on creation flags)\n- Cross-platform exploitation capability\n\n**Attack Scenarios:**\n\n**1. Web Application Configuration Poisoning:**\n- User uploads file with malicious prefix/postfix\n- tmp creates \"temporary\" file in application configuration directory\n- Malicious configuration loaded on next application restart\n\n**2. Cache Poisoning:**\n- Application caches user content using tmp\n- Attacker escapes to cache directory of different user/tenant\n- Poisoned cache serves malicious content to other users\n\n**3. Build Pipeline Compromise:**\n- CI/CD system processes user PRs with tmp usage\n- Malicious prefix escapes to build output directories\n- Compromised build artifacts deployed to production\n\n**4. Container Escape Attempt:**\n- Containerized application uses tmp with user input\n- Attacker attempts to escape container temp restrictions\n- Files created in host-mapped volumes or sensitive container areas\n\n**5. Multi-Tenant Service Bypass:**\n- SaaS platform isolates tenants using separate tmp directories\n- Tenant A escapes their tmp space to tenant B's area\n- Cross-tenant data access and potential privilege escalation\n\n**Business Impact:**\n- **Data Integrity:** Unauthorized file placement can corrupt application state\n- **Service Disruption:** Files in wrong locations may break application functionality  \n- **Security Bypass:** Escape temporary isolation boundaries\n- **Compliance Violations:** Files containing sensitive data placed in uncontrolled locations\n\n### Affected Products\n\n- **Ecosystem:** npm\n- **Package name:** tmp\n- **Repository:** github.com/raszi/node-tmp\n- **Affected versions:** All versions with vulnerable path construction logic\n- **Patched versions:** None currently available\n\n**Component Impact:**\n- `tmp.file()` function - vulnerable to prefix/postfix/dir traversal\n- `tmp.dir()` function - vulnerable to same parameter manipulation  \n- `tmp.tmpName()` function - if using affected path construction\n\n**Severity:** High  \n**CVSS v3.1:** 8.1 (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:L)\n\n**CWE Classification:**\n- CWE-22: Improper Limitation of a Pathname to a Restricted Directory (Path Traversal)\n\n### Remediation\n\n**Input Validation and Sanitization:**\n\n1. **Sanitize prefix/postfix:**\n```javascript\nfunction sanitizePrefix(prefix) {\n  if (!prefix) return '';\n  // Remove path separators and traversal sequences\n  return path.basename(String(prefix)).replace(/[\\.\\/\\\\]/g, '-');\n}\n\nfunction sanitizePostfix(postfix) {\n  if (!postfix) return '';\n  // Allow only safe characters\n  return String(postfix).replace(/[^A-Za-z0-9._-]/g, '');\n}\n```\n\n2. **Validate dir parameter:**\n```javascript\nfunction validateDir(dir, baseDir) {\n  if (!dir) return '';\n  \n  // Reject absolute paths\n  if (path.isAbsolute(dir)) {\n    throw new Error('Absolute paths not allowed for dir option');\n  }\n  \n  // Resolve and check containment\n  const resolved = path.resolve(baseDir, dir);\n  const relative = path.relative(baseDir, resolved);\n  \n  if (relative.startsWith('..') || path.isAbsolute(relative)) {\n    throw new Error('Dir option escapes base directory');\n  }\n  \n  return dir;\n}\n```\n\n3. **Post-construction path validation:**\n```javascript\nfunction validateFinalPath(finalPath, baseDir) {\n  const resolved = path.resolve(finalPath);\n  const relative = path.relative(path.resolve(baseDir), resolved);\n  \n  if (relative.startsWith('..') || path.isAbsolute(relative)) {\n    throw new Error('Generated path escapes temporary directory');\n  }\n  \n  return resolved;\n}\n```\n\n**Secure Implementation Pattern:**\n```javascript\nfunction createTempFile(options) {\n  const opts = { ...options };\n  \n  // Sanitize inputs\n  opts.prefix = sanitizePrefix(opts.prefix);\n  opts.postfix = sanitizePostfix(opts.postfix);\n  opts.dir = validateDir(opts.dir, opts.tmpdir);\n  \n  // Create with sanitized options\n  return tmp.file(opts, (err, path, fd, cleanup) => {\n    if (err) return callback(err);\n    \n    // Validate final path\n    try {\n      validateFinalPath(path, opts.tmpdir);\n    } catch (validationErr) {\n      cleanup();\n      return callback(validationErr);\n    }\n    \n    callback(null, path, fd, cleanup);\n  });\n}\n```\n\n### Workarounds\n\n**For Application Developers:**\n\n1. **Input Sanitization:**\n```javascript\n// Sanitize before passing to tmp\nfunction safeTmpFile(userOptions) {\n  const safeOpts = {\n    ...userOptions,\n    prefix: userOptions.prefix ? path.basename(userOptions.prefix) : undefined,\n    postfix: userOptions.postfix ? userOptions.postfix.replace(/[^A-Za-z0-9._-]/g, '') : undefined,\n    dir: undefined // Don't allow user-controlled dir\n  };\n  \n  return tmp.file(safeOpts);\n}\n```\n\n2. **Path Validation:**\n```javascript\nfunction validateTmpPath(tmpPath, expectedBase) {\n  const relativePath = path.relative(expectedBase, tmpPath);\n  if (relativePath.startsWith('..') || path.isAbsolute(relativePath)) {\n    throw new Error('Temporary file path escaped base directory');\n  }\n  return tmpPath;\n}\n```\n\n3. **Restricted Usage:**\n```javascript\n// Only use tmp with known-safe, literal values\ntmp.file({ prefix: 'app-temp-', postfix: '.tmp' }, callback);\n// Never: tmp.file({ prefix: userInput }, callback);\n```\n\n**For Security Teams:**\n\n1. **Code Review Patterns:**\n```bash\n# Search for dangerous tmp usage\ngrep -r \"tmp\\.file.*prefix.*req\\|tmp\\.file.*postfix.*req\" .\ngrep -r \"tmp\\.dir.*opts\\|tmp\\.file.*opts\" .\n```\n\n2. **Runtime Monitoring:**\n```javascript\n// Monitor for files created outside expected temp areas\nconst originalFile = tmp.file;\ntmp.file = function(options, callback) {\n  return originalFile(options, (err, path, fd, cleanup) => {\n    if (!err && options.tmpdir) {\n      const relative = require('path').relative(options.tmpdir, path);\n      if (relative.startsWith('..')) {\n        console.warn('Path traversal detected:', path);\n      }\n    }\n    return callback(err, path, fd, cleanup);\n  });\n};\n```\n\n### Detection and Monitoring\n\n**Static Analysis:**\n- Scan for tmp usage with user-controlled input\n- Identify unsanitized parameter passing to tmp functions\n- Review file creation patterns in temporary directories\n\n**Runtime Detection:**\n```javascript\n// Log suspicious tmp operations\nfunction monitorTmpUsage() {\n  const originalTmpFile = require('tmp').file;\n  \n  require('tmp').file = function(options = {}, callback) {\n    // Check for suspicious patterns\n    const suspicious = [\n      options.prefix && options.prefix.includes('..'),\n      options.postfix && options.postfix.includes('..'),  \n      options.dir && path.isAbsolute(options.dir)\n    ].some(Boolean);\n    \n    if (suspicious) {\n      console.warn('Suspicious tmp usage detected:', options);\n    }\n    \n    return originalTmpFile.call(this, options, callback);\n  };\n}\n```\n\n**File System Monitoring:**\n```bash\n# Monitor file creation outside expected temp directories\ninotifywait -m -r --format '%w%f %e' /tmp /var/tmp | while read file event; do\n  if [[ \"$event\" == *\"CREATE\"* && \"$file\" != /tmp/tmp-* ]]; then\n    echo \"Unexpected file creation: $file\"\n  fi\ndone\n```\n### Acknowledgements\n\n**Reported by**: Mapta / BugBunny_ai",
+                "affected": [
+                  {
+                    "package": {
+                      "ecosystem": "npm",
+                      "name": "tmp",
+                      "purl": "pkg:npm/tmp"
+                    },
+                    "ranges": [
+                      {
+                        "type": "SEMVER",
+                        "events": [
+                          {
+                            "introduced": "0"
+                          },
+                          {
+                            "fixed": "0.2.6"
+                          }
+                        ]
+                      }
+                    ],
+                    "database_specific": {
+                      "source": "https://github.com/github/advisory-database/blob/main/advisories/github-reviewed/2026/05/GHSA-ph9p-34f9-6g65/GHSA-ph9p-34f9-6g65.json"
+                    }
+                  }
+                ],
+                "severity": [
+                  {
+                    "type": "CVSS_V4",
+                    "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:P"
+                  }
+                ],
+                "references": [
+                  {
+                    "type": "WEB",
+                    "url": "https://github.com/raszi/node-tmp/security/advisories/GHSA-ph9p-34f9-6g65"
+                  },
+                  {
+                    "type": "ADVISORY",
+                    "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-44705"
+                  },
+                  {
+                    "type": "WEB",
+                    "url": "https://github.com/raszi/node-tmp/commit/efa4a06f24374797ae32ab2b6ae39b7a611ae429"
+                  },
+                  {
+                    "type": "PACKAGE",
+                    "url": "https://github.com/raszi/node-tmp"
+                  }
+                ],
+                "database_specific": {
+                  "cwe_ids": [
+                    "CWE-22"
+                  ],
+                  "github_reviewed": true,
+                  "github_reviewed_at": "2026-05-27T00:34:06Z",
+                  "nvd_published_at": "2026-06-11T17:16:33Z",
+                  "severity": "HIGH"
+                }
+              }
+            ],
+            "groups": [
+              {
+                "ids": [
+                  "GHSA-52f5-9888-hmc6"
+                ],
+                "aliases": [
+                  "CVE-2025-54798",
+                  "GHSA-52f5-9888-hmc6"
+                ],
+                "max_severity": "2.5"
+              },
+              {
+                "ids": [
+                  "GHSA-ph9p-34f9-6g65"
+                ],
+                "aliases": [
+                  "CVE-2026-44705",
+                  "GHSA-ph9p-34f9-6g65"
+                ],
+                "max_severity": "7.7"
+              }
+            ]
+          },
+          {
+            "package": {
+              "name": "undici",
+              "version": "5.29.0",
+              "ecosystem": "npm"
+            },
+            "dependency_groups": [
+              "dev"
+            ],
+            "vulnerabilities": [
+              {
+                "modified": "2026-03-18T22:58:59Z",
+                "published": "2026-03-13T20:07:03Z",
+                "schema_version": "1.7.5",
+                "id": "GHSA-2mjp-6q6p-2qxm",
+                "aliases": [
+                  "CVE-2026-1525"
+                ],
+                "related": [
+                  "CGA-8j94-xjwc-c47x"
+                ],
+                "summary": "Undici has an HTTP Request/Response Smuggling issue",
+                "details": "### Impact\n\nUndici allows duplicate HTTP `Content-Length` headers when they are provided in an array with case-variant names (e.g., `Content-Length` and `content-length`). This produces malformed HTTP/1.1 requests with multiple conflicting `Content-Length` values on the wire.\n\n**Who is impacted:**\n  - Applications using `undici.request()`, `undici.Client`, or similar low-level APIs with headers passed as flat arrays\n  - Applications that accept user-controlled header names without case-normalization\n\n**Potential consequences:**\n  - **Denial of Service**: Strict HTTP parsers (proxies, servers) will reject requests with duplicate `Content-Length` headers (400 Bad Request)\n  - **HTTP Request Smuggling**: In deployments where an intermediary and backend interpret duplicate headers inconsistently (e.g., one uses the first value, the other uses the last), this can enable request smuggling attacks leading to ACL bypass, cache poisoning, or credential hijacking\n\n### Patches\n\n Patched in the undici version v7.24.0 and v6.24.0. Users should upgrade to this version or later.\n\n### Workarounds\n\n  If upgrading is not immediately possible:\n\n  1. **Validate header names**: Ensure no duplicate `Content-Length` headers (case-insensitive) are present before passing headers to undici\n  2. **Use object format**: Pass headers as a plain object (`{ 'content-length': '123' }`) rather than an array, which naturally deduplicates by key\n  3. **Sanitize user input**: If headers originate from user input, normalize header names to lowercase and reject duplicates",
+                "affected": [
+                  {
+                    "package": {
+                      "ecosystem": "npm",
+                      "name": "undici",
+                      "purl": "pkg:npm/undici"
+                    },
+                    "ranges": [
+                      {
+                        "type": "SEMVER",
+                        "events": [
+                          {
+                            "introduced": "0"
+                          },
+                          {
+                            "fixed": "6.24.0"
+                          }
+                        ]
+                      }
+                    ],
+                    "database_specific": {
+                      "source": "https://github.com/github/advisory-database/blob/main/advisories/github-reviewed/2026/03/GHSA-2mjp-6q6p-2qxm/GHSA-2mjp-6q6p-2qxm.json"
+                    }
+                  },
+                  {
+                    "package": {
+                      "ecosystem": "npm",
+                      "name": "undici",
+                      "purl": "pkg:npm/undici"
+                    },
+                    "ranges": [
+                      {
+                        "type": "SEMVER",
+                        "events": [
+                          {
+                            "introduced": "7.0.0"
+                          },
+                          {
+                            "fixed": "7.24.0"
+                          }
+                        ]
+                      }
+                    ],
+                    "database_specific": {
+                      "source": "https://github.com/github/advisory-database/blob/main/advisories/github-reviewed/2026/03/GHSA-2mjp-6q6p-2qxm/GHSA-2mjp-6q6p-2qxm.json"
+                    }
+                  }
+                ],
+                "severity": [
+                  {
+                    "type": "CVSS_V3",
+                    "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:L"
+                  }
+                ],
+                "references": [
+                  {
+                    "type": "WEB",
+                    "url": "https://github.com/nodejs/undici/security/advisories/GHSA-2mjp-6q6p-2qxm"
+                  },
+                  {
+                    "type": "ADVISORY",
+                    "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-1525"
+                  },
+                  {
+                    "type": "WEB",
+                    "url": "https://hackerone.com/reports/3556037"
+                  },
+                  {
+                    "type": "WEB",
+                    "url": "https://cna.openjsf.org/security-advisories.html"
+                  },
+                  {
+                    "type": "WEB",
+                    "url": "https://cwe.mitre.org/data/definitions/444.html"
+                  },
+                  {
+                    "type": "PACKAGE",
+                    "url": "https://github.com/nodejs/undici"
+                  },
+                  {
+                    "type": "WEB",
+                    "url": "https://www.rfc-editor.org/rfc/rfc9110.html#section-8.6"
+                  }
+                ],
+                "database_specific": {
+                  "cwe_ids": [
+                    "CWE-444"
+                  ],
+                  "github_reviewed": true,
+                  "github_reviewed_at": "2026-03-13T20:07:03Z",
+                  "nvd_published_at": "2026-03-12T20:16:02Z",
+                  "severity": "MODERATE"
+                }
+              },
+              {
+                "modified": "2026-03-18T22:58:58Z",
+                "published": "2026-03-13T20:41:26Z",
+                "schema_version": "1.7.5",
+                "id": "GHSA-4992-7rv2-5pvq",
+                "aliases": [
+                  "CVE-2026-1527"
+                ],
+                "related": [
+                  "CGA-474r-8wcx-87w5"
+                ],
+                "summary": "Undici has CRLF Injection in undici via `upgrade` option",
+                "details": "### Impact\n\nWhen an application passes user-controlled input to the `upgrade` option of `client.request()`, an attacker can inject CRLF sequences (`\\r\\n`) to:\n\n1. Inject arbitrary HTTP headers\n2. Terminate the HTTP request prematurely and smuggle raw data to non-HTTP services (Redis, Memcached, Elasticsearch)\n\nThe vulnerability exists because undici writes the `upgrade` value directly to the socket without validating for invalid header characters:\n\n```javascript\n// lib/dispatcher/client-h1.js:1121\nif (upgrade) {\n  header += `connection: upgrade\\r\\nupgrade: ${upgrade}\\r\\n`\n}\n```\n\n### Patches\n\n Patched in the undici version v7.24.0 and v6.24.0. Users should upgrade to this version or later.\n\n### Workarounds\n\nSanitize the `upgrade` option string before passing to undici:\n\n```javascript\nfunction sanitizeUpgrade(value) {\n  if (/[\\r\\n]/.test(value)) {\n    throw new Error('Invalid upgrade value')\n  }\n  return value\n}\n\nclient.request({\n  upgrade: sanitizeUpgrade(userInput)\n})\n```",
+                "affected": [
+                  {
+                    "package": {
+                      "ecosystem": "npm",
+                      "name": "undici",
+                      "purl": "pkg:npm/undici"
+                    },
+                    "ranges": [
+                      {
+                        "type": "SEMVER",
+                        "events": [
+                          {
+                            "introduced": "0"
+                          },
+                          {
+                            "fixed": "6.24.0"
+                          }
+                        ]
+                      }
+                    ],
+                    "database_specific": {
+                      "source": "https://github.com/github/advisory-database/blob/main/advisories/github-reviewed/2026/03/GHSA-4992-7rv2-5pvq/GHSA-4992-7rv2-5pvq.json"
+                    }
+                  },
+                  {
+                    "package": {
+                      "ecosystem": "npm",
+                      "name": "undici",
+                      "purl": "pkg:npm/undici"
+                    },
+                    "ranges": [
+                      {
+                        "type": "SEMVER",
+                        "events": [
+                          {
+                            "introduced": "7.0.0"
+                          },
+                          {
+                            "fixed": "7.24.0"
+                          }
+                        ]
+                      }
+                    ],
+                    "database_specific": {
+                      "source": "https://github.com/github/advisory-database/blob/main/advisories/github-reviewed/2026/03/GHSA-4992-7rv2-5pvq/GHSA-4992-7rv2-5pvq.json"
+                    }
+                  }
+                ],
+                "severity": [
+                  {
+                    "type": "CVSS_V3",
+                    "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:L/I:L/A:N"
+                  }
+                ],
+                "references": [
+                  {
+                    "type": "WEB",
+                    "url": "https://github.com/nodejs/undici/security/advisories/GHSA-4992-7rv2-5pvq"
+                  },
+                  {
+                    "type": "ADVISORY",
+                    "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-1527"
+                  },
+                  {
+                    "type": "WEB",
+                    "url": "https://hackerone.com/reports/3487198"
+                  },
+                  {
+                    "type": "WEB",
+                    "url": "https://cna.openjsf.org/security-advisories.html"
+                  },
+                  {
+                    "type": "PACKAGE",
+                    "url": "https://github.com/nodejs/undici"
+                  }
+                ],
+                "database_specific": {
+                  "cwe_ids": [
+                    "CWE-93"
+                  ],
+                  "github_reviewed": true,
+                  "github_reviewed_at": "2026-03-13T20:41:26Z",
+                  "nvd_published_at": "2026-03-12T21:16:25Z",
+                  "severity": "MODERATE"
+                }
+              },
+              {
+                "modified": "2026-02-04T02:56:17Z",
+                "published": "2026-01-14T21:06:08Z",
+                "schema_version": "1.7.3",
+                "id": "GHSA-g9mf-h72j-4rw9",
+                "aliases": [
+                  "CVE-2026-22036"
+                ],
+                "related": [
+                  "CGA-v3cm-92h7-q9pf"
+                ],
+                "summary": "Undici has an unbounded decompression chain in HTTP responses on Node.js Fetch API via Content-Encoding leads to resource exhaustion",
+                "details": "### Impact\n\nThe `fetch()` API supports chained HTTP encoding algorithms for response content according to RFC 9110 (e.g., Content-Encoding: gzip, br). This is also supported by the undici decompress interceptor.\n\nHowever, the number of links in the decompression chain is unbounded and the default maxHeaderSize allows a malicious server to insert thousands compression steps leading to high CPU usage and excessive memory allocation.\n\n### Patches\n\nUpgrade to 7.18.2 or 6.23.0.\n\n### Workarounds\n\nIt is possible to apply an undici interceptor and filter long `Content-Encoding` sequences manually.\n\n### References\n\n* https://hackerone.com/reports/3456148\n* https://github.com/advisories/GHSA-gm62-xv2j-4w53\n* https://curl.se/docs/CVE-2022-32206.html",
+                "affected": [
+                  {
+                    "package": {
+                      "ecosystem": "npm",
+                      "name": "undici",
+                      "purl": "pkg:npm/undici"
+                    },
+                    "ranges": [
+                      {
+                        "type": "SEMVER",
+                        "events": [
+                          {
+                            "introduced": "7.0.0"
+                          },
+                          {
+                            "fixed": "7.18.2"
+                          }
+                        ]
+                      }
+                    ],
+                    "database_specific": {
+                      "source": "https://github.com/github/advisory-database/blob/main/advisories/github-reviewed/2026/01/GHSA-g9mf-h72j-4rw9/GHSA-g9mf-h72j-4rw9.json"
+                    }
+                  },
+                  {
+                    "package": {
+                      "ecosystem": "npm",
+                      "name": "undici",
+                      "purl": "pkg:npm/undici"
+                    },
+                    "ranges": [
+                      {
+                        "type": "SEMVER",
+                        "events": [
+                          {
+                            "introduced": "0"
+                          },
+                          {
+                            "fixed": "6.23.0"
+                          }
+                        ]
+                      }
+                    ],
+                    "database_specific": {
+                      "source": "https://github.com/github/advisory-database/blob/main/advisories/github-reviewed/2026/01/GHSA-g9mf-h72j-4rw9/GHSA-g9mf-h72j-4rw9.json"
+                    }
+                  }
+                ],
+                "severity": [
+                  {
+                    "type": "CVSS_V3",
+                    "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H"
+                  }
+                ],
+                "references": [
+                  {
+                    "type": "WEB",
+                    "url": "https://github.com/nodejs/undici/security/advisories/GHSA-g9mf-h72j-4rw9"
+                  },
+                  {
+                    "type": "ADVISORY",
+                    "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-22036"
+                  },
+                  {
+                    "type": "WEB",
+                    "url": "https://github.com/nodejs/undici/commit/b04e3cbb569c1596f86c108e9b52c79d8475dcb3"
+                  },
+                  {
+                    "type": "PACKAGE",
+                    "url": "https://github.com/nodejs/undici"
+                  }
+                ],
+                "database_specific": {
+                  "cwe_ids": [
+                    "CWE-770"
+                  ],
+                  "github_reviewed": true,
+                  "github_reviewed_at": "2026-01-14T21:06:08Z",
+                  "nvd_published_at": "2026-01-14T19:16:47Z",
+                  "severity": "MODERATE"
+                }
+              },
+              {
+                "modified": "2026-03-18T22:58:58Z",
+                "published": "2026-03-13T20:41:41Z",
+                "schema_version": "1.7.5",
+                "id": "GHSA-v9p9-hfj2-hcw8",
+                "aliases": [
+                  "CVE-2026-2229"
+                ],
+                "related": [
+                  "CGA-gmm5-x3fp-m45f"
+                ],
+                "summary": "Undici has Unhandled Exception in WebSocket Client Due to Invalid server_max_window_bits Validation",
+                "details": "### Impact\n\nThe undici WebSocket client is vulnerable to a denial-of-service attack due to improper validation of the `server_max_window_bits` parameter in the permessage-deflate extension. When a WebSocket client connects to a server, it automatically advertises support for permessage-deflate compression. A malicious server can respond with an out-of-range `server_max_window_bits` value (outside zlib's valid range of 8-15). When the server subsequently sends a compressed frame, the client attempts to create a zlib InflateRaw instance with the invalid windowBits value, causing a synchronous RangeError exception that is not caught, resulting in immediate process termination.\n\nThe vulnerability exists because:\n\n1. The `isValidClientWindowBits()` function only validates that the value contains ASCII digits, not that it falls within the valid range 8-15\n2. The `createInflateRaw()` call is not wrapped in a try-catch block\n3. The resulting exception propagates up through the call stack and crashes the Node.js process\n\n### Patches\n_Has the problem been patched? What versions should users upgrade to?_\n\n### Workarounds\n_Is there a way for users to fix or remediate the vulnerability without upgrading?_",
+                "affected": [
+                  {
+                    "package": {
+                      "ecosystem": "npm",
+                      "name": "undici",
+                      "purl": "pkg:npm/undici"
+                    },
+                    "ranges": [
+                      {
+                        "type": "SEMVER",
+                        "events": [
+                          {
+                            "introduced": "0"
+                          },
+                          {
+                            "fixed": "6.24.0"
+                          }
+                        ]
+                      }
+                    ],
+                    "database_specific": {
+                      "source": "https://github.com/github/advisory-database/blob/main/advisories/github-reviewed/2026/03/GHSA-v9p9-hfj2-hcw8/GHSA-v9p9-hfj2-hcw8.json"
+                    }
+                  },
+                  {
+                    "package": {
+                      "ecosystem": "npm",
+                      "name": "undici",
+                      "purl": "pkg:npm/undici"
+                    },
+                    "ranges": [
+                      {
+                        "type": "SEMVER",
+                        "events": [
+                          {
+                            "introduced": "7.0.0"
+                          },
+                          {
+                            "fixed": "7.24.0"
+                          }
+                        ]
+                      }
+                    ],
+                    "database_specific": {
+                      "source": "https://github.com/github/advisory-database/blob/main/advisories/github-reviewed/2026/03/GHSA-v9p9-hfj2-hcw8/GHSA-v9p9-hfj2-hcw8.json"
+                    }
+                  }
+                ],
+                "severity": [
+                  {
+                    "type": "CVSS_V3",
+                    "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+                  }
+                ],
+                "references": [
+                  {
+                    "type": "WEB",
+                    "url": "https://github.com/nodejs/undici/security/advisories/GHSA-v9p9-hfj2-hcw8"
+                  },
+                  {
+                    "type": "ADVISORY",
+                    "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-2229"
+                  },
+                  {
+                    "type": "WEB",
+                    "url": "https://hackerone.com/reports/3487486"
+                  },
+                  {
+                    "type": "WEB",
+                    "url": "https://cna.openjsf.org/security-advisories.html"
+                  },
+                  {
+                    "type": "WEB",
+                    "url": "https://datatracker.ietf.org/doc/html/rfc7692"
+                  },
+                  {
+                    "type": "PACKAGE",
+                    "url": "https://github.com/nodejs/undici"
+                  },
+                  {
+                    "type": "WEB",
+                    "url": "https://nodejs.org/api/zlib.html#class-zlibinflateraw"
+                  }
+                ],
+                "database_specific": {
+                  "cwe_ids": [
+                    "CWE-248"
+                  ],
+                  "github_reviewed": true,
+                  "github_reviewed_at": "2026-03-13T20:41:41Z",
+                  "nvd_published_at": "2026-03-12T21:16:25Z",
+                  "severity": "HIGH"
+                }
+              },
+              {
+                "modified": "2026-03-18T22:58:59Z",
+                "published": "2026-03-13T20:41:56Z",
+                "schema_version": "1.7.5",
+                "id": "GHSA-vrm6-8vpv-qv8q",
+                "aliases": [
+                  "CVE-2026-1526"
+                ],
+                "related": [
+                  "CGA-xmgj-hc7r-rjjg"
+                ],
+                "summary": "Undici has Unbounded Memory Consumption in WebSocket permessage-deflate Decompression",
+                "details": "## Description\n\nThe undici WebSocket client is vulnerable to a denial-of-service attack via unbounded memory consumption during permessage-deflate decompression. When a WebSocket connection negotiates the permessage-deflate extension, the client decompresses incoming compressed frames without enforcing any limit on the decompressed data size. A malicious WebSocket server can send a small compressed frame (a \"decompression bomb\") that expands to an extremely large size in memory, causing the Node.js process to exhaust available memory and crash or become unresponsive.\n\nThe vulnerability exists in the `PerMessageDeflate.decompress()` method, which accumulates all decompressed chunks in memory and concatenates them into a single Buffer without checking whether the total size exceeds a safe threshold.\n\n## Impact\n\n- Remote denial of service against any Node.js application using undici's WebSocket client\n- A single compressed WebSocket frame of ~6 MB can decompress to ~1 GB or more\n- Memory exhaustion occurs in native/external memory, bypassing V8 heap limits\n- No application-level mitigation is possible as decompression occurs before message delivery\n\n### Patches\n\nUsers should upgrade to fixed versions.\n\n### Workarounds\n\nNo workaround are possible.",
+                "affected": [
+                  {
+                    "package": {
+                      "ecosystem": "npm",
+                      "name": "undici",
+                      "purl": "pkg:npm/undici"
+                    },
+                    "ranges": [
+                      {
+                        "type": "SEMVER",
+                        "events": [
+                          {
+                            "introduced": "0"
+                          },
+                          {
+                            "fixed": "6.24.0"
+                          }
+                        ]
+                      }
+                    ],
+                    "database_specific": {
+                      "source": "https://github.com/github/advisory-database/blob/main/advisories/github-reviewed/2026/03/GHSA-vrm6-8vpv-qv8q/GHSA-vrm6-8vpv-qv8q.json"
+                    }
+                  },
+                  {
+                    "package": {
+                      "ecosystem": "npm",
+                      "name": "undici",
+                      "purl": "pkg:npm/undici"
+                    },
+                    "ranges": [
+                      {
+                        "type": "SEMVER",
+                        "events": [
+                          {
+                            "introduced": "7.0.0"
+                          },
+                          {
+                            "fixed": "7.24.0"
+                          }
+                        ]
+                      }
+                    ],
+                    "database_specific": {
+                      "source": "https://github.com/github/advisory-database/blob/main/advisories/github-reviewed/2026/03/GHSA-vrm6-8vpv-qv8q/GHSA-vrm6-8vpv-qv8q.json"
+                    }
+                  }
+                ],
+                "severity": [
+                  {
+                    "type": "CVSS_V3",
+                    "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+                  }
+                ],
+                "references": [
+                  {
+                    "type": "WEB",
+                    "url": "https://github.com/nodejs/undici/security/advisories/GHSA-vrm6-8vpv-qv8q"
+                  },
+                  {
+                    "type": "ADVISORY",
+                    "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-1526"
+                  },
+                  {
+                    "type": "WEB",
+                    "url": "https://hackerone.com/reports/3481206"
+                  },
+                  {
+                    "type": "WEB",
+                    "url": "https://cna.openjsf.org/security-advisories.html"
+                  },
+                  {
+                    "type": "WEB",
+                    "url": "https://datatracker.ietf.org/doc/html/rfc7692"
+                  },
+                  {
+                    "type": "PACKAGE",
+                    "url": "https://github.com/nodejs/undici"
+                  },
+                  {
+                    "type": "WEB",
+                    "url": "https://owasp.org/www-community/attacks/Denial_of_Service"
+                  }
+                ],
+                "database_specific": {
+                  "cwe_ids": [
+                    "CWE-409"
+                  ],
+                  "github_reviewed": true,
+                  "github_reviewed_at": "2026-03-13T20:41:56Z",
+                  "nvd_published_at": "2026-03-12T21:16:23Z",
+                  "severity": "HIGH"
+                }
+              }
+            ],
+            "groups": [
+              {
+                "ids": [
+                  "GHSA-2mjp-6q6p-2qxm"
+                ],
+                "aliases": [
+                  "CVE-2026-1525",
+                  "GHSA-2mjp-6q6p-2qxm"
+                ],
+                "max_severity": "6.5"
+              },
+              {
+                "ids": [
+                  "GHSA-4992-7rv2-5pvq"
+                ],
+                "aliases": [
+                  "CVE-2026-1527",
+                  "GHSA-4992-7rv2-5pvq"
+                ],
+                "max_severity": "4.6"
+              },
+              {
+                "ids": [
+                  "GHSA-g9mf-h72j-4rw9"
+                ],
+                "aliases": [
+                  "CVE-2026-22036",
+                  "GHSA-g9mf-h72j-4rw9"
+                ],
+                "max_severity": "5.9"
+              },
+              {
+                "ids": [
+                  "GHSA-v9p9-hfj2-hcw8"
+                ],
+                "aliases": [
+                  "CVE-2026-2229",
+                  "GHSA-v9p9-hfj2-hcw8"
+                ],
+                "max_severity": "7.5"
+              },
+              {
+                "ids": [
+                  "GHSA-vrm6-8vpv-qv8q"
+                ],
+                "aliases": [
+                  "CVE-2026-1526",
+                  "GHSA-vrm6-8vpv-qv8q"
+                ],
+                "max_severity": "7.5"
+              }
+            ]
+          },
+          {
+            "package": {
+              "name": "uuid",
+              "version": "8.3.2",
+              "ecosystem": "npm"
+            },
+            "dependency_groups": [
+              "dev"
+            ],
+            "vulnerabilities": [
+              {
+                "modified": "2026-05-21T18:30:08Z",
+                "published": "2026-04-22T20:53:24Z",
+                "schema_version": "1.7.5",
+                "id": "GHSA-w5hq-g745-h8pq",
+                "aliases": [
+                  "CVE-2026-41907"
+                ],
+                "related": [
+                  "CGA-cfw7-cq6w-m5hj"
+                ],
+                "summary": "uuid: Missing buffer bounds check in v3/v5/v6 when buf is provided",
+                "details": "### Summary\n\nThe `v3()`, `v5()`, and `v6()` [API methods](https://github.com/uuidjs/uuid#api-summary) (not `uuid` release versions) accept external output buffers but do not reject out-of-range writes (small `buf` or large `offset`).  \nBy contrast, `v4()`, `v1()`, and `v7()` API methods explicitly throw `RangeError` on invalid bounds.\n\nThis inconsistency allows **silent partial writes** into caller-provided buffers.\n\n\n### Affected code\n\n- `src/v35.ts` (`v3()`/`v5()` path) writes `buf[offset + i]` without bounds validation.\n- `src/v6.ts` writes `buf[offset + i]` without bounds validation.\n\n### Reproducible PoC\n\n```bash\ncd /home/StrawHat/uuid\nnpm ci\nnpm run build\n\nnode --input-type=module -e \"\nimport {v4,v5,v6} from './dist-node/index.js';\nconst ns='6ba7b810-9dad-11d1-80b4-00c04fd430c8';\nfor (const [name,fn] of [\n  ['v4()',()=>v4({},new Uint8Array(8),4)],\n  ['v5()',()=>v5('x',ns,new Uint8Array(8),4)],\n  ['v6()',()=>v6({},new Uint8Array(8),4)],\n]) {\n  try { fn(); console.log(name,'NO_THROW'); }\n  catch(e){ console.log(name,'THREW',e.name); }\n}\"\n```\n\nObserved:\n\n- `v4() THREW RangeError`\n- `v5() NO_THROW`\n- `v6() NO_THROW`\n\nExample partial overwrite evidence captured during audit:\n\n```text\nsame true buf [\n  170, 170, 170, 170,\n   75, 224, 100,  63\n]\nv6 [\n  187, 187, 187, 187,\n   31,  19, 185,  64\n]\n```\n\n### Security impact\n\n- **Primary**: integrity/robustness issue (silent partial output).\n- If an application assumes full UUID writes into preallocated buffers, this can produce malformed/truncated/partially stale identifiers without error.\n- In systems where caller-controlled offsets/buffer sizes are exposed indirectly, this may become a security-relevant logic flaw.\n\n### Suggested fix\n\nAdd the same guard used by `v4()`/`v1()`/`v7()`:\n\n```ts\nif (offset < 0 || offset + 16 > buf.length) {\n  throw new RangeError(`UUID byte range ${offset}:${offset + 15} is out of buffer bounds`);\n}\n```\n\nApply to:\n\n- `src/v35.ts` (covers `v3()` and `v5()`)\n- `src/v6.ts`",
+                "affected": [
+                  {
+                    "package": {
+                      "ecosystem": "npm",
+                      "name": "uuid",
+                      "purl": "pkg:npm/uuid"
+                    },
+                    "ranges": [
+                      {
+                        "type": "SEMVER",
+                        "events": [
+                          {
+                            "introduced": "0"
+                          },
+                          {
+                            "fixed": "11.1.1"
+                          }
+                        ]
+                      }
+                    ],
+                    "database_specific": {
+                      "source": "https://github.com/github/advisory-database/blob/main/advisories/github-reviewed/2026/04/GHSA-w5hq-g745-h8pq/GHSA-w5hq-g745-h8pq.json"
+                    }
+                  },
+                  {
+                    "package": {
+                      "ecosystem": "npm",
+                      "name": "uuid",
+                      "purl": "pkg:npm/uuid"
+                    },
+                    "ranges": [
+                      {
+                        "type": "SEMVER",
+                        "events": [
+                          {
+                            "introduced": "12.0.0"
+                          },
+                          {
+                            "fixed": "12.0.1"
+                          }
+                        ]
+                      }
+                    ],
+                    "database_specific": {
+                      "source": "https://github.com/github/advisory-database/blob/main/advisories/github-reviewed/2026/04/GHSA-w5hq-g745-h8pq/GHSA-w5hq-g745-h8pq.json"
+                    }
+                  },
+                  {
+                    "package": {
+                      "ecosystem": "npm",
+                      "name": "uuid",
+                      "purl": "pkg:npm/uuid"
+                    },
+                    "ranges": [
+                      {
+                        "type": "SEMVER",
+                        "events": [
+                          {
+                            "introduced": "13.0.0"
+                          },
+                          {
+                            "fixed": "13.0.1"
+                          }
+                        ]
+                      }
+                    ],
+                    "database_specific": {
+                      "source": "https://github.com/github/advisory-database/blob/main/advisories/github-reviewed/2026/04/GHSA-w5hq-g745-h8pq/GHSA-w5hq-g745-h8pq.json"
+                    }
+                  }
+                ],
+                "severity": [
+                  {
+                    "type": "CVSS_V3",
+                    "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N"
+                  },
+                  {
+                    "type": "CVSS_V4",
+                    "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N"
+                  }
+                ],
+                "references": [
+                  {
+                    "type": "WEB",
+                    "url": "https://github.com/uuidjs/uuid/security/advisories/GHSA-w5hq-g745-h8pq"
+                  },
+                  {
+                    "type": "ADVISORY",
+                    "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-41907"
+                  },
+                  {
+                    "type": "WEB",
+                    "url": "https://github.com/uuidjs/uuid/commit/32389c887c9e75f90442ee4cc95bbab0c4e8346e"
+                  },
+                  {
+                    "type": "WEB",
+                    "url": "https://github.com/uuidjs/uuid/commit/3d2c5b0342f0fcb52a5ac681c3d47c13e7444b34"
+                  },
+                  {
+                    "type": "WEB",
+                    "url": "https://github.com/uuidjs/uuid/commit/3d61d6ac1f782cf6b1dd8661c60f11722cd49a0d"
+                  },
+                  {
+                    "type": "WEB",
+                    "url": "https://github.com/uuidjs/uuid/commit/9d27ddf7046ce496ef39569ff84d948eeff9cb2a"
+                  },
+                  {
+                    "type": "PACKAGE",
+                    "url": "https://github.com/uuidjs/uuid"
+                  },
+                  {
+                    "type": "WEB",
+                    "url": "https://github.com/uuidjs/uuid/releases/tag/v11.1.1"
+                  },
+                  {
+                    "type": "WEB",
+                    "url": "https://github.com/uuidjs/uuid/releases/tag/v12.0.1"
+                  },
+                  {
+                    "type": "WEB",
+                    "url": "https://github.com/uuidjs/uuid/releases/tag/v13.0.1"
+                  },
+                  {
+                    "type": "WEB",
+                    "url": "https://github.com/uuidjs/uuid/releases/tag/v14.0.0"
+                  }
+                ],
+                "database_specific": {
+                  "cwe_ids": [
+                    "CWE-1285",
+                    "CWE-787"
+                  ],
+                  "github_reviewed": true,
+                  "github_reviewed_at": "2026-04-22T20:53:24Z",
+                  "nvd_published_at": "2026-04-24T19:17:14Z",
+                  "severity": "MODERATE"
+                }
+              }
+            ],
+            "groups": [
+              {
+                "ids": [
+                  "GHSA-w5hq-g745-h8pq"
+                ],
+                "aliases": [
+                  "CVE-2026-41907",
+                  "GHSA-w5hq-g745-h8pq"
+                ],
+                "max_severity": "7.5"
+              }
+            ]
+          },
+          {
+            "package": {
+              "name": "ws",
+              "version": "8.17.1",
+              "ecosystem": "npm"
+            },
+            "dependency_groups": [
+              "dev"
+            ],
+            "vulnerabilities": [
+              {
+                "modified": "2026-05-20T14:14:16Z",
+                "published": "2026-05-18T19:02:40Z",
+                "schema_version": "1.7.5",
+                "id": "GHSA-58qx-3vcg-4xpx",
+                "aliases": [
+                  "CVE-2026-45736"
+                ],
+                "related": [
+                  "CGA-342g-4fmm-4xmf"
+                ],
+                "summary": "ws: Uninitialized memory disclosure",
+                "details": "### Impact\n\nThe `websocket.close()` implementation is vulnerable to uninitialized memory disclosure when a `TypedArray` is passed as the reason argument.\n\n### Proof of concept\n\n```js\nimport { deepStrictEqual } from 'node:assert';\nimport { WebSocket, WebSocketServer } from 'ws';\n\nconst wss = new WebSocketServer(\n  { port: 0, skipUTF8Validation: true },\n  function () {\n    const { port } = wss.address();\n    const ws = new WebSocket(`ws://localhost:${port}`, {\n      skipUTF8Validation: true\n    });\n\n    ws.on('close', function (code, reason) {\n      deepStrictEqual(reason, Buffer.alloc(80));\n    });\n  }\n);\n\nwss.on('connection', function (ws) {\n  ws.close(1000, new Float32Array(20));\n});\n```\n\n### Patches\n\nThe vulnerability was fixed in ws@8.20.1 (https://github.com/websockets/ws/commit/c0327ec15a54d701eb6ccefaa8bef328cfc03086).\n\n### Credits\n\nCredit for the private and responsible disclosure of this issue goes to [Nikita Skovoroda](https://github.com/ChALkeR).\n\n### Remarks\n\nAlthough the calculated CVSS severity is medium, the actual severity is believed to be low, as the flaw is only exploitable through misuse that is unlikely in practice.\n\n### Resources\n\n- https://github.com/advisories/GHSA-58qx-3vcg-4xpx\n- https://www.cve.org/CVERecord?id=CVE-2026-45736",
+                "affected": [
+                  {
+                    "package": {
+                      "ecosystem": "npm",
+                      "name": "ws",
+                      "purl": "pkg:npm/ws"
+                    },
+                    "ranges": [
+                      {
+                        "type": "SEMVER",
+                        "events": [
+                          {
+                            "introduced": "8.0.0"
+                          },
+                          {
+                            "fixed": "8.20.1"
+                          }
+                        ]
+                      }
+                    ],
+                    "database_specific": {
+                      "source": "https://github.com/github/advisory-database/blob/main/advisories/github-reviewed/2026/05/GHSA-58qx-3vcg-4xpx/GHSA-58qx-3vcg-4xpx.json"
+                    }
+                  }
+                ],
+                "severity": [
+                  {
+                    "type": "CVSS_V3",
+                    "score": "CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:N/A:N"
+                  }
+                ],
+                "references": [
+                  {
+                    "type": "WEB",
+                    "url": "https://github.com/websockets/ws/security/advisories/GHSA-58qx-3vcg-4xpx"
+                  },
+                  {
+                    "type": "ADVISORY",
+                    "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-45736"
+                  },
+                  {
+                    "type": "WEB",
+                    "url": "https://github.com/websockets/ws/commit/c0327ec15a54d701eb6ccefaa8bef328cfc03086"
+                  },
+                  {
+                    "type": "PACKAGE",
+                    "url": "https://github.com/websockets/ws"
+                  }
+                ],
+                "database_specific": {
+                  "cwe_ids": [
+                    "CWE-908"
+                  ],
+                  "github_reviewed": true,
+                  "github_reviewed_at": "2026-05-18T19:02:40Z",
+                  "nvd_published_at": "2026-05-15T15:16:54Z",
+                  "severity": "MODERATE"
+                }
+              }
+            ],
+            "groups": [
+              {
+                "ids": [
+                  "GHSA-58qx-3vcg-4xpx"
+                ],
+                "aliases": [
+                  "CVE-2026-45736",
+                  "GHSA-58qx-3vcg-4xpx"
+                ],
+                "max_severity": "4.4"
+              }
+            ]
+          },
+          {
+            "package": {
+              "name": "ws",
+              "version": "8.18.0",
+              "ecosystem": "npm"
+            },
+            "dependency_groups": [
+              "dev"
+            ],
+            "vulnerabilities": [
+              {
+                "modified": "2026-05-20T14:14:16Z",
+                "published": "2026-05-18T19:02:40Z",
+                "schema_version": "1.7.5",
+                "id": "GHSA-58qx-3vcg-4xpx",
+                "aliases": [
+                  "CVE-2026-45736"
+                ],
+                "related": [
+                  "CGA-342g-4fmm-4xmf"
+                ],
+                "summary": "ws: Uninitialized memory disclosure",
+                "details": "### Impact\n\nThe `websocket.close()` implementation is vulnerable to uninitialized memory disclosure when a `TypedArray` is passed as the reason argument.\n\n### Proof of concept\n\n```js\nimport { deepStrictEqual } from 'node:assert';\nimport { WebSocket, WebSocketServer } from 'ws';\n\nconst wss = new WebSocketServer(\n  { port: 0, skipUTF8Validation: true },\n  function () {\n    const { port } = wss.address();\n    const ws = new WebSocket(`ws://localhost:${port}`, {\n      skipUTF8Validation: true\n    });\n\n    ws.on('close', function (code, reason) {\n      deepStrictEqual(reason, Buffer.alloc(80));\n    });\n  }\n);\n\nwss.on('connection', function (ws) {\n  ws.close(1000, new Float32Array(20));\n});\n```\n\n### Patches\n\nThe vulnerability was fixed in ws@8.20.1 (https://github.com/websockets/ws/commit/c0327ec15a54d701eb6ccefaa8bef328cfc03086).\n\n### Credits\n\nCredit for the private and responsible disclosure of this issue goes to [Nikita Skovoroda](https://github.com/ChALkeR).\n\n### Remarks\n\nAlthough the calculated CVSS severity is medium, the actual severity is believed to be low, as the flaw is only exploitable through misuse that is unlikely in practice.\n\n### Resources\n\n- https://github.com/advisories/GHSA-58qx-3vcg-4xpx\n- https://www.cve.org/CVERecord?id=CVE-2026-45736",
+                "affected": [
+                  {
+                    "package": {
+                      "ecosystem": "npm",
+                      "name": "ws",
+                      "purl": "pkg:npm/ws"
+                    },
+                    "ranges": [
+                      {
+                        "type": "SEMVER",
+                        "events": [
+                          {
+                            "introduced": "8.0.0"
+                          },
+                          {
+                            "fixed": "8.20.1"
+                          }
+                        ]
+                      }
+                    ],
+                    "database_specific": {
+                      "source": "https://github.com/github/advisory-database/blob/main/advisories/github-reviewed/2026/05/GHSA-58qx-3vcg-4xpx/GHSA-58qx-3vcg-4xpx.json"
+                    }
+                  }
+                ],
+                "severity": [
+                  {
+                    "type": "CVSS_V3",
+                    "score": "CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:N/A:N"
+                  }
+                ],
+                "references": [
+                  {
+                    "type": "WEB",
+                    "url": "https://github.com/websockets/ws/security/advisories/GHSA-58qx-3vcg-4xpx"
+                  },
+                  {
+                    "type": "ADVISORY",
+                    "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-45736"
+                  },
+                  {
+                    "type": "WEB",
+                    "url": "https://github.com/websockets/ws/commit/c0327ec15a54d701eb6ccefaa8bef328cfc03086"
+                  },
+                  {
+                    "type": "PACKAGE",
+                    "url": "https://github.com/websockets/ws"
+                  }
+                ],
+                "database_specific": {
+                  "cwe_ids": [
+                    "CWE-908"
+                  ],
+                  "github_reviewed": true,
+                  "github_reviewed_at": "2026-05-18T19:02:40Z",
+                  "nvd_published_at": "2026-05-15T15:16:54Z",
+                  "severity": "MODERATE"
+                }
+              }
+            ],
+            "groups": [
+              {
+                "ids": [
+                  "GHSA-58qx-3vcg-4xpx"
+                ],
+                "aliases": [
+                  "CVE-2026-45736",
+                  "GHSA-58qx-3vcg-4xpx"
+                ],
+                "max_severity": "4.4"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "experimental_config": {
+      "licenses": {
+        "summary": false,
+        "allowlist": null
+      }
+    }
+  },
+  "findingCount": 18,
+  "acceptedFindingCount": 18,
+  "untriagedFindingCount": 0,
+  "untriagedIds": [],
+  "critical_high_unresolved": 0,
+  "triage": "OSV scanner executed; listed dev/tooling findings are accepted only via audit/OSV_AUDIT_TRIAGE.json. Missing scanner, scanner errors, or unlisted IDs block Tier 1 clearance.",
+  "triageStatus": "TRIAGED_ACCEPTED_DEV_TOOLING_ONLY",
+  "triagePath": "audit/OSV_AUDIT_TRIAGE.json",
+  "stderr": "Scanned /workspace/goalos-agialpha-ascension/package-lock.json file and found 540 packages\n"
+}

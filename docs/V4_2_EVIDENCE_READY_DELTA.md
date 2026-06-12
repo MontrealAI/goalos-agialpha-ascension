@@ -1,3 +1,5 @@
+> Historical/deprecated note: this document describes a prior pre-certificate authorization model. The active source of truth is `qa/mainnet-authorization-certificate.json`.
+
 # v4.2 Evidence-Ready Delta
 
 v4.2 does not pretend to be audited or mainnet-ready. It moves the package as close as safely possible to a 10/10 by adding the missing evidence-production layer.
