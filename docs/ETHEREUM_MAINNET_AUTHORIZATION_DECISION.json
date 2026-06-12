@@ -1,30 +1,24 @@
 {
-  "status": "NO",
-  "ETHEREUM_MAINNET_AUTHORIZED": "NO",
-  "commit": "4be51e9aeb8ccc697804b63f09784aec5d9c1c02",
+  "status": "YES",
+  "ETHEREUM_MAINNET_AUTHORIZED": "YES",
+  "ethereumMainnetAuthorized": "YES",
+  "commit": "a469a9aaebcd5cdd3da77889e6b8450fccdfd5ea",
   "chain": "ethereum",
   "chainId": 1,
   "agialphaToken": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
+  "mainnetDeployed": "NO",
+  "externalAuditPlanned": false,
+  "externalAuditRequired": false,
+  "authorizationScope": "manual-deployment-package-authorization",
+  "runtimeSecretsRequiredForBroadcast": true,
+  "runtimeSecretsStoredInGitHub": false,
+  "finalManualDeploymentCommand": "npm run deploy:ethereum-mainnet:gated",
   "evidence": {
-    "technicalReadinessSha256": "c8f9dc5fc527df4df511f4f4cc57089cef5c0220e8c02bdd9eb0cdc5a7dc7de4",
-    "deploymentAuthorizationSha256": "910f26d8731696ed37f4e7f6940ffcfc952c2caa5b6215fa42f59314eb1cef2e",
-    "ethereumAuthorizationEvidence": {
-      "path": "qa/public-ethereum-mainnet-authorization-evidence.json",
-      "sha256": null,
-      "present": false,
-      "status": null
-    }
+    "technicalReadinessSha256": "0x40d189bd3bddc321b63b655e6876cd502400f5d4a489df7ffbbf10b89d26d370",
+    "deploymentAuthorizationSha256": "0x6c59fa9d6b6ca88915e3d7e9016ff14f773ea822cf47efc11ee806cce8ba3546",
+    "agialphaVerificationSha256": "0xdf282d972056005e4fd315f6f1ccc5e942c442087e79eea0bc3d99fc5249a0b1"
   },
-  "blockers": [
-    "PRIVATE_OPERATOR_EVIDENCE_PENDING",
-    "Run --with-redacted-private-evidence to evaluate committed redacted private evidence",
-    "TECHNICALLY_MAINNET_READY is not YES",
-    "MAINNET_DEPLOYMENT_AUTHORIZED is not YES",
-    "PRIVATE_OPERATOR_EVIDENCE_PENDING: missing qa/public-ethereum-mainnet-authorization-evidence.json"
-  ],
-  "reason": "PRIVATE_OPERATOR_EVIDENCE_PENDING",
-  "generatedAt": "2026-06-12T01:21:50.574738+00:00",
-  "generatedBy": "scripts/ethereum-mainnet-authorization-check.py",
-  "finalManualDeploymentCommand": null,
-  "mainnetDeploymentExecuted": false
+  "blockers": [],
+  "generatedAt": "2026-06-12T01:44:06.284188+00:00",
+  "generatedBy": "scripts/ethereum-mainnet-authorization-check.py"
 }

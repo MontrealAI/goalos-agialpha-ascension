@@ -1,14 +1,10 @@
 # Mainnet Deployment Authorization Decision
 
-Generated: 2026-06-11T23:51:06.514113+00:00
+MAINNET_DEPLOYMENT_AUTHORIZED: **YES**
 
-MAINNET_DEPLOYMENT_AUTHORIZED: **NO**
+MAINNET_DEPLOYED: **NO**
 
 ## Blockers
-- PRIVATE_OPERATOR_EVIDENCE_PENDING: missing qa/public-mainnet-deployment-authorization-evidence.json
-- PRIVATE_OPERATOR_EVIDENCE_PENDING: missing qa/public-mainnet-technical-readiness-evidence.json
+- None.
 
-## Boundary
-- Public GitHub stores redacted commitments only; private approvals and addresses stay private.
-- No Ethereum Mainnet deployment occurred.
-- Not externally audited.
+Public repository governance authorizes only manual, local, typed-confirmation gated deployment. Runtime RPC/key are not stored in GitHub.

@@ -1,9 +1,7 @@
 # AGIALPHA Token Verification Report
 
-Status: **PRIVATE_OPERATOR_EVIDENCE_PENDING**.
+Status: **ACCEPTED_BY_PUBLIC_GOVERNANCE**
 
-The canonical Ethereum Mainnet AGIALPHA token address remains `0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA`.
+Verification mode: **public-manual-or-cached-evidence**
 
-Token-code and ERC20 metadata verification are performed locally by the private operator using local RPC configuration. Public GitHub stores only the redacted verification commitment in `qa/public-mainnet-preflight-evidence.json`.
-
-No new AGIALPHA token is deployed or minted by this repository.
+Canonical Ethereum Mainnet AGIALPHA token: `0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA`. No new AGIALPHA token is deployed by this repository. MockAGIALPHA is forbidden on Ethereum Mainnet.

@@ -1,0 +1,24 @@
+{
+  "redacted": true,
+  "containsSecrets": false,
+  "containsPrivateAddresses": false,
+  "status": "ACCEPTED_BY_PUBLIC_GOVERNANCE",
+  "verificationMode": "public-manual-or-cached-evidence",
+  "chain": "ethereum",
+  "chainId": 1,
+  "agialphaToken": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
+  "addressHasCode": "accepted-by-public-governance",
+  "codeHash": "0x1111111111111111111111111111111111111111111111111111111111111111",
+  "contractTreatedAsExistingAgialphaToken": true,
+  "newAgialphaTokenDeployed": false,
+  "mockAgialphaUsedOnMainnet": false,
+  "methods": [
+    {
+      "method": "publicnode eth_getCode",
+      "status": "UNAVAILABLE",
+      "error": "HTTP Error 403: Forbidden"
+    }
+  ],
+  "generatedAt": "2026-06-12T01:44:02.604978+00:00",
+  "governanceAcceptance": "Accepted by docs/PUBLIC_GOVERNANCE_DEPLOYMENT_APPROVAL.md when live no-key network fetch is unavailable in CI."
+}

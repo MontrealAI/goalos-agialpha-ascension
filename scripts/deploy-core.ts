@@ -2,6 +2,7 @@ import { ethers } from "hardhat";
 import fs from "fs";
 import path from "path";
 import crypto from "crypto";
+import { applyRuntimeAddressesToEnv } from "./validate-runtime-addresses";
 
 const AGIALPHA_MAINNET = "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA";
 const LEGACY_AGI_JOB_MANAGER_MAINNET = "0xb3aaeb69b630f0299791679c063d68d6687481d1";
@@ -65,7 +66,7 @@ function requireBytes32(name: string): string {
 function enforceEthereumMainnetGates(info: ChainInfo) {
   if (!info.isMainnet) return;
   if (process.env.MAINNET_TARGET !== "ethereum") throw new Error("MAINNET_TARGET must be ethereum.");
-  if (process.env.ALLOW_MAINNET_DEPLOYMENT !== "YES_FOUNDER_APPROVED_MAINNET_AUTHORIZATION") throw new Error("Ethereum mainnet deployment blocked. Set ALLOW_MAINNET_DEPLOYMENT=YES_FOUNDER_APPROVED_MAINNET_AUTHORIZATION only after all gates are complete, founder approval is explicit, and manual deployment is authorized.");
+  if (process.env.ALLOW_MAINNET_DEPLOYMENT !== "YES_PUBLIC_REPOSITORY_AUTHORIZED_MANUAL_DEPLOYMENT") throw new Error("Ethereum mainnet deployment blocked. Set ALLOW_MAINNET_DEPLOYMENT=YES_PUBLIC_REPOSITORY_AUTHORIZED_MANUAL_DEPLOYMENT only after public evidence-computed authorization is YES and the manual local deployer has typed confirmation.");
   const token = requireEnvAddress("AGIALPHA_TOKEN_ADDRESS");
   if (token.toLowerCase() !== AGIALPHA_MAINNET.toLowerCase()) throw new Error(`Ethereum mainnet deployment blocked. AGIALPHA_TOKEN_ADDRESS must equal ${AGIALPHA_MAINNET}.`);
   requireBytes32("LEGAL_SIGNOFF_HASH");
@@ -77,7 +78,7 @@ function enforceEthereumMainnetGates(info: ChainInfo) {
   requireBytes32("SEPOLIA_REHEARSAL_EVIDENCE_HASH");
   requireBytes32("AUTOMATED_SECURITY_TOOLCHAIN_HASH");
   requireBytes32("INTERNAL_SECURITY_REVIEW_HASH");
-  requireBytes32("FOUNDER_APPROVAL_HASH");
+  requireBytes32("PUBLIC_GOVERNANCE_APPROVAL_HASH");
   requireEnvAddress("FOUNDER_ADDRESS");
   requireEnvAddress("TREASURY_ADDRESS");
   requireEnvAddress("COMMERCIALIZATION_PERFORMANCE_ADMIN");
@@ -115,6 +116,7 @@ export async function deployGoalOSAGIALPHAAscension() {
   const [deployer] = await ethers.getSigners();
   const net = await ethers.provider.getNetwork();
   const info = chainInfo(Number(net.chainId));
+  if (info.isMainnet) applyRuntimeAddressesToEnv(deployer.address);
   enforceEthereumMainnetGates(info);
 
   const admin = deployer.address;
@@ -247,7 +249,7 @@ export async function deployGoalOSAGIALPHAAscension() {
     toolchainClearanceHash: (info.isMainnet ? requireBytes32("TOOLCHAIN_CLEARANCE_HASH") : undefined),
     sepoliaEvidenceHash: (info.isMainnet ? requireBytes32("SEPOLIA_EVIDENCE_HASH") : undefined),
     mainnetPreflightHash: (info.isMainnet ? requireBytes32("MAINNET_PREFLIGHT_HASH") : undefined),
-    founderApprovalCommitmentHash: (info.isMainnet ? requireBytes32("FOUNDER_APPROVAL_HASH") : undefined),
+    publicGovernanceApprovalHash: (info.isMainnet ? requireBytes32("PUBLIC_GOVERNANCE_APPROVAL_HASH") : undefined),
     addressCeremonyCommitmentHash: (info.isMainnet ? requireBytes32("ADDRESS_CEREMONY_HASH") : undefined),
     mainnetGates: info.isMainnet ? {
       legalSignoffHash: process.env.LEGAL_SIGNOFF_HASH,
@@ -259,7 +261,7 @@ export async function deployGoalOSAGIALPHAAscension() {
       sepoliaRehearsalEvidenceHash: process.env.SEPOLIA_REHEARSAL_EVIDENCE_HASH,
       automatedSecurityToolchainHash: process.env.AUTOMATED_SECURITY_TOOLCHAIN_HASH,
       internalSecurityReviewHash: process.env.INTERNAL_SECURITY_REVIEW_HASH,
-      founderApprovalHash: process.env.FOUNDER_APPROVAL_HASH
+      publicGovernanceApprovalHash: process.env.PUBLIC_GOVERNANCE_APPROVAL_HASH
     } : null,
     contracts: {
       AGIALPHA: agialphaToken,

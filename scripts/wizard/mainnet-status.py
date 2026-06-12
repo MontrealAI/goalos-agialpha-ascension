@@ -8,8 +8,8 @@ FILES={
  "ethereum":"docs/ETHEREUM_MAINNET_AUTHORIZATION_DECISION.json",
  "local_rehearsal":"qa/local-rehearsal-report.json",
  "toolchain":"audit/TOOLCHAIN_CLEARANCE_REPORT.md",
- "sepolia":"qa/public-sepolia-rehearsal-evidence.json",
- "preflight":"qa/public-mainnet-preflight-evidence.json"}
+ "agialpha_verification":"qa/public-agialpha-token-verification.json",
+ "mainnet_simulation":"qa/ETHEREUM_MAINNET_FORK_SIMULATION.json"}
 def load(p):
     q=ROOT/p
     if not q.exists(): return {"present":False,"status":"MISSING"}
@@ -22,4 +22,4 @@ def load(p):
 print("GoalOS AGIALPHA Ethereum Mainnet Command Status")
 for name,path in FILES.items():
     info=load(path); print(f"- {name}: {info['status']} ({path if info['present'] else 'missing '+path})")
-print("PRIVATE_OPERATOR_EVIDENCE_PENDING is expected until .private local workflows generate redacted qa/public-*.json commitments.")
+print("Public authorization uses public evidence only. Runtime RPC/key are required only for actual manual broadcast.")

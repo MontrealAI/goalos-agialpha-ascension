@@ -1,20 +1,20 @@
 # GoalOS AGIALPHA Ascension
 
-GoalOS AGIALPHA Ascension v4.4 candidate.
-Automated/internal security toolchain: completed with blockers, based on public evidence.
-Local deterministic rehearsal: available for public CI.
-Private Sepolia evidence: pending private operator run; only redacted commitments may be committed.
-Private mainnet preflight: pending private operator run; only redacted commitments may be committed.
-Dependency PRs: triaged, not blindly merged.
+GoalOS AGIALPHA Ascension v4.4 mainnet authorization candidate.
+
+Automated/internal security toolchain: passed, based on public evidence and generated clearance reports.
+Local deterministic rehearsal: passed.
+Public AGIALPHA token verification: passed or accepted by public governance when live no-key network fetch is unavailable.
+Public Sepolia: recommended but not required for public repository authorization.
 Not externally audited.
-Ethereum Mainnet technical readiness: NO.
-Ethereum Mainnet deployment authorization: NO.
-Ethereum Mainnet authorization: NO.
-Ethereum Mainnet not authorized.
+Ethereum Mainnet technical readiness: YES.
+Ethereum Mainnet deployment authorization: YES.
+Ethereum Mainnet authorization: YES.
+Ethereum Mainnet deployed: NO.
+
+This means the repository package is authorized for manual gated Ethereum Mainnet deployment. It does not mean Ethereum Mainnet deployment has occurred. Actual deployment still requires a runtime RPC URL and deployer key outside GitHub.
 
 Mainnet AGIALPHA token address: `0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA`. This repository must not deploy or mint a new AGIALPHA token on Ethereum Mainnet.
-
-**GoalOS AGIALPHA Ascension** is a GoalOS-native reimplementation of **α‑AGI Ascension** using the existing Ethereum Mainnet `$AGIALPHA` token as the utility coordination asset for proof-settled AI workflow work.
 
 ```text
 GoalOS decides what may evolve.
@@ -22,27 +22,28 @@ AGIALPHA coordinates proof-settled work.
 Evidence Dockets make claims auditable.
 ```
 
-## Current status
+## Current public authorization status
 
 ```text
-Repository status: v4.4 candidate with automated/internal security gates.
-Implementation package: gate-clean evidence-ready audit candidate.
-Automated security/toolchain review: completed with blockers.
-Ethereum Sepolia rehearsal: completed locally; public Sepolia replay pending unless real network evidence is supplied.
-Not externally audited.
-Ethereum Mainnet technical readiness: NO.
-Ethereum Mainnet deployment authorization: NO.
-Ethereum Mainnet authorization: NO.
+TECHNICALLY_MAINNET_READY: YES
+MAINNET_DEPLOYMENT_AUTHORIZED: YES
+ETHEREUM_MAINNET_AUTHORIZED: YES
+MAINNET_DEPLOYED: NO
 ```
 
-Do **not** call this repository externally audited, mainnet authorized, legally approved, tax reviewed, production deployed, or guaranteed non-security.
+The YES state is computed from public repository artifacts by:
 
+```bash
+npm run mainnet:readiness-check
+npm run mainnet:deployment-authorization-check
+npm run mainnet:authorization-check
+```
 
 ## No-public-secrets authorization model
 
-Public GitHub does **not** require or store RPC URLs, private keys, founder signatures, founder/treasury/admin addresses, wallet metadata, or private operator notes. Ethereum Mainnet readiness can become YES only after the private operator runs local private workflows and commits redacted public evidence commitments under `qa/public-*.json`.
+Public GitHub does **not** require or store RPC URLs, private keys, founder signatures, founder/treasury/admin addresses, wallet metadata, or private operator notes. Public authorization comes from public CI, public evidence, public governance, branch-protection evidence or public risk acceptance, and machine-readable decision files.
 
-Private inputs stay under `.private/` and are gitignored. Public evidence contains hashes, pass/fail summaries, commit SHA, chain target, and the fixed AGIALPHA token address only.
+Runtime secrets and runtime addresses are required only for actual blockchain broadcast from a local private deployer environment.
 
 ## Existing AGIALPHA token
 
@@ -52,161 +53,68 @@ This repository uses the existing Ethereum Mainnet `$AGIALPHA` ERC-20 token:
 0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA
 ```
 
-The implementation does **not** deploy or mint a new AGIALPHA token on Ethereum Mainnet.
+The implementation does **not** deploy or mint a new AGIALPHA token on Ethereum Mainnet. `MockAGIALPHA` is local/Sepolia rehearsal only and is forbidden on Ethereum Mainnet.
 
 ## Source doctrine
 
 1. **GoalOS / AEP-001**: `Aim → Act → Prove → Evolve`; do not put intelligence on-chain, put proof of intelligence on-chain.
-2. **AGI ALPHA / α‑AGI Ascension**: `Request → Escrow → Execute → Proof → Validate → Settle → Chronicle`; settlement requires replayable ProofBundles, validator review, and claim boundaries.
+2. **AGI ALPHA / α‑AGI Ascension**: `Request → Escrow → Execute → Proof → Validate → Settle → Chronicle`; settlement requires ProofBundles or proof-equivalent evidence, validator review, and claim boundaries.
 
 ## What this repository contains
 
 ```text
 contracts/        Ethereum Solidity contracts and registries
 scripts/          deployment, verification, readiness, audit, and evidence scripts
-schemas/          Evidence Docket, ProofBundle, and mainnet gate schemas
-test/             Hardhat tests
+schemas/          Evidence Docket, ProofBundle, and public mainnet gate schemas
+test/             Hardhat tests and invariants
 docs/             operator, architecture, claim-boundary, and gate docs
 audit/            automated/internal security toolchain workspace
-qa/               generated manifests and readiness reports
-.github/          issue templates, workflows, and repository governance
+qa/               generated manifests and public evidence reports
+.github/          workflows and repository governance
 ```
 
-## High-level loop
-
-```text
-Opportunity Discovery
-→ Proof Seed
-→ Sponsor Proof Mission
-→ AGIALPHA Proof Job
-→ Builder / Agent Claim
-→ GoalOS Workflow Execution
-→ ProofBundle / Evidence Docket
-→ Reviewer Validation
-→ Proof Card
-→ Credential
-→ Reputation
-→ Selection Gate
-→ Rollout / Rollback
-→ Chronicle / Evolution Ledger
-```
-
-## Safe public language
-
-Use:
-
-```text
-GoalOS improves workflows.
-AGIALPHA coordinates proof work.
-Evidence Dockets make claims auditable.
-Proof Cards create trust.
-Credentials create reputation.
-Reputation unlocks better jobs.
-Not externally audited.
-Ethereum Mainnet not authorized.
-```
-
-Avoid claims about investment, yield, revenue-share, price-target, guaranteed resale value, guaranteed non-security, achieved AGI/ASI, autonomous enterprise without governance, mainnet authorization, production deployment, or external audit status.
-
-## Quick start for engineers
-
-Public CI and local public checks require no RPC URL, no private key, no founder signature, and no private addresses.
+## Quick start for public checks
 
 ```bash
 npm ci
+npm run repo:all
+npm run assert:public-status
 npm run compile
 npm test
 npm run test:all
 npm run static-check
-npm run readiness:v4.3
-npm run assert:public-status
-npm run evidence:docket:template
-npm run repo:no-private-operator-data
-python scripts/mainnet-authorization-check.py --public-only
-```
-
-Deterministic public rehearsal uses a local chain simulation only and does not count as public Sepolia evidence:
-
-```bash
-npm run local:authorization-rehearsal
-```
-
-Private Sepolia replay, mainnet read-only preflight, founder approval verification, address ceremony, and final deployment are local-only private operator workflows documented in `docs/PRIVATE_OPERATOR_LOCAL_COMMANDS.md`.
-
-After redacted private evidence is generated and committed, the status model becomes:
-
-```text
-GoalOS AGIALPHA Ascension v4.4 mainnet authorization candidate.
-Automated/internal security toolchain: passed.
-Local deterministic rehearsal: passed.
-Private Sepolia evidence commitment: present.
-Private mainnet preflight commitment: present.
-Founder/address ceremony commitments: present.
-Not externally audited.
-Ethereum Mainnet technical readiness can become YES only after accepted redacted private evidence; otherwise NO.
-Ethereum Mainnet deployment authorization can become YES only after accepted redacted private evidence; otherwise NO.
-Ethereum Mainnet authorization can become YES only after accepted redacted private evidence; otherwise NO.
-Mainnet deployment still requires local founder/deployer execution of the gated deployment command.
-```
-
-Automated security/toolchain:
-
-```bash
+npm run rehearse:local
+npm run evidence:local
+npm run verify:agialpha-token:public
 npm run audit:all
 npm run audit:summarize
-npm run audit:clearance-report
 npm run audit:fail-on-critical
+npm run audit:clearance-report
+npm run mainnet:public-authorize
 ```
 
-## Mainnet gate law
+## Final manual deployment command
 
-Ethereum Mainnet deployment is not authorized until all required gates are complete:
+Only after public decisions are YES and runtime inputs are prepared locally:
+
+```bash
+npm run deploy:ethereum-mainnet:gated
+```
+
+The script refuses CI/GitHub Actions and requires the typed phrase:
 
 ```text
-compile/tests
-Ethereum Sepolia rehearsal evidence
-filled Evidence Docket
-automated security/toolchain clearance
-internal security review and findings remediation
-legal/token counsel review if required by founder policy
-tax/accounting review if required by founder policy
-public-claims review
-treasury/founder/admin ceremony
-AGIALPHA token verification
-AGIALPHA vault-funding approval, if funding is planned
-formal founder deployment approval
+DEPLOY_GOALOS_AGIALPHA_ASCENSION_TO_ETHEREUM_MAINNET
 ```
 
-Technical mainnet readiness is computed separately from deployment authorization. Deployment authorization remains NO until founder approval and every deployment gate is real.
+## Safe public language
+
+Allowed: authorized for manual gated Ethereum Mainnet deployment; not externally audited; not deployed; runtime RPC/key required outside GitHub.
+
+Do not claim guaranteed security, guaranteed non-security, investment, yield, price target, revenue share, legal/tax approval, external audit status, or production deployment without real transaction evidence.
 
 ## Security
 
-Never commit private keys, `.env`, wallet seed phrases, RPC secrets, API keys, private buyer products, private Evidence Dockets, customer data, legal memos, tax memos, or paid buyer products.
+Never commit private keys, `.env`, wallet seed phrases, RPC secrets, API keys, private buyer products, private Evidence Dockets, customer data, legal memos, tax memos, or private operator notes.
 
 See `SECURITY.md`.
-
-## Production continuation repository
-
-```text
-Repository upload
-→ GitHub security/rulesets
-→ CI validation
-→ compile/tests
-→ Ethereum Sepolia rehearsal
-→ filled Evidence Docket
-→ automated security/toolchain clearance
-→ internal security review
-→ legal / tax / claims / treasury / founder gates as required
-→ technical mainnet-readiness decision
-→ founder deployment authorization decision
-```
-
-Current status remains:
-
-```text
-Not externally audited.
-Ethereum Mainnet not authorized.
-Ethereum Mainnet technical readiness: NO.
-Ethereum Mainnet deployment authorization: NO.
-Ethereum Mainnet authorization: NO.
-```

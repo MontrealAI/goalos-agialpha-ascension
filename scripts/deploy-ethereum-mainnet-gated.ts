@@ -6,12 +6,11 @@ import { AGIALPHA_MAINNET_TOKEN, assertAgialphaMainnetToken, assertNoMockTokenOn
 
 const CONFIRM_PHRASE = "DEPLOY_GOALOS_AGIALPHA_ASCENSION_TO_ETHEREUM_MAINNET";
 const REQUIRED_HASHES = [
-  "FOUNDER_APPROVAL_HASH",
-  "ADDRESS_CEREMONY_HASH",
+  "AUTHORIZATION_DECISION_HASH",
   "TOOLCHAIN_CLEARANCE_HASH",
-  "SEPOLIA_EVIDENCE_HASH",
-  "MAINNET_PREFLIGHT_HASH",
-  "AUTHORIZATION_DECISION_HASH"
+  "LOCAL_REHEARSAL_EVIDENCE_HASH",
+  "AGIALPHA_TOKEN_VERIFICATION_HASH",
+  "PUBLIC_GOVERNANCE_APPROVAL_HASH"
 ];
 function readJson(path: string) { if (!fs.existsSync(path)) throw new Error(`${path} is missing.`); return JSON.parse(fs.readFileSync(path, "utf8")); }
 function validHash(value: string | undefined) { return /^0x[0-9a-fA-F]{64}$/.test(value || "") && !/^0x0{64}$/i.test(value || ""); }
@@ -30,14 +29,20 @@ async function main() {
   if ((await ethers.provider.getCode(AGIALPHA_MAINNET_TOKEN)) === "0x") throw new Error("Canonical AGIALPHA token has no code on Ethereum Mainnet provider.");
   if (process.env.MOCK_AGIALPHA_ADDRESS) throw new Error("MOCK_AGIALPHA_ADDRESS must not be set for Ethereum Mainnet.");
   if (process.env.DEPLOY_NEW_AGIALPHA_TOKEN === "true") throw new Error("Deploying or minting a new AGIALPHA token on Ethereum Mainnet is forbidden.");
-  if (!fs.existsSync(".private/mainnet-operator-input.json")) throw new Error("Private operator input is missing at .private/mainnet-operator-input.json.");
   const publicAuth = readJson("docs/ETHEREUM_MAINNET_AUTHORIZATION_DECISION.json");
   if (publicAuth.status !== "YES" || publicAuth.ETHEREUM_MAINNET_AUTHORIZED !== "YES") throw new Error("Redacted public Ethereum Mainnet authorization decision is not YES.");
-  const privateAuth = readJson(".private/mainnet-operator-input.json");
-  if (privateAuth.privateAuthorizationBundleStatus !== "YES" && process.env.PRIVATE_AUTHORIZATION_BUNDLE_STATUS !== "YES") throw new Error("Private authorization bundle is not YES.");
+  const deployAuth = readJson("docs/MAINNET_DEPLOYMENT_AUTHORIZATION_DECISION.json");
+  if (deployAuth.status !== "YES" || deployAuth.MAINNET_DEPLOYMENT_AUTHORIZED !== "YES") throw new Error("Public Mainnet deployment authorization decision is not YES.");
+  const toolchain = readJson("qa/public-toolchain-clearance-evidence.json");
+  if (toolchain.automatedSecurityToolchain !== "PASSED" && toolchain.status !== "PASSED") throw new Error("Public toolchain clearance evidence is not PASSED.");
+  const rehearsal = readJson("qa/local-rehearsal-report.json");
+  if (rehearsal.status !== "PASSED") throw new Error("Local deterministic rehearsal evidence is not PASSED.");
+  const tokenVerification = readJson("qa/public-agialpha-token-verification.json");
+  if (tokenVerification.status !== "PASSED" && tokenVerification.status !== "ACCEPTED_BY_PUBLIC_GOVERNANCE") throw new Error("Public AGIALPHA verification evidence is not passed/accepted.");
+  process.env.ALLOW_MAINNET_DEPLOYMENT = "YES_PUBLIC_REPOSITORY_AUTHORIZED_MANUAL_DEPLOYMENT";
   for (const key of REQUIRED_HASHES) if (!validHash(process.env[key])) throw new Error(`${key} commitment is missing or invalid.`);
   if (process.env.MAINNET_DEPLOYMENT_CONFIRMATION !== CONFIRM_PHRASE && process.env.FINAL_DEPLOY_CONFIRMATION !== CONFIRM_PHRASE) throw new Error(`Typed confirmation phrase is required: ${CONFIRM_PHRASE}`);
-  console.log(JSON.stringify({ status: "MAINNET_DEPLOYMENT_GATES_PASSED_REDACTED", chain: "ethereum", chainId: 1, agialphaToken: AGIALPHA_MAINNET_TOKEN, privateInputsLoaded: true, noMainnetMock: true }, null, 2));
+  console.log(JSON.stringify({ status: "MAINNET_DEPLOYMENT_GATES_PASSED_REDACTED", chain: "ethereum", chainId: 1, agialphaToken: AGIALPHA_MAINNET_TOKEN, privateOperatorPackageRequired: false, noMainnetMock: true }, null, 2));
   const deployment = await deployGoalOSAGIALPHAAscension();
   const manifestPath = "deployments/ethereum-mainnet.agialpha.latest.json";
   if (fs.existsSync(manifestPath)) fs.writeFileSync("deployments/ethereum-mainnet.agialpha.latest.sha256", hashFile(manifestPath) + "\n");

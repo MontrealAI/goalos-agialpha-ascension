@@ -48,7 +48,7 @@ for path in tracked_files():
         continue
     if path.name in FORBIDDEN_NAMES or (path.name.startswith(".env") and path.name != ".env.example"):
         errors.append(f"Forbidden private/env file committed: {rel}")
-    if any(part in FORBIDDEN_PARTS for part in rel_parts) or (rel_parts and rel_parts[0] == "private"):
+    if (any(part in FORBIDDEN_PARTS for part in rel_parts) and not rel.startswith(".private.example/")) or (rel_parts and rel_parts[0] == "private"):
         errors.append(f"Forbidden private operator path committed: {rel}")
     if path.suffix in {".key", ".pem", ".p12", ".secret"} or rel.endswith((".private.json", ".private.env")):
         errors.append(f"Forbidden private secret file pattern committed: {rel}")
@@ -56,7 +56,7 @@ for path in tracked_files():
         text = path.read_text(encoding="utf-8", errors="ignore")
     except Exception:
         continue
-    if rel not in ALLOWLIST_FILES:
+    if rel not in ALLOWLIST_FILES and not rel.startswith(".private.example/"):
         for pattern in SECRET_PATTERNS:
             if pattern.search(text):
                 errors.append(f"Potential secret/RPC/private artifact in {rel}")

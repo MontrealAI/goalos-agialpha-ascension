@@ -1,8 +1,11 @@
 {
   "status": "LOCAL_SIMULATION_ONLY",
-  "generatedAt": "2026-06-12T01:12:20.681973+00:00",
+  "generatedAt": "2026-06-12T01:42:51.382914+00:00",
   "manifest": "deployments/local.agialpha.latest.json",
-  "manifestHash": "0x56ff6371345bc2462a6a8b09bc4de8d66732a292e6111b3f3f47d6b6bec1812f",
+  "manifestHash": "0xd9ada8be6c9bf057a32e4b5e05e3efcf289fb59acaf09413b845f32e8cf83a6d",
   "mainnetEvidence": false,
-  "publicSepoliaEvidence": false
+  "publicSepoliaEvidence": false,
+  "redacted": true,
+  "containsSecrets": false,
+  "containsPrivateAddresses": false
 }

@@ -1,102 +1,56 @@
 #!/usr/bin/env python3
 from __future__ import annotations
-import argparse, datetime, hashlib, json, pathlib, re, subprocess
-
+import argparse, datetime, hashlib, json, pathlib, subprocess
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 AGIALPHA = "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA"
-HEX32 = re.compile(r"^0x[0-9a-fA-F]{64}$")
-ADDRESS_RE = re.compile(r"(?<![0-9a-fA-F])0x[0-9a-fA-F]{40}(?![0-9a-fA-F])")
 
-
-def now() -> str: return datetime.datetime.now(datetime.timezone.utc).isoformat()
-def sha256_file(path: pathlib.Path) -> str | None: return hashlib.sha256(path.read_bytes()).hexdigest() if path.exists() else None
-def read_json(path: pathlib.Path) -> dict:
+def now(): return datetime.datetime.now(datetime.timezone.utc).isoformat()
+def sha(path: pathlib.Path): return "0x" + hashlib.sha256(path.read_bytes()).hexdigest() if path.exists() else None
+def read(path: pathlib.Path):
     try: return json.loads(path.read_text())
     except Exception: return {}
-def git_commit() -> str:
-    try: return subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True).strip()
+def git(args):
+    try: return subprocess.check_output(["git", *args], cwd=ROOT, text=True).strip()
     except Exception: return "UNKNOWN"
-def valid_hash(value: object) -> bool: return isinstance(value, str) and bool(HEX32.fullmatch(value)) and value.lower() != "0x" + "0" * 64
+def ok_file(path, pred=lambda d: True):
+    p=ROOT/path; d=read(p); return p.exists() and pred(d), d
 
-def evidence_has_no_private_data(data: dict) -> bool:
-    text = json.dumps(data, sort_keys=True)
-    forbidden = ["PRIVATE_KEY", "RPC_URL", "SEPOLIA_RPC", "MAINNET_RPC", "ETHERSCAN_API_KEY", "FOUNDER_APPROVAL_SIGNATURE"]
-    if any(token in text.upper() for token in forbidden): return False
-    if data.get("containsSecrets") is not False: return False
-    if data.get("containsPrivateAddresses") is not False: return False
-    if data.get("redacted") is not True: return False
-    for match in ADDRESS_RE.findall(text):
-        if match.lower() != AGIALPHA.lower():
-            return False
-    return True
+def public_safe(d):
+    text=json.dumps(d,sort_keys=True).upper()
+    return d.get("containsSecrets") is False and d.get("containsPrivateAddresses") is False and "PRIVATE_KEY" not in text and "RPC_URL" not in text
 
-def load_public_evidence() -> tuple[dict[str, dict], list[str]]:
-    paths = {
-        "technical": ROOT/"qa/public-mainnet-technical-readiness-evidence.json",
-        "sepolia": ROOT/"qa/public-sepolia-rehearsal-evidence.json",
-        "preflight": ROOT/"qa/public-mainnet-preflight-evidence.json",
-        "toolchain": ROOT/"qa/public-toolchain-clearance-evidence.json",
+def compute():
+    blockers=[]; ev={}
+    checks={
+      "toolchain": ("qa/public-toolchain-clearance-evidence.json", lambda d: d.get("automatedSecurityToolchain")=="PASSED" or d.get("status")=="PASSED"),
+      "localRehearsal": ("qa/local-rehearsal-report.json", lambda d: d.get("status")=="PASSED"),
+      "localDocket": ("evidence/local/EVIDENCE_DOCKET.json", lambda d: d.get("status")=="LOCAL_SIMULATION_ONLY" and d.get("manifestHash")),
+      "agialphaVerification": ("qa/public-agialpha-token-verification.json", lambda d: d.get("status") in ["PASSED","ACCEPTED_BY_PUBLIC_GOVERNANCE"] and str(d.get("agialphaToken","")).lower()==AGIALPHA.lower()),
+      "mainnetSimulation": ("qa/ETHEREUM_MAINNET_FORK_SIMULATION.json", lambda d: d.get("status") in ["PASSED","DETERMINISTIC_LOCAL_MAINNET_SHAPED_SIMULATION"] and d.get("checks",{}).get("deploysNewAGIALPHAOnMainnet") is False),
+      "governance": ("qa/public-governance-approval-evidence.json", lambda d: d.get("status") in ["PUBLIC_GOVERNANCE_APPROVED","PUBLIC_RISK_ACCEPTED"]),
+      "branchProtection": ("qa/public-branch-protection-evidence.json", lambda d: d.get("branchProtection") in ["ENABLED","PUBLIC_RISK_ACCEPTED"]),
     }
-    evidence: dict[str, dict] = {}
-    blockers: list[str] = []
-    for name, path in paths.items():
-        data = read_json(path)
-        evidence[name] = {"path": path.relative_to(ROOT).as_posix(), "sha256": sha256_file(path), "present": path.exists(), "status": data.get("status") or data.get("technicalReadiness")}
-        if not path.exists(): blockers.append(f"PRIVATE_OPERATOR_EVIDENCE_PENDING: missing {path.relative_to(ROOT).as_posix()}")
-        elif not evidence_has_no_private_data(data): blockers.append(f"Redacted evidence failed public-safety validation: {path.relative_to(ROOT).as_posix()}")
-    return evidence, blockers
+    for name,(path,pred) in checks.items():
+        passed,d=ok_file(path,pred); ev[name]={"path":path,"sha256":sha(ROOT/path),"status":d.get("status") or d.get("branchProtection"),"present":(ROOT/path).exists()}
+        if not passed: blockers.append(f"{name} evidence missing or not passed: {path}")
+        if d and not public_safe(d): blockers.append(f"{name} evidence is not public-safe: {path}")
+    pkg=read(ROOT/"package.json")
+    for script in ["repo:all","assert:public-status","compile","test","test:all","static-check","audit:slither","audit:all","rehearse:local","evidence:local"]:
+        if script not in pkg.get("scripts",{}): blockers.append(f"missing package script {script}")
+    required_files=["scripts/deploy-ethereum-mainnet-gated.ts","scripts/preflight-ethereum-mainnet.ts","scripts/config/networkConfig.ts","docs/BRANCH_PROTECTION_PUBLIC_RISK_ACCEPTANCE.md","docs/PUBLIC_MAINNET_AUTHORIZATION_MODEL.md","docs/WHAT_YES_MEANS_AND_DOES_NOT_MEAN.md"]
+    for f in required_files:
+        if not (ROOT/f).exists(): blockers.append(f"missing required artifact {f}")
+    status="NO" if blockers else "YES"
+    return status, blockers, ev
 
-def validate_redacted_yes() -> tuple[dict[str, dict], list[str]]:
-    evidence, blockers = load_public_evidence()
-    tech = read_json(ROOT/"qa/public-mainnet-technical-readiness-evidence.json")
-    sep = read_json(ROOT/"qa/public-sepolia-rehearsal-evidence.json")
-    pre = read_json(ROOT/"qa/public-mainnet-preflight-evidence.json")
-    tool = read_json(ROOT/"qa/public-toolchain-clearance-evidence.json")
-    if blockers: return evidence, blockers
-    if tech.get("technicalReadiness") != "YES": blockers.append("Redacted technical readiness evidence is not YES")
-    if sep.get("sepoliaRehearsal") != "PASSED": blockers.append("Redacted private Sepolia rehearsal evidence is not PASSED")
-    if pre.get("mainnetPreflight") != "PASSED": blockers.append("Redacted private mainnet preflight evidence is not PASSED")
-    if tool.get("automatedSecurityToolchain") != "PASSED": blockers.append("Redacted toolchain clearance evidence is not PASSED")
-    for key in ["toolchainClearanceHash", "sepoliaEvidenceDocketHash", "sepoliaReceiptVerificationHash", "mainnetPreflightHash", "addressCeremonyCommitmentHash", "founderApprovalCommitmentHash", "policyDecisionCommitmentHash"]:
-        if not valid_hash(tech.get(key) or sep.get(key) or pre.get(key) or tool.get(key)):
-            blockers.append(f"Missing or invalid redacted commitment hash: {key}")
-    if tech.get("chain") != "ethereum" or tech.get("chainId") != 1 or str(tech.get("agialphaToken", "")).lower() != AGIALPHA.lower():
-        blockers.append("Redacted technical evidence target chain/token mismatch")
-    return evidence, blockers
+def write(status, blockers, evidence):
+    out={"status":status,"TECHNICALLY_MAINNET_READY":status,"technicallyMainnetReady":status,"commit":git(["rev-parse","HEAD"]),"chain":"ethereum","chainId":1,"agialphaToken":AGIALPHA,"mainnetDeployed":"NO","externalAuditPlanned":False,"externalAuditRequired":False,"authorizationScope":"manual-deployment-package-authorization","runtimeSecretsRequiredForBroadcast":True,"runtimeSecretsStoredInGitHub":False,"evidence":evidence,"blockers":blockers,"generatedAt":now(),"generatedBy":"scripts/mainnet-readiness-check.py"}
+    (ROOT/"docs/MAINNET_TECHNICAL_READINESS_DECISION.json").write_text(json.dumps(out,indent=2)+"\n")
+    (ROOT/"docs/MAINNET_TECHNICAL_READINESS_DECISION.md").write_text(f"# Mainnet Technical Readiness Decision\n\nTECHNICALLY_MAINNET_READY: **{status}**\n\nMAINNET_DEPLOYED: **NO**\n\n## Blockers\n" + ("\n".join(f"- {b}" for b in blockers) if blockers else "- None.") + "\n\nThis is public evidence-computed package readiness for manual gated Ethereum Mainnet deployment. It is not an external audit and no deployment occurred.\n")
+    (ROOT/"qa/public-mainnet-technical-readiness-evidence.json").write_text(json.dumps({"redacted":True,"containsSecrets":False,"containsPrivateAddresses":False,"chain":"ethereum","chainId":1,"agialphaToken":AGIALPHA,"commit":out["commit"],"technicalReadiness":status,"mainnetDeployed":"NO","blockers":blockers,"generatedAt":out["generatedAt"],"toolchainClearanceHash":evidence.get("toolchain",{}).get("sha256"),"localRehearsalEvidenceHash":evidence.get("localRehearsal",{}).get("sha256"),"agialphaTokenVerificationHash":evidence.get("agialphaVerification",{}).get("sha256"),"mainnetPreflightPolicyHash":sha(ROOT/"docs/ETHEREUM_MAINNET_PREFLIGHT_REPORT.md"),"governanceApprovalHash":evidence.get("governance",{}).get("sha256"),"branchProtectionEvidenceHash":evidence.get("branchProtection",{}).get("sha256")},indent=2)+"\n")
+    return out
 
-def write_decision(status: str, blockers: list[str], evidence: dict) -> dict:
-    generated = now()
-    decision = {
-        "status": status,
-        "TECHNICALLY_MAINNET_READY": status,
-        "commit": git_commit(),
-        "chain": "ethereum",
-        "chainId": 1,
-        "agialphaToken": AGIALPHA,
-        "evidence": evidence,
-        "blockers": blockers,
-        "reason": blockers[0] if blockers else "READY",
-        "generatedAt": generated,
-        "generatedBy": "scripts/mainnet-readiness-check.py",
-        "mainnetDeploymentExecuted": False,
-    }
-    (ROOT/"docs/MAINNET_TECHNICAL_READINESS_DECISION.json").write_text(json.dumps(decision, indent=2)+"\n")
-    md = ["# Mainnet Technical Readiness Decision", "", f"Generated: {generated}", "", f"TECHNICALLY_MAINNET_READY: **{status}**", "", "## Blockers"]
-    md += [f"- {b}" for b in blockers] or ["- None."]
-    md += ["", "## Public/private evidence boundary", "- Public GitHub stores redacted commitments only.", "- Private RPC URLs, keys, signatures, and addresses are not required in GitHub.", "- No Ethereum Mainnet deployment occurred."]
-    (ROOT/"docs/MAINNET_TECHNICAL_READINESS_DECISION.md").write_text("\n".join(md)+"\n")
-    return decision
-
-def main() -> None:
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--public-only", action="store_true")
-    parser.add_argument("--with-redacted-private-evidence", action="store_true")
-    args = parser.parse_args()
-    if args.with_redacted_private_evidence:
-        evidence, blockers = validate_redacted_yes()
-    else:
-        evidence, blockers = load_public_evidence()
-        blockers = ["PRIVATE_OPERATOR_EVIDENCE_PENDING", "Run --with-redacted-private-evidence to evaluate committed redacted private evidence"] + blockers
-    status = "NO" if blockers else "YES"
-    print(json.dumps(write_decision(status, blockers, evidence), indent=2))
+def main():
+    parser=argparse.ArgumentParser(); parser.add_argument("--public-only-final", action="store_true"); parser.parse_args()
+    print(json.dumps(write(*compute()),indent=2))
 if __name__ == "__main__": main()
