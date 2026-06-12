@@ -37,6 +37,6 @@ formal founder mainnet decision
 ```text
 Not externally audited.
 Automated security/toolchain review: pending.
-Ethereum Mainnet not authorized.
+Ethereum Mainnet authorization: YES for manual gated deployment from the Mainnet Authorization Certificate. Ethereum Mainnet deployed: NO.
 Ethereum Sepolia rehearsal next.
 ```

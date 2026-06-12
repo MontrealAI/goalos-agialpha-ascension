@@ -1,0 +1,6 @@
+osv-scanner status=COMPLETED_TRIAGED scannerExitStatus=1
+findingCount=18 accepted=18 untriaged=0 critical_high_unresolved=0
+
+stderr:
+Scanned /workspace/goalos-agialpha-ascension/package-lock.json file and found 540 packages
+

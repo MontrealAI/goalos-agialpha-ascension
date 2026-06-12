@@ -30,7 +30,7 @@
   description: Treasury/admin address ceremony
 - name: mainnet-blocked
   color: B60205
-  description: Mainnet not authorized
+  description: Mainnet authorization evidence and certificate updates
 - name: proof-mission
   color: 0E8A16
   description: Proof mission use case

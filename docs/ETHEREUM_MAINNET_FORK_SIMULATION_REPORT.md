@@ -8,7 +8,7 @@ Simulation mode: **deterministic local mainnet-shaped simulation**
 
 Contracts represented in simulation manifest: **17**
 
-Deployment manifest hash: **0x562c48efc23d43bda5a597e362d59d335e03dad95113b1f219d21a48529b291f**
+Deployment manifest hash: **0x51f44af1595e5412506f39a7e8e6ecc8b4c8e6315c88485f0cb96ded23f93d3e**
 
 This is fork/local simulation evidence only. No Ethereum Mainnet broadcast occurred.
 
