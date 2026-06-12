@@ -25,8 +25,8 @@ def compute():
       "toolchain": ("qa/public-toolchain-clearance-evidence.json", lambda d: d.get("automatedSecurityToolchain")=="PASSED" or d.get("status")=="PASSED"),
       "localRehearsal": ("qa/local-rehearsal-report.json", lambda d: d.get("status")=="PASSED"),
       "localDocket": ("evidence/local/EVIDENCE_DOCKET.json", lambda d: d.get("status")=="LOCAL_SIMULATION_ONLY" and d.get("manifestHash")),
-      "agialphaVerification": ("qa/public-agialpha-token-verification.json", lambda d: d.get("status") in ["PASSED","ACCEPTED_BY_PUBLIC_GOVERNANCE"] and str(d.get("agialphaToken","")).lower()==AGIALPHA.lower()),
-      "mainnetSimulation": ("qa/ETHEREUM_MAINNET_FORK_SIMULATION.json", lambda d: d.get("status") in ["PASSED","DETERMINISTIC_LOCAL_MAINNET_SHAPED_SIMULATION"] and d.get("checks",{}).get("deploysNewAGIALPHAOnMainnet") is False),
+      "agialphaVerification": ("qa/public-agialpha-token-verification.json", lambda d: d.get("status") == "PASSED" and d.get("addressHasCode") is True and str(d.get("agialphaToken","")).lower()==AGIALPHA.lower()),
+      "mainnetSimulation": ("qa/ETHEREUM_MAINNET_FORK_SIMULATION.json", lambda d: d.get("status") == "PASSED" and d.get("checks",{}).get("deploysNewAGIALPHAOnMainnet") is False),
       "governance": ("qa/public-governance-approval-evidence.json", lambda d: d.get("status") in ["PUBLIC_GOVERNANCE_APPROVED","PUBLIC_RISK_ACCEPTED"]),
       "branchProtection": ("qa/public-branch-protection-evidence.json", lambda d: d.get("branchProtection") in ["ENABLED","PUBLIC_RISK_ACCEPTED"]),
     }

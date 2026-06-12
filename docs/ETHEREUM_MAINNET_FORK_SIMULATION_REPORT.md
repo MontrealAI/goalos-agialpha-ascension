@@ -1,7 +1,12 @@
 # Ethereum Mainnet Fork Simulation Report
 
-Status: **DETERMINISTIC_LOCAL_MAINNET_SHAPED_SIMULATION**
+Status: **PASSED**
 
-Mode: deterministic local mainnet-shaped simulation.
+Observed chainId: **1**
 
-No Ethereum Mainnet broadcast occurred.
+Contracts deployed on fork: **49**
+
+This is fork/local simulation evidence only. No Ethereum Mainnet broadcast occurred.
+
+## Blockers
+- None.

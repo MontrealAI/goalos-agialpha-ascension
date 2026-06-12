@@ -2,7 +2,7 @@
   "status": "YES",
   "MAINNET_DEPLOYMENT_AUTHORIZED": "YES",
   "mainnetDeploymentAuthorized": "YES",
-  "commit": "a469a9aaebcd5cdd3da77889e6b8450fccdfd5ea",
+  "commit": "29a803b38e2c857670d67b9d0b06370d4999900e",
   "chain": "ethereum",
   "chainId": 1,
   "agialphaToken": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
@@ -11,11 +11,11 @@
   "runtimeSecretsStoredInGitHub": false,
   "authorizationScope": "manual-deployment-package-authorization",
   "evidence": {
-    "technical": "0x40d189bd3bddc321b63b655e6876cd502400f5d4a489df7ffbbf10b89d26d370",
+    "technical": "0x349ac949953661c166288a4b5ca535256f0d60dd1d2712bb2856f2ed292165a8",
     "governance": "0x098d121802ecb38cdeafe29aae405ac4122948cf3caf7e40b1707d08408187c1",
     "branchProtection": "0x4d8f5580def78bf2968cc296fd2311a3c1c228ea43c322a935d2f933859b54a6"
   },
   "blockers": [],
-  "generatedAt": "2026-06-12T01:44:05.051172+00:00",
+  "generatedAt": "2026-06-12T02:05:46.135113+00:00",
   "generatedBy": "scripts/mainnet-deployment-authorization-check.py"
 }
