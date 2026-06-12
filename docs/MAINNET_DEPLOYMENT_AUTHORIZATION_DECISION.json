@@ -2,7 +2,7 @@
   "status": "YES",
   "MAINNET_DEPLOYMENT_AUTHORIZED": "YES",
   "mainnetDeploymentAuthorized": "YES",
-  "commit": "61eb3a6a92369014304cc058f94c10f5f0d0aa54",
+  "commit": "db33f922b66dd1c51041f003b099300765e471ee",
   "chain": "ethereum",
   "chainId": 1,
   "agialphaToken": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
@@ -102,7 +102,7 @@
     },
     "packageScripts": {
       "path": "package.json",
-      "sha256": "0xc43207ffd1e7553f98f6c0d7648a9c073530a9d27fd4b1507edcdbbe6dfab7f6"
+      "sha256": "0x34112de02f9fc40e49baa474eb0a201be00b35b68955cbbd87b110941c4bff71"
     },
     "branchProtectionOrRiskAcceptance": {
       "path": "qa/public-branch-protection-evidence.json",
@@ -122,6 +122,6 @@
     }
   },
   "blockers": [],
-  "generatedAt": "2026-06-12T17:53:07.827228+00:00",
+  "generatedAt": "2026-06-12T18:08:14.971966+00:00",
   "generatedBy": "scripts/mainnet-deployment-authorization-check.py"
 }

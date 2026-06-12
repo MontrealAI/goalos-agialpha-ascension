@@ -86,7 +86,9 @@
     "compile:deterministic": "node scripts/compile-deterministic.js",
     "compile:ci": "npm run compile:deterministic",
     "test:ci": "npm run compile:ci && hardhat test --no-compile",
-    "verify:compiler-alignment": "python scripts/verify-compiler-alignment.py"
+    "verify:compiler-alignment": "python scripts/verify-compiler-alignment.py",
+    "qa:manifest": "python scripts/refresh-qa-manifests.py",
+    "qa:manifest:verify": "python scripts/refresh-qa-manifests.py --verify"
   },
   "dependencies": {
     "@openzeppelin/contracts": "4.9.6",
