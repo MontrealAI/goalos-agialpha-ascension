@@ -1,3 +1,5 @@
+> Historical/deprecated note: this document describes a prior pre-certificate authorization model. The active source of truth is `qa/mainnet-authorization-certificate.json`.
+
 ## npm run repo:all
 npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
 

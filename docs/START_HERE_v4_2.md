@@ -1,3 +1,5 @@
+> Historical/deprecated note: this document describes a prior pre-certificate authorization model. The active source of truth is `qa/mainnet-authorization-certificate.json`.
+
 # GoalOS AGIALPHA Ascension v4.2 — Evidence-Ready Audit Candidate
 
 This is the closest safe package to a 10/10 **given the current state**.

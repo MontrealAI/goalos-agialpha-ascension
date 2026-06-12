@@ -15,7 +15,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 QA = ROOT / "qa"
-MANIFESTS = [QA / "MANIFEST.json", QA / "MANIFEST_v4_3.json"]
+MANIFESTS = [QA / "MANIFEST.json", QA / "MANIFEST_v4_4.json", QA / "MANIFEST_MAINNET_AUTHORIZATION_v4_4_0.json"]
 IGNORED_PARTS = {
     ".git",
     ".private",

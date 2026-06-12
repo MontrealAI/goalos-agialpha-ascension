@@ -5,7 +5,7 @@ ROOT=pathlib.Path(__file__).resolve().parents[1]
 cert=json.loads((ROOT/'qa/mainnet-authorization-certificate.json').read_text())
 tech=cert['technicallyMainnetReady']; dep=cert['mainnetDeploymentAuthorized']; eth=cert['ethereumMainnetAuthorized']; deployed=cert['mainnetDeployed']
 authorization_meaning = 'This means the repository package is authorized for manual gated Ethereum Mainnet deployment. It does not mean Ethereum Mainnet deployment has occurred. Actual deployment still requires a runtime RPC URL and deployer key outside GitHub.' if (tech == 'YES' and dep == 'YES' and eth == 'YES') else 'This means the repository package is not currently authorized for manual gated Ethereum Mainnet deployment. Resolve the certificate blockers, regenerate the certificate, and rerun the public checks before any mainnet deployment attempt. Actual deployment still requires a runtime RPC URL and deployer key outside GitHub.'
-status_block=f"""GoalOS AGIALPHA Ascension v4.4 mainnet authorization candidate.
+status_block=f"""GoalOS AGIALPHA Ascension v4.4.0 mainnet authorization candidate.
 
 Automated/internal security toolchain: passed.
 Local deterministic rehearsal: passed.
@@ -50,6 +50,16 @@ The source of truth is `qa/mainnet-authorization-certificate.json`. README/statu
 ## Safety boundary
 
 CI cannot deploy Ethereum Mainnet. Runtime RPC URL, deployer key, and runtime addresses are local broadcast inputs only and are not stored in GitHub. MockAGIALPHA is local/Sepolia-only and is forbidden on Ethereum Mainnet. No new AGIALPHA token is deployed on Ethereum Mainnet.
+
+## Sovereign RSI v6.3 research paper
+
+The Sovereign RSI v6.3 publication folder is `docs/papers/sovereign-rsi/v6.3/`. Paper assets may be pending upload if they are not present in the tree; do not fabricate missing PDF/DOCX/source files.
+
+Core thesis: GoalOS sets sovereign aims. AGIALPHA coordinates proof-settled work. AEP-001 defines valid evidence. The Proof Gradient decides what may evolve. The intelligence stays private. The proof becomes verifiable.
+
+RSI means proof-backed upgrade rights. An artifact may influence future work only after evidence, evaluation, reviewer validation, scope control, challenge window, canary rollout, monitoring, rollback readiness, and chronicle memory.
+
+Claim boundary: this paper does not claim achieved AGI, ASI, superintelligence, autonomous sovereignty, guaranteed ROI, safety certification, legal approval, tax approval, security approval, energy abundance, or Kardashev Type II achievement.
 """
 
 # Decision JSON/Markdown documents are generated from the same certificate so docs:status is sufficient before assert/checker steps.

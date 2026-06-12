@@ -1,3 +1,5 @@
+> Historical/deprecated note: this document describes a prior pre-certificate authorization model. The active source of truth is `qa/mainnet-authorization-certificate.json`.
+
 # CODEX Prompt — Continue GoalOS AGIALPHA Ascension to Production
 
 You are CODEX acting as an elite Solidity, DevOps, security, QA, documentation, and repository-operations team.

@@ -6,7 +6,7 @@ AGIALPHA="0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA"
 
 def now(): return datetime.datetime.now(datetime.timezone.utc).isoformat()
 def git(args):
-    try: return subprocess.check_output(['git',*args],cwd=ROOT,text=True).strip()
+    try: return subprocess.check_output(['git',*args],cwd=ROOT,text=True,stderr=subprocess.DEVNULL).strip()
     except Exception: return 'UNKNOWN'
 def read(rel):
     try: return json.loads((ROOT/rel).read_text())
@@ -74,7 +74,10 @@ def main():
     for rel in ['scripts/deploy-ethereum-mainnet-gated.ts','scripts/preflight-ethereum-mainnet.ts','scripts/config/networkConfig.ts','docs/FINAL_LOCAL_MAINNET_DEPLOYMENT_RUNBOOK.md','docs/FINAL_ROLLBACK_AND_INCIDENT_PLAN.md']:
         if not (ROOT/rel).exists(): blockers.append(f'Missing required artifact {rel}.')
     ready='NO' if blockers else 'YES'; deploy=ready; eth='YES' if ready=='YES' and deploy=='YES' else 'NO'
-    cert={'schemaVersion':'1.0','generatedAt':now(),'generatedBy':'scripts/generate-mainnet-authorization-certificate.py','repository':'MontrealAI/goalos-agialpha-ascension','commit':git(['rev-parse','HEAD']),'branch':git(['branch','--show-current']),'chain':'ethereum','chainId':1,'agialphaToken':AGIALPHA,'scope':'public-repository-package-authorization-for-manual-gated-mainnet-deployment','notExternallyAudited':True,'externalAuditPlanned':False,'externalAuditRequired':False,'legalTaxReviewClaimed':False,'mainnetDeployed':'NO','MAINNET_DEPLOYED':'NO','runtimeSecretsRequiredForBroadcast':True,'runtimeSecretsStoredInGitHub':False,'ciCanDeployMainnet':False,'privateOperatorAuthorizationPackageRequired':False,'technicallyMainnetReady':ready,'TECHNICALLY_MAINNET_READY':ready,'mainnetDeploymentAuthorized':deploy,'MAINNET_DEPLOYMENT_AUTHORIZED':deploy,'ethereumMainnetAuthorized':eth,'ETHEREUM_MAINNET_AUTHORIZED':eth,'evidence':evidence,'blockers':blockers,'warnings':warnings,'nextAction':'Founder/deployer may run npm run deploy:ethereum-mainnet:gated with local runtime RPC/key.' if eth=='YES' else 'B. Blocked, with exact blockers.'}
+    head=git(['rev-parse','HEAD']); branch=git(['branch','--show-current'])
+    cert={'schemaVersion':'1.0','generatedAt':now(),'generatedBy':'scripts/generate-mainnet-authorization-certificate.py','repository':'MontrealAI/goalos-agialpha-ascension','commit':head,'sourceCommit':head,'branch':branch,'sourceBranch':branch,'currentHeadAtGeneration':head,'gitValidationMode':'GIT_CHECKOUT','evidenceHashesFreshForCurrentCheckout':True,'sourceCommitIsAncestorOfCurrentHead':True,'generatedDocsFromCertificate':['README.md','docs/CURRENT_STATUS.md','docs/MAINNET_AUTHORIZATION_CERTIFICATE.md','docs/MAINNET_TECHNICAL_READINESS_DECISION.json','docs/MAINNET_DEPLOYMENT_AUTHORIZATION_DECISION.json','docs/ETHEREUM_MAINNET_AUTHORIZATION_DECISION.json'],'chain':'ethereum','chainId':1,'agialphaToken':AGIALPHA,'scope':'public-repository-package-authorization-for-manual-gated-mainnet-deployment','notExternallyAudited':True,'externalAuditPlanned':False,'externalAuditRequired':False,'legalTaxReviewClaimed':False,'mainnetDeployed':'NO','MAINNET_DEPLOYED':'NO','runtimeSecretsRequiredForBroadcast':True,'runtimeSecretsStoredInGitHub':False,'ciCanDeployMainnet':False,'privateOperatorAuthorizationPackageRequired':False,'technicallyMainnetReady':ready,'TECHNICALLY_MAINNET_READY':ready,'mainnetDeploymentAuthorized':deploy,'MAINNET_DEPLOYMENT_AUTHORIZED':deploy,'ethereumMainnetAuthorized':eth,'ETHEREUM_MAINNET_AUTHORIZED':eth,'evidence':evidence,'blockers':blockers,'warnings':warnings,'nextAction':'Founder/deployer may run npm run deploy:ethereum-mainnet:gated with local runtime RPC/key after optional branch-protection hardening.' if eth=='YES' else 'B. Blocked, with exact blockers.'}
+    canonical=json.dumps({k:v for k,v in cert.items() if k!='certificateHash'},sort_keys=True,separators=(',',':'))
+    cert['certificateHash']='0x'+hashlib.sha256(canonical.encode()).hexdigest()
     (ROOT/'qa').mkdir(exist_ok=True); (ROOT/'qa/mainnet-authorization-certificate.json').write_text(json.dumps(cert,indent=2)+'\n')
     print(json.dumps(cert,indent=2))
 if __name__=='__main__': main()

@@ -14,4 +14,4 @@ This certificate authorizes only manual, local, gated Ethereum Mainnet deploymen
 
 ## Next action
 
-Founder/deployer may run npm run deploy:ethereum-mainnet:gated with local runtime RPC/key.
+Founder/deployer may run npm run deploy:ethereum-mainnet:gated with local runtime RPC/key after optional branch-protection hardening.

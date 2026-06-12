@@ -1,4 +1,4 @@
-name: Final Public Mainnet Authorization
+name: Ethereum Sepolia Rehearsal
 on:
   pull_request:
   workflow_dispatch:
@@ -45,12 +45,15 @@ jobs:
       - run: npm run mainnet:readiness-check
       - run: npm run mainnet:deployment-authorization-check
       - run: npm run mainnet:authorization-check
+      - run: npm run qa:manifest
+      - run: npm run qa:manifest:verify
       - uses: actions/upload-artifact@v5
         if: always()
         with:
           name: public-mainnet-authorization-artifacts
           path: |
             qa/mainnet-authorization-certificate.json
+            qa/MANIFEST_MAINNET_AUTHORIZATION_v4_4_0.json
             docs/MAINNET_AUTHORIZATION_CERTIFICATE.md
             audit/TOOLCHAIN_CLEARANCE_REPORT.md
             docs/MAINNET_TECHNICAL_READINESS_DECISION.json

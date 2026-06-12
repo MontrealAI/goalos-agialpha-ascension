@@ -1,4 +1,4 @@
-name: Ethereum Sepolia Rehearsal
+name: Local/Sepolia Rehearsal
 
 on:
   pull_request:

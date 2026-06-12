@@ -1,6 +1,6 @@
 # Start Here: Ethereum Mainnet
 
-GoalOS AGIALPHA Ascension v4.4 mainnet authorization candidate.
+GoalOS AGIALPHA Ascension v4.4.0 mainnet authorization candidate.
 
 Automated/internal security toolchain: passed.
 Local deterministic rehearsal: passed.
