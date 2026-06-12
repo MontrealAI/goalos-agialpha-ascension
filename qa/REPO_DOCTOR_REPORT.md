@@ -1,9 +1,9 @@
 # Repo Doctor Report
 
-Generated: 2026-06-12T04:13:08.132834+00:00
+Generated: 2026-06-12T16:03:54.184853+00:00
 
 - Current branch: `codex/final-certificate-cleanup-v13`
-- Current commit: `5dca98050896950c26a10f89618ecd0dd4bdecbc`
+- Current commit: `972d8783948785d7527f04a0d9e3197cd397c20d`
 - Package manager: npm via package-lock.json
 - package-lock.json exists: True
 - Hardhat: 2.28.6 (Hardhat 2)

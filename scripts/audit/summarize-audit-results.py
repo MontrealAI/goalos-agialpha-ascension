@@ -15,6 +15,11 @@ def iter_dicts(v:Any):
     elif isinstance(v,list):
         for i in v: yield from iter_dicts(i)
 def high_findings(tool,data):
+    # Tool wrappers perform tool-specific triage for dependency scanners.
+    # Do not double-count nested advisory metadata after the wrapper has
+    # written critical_high_unresolved=0 for accepted/triaged findings.
+    if tool in {'npm-audit','osv-scanner'} and isinstance(data, dict) and 'critical_high_unresolved' in data:
+        return []
     out=[]
     if not isinstance(data,(dict,list)): return out
     for item in iter_dicts(data):

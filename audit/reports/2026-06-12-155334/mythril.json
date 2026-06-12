@@ -1,0 +1,1 @@
+{"tool":"Mythril","status":"PENDING_ENVIRONMENT_BLOCKED","command":"myth analyze contracts/registry/LaunchGateRegistry.sol --solv 0.8.24 -o json --execution-timeout 120","reason":"myth/mythril executable is not installed or failed to install","blocks_mainnet":true,"generated_at":"2026-06-12T16:00:35Z"}
