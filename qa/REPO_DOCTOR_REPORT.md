@@ -1,32 +1,41 @@
 # Repo Doctor Report
 
-Generated: 2026-06-12T16:03:54.184853+00:00
+Generated: 2026-06-12T17:00:22.221226+00:00
 
 - Current branch: `codex/final-certificate-cleanup-v13`
-- Current commit: `972d8783948785d7527f04a0d9e3197cd397c20d`
+- Current commit: `5c6f7384894200f627ef479b7a14cbb87d9a06fb`
 - Package manager: npm via package-lock.json
 - package-lock.json exists: True
 - Hardhat: 2.28.6 (Hardhat 2)
 - Hardhat Toolbox: 5.0.0
 - OpenZeppelin Contracts: 4.9.6
 - TypeScript: 5.9.3
-- Solidity compiler baseline: Hardhat/local solc-js 0.8.35
+- Solidity compiler baseline: local solc-js 0.8.35+commit.47b9dedd.Emscripten.clang aligned with hardhat 0.8.35
 - Node: v20.20.2
 - npm: 11.4.2
 
 ## Status
-- npm ci: PASSED
-- Compile: PASSED: npm run compile:ci used local solc-js without Hardhat compiler download
-- Tests: PASSED: npm run test:ci and npm run test:all
-- Slither/security toolchain: PASSED/CLEARED: Slither executed; Tier 1 completed; no unresolved critical/high findings
-- Local rehearsal: PASSED: deterministic local rehearsal and public-safe Evidence Docket generated
-- Evidence Docket: GENERATED: evidence/local/EVIDENCE_DOCKET.json marked LOCAL_SIMULATION_ONLY
-- Mainnet authorization: TECHNICALLY_MAINNET_READY=YES; MAINNET_DEPLOYMENT_AUTHORIZED=YES; ETHEREUM_MAINNET_AUTHORIZED=YES; MAINNET_DEPLOYED=NO
+- npmCi: PASSED; package-lock.json used
+- compilerAlignment: PASSED
+- compileCi: PASSED; deterministic local solc-js compile generated Hardhat artifacts
+- testCi: PASSED
+- testAll: PASSED
+- staticCheck: PASSED
+- toolchainClearance: PASSED
+- tier1SecurityToolchain: PASSED
+- tier1BlockedTools: []
+- tier2UnavailableTools: ['echidna', 'mythril', 'medusa', 'foundry', 'halmos', 'smtchecker']
+- localRehearsal: PASSED
+- localEvidenceDocket: LOCAL_SIMULATION_ONLY
+- agialphaTokenVerification: PASSED
+- mainnetSimulation: PASSED
+- technicallyMainnetReady: YES
+- mainnetDeploymentAuthorized: YES
+- ethereumMainnetAuthorized: YES
+- mainnetDeployed: NO
 
 ## Blockers
-- TECHNICALLY_MAINNET_READY blockers: none.
-- MAINNET_DEPLOYMENT_AUTHORIZED blockers: none.
-- ETHEREUM_MAINNET_AUTHORIZED blockers: none.
+- None.
 
 ## Dependency Notes
 - Final YES does not depend on private operator evidence.

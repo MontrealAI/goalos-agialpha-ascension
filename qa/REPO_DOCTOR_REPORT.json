@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-06-12T16:03:54.184853+00:00",
+  "generatedAt": "2026-06-12T17:00:22.221226+00:00",
   "branch": "codex/final-certificate-cleanup-v13",
-  "commit": "972d8783948785d7527f04a0d9e3197cd397c20d",
+  "commit": "5c6f7384894200f627ef479b7a14cbb87d9a06fb",
   "node": "v20.20.2",
   "npm": "11.4.2",
   "packageLockExists": true,
@@ -10,21 +10,37 @@
     "hardhatToolbox": "5.0.0",
     "openzeppelinContracts": "4.9.6",
     "typescript": "5.9.3",
-    "solc": "0.8.35"
+    "solc": "0.8.35",
+    "deterministicCompiler": "local solc-js 0.8.35+commit.47b9dedd.Emscripten.clang aligned with hardhat 0.8.35"
   },
   "status": {
-    "npmCi": "PASSED",
+    "npmCi": "PASSED; package-lock.json used",
     "compilerAlignment": "PASSED",
-    "compileCi": "PASSED",
+    "compileCi": "PASSED; deterministic local solc-js compile generated Hardhat artifacts",
     "testCi": "PASSED",
     "testAll": "PASSED",
     "staticCheck": "PASSED",
+    "toolchainClearance": "PASSED",
     "tier1SecurityToolchain": "PASSED",
+    "tier1BlockedTools": [],
+    "tier2UnavailableTools": [
+      "echidna",
+      "mythril",
+      "medusa",
+      "foundry",
+      "halmos",
+      "smtchecker"
+    ],
     "localRehearsal": "PASSED",
-    "localEvidenceDocket": "GENERATED",
+    "localEvidenceDocket": "LOCAL_SIMULATION_ONLY",
     "agialphaTokenVerification": "PASSED",
-    "mainnetAuthorization": "YES",
+    "mainnetSimulation": "PASSED",
+    "technicallyMainnetReady": "YES",
+    "mainnetDeploymentAuthorized": "YES",
+    "ethereumMainnetAuthorized": "YES",
     "mainnetDeployed": "NO"
   },
-  "blockers": []
+  "blockers": [],
+  "warnings": [],
+  "requiredCommandsLog": "qa/codex-required-commands.log"
 }

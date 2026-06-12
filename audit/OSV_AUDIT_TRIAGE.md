@@ -1,7 +1,11 @@
 # OSV Audit Triage
 
-Status: **TRIAGED_ACCEPTED_DEV_TOOLING_ONLY**
+Generated: 2026-06-12T17:01:40.183509+00:00
 
-The OSV scanner must run for Tier 1 clearance. If the scanner is unavailable or exits with an execution/configuration error, the OSV gate is blocked.
+Status: **COMPLETED_TRIAGED**.
 
-The accepted OSV IDs in `audit/OSV_AUDIT_TRIAGE.json` are transitive npm development/tooling findings. They are not Solidity source, are not linked into deployed bytecode, are not served by a repository web service, and are not Ethereum Mainnet runtime dependencies. Any new OSV ID not listed in the JSON triage remains a Tier 1 blocker until fixed or explicitly triaged.
+Finding count: **18**.
+Accepted finding count: **18**.
+Untriaged finding count: **0**.
+
+OSV scanner executed against `package-lock.json`. Accepted IDs are maintained in `audit/OSV_AUDIT_TRIAGE.json`; these are development/tooling dependency findings and do not change deployed Solidity bytecode.

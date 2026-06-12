@@ -1,0 +1,1824 @@
+\n===== npm ci =====
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+npm warn deprecated lodash.isequal@4.5.0: This package is deprecated. Use require('node:util').isDeepStrictEqual instead.
+npm warn deprecated glob@8.1.0: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+npm warn deprecated glob@5.0.15: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+npm warn deprecated glob@7.1.7: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+npm warn deprecated uuid@8.3.2: uuid@10 and below is no longer supported.  For ESM codebases, update to uuid@latest.  For CommonJS codebases, use uuid@11 (but be aware this version will likely be deprecated in 2028).
+
+added 597 packages, and audited 598 packages in 22s
+
+44 vulnerabilities (18 low, 22 moderate, 4 high)
+
+To address issues that do not require attention, run:
+  npm audit fix
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+===== exit 0: npm ci =====
+\n===== npm run verify:compiler-alignment =====
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> goalos-agialpha-ascension@4.3.0 verify:compiler-alignment
+> python scripts/verify-compiler-alignment.py
+
+{
+  "status": "PASSED",
+  "hardhatSolidityVersion": "0.8.35",
+  "packageSolc": "0.8.35",
+  "runtimeSolcVersion": "0.8.35+commit.47b9dedd.Emscripten.clang",
+  "pragmaConstraints": [
+    "^0.8.24"
+  ],
+  "errors": []
+}
+===== exit 0: npm run verify:compiler-alignment =====
+\n===== npm run repo:all =====
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> goalos-agialpha-ascension@4.3.0 repo:all
+> python scripts/repository_safety_check.py && python scripts/repository_status_check.py && python scripts/repository_production_readiness_check.py && python scripts/no_paid_products_check.py && python scripts/no_private_operator_data_check.py
+
+Repository safety check passed.
+Repository status check passed.
+{
+  "status": "passed",
+  "errors": [],
+  "warnings": [],
+  "message": "Repository is production-continuation ready as a GitHub starter candidate."
+}
+Paid/private product check passed.
+Private operator data check passed.
+===== exit 0: npm run repo:all =====
+\n===== npm run repo:no-private-operator-data =====
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> goalos-agialpha-ascension@4.3.0 repo:no-private-operator-data
+> python scripts/no_private_operator_data_check.py
+
+Private operator data check passed.
+===== exit 0: npm run repo:no-private-operator-data =====
+\n===== npm run repo:no-paid-products =====
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> goalos-agialpha-ascension@4.3.0 repo:no-paid-products
+> python scripts/no_paid_products_check.py
+
+Paid/private product check passed.
+===== exit 0: npm run repo:no-paid-products =====
+\n===== npm run compile:ci =====
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> goalos-agialpha-ascension@4.3.0 compile:ci
+> npm run compile:deterministic
+
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> goalos-agialpha-ascension@4.3.0 compile:deterministic
+> node scripts/compile-deterministic.js
+
+Deterministic Solidity compile using local solc-js 0.8.35+commit.47b9dedd.Emscripten.clang (package solc 0.8.35).
+WARNING: Warning: "error" will be promoted to keyword in the future and will not be allowed as an identifier anymore.
+  --> @openzeppelin/contracts/utils/cryptography/ECDSA.sol:23:26:
+   |
+23 |     function _throwError(RecoverError error) private pure {
+   |                          ^^^^^^^^^^^^^^^^^^
+
+
+WARNING: Warning: "error" will be promoted to keyword in the future and will not be allowed as an identifier anymore.
+  --> @openzeppelin/contracts/utils/cryptography/ECDSA.sol:89:29:
+   |
+89 |         (address recovered, RecoverError error) = tryRecover(hash, signature);
+   |                             ^^^^^^^^^^^^^^^^^^
+
+
+WARNING: Warning: "error" will be promoted to keyword in the future and will not be allowed as an identifier anymore.
+   --> @openzeppelin/contracts/utils/cryptography/ECDSA.sol:113:29:
+    |
+113 |         (address recovered, RecoverError error) = tryRecover(hash, r, vs);
+    |                             ^^^^^^^^^^^^^^^^^^
+
+
+WARNING: Warning: "error" will be promoted to keyword in the future and will not be allowed as an identifier anymore.
+   --> @openzeppelin/contracts/utils/cryptography/ECDSA.sol:152:29:
+    |
+152 |         (address recovered, RecoverError error) = tryRecover(hash, v, r, s);
+    |                             ^^^^^^^^^^^^^^^^^^
+
+
+WARNING: Warning: Natspec memory-safe-assembly special comment for inline assembly is deprecated and scheduled for removal. Use the memory-safe block annotation instead.
+  --> @openzeppelin/contracts/utils/Strings.sol:25:13:
+   |
+25 |             assembly {
+   |             ^ (Relevant source part starts here and spans across multiple lines).
+
+
+WARNING: Warning: Natspec memory-safe-assembly special comment for inline assembly is deprecated and scheduled for removal. Use the memory-safe block annotation instead.
+  --> @openzeppelin/contracts/utils/Strings.sol:31:17:
+   |
+31 |                 assembly {
+   |                 ^ (Relevant source part starts here and spans across multiple lines).
+
+
+WARNING: Warning: Natspec memory-safe-assembly special comment for inline assembly is deprecated and scheduled for removal. Use the memory-safe block annotation instead.
+  --> @openzeppelin/contracts/utils/cryptography/ECDSA.sol:63:13:
+   |
+63 |             assembly {
+   |             ^ (Relevant source part starts here and spans across multiple lines).
+
+
+WARNING: Warning: Natspec memory-safe-assembly special comment for inline assembly is deprecated and scheduled for removal. Use the memory-safe block annotation instead.
+   --> @openzeppelin/contracts/utils/cryptography/ECDSA.sol:169:9:
+    |
+169 |         assembly {
+    |         ^ (Relevant source part starts here and spans across multiple lines).
+
+
+WARNING: Warning: Natspec memory-safe-assembly special comment for inline assembly is deprecated and scheduled for removal. Use the memory-safe block annotation instead.
+   --> @openzeppelin/contracts/utils/cryptography/ECDSA.sol:199:9:
+    |
+199 |         assembly {
+    |         ^ (Relevant source part starts here and spans across multiple lines).
+
+
+WARNING: Warning: Natspec memory-safe-assembly special comment for inline assembly is deprecated and scheduled for removal. Use the memory-safe block annotation instead.
+  --> @openzeppelin/contracts/utils/StorageSlot.sol:64:9:
+   |
+64 |         assembly {
+   |         ^ (Relevant source part starts here and spans across multiple lines).
+
+
+WARNING: Warning: Natspec memory-safe-assembly special comment for inline assembly is deprecated and scheduled for removal. Use the memory-safe block annotation instead.
+  --> @openzeppelin/contracts/utils/StorageSlot.sol:74:9:
+   |
+74 |         assembly {
+   |         ^ (Relevant source part starts here and spans across multiple lines).
+
+
+WARNING: Warning: Natspec memory-safe-assembly special comment for inline assembly is deprecated and scheduled for removal. Use the memory-safe block annotation instead.
+  --> @openzeppelin/contracts/utils/StorageSlot.sol:84:9:
+   |
+84 |         assembly {
+   |         ^ (Relevant source part starts here and spans across multiple lines).
+
+
+WARNING: Warning: Natspec memory-safe-assembly special comment for inline assembly is deprecated and scheduled for removal. Use the memory-safe block annotation instead.
+  --> @openzeppelin/contracts/utils/StorageSlot.sol:94:9:
+   |
+94 |         assembly {
+   |         ^ (Relevant source part starts here and spans across multiple lines).
+
+
+WARNING: Warning: Natspec memory-safe-assembly special comment for inline assembly is deprecated and scheduled for removal. Use the memory-safe block annotation instead.
+   --> @openzeppelin/contracts/utils/StorageSlot.sol:104:9:
+    |
+104 |         assembly {
+    |         ^ (Relevant source part starts here and spans across multiple lines).
+
+
+WARNING: Warning: Natspec memory-safe-assembly special comment for inline assembly is deprecated and scheduled for removal. Use the memory-safe block annotation instead.
+   --> @openzeppelin/contracts/utils/StorageSlot.sol:114:9:
+    |
+114 |         assembly {
+    |         ^ (Relevant source part starts here and spans across multiple lines).
+
+
+WARNING: Warning: Natspec memory-safe-assembly special comment for inline assembly is deprecated and scheduled for removal. Use the memory-safe block annotation instead.
+   --> @openzeppelin/contracts/utils/StorageSlot.sol:124:9:
+    |
+124 |         assembly {
+    |         ^ (Relevant source part starts here and spans across multiple lines).
+
+
+WARNING: Warning: Natspec memory-safe-assembly special comment for inline assembly is deprecated and scheduled for removal. Use the memory-safe block annotation instead.
+   --> @openzeppelin/contracts/utils/StorageSlot.sol:134:9:
+    |
+134 |         assembly {
+    |         ^ (Relevant source part starts here and spans across multiple lines).
+
+
+WARNING: Warning: Natspec memory-safe-assembly special comment for inline assembly is deprecated and scheduled for removal. Use the memory-safe block annotation instead.
+  --> @openzeppelin/contracts/utils/ShortStrings.sol:68:9:
+   |
+68 |         assembly {
+   |         ^ (Relevant source part starts here and spans across multiple lines).
+
+
+WARNING: Warning: Natspec memory-safe-assembly special comment for inline assembly is deprecated and scheduled for removal. Use the memory-safe block annotation instead.
+   --> @openzeppelin/contracts/utils/Address.sol:236:13:
+    |
+236 |             assembly {
+    |             ^ (Relevant source part starts here and spans across multiple lines).
+
+
+WARNING: Warning: Natspec memory-safe-assembly special comment for inline assembly is deprecated and scheduled for removal. Use the memory-safe block annotation instead.
+   --> @openzeppelin/contracts/token/ERC721/ERC721.sol:413:21:
+    |
+413 |                     assembly {
+    |                     ^ (Relevant source part starts here and spans across multiple lines).
+
+
+Direct solc-js compile passed with 20 warnings/errors total and 0 fatal errors.
+Generated Hardhat-compatible artifacts from direct solc output.
+compile:deterministic completed without Hardhat compiler download.
+===== exit 0: npm run compile:ci =====
+\n===== npm run test:ci =====
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> goalos-agialpha-ascension@4.3.0 test:ci
+> npm run compile:ci && hardhat test --no-compile
+
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> goalos-agialpha-ascension@4.3.0 compile:ci
+> npm run compile:deterministic
+
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> goalos-agialpha-ascension@4.3.0 compile:deterministic
+> node scripts/compile-deterministic.js
+
+Deterministic Solidity compile using local solc-js 0.8.35+commit.47b9dedd.Emscripten.clang (package solc 0.8.35).
+WARNING: Warning: "error" will be promoted to keyword in the future and will not be allowed as an identifier anymore.
+  --> @openzeppelin/contracts/utils/cryptography/ECDSA.sol:23:26:
+   |
+23 |     function _throwError(RecoverError error) private pure {
+   |                          ^^^^^^^^^^^^^^^^^^
+
+
+WARNING: Warning: "error" will be promoted to keyword in the future and will not be allowed as an identifier anymore.
+  --> @openzeppelin/contracts/utils/cryptography/ECDSA.sol:89:29:
+   |
+89 |         (address recovered, RecoverError error) = tryRecover(hash, signature);
+   |                             ^^^^^^^^^^^^^^^^^^
+
+
+WARNING: Warning: "error" will be promoted to keyword in the future and will not be allowed as an identifier anymore.
+   --> @openzeppelin/contracts/utils/cryptography/ECDSA.sol:113:29:
+    |
+113 |         (address recovered, RecoverError error) = tryRecover(hash, r, vs);
+    |                             ^^^^^^^^^^^^^^^^^^
+
+
+WARNING: Warning: "error" will be promoted to keyword in the future and will not be allowed as an identifier anymore.
+   --> @openzeppelin/contracts/utils/cryptography/ECDSA.sol:152:29:
+    |
+152 |         (address recovered, RecoverError error) = tryRecover(hash, v, r, s);
+    |                             ^^^^^^^^^^^^^^^^^^
+
+
+WARNING: Warning: Natspec memory-safe-assembly special comment for inline assembly is deprecated and scheduled for removal. Use the memory-safe block annotation instead.
+  --> @openzeppelin/contracts/utils/Strings.sol:25:13:
+   |
+25 |             assembly {
+   |             ^ (Relevant source part starts here and spans across multiple lines).
+
+
+WARNING: Warning: Natspec memory-safe-assembly special comment for inline assembly is deprecated and scheduled for removal. Use the memory-safe block annotation instead.
+  --> @openzeppelin/contracts/utils/Strings.sol:31:17:
+   |
+31 |                 assembly {
+   |                 ^ (Relevant source part starts here and spans across multiple lines).
+
+
+WARNING: Warning: Natspec memory-safe-assembly special comment for inline assembly is deprecated and scheduled for removal. Use the memory-safe block annotation instead.
+  --> @openzeppelin/contracts/utils/cryptography/ECDSA.sol:63:13:
+   |
+63 |             assembly {
+   |             ^ (Relevant source part starts here and spans across multiple lines).
+
+
+WARNING: Warning: Natspec memory-safe-assembly special comment for inline assembly is deprecated and scheduled for removal. Use the memory-safe block annotation instead.
+   --> @openzeppelin/contracts/utils/cryptography/ECDSA.sol:169:9:
+    |
+169 |         assembly {
+    |         ^ (Relevant source part starts here and spans across multiple lines).
+
+
+WARNING: Warning: Natspec memory-safe-assembly special comment for inline assembly is deprecated and scheduled for removal. Use the memory-safe block annotation instead.
+   --> @openzeppelin/contracts/utils/cryptography/ECDSA.sol:199:9:
+    |
+199 |         assembly {
+    |         ^ (Relevant source part starts here and spans across multiple lines).
+
+
+WARNING: Warning: Natspec memory-safe-assembly special comment for inline assembly is deprecated and scheduled for removal. Use the memory-safe block annotation instead.
+  --> @openzeppelin/contracts/utils/StorageSlot.sol:64:9:
+   |
+64 |         assembly {
+   |         ^ (Relevant source part starts here and spans across multiple lines).
+
+
+WARNING: Warning: Natspec memory-safe-assembly special comment for inline assembly is deprecated and scheduled for removal. Use the memory-safe block annotation instead.
+  --> @openzeppelin/contracts/utils/StorageSlot.sol:74:9:
+   |
+74 |         assembly {
+   |         ^ (Relevant source part starts here and spans across multiple lines).
+
+
+WARNING: Warning: Natspec memory-safe-assembly special comment for inline assembly is deprecated and scheduled for removal. Use the memory-safe block annotation instead.
+  --> @openzeppelin/contracts/utils/StorageSlot.sol:84:9:
+   |
+84 |         assembly {
+   |         ^ (Relevant source part starts here and spans across multiple lines).
+
+
+WARNING: Warning: Natspec memory-safe-assembly special comment for inline assembly is deprecated and scheduled for removal. Use the memory-safe block annotation instead.
+  --> @openzeppelin/contracts/utils/StorageSlot.sol:94:9:
+   |
+94 |         assembly {
+   |         ^ (Relevant source part starts here and spans across multiple lines).
+
+
+WARNING: Warning: Natspec memory-safe-assembly special comment for inline assembly is deprecated and scheduled for removal. Use the memory-safe block annotation instead.
+   --> @openzeppelin/contracts/utils/StorageSlot.sol:104:9:
+    |
+104 |         assembly {
+    |         ^ (Relevant source part starts here and spans across multiple lines).
+
+
+WARNING: Warning: Natspec memory-safe-assembly special comment for inline assembly is deprecated and scheduled for removal. Use the memory-safe block annotation instead.
+   --> @openzeppelin/contracts/utils/StorageSlot.sol:114:9:
+    |
+114 |         assembly {
+    |         ^ (Relevant source part starts here and spans across multiple lines).
+
+
+WARNING: Warning: Natspec memory-safe-assembly special comment for inline assembly is deprecated and scheduled for removal. Use the memory-safe block annotation instead.
+   --> @openzeppelin/contracts/utils/StorageSlot.sol:124:9:
+    |
+124 |         assembly {
+    |         ^ (Relevant source part starts here and spans across multiple lines).
+
+
+WARNING: Warning: Natspec memory-safe-assembly special comment for inline assembly is deprecated and scheduled for removal. Use the memory-safe block annotation instead.
+   --> @openzeppelin/contracts/utils/StorageSlot.sol:134:9:
+    |
+134 |         assembly {
+    |         ^ (Relevant source part starts here and spans across multiple lines).
+
+
+WARNING: Warning: Natspec memory-safe-assembly special comment for inline assembly is deprecated and scheduled for removal. Use the memory-safe block annotation instead.
+  --> @openzeppelin/contracts/utils/ShortStrings.sol:68:9:
+   |
+68 |         assembly {
+   |         ^ (Relevant source part starts here and spans across multiple lines).
+
+
+WARNING: Warning: Natspec memory-safe-assembly special comment for inline assembly is deprecated and scheduled for removal. Use the memory-safe block annotation instead.
+   --> @openzeppelin/contracts/utils/Address.sol:236:13:
+    |
+236 |             assembly {
+    |             ^ (Relevant source part starts here and spans across multiple lines).
+
+
+WARNING: Warning: Natspec memory-safe-assembly special comment for inline assembly is deprecated and scheduled for removal. Use the memory-safe block annotation instead.
+   --> @openzeppelin/contracts/token/ERC721/ERC721.sol:413:21:
+    |
+413 |                     assembly {
+    |                     ^ (Relevant source part starts here and spans across multiple lines).
+
+
+Direct solc-js compile passed with 20 warnings/errors total and 0 fatal errors.
+Generated Hardhat-compatible artifacts from direct solc output.
+compile:deterministic completed without Hardhat compiler download.
+
+
+  AEP-001 / AGIALPHA Ascension proof-of-evolution spine
+    ✔ runs Aim -> Act -> Prove -> Evolve on-chain commitments (1671ms)
+
+  GoalOS AGIALPHA Ascension flow
+    ✔ creates a Proof Seed using AGIALPHA (406ms)
+    ✔ runs post -> claim -> submit -> review -> proof card -> credential -> reputation with AGIALPHA (378ms)
+    ✔ anchors a legacy AGIJobManager record as reviewed history (284ms)
+
+  mainnet boundary invariants
+    ✔ keeps canonical Ethereum Mainnet token and chain guards in the gated deployment script
+    ✔ requires every core launch gate before allCoreGatesPassed can become true (179ms)
+
+  GoalOS AGIALPHA Ascension v4 institutional controls
+    ✔ records conformance, claim boundary, replay, chronicle and falsification records (329ms)
+    ✔ supports commit-reveal validation (281ms)
+    ✔ supports evaluator staking, slashing court, and reward vault (261ms)
+
+  v4.3 Ethereum launch gate consistency
+    ✔ uses Ethereum Sepolia and complete institutional gates (120ms)
+
+
+  10 passing (4s)
+
+===== exit 0: npm run test:ci =====
+\n===== npm run test:all =====
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> goalos-agialpha-ascension@4.3.0 test:all
+> npm run compile:ci && hardhat test --no-compile test/agialphaAscensionFlow.test.ts test/aepAscensionFlow.test.ts test/v4InstitutionalControls.test.ts test/v4_3EthereumGateConsistency.test.ts test/invariants/mainnetBoundary.invariant.test.ts
+
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> goalos-agialpha-ascension@4.3.0 compile:ci
+> npm run compile:deterministic
+
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> goalos-agialpha-ascension@4.3.0 compile:deterministic
+> node scripts/compile-deterministic.js
+
+Deterministic Solidity compile using local solc-js 0.8.35+commit.47b9dedd.Emscripten.clang (package solc 0.8.35).
+WARNING: Warning: "error" will be promoted to keyword in the future and will not be allowed as an identifier anymore.
+  --> @openzeppelin/contracts/utils/cryptography/ECDSA.sol:23:26:
+   |
+23 |     function _throwError(RecoverError error) private pure {
+   |                          ^^^^^^^^^^^^^^^^^^
+
+
+WARNING: Warning: "error" will be promoted to keyword in the future and will not be allowed as an identifier anymore.
+  --> @openzeppelin/contracts/utils/cryptography/ECDSA.sol:89:29:
+   |
+89 |         (address recovered, RecoverError error) = tryRecover(hash, signature);
+   |                             ^^^^^^^^^^^^^^^^^^
+
+
+WARNING: Warning: "error" will be promoted to keyword in the future and will not be allowed as an identifier anymore.
+   --> @openzeppelin/contracts/utils/cryptography/ECDSA.sol:113:29:
+    |
+113 |         (address recovered, RecoverError error) = tryRecover(hash, r, vs);
+    |                             ^^^^^^^^^^^^^^^^^^
+
+
+WARNING: Warning: "error" will be promoted to keyword in the future and will not be allowed as an identifier anymore.
+   --> @openzeppelin/contracts/utils/cryptography/ECDSA.sol:152:29:
+    |
+152 |         (address recovered, RecoverError error) = tryRecover(hash, v, r, s);
+    |                             ^^^^^^^^^^^^^^^^^^
+
+
+WARNING: Warning: Natspec memory-safe-assembly special comment for inline assembly is deprecated and scheduled for removal. Use the memory-safe block annotation instead.
+  --> @openzeppelin/contracts/utils/Strings.sol:25:13:
+   |
+25 |             assembly {
+   |             ^ (Relevant source part starts here and spans across multiple lines).
+
+
+WARNING: Warning: Natspec memory-safe-assembly special comment for inline assembly is deprecated and scheduled for removal. Use the memory-safe block annotation instead.
+  --> @openzeppelin/contracts/utils/Strings.sol:31:17:
+   |
+31 |                 assembly {
+   |                 ^ (Relevant source part starts here and spans across multiple lines).
+
+
+WARNING: Warning: Natspec memory-safe-assembly special comment for inline assembly is deprecated and scheduled for removal. Use the memory-safe block annotation instead.
+  --> @openzeppelin/contracts/utils/cryptography/ECDSA.sol:63:13:
+   |
+63 |             assembly {
+   |             ^ (Relevant source part starts here and spans across multiple lines).
+
+
+WARNING: Warning: Natspec memory-safe-assembly special comment for inline assembly is deprecated and scheduled for removal. Use the memory-safe block annotation instead.
+   --> @openzeppelin/contracts/utils/cryptography/ECDSA.sol:169:9:
+    |
+169 |         assembly {
+    |         ^ (Relevant source part starts here and spans across multiple lines).
+
+
+WARNING: Warning: Natspec memory-safe-assembly special comment for inline assembly is deprecated and scheduled for removal. Use the memory-safe block annotation instead.
+   --> @openzeppelin/contracts/utils/cryptography/ECDSA.sol:199:9:
+    |
+199 |         assembly {
+    |         ^ (Relevant source part starts here and spans across multiple lines).
+
+
+WARNING: Warning: Natspec memory-safe-assembly special comment for inline assembly is deprecated and scheduled for removal. Use the memory-safe block annotation instead.
+  --> @openzeppelin/contracts/utils/StorageSlot.sol:64:9:
+   |
+64 |         assembly {
+   |         ^ (Relevant source part starts here and spans across multiple lines).
+
+
+WARNING: Warning: Natspec memory-safe-assembly special comment for inline assembly is deprecated and scheduled for removal. Use the memory-safe block annotation instead.
+  --> @openzeppelin/contracts/utils/StorageSlot.sol:74:9:
+   |
+74 |         assembly {
+   |         ^ (Relevant source part starts here and spans across multiple lines).
+
+
+WARNING: Warning: Natspec memory-safe-assembly special comment for inline assembly is deprecated and scheduled for removal. Use the memory-safe block annotation instead.
+  --> @openzeppelin/contracts/utils/StorageSlot.sol:84:9:
+   |
+84 |         assembly {
+   |         ^ (Relevant source part starts here and spans across multiple lines).
+
+
+WARNING: Warning: Natspec memory-safe-assembly special comment for inline assembly is deprecated and scheduled for removal. Use the memory-safe block annotation instead.
+  --> @openzeppelin/contracts/utils/StorageSlot.sol:94:9:
+   |
+94 |         assembly {
+   |         ^ (Relevant source part starts here and spans across multiple lines).
+
+
+WARNING: Warning: Natspec memory-safe-assembly special comment for inline assembly is deprecated and scheduled for removal. Use the memory-safe block annotation instead.
+   --> @openzeppelin/contracts/utils/StorageSlot.sol:104:9:
+    |
+104 |         assembly {
+    |         ^ (Relevant source part starts here and spans across multiple lines).
+
+
+WARNING: Warning: Natspec memory-safe-assembly special comment for inline assembly is deprecated and scheduled for removal. Use the memory-safe block annotation instead.
+   --> @openzeppelin/contracts/utils/StorageSlot.sol:114:9:
+    |
+114 |         assembly {
+    |         ^ (Relevant source part starts here and spans across multiple lines).
+
+
+WARNING: Warning: Natspec memory-safe-assembly special comment for inline assembly is deprecated and scheduled for removal. Use the memory-safe block annotation instead.
+   --> @openzeppelin/contracts/utils/StorageSlot.sol:124:9:
+    |
+124 |         assembly {
+    |         ^ (Relevant source part starts here and spans across multiple lines).
+
+
+WARNING: Warning: Natspec memory-safe-assembly special comment for inline assembly is deprecated and scheduled for removal. Use the memory-safe block annotation instead.
+   --> @openzeppelin/contracts/utils/StorageSlot.sol:134:9:
+    |
+134 |         assembly {
+    |         ^ (Relevant source part starts here and spans across multiple lines).
+
+
+WARNING: Warning: Natspec memory-safe-assembly special comment for inline assembly is deprecated and scheduled for removal. Use the memory-safe block annotation instead.
+  --> @openzeppelin/contracts/utils/ShortStrings.sol:68:9:
+   |
+68 |         assembly {
+   |         ^ (Relevant source part starts here and spans across multiple lines).
+
+
+WARNING: Warning: Natspec memory-safe-assembly special comment for inline assembly is deprecated and scheduled for removal. Use the memory-safe block annotation instead.
+   --> @openzeppelin/contracts/utils/Address.sol:236:13:
+    |
+236 |             assembly {
+    |             ^ (Relevant source part starts here and spans across multiple lines).
+
+
+WARNING: Warning: Natspec memory-safe-assembly special comment for inline assembly is deprecated and scheduled for removal. Use the memory-safe block annotation instead.
+   --> @openzeppelin/contracts/token/ERC721/ERC721.sol:413:21:
+    |
+413 |                     assembly {
+    |                     ^ (Relevant source part starts here and spans across multiple lines).
+
+
+Direct solc-js compile passed with 20 warnings/errors total and 0 fatal errors.
+Generated Hardhat-compatible artifacts from direct solc output.
+compile:deterministic completed without Hardhat compiler download.
+
+
+  GoalOS AGIALPHA Ascension flow
+    ✔ creates a Proof Seed using AGIALPHA (1473ms)
+    ✔ runs post -> claim -> submit -> review -> proof card -> credential -> reputation with AGIALPHA (375ms)
+    ✔ anchors a legacy AGIJobManager record as reviewed history (269ms)
+
+  AEP-001 / AGIALPHA Ascension proof-of-evolution spine
+    ✔ runs Aim -> Act -> Prove -> Evolve on-chain commitments (388ms)
+
+  GoalOS AGIALPHA Ascension v4 institutional controls
+    ✔ records conformance, claim boundary, replay, chronicle and falsification records (258ms)
+    ✔ supports commit-reveal validation (241ms)
+    ✔ supports evaluator staking, slashing court, and reward vault (356ms)
+
+  v4.3 Ethereum launch gate consistency
+    ✔ uses Ethereum Sepolia and complete institutional gates (150ms)
+
+  mainnet boundary invariants
+    ✔ keeps canonical Ethereum Mainnet token and chain guards in the gated deployment script
+    ✔ requires every core launch gate before allCoreGatesPassed can become true (156ms)
+
+
+  10 passing (4s)
+
+===== exit 0: npm run test:all =====
+\n===== npm run static-check =====
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> goalos-agialpha-ascension@4.3.0 static-check
+> python scripts/static_check.py
+
+Static QA passed.
+Files checked: 1163
+===== exit 0: npm run static-check =====
+\n===== npm run readiness:v4.3 =====
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> goalos-agialpha-ascension@4.3.0 readiness:v4.3
+> python scripts/verify-readiness-v4-3.py
+
+{
+  "package": "GoalOS_AGIALPHA_Ascension_Ethereum_Mainnet_Implementation_v4_3_GATE_CLEAN_EVIDENCE_READY",
+  "generated_at": "2026-06-12T16:43:01.520988+00:00",
+  "static_readiness": "passed",
+  "files_checked": 1163,
+  "errors": [],
+  "warnings": [],
+  "status": "certificate-backed evidence-ready public authorization candidate; mainnet deployed: NO",
+  "score_current_state": "public repository package authorized by generated certificate when all public gates pass; no guarantee of security or legal/tax approval",
+  "next_gate": "manual local gated Ethereum Mainnet deployment with runtime RPC/key if founder/deployer elects to broadcast"
+}
+===== exit 0: npm run readiness:v4.3 =====
+\n===== npm run evidence:docket:template =====
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> goalos-agialpha-ascension@4.3.0 evidence:docket:template
+> python scripts/generate-evidence-docket-template.py
+
+{
+  "status": "EVIDENCE_DOCKET_TEMPLATE_WRITTEN",
+  "path": "evidence/SEPOLIA_EVIDENCE_DOCKET_TEMPLATE_v4_2.json",
+  "sha256": "88ea677bdf4f9033d9c70adb7941a6031e40eb556864d97e96b4b2fbf81c579f"
+}
+===== exit 0: npm run evidence:docket:template =====
+\n===== npm run rehearse:local =====
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> goalos-agialpha-ascension@4.3.0 rehearse:local
+> npm run compile:ci && hardhat run --no-compile scripts/rehearse-local-authorization-chain.ts --network hardhat
+
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> goalos-agialpha-ascension@4.3.0 compile:ci
+> npm run compile:deterministic
+
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> goalos-agialpha-ascension@4.3.0 compile:deterministic
+> node scripts/compile-deterministic.js
+
+Deterministic Solidity compile using local solc-js 0.8.35+commit.47b9dedd.Emscripten.clang (package solc 0.8.35).
+WARNING: Warning: "error" will be promoted to keyword in the future and will not be allowed as an identifier anymore.
+  --> @openzeppelin/contracts/utils/cryptography/ECDSA.sol:23:26:
+   |
+23 |     function _throwError(RecoverError error) private pure {
+   |                          ^^^^^^^^^^^^^^^^^^
+
+
+WARNING: Warning: "error" will be promoted to keyword in the future and will not be allowed as an identifier anymore.
+  --> @openzeppelin/contracts/utils/cryptography/ECDSA.sol:89:29:
+   |
+89 |         (address recovered, RecoverError error) = tryRecover(hash, signature);
+   |                             ^^^^^^^^^^^^^^^^^^
+
+
+WARNING: Warning: "error" will be promoted to keyword in the future and will not be allowed as an identifier anymore.
+   --> @openzeppelin/contracts/utils/cryptography/ECDSA.sol:113:29:
+    |
+113 |         (address recovered, RecoverError error) = tryRecover(hash, r, vs);
+    |                             ^^^^^^^^^^^^^^^^^^
+
+
+WARNING: Warning: "error" will be promoted to keyword in the future and will not be allowed as an identifier anymore.
+   --> @openzeppelin/contracts/utils/cryptography/ECDSA.sol:152:29:
+    |
+152 |         (address recovered, RecoverError error) = tryRecover(hash, v, r, s);
+    |                             ^^^^^^^^^^^^^^^^^^
+
+
+WARNING: Warning: Natspec memory-safe-assembly special comment for inline assembly is deprecated and scheduled for removal. Use the memory-safe block annotation instead.
+  --> @openzeppelin/contracts/utils/Strings.sol:25:13:
+   |
+25 |             assembly {
+   |             ^ (Relevant source part starts here and spans across multiple lines).
+
+
+WARNING: Warning: Natspec memory-safe-assembly special comment for inline assembly is deprecated and scheduled for removal. Use the memory-safe block annotation instead.
+  --> @openzeppelin/contracts/utils/Strings.sol:31:17:
+   |
+31 |                 assembly {
+   |                 ^ (Relevant source part starts here and spans across multiple lines).
+
+
+WARNING: Warning: Natspec memory-safe-assembly special comment for inline assembly is deprecated and scheduled for removal. Use the memory-safe block annotation instead.
+  --> @openzeppelin/contracts/utils/cryptography/ECDSA.sol:63:13:
+   |
+63 |             assembly {
+   |             ^ (Relevant source part starts here and spans across multiple lines).
+
+
+WARNING: Warning: Natspec memory-safe-assembly special comment for inline assembly is deprecated and scheduled for removal. Use the memory-safe block annotation instead.
+   --> @openzeppelin/contracts/utils/cryptography/ECDSA.sol:169:9:
+    |
+169 |         assembly {
+    |         ^ (Relevant source part starts here and spans across multiple lines).
+
+
+WARNING: Warning: Natspec memory-safe-assembly special comment for inline assembly is deprecated and scheduled for removal. Use the memory-safe block annotation instead.
+   --> @openzeppelin/contracts/utils/cryptography/ECDSA.sol:199:9:
+    |
+199 |         assembly {
+    |         ^ (Relevant source part starts here and spans across multiple lines).
+
+
+WARNING: Warning: Natspec memory-safe-assembly special comment for inline assembly is deprecated and scheduled for removal. Use the memory-safe block annotation instead.
+  --> @openzeppelin/contracts/utils/StorageSlot.sol:64:9:
+   |
+64 |         assembly {
+   |         ^ (Relevant source part starts here and spans across multiple lines).
+
+
+WARNING: Warning: Natspec memory-safe-assembly special comment for inline assembly is deprecated and scheduled for removal. Use the memory-safe block annotation instead.
+  --> @openzeppelin/contracts/utils/StorageSlot.sol:74:9:
+   |
+74 |         assembly {
+   |         ^ (Relevant source part starts here and spans across multiple lines).
+
+
+WARNING: Warning: Natspec memory-safe-assembly special comment for inline assembly is deprecated and scheduled for removal. Use the memory-safe block annotation instead.
+  --> @openzeppelin/contracts/utils/StorageSlot.sol:84:9:
+   |
+84 |         assembly {
+   |         ^ (Relevant source part starts here and spans across multiple lines).
+
+
+WARNING: Warning: Natspec memory-safe-assembly special comment for inline assembly is deprecated and scheduled for removal. Use the memory-safe block annotation instead.
+  --> @openzeppelin/contracts/utils/StorageSlot.sol:94:9:
+   |
+94 |         assembly {
+   |         ^ (Relevant source part starts here and spans across multiple lines).
+
+
+WARNING: Warning: Natspec memory-safe-assembly special comment for inline assembly is deprecated and scheduled for removal. Use the memory-safe block annotation instead.
+   --> @openzeppelin/contracts/utils/StorageSlot.sol:104:9:
+    |
+104 |         assembly {
+    |         ^ (Relevant source part starts here and spans across multiple lines).
+
+
+WARNING: Warning: Natspec memory-safe-assembly special comment for inline assembly is deprecated and scheduled for removal. Use the memory-safe block annotation instead.
+   --> @openzeppelin/contracts/utils/StorageSlot.sol:114:9:
+    |
+114 |         assembly {
+    |         ^ (Relevant source part starts here and spans across multiple lines).
+
+
+WARNING: Warning: Natspec memory-safe-assembly special comment for inline assembly is deprecated and scheduled for removal. Use the memory-safe block annotation instead.
+   --> @openzeppelin/contracts/utils/StorageSlot.sol:124:9:
+    |
+124 |         assembly {
+    |         ^ (Relevant source part starts here and spans across multiple lines).
+
+
+WARNING: Warning: Natspec memory-safe-assembly special comment for inline assembly is deprecated and scheduled for removal. Use the memory-safe block annotation instead.
+   --> @openzeppelin/contracts/utils/StorageSlot.sol:134:9:
+    |
+134 |         assembly {
+    |         ^ (Relevant source part starts here and spans across multiple lines).
+
+
+WARNING: Warning: Natspec memory-safe-assembly special comment for inline assembly is deprecated and scheduled for removal. Use the memory-safe block annotation instead.
+  --> @openzeppelin/contracts/utils/ShortStrings.sol:68:9:
+   |
+68 |         assembly {
+   |         ^ (Relevant source part starts here and spans across multiple lines).
+
+
+WARNING: Warning: Natspec memory-safe-assembly special comment for inline assembly is deprecated and scheduled for removal. Use the memory-safe block annotation instead.
+   --> @openzeppelin/contracts/utils/Address.sol:236:13:
+    |
+236 |             assembly {
+    |             ^ (Relevant source part starts here and spans across multiple lines).
+
+
+WARNING: Warning: Natspec memory-safe-assembly special comment for inline assembly is deprecated and scheduled for removal. Use the memory-safe block annotation instead.
+   --> @openzeppelin/contracts/token/ERC721/ERC721.sol:413:21:
+    |
+413 |                     assembly {
+    |                     ^ (Relevant source part starts here and spans across multiple lines).
+
+
+Direct solc-js compile passed with 20 warnings/errors total and 0 fatal errors.
+Generated Hardhat-compatible artifacts from direct solc output.
+compile:deterministic completed without Hardhat compiler download.
+{
+  "status": "PASSED",
+  "scope": "LOCAL_SIMULATION_ONLY",
+  "manifest": "deployments/local.agialpha.latest.json",
+  "manifestHash": "0x9873fb9ce118a4345801d5ca1c7aec622ee510b5d910bedb10e4ba0c18837165",
+  "contractsDeployed": 17,
+  "proofWorkLoopCompleted": true,
+  "negativePathsCompleted": true,
+  "generatedAt": "2026-06-12T16:44:23.477Z",
+  "mainnetEvidence": false,
+  "publicSepoliaEvidence": false,
+  "containsSecrets": false,
+  "containsPrivateAddresses": false
+}
+===== exit 0: npm run rehearse:local =====
+\n===== npm run evidence:local =====
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> goalos-agialpha-ascension@4.3.0 evidence:local
+> python scripts/generate-local-evidence-docket.py
+
+{
+  "status": "LOCAL_SIMULATION_ONLY",
+  "generatedAt": "2026-06-12T16:44:28.395146+00:00",
+  "manifest": "deployments/local.agialpha.latest.json",
+  "manifestHash": "0x684d4eced17daf9512dc3196caf8bc50230a9657d836615178bb925d539441bd",
+  "mainnetEvidence": false,
+  "publicSepoliaEvidence": false,
+  "redacted": true,
+  "containsSecrets": false,
+  "containsPrivateAddresses": false
+}
+===== exit 0: npm run evidence:local =====
+\n===== npm run audit:slither =====
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> goalos-agialpha-ascension@4.3.0 audit:slither
+> bash scripts/audit/run-slither.sh
+
+{
+  "status": "NO_UNRESOLVED_CRITICAL_HIGH",
+  "tool": "slither",
+  "critical_high_unresolved": 0
+}
+===== exit 0: npm run audit:slither =====
+\n===== npm run audit:semgrep =====
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> goalos-agialpha-ascension@4.3.0 audit:semgrep
+> bash scripts/audit/run-semgrep.sh
+
+{
+  "status": "COMPLETED",
+  "tool": "semgrep",
+  "critical_high_unresolved": 0,
+  "resultCount": 0
+}
+===== exit 0: npm run audit:semgrep =====
+\n===== npm run audit:solhint =====
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> goalos-agialpha-ascension@4.3.0 audit:solhint
+> bash scripts/audit/run-solhint.sh
+
+{
+  "tool": "solhint",
+  "status": "COMPLETED",
+  "exitStatus": 0,
+  "errors": 0,
+  "warnings": 1845,
+  "critical_high_unresolved": 0
+}
+===== exit 0: npm run audit:solhint =====
+\n===== npm run audit:actions =====
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> goalos-agialpha-ascension@4.3.0 audit:actions
+> bash scripts/audit/run-actionlint.sh
+
+{
+  "tool": "actionlint",
+  "status": "COMPLETED",
+  "exitStatus": 0,
+  "critical_high_unresolved": 0
+}
+===== exit 0: npm run audit:actions =====
+\n===== npm run audit:shell =====
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> goalos-agialpha-ascension@4.3.0 audit:shell
+> bash scripts/audit/run-shellcheck.sh
+
+{
+  "tool": "shellcheck",
+  "status": "COMPLETED",
+  "mode": "bash-syntax-equivalent",
+  "exitStatus": 0,
+  "critical_high_unresolved": 0
+}
+===== exit 0: npm run audit:shell =====
+\n===== npm run audit:secrets =====
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> goalos-agialpha-ascension@4.3.0 audit:secrets
+> bash scripts/audit/run-gitleaks.sh
+
+{
+  "tool": "gitleaks",
+  "status": "COMPLETED",
+  "findingCount": 0,
+  "critical_high_unresolved": 0
+}
+===== exit 0: npm run audit:secrets =====
+\n===== npm run audit:npm =====
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> goalos-agialpha-ascension@4.3.0 audit:npm
+> bash scripts/audit/run-npm-audit.sh
+
+===== exit 0: npm run audit:npm =====
+\n===== npm run audit:osv || true =====
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> goalos-agialpha-ascension@4.3.0 audit:osv
+> bash scripts/audit/run-osv-scanner.sh
+
+{
+  "tool": "osv-scanner",
+  "status": "COMPLETED_TRIAGED",
+  "findingCount": 18,
+  "critical_high_unresolved": 0
+}
+===== exit 0: npm run audit:osv || true =====
+\n===== npm run audit:foundry || true =====
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> goalos-agialpha-ascension@4.3.0 audit:foundry
+> bash scripts/audit/run-foundry.sh
+
+===== exit 0: npm run audit:foundry || true =====
+\n===== npm run audit:echidna || true =====
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> goalos-agialpha-ascension@4.3.0 audit:echidna
+> bash scripts/audit/run-echidna.sh
+
+===== exit 0: npm run audit:echidna || true =====
+\n===== npm run audit:medusa || true =====
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> goalos-agialpha-ascension@4.3.0 audit:medusa
+> bash scripts/audit/run-medusa.sh
+
+===== exit 0: npm run audit:medusa || true =====
+\n===== npm run audit:mythril || true =====
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> goalos-agialpha-ascension@4.3.0 audit:mythril
+> bash scripts/audit/run-mythril.sh
+
+===== exit 0: npm run audit:mythril || true =====
+\n===== npm run audit:halmos || true =====
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> goalos-agialpha-ascension@4.3.0 audit:halmos
+> bash scripts/audit/run-halmos.sh
+
+===== exit 0: npm run audit:halmos || true =====
+\n===== npm run audit:smt || true =====
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> goalos-agialpha-ascension@4.3.0 audit:smt
+> bash scripts/audit/run-solc-smtchecker.sh
+
+===== exit 0: npm run audit:smt || true =====
+\n===== npm run audit:summarize =====
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> goalos-agialpha-ascension@4.3.0 audit:summarize
+> python scripts/audit/summarize-audit-results.py
+
+{
+  "generated_at": "2026-06-12T16:57:56.699953+00:00",
+  "report_dir": "audit/reports/2026-06-12-164431",
+  "decision": "TECHNICALLY_MAINNET_READY_NO_UNRESOLVED_CRITICAL_HIGH",
+  "critical_high_unresolved": 0,
+  "medium_unaccepted": 0,
+  "tier1_blocked_tools": [],
+  "tier2_environment_unavailable": [
+    "echidna",
+    "mythril",
+    "medusa",
+    "foundry",
+    "halmos",
+    "smtchecker"
+  ],
+  "tools": [
+    {
+      "tool": "slither",
+      "tier": "1",
+      "status": "COMPLETED",
+      "raw_status": "COMPLETED",
+      "json": "audit/reports/2026-06-12-164431/slither.json",
+      "text": "audit/reports/2026-06-12-164431/slither.txt",
+      "critical_high_unresolved": 0,
+      "blocks_technical_mainnet_readiness": false,
+      "blockers": []
+    },
+    {
+      "tool": "echidna",
+      "tier": "2",
+      "status": "TIER2_ENVIRONMENT_UNAVAILABLE_DOCUMENTED",
+      "raw_status": "PENDING_ENVIRONMENT_BLOCKED",
+      "json": "audit/reports/2026-06-12-164431/echidna.json",
+      "text": "audit/reports/2026-06-12-164431/echidna.txt",
+      "critical_high_unresolved": 0,
+      "blocks_technical_mainnet_readiness": false,
+      "blockers": []
+    },
+    {
+      "tool": "mythril",
+      "tier": "2",
+      "status": "TIER2_ENVIRONMENT_UNAVAILABLE_DOCUMENTED",
+      "raw_status": "PENDING_ENVIRONMENT_BLOCKED",
+      "json": "audit/reports/2026-06-12-164431/mythril.json",
+      "text": "audit/reports/2026-06-12-164431/mythril.txt",
+      "critical_high_unresolved": 0,
+      "blocks_technical_mainnet_readiness": false,
+      "blockers": []
+    },
+    {
+      "tool": "medusa",
+      "tier": "2",
+      "status": "TIER2_ENVIRONMENT_UNAVAILABLE_DOCUMENTED",
+      "raw_status": "PENDING_ENVIRONMENT_BLOCKED",
+      "json": "audit/reports/2026-06-12-164431/medusa.json",
+      "text": "audit/reports/2026-06-12-164431/medusa.txt",
+      "critical_high_unresolved": 0,
+      "blocks_technical_mainnet_readiness": false,
+      "blockers": []
+    },
+    {
+      "tool": "foundry",
+      "tier": "2",
+      "status": "TIER2_ENVIRONMENT_UNAVAILABLE_DOCUMENTED",
+      "raw_status": "PENDING_ENVIRONMENT_BLOCKED",
+      "json": "audit/reports/2026-06-12-164431/foundry.json",
+      "text": "audit/reports/2026-06-12-164431/foundry-test.log",
+      "critical_high_unresolved": 0,
+      "blocks_technical_mainnet_readiness": false,
+      "blockers": []
+    },
+    {
+      "tool": "halmos",
+      "tier": "2",
+      "status": "TIER2_ENVIRONMENT_UNAVAILABLE_DOCUMENTED",
+      "raw_status": "PENDING_ENVIRONMENT_BLOCKED",
+      "json": "audit/reports/2026-06-12-164431/halmos.json",
+      "text": "audit/reports/2026-06-12-164431/halmos.txt",
+      "critical_high_unresolved": 0,
+      "blocks_technical_mainnet_readiness": false,
+      "blockers": []
+    },
+    {
+      "tool": "semgrep",
+      "tier": "1",
+      "status": "COMPLETED",
+      "raw_status": "COMPLETED",
+      "json": "audit/reports/2026-06-12-164431/semgrep.json",
+      "text": "audit/reports/2026-06-12-164431/semgrep.txt",
+      "critical_high_unresolved": 0,
+      "blocks_technical_mainnet_readiness": false,
+      "blockers": []
+    },
+    {
+      "tool": "solhint",
+      "tier": "1",
+      "status": "COMPLETED",
+      "raw_status": "COMPLETED",
+      "json": "audit/reports/2026-06-12-164431/solhint.json",
+      "text": "audit/reports/2026-06-12-164431/solhint.txt",
+      "critical_high_unresolved": 0,
+      "blocks_technical_mainnet_readiness": false,
+      "blockers": []
+    },
+    {
+      "tool": "smtchecker",
+      "tier": "2",
+      "status": "TIER2_ENVIRONMENT_UNAVAILABLE_DOCUMENTED",
+      "raw_status": "PENDING_ENVIRONMENT_BLOCKED",
+      "json": "audit/reports/2026-06-12-164431/smtchecker.json",
+      "text": "audit/reports/2026-06-12-164431/smtchecker.txt",
+      "critical_high_unresolved": 0,
+      "blocks_technical_mainnet_readiness": false,
+      "blockers": []
+    },
+    {
+      "tool": "npm-audit",
+      "tier": "1",
+      "status": "COMPLETED_FINDINGS_REVIEWED_NO_CRITICAL_HIGH_BLOCKER",
+      "raw_status": "COMPLETED",
+      "json": "audit/reports/2026-06-12-164431/npm-audit.json",
+      "text": "audit/reports/2026-06-12-164431/npm-audit.txt",
+      "critical_high_unresolved": 0,
+      "blocks_technical_mainnet_readiness": false,
+      "blockers": []
+    },
+    {
+      "tool": "osv-scanner",
+      "tier": "1",
+      "status": "COMPLETED_TRIAGED",
+      "raw_status": "COMPLETED_TRIAGED",
+      "json": "audit/reports/2026-06-12-164431/osv-scanner.json",
+      "text": "audit/reports/2026-06-12-164431/osv-scanner.txt",
+      "critical_high_unresolved": 0,
+      "blocks_technical_mainnet_readiness": false,
+      "blockers": []
+    },
+    {
+      "tool": "actionlint",
+      "tier": "1",
+      "status": "COMPLETED",
+      "raw_status": "COMPLETED",
+      "json": "audit/reports/2026-06-12-164431/actionlint.json",
+      "text": "audit/reports/2026-06-12-164431/actionlint.txt",
+      "critical_high_unresolved": 0,
+      "blocks_technical_mainnet_readiness": false,
+      "blockers": []
+    },
+    {
+      "tool": "shellcheck",
+      "tier": "1",
+      "status": "COMPLETED",
+      "raw_status": "COMPLETED",
+      "json": "audit/reports/2026-06-12-164431/shellcheck.json",
+      "text": "audit/reports/2026-06-12-164431/shellcheck.txt",
+      "critical_high_unresolved": 0,
+      "blocks_technical_mainnet_readiness": false,
+      "blockers": []
+    },
+    {
+      "tool": "gitleaks",
+      "tier": "1",
+      "status": "COMPLETED",
+      "raw_status": "COMPLETED",
+      "json": "audit/reports/2026-06-12-164431/gitleaks.json",
+      "text": "audit/reports/2026-06-12-164431/gitleaks.txt",
+      "critical_high_unresolved": 0,
+      "blocks_technical_mainnet_readiness": false,
+      "blockers": []
+    }
+  ],
+  "mainnet_blockers": [],
+  "environment_blocked_tools_documented": [
+    "echidna",
+    "mythril",
+    "medusa",
+    "foundry",
+    "halmos",
+    "smtchecker"
+  ],
+  "public_governance_acceptance": "Tier 2 unavailable tools are documented and not counted as passed; Tier 1 tools must pass or provide accepted triage."
+}
+===== exit 0: npm run audit:summarize =====
+\n===== npm run audit:fail-on-critical =====
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> goalos-agialpha-ascension@4.3.0 audit:fail-on-critical
+> python scripts/audit/fail-on-critical-findings.py
+
+{
+  "status": "NO_UNRESOLVED_CRITICAL_HIGH",
+  "tool": "summary",
+  "critical_high_unresolved": 0
+}
+===== exit 0: npm run audit:fail-on-critical =====
+\n===== npm run audit:clearance-report =====
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> goalos-agialpha-ascension@4.3.0 audit:clearance-report
+> python scripts/audit/generate-toolchain-clearance-report.py
+
+{
+  "status": "CLEARED",
+  "sha256": "98492d3faa820a0a2c0c9149fe82aa88f45f110d3deb0e6dd70eea72a16cce59",
+  "path": "audit/reports/2026-06-12-164431/toolchain-clearance-report.md"
+}
+===== exit 0: npm run audit:clearance-report =====
+\n===== npm run verify:agialpha-token:public || true =====
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> goalos-agialpha-ascension@4.3.0 verify:agialpha-token:public
+> python scripts/verify_agialpha_token_public.py
+
+{
+  "redacted": true,
+  "containsSecrets": false,
+  "containsPrivateAddresses": false,
+  "status": "PASSED",
+  "verificationMode": "live-public-read-only-rpc",
+  "chain": "ethereum",
+  "chainId": 1,
+  "agialphaToken": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
+  "addressHasCode": true,
+  "codeSha256": "0x9fd51d9b20b0cf7b179d53254bde67131b3a7f632d1ea899359bbed2d3fe5575",
+  "contractTreatedAsExistingAgialphaToken": true,
+  "newAgialphaTokenDeployed": false,
+  "mockAgialphaUsedOnMainnet": false,
+  "methods": [
+    {
+      "method": "https://ethereum-rpc.publicnode.com eth_getCode",
+      "status": "PASSED",
+      "codeSha256": "0x9fd51d9b20b0cf7b179d53254bde67131b3a7f632d1ea899359bbed2d3fe5575"
+    }
+  ],
+  "generatedAt": "2026-06-12T16:58:10.384732+00:00",
+  "blockers": []
+}
+===== exit 0: npm run verify:agialpha-token:public || true =====
+\n===== npm run mainnet:certificate =====
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> goalos-agialpha-ascension@4.3.0 mainnet:certificate
+> python scripts/generate-mainnet-authorization-certificate.py
+
+{
+  "schemaVersion": "1.0",
+  "generatedAt": "2026-06-12T16:58:14.970910+00:00",
+  "generatedBy": "scripts/generate-mainnet-authorization-certificate.py",
+  "repository": "MontrealAI/goalos-agialpha-ascension",
+  "commit": "5c6f7384894200f627ef479b7a14cbb87d9a06fb",
+  "branch": "codex/final-certificate-cleanup-v13",
+  "chain": "ethereum",
+  "chainId": 1,
+  "agialphaToken": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
+  "scope": "public-repository-package-authorization-for-manual-gated-mainnet-deployment",
+  "notExternallyAudited": true,
+  "externalAuditPlanned": false,
+  "externalAuditRequired": false,
+  "legalTaxReviewClaimed": false,
+  "mainnetDeployed": "NO",
+  "MAINNET_DEPLOYED": "NO",
+  "runtimeSecretsRequiredForBroadcast": true,
+  "runtimeSecretsStoredInGitHub": false,
+  "ciCanDeployMainnet": false,
+  "privateOperatorAuthorizationPackageRequired": false,
+  "technicallyMainnetReady": "YES",
+  "TECHNICALLY_MAINNET_READY": "YES",
+  "mainnetDeploymentAuthorized": "YES",
+  "MAINNET_DEPLOYMENT_AUTHORIZED": "YES",
+  "ethereumMainnetAuthorized": "YES",
+  "ETHEREUM_MAINNET_AUTHORIZED": "YES",
+  "evidence": {
+    "repoDoctor": {
+      "path": "qa/REPO_DOCTOR_REPORT.json",
+      "sha256": "0x87795da7e780b97296ac2092c23162b7c600fe10c72aa811c4d490b6163c233a"
+    },
+    "dependencyBaseline": {
+      "path": "docs/DEPENDENCY_BASELINE_FOR_MAINNET.md",
+      "sha256": "0xefa39de31ff24c79017a474147b1a500d076c4b7783b5eff4e1bce932abfd5a7"
+    },
+    "compilerAlignment": {
+      "path": "qa/compiler-alignment.json",
+      "sha256": "0x6e26d461a64eb5f6a79a408d14d58b58ddb426f67d9b03b17c486048794ff865"
+    },
+    "compile": {
+      "path": "scripts/compile-deterministic.js",
+      "sha256": "0x546f6cfcaa228322a049a9ac7f07d5ffea95c8b4ed6efab556dfdad60740c11f"
+    },
+    "tests": {
+      "path": "test",
+      "sha256": "0x7f9272a3cf29fb38ff54945f55920c75fc689cc52cc5ea50eb6f6742c29513bc"
+    },
+    "testAll": {
+      "path": "test/invariants/mainnetBoundary.invariant.test.ts",
+      "sha256": "0x3aae9ec3a7185e1bdb25a3be670964493f07731ed1ba4d728c71abb4638cf192"
+    },
+    "staticCheck": {
+      "path": "scripts/static_check.py",
+      "sha256": "0xd8e3e0b82c3f0352c2aee519c2ace14b12b62f6b823eb7cd3422468b6694b6a4"
+    },
+    "publicStatus": {
+      "path": "scripts/assert_public_status.py",
+      "sha256": "0xb4ce73eedf6c9ce0ef107e46163e06fa385e21c2e9b2826934032a3df5542e02"
+    },
+    "noPrivateOperatorData": {
+      "path": "scripts/no_private_operator_data_check.py",
+      "sha256": "0xcc6d7ef6fdd4e84eaa69b55cad85e49c247357f5f32dbebadde1880350557736"
+    },
+    "noPaidProducts": {
+      "path": "scripts/no_paid_products_check.py",
+      "sha256": "0xed865850de41ec9e7a0eaded9b278e7ec3f191f57fb61b8962531dc69d5f0511"
+    },
+    "slither": {
+      "path": "docs/SLITHER_SECURITY_REPORT.md",
+      "sha256": "0x26101191906a29d5bdaa2d0e540e60adb5436fc5b4851a7066f6f6ec58ba3aaa"
+    },
+    "tier1SecurityToolchain": {
+      "path": "audit/TOOLCHAIN_CLEARANCE_REPORT.md",
+      "sha256": "0x98492d3faa820a0a2c0c9149fe82aa88f45f110d3deb0e6dd70eea72a16cce59"
+    },
+    "tier2SecurityToolchain": {
+      "path": "audit/AUTOMATED_SECURITY_TOOLCHAIN.md",
+      "sha256": "0xc7dabdfd833ef1b40bec88effe56b00cfbcf3890cc0a04e1e3251a4c9dd5d00b"
+    },
+    "toolchainClearance": {
+      "path": "qa/public-toolchain-clearance-evidence.json",
+      "sha256": "0x4056eb7a86b0777c282eb5963c873a2e0d37bf8710219c494897c1f4179a4704"
+    },
+    "unresolvedFindings": {
+      "path": "audit/AUDIT_FINDINGS_REGISTER.csv",
+      "sha256": "0x6a706a52433d3c8cd3d44ac62231388ebc02beb372a0ba84a975b6f2929404bb"
+    },
+    "invariants": {
+      "path": "security/INVARIANTS.md",
+      "sha256": "0x9aa4b8ef7ae0b84025a8849f2aa6c3954b28c932c5bdd3916f82b0df7fbb69db"
+    },
+    "localRehearsal": {
+      "path": "qa/local-rehearsal-report.json",
+      "sha256": "0x2285b54c260a1c3e38d8b1024c9806654ee89b4da1276a8affc5845e28ed399f"
+    },
+    "localEvidenceDocket": {
+      "path": "evidence/local/EVIDENCE_DOCKET.json",
+      "sha256": "0x6becb27d6d79f44474ba6d2c3872c1578e278ecde88f0debc8d4c9e09f598973"
+    },
+    "agialphaTokenVerification": {
+      "path": "qa/public-agialpha-token-verification.json",
+      "sha256": "0x1812602b1bb3a18c46adcb278e61c313b9136b38039f74b60429555a0b03ef6c"
+    },
+    "mainnetGuardrails": {
+      "path": "scripts/deploy-ethereum-mainnet-gated.ts",
+      "sha256": "0xd8a7de08236570a03b930b5f2dbb7d0992a06a348883571b2bbbfc2cfa57a02e"
+    },
+    "certificateGenerator": {
+      "path": "scripts/generate-mainnet-authorization-certificate.py",
+      "sha256": "0x010191df993028b046ac265888f9c2250ef040820496800eaf0772bd595cac2b"
+    },
+    "certificateValidator": {
+      "path": "scripts/validate-mainnet-authorization-certificate.py",
+      "sha256": "0x525188891b4024c02d03338b43dc14483dfe2a39c12caddffda5ec402854da1d"
+    },
+    "packageScripts": {
+      "path": "package.json",
+      "sha256": "0x451a3cf24c2e0e4cab5f050746ab56e66298317165866216aba9e6a157d02e12"
+    },
+    "branchProtectionOrRiskAcceptance": {
+      "path": "qa/public-branch-protection-evidence.json",
+      "sha256": "0xd4210ac4d31d49041473388c4f4790e0decb433aeec614e75c69c83e5d5a2ceb"
+    },
+    "publicGovernanceApproval": {
+      "path": "qa/public-governance-approval-evidence.json",
+      "sha256": "0x5f27824fc18f9569cd701aa524fbdcde8523edf9084f88e032663c1fc499bbca"
+    },
+    "releaseGate": {
+      "path": "docs/PUBLIC_MAINNET_AUTHORIZATION_RUNBOOK.md",
+      "sha256": "0xaa260e30cb260251cbf495fcb9ae4b347cf096cd2a46d3a8acaeff13b6641f88"
+    },
+    "mainnetSimulation": {
+      "path": "qa/ETHEREUM_MAINNET_FORK_SIMULATION.json",
+      "sha256": "0xc31f106afe209015778603b0d18ca31e38c1cb22750c200137a5c971ebdee439"
+    }
+  },
+  "blockers": [],
+  "warnings": [],
+  "nextAction": "Founder/deployer may run npm run deploy:ethereum-mainnet:gated with local runtime RPC/key."
+}
+===== exit 0: npm run mainnet:certificate =====
+\n===== npm run mainnet:certificate:validate =====
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> goalos-agialpha-ascension@4.3.0 mainnet:certificate:validate
+> python scripts/validate-mainnet-authorization-certificate.py
+
+{
+  "status": "PASSED",
+  "errors": [],
+  "warnings": [],
+  "certificateCommit": "5c6f7384894200f627ef479b7a14cbb87d9a06fb",
+  "currentHead": "5c6f7384894200f627ef479b7a14cbb87d9a06fb",
+  "freshEvidenceHashes": true
+}
+===== exit 0: npm run mainnet:certificate:validate =====
+\n===== npm run docs:status =====
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> goalos-agialpha-ascension@4.3.0 docs:status
+> python scripts/generate-public-status-docs.py
+
+Generated public status docs from qa/mainnet-authorization-certificate.json
+===== exit 0: npm run docs:status =====
+\n===== npm run assert:public-status =====
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> goalos-agialpha-ascension@4.3.0 assert:public-status
+> python scripts/assert_public_status.py
+
+Public status assertion passed: certificate-backed public mainnet authorization is consistent, bounded, not externally audited, and not deployed.
+===== exit 0: npm run assert:public-status =====
+\n===== npm run mainnet:readiness-check =====
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> goalos-agialpha-ascension@4.3.0 mainnet:readiness-check
+> python scripts/mainnet-readiness-check.py --certificate qa/mainnet-authorization-certificate.json
+
+{
+  "status": "YES",
+  "TECHNICALLY_MAINNET_READY": "YES",
+  "technicallyMainnetReady": "YES",
+  "commit": "5c6f7384894200f627ef479b7a14cbb87d9a06fb",
+  "chain": "ethereum",
+  "chainId": 1,
+  "agialphaToken": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
+  "mainnetDeployed": "NO",
+  "MAINNET_DEPLOYED": "NO",
+  "privateOperatorAuthorizationPackageRequired": false,
+  "externalAuditRequired": false,
+  "evidence": {
+    "repoDoctor": {
+      "path": "qa/REPO_DOCTOR_REPORT.json",
+      "sha256": "0x87795da7e780b97296ac2092c23162b7c600fe10c72aa811c4d490b6163c233a"
+    },
+    "dependencyBaseline": {
+      "path": "docs/DEPENDENCY_BASELINE_FOR_MAINNET.md",
+      "sha256": "0xefa39de31ff24c79017a474147b1a500d076c4b7783b5eff4e1bce932abfd5a7"
+    },
+    "compilerAlignment": {
+      "path": "qa/compiler-alignment.json",
+      "sha256": "0x6e26d461a64eb5f6a79a408d14d58b58ddb426f67d9b03b17c486048794ff865"
+    },
+    "compile": {
+      "path": "scripts/compile-deterministic.js",
+      "sha256": "0x546f6cfcaa228322a049a9ac7f07d5ffea95c8b4ed6efab556dfdad60740c11f"
+    },
+    "tests": {
+      "path": "test",
+      "sha256": "0x7f9272a3cf29fb38ff54945f55920c75fc689cc52cc5ea50eb6f6742c29513bc"
+    },
+    "testAll": {
+      "path": "test/invariants/mainnetBoundary.invariant.test.ts",
+      "sha256": "0x3aae9ec3a7185e1bdb25a3be670964493f07731ed1ba4d728c71abb4638cf192"
+    },
+    "staticCheck": {
+      "path": "scripts/static_check.py",
+      "sha256": "0xd8e3e0b82c3f0352c2aee519c2ace14b12b62f6b823eb7cd3422468b6694b6a4"
+    },
+    "publicStatus": {
+      "path": "scripts/assert_public_status.py",
+      "sha256": "0xb4ce73eedf6c9ce0ef107e46163e06fa385e21c2e9b2826934032a3df5542e02"
+    },
+    "noPrivateOperatorData": {
+      "path": "scripts/no_private_operator_data_check.py",
+      "sha256": "0xcc6d7ef6fdd4e84eaa69b55cad85e49c247357f5f32dbebadde1880350557736"
+    },
+    "noPaidProducts": {
+      "path": "scripts/no_paid_products_check.py",
+      "sha256": "0xed865850de41ec9e7a0eaded9b278e7ec3f191f57fb61b8962531dc69d5f0511"
+    },
+    "slither": {
+      "path": "docs/SLITHER_SECURITY_REPORT.md",
+      "sha256": "0x26101191906a29d5bdaa2d0e540e60adb5436fc5b4851a7066f6f6ec58ba3aaa"
+    },
+    "tier1SecurityToolchain": {
+      "path": "audit/TOOLCHAIN_CLEARANCE_REPORT.md",
+      "sha256": "0x98492d3faa820a0a2c0c9149fe82aa88f45f110d3deb0e6dd70eea72a16cce59"
+    },
+    "tier2SecurityToolchain": {
+      "path": "audit/AUTOMATED_SECURITY_TOOLCHAIN.md",
+      "sha256": "0xc7dabdfd833ef1b40bec88effe56b00cfbcf3890cc0a04e1e3251a4c9dd5d00b"
+    },
+    "toolchainClearance": {
+      "path": "qa/public-toolchain-clearance-evidence.json",
+      "sha256": "0x4056eb7a86b0777c282eb5963c873a2e0d37bf8710219c494897c1f4179a4704"
+    },
+    "unresolvedFindings": {
+      "path": "audit/AUDIT_FINDINGS_REGISTER.csv",
+      "sha256": "0x6a706a52433d3c8cd3d44ac62231388ebc02beb372a0ba84a975b6f2929404bb"
+    },
+    "invariants": {
+      "path": "security/INVARIANTS.md",
+      "sha256": "0x9aa4b8ef7ae0b84025a8849f2aa6c3954b28c932c5bdd3916f82b0df7fbb69db"
+    },
+    "localRehearsal": {
+      "path": "qa/local-rehearsal-report.json",
+      "sha256": "0x2285b54c260a1c3e38d8b1024c9806654ee89b4da1276a8affc5845e28ed399f"
+    },
+    "localEvidenceDocket": {
+      "path": "evidence/local/EVIDENCE_DOCKET.json",
+      "sha256": "0x6becb27d6d79f44474ba6d2c3872c1578e278ecde88f0debc8d4c9e09f598973"
+    },
+    "agialphaTokenVerification": {
+      "path": "qa/public-agialpha-token-verification.json",
+      "sha256": "0x1812602b1bb3a18c46adcb278e61c313b9136b38039f74b60429555a0b03ef6c"
+    },
+    "mainnetGuardrails": {
+      "path": "scripts/deploy-ethereum-mainnet-gated.ts",
+      "sha256": "0xd8a7de08236570a03b930b5f2dbb7d0992a06a348883571b2bbbfc2cfa57a02e"
+    },
+    "certificateGenerator": {
+      "path": "scripts/generate-mainnet-authorization-certificate.py",
+      "sha256": "0x010191df993028b046ac265888f9c2250ef040820496800eaf0772bd595cac2b"
+    },
+    "certificateValidator": {
+      "path": "scripts/validate-mainnet-authorization-certificate.py",
+      "sha256": "0x525188891b4024c02d03338b43dc14483dfe2a39c12caddffda5ec402854da1d"
+    },
+    "packageScripts": {
+      "path": "package.json",
+      "sha256": "0x451a3cf24c2e0e4cab5f050746ab56e66298317165866216aba9e6a157d02e12"
+    },
+    "branchProtectionOrRiskAcceptance": {
+      "path": "qa/public-branch-protection-evidence.json",
+      "sha256": "0xd4210ac4d31d49041473388c4f4790e0decb433aeec614e75c69c83e5d5a2ceb"
+    },
+    "publicGovernanceApproval": {
+      "path": "qa/public-governance-approval-evidence.json",
+      "sha256": "0x5f27824fc18f9569cd701aa524fbdcde8523edf9084f88e032663c1fc499bbca"
+    },
+    "releaseGate": {
+      "path": "docs/PUBLIC_MAINNET_AUTHORIZATION_RUNBOOK.md",
+      "sha256": "0xaa260e30cb260251cbf495fcb9ae4b347cf096cd2a46d3a8acaeff13b6641f88"
+    },
+    "mainnetSimulation": {
+      "path": "qa/ETHEREUM_MAINNET_FORK_SIMULATION.json",
+      "sha256": "0xc31f106afe209015778603b0d18ca31e38c1cb22750c200137a5c971ebdee439"
+    }
+  },
+  "blockers": [],
+  "generatedAt": "2026-06-12T16:58:33.250709+00:00",
+  "generatedBy": "scripts/mainnet-readiness-check.py"
+}
+===== exit 0: npm run mainnet:readiness-check =====
+\n===== npm run mainnet:deployment-authorization-check =====
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> goalos-agialpha-ascension@4.3.0 mainnet:deployment-authorization-check
+> python scripts/mainnet-deployment-authorization-check.py --certificate qa/mainnet-authorization-certificate.json
+
+{
+  "status": "YES",
+  "MAINNET_DEPLOYMENT_AUTHORIZED": "YES",
+  "mainnetDeploymentAuthorized": "YES",
+  "commit": "5c6f7384894200f627ef479b7a14cbb87d9a06fb",
+  "chain": "ethereum",
+  "chainId": 1,
+  "agialphaToken": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
+  "mainnetDeployed": "NO",
+  "MAINNET_DEPLOYED": "NO",
+  "runtimeSecretsRequiredForBroadcast": true,
+  "runtimeSecretsStoredInGitHub": false,
+  "privateOperatorAuthorizationPackageRequired": false,
+  "evidence": {
+    "repoDoctor": {
+      "path": "qa/REPO_DOCTOR_REPORT.json",
+      "sha256": "0x87795da7e780b97296ac2092c23162b7c600fe10c72aa811c4d490b6163c233a"
+    },
+    "dependencyBaseline": {
+      "path": "docs/DEPENDENCY_BASELINE_FOR_MAINNET.md",
+      "sha256": "0xefa39de31ff24c79017a474147b1a500d076c4b7783b5eff4e1bce932abfd5a7"
+    },
+    "compilerAlignment": {
+      "path": "qa/compiler-alignment.json",
+      "sha256": "0x6e26d461a64eb5f6a79a408d14d58b58ddb426f67d9b03b17c486048794ff865"
+    },
+    "compile": {
+      "path": "scripts/compile-deterministic.js",
+      "sha256": "0x546f6cfcaa228322a049a9ac7f07d5ffea95c8b4ed6efab556dfdad60740c11f"
+    },
+    "tests": {
+      "path": "test",
+      "sha256": "0x7f9272a3cf29fb38ff54945f55920c75fc689cc52cc5ea50eb6f6742c29513bc"
+    },
+    "testAll": {
+      "path": "test/invariants/mainnetBoundary.invariant.test.ts",
+      "sha256": "0x3aae9ec3a7185e1bdb25a3be670964493f07731ed1ba4d728c71abb4638cf192"
+    },
+    "staticCheck": {
+      "path": "scripts/static_check.py",
+      "sha256": "0xd8e3e0b82c3f0352c2aee519c2ace14b12b62f6b823eb7cd3422468b6694b6a4"
+    },
+    "publicStatus": {
+      "path": "scripts/assert_public_status.py",
+      "sha256": "0xb4ce73eedf6c9ce0ef107e46163e06fa385e21c2e9b2826934032a3df5542e02"
+    },
+    "noPrivateOperatorData": {
+      "path": "scripts/no_private_operator_data_check.py",
+      "sha256": "0xcc6d7ef6fdd4e84eaa69b55cad85e49c247357f5f32dbebadde1880350557736"
+    },
+    "noPaidProducts": {
+      "path": "scripts/no_paid_products_check.py",
+      "sha256": "0xed865850de41ec9e7a0eaded9b278e7ec3f191f57fb61b8962531dc69d5f0511"
+    },
+    "slither": {
+      "path": "docs/SLITHER_SECURITY_REPORT.md",
+      "sha256": "0x26101191906a29d5bdaa2d0e540e60adb5436fc5b4851a7066f6f6ec58ba3aaa"
+    },
+    "tier1SecurityToolchain": {
+      "path": "audit/TOOLCHAIN_CLEARANCE_REPORT.md",
+      "sha256": "0x98492d3faa820a0a2c0c9149fe82aa88f45f110d3deb0e6dd70eea72a16cce59"
+    },
+    "tier2SecurityToolchain": {
+      "path": "audit/AUTOMATED_SECURITY_TOOLCHAIN.md",
+      "sha256": "0xc7dabdfd833ef1b40bec88effe56b00cfbcf3890cc0a04e1e3251a4c9dd5d00b"
+    },
+    "toolchainClearance": {
+      "path": "qa/public-toolchain-clearance-evidence.json",
+      "sha256": "0x4056eb7a86b0777c282eb5963c873a2e0d37bf8710219c494897c1f4179a4704"
+    },
+    "unresolvedFindings": {
+      "path": "audit/AUDIT_FINDINGS_REGISTER.csv",
+      "sha256": "0x6a706a52433d3c8cd3d44ac62231388ebc02beb372a0ba84a975b6f2929404bb"
+    },
+    "invariants": {
+      "path": "security/INVARIANTS.md",
+      "sha256": "0x9aa4b8ef7ae0b84025a8849f2aa6c3954b28c932c5bdd3916f82b0df7fbb69db"
+    },
+    "localRehearsal": {
+      "path": "qa/local-rehearsal-report.json",
+      "sha256": "0x2285b54c260a1c3e38d8b1024c9806654ee89b4da1276a8affc5845e28ed399f"
+    },
+    "localEvidenceDocket": {
+      "path": "evidence/local/EVIDENCE_DOCKET.json",
+      "sha256": "0x6becb27d6d79f44474ba6d2c3872c1578e278ecde88f0debc8d4c9e09f598973"
+    },
+    "agialphaTokenVerification": {
+      "path": "qa/public-agialpha-token-verification.json",
+      "sha256": "0x1812602b1bb3a18c46adcb278e61c313b9136b38039f74b60429555a0b03ef6c"
+    },
+    "mainnetGuardrails": {
+      "path": "scripts/deploy-ethereum-mainnet-gated.ts",
+      "sha256": "0xd8a7de08236570a03b930b5f2dbb7d0992a06a348883571b2bbbfc2cfa57a02e"
+    },
+    "certificateGenerator": {
+      "path": "scripts/generate-mainnet-authorization-certificate.py",
+      "sha256": "0x010191df993028b046ac265888f9c2250ef040820496800eaf0772bd595cac2b"
+    },
+    "certificateValidator": {
+      "path": "scripts/validate-mainnet-authorization-certificate.py",
+      "sha256": "0x525188891b4024c02d03338b43dc14483dfe2a39c12caddffda5ec402854da1d"
+    },
+    "packageScripts": {
+      "path": "package.json",
+      "sha256": "0x451a3cf24c2e0e4cab5f050746ab56e66298317165866216aba9e6a157d02e12"
+    },
+    "branchProtectionOrRiskAcceptance": {
+      "path": "qa/public-branch-protection-evidence.json",
+      "sha256": "0xd4210ac4d31d49041473388c4f4790e0decb433aeec614e75c69c83e5d5a2ceb"
+    },
+    "publicGovernanceApproval": {
+      "path": "qa/public-governance-approval-evidence.json",
+      "sha256": "0x5f27824fc18f9569cd701aa524fbdcde8523edf9084f88e032663c1fc499bbca"
+    },
+    "releaseGate": {
+      "path": "docs/PUBLIC_MAINNET_AUTHORIZATION_RUNBOOK.md",
+      "sha256": "0xaa260e30cb260251cbf495fcb9ae4b347cf096cd2a46d3a8acaeff13b6641f88"
+    },
+    "mainnetSimulation": {
+      "path": "qa/ETHEREUM_MAINNET_FORK_SIMULATION.json",
+      "sha256": "0xc31f106afe209015778603b0d18ca31e38c1cb22750c200137a5c971ebdee439"
+    }
+  },
+  "blockers": [],
+  "generatedAt": "2026-06-12T16:58:37.909776+00:00",
+  "generatedBy": "scripts/mainnet-deployment-authorization-check.py"
+}
+===== exit 0: npm run mainnet:deployment-authorization-check =====
+\n===== npm run mainnet:authorization-check =====
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> goalos-agialpha-ascension@4.3.0 mainnet:authorization-check
+> python scripts/ethereum-mainnet-authorization-check.py --certificate qa/mainnet-authorization-certificate.json
+
+{
+  "status": "YES",
+  "ETHEREUM_MAINNET_AUTHORIZED": "YES",
+  "ethereumMainnetAuthorized": "YES",
+  "commit": "5c6f7384894200f627ef479b7a14cbb87d9a06fb",
+  "chain": "ethereum",
+  "chainId": 1,
+  "agialphaToken": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
+  "mainnetDeployed": "NO",
+  "MAINNET_DEPLOYED": "NO",
+  "finalManualDeploymentCommand": "npm run deploy:ethereum-mainnet:gated",
+  "runtimeSecretsRequiredForBroadcast": true,
+  "runtimeSecretsStoredInGitHub": false,
+  "ciCanDeployMainnet": false,
+  "evidence": {
+    "repoDoctor": {
+      "path": "qa/REPO_DOCTOR_REPORT.json",
+      "sha256": "0x87795da7e780b97296ac2092c23162b7c600fe10c72aa811c4d490b6163c233a"
+    },
+    "dependencyBaseline": {
+      "path": "docs/DEPENDENCY_BASELINE_FOR_MAINNET.md",
+      "sha256": "0xefa39de31ff24c79017a474147b1a500d076c4b7783b5eff4e1bce932abfd5a7"
+    },
+    "compilerAlignment": {
+      "path": "qa/compiler-alignment.json",
+      "sha256": "0x6e26d461a64eb5f6a79a408d14d58b58ddb426f67d9b03b17c486048794ff865"
+    },
+    "compile": {
+      "path": "scripts/compile-deterministic.js",
+      "sha256": "0x546f6cfcaa228322a049a9ac7f07d5ffea95c8b4ed6efab556dfdad60740c11f"
+    },
+    "tests": {
+      "path": "test",
+      "sha256": "0x7f9272a3cf29fb38ff54945f55920c75fc689cc52cc5ea50eb6f6742c29513bc"
+    },
+    "testAll": {
+      "path": "test/invariants/mainnetBoundary.invariant.test.ts",
+      "sha256": "0x3aae9ec3a7185e1bdb25a3be670964493f07731ed1ba4d728c71abb4638cf192"
+    },
+    "staticCheck": {
+      "path": "scripts/static_check.py",
+      "sha256": "0xd8e3e0b82c3f0352c2aee519c2ace14b12b62f6b823eb7cd3422468b6694b6a4"
+    },
+    "publicStatus": {
+      "path": "scripts/assert_public_status.py",
+      "sha256": "0xb4ce73eedf6c9ce0ef107e46163e06fa385e21c2e9b2826934032a3df5542e02"
+    },
+    "noPrivateOperatorData": {
+      "path": "scripts/no_private_operator_data_check.py",
+      "sha256": "0xcc6d7ef6fdd4e84eaa69b55cad85e49c247357f5f32dbebadde1880350557736"
+    },
+    "noPaidProducts": {
+      "path": "scripts/no_paid_products_check.py",
+      "sha256": "0xed865850de41ec9e7a0eaded9b278e7ec3f191f57fb61b8962531dc69d5f0511"
+    },
+    "slither": {
+      "path": "docs/SLITHER_SECURITY_REPORT.md",
+      "sha256": "0x26101191906a29d5bdaa2d0e540e60adb5436fc5b4851a7066f6f6ec58ba3aaa"
+    },
+    "tier1SecurityToolchain": {
+      "path": "audit/TOOLCHAIN_CLEARANCE_REPORT.md",
+      "sha256": "0x98492d3faa820a0a2c0c9149fe82aa88f45f110d3deb0e6dd70eea72a16cce59"
+    },
+    "tier2SecurityToolchain": {
+      "path": "audit/AUTOMATED_SECURITY_TOOLCHAIN.md",
+      "sha256": "0xc7dabdfd833ef1b40bec88effe56b00cfbcf3890cc0a04e1e3251a4c9dd5d00b"
+    },
+    "toolchainClearance": {
+      "path": "qa/public-toolchain-clearance-evidence.json",
+      "sha256": "0x4056eb7a86b0777c282eb5963c873a2e0d37bf8710219c494897c1f4179a4704"
+    },
+    "unresolvedFindings": {
+      "path": "audit/AUDIT_FINDINGS_REGISTER.csv",
+      "sha256": "0x6a706a52433d3c8cd3d44ac62231388ebc02beb372a0ba84a975b6f2929404bb"
+    },
+    "invariants": {
+      "path": "security/INVARIANTS.md",
+      "sha256": "0x9aa4b8ef7ae0b84025a8849f2aa6c3954b28c932c5bdd3916f82b0df7fbb69db"
+    },
+    "localRehearsal": {
+      "path": "qa/local-rehearsal-report.json",
+      "sha256": "0x2285b54c260a1c3e38d8b1024c9806654ee89b4da1276a8affc5845e28ed399f"
+    },
+    "localEvidenceDocket": {
+      "path": "evidence/local/EVIDENCE_DOCKET.json",
+      "sha256": "0x6becb27d6d79f44474ba6d2c3872c1578e278ecde88f0debc8d4c9e09f598973"
+    },
+    "agialphaTokenVerification": {
+      "path": "qa/public-agialpha-token-verification.json",
+      "sha256": "0x1812602b1bb3a18c46adcb278e61c313b9136b38039f74b60429555a0b03ef6c"
+    },
+    "mainnetGuardrails": {
+      "path": "scripts/deploy-ethereum-mainnet-gated.ts",
+      "sha256": "0xd8a7de08236570a03b930b5f2dbb7d0992a06a348883571b2bbbfc2cfa57a02e"
+    },
+    "certificateGenerator": {
+      "path": "scripts/generate-mainnet-authorization-certificate.py",
+      "sha256": "0x010191df993028b046ac265888f9c2250ef040820496800eaf0772bd595cac2b"
+    },
+    "certificateValidator": {
+      "path": "scripts/validate-mainnet-authorization-certificate.py",
+      "sha256": "0x525188891b4024c02d03338b43dc14483dfe2a39c12caddffda5ec402854da1d"
+    },
+    "packageScripts": {
+      "path": "package.json",
+      "sha256": "0x451a3cf24c2e0e4cab5f050746ab56e66298317165866216aba9e6a157d02e12"
+    },
+    "branchProtectionOrRiskAcceptance": {
+      "path": "qa/public-branch-protection-evidence.json",
+      "sha256": "0xd4210ac4d31d49041473388c4f4790e0decb433aeec614e75c69c83e5d5a2ceb"
+    },
+    "publicGovernanceApproval": {
+      "path": "qa/public-governance-approval-evidence.json",
+      "sha256": "0x5f27824fc18f9569cd701aa524fbdcde8523edf9084f88e032663c1fc499bbca"
+    },
+    "releaseGate": {
+      "path": "docs/PUBLIC_MAINNET_AUTHORIZATION_RUNBOOK.md",
+      "sha256": "0xaa260e30cb260251cbf495fcb9ae4b347cf096cd2a46d3a8acaeff13b6641f88"
+    },
+    "mainnetSimulation": {
+      "path": "qa/ETHEREUM_MAINNET_FORK_SIMULATION.json",
+      "sha256": "0xc31f106afe209015778603b0d18ca31e38c1cb22750c200137a5c971ebdee439"
+    }
+  },
+  "blockers": [],
+  "generatedAt": "2026-06-12T16:58:42.582161+00:00",
+  "generatedBy": "scripts/ethereum-mainnet-authorization-check.py"
+}
+===== exit 0: npm run mainnet:authorization-check =====
+\n===== npm run mainnet:status =====
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> goalos-agialpha-ascension@4.3.0 mainnet:status
+> python scripts/wizard/mainnet-status.py
+
+GoalOS AGIALPHA Ethereum Mainnet Command Status
+- technical: YES (docs/MAINNET_TECHNICAL_READINESS_DECISION.json)
+- deployment: YES (docs/MAINNET_DEPLOYMENT_AUTHORIZATION_DECISION.json)
+- ethereum: YES (docs/ETHEREUM_MAINNET_AUTHORIZATION_DECISION.json)
+- local_rehearsal: PASSED (qa/local-rehearsal-report.json)
+- toolchain: PRESENT (audit/TOOLCHAIN_CLEARANCE_REPORT.md)
+- agialpha_verification: PASSED (qa/public-agialpha-token-verification.json)
+- mainnet_simulation: PASSED (qa/ETHEREUM_MAINNET_FORK_SIMULATION.json)
+Public authorization uses public evidence only. Runtime RPC/key are required only for actual manual broadcast.
+===== exit 0: npm run mainnet:status =====
+\n===== npm run mainnet:next =====
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> goalos-agialpha-ascension@4.3.0 mainnet:next
+> python scripts/wizard/mainnet-next-step.py
+
+Next action: A. Public repo authorized. Founder/deployer may run npm run deploy:ethereum-mainnet:gated with local runtime RPC/key.
+===== exit 0: npm run mainnet:next =====

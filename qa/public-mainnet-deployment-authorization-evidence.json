@@ -5,7 +5,7 @@
   "status": "YES",
   "MAINNET_DEPLOYMENT_AUTHORIZED": "YES",
   "mainnetDeploymentAuthorized": "YES",
-  "commit": "5599fe1b648394280ba0b07712f827cc8f6dd46d",
+  "commit": "5c6f7384894200f627ef479b7a14cbb87d9a06fb",
   "chain": "ethereum",
   "chainId": 1,
   "agialphaToken": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
@@ -17,7 +17,7 @@
   "evidence": {
     "repoDoctor": {
       "path": "qa/REPO_DOCTOR_REPORT.json",
-      "sha256": "0x87795da7e780b97296ac2092c23162b7c600fe10c72aa811c4d490b6163c233a"
+      "sha256": "0xc757081d66ff4d0012caffe91b165712f92f2dad1600165c1951221e72d24e87"
     },
     "dependencyBaseline": {
       "path": "docs/DEPENDENCY_BASELINE_FOR_MAINNET.md",
@@ -61,7 +61,7 @@
     },
     "tier1SecurityToolchain": {
       "path": "audit/TOOLCHAIN_CLEARANCE_REPORT.md",
-      "sha256": "0xf24098b101a2dd3d414d71a5b3cd042f44d57dc5c21d65b5018fe6aee00bf926"
+      "sha256": "0x98492d3faa820a0a2c0c9149fe82aa88f45f110d3deb0e6dd70eea72a16cce59"
     },
     "tier2SecurityToolchain": {
       "path": "audit/AUTOMATED_SECURITY_TOOLCHAIN.md",
@@ -69,7 +69,7 @@
     },
     "toolchainClearance": {
       "path": "qa/public-toolchain-clearance-evidence.json",
-      "sha256": "0x8f58364cbe632a241126f06807ae619c4e48b6c5d6b14e71567a14234befc88b"
+      "sha256": "0x4056eb7a86b0777c282eb5963c873a2e0d37bf8710219c494897c1f4179a4704"
     },
     "unresolvedFindings": {
       "path": "audit/AUDIT_FINDINGS_REGISTER.csv",
@@ -81,15 +81,15 @@
     },
     "localRehearsal": {
       "path": "qa/local-rehearsal-report.json",
-      "sha256": "0xe9c09b7509ae6c4b29057587f37a14b392ca0077e8a00173870e616f41cc04dd"
+      "sha256": "0x2285b54c260a1c3e38d8b1024c9806654ee89b4da1276a8affc5845e28ed399f"
     },
     "localEvidenceDocket": {
       "path": "evidence/local/EVIDENCE_DOCKET.json",
-      "sha256": "0x83f5d50d776b81b4a21c9f6c97c18f494bcbdd2c75f97a8257ff39eae4aafb18"
+      "sha256": "0x6becb27d6d79f44474ba6d2c3872c1578e278ecde88f0debc8d4c9e09f598973"
     },
     "agialphaTokenVerification": {
       "path": "qa/public-agialpha-token-verification.json",
-      "sha256": "0x562d3d0d6ad61fb7da44e183d9b15c283aae7c18a72f317a3c0f120d62ca77ba"
+      "sha256": "0x1812602b1bb3a18c46adcb278e61c313b9136b38039f74b60429555a0b03ef6c"
     },
     "mainnetGuardrails": {
       "path": "scripts/deploy-ethereum-mainnet-gated.ts",
@@ -125,6 +125,6 @@
     }
   },
   "blockers": [],
-  "generatedAt": "2026-06-12T16:21:41.295533+00:00",
+  "generatedAt": "2026-06-12T17:00:40.830142+00:00",
   "generatedBy": "scripts/mainnet-deployment-authorization-check.py"
 }
