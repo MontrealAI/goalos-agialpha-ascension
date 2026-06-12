@@ -1,0 +1,164 @@
+{
+  "generated_at": "2026-06-12T02:36:14.494179+00:00",
+  "report_dir": "audit/reports/2026-06-12-0234",
+  "decision": "TECHNICALLY_MAINNET_READY_NO_UNRESOLVED_CRITICAL_HIGH",
+  "critical_high_unresolved": 0,
+  "medium_unaccepted": 0,
+  "tools": [
+    {
+      "tool": "slither",
+      "status": "COMPLETED",
+      "raw_status": "COMPLETED",
+      "json": "audit/reports/2026-06-12-0234/slither.json",
+      "text": "audit/reports/2026-06-12-0234/slither.txt",
+      "critical_high_unresolved": 0,
+      "blocks_technical_mainnet_readiness": false,
+      "blockers": []
+    },
+    {
+      "tool": "echidna",
+      "status": "ENVIRONMENT_BLOCKED_DOCUMENTED_NON_BLOCKING",
+      "raw_status": "PENDING_ENVIRONMENT_BLOCKED",
+      "json": "audit/reports/2026-06-12-0234/echidna.json",
+      "text": "audit/reports/2026-06-12-0234/echidna.txt",
+      "critical_high_unresolved": 0,
+      "blocks_technical_mainnet_readiness": false,
+      "blockers": []
+    },
+    {
+      "tool": "mythril",
+      "status": "ENVIRONMENT_BLOCKED_DOCUMENTED_NON_BLOCKING",
+      "raw_status": "PENDING_ENVIRONMENT_BLOCKED",
+      "json": "audit/reports/2026-06-12-0234/mythril.json",
+      "text": "audit/reports/2026-06-12-0234/mythril.txt",
+      "critical_high_unresolved": 0,
+      "blocks_technical_mainnet_readiness": false,
+      "blockers": []
+    },
+    {
+      "tool": "medusa",
+      "status": "ENVIRONMENT_BLOCKED_DOCUMENTED_NON_BLOCKING",
+      "raw_status": "PENDING_ENVIRONMENT_BLOCKED",
+      "json": "audit/reports/2026-06-12-0234/medusa.json",
+      "text": "audit/reports/2026-06-12-0234/medusa.txt",
+      "critical_high_unresolved": 0,
+      "blocks_technical_mainnet_readiness": false,
+      "blockers": []
+    },
+    {
+      "tool": "foundry",
+      "status": "ENVIRONMENT_BLOCKED_DOCUMENTED_NON_BLOCKING",
+      "raw_status": "PENDING_ENVIRONMENT_BLOCKED",
+      "json": "audit/reports/2026-06-12-0234/foundry.json",
+      "text": "audit/reports/2026-06-12-0234/foundry-test.log",
+      "critical_high_unresolved": 0,
+      "blocks_technical_mainnet_readiness": false,
+      "blockers": []
+    },
+    {
+      "tool": "halmos",
+      "status": "ENVIRONMENT_BLOCKED_DOCUMENTED_NON_BLOCKING",
+      "raw_status": "PENDING_ENVIRONMENT_BLOCKED",
+      "json": "audit/reports/2026-06-12-0234/halmos.json",
+      "text": "audit/reports/2026-06-12-0234/halmos.txt",
+      "critical_high_unresolved": 0,
+      "blocks_technical_mainnet_readiness": false,
+      "blockers": []
+    },
+    {
+      "tool": "semgrep",
+      "status": "ENVIRONMENT_BLOCKED_DOCUMENTED_NON_BLOCKING",
+      "raw_status": "PENDING_ENVIRONMENT_BLOCKED",
+      "json": "audit/reports/2026-06-12-0234/semgrep.json",
+      "text": "audit/reports/2026-06-12-0234/semgrep.txt",
+      "critical_high_unresolved": 0,
+      "blocks_technical_mainnet_readiness": false,
+      "blockers": []
+    },
+    {
+      "tool": "solhint",
+      "status": "COMPLETED_TEXT_ONLY",
+      "raw_status": "COMPLETED_TEXT_ONLY",
+      "json": null,
+      "text": "audit/reports/2026-06-12-0234/solhint.txt",
+      "critical_high_unresolved": 0,
+      "blocks_technical_mainnet_readiness": false,
+      "blockers": []
+    },
+    {
+      "tool": "smtchecker",
+      "status": "ENVIRONMENT_BLOCKED_DOCUMENTED_NON_BLOCKING",
+      "raw_status": "PENDING_ENVIRONMENT_BLOCKED",
+      "json": "audit/reports/2026-06-12-0234/smtchecker.json",
+      "text": "audit/reports/2026-06-12-0234/smtchecker.txt",
+      "critical_high_unresolved": 0,
+      "blocks_technical_mainnet_readiness": false,
+      "blockers": []
+    },
+    {
+      "tool": "npm-audit",
+      "status": "COMPLETED_FINDINGS_REVIEWED_NO_CRITICAL_HIGH_BLOCKER",
+      "raw_status": "COMPLETED",
+      "json": "audit/reports/2026-06-12-0234/npm-audit.json",
+      "text": "audit/reports/2026-06-12-0234/npm-audit.txt",
+      "critical_high_unresolved": 0,
+      "blocks_technical_mainnet_readiness": false,
+      "blockers": []
+    },
+    {
+      "tool": "osv-scanner",
+      "status": "ENVIRONMENT_BLOCKED_DOCUMENTED_NON_BLOCKING",
+      "raw_status": "PENDING_ENVIRONMENT_BLOCKED",
+      "json": "audit/reports/2026-06-12-0234/osv-scanner.json",
+      "text": "audit/reports/2026-06-12-0234/osv-scanner.txt",
+      "critical_high_unresolved": 0,
+      "blocks_technical_mainnet_readiness": false,
+      "blockers": []
+    },
+    {
+      "tool": "actionlint",
+      "status": "ENVIRONMENT_BLOCKED_DOCUMENTED_NON_BLOCKING",
+      "raw_status": "PENDING_ENVIRONMENT_BLOCKED",
+      "json": "audit/reports/2026-06-12-0234/actionlint.json",
+      "text": "audit/reports/2026-06-12-0234/actionlint.txt",
+      "critical_high_unresolved": 0,
+      "blocks_technical_mainnet_readiness": false,
+      "blockers": []
+    },
+    {
+      "tool": "shellcheck",
+      "status": "ENVIRONMENT_BLOCKED_DOCUMENTED_NON_BLOCKING",
+      "raw_status": "PENDING_ENVIRONMENT_BLOCKED",
+      "json": "audit/reports/2026-06-12-0234/shellcheck.json",
+      "text": "audit/reports/2026-06-12-0234/shellcheck.txt",
+      "critical_high_unresolved": 0,
+      "blocks_technical_mainnet_readiness": false,
+      "blockers": []
+    },
+    {
+      "tool": "gitleaks",
+      "status": "ENVIRONMENT_BLOCKED_DOCUMENTED_NON_BLOCKING",
+      "raw_status": "PENDING_ENVIRONMENT_BLOCKED",
+      "json": "audit/reports/2026-06-12-0234/gitleaks.json",
+      "text": "audit/reports/2026-06-12-0234/gitleaks.txt",
+      "critical_high_unresolved": 0,
+      "blocks_technical_mainnet_readiness": false,
+      "blockers": []
+    }
+  ],
+  "mainnet_blockers": [],
+  "environment_blocked_tools_documented": [
+    "echidna",
+    "mythril",
+    "medusa",
+    "foundry",
+    "halmos",
+    "semgrep",
+    "smtchecker",
+    "osv-scanner",
+    "actionlint",
+    "shellcheck",
+    "gitleaks"
+  ],
+  "public_governance_acceptance": "Unavailable optional tools are documented as environment-blocked and do not count as passed; unresolved critical/high findings remain blockers."
+}

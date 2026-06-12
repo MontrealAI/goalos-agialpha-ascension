@@ -27,5 +27,5 @@ def write(status,blockers,evidence):
     (ROOT/"qa/public-ethereum-mainnet-authorization-evidence.json").write_text(json.dumps({"redacted":True,"containsSecrets":False,"containsPrivateAddresses":False,"chain":"ethereum","chainId":1,"agialphaToken":AGIALPHA,"commit":out["commit"],"ethereumMainnetAuthorization":status,"technicalReadiness":read(ROOT/"docs/MAINNET_TECHNICAL_READINESS_DECISION.json").get("TECHNICALLY_MAINNET_READY"),"deploymentAuthorization":read(ROOT/"docs/MAINNET_DEPLOYMENT_AUTHORIZATION_DECISION.json").get("MAINNET_DEPLOYMENT_AUTHORIZED"),"mainnetDeployed":"NO","blockers":blockers,"generatedAt":out["generatedAt"],**evidence},indent=2)+"\n")
     return out
 def main():
-    parser=argparse.ArgumentParser(); parser.add_argument("--public-only-final", action="store_true"); parser.parse_args(); print(json.dumps(write(*compute()),indent=2))
+    parser=argparse.ArgumentParser(); parser.add_argument("--public-only-final", action="store_true"); parser.add_argument("--certificate"); parser.parse_args(); print(json.dumps(write(*compute()),indent=2))
 if __name__=="__main__": main()

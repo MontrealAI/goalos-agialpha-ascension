@@ -1,1 +1,7 @@
-{"authorization":"PUBLIC_DECISIONS_ONLY","runtimeSecrets":"PLACEHOLDER_DO_NOT_COMMIT"}
+{
+  "authorizationCertificate": "qa/mainnet-authorization-certificate.json",
+  "finalManualDeploymentCommand": "npm run deploy:ethereum-mainnet:gated",
+  "typedConfirmation": "TYPE_CONFIRMATION_LOCALLY_ONLY",
+  "privateOperatorPackageRequiredForPublicAuthorization": false,
+  "runtimeSecretsStoredInGitHub": false
+}

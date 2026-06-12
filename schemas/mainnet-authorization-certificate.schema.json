@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Mainnet Authorization Certificate",
+  "type": "object",
+  "required": ["schemaVersion", "repository", "chain", "chainId", "agialphaToken", "technicallyMainnetReady", "mainnetDeploymentAuthorized", "ethereumMainnetAuthorized", "mainnetDeployed", "runtimeSecretsStoredInGitHub", "ciCanDeployMainnet", "evidence", "blockers"],
+  "properties": {
+    "schemaVersion": {"const": "1.0"},
+    "repository": {"const": "MontrealAI/goalos-agialpha-ascension"},
+    "chain": {"const": "ethereum"},
+    "chainId": {"const": 1},
+    "agialphaToken": {"const": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA"},
+    "technicallyMainnetReady": {"enum": ["YES", "NO"]},
+    "mainnetDeploymentAuthorized": {"enum": ["YES", "NO"]},
+    "ethereumMainnetAuthorized": {"enum": ["YES", "NO"]},
+    "mainnetDeployed": {"enum": ["YES", "NO"]},
+    "externalAuditPlanned": {"const": false},
+    "externalAuditRequired": {"const": false},
+    "runtimeSecretsStoredInGitHub": {"const": false},
+    "ciCanDeployMainnet": {"const": false},
+    "evidence": {"type": "object"},
+    "blockers": {"type": "array"}
+  }
+}

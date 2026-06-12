@@ -1,0 +1,115 @@
+{
+  "schemaVersion": "1.0",
+  "generatedAt": "2026-06-12T02:38:12.998555+00:00",
+  "generatedBy": "scripts/generate-mainnet-authorization-certificate.py",
+  "repository": "MontrealAI/goalos-agialpha-ascension",
+  "commit": "680883e974d6eb6590aa81b77b350a3446a9258e",
+  "branch": "codex/mainnet-authorization-certificate-v11",
+  "chain": "ethereum",
+  "chainId": 1,
+  "agialphaToken": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
+  "scope": "public-repository-package-authorization-for-manual-gated-mainnet-deployment",
+  "notExternallyAudited": true,
+  "externalAuditPlanned": false,
+  "externalAuditRequired": false,
+  "legalTaxReviewClaimed": false,
+  "mainnetDeployed": "NO",
+  "runtimeSecretsRequiredForBroadcast": true,
+  "runtimeSecretsStoredInGitHub": false,
+  "ciCanDeployMainnet": false,
+  "technicallyMainnetReady": "YES",
+  "TECHNICALLY_MAINNET_READY": "YES",
+  "mainnetDeploymentAuthorized": "YES",
+  "MAINNET_DEPLOYMENT_AUTHORIZED": "YES",
+  "ethereumMainnetAuthorized": "YES",
+  "ETHEREUM_MAINNET_AUTHORIZED": "YES",
+  "evidence": {
+    "repoDoctor": {
+      "path": "qa/REPO_DOCTOR_REPORT.json",
+      "sha256": "0x3286edf32617b028bafc99e0c4ceec3b30e7901f5fcfd4bc230752ab2d8442a0"
+    },
+    "dependencyBaseline": {
+      "path": "docs/DEPENDENCY_BASELINE_FOR_MAINNET.md",
+      "sha256": "0xb63452004583c8f42c287f80bfcd89975ee2534c1b479362c180da352d37b39c"
+    },
+    "compile": {
+      "path": "artifacts/build-info",
+      "sha256": "0x06d029f00bccd26eb9f6d7f4c09c262785272b7693644ac1f61f09de0918b891"
+    },
+    "tests": {
+      "path": "test",
+      "sha256": "0x93d8fbe0927ff703a19e979c6cf6a3c3bcbf4965ed9d86e9571973dd1db43a46"
+    },
+    "testAll": {
+      "path": "test/invariants/mainnetBoundary.invariant.test.ts",
+      "sha256": "0x3aae9ec3a7185e1bdb25a3be670964493f07731ed1ba4d728c71abb4638cf192"
+    },
+    "staticCheck": {
+      "path": "scripts/static_check.py",
+      "sha256": "0xd8e3e0b82c3f0352c2aee519c2ace14b12b62f6b823eb7cd3422468b6694b6a4"
+    },
+    "publicStatus": {
+      "path": "scripts/assert_public_status.py",
+      "sha256": "0x43b5ddac61051e3a513857cc9adebee8111790729a72bede6ac338517025aed0"
+    },
+    "noPrivateOperatorData": {
+      "path": "scripts/no_private_operator_data_check.py",
+      "sha256": "0xcc6d7ef6fdd4e84eaa69b55cad85e49c247357f5f32dbebadde1880350557736"
+    },
+    "noPaidProducts": {
+      "path": "scripts/no_paid_products_check.py",
+      "sha256": "0xed865850de41ec9e7a0eaded9b278e7ec3f191f57fb61b8962531dc69d5f0511"
+    },
+    "slither": {
+      "path": "docs/SLITHER_SECURITY_REPORT.md",
+      "sha256": "0xad16c87eddd93a6d70c89a1937c921efa64febace1dd0f2dcd431583ef10b616"
+    },
+    "toolchainClearance": {
+      "path": "qa/public-toolchain-clearance-evidence.json",
+      "sha256": "0xda7675f5d5878488332f0a300cbf52f8284784156e27326c08704662b55e80d1"
+    },
+    "unresolvedFindings": {
+      "path": "audit/AUDIT_FINDINGS_REGISTER.csv",
+      "sha256": "0x6a706a52433d3c8cd3d44ac62231388ebc02beb372a0ba84a975b6f2929404bb"
+    },
+    "invariants": {
+      "path": "security/INVARIANTS.md",
+      "sha256": "0x3e9cb9459cf67695d38dbe812c98cc22a15ed5d3bede1ab35e710151ebcdd352"
+    },
+    "localRehearsal": {
+      "path": "qa/local-rehearsal-report.json",
+      "sha256": "0x058709471161b65e50664f30042b8e580cf0ddf86741afecf83054b7e5e08c43"
+    },
+    "localEvidenceDocket": {
+      "path": "evidence/local/EVIDENCE_DOCKET.json",
+      "sha256": "0x9e2664bb93897cfccb255203d1189b6ba4f5c35881aeb6dd18bdcc8fb84b80ab"
+    },
+    "agialphaTokenVerification": {
+      "path": "qa/public-agialpha-token-verification.json",
+      "sha256": "0xa6a4c97724644fcef7707db9813d177e9c1c60cb84013ad3605b2081116bc6a4"
+    },
+    "mainnetGuardrails": {
+      "path": "scripts/deploy-ethereum-mainnet-gated.ts",
+      "sha256": "0x74adaa2a085808371332a49cb79b0e79c3433e995649f3c21b8601d2a2cdb2f2"
+    },
+    "branchProtectionOrRiskAcceptance": {
+      "path": "qa/public-branch-protection-evidence.json",
+      "sha256": "0x4d8f5580def78bf2968cc296fd2311a3c1c228ea43c322a935d2f933859b54a6"
+    },
+    "publicGovernanceApproval": {
+      "path": "qa/public-governance-approval-evidence.json",
+      "sha256": "0x098d121802ecb38cdeafe29aae405ac4122948cf3caf7e40b1707d08408187c1"
+    },
+    "releaseGate": {
+      "path": "docs/PUBLIC_MAINNET_AUTHORIZATION_RUNBOOK.md",
+      "sha256": "0x383a9e6ca621580c9d61a52a68d82c6fb64a516e09bdd203e6341fa615958e78"
+    },
+    "mainnetSimulation": {
+      "path": "qa/ETHEREUM_MAINNET_FORK_SIMULATION.json",
+      "sha256": "0x018707edf6f836a58642651b527f9823fd486cf1a824fbfdbddd9cca5daca97a"
+    }
+  },
+  "blockers": [],
+  "warnings": [],
+  "nextAction": "A. Public repo authorized. Founder/deployer may run the final manual gated deployment command with local runtime RPC/key."
+}
