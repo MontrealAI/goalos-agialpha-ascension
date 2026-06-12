@@ -5,7 +5,13 @@ ROOT = pathlib.Path(__file__).resolve().parents[1]
 AGI = '0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA'
 
 
+def has_git_history() -> bool:
+    return (ROOT / '.git').exists()
+
+
 def git(args: list[str]) -> str | None:
+    if not has_git_history():
+        return None
     try:
         return subprocess.check_output(['git', *args], cwd=ROOT, text=True, stderr=subprocess.DEVNULL).strip()
     except Exception:
@@ -33,7 +39,9 @@ def main() -> None:
     cert = json.loads(cert_path.read_text())
     errors: list[str] = []
     warnings: list[str] = []
-    for k in ['schemaVersion','generatedAt','repository','commit','chain','chainId','agialphaToken','technicallyMainnetReady','mainnetDeploymentAuthorized','ethereumMainnetAuthorized','evidence','blockers']:
+    git_mode = 'GIT_CHECKOUT' if has_git_history() else 'SOURCE_ARCHIVE_NO_GIT'
+
+    for k in ['schemaVersion','generatedAt','repository','chain','chainId','agialphaToken','technicallyMainnetReady','mainnetDeploymentAuthorized','ethereumMainnetAuthorized','evidence','blockers']:
         if k not in cert:
             errors.append(f'missing {k}')
     if cert.get('chain') != 'ethereum' or cert.get('chainId') != 1:
@@ -53,23 +61,27 @@ def main() -> None:
     if cert.get('technicallyMainnetReady') == 'YES' and cert.get('blockers'):
         errors.append('YES certificate cannot have blockers')
 
-    cert_commit = str(cert.get('commit') or '')
+    cert_commit = str(cert.get('sourceCommit') or cert.get('commit') or '')
     head = git(['rev-parse', 'HEAD'])
+    source_commit_is_ancestor: bool | None = None
     if cert_commit:
-        if git(['cat-file', '-e', f'{cert_commit}^{{commit}}']) is None:
-            errors.append(f'certificate commit {cert_commit} does not exist in this repository')
-        elif head and cert_commit != head:
-            # A committed generated certificate normally names the source commit that
-            # existed immediately before the commit adding the regenerated artifact.
-            # Do not accept stale source coverage: every evidence hash below must
-            # still match the current checkout, including deployment/security scripts.
-            merge_base = git(['merge-base', cert_commit, head])
-            if merge_base != cert_commit:
-                errors.append(f'certificate commit {cert_commit} is not an ancestor of current HEAD {head}')
+        if git_mode == 'GIT_CHECKOUT':
+            if git(['cat-file', '-e', f'{cert_commit}^{{commit}}']) is None:
+                errors.append(f'certificate commit {cert_commit} does not exist in this repository')
+            elif head and cert_commit != head:
+                merge_base = git(['merge-base', cert_commit, head])
+                source_commit_is_ancestor = merge_base == cert_commit
+                if not source_commit_is_ancestor:
+                    errors.append(f'certificate commit {cert_commit} is not an ancestor of current HEAD {head}')
+                else:
+                    warnings.append(f'certificate commit {cert_commit} differs from current HEAD {head}; freshness is enforced by current evidence hash verification')
             else:
-                warnings.append(f'certificate commit {cert_commit} differs from current HEAD {head}; freshness is enforced by current evidence hash verification')
+                source_commit_is_ancestor = True if head else None
+        else:
+            warnings.append('source archive has no git history; commit ancestry not checked')
+            source_commit_is_ancestor = None
     else:
-        errors.append('certificate commit is empty')
+        errors.append('certificate sourceCommit/commit is empty')
 
     evidence = cert.get('evidence')
     if not isinstance(evidence, dict):
@@ -96,13 +108,18 @@ def main() -> None:
     if stale_evidence:
         errors.append('certificate evidence hashes are stale for current checkout: ' + '; '.join(stale_evidence))
 
+    evidence_fresh = not stale_evidence
     out = {
         'status': 'PASSED' if not errors else 'FAILED',
         'errors': errors,
         'warnings': warnings,
+        'gitValidationMode': git_mode,
         'certificateCommit': cert_commit or None,
+        'sourceCommit': cert_commit or None,
         'currentHead': head,
-        'freshEvidenceHashes': not stale_evidence,
+        'sourceCommitIsAncestorOfCurrentHead': source_commit_is_ancestor,
+        'freshEvidenceHashes': evidence_fresh,
+        'evidenceHashesFreshForCurrentCheckout': evidence_fresh,
     }
     print(json.dumps(out, indent=2))
     if errors:

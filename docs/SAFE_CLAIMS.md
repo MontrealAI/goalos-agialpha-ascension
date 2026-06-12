@@ -1,40 +1,20 @@
-# Safe Claims
+# Safe Public Claims
 
-## Approved
+GoalOS AGIALPHA Ascension v4.4.0 mainnet authorization candidate.
 
-```text
-GoalOS decides what may evolve.
-AGIALPHA coordinates proof-settled work.
-Evidence Dockets make claims auditable.
-Proof Cards create trust.
-Credentials create reputation.
-Reputation unlocks better jobs.
-```
+The active source of truth is `qa/mainnet-authorization-certificate.json`.
 
-## Allowed current status
+Safe claims:
 
-```text
-Gate-clean evidence-ready audit candidate.
-Ethereum Sepolia rehearsal-ready after compile/tests pass.
-Not externally audited.
-Automated security/toolchain review: pending.
-Ethereum Mainnet not authorized.
-```
-
-## Prohibited without signed evidence
-
-```text
-externally audited
-mainnet authorized
-legally approved
-tax reviewed
-production deployed
-guaranteed non-security
-investment
-yield
-revenue share
-price target
-guaranteed resale value
-achieved AGI
-achieved ASI
-```
+- Ethereum Mainnet technical readiness: **YES**.
+- Ethereum Mainnet deployment authorization: **YES**.
+- Ethereum Mainnet authorization: **YES**.
+- Ethereum Mainnet deployed: **NO**.
+- The public repository package is authorized for manual, local, gated Ethereum Mainnet deployment.
+- CI cannot deploy Ethereum Mainnet.
+- Actual broadcast requires local runtime RPC/key and valid runtime addresses.
+- No runtime RPC/private key/private operator address is stored in GitHub.
+- The canonical Ethereum Mainnet AGIALPHA token is `0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA`.
+- No new AGIALPHA token is deployed by this repository for Ethereum Mainnet.
+- The project is not externally audited.
+- No legal approval, tax approval, guaranteed security, guaranteed token classification, investment return, yield, price target, or revenue-share claim is made.

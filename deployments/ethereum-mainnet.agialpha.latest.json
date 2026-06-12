@@ -1,0 +1,12 @@
+{
+  "status": "TEMPLATE_NO_DEPLOYMENT",
+  "mainnetDeployed": "NO",
+  "chain": "ethereum",
+  "chainId": 1,
+  "agialphaToken": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
+  "mockAgialphaUsed": false,
+  "newAgialphaTokenDeployed": false,
+  "contracts": {},
+  "transactions": [],
+  "note": "Template only. Replace only after real Ethereum Mainnet broadcast and post-deployment verification."
+}

@@ -1,4 +1,4 @@
-# Ethereum Mainnet Deployment Authorization Decision
+# Mainnet Deployment Authorization Decision
 
 Ethereum Mainnet deployment authorization: **YES**.
 
@@ -6,4 +6,7 @@ MAINNET_DEPLOYMENT_AUTHORIZED: **YES**
 
 MAINNET_DEPLOYED: **NO**
 
-Not externally audited. External audit is not planned and is not an active mainnet gate. Automated/internal security-toolchain clearance is the active security gate.
+Public repository governance authorizes only manual, local, typed-confirmation gated deployment. Runtime RPC/key are not stored in GitHub.
+
+## Blockers
+- None.

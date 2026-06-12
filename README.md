@@ -1,6 +1,6 @@
 # GoalOS AGIALPHA Ascension
 
-GoalOS AGIALPHA Ascension v4.4 mainnet authorization candidate.
+GoalOS AGIALPHA Ascension v4.4.0 mainnet authorization candidate.
 
 Automated/internal security toolchain: passed.
 Local deterministic rehearsal: passed.
@@ -42,3 +42,13 @@ The source of truth is `qa/mainnet-authorization-certificate.json`. README/statu
 ## Safety boundary
 
 CI cannot deploy Ethereum Mainnet. Runtime RPC URL, deployer key, and runtime addresses are local broadcast inputs only and are not stored in GitHub. MockAGIALPHA is local/Sepolia-only and is forbidden on Ethereum Mainnet. No new AGIALPHA token is deployed on Ethereum Mainnet.
+
+## Sovereign RSI v6.3 research paper
+
+The Sovereign RSI v6.3 publication folder is `docs/papers/sovereign-rsi/v6.3/`. Paper assets may be pending upload if they are not present in the tree; do not fabricate missing PDF/DOCX/source files.
+
+Core thesis: GoalOS sets sovereign aims. AGIALPHA coordinates proof-settled work. AEP-001 defines valid evidence. The Proof Gradient decides what may evolve. The intelligence stays private. The proof becomes verifiable.
+
+RSI means proof-backed upgrade rights. An artifact may influence future work only after evidence, evaluation, reviewer validation, scope control, challenge window, canary rollout, monitoring, rollback readiness, and chronicle memory.
+
+Claim boundary: this paper does not claim achieved AGI, ASI, superintelligence, autonomous sovereignty, guaranteed ROI, safety certification, legal approval, tax approval, security approval, energy abundance, or Kardashev Type II achievement.

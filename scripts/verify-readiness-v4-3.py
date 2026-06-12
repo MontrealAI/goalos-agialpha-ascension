@@ -9,7 +9,7 @@ def main():
     for rel in REQUIRED:
         if not (ROOT/rel).exists(): errors.append(f'missing required file: {rel}')
     pkg=json.loads(read('package.json')) if (ROOT/'package.json').exists() else {}
-    if pkg.get('version')!='4.3.0': errors.append('package.json version must equal 4.3.0')
+    if pkg.get('version') not in {'4.3.0','4.4.0'}: errors.append('package.json version must equal 4.3.0 or 4.4.0 for v4.3 compatibility/v4.4 release alignment')
     scripts=pkg.get('scripts', {})
     for s in ['readiness:v4.3','test:v4.3','evidence:docket:template','mainnet:authorization-check','compile','test','test:all','static-check','deploy:ethereum-sepolia','deploy:ethereum-mainnet:gated']:
         if s not in scripts: errors.append(f'package.json missing script: {s}')

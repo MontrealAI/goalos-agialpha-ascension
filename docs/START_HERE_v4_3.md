@@ -1,3 +1,5 @@
+> Historical/deprecated note: this document describes a prior pre-certificate authorization model. The active source of truth is `qa/mainnet-authorization-certificate.json`.
+
 # GoalOS AGIALPHA Ascension v4.3 — Gate-Clean Evidence-Ready Audit Candidate
 
 v4.3 is the corrected package to hand to engineers and internal security/toolchain reviewers.

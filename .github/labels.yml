@@ -18,34 +18,46 @@
   description: Security-sensitive work
 - name: legal
   color: FEF2C0
-  description: Legal/token counsel review
+  description: Legal/token counsel review; no legal approval is claimed
 - name: tax
   color: C2E0C6
-  description: Tax/accounting review
+  description: Tax/accounting review; no tax approval is claimed
 - name: claims
   color: FBCA04
-  description: Public claims review
+  description: Public claims boundary review
 - name: treasury
   color: 0052CC
-  description: Treasury/admin address ceremony
-- name: mainnet-blocked
+  description: Treasury/admin local runtime ceremony; no private addresses in GitHub
+- name: mainnet-authorization
   color: B60205
-  description: Mainnet authorization evidence and certificate updates
+  description: Certificate-backed manual Ethereum Mainnet deployment authorization
+- name: mainnet-deployed
+  color: 5319E7
+  description: Real Ethereum Mainnet deployment evidence only; current deployed status remains NO unless tx hashes exist
+- name: deployment
+  color: 0052CC
+  description: Deployment scripts, guardrails, or release operations
 - name: proof-mission
   color: 0E8A16
   description: Proof mission use case
 - name: proof-card
   color: 0E8A16
   description: Proof Card work
+- name: documentation
+  color: 0075CA
+  description: Documentation
 - name: docs
   color: 0075CA
   description: Documentation
 - name: ci
   color: 5319E7
-  description: Continuous integration
+  description: Continuous integration; CI must not deploy Ethereum Mainnet
 - name: founder-decision
   color: D4C5F9
   description: Requires founder decision
 - name: dependencies
   color: 0366D6
   description: Dependency updates
+- name: release
+  color: C5DEF5
+  description: Release readiness, notes, tags, and publication artifacts

@@ -1,0 +1,390 @@
+{
+  "status": "PASSED",
+  "packageJsonVersion": "4.4.0",
+  "readmeStatusVersion": "v4.4.0",
+  "versionsMatch": true,
+  "certificateValidationGitCheckout": {
+    "status": "PASSED",
+    "gitValidationMode": "GIT_CHECKOUT"
+  },
+  "certificateValidationSourceArchiveNoGit": {
+    "status": "PASSED",
+    "gitValidationMode": "SOURCE_ARCHIVE_NO_GIT",
+    "warning": "source archive has no git history; commit ancestry not checked"
+  },
+  "qaManifestFreshness": {
+    "status": "PASSED",
+    "manifestHash": "0xc07a8b11a6021f503e34c4974432fdf9095c974d8f1c7ff24677a5eff5941924"
+  },
+  "assertPublicStatusPasses": true,
+  "noPrivateOperatorDataPassesWithoutNoisyFatalGitOutput": true,
+  "activeStaleDocsArtifactsContradictingPublicYes": [],
+  "historicalStaleDocsArtifactsAcceptableIfBannered": [
+    {
+      "path": "qa/COMMAND_RUN_LOG.md",
+      "line": 644,
+      "text": "\"PRIVATE_OPERATOR_EVIDENCE_PENDING\",",
+      "classification": "HISTORICAL_DOC_OK_WITH_BANNER"
+    },
+    {
+      "path": "qa/COMMAND_RUN_LOG.md",
+      "line": 645,
+      "text": "\"Run --with-redacted-private-evidence to evaluate committed redacted private evidence\",",
+      "classification": "HISTORICAL_DOC_OK_WITH_BANNER"
+    },
+    {
+      "path": "qa/COMMAND_RUN_LOG.md",
+      "line": 648,
+      "text": "\"PRIVATE_OPERATOR_EVIDENCE_PENDING: missing qa/public-ethereum-mainnet-authorization-evidence.json\"",
+      "classification": "HISTORICAL_DOC_OK_WITH_BANNER"
+    },
+    {
+      "path": "qa/COMMAND_RUN_LOG.md",
+      "line": 650,
+      "text": "\"reason\": \"PRIVATE_OPERATOR_EVIDENCE_PENDING\",",
+      "classification": "HISTORICAL_DOC_OK_WITH_BANNER"
+    },
+    {
+      "path": "qa/historical/MAINNET_AUTHORIZATION_CHECK_EXPECTED_BLOCKED.json",
+      "line": 4,
+      "text": "\"PRIVATE_OPERATOR_EVIDENCE_PENDING\",",
+      "classification": "STALE_QA_ARTIFACT_MOVE_TO_HISTORICAL"
+    },
+    {
+      "path": "qa/historical/V4_3_LOCAL_QA_COMMAND_OUTPUTS.json",
+      "line": 8,
+      "text": "\"summary\": \"Outputs one parseable JSON decision with PRIVATE_OPERATOR_EVIDENCE_PENDING when redacted private commitments are absent.\"",
+      "classification": "STALE_QA_ARTIFACT_MOVE_TO_HISTORICAL"
+    },
+    {
+      "path": "scripts/verify-readiness-v4-2.py",
+      "line": 36,
+      "text": "\"docs/EXTERNAL_AUDIT_CLOSURE_REQUEST_v4_2.md\",",
+      "classification": "SCRIPT_BACKWARD_COMPATIBILITY_OK"
+    },
+    {
+      "path": "scripts/verify-readiness-v4-2.py",
+      "line": 73,
+      "text": "for key in [\"LEGAL_SIGNOFF_HASH\", \"TAX_SIGNOFF_HASH\", \"SECURITY_REVIEW_HASH\", \"PUBLIC_CLAIMS_REVIEW_HASH\", \"SEPOLIA_REHEARSAL_EVIDENCE_HASH\", \"EXTERNAL_AUDIT_CLOSURE_HASH\", \"FOUNDER_APPROVAL_HASH\"]:",
+      "classification": "SCRIPT_BACKWARD_COMPATIBILITY_OK"
+    },
+    {
+      "path": "scripts/mainnet-readiness-check.py",
+      "line": 17,
+      "text": "parser.add_argument('--with-redacted-private-evidence', action='store_true', help='Deprecated no-op; private evidence is not required.')",
+      "classification": "SCRIPT_BACKWARD_COMPATIBILITY_OK"
+    },
+    {
+      "path": "scripts/assert_public_status.py",
+      "line": 49,
+      "text": "if 'external audit closure' in l or 'external_audit_closure' in line:",
+      "classification": "SCRIPT_BACKWARD_COMPATIBILITY_OK"
+    },
+    {
+      "path": "scripts/assert_public_status.py",
+      "line": 50,
+      "text": "errors.append(f'{rel}:{i}: stale external audit closure active-gate language')",
+      "classification": "SCRIPT_BACKWARD_COMPATIBILITY_OK"
+    },
+    {
+      "path": "scripts/mainnet-deployment-authorization-check.py",
+      "line": 10,
+      "text": "parser.add_argument('--with-redacted-private-evidence', action='store_true', help='Deprecated no-op; private evidence is not required.')",
+      "classification": "SCRIPT_BACKWARD_COMPATIBILITY_OK"
+    },
+    {
+      "path": "scripts/mainnet-authorization-check.py",
+      "line": 32,
+      "text": "parser.add_argument(\"--with-redacted-private-evidence\", action=\"store_true\", help=\"Deprecated; public-only final mode ignores private evidence.\")",
+      "classification": "SCRIPT_BACKWARD_COMPATIBILITY_OK"
+    },
+    {
+      "path": "scripts/ethereum-mainnet-authorization-check.py",
+      "line": 11,
+      "text": "parser.add_argument('--with-redacted-private-evidence', action='store_true', help='Deprecated no-op; private evidence is not required.')",
+      "classification": "SCRIPT_BACKWARD_COMPATIBILITY_OK"
+    },
+    {
+      "path": "audit/reports/dependency-triage/pr-4.log",
+      "line": 254,
+      "text": "\"EXTERNAL_AUDIT_CLOSURE_HASH missing or not bytes32\",",
+      "classification": "OLD_AUDIT_REPORT_OK_AS_ARCHIVED"
+    },
+    {
+      "path": "audit/reports/dependency-triage/pr-2.log",
+      "line": 138,
+      "text": "\"EXTERNAL_AUDIT_CLOSURE_HASH missing or not bytes32\",",
+      "classification": "OLD_AUDIT_REPORT_OK_AS_ARCHIVED"
+    },
+    {
+      "path": "audit/reports/dependency-triage/pr-3.log",
+      "line": 121,
+      "text": "\"EXTERNAL_AUDIT_CLOSURE_HASH missing or not bytes32\",",
+      "classification": "OLD_AUDIT_REPORT_OK_AS_ARCHIVED"
+    },
+    {
+      "path": "audit/reports/2026-06-11-1553/audit-summary.md",
+      "line": 16,
+      "text": "- external audit closure hash missing",
+      "classification": "OLD_AUDIT_REPORT_OK_AS_ARCHIVED"
+    },
+    {
+      "path": "audit/reports/2026-06-11-1553/slither.json",
+      "line": 42106,
+      "text": "\"name\": \"gateOf[LEGAL_REVIEW].passed && gateOf[TAX_REVIEW].passed && gateOf[SECURITY_REVIEW].passed && gateOf[PUBLIC_CLAIMS_REVIEW].passed && gateOf[TREASURY_REVIEW].passed && gateOf[AGIALPHA_TOKEN_VERIFICATION].passed && gateOf[ETHEREUM_SEPOLIA_REHEARSAL].passed && gateOf[EXTERNAL_AUDIT_CLOSURE].passed && gateOf[FOUNDER_APPROVAL].passed\",",
+      "classification": "OLD_AUDIT_REPORT_OK_AS_ARCHIVED"
+    },
+    {
+      "path": "audit/reports/2026-06-11-1553/slither.json",
+      "line": 42185,
+      "text": "\"description\": \"LaunchGateRegistry.allCoreGatesPassed() (contracts/registry/LaunchGateRegistry.sol#25-27) uses timestamp for comparisons\\n\\tDangerous comparisons:\\n\\t- gateOf[LEGAL_REVIEW].passed && gateOf[TAX_REVIEW].passed && gateOf[SECURITY_REVIEW].passed && gateOf[PUBLIC_CLAIMS_REVIEW].passed && gateOf[TREASURY_REVIEW].passed && gateOf[AGIALPHA_TOKEN_VERIFICATION].passed && gateOf[ETHEREUM_SEPOLIA_REHEARSAL].passed && gateOf[EXTERNAL_AUDIT_CLOSURE].passed && gateOf[FOUNDER_APPROVAL].passed (contracts/registry/LaunchGateRegistry.sol#26)\\n\",",
+      "classification": "OLD_AUDIT_REPORT_OK_AS_ARCHIVED"
+    },
+    {
+      "path": "audit/reports/2026-06-11-1553/slither.json",
+      "line": 42186,
+      "text": "\"markdown\": \"[LaunchGateRegistry.allCoreGatesPassed()](contracts/registry/LaunchGateRegistry.sol#L25-L27) uses timestamp for comparisons\\n\\tDangerous comparisons:\\n\\t- [gateOf[LEGAL_REVIEW].passed && gateOf[TAX_REVIEW].passed && gateOf[SECURITY_REVIEW].passed && gateOf[PUBLIC_CLAIMS_REVIEW].passed && gateOf[TREASURY_REVIEW].passed && gateOf[AGIALPHA_TOKEN_VERIFICATION].passed && gateOf[ETHEREUM_SEPOLIA_REHEARSAL].passed && gateOf[EXTERNAL_AUDIT_CLOSURE].passed && gateOf[FOUNDER_APPROVAL].passed](contracts/registry/LaunchGateRegistry.sol#L26)\\n\",",
+      "classification": "OLD_AUDIT_REPORT_OK_AS_ARCHIVED"
+    },
+    {
+      "path": "audit/reports/2026-06-11-1553/slither.txt",
+      "line": 294,
+      "text": "- gateOf[LEGAL_REVIEW].passed && gateOf[TAX_REVIEW].passed && gateOf[SECURITY_REVIEW].passed && gateOf[PUBLIC_CLAIMS_REVIEW].passed && gateOf[TREASURY_REVIEW].passed && gateOf[AGIALPHA_TOKEN_VERIFICATION].passed && gateOf[ETHEREUM_SEPOLIA_REHEARSAL].passed && gateOf[EXTERNAL_AUDIT_CLOSURE].passed && gateOf[FOUNDER_APPROVAL].passed (contracts/registry/LaunchGateRegistry.sol#26)",
+      "classification": "OLD_AUDIT_REPORT_OK_AS_ARCHIVED"
+    },
+    {
+      "path": "audit/reports/2026-06-11-1553/toolchain-clearance-report.md",
+      "line": 7,
+      "text": "- external audit closure hash missing",
+      "classification": "OLD_AUDIT_REPORT_OK_AS_ARCHIVED"
+    },
+    {
+      "path": "audit/reports/2026-06-11-1553/audit-summary.json",
+      "line": 74,
+      "text": "\"external audit closure hash missing\",",
+      "classification": "OLD_AUDIT_REPORT_OK_AS_ARCHIVED"
+    },
+    {
+      "path": "docs/POST_UPLOAD_VALIDATION_RUNBOOK.md",
+      "line": 23,
+      "text": "- [ ] README says Ethereum Mainnet not authorized.",
+      "classification": "HISTORICAL_DOC_OK_WITH_BANNER"
+    },
+    {
+      "path": "docs/START_HERE_v4_3.md",
+      "line": 11,
+      "text": "- Historical note: v4.3 previously referenced `EXTERNAL_AUDIT_CLOSURE`; v4.4 replaces that requirement with `AUTOMATED_SECURITY_TOOLCHAIN` and `INTERNAL_SECURITY_REVIEW`.",
+      "classification": "HISTORICAL_DOC_OK_WITH_BANNER"
+    },
+    {
+      "path": "docs/START_HERE_v4_3.md",
+      "line": 28,
+      "text": "Ethereum Mainnet not authorized.",
+      "classification": "HISTORICAL_DOC_OK_WITH_BANNER"
+    },
+    {
+      "path": "docs/PRIVATE_OPERATOR_HANDOFF.md",
+      "line": 34,
+      "text": "8. Run the public checkers with `--with-redacted-private-evidence`.",
+      "classification": "HISTORICAL_DOC_OK_WITH_BANNER"
+    },
+    {
+      "path": "docs/START_HERE_v4_2.md",
+      "line": 29,
+      "text": "Ethereum Mainnet not authorized.",
+      "classification": "HISTORICAL_DOC_OK_WITH_BANNER"
+    },
+    {
+      "path": "docs/FINAL_LOCAL_OPERATOR_RUNBOOK.md",
+      "line": 25,
+      "text": "python scripts/mainnet-authorization-check.py --with-redacted-private-evidence",
+      "classification": "HISTORICAL_DOC_OK_WITH_BANNER"
+    },
+    {
+      "path": "docs/MAINNET_NOT_AUTHORIZED_DECISION_v4_3.md",
+      "line": 5,
+      "text": "Ethereum Mainnet not authorized.",
+      "classification": "HISTORICAL_DOC_OK_WITH_BANNER"
+    },
+    {
+      "path": "docs/MAINNET_NOT_AUTHORIZED_DECISION_v4_3.md",
+      "line": 10,
+      "text": "Ethereum Mainnet deployment authorization: NO.",
+      "classification": "HISTORICAL_DOC_OK_WITH_BANNER"
+    },
+    {
+      "path": "docs/PRIVATE_OPERATOR_LOCAL_COMMANDS.md",
+      "line": 14,
+      "text": "python scripts/mainnet-authorization-check.py --with-redacted-private-evidence",
+      "classification": "HISTORICAL_DOC_OK_WITH_BANNER"
+    },
+    {
+      "path": "docs/PRIVATE_OPERATOR_LOCAL_COMMANDS.md",
+      "line": 25,
+      "text": "python scripts/mainnet-readiness-check.py --with-redacted-private-evidence",
+      "classification": "HISTORICAL_DOC_OK_WITH_BANNER"
+    },
+    {
+      "path": "docs/PRIVATE_OPERATOR_LOCAL_COMMANDS.md",
+      "line": 26,
+      "text": "python scripts/mainnet-deployment-authorization-check.py --with-redacted-private-evidence",
+      "classification": "HISTORICAL_DOC_OK_WITH_BANNER"
+    },
+    {
+      "path": "docs/PRIVATE_OPERATOR_LOCAL_COMMANDS.md",
+      "line": 27,
+      "text": "python scripts/ethereum-mainnet-authorization-check.py --with-redacted-private-evidence",
+      "classification": "HISTORICAL_DOC_OK_WITH_BANNER"
+    },
+    {
+      "path": "docs/START_HERE_v3_0.md",
+      "line": 21,
+      "text": "Implementation complete. Mainnet not authorized until all gates pass.",
+      "classification": "HISTORICAL_DOC_OK_WITH_BANNER"
+    },
+    {
+      "path": "docs/MAINNET_AUTHORIZATION_WITH_REDACTED_EVIDENCE.md",
+      "line": 18,
+      "text": "- blocker `PRIVATE_OPERATOR_EVIDENCE_PENDING`.",
+      "classification": "HISTORICAL_DOC_OK_WITH_BANNER"
+    },
+    {
+      "path": "docs/MAINNET_AUTHORIZATION_WITH_REDACTED_EVIDENCE.md",
+      "line": 25,
+      "text": "python scripts/mainnet-readiness-check.py --with-redacted-private-evidence",
+      "classification": "HISTORICAL_DOC_OK_WITH_BANNER"
+    },
+    {
+      "path": "docs/MAINNET_AUTHORIZATION_WITH_REDACTED_EVIDENCE.md",
+      "line": 26,
+      "text": "python scripts/mainnet-deployment-authorization-check.py --with-redacted-private-evidence",
+      "classification": "HISTORICAL_DOC_OK_WITH_BANNER"
+    },
+    {
+      "path": "docs/MAINNET_AUTHORIZATION_WITH_REDACTED_EVIDENCE.md",
+      "line": 27,
+      "text": "python scripts/ethereum-mainnet-authorization-check.py --with-redacted-private-evidence",
+      "classification": "HISTORICAL_DOC_OK_WITH_BANNER"
+    },
+    {
+      "path": "docs/V4_2_EVIDENCE_READY_DELTA.md",
+      "line": 14,
+      "text": "- `docs/EXTERNAL_AUDIT_CLOSURE_REQUEST_v4_2.md`",
+      "classification": "HISTORICAL_DOC_OK_WITH_BANNER"
+    }
+  ],
+  "workflowNameChecks": [
+    {
+      "path": ".github/workflows/final-public-mainnet-authorization.yml",
+      "expected": "Final Public Mainnet Authorization",
+      "actual": "Final Public Mainnet Authorization",
+      "ok": true
+    },
+    {
+      "path": ".github/workflows/repository-validation.yml",
+      "expected": "Repository Validation",
+      "actual": "Repository Validation",
+      "ok": true
+    },
+    {
+      "path": ".github/workflows/solidity-audit-toolchain.yml",
+      "expected": "Solidity Audit Toolchain",
+      "actual": "Solidity Audit Toolchain",
+      "ok": true
+    },
+    {
+      "path": ".github/workflows/agialpha-audit-candidate-ci.yml",
+      "expected": "GoalOS AGIALPHA Audit-Candidate CI",
+      "actual": "GoalOS AGIALPHA Audit-Candidate CI",
+      "ok": true
+    },
+    {
+      "path": ".github/workflows/mainnet-authorization-gate.yml",
+      "expected": "Mainnet Authorization Gate",
+      "actual": "Mainnet Authorization Gate",
+      "ok": true
+    },
+    {
+      "path": ".github/workflows/mainnet-gate-watch.yml",
+      "expected": "Mainnet Gate Watch",
+      "actual": "Mainnet Gate Watch",
+      "ok": true
+    },
+    {
+      "path": ".github/workflows/ethereum-sepolia-rehearsal.yml",
+      "expected": "Ethereum Sepolia Rehearsal",
+      "actual": "Ethereum Sepolia Rehearsal",
+      "ok": true
+    },
+    {
+      "path": ".github/workflows/sepolia-rehearsal.yml",
+      "expected": "Local/Sepolia Rehearsal",
+      "actual": "Local/Sepolia Rehearsal",
+      "ok": true
+    }
+  ],
+  "paperFolderExists": true,
+  "paperAssetsExist": {
+    "GoalOS_native_alpha_AGI_Ascension_using_AGIALPHA_v6.3_Sovereign_RSI.md": true,
+    "GoalOS_native_alpha_AGI_Ascension_using_AGIALPHA_v6.3_Sovereign_RSI.pdf": true,
+    "GoalOS_native_alpha_AGI_Ascension_using_AGIALPHA_v6.3_Sovereign_RSI.docx": true
+  },
+  "releaseDocsExist": {
+    "docs/RELEASE_PLAN_MAINNET_AUTHORIZATION_v4_4_0.md": true,
+    "docs/RELEASE_NOTES_MAINNET_AUTHORIZATION_v4_4_0.md": true,
+    "docs/RELEASE_CHECKLIST_MAINNET_AUTHORIZATION_v4_4_0.md": true
+  },
+  "branchProtection": "PUBLIC_RISK_ACCEPTED",
+  "actualBranchProtectionDetected": null,
+  "certificateHash": "0x468c2b06aac1cc70a03a79fdb4067df45b5ad4e8e3d29bd17c342fe275fd9975",
+  "finalPublicStates": {
+    "TECHNICALLY_MAINNET_READY": "YES",
+    "MAINNET_DEPLOYMENT_AUTHORIZED": "YES",
+    "ETHEREUM_MAINNET_AUTHORIZED": "YES",
+    "MAINNET_DEPLOYED": "NO"
+  },
+  "commandsRun": {
+    "npm ci": 0,
+    "npm run verify:compiler-alignment": 0,
+    "npm run repo:all": 0,
+    "npm run repo:no-private-operator-data": 0,
+    "npm run repo:no-paid-products": 0,
+    "npm run compile:ci": 0,
+    "npm run test:ci": 0,
+    "npm run test:all": 0,
+    "npm run static-check": 0,
+    "npm run readiness:v4.3": 0,
+    "npm run evidence:docket:template": 0,
+    "npm run rehearse:local": 0,
+    "npm run evidence:local": 0,
+    "npm run audit:slither": 0,
+    "npm run audit:semgrep": 0,
+    "npm run audit:solhint": 0,
+    "npm run audit:actions": 0,
+    "npm run audit:shell": 0,
+    "npm run audit:secrets": 0,
+    "npm run audit:npm": 0,
+    "npm run audit:osv || true": 0,
+    "npm run audit:foundry || true": 0,
+    "npm run audit:echidna || true": 0,
+    "npm run audit:medusa || true": 0,
+    "npm run audit:mythril || true": 0,
+    "npm run audit:halmos || true": 0,
+    "npm run audit:smt || true": 0,
+    "npm run audit:summarize": 0,
+    "npm run audit:fail-on-critical": 0,
+    "npm run audit:clearance-report": 0,
+    "npm run verify:agialpha-token:public || true": 0,
+    "npm run mainnet:certificate": 0,
+    "npm run mainnet:certificate:validate": 0,
+    "npm run docs:status": 0,
+    "npm run assert:public-status": 0,
+    "npm run mainnet:readiness-check": 0,
+    "npm run mainnet:deployment-authorization-check": 0,
+    "npm run mainnet:authorization-check": 0,
+    "npm run qa:manifest": 0,
+    "npm run qa:manifest:verify": 0,
+    "npm run mainnet:status": 0,
+    "npm run mainnet:next": 0
+  }
+}

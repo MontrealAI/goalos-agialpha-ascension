@@ -1,3 +1,5 @@
+> Historical/deprecated note: this document describes a prior pre-certificate authorization model. The active source of truth is `qa/mainnet-authorization-certificate.json`.
+
 # Legal, Tax, and Public Claims Gate Memo
 
 No legal, tax, or public-claims approval hash is fabricated in this repository.
