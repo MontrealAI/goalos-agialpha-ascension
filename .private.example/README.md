@@ -1,3 +1,5 @@
-# Private Runtime Templates
+# Private Runtime Input Examples
 
-Copy these examples outside public Git history when executing a real deployment. Use placeholders only in this directory.
+This directory contains placeholders only. Copy these templates outside GitHub (for example into `.private/`) before an actual local broadcast. Do not commit RPC URLs, private keys, founder/admin/treasury/security/community addresses, signatures, wallet metadata, or private ceremony notes.
+
+The public repository authorization does not require these files. They are optional runtime aids for a manual local deployment.

@@ -11,8 +11,14 @@ combined_lower = combined.lower()
 errors: list[str] = []
 
 mainnet_not_authorized = re.search(r"ethereum\s+mainnet\s+(deployment\s+authorization:\s+no|not[_\s-]*authorized|is\s+not\s+authorized)", combined, re.I) or "mainnet_deployment_authorized: **no**" in combined_lower
-if not mainnet_not_authorized and "technically_mainnet_ready: **yes**" not in combined_lower:
-    errors.append("Missing clear Ethereum Mainnet not-authorized/deployment authorization NO statement.")
+mainnet_public_authorized = (
+    "ethereum mainnet technical readiness: yes" in combined_lower
+    and "ethereum mainnet deployment authorization: yes" in combined_lower
+    and "ethereum mainnet authorization: yes" in combined_lower
+    and "ethereum mainnet deployed: no" in combined_lower
+)
+if not mainnet_not_authorized and not mainnet_public_authorized:
+    errors.append("Missing clear Ethereum Mainnet public authorization YES/NO statement generated from the certificate.")
 
 if "not externally audited" not in combined_lower:
     errors.append("Missing allowed public status: Not externally audited.")
@@ -53,4 +59,4 @@ if errors:
     for err in errors:
         print(f"- {err}")
     sys.exit(1)
-print("Public status assertion passed: Ethereum Mainnet is not authorized, public claims are bounded, and external-audit closure is not an active required gate.")
+print("Public status assertion passed: Ethereum Mainnet public YES/NO claims are certificate-bounded and external-audit closure is not an active required gate.")

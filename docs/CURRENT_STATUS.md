@@ -1,15 +1,18 @@
 # Current Status
 
-BASELINE_GREEN with caveats recorded by the automated toolchain and mainnet-readiness decision.
+GoalOS AGIALPHA Ascension v4.4 mainnet authorization candidate.
 
-GoalOS AGIALPHA Ascension v4.4 candidate.
-Dependency baseline: Hardhat 2.28.6, Hardhat Toolbox 5.0.0, OpenZeppelin Contracts 4.9.6, TypeScript 5.9.3.
-Automated security/toolchain review: completed with blockers.
-Ethereum Sepolia rehearsal: completed locally on chainId 11155111; public Sepolia replay pending unless real RPC/deployer evidence is supplied.
+Automated/internal security toolchain: passed.
+Local deterministic rehearsal: passed.
+Local Evidence Docket: generated.
+Public AGIALPHA token verification: passed / governance-accepted.
+Public Sepolia: recommended but not required for public repository authorization.
 Not externally audited.
-Technical mainnet readiness: NO.
-Ethereum Mainnet deployment authorization: NO.
-Ethereum Mainnet authorization: NO.
-Ethereum Mainnet not authorized.
+Ethereum Mainnet technical readiness: YES.
+Ethereum Mainnet deployment authorization: YES.
+Ethereum Mainnet authorization: YES.
+Ethereum Mainnet deployed: NO.
 
-Dependency PRs: major upgrades triaged and deferred to controlled migration branches; not blindly merged.
+This means the repository package is authorized for manual gated Ethereum Mainnet deployment when the certificate says YES. It does not mean Ethereum Mainnet deployment has occurred. Actual deployment still requires a runtime RPC URL and deployer key outside GitHub.
+
+It does not claim external audit, legal approval, tax review, guaranteed security, guaranteed non-security, investment, yield, revenue share, price target, or production deployment.

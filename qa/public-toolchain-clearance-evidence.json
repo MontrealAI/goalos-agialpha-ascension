@@ -7,7 +7,6 @@
   "unresolvedCriticalHighFindings": 0,
   "unresolvedMediumFindings": 0,
   "environmentBlockedToolsDocumented": [
-    "slither",
     "echidna",
     "mythril",
     "medusa",
@@ -21,5 +20,5 @@
     "gitleaks"
   ],
   "mainnetDeployed": "NO",
-  "generatedAt": "2026-06-12T02:14:36.112038+00:00"
+  "generatedAt": "2026-06-12T02:36:17.481450+00:00"
 }

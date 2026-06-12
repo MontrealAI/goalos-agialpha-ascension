@@ -1,56 +1,17 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Public Mainnet Authorization State",
   "type": "object",
-  "required": [
-    "technicallyMainnetReady",
-    "mainnetDeploymentAuthorized",
-    "ethereumMainnetAuthorized",
-    "mainnetDeployed",
-    "externalAuditPlanned",
-    "externalAuditRequired",
-    "authorizationScope",
-    "runtimeSecretsRequiredForBroadcast",
-    "runtimeSecretsStoredInGitHub"
-  ],
+  "required": ["technicallyMainnetReady", "mainnetDeploymentAuthorized", "ethereumMainnetAuthorized", "mainnetDeployed", "externalAuditPlanned", "externalAuditRequired", "authorizationScope", "runtimeSecretsRequiredForBroadcast", "runtimeSecretsStoredInGitHub"],
   "properties": {
-    "technicallyMainnetReady": {
-      "enum": [
-        "YES",
-        "NO"
-      ]
-    },
-    "mainnetDeploymentAuthorized": {
-      "enum": [
-        "YES",
-        "NO"
-      ]
-    },
-    "ethereumMainnetAuthorized": {
-      "enum": [
-        "YES",
-        "NO"
-      ]
-    },
-    "mainnetDeployed": {
-      "enum": [
-        "YES",
-        "NO"
-      ]
-    },
-    "externalAuditPlanned": {
-      "const": false
-    },
-    "externalAuditRequired": {
-      "const": false
-    },
-    "authorizationScope": {
-      "const": "manual-deployment-package-authorization"
-    },
-    "runtimeSecretsRequiredForBroadcast": {
-      "const": true
-    },
-    "runtimeSecretsStoredInGitHub": {
-      "const": false
-    }
+    "technicallyMainnetReady": {"enum": ["YES", "NO"]},
+    "mainnetDeploymentAuthorized": {"enum": ["YES", "NO"]},
+    "ethereumMainnetAuthorized": {"enum": ["YES", "NO"]},
+    "mainnetDeployed": {"enum": ["YES", "NO"]},
+    "externalAuditPlanned": {"const": false},
+    "externalAuditRequired": {"const": false},
+    "authorizationScope": {"const": "manual-deployment-package-authorization"},
+    "runtimeSecretsRequiredForBroadcast": {"const": true},
+    "runtimeSecretsStoredInGitHub": {"const": false}
   }
 }

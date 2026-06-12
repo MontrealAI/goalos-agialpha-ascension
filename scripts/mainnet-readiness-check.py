@@ -51,6 +51,6 @@ def write(status, blockers, evidence):
     return out
 
 def main():
-    parser=argparse.ArgumentParser(); parser.add_argument("--public-only-final", action="store_true"); parser.parse_args()
+    parser=argparse.ArgumentParser(); parser.add_argument("--public-only-final", action="store_true"); parser.add_argument("--certificate"); parser.parse_args()
     print(json.dumps(write(*compute()),indent=2))
 if __name__ == "__main__": main()
