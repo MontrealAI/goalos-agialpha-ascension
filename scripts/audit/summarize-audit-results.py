@@ -7,10 +7,6 @@ report_dir.mkdir(parents=True, exist_ok=True)
 TIER1 = {'slither','semgrep','solhint','npm-audit','osv-scanner','actionlint','shellcheck','gitleaks'}
 TIER2 = {'echidna','mythril','medusa','foundry','halmos','smtchecker'}
 files = {'slither':('slither.json','slither.txt'),'echidna':('echidna.json','echidna.txt'),'mythril':('mythril.json','mythril.txt'),'medusa':('medusa.json','medusa.txt'),'foundry':('foundry.json','foundry-test.log'),'halmos':('halmos.json','halmos.txt'),'semgrep':('semgrep.json','semgrep.txt'),'solhint':('solhint.json','solhint.txt'),'smtchecker':('smtchecker.json','smtchecker.txt'),'npm-audit':('npm-audit.json','npm-audit.txt'),'osv-scanner':('osv-scanner.json','osv-scanner.txt'),'actionlint':('actionlint.json','actionlint.txt'),'shellcheck':('shellcheck.json','shellcheck.txt'),'gitleaks':('gitleaks.json','gitleaks.txt')}
-reports_root = pathlib.Path('audit/reports')
-def latest_tool_file(filename: str):
-    candidates = sorted((p for p in reports_root.glob('20*/'+filename) if p.is_file()), key=lambda p: p.stat().st_mtime, reverse=True)
-    return candidates[0] if candidates else report_dir/filename
 ACCEPTED={'resolved','accepted','false_positive','false-positive','triaged_accepted'}; SEV={'critical','high'}
 def iter_dicts(v:Any):
     if isinstance(v,dict):
@@ -36,19 +32,19 @@ def direct_count(data):
     return 0
 tools=[]; rows=[]; total=0; blockers=[]; tier1_blocked=[]; tier2_unavailable=[]
 for name,(jn,tn) in files.items():
-    j=latest_tool_file(jn); t=latest_tool_file(tn); data={}; raw='NOT_RUN'; parse_error=None
+    j=report_dir/jn; t=report_dir/tn; data={}; raw='NOT_RUN'; parse_error=None
     if j.exists():
         try:
             data=json.loads(j.read_text()); raw=str(data.get('status','COMPLETED')) if isinstance(data,dict) else 'COMPLETED'
         except Exception as exc:
             parse_error=str(exc); raw='COMPLETED_TEXT_OR_TOOL_JSON'
     elif t.exists(): raw='COMPLETED_TEXT_ONLY'
-    findings=high_findings(name,data); critical=direct_count(data)+len(findings); total+=critical
+    findings=high_findings(name,data); direct=direct_count(data); critical=max(direct, len(findings)); total+=critical
     tool_blockers=[]
     if critical:
         tool_blockers.append(f'{name} reported {critical} unresolved critical/high finding(s)')
         rows.append([f'{name.upper()}-DIRECT', name, 'Critical/High', 'Unresolved', f'{name} critical_high_unresolved={critical}', 'true'])
-    if raw in {'PENDING_ENVIRONMENT_BLOCKED','NOT_RUN','FAILED'} and name in TIER1:
+    if raw in {'PENDING_ENVIRONMENT_BLOCKED','NOT_RUN','FAILED','FAILED_SCANNER_ERROR','FAILED_UNTRIAGED_VULNERABILITIES'} and name in TIER1:
         tool_blockers.append(f'Tier 1 tool {name} did not pass (raw status: {raw})')
         tier1_blocked.append(name)
     if raw in {'PENDING_ENVIRONMENT_BLOCKED','NOT_RUN'} and name in TIER2:
@@ -57,8 +53,8 @@ for name,(jn,tn) in files.items():
         status='TIER2_ENVIRONMENT_UNAVAILABLE_DOCUMENTED' if name in TIER2 else 'TIER1_BLOCKED'
     elif critical:
         status='COMPLETED_WITH_UNRESOLVED_CRITICAL_HIGH'
-    elif raw == 'FAILED':
-        status='FAILED'
+    elif raw in {'FAILED','FAILED_SCANNER_ERROR','FAILED_UNTRIAGED_VULNERABILITIES'}:
+        status=raw
     elif name=='npm-audit':
         status='COMPLETED_FINDINGS_REVIEWED_NO_CRITICAL_HIGH_BLOCKER'
     else:

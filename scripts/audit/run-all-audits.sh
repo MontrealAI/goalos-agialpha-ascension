@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 set -uo pipefail
-export AUDIT_REPORT_DIR="${AUDIT_REPORT_DIR:-audit/reports/$(date -u +%Y-%m-%d-%H%M)}"
+rm -f audit/reports/current-run.txt
+export AUDIT_REPORT_DIR="${AUDIT_REPORT_DIR:-audit/reports/$(date -u +%Y-%m-%d-%H%M%S)}"
 mkdir -p "$AUDIT_REPORT_DIR"
+echo "$AUDIT_REPORT_DIR" > audit/reports/current-run.txt
 echo "$AUDIT_REPORT_DIR" > audit/reports/latest.txt
 npm run compile:ci > "$AUDIT_REPORT_DIR/hardhat-compile.log" 2>&1 || true
 npm run test:ci > "$AUDIT_REPORT_DIR/hardhat-test.log" 2>&1 || true
