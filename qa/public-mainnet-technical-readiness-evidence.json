@@ -2,18 +2,115 @@
   "redacted": true,
   "containsSecrets": false,
   "containsPrivateAddresses": false,
+  "status": "YES",
+  "TECHNICALLY_MAINNET_READY": "YES",
+  "technicallyMainnetReady": "YES",
+  "commit": "33db9c69e3808b56cf96b42d24d4906f6e3ca6f2",
   "chain": "ethereum",
   "chainId": 1,
   "agialphaToken": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
-  "commit": "680883e974d6eb6590aa81b77b350a3446a9258e",
-  "technicalReadiness": "YES",
   "mainnetDeployed": "NO",
+  "privateOperatorAuthorizationPackageRequired": false,
+  "externalAuditRequired": false,
+  "evidence": {
+    "repoDoctor": {
+      "path": "qa/REPO_DOCTOR_REPORT.json",
+      "sha256": "0x1b523dafd574b40d682bba99a43f327084e960bad008ddbb457d7585380c31d1"
+    },
+    "dependencyBaseline": {
+      "path": "docs/DEPENDENCY_BASELINE_FOR_MAINNET.md",
+      "sha256": "0xefa39de31ff24c79017a474147b1a500d076c4b7783b5eff4e1bce932abfd5a7"
+    },
+    "compilerAlignment": {
+      "path": "qa/compiler-alignment.json",
+      "sha256": "0x6e26d461a64eb5f6a79a408d14d58b58ddb426f67d9b03b17c486048794ff865"
+    },
+    "compile": {
+      "path": "scripts/compile-deterministic.js",
+      "sha256": "0x546f6cfcaa228322a049a9ac7f07d5ffea95c8b4ed6efab556dfdad60740c11f"
+    },
+    "tests": {
+      "path": "test",
+      "sha256": "0x7f9272a3cf29fb38ff54945f55920c75fc689cc52cc5ea50eb6f6742c29513bc"
+    },
+    "testAll": {
+      "path": "test/invariants/mainnetBoundary.invariant.test.ts",
+      "sha256": "0x3aae9ec3a7185e1bdb25a3be670964493f07731ed1ba4d728c71abb4638cf192"
+    },
+    "staticCheck": {
+      "path": "scripts/static_check.py",
+      "sha256": "0xd8e3e0b82c3f0352c2aee519c2ace14b12b62f6b823eb7cd3422468b6694b6a4"
+    },
+    "publicStatus": {
+      "path": "scripts/assert_public_status.py",
+      "sha256": "0x43b5ddac61051e3a513857cc9adebee8111790729a72bede6ac338517025aed0"
+    },
+    "noPrivateOperatorData": {
+      "path": "scripts/no_private_operator_data_check.py",
+      "sha256": "0xcc6d7ef6fdd4e84eaa69b55cad85e49c247357f5f32dbebadde1880350557736"
+    },
+    "noPaidProducts": {
+      "path": "scripts/no_paid_products_check.py",
+      "sha256": "0xed865850de41ec9e7a0eaded9b278e7ec3f191f57fb61b8962531dc69d5f0511"
+    },
+    "slither": {
+      "path": "docs/SLITHER_SECURITY_REPORT.md",
+      "sha256": "0x26101191906a29d5bdaa2d0e540e60adb5436fc5b4851a7066f6f6ec58ba3aaa"
+    },
+    "tier1SecurityToolchain": {
+      "path": "audit/TOOLCHAIN_CLEARANCE_REPORT.md",
+      "sha256": "0x200cc332cf140af4ea9d62c5c05c01101715687f265896792b842a19503173e2"
+    },
+    "tier2SecurityToolchain": {
+      "path": "audit/AUTOMATED_SECURITY_TOOLCHAIN.md",
+      "sha256": "0xc7dabdfd833ef1b40bec88effe56b00cfbcf3890cc0a04e1e3251a4c9dd5d00b"
+    },
+    "toolchainClearance": {
+      "path": "qa/public-toolchain-clearance-evidence.json",
+      "sha256": "0xc43b2e4f0f7c04ff8702393871ccb08b42a5eefeae8300e64966a687cf486a7e"
+    },
+    "unresolvedFindings": {
+      "path": "audit/AUDIT_FINDINGS_REGISTER.csv",
+      "sha256": "0x6a706a52433d3c8cd3d44ac62231388ebc02beb372a0ba84a975b6f2929404bb"
+    },
+    "invariants": {
+      "path": "security/INVARIANTS.md",
+      "sha256": "0x9aa4b8ef7ae0b84025a8849f2aa6c3954b28c932c5bdd3916f82b0df7fbb69db"
+    },
+    "localRehearsal": {
+      "path": "qa/local-rehearsal-report.json",
+      "sha256": "0x05c14a8b160a5e57635ee4c461ec6841eed706611ac3d12968fdb719e578385b"
+    },
+    "localEvidenceDocket": {
+      "path": "evidence/local/EVIDENCE_DOCKET.json",
+      "sha256": "0x24a67c7be4c3c8a6e5c7ee7f2e36fe1fc3616c807bbc1c48fc27039f911ec8bc"
+    },
+    "agialphaTokenVerification": {
+      "path": "qa/public-agialpha-token-verification.json",
+      "sha256": "0x712b955541094c88bc538dd43e13e3e0cf3d8bfd4dc66931004bed60b25184be"
+    },
+    "mainnetGuardrails": {
+      "path": "scripts/deploy-ethereum-mainnet-gated.ts",
+      "sha256": "0x74adaa2a085808371332a49cb79b0e79c3433e995649f3c21b8601d2a2cdb2f2"
+    },
+    "branchProtectionOrRiskAcceptance": {
+      "path": "qa/public-branch-protection-evidence.json",
+      "sha256": "0xd4210ac4d31d49041473388c4f4790e0decb433aeec614e75c69c83e5d5a2ceb"
+    },
+    "publicGovernanceApproval": {
+      "path": "qa/public-governance-approval-evidence.json",
+      "sha256": "0x5f27824fc18f9569cd701aa524fbdcde8523edf9084f88e032663c1fc499bbca"
+    },
+    "releaseGate": {
+      "path": "docs/PUBLIC_MAINNET_AUTHORIZATION_RUNBOOK.md",
+      "sha256": "0xaa260e30cb260251cbf495fcb9ae4b347cf096cd2a46d3a8acaeff13b6641f88"
+    },
+    "mainnetSimulation": {
+      "path": "qa/ETHEREUM_MAINNET_FORK_SIMULATION.json",
+      "sha256": "0xfd2dbd6be46ff726af8ebf36f91fa5c09ed5b38368556d50f759e3ddfbf7330f"
+    }
+  },
   "blockers": [],
-  "generatedAt": "2026-06-12T02:38:16.012020+00:00",
-  "toolchainClearanceHash": "0xda7675f5d5878488332f0a300cbf52f8284784156e27326c08704662b55e80d1",
-  "localRehearsalEvidenceHash": "0x058709471161b65e50664f30042b8e580cf0ddf86741afecf83054b7e5e08c43",
-  "agialphaTokenVerificationHash": "0xa6a4c97724644fcef7707db9813d177e9c1c60cb84013ad3605b2081116bc6a4",
-  "mainnetPreflightPolicyHash": "0x3155e7372dac0ffbfae2852b38d0a8b9c1a759e99c7822551b8893eb790ce4d7",
-  "governanceApprovalHash": "0x098d121802ecb38cdeafe29aae405ac4122948cf3caf7e40b1707d08408187c1",
-  "branchProtectionEvidenceHash": "0x4d8f5580def78bf2968cc296fd2311a3c1c228ea43c322a935d2f933859b54a6"
+  "generatedAt": "2026-06-12T03:16:22.341163+00:00",
+  "generatedBy": "scripts/mainnet-readiness-check.py"
 }

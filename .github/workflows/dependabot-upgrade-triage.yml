@@ -31,8 +31,8 @@ jobs:
         if: always() && steps.npm-ci.outcome == 'success'
         continue-on-error: true
         run: |
-          npm run compile
-          npm test
+          npm run compile:ci
+          npm run test:ci
           npm run static-check
       - uses: actions/upload-artifact@v5
         if: always()

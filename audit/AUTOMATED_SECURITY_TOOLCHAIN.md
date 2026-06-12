@@ -1,7 +1,5 @@
-# Automated Security Toolchain
+# Automated/Internal Security Toolchain
 
-This repository uses overlapping automated and internal security-review signals rather than a planned external audit gate. The active gate model requires automated security/toolchain clearance, internal security review, Sepolia rehearsal evidence, AGIALPHA token verification, and founder deployment approval.
+Tier 1 mandatory tools: npm ci, deterministic compile, Hardhat tests, test:all, static-check, repo checks, public-status check, no-private-operator-data check, no-paid-products check, Slither, Solhint, Semgrep, secret scanning, actionlint, shellcheck, npm audit/OSV triage, local rehearsal, invariant tests, deployment guardrails, findings register, and clearance report.
 
-Required tools include Hardhat compile/tests, Slither, Echidna, Foundry/Forge, Mythril, Medusa, Halmos where available, solc SMTChecker where configured, Semgrep, Solhint, npm audit, OSV Scanner, actionlint, shellcheck, and gitleaks.
-
-Environment-blocked tools are recorded as technical mainnet-readiness blockers until they are run or explicitly accepted by internal security/founder review.
+Tier 2 best-available tools: Foundry, Echidna, Medusa, Mythril, Halmos, solc SMTChecker, SBOM, live mainnet fork simulation. Environment-unavailable Tier 2 tools are documented and do not block if Tier 1 passes and public governance accepts the status.

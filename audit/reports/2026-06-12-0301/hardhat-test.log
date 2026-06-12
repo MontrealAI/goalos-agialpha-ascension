@@ -1,0 +1,30 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> goalos-agialpha-ascension@4.3.0 test
+> hardhat test
+
+
+
+  AEP-001 / AGIALPHA Ascension proof-of-evolution spine
+    ✔ runs Aim -> Act -> Prove -> Evolve on-chain commitments (2190ms)
+
+  GoalOS AGIALPHA Ascension flow
+    ✔ creates a Proof Seed using AGIALPHA (379ms)
+    ✔ runs post -> claim -> submit -> review -> proof card -> credential -> reputation with AGIALPHA (412ms)
+    ✔ anchors a legacy AGIJobManager record as reviewed history (295ms)
+
+  mainnet boundary invariants
+    ✔ keeps canonical Ethereum Mainnet token and chain guards in the gated deployment script
+    ✔ requires every core launch gate before allCoreGatesPassed can become true (135ms)
+
+  GoalOS AGIALPHA Ascension v4 institutional controls
+    ✔ records conformance, claim boundary, replay, chronicle and falsification records (303ms)
+    ✔ supports commit-reveal validation (258ms)
+    ✔ supports evaluator staking, slashing court, and reward vault (289ms)
+
+  v4.3 Ethereum launch gate consistency
+    ✔ uses Ethereum Sepolia and complete institutional gates (106ms)
+
+
+  10 passing (4s)
+

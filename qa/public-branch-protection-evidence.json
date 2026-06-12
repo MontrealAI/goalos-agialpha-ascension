@@ -5,6 +5,28 @@
   "status": "PUBLIC_RISK_ACCEPTED",
   "branchProtection": "PUBLIC_RISK_ACCEPTED",
   "source": "docs/BRANCH_PROTECTION_PUBLIC_RISK_ACCEPTANCE.md",
-  "requiredProtections": ["pull-request-before-merge", "required-status-checks", "no-force-push", "no-branch-deletion", "conversation-resolution", "sensitive-path-review"],
-  "generatedAt": "2026-06-12T00:00:00Z"
+  "requiredProtections": [
+    "pull-request-before-merge",
+    "required-status-checks",
+    "no-force-push",
+    "no-branch-deletion",
+    "conversation-resolution",
+    "sensitive-path-review"
+  ],
+  "sensitivePaths": [
+    "contracts/**",
+    "scripts/**",
+    "schemas/**",
+    ".github/**",
+    ".env.example",
+    "package.json",
+    "package-lock.json",
+    "hardhat.config.ts",
+    "docs/*MAINNET*",
+    "docs/*DEPLOYMENT*",
+    "docs/*AUTHORIZATION*",
+    "audit/**",
+    "security/**"
+  ],
+  "generatedAt": "2026-06-12T02:53:39.169048+00:00"
 }

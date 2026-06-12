@@ -1,7 +1,9 @@
 # Final Local Pre-Deployment Checklist
 
-- Public authorization decisions are YES.
-- Runtime RPC/key are loaded locally only.
-- Runtime addresses are validated locally only.
-- AGIALPHA token is the canonical Ethereum Mainnet address.
-- Typed confirmation is ready.
+- Certificate is YES/YES/YES/NO.
+- Toolchain clearance passed.
+- Local rehearsal passed.
+- AGIALPHA token verification passed or governance-accepted.
+- Runtime RPC/key loaded locally.
+- Typed confirmation available only outside CI.
+- No MockAGIALPHA and no new AGIALPHA token.

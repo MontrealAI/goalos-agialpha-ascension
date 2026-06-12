@@ -1,0 +1,5 @@
+Foundry: PENDING_ENVIRONMENT_BLOCKED
+Command attempted: forge build && forge test && forge test -vvv
+Reason: forge executable is not installed; install Foundry with foundryup
+Environment: Linux 1d012faded87 6.12.47 #1 SMP Mon Oct 27 10:01:15 UTC 2025 x86_64 x86_64 x86_64 GNU/Linux
+Blocks mainnet: true until run/triaged by qualified reviewer.

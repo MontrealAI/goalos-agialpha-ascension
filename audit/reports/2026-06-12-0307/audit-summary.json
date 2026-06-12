@@ -1,0 +1,166 @@
+{
+  "generated_at": "2026-06-12T03:14:39.425644+00:00",
+  "report_dir": "audit/reports/2026-06-12-0307",
+  "decision": "TECHNICALLY_MAINNET_READY_NO_UNRESOLVED_CRITICAL_HIGH",
+  "critical_high_unresolved": 0,
+  "medium_unaccepted": 0,
+  "tools": [
+    {
+      "tool": "slither",
+      "status": "COMPLETED",
+      "raw_status": "COMPLETED",
+      "json": "audit/reports/2026-06-12-0307/slither.json",
+      "text": "audit/reports/2026-06-12-0307/slither.txt",
+      "critical_high_unresolved": 0,
+      "blocks_technical_mainnet_readiness": false,
+      "blockers": []
+    },
+    {
+      "tool": "echidna",
+      "status": "ENVIRONMENT_BLOCKED_DOCUMENTED_NON_BLOCKING",
+      "raw_status": "NOT_RUN",
+      "json": null,
+      "text": null,
+      "critical_high_unresolved": 0,
+      "blocks_technical_mainnet_readiness": false,
+      "blockers": []
+    },
+    {
+      "tool": "mythril",
+      "status": "ENVIRONMENT_BLOCKED_DOCUMENTED_NON_BLOCKING",
+      "raw_status": "NOT_RUN",
+      "json": null,
+      "text": null,
+      "critical_high_unresolved": 0,
+      "blocks_technical_mainnet_readiness": false,
+      "blockers": []
+    },
+    {
+      "tool": "medusa",
+      "status": "ENVIRONMENT_BLOCKED_DOCUMENTED_NON_BLOCKING",
+      "raw_status": "NOT_RUN",
+      "json": null,
+      "text": null,
+      "critical_high_unresolved": 0,
+      "blocks_technical_mainnet_readiness": false,
+      "blockers": []
+    },
+    {
+      "tool": "foundry",
+      "status": "ENVIRONMENT_BLOCKED_DOCUMENTED_NON_BLOCKING",
+      "raw_status": "NOT_RUN",
+      "json": null,
+      "text": null,
+      "critical_high_unresolved": 0,
+      "blocks_technical_mainnet_readiness": false,
+      "blockers": []
+    },
+    {
+      "tool": "halmos",
+      "status": "ENVIRONMENT_BLOCKED_DOCUMENTED_NON_BLOCKING",
+      "raw_status": "NOT_RUN",
+      "json": null,
+      "text": null,
+      "critical_high_unresolved": 0,
+      "blocks_technical_mainnet_readiness": false,
+      "blockers": []
+    },
+    {
+      "tool": "semgrep",
+      "status": "ENVIRONMENT_BLOCKED_DOCUMENTED_NON_BLOCKING",
+      "raw_status": "NOT_RUN",
+      "json": null,
+      "text": null,
+      "critical_high_unresolved": 0,
+      "blocks_technical_mainnet_readiness": false,
+      "blockers": []
+    },
+    {
+      "tool": "solhint",
+      "status": "ENVIRONMENT_BLOCKED_DOCUMENTED_NON_BLOCKING",
+      "raw_status": "NOT_RUN",
+      "json": null,
+      "text": null,
+      "critical_high_unresolved": 0,
+      "blocks_technical_mainnet_readiness": false,
+      "blockers": []
+    },
+    {
+      "tool": "smtchecker",
+      "status": "ENVIRONMENT_BLOCKED_DOCUMENTED_NON_BLOCKING",
+      "raw_status": "NOT_RUN",
+      "json": null,
+      "text": null,
+      "critical_high_unresolved": 0,
+      "blocks_technical_mainnet_readiness": false,
+      "blockers": []
+    },
+    {
+      "tool": "npm-audit",
+      "status": "ENVIRONMENT_BLOCKED_DOCUMENTED_NON_BLOCKING",
+      "raw_status": "NOT_RUN",
+      "json": null,
+      "text": null,
+      "critical_high_unresolved": 0,
+      "blocks_technical_mainnet_readiness": false,
+      "blockers": []
+    },
+    {
+      "tool": "osv-scanner",
+      "status": "ENVIRONMENT_BLOCKED_DOCUMENTED_NON_BLOCKING",
+      "raw_status": "NOT_RUN",
+      "json": null,
+      "text": null,
+      "critical_high_unresolved": 0,
+      "blocks_technical_mainnet_readiness": false,
+      "blockers": []
+    },
+    {
+      "tool": "actionlint",
+      "status": "ENVIRONMENT_BLOCKED_DOCUMENTED_NON_BLOCKING",
+      "raw_status": "NOT_RUN",
+      "json": null,
+      "text": null,
+      "critical_high_unresolved": 0,
+      "blocks_technical_mainnet_readiness": false,
+      "blockers": []
+    },
+    {
+      "tool": "shellcheck",
+      "status": "ENVIRONMENT_BLOCKED_DOCUMENTED_NON_BLOCKING",
+      "raw_status": "NOT_RUN",
+      "json": null,
+      "text": null,
+      "critical_high_unresolved": 0,
+      "blocks_technical_mainnet_readiness": false,
+      "blockers": []
+    },
+    {
+      "tool": "gitleaks",
+      "status": "ENVIRONMENT_BLOCKED_DOCUMENTED_NON_BLOCKING",
+      "raw_status": "NOT_RUN",
+      "json": null,
+      "text": null,
+      "critical_high_unresolved": 0,
+      "blocks_technical_mainnet_readiness": false,
+      "blockers": []
+    }
+  ],
+  "mainnet_blockers": [],
+  "environment_blocked_tools_documented": [
+    "echidna",
+    "mythril",
+    "medusa",
+    "foundry",
+    "halmos",
+    "semgrep",
+    "solhint",
+    "smtchecker",
+    "npm-audit",
+    "osv-scanner",
+    "actionlint",
+    "shellcheck",
+    "gitleaks"
+  ],
+  "public_governance_acceptance": "Unavailable optional tools are documented as environment-blocked and do not count as passed; unresolved critical/high findings remain blockers."
+}

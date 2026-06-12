@@ -1,13 +1,14 @@
 # Final Local Mainnet Deployment Runbook
 
-1. Run public checks.
-2. Run automated/internal security toolchain.
-3. Run local deterministic rehearsal.
-4. Compute technical readiness.
-5. Compute deployment authorization.
-6. Compute Ethereum Mainnet authorization.
-7. Prepare runtime RPC/key locally.
-8. Run `npm run deploy:ethereum-mainnet:gated` and type `DEPLOY_GOALOS_AGIALPHA_ASCENSION_TO_ETHEREUM_MAINNET`.
-9. Run post-deployment verification.
+1. Run public checks: `npm run mainnet:local-checks`.
+2. Run automated/internal security toolchain: `npm run mainnet:security`.
+3. Run local deterministic rehearsal: `npm run mainnet:local-rehearsal`.
+4. Generate certificate: `npm run mainnet:certificate`.
+5. Compute readiness: `npm run mainnet:readiness-check`.
+6. Compute deployment authorization: `npm run mainnet:deployment-authorization-check`.
+7. Compute Ethereum authorization: `npm run mainnet:authorization-check`.
+8. Prepare runtime RPC/key locally outside GitHub.
+9. Run final deployment: `npm run deploy:ethereum-mainnet:gated`.
+10. Run post-deployment verification and publish only transaction/contract evidence.
 
-No CI deployment is allowed. No deployment occurred in this PR.
+Emergency pause/rollback follows `docs/FINAL_ROLLBACK_AND_INCIDENT_PLAN.md`.

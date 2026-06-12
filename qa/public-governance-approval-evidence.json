@@ -3,12 +3,20 @@
   "containsSecrets": false,
   "containsPrivateAddresses": false,
   "status": "PUBLIC_GOVERNANCE_APPROVED",
-  "commit": "a469a9aaebcd5cdd3da77889e6b8450fccdfd5ea",
-  "branch": "codex/public-mainnet-authorization-v10",
+  "commit": "36d66c31867f2f48c439a95f987b2f92c2a367b9",
+  "branch": "codex/mainnet-authorization-certificate-v12",
   "checksPassed": "evaluated-by-public-ci",
   "branchProtectionOrRiskAcceptance": true,
   "codeownersOrSensitivePathPolicy": true,
   "releaseTagInstruction": "mainnet-authorization-vX.Y.Z",
-  "missing": [],
-  "generatedAt": "2026-06-12T01:42:29.540522+00:00"
+  "releaseNotesRequired": [
+    "not externally audited",
+    "not deployed",
+    "authorized for manual gated Ethereum Mainnet deployment",
+    "deployment still requires runtime RPC/key",
+    "no new AGIALPHA token is deployed",
+    "AGIALPHA token address is fixed"
+  ],
+  "privateFounderSignatureRequired": false,
+  "generatedAt": "2026-06-12T02:53:39.168026+00:00"
 }

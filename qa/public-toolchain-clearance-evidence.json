@@ -13,12 +13,14 @@
     "foundry",
     "halmos",
     "semgrep",
+    "solhint",
     "smtchecker",
+    "npm-audit",
     "osv-scanner",
     "actionlint",
     "shellcheck",
     "gitleaks"
   ],
   "mainnetDeployed": "NO",
-  "generatedAt": "2026-06-12T02:36:17.481450+00:00"
+  "generatedAt": "2026-06-12T03:14:42.764660+00:00"
 }
