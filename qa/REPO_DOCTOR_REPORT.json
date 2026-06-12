@@ -1,10 +1,11 @@
 {
-  "generatedAt": "2026-06-12T17:00:22.221226+00:00",
-  "branch": "codex/final-certificate-cleanup-v13",
-  "commit": "5c6f7384894200f627ef479b7a14cbb87d9a06fb",
-  "node": "v20.20.2",
-  "npm": "11.4.2",
+  "generatedAt": "2026-06-12T17:51:42.191470+00:00",
+  "branch": "codex/mainnet-authorization-certificate-v12",
+  "commit": "61eb3a6a92369014304cc058f94c10f5f0d0aa54",
+  "packageManager": "npm via package-lock.json",
   "packageLockExists": true,
+  "workflowNodeVersion": "20.x / v20.20.2 local runtime",
+  "hardhatMajor": "Hardhat 2",
   "baselines": {
     "hardhat": "2.28.6",
     "hardhatToolbox": "5.0.0",
@@ -13,13 +14,16 @@
     "solc": "0.8.35",
     "deterministicCompiler": "local solc-js 0.8.35+commit.47b9dedd.Emscripten.clang aligned with hardhat 0.8.35"
   },
+  "node": "v20.20.2",
+  "npm": "11.4.2",
   "status": {
     "npmCi": "PASSED; package-lock.json used",
     "compilerAlignment": "PASSED",
-    "compileCi": "PASSED; deterministic local solc-js compile generated Hardhat artifacts",
+    "compileCi": "PASSED; deterministic local solc-js compile generated Hardhat artifacts without Hardhat compiler download",
     "testCi": "PASSED",
     "testAll": "PASSED",
     "staticCheck": "PASSED",
+    "slitherSecurityToolchain": "PASSED; no unresolved critical/high findings",
     "toolchainClearance": "PASSED",
     "tier1SecurityToolchain": "PASSED",
     "tier1BlockedTools": [],
@@ -32,15 +36,24 @@
       "smtchecker"
     ],
     "localRehearsal": "PASSED",
-    "localEvidenceDocket": "LOCAL_SIMULATION_ONLY",
+    "localEvidenceDocket": "LOCAL_SIMULATION_ONLY generated",
+    "evidenceDocket": "PASSED; local public-safe Evidence Docket generated",
     "agialphaTokenVerification": "PASSED",
+    "mainnetAuthorizationStatus": "TECHNICALLY_MAINNET_READY=YES; MAINNET_DEPLOYMENT_AUTHORIZED=YES; ETHEREUM_MAINNET_AUTHORIZED=YES; MAINNET_DEPLOYED=NO",
     "mainnetSimulation": "PASSED",
     "technicallyMainnetReady": "YES",
     "mainnetDeploymentAuthorized": "YES",
     "ethereumMainnetAuthorized": "YES",
     "mainnetDeployed": "NO"
   },
+  "blockersPreventingTechnicallyMainnetReadyYES": [],
+  "blockersPreventingMainnetDeploymentAuthorizedYES": [],
+  "blockersPreventingEthereumMainnetAuthorizedYES": [],
+  "finalYesDependsOnPrivateOperatorEvidence": false,
+  "finalYesDependsOnExternalAuditClosure": false,
   "blockers": [],
-  "warnings": [],
-  "requiredCommandsLog": "qa/codex-required-commands.log"
+  "warnings": [
+    "Tier 2 extended tools are documented as environment-unavailable, not passed, and accepted by public governance evidence."
+  ],
+  "requiredCommandsLog": "qa/codex-v12-command-results.log"
 }

@@ -1,0 +1,9 @@
+{
+  "tool": "gitleaks",
+  "status": "COMPLETED",
+  "scannerExitStatus": 0,
+  "findingCount": 0,
+  "critical_high_unresolved": 0,
+  "findings": [],
+  "output": "\n    \u25cb\n    \u2502\u2572\n    \u2502 \u25cb\n    \u25cb \u2591\n    \u2591    gitleaks\n\n5:48PM INF scanned ~206622442 bytes (206.62 MB) in 51.5s\n5:48PM INF no leaks found\n"
+}
