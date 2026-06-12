@@ -11,6 +11,9 @@ on:
       - "audit/**"
       - "deployments/**"
       - "package.json"
+      - "docs/examples/**"
+      - "data/examples/**"
+      - "scripts/add_goalos_usage_example_to_site.py"
       - ".github/workflows/autonomous-github-pages.yml"
   workflow_dispatch:
 
@@ -1619,6 +1622,11 @@ jobs:
           print(f"Evidence artifacts copied: {len(copied_evidence)}")
           PY
 
+      - name: Add GoalOS AGIALPHA usage example to website
+        shell: bash
+        run: |
+          python3 scripts/add_goalos_usage_example_to_site.py --site site
+
       - name: Validate generated website artifact
         shell: bash
         run: |
@@ -1627,6 +1635,9 @@ jobs:
           test -f site/authorization.html
           test -f site/evidence.html
           test -f site/release.html
+          test -f site/usage-example.html
+          test -f site/proof-card-001.html
+          test -f site/data/usage-example-proof-card-001.json
           test -f site/assets/site.css
           test -f site/assets/site.js
           test -f site/.nojekyll

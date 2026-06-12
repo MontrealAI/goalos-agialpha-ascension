@@ -1,0 +1,27 @@
+name: Usage Example Website Smoke Test
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "docs/examples/**"
+      - "data/examples/**"
+      - "scripts/add_goalos_usage_example_to_site.py"
+      - ".github/workflows/usage-example-website-smoke-test.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  smoke-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Build tiny local site and apply usage example
+        run: |
+          mkdir -p site
+          cp app/index.html site/index.html || printf '<main></main>' > site/index.html
+          python3 scripts/add_goalos_usage_example_to_site.py --site site
+          test -f site/usage-example.html
+          test -f site/proof-card-001.html
+          test -f site/data/usage-example-proof-card-001.json
