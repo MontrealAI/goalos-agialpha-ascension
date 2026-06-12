@@ -44,7 +44,7 @@ for name,(jn,tn) in files.items():
     if critical:
         tool_blockers.append(f'{name} reported {critical} unresolved critical/high finding(s)')
         rows.append([f'{name.upper()}-DIRECT', name, 'Critical/High', 'Unresolved', f'{name} critical_high_unresolved={critical}', 'true'])
-    if raw in {'PENDING_ENVIRONMENT_BLOCKED','NOT_RUN','FAILED','FAILED_SCANNER_ERROR','FAILED_UNTRIAGED_VULNERABILITIES'} and name in TIER1:
+    if raw in {'PENDING_ENVIRONMENT_BLOCKED','NOT_RUN','FAILED','FAILED_SCANNER_ERROR','FAILED_UNTRIAGED_VULNERABILITIES','FAILED_TOOL_UNAVAILABLE'} and name in TIER1:
         tool_blockers.append(f'Tier 1 tool {name} did not pass (raw status: {raw})')
         tier1_blocked.append(name)
     if raw in {'PENDING_ENVIRONMENT_BLOCKED','NOT_RUN'} and name in TIER2:
@@ -53,7 +53,7 @@ for name,(jn,tn) in files.items():
         status='TIER2_ENVIRONMENT_UNAVAILABLE_DOCUMENTED' if name in TIER2 else 'TIER1_BLOCKED'
     elif critical:
         status='COMPLETED_WITH_UNRESOLVED_CRITICAL_HIGH'
-    elif raw in {'FAILED','FAILED_SCANNER_ERROR','FAILED_UNTRIAGED_VULNERABILITIES'}:
+    elif raw in {'FAILED','FAILED_SCANNER_ERROR','FAILED_UNTRIAGED_VULNERABILITIES','FAILED_TOOL_UNAVAILABLE'}:
         status=raw
     elif name=='npm-audit':
         status='COMPLETED_FINDINGS_REVIEWED_NO_CRITICAL_HIGH_BLOCKER'

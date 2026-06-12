@@ -37,8 +37,36 @@ def main():
     if not ((docket.get('status')=='LOCAL_SIMULATION_ONLY' or docket.get('docketType')=='LOCAL_SIMULATION_ONLY') and (docket.get('manifestHash') or docket.get('deploymentManifestHash'))): blockers.append('Local Evidence Docket is missing or incomplete.')
     token_ok=token.get('status') in {'PASSED','ACCEPTED_BY_PUBLIC_GOVERNANCE','GOVERNANCE_ACCEPTED'} and str(token.get('agialphaToken',token.get('address',''))).lower()==AGIALPHA.lower() and token.get('newAgialphaTokenDeployed') is False and token.get('mockAgialphaUsedOnMainnet') is False
     if not token_ok: blockers.append('Public AGIALPHA token verification is missing or not governance-accepted.')
-    sim_ok=sim.get('status')=='PASSED' and sim.get('chainId')==1 and sim.get('checks',{}).get('deploysNewAGIALPHAOnMainnet') is False and sim.get('checks',{}).get('deploysMockAGIALPHAOnMainnet') is False
-    if not sim_ok: blockers.append('Mainnet-shaped simulation evidence is missing or failed.')
+    sim_checks=sim.get('checks',{}) if isinstance(sim.get('checks',{}),dict) else {}
+    sim_deployed_contracts=int(sim.get('deployedContracts',0) or 0)
+    sim_has_deployment_manifest=bool(sim.get('deploymentManifestHash'))
+    sim_common_ok=(
+        sim.get('status')=='PASSED'
+        and sim.get('chainId')==1
+        and str(sim.get('agialphaToken','')).lower()==AGIALPHA.lower()
+        and sim.get('mainnetBroadcast') is False
+        and sim_checks.get('deploysNewAGIALPHAOnMainnet') is False
+        and sim_checks.get('deploysMockAGIALPHAOnMainnet') is False
+        and sim_checks.get('constructorChecks') is True
+        and sim_checks.get('roleAssignmentChecks') is True
+        and sim_deployed_contracts > 0
+        and sim_has_deployment_manifest
+    )
+    sim_live_fork_ok=(
+        sim_common_ok
+        and sim.get('forkMainnet') is True
+        and sim.get('observedChainId')==1
+        and sim.get('tokenCodeVerifiedOnFork') is True
+        and sim.get('simulationMode')=='MAINNET_FORK_SIMULATION: LIVE_MAINNET_FORK'
+    )
+    sim_deterministic_ok=(
+        sim_common_ok
+        and sim.get('simulationMode')=='MAINNET_FORK_SIMULATION: DETERMINISTIC_LOCAL_MAINNET_SHAPED_SIMULATION'
+        and sim.get('deterministicLocalSimulationGovernanceAccepted') is True
+    )
+    sim_ok=sim_live_fork_ok or sim_deterministic_ok
+    if not sim_ok:
+        blockers.append('Mainnet-shaped simulation evidence must prove a live fork deployment (observed chainId 1, token code verified, deployed contracts and manifest hash) or an explicitly governance-accepted deterministic local deployment with deployed contracts and manifest hash.')
     if gov.get('status') not in {'PUBLIC_GOVERNANCE_APPROVED','PUBLIC_RISK_ACCEPTED'}: blockers.append('Public governance approval evidence is missing.')
     if branch.get('branchProtection') not in {'ENABLED','PUBLIC_RISK_ACCEPTED'}: blockers.append('Branch protection/risk acceptance evidence is missing.')
     for rel in ['qa/public-toolchain-clearance-evidence.json','qa/local-rehearsal-report.json','qa/public-agialpha-token-verification.json','qa/public-governance-approval-evidence.json','qa/public-branch-protection-evidence.json','qa/ETHEREUM_MAINNET_FORK_SIMULATION.json']:

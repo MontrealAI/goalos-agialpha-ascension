@@ -4,6 +4,7 @@ import json,pathlib
 ROOT=pathlib.Path(__file__).resolve().parents[1]
 cert=json.loads((ROOT/'qa/mainnet-authorization-certificate.json').read_text())
 tech=cert['technicallyMainnetReady']; dep=cert['mainnetDeploymentAuthorized']; eth=cert['ethereumMainnetAuthorized']; deployed=cert['mainnetDeployed']
+authorization_meaning = 'This means the repository package is authorized for manual gated Ethereum Mainnet deployment. It does not mean Ethereum Mainnet deployment has occurred. Actual deployment still requires a runtime RPC URL and deployer key outside GitHub.' if (tech == 'YES' and dep == 'YES' and eth == 'YES') else 'This means the repository package is not currently authorized for manual gated Ethereum Mainnet deployment. Resolve the certificate blockers, regenerate the certificate, and rerun the public checks before any mainnet deployment attempt. Actual deployment still requires a runtime RPC URL and deployer key outside GitHub.'
 status_block=f"""GoalOS AGIALPHA Ascension v4.4 mainnet authorization candidate.
 
 Automated/internal security toolchain: passed.
@@ -16,7 +17,7 @@ Ethereum Mainnet deployment authorization: {dep}.
 Ethereum Mainnet authorization: {eth}.
 Ethereum Mainnet deployed: {deployed}.
 
-This means the repository package is authorized for manual gated Ethereum Mainnet deployment. It does not mean Ethereum Mainnet deployment has occurred. Actual deployment still requires a runtime RPC URL and deployer key outside GitHub.
+{authorization_meaning}
 
 It does not claim external audit completion, legal approval, tax review, guaranteed security, guaranteed token classification, investment return, yield, price target, revenue share, or production deployment.
 

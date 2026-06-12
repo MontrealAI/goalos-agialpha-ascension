@@ -1,16 +1,13 @@
 {
-  "status": "YES",
-  "MAINNET_DEPLOYMENT_AUTHORIZED": "YES",
-  "mainnetDeploymentAuthorized": "YES",
-  "commit": "5dca98050896950c26a10f89618ecd0dd4bdecbc",
+  "status": "NO",
+  "MAINNET_DEPLOYMENT_AUTHORIZED": "NO",
+  "mainnetDeploymentAuthorized": "NO",
+  "commit": "c006537058510f4a0d4ecb128769d8a02955a5d9",
   "chain": "ethereum",
   "chainId": 1,
   "agialphaToken": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
   "mainnetDeployed": "NO",
   "MAINNET_DEPLOYED": "NO",
-  "runtimeSecretsRequiredForBroadcast": true,
-  "runtimeSecretsStoredInGitHub": false,
-  "privateOperatorAuthorizationPackageRequired": false,
   "evidence": {
     "repoDoctor": {
       "path": "qa/REPO_DOCTOR_REPORT.json",
@@ -109,7 +106,9 @@
       "sha256": "0x91fa1803a3c687a0266ea6039deb2c27572a299d62e4a32cf544c017e804e62c"
     }
   },
-  "blockers": [],
-  "generatedAt": "2026-06-12T04:13:16.629048+00:00",
-  "generatedBy": "scripts/mainnet-deployment-authorization-check.py"
+  "blockers": [
+    "Mainnet-shaped simulation evidence must prove a live fork deployment (observed chainId 1, token code verified, deployed contracts and manifest hash) or an explicitly governance-accepted deterministic local deployment with deployed contracts and manifest hash."
+  ],
+  "generatedAt": "2026-06-12T13:38:50.205069+00:00",
+  "generatedBy": "scripts/generate-public-status-docs.py"
 }
