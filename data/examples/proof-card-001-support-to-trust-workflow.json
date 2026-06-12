@@ -1,0 +1,80 @@
+{
+  "schema": "goalos.agialpha.usage_example.v2",
+  "id": "proof-card-001-support-to-trust-workflow",
+  "title": "Proof Card 001 \u2014 The Support-to-Trust Workflow",
+  "status": "illustrative-public-usage-example-until-live-evidence-docket",
+  "oneLine": "GoalOS turns AI work into proof: one support workflow improves, proof validates it, reputation compounds it.",
+  "plainEnglish": "A buyer has a support question. GoalOS improves the support workflow. AGIALPHA coordinates sponsor, builder, and reviewer proof work. The result becomes a Proof Card, credential, and reputation update. The buyer does not need crypto. Private data stays off-chain. Public proof becomes verifiable.",
+  "roles": [
+    {
+      "role": "Sponsor",
+      "plainEnglish": "Funds a useful proof mission."
+    },
+    {
+      "role": "Builder",
+      "plainEnglish": "Improves the workflow and submits proof."
+    },
+    {
+      "role": "Reviewer",
+      "plainEnglish": "Checks evidence against a rubric."
+    },
+    {
+      "role": "Buyer",
+      "plainEnglish": "Receives a clearer, safer support experience without needing crypto."
+    }
+  ],
+  "loop": [
+    "Support issue appears",
+    "GoalOS defines the aim and success criteria",
+    "Builder improves workflow v1.0 to v1.1",
+    "ProofBundle and proof note are prepared",
+    "Reviewer validates evidence",
+    "Proof Card registers public-safe proof",
+    "Credential issues",
+    "Reputation updates",
+    "Better support work starts from the improved workflow"
+  ],
+  "publicProof": [
+    "mission title",
+    "proof-card hash",
+    "review decision",
+    "credential type",
+    "reputation update",
+    "public claim boundary"
+  ],
+  "privateEvidence": [
+    "buyer identity",
+    "private emails",
+    "paid files",
+    "internal policy",
+    "private prompts",
+    "legal/tax/security records"
+  ],
+  "claimBoundary": {
+    "achievedAGI": false,
+    "investmentReturn": false,
+    "mainnetDeployment": false,
+    "legalApproval": false,
+    "taxApproval": false,
+    "securityApproval": false,
+    "liveCustomerResult": false
+  },
+  "callsToAction": [
+    {
+      "label": "Sponsor a Proof Mission",
+      "href": "proof-mission-001.html#sponsor"
+    },
+    {
+      "label": "Become a Builder",
+      "href": "proof-mission-001.html#builder"
+    },
+    {
+      "label": "Review Proof",
+      "href": "proof-mission-001.html#reviewer"
+    },
+    {
+      "label": "Share the Example",
+      "href": "share.html"
+    }
+  ]
+}
