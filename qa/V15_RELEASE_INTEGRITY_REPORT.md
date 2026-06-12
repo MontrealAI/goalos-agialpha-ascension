@@ -1,7 +1,7 @@
 # V15 Release Integrity Report
 
 ## Summary
-- Certificate hash: `0x1f133895a142dd3446b8bc7dbc249e40fb0707eb4bb7bf09a197d42412e75818`
+- Certificate hash: `0xe57107980ba5eca61a208e18a03d4132742861565070acad77dabad7fde64d43`
 - package.json version: `4.4.0`
 - README/status version: `v4.4.0`
 - Versions match: `True`
