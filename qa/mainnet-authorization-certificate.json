@@ -1,9 +1,9 @@
 {
   "schemaVersion": "1.0",
-  "generatedAt": "2026-06-12T14:51:37.301506+00:00",
+  "generatedAt": "2026-06-12T15:34:59.636362+00:00",
   "generatedBy": "scripts/generate-mainnet-authorization-certificate.py",
   "repository": "MontrealAI/goalos-agialpha-ascension",
-  "commit": "693a68eb0f917da1483a5da5c5b1b9a4ef64c49c",
+  "commit": "ee8d89c275d000aea7ddb18f946a530a01ddd0fc",
   "branch": "work",
   "chain": "ethereum",
   "chainId": 1,

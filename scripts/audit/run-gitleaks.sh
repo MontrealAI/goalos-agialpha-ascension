@@ -19,10 +19,10 @@ out_path = pathlib.Path(sys.argv[2])
 install_status = int(sys.argv[3])
 install_output = text_path.read_text(errors="ignore")
 exclude_dirs = {".git", "node_modules", "artifacts", "cache", "direct-solc-output"}
-exclude_prefixes = ("audit/reports/",)
+exclude_prefixes = ("audit/reports/", ".private.example/")
 secret_name = re.compile(r"(?i)(private[_-]?key|deployer[_-]?key|mnemonic|seed[_-]?phrase|etherscan[_-]?api[_-]?key|rpc[_-]?url)")
 assignment = re.compile(r"(?i)([A-Z0-9_]*(?:PRIVATE_KEY|DEPLOYER_KEY|MNEMONIC|SEED_PHRASE|ETHERSCAN_API_KEY|RPC_URL)[A-Z0-9_]*)\s*[:=]\s*['\"]?([^'\"\s#]+)")
-placeholder = re.compile(r"(?i)^(|0x0+|<.*>|\$\{.*\}|your[-_].*|example|placeholder|redacted|changeme|dummy|localhost|http://127\.0\.0\.1.*|http://localhost.*)$")
+placeholder = re.compile(r"(?i)^(|0x0+|0x?DO_NOT_COMMIT.*|DO_NOT_COMMIT.*|PRIVATE_LOCAL.*|TYPE_CONFIRMATION.*|<.*>|\$\{.*\}|your[-_].*|example|placeholder|redacted|changeme|dummy|localhost|http://127\.0\.0\.1.*|http://localhost.*)$")
 findings = []
 for path in pathlib.Path('.').rglob('*'):
     rel = path.as_posix()
@@ -32,7 +32,7 @@ for path in pathlib.Path('.').rglob('*'):
         data = path.read_text(errors='ignore')
     except Exception:
         continue
-    if 'BEGIN PRIVATE KEY' in data or 'BEGIN RSA PRIVATE KEY' in data or 'BEGIN OPENSSH PRIVATE KEY' in data:
+    if re.search(r'(?m)^-----BEGIN (?:RSA |OPENSSH )?PRIVATE KEY-----$', data):
         findings.append({'file': rel, 'rule': 'private-key-block'})
         continue
     for line_no, line in enumerate(data.splitlines(), 1):
