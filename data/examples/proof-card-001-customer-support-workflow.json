@@ -1,0 +1,37 @@
+{
+  "schema": "goalos.agialpha.usage_example.v1",
+  "id": "proof-card-001-customer-support-reply-workflow",
+  "title": "Proof Card 001 - Customer Support Reply Workflow",
+  "status": "illustrative-public-example-until-live-evidence-docket",
+  "goal": "Improve customer support replies for GoalOS digital-product buyers.",
+  "buyerCryptoRequired": false,
+  "agialphaRole": [
+    "mission posting",
+    "builder claim bond",
+    "proof submission bond",
+    "reviewer bond",
+    "proof-card registration",
+    "credential action",
+    "reputation update"
+  ],
+  "workflowBefore": "A polite but generic AI reply that may miss access/refund classification and escalation needs.",
+  "workflowAfter": "A structured reply workflow that classifies the request, drafts a clear response, flags risk, and produces a reusable support playbook.",
+  "proofLoop": [
+    "Sponsor posts mission",
+    "Builder claims mission",
+    "Builder improves workflow",
+    "Builder submits proof",
+    "Reviewer validates evidence",
+    "Proof Card registers",
+    "Credential issues",
+    "Reputation updates"
+  ],
+  "safeClaimBoundary": {
+    "achievedAGI": false,
+    "investmentReturn": false,
+    "mainnetDeployment": false,
+    "privateBuyerDataOnChain": false,
+    "liveCustomerResult": false
+  },
+  "publicShareLine": "GoalOS turns AI work into proof: one support workflow improves, proof validates it, reputation compounds it."
+}
