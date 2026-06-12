@@ -3,7 +3,7 @@
   "containsSecrets": false,
   "containsPrivateAddresses": false,
   "status": "PASSED",
-  "generatedAt": "2026-06-12T17:50:22.580Z",
+  "generatedAt": "2026-06-12T18:46:43.789Z",
   "generatedBy": "scripts/local-mainnet-fork-simulation.ts",
   "chain": "ethereum",
   "chainId": 1,
@@ -17,7 +17,7 @@
   "deterministicLocalSimulationSource": "deployments/local.agialpha.latest.json",
   "tokenCodeVerifiedOnFork": false,
   "deployedContracts": 17,
-  "deploymentManifestHash": "0x562c48efc23d43bda5a597e362d59d335e03dad95113b1f219d21a48529b291f",
+  "deploymentManifestHash": "0x51f44af1595e5412506f39a7e8e6ecc8b4c8e6315c88485f0cb96ded23f93d3e",
   "restoredManifest": false,
   "checks": {
     "MAINNET_FORK_SIMULATION": "PASSED",

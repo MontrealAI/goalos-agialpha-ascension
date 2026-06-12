@@ -4,9 +4,9 @@ GoalOS AGIALPHA Ascension v4.4 candidate.
 Gate-clean evidence-ready audit candidate.
 Not externally audited.
 Automated security/toolchain review: completed with blockers.
-Ethereum Mainnet not authorized.
+Ethereum Mainnet authorization: YES for manual gated deployment from the public certificate.
 Technical mainnet readiness: NO.
-Ethereum Mainnet deployment authorization: NO.
+Ethereum Mainnet deployment authorization: YES. Ethereum Mainnet deployed: NO.
 
 Continuation path:
 
