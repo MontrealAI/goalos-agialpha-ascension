@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-11T23:51:52.198641+00:00",
+  "generated_at": "2026-06-12T01:11:43.403625+00:00",
   "files": [
     {
       "path": ".editorconfig",
@@ -2118,8 +2118,8 @@
     },
     {
       "path": "audit/reports/2026-06-11-2350/unresolved-findings.csv",
-      "bytes": 1547,
-      "sha256": "108b44a9bb718a46ba00ffaff143940b537050301924c0750bbc2fd510d311d6"
+      "bytes": 1534,
+      "sha256": "a182596f7c6418fead32c5eb0627069ce20781fac64bb6247f62d4e39f439ae5"
     },
     {
       "path": "audit/reports/dependency-triage/openzeppelin-pattern-scan.md",
@@ -3594,7 +3594,7 @@
     {
       "path": "qa/QA_REPORT.json",
       "bytes": 921,
-      "sha256": "59031a9190ff7c2cb6b8fffb48fc31f07f600d1430d01d8fa01ebc141e8d9c85"
+      "sha256": "3aaeaab7e0021f374db35c5e1f7e7dcf49dd767abea89b496d39ac13ab85167e"
     },
     {
       "path": "qa/QA_REPORT_v4_0.json",

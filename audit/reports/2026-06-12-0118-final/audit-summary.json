@@ -1,0 +1,147 @@
+{
+  "generated_at": "2026-06-12T01:20:17.629843+00:00",
+  "report_dir": "audit/reports/2026-06-12-0118-final",
+  "decision": "TECHNICALLY_MAINNET_READY_NO",
+  "critical_high_unresolved": 0,
+  "medium_unaccepted": 0,
+  "tools": [
+    {
+      "tool": "slither",
+      "status": "COMPLETED",
+      "json": "audit/reports/2026-06-12-0118-final/slither.json",
+      "text": "audit/reports/2026-06-12-0118-final/slither.txt",
+      "blocks_technical_mainnet_readiness": false,
+      "blockers": []
+    },
+    {
+      "tool": "echidna",
+      "status": "PENDING_ENVIRONMENT_BLOCKED",
+      "json": "audit/reports/2026-06-12-0118-final/echidna.json",
+      "text": "audit/reports/2026-06-12-0118-final/echidna.txt",
+      "blocks_technical_mainnet_readiness": true,
+      "blockers": [
+        "echidna execution pending or environment-blocked"
+      ]
+    },
+    {
+      "tool": "mythril",
+      "status": "PENDING_ENVIRONMENT_BLOCKED",
+      "json": "audit/reports/2026-06-12-0118-final/mythril.json",
+      "text": "audit/reports/2026-06-12-0118-final/mythril.txt",
+      "blocks_technical_mainnet_readiness": true,
+      "blockers": [
+        "mythril execution pending or environment-blocked"
+      ]
+    },
+    {
+      "tool": "medusa",
+      "status": "PENDING_ENVIRONMENT_BLOCKED",
+      "json": "audit/reports/2026-06-12-0118-final/medusa.json",
+      "text": "audit/reports/2026-06-12-0118-final/medusa.txt",
+      "blocks_technical_mainnet_readiness": true,
+      "blockers": [
+        "medusa execution pending or environment-blocked"
+      ]
+    },
+    {
+      "tool": "foundry",
+      "status": "PENDING_ENVIRONMENT_BLOCKED",
+      "json": "audit/reports/2026-06-12-0118-final/foundry.json",
+      "text": "audit/reports/2026-06-12-0118-final/foundry-test.log",
+      "blocks_technical_mainnet_readiness": true,
+      "blockers": [
+        "foundry execution pending or environment-blocked"
+      ]
+    },
+    {
+      "tool": "halmos",
+      "status": "PENDING_ENVIRONMENT_BLOCKED",
+      "json": "audit/reports/2026-06-12-0118-final/halmos.json",
+      "text": "audit/reports/2026-06-12-0118-final/halmos.txt",
+      "blocks_technical_mainnet_readiness": true,
+      "blockers": [
+        "halmos execution pending or environment-blocked"
+      ]
+    },
+    {
+      "tool": "semgrep",
+      "status": "COMPLETED",
+      "json": "audit/reports/2026-06-12-0118-final/semgrep.json",
+      "text": "audit/reports/2026-06-12-0118-final/semgrep.txt",
+      "blocks_technical_mainnet_readiness": false,
+      "blockers": []
+    },
+    {
+      "tool": "solhint",
+      "status": "COMPLETED_TEXT_ONLY",
+      "json": null,
+      "text": "audit/reports/2026-06-12-0118-final/solhint.txt",
+      "blocks_technical_mainnet_readiness": false,
+      "blockers": []
+    },
+    {
+      "tool": "smtchecker",
+      "status": "PENDING_ENVIRONMENT_BLOCKED",
+      "json": "audit/reports/2026-06-12-0118-final/smtchecker.json",
+      "text": "audit/reports/2026-06-12-0118-final/smtchecker.txt",
+      "blocks_technical_mainnet_readiness": true,
+      "blockers": [
+        "smtchecker execution pending or environment-blocked"
+      ]
+    },
+    {
+      "tool": "npm-audit",
+      "status": "COMPLETED_WITH_FINDINGS_REVIEW_REQUIRED",
+      "json": "audit/reports/2026-06-12-0118-final/npm-audit.json",
+      "text": "audit/reports/2026-06-12-0118-final/npm-audit.txt",
+      "blocks_technical_mainnet_readiness": false,
+      "blockers": []
+    },
+    {
+      "tool": "osv-scanner",
+      "status": "PENDING_ENVIRONMENT_BLOCKED",
+      "json": "audit/reports/2026-06-12-0118-final/osv-scanner.json",
+      "text": "audit/reports/2026-06-12-0118-final/osv-scanner.txt",
+      "blocks_technical_mainnet_readiness": true,
+      "blockers": [
+        "osv-scanner execution pending or environment-blocked"
+      ]
+    },
+    {
+      "tool": "actionlint",
+      "status": "PENDING_ENVIRONMENT_BLOCKED",
+      "json": "audit/reports/2026-06-12-0118-final/actionlint.json",
+      "text": "audit/reports/2026-06-12-0118-final/actionlint.txt",
+      "blocks_technical_mainnet_readiness": true,
+      "blockers": [
+        "actionlint execution pending or environment-blocked"
+      ]
+    },
+    {
+      "tool": "shellcheck",
+      "status": "PENDING_ENVIRONMENT_BLOCKED",
+      "json": "audit/reports/2026-06-12-0118-final/shellcheck.json",
+      "text": "audit/reports/2026-06-12-0118-final/shellcheck.txt",
+      "blocks_technical_mainnet_readiness": true,
+      "blockers": [
+        "shellcheck execution pending or environment-blocked"
+      ]
+    },
+    {
+      "tool": "gitleaks",
+      "status": "PENDING_ENVIRONMENT_BLOCKED",
+      "json": "audit/reports/2026-06-12-0118-final/gitleaks.json",
+      "text": "audit/reports/2026-06-12-0118-final/gitleaks.txt",
+      "blocks_technical_mainnet_readiness": true,
+      "blockers": [
+        "gitleaks execution pending or environment-blocked"
+      ]
+    }
+  ],
+  "mainnet_blockers": [
+    "toolchain components pending/environment-blocked unless cleared by internal security review",
+    "public Sepolia replay evidence is pending unless real Sepolia RPC/deployer evidence is supplied",
+    "AGIALPHA mainnet token verification requires mainnet RPC evidence",
+    "treasury/admin/founder address ceremony and founder deployment approval are not complete"
+  ]
+}

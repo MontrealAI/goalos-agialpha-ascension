@@ -1,0 +1,1 @@
+{"tool":"Echidna","status":"PENDING_ENVIRONMENT_BLOCKED","command":"echidna . --config configs/echidna.yaml","reason":"echidna executable is not installed; install via crytic/echidna Docker or release binary","blocks_mainnet":true,"generated_at":"2026-06-12T01:19:46Z"}
