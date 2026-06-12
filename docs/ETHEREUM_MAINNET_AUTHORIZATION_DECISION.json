@@ -1,13 +1,13 @@
 {
   "status": "NO",
   "ETHEREUM_MAINNET_AUTHORIZED": "NO",
-  "commit": "50d7d92bacd6b8b58a7dfa4a080ffd3b299fd841",
+  "commit": "52835afd36e69a8227c5ca483649bd7ffaec2fda",
   "chain": "ethereum",
   "chainId": 1,
   "agialphaToken": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
   "evidence": {
-    "technicalReadinessSha256": "e2f4da3bca12b27550c0117dde3622d139f8617578446b64d22f8a0239cdfdd3",
-    "deploymentAuthorizationSha256": "7218b8f2c8a3f2ec1a08841b5ed899afe7aa1b5bf551c6ce1d21517c1b8fc35e",
+    "technicalReadinessSha256": "c8f9dc5fc527df4df511f4f4cc57089cef5c0220e8c02bdd9eb0cdc5a7dc7de4",
+    "deploymentAuthorizationSha256": "910f26d8731696ed37f4e7f6940ffcfc952c2caa5b6215fa42f59314eb1cef2e",
     "ethereumAuthorizationEvidence": {
       "path": "qa/public-ethereum-mainnet-authorization-evidence.json",
       "sha256": null,
@@ -16,12 +16,14 @@
     }
   },
   "blockers": [
+    "PRIVATE_OPERATOR_EVIDENCE_PENDING",
+    "Run --with-redacted-private-evidence to evaluate committed redacted private evidence",
     "TECHNICALLY_MAINNET_READY is not YES",
     "MAINNET_DEPLOYMENT_AUTHORIZED is not YES",
     "PRIVATE_OPERATOR_EVIDENCE_PENDING: missing qa/public-ethereum-mainnet-authorization-evidence.json"
   ],
-  "reason": "TECHNICALLY_MAINNET_READY is not YES",
-  "generatedAt": "2026-06-11T23:05:13.440957+00:00",
+  "reason": "PRIVATE_OPERATOR_EVIDENCE_PENDING",
+  "generatedAt": "2026-06-11T23:51:11.921786+00:00",
   "generatedBy": "scripts/ethereum-mainnet-authorization-check.py",
   "finalManualDeploymentCommand": null,
   "mainnetDeploymentExecuted": false

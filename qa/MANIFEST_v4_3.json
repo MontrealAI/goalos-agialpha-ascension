@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-11T23:24:03.334670+00:00",
+  "generated_at": "2026-06-11T23:49:33.382270+00:00",
   "files": [
     {
       "path": ".editorconfig",
@@ -2723,8 +2723,8 @@
     },
     {
       "path": "docs/FINAL_LOCAL_PRE_DEPLOYMENT_CHECKLIST.md",
-      "bytes": 525,
-      "sha256": "580d6194784b64adbcac84b155df783108c94b5b4979d6b900c04bdc6430d1d2"
+      "bytes": 794,
+      "sha256": "3ae7457a6dd345270aff99535eaa378dc195556048c219581957591aa409d825"
     },
     {
       "path": "docs/FINAL_PUBLIC_CLAIMS_BOUNDARY.md",
@@ -2908,8 +2908,8 @@
     },
     {
       "path": "docs/NO_PUBLIC_SECRETS_MAINNET_AUTHORIZATION_MODEL.md",
-      "bytes": 2950,
-      "sha256": "b23cdc6b1c248cff459bd6b67da64718b130fb40dd6622a81fa890ee0b17c6e1"
+      "bytes": 488,
+      "sha256": "6e897284cd2cf1f338c26ab32dea95902547565ed56ce953ec05fb73130458e3"
     },
     {
       "path": "docs/OPENZEPPELIN_5_MIGRATION_DECISION.md",
@@ -2993,8 +2993,8 @@
     },
     {
       "path": "docs/PRIVATE_OPERATOR_LOCAL_COMMANDS.md",
-      "bytes": 2192,
-      "sha256": "c2d1894f1347e6bb57a42045ca935ff0bd2fa80414ba9006cb03e3617f45eeac"
+      "bytes": 765,
+      "sha256": "d25c85485e7efd8f7e7e5dbf375960bfd4d01bfe253f0b8659bceb7e5bde8462"
     },
     {
       "path": "docs/PRIVATE_SEPOLIA_REHEARSAL_RUNBOOK.md",
@@ -3110,6 +3110,11 @@
       "path": "docs/SEPOLIA_REHEARSAL_EVIDENCE_DOCKET_v4_2.md",
       "bytes": 1022,
       "sha256": "cd94d543ff362dfb045b7fbfaee97252fe67998e9d8297a56e85178cbe9107bb"
+    },
+    {
+      "path": "docs/START_HERE_MAINNET.md",
+      "bytes": 922,
+      "sha256": "80d483fc5c202c621e9ba9e4efb46d89768f618923f7357c54da4f1e8e031aaa"
     },
     {
       "path": "docs/START_HERE_v3_0.md",
@@ -3283,8 +3288,8 @@
     },
     {
       "path": "package.json",
-      "bytes": 6534,
-      "sha256": "ff08608abcbeb5b1a973ea19428160271155e8f8f8e23e7b8f8d862705929371"
+      "bytes": 7549,
+      "sha256": "757ac4171ed66e076449be7fd0eb4816243bd0d16625f68cc09bea1e43a57762"
     },
     {
       "path": "qa/ADDRESS_CEREMONY.json",
@@ -3374,7 +3379,7 @@
     {
       "path": "qa/QA_REPORT.json",
       "bytes": 921,
-      "sha256": "8be7095e6eb34e1a2100e9d4a19c60d280568f8a734a99d8d2aa1177e47e660d"
+      "sha256": "1cd4795c3711f6b41a2a28ec10189eb0f06db13c6e4cb8e2c1c96ea3fed5a6ef"
     },
     {
       "path": "qa/QA_REPORT_v4_0.json",
@@ -3389,7 +3394,7 @@
     {
       "path": "qa/READINESS_REPORT_v4_3.json",
       "bytes": 538,
-      "sha256": "af2eb2f68bbf1f63a43f9ba239ae2769552ad28dfd49589677f8615aad2634ea"
+      "sha256": "4ed73f74fc7fe35bf2ec76c17716c3959746cf6e45b7a43b4fcae9c8a47b150a"
     },
     {
       "path": "qa/REPOSITORY_STARTER_QA_OUTPUTS_v2_0.json",
@@ -3403,13 +3408,13 @@
     },
     {
       "path": "qa/REPO_DOCTOR_REPORT.json",
-      "bytes": 1429,
-      "sha256": "ab2eeaa0d6d6b470282ae0727506a57fc1156e130e4e28cd14b0a62eec192ecd"
+      "bytes": 2513,
+      "sha256": "840da1d66697e1f37785b79221f12d0e332ce24f3e95b90de2c7c844ec62b9f9"
     },
     {
       "path": "qa/REPO_DOCTOR_REPORT.md",
-      "bytes": 1358,
-      "sha256": "c22b97ecc089a15b8b189bac133b7d7ed26daf100bb35bd73f1f024af8d4a19b"
+      "bytes": 2119,
+      "sha256": "07fcac819b32cfea4f0ab5d7ab9732eb5add98efde4e7ba5a2ab9225481222dd"
     },
     {
       "path": "qa/SHA256SUMS_v4_0.txt",
@@ -3653,8 +3658,8 @@
     },
     {
       "path": "scripts/deploy-core.ts",
-      "bytes": 19766,
-      "sha256": "b1728a01331c2991298543a3a007bbf2488a4f5d3e9162a043eed27e91c42219"
+      "bytes": 19951,
+      "sha256": "91396aef16cb2b21686f34743333f8de7d758b4b5f863de9f21914d95218196b"
     },
     {
       "path": "scripts/deploy-ethereum-mainnet-gated.ts",
@@ -3868,8 +3873,8 @@
     },
     {
       "path": "scripts/verify-agialpha-token.ts",
-      "bytes": 2163,
-      "sha256": "20e54659377c1b7921da478d864328d76d171b1eb070eaf11d41d4f3132d897d"
+      "bytes": 2254,
+      "sha256": "92fcf067ac12162df67d82e4a9df4c7ceea04ee5750c9cee5252c5ec996a6b2f"
     },
     {
       "path": "scripts/verify-deployment-manifest.ts",
@@ -3890,6 +3895,21 @@
       "path": "scripts/verify-readiness-v4-3.py",
       "bytes": 6224,
       "sha256": "506af43cb504d8e612b3232ad24355c0cf0f7c92a6f93500e046bbce3d46bbe5"
+    },
+    {
+      "path": "scripts/wizard/mainnet-command-center.py",
+      "bytes": 1469,
+      "sha256": "4cab7e4a04b2fc6a5c20e8e1f4ab36f3620dae57d92eecec34f90796c553dc63"
+    },
+    {
+      "path": "scripts/wizard/mainnet-next-step.py",
+      "bytes": 990,
+      "sha256": "155ed02a19113681755da527972a275c51209555cf19962fc55a6969c63e710a"
+    },
+    {
+      "path": "scripts/wizard/mainnet-status.py",
+      "bytes": 1314,
+      "sha256": "072e16120b7ee727c20fb47ed3ed17f6a0606b0989a53c3dfd52683c6d1ea824"
     },
     {
       "path": "security/ACCESS_CONTROL_MATRIX.md",
