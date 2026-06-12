@@ -5,10 +5,27 @@ import { deployGoalOSAGIALPHAAscension } from "./deploy-core";
 
 const AGIALPHA = "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA";
 const MANIFEST_PATH = "deployments/ethereum-mainnet.agialpha.latest.json";
+const LOCAL_REHEARSAL_MANIFEST_PATH = "deployments/local.agialpha.latest.json";
+const PUBLIC_GOVERNANCE_EVIDENCE_PATH = "qa/public-governance-approval-evidence.json";
 
 function sha(value: string) { return "0x" + crypto.createHash("sha256").update(value).digest("hex"); }
 function bytes32(seed: string) { return "0x" + seed.repeat(64).slice(0, 64); }
 function setDefaultEnv(name: string, value: string) { if (!process.env[name]) process.env[name] = value; }
+function readJsonIfExists(path: string): any | null {
+  if (!fs.existsSync(path)) return null;
+  try { return JSON.parse(fs.readFileSync(path, "utf8")); } catch { return null; }
+}
+function deterministicGovernanceAccepted(): boolean {
+  const evidence = readJsonIfExists(PUBLIC_GOVERNANCE_EVIDENCE_PATH);
+  return evidence?.status === "PUBLIC_GOVERNANCE_APPROVED" || evidence?.status === "PUBLIC_RISK_ACCEPTED";
+}
+function localManifestContractCount(manifest: any): number {
+  const direct = Number(manifest?.contractsDeployed || 0);
+  if (Number.isFinite(direct) && direct > 0) return direct;
+  if (Array.isArray(manifest?.addressCommitments)) return manifest.addressCommitments.length;
+  if (manifest?.contracts && typeof manifest.contracts === "object") return Object.keys(manifest.contracts).length;
+  return 0;
+}
 
 async function main() {
   fs.mkdirSync("qa", { recursive: true });
@@ -24,15 +41,37 @@ async function main() {
   let deployedContracts = 0;
   let deploymentManifestHash: string | null = null;
   let restoredManifest = false;
+  let deterministicLocalSimulationGovernanceAccepted = false;
+  let deterministicLocalSimulationSource: string | null = null;
 
   if (network.name !== "hardhat") blockers.push("Simulation must run on the local Hardhat network.");
   const runtimeForkRpc = Boolean(process.env.MAINNET_RPC_URL || process.env.PRIVATE_MAINNET_RPC_URL || process.env.PUBLIC_ETHEREUM_MAINNET_RPC_URL);
   const deterministicLocalMode = !runtimeForkRpc && chainId !== 1;
 
   if (deterministicLocalMode && blockers.length === 0) {
-    status = "PASSED";
+    const localManifestText = fs.existsSync(LOCAL_REHEARSAL_MANIFEST_PATH)
+      ? fs.readFileSync(LOCAL_REHEARSAL_MANIFEST_PATH, "utf8")
+      : null;
+    const localManifest = localManifestText ? readJsonIfExists(LOCAL_REHEARSAL_MANIFEST_PATH) : null;
+    deterministicLocalSimulationGovernanceAccepted = deterministicGovernanceAccepted();
+    deterministicLocalSimulationSource = localManifestText ? LOCAL_REHEARSAL_MANIFEST_PATH : null;
     tokenCodeVerifiedOnFork = false;
-    deployedContracts = 0;
+    deployedContracts = localManifestContractCount(localManifest);
+    deploymentManifestHash = localManifestText ? sha(localManifestText) : null;
+
+    if (!localManifestText || !localManifest) {
+      blockers.push("Deterministic local mainnet-shaped simulation requires a generated local rehearsal deployment manifest.");
+    }
+    if (deployedContracts <= 0) {
+      blockers.push("Deterministic local mainnet-shaped simulation evidence must include deployed local contracts.");
+    }
+    if (!deploymentManifestHash) {
+      blockers.push("Deterministic local mainnet-shaped simulation evidence must include a deployment manifest hash.");
+    }
+    if (!deterministicLocalSimulationGovernanceAccepted) {
+      blockers.push("Deterministic local mainnet-shaped simulation requires public governance/risk acceptance evidence.");
+    }
+    status = blockers.length === 0 ? "PASSED" : "FAILED";
   } else {
     if (chainId !== 1) blockers.push(`Hardhat must be configured as an Ethereum Mainnet fork when runtime RPC is supplied; got chainId ${chainId}.`);
 
@@ -102,6 +141,8 @@ async function main() {
     mainnetBroadcast: false,
     forkMainnet: chainId === 1,
     simulationMode: deterministicLocalMode ? "MAINNET_FORK_SIMULATION: DETERMINISTIC_LOCAL_MAINNET_SHAPED_SIMULATION" : "MAINNET_FORK_SIMULATION: LIVE_MAINNET_FORK",
+    deterministicLocalSimulationGovernanceAccepted,
+    deterministicLocalSimulationSource,
     tokenCodeVerifiedOnFork,
     deployedContracts,
     deploymentManifestHash,
@@ -126,7 +167,9 @@ async function main() {
     "docs/ETHEREUM_MAINNET_FORK_SIMULATION_REPORT.md",
     `# Ethereum Mainnet Fork Simulation Report\n\nStatus: **${status}**\n\n` +
       `Observed chainId: **${chainId}**\n\n` +
-      `Contracts deployed on fork: **${deployedContracts}**\n\n` +
+      `Simulation mode: **${deterministicLocalMode ? "deterministic local mainnet-shaped simulation" : "live Ethereum Mainnet fork"}**\n\n` +
+      `Contracts represented in simulation manifest: **${deployedContracts}**\n\n` +
+      `Deployment manifest hash: **${deploymentManifestHash || "missing"}**\n\n` +
       "This is fork/local simulation evidence only. No Ethereum Mainnet broadcast occurred.\n\n" +
       `## Blockers\n${blockers.map((b) => `- ${b}`).join("\n") || "- None."}\n`
   );

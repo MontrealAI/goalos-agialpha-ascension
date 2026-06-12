@@ -52,9 +52,14 @@ if (ROOT / ".github/workflows/goalos-jobs-production-rc-ci.yml").exists():
     errors.append("Stale JOBS workflow must not exist: .github/workflows/goalos-jobs-production-rc-ci.yml")
 
 readme = (ROOT / "README.md").read_text(encoding="utf-8", errors="ignore") if (ROOT / "README.md").exists() else ""
-for phrase in ["GoalOS AGIALPHA Ascension", "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA", "Not externally audited", "Ethereum Mainnet authorization: YES", "Ethereum Mainnet deployed: NO", "Public Sepolia"]:
+cert_path = ROOT / "qa/mainnet-authorization-certificate.json"
+cert = json.loads(cert_path.read_text(encoding="utf-8")) if cert_path.exists() else {}
+expected_eth_auth = cert.get("ethereumMainnetAuthorized", "YES")
+for phrase in ["GoalOS AGIALPHA Ascension", "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA", "Not externally audited", f"Ethereum Mainnet authorization: {expected_eth_auth}", "Ethereum Mainnet deployed: NO", "Public Sepolia"]:
     if phrase.lower() not in readme.lower():
         errors.append(f"README missing required phrase: {phrase}")
+if cert and cert.get("mainnetDeployed") != "NO":
+    errors.append("Mainnet deployment status must remain NO without transaction evidence")
 
 pkg = json.loads((ROOT / "package.json").read_text(encoding="utf-8")) if (ROOT / "package.json").exists() else {}
 scripts = pkg.get("scripts", {})
@@ -68,7 +73,7 @@ if "readiness:v4.2" in scripts:
 wf = (ROOT / ".github/workflows/agialpha-audit-candidate-ci.yml")
 if wf.exists():
     txt = wf.read_text(encoding="utf-8", errors="ignore")
-    for must in ["repository_production_readiness_check.py", "npm run compile", "npm run test:all", "npm run static-check", "npm run readiness:v4.3", "npm run mainnet:authorization-check"]:
+    for must in ["npm run verify:compiler-alignment", "npm run compile:ci", "npm run test:ci", "npm run test:all", "npm run static-check", "npm run readiness:v4.3", "npm run mainnet:authorization-check"]:
         if must not in txt:
             errors.append(f"AGIALPHA CI workflow missing: {must}")
 

@@ -1,0 +1,10 @@
+{
+  "status": "PASSED",
+  "hardhatSolidityVersion": "0.8.35",
+  "packageSolc": "0.8.35",
+  "runtimeSolcVersion": "0.8.35+commit.47b9dedd.Emscripten.clang",
+  "pragmaConstraints": [
+    "^0.8.24"
+  ],
+  "errors": []
+}

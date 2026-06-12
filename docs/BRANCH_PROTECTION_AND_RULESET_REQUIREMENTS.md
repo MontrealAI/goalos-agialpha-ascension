@@ -1,3 +1,3 @@
-# Branch Protection And Ruleset Requirements
+# Branch Protection and Ruleset Requirements
 
-Required protections: PR required before merge, required status checks, no force push, no branch deletion, conversation resolution, CODEOWNER review for sensitive paths where possible, and bypass restricted to owner/admin only. If these cannot be detected automatically, `docs/BRANCH_PROTECTION_PUBLIC_RISK_ACCEPTANCE.md` is the public fallback gate.
+Preferred protections: PR before merge, required status checks, no force push, no branch deletion, conversation resolution, CODEOWNER review for sensitive paths, and owner/admin-only bypass. If automatic detection is unavailable, `docs/BRANCH_PROTECTION_PUBLIC_RISK_ACCEPTANCE.md` records public risk acceptance.

@@ -1,3 +1,3 @@
-# Final Rollback And Incident Plan
+# Final Rollback and Incident Plan
 
-Rollback before release. Pause/emergency controls must be verified after deployment. If validation fails, stop, do not publish production claims, and chronicle evidence.
+No rollback, no release. Before release, verify pause/emergency controls, admin transfer plan, incident contacts outside public repo, manifest review, and post-deployment verification. If an incident occurs, pause where applicable, stop releases, preserve evidence, publish public-safe status, and do not disclose secrets.

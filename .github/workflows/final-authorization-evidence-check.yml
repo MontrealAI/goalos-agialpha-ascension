@@ -9,25 +9,26 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: "20"
+          cache: npm
+      - run: npm ci
+      - run: npm run mainnet:certificate
+      - run: npm run mainnet:certificate:validate
+      - run: npm run docs:status
       - name: Public-only status assertion
-        run: python scripts/assert_public_status.py
+        run: npm run assert:public-status
       - name: No private operator data in public repo
-        run: python scripts/no_private_operator_data_check.py
-      - name: Public or redacted authorization check (no secrets required)
-        shell: bash
-        run: |
-          if test -f qa/public-mainnet-technical-readiness-evidence.json \
-             && test -f qa/public-mainnet-deployment-authorization-evidence.json \
-             && test -f qa/public-ethereum-mainnet-authorization-evidence.json; then
-            python scripts/mainnet-authorization-check.py --public-only-final
-          else
-            python scripts/mainnet-authorization-check.py --public-only-final
-          fi
+        run: npm run repo:no-private-operator-data
+      - name: Certificate-backed public authorization check (no secrets required)
+        run: npm run mainnet:authorization-check:public
       - uses: actions/upload-artifact@v5
         if: always()
         with:
           name: public-mainnet-authorization-decision
           path: |
+            qa/mainnet-authorization-certificate.json
             docs/MAINNET_TECHNICAL_READINESS_DECISION.*
             docs/MAINNET_DEPLOYMENT_AUTHORIZATION_DECISION.*
             docs/ETHEREUM_MAINNET_AUTHORIZATION_DECISION.*

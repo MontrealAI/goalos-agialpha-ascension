@@ -32,7 +32,7 @@ def main() -> None:
     parser.add_argument("--with-redacted-private-evidence", action="store_true", help="Deprecated; public-only final mode ignores private evidence.")
     parser.add_argument("--public-only-final", action="store_true")
     parser.parse_args()
-    forwarded = ["--public-only-final"]
+    forwarded = ["--certificate", "qa/mainnet-authorization-certificate.json"]
     run_quiet([sys.executable, "scripts/mainnet-readiness-check.py", *forwarded])
     run_quiet([sys.executable, "scripts/mainnet-deployment-authorization-check.py", *forwarded])
     run_quiet([sys.executable, "scripts/ethereum-mainnet-authorization-check.py", *forwarded])

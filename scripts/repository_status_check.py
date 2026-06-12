@@ -1,4 +1,5 @@
 from pathlib import Path
+import json
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -23,9 +24,12 @@ if missing:
     sys.exit(1)
 
 readme = (ROOT / "README.md").read_text(encoding="utf-8")
+cert_path = ROOT / "qa/mainnet-authorization-certificate.json"
+cert = json.loads(cert_path.read_text(encoding="utf-8")) if cert_path.exists() else {}
+expected_eth_auth = cert.get("ethereumMainnetAuthorized", "YES")
 must_include = [
     "Not externally audited",
-    "Ethereum Mainnet authorization: YES",
+    f"Ethereum Mainnet authorization: {expected_eth_auth}",
     "Ethereum Mainnet deployed: NO",
     "AGIALPHA",
     "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",

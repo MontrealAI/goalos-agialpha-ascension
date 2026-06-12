@@ -1,0 +1,152 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> goalos-agialpha-ascension@4.3.0 compile
+> hardhat compile
+
+Solidity 0.8.35 is not fully supported yet. You can still use Hardhat, but some features, like stack traces, might not work correctly.
+
+Learn more at https://v2.hardhat.org/hardhat-runner/docs/reference/solidity-support
+
+Warning: "error" will be promoted to keyword in the future and will not be allowed as an identifier anymore.
+  --> @openzeppelin/contracts/utils/cryptography/ECDSA.sol:23:26:
+   |
+23 |     function _throwError(RecoverError error) private pure {
+   |                          ^^^^^^^^^^^^^^^^^^
+
+
+Warning: "error" will be promoted to keyword in the future and will not be allowed as an identifier anymore.
+  --> @openzeppelin/contracts/utils/cryptography/ECDSA.sol:89:29:
+   |
+89 |         (address recovered, RecoverError error) = tryRecover(hash, signature);
+   |                             ^^^^^^^^^^^^^^^^^^
+
+
+Warning: "error" will be promoted to keyword in the future and will not be allowed as an identifier anymore.
+   --> @openzeppelin/contracts/utils/cryptography/ECDSA.sol:113:29:
+    |
+113 |         (address recovered, RecoverError error) = tryRecover(hash, r, vs);
+    |                             ^^^^^^^^^^^^^^^^^^
+
+
+Warning: "error" will be promoted to keyword in the future and will not be allowed as an identifier anymore.
+   --> @openzeppelin/contracts/utils/cryptography/ECDSA.sol:152:29:
+    |
+152 |         (address recovered, RecoverError error) = tryRecover(hash, v, r, s);
+    |                             ^^^^^^^^^^^^^^^^^^
+
+
+Warning: Natspec memory-safe-assembly special comment for inline assembly is deprecated and scheduled for removal. Use the memory-safe block annotation instead.
+  --> @openzeppelin/contracts/utils/Strings.sol:25:13:
+   |
+25 |             assembly {
+   |             ^ (Relevant source part starts here and spans across multiple lines).
+
+
+Warning: Natspec memory-safe-assembly special comment for inline assembly is deprecated and scheduled for removal. Use the memory-safe block annotation instead.
+  --> @openzeppelin/contracts/utils/Strings.sol:31:17:
+   |
+31 |                 assembly {
+   |                 ^ (Relevant source part starts here and spans across multiple lines).
+
+
+Warning: Natspec memory-safe-assembly special comment for inline assembly is deprecated and scheduled for removal. Use the memory-safe block annotation instead.
+  --> @openzeppelin/contracts/utils/cryptography/ECDSA.sol:63:13:
+   |
+63 |             assembly {
+   |             ^ (Relevant source part starts here and spans across multiple lines).
+
+
+Warning: Natspec memory-safe-assembly special comment for inline assembly is deprecated and scheduled for removal. Use the memory-safe block annotation instead.
+   --> @openzeppelin/contracts/utils/cryptography/ECDSA.sol:169:9:
+    |
+169 |         assembly {
+    |         ^ (Relevant source part starts here and spans across multiple lines).
+
+
+Warning: Natspec memory-safe-assembly special comment for inline assembly is deprecated and scheduled for removal. Use the memory-safe block annotation instead.
+   --> @openzeppelin/contracts/utils/cryptography/ECDSA.sol:199:9:
+    |
+199 |         assembly {
+    |         ^ (Relevant source part starts here and spans across multiple lines).
+
+
+Warning: Natspec memory-safe-assembly special comment for inline assembly is deprecated and scheduled for removal. Use the memory-safe block annotation instead.
+  --> @openzeppelin/contracts/utils/StorageSlot.sol:64:9:
+   |
+64 |         assembly {
+   |         ^ (Relevant source part starts here and spans across multiple lines).
+
+
+Warning: Natspec memory-safe-assembly special comment for inline assembly is deprecated and scheduled for removal. Use the memory-safe block annotation instead.
+  --> @openzeppelin/contracts/utils/StorageSlot.sol:74:9:
+   |
+74 |         assembly {
+   |         ^ (Relevant source part starts here and spans across multiple lines).
+
+
+Warning: Natspec memory-safe-assembly special comment for inline assembly is deprecated and scheduled for removal. Use the memory-safe block annotation instead.
+  --> @openzeppelin/contracts/utils/StorageSlot.sol:84:9:
+   |
+84 |         assembly {
+   |         ^ (Relevant source part starts here and spans across multiple lines).
+
+
+Warning: Natspec memory-safe-assembly special comment for inline assembly is deprecated and scheduled for removal. Use the memory-safe block annotation instead.
+  --> @openzeppelin/contracts/utils/StorageSlot.sol:94:9:
+   |
+94 |         assembly {
+   |         ^ (Relevant source part starts here and spans across multiple lines).
+
+
+Warning: Natspec memory-safe-assembly special comment for inline assembly is deprecated and scheduled for removal. Use the memory-safe block annotation instead.
+   --> @openzeppelin/contracts/utils/StorageSlot.sol:104:9:
+    |
+104 |         assembly {
+    |         ^ (Relevant source part starts here and spans across multiple lines).
+
+
+Warning: Natspec memory-safe-assembly special comment for inline assembly is deprecated and scheduled for removal. Use the memory-safe block annotation instead.
+   --> @openzeppelin/contracts/utils/StorageSlot.sol:114:9:
+    |
+114 |         assembly {
+    |         ^ (Relevant source part starts here and spans across multiple lines).
+
+
+Warning: Natspec memory-safe-assembly special comment for inline assembly is deprecated and scheduled for removal. Use the memory-safe block annotation instead.
+   --> @openzeppelin/contracts/utils/StorageSlot.sol:124:9:
+    |
+124 |         assembly {
+    |         ^ (Relevant source part starts here and spans across multiple lines).
+
+
+Warning: Natspec memory-safe-assembly special comment for inline assembly is deprecated and scheduled for removal. Use the memory-safe block annotation instead.
+   --> @openzeppelin/contracts/utils/StorageSlot.sol:134:9:
+    |
+134 |         assembly {
+    |         ^ (Relevant source part starts here and spans across multiple lines).
+
+
+Warning: Natspec memory-safe-assembly special comment for inline assembly is deprecated and scheduled for removal. Use the memory-safe block annotation instead.
+  --> @openzeppelin/contracts/utils/ShortStrings.sol:68:9:
+   |
+68 |         assembly {
+   |         ^ (Relevant source part starts here and spans across multiple lines).
+
+
+Warning: Natspec memory-safe-assembly special comment for inline assembly is deprecated and scheduled for removal. Use the memory-safe block annotation instead.
+   --> @openzeppelin/contracts/utils/Address.sol:236:13:
+    |
+236 |             assembly {
+    |             ^ (Relevant source part starts here and spans across multiple lines).
+
+
+Warning: Natspec memory-safe-assembly special comment for inline assembly is deprecated and scheduled for removal. Use the memory-safe block annotation instead.
+   --> @openzeppelin/contracts/token/ERC721/ERC721.sol:413:21:
+    |
+413 |                     assembly {
+    |                     ^ (Relevant source part starts here and spans across multiple lines).
+
+
+Generating typings for: 81 artifacts in dir: typechain-types for target: ethers-v6
+Successfully generated 194 typings!
+Compiled 79 Solidity files successfully (evm target: paris).

@@ -1,25 +1,61 @@
 #!/usr/bin/env python3
 from __future__ import annotations
-import json, pathlib, sys
-ROOT=pathlib.Path(__file__).resolve().parents[1]
-CERT=ROOT/'qa/mainnet-authorization-certificate.json'
-AGIALPHA='0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA'
-required_yes=['technicallyMainnetReady','mainnetDeploymentAuthorized','ethereumMainnetAuthorized']
-errors=[]
-try: d=json.loads(CERT.read_text())
-except Exception as e: print(f'certificate missing/unreadable: {e}'); sys.exit(1)
-if d.get('schemaVersion')!='1.0': errors.append('schemaVersion must be 1.0')
-if d.get('chain')!='ethereum' or d.get('chainId')!=1: errors.append('chain must be ethereum chainId 1')
-if str(d.get('agialphaToken','')).lower()!=AGIALPHA.lower(): errors.append('AGIALPHA token mismatch')
-for k in required_yes:
-    if d.get(k)!='YES': errors.append(f'{k} must be YES')
-for k in ['externalAuditPlanned','externalAuditRequired','legalTaxReviewClaimed','runtimeSecretsStoredInGitHub','ciCanDeployMainnet']:
-    if d.get(k) is not False: errors.append(f'{k} must be false')
-if d.get('mainnetDeployed')!='NO': errors.append('mainnetDeployed must be NO')
-if d.get('runtimeSecretsRequiredForBroadcast') is not True: errors.append('runtimeSecretsRequiredForBroadcast must be true')
-if d.get('blockers'): errors.append('blockers must be empty for final YES')
-if errors:
-    print('Mainnet Authorization Certificate validation failed:')
-    [print(f'- {e}') for e in errors]
-    sys.exit(1)
-print('Mainnet Authorization Certificate validation passed.')
+import argparse, json, pathlib, subprocess, sys
+ROOT = pathlib.Path(__file__).resolve().parents[1]
+AGI = '0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA'
+
+def git(args: list[str]) -> str | None:
+    try:
+        return subprocess.check_output(['git', *args], cwd=ROOT, text=True, stderr=subprocess.DEVNULL).strip()
+    except Exception:
+        return None
+
+def main() -> None:
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--certificate', default='qa/mainnet-authorization-certificate.json')
+    args = parser.parse_args()
+    cert_path = ROOT / args.certificate
+    cert = json.loads(cert_path.read_text())
+    errors: list[str] = []
+    for k in ['schemaVersion','generatedAt','repository','commit','chain','chainId','agialphaToken','technicallyMainnetReady','mainnetDeploymentAuthorized','ethereumMainnetAuthorized','evidence','blockers']:
+        if k not in cert:
+            errors.append(f'missing {k}')
+    if cert.get('chain') != 'ethereum' or cert.get('chainId') != 1:
+        errors.append('certificate must target Ethereum Mainnet chainId 1')
+    if str(cert.get('agialphaToken','')).lower() != AGI.lower():
+        errors.append('wrong AGIALPHA token')
+    if cert.get('mainnetDeployed') != 'NO':
+        errors.append('mainnetDeployed must be NO without transaction evidence')
+    if cert.get('ciCanDeployMainnet') is not False:
+        errors.append('ciCanDeployMainnet must be false')
+    if cert.get('privateOperatorAuthorizationPackageRequired') is not False:
+        errors.append('private operator package must not be required')
+    if cert.get('runtimeSecretsStoredInGitHub') is not False:
+        errors.append('runtime secrets must not be stored in GitHub')
+    if cert.get('notExternallyAudited') is not True or cert.get('externalAuditRequired') is not False:
+        errors.append('external-audit fields invalid')
+    if cert.get('technicallyMainnetReady') == 'YES' and cert.get('blockers'):
+        errors.append('YES certificate cannot have blockers')
+
+    cert_commit = str(cert.get('commit') or '')
+    head = git(['rev-parse', 'HEAD'])
+    if cert_commit:
+        if git(['cat-file', '-e', f'{cert_commit}^{{commit}}']) is None:
+            errors.append(f'certificate commit {cert_commit} does not exist in this repository')
+        if head and cert_commit != head:
+            errors.append(f'certificate commit {cert_commit} does not match current HEAD {head}; regenerate with npm run mainnet:certificate before validation')
+    else:
+        errors.append('certificate commit is empty')
+
+    out = {
+        'status': 'PASSED' if not errors else 'FAILED',
+        'errors': errors,
+        'certificateCommit': cert_commit or None,
+        'currentHead': head,
+    }
+    print(json.dumps(out, indent=2))
+    if errors:
+        sys.exit(1)
+
+if __name__ == '__main__':
+    main()

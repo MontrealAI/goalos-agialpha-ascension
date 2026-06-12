@@ -5,22 +5,54 @@ on:
 permissions:
   contents: read
 jobs:
-  audit:
+  authorize:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
       - uses: actions/setup-node@v5
         with:
           node-version: "20"
-          cache: "npm"
+          cache: npm
       - run: npm ci
+      - run: npm run verify:compiler-alignment
       - run: npm run repo:all
-      - run: npm run compile
-      - run: npm test
-      - name: Slither-first automated/internal security toolchain
-        run: npm run audit:all
+      - run: npm run repo:no-private-operator-data
+      - run: npm run repo:no-paid-products
+      - run: npm run compile:ci
+      - run: npm run test:ci
+      - run: npm run test:all
+      - run: npm run static-check
+      - run: npm run readiness:v4.3
+      - run: npm run evidence:docket:template
+      - run: npm run rehearse:local
+      - run: npm run evidence:local
+      - run: npm run audit:slither
+      - run: npm run audit:semgrep
+      - run: npm run audit:solhint
+      - run: npm run audit:actions
+      - run: npm run audit:shell
+      - run: npm run audit:secrets
+      - run: npm run audit:npm
+      - run: npm run audit:osv || true
+      - run: npm run audit:summarize
+      - run: npm run audit:fail-on-critical
+      - run: npm run audit:clearance-report
+      - run: npm run verify:agialpha-token:public || true
+      - run: npm run mainnet:certificate
+      - run: npm run mainnet:certificate:validate
+      - run: npm run docs:status
+      - run: npm run assert:public-status
+      - run: npm run mainnet:readiness-check
+      - run: npm run mainnet:deployment-authorization-check
+      - run: npm run mainnet:authorization-check
       - uses: actions/upload-artifact@v5
         if: always()
         with:
-          name: audit-reports
-          path: audit/reports/**
+          name: public-mainnet-authorization-artifacts
+          path: |
+            qa/mainnet-authorization-certificate.json
+            docs/MAINNET_AUTHORIZATION_CERTIFICATE.md
+            audit/TOOLCHAIN_CLEARANCE_REPORT.md
+            docs/MAINNET_TECHNICAL_READINESS_DECISION.json
+            docs/MAINNET_DEPLOYMENT_AUTHORIZATION_DECISION.json
+            docs/ETHEREUM_MAINNET_AUTHORIZATION_DECISION.json

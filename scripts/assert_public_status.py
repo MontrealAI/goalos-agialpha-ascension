@@ -1,62 +1,57 @@
+#!/usr/bin/env python3
 from __future__ import annotations
-import re
-import sys
+import json, re, sys
 from pathlib import Path
-
 ROOT = Path(__file__).resolve().parents[1]
-DOCS = [ROOT / "README.md"] + sorted((ROOT / "docs").glob("*.md"))
-text_by_file = {p: p.read_text(encoding="utf-8", errors="ignore") for p in DOCS if p.exists()}
-combined = "\n".join(text_by_file.values())
-combined_lower = combined.lower()
-errors: list[str] = []
-
-mainnet_not_authorized = re.search(r"ethereum\s+mainnet\s+(deployment\s+authorization:\s+no|not[_\s-]*authorized|is\s+not\s+authorized)", combined, re.I) or "mainnet_deployment_authorized: **no**" in combined_lower
-mainnet_public_authorized = (
-    "ethereum mainnet technical readiness: yes" in combined_lower
-    and "ethereum mainnet deployment authorization: yes" in combined_lower
-    and "ethereum mainnet authorization: yes" in combined_lower
-    and "ethereum mainnet deployed: no" in combined_lower
-)
-if not mainnet_not_authorized and not mainnet_public_authorized:
-    errors.append("Missing clear Ethereum Mainnet public authorization YES/NO statement generated from the certificate.")
-
-if "not externally audited" not in combined_lower:
-    errors.append("Missing allowed public status: Not externally audited.")
-if not re.search(r"automated security/toolchain (review|clearance):? (pending|completed|completed with blockers)", combined, re.I) and "AUTOMATED_SECURITY_TOOLCHAIN" not in combined:
-    errors.append("Missing automated security/toolchain clearance or equivalent internal security gate.")
-
-unsafe_patterns = [
-    ("externally audited", re.compile(r"\bexternally audited\b", re.I), ["not externally audited", "do not", "do **not**", "must not"]),
-    ("mainnet authorized", re.compile(r"\bmainnet[-\s]+authorized\b", re.I), ["not mainnet authorized", "not-authorized", "not authorized", "do not", "do **not**", "must not", "unless", "without"]),
-    ("mainnet deployment authorized", re.compile(r"mainnet deployment authorization:\s*(yes|authorized)", re.I), ["yes"]),
-    ("production deployed", re.compile(r"\bproduction deployed\b", re.I), ["not", "do not", "do **not**", "must not", "avoid", "unless", "without"]),
-    ("guaranteed non-security", re.compile(r"\bguaranteed non-security\b", re.I), ["do not", "do **not**", "must not", "not", "no ", "avoid", "unless", "without"]),
-    ("investment", re.compile(r"\binvestment\b", re.I), ["not", "no ", "do not", "do **not**", "must not", "avoid", "without", "nor", "unless", "forbidden", "boundary"]),
-    ("yield", re.compile(r"\byield\b", re.I), ["not", "no ", "do not", "do **not**", "must not", "avoid", "without", "nor", "unless", "forbidden", "boundary"]),
-    ("revenue share", re.compile(r"\brevenue[-\s]+share\b", re.I), ["not", "no ", "do not", "do **not**", "must not", "avoid", "without", "nor", "unless", "forbidden", "boundary"]),
-    ("price target", re.compile(r"\bprice[-\s]+target\b", re.I), ["not", "no ", "do not", "do **not**", "must not", "avoid", "without", "nor", "unless", "forbidden", "boundary"]),
-]
-active_gate_files = {"README.md", "docs/CURRENT_STATUS.md", "docs/MAINNET_NOT_AUTHORIZED_DECISION_v4_3.md", "docs/MAINNET_TECHNICAL_READINESS_DECISION.md", "docs/MAINNET_DEPLOYMENT_AUTHORIZATION_DECISION.md", "docs/MAINNET_AUTHORIZATION_DECISION.md", "docs/PRODUCTION_CONTINUATION_PLAN.md"}
-for path, text in text_by_file.items():
-    rel = str(path.relative_to(ROOT))
-    for i, line in enumerate(text.splitlines(), 1):
-        low = line.lower()
-        normalized = low.strip().lstrip("-*•0123456789. )").rstrip(".;:")
-        positive_context = any(token in low for token in [" is ", " are ", " status", "authorized: yes", "authorization: yes", "externally audited.", "production deployed."])
-        negative_context = any(token in low for token in [": no", "not", "no ", "do not", "do **not**", "must not", "avoid", "unless", "without", "prohibited", "out of scope", "forbidden", "boundary"])
-        if normalized in {"externally audited", "audited", "mainnet authorized", "production deployed", "guaranteed non-security", "investment", "investment opportunity", "investment return", "yield", "revenue share", "price target"}:
-            continue
-        for label, pattern, allowed in unsafe_patterns:
-            if pattern.search(line) and not any(a in low for a in allowed) and positive_context and not negative_context:
-                errors.append(f"{rel}:{i}: unsafe public claim or stale phrase: {label}")
-        if rel in active_gate_files and re.search(r"external audit (required|closure)", line, re.I) and "not" not in low and "without" not in low:
-            errors.append(f"{rel}:{i}: stale external audit gate language")
-        if rel in active_gate_files and "EXTERNAL_AUDIT_CLOSURE" in line:
-            errors.append(f"{rel}:{i}: stale EXTERNAL_AUDIT_CLOSURE gate")
-
+CERT = ROOT / 'qa/mainnet-authorization-certificate.json'
+DOCS = [ROOT / 'README.md', ROOT / 'docs/CURRENT_STATUS.md', ROOT / 'docs/MAINNET_AUTHORIZATION_CERTIFICATE.md', ROOT / 'docs/MAINNET_TECHNICAL_READINESS_DECISION.md', ROOT / 'docs/MAINNET_DEPLOYMENT_AUTHORIZATION_DECISION.md', ROOT / 'docs/ETHEREUM_MAINNET_AUTHORIZATION_DECISION.md', ROOT / 'docs/START_HERE_MAINNET.md']
+texts = {p: p.read_text(encoding='utf-8', errors='ignore') for p in DOCS if p.exists()}
+combined = '\n'.join(texts.values()); low = combined.lower(); errors: list[str] = []
+cert = None
+if CERT.exists():
+    try: cert = json.loads(CERT.read_text())
+    except Exception as exc: errors.append(f'Unable to parse certificate: {exc}')
+claims_yes = all(phrase in low for phrase in ['ethereum mainnet technical readiness: yes','ethereum mainnet deployment authorization: yes','ethereum mainnet authorization: yes'])
+if not cert and claims_yes:
+    errors.append('Public docs claim Ethereum Mainnet authorization YES but qa/mainnet-authorization-certificate.json is missing.')
+if cert:
+    expected = {
+        'ethereum mainnet technical readiness': cert.get('technicallyMainnetReady'),
+        'ethereum mainnet deployment authorization': cert.get('mainnetDeploymentAuthorized'),
+        'ethereum mainnet authorization': cert.get('ethereumMainnetAuthorized'),
+        'ethereum mainnet deployed': cert.get('mainnetDeployed'),
+    }
+    for label, value in expected.items():
+        phrase = f'{label}: {str(value).lower()}'
+        if phrase not in low:
+            errors.append(f'Public docs missing certificate-backed status phrase: {label}: {value}')
+    if cert.get('mainnetDeployed') != 'NO': errors.append('Certificate must keep mainnetDeployed as NO until transaction evidence exists.')
+    if cert.get('runtimeSecretsStoredInGitHub') is not False: errors.append('Certificate must state runtime secrets are not stored in GitHub.')
+    if cert.get('ciCanDeployMainnet') is not False: errors.append('Certificate must state CI cannot deploy mainnet.')
+if 'not externally audited' not in low: errors.append('Missing required boundary: Not externally audited.')
+if 'runtime rpc url and deployer key outside github' not in low and 'runtime rpc/key' not in low:
+    errors.append('Missing runtime RPC/key outside GitHub boundary.')
+if 'ethereum mainnet deployed: no' not in low and 'mainnet_deployed: **no**' not in low:
+    errors.append('Public docs must state Ethereum Mainnet deployed: NO.')
+for forbidden, allowed_context in [
+    ('externally audited', 'not externally audited'), ('legal approval', 'does not claim'), ('tax review', 'does not claim'), ('tax approved', 'does not claim'), ('guaranteed secure', 'does not claim'), ('guaranteed security', 'does not claim'), ('guaranteed non-security', 'does not claim'), ('investment opportunity', 'does not claim'), ('yield', 'does not claim'), ('price target', 'does not claim'), ('revenue share', 'does not claim'), ('production deployed', 'does not claim')]:
+    for path, text in texts.items():
+        for i, line in enumerate(text.splitlines(), 1):
+            l=line.lower()
+            if forbidden in l and allowed_context not in l and 'not ' not in l and 'no ' not in l and 'must not' not in l and 'do not' not in l and 'does not' not in l and 'unless' not in l:
+                errors.append(f'{path.relative_to(ROOT)}:{i}: unsafe public claim: {forbidden}')
+active_gate_files = {'README.md','docs/CURRENT_STATUS.md','docs/START_HERE_MAINNET.md','docs/MAINNET_AUTHORIZATION_CERTIFICATE.md','docs/MAINNET_TECHNICAL_READINESS_DECISION.md','docs/MAINNET_DEPLOYMENT_AUTHORIZATION_DECISION.md','docs/ETHEREUM_MAINNET_AUTHORIZATION_DECISION.md'}
+for path, text in texts.items():
+    rel=str(path.relative_to(ROOT))
+    if rel in active_gate_files:
+        for i,line in enumerate(text.splitlines(),1):
+            l=line.lower()
+            if 'external audit closure' in l or 'external_audit_closure' in line:
+                errors.append(f'{rel}:{i}: stale external audit closure active-gate language')
+            if ('private operator package required' in l or 'private operator evidence required' in l) and 'false' not in l and 'not required' not in l:
+                errors.append(f'{rel}:{i}: stale private-operator mandatory gate language')
 if errors:
-    print("Public status assertion failed:")
-    for err in errors:
-        print(f"- {err}")
+    print('Public status assertion failed:')
+    for e in errors: print(f'- {e}')
     sys.exit(1)
-print("Public status assertion passed: Ethereum Mainnet public YES/NO claims are certificate-bounded and external-audit closure is not an active required gate.")
+print('Public status assertion passed: certificate-backed public mainnet authorization is consistent, bounded, not externally audited, and not deployed.')

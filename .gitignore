@@ -34,3 +34,6 @@ private/
 *.local.json
 !scripts/private/
 !scripts/private/*.py
+__pycache__/
+# Local audit run pointer
+audit/reports/current-run.txt

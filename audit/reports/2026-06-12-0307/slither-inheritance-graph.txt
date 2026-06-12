@@ -1,0 +1,8 @@
+'npx hardhat clean' running (wd: /workspace/goalos-agialpha-ascension)
+'npx hardhat clean --global' running (wd: /workspace/goalos-agialpha-ascension)
+Problem executing hardhat: npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+'npx hardhat compile --force' running (wd: /workspace/goalos-agialpha-ascension)
+INFO:Printers:Inheritance Graph: inheritance-graph.dot
+
+INFO:Slither:. analyzed (81 contracts)

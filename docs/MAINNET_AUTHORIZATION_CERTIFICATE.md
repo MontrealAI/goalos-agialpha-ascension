@@ -6,5 +6,12 @@ Generated from `qa/mainnet-authorization-certificate.json`.
 - MAINNET_DEPLOYMENT_AUTHORIZED: **YES**
 - ETHEREUM_MAINNET_AUTHORIZED: **YES**
 - MAINNET_DEPLOYED: **NO**
+- Private operator authorization package required: **False**
+- Runtime secrets stored in GitHub: **False**
+- CI can deploy mainnet: **False**
 
-This certificate authorizes only manual, local, gated Ethereum Mainnet deployment. It is not an external audit, legal approval, tax review, or proof that deployment occurred.
+This certificate authorizes only manual, local, gated Ethereum Mainnet deployment. It is not an external audit, legal approval, tax review, proof of deployment, or guarantee of security/token classification.
+
+## Next action
+
+Founder/deployer may run npm run deploy:ethereum-mainnet:gated with local runtime RPC/key.

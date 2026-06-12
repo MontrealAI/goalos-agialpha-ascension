@@ -1,5 +1,3 @@
-# What YES Means And Does Not Mean
+# What YES Means and Does Not Mean
 
-YES means this repository package is authorized for manual gated Ethereum Mainnet deployment.
-
-YES does not mean deployed, externally audited, legally/tax approved, guaranteed secure, guaranteed non-security, investment, yield, revenue share, or CI deployment.
+YES authorizes the public repository package for manual, gated Ethereum Mainnet deployment. It does not mean deployment happened, external audit occurred, legal/tax review occurred, contracts are guaranteed secure, AGIALPHA is guaranteed non-security, CI can deploy, or runtime secrets/addresses are in GitHub.

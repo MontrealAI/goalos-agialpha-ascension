@@ -1,3 +1,3 @@
 # Public Mainnet Authorization Runbook
 
-Public authorization is computed by `npm run mainnet:public-authorize`. It uses public evidence only and does not require a private operator authorization package, private founder signature, private RPC URL, private key, or private addresses.
+Run `npm run mainnet:public-authorize`, then `npm run docs:status`. This creates the certificate, validates it, computes technical readiness, deployment authorization, and Ethereum Mainnet authorization. Private operator package is optional and not a public YES gate.

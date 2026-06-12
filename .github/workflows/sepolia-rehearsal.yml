@@ -14,11 +14,13 @@ jobs:
       - uses: actions/checkout@v5
       - uses: actions/setup-node@v5
         with:
-          node-version: '20'
-          cache: 'npm'
+          node-version: "20"
+          cache: npm
       - run: npm ci
-      - run: npm run compile
+      - run: npm run compile:ci
       - name: Deterministic local authorization rehearsal (no secrets)
         run: npm run local:authorization-rehearsal
-      - name: Public-only authorization check (private evidence may be pending)
-        run: python scripts/mainnet-authorization-check.py --public-only-final
+      - run: npm run mainnet:certificate
+      - run: npm run mainnet:certificate:validate
+      - name: Public certificate authorization check (Sepolia optional)
+        run: npm run mainnet:authorization-check:public

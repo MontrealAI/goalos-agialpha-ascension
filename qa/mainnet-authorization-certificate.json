@@ -1,10 +1,10 @@
 {
   "schemaVersion": "1.0",
-  "generatedAt": "2026-06-12T02:38:12.998555+00:00",
+  "generatedAt": "2026-06-12T15:34:59.636362+00:00",
   "generatedBy": "scripts/generate-mainnet-authorization-certificate.py",
   "repository": "MontrealAI/goalos-agialpha-ascension",
-  "commit": "680883e974d6eb6590aa81b77b350a3446a9258e",
-  "branch": "codex/mainnet-authorization-certificate-v11",
+  "commit": "ee8d89c275d000aea7ddb18f946a530a01ddd0fc",
+  "branch": "work",
   "chain": "ethereum",
   "chainId": 1,
   "agialphaToken": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
@@ -14,9 +14,11 @@
   "externalAuditRequired": false,
   "legalTaxReviewClaimed": false,
   "mainnetDeployed": "NO",
+  "MAINNET_DEPLOYED": "NO",
   "runtimeSecretsRequiredForBroadcast": true,
   "runtimeSecretsStoredInGitHub": false,
   "ciCanDeployMainnet": false,
+  "privateOperatorAuthorizationPackageRequired": false,
   "technicallyMainnetReady": "YES",
   "TECHNICALLY_MAINNET_READY": "YES",
   "mainnetDeploymentAuthorized": "YES",
@@ -26,19 +28,23 @@
   "evidence": {
     "repoDoctor": {
       "path": "qa/REPO_DOCTOR_REPORT.json",
-      "sha256": "0x3286edf32617b028bafc99e0c4ceec3b30e7901f5fcfd4bc230752ab2d8442a0"
+      "sha256": "0x3c9b69495349f6c223693feb4e3e38868689efb1c5f45a5b733e9a70bd3e7f78"
     },
     "dependencyBaseline": {
       "path": "docs/DEPENDENCY_BASELINE_FOR_MAINNET.md",
-      "sha256": "0xb63452004583c8f42c287f80bfcd89975ee2534c1b479362c180da352d37b39c"
+      "sha256": "0xefa39de31ff24c79017a474147b1a500d076c4b7783b5eff4e1bce932abfd5a7"
+    },
+    "compilerAlignment": {
+      "path": "qa/compiler-alignment.json",
+      "sha256": "0x6e26d461a64eb5f6a79a408d14d58b58ddb426f67d9b03b17c486048794ff865"
     },
     "compile": {
-      "path": "artifacts/build-info",
-      "sha256": "0x06d029f00bccd26eb9f6d7f4c09c262785272b7693644ac1f61f09de0918b891"
+      "path": "scripts/compile-deterministic.js",
+      "sha256": "0x546f6cfcaa228322a049a9ac7f07d5ffea95c8b4ed6efab556dfdad60740c11f"
     },
     "tests": {
       "path": "test",
-      "sha256": "0x93d8fbe0927ff703a19e979c6cf6a3c3bcbf4965ed9d86e9571973dd1db43a46"
+      "sha256": "0x7f9272a3cf29fb38ff54945f55920c75fc689cc52cc5ea50eb6f6742c29513bc"
     },
     "testAll": {
       "path": "test/invariants/mainnetBoundary.invariant.test.ts",
@@ -50,7 +56,7 @@
     },
     "publicStatus": {
       "path": "scripts/assert_public_status.py",
-      "sha256": "0x43b5ddac61051e3a513857cc9adebee8111790729a72bede6ac338517025aed0"
+      "sha256": "0xb4ce73eedf6c9ce0ef107e46163e06fa385e21c2e9b2826934032a3df5542e02"
     },
     "noPrivateOperatorData": {
       "path": "scripts/no_private_operator_data_check.py",
@@ -62,11 +68,19 @@
     },
     "slither": {
       "path": "docs/SLITHER_SECURITY_REPORT.md",
-      "sha256": "0xad16c87eddd93a6d70c89a1937c921efa64febace1dd0f2dcd431583ef10b616"
+      "sha256": "0x26101191906a29d5bdaa2d0e540e60adb5436fc5b4851a7066f6f6ec58ba3aaa"
+    },
+    "tier1SecurityToolchain": {
+      "path": "audit/TOOLCHAIN_CLEARANCE_REPORT.md",
+      "sha256": "0xf2ddc417210e219957aeeb3fbebf61b3cd823e871d5c2758b66bffcb6d7935d8"
+    },
+    "tier2SecurityToolchain": {
+      "path": "audit/AUTOMATED_SECURITY_TOOLCHAIN.md",
+      "sha256": "0xc7dabdfd833ef1b40bec88effe56b00cfbcf3890cc0a04e1e3251a4c9dd5d00b"
     },
     "toolchainClearance": {
       "path": "qa/public-toolchain-clearance-evidence.json",
-      "sha256": "0xda7675f5d5878488332f0a300cbf52f8284784156e27326c08704662b55e80d1"
+      "sha256": "0xa97feb322bd6c8cb3f3e282970d4abe3b185dc093d2fd24532c66884a5413734"
     },
     "unresolvedFindings": {
       "path": "audit/AUDIT_FINDINGS_REGISTER.csv",
@@ -74,42 +88,42 @@
     },
     "invariants": {
       "path": "security/INVARIANTS.md",
-      "sha256": "0x3e9cb9459cf67695d38dbe812c98cc22a15ed5d3bede1ab35e710151ebcdd352"
+      "sha256": "0x9aa4b8ef7ae0b84025a8849f2aa6c3954b28c932c5bdd3916f82b0df7fbb69db"
     },
     "localRehearsal": {
       "path": "qa/local-rehearsal-report.json",
-      "sha256": "0x058709471161b65e50664f30042b8e580cf0ddf86741afecf83054b7e5e08c43"
+      "sha256": "0xea856cc4031cb90df66a494cbd6540943c30e59c0fb5d1d7a51db63971a6b199"
     },
     "localEvidenceDocket": {
       "path": "evidence/local/EVIDENCE_DOCKET.json",
-      "sha256": "0x9e2664bb93897cfccb255203d1189b6ba4f5c35881aeb6dd18bdcc8fb84b80ab"
+      "sha256": "0x001979ec45fceb6a1eaa6577ea3d007da6727b980e02619f571106ea8fb8f569"
     },
     "agialphaTokenVerification": {
       "path": "qa/public-agialpha-token-verification.json",
-      "sha256": "0xa6a4c97724644fcef7707db9813d177e9c1c60cb84013ad3605b2081116bc6a4"
+      "sha256": "0xc2230f97fb2eb2590349bd752762014f39c634dce1f05a58e2545f3ea95df97e"
     },
     "mainnetGuardrails": {
       "path": "scripts/deploy-ethereum-mainnet-gated.ts",
-      "sha256": "0x74adaa2a085808371332a49cb79b0e79c3433e995649f3c21b8601d2a2cdb2f2"
+      "sha256": "0xd8a7de08236570a03b930b5f2dbb7d0992a06a348883571b2bbbfc2cfa57a02e"
     },
     "branchProtectionOrRiskAcceptance": {
       "path": "qa/public-branch-protection-evidence.json",
-      "sha256": "0x4d8f5580def78bf2968cc296fd2311a3c1c228ea43c322a935d2f933859b54a6"
+      "sha256": "0xd4210ac4d31d49041473388c4f4790e0decb433aeec614e75c69c83e5d5a2ceb"
     },
     "publicGovernanceApproval": {
       "path": "qa/public-governance-approval-evidence.json",
-      "sha256": "0x098d121802ecb38cdeafe29aae405ac4122948cf3caf7e40b1707d08408187c1"
+      "sha256": "0x5f27824fc18f9569cd701aa524fbdcde8523edf9084f88e032663c1fc499bbca"
     },
     "releaseGate": {
       "path": "docs/PUBLIC_MAINNET_AUTHORIZATION_RUNBOOK.md",
-      "sha256": "0x383a9e6ca621580c9d61a52a68d82c6fb64a516e09bdd203e6341fa615958e78"
+      "sha256": "0xaa260e30cb260251cbf495fcb9ae4b347cf096cd2a46d3a8acaeff13b6641f88"
     },
     "mainnetSimulation": {
       "path": "qa/ETHEREUM_MAINNET_FORK_SIMULATION.json",
-      "sha256": "0x018707edf6f836a58642651b527f9823fd486cf1a824fbfdbddd9cca5daca97a"
+      "sha256": "0xe7239cb673d8fec43305a8ba7efa5a18ba207ab25cd28b1e9adf7a6280f3d76a"
     }
   },
   "blockers": [],
   "warnings": [],
-  "nextAction": "A. Public repo authorized. Founder/deployer may run the final manual gated deployment command with local runtime RPC/key."
+  "nextAction": "Founder/deployer may run npm run deploy:ethereum-mainnet:gated with local runtime RPC/key."
 }
