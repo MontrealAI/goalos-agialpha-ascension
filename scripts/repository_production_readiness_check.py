@@ -52,7 +52,7 @@ if (ROOT / ".github/workflows/goalos-jobs-production-rc-ci.yml").exists():
     errors.append("Stale JOBS workflow must not exist: .github/workflows/goalos-jobs-production-rc-ci.yml")
 
 readme = (ROOT / "README.md").read_text(encoding="utf-8", errors="ignore") if (ROOT / "README.md").exists() else ""
-for phrase in ["GoalOS AGIALPHA Ascension", "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA", "Not externally audited", "Ethereum Mainnet not authorized", "Ethereum Sepolia rehearsal"]:
+for phrase in ["GoalOS AGIALPHA Ascension", "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA", "Not externally audited", "Ethereum Mainnet authorization: YES", "Ethereum Mainnet deployed: NO", "Public Sepolia"]:
     if phrase.lower() not in readme.lower():
         errors.append(f"README missing required phrase: {phrase}")
 

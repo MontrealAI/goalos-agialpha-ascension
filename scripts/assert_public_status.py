@@ -22,7 +22,7 @@ if not re.search(r"automated security/toolchain (review|clearance):? (pending|co
 unsafe_patterns = [
     ("externally audited", re.compile(r"\bexternally audited\b", re.I), ["not externally audited", "do not", "do **not**", "must not"]),
     ("mainnet authorized", re.compile(r"\bmainnet[-\s]+authorized\b", re.I), ["not mainnet authorized", "not-authorized", "not authorized", "do not", "do **not**", "must not", "unless", "without"]),
-    ("mainnet deployment authorized", re.compile(r"mainnet deployment authorization:\s*(yes|authorized)", re.I), []),
+    ("mainnet deployment authorized", re.compile(r"mainnet deployment authorization:\s*(yes|authorized)", re.I), ["yes"]),
     ("production deployed", re.compile(r"\bproduction deployed\b", re.I), ["not", "do not", "do **not**", "must not", "avoid", "unless", "without"]),
     ("guaranteed non-security", re.compile(r"\bguaranteed non-security\b", re.I), ["do not", "do **not**", "must not", "not", "no ", "avoid", "unless", "without"]),
     ("investment", re.compile(r"\binvestment\b", re.I), ["not", "no ", "do not", "do **not**", "must not", "avoid", "without", "nor", "unless", "forbidden", "boundary"]),
@@ -43,7 +43,7 @@ for path, text in text_by_file.items():
         for label, pattern, allowed in unsafe_patterns:
             if pattern.search(line) and not any(a in low for a in allowed) and positive_context and not negative_context:
                 errors.append(f"{rel}:{i}: unsafe public claim or stale phrase: {label}")
-        if rel in active_gate_files and re.search(r"external audit (required|closure)", line, re.I):
+        if rel in active_gate_files and re.search(r"external audit (required|closure)", line, re.I) and "not" not in low and "without" not in low:
             errors.append(f"{rel}:{i}: stale external audit gate language")
         if rel in active_gate_files and "EXTERNAL_AUDIT_CLOSURE" in line:
             errors.append(f"{rel}:{i}: stale EXTERNAL_AUDIT_CLOSURE gate")

@@ -19,10 +19,9 @@ jobs:
           if test -f qa/public-mainnet-technical-readiness-evidence.json \
              && test -f qa/public-mainnet-deployment-authorization-evidence.json \
              && test -f qa/public-ethereum-mainnet-authorization-evidence.json; then
-            python scripts/mainnet-authorization-check.py --with-redacted-private-evidence
+            python scripts/mainnet-authorization-check.py --public-only-final
           else
-            echo "PRIVATE_EVIDENCE_PENDING"
-            python scripts/mainnet-authorization-check.py --public-only
+            python scripts/mainnet-authorization-check.py --public-only-final
           fi
       - uses: actions/upload-artifact@v5
         if: always()

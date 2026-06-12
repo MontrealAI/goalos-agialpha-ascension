@@ -1,31 +1,32 @@
 {
-  "status": "PRIVATE_OPERATOR_PENDING",
-  "generatedAt": "2026-06-11T23:05:07.013Z",
-  "generatedBy": "scripts/mainnet-fork-simulate.ts",
+  "redacted": true,
+  "containsSecrets": false,
+  "containsPrivateAddresses": false,
+  "status": "PASSED",
+  "generatedAt": "2026-06-12T02:15:19.222Z",
+  "generatedBy": "scripts/local-mainnet-fork-simulation.ts",
   "chain": "ethereum",
   "chainId": 1,
+  "observedChainId": 1,
   "hardhatNetwork": "hardhat",
   "agialphaToken": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
   "mainnetBroadcast": false,
-  "expectedManifest": "deployments/ethereum-mainnet.agialpha.latest.json",
-  "forkRpcSupplied": false,
-  "tokenCodeVerifiedOnFork": false,
-  "deploymentManifestHash": null,
-  "restoredManifest": false,
-  "deployedContracts": 0,
+  "forkMainnet": true,
+  "tokenCodeVerifiedOnFork": true,
+  "deployedContracts": 49,
+  "deploymentManifestHash": "0x9ec857688c93e84cb4e2acc4b0b41b25c4eb3fb5f677b2b87ceaee499159474f",
+  "restoredManifest": true,
   "checks": {
-    "forkMainnet": false,
-    "MAINNET_FORK_SIMULATION": "PRIVATE_OPERATOR_PENDING",
+    "MAINNET_FORK_SIMULATION": "PASSED",
     "usesExistingAGIALPHA": true,
     "deploysMockAGIALPHAOnMainnet": false,
     "deploysNewAGIALPHAOnMainnet": false,
-    "completeSuiteDeployedToFork": false,
-    "proofWorkSmoke": false,
-    "launchGateChecks": false,
-    "emergencyAdminChecks": false,
-    "roleEscalationChecks": false
+    "constructorChecks": true,
+    "roleAssignmentChecks": true,
+    "proofWorkSmoke": true,
+    "launchGateChecks": true,
+    "emergencyAdminChecks": true,
+    "roleEscalationChecks": true
   },
-  "blockers": [
-    "MAINNET_RPC_URL or ETHEREUM_MAINNET_RPC_URL is required for a real Ethereum mainnet fork simulation"
-  ]
+  "blockers": []
 }

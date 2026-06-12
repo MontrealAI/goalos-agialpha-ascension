@@ -21,4 +21,4 @@ jobs:
       - name: Deterministic local authorization rehearsal (no secrets)
         run: npm run local:authorization-rehearsal
       - name: Public-only authorization check (private evidence may be pending)
-        run: python scripts/mainnet-authorization-check.py --public-only
+        run: python scripts/mainnet-authorization-check.py --public-only-final

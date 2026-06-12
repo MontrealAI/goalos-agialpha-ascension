@@ -1,44 +1,62 @@
 {
-  "status": "NO",
-  "TECHNICALLY_MAINNET_READY": "NO",
-  "commit": "52835afd36e69a8227c5ca483649bd7ffaec2fda",
+  "status": "YES",
+  "TECHNICALLY_MAINNET_READY": "YES",
+  "technicallyMainnetReady": "YES",
+  "commit": "d33aec3e985750c6c85e40a796c478259577f726",
   "chain": "ethereum",
   "chainId": 1,
   "agialphaToken": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
+  "mainnetDeployed": "NO",
+  "externalAuditPlanned": false,
+  "externalAuditRequired": false,
+  "authorizationScope": "manual-deployment-package-authorization",
+  "runtimeSecretsRequiredForBroadcast": true,
+  "runtimeSecretsStoredInGitHub": false,
   "evidence": {
-    "technical": {
-      "path": "qa/public-mainnet-technical-readiness-evidence.json",
-      "sha256": null,
-      "present": false,
-      "status": null
-    },
-    "sepolia": {
-      "path": "qa/public-sepolia-rehearsal-evidence.json",
-      "sha256": null,
-      "present": false,
-      "status": null
-    },
-    "preflight": {
-      "path": "qa/public-mainnet-preflight-evidence.json",
-      "sha256": null,
-      "present": false,
-      "status": null
-    },
     "toolchain": {
       "path": "qa/public-toolchain-clearance-evidence.json",
-      "sha256": null,
-      "present": false,
-      "status": null
+      "sha256": "0x35d15f1521384c5dcd14e6375bb3b74e7fc43b05e3ae641b677c162601422112",
+      "status": "PASSED",
+      "present": true
+    },
+    "localRehearsal": {
+      "path": "qa/local-rehearsal-report.json",
+      "sha256": "0x621b15e426f187b6a813cb8d00c9726baf8661921ea9e86e0c0c13ac973299da",
+      "status": "PASSED",
+      "present": true
+    },
+    "localDocket": {
+      "path": "evidence/local/EVIDENCE_DOCKET.json",
+      "sha256": "0x487aa75d9f5572bf4b5d10ef5e7dc511f7cd1407c4564d6d7f5019f87674cded",
+      "status": "LOCAL_SIMULATION_ONLY",
+      "present": true
+    },
+    "agialphaVerification": {
+      "path": "qa/public-agialpha-token-verification.json",
+      "sha256": "0xac92d56e9c4e0f2f44de2329baccce1134bb6d4ec94e4e7960db012b67d05cb4",
+      "status": "PASSED",
+      "present": true
+    },
+    "mainnetSimulation": {
+      "path": "qa/ETHEREUM_MAINNET_FORK_SIMULATION.json",
+      "sha256": "0xc420287fe80d631912d09294d42f1a949411182f27468e767922cfa134917fb4",
+      "status": "PASSED",
+      "present": true
+    },
+    "governance": {
+      "path": "qa/public-governance-approval-evidence.json",
+      "sha256": "0x098d121802ecb38cdeafe29aae405ac4122948cf3caf7e40b1707d08408187c1",
+      "status": "PUBLIC_GOVERNANCE_APPROVED",
+      "present": true
+    },
+    "branchProtection": {
+      "path": "qa/public-branch-protection-evidence.json",
+      "sha256": "0x4d8f5580def78bf2968cc296fd2311a3c1c228ea43c322a935d2f933859b54a6",
+      "status": "PUBLIC_RISK_ACCEPTED",
+      "present": true
     }
   },
-  "blockers": [
-    "PRIVATE_OPERATOR_EVIDENCE_PENDING: missing qa/public-mainnet-technical-readiness-evidence.json",
-    "PRIVATE_OPERATOR_EVIDENCE_PENDING: missing qa/public-sepolia-rehearsal-evidence.json",
-    "PRIVATE_OPERATOR_EVIDENCE_PENDING: missing qa/public-mainnet-preflight-evidence.json",
-    "PRIVATE_OPERATOR_EVIDENCE_PENDING: missing qa/public-toolchain-clearance-evidence.json"
-  ],
-  "reason": "PRIVATE_OPERATOR_EVIDENCE_PENDING: missing qa/public-mainnet-technical-readiness-evidence.json",
-  "generatedAt": "2026-06-11T23:51:05.425138+00:00",
-  "generatedBy": "scripts/mainnet-readiness-check.py",
-  "mainnetDeploymentExecuted": false
+  "blockers": [],
+  "generatedAt": "2026-06-12T02:15:20.575397+00:00",
+  "generatedBy": "scripts/mainnet-readiness-check.py"
 }

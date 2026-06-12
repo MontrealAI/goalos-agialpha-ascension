@@ -1,0 +1,13 @@
+{
+  "redacted": true,
+  "containsSecrets": false,
+  "containsPrivateAddresses": false,
+  "chain": "ethereum",
+  "chainId": 1,
+  "agialphaToken": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
+  "addressHasCode": true,
+  "codeSha256": "0x9fd51d9b20b0cf7b179d53254bde67131b3a7f632d1ea899359bbed2d3fe5575",
+  "evidenceSource": "live-public-read-only-rpc",
+  "observedAt": "2026-06-12T02:14:37.947996+00:00",
+  "sourceMethod": "https://ethereum-rpc.publicnode.com eth_getCode"
+}

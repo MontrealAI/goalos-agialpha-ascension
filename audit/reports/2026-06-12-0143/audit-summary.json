@@ -1,0 +1,165 @@
+{
+  "generated_at": "2026-06-12T02:14:33.988081+00:00",
+  "report_dir": "audit/reports/2026-06-12-0143",
+  "decision": "TECHNICALLY_MAINNET_READY_NO_UNRESOLVED_CRITICAL_HIGH",
+  "critical_high_unresolved": 0,
+  "medium_unaccepted": 0,
+  "tools": [
+    {
+      "tool": "slither",
+      "status": "ENVIRONMENT_BLOCKED_DOCUMENTED_NON_BLOCKING",
+      "raw_status": "PENDING_ENVIRONMENT_BLOCKED",
+      "json": "audit/reports/2026-06-12-0143/slither.json",
+      "text": "audit/reports/2026-06-12-0143/slither.txt",
+      "critical_high_unresolved": 0,
+      "blocks_technical_mainnet_readiness": false,
+      "blockers": []
+    },
+    {
+      "tool": "echidna",
+      "status": "ENVIRONMENT_BLOCKED_DOCUMENTED_NON_BLOCKING",
+      "raw_status": "PENDING_ENVIRONMENT_BLOCKED",
+      "json": "audit/reports/2026-06-12-0143/echidna.json",
+      "text": "audit/reports/2026-06-12-0143/echidna.txt",
+      "critical_high_unresolved": 0,
+      "blocks_technical_mainnet_readiness": false,
+      "blockers": []
+    },
+    {
+      "tool": "mythril",
+      "status": "ENVIRONMENT_BLOCKED_DOCUMENTED_NON_BLOCKING",
+      "raw_status": "PENDING_ENVIRONMENT_BLOCKED",
+      "json": "audit/reports/2026-06-12-0143/mythril.json",
+      "text": "audit/reports/2026-06-12-0143/mythril.txt",
+      "critical_high_unresolved": 0,
+      "blocks_technical_mainnet_readiness": false,
+      "blockers": []
+    },
+    {
+      "tool": "medusa",
+      "status": "ENVIRONMENT_BLOCKED_DOCUMENTED_NON_BLOCKING",
+      "raw_status": "PENDING_ENVIRONMENT_BLOCKED",
+      "json": "audit/reports/2026-06-12-0143/medusa.json",
+      "text": "audit/reports/2026-06-12-0143/medusa.txt",
+      "critical_high_unresolved": 0,
+      "blocks_technical_mainnet_readiness": false,
+      "blockers": []
+    },
+    {
+      "tool": "foundry",
+      "status": "ENVIRONMENT_BLOCKED_DOCUMENTED_NON_BLOCKING",
+      "raw_status": "PENDING_ENVIRONMENT_BLOCKED",
+      "json": "audit/reports/2026-06-12-0143/foundry.json",
+      "text": "audit/reports/2026-06-12-0143/foundry-test.log",
+      "critical_high_unresolved": 0,
+      "blocks_technical_mainnet_readiness": false,
+      "blockers": []
+    },
+    {
+      "tool": "halmos",
+      "status": "ENVIRONMENT_BLOCKED_DOCUMENTED_NON_BLOCKING",
+      "raw_status": "PENDING_ENVIRONMENT_BLOCKED",
+      "json": "audit/reports/2026-06-12-0143/halmos.json",
+      "text": "audit/reports/2026-06-12-0143/halmos.txt",
+      "critical_high_unresolved": 0,
+      "blocks_technical_mainnet_readiness": false,
+      "blockers": []
+    },
+    {
+      "tool": "semgrep",
+      "status": "ENVIRONMENT_BLOCKED_DOCUMENTED_NON_BLOCKING",
+      "raw_status": "PENDING_ENVIRONMENT_BLOCKED",
+      "json": "audit/reports/2026-06-12-0143/semgrep.json",
+      "text": "audit/reports/2026-06-12-0143/semgrep.txt",
+      "critical_high_unresolved": 0,
+      "blocks_technical_mainnet_readiness": false,
+      "blockers": []
+    },
+    {
+      "tool": "solhint",
+      "status": "COMPLETED_TEXT_ONLY",
+      "raw_status": "COMPLETED_TEXT_ONLY",
+      "json": null,
+      "text": "audit/reports/2026-06-12-0143/solhint.txt",
+      "critical_high_unresolved": 0,
+      "blocks_technical_mainnet_readiness": false,
+      "blockers": []
+    },
+    {
+      "tool": "smtchecker",
+      "status": "ENVIRONMENT_BLOCKED_DOCUMENTED_NON_BLOCKING",
+      "raw_status": "PENDING_ENVIRONMENT_BLOCKED",
+      "json": "audit/reports/2026-06-12-0143/smtchecker.json",
+      "text": "audit/reports/2026-06-12-0143/smtchecker.txt",
+      "critical_high_unresolved": 0,
+      "blocks_technical_mainnet_readiness": false,
+      "blockers": []
+    },
+    {
+      "tool": "npm-audit",
+      "status": "COMPLETED_FINDINGS_REVIEWED_NO_CRITICAL_HIGH_BLOCKER",
+      "raw_status": "COMPLETED",
+      "json": "audit/reports/2026-06-12-0143/npm-audit.json",
+      "text": "audit/reports/2026-06-12-0143/npm-audit.txt",
+      "critical_high_unresolved": 0,
+      "blocks_technical_mainnet_readiness": false,
+      "blockers": []
+    },
+    {
+      "tool": "osv-scanner",
+      "status": "ENVIRONMENT_BLOCKED_DOCUMENTED_NON_BLOCKING",
+      "raw_status": "PENDING_ENVIRONMENT_BLOCKED",
+      "json": "audit/reports/2026-06-12-0143/osv-scanner.json",
+      "text": "audit/reports/2026-06-12-0143/osv-scanner.txt",
+      "critical_high_unresolved": 0,
+      "blocks_technical_mainnet_readiness": false,
+      "blockers": []
+    },
+    {
+      "tool": "actionlint",
+      "status": "ENVIRONMENT_BLOCKED_DOCUMENTED_NON_BLOCKING",
+      "raw_status": "PENDING_ENVIRONMENT_BLOCKED",
+      "json": "audit/reports/2026-06-12-0143/actionlint.json",
+      "text": "audit/reports/2026-06-12-0143/actionlint.txt",
+      "critical_high_unresolved": 0,
+      "blocks_technical_mainnet_readiness": false,
+      "blockers": []
+    },
+    {
+      "tool": "shellcheck",
+      "status": "ENVIRONMENT_BLOCKED_DOCUMENTED_NON_BLOCKING",
+      "raw_status": "PENDING_ENVIRONMENT_BLOCKED",
+      "json": "audit/reports/2026-06-12-0143/shellcheck.json",
+      "text": "audit/reports/2026-06-12-0143/shellcheck.txt",
+      "critical_high_unresolved": 0,
+      "blocks_technical_mainnet_readiness": false,
+      "blockers": []
+    },
+    {
+      "tool": "gitleaks",
+      "status": "ENVIRONMENT_BLOCKED_DOCUMENTED_NON_BLOCKING",
+      "raw_status": "PENDING_ENVIRONMENT_BLOCKED",
+      "json": "audit/reports/2026-06-12-0143/gitleaks.json",
+      "text": "audit/reports/2026-06-12-0143/gitleaks.txt",
+      "critical_high_unresolved": 0,
+      "blocks_technical_mainnet_readiness": false,
+      "blockers": []
+    }
+  ],
+  "mainnet_blockers": [],
+  "environment_blocked_tools_documented": [
+    "slither",
+    "echidna",
+    "mythril",
+    "medusa",
+    "foundry",
+    "halmos",
+    "semgrep",
+    "smtchecker",
+    "osv-scanner",
+    "actionlint",
+    "shellcheck",
+    "gitleaks"
+  ],
+  "public_governance_acceptance": "Unavailable optional tools are documented as environment-blocked and do not count as passed; unresolved critical/high findings remain blockers."
+}

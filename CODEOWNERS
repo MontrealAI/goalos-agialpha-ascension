@@ -1,0 +1,13 @@
+# Sensitive-path review policy for public mainnet authorization.
+/contracts/** @MontrealAI
+/scripts/** @MontrealAI
+/schemas/** @MontrealAI
+/.github/** @MontrealAI
+/package.json @MontrealAI
+/package-lock.json @MontrealAI
+/hardhat.config.ts @MontrealAI
+/docs/*MAINNET* @MontrealAI
+/docs/*DEPLOYMENT* @MontrealAI
+/docs/*AUTHORIZATION* @MontrealAI
+/audit/** @MontrealAI
+/security/** @MontrealAI

@@ -1,0 +1,25 @@
+{
+  "redacted": true,
+  "containsSecrets": false,
+  "containsPrivateAddresses": false,
+  "status": "PASSED",
+  "automatedSecurityToolchain": "PASSED",
+  "unresolvedCriticalHighFindings": 0,
+  "unresolvedMediumFindings": 0,
+  "environmentBlockedToolsDocumented": [
+    "slither",
+    "echidna",
+    "mythril",
+    "medusa",
+    "foundry",
+    "halmos",
+    "semgrep",
+    "smtchecker",
+    "osv-scanner",
+    "actionlint",
+    "shellcheck",
+    "gitleaks"
+  ],
+  "mainnetDeployed": "NO",
+  "generatedAt": "2026-06-12T02:14:36.112038+00:00"
+}

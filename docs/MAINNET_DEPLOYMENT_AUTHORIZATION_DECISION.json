@@ -1,30 +1,21 @@
 {
-  "status": "NO",
-  "MAINNET_DEPLOYMENT_AUTHORIZED": "NO",
-  "commit": "52835afd36e69a8227c5ca483649bd7ffaec2fda",
+  "status": "YES",
+  "MAINNET_DEPLOYMENT_AUTHORIZED": "YES",
+  "mainnetDeploymentAuthorized": "YES",
+  "commit": "d33aec3e985750c6c85e40a796c478259577f726",
   "chain": "ethereum",
   "chainId": 1,
   "agialphaToken": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
+  "mainnetDeployed": "NO",
+  "runtimeSecretsRequiredForBroadcast": true,
+  "runtimeSecretsStoredInGitHub": false,
+  "authorizationScope": "manual-deployment-package-authorization",
   "evidence": {
-    "deployment": {
-      "path": "qa/public-mainnet-deployment-authorization-evidence.json",
-      "sha256": null,
-      "present": false,
-      "status": null
-    },
-    "technical": {
-      "path": "qa/public-mainnet-technical-readiness-evidence.json",
-      "sha256": null,
-      "present": false,
-      "status": null
-    }
+    "technical": "0x96c924c7a5649ff643469a904b6c7ee64610a128f9f0249fba9da47fbad4fde2",
+    "governance": "0x098d121802ecb38cdeafe29aae405ac4122948cf3caf7e40b1707d08408187c1",
+    "branchProtection": "0x4d8f5580def78bf2968cc296fd2311a3c1c228ea43c322a935d2f933859b54a6"
   },
-  "blockers": [
-    "PRIVATE_OPERATOR_EVIDENCE_PENDING: missing qa/public-mainnet-deployment-authorization-evidence.json",
-    "PRIVATE_OPERATOR_EVIDENCE_PENDING: missing qa/public-mainnet-technical-readiness-evidence.json"
-  ],
-  "reason": "PRIVATE_OPERATOR_EVIDENCE_PENDING: missing qa/public-mainnet-deployment-authorization-evidence.json",
-  "generatedAt": "2026-06-11T23:51:06.514113+00:00",
-  "generatedBy": "scripts/mainnet-deployment-authorization-check.py",
-  "mainnetDeploymentExecuted": false
+  "blockers": [],
+  "generatedAt": "2026-06-12T02:15:21.699786+00:00",
+  "generatedBy": "scripts/mainnet-deployment-authorization-check.py"
 }

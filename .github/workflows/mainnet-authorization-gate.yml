@@ -1,11 +1,11 @@
-name: Mainnet Authorization Gate
+name: Public Mainnet Authorization Gate
 on:
   pull_request:
   workflow_dispatch:
 permissions:
   contents: read
 jobs:
-  gate:
+  public-mainnet-authorization:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
@@ -15,13 +15,18 @@ jobs:
           cache: "npm"
       - run: npm ci
       - run: npm run repo:all
+      - run: npm run repo:no-private-operator-data
+      - run: npm run repo:no-paid-products
       - run: npm run assert:public-status
-      - name: Read-only public gate check; no secrets or deployment
-        run: npm run mainnet:authorization-check:public
-      - uses: actions/upload-artifact@v5
-        if: always()
-        with:
-          name: mainnet-authorization-decision
-          path: |
-            docs/MAINNET_AUTHORIZATION_DECISION.*
-            docs/ETHEREUM_MAINNET_AUTHORIZATION_DECISION.*
+      - run: npm run compile
+      - run: npm test
+      - run: npm run test:all
+      - run: npm run static-check
+      - run: npm run rehearse:local
+      - run: npm run evidence:local
+      - run: npm run verify:agialpha-token:public
+      - run: npm run audit:all
+      - run: npm run audit:summarize
+      - run: npm run audit:fail-on-critical
+      - run: npm run audit:clearance-report
+      - run: npm run mainnet:public-authorize

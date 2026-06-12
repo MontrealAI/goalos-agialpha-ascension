@@ -3,7 +3,7 @@ import "@nomicfoundation/hardhat-toolbox";
 import { getOptionalPrivateKey, getOptionalRpcUrl } from "./scripts/config/networkConfig";
 
 const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY || "";
-const MAINNET_FORK_RPC_URL = getOptionalRpcUrl("ethereumMainnet");
+const MAINNET_FORK_RPC_URL = getOptionalRpcUrl("ethereumMainnet") || process.env.PUBLIC_ETHEREUM_MAINNET_RPC_URL;
 const ENABLE_MAINNET_FORK = process.env.HARDHAT_FORK_MAINNET === "1" && Boolean(MAINNET_FORK_RPC_URL);
 
 function accounts(networkName: string): string[] | "remote" {

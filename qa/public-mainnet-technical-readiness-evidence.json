@@ -1,0 +1,19 @@
+{
+  "redacted": true,
+  "containsSecrets": false,
+  "containsPrivateAddresses": false,
+  "chain": "ethereum",
+  "chainId": 1,
+  "agialphaToken": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
+  "commit": "d33aec3e985750c6c85e40a796c478259577f726",
+  "technicalReadiness": "YES",
+  "mainnetDeployed": "NO",
+  "blockers": [],
+  "generatedAt": "2026-06-12T02:15:20.575397+00:00",
+  "toolchainClearanceHash": "0x35d15f1521384c5dcd14e6375bb3b74e7fc43b05e3ae641b677c162601422112",
+  "localRehearsalEvidenceHash": "0x621b15e426f187b6a813cb8d00c9726baf8661921ea9e86e0c0c13ac973299da",
+  "agialphaTokenVerificationHash": "0xac92d56e9c4e0f2f44de2329baccce1134bb6d4ec94e4e7960db012b67d05cb4",
+  "mainnetPreflightPolicyHash": "0x3155e7372dac0ffbfae2852b38d0a8b9c1a759e99c7822551b8893eb790ce4d7",
+  "governanceApprovalHash": "0x098d121802ecb38cdeafe29aae405ac4122948cf3caf7e40b1707d08408187c1",
+  "branchProtectionEvidenceHash": "0x4d8f5580def78bf2968cc296fd2311a3c1c228ea43c322a935d2f933859b54a6"
+}

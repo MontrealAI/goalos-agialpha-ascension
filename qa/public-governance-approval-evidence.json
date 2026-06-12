@@ -1,0 +1,14 @@
+{
+  "redacted": true,
+  "containsSecrets": false,
+  "containsPrivateAddresses": false,
+  "status": "PUBLIC_GOVERNANCE_APPROVED",
+  "commit": "a469a9aaebcd5cdd3da77889e6b8450fccdfd5ea",
+  "branch": "codex/public-mainnet-authorization-v10",
+  "checksPassed": "evaluated-by-public-ci",
+  "branchProtectionOrRiskAcceptance": true,
+  "codeownersOrSensitivePathPolicy": true,
+  "releaseTagInstruction": "mainnet-authorization-vX.Y.Z",
+  "missing": [],
+  "generatedAt": "2026-06-12T01:42:29.540522+00:00"
+}

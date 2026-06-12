@@ -1,7 +1,3 @@
 # Final Public Claims Boundary
 
-Permitted public statements are limited to utility coordination, proof-settled workflow, and evidence commitments.
-
-Do not claim externally audited, guaranteed secure, guaranteed non-security, investment, yield, dividends, ownership, profit rights, revenue share, price targets, or mainnet production deployment unless separate post-deployment transaction evidence exists.
-
-AGIALPHA is utility coordination only, not equity, dividends, yield, ownership, profit rights, or an investment claim.
+Allowed: authorized for manual gated Ethereum Mainnet deployment when public decisions are YES. Not allowed: externally audited, guaranteed secure, guaranteed non-security, investment, yield, price target, revenue share, or production deployed without transaction evidence.
