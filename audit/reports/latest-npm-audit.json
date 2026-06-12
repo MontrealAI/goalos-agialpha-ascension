@@ -11,6 +11,7 @@
       "effects": [
         "@ethersproject/contracts",
         "@nomicfoundation/hardhat-verify",
+        "ethers",
         "hardhat"
       ],
       "range": "5.0.10 - 5.8.0",
@@ -244,18 +245,13 @@
         "@ethersproject/hash"
       ],
       "effects": [
-        "@ethersproject/hdnode",
-        "ethers"
+        "@ethersproject/hdnode"
       ],
       "range": "5.0.8 - 5.8.0",
       "nodes": [
         "node_modules/@ethersproject/wordlists"
       ],
-      "fixAvailable": {
-        "name": "@nomicfoundation/hardhat-toolbox",
-        "version": "7.0.0",
-        "isSemVerMajor": true
-      }
+      "fixAvailable": true
     },
     "@nomicfoundation/hardhat-chai-matchers": {
       "name": "@nomicfoundation/hardhat-chai-matchers",
@@ -655,9 +651,7 @@
         "bn.js",
         "number-to-bn"
       ],
-      "effects": [
-        "web3-utils"
-      ],
+      "effects": [],
       "range": ">=0.1.3",
       "nodes": [
         "node_modules/ethjs-unit"
@@ -786,7 +780,9 @@
       "via": [
         "bn.js"
       ],
-      "effects": [],
+      "effects": [
+        "web3-utils"
+      ],
       "range": "*",
       "nodes": [
         "node_modules/number-to-bn"
