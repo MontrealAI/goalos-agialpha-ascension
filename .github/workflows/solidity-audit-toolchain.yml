@@ -47,7 +47,7 @@ jobs:
       - run: npm run mainnet:authorization-check
       - run: npm run qa:manifest
       - run: npm run qa:manifest:verify
-      - uses: actions/upload-artifact@v5
+      - uses: actions/upload-artifact@v7
         if: always()
         with:
           name: public-mainnet-authorization-artifacts
