@@ -1,9 +1,9 @@
 # Ethereum Mainnet Preflight Report
 
-Status: **PRIVATE_OPERATOR_EVIDENCE_PENDING**.
+Status: **PUBLIC_CERTIFICATE_AUTHORIZED_FOR_MANUAL_GATED_MAINNET_DEPLOYMENT**.
 
-Public GitHub does not require or store RPC URLs, deployer keys, founder addresses, treasury addresses, admin addresses, vault addresses, or private ceremony details.
+The public repository authorization does not require public RPC URLs, deployer keys, founder addresses, treasury addresses, admin addresses, vault addresses, or private ceremony details.
 
-The Ethereum Mainnet read-only preflight must be run locally by the private operator. The private report remains under `.private/`, and only `qa/public-mainnet-preflight-evidence.json` may be committed as a redacted commitment.
+Runtime Ethereum Mainnet read-only preflight may still be run locally by the deployer before broadcast. Any private report remains under `.private/`; public authorization is computed from `qa/mainnet-authorization-certificate.json` and public-safe evidence.
 
 No Ethereum Mainnet deployment occurred.

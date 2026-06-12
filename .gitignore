@@ -34,3 +34,4 @@ private/
 *.local.json
 !scripts/private/
 !scripts/private/*.py
+__pycache__/

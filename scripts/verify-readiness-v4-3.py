@@ -21,19 +21,19 @@ def main():
         if needle not in launch: errors.append(f'LaunchGateRegistry missing {needle}')
     if 'BASE_SEPOLIA_REHEARSAL' in launch: errors.append('LaunchGateRegistry must not contain BASE_SEPOLIA_REHEARSAL')
     deploy=read('scripts/deploy-core.ts') if (ROOT/'scripts/deploy-core.ts').exists() else ''
-    for needle in ['AGIALPHA_MAINNET','TREASURY_REVIEW_HASH','AGIALPHA_TOKEN_VERIFICATION_HASH','MockAGIALPHA','GoalOS_AGIALPHA_Ascension_Ethereum_Mainnet_Implementation_v4_3_GATE_CLEAN_EVIDENCE_READY']:
+    for needle in ['AGIALPHA_MAINNET','mainnetAuthorizationCertificateHash','agialphaTokenVerificationHash','MockAGIALPHA','GoalOS_AGIALPHA_Ascension_Ethereum_Mainnet_Implementation_v4_3_GATE_CLEAN_EVIDENCE_READY']:
         if needle not in deploy: errors.append(f'deploy-core.ts missing {needle}')
-    for script in ['scripts/preflight-ethereum-mainnet-gates.ts','scripts/mainnet-authorization-check.py']:
+    for script in ['scripts/deploy-ethereum-mainnet-gated.ts','scripts/mainnet-authorization-check.py']:
         txt=read(script) if (ROOT/script).exists() else ''
-        for key in ['TREASURY_REVIEW_HASH','AGIALPHA_TOKEN_VERIFICATION_HASH']:
-            if key not in txt: errors.append(f'{script} missing {key}')
+        for key in ['qa/mainnet-authorization-certificate.json','certificate']:
+            if key not in txt: errors.append(f'{script} missing certificate source-of-truth marker {key}')
     for sol in (ROOT/'contracts').rglob('*.sol'):
         txt=sol.read_text(encoding='utf-8', errors='ignore')
         if 'pragma solidity ^0.8.24;' not in txt: errors.append(f'missing pragma: {sol.relative_to(ROOT)}')
         if txt.count('{')!=txt.count('}'): errors.append(f'brace mismatch: {sol.relative_to(ROOT)}')
     (ROOT/'qa').mkdir(exist_ok=True)
     generated_at=datetime.datetime.now(datetime.UTC).isoformat()
-    report={'package':'GoalOS_AGIALPHA_Ascension_Ethereum_Mainnet_Implementation_v4_3_GATE_CLEAN_EVIDENCE_READY','generated_at':generated_at,'static_readiness':'passed' if not errors else 'failed','files_checked':0,'errors':errors,'warnings':warnings,'status':'gate-clean evidence-ready audit candidate; mainnet not authorized','score_current_state':'9.6/10 audit-candidate package; not 10/10 until executed evidence and internal security review exist','next_gate':'real Ethereum Sepolia rehearsal and filled Evidence Docket'}
+    report={'package':'GoalOS_AGIALPHA_Ascension_Ethereum_Mainnet_Implementation_v4_3_GATE_CLEAN_EVIDENCE_READY','generated_at':generated_at,'static_readiness':'passed' if not errors else 'failed','files_checked':0,'errors':errors,'warnings':warnings,'status':'certificate-backed evidence-ready public authorization candidate; mainnet deployed: NO','score_current_state':'public repository package authorized by generated certificate when all public gates pass; no guarantee of security or legal/tax approval','next_gate':'manual local gated Ethereum Mainnet deployment with runtime RPC/key if founder/deployer elects to broadcast'}
     (ROOT/'qa/READINESS_REPORT_v4_3.json').write_text(json.dumps(report,indent=2),encoding='utf-8')
     manifest=[]
     manifest_path=ROOT/'qa/MANIFEST_v4_3.json'

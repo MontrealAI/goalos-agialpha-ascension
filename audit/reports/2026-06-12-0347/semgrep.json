@@ -1,0 +1,186 @@
+{
+  "tool": "semgrep",
+  "status": "COMPLETED",
+  "rawResults": {
+    "version": "1.166.0",
+    "results": [],
+    "errors": [],
+    "paths": {
+      "scanned": [
+        ".github/ISSUE_TEMPLATE/audit_item.yml",
+        ".github/ISSUE_TEMPLATE/config.yml",
+        ".github/ISSUE_TEMPLATE/mainnet_gate.yml",
+        ".github/ISSUE_TEMPLATE/proof_mission.yml",
+        ".github/ISSUE_TEMPLATE/repository_hygiene.yml",
+        ".github/ISSUE_TEMPLATE/safe_claims_review.yml",
+        ".github/ISSUE_TEMPLATE/sepolia_rehearsal.yml",
+        ".github/dependabot.yml",
+        ".github/labels.yml",
+        ".github/workflows/agialpha-audit-candidate-ci.yml",
+        ".github/workflows/dependabot-upgrade-triage.yml",
+        ".github/workflows/ethereum-sepolia-rehearsal.yml",
+        ".github/workflows/final-authorization-evidence-check.yml",
+        ".github/workflows/final-public-mainnet-authorization.yml",
+        ".github/workflows/mainnet-authorization-gate.yml",
+        ".github/workflows/mainnet-gate-watch.yml",
+        ".github/workflows/repository-validation.yml",
+        ".github/workflows/sepolia-rehearsal.yml",
+        ".github/workflows/solidity-audit-toolchain.yml",
+        "configs/echidna.yaml",
+        "hardhat.config.ts",
+        "ignition/modules/GoalOSAGIALPHAAscension.ts",
+        "scripts/assert_public_status.py",
+        "scripts/audit/_common.sh",
+        "scripts/audit/fail-on-critical-findings.py",
+        "scripts/audit/generate-toolchain-clearance-report.py",
+        "scripts/audit/run-actionlint.sh",
+        "scripts/audit/run-all-audits.sh",
+        "scripts/audit/run-echidna.sh",
+        "scripts/audit/run-foundry.sh",
+        "scripts/audit/run-gitleaks.sh",
+        "scripts/audit/run-halmos.sh",
+        "scripts/audit/run-medusa.sh",
+        "scripts/audit/run-mythril.sh",
+        "scripts/audit/run-npm-audit.sh",
+        "scripts/audit/run-osv-scanner.sh",
+        "scripts/audit/run-semgrep.sh",
+        "scripts/audit/run-shellcheck.sh",
+        "scripts/audit/run-slither.sh",
+        "scripts/audit/run-solc-smtchecker.sh",
+        "scripts/audit/run-solhint.sh",
+        "scripts/audit/summarize-audit-results.py",
+        "scripts/check-deployment-readiness.ts",
+        "scripts/config/networkConfig.ts",
+        "scripts/deploy-core.ts",
+        "scripts/deploy-ethereum-mainnet-gated.ts",
+        "scripts/deploy-ethereum-sepolia.ts",
+        "scripts/ethereum-mainnet-authorization-check.py",
+        "scripts/fund-vaults-agialpha-gated.ts",
+        "scripts/generate-deployment-manifest.ts",
+        "scripts/generate-evidence-docket-template.py",
+        "scripts/generate-local-evidence-docket.py",
+        "scripts/generate-mainnet-authorization-certificate.py",
+        "scripts/generate-public-post-deployment-report.py",
+        "scripts/generate-public-status-docs.py",
+        "scripts/generate-sepolia-evidence-docket.py",
+        "scripts/generate-vault-funding-instructions.ts",
+        "scripts/ignition-mainnet-gated-disabled.ts",
+        "scripts/local-mainnet-fork-simulation.ts",
+        "scripts/mainnet-authorization-check.py",
+        "scripts/mainnet-deployment-authorization-check.py",
+        "scripts/mainnet-fork-simulate.ts",
+        "scripts/mainnet-readiness-check.py",
+        "scripts/no_paid_products_check.py",
+        "scripts/no_private_operator_data_check.py",
+        "scripts/preflight-ethereum-mainnet-gates.ts",
+        "scripts/preflight-ethereum-mainnet.ts",
+        "scripts/private/common.py",
+        "scripts/private/generate-address-ceremony-commitment.py",
+        "scripts/private/generate-founder-approval-message.py",
+        "scripts/private/generate-private-operator-template.py",
+        "scripts/private/generate-redacted-public-evidence.py",
+        "scripts/private/post-deployment-verify-mainnet.py",
+        "scripts/private/prepare-final-local-deployment.py",
+        "scripts/private/run-final-local-mainnet-deployment.py",
+        "scripts/private/run-private-mainnet-preflight.py",
+        "scripts/private/run-private-sepolia-rehearsal.py",
+        "scripts/private/validate-private-operator-inputs.py",
+        "scripts/private/verify-founder-approval-private.py",
+        "scripts/public_governance_approval_check.py",
+        "scripts/rehearse-ethereum-sepolia.ts",
+        "scripts/rehearse-local-authorization-chain.ts",
+        "scripts/repository_production_readiness_check.py",
+        "scripts/repository_safety_check.py",
+        "scripts/repository_status_check.py",
+        "scripts/static_check.py",
+        "scripts/validate-mainnet-authorization-certificate.py",
+        "scripts/validate-runtime-addresses.ts",
+        "scripts/verify-agialpha-token.ts",
+        "scripts/verify-compiler-alignment.py",
+        "scripts/verify-deployment-manifest.ts",
+        "scripts/verify-deployment.ts",
+        "scripts/verify-readiness-v4-2.py",
+        "scripts/verify-readiness-v4-3.py",
+        "scripts/verify_agialpha_token_public.py",
+        "scripts/wizard/mainnet-command-center.py",
+        "scripts/wizard/mainnet-next-step.py",
+        "scripts/wizard/mainnet-status.py"
+      ]
+    },
+    "time": {
+      "rules": [],
+      "rules_parse_time": 0.003951072692871094,
+      "profiling_times": {
+        "config_time": 0.5375430583953857,
+        "core_time": 1.4243676662445068,
+        "ignores_time": 0.0009586811065673828,
+        "total_time": 1.9886395931243896
+      },
+      "parsing_time": {
+        "total_time": 0.0,
+        "per_file_time": {
+          "mean": 0.0,
+          "std_dev": 0.0
+        },
+        "very_slow_stats": {
+          "time_ratio": 0.0,
+          "count_ratio": 0.0
+        },
+        "very_slow_files": []
+      },
+      "scanning_time": {
+        "total_time": 0.1811056137084961,
+        "per_file_time": {
+          "mean": 0.001848016466413225,
+          "std_dev": 9.498906069081517e-05
+        },
+        "very_slow_stats": {
+          "time_ratio": 0.0,
+          "count_ratio": 0.0
+        },
+        "very_slow_files": []
+      },
+      "matching_time": {
+        "total_time": 0.0,
+        "per_file_and_rule_time": {
+          "mean": 0.0,
+          "std_dev": 0.0
+        },
+        "very_slow_stats": {
+          "time_ratio": 0.0,
+          "count_ratio": 0.0
+        },
+        "very_slow_rules_on_files": []
+      },
+      "tainting_time": {
+        "total_time": 0.0,
+        "per_def_and_rule_time": {
+          "mean": 0.0,
+          "std_dev": 0.0
+        },
+        "very_slow_stats": {
+          "time_ratio": 0.0,
+          "count_ratio": 0.0
+        },
+        "very_slow_rules_on_defs": []
+      },
+      "fixpoint_timeouts": [],
+      "prefiltering": {
+        "project_level_time": 0.0,
+        "file_level_time": 0.0,
+        "rules_with_project_prefilters_ratio": 0.0,
+        "rules_with_file_prefilters_ratio": 1.0,
+        "rules_selected_ratio": 0.015503875968992248,
+        "rules_matched_ratio": 0.015503875968992248
+      },
+      "targets": [],
+      "total_bytes": 0,
+      "max_memory_bytes": 100872640
+    },
+    "engine_requested": "OSS",
+    "skipped_rules": [],
+    "profiling_results": []
+  },
+  "critical_high_unresolved": 0,
+  "resultCount": 0
+}

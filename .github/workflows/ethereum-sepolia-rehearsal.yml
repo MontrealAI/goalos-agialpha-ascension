@@ -18,7 +18,6 @@ jobs:
       - run: npm run repo:all
       - run: npm run repo:no-private-operator-data
       - run: npm run repo:no-paid-products
-      - run: npm run assert:public-status
       - run: npm run compile:ci
       - run: npm run test:ci
       - run: npm run test:all
@@ -35,17 +34,17 @@ jobs:
       - run: npm run audit:secrets
       - run: npm run audit:npm
       - run: npm run audit:osv || true
-      - run: npm run audit:all || true
       - run: npm run audit:summarize
       - run: npm run audit:fail-on-critical
       - run: npm run audit:clearance-report
       - run: npm run verify:agialpha-token:public || true
       - run: npm run mainnet:certificate
       - run: npm run mainnet:certificate:validate
+      - run: npm run docs:status
+      - run: npm run assert:public-status
       - run: npm run mainnet:readiness-check
       - run: npm run mainnet:deployment-authorization-check
       - run: npm run mainnet:authorization-check
-      - run: npm run docs:status
       - uses: actions/upload-artifact@v5
         if: always()
         with:

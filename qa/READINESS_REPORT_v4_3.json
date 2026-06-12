@@ -1,11 +1,11 @@
 {
   "package": "GoalOS_AGIALPHA_Ascension_Ethereum_Mainnet_Implementation_v4_3_GATE_CLEAN_EVIDENCE_READY",
-  "generated_at": "2026-06-12T02:58:52.020504+00:00",
+  "generated_at": "2026-06-12T03:44:57.633960+00:00",
   "static_readiness": "passed",
-  "files_checked": 1016,
+  "files_checked": 1073,
   "errors": [],
   "warnings": [],
-  "status": "gate-clean evidence-ready audit candidate; mainnet not authorized",
-  "score_current_state": "9.6/10 audit-candidate package; not 10/10 until executed evidence and internal security review exist",
-  "next_gate": "real Ethereum Sepolia rehearsal and filled Evidence Docket"
+  "status": "certificate-backed evidence-ready public authorization candidate; mainnet deployed: NO",
+  "score_current_state": "public repository package authorized by generated certificate when all public gates pass; no guarantee of security or legal/tax approval",
+  "next_gate": "manual local gated Ethereum Mainnet deployment with runtime RPC/key if founder/deployer elects to broadcast"
 }

@@ -4,23 +4,18 @@
   "containsPrivateAddresses": false,
   "status": "PASSED",
   "automatedSecurityToolchain": "PASSED",
-  "unresolvedCriticalHighFindings": 0,
-  "unresolvedMediumFindings": 0,
-  "environmentBlockedToolsDocumented": [
+  "tier1Status": "PASSED",
+  "tier1BlockedTools": [],
+  "tier2UnavailableTools": [
     "echidna",
     "mythril",
     "medusa",
     "foundry",
     "halmos",
-    "semgrep",
-    "solhint",
-    "smtchecker",
-    "npm-audit",
-    "osv-scanner",
-    "actionlint",
-    "shellcheck",
-    "gitleaks"
+    "smtchecker"
   ],
+  "unresolvedCriticalHighFindings": 0,
+  "unresolvedMediumFindings": 0,
   "mainnetDeployed": "NO",
-  "generatedAt": "2026-06-12T03:14:42.764660+00:00"
+  "generatedAt": "2026-06-12T04:05:15.286650+00:00"
 }

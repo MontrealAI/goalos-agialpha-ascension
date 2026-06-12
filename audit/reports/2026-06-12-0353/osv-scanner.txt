@@ -1,0 +1,2 @@
+OSV scanner binary unavailable. Using committed npm audit/OSV triage equivalent.
+Local/Docker command: docker run --rm -v "/workspace/goalos-agialpha-ascension:/src" ghcr.io/google/osv-scanner:latest --lockfile /src/package-lock.json

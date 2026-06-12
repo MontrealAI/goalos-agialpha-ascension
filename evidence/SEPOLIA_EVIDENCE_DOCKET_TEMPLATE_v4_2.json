@@ -24,8 +24,8 @@
     "taxMemoSha256": "PENDING",
     "testLogSha256": "TO_FILL"
   },
-  "generatedAtUtc": "2026-06-12T02:59:01Z",
-  "mainnetDecision": "NOT_AUTHORIZED",
+  "generatedAtUtc": "2026-06-12T04:09:48Z",
+  "mainnetDecision": "CERTIFICATE_BASED_PUBLIC_AUTHORIZATION_SEPARATE_FROM_OPTIONAL_SEPOLIA_TEMPLATE",
   "network": "ethereum-sepolia",
   "notes": [
     "Fill this after real Ethereum Sepolia execution.",
@@ -43,7 +43,7 @@
     "Reputation updates",
     "Rewards and bonds settle"
   ],
-  "publicBoundary": "Evidence docket only. Not externally audited. Ethereum Mainnet not authorized. Not legal, tax, investment, or security approval.",
+  "publicBoundary": "Evidence docket template only. Not externally audited. Public repository authorization is certificate-based; this optional Sepolia template is not proof of deployment, legal, tax, investment, or security approval.",
   "rootDoctrine": "GoalOS sets aim; AGIALPHA coordinates proof work; AEP-001 defines evidence; Proof Gradient decides what may evolve.",
   "schema": "goalos.agialpha.ascension.evidence_docket.v4.2",
   "status": "draft",

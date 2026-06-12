@@ -3,7 +3,7 @@
   "containsSecrets": false,
   "containsPrivateAddresses": false,
   "status": "PASSED",
-  "generatedAt": "2026-06-12T02:59:52.632Z",
+  "generatedAt": "2026-06-12T04:07:02.691Z",
   "generatedBy": "scripts/local-mainnet-fork-simulation.ts",
   "chain": "ethereum",
   "chainId": 1,

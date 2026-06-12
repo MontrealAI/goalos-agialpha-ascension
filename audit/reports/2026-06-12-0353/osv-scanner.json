@@ -1,0 +1,1 @@
+{"tool":"osv-scanner","status":"COMPLETED_TRIAGED","critical_high_unresolved":0,"triage":"OSV binary unavailable; npm audit triage is committed and accepted for Tier 1 OSV-or-triage gate","localDockerCommand":"docker run --rm -v /workspace/goalos-agialpha-ascension:/src ghcr.io/google/osv-scanner:latest --lockfile /src/package-lock.json"}

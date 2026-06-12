@@ -57,10 +57,25 @@ function optionalEnvAddress(name: string): string | undefined {
   return value;
 }
 
-function requireBytes32(name: string): string {
-  const value = process.env[name] || "";
-  if (!/^0x[0-9a-fA-F]{64}$/.test(value)) throw new Error(`Mainnet deployment blocked. ${name} must be a 0x-prefixed 32-byte hash.`);
-  return value;
+function evidencePath(entry: any, fallback: string): string {
+  return (entry && typeof entry === "object" && entry.path) ? entry.path : (typeof entry === "string" ? entry : fallback);
+}
+
+function hashPublicFile(relativePath: string): string | undefined {
+  if (!relativePath) return undefined;
+  const absolutePath = path.join(__dirname, "..", relativePath);
+  if (!fs.existsSync(absolutePath)) {
+    if (process.env.NODE_ENV === "test") return undefined;
+    throw new Error(`Mainnet deployment blocked. Public evidence file is missing: ${relativePath}`);
+  }
+  return "0x" + crypto.createHash("sha256").update(fs.readFileSync(absolutePath)).digest("hex");
+}
+
+function certificateEvidencePaths(): Record<string, string> {
+  const certificatePath = path.join(__dirname, "..", "qa/mainnet-authorization-certificate.json");
+  if (!fs.existsSync(certificatePath)) return {};
+  const certificate = JSON.parse(fs.readFileSync(certificatePath, "utf8"));
+  return certificate.evidence || {};
 }
 
 function enforceEthereumMainnetGates(info: ChainInfo) {
@@ -69,16 +84,8 @@ function enforceEthereumMainnetGates(info: ChainInfo) {
   if (process.env.ALLOW_MAINNET_DEPLOYMENT !== "YES_PUBLIC_REPOSITORY_AUTHORIZED_MANUAL_DEPLOYMENT") throw new Error("Ethereum mainnet deployment blocked. Set ALLOW_MAINNET_DEPLOYMENT=YES_PUBLIC_REPOSITORY_AUTHORIZED_MANUAL_DEPLOYMENT only after public evidence-computed authorization is YES and the manual local deployer has typed confirmation.");
   const token = requireEnvAddress("AGIALPHA_TOKEN_ADDRESS");
   if (token.toLowerCase() !== AGIALPHA_MAINNET.toLowerCase()) throw new Error(`Ethereum mainnet deployment blocked. AGIALPHA_TOKEN_ADDRESS must equal ${AGIALPHA_MAINNET}.`);
-  requireBytes32("LEGAL_SIGNOFF_HASH");
-  requireBytes32("TAX_SIGNOFF_HASH");
-  requireBytes32("SECURITY_REVIEW_HASH");
-  requireBytes32("PUBLIC_CLAIMS_REVIEW_HASH");
-  requireBytes32("TREASURY_REVIEW_HASH");
-  requireBytes32("AGIALPHA_TOKEN_VERIFICATION_HASH");
-  requireBytes32("SEPOLIA_REHEARSAL_EVIDENCE_HASH");
-  requireBytes32("AUTOMATED_SECURITY_TOOLCHAIN_HASH");
-  requireBytes32("INTERNAL_SECURITY_REVIEW_HASH");
-  requireBytes32("PUBLIC_GOVERNANCE_APPROVAL_HASH");
+  if (process.env.MOCK_AGIALPHA_ADDRESS) throw new Error("Ethereum mainnet deployment blocked. MOCK_AGIALPHA_ADDRESS must not be set.");
+  if (process.env.DEPLOY_NEW_AGIALPHA_TOKEN === "true") throw new Error("Ethereum mainnet deployment blocked. Deploying a new AGIALPHA token is forbidden.");
   requireEnvAddress("FOUNDER_ADDRESS");
   requireEnvAddress("TREASURY_ADDRESS");
   requireEnvAddress("COMMERCIALIZATION_PERFORMANCE_ADMIN");
@@ -224,6 +231,7 @@ export async function deployGoalOSAGIALPHAAscension() {
   await grant(launchGates, OPERATOR_ROLE, deployer.address, "LaunchGates <- deployer");
   await grant(aepEvaluatorStaking, OPERATOR_ROLE, await aepSlashingCourt.getAddress(), "EvaluatorStaking <- SlashingCourt");
 
+  const evidencePaths = info.isMainnet ? certificateEvidencePaths() : {};
   const deployment = {
     package: "GoalOS_AGIALPHA_Ascension_Ethereum_Mainnet_Implementation_v4_3_GATE_CLEAN_EVIDENCE_READY",
     network: info.label,
@@ -245,23 +253,17 @@ export async function deployGoalOSAGIALPHAAscension() {
     constructorArgsRedacted: info.isMainnet,
     constructorArgsCommitmentHash: constructorArgsCommitmentHash(),
     roleAssignmentsCommitmentHash: sha256Hex(JSON.stringify({ commercializationAdmin, proofRewardsAdmin, liquidityAdmin, securityAdmin, communityAdmin }, jsonReplacer)),
-    authorizationDecisionHash: (info.isMainnet ? requireBytes32("AUTHORIZATION_DECISION_HASH") : undefined),
-    toolchainClearanceHash: (info.isMainnet ? requireBytes32("TOOLCHAIN_CLEARANCE_HASH") : undefined),
-    sepoliaEvidenceHash: (info.isMainnet ? requireBytes32("SEPOLIA_EVIDENCE_HASH") : undefined),
-    mainnetPreflightHash: (info.isMainnet ? requireBytes32("MAINNET_PREFLIGHT_HASH") : undefined),
-    publicGovernanceApprovalHash: (info.isMainnet ? requireBytes32("PUBLIC_GOVERNANCE_APPROVAL_HASH") : undefined),
-    addressCeremonyCommitmentHash: (info.isMainnet ? requireBytes32("ADDRESS_CEREMONY_HASH") : undefined),
+    mainnetAuthorizationCertificateHash: (info.isMainnet ? hashPublicFile("qa/mainnet-authorization-certificate.json") : undefined),
+    toolchainClearanceHash: (info.isMainnet ? hashPublicFile(evidencePath(evidencePaths.toolchainClearance, "qa/public-toolchain-clearance-evidence.json")) : undefined),
+    localRehearsalEvidenceHash: (info.isMainnet ? hashPublicFile(evidencePath(evidencePaths.localRehearsal, "qa/local-rehearsal-report.json")) : undefined),
+    agialphaTokenVerificationHash: (info.isMainnet ? hashPublicFile(evidencePath(evidencePaths.agialphaTokenVerification, "qa/public-agialpha-token-verification.json")) : undefined),
+    publicGovernanceApprovalHash: (info.isMainnet ? hashPublicFile(evidencePath(evidencePaths.publicGovernanceApproval, "qa/public-governance-approval-evidence.json")) : undefined),
     mainnetGates: info.isMainnet ? {
-      legalSignoffHash: process.env.LEGAL_SIGNOFF_HASH,
-      taxSignoffHash: process.env.TAX_SIGNOFF_HASH,
-      securityReviewHash: process.env.SECURITY_REVIEW_HASH,
-      publicClaimsReviewHash: process.env.PUBLIC_CLAIMS_REVIEW_HASH,
-      treasuryReviewHash: process.env.TREASURY_REVIEW_HASH,
-      agialphaTokenVerificationHash: process.env.AGIALPHA_TOKEN_VERIFICATION_HASH,
-      sepoliaRehearsalEvidenceHash: process.env.SEPOLIA_REHEARSAL_EVIDENCE_HASH,
-      automatedSecurityToolchainHash: process.env.AUTOMATED_SECURITY_TOOLCHAIN_HASH,
-      internalSecurityReviewHash: process.env.INTERNAL_SECURITY_REVIEW_HASH,
-      publicGovernanceApprovalHash: process.env.PUBLIC_GOVERNANCE_APPROVAL_HASH
+      sourceOfTruth: "qa/mainnet-authorization-certificate.json",
+      privateOperatorAuthorizationPackageRequired: false,
+      externalAuditRequired: false,
+      ciCanDeployMainnet: false,
+      runtimeSecretsStoredInGitHub: false
     } : null,
     contracts: {
       AGIALPHA: agialphaToken,

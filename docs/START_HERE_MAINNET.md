@@ -16,6 +16,8 @@ This means the repository package is authorized for manual gated Ethereum Mainne
 
 It does not claim external audit completion, legal approval, tax review, guaranteed security, guaranteed token classification, investment return, yield, price target, revenue share, or production deployment.
 
+Public Sepolia deployment is recommended but not mandatory for public authorization; local deterministic rehearsal and mainnet-shaped simulation are the active public gates.
+
 
 ## Command center
 

@@ -16,7 +16,7 @@ docket = {
     "network": "ethereum-sepolia",
     "status": "draft",
     "rootDoctrine": "GoalOS sets aim; AGIALPHA coordinates proof work; AEP-001 defines evidence; Proof Gradient decides what may evolve.",
-    "publicBoundary": "Evidence docket only. Not externally audited. Ethereum Mainnet not authorized. Not legal, tax, investment, or security approval.",
+    "publicBoundary": "Evidence docket template only. Not externally audited. Public repository authorization is certificate-based; this optional Sepolia template is not proof of deployment, legal, tax, investment, or security approval.",
     "contracts": {
         "AGIALPHA_or_MockAGIALPHA": "TO_FILL",
         "JobRegistry": "TO_FILL",
@@ -64,7 +64,7 @@ docket = {
         "Reputation updates",
         "Rewards and bonds settle"
     ],
-    "mainnetDecision": "NOT_AUTHORIZED",
+    "mainnetDecision": "CERTIFICATE_BASED_PUBLIC_AUTHORIZATION_SEPARATE_FROM_OPTIONAL_SEPOLIA_TEMPLATE",
     "notes": [
         "Fill this after real Ethereum Sepolia execution.",
         "Do not copy private workflow evidence into this public docket.",
