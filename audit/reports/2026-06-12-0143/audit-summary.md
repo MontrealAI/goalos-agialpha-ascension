@@ -1,7 +1,7 @@
 # Automated Security Toolchain Summary
 
-Generated: 2026-06-12T01:43:58.808707+00:00
-Decision: **TECHNICALLY_MAINNET_READY_YES_PUBLIC_TOOLCHAIN_ACCEPTED**
+Generated: 2026-06-12T02:14:33.988081+00:00
+Decision: **TECHNICALLY_MAINNET_READY_NO_UNRESOLVED_CRITICAL_HIGH**
 
 ## Tool Results
 - slither: ENVIRONMENT_BLOCKED_DOCUMENTED_NON_BLOCKING (raw: PENDING_ENVIRONMENT_BLOCKED)
@@ -20,4 +20,4 @@ Decision: **TECHNICALLY_MAINNET_READY_YES_PUBLIC_TOOLCHAIN_ACCEPTED**
 - gitleaks: ENVIRONMENT_BLOCKED_DOCUMENTED_NON_BLOCKING (raw: PENDING_ENVIRONMENT_BLOCKED)
 
 ## Technical Mainnet Blockers
-- None. Environment-blocked tools are documented as not passed and accepted by public governance as non-blocking because there are no unresolved critical/high findings.
+- None. Environment-blocked tools are documented as not passed; no unresolved critical/high findings were reported.

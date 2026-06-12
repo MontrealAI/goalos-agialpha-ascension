@@ -3,7 +3,7 @@
   "containsSecrets": false,
   "containsPrivateAddresses": false,
   "status": "PASSED",
-  "generatedAt": "2026-06-12T02:04:06.070Z",
+  "generatedAt": "2026-06-12T02:15:19.222Z",
   "generatedBy": "scripts/local-mainnet-fork-simulation.ts",
   "chain": "ethereum",
   "chainId": 1,
@@ -14,7 +14,7 @@
   "forkMainnet": true,
   "tokenCodeVerifiedOnFork": true,
   "deployedContracts": 49,
-  "deploymentManifestHash": "0x768bf481a5582dde9bd0332c8067dae7785671c79c9583be97719739f0e6d320",
+  "deploymentManifestHash": "0x9ec857688c93e84cb4e2acc4b0b41b25c4eb3fb5f677b2b87ceaee499159474f",
   "restoredManifest": true,
   "checks": {
     "MAINNET_FORK_SIMULATION": "PASSED",

@@ -77,7 +77,7 @@
     "mainnet:local-rehearsal": "npm run rehearse:local && npm run evidence:local",
     "mainnet:private-authorize": "python scripts/private/generate-redacted-public-evidence.py --env .private/mainnet-operator.env --input .private/mainnet-operator-input.json",
     "mainnet:final-check": "npm run mainnet:public-authorize && npm run mainnet:status",
-    "mainnet:public-authorize": "npm run mainnet:readiness-check && npm run mainnet:deployment-authorization-check && npm run mainnet:authorization-check",
+    "mainnet:public-authorize": "npm run verify:agialpha-token:public && npm run mainnet:fork-simulate && npm run mainnet:readiness-check && npm run mainnet:deployment-authorization-check && npm run mainnet:authorization-check",
     "verify:agialpha-token:public": "python scripts/verify_agialpha_token_public.py"
   },
   "dependencies": {

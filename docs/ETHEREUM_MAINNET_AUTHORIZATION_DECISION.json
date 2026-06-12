@@ -2,7 +2,7 @@
   "status": "YES",
   "ETHEREUM_MAINNET_AUTHORIZED": "YES",
   "ethereumMainnetAuthorized": "YES",
-  "commit": "29a803b38e2c857670d67b9d0b06370d4999900e",
+  "commit": "d33aec3e985750c6c85e40a796c478259577f726",
   "chain": "ethereum",
   "chainId": 1,
   "agialphaToken": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
@@ -14,11 +14,11 @@
   "runtimeSecretsStoredInGitHub": false,
   "finalManualDeploymentCommand": "npm run deploy:ethereum-mainnet:gated",
   "evidence": {
-    "technicalReadinessSha256": "0x349ac949953661c166288a4b5ca535256f0d60dd1d2712bb2856f2ed292165a8",
-    "deploymentAuthorizationSha256": "0x857cc53fa142e83b68b27752fef9d9586b7e4928308126cdfbbd43bdd21e3bef",
-    "agialphaVerificationSha256": "0x31ce7ab10843fe78c08c71ee1e8ca397a8784839b6adf192ddaac05d233d8e6e"
+    "technicalReadinessSha256": "0x96c924c7a5649ff643469a904b6c7ee64610a128f9f0249fba9da47fbad4fde2",
+    "deploymentAuthorizationSha256": "0xde5671a9f97d074aac67c6c2d04ce4e59ab2f37580dac259def0f03746abd938",
+    "agialphaVerificationSha256": "0xac92d56e9c4e0f2f44de2329baccce1134bb6d4ec94e4e7960db012b67d05cb4"
   },
   "blockers": [],
-  "generatedAt": "2026-06-12T02:05:47.798299+00:00",
+  "generatedAt": "2026-06-12T02:15:22.814010+00:00",
   "generatedBy": "scripts/ethereum-mainnet-authorization-check.py"
 }

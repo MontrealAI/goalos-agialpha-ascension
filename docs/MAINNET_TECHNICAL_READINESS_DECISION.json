@@ -2,7 +2,7 @@
   "status": "YES",
   "TECHNICALLY_MAINNET_READY": "YES",
   "technicallyMainnetReady": "YES",
-  "commit": "29a803b38e2c857670d67b9d0b06370d4999900e",
+  "commit": "d33aec3e985750c6c85e40a796c478259577f726",
   "chain": "ethereum",
   "chainId": 1,
   "agialphaToken": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
@@ -15,7 +15,7 @@
   "evidence": {
     "toolchain": {
       "path": "qa/public-toolchain-clearance-evidence.json",
-      "sha256": "0x194b3bbbc19d1f5a7851f49dd8e0c17d192a0d312a2f2f4c40eb7eb40f9014b8",
+      "sha256": "0x35d15f1521384c5dcd14e6375bb3b74e7fc43b05e3ae641b677c162601422112",
       "status": "PASSED",
       "present": true
     },
@@ -33,13 +33,13 @@
     },
     "agialphaVerification": {
       "path": "qa/public-agialpha-token-verification.json",
-      "sha256": "0x31ce7ab10843fe78c08c71ee1e8ca397a8784839b6adf192ddaac05d233d8e6e",
+      "sha256": "0xac92d56e9c4e0f2f44de2329baccce1134bb6d4ec94e4e7960db012b67d05cb4",
       "status": "PASSED",
       "present": true
     },
     "mainnetSimulation": {
       "path": "qa/ETHEREUM_MAINNET_FORK_SIMULATION.json",
-      "sha256": "0x0d38f50b13d44a16f3c2e6bb513ff8f06d1e4bcfcc4411fe90d41177fbfcd389",
+      "sha256": "0xc420287fe80d631912d09294d42f1a949411182f27468e767922cfa134917fb4",
       "status": "PASSED",
       "present": true
     },
@@ -57,6 +57,6 @@
     }
   },
   "blockers": [],
-  "generatedAt": "2026-06-12T02:05:44.395748+00:00",
+  "generatedAt": "2026-06-12T02:15:20.575397+00:00",
   "generatedBy": "scripts/mainnet-readiness-check.py"
 }
