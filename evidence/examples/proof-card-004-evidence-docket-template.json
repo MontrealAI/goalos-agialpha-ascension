@@ -1,21 +1,24 @@
 {
   "proof_card_id": "004",
   "title": "Persistent Goal-Seeking Intelligence Accumulation Engine",
-  "status": "template_until_live_docket",
+  "status": "illustrative_template_until_live_run",
   "required_evidence": [
-    "GoalOSCommit",
-    "RunCommitment",
-    "task_manifest",
-    "baseline",
-    "candidate_artifact",
-    "ProofBundle",
-    "EvaluatorReport",
-    "ReviewerAttestation",
-    "CostLedger",
-    "SafetyLedger",
-    "RiskLedger",
-    "SelectionCertificate",
-    "RollbackPlan",
-    "ChronicleEntry"
-  ]
+    "Capability inventory",
+    "Proof Card lineage",
+    "Credential history",
+    "Reputation update",
+    "Chronicle entry",
+    "Artifact version map"
+  ],
+  "contracts": [
+    "AEPArtifactRegistry",
+    "ProofCardRegistry",
+    "ProofCredentialRegistry",
+    "ReputationRegistry",
+    "AEPEvidenceDocketRegistry",
+    "AEPSelectionGate",
+    "AEPChronicleRegistry",
+    "AlphaWorkUnitLedger"
+  ],
+  "claim_boundary": "No achieved AGI/ASI, no financial return, no legal/tax/security approval, no Ethereum mainnet deployment claim, no Kardashev Type II achievement claim."
 }

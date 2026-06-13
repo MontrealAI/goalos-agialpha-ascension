@@ -1,12 +1,70 @@
 {
   "id": "001",
-  "slug": "proof-card-001",
   "title": "Buyer Rescue Workflow",
-  "subtitle": "Turn a buyer support problem into verified workflow improvement.",
-  "problem": "A buyer cannot access a purchased file or needs a clear next step. A normal AI reply may be helpful, but it is not yet a reusable, reviewed workflow asset.",
-  "mission": "Create and validate a support workflow that classifies the issue, drafts the reply, flags human review when needed, and records a public-safe proof summary.",
-  "agialpha": "AGIALPHA coordinates the proof mission: sponsor posting, builder claim bond, proof submission bond, reviewer bond, proof-card registration, credential action, and reward settlement.",
-  "rsi": "The accepted support workflow becomes a scoped reusable artifact for future support cases only after evidence, review, and Selection Gate acceptance.",
-  "value": "Better buyer experience, lower repeated support work, clearer refund/access handling, and first public-safe proof that useful work can become reusable capability.",
-  "status": "Illustrative until a live Evidence Docket is completed."
+  "level": "First proof of practical value",
+  "domain": "Customer support / buyer trust",
+  "thesis": "A buyer support failure becomes a reusable, verified workflow improvement rather than a forgotten ticket.",
+  "problem": "A buyer cannot access a download, receipt, or onboarding step. Ordinary support replies solve one case but rarely improve the system.",
+  "mission": "Convert the support scenario into a GoalOS proof mission: diagnose the weak workflow, generate v1.1, validate with a reviewer, and publish a public-safe Proof Card.",
+  "why": "This is the simplest proof that GoalOS turns everyday AI work into reusable operational intelligence.",
+  "contracts": [
+    "AEPGoalOSCommitRegistry",
+    "AEPRunCommitmentRegistry",
+    "JobRegistry",
+    "JobClaimBondManager",
+    "ProofSubmissionRegistry",
+    "ReviewerBondRegistry",
+    "ProofCardRegistry",
+    "ProofCredentialRegistry",
+    "ReputationRegistry",
+    "AEPEvidenceDocketRegistry",
+    "AEPChronicleRegistry"
+  ],
+  "skills": [
+    "Support triage classification",
+    "Policy-bound response drafting",
+    "Private-data minimization",
+    "Evidence-note writing",
+    "Reviewer-ready proof packaging"
+  ],
+  "plans": [
+    "Capture baseline support response",
+    "Score clarity/access/refund/escalation handling",
+    "Improve workflow v1.1",
+    "Validate public-safe proof",
+    "Chronicle the accepted artifact"
+  ],
+  "goals": [
+    "Reduce repeated support failures",
+    "Create the first public-safe Proof Card",
+    "Show non-technical buyers why proof matters"
+  ],
+  "rsi": "The improved support workflow earns scoped reuse only after evidence, review, and claim-boundary checks. Future support work inherits the validated artifact, not the unproven draft.",
+  "agialpha": "AGIALPHA coordinates the sponsor mission, builder claim bond, proof submission bond, reviewer bond, proof-card action, credential action, and reputation-linked settlement.",
+  "evidence": [
+    "Original support scenario redacted",
+    "Workflow v1.0 output",
+    "Scorecard and diagnosis",
+    "Workflow v1.1 output",
+    "Reviewer attestation",
+    "Proof Card hash",
+    "Chronicle entry"
+  ],
+  "metrics": [
+    [
+      "access clarity",
+      "baseline unclear",
+      "v1.1 gives exact next action"
+    ],
+    [
+      "privacy",
+      "risk of overexposure",
+      "redacted public proof"
+    ],
+    [
+      "reuse",
+      "one-off reply",
+      "reusable support playbook"
+    ]
+  ]
 }

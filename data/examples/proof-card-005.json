@@ -1,0 +1,65 @@
+{
+  "id": "005",
+  "title": "Sovereign RSI Value-to-Capability Treasury",
+  "level": "Reinvestment engine",
+  "domain": "Treasury / capability allocation",
+  "thesis": "Verified value can be governed and reinvested into future capability.",
+  "problem": "Even when AI work creates value, organizations often fail to convert that value into stronger future systems.",
+  "mission": "Route verified value into capability budgets for better missions, stronger agents, better evaluators, security review, compute, and evidence infrastructure.",
+  "why": "This is where RSI becomes economically useful: value funds capability, capability produces better value.",
+  "contracts": [
+    "AEPRewardVault",
+    "TreasuryRouter",
+    "CommercializationPerformanceVault",
+    "AlphaWorkUnitLedger",
+    "AEPSelectionGate",
+    "AEPChronicleRegistry",
+    "LaunchGateRegistry"
+  ],
+  "skills": [
+    "Treasury routing",
+    "Capability budgeting",
+    "AlphaWorkUnit measurement",
+    "Reinvestment planning",
+    "Governance accounting"
+  ],
+  "plans": [
+    "Measure verified value",
+    "Allocate capability budget",
+    "Fund higher-value proof missions",
+    "Review outcomes",
+    "Chronicle reinvestment effectiveness"
+  ],
+  "goals": [
+    "Turn value into capability",
+    "Avoid speculative value claims",
+    "Create a disciplined reinvestment flywheel"
+  ],
+  "rsi": "The system improves because verified value funds the next generation of proof missions, evaluator harnesses, specialist cells, and review capacity.",
+  "agialpha": "AGIALPHA coordinates settlement, reward-vault allocation, treasury records, milestone release, and capability-budget routing after proof and review.",
+  "evidence": [
+    "Value ledger",
+    "AlphaWorkUnit report",
+    "Treasury allocation record",
+    "RewardVault record",
+    "Commercialization milestone proof",
+    "Chronicle entry"
+  ],
+  "metrics": [
+    [
+      "value capture",
+      "untracked benefit",
+      "measured value ledger"
+    ],
+    [
+      "reinvestment",
+      "manual decision",
+      "governed capability budget"
+    ],
+    [
+      "future capability",
+      "static team",
+      "stronger mission portfolio"
+    ]
+  ]
+}

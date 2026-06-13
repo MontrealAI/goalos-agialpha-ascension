@@ -1,65 +1,59 @@
-# Proof Card 001 — Buyer Rescue Workflow
+# Proof Card 001 - Buyer Rescue Workflow
 
-**Phase:** Frontline Trust
+**Thesis:** A buyer support failure becomes a reusable, verified workflow improvement rather than a forgotten ticket.
 
 ## Problem
-
-A buyer cannot access a purchased file or needs help after checkout. A normal AI response may be polite but incomplete; it may miss access-state classification, refund boundaries, escalation logic, or a public-safe proof note.
+A buyer cannot access a download, receipt, or onboarding step. Ordinary support replies solve one case but rarely improve the system.
 
 ## Proof mission
+Convert the support scenario into a GoalOS proof mission: diagnose the weak workflow, generate v1.1, validate with a reviewer, and publish a public-safe Proof Card.
 
-Convert a recurring support scenario into a reusable GoalOS workflow: classify the issue, generate a safe response, flag human review when needed, preserve private buyer data off-chain, and produce a Proof Card showing what improved.
+## AGIALPHA use
+AGIALPHA coordinates the sponsor mission, builder claim bond, proof submission bond, reviewer bond, proof-card action, credential action, and reputation-linked settlement.
 
-## Incremental improvement
-
-Establishes the first proof surface: AI work becomes an auditable workflow improvement rather than a disposable answer.
-
-## Where AGIALPHA becomes useful
-
-AGIALPHA coordinates sponsor funding, builder claim bonds, proof submission bonds, reviewer bonds, proof-card registration, credential issuance, reputation-linked routing, settlement, and Chronicle memory.
+## RSI logic
+The improved support workflow earns scoped reuse only after evidence, review, and claim-boundary checks. Future support work inherits the validated artifact, not the unproven draft.
 
 ## Skills used
-
-- Support triage
-- Policy-bound response writing
+- Support triage classification
+- Policy-bound response drafting
 - Private-data minimization
-- Proof-note drafting
-- Reviewer-ready evidence packaging
+- Evidence-note writing
+- Reviewer-ready proof packaging
 
 ## Plans used
-
-- Buyer Rescue Workflow proof mission plan
-- Evidence Docket route
-- Reviewer and red-team plan
-- Selection Gate upgrade policy
+- Capture baseline support response
+- Score clarity/access/refund/escalation handling
+- Improve workflow v1.1
+- Validate public-safe proof
+- Chronicle the accepted artifact
 
 ## Goals used
+- Reduce repeated support failures
+- Create the first public-safe Proof Card
+- Show non-technical buyers why proof matters
 
-- Create replayable institutional proof
-- Demonstrate AGIALPHA proof-settled coordination
-- Promote only proven artifacts
-- Strengthen the evidence graph
+## Contracts / registries
+- `AEPGoalOSCommitRegistry`
+- `AEPRunCommitmentRegistry`
+- `JobRegistry`
+- `JobClaimBondManager`
+- `ProofSubmissionRegistry`
+- `ReviewerBondRegistry`
+- `ProofCardRegistry`
+- `ProofCredentialRegistry`
+- `ReputationRegistry`
+- `AEPEvidenceDocketRegistry`
+- `AEPChronicleRegistry`
 
-## Contracts / registries used
-
-- AEPGoalOSCommitRegistry
-- AEPRunCommitmentRegistry
-- JobRegistry
-- JobClaimBondManager
-- ProofSubmissionRegistry
-- ReviewerBondRegistry
-- ProofCardRegistry
-- ProofCredentialRegistry
-- ReputationRegistry
-- AEPEvidenceDocketRegistry
-- AEPSelectionGate
-- AEPChronicleRegistry
-- AEPClaimBoundaryRegistry
-
-## RSI upgrade logic
-
-The accepted artifact may influence future work only after evidence, evaluator review, reviewer validation, scope control, challenge window, rollback readiness, Selection Gate approval, and Chronicle entry.
+## Evidence Docket checklist
+- Original support scenario redacted
+- Workflow v1.0 output
+- Scorecard and diagnosis
+- Workflow v1.1 output
+- Reviewer attestation
+- Proof Card hash
+- Chronicle entry
 
 ## Claim boundary
-
-This proof card is an experimental public-safe proof template until a live Evidence Docket is completed. It does not claim achieved AGI, achieved superintelligence, guaranteed ROI, legal/tax/security approval, Ethereum mainnet deployment, or Kardashev Type II achievement.
+Illustrative until a live Evidence Docket is completed. No AGI/ASI, investment, legal, tax, security, mainnet, or Kardashev achievement claim.

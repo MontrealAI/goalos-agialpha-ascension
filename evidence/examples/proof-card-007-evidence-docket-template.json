@@ -1,21 +1,25 @@
 {
   "proof_card_id": "007",
   "title": "Sovereign Enterprise Autoresearch Reactor",
-  "status": "template_until_live_docket",
+  "status": "illustrative_template_until_live_run",
   "required_evidence": [
-    "GoalOSCommit",
-    "RunCommitment",
-    "task_manifest",
-    "baseline",
-    "candidate_artifact",
-    "ProofBundle",
-    "EvaluatorReport",
-    "ReviewerAttestation",
-    "CostLedger",
-    "SafetyLedger",
-    "RiskLedger",
+    "Benchmark docket",
+    "Experiment manifest",
+    "Candidate artifacts",
+    "Evaluator report",
+    "Falsification report",
     "SelectionCertificate",
-    "RollbackPlan",
-    "ChronicleEntry"
-  ]
+    "Chronicle entry"
+  ],
+  "contracts": [
+    "AEPBenchmarkRegistry",
+    "AEPExperimentRegistry",
+    "AEPAutoresearchPortfolioRegistry",
+    "AEPEvaluatorStakingRegistry",
+    "AEPCommitRevealValidationRegistry",
+    "AEPSlashingCourt",
+    "AEPFalsificationRegistry",
+    "AEPSelectionGate"
+  ],
+  "claim_boundary": "No achieved AGI/ASI, no financial return, no legal/tax/security approval, no Ethereum mainnet deployment claim, no Kardashev Type II achievement claim."
 }

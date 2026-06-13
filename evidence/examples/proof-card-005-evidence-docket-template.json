@@ -1,21 +1,23 @@
 {
   "proof_card_id": "005",
   "title": "Sovereign RSI Value-to-Capability Treasury",
-  "status": "template_until_live_docket",
+  "status": "illustrative_template_until_live_run",
   "required_evidence": [
-    "GoalOSCommit",
-    "RunCommitment",
-    "task_manifest",
-    "baseline",
-    "candidate_artifact",
-    "ProofBundle",
-    "EvaluatorReport",
-    "ReviewerAttestation",
-    "CostLedger",
-    "SafetyLedger",
-    "RiskLedger",
-    "SelectionCertificate",
-    "RollbackPlan",
-    "ChronicleEntry"
-  ]
+    "Value ledger",
+    "AlphaWorkUnit report",
+    "Treasury allocation record",
+    "RewardVault record",
+    "Commercialization milestone proof",
+    "Chronicle entry"
+  ],
+  "contracts": [
+    "AEPRewardVault",
+    "TreasuryRouter",
+    "CommercializationPerformanceVault",
+    "AlphaWorkUnitLedger",
+    "AEPSelectionGate",
+    "AEPChronicleRegistry",
+    "LaunchGateRegistry"
+  ],
+  "claim_boundary": "No achieved AGI/ASI, no financial return, no legal/tax/security approval, no Ethereum mainnet deployment claim, no Kardashev Type II achievement claim."
 }

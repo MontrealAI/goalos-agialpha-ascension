@@ -1,21 +1,27 @@
 {
   "proof_card_id": "010",
   "title": "Cyber-Sovereign Proof Benchmark Market",
-  "status": "template_until_live_docket",
+  "status": "illustrative_template_until_live_run",
   "required_evidence": [
-    "GoalOSCommit",
-    "RunCommitment",
-    "task_manifest",
-    "baseline",
-    "candidate_artifact",
-    "ProofBundle",
-    "EvaluatorReport",
-    "ReviewerAttestation",
-    "CostLedger",
-    "SafetyLedger",
-    "RiskLedger",
+    "CyberBenchmarkDocket",
+    "Task manifest",
+    "Baseline",
+    "Candidate artifact",
+    "Evaluator report",
+    "Red-team report",
+    "ReproductionReceipt",
     "SelectionCertificate",
-    "RollbackPlan",
-    "ChronicleEntry"
-  ]
+    "Chronicle entry"
+  ],
+  "contracts": [
+    "CyberBenchmarkRegistry",
+    "AEPBenchmarkRegistry",
+    "AEPExperimentRegistry",
+    "AEPCommitRevealValidationRegistry",
+    "AEPSlashingCourt",
+    "AEPFalsificationRegistry",
+    "AEPSelectionGate",
+    "AEPChronicleRegistry"
+  ],
+  "claim_boundary": "No achieved AGI/ASI, no financial return, no legal/tax/security approval, no Ethereum mainnet deployment claim, no Kardashev Type II achievement claim."
 }

@@ -1,12 +1,66 @@
 {
   "id": "002",
-  "slug": "proof-card-002",
   "title": "Sovereign Procurement Trust Room",
-  "subtitle": "Convert buyer diligence into an auditable trust-room workflow.",
-  "problem": "A serious buyer asks whether GoalOS AGIALPHA Ascension can be trusted, governed, audited, and explained without exposing private intelligence or private evidence.",
-  "mission": "Assemble a procurement-ready trust room: claim boundary, security posture, evidence checklist, proof-card summary, reviewer rubric, and rollback path.",
-  "agialpha": "AGIALPHA coordinates the sponsored trust-room mission and creates accountable commitments for builders and reviewers through bonds, proof actions, credentials, and reputation updates.",
-  "rsi": "The accepted trust-room template improves future procurement responses because the system reuses only reviewed evidence structures and rejects unproven claims.",
-  "value": "Shorter diligence cycles, stronger enterprise trust, safer public claims, better sponsor conversations, and a reusable due-diligence operating asset.",
-  "status": "Illustrative until a live Evidence Docket is completed."
+  "level": "Enterprise trust surface",
+  "domain": "Procurement / due diligence",
+  "thesis": "A buyer diligence question becomes an auditable Trust Room rather than an improvised sales response.",
+  "problem": "Enterprise and sovereign buyers ask whether an AI workflow system can be trusted, governed, audited, and safely adopted.",
+  "mission": "Create a Trust Room artifact that answers procurement questions with evidence boundaries, proof routes, reviewer decisions, and safe public claims.",
+  "why": "Procurement trust is a high-value bottleneck. Solving it converts interest into qualified institutional demand.",
+  "contracts": [
+    "AEPGoalOSCommitRegistry",
+    "AEPClaimBoundaryRegistry",
+    "AEPConformanceRegistry",
+    "AEPEvidenceDocketRegistry",
+    "ProofCardRegistry",
+    "ProofCredentialRegistry",
+    "ReputationRegistry",
+    "AEPSelectionGate"
+  ],
+  "skills": [
+    "Procurement response architecture",
+    "Trust-center documentation",
+    "Claim-boundary review",
+    "Evidence Docket compilation",
+    "Reviewer rubric design"
+  ],
+  "plans": [
+    "Map buyer questions",
+    "Build trust-room artifact",
+    "Attach public-safe evidence",
+    "Run reviewer validation",
+    "Publish Proof Card 002"
+  ],
+  "goals": [
+    "Shorten buyer diligence cycles",
+    "Create a reusable procurement answer",
+    "Make proof legible to non-technical executives"
+  ],
+  "rsi": "The Trust Room becomes a reusable artifact for future procurement conversations only after it survives review, claim-boundary validation, and Evidence Docket anchoring.",
+  "agialpha": "AGIALPHA coordinates mission funding, builder proof work, reviewer validation, proof-card registration, credential issuance, and reputation updates for trust-room specialists.",
+  "evidence": [
+    "Procurement question set",
+    "Trust Room v1.0",
+    "Claim-boundary checklist",
+    "Reviewer attestation",
+    "Proof Card 002",
+    "Evidence Docket template"
+  ],
+  "metrics": [
+    [
+      "buyer confidence",
+      "ad hoc answer",
+      "auditable trust-room"
+    ],
+    [
+      "sales reuse",
+      "custom reply",
+      "standardized diligence asset"
+    ],
+    [
+      "claim safety",
+      "marketing-heavy",
+      "bounded evidence language"
+    ]
+  ]
 }

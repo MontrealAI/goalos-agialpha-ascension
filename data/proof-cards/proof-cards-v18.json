@@ -1,0 +1,681 @@
+{
+  "version": "v18.0",
+  "cards": [
+    {
+      "id": "001",
+      "title": "Buyer Rescue Workflow",
+      "level": "First proof of practical value",
+      "domain": "Customer support / buyer trust",
+      "thesis": "A buyer support failure becomes a reusable, verified workflow improvement rather than a forgotten ticket.",
+      "problem": "A buyer cannot access a download, receipt, or onboarding step. Ordinary support replies solve one case but rarely improve the system.",
+      "mission": "Convert the support scenario into a GoalOS proof mission: diagnose the weak workflow, generate v1.1, validate with a reviewer, and publish a public-safe Proof Card.",
+      "why": "This is the simplest proof that GoalOS turns everyday AI work into reusable operational intelligence.",
+      "contracts": [
+        "AEPGoalOSCommitRegistry",
+        "AEPRunCommitmentRegistry",
+        "JobRegistry",
+        "JobClaimBondManager",
+        "ProofSubmissionRegistry",
+        "ReviewerBondRegistry",
+        "ProofCardRegistry",
+        "ProofCredentialRegistry",
+        "ReputationRegistry",
+        "AEPEvidenceDocketRegistry",
+        "AEPChronicleRegistry"
+      ],
+      "skills": [
+        "Support triage classification",
+        "Policy-bound response drafting",
+        "Private-data minimization",
+        "Evidence-note writing",
+        "Reviewer-ready proof packaging"
+      ],
+      "plans": [
+        "Capture baseline support response",
+        "Score clarity/access/refund/escalation handling",
+        "Improve workflow v1.1",
+        "Validate public-safe proof",
+        "Chronicle the accepted artifact"
+      ],
+      "goals": [
+        "Reduce repeated support failures",
+        "Create the first public-safe Proof Card",
+        "Show non-technical buyers why proof matters"
+      ],
+      "rsi": "The improved support workflow earns scoped reuse only after evidence, review, and claim-boundary checks. Future support work inherits the validated artifact, not the unproven draft.",
+      "agialpha": "AGIALPHA coordinates the sponsor mission, builder claim bond, proof submission bond, reviewer bond, proof-card action, credential action, and reputation-linked settlement.",
+      "evidence": [
+        "Original support scenario redacted",
+        "Workflow v1.0 output",
+        "Scorecard and diagnosis",
+        "Workflow v1.1 output",
+        "Reviewer attestation",
+        "Proof Card hash",
+        "Chronicle entry"
+      ],
+      "metrics": [
+        [
+          "access clarity",
+          "baseline unclear",
+          "v1.1 gives exact next action"
+        ],
+        [
+          "privacy",
+          "risk of overexposure",
+          "redacted public proof"
+        ],
+        [
+          "reuse",
+          "one-off reply",
+          "reusable support playbook"
+        ]
+      ]
+    },
+    {
+      "id": "002",
+      "title": "Sovereign Procurement Trust Room",
+      "level": "Enterprise trust surface",
+      "domain": "Procurement / due diligence",
+      "thesis": "A buyer diligence question becomes an auditable Trust Room rather than an improvised sales response.",
+      "problem": "Enterprise and sovereign buyers ask whether an AI workflow system can be trusted, governed, audited, and safely adopted.",
+      "mission": "Create a Trust Room artifact that answers procurement questions with evidence boundaries, proof routes, reviewer decisions, and safe public claims.",
+      "why": "Procurement trust is a high-value bottleneck. Solving it converts interest into qualified institutional demand.",
+      "contracts": [
+        "AEPGoalOSCommitRegistry",
+        "AEPClaimBoundaryRegistry",
+        "AEPConformanceRegistry",
+        "AEPEvidenceDocketRegistry",
+        "ProofCardRegistry",
+        "ProofCredentialRegistry",
+        "ReputationRegistry",
+        "AEPSelectionGate"
+      ],
+      "skills": [
+        "Procurement response architecture",
+        "Trust-center documentation",
+        "Claim-boundary review",
+        "Evidence Docket compilation",
+        "Reviewer rubric design"
+      ],
+      "plans": [
+        "Map buyer questions",
+        "Build trust-room artifact",
+        "Attach public-safe evidence",
+        "Run reviewer validation",
+        "Publish Proof Card 002"
+      ],
+      "goals": [
+        "Shorten buyer diligence cycles",
+        "Create a reusable procurement answer",
+        "Make proof legible to non-technical executives"
+      ],
+      "rsi": "The Trust Room becomes a reusable artifact for future procurement conversations only after it survives review, claim-boundary validation, and Evidence Docket anchoring.",
+      "agialpha": "AGIALPHA coordinates mission funding, builder proof work, reviewer validation, proof-card registration, credential issuance, and reputation updates for trust-room specialists.",
+      "evidence": [
+        "Procurement question set",
+        "Trust Room v1.0",
+        "Claim-boundary checklist",
+        "Reviewer attestation",
+        "Proof Card 002",
+        "Evidence Docket template"
+      ],
+      "metrics": [
+        [
+          "buyer confidence",
+          "ad hoc answer",
+          "auditable trust-room"
+        ],
+        [
+          "sales reuse",
+          "custom reply",
+          "standardized diligence asset"
+        ],
+        [
+          "claim safety",
+          "marketing-heavy",
+          "bounded evidence language"
+        ]
+      ]
+    },
+    {
+      "id": "003",
+      "title": "Sovereign AI Procurement Control Tower",
+      "level": "Institutional control plane",
+      "domain": "AI procurement governance",
+      "thesis": "A procurement workflow becomes a control tower that routes risk, evidence, approval, rollback, and upgrade rights.",
+      "problem": "AI adoption fails when procurement, legal, security, finance, and operations evaluate systems separately without a shared proof trail.",
+      "mission": "Build a control tower that coordinates the evaluation of AI systems through roles, evidence, contracts, approvals, and Proof Cards.",
+      "why": "This is the enterprise version of proof-backed adoption: one command surface for trust, risk, and capability.",
+      "contracts": [
+        "AEPGoalOSCommitRegistry",
+        "AEPRunCommitmentRegistry",
+        "JobRegistry",
+        "ReviewerBondRegistry",
+        "AEPSelectionGate",
+        "AEPRolloutRouter",
+        "AEPRollbackRegistry",
+        "AEPEvidenceDocketRegistry",
+        "AEPChronicleRegistry"
+      ],
+      "skills": [
+        "Cross-functional AI procurement",
+        "Risk routing",
+        "Control-plane design",
+        "Evidence synthesis",
+        "Rollback planning"
+      ],
+      "plans": [
+        "Define procurement mandate",
+        "Route diligence tasks to specialist cells",
+        "Collect ProofBundles",
+        "Validate with reviewers/red-team",
+        "Issue scoped adoption recommendation"
+      ],
+      "goals": [
+        "Turn AI adoption into a governed proof process",
+        "Reduce procurement uncertainty",
+        "Create repeatable enterprise control infrastructure"
+      ],
+      "rsi": "Future procurement routes improve because accepted evidence templates, reviewer rubrics, and rollback paths become upgradeable institutional memory.",
+      "agialpha": "AGIALPHA coordinates task budgets, reviewer bonds, proof-card actions, credential issuance, settlement, and reputation-linked access for procurement-control specialists.",
+      "evidence": [
+        "Mandate record",
+        "Control tower workflow",
+        "Specialist task outputs",
+        "Reviewer attestations",
+        "Rollback plan",
+        "SelectionCertificate",
+        "Chronicle entry"
+      ],
+      "metrics": [
+        [
+          "coordination",
+          "fragmented review",
+          "single control tower"
+        ],
+        [
+          "risk",
+          "unclear ownership",
+          "assigned specialists"
+        ],
+        [
+          "reuse",
+          "one-off evaluation",
+          "repeatable procurement system"
+        ]
+      ]
+    },
+    {
+      "id": "004",
+      "title": "Persistent Goal-Seeking Intelligence Accumulation Engine",
+      "level": "Compounding memory",
+      "domain": "Persistent organizational intelligence",
+      "thesis": "GoalOS AGIALPHA Ascension is an experimental framework for a persistent, goal-seeking, self-improving intelligence system that accumulates capabilities, evidence, and economic value over time.",
+      "problem": "Most AI work is transient: prompts, outputs, and one-off tasks are lost instead of becoming institutional capability.",
+      "mission": "Make every accepted proof into durable institutional memory: capability, evidence, credential, reputation, and reusable context.",
+      "why": "Persistent accumulation is the bridge from useful AI work to sovereign RSI.",
+      "contracts": [
+        "AEPArtifactRegistry",
+        "ProofCardRegistry",
+        "ProofCredentialRegistry",
+        "ReputationRegistry",
+        "AEPEvidenceDocketRegistry",
+        "AEPSelectionGate",
+        "AEPChronicleRegistry",
+        "AlphaWorkUnitLedger"
+      ],
+      "skills": [
+        "Capability archiving",
+        "Evidence graph design",
+        "Reputation accounting",
+        "Artifact versioning",
+        "Chronicle construction"
+      ],
+      "plans": [
+        "Capture accepted artifacts",
+        "Map evidence to capability",
+        "Issue credentials",
+        "Update reputation",
+        "Chronicle the institutional memory"
+      ],
+      "goals": [
+        "Stop losing useful work",
+        "Accumulate reusable intelligence",
+        "Create measurable capability memory"
+      ],
+      "rsi": "Accepted artifacts become candidate operating context for future work. Unproven artifacts remain outside the system memory that shapes future missions.",
+      "agialpha": "AGIALPHA coordinates the work that creates, validates, and settles proof-bearing artifacts while the Chronicle preserves what may influence future missions.",
+      "evidence": [
+        "Capability inventory",
+        "Proof Card lineage",
+        "Credential history",
+        "Reputation update",
+        "Chronicle entry",
+        "Artifact version map"
+      ],
+      "metrics": [
+        [
+          "memory",
+          "ephemeral output",
+          "chronicle-backed capability"
+        ],
+        [
+          "proof",
+          "unverified work",
+          "reviewed evidence"
+        ],
+        [
+          "economic value",
+          "isolated task",
+          "compounding artifact"
+        ]
+      ]
+    },
+    {
+      "id": "005",
+      "title": "Sovereign RSI Value-to-Capability Treasury",
+      "level": "Reinvestment engine",
+      "domain": "Treasury / capability allocation",
+      "thesis": "Verified value can be governed and reinvested into future capability.",
+      "problem": "Even when AI work creates value, organizations often fail to convert that value into stronger future systems.",
+      "mission": "Route verified value into capability budgets for better missions, stronger agents, better evaluators, security review, compute, and evidence infrastructure.",
+      "why": "This is where RSI becomes economically useful: value funds capability, capability produces better value.",
+      "contracts": [
+        "AEPRewardVault",
+        "TreasuryRouter",
+        "CommercializationPerformanceVault",
+        "AlphaWorkUnitLedger",
+        "AEPSelectionGate",
+        "AEPChronicleRegistry",
+        "LaunchGateRegistry"
+      ],
+      "skills": [
+        "Treasury routing",
+        "Capability budgeting",
+        "AlphaWorkUnit measurement",
+        "Reinvestment planning",
+        "Governance accounting"
+      ],
+      "plans": [
+        "Measure verified value",
+        "Allocate capability budget",
+        "Fund higher-value proof missions",
+        "Review outcomes",
+        "Chronicle reinvestment effectiveness"
+      ],
+      "goals": [
+        "Turn value into capability",
+        "Avoid speculative value claims",
+        "Create a disciplined reinvestment flywheel"
+      ],
+      "rsi": "The system improves because verified value funds the next generation of proof missions, evaluator harnesses, specialist cells, and review capacity.",
+      "agialpha": "AGIALPHA coordinates settlement, reward-vault allocation, treasury records, milestone release, and capability-budget routing after proof and review.",
+      "evidence": [
+        "Value ledger",
+        "AlphaWorkUnit report",
+        "Treasury allocation record",
+        "RewardVault record",
+        "Commercialization milestone proof",
+        "Chronicle entry"
+      ],
+      "metrics": [
+        [
+          "value capture",
+          "untracked benefit",
+          "measured value ledger"
+        ],
+        [
+          "reinvestment",
+          "manual decision",
+          "governed capability budget"
+        ],
+        [
+          "future capability",
+          "static team",
+          "stronger mission portfolio"
+        ]
+      ]
+    },
+    {
+      "id": "006",
+      "title": "Sovereign Enterprise RSI Operating System",
+      "level": "Enterprise operating layer",
+      "domain": "Sovereign enterprise operations",
+      "thesis": "A large specialist-agent institution can coordinate work, proof, review, treasury, rollback, and memory through an evidence-governed RSI operating system.",
+      "problem": "Enterprises cannot safely adopt autonomous work unless responsibility, evaluation, rollback, settlement, and evidence are explicit.",
+      "mission": "Build an operating theater of specialist agent cells whose work is routed, reviewed, settled, and chronicled.",
+      "why": "This is the organizational layer that turns proof cards into an operating system.",
+      "contracts": [
+        "AEPGoalOSCommitRegistry",
+        "AEPRunCommitmentRegistry",
+        "AEPAgentRegistry",
+        "AEPArtifactRegistry",
+        "JobRegistry",
+        "ProofSubmissionRegistry",
+        "ReviewerBondRegistry",
+        "AEPSelectionGate",
+        "AEPRollbackRegistry",
+        "AEPChronicleRegistry"
+      ],
+      "skills": [
+        "Multi-agent orchestration",
+        "Enterprise operating design",
+        "Proof engineering",
+        "Reviewer coordination",
+        "Rollback planning"
+      ],
+      "plans": [
+        "Define enterprise aim",
+        "Route missions to agent cells",
+        "Collect ProofBundles",
+        "Review and red-team",
+        "Promote only accepted artifacts"
+      ],
+      "goals": [
+        "Operate many specialist agents safely",
+        "Make responsibility explicit",
+        "Build enterprise-scale evidence memory"
+      ],
+      "rsi": "An enterprise artifact is not upgraded because it performs once. It earns scoped upgrade rights only after proof, evaluation, review, monitoring, and rollback readiness.",
+      "agialpha": "AGIALPHA coordinates mission budgets, agent claims, proof bonds, reviewer bonds, credentials, reputation, reward settlement, and treasury routing across the operating system.",
+      "evidence": [
+        "GoalOSCommit",
+        "RunCommitment",
+        "ProofBundle",
+        "EvalAttestation",
+        "Risk report",
+        "RollbackReceipt",
+        "Chronicle entry"
+      ],
+      "metrics": [
+        [
+          "coordination",
+          "ad hoc teams",
+          "specialist-agent operating theater"
+        ],
+        [
+          "safety",
+          "informal approval",
+          "Selection Gate + rollback"
+        ],
+        [
+          "scale",
+          "single workflow",
+          "enterprise mission portfolio"
+        ]
+      ]
+    },
+    {
+      "id": "007",
+      "title": "Sovereign Enterprise Autoresearch Reactor",
+      "level": "Autonomous improvement search",
+      "domain": "Enterprise autoresearch",
+      "thesis": "A sovereign enterprise can run parallel improvement searches, validate them, and propagate only the artifacts that survive proof.",
+      "problem": "Automated improvement loops can produce useful candidates, but without governance they risk reward hacking, brittle gains, and unsafe propagation.",
+      "mission": "Run many bounded proof missions across enterprise domains, evaluate candidates, red-team claims, and promote only replayable improvements.",
+      "why": "This is the institutional answer to autoresearch: search plus proof, settlement, rollback, and memory.",
+      "contracts": [
+        "AEPBenchmarkRegistry",
+        "AEPExperimentRegistry",
+        "AEPAutoresearchPortfolioRegistry",
+        "AEPEvaluatorStakingRegistry",
+        "AEPCommitRevealValidationRegistry",
+        "AEPSlashingCourt",
+        "AEPFalsificationRegistry",
+        "AEPSelectionGate"
+      ],
+      "skills": [
+        "Hypothesis generation",
+        "Experiment portfolio management",
+        "Evaluator harness design",
+        "Reward-hack detection",
+        "Red-team validation"
+      ],
+      "plans": [
+        "Define benchmark family",
+        "Launch parallel missions",
+        "Evaluate candidate improvements",
+        "Red-team and replay",
+        "Promote safe candidates"
+      ],
+      "goals": [
+        "Search for enterprise improvements",
+        "Prevent unproven artifacts from propagating",
+        "Create a replayable autoresearch institution"
+      ],
+      "rsi": "The reactor improves itself by converting accepted experiment outputs into new priors, harnesses, rubrics, and mission templates - but only after proof and review.",
+      "agialpha": "AGIALPHA coordinates mission funding, builder and reviewer bonds, evaluator incentives, reward-vault settlement, reputation updates, and portfolio reinvestment.",
+      "evidence": [
+        "Benchmark docket",
+        "Experiment manifest",
+        "Candidate artifacts",
+        "Evaluator report",
+        "Falsification report",
+        "SelectionCertificate",
+        "Chronicle entry"
+      ],
+      "metrics": [
+        [
+          "search",
+          "single experiment",
+          "parallel portfolio"
+        ],
+        [
+          "validity",
+          "self-reported gain",
+          "review + replay"
+        ],
+        [
+          "reuse",
+          "one-off optimization",
+          "autoresearch memory"
+        ]
+      ]
+    },
+    {
+      "id": "008",
+      "title": "Sovereign Corporate Capability Foundry",
+      "level": "Portfolio capability production",
+      "domain": "Corporate capability portfolios",
+      "thesis": "A sovereign enterprise can allocate proof missions across domains to manufacture reusable capability, not just isolated task outputs.",
+      "problem": "Corporate AI programs often create disconnected experiments that fail to become durable capability across departments.",
+      "mission": "Build a portfolio foundry that turns domain weaknesses into proof missions, accepted artifacts, credentials, reputation, and capability budgets.",
+      "why": "This is the portfolio-scale version of RSI: many domains, many agents, one evidence graph.",
+      "contracts": [
+        "MandateEpochRegistry",
+        "AEPAutoresearchPortfolioRegistry",
+        "AEPBenchmarkRegistry",
+        "AEPExperimentRegistry",
+        "AEPRewardVault",
+        "TreasuryRouter",
+        "CommercializationPerformanceVault",
+        "AEPChronicleRegistry"
+      ],
+      "skills": [
+        "Portfolio governance",
+        "Domain scouting",
+        "Capability packaging",
+        "AlphaWorkUnit metrology",
+        "Capability reinvestment"
+      ],
+      "plans": [
+        "Open mandate epoch",
+        "Select domain portfolio",
+        "Route proof missions",
+        "Measure capability yield",
+        "Reinvest into stronger missions"
+      ],
+      "goals": [
+        "Move from tasks to capability portfolios",
+        "Prioritize profitable sovereign corporate domains",
+        "Compound accepted artifacts across departments"
+      ],
+      "rsi": "The foundry improves by learning which domains, agent cells, evaluators, and artifacts generate repeatable verified capability.",
+      "agialpha": "AGIALPHA coordinates portfolio budgets, mission settlement, evaluator incentives, proof-card actions, credential issuance, treasury routing, and commercialization milestone evidence.",
+      "evidence": [
+        "Mandate epoch record",
+        "Portfolio map",
+        "Domain proof cards",
+        "AlphaWorkUnit report",
+        "Treasury allocation",
+        "Chronicle portfolio memory"
+      ],
+      "metrics": [
+        [
+          "domain coverage",
+          "isolated demo",
+          "portfolio foundry"
+        ],
+        [
+          "economic focus",
+          "unclear value",
+          "profitable sovereign domains"
+        ],
+        [
+          "learning",
+          "manual roadmap",
+          "evidence-driven portfolio routing"
+        ]
+      ]
+    },
+    {
+      "id": "009",
+      "title": "Cyber-Sovereign Execution Moat",
+      "level": "Defensive cyber execution moat",
+      "domain": "Cyber-sovereign security operations",
+      "thesis": "Cyber-sovereign work becomes a compounding execution moat when authorized weaknesses are remediated through proof, review, red-team challenge, rollback, and Chronicle memory.",
+      "problem": "Security teams need verified remediation, not speculative automation. The proof must be authorized, replayable, and safe to roll back.",
+      "mission": "Coordinate defensive cyber proof missions from authorized weakness to validated remediation artifact with regression harness and rollback path.",
+      "why": "Cyber is a high-value enterprise domain where proof, safety, replayability, and trust are mandatory.",
+      "contracts": [
+        "CyberAssetGraphRegistry",
+        "SBOMEvidenceRegistry",
+        "VEXAttestationRegistry",
+        "RemediationPatchRegistry",
+        "SecurityRegressionHarnessRegistry",
+        "RedTeamChallengeRegistry",
+        "IncidentRollbackRegistry",
+        "AEPFalsificationRegistry"
+      ],
+      "skills": [
+        "Asset graph mapping",
+        "Vulnerability triage",
+        "Defensive remediation",
+        "Security regression harnessing",
+        "Incident rollback planning"
+      ],
+      "plans": [
+        "Authorize scope",
+        "Map asset graph",
+        "Generate remediation candidate",
+        "Run regression harness",
+        "Review and red-team",
+        "Chronicle reusable remediation"
+      ],
+      "goals": [
+        "Build defensive security capability",
+        "Avoid unsafe/offensive claims",
+        "Create replayable remediation evidence"
+      ],
+      "rsi": "Each validated remediation improves the next security mission: stronger harnesses, better triage, reusable patches, and known rollback paths.",
+      "agialpha": "AGIALPHA coordinates mission budgets, builder claim bonds, proof bonds, reviewer/red-team bonds, evaluator incentives, proof-card registration, credentialing, and settlement.",
+      "evidence": [
+        "Authorized scope",
+        "Asset graph",
+        "SBOM/VEX evidence",
+        "Patch artifact",
+        "Regression harness result",
+        "Red-team report",
+        "RollbackReceipt",
+        "Chronicle entry"
+      ],
+      "metrics": [
+        [
+          "execution",
+          "manual remediation",
+          "proof-routed remediation"
+        ],
+        [
+          "security",
+          "unverified fix",
+          "regression + red-team"
+        ],
+        [
+          "moat",
+          "single patch",
+          "reusable cyber capability"
+        ]
+      ]
+    },
+    {
+      "id": "010",
+      "title": "Cyber-Sovereign Proof Benchmark Market",
+      "level": "Replayable benchmark-market moat",
+      "domain": "Cyber benchmark markets",
+      "thesis": "Cyber-sovereign work becomes an execution moat when improvements are benchmarked, independently reproduced, settled, and admitted into future context only after proof.",
+      "problem": "A single cyber improvement is not enough. Serious buyers need benchmarks, task manifests, reproduction receipts, and challenge history.",
+      "mission": "Create a proof benchmark market for authorized defensive cyber tasks: run candidate improvements, validate, red-team, reproduce independently, settle, and Chronicle.",
+      "why": "This converts cyber proof from internal work into a market-readable execution moat.",
+      "contracts": [
+        "CyberBenchmarkRegistry",
+        "AEPBenchmarkRegistry",
+        "AEPExperimentRegistry",
+        "AEPCommitRevealValidationRegistry",
+        "AEPSlashingCourt",
+        "AEPFalsificationRegistry",
+        "AEPSelectionGate",
+        "AEPChronicleRegistry"
+      ],
+      "skills": [
+        "Benchmark design",
+        "Independent reproduction",
+        "Evaluator hardening",
+        "Red-team challenge design",
+        "Replayable evidence packaging"
+      ],
+      "plans": [
+        "Define benchmark task family",
+        "Publish task manifest",
+        "Run parallel missions",
+        "Validate and red-team",
+        "Collect reproduction receipt",
+        "Issue SelectionCertificate"
+      ],
+      "goals": [
+        "Turn cyber work into replayable proof",
+        "Create external trust signals",
+        "Make the execution moat measurable"
+      ],
+      "rsi": "Only reproduced and validated benchmark improvements can become future operating context; every accepted benchmark improves the next benchmark market.",
+      "agialpha": "AGIALPHA coordinates benchmark mission budgets, builder claims, reviewer/red-team bonds, evaluator incentives, proof-card actions, credential issuance, reward-vault settlement, and reputation-weighted routing.",
+      "evidence": [
+        "CyberBenchmarkDocket",
+        "Task manifest",
+        "Baseline",
+        "Candidate artifact",
+        "Evaluator report",
+        "Red-team report",
+        "ReproductionReceipt",
+        "SelectionCertificate",
+        "Chronicle entry"
+      ],
+      "metrics": [
+        [
+          "proof",
+          "internal result",
+          "replayable benchmark"
+        ],
+        [
+          "trust",
+          "single validator",
+          "review + red-team + reproduction"
+        ],
+        [
+          "market",
+          "manual security service",
+          "proof benchmark market"
+        ]
+      ]
+    }
+  ]
+}

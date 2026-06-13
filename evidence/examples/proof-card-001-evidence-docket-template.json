@@ -1,21 +1,28 @@
 {
   "proof_card_id": "001",
   "title": "Buyer Rescue Workflow",
-  "status": "template_until_live_docket",
+  "status": "illustrative_template_until_live_run",
   "required_evidence": [
-    "GoalOSCommit",
-    "RunCommitment",
-    "task_manifest",
-    "baseline",
-    "candidate_artifact",
-    "ProofBundle",
-    "EvaluatorReport",
-    "ReviewerAttestation",
-    "CostLedger",
-    "SafetyLedger",
-    "RiskLedger",
-    "SelectionCertificate",
-    "RollbackPlan",
-    "ChronicleEntry"
-  ]
+    "Original support scenario redacted",
+    "Workflow v1.0 output",
+    "Scorecard and diagnosis",
+    "Workflow v1.1 output",
+    "Reviewer attestation",
+    "Proof Card hash",
+    "Chronicle entry"
+  ],
+  "contracts": [
+    "AEPGoalOSCommitRegistry",
+    "AEPRunCommitmentRegistry",
+    "JobRegistry",
+    "JobClaimBondManager",
+    "ProofSubmissionRegistry",
+    "ReviewerBondRegistry",
+    "ProofCardRegistry",
+    "ProofCredentialRegistry",
+    "ReputationRegistry",
+    "AEPEvidenceDocketRegistry",
+    "AEPChronicleRegistry"
+  ],
+  "claim_boundary": "No achieved AGI/ASI, no financial return, no legal/tax/security approval, no Ethereum mainnet deployment claim, no Kardashev Type II achievement claim."
 }

@@ -1,66 +1,55 @@
-# Proof Card 002 — Sovereign Procurement Trust Room
+# Proof Card 002 - Sovereign Procurement Trust Room
 
-**Phase:** Trust Architecture
+**Thesis:** A buyer diligence question becomes an auditable Trust Room rather than an improvised sales response.
 
 ## Problem
-
-A serious buyer asks whether the system can be evaluated, audited, and trusted. A generic sales page is not enough for procurement, compliance, or institutional review.
+Enterprise and sovereign buyers ask whether an AI workflow system can be trusted, governed, audited, and safely adopted.
 
 ## Proof mission
+Create a Trust Room artifact that answers procurement questions with evidence boundaries, proof routes, reviewer decisions, and safe public claims.
 
-Turn procurement due diligence into a proof mission: assemble a trust room with public-safe evidence, claim boundaries, security posture, token-utility explanation, Proof Cards, reviewer notes, and an Evidence Docket checklist.
+## AGIALPHA use
+AGIALPHA coordinates mission funding, builder proof work, reviewer validation, proof-card registration, credential issuance, and reputation updates for trust-room specialists.
 
-## Incremental improvement
-
-Moves from buyer support to institutional trust: proof becomes useful in procurement conversations.
-
-## Where AGIALPHA becomes useful
-
-AGIALPHA coordinates sponsor funding, builder claim bonds, proof submission bonds, reviewer bonds, proof-card registration, credential issuance, reputation-linked routing, settlement, and Chronicle memory.
+## RSI logic
+The Trust Room becomes a reusable artifact for future procurement conversations only after it survives review, claim-boundary validation, and Evidence Docket anchoring.
 
 ## Skills used
-
-- Procurement response design
-- Trust-center evidence mapping
-- Compliance-oriented explanation
-- Claim-boundary editing
-- Evidence Docket assembly
+- Procurement response architecture
+- Trust-center documentation
+- Claim-boundary review
+- Evidence Docket compilation
+- Reviewer rubric design
 
 ## Plans used
-
-- Sovereign Procurement Trust Room proof mission plan
-- Evidence Docket route
-- Reviewer and red-team plan
-- Selection Gate upgrade policy
+- Map buyer questions
+- Build trust-room artifact
+- Attach public-safe evidence
+- Run reviewer validation
+- Publish Proof Card 002
 
 ## Goals used
+- Shorten buyer diligence cycles
+- Create a reusable procurement answer
+- Make proof legible to non-technical executives
 
-- Create replayable institutional proof
-- Demonstrate AGIALPHA proof-settled coordination
-- Promote only proven artifacts
-- Strengthen the evidence graph
+## Contracts / registries
+- `AEPGoalOSCommitRegistry`
+- `AEPClaimBoundaryRegistry`
+- `AEPConformanceRegistry`
+- `AEPEvidenceDocketRegistry`
+- `ProofCardRegistry`
+- `ProofCredentialRegistry`
+- `ReputationRegistry`
+- `AEPSelectionGate`
 
-## Contracts / registries used
-
-- AEPGoalOSCommitRegistry
-- AEPRunCommitmentRegistry
-- JobRegistry
-- JobClaimBondManager
-- ProofSubmissionRegistry
-- ReviewerBondRegistry
-- ProofCardRegistry
-- ProofCredentialRegistry
-- ReputationRegistry
-- AEPEvidenceDocketRegistry
-- AEPSelectionGate
-- AEPChronicleRegistry
-- AEPConformanceRegistry
-- LaunchGateRegistry
-
-## RSI upgrade logic
-
-The accepted artifact may influence future work only after evidence, evaluator review, reviewer validation, scope control, challenge window, rollback readiness, Selection Gate approval, and Chronicle entry.
+## Evidence Docket checklist
+- Procurement question set
+- Trust Room v1.0
+- Claim-boundary checklist
+- Reviewer attestation
+- Proof Card 002
+- Evidence Docket template
 
 ## Claim boundary
-
-This proof card is an experimental public-safe proof template until a live Evidence Docket is completed. It does not claim achieved AGI, achieved superintelligence, guaranteed ROI, legal/tax/security approval, Ethereum mainnet deployment, or Kardashev Type II achievement.
+Illustrative until a live Evidence Docket is completed. No AGI/ASI, investment, legal, tax, security, mainnet, or Kardashev achievement claim.

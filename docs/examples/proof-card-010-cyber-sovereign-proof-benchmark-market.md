@@ -1,72 +1,59 @@
-# Proof Card 010 — Cyber-Sovereign Proof Benchmark Market
+# Proof Card 010 - Cyber-Sovereign Proof Benchmark Market
 
-**Phase:** Replayable Benchmark Market
+**Thesis:** Cyber-sovereign work becomes an execution moat when improvements are benchmarked, independently reproduced, settled, and admitted into future context only after proof.
 
 ## Problem
-
-Architecture is not enough. A durable execution moat requires replayable benchmarks, independent reproduction, hardened evaluators, and public-safe evidence that buyers can inspect.
+A single cyber improvement is not enough. Serious buyers need benchmarks, task manifests, reproduction receipts, and challenge history.
 
 ## Proof mission
+Create a proof benchmark market for authorized defensive cyber tasks: run candidate improvements, validate, red-team, reproduce independently, settle, and Chronicle.
 
-Build a cyber-sovereign proof benchmark market: authorized defensive tasks, baseline manifests, evaluator harnesses, candidate artifacts, ProofBundles, reviewer attestations, red-team falsification reports, reproduction receipts, and AGIALPHA settlement.
+## AGIALPHA use
+AGIALPHA coordinates benchmark mission budgets, builder claims, reviewer/red-team bonds, evaluator incentives, proof-card actions, credential issuance, reward-vault settlement, and reputation-weighted routing.
 
-## Incremental improvement
-
-Turns the cyber execution moat into a benchmark market where results can be replayed and compared.
-
-## Where AGIALPHA becomes useful
-
-AGIALPHA coordinates sponsor funding, builder claim bonds, proof submission bonds, reviewer bonds, proof-card registration, credential issuance, reputation-linked routing, settlement, and Chronicle memory.
+## RSI logic
+Only reproduced and validated benchmark improvements can become future operating context; every accepted benchmark improves the next benchmark market.
 
 ## Skills used
-
 - Benchmark design
+- Independent reproduction
 - Evaluator hardening
-- Reproduction packaging
-- Defensive task manifesting
-- Falsification testing
-- Result comparison
+- Red-team challenge design
+- Replayable evidence packaging
 
 ## Plans used
-
-- Cyber-Sovereign Proof Benchmark Market proof mission plan
-- Evidence Docket route
-- Reviewer and red-team plan
-- Selection Gate upgrade policy
+- Define benchmark task family
+- Publish task manifest
+- Run parallel missions
+- Validate and red-team
+- Collect reproduction receipt
+- Issue SelectionCertificate
 
 ## Goals used
+- Turn cyber work into replayable proof
+- Create external trust signals
+- Make the execution moat measurable
 
-- Create replayable institutional proof
-- Demonstrate AGIALPHA proof-settled coordination
-- Promote only proven artifacts
-- Strengthen the evidence graph
+## Contracts / registries
+- `CyberBenchmarkRegistry`
+- `AEPBenchmarkRegistry`
+- `AEPExperimentRegistry`
+- `AEPCommitRevealValidationRegistry`
+- `AEPSlashingCourt`
+- `AEPFalsificationRegistry`
+- `AEPSelectionGate`
+- `AEPChronicleRegistry`
 
-## Contracts / registries used
-
-- AEPGoalOSCommitRegistry
-- AEPRunCommitmentRegistry
-- JobRegistry
-- JobClaimBondManager
-- ProofSubmissionRegistry
-- ReviewerBondRegistry
-- ProofCardRegistry
-- ProofCredentialRegistry
-- ReputationRegistry
-- AEPEvidenceDocketRegistry
-- AEPSelectionGate
-- AEPChronicleRegistry
-- CyberBenchmarkRegistry
-- AEPBenchmarkRegistry
-- AEPExperimentRegistry
-- AEPEvaluatorStakingRegistry
-- AEPCommitRevealValidationRegistry
-- AEPSlashingCourt
-- AEPFalsificationRegistry
-
-## RSI upgrade logic
-
-The accepted artifact may influence future work only after evidence, evaluator review, reviewer validation, scope control, challenge window, rollback readiness, Selection Gate approval, and Chronicle entry.
+## Evidence Docket checklist
+- CyberBenchmarkDocket
+- Task manifest
+- Baseline
+- Candidate artifact
+- Evaluator report
+- Red-team report
+- ReproductionReceipt
+- SelectionCertificate
+- Chronicle entry
 
 ## Claim boundary
-
-This proof card is an experimental public-safe proof template until a live Evidence Docket is completed. It does not claim achieved AGI, achieved superintelligence, guaranteed ROI, legal/tax/security approval, Ethereum mainnet deployment, or Kardashev Type II achievement.
+Illustrative until a live Evidence Docket is completed. No AGI/ASI, investment, legal, tax, security, mainnet, or Kardashev achievement claim.

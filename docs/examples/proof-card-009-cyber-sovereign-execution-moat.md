@@ -1,72 +1,58 @@
-# Proof Card 009 — Cyber-Sovereign Execution Moat
+# Proof Card 009 - Cyber-Sovereign Execution Moat
 
-**Phase:** Defensive Execution Moat
+**Thesis:** Cyber-sovereign work becomes a compounding execution moat when authorized weaknesses are remediated through proof, review, red-team challenge, rollback, and Chronicle memory.
 
 ## Problem
-
-Cyber risk is a high-value sovereign corporate domain where unverified automation is dangerous. The system needs authorized scope, defensive boundaries, evidence, regression harnesses, red-team review, and rollback readiness.
+Security teams need verified remediation, not speculative automation. The proof must be authorized, replayable, and safe to roll back.
 
 ## Proof mission
+Coordinate defensive cyber proof missions from authorized weakness to validated remediation artifact with regression harness and rollback path.
 
-Turn authorized cyber weakness remediation into proof-settled work: map assets, triage risk, build remediation candidates, run security regression harnesses, validate through reviewers and red teams, and promote only safe remediations.
+## AGIALPHA use
+AGIALPHA coordinates mission budgets, builder claim bonds, proof bonds, reviewer/red-team bonds, evaluator incentives, proof-card registration, credentialing, and settlement.
 
-## Incremental improvement
-
-Moves the foundry into a high-value cyber-sovereign execution domain.
-
-## Where AGIALPHA becomes useful
-
-AGIALPHA coordinates sponsor funding, builder claim bonds, proof submission bonds, reviewer bonds, proof-card registration, credential issuance, reputation-linked routing, settlement, and Chronicle memory.
+## RSI logic
+Each validated remediation improves the next security mission: stronger harnesses, better triage, reusable patches, and known rollback paths.
 
 ## Skills used
-
-- Cyber asset mapping
+- Asset graph mapping
+- Vulnerability triage
 - Defensive remediation
-- Security regression testing
-- SBOM/VEX evidence
+- Security regression harnessing
 - Incident rollback planning
-- Red-team validation
 
 ## Plans used
-
-- Cyber-Sovereign Execution Moat proof mission plan
-- Evidence Docket route
-- Reviewer and red-team plan
-- Selection Gate upgrade policy
+- Authorize scope
+- Map asset graph
+- Generate remediation candidate
+- Run regression harness
+- Review and red-team
+- Chronicle reusable remediation
 
 ## Goals used
+- Build defensive security capability
+- Avoid unsafe/offensive claims
+- Create replayable remediation evidence
 
-- Create replayable institutional proof
-- Demonstrate AGIALPHA proof-settled coordination
-- Promote only proven artifacts
-- Strengthen the evidence graph
+## Contracts / registries
+- `CyberAssetGraphRegistry`
+- `SBOMEvidenceRegistry`
+- `VEXAttestationRegistry`
+- `RemediationPatchRegistry`
+- `SecurityRegressionHarnessRegistry`
+- `RedTeamChallengeRegistry`
+- `IncidentRollbackRegistry`
+- `AEPFalsificationRegistry`
 
-## Contracts / registries used
-
-- AEPGoalOSCommitRegistry
-- AEPRunCommitmentRegistry
-- JobRegistry
-- JobClaimBondManager
-- ProofSubmissionRegistry
-- ReviewerBondRegistry
-- ProofCardRegistry
-- ProofCredentialRegistry
-- ReputationRegistry
-- AEPEvidenceDocketRegistry
-- AEPSelectionGate
-- AEPChronicleRegistry
-- CyberAssetGraphRegistry
-- SBOMEvidenceRegistry
-- VEXAttestationRegistry
-- RemediationPatchRegistry
-- SecurityRegressionHarnessRegistry
-- RedTeamChallengeRegistry
-- IncidentRollbackRegistry
-
-## RSI upgrade logic
-
-The accepted artifact may influence future work only after evidence, evaluator review, reviewer validation, scope control, challenge window, rollback readiness, Selection Gate approval, and Chronicle entry.
+## Evidence Docket checklist
+- Authorized scope
+- Asset graph
+- SBOM/VEX evidence
+- Patch artifact
+- Regression harness result
+- Red-team report
+- RollbackReceipt
+- Chronicle entry
 
 ## Claim boundary
-
-This proof card is an experimental public-safe proof template until a live Evidence Docket is completed. It does not claim achieved AGI, achieved superintelligence, guaranteed ROI, legal/tax/security approval, Ethereum mainnet deployment, or Kardashev Type II achievement.
+Illustrative until a live Evidence Docket is completed. No AGI/ASI, investment, legal, tax, security, mainnet, or Kardashev achievement claim.

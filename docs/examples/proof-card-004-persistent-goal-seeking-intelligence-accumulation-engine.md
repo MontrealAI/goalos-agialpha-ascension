@@ -1,66 +1,55 @@
-# Proof Card 004 — Persistent Goal-Seeking Intelligence Accumulation Engine
+# Proof Card 004 - Persistent Goal-Seeking Intelligence Accumulation Engine
 
-**Phase:** Persistent Memory
+**Thesis:** GoalOS AGIALPHA Ascension is an experimental framework for a persistent, goal-seeking, self-improving intelligence system that accumulates capabilities, evidence, and economic value over time.
 
 ## Problem
-
-One-off AI tasks do not compound. They answer, then disappear. A persistent system must accumulate capabilities, evidence, and value over time.
+Most AI work is transient: prompts, outputs, and one-off tasks are lost instead of becoming institutional capability.
 
 ## Proof mission
+Make every accepted proof into durable institutional memory: capability, evidence, credential, reputation, and reusable context.
 
-Define the accumulation layer: every accepted workflow improvement becomes an artifact; every artifact receives evidence; every evidence-backed artifact can earn credentials, reputation, and future routing rights.
+## AGIALPHA use
+AGIALPHA coordinates the work that creates, validates, and settles proof-bearing artifacts while the Chronicle preserves what may influence future missions.
 
-## Incremental improvement
-
-Moves from individual proof cards to compounding institutional memory.
-
-## Where AGIALPHA becomes useful
-
-AGIALPHA coordinates sponsor funding, builder claim bonds, proof submission bonds, reviewer bonds, proof-card registration, credential issuance, reputation-linked routing, settlement, and Chronicle memory.
+## RSI logic
+Accepted artifacts become candidate operating context for future work. Unproven artifacts remain outside the system memory that shapes future missions.
 
 ## Skills used
-
-- Capability inventory
+- Capability archiving
+- Evidence graph design
+- Reputation accounting
 - Artifact versioning
-- Evidence tracking
-- Reputation design
-- Chronicle memory design
+- Chronicle construction
 
 ## Plans used
-
-- Persistent Goal-Seeking Intelligence Accumulation Engine proof mission plan
-- Evidence Docket route
-- Reviewer and red-team plan
-- Selection Gate upgrade policy
+- Capture accepted artifacts
+- Map evidence to capability
+- Issue credentials
+- Update reputation
+- Chronicle the institutional memory
 
 ## Goals used
+- Stop losing useful work
+- Accumulate reusable intelligence
+- Create measurable capability memory
 
-- Create replayable institutional proof
-- Demonstrate AGIALPHA proof-settled coordination
-- Promote only proven artifacts
-- Strengthen the evidence graph
+## Contracts / registries
+- `AEPArtifactRegistry`
+- `ProofCardRegistry`
+- `ProofCredentialRegistry`
+- `ReputationRegistry`
+- `AEPEvidenceDocketRegistry`
+- `AEPSelectionGate`
+- `AEPChronicleRegistry`
+- `AlphaWorkUnitLedger`
 
-## Contracts / registries used
-
-- AEPGoalOSCommitRegistry
-- AEPRunCommitmentRegistry
-- JobRegistry
-- JobClaimBondManager
-- ProofSubmissionRegistry
-- ReviewerBondRegistry
-- ProofCardRegistry
-- ProofCredentialRegistry
-- ReputationRegistry
-- AEPEvidenceDocketRegistry
-- AEPSelectionGate
-- AEPChronicleRegistry
-- AEPArtifactRegistry
-- AlphaWorkUnitLedger
-
-## RSI upgrade logic
-
-The accepted artifact may influence future work only after evidence, evaluator review, reviewer validation, scope control, challenge window, rollback readiness, Selection Gate approval, and Chronicle entry.
+## Evidence Docket checklist
+- Capability inventory
+- Proof Card lineage
+- Credential history
+- Reputation update
+- Chronicle entry
+- Artifact version map
 
 ## Claim boundary
-
-This proof card is an experimental public-safe proof template until a live Evidence Docket is completed. It does not claim achieved AGI, achieved superintelligence, guaranteed ROI, legal/tax/security approval, Ethereum mainnet deployment, or Kardashev Type II achievement.
+Illustrative until a live Evidence Docket is completed. No AGI/ASI, investment, legal, tax, security, mainnet, or Kardashev achievement claim.

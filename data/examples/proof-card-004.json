@@ -1,12 +1,66 @@
 {
   "id": "004",
-  "slug": "proof-card-004",
   "title": "Persistent Goal-Seeking Intelligence Accumulation Engine",
-  "subtitle": "Show how GoalOS AGIALPHA Ascension accumulates capability, evidence, and economic value over time.",
-  "problem": "Most AI workflows disappear after use. The organization loses what worked, why it worked, who reviewed it, and whether it should improve future work.",
-  "mission": "Demonstrate the persistent accumulation loop: goals become proof missions; proof missions create evidence; evidence creates credentials and reputation; accepted artifacts earn scoped upgrade rights; future work improves.",
-  "agialpha": "AGIALPHA coordinates the economic accountability layer for the accumulation loop: posted missions, bonded participation, proof actions, reviewer accountability, settlement, credentialing, and reputation-linked access.",
-  "rsi": "This is the meta-card: Recursive Self-Improvement becomes proof-backed accumulation. A capability shapes future work only after it passes evidence, evaluation, review, selection, monitoring, and rollback criteria.",
-  "value": "A compounding evidence graph: validated workflows, rubrics, policies, proof templates, procurement answers, reviewer attestations, economic records, and reusable institutional intelligence.",
-  "status": "Illustrative until repeated live Evidence Dockets prove accumulation over time."
+  "level": "Compounding memory",
+  "domain": "Persistent organizational intelligence",
+  "thesis": "GoalOS AGIALPHA Ascension is an experimental framework for a persistent, goal-seeking, self-improving intelligence system that accumulates capabilities, evidence, and economic value over time.",
+  "problem": "Most AI work is transient: prompts, outputs, and one-off tasks are lost instead of becoming institutional capability.",
+  "mission": "Make every accepted proof into durable institutional memory: capability, evidence, credential, reputation, and reusable context.",
+  "why": "Persistent accumulation is the bridge from useful AI work to sovereign RSI.",
+  "contracts": [
+    "AEPArtifactRegistry",
+    "ProofCardRegistry",
+    "ProofCredentialRegistry",
+    "ReputationRegistry",
+    "AEPEvidenceDocketRegistry",
+    "AEPSelectionGate",
+    "AEPChronicleRegistry",
+    "AlphaWorkUnitLedger"
+  ],
+  "skills": [
+    "Capability archiving",
+    "Evidence graph design",
+    "Reputation accounting",
+    "Artifact versioning",
+    "Chronicle construction"
+  ],
+  "plans": [
+    "Capture accepted artifacts",
+    "Map evidence to capability",
+    "Issue credentials",
+    "Update reputation",
+    "Chronicle the institutional memory"
+  ],
+  "goals": [
+    "Stop losing useful work",
+    "Accumulate reusable intelligence",
+    "Create measurable capability memory"
+  ],
+  "rsi": "Accepted artifacts become candidate operating context for future work. Unproven artifacts remain outside the system memory that shapes future missions.",
+  "agialpha": "AGIALPHA coordinates the work that creates, validates, and settles proof-bearing artifacts while the Chronicle preserves what may influence future missions.",
+  "evidence": [
+    "Capability inventory",
+    "Proof Card lineage",
+    "Credential history",
+    "Reputation update",
+    "Chronicle entry",
+    "Artifact version map"
+  ],
+  "metrics": [
+    [
+      "memory",
+      "ephemeral output",
+      "chronicle-backed capability"
+    ],
+    [
+      "proof",
+      "unverified work",
+      "reviewed evidence"
+    ],
+    [
+      "economic value",
+      "isolated task",
+      "compounding artifact"
+    ]
+  ]
 }

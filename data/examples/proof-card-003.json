@@ -1,12 +1,68 @@
 {
   "id": "003",
-  "slug": "proof-card-003",
   "title": "Sovereign AI Procurement Control Tower",
-  "subtitle": "A flagship control tower for trust, evidence, rollout, rollback, and upgrade rights.",
-  "problem": "A sovereign or enterprise buyer needs more than a demo: it needs a control plane for evaluating AI workflows, validating evidence, managing risk, and deciding what can improve future work.",
-  "mission": "Build a procurement control tower with GoalOS commitments, run commitments, proof submissions, reviewer validation, Evidence Docket, Proof Card, credential, reputation, and Selection Gate path.",
-  "agialpha": "AGIALPHA is used across the whole coordination route: mission posting, claim bonds, proof bonds, reviewer bonds, settlement, proof-card action, credential action, and reputation-linked access.",
-  "rsi": "The control tower grants proof-backed upgrade rights only to procurement artifacts that survive evidence, evaluator review, scope control, monitoring, and rollback readiness.",
-  "value": "An enterprise-grade route from buyer trust question to audited proof, making adoption legible to boards, procurement teams, risk owners, and sovereign institutions.",
-  "status": "Illustrative until a live Evidence Docket is completed."
+  "level": "Institutional control plane",
+  "domain": "AI procurement governance",
+  "thesis": "A procurement workflow becomes a control tower that routes risk, evidence, approval, rollback, and upgrade rights.",
+  "problem": "AI adoption fails when procurement, legal, security, finance, and operations evaluate systems separately without a shared proof trail.",
+  "mission": "Build a control tower that coordinates the evaluation of AI systems through roles, evidence, contracts, approvals, and Proof Cards.",
+  "why": "This is the enterprise version of proof-backed adoption: one command surface for trust, risk, and capability.",
+  "contracts": [
+    "AEPGoalOSCommitRegistry",
+    "AEPRunCommitmentRegistry",
+    "JobRegistry",
+    "ReviewerBondRegistry",
+    "AEPSelectionGate",
+    "AEPRolloutRouter",
+    "AEPRollbackRegistry",
+    "AEPEvidenceDocketRegistry",
+    "AEPChronicleRegistry"
+  ],
+  "skills": [
+    "Cross-functional AI procurement",
+    "Risk routing",
+    "Control-plane design",
+    "Evidence synthesis",
+    "Rollback planning"
+  ],
+  "plans": [
+    "Define procurement mandate",
+    "Route diligence tasks to specialist cells",
+    "Collect ProofBundles",
+    "Validate with reviewers/red-team",
+    "Issue scoped adoption recommendation"
+  ],
+  "goals": [
+    "Turn AI adoption into a governed proof process",
+    "Reduce procurement uncertainty",
+    "Create repeatable enterprise control infrastructure"
+  ],
+  "rsi": "Future procurement routes improve because accepted evidence templates, reviewer rubrics, and rollback paths become upgradeable institutional memory.",
+  "agialpha": "AGIALPHA coordinates task budgets, reviewer bonds, proof-card actions, credential issuance, settlement, and reputation-linked access for procurement-control specialists.",
+  "evidence": [
+    "Mandate record",
+    "Control tower workflow",
+    "Specialist task outputs",
+    "Reviewer attestations",
+    "Rollback plan",
+    "SelectionCertificate",
+    "Chronicle entry"
+  ],
+  "metrics": [
+    [
+      "coordination",
+      "fragmented review",
+      "single control tower"
+    ],
+    [
+      "risk",
+      "unclear ownership",
+      "assigned specialists"
+    ],
+    [
+      "reuse",
+      "one-off evaluation",
+      "repeatable procurement system"
+    ]
+  ]
 }

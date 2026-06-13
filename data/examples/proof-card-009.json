@@ -1,0 +1,69 @@
+{
+  "id": "009",
+  "title": "Cyber-Sovereign Execution Moat",
+  "level": "Defensive cyber execution moat",
+  "domain": "Cyber-sovereign security operations",
+  "thesis": "Cyber-sovereign work becomes a compounding execution moat when authorized weaknesses are remediated through proof, review, red-team challenge, rollback, and Chronicle memory.",
+  "problem": "Security teams need verified remediation, not speculative automation. The proof must be authorized, replayable, and safe to roll back.",
+  "mission": "Coordinate defensive cyber proof missions from authorized weakness to validated remediation artifact with regression harness and rollback path.",
+  "why": "Cyber is a high-value enterprise domain where proof, safety, replayability, and trust are mandatory.",
+  "contracts": [
+    "CyberAssetGraphRegistry",
+    "SBOMEvidenceRegistry",
+    "VEXAttestationRegistry",
+    "RemediationPatchRegistry",
+    "SecurityRegressionHarnessRegistry",
+    "RedTeamChallengeRegistry",
+    "IncidentRollbackRegistry",
+    "AEPFalsificationRegistry"
+  ],
+  "skills": [
+    "Asset graph mapping",
+    "Vulnerability triage",
+    "Defensive remediation",
+    "Security regression harnessing",
+    "Incident rollback planning"
+  ],
+  "plans": [
+    "Authorize scope",
+    "Map asset graph",
+    "Generate remediation candidate",
+    "Run regression harness",
+    "Review and red-team",
+    "Chronicle reusable remediation"
+  ],
+  "goals": [
+    "Build defensive security capability",
+    "Avoid unsafe/offensive claims",
+    "Create replayable remediation evidence"
+  ],
+  "rsi": "Each validated remediation improves the next security mission: stronger harnesses, better triage, reusable patches, and known rollback paths.",
+  "agialpha": "AGIALPHA coordinates mission budgets, builder claim bonds, proof bonds, reviewer/red-team bonds, evaluator incentives, proof-card registration, credentialing, and settlement.",
+  "evidence": [
+    "Authorized scope",
+    "Asset graph",
+    "SBOM/VEX evidence",
+    "Patch artifact",
+    "Regression harness result",
+    "Red-team report",
+    "RollbackReceipt",
+    "Chronicle entry"
+  ],
+  "metrics": [
+    [
+      "execution",
+      "manual remediation",
+      "proof-routed remediation"
+    ],
+    [
+      "security",
+      "unverified fix",
+      "regression + red-team"
+    ],
+    [
+      "moat",
+      "single patch",
+      "reusable cyber capability"
+    ]
+  ]
+}

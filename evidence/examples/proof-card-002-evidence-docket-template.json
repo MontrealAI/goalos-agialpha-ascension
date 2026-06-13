@@ -1,21 +1,24 @@
 {
   "proof_card_id": "002",
   "title": "Sovereign Procurement Trust Room",
-  "status": "template_until_live_docket",
+  "status": "illustrative_template_until_live_run",
   "required_evidence": [
-    "GoalOSCommit",
-    "RunCommitment",
-    "task_manifest",
-    "baseline",
-    "candidate_artifact",
-    "ProofBundle",
-    "EvaluatorReport",
-    "ReviewerAttestation",
-    "CostLedger",
-    "SafetyLedger",
-    "RiskLedger",
-    "SelectionCertificate",
-    "RollbackPlan",
-    "ChronicleEntry"
-  ]
+    "Procurement question set",
+    "Trust Room v1.0",
+    "Claim-boundary checklist",
+    "Reviewer attestation",
+    "Proof Card 002",
+    "Evidence Docket template"
+  ],
+  "contracts": [
+    "AEPGoalOSCommitRegistry",
+    "AEPClaimBoundaryRegistry",
+    "AEPConformanceRegistry",
+    "AEPEvidenceDocketRegistry",
+    "ProofCardRegistry",
+    "ProofCredentialRegistry",
+    "ReputationRegistry",
+    "AEPSelectionGate"
+  ],
+  "claim_boundary": "No achieved AGI/ASI, no financial return, no legal/tax/security approval, no Ethereum mainnet deployment claim, no Kardashev Type II achievement claim."
 }

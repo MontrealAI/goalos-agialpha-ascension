@@ -1,21 +1,24 @@
 {
   "proof_card_id": "008",
   "title": "Sovereign Corporate Capability Foundry",
-  "status": "template_until_live_docket",
+  "status": "illustrative_template_until_live_run",
   "required_evidence": [
-    "GoalOSCommit",
-    "RunCommitment",
-    "task_manifest",
-    "baseline",
-    "candidate_artifact",
-    "ProofBundle",
-    "EvaluatorReport",
-    "ReviewerAttestation",
-    "CostLedger",
-    "SafetyLedger",
-    "RiskLedger",
-    "SelectionCertificate",
-    "RollbackPlan",
-    "ChronicleEntry"
-  ]
+    "Mandate epoch record",
+    "Portfolio map",
+    "Domain proof cards",
+    "AlphaWorkUnit report",
+    "Treasury allocation",
+    "Chronicle portfolio memory"
+  ],
+  "contracts": [
+    "MandateEpochRegistry",
+    "AEPAutoresearchPortfolioRegistry",
+    "AEPBenchmarkRegistry",
+    "AEPExperimentRegistry",
+    "AEPRewardVault",
+    "TreasuryRouter",
+    "CommercializationPerformanceVault",
+    "AEPChronicleRegistry"
+  ],
+  "claim_boundary": "No achieved AGI/ASI, no financial return, no legal/tax/security approval, no Ethereum mainnet deployment claim, no Kardashev Type II achievement claim."
 }

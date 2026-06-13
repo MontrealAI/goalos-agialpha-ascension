@@ -1,0 +1,69 @@
+{
+  "id": "006",
+  "title": "Sovereign Enterprise RSI Operating System",
+  "level": "Enterprise operating layer",
+  "domain": "Sovereign enterprise operations",
+  "thesis": "A large specialist-agent institution can coordinate work, proof, review, treasury, rollback, and memory through an evidence-governed RSI operating system.",
+  "problem": "Enterprises cannot safely adopt autonomous work unless responsibility, evaluation, rollback, settlement, and evidence are explicit.",
+  "mission": "Build an operating theater of specialist agent cells whose work is routed, reviewed, settled, and chronicled.",
+  "why": "This is the organizational layer that turns proof cards into an operating system.",
+  "contracts": [
+    "AEPGoalOSCommitRegistry",
+    "AEPRunCommitmentRegistry",
+    "AEPAgentRegistry",
+    "AEPArtifactRegistry",
+    "JobRegistry",
+    "ProofSubmissionRegistry",
+    "ReviewerBondRegistry",
+    "AEPSelectionGate",
+    "AEPRollbackRegistry",
+    "AEPChronicleRegistry"
+  ],
+  "skills": [
+    "Multi-agent orchestration",
+    "Enterprise operating design",
+    "Proof engineering",
+    "Reviewer coordination",
+    "Rollback planning"
+  ],
+  "plans": [
+    "Define enterprise aim",
+    "Route missions to agent cells",
+    "Collect ProofBundles",
+    "Review and red-team",
+    "Promote only accepted artifacts"
+  ],
+  "goals": [
+    "Operate many specialist agents safely",
+    "Make responsibility explicit",
+    "Build enterprise-scale evidence memory"
+  ],
+  "rsi": "An enterprise artifact is not upgraded because it performs once. It earns scoped upgrade rights only after proof, evaluation, review, monitoring, and rollback readiness.",
+  "agialpha": "AGIALPHA coordinates mission budgets, agent claims, proof bonds, reviewer bonds, credentials, reputation, reward settlement, and treasury routing across the operating system.",
+  "evidence": [
+    "GoalOSCommit",
+    "RunCommitment",
+    "ProofBundle",
+    "EvalAttestation",
+    "Risk report",
+    "RollbackReceipt",
+    "Chronicle entry"
+  ],
+  "metrics": [
+    [
+      "coordination",
+      "ad hoc teams",
+      "specialist-agent operating theater"
+    ],
+    [
+      "safety",
+      "informal approval",
+      "Selection Gate + rollback"
+    ],
+    [
+      "scale",
+      "single workflow",
+      "enterprise mission portfolio"
+    ]
+  ]
+}

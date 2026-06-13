@@ -1,67 +1,58 @@
-# Proof Card 006 — Sovereign Enterprise RSI Operating System
+# Proof Card 006 - Sovereign Enterprise RSI Operating System
 
-**Phase:** Enterprise Operating Layer
+**Thesis:** A large specialist-agent institution can coordinate work, proof, review, treasury, rollback, and memory through an evidence-governed RSI operating system.
 
 ## Problem
-
-A sovereign enterprise needs more than isolated tools. It needs a multi-agent operating system with aim, strategy, execution, proof, risk control, settlement, rollback, and memory.
+Enterprises cannot safely adopt autonomous work unless responsibility, evaluation, rollback, settlement, and evidence are explicit.
 
 ## Proof mission
+Build an operating theater of specialist agent cells whose work is routed, reviewed, settled, and chronicled.
 
-Coordinate specialist agent roles—Aim Council, Strategy Desk, Builders, Proof Engineers, Reviewers, Red Team, Treasury, Rollback Desk, and Evidence Office—through proof-backed workflows and AGIALPHA settlement.
+## AGIALPHA use
+AGIALPHA coordinates mission budgets, agent claims, proof bonds, reviewer bonds, credentials, reputation, reward settlement, and treasury routing across the operating system.
 
-## Incremental improvement
-
-Turns the proof flywheel into an enterprise operating system.
-
-## Where AGIALPHA becomes useful
-
-AGIALPHA coordinates sponsor funding, builder claim bonds, proof submission bonds, reviewer bonds, proof-card registration, credential issuance, reputation-linked routing, settlement, and Chronicle memory.
+## RSI logic
+An enterprise artifact is not upgraded because it performs once. It earns scoped upgrade rights only after proof, evaluation, review, monitoring, and rollback readiness.
 
 ## Skills used
-
-- Enterprise operating model design
-- Multi-agent routing
+- Multi-agent orchestration
+- Enterprise operating design
 - Proof engineering
-- Risk governance
+- Reviewer coordination
 - Rollback planning
-- Institutional memory
 
 ## Plans used
-
-- Sovereign Enterprise RSI Operating System proof mission plan
-- Evidence Docket route
-- Reviewer and red-team plan
-- Selection Gate upgrade policy
+- Define enterprise aim
+- Route missions to agent cells
+- Collect ProofBundles
+- Review and red-team
+- Promote only accepted artifacts
 
 ## Goals used
+- Operate many specialist agents safely
+- Make responsibility explicit
+- Build enterprise-scale evidence memory
 
-- Create replayable institutional proof
-- Demonstrate AGIALPHA proof-settled coordination
-- Promote only proven artifacts
-- Strengthen the evidence graph
+## Contracts / registries
+- `AEPGoalOSCommitRegistry`
+- `AEPRunCommitmentRegistry`
+- `AEPAgentRegistry`
+- `AEPArtifactRegistry`
+- `JobRegistry`
+- `ProofSubmissionRegistry`
+- `ReviewerBondRegistry`
+- `AEPSelectionGate`
+- `AEPRollbackRegistry`
+- `AEPChronicleRegistry`
 
-## Contracts / registries used
-
-- AEPGoalOSCommitRegistry
-- AEPRunCommitmentRegistry
-- JobRegistry
-- JobClaimBondManager
-- ProofSubmissionRegistry
-- ReviewerBondRegistry
-- ProofCardRegistry
-- ProofCredentialRegistry
-- ReputationRegistry
-- AEPEvidenceDocketRegistry
-- AEPSelectionGate
-- AEPChronicleRegistry
-- AEPAgentRegistry
-- AEPRollbackRegistry
-
-## RSI upgrade logic
-
-The accepted artifact may influence future work only after evidence, evaluator review, reviewer validation, scope control, challenge window, rollback readiness, Selection Gate approval, and Chronicle entry.
+## Evidence Docket checklist
+- GoalOSCommit
+- RunCommitment
+- ProofBundle
+- EvalAttestation
+- Risk report
+- RollbackReceipt
+- Chronicle entry
 
 ## Claim boundary
-
-This proof card is an experimental public-safe proof template until a live Evidence Docket is completed. It does not claim achieved AGI, achieved superintelligence, guaranteed ROI, legal/tax/security approval, Ethereum mainnet deployment, or Kardashev Type II achievement.
+Illustrative until a live Evidence Docket is completed. No AGI/ASI, investment, legal, tax, security, mainnet, or Kardashev achievement claim.
