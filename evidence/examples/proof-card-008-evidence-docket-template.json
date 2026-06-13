@@ -1,0 +1,35 @@
+{
+  "evidence_docket_id": "ED-PC-008-TEMPLATE",
+  "proof_card": "PC-008",
+  "title": "Evidence Docket Template - Proof Card 008 - Sovereign Corporate Capability Foundry",
+  "required_sections": [
+    "GoalOSCommit",
+    "MandateEpochPlan",
+    "DomainPortfolioPlan",
+    "ProofMissionPortfolio",
+    "AgentRoleAssignments",
+    "AGIALPHAFundingAndBondSchedule",
+    "RunCommitments",
+    "EvaluatorHarnesses",
+    "ProofBundles",
+    "ReviewerAttestations",
+    "RedTeamReports",
+    "SelectionCertificates",
+    "RolloutPlan",
+    "RollbackPlan",
+    "AlphaWorkUnitLedgerEntries",
+    "TreasuryRoutingRecords",
+    "ChronicleEntries",
+    "PublicClaimBoundary",
+    "PrivateEvidenceAppendix"
+  ],
+  "not_included_publicly": [
+    "private customer data",
+    "private prompts",
+    "private keys",
+    "wallet secrets",
+    "unredacted legal/tax records",
+    "non-public evidence"
+  ],
+  "status": "template_only_until_live_rehearsal"
+}

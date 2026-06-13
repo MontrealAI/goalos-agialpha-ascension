@@ -1,0 +1,240 @@
+{
+  "proof_card_id": "PC-008",
+  "title": "Sovereign Corporate Capability Foundry",
+  "subtitle": "From autonomous proof missions to portfolio-level corporate capability compounding",
+  "status": "illustrative_until_live_evidence_docket_completed",
+  "canonical_statement": "GoalOS-native alpha-AGI Ascension can coordinate large specialist-agent portfolios that discover, test, prove, review, settle, select, and reinvest improvements across sovereign corporate domains - converting verified work into reusable capability, productive capacity, and stronger future missions.",
+  "incremental_delta_from_pc007": "Proof Card 007 proved an autoresearch reactor: parallel proof missions, evaluator harnesses, review, selection, and chronicle memory. Proof Card 008 upgrades that reactor into a corporate capability foundry: a portfolio-level institution that allocates AGIALPHA-coordinated budgets across profitable sovereign domains, measures alpha-Work Units, compounds accepted artifacts, and reinvests verified value into stronger future missions.",
+  "agialpha_token": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
+  "agialpha_uses": [
+    "mission posting",
+    "builder claim bonds",
+    "proof submission bonds",
+    "reviewer bonds",
+    "red-team bonds",
+    "evaluator incentives",
+    "proof-card registration",
+    "credential issuance",
+    "reputation-linked access",
+    "AlphaWorkUnit metrology",
+    "reward-vault settlement",
+    "treasury routing",
+    "commercialization-performance milestones",
+    "chronicle memory"
+  ],
+  "contracts": [
+    "AEPGoalOSCommitRegistry",
+    "AEPRunCommitmentRegistry",
+    "AEPAgentRegistry",
+    "AEPArtifactRegistry",
+    "JobRegistry",
+    "JobClaimBondManager",
+    "ProofSubmissionRegistry",
+    "ReviewerBondRegistry",
+    "ProofCardRegistry",
+    "ProofCredentialRegistry",
+    "ReputationRegistry",
+    "AEPEvidenceDocketRegistry",
+    "AEPSelectionGate",
+    "AEPRolloutRouter",
+    "AEPRollbackRegistry",
+    "AEPChronicleRegistry",
+    "AlphaWorkUnitLedger",
+    "AEPRewardVault",
+    "TreasuryRouter",
+    "CommercializationPerformanceVault",
+    "AEPBenchmarkRegistry",
+    "AEPExperimentRegistry",
+    "AEPAutoresearchPortfolioRegistry",
+    "AEPClaimBoundaryRegistry",
+    "AEPFalsificationRegistry",
+    "LaunchGateRegistry"
+  ],
+  "roles": [
+    {
+      "role": "Aim Council",
+      "purpose": "Sets sovereign corporate goals, risk class, authority, and success criteria.",
+      "artifact": "GoalOSCommit"
+    },
+    {
+      "role": "Portfolio Strategists",
+      "purpose": "Selects high-value domains and allocates mandate epochs.",
+      "artifact": "MandateEpoch plan"
+    },
+    {
+      "role": "Domain Scouts",
+      "purpose": "Surfaces workflow opportunity, market pressure, and enterprise pain points.",
+      "artifact": "Opportunity Docket"
+    },
+    {
+      "role": "Hypothesis Engineers",
+      "purpose": "Proposes candidate improvements and proof missions.",
+      "artifact": "Hypothesis Pack"
+    },
+    {
+      "role": "Builder Cells",
+      "purpose": "Execute workflow, model, contract, data, and operational artifacts.",
+      "artifact": "Candidate Artifact"
+    },
+    {
+      "role": "Evaluator Operators",
+      "purpose": "Run benchmarks, cost tests, safety checks, and variance controls.",
+      "artifact": "Evaluator Report"
+    },
+    {
+      "role": "Proof Engineers",
+      "purpose": "Assemble ProofBundles, public-safe hashes, and Evidence Dockets.",
+      "artifact": "ProofBundle"
+    },
+    {
+      "role": "Reviewer Council",
+      "purpose": "Validates claims under rubrics and challenge windows.",
+      "artifact": "EvalAttestation"
+    },
+    {
+      "role": "Red-Team Court",
+      "purpose": "Attempts falsification, reward-hack discovery, and unsafe-claim rejection.",
+      "artifact": "Falsification Report"
+    },
+    {
+      "role": "Treasury Desk",
+      "purpose": "Routes verified value into capability budgets and reward vaults.",
+      "artifact": "Treasury Allocation"
+    },
+    {
+      "role": "Selection Gate",
+      "purpose": "Grants scoped upgrade rights only to artifacts that survived evidence.",
+      "artifact": "SelectionCertificate"
+    },
+    {
+      "role": "Rollback Desk",
+      "purpose": "Defines recovery paths, canaries, reversibility, and incident response.",
+      "artifact": "RollbackReceipt"
+    },
+    {
+      "role": "Chronicle Office",
+      "purpose": "Records durable memory so future missions do not relearn solved work.",
+      "artifact": "Chronicle Entry"
+    }
+  ],
+  "skills": [
+    {
+      "skill": "Sovereign domain decomposition",
+      "explanation": "Break a corporate objective into proof missions that can be executed, tested, and reviewed."
+    },
+    {
+      "skill": "Portfolio mission routing",
+      "explanation": "Allocate budget, agents, and evaluator harnesses across competing high-value opportunities."
+    },
+    {
+      "skill": "Autonomous hypothesis generation",
+      "explanation": "Generate candidate improvements while preserving scope, risk, and rollback constraints."
+    },
+    {
+      "skill": "Evaluator harness design",
+      "explanation": "Convert claims into measurable tests, variance controls, and anti-reward-hack checks."
+    },
+    {
+      "skill": "Proof engineering",
+      "explanation": "Assemble ProofBundles, public-safe hashes, and Evidence Dockets."
+    },
+    {
+      "skill": "Reviewer adjudication",
+      "explanation": "Validate evidence under a rubric and challenge window."
+    },
+    {
+      "skill": "Red-team falsification",
+      "explanation": "Try to break claims before artifacts receive upgrade rights."
+    },
+    {
+      "skill": "AGIALPHA settlement routing",
+      "explanation": "Coordinate mission posting, bonds, rewards, credentials, reputation, and vault entries."
+    },
+    {
+      "skill": "Treasury reinvestment design",
+      "explanation": "Route verified value into stronger future missions and capability budgets."
+    },
+    {
+      "skill": "Rollback and canary design",
+      "explanation": "Keep upgrades reversible and scope-limited until proven safe."
+    },
+    {
+      "skill": "Chronicle memory curation",
+      "explanation": "Record what worked so future missions can reuse it instead of relearning it."
+    },
+    {
+      "skill": "RSI upgrade-rights selection",
+      "explanation": "Grant future influence only to artifacts that survived evidence and review."
+    }
+  ],
+  "plans": [
+    {
+      "plan": "Mandate Epoch Plan",
+      "explanation": "Define the sovereign corporate period, domains, budgets, risk classes, and required proof outputs."
+    },
+    {
+      "plan": "Domain Portfolio Plan",
+      "explanation": "Prioritize procurement, finance, compliance, support, security, operations, energy, and compute workflows."
+    },
+    {
+      "plan": "Proof Mission Plan",
+      "explanation": "Turn each domain opportunity into goal, metric, bounty, proof requirement, evaluator, and reviewer rubric."
+    },
+    {
+      "plan": "AGIALPHA Coordination Plan",
+      "explanation": "Specify posting fees, claim bonds, proof bonds, reviewer bonds, rewards, credentials, and reputation updates."
+    },
+    {
+      "plan": "Evaluation Plan",
+      "explanation": "Define baselines, acceptance thresholds, replay requirements, variance checks, and safety controls."
+    },
+    {
+      "plan": "Selection Gate Plan",
+      "explanation": "Decide when a candidate artifact earns scoped upgrade rights or is rejected."
+    },
+    {
+      "plan": "Reinvestment Plan",
+      "explanation": "Route validated value into compute, tools, audits, data, stronger agents, and new proof missions."
+    },
+    {
+      "plan": "Rollback Plan",
+      "explanation": "Define canary scope, monitoring, reversal triggers, recovery targets, and incident evidence."
+    }
+  ],
+  "goals": [
+    {
+      "goal": "Increase verified productive capacity",
+      "explanation": "Grow output that is measurable, reusable, and audit-backed."
+    },
+    {
+      "goal": "Reduce repeated work",
+      "explanation": "Use chronicle memory and accepted artifacts to avoid relearning solved workflows."
+    },
+    {
+      "goal": "Improve sovereign corporate trust",
+      "explanation": "Convert due diligence, procurement, compliance, and audit concerns into proof artifacts."
+    },
+    {
+      "goal": "Maximize risk-adjusted capability",
+      "explanation": "Select upgrades only when evidence, safety, and rollback conditions are satisfied."
+    },
+    {
+      "goal": "Coordinate specialist agents at scale",
+      "explanation": "Route aim, strategy, builders, evaluators, reviewers, treasury, rollback, and evidence roles to maximum effect."
+    },
+    {
+      "goal": "Compound AGIALPHA proof work",
+      "explanation": "Use AGIALPHA to coordinate proof-settled work, credentials, reputation, and capability budgets."
+    },
+    {
+      "goal": "Build the evidence graph",
+      "explanation": "Accumulate Evidence Dockets, Proof Cards, credentials, reviewer records, and chronicles."
+    },
+    {
+      "goal": "Advance the value-to-capability horizon",
+      "explanation": "Reinvest verified value into stronger future capability while preserving claim boundaries."
+    }
+  ],
+  "claim_boundary": "This is an experimental proof framework and public usage example. It does not claim achieved AGI, achieved superintelligence, guaranteed ROI, legal approval, tax approval, security approval, Ethereum mainnet deployment, or Kardashev Type II achievement. The civilizational horizon is expressed as a bounded reinvestment thesis, not a present achievement.",
+  "created_at_utc": "2026-06-13T17:04:42.182684+00:00"
+}
