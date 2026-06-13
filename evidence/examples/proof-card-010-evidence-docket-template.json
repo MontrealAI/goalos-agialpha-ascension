@@ -1,0 +1,13 @@
+{
+  "proof_card": "PC-010",
+  "required_evidence": [
+    "task_manifest",
+    "baseline",
+    "ProofBundle",
+    "reviewer_attestation",
+    "red_team_report",
+    "reproduction_receipt",
+    "SelectionCertificate",
+    "Chronicle_entry"
+  ]
+}
