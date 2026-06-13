@@ -1,0 +1,34 @@
+{
+  "proofCard": "006",
+  "title": "Sovereign Enterprise RSI Operating System",
+  "status": "template_until_live_evidence_docket_completed",
+  "requiredEvidence": [
+    "GoalOSCommit",
+    "RunCommitment",
+    "mission budget",
+    "AGIALPHA funding transaction hash",
+    "builder claim bond transaction hash",
+    "proof submission hash",
+    "reviewer bond transaction hash",
+    "reviewer attestation",
+    "Proof Card registration hash",
+    "credential issuance hash",
+    "reputation update hash",
+    "AlphaWorkUnit measurement",
+    "TreasuryRouter record",
+    "SelectionCertificate",
+    "rollback plan",
+    "Chronicle entry"
+  ],
+  "claimBoundary": {
+    "achievedAGI": false,
+    "achievedSuperintelligence": false,
+    "investmentReturn": false,
+    "guaranteedROI": false,
+    "legalApproval": false,
+    "taxApproval": false,
+    "securityApproval": false,
+    "ethereumMainnetDeployment": false,
+    "kardashevTypeIIAchievement": false
+  }
+}
