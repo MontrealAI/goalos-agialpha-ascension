@@ -1,0 +1,28 @@
+name: Main Website Proof Card 007 Smoke Test
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+    paths:
+      - "scripts/add_goalos_agialpha_main_site_proof_cards_v13.py"
+      - "scripts/verify_goalos_agialpha_main_site_proof_cards_v13.py"
+      - "docs/examples/proof-card-007-*.md"
+      - "data/examples/proof-card-007-*.json"
+      - "evidence/examples/proof-card-007-*.json"
+      - ".github/workflows/main-website-proof-card-007-smoke-test.yml"
+
+jobs:
+  smoke-test:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v6
+      - name: Build local proof-card website preview
+        run: |
+          mkdir -p site
+          printf '<!doctype html><html><head><title>GoalOS AGIALPHA</title></head><body><main><h1>GoalOS AGIALPHA Ascension</h1></main></body></html>' > site/index.html
+          python3 scripts/add_goalos_agialpha_main_site_proof_cards_v13.py --site site --allow-bootstrap
+      - name: Verify proof cards 001-007
+        run: python3 scripts/verify_goalos_agialpha_main_site_proof_cards_v13.py --site site

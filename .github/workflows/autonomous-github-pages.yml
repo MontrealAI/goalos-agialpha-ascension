@@ -12,6 +12,11 @@ on:
       - "deployments/**"
       - "package.json"
       - ".github/workflows/autonomous-github-pages.yml"
+      - "scripts/add_goalos_agialpha_main_site_proof_cards_v13.py"
+      - "scripts/verify_goalos_agialpha_main_site_proof_cards_v13.py"
+      - "docs/examples/**"
+      - "data/examples/**"
+      - "evidence/examples/**"
   workflow_dispatch:
 
 concurrency:
@@ -1263,7 +1268,7 @@ jobs:
           sovereign_body = f"""
           <section class="hero">
             <div class="hero-card">
-              <div class="eyebrow">Sovereign RSI</div>
+              <div class="eyebrow">Sovereign Recursive Self-Improvement</div>
               <h1>RSI as proof-backed upgrade rights</h1>
               <p class="subtitle">
                 The base model is not silently rewriting itself. The institution recursively improves
@@ -1619,13 +1624,11 @@ jobs:
           print(f"Evidence artifacts copied: {len(copied_evidence)}")
           PY
 
-      - name: Add Proof Cards 001-006 to the main website
+      - name: Add Proof Cards 001-007 to main website
         shell: bash
-        run: python3 scripts/add_goalos_agialpha_main_site_proof_cards_v12.py --site site
-
-      - name: Verify main website and Proof Cards 001-006
-        shell: bash
-        run: python3 scripts/verify_goalos_agialpha_main_site_proof_cards_v12.py --site site
+        run: |
+          python3 scripts/add_goalos_agialpha_main_site_proof_cards_v13.py --site site
+          python3 scripts/verify_goalos_agialpha_main_site_proof_cards_v13.py --site site
 
       - name: Validate generated website artifact
         shell: bash
@@ -1635,6 +1638,17 @@ jobs:
           test -f site/authorization.html
           test -f site/evidence.html
           test -f site/release.html
+          test -f site/proof-cards.html
+          test -f site/proof-card-001.html
+          test -f site/proof-card-002.html
+          test -f site/proof-card-003.html
+          test -f site/proof-card-004.html
+          test -f site/proof-card-005.html
+          test -f site/proof-card-006.html
+          test -f site/proof-card-007.html
+          test -f site/agialpha-ledger-route.html
+          test -f site/sovereign-rsi-control-plane.html
+          test -f site/evidence-docket.html
           test -f site/assets/site.css
           test -f site/assets/site.js
           test -f site/.nojekyll
