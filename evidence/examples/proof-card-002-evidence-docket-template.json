@@ -1,30 +1,51 @@
 {
-  "schema": "goalos.agialpha.evidence_docket.template.v4",
-  "proofCardId": "PC-002",
-  "requiredEvidence": [
-    "GoalOSCommit hash",
-    "RunCommitment hash",
-    "mission posting transaction",
-    "builder claim transaction",
-    "proof submission transaction",
-    "reviewer validation transaction",
-    "proof card registration transaction",
-    "credential issuance transaction",
-    "reputation update transaction",
-    "selection certificate hash",
-    "chronicle entry hash",
-    "public-safe proof note",
-    "private evidence index",
-    "claim boundary review",
-    "rollback plan"
+  "proof_card_id": "002",
+  "title": "Sovereign Procurement Trust Room",
+  "status": "template",
+  "required_evidence": [
+    "Procurement question",
+    "Claim boundary",
+    "Trust room checklist",
+    "Risk classification",
+    "Public/private evidence split",
+    "Reviewer rubric",
+    "Red-team concerns",
+    "Proof Card draft",
+    "Credential decision",
+    "Selection Gate note"
   ],
-  "privateEvidenceStaysOffChain": true,
-  "publicAnchors": [
-    "proof card hash",
-    "evidence docket root",
-    "attestation hash",
-    "credential id",
-    "reputation update",
-    "selection certificate"
+  "on_chain_anchors": [
+    "AEPGoalOSCommitRegistry",
+    "AEPRunCommitmentRegistry",
+    "JobRegistry",
+    "JobClaimBondManager",
+    "ProofSubmissionRegistry",
+    "ReviewerBondRegistry",
+    "ProofCardRegistry",
+    "ProofCredentialRegistry",
+    "ReputationRegistry",
+    "AEPEvidenceDocketRegistry",
+    "AEPSelectionGate",
+    "AEPChronicleRegistry"
+  ],
+  "agialpha_uses": [
+    "mission_posting",
+    "builder_claim_bond",
+    "proof_submission_bond",
+    "reviewer_bond",
+    "proof_card_action",
+    "credential_action",
+    "reward_settlement",
+    "reputation_linked_access"
+  ],
+  "rsi_gate": [
+    "evidence",
+    "evaluation",
+    "reviewer_validation",
+    "scope_control",
+    "challenge_window",
+    "monitoring",
+    "rollback_readiness",
+    "selection_gate_approval"
   ]
 }

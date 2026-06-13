@@ -1,8 +1,28 @@
 {
-  "id": "proof-card-001",
+  "id": "001",
+  "slug": "buyer-rescue-workflow",
   "title": "Buyer Rescue Workflow",
-  "status": "illustrative_public_example",
-  "agialpha_token": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
-  "summary": "A buyer cannot access a download. GoalOS improves the support workflow; AGIALPHA coordinates proof work when sponsor/builder/reviewer coordination is needed; a reviewer validates evidence; a public-safe Proof Card creates trust.",
-  "rsi": "Support workflow v1.0 becomes v1.1 only after evidence-backed review; selected artifact improves future support work."
+  "subtitle": "A simple buyer support problem becomes a proof-backed workflow upgrade.",
+  "audience": "Digital product buyers, support teams, first-time operators",
+  "problem": "A buyer cannot access a file, receives a generic reply, and needs a clear path to resolution without exposing private order data.",
+  "mission": "Improve the support reply workflow from v1.0 to v1.1 so it classifies access, refund, duplicate charge, corrupted file, and human-review cases more reliably.",
+  "why_it_matters": "This is the lowest-friction proof that GoalOS can turn everyday AI work into reusable institutional memory.",
+  "agialpha_use": "AGIALPHA coordinates mission posting, builder claim bond, proof submission bond, reviewer bond, proof-card action, credential action, reward settlement, and reputation-linked access.",
+  "proof_output": "Public-safe Proof Card showing what improved, what was reviewed, and what can be reused next.",
+  "credential": "GoalOS Proof Builder - Buyer Rescue Workflow",
+  "rsi_upgrade": "The accepted support classification rubric becomes a scoped upgrade candidate for future support workflows.",
+  "status": "Illustrative until live Evidence Docket is completed.",
+  "evidence_items": [
+    "Workflow v1.0 prompt/spec",
+    "Private buyer scenario redacted",
+    "v1.0 output",
+    "Scorecard and diagnosis",
+    "Workflow v1.1 prompt/spec",
+    "v1.1 output",
+    "Before/after comparison",
+    "Reviewer attestation",
+    "Proof Card hash",
+    "Rollback note"
+  ],
+  "public_line": "A buyer problem becomes a proof-backed support upgrade."
 }

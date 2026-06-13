@@ -1,14 +1,52 @@
 {
-  "schema": "goalos.agialpha.evidence_docket.v7.template",
-  "status": "template_pending_live_evidence",
-  "required": [
+  "proof_card_id": "003",
+  "title": "Sovereign AI Procurement Control Tower",
+  "status": "template",
+  "required_evidence": [
+    "Sovereign buyer question",
     "GoalOSCommit",
     "RunCommitment",
-    "ProofBundle",
-    "EvalAttestation",
+    "Proof mission specification",
+    "Builder deliverables",
+    "Reviewer attestation",
+    "Risk and rollback plan",
+    "Evidence Docket",
+    "Proof Card",
     "SelectionCertificate",
-    "RolloutReceipt",
-    "RollbackReceipt",
-    "ChronicleEntry"
+    "Chronicle entry"
+  ],
+  "on_chain_anchors": [
+    "AEPGoalOSCommitRegistry",
+    "AEPRunCommitmentRegistry",
+    "JobRegistry",
+    "JobClaimBondManager",
+    "ProofSubmissionRegistry",
+    "ReviewerBondRegistry",
+    "ProofCardRegistry",
+    "ProofCredentialRegistry",
+    "ReputationRegistry",
+    "AEPEvidenceDocketRegistry",
+    "AEPSelectionGate",
+    "AEPChronicleRegistry"
+  ],
+  "agialpha_uses": [
+    "mission_posting",
+    "builder_claim_bond",
+    "proof_submission_bond",
+    "reviewer_bond",
+    "proof_card_action",
+    "credential_action",
+    "reward_settlement",
+    "reputation_linked_access"
+  ],
+  "rsi_gate": [
+    "evidence",
+    "evaluation",
+    "reviewer_validation",
+    "scope_control",
+    "challenge_window",
+    "monitoring",
+    "rollback_readiness",
+    "selection_gate_approval"
   ]
 }

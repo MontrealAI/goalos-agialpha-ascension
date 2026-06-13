@@ -1,32 +1,47 @@
 # Proof Card 001 - Buyer Rescue Workflow
 
-A buyer cannot access a GoalOS product download. A first support reply is helpful but incomplete. GoalOS turns the situation into a workflow improvement mission.
+**Status:** Illustrative until live Evidence Docket is completed.
 
-The workflow improves from v1.0 to v1.1. AGIALPHA coordinates the proof mission between sponsor, builder, and reviewer. The reviewer validates evidence. A Proof Card explains the improvement without exposing private buyer data.
+## Public line
+A buyer problem becomes a proof-backed support upgrade.
 
-## AGIALPHA + smart-contract flow
+## Problem
+A buyer cannot access a file, receives a generic reply, and needs a clear path to resolution without exposing private order data.
 
-| Step | Artifact | Contract / Registry action | Meaning |
-|---|---|---|---|
-| 1 | GoalOSCommit | `AEPGoalOSCommitRegistry.createCommit` | Sponsor records mission aim, success criteria, constraints, authority, data boundary, rollback obligation, and claim boundary. |
-| 2 | RunCommitment | `AEPRunCommitmentRegistry.commitRun` | Operator records plan graph, tool permissions, context root, policy root, budget, and latency limits. |
-| 3 | Sponsor mission | `JobRegistry.postJob` | Sponsor posts the support-workflow proof mission and escrows an AGIALPHA reward. |
-| 4 | Builder claim | `JobClaimBondManager.claimJob` | Builder claims the mission with an AGIALPHA claim bond. |
-| 5 | Proof submission | `ProofSubmissionRegistry.submitProof` | Builder submits proof hash, proof URI, proof-card hash, and proof bond. |
-| 6 | Reviewer bond | `ReviewerBondRegistry.bondAsReviewer` | Reviewer bonds AGIALPHA before validating evidence. |
-| 7 | Review decision | `ReviewerBondRegistry.reviewSubmission + ProofSubmissionRegistry.approveSubmission` | Reviewer validates the before/after workflow, scorecard, claim boundary, and proof note. |
-| 8 | Proof Card | `ProofCardRegistry.registerProofCard` | Public-safe Proof Card is registered for the approved workflow improvement. |
-| 9 | Credential | `ProofCredentialRegistry.issueCredential` | Builder receives a non-transferable proof-work credential. |
-| 10 | Reputation | `ReputationRegistry.recordApprovedProof` | Builder and reviewer reputation update after approved proof. |
-| 11 | Evidence Docket | `AEPEvidenceDocketRegistry.registerEvidenceDocket` | Evidence Docket anchors claims, costs, risks, public/private boundary, and proof artifacts. |
-| 12 | Selection + Chronicle | `AEPSelectionGate.issueSelectionCertificate + AEPChronicleRegistry.recordEntry` | If the improvement passes the gate, it can influence future work and is recorded in institutional memory. |
+## Mission
+Improve the support reply workflow from v1.0 to v1.1 so it classifies access, refund, duplicate charge, corrupted file, and human-review cases more reliably.
 
-AGIALPHA token used: `0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA`.
+## Where AGIALPHA becomes useful
+AGIALPHA coordinates mission posting, builder claim bond, proof submission bond, reviewer bond, proof-card action, credential action, reward settlement, and reputation-linked access.
 
-## RSI loop
+## Smart-contract route
+- **AEPGoalOSCommitRegistry** - Records aim, authority, constraints, risk, budget, evaluator set and rollback duty.
+- **AEPRunCommitmentRegistry** - Records the selected run path, policy set, tools, artifacts and approvals.
+- **JobRegistry** - Posts the public proof mission and stores public-safe mission metadata.
+- **JobClaimBondManager** - Locks a builder claim bond so serious work is distinguishable.
+- **ProofSubmissionRegistry** - Stores proof submission hash and proof-card candidate hash.
+- **ReviewerBondRegistry** - Bonds reviewer accountability and challenge-window discipline.
+- **ProofCardRegistry** - Anchors public-safe Proof Card hash and URI.
+- **ProofCredentialRegistry** - Issues non-transferable credentials for accepted proof work.
+- **ReputationRegistry** - Records accepted proof, reviewer quality and future routing signals.
+- **AEPEvidenceDocketRegistry** - Anchors the Evidence Docket that makes claims auditable.
+- **AEPSelectionGate** - Decides whether an artifact earns scoped upgrade rights.
+- **AEPChronicleRegistry** - Records durable memory for future routing and learning.
 
-RSI means proof-backed upgrade rights. An improvement may shape future work only after it survives evidence, evaluation, reviewer validation, scope control, challenge window, rollout, monitoring, and rollback readiness.
+## Evidence checklist
+- Workflow v1.0 prompt/spec
+- Private buyer scenario redacted
+- v1.0 output
+- Scorecard and diagnosis
+- Workflow v1.1 prompt/spec
+- v1.1 output
+- Before/after comparison
+- Reviewer attestation
+- Proof Card hash
+- Rollback note
 
-## Claim boundary
+## RSI upgrade logic
+The accepted support classification rubric becomes a scoped upgrade candidate for future support workflows.
 
-Illustrative usage example only. A live Evidence Docket is required before claiming verified production impact.
+## Public claim boundary
+This card does not claim achieved AGI, investment return, legal approval, tax approval, security approval, customer result, or mainnet deployment. It is a public-safe usage example until a live Evidence Docket is completed.

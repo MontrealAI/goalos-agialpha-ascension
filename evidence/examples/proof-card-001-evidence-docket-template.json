@@ -1,19 +1,51 @@
 {
-  "schema": "goalos.agialpha.evidence_docket.template.v3.1",
-  "status": "template-not-live-evidence",
-  "requiredEvidence": [
-    "GoalOSCommit hash",
-    "RunCommitment hash",
-    "JobRegistry job id",
-    "Claim bond event",
-    "ProofSubmission submission id",
+  "proof_card_id": "001",
+  "title": "Buyer Rescue Workflow",
+  "status": "template",
+  "required_evidence": [
+    "Workflow v1.0 prompt/spec",
+    "Private buyer scenario redacted",
+    "v1.0 output",
+    "Scorecard and diagnosis",
+    "Workflow v1.1 prompt/spec",
+    "v1.1 output",
+    "Before/after comparison",
     "Reviewer attestation",
-    "ProofCard id",
-    "Credential id",
-    "Reputation update",
-    "Evidence Docket id",
-    "SelectionCertificate",
-    "Chronicle entry",
-    "Rollback target"
+    "Proof Card hash",
+    "Rollback note"
+  ],
+  "on_chain_anchors": [
+    "AEPGoalOSCommitRegistry",
+    "AEPRunCommitmentRegistry",
+    "JobRegistry",
+    "JobClaimBondManager",
+    "ProofSubmissionRegistry",
+    "ReviewerBondRegistry",
+    "ProofCardRegistry",
+    "ProofCredentialRegistry",
+    "ReputationRegistry",
+    "AEPEvidenceDocketRegistry",
+    "AEPSelectionGate",
+    "AEPChronicleRegistry"
+  ],
+  "agialpha_uses": [
+    "mission_posting",
+    "builder_claim_bond",
+    "proof_submission_bond",
+    "reviewer_bond",
+    "proof_card_action",
+    "credential_action",
+    "reward_settlement",
+    "reputation_linked_access"
+  ],
+  "rsi_gate": [
+    "evidence",
+    "evaluation",
+    "reviewer_validation",
+    "scope_control",
+    "challenge_window",
+    "monitoring",
+    "rollback_readiness",
+    "selection_gate_approval"
   ]
 }

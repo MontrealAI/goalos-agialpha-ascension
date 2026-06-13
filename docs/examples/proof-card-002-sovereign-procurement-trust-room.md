@@ -1,62 +1,47 @@
 # Proof Card 002 - Sovereign Procurement Trust Room
 
-**Status:** public-safe illustrative use case. Not a live customer result until an Evidence Docket is filled with real transaction hashes and reviewer attestations.
+**Status:** Illustrative until live Evidence Docket is completed.
 
-## One-line story
+## Public line
+A buyer trust question becomes an auditable proof room.
 
-A sponsor needs to trust an AI workflow vendor; GoalOS converts the procurement, security, compliance, and implementation evidence into a proof-backed Trust Room, coordinated with AGIALPHA and improved through RSI.
+## Problem
+A serious buyer asks whether the AI workflow system can be evaluated without leaking private data or relying on unsupported claims.
 
-## Why this matters
+## Mission
+Build a procurement-grade trust room with claim boundary, evidence checklist, reviewer rubric, proof-card summary, and private/public evidence split.
 
-A government, hospital network, bank, infrastructure company, or enterprise buyer must evaluate AI workflow adoption across security, privacy, procurement, vendor risk, finance, operations, and governance. The process is slow, fragmented, and difficult to trust.
+## Where AGIALPHA becomes useful
+AGIALPHA coordinates sponsor-funded trust-room missions, builder claim bonds, proof evidence submission, reviewer validation, proof-card registration, credential issuance, reward settlement, and reputation updates.
 
-GoalOS decomposes the procurement obstacle into bounded proof missions. Builders create evidence artifacts. Reviewers validate them. AGIALPHA coordinates mission posting, bonds, review, credentialing, and reputation. The approved artifacts become a reusable Trust Room that improves future procurement cycles.
+## Smart-contract route
+- **AEPGoalOSCommitRegistry** - Records aim, authority, constraints, risk, budget, evaluator set and rollback duty.
+- **AEPRunCommitmentRegistry** - Records the selected run path, policy set, tools, artifacts and approvals.
+- **JobRegistry** - Posts the public proof mission and stores public-safe mission metadata.
+- **JobClaimBondManager** - Locks a builder claim bond so serious work is distinguishable.
+- **ProofSubmissionRegistry** - Stores proof submission hash and proof-card candidate hash.
+- **ReviewerBondRegistry** - Bonds reviewer accountability and challenge-window discipline.
+- **ProofCardRegistry** - Anchors public-safe Proof Card hash and URI.
+- **ProofCredentialRegistry** - Issues non-transferable credentials for accepted proof work.
+- **ReputationRegistry** - Records accepted proof, reviewer quality and future routing signals.
+- **AEPEvidenceDocketRegistry** - Anchors the Evidence Docket that makes claims auditable.
+- **AEPSelectionGate** - Decides whether an artifact earns scoped upgrade rights.
+- **AEPChronicleRegistry** - Records durable memory for future routing and learning.
 
-## How AGIALPHA is used
+## Evidence checklist
+- Procurement question
+- Claim boundary
+- Trust room checklist
+- Risk classification
+- Public/private evidence split
+- Reviewer rubric
+- Red-team concerns
+- Proof Card draft
+- Credential decision
+- Selection Gate note
 
-AGIALPHA coordinates the proof-work network around the mission:
-
-- sponsor reward escrow;
-- builder claim bond;
-- proof submission bond;
-- reviewer bond;
-- proof-card registry action;
-- credential action;
-- reward settlement;
-- reputation-linked future routing.
-
-## Smart-contract flow
-
-| Step | Contract / registry | Purpose |
-|---|---|---|
-| 1 | `AEPGoalOSCommitRegistry` | Creates the signed institutional commitment: objective, constraints, success metrics, risk class, allowed evidence, and rollback expectation. |
-| 2 | `AEPRunCommitmentRegistry` | Commits the run plan: work packages, builders, reviewers, artifacts, tools, deadlines, and evidence roots. |
-| 3 | `JobRegistry` | Posts the proof mission with AGIALPHA reward and public-safe mission metadata. |
-| 4 | `JobClaimBondManager` | Builder claims the mission with an AGIALPHA bond. |
-| 5 | `ProofSubmissionRegistry` | Builder submits proof hashes, public-safe proof note, evidence docket root, and proof-card candidate. |
-| 6 | `ReviewerBondRegistry` | Reviewer bonds AGIALPHA and validates or rejects the proof under a rubric. |
-| 7 | `ProofCardRegistry` | Registers the approved public Proof Card hash and URI. |
-| 8 | `ProofCredentialRegistry` | Issues a non-transferable credential to the builder and optionally reviewer. |
-| 9 | `ReputationRegistry` | Updates reputation based on approved proof, review quality, and challenge history. |
-| 10 | `AEPEvidenceDocketRegistry` | Registers the Evidence Docket root and public/private proof boundary. |
-| 11 | `AEPSelectionGate` | Issues a Selection Certificate for artifacts that may influence future work. |
-| 12 | `AEPChronicleRegistry` | Records the accepted artifacts, credentials, reputation, and upgrade lineage. |
-
-
-## RSI: proof-backed upgrade rights
-
-An improvement is not allowed to shape future work merely because it exists. It must pass evidence, evaluation, reviewer validation, scope control, challenge window, rollout readiness, monitoring, and rollback readiness.
-
-| RSI phase | Meaning |
-|---|---|
-| Observe | Procurement cycles repeatedly stall on the same evidence gaps: security questionnaire, privacy proof, support workflow, claim boundary, rollback plan. |
-| Improve | Builders create reusable artifacts: Trust Room index, evidence checklist, answer library, security claim map, RFP response templates, review rubric. |
-| Prove | Reviewer validates before/after evidence, checks public claims, confirms private evidence boundaries, and signs an attestation. |
-| Select | Selection Gate promotes only artifacts that are evidence-backed, scope-limited, reversible, and useful for future runs. |
-| Propagate | Future procurement missions route through the accepted artifacts, reducing duplicated work and improving consistency. |
-| Rollback | If evidence becomes stale, challenged, or unsafe, the artifact is paused, replaced, or rolled back with a visible receipt. |
-
+## RSI upgrade logic
+The accepted trust-room template becomes a reusable artifact for future buyers, sponsors, and enterprise pilots.
 
 ## Public claim boundary
-
-This Proof Card is a high-value usage example and demand engine for the first live Evidence Docket; it is not a live customer result or deployment authorization. It is a high-value usage example and demand engine for the first live Evidence Docket.
+This card does not claim achieved AGI, investment return, legal approval, tax approval, security approval, customer result, or mainnet deployment. It is a public-safe usage example until a live Evidence Docket is completed.
