@@ -5,57 +5,41 @@ on:
   push:
     branches: [ main ]
     paths:
-      - "app/**"
-      - "scripts/add_goalos_agialpha_main_site_proof_cards_v14.py"
-      - "scripts/verify_goalos_agialpha_main_site_proof_cards_v14.py"
-      - "docs/examples/**"
-      - "data/examples/**"
-      - "evidence/examples/**"
+      - "README.md"
+      - "docs/**"
+      - "data/**"
+      - "evidence/**"
       - "assets/**"
+      - "LOCAL_QA_SITE/**"
+      - "scripts/add_goalos_agialpha_main_site_proof_cards_v15.py"
+      - "scripts/verify_goalos_agialpha_main_site_proof_cards_v15.py"
       - ".github/workflows/autonomous-github-pages.yml"
 
 concurrency:
-  group: goalos-agialpha-pages-${{ github.ref }}
+  group: premium-autonomous-github-pages
   cancel-in-progress: false
 
 jobs:
   build:
-    name: Build canonical main website with proof cards
+    name: Build and verify main website with Proof Cards 001-009
     runs-on: ubuntu-latest
     permissions:
       contents: read
     steps:
-      - name: Check out repository
+      - name: Checkout repository
         uses: actions/checkout@v6
-
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
-
-      - name: Build existing website foundation
-        run: |
-          mkdir -p site
-          if [ -d app ]; then
-            cp -R app/. site/
-          elif [ -f index.html ]; then
-            cp index.html site/index.html
-          else
-            echo "No existing app/index.html or root index.html found" >&2
-            exit 1
-          fi
-
-      - name: Add Proof Cards 001-008 to main website
-        run: python3 scripts/add_goalos_agialpha_main_site_proof_cards_v14.py --site site
-
+      - name: Build main website with Proof Cards 001-009
+        run: python3 scripts/add_goalos_agialpha_main_site_proof_cards_v15.py --site site --allow-bootstrap
       - name: Verify main website proof cards
-        run: python3 scripts/verify_goalos_agialpha_main_site_proof_cards_v14.py --site site
-
+        run: python3 scripts/verify_goalos_agialpha_main_site_proof_cards_v15.py --site site
       - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v4
         with:
           path: site
-
   deploy:
-    name: Deploy to GitHub Pages
+    name: Deploy main website to GitHub Pages
     needs: build
     runs-on: ubuntu-latest
     permissions:

@@ -1,0 +1,21 @@
+name: Main Website Proof Card 009 Smoke Test
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "scripts/add_goalos_agialpha_main_site_proof_cards_v15.py"
+      - "scripts/verify_goalos_agialpha_main_site_proof_cards_v15.py"
+      - "LOCAL_QA_SITE/**"
+      - ".github/workflows/main-website-proof-card-009-smoke-test.yml"
+
+jobs:
+  smoke-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+      - name: Build local site
+        run: python3 scripts/add_goalos_agialpha_main_site_proof_cards_v15.py --site site --allow-bootstrap
+      - name: Verify local site
+        run: python3 scripts/verify_goalos_agialpha_main_site_proof_cards_v15.py --site site
