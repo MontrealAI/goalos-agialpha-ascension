@@ -1,0 +1,150 @@
+{
+  "schema": "goalos.agialpha.proof_card_example.v4",
+  "proofCardId": "PC-002",
+  "title": "Sovereign Procurement Trust Room",
+  "status": "illustrative-public-safe-example",
+  "agialphaToken": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
+  "oneLine": "A sponsor needs to trust an AI workflow vendor; GoalOS converts the procurement, security, compliance, and implementation evidence into a proof-backed Trust Room, coordinated with AGIALPHA and improved through RSI.",
+  "contractFlow": [
+    {
+      "step": "1",
+      "contract": "AEPGoalOSCommitRegistry",
+      "function": "Creates the signed institutional commitment: objective, constraints, success metrics, risk class, allowed evidence, and rollback expectation.",
+      "whyItMatters": "GoalOS commits the procurement mission without exposing private buyer evidence."
+    },
+    {
+      "step": "2",
+      "contract": "AEPRunCommitmentRegistry",
+      "function": "Commits the run plan: work packages, builders, reviewers, artifacts, tools, deadlines, and evidence roots.",
+      "whyItMatters": "The workflow becomes accountable before work begins."
+    },
+    {
+      "step": "3",
+      "contract": "JobRegistry",
+      "function": "Posts the proof mission with AGIALPHA reward and public-safe mission metadata.",
+      "whyItMatters": "Sponsor demand becomes a visible proof job."
+    },
+    {
+      "step": "4",
+      "contract": "JobClaimBondManager",
+      "function": "Builder claims the mission with an AGIALPHA bond.",
+      "whyItMatters": "Reduces no-shows and gives the sponsor a credible commitment."
+    },
+    {
+      "step": "5",
+      "contract": "ProofSubmissionRegistry",
+      "function": "Builder submits proof hashes, public-safe proof note, evidence docket root, and proof-card candidate.",
+      "whyItMatters": "Private evidence stays off-chain; the public proof trail is anchored."
+    },
+    {
+      "step": "6",
+      "contract": "ReviewerBondRegistry",
+      "function": "Reviewer bonds AGIALPHA and validates or rejects the proof under a rubric.",
+      "whyItMatters": "Review becomes accountable, not just an opinion."
+    },
+    {
+      "step": "7",
+      "contract": "ProofCardRegistry",
+      "function": "Registers the approved public Proof Card hash and URI.",
+      "whyItMatters": "Creates a shareable trust asset for sponsors, buyers, and future builders."
+    },
+    {
+      "step": "8",
+      "contract": "ProofCredentialRegistry",
+      "function": "Issues a non-transferable credential to the builder and optionally reviewer.",
+      "whyItMatters": "Approved work becomes legible capability."
+    },
+    {
+      "step": "9",
+      "contract": "ReputationRegistry",
+      "function": "Updates reputation based on approved proof, review quality, and challenge history.",
+      "whyItMatters": "Future routing improves through earned trust."
+    },
+    {
+      "step": "10",
+      "contract": "AEPEvidenceDocketRegistry",
+      "function": "Registers the Evidence Docket root and public/private proof boundary.",
+      "whyItMatters": "Makes the claim auditable without exposing confidential evidence."
+    },
+    {
+      "step": "11",
+      "contract": "AEPSelectionGate",
+      "function": "Issues a Selection Certificate for artifacts that may influence future work.",
+      "whyItMatters": "RSI becomes controlled propagation, not blind self-modification."
+    },
+    {
+      "step": "12",
+      "contract": "AEPChronicleRegistry",
+      "function": "Records the accepted artifacts, credentials, reputation, and upgrade lineage.",
+      "whyItMatters": "The network remembers what proved useful."
+    }
+  ],
+  "rsiLoop": [
+    {
+      "phase": "Observe",
+      "meaning": "Procurement cycles repeatedly stall on the same evidence gaps: security questionnaire, privacy proof, support workflow, claim boundary, rollback plan."
+    },
+    {
+      "phase": "Improve",
+      "meaning": "Builders create reusable artifacts: Trust Room index, evidence checklist, answer library, security claim map, RFP response templates, review rubric."
+    },
+    {
+      "phase": "Prove",
+      "meaning": "Reviewer validates before/after evidence, checks public claims, confirms private evidence boundaries, and signs an attestation."
+    },
+    {
+      "phase": "Select",
+      "meaning": "Selection Gate promotes only artifacts that are evidence-backed, scope-limited, reversible, and useful for future runs."
+    },
+    {
+      "phase": "Propagate",
+      "meaning": "Future procurement missions route through the accepted artifacts, reducing duplicated work and improving consistency."
+    },
+    {
+      "phase": "Rollback",
+      "meaning": "If evidence becomes stale, challenged, or unsafe, the artifact is paused, replaced, or rolled back with a visible receipt."
+    }
+  ],
+  "proofMissions": [
+    {
+      "id": "PM-002A",
+      "mission": "Trust Room Evidence Index",
+      "goal": "Create a buyer-safe index of security, privacy, governance, product, and support evidence.",
+      "artifact": "Evidence Docket root + public-safe Trust Room map"
+    },
+    {
+      "id": "PM-002B",
+      "mission": "Procurement Questionnaire Accelerator",
+      "goal": "Convert common buyer questions into reviewed response templates and evidence references.",
+      "artifact": "Question library + answer templates + reviewer rubric"
+    },
+    {
+      "id": "PM-002C",
+      "mission": "Claims Boundary Review",
+      "goal": "Prevent unsafe public or sales claims before they appear in sponsor-facing material.",
+      "artifact": "Claim boundary matrix + approved language"
+    },
+    {
+      "id": "PM-002D",
+      "mission": "Rollback and Incident Readiness",
+      "goal": "Define what happens if a workflow, artifact, or public claim must be paused or reversed.",
+      "artifact": "Rollback plan + incident response proof note"
+    },
+    {
+      "id": "PM-002E",
+      "mission": "Cost / Latency / Risk Docket",
+      "goal": "Record expected operating cost, latency, privacy risk, support burden, and monitoring responsibilities.",
+      "artifact": "Risk-adjusted operating dossier"
+    }
+  ],
+  "claimBoundary": {
+    "liveCustomerResult": false,
+    "achievedAGI": false,
+    "achievedASI": false,
+    "guaranteedROI": false,
+    "legalApproval": false,
+    "taxApproval": false,
+    "securityApproval": false,
+    "mainnetDeployment": false
+  }
+}

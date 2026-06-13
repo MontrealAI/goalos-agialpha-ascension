@@ -1,0 +1,30 @@
+{
+  "schema": "goalos.agialpha.evidence_docket.template.v4",
+  "proofCardId": "PC-002",
+  "requiredEvidence": [
+    "GoalOSCommit hash",
+    "RunCommitment hash",
+    "mission posting transaction",
+    "builder claim transaction",
+    "proof submission transaction",
+    "reviewer validation transaction",
+    "proof card registration transaction",
+    "credential issuance transaction",
+    "reputation update transaction",
+    "selection certificate hash",
+    "chronicle entry hash",
+    "public-safe proof note",
+    "private evidence index",
+    "claim boundary review",
+    "rollback plan"
+  ],
+  "privateEvidenceStaysOffChain": true,
+  "publicAnchors": [
+    "proof card hash",
+    "evidence docket root",
+    "attestation hash",
+    "credential id",
+    "reputation update",
+    "selection certificate"
+  ]
+}
