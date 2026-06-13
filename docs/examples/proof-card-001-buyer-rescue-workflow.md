@@ -1,11 +1,29 @@
-# Proof Card 001 - Buyer Rescue Workflow
+# Proof Card 001 — Buyer Rescue Workflow
 
 **Domain:** support / customer trust
 
-**Mission:** Improve a buyer-support workflow from an incomplete response into a clear rescue path with access classification, refund/access boundary, escalation flag, proof note, and reusable support playbook.
+**Status:** Experimental public proof-card dossier / evidence-docket template
 
-**Where AGIALPHA becomes useful:** AGIALPHA coordinates the support proof mission: sponsor funds the improvement, builder claims with a bond, reviewer validates evidence, and approved work records credential and reputation.
+## Plain-English thesis
 
-**RSI logic:** The support workflow may influence future support only after the reviewer validates the before/after improvement and the Selection Gate grants scoped upgrade rights.
+A buyer support issue becomes a reusable, reviewer-validated workflow improvement.
 
-**Claim boundary:** This proof card is an experimental public-safe proof template until a live Evidence Docket is completed.
+## Mission
+
+Improve a buyer-support workflow from an incomplete response into a clear rescue path with access classification, refund/access boundary, escalation flag, proof note, and reusable support playbook.
+
+## Why it matters
+
+The first proof must be instantly understandable. Support is the front door of trust: if the system can rescue a buyer and preserve the improvement, it begins converting service into reusable capability.
+
+## AGIALPHA usage
+
+AGIALPHA coordinates the support proof mission: sponsor funds the improvement, builder claims with a bond, reviewer validates evidence, and approved work records credential and reputation.
+
+## RSI logic
+
+The support workflow may influence future support only after the reviewer validates the before/after improvement and the Selection Gate grants scoped upgrade rights.
+
+## Claim boundary
+
+This proof card does not claim achieved AGI, superintelligence, guaranteed return, legal approval, tax approval, security approval, Ethereum mainnet deployment, or Kardashev Type II achievement.

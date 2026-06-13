@@ -1,0 +1,29 @@
+{
+  "schema": "goalos.agialpha.evidence_docket_template.v20",
+  "proof_card_id": "005",
+  "proof_card_title": "Sovereign RSI Value-to-Capability Treasury",
+  "required_artifacts": [
+    "GoalOSCommit",
+    "RunCommitment",
+    "Candidate artifact",
+    "Evaluator report",
+    "ProofBundle",
+    "Reviewer attestation",
+    "Falsification / red-team note",
+    "SelectionCertificate",
+    "RollbackReceipt",
+    "ChronicleEntry"
+  ],
+  "claim_boundary": {
+    "achieved_agi": false,
+    "achieved_superintelligence": false,
+    "guaranteed_roi": false,
+    "legal_approval": false,
+    "tax_approval": false,
+    "security_approval": false,
+    "ethereum_mainnet_deployment": false,
+    "kardashev_type_ii_achievement": false
+  },
+  "public_safe": true,
+  "private_data_required_on_chain": false
+}

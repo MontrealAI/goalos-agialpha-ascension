@@ -110,5 +110,454 @@
     "SelectionCertificate or rejection note",
     "Rollback / non-propagation path",
     "Chronicle entry and delayed-outcome update"
+  ],
+  "status": "Experimental public proof-card dossier / evidence-docket template",
+  "plain_english": "Parallel agent cells run proof-seeking enterprise autoresearch under review and rollback rules.",
+  "portfolio_position": "autoresearch reactor",
+  "maturity_scores": [
+    {
+      "label": "Evidence depth",
+      "score": 92
+    },
+    {
+      "label": "Agent coordination",
+      "score": 90
+    },
+    {
+      "label": "RSI readiness",
+      "score": 89
+    },
+    {
+      "label": "Enterprise value",
+      "score": 88
+    },
+    {
+      "label": "Replayability",
+      "score": 87
+    },
+    {
+      "label": "Rollback discipline",
+      "score": 86
+    }
+  ],
+  "agent_roles": [
+    [
+      "Aim Council",
+      "Converts institutional intent into a bounded mission",
+      "strategic objective, risk class",
+      "GoalOSCommit",
+      "scope and claim-boundary control"
+    ],
+    [
+      "Strategy Desk",
+      "Designs the mission plan and evidence path",
+      "GoalOSCommit",
+      "RunCommitment",
+      "budget, tools, evaluator constraints"
+    ],
+    [
+      "Builder Cell",
+      "Produces the candidate artifact or workflow improvement",
+      "RunCommitment",
+      "CandidateArtifact",
+      "bonded execution and timebox"
+    ],
+    [
+      "Evaluator Operator",
+      "Runs the scorecard, benchmark, harness, or replay test",
+      "CandidateArtifact",
+      "EvaluatorReport",
+      "baseline and anti-gaming checks"
+    ],
+    [
+      "Proof Engineer",
+      "Packages artifacts into a proof bundle and evidence docket",
+      "trace, output, evaluation",
+      "ProofBundle / EvidenceDocket",
+      "hashing, replay metadata, privacy filtering"
+    ],
+    [
+      "Reviewer Council",
+      "Validates whether the proof should be accepted",
+      "ProofBundle",
+      "EvalAttestation",
+      "bond, challenge window, reputation"
+    ],
+    [
+      "Red-Team Court",
+      "Attempts to falsify the improvement and detect unsafe propagation",
+      "Claim, artifact, harness",
+      "FalsificationReport",
+      "adversarial review and rollback trigger"
+    ],
+    [
+      "Selection Gate",
+      "Grants or denies scoped upgrade rights",
+      "attestations, risk, evidence",
+      "SelectionCertificate",
+      "no proof, no propagation"
+    ],
+    [
+      "Treasury Desk",
+      "Routes verified value into future capability budget",
+      "settlement receipts",
+      "TreasuryAllocation",
+      "governed reinvestment"
+    ],
+    [
+      "Chronicle Office",
+      "Preserves what worked for future missions",
+      "certificates and dockets",
+      "ChronicleEntry",
+      "institutional memory"
+    ]
+  ],
+  "skill_explanations": [
+    [
+      "Goal decomposition",
+      "Used in this proof card for sovereign enterprise autoresearch reactor: Turns a strategic objective into scoped proof missions with measurable outcomes."
+    ],
+    [
+      "Evidence packaging",
+      "Used in this proof card for sovereign enterprise autoresearch reactor: Converts traces, artifacts, evaluator reports, and reviewer decisions into an inspectable docket."
+    ],
+    [
+      "Reviewer-ready documentation",
+      "Used in this proof card for sovereign enterprise autoresearch reactor: Makes advanced work understandable to external reviewers without leaking private data."
+    ],
+    [
+      "Claim-boundary discipline",
+      "Used in this proof card for sovereign enterprise autoresearch reactor: Prevents marketing claims from exceeding what the evidence supports."
+    ],
+    [
+      "Selection-gate reasoning",
+      "Used in this proof card for sovereign enterprise autoresearch reactor: Determines whether an artifact earns scoped upgrade rights."
+    ],
+    [
+      "Rollback planning",
+      "Used in this proof card for sovereign enterprise autoresearch reactor: Preserves a recovery path for rejected or unsafe changes."
+    ],
+    [
+      "Hypothesis Generation",
+      "Domain-specific capability required for the autoresearch / enterprise improvement mission."
+    ],
+    [
+      "Parallel Mission Routing",
+      "Domain-specific capability required for the autoresearch / enterprise improvement mission."
+    ],
+    [
+      "Evaluator-Harness Design",
+      "Domain-specific capability required for the autoresearch / enterprise improvement mission."
+    ],
+    [
+      "Branch Comparison",
+      "Domain-specific capability required for the autoresearch / enterprise improvement mission."
+    ],
+    [
+      "Reward-Hack Screening",
+      "Domain-specific capability required for the autoresearch / enterprise improvement mission."
+    ],
+    [
+      "Falsification Testing",
+      "Domain-specific capability required for the autoresearch / enterprise improvement mission."
+    ],
+    [
+      "Chronicle Synthesis",
+      "Domain-specific capability required for the autoresearch / enterprise improvement mission."
+    ]
+  ],
+  "plan_explanations": [
+    [
+      "Mission intake plan",
+      "Define problem, sponsor, baseline, scope, risk, and desired proof artifact."
+    ],
+    [
+      "Agent routing plan",
+      "Route the mission to specialized cells with bounded responsibilities and outputs."
+    ],
+    [
+      "Evidence plan",
+      "Predefine what evidence must be collected before work can be accepted."
+    ],
+    [
+      "Review and red-team plan",
+      "Validate the claim, challenge the evidence, and record acceptance or rejection."
+    ],
+    [
+      "Propagation plan",
+      "Allow only selected artifacts to influence future workflows."
+    ],
+    [
+      "Reinvestment plan",
+      "Allocate verified value toward stronger future missions, audits, tooling, and capability."
+    ],
+    [
+      "Sovereign Enterprise Autoresearch Reactor execution plan",
+      "Run multiple enterprise improvement hypotheses in parallel, require evaluator harnesses and ProofBundles, route results through reviewer and red-team validation, and promote only selected artifacts."
+    ]
+  ],
+  "goal_explanations": [
+    [
+      "Proof completeness",
+      "Every promoted artifact must have a traceable Evidence Docket."
+    ],
+    [
+      "Operational usefulness",
+      "The result must improve a real buyer, sponsor, enterprise, or cyber-sovereign workflow."
+    ],
+    [
+      "Replayability",
+      "Independent reviewers must be able to inspect or reproduce the claim path."
+    ],
+    [
+      "Risk containment",
+      "Unsafe or unproven artifacts cannot become future operating context."
+    ],
+    [
+      "Economic discipline",
+      "AGIALPHA settlement must coordinate real proof work, not unsupported claims."
+    ],
+    [
+      "RSI efficiency",
+      "Future work should reuse what proved itself and avoid repeating rejected paths."
+    ],
+    [
+      "Turn Autoresearch Into Institutional Capability",
+      "Specific goal for this proof card: turn autoresearch into institutional capability."
+    ],
+    [
+      "Make Experiments Replayable",
+      "Specific goal for this proof card: make experiments replayable."
+    ],
+    [
+      "Separate True Progress From Noise",
+      "Specific goal for this proof card: separate true progress from noise."
+    ],
+    [
+      "Compound Selected Improvements",
+      "Specific goal for this proof card: compound selected improvements."
+    ]
+  ],
+  "contract_explanations": [
+    [
+      "AEPGoalOSCommitRegistry",
+      "Records the mission aim, authority, constraints, risk class, success criteria, allowed scope, and claim boundary."
+    ],
+    [
+      "AEPRunCommitmentRegistry",
+      "Binds the selected agents, tools, artifacts, context, budget, timeline, and execution plan before work begins."
+    ],
+    [
+      "JobRegistry",
+      "Publishes the proof mission so sponsors, builders, and reviewers can coordinate around a shared work object."
+    ],
+    [
+      "JobClaimBondManager",
+      "Requires accountable commitment from builders before they claim a mission."
+    ],
+    [
+      "ProofSubmissionRegistry",
+      "Records the proof submission hash, proof bundle URI, and public-safe evidence reference."
+    ],
+    [
+      "ReviewerBondRegistry",
+      "Requires reviewer accountability and supports challenge windows before reviewer bonds unlock."
+    ],
+    [
+      "ProofCardRegistry",
+      "Registers the public-safe Proof Card that makes the result inspectable without exposing private intelligence."
+    ],
+    [
+      "ProofCredentialRegistry",
+      "Issues non-transferable credentials to builders/reviewers who create validated proof work."
+    ],
+    [
+      "ReputationRegistry",
+      "Updates proof-backed reputation so future work can be routed to proven operators."
+    ],
+    [
+      "AEPEvidenceDocketRegistry",
+      "Anchors the evidence package: task, baseline, artifacts, proof, review, cost, risk, and replay metadata."
+    ],
+    [
+      "AEPSelectionGate",
+      "Decides whether an artifact earns scoped upgrade rights for future workflows."
+    ],
+    [
+      "AEPRollbackRegistry",
+      "Preserves rollback readiness so rejected or harmful changes can be reversed or contained."
+    ],
+    [
+      "AEPChronicleRegistry",
+      "Creates durable institutional memory of what worked, what failed, and what may be reused."
+    ],
+    [
+      "AlphaWorkUnitLedger",
+      "Measures proof-settled work units so capability, effort, validation, and settlement can be compared over time."
+    ],
+    [
+      "AEPRewardVault",
+      "Holds and releases AGIALPHA rewards according to proof, review, settlement, and challenge rules."
+    ],
+    [
+      "TreasuryRouter",
+      "Routes verified value toward future proof missions, audits, tools, security, and capability development."
+    ],
+    [
+      "AEPAutoresearchPortfolioRegistry",
+      "Supports the proof-card lifecycle by anchoring commitments, proof, review, selection, settlement, or memory."
+    ],
+    [
+      "AEPExperimentRegistry",
+      "Supports the proof-card lifecycle by anchoring commitments, proof, review, selection, settlement, or memory."
+    ],
+    [
+      "AEPAgentRegistry",
+      "Supports the proof-card lifecycle by anchoring commitments, proof, review, selection, settlement, or memory."
+    ],
+    [
+      "AEPArtifactRegistry",
+      "Supports the proof-card lifecycle by anchoring commitments, proof, review, selection, settlement, or memory."
+    ],
+    [
+      "AEPRolloutRouter",
+      "Supports the proof-card lifecycle by anchoring commitments, proof, review, selection, settlement, or memory."
+    ],
+    [
+      "CommercializationPerformanceVault",
+      "Supports the proof-card lifecycle by anchoring commitments, proof, review, selection, settlement, or memory."
+    ],
+    [
+      "AEPBenchmarkRegistry",
+      "Supports the proof-card lifecycle by anchoring commitments, proof, review, selection, settlement, or memory."
+    ],
+    [
+      "AEPClaimBoundaryRegistry",
+      "Supports the proof-card lifecycle by anchoring commitments, proof, review, selection, settlement, or memory."
+    ],
+    [
+      "AEPConformanceRegistry",
+      "Supports the proof-card lifecycle by anchoring commitments, proof, review, selection, settlement, or memory."
+    ],
+    [
+      "AEPFalsificationRegistry",
+      "Supports the proof-card lifecycle by anchoring commitments, proof, review, selection, settlement, or memory."
+    ],
+    [
+      "LaunchGateRegistry",
+      "Supports the proof-card lifecycle by anchoring commitments, proof, review, selection, settlement, or memory."
+    ],
+    [
+      "AEPEvaluatorStakingRegistry",
+      "Supports the proof-card lifecycle by anchoring commitments, proof, review, selection, settlement, or memory."
+    ],
+    [
+      "AEPCommitRevealValidationRegistry",
+      "Supports the proof-card lifecycle by anchoring commitments, proof, review, selection, settlement, or memory."
+    ],
+    [
+      "AEPSlashingCourt",
+      "Supports the proof-card lifecycle by anchoring commitments, proof, review, selection, settlement, or memory."
+    ],
+    [
+      "MandateEpochRegistry",
+      "Supports the proof-card lifecycle by anchoring commitments, proof, review, selection, settlement, or memory."
+    ]
+  ],
+  "evidence_checklist": [
+    [
+      "GoalOSCommit",
+      "A signed/scoped mission objective with success criteria and claim boundary."
+    ],
+    [
+      "RunCommitment",
+      "The planned agents, tools, artifacts, context, cost limits, and evaluation route."
+    ],
+    [
+      "Candidate artifact",
+      "The workflow, policy, remediation, benchmark, or operating artifact being improved."
+    ],
+    [
+      "Evaluator report",
+      "A scorecard, benchmark, harness, or replay result comparing baseline and candidate."
+    ],
+    [
+      "ProofBundle",
+      "The hash-linked package of inputs, outputs, traces, and evaluation evidence."
+    ],
+    [
+      "Reviewer attestation",
+      "A bonded reviewer decision stating whether the evidence supports the claim."
+    ],
+    [
+      "Falsification / red-team note",
+      "A challenge report for reward hacking, unsafe propagation, or unsupported claims."
+    ],
+    [
+      "SelectionCertificate",
+      "The decision granting or rejecting scoped upgrade rights."
+    ],
+    [
+      "RollbackReceipt",
+      "The recovery path if a promoted artifact fails, regresses, or becomes unsafe."
+    ],
+    [
+      "ChronicleEntry",
+      "The durable memory record used by future missions."
+    ]
+  ],
+  "faq": [
+    [
+      "Does this claim achieved AGI or superintelligence?",
+      "No. It is an experimental proof-card framework for evidence-governed capability accumulation."
+    ],
+    [
+      "What is public?",
+      "Public-safe hashes, proof-card summaries, claim boundaries, and selected evidence references."
+    ],
+    [
+      "What stays private?",
+      "Private data, sensitive workflows, security details, buyer data, and confidential operational context."
+    ],
+    [
+      "What makes this RSI?",
+      "Only artifacts that survive proof, evaluation, review, and selection may shape future work."
+    ],
+    [
+      "Where does AGIALPHA matter?",
+      "AGIALPHA coordinates mission budgets, bonds, settlement, proof-card actions, credentials, and reputation-linked access."
+    ]
+  ],
+  "glossary": [
+    [
+      "Proof Card",
+      "A public-safe page explaining a proof mission, evidence standard, claim boundary, and upgrade logic."
+    ],
+    [
+      "Evidence Docket",
+      "The structured evidence package behind a proof card."
+    ],
+    [
+      "Selection Gate",
+      "The decision layer that grants or denies upgrade rights."
+    ],
+    [
+      "Proof-backed upgrade right",
+      "The earned right for an artifact to influence future work."
+    ],
+    [
+      "Chronicle",
+      "Institutional memory of missions, proofs, decisions, and outcomes."
+    ]
+  ],
+  "value_ladder": [
+    "specific workflow or cyber weakness",
+    "candidate artifact",
+    "proof and evaluation",
+    "review and red-team validation",
+    "selection certificate",
+    "reusable capability",
+    "governed reinvestment",
+    "stronger future mission portfolio"
   ]
 }
