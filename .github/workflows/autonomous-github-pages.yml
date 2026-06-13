@@ -7,12 +7,14 @@ on:
     paths:
       - "README.md"
       - "docs/**"
+      - "data/**"
+      - "evidence/**"
+      - "scripts/add_goalos_agialpha_proof_card_002_to_site.py"
+      - "scripts/verify_goalos_agialpha_proof_card_002_site.py"
       - "qa/**"
       - "audit/**"
       - "deployments/**"
       - "package.json"
-      - "scripts/**"
-      - "data/**"
       - ".github/workflows/autonomous-github-pages.yml"
   workflow_dispatch:
 
@@ -60,7 +62,6 @@ jobs:
           PROJECT = "GoalOS AGIALPHA Ascension"
           PAPER_TITLE = "GoalOS-native alpha-AGI Ascension using AGIALPHA"
           PAPER_EDITION = "Sovereign RSI Edition v6.3"
-          MANUAL_MAINNET_DEPLOY_COMMAND = "npm run deploy:ethereum-" + "mainnet" + ":gated"
 
           if OUT.exists():
               shutil.rmtree(OUT)
@@ -1419,7 +1420,7 @@ jobs:
               </article>
               <article class="card wide">
                 <h2>Manual deployment command</h2>
-                <pre><code>{MANUAL_MAINNET_DEPLOY_COMMAND}</code></pre>
+                <pre><code>npm run deploy:ethereum-mainnet:gated</code></pre>
                 <p>This command must remain local/manual. No GitHub Actions workflow may broadcast Ethereum Mainnet transactions.</p>
               </article>
               <article class="card">
@@ -1540,7 +1541,7 @@ jobs:
               </article>
               <article class="card">
                 <h3>Next manual command</h3>
-                <pre><code>{MANUAL_MAINNET_DEPLOY_COMMAND}</code></pre>
+                <pre><code>npm run deploy:ethereum-mainnet:gated</code></pre>
               </article>
             </div>
           </section>
@@ -1622,12 +1623,6 @@ jobs:
           print(f"Evidence artifacts copied: {len(copied_evidence)}")
           PY
 
-
-      - name: Add Proof Card 001 usage example pages
-        shell: bash
-        run: |
-          python3 scripts/add_goalos_agialpha_usage_example_to_site.py --site site
-
       - name: Validate generated website artifact
         shell: bash
         run: |
@@ -1640,19 +1635,22 @@ jobs:
           test -f site/assets/site.js
           test -f site/.nojekyll
 
-          test -f site/usage-example.html
-          test -f site/proof-card-001.html
-          test -f site/proof-mission-001.html
-          test -f site/share.html
-          test -f site/data/usage-example-proof-card-001.json
-          python3 scripts/verify_goalos_agialpha_usage_example_site.py --site site
-
           if grep -RniE "PRIVATE_KEY|SEED_PHRASE|MNEMONIC|MAINNET_RPC_URL=|SEPOLIA_RPC_URL=|DEPLOYER_PRIVATE_KEY" site; then
             echo "Potential secret-like text found in generated website."
             exit 1
           fi
 
           echo "Generated website artifact validated."
+
+      - name: Add Proof Card 002 elite use case pages
+        shell: bash
+        run: |
+          python3 scripts/add_goalos_agialpha_proof_card_002_to_site.py --site site
+
+      - name: Verify Proof Card 002 elite use case pages
+        shell: bash
+        run: |
+          python3 scripts/verify_goalos_agialpha_proof_card_002_site.py --site site
 
       - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v4

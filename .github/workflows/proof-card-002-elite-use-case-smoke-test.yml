@@ -1,0 +1,24 @@
+name: Proof Card 002 Elite Use Case Smoke Test
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "docs/examples/**"
+      - "data/examples/**"
+      - "evidence/examples/**"
+      - "scripts/add_goalos_agialpha_proof_card_002_to_site.py"
+      - "scripts/verify_goalos_agialpha_proof_card_002_site.py"
+      - ".github/workflows/proof-card-002-elite-use-case-smoke-test.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  smoke-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build local preview and verify
+        run: |
+          python3 scripts/build_goalos_agialpha_proof_card_002_preview.py
