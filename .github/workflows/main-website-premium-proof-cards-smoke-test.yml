@@ -1,0 +1,24 @@
+name: Main Website Premium Proof Cards Smoke Test
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "scripts/integrate_goalos_agialpha_premium_proof_cards_v20.py"
+      - "scripts/verify_goalos_agialpha_premium_proof_cards_v20.py"
+      - "data/proof-cards/proof-cards-v20.json"
+      - ".github/workflows/main-website-premium-proof-cards-smoke-test.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  smoke-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+      - name: Build demo site with substantial proof cards
+        run: python3 scripts/integrate_goalos_agialpha_premium_proof_cards_v20.py --site site --allow-demo-site
+      - name: Verify demo site
+        run: python3 scripts/verify_goalos_agialpha_premium_proof_cards_v20.py --site site

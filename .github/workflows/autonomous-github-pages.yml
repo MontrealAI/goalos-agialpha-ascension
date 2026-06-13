@@ -7,14 +7,17 @@ on:
     paths:
       - "README.md"
       - "docs/**"
-      - "scripts/**"
-      - "data/**"
-      - "evidence/**"
       - "qa/**"
       - "audit/**"
       - "deployments/**"
       - "package.json"
       - ".github/workflows/autonomous-github-pages.yml"
+      - "scripts/integrate_goalos_agialpha_premium_proof_cards_v20.py"
+      - "scripts/verify_goalos_agialpha_premium_proof_cards_v20.py"
+      - "data/proof-cards/proof-cards-v20.json"
+      - "docs/examples/**"
+      - "data/examples/**"
+      - "evidence/examples/**"
   workflow_dispatch:
 
 concurrency:
@@ -1622,6 +1625,16 @@ jobs:
           print(f"Evidence artifacts copied: {len(copied_evidence)}")
           PY
 
+      - name: Integrate substantial Proof Cards 001-010 into main website
+        shell: bash
+        run: |
+          python3 scripts/integrate_goalos_agialpha_premium_proof_cards_v20.py --site site
+
+      - name: Verify substantial Proof Card Command Center
+        shell: bash
+        run: |
+          python3 scripts/verify_goalos_agialpha_premium_proof_cards_v20.py --site site
+
       - name: Validate generated website artifact
         shell: bash
         run: |
@@ -1640,13 +1653,6 @@ jobs:
           fi
 
           echo "Generated website artifact validated."
-
-
-      - name: Integrate substantial Proof Card Command Center
-        run: python3 scripts/integrate_goalos_agialpha_proof_card_atlas_v19.py --site site
-
-      - name: Verify substantial Proof Card Command Center
-        run: python3 scripts/verify_goalos_agialpha_proof_card_atlas_v19.py --site site
 
       - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v4
