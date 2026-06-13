@@ -1,58 +1,11 @@
 # Proof Card 006 - Sovereign Enterprise RSI Operating System
 
-**Thesis:** A large specialist-agent institution can coordinate work, proof, review, treasury, rollback, and memory through an evidence-governed RSI operating system.
+**Domain:** enterprise operations
 
-## Problem
-Enterprises cannot safely adopt autonomous work unless responsibility, evaluation, rollback, settlement, and evidence are explicit.
+**Mission:** Define a sovereign enterprise RSI operating system where specialist agents coordinate through GoalOS commits, AGIALPHA proof missions, Evidence Dockets, Selection Gates, and Chronicle memory.
 
-## Proof mission
-Build an operating theater of specialist agent cells whose work is routed, reviewed, settled, and chronicled.
+**Where AGIALPHA becomes useful:** AGIALPHA coordinates enterprise proof missions, role-linked bonds, settlement, credentialing, reputation, and treasury routing.
 
-## AGIALPHA use
-AGIALPHA coordinates mission budgets, agent claims, proof bonds, reviewer bonds, credentials, reputation, reward settlement, and treasury routing across the operating system.
+**RSI logic:** Enterprise RSI works only when accepted artifacts earn scoped upgrade rights and can be rolled back if evidence later fails.
 
-## RSI logic
-An enterprise artifact is not upgraded because it performs once. It earns scoped upgrade rights only after proof, evaluation, review, monitoring, and rollback readiness.
-
-## Skills used
-- Multi-agent orchestration
-- Enterprise operating design
-- Proof engineering
-- Reviewer coordination
-- Rollback planning
-
-## Plans used
-- Define enterprise aim
-- Route missions to agent cells
-- Collect ProofBundles
-- Review and red-team
-- Promote only accepted artifacts
-
-## Goals used
-- Operate many specialist agents safely
-- Make responsibility explicit
-- Build enterprise-scale evidence memory
-
-## Contracts / registries
-- `AEPGoalOSCommitRegistry`
-- `AEPRunCommitmentRegistry`
-- `AEPAgentRegistry`
-- `AEPArtifactRegistry`
-- `JobRegistry`
-- `ProofSubmissionRegistry`
-- `ReviewerBondRegistry`
-- `AEPSelectionGate`
-- `AEPRollbackRegistry`
-- `AEPChronicleRegistry`
-
-## Evidence Docket checklist
-- GoalOSCommit
-- RunCommitment
-- ProofBundle
-- EvalAttestation
-- Risk report
-- RollbackReceipt
-- Chronicle entry
-
-## Claim boundary
-Illustrative until a live Evidence Docket is completed. No AGI/ASI, investment, legal, tax, security, mainnet, or Kardashev achievement claim.
+**Claim boundary:** This proof card is an experimental public-safe proof template until a live Evidence Docket is completed.

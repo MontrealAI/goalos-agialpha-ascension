@@ -1,34 +1,75 @@
 {
   "id": "005",
-  "slug": "sovereign-rsi-value-to-capability-treasury",
   "title": "Sovereign RSI Value-to-Capability Treasury",
-  "phase": "Reinvestment Engine",
-  "problem": "Accumulated value must not remain inert. It must be governed, budgeted, and reinvested into stronger future capabilities.",
-  "mission": "Turn verified value into governed capability budgets: successful proof missions produce value signals; value is routed through treasury controls; stronger future proof missions receive budget, talent, tools, and review capacity.",
-  "incremental": "Adds economic recursion: verified value funds stronger future work.",
-  "value": "Connects proof to reinvestment, allowing the system to improve its own operating capacity without relying only on manual planning.",
+  "domain": "treasury / reinvestment",
+  "level": "value-to-capability flywheel",
+  "short": "Verified value is governed and reinvested into stronger future capability.",
+  "problem": "Value capture without governed reinvestment does not create a durable RSI system. The system must route verified value into better missions, tools, audits, compute, and future capability.",
+  "mission": "Create a proof-card framework for turning verified value into a capability budget, then routing that budget through AGIALPHA-coordinated missions and treasury controls.",
+  "why": "This card adds the economic flywheel: proof does not merely validate work; it can fund stronger future work under governance.",
+  "agents": [
+    "Treasury Desk",
+    "Portfolio Strategist",
+    "Capability Planner",
+    "Proof Engineer",
+    "Reviewer",
+    "Risk Desk",
+    "Chronicle Office"
+  ],
   "skills": [
-    "Treasury routing",
-    "Value-to-capability accounting",
-    "Budget prioritization",
-    "Portfolio allocation",
-    "Capability ROI tracking"
+    "capability budgeting",
+    "value attribution",
+    "treasury routing",
+    "mission prioritization",
+    "portfolio governance",
+    "reinvestment analysis"
   ],
   "plans": [
-    "Sovereign RSI Value-to-Capability Treasury proof mission plan",
-    "Evidence Docket route",
-    "Reviewer and red-team plan",
-    "Selection Gate upgrade policy"
+    "measure verified value",
+    "assign capability budget",
+    "route mission portfolio",
+    "review proof outputs",
+    "settle and chronicle",
+    "reinvest into next capability frontier"
   ],
   "goals": [
-    "Create replayable institutional proof",
-    "Demonstrate AGIALPHA proof-settled coordination",
-    "Promote only proven artifacts",
-    "Strengthen the evidence graph"
+    "convert value into capability",
+    "make reinvestment auditable",
+    "fund stronger proof missions",
+    "compound productive capacity"
+  ],
+  "metrics": [
+    [
+      "value loop",
+      "uncaptured savings",
+      "capability budget"
+    ],
+    [
+      "governance",
+      "manual allocation",
+      "treasury route"
+    ],
+    [
+      "compounding",
+      "one-time benefit",
+      "reinvested mission portfolio"
+    ]
+  ],
+  "agialpha": "AGIALPHA coordinates value-linked proof missions, reward vault allocations, treasury routing, and commercialization-performance milestones.",
+  "rsi": "Accepted value signals fund future improvement only through governed allocation and evidence-backed mission selection.",
+  "extra_contracts": [
+    "TreasuryRouter",
+    "CommercializationPerformanceVault",
+    "ValueAttributionRegistry"
   ],
   "contracts": [
     "AEPGoalOSCommitRegistry",
     "AEPRunCommitmentRegistry",
+    "TreasuryRouter",
+    "CommercializationPerformanceVault",
+    "ValueAttributionRegistry",
+    "AEPAgentRegistry",
+    "AEPArtifactRegistry",
     "JobRegistry",
     "JobClaimBondManager",
     "ProofSubmissionRegistry",
@@ -38,11 +79,33 @@
     "ReputationRegistry",
     "AEPEvidenceDocketRegistry",
     "AEPSelectionGate",
+    "AEPRolloutRouter",
+    "AEPRollbackRegistry",
     "AEPChronicleRegistry",
+    "AlphaWorkUnitLedger",
     "AEPRewardVault",
-    "TreasuryRouter",
-    "CommercializationPerformanceVault"
+    "AEPBenchmarkRegistry",
+    "AEPExperimentRegistry",
+    "AEPAutoresearchPortfolioRegistry",
+    "AEPClaimBoundaryRegistry",
+    "AEPConformanceRegistry",
+    "AEPFalsificationRegistry",
+    "LaunchGateRegistry",
+    "AEPEvaluatorStakingRegistry",
+    "AEPCommitRevealValidationRegistry",
+    "AEPSlashingCourt",
+    "MandateEpochRegistry"
   ],
-  "rsi": "The accepted artifact may influence future work only after evidence, evaluator review, reviewer validation, scope control, challenge window, rollback readiness, Selection Gate approval, and Chronicle entry.",
-  "status": "illustrative_until_live_evidence_docket"
+  "evidence": [
+    "Claim matrix with public/private boundary",
+    "GoalOSCommit and RunCommitment",
+    "Task manifest and baseline",
+    "ProofBundle with artifact hashes",
+    "Evaluator report and cost ledger",
+    "Reviewer attestation",
+    "Red-team or challenge report where applicable",
+    "SelectionCertificate or rejection note",
+    "Rollback / non-propagation path",
+    "Chronicle entry and delayed-outcome update"
+  ]
 }

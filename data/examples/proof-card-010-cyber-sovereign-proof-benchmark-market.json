@@ -1,35 +1,82 @@
 {
   "id": "010",
-  "slug": "cyber-sovereign-proof-benchmark-market",
   "title": "Cyber-Sovereign Proof Benchmark Market",
-  "phase": "Replayable Benchmark Market",
-  "problem": "Architecture is not enough. A durable execution moat requires replayable benchmarks, independent reproduction, hardened evaluators, and public-safe evidence that buyers can inspect.",
-  "mission": "Build a cyber-sovereign proof benchmark market: authorized defensive tasks, baseline manifests, evaluator harnesses, candidate artifacts, ProofBundles, reviewer attestations, red-team falsification reports, reproduction receipts, and AGIALPHA settlement.",
-  "incremental": "Turns the cyber execution moat into a benchmark market where results can be replayed and compared.",
-  "value": "Creates market-legible proof: not merely a claim of improvement, but a reproducible path showing what improved, what it cost, what risks were controlled, and what may propagate.",
+  "domain": "defensive cyber benchmarks",
+  "level": "replayable proof market",
+  "short": "Cyber-sovereign work becomes a replayable proof benchmark market with reproduction receipts.",
+  "problem": "Architecture is not enough. The execution moat becomes real when results can be benchmarked, replayed, reviewed, challenged, reproduced, settled, and admitted into future context.",
+  "mission": "Create a cyber-sovereign proof benchmark market: define authorized defensive tasks, run parallel specialist-agent missions, validate outputs through evaluator harnesses, require red-team challenge, collect independent reproduction receipts, settle through AGIALPHA, and chronicle selected artifacts.",
+  "why": "This card is the strongest execution-moat card because it converts proof architecture into a market-readable standard for replayable results.",
+  "agents": [
+    "Cyber Aim Council",
+    "Benchmark Foundry",
+    "Asset Graph Cell",
+    "Hypothesis Engineers",
+    "Remediation Builders",
+    "Evaluator Operators",
+    "Proof Engineers",
+    "Reviewer Council",
+    "Red-Team Court",
+    "External Reproduction Cell",
+    "Treasury Desk",
+    "Chronicle Office"
+  ],
   "skills": [
-    "Benchmark design",
-    "Evaluator hardening",
-    "Reproduction packaging",
-    "Defensive task manifesting",
-    "Falsification testing",
-    "Result comparison"
+    "benchmark design",
+    "task manifest creation",
+    "independent reproduction",
+    "evaluator hardening",
+    "red-team falsification",
+    "cost/safety ledgering",
+    "proof-market design"
   ],
   "plans": [
-    "Cyber-Sovereign Proof Benchmark Market proof mission plan",
-    "Evidence Docket route",
-    "Reviewer and red-team plan",
-    "Selection Gate upgrade policy"
+    "define benchmark task family",
+    "publish manifest",
+    "run parallel proof missions",
+    "evaluate outputs",
+    "red-team and reproduce",
+    "issue SelectionCertificate",
+    "settle and chronicle"
   ],
   "goals": [
-    "Create replayable institutional proof",
-    "Demonstrate AGIALPHA proof-settled coordination",
-    "Promote only proven artifacts",
-    "Strengthen the evidence graph"
+    "turn cyber work into replayable proof",
+    "make execution moat measurable",
+    "create a proof benchmark market",
+    "produce evidence that can be checked by others"
+  ],
+  "metrics": [
+    [
+      "proof strength",
+      "internal claim",
+      "reproduction receipt"
+    ],
+    [
+      "market legibility",
+      "opaque result",
+      "benchmark docket"
+    ],
+    [
+      "RSI safety",
+      "unchecked propagation",
+      "Selection Gate + rollback"
+    ]
+  ],
+  "agialpha": "AGIALPHA coordinates benchmark mission budgets, builder claims, proof submissions, reviewer/red-team bonds, evaluator incentives, proof-card actions, settlement, and reputation-weighted routing.",
+  "rsi": "Proof benchmark RSI means replayed, validated, and selected results can influence future missions; unreproduced results cannot.",
+  "extra_contracts": [
+    "CyberBenchmarkRegistry",
+    "ExternalReproductionReceiptRegistry",
+    "SecurityBenchmarkMarketRegistry"
   ],
   "contracts": [
     "AEPGoalOSCommitRegistry",
     "AEPRunCommitmentRegistry",
+    "CyberBenchmarkRegistry",
+    "ExternalReproductionReceiptRegistry",
+    "SecurityBenchmarkMarketRegistry",
+    "AEPAgentRegistry",
+    "AEPArtifactRegistry",
     "JobRegistry",
     "JobClaimBondManager",
     "ProofSubmissionRegistry",
@@ -39,15 +86,35 @@
     "ReputationRegistry",
     "AEPEvidenceDocketRegistry",
     "AEPSelectionGate",
+    "AEPRolloutRouter",
+    "AEPRollbackRegistry",
     "AEPChronicleRegistry",
-    "CyberBenchmarkRegistry",
+    "AlphaWorkUnitLedger",
+    "AEPRewardVault",
+    "TreasuryRouter",
+    "CommercializationPerformanceVault",
     "AEPBenchmarkRegistry",
     "AEPExperimentRegistry",
+    "AEPAutoresearchPortfolioRegistry",
+    "AEPClaimBoundaryRegistry",
+    "AEPConformanceRegistry",
+    "AEPFalsificationRegistry",
+    "LaunchGateRegistry",
     "AEPEvaluatorStakingRegistry",
     "AEPCommitRevealValidationRegistry",
     "AEPSlashingCourt",
-    "AEPFalsificationRegistry"
+    "MandateEpochRegistry"
   ],
-  "rsi": "The accepted artifact may influence future work only after evidence, evaluator review, reviewer validation, scope control, challenge window, rollback readiness, Selection Gate approval, and Chronicle entry.",
-  "status": "illustrative_until_live_evidence_docket"
+  "evidence": [
+    "Claim matrix with public/private boundary",
+    "GoalOSCommit and RunCommitment",
+    "Task manifest and baseline",
+    "ProofBundle with artifact hashes",
+    "Evaluator report and cost ledger",
+    "Reviewer attestation",
+    "Red-team or challenge report where applicable",
+    "SelectionCertificate or rejection note",
+    "Rollback / non-propagation path",
+    "Chronicle entry and delayed-outcome update"
+  ]
 }

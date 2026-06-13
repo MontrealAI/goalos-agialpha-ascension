@@ -1,27 +1,15 @@
 {
   "proof_card_id": "006",
   "title": "Sovereign Enterprise RSI Operating System",
-  "status": "illustrative_template_until_live_run",
-  "required_evidence": [
-    "GoalOSCommit",
-    "RunCommitment",
-    "ProofBundle",
-    "EvalAttestation",
-    "Risk report",
-    "RollbackReceipt",
-    "Chronicle entry"
-  ],
-  "contracts": [
-    "AEPGoalOSCommitRegistry",
-    "AEPRunCommitmentRegistry",
-    "AEPAgentRegistry",
-    "AEPArtifactRegistry",
-    "JobRegistry",
-    "ProofSubmissionRegistry",
-    "ReviewerBondRegistry",
-    "AEPSelectionGate",
-    "AEPRollbackRegistry",
-    "AEPChronicleRegistry"
-  ],
-  "claim_boundary": "No achieved AGI/ASI, no financial return, no legal/tax/security approval, no Ethereum mainnet deployment claim, no Kardashev Type II achievement claim."
+  "status": "template_until_live_run",
+  "claim_matrix": [],
+  "goalos_commit": null,
+  "run_commitment": null,
+  "proof_bundle": null,
+  "evaluator_report": null,
+  "reviewer_attestation": null,
+  "red_team_report": null,
+  "selection_certificate": null,
+  "rollback_plan": null,
+  "chronicle_entry": null
 }

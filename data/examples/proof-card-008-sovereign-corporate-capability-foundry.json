@@ -1,35 +1,78 @@
 {
   "id": "008",
-  "slug": "sovereign-corporate-capability-foundry",
   "title": "Sovereign Corporate Capability Foundry",
-  "phase": "Portfolio Foundry",
-  "problem": "Enterprises need capability growth across multiple profitable domains, not only one research benchmark. The system must allocate missions across procurement, finance, security, operations, energy, compute, and R&D.",
-  "mission": "Create a portfolio-level capability foundry that assigns proof missions to specialist cells, measures alpha-Work Units, validates output, issues proof cards, and reinvests verified value across domains.",
-  "incremental": "Moves from autoresearch to portfolio-level corporate capability formation.",
-  "value": "Shows how a sovereign corporation can systematically convert work into a growing library of reusable capabilities.",
+  "domain": "corporate capability portfolio",
+  "level": "portfolio foundry",
+  "short": "A portfolio of proof missions turns corporate work into compounding capability.",
+  "problem": "A single improvement does not create a moat. Corporate advantage emerges when many proof missions across procurement, finance, security, operations, compute, and R&D become a compounding evidence graph.",
+  "mission": "Operate a capability foundry that allocates AGIALPHA-coordinated proof missions across high-value corporate domains, measures alpha-Work Units, selects proven artifacts, and reinvests into stronger future missions.",
+  "why": "This card moves the system from one proof stream to a portfolio: a corporate proof factory that converts work into capability.",
+  "agents": [
+    "Corporate Aim Council",
+    "Portfolio Strategists",
+    "Domain Scouts",
+    "Hypothesis Engineers",
+    "Builder Cells",
+    "Evaluator Operators",
+    "Proof Engineers",
+    "Reviewer Council",
+    "Treasury Desk",
+    "Selection Gate"
+  ],
   "skills": [
-    "Portfolio allocation",
-    "Domain scouting",
-    "Capability formation",
-    "AlphaWorkUnit metrology",
-    "Cross-domain reuse",
-    "Treasury prioritization"
+    "portfolio design",
+    "domain mapping",
+    "mission prioritization",
+    "alpha-Work Unit metrology",
+    "capability accounting",
+    "proof portfolio governance"
   ],
   "plans": [
-    "Sovereign Corporate Capability Foundry proof mission plan",
-    "Evidence Docket route",
-    "Reviewer and red-team plan",
-    "Selection Gate upgrade policy"
+    "define mandate epoch",
+    "rank corporate domains",
+    "issue proof mission portfolio",
+    "validate and score outputs",
+    "select upgrade candidates",
+    "allocate reinvestment"
   ],
   "goals": [
-    "Create replayable institutional proof",
-    "Demonstrate AGIALPHA proof-settled coordination",
-    "Promote only proven artifacts",
-    "Strengthen the evidence graph"
+    "create corporate capability compounding",
+    "make investment in AI work measurable",
+    "rank proof missions by value",
+    "build a durable evidence graph"
+  ],
+  "metrics": [
+    [
+      "scope",
+      "single workflow",
+      "multi-domain portfolio"
+    ],
+    [
+      "measurement",
+      "manual ROI guess",
+      "alpha-Work Unit ledger"
+    ],
+    [
+      "moat",
+      "isolated insight",
+      "compounding capability foundry"
+    ]
+  ],
+  "agialpha": "AGIALPHA coordinates mission budgets, settlement, reputation, reward vaults, alpha-Work Unit metrology, and treasury reinvestment across the capability portfolio.",
+  "rsi": "The foundry improves itself by routing future budget toward artifacts and domains that produced verified capability under review.",
+  "extra_contracts": [
+    "MandateEpochRegistry",
+    "AlphaWorkUnitLedger",
+    "AEPBenchmarkRegistry"
   ],
   "contracts": [
     "AEPGoalOSCommitRegistry",
     "AEPRunCommitmentRegistry",
+    "MandateEpochRegistry",
+    "AlphaWorkUnitLedger",
+    "AEPBenchmarkRegistry",
+    "AEPAgentRegistry",
+    "AEPArtifactRegistry",
     "JobRegistry",
     "JobClaimBondManager",
     "ProofSubmissionRegistry",
@@ -39,12 +82,32 @@
     "ReputationRegistry",
     "AEPEvidenceDocketRegistry",
     "AEPSelectionGate",
+    "AEPRolloutRouter",
+    "AEPRollbackRegistry",
     "AEPChronicleRegistry",
-    "MandateEpochRegistry",
+    "AEPRewardVault",
     "TreasuryRouter",
     "CommercializationPerformanceVault",
-    "AEPAutoresearchPortfolioRegistry"
+    "AEPExperimentRegistry",
+    "AEPAutoresearchPortfolioRegistry",
+    "AEPClaimBoundaryRegistry",
+    "AEPConformanceRegistry",
+    "AEPFalsificationRegistry",
+    "LaunchGateRegistry",
+    "AEPEvaluatorStakingRegistry",
+    "AEPCommitRevealValidationRegistry",
+    "AEPSlashingCourt"
   ],
-  "rsi": "The accepted artifact may influence future work only after evidence, evaluator review, reviewer validation, scope control, challenge window, rollback readiness, Selection Gate approval, and Chronicle entry.",
-  "status": "illustrative_until_live_evidence_docket"
+  "evidence": [
+    "Claim matrix with public/private boundary",
+    "GoalOSCommit and RunCommitment",
+    "Task manifest and baseline",
+    "ProofBundle with artifact hashes",
+    "Evaluator report and cost ledger",
+    "Reviewer attestation",
+    "Red-team or challenge report where applicable",
+    "SelectionCertificate or rejection note",
+    "Rollback / non-propagation path",
+    "Chronicle entry and delayed-outcome update"
+  ]
 }

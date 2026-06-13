@@ -1,58 +1,11 @@
 # Proof Card 009 - Cyber-Sovereign Execution Moat
 
-**Thesis:** Cyber-sovereign work becomes a compounding execution moat when authorized weaknesses are remediated through proof, review, red-team challenge, rollback, and Chronicle memory.
+**Domain:** defensive cybersecurity
 
-## Problem
-Security teams need verified remediation, not speculative automation. The proof must be authorized, replayable, and safe to roll back.
+**Mission:** Turn an authorized defensive weakness into a proof mission: map asset graph, generate remediation candidate, run security regression harness, package ProofBundle, validate with reviewers and red team, then select safe improvements.
 
-## Proof mission
-Coordinate defensive cyber proof missions from authorized weakness to validated remediation artifact with regression harness and rollback path.
+**Where AGIALPHA becomes useful:** AGIALPHA coordinates defensive proof missions, builder claims, reviewer/red-team bonds, proof submission, credentials, reputation, and settlement.
 
-## AGIALPHA use
-AGIALPHA coordinates mission budgets, builder claim bonds, proof bonds, reviewer/red-team bonds, evaluator incentives, proof-card registration, credentialing, and settlement.
+**RSI logic:** Cyber RSI means only proven remediations, harnesses, and rollback playbooks can shape future defensive operations.
 
-## RSI logic
-Each validated remediation improves the next security mission: stronger harnesses, better triage, reusable patches, and known rollback paths.
-
-## Skills used
-- Asset graph mapping
-- Vulnerability triage
-- Defensive remediation
-- Security regression harnessing
-- Incident rollback planning
-
-## Plans used
-- Authorize scope
-- Map asset graph
-- Generate remediation candidate
-- Run regression harness
-- Review and red-team
-- Chronicle reusable remediation
-
-## Goals used
-- Build defensive security capability
-- Avoid unsafe/offensive claims
-- Create replayable remediation evidence
-
-## Contracts / registries
-- `CyberAssetGraphRegistry`
-- `SBOMEvidenceRegistry`
-- `VEXAttestationRegistry`
-- `RemediationPatchRegistry`
-- `SecurityRegressionHarnessRegistry`
-- `RedTeamChallengeRegistry`
-- `IncidentRollbackRegistry`
-- `AEPFalsificationRegistry`
-
-## Evidence Docket checklist
-- Authorized scope
-- Asset graph
-- SBOM/VEX evidence
-- Patch artifact
-- Regression harness result
-- Red-team report
-- RollbackReceipt
-- Chronicle entry
-
-## Claim boundary
-Illustrative until a live Evidence Docket is completed. No AGI/ASI, investment, legal, tax, security, mainnet, or Kardashev achievement claim.
+**Claim boundary:** This proof card is an experimental public-safe proof template until a live Evidence Docket is completed.

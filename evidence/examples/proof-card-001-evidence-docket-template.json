@@ -1,28 +1,15 @@
 {
   "proof_card_id": "001",
   "title": "Buyer Rescue Workflow",
-  "status": "illustrative_template_until_live_run",
-  "required_evidence": [
-    "Original support scenario redacted",
-    "Workflow v1.0 output",
-    "Scorecard and diagnosis",
-    "Workflow v1.1 output",
-    "Reviewer attestation",
-    "Proof Card hash",
-    "Chronicle entry"
-  ],
-  "contracts": [
-    "AEPGoalOSCommitRegistry",
-    "AEPRunCommitmentRegistry",
-    "JobRegistry",
-    "JobClaimBondManager",
-    "ProofSubmissionRegistry",
-    "ReviewerBondRegistry",
-    "ProofCardRegistry",
-    "ProofCredentialRegistry",
-    "ReputationRegistry",
-    "AEPEvidenceDocketRegistry",
-    "AEPChronicleRegistry"
-  ],
-  "claim_boundary": "No achieved AGI/ASI, no financial return, no legal/tax/security approval, no Ethereum mainnet deployment claim, no Kardashev Type II achievement claim."
+  "status": "template_until_live_run",
+  "claim_matrix": [],
+  "goalos_commit": null,
+  "run_commitment": null,
+  "proof_bundle": null,
+  "evaluator_report": null,
+  "reviewer_attestation": null,
+  "red_team_report": null,
+  "selection_certificate": null,
+  "rollback_plan": null,
+  "chronicle_entry": null
 }

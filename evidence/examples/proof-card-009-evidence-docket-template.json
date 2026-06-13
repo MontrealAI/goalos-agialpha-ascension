@@ -1,26 +1,15 @@
 {
   "proof_card_id": "009",
   "title": "Cyber-Sovereign Execution Moat",
-  "status": "illustrative_template_until_live_run",
-  "required_evidence": [
-    "Authorized scope",
-    "Asset graph",
-    "SBOM/VEX evidence",
-    "Patch artifact",
-    "Regression harness result",
-    "Red-team report",
-    "RollbackReceipt",
-    "Chronicle entry"
-  ],
-  "contracts": [
-    "CyberAssetGraphRegistry",
-    "SBOMEvidenceRegistry",
-    "VEXAttestationRegistry",
-    "RemediationPatchRegistry",
-    "SecurityRegressionHarnessRegistry",
-    "RedTeamChallengeRegistry",
-    "IncidentRollbackRegistry",
-    "AEPFalsificationRegistry"
-  ],
-  "claim_boundary": "No achieved AGI/ASI, no financial return, no legal/tax/security approval, no Ethereum mainnet deployment claim, no Kardashev Type II achievement claim."
+  "status": "template_until_live_run",
+  "claim_matrix": [],
+  "goalos_commit": null,
+  "run_commitment": null,
+  "proof_bundle": null,
+  "evaluator_report": null,
+  "reviewer_attestation": null,
+  "red_team_report": null,
+  "selection_certificate": null,
+  "rollback_plan": null,
+  "chronicle_entry": null
 }

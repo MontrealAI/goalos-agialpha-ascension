@@ -1,34 +1,72 @@
 {
   "id": "002",
-  "slug": "sovereign-procurement-trust-room",
   "title": "Sovereign Procurement Trust Room",
-  "phase": "Trust Architecture",
-  "problem": "A serious buyer asks whether the system can be evaluated, audited, and trusted. A generic sales page is not enough for procurement, compliance, or institutional review.",
-  "mission": "Turn procurement due diligence into a proof mission: assemble a trust room with public-safe evidence, claim boundaries, security posture, token-utility explanation, Proof Cards, reviewer notes, and an Evidence Docket checklist.",
-  "incremental": "Moves from buyer support to institutional trust: proof becomes useful in procurement conversations.",
-  "value": "Better procurement readiness, faster sponsor conversations, clearer risk posture, and reusable answers for future enterprise buyers.",
+  "domain": "procurement / buyer diligence",
+  "level": "enterprise trust surface",
+  "short": "A procurement trust question becomes a proof room with evidence, boundaries, and reviewer validation.",
+  "problem": "Enterprise and sovereign buyers ask whether an AI workflow system can be trusted, governed, audited, and explained. A sales deck is not enough. They need a proof room.",
+  "mission": "Convert buyer due diligence into a structured Evidence Docket: claims, controls, documents, security posture, public/private boundaries, review records, and a procurement-ready trust response.",
+  "why": "Procurement is where interest becomes adoption. This proof card demonstrates that trust itself can be made into a workflow, improved through proof, and reused across future enterprise conversations.",
+  "agents": [
+    "Procurement Analyst",
+    "Trust Center Builder",
+    "Policy Boundary Agent",
+    "Security Evidence Collector",
+    "Reviewer",
+    "Evidence Office"
+  ],
   "skills": [
-    "Procurement response design",
-    "Trust-center evidence mapping",
-    "Compliance-oriented explanation",
-    "Claim-boundary editing",
-    "Evidence Docket assembly"
+    "procurement response design",
+    "trust-center evidence mapping",
+    "claim boundary drafting",
+    "security-document packaging",
+    "reviewer attestation",
+    "buyer-ready narrative"
   ],
   "plans": [
-    "Sovereign Procurement Trust Room proof mission plan",
-    "Evidence Docket route",
-    "Reviewer and red-team plan",
-    "Selection Gate upgrade policy"
+    "map buyer diligence questions",
+    "assemble a public-safe trust room",
+    "separate public and private evidence",
+    "validate claims",
+    "publish Proof Card 002",
+    "reuse accepted answer in future procurement"
   ],
   "goals": [
-    "Create replayable institutional proof",
-    "Demonstrate AGIALPHA proof-settled coordination",
-    "Promote only proven artifacts",
-    "Strengthen the evidence graph"
+    "accelerate enterprise trust",
+    "reduce repeated procurement work",
+    "make trust auditable",
+    "turn buyer friction into reusable capability"
+  ],
+  "metrics": [
+    [
+      "buyer readiness",
+      "ad hoc answers",
+      "structured trust room"
+    ],
+    [
+      "evidence legibility",
+      "scattered files",
+      "docketed controls"
+    ],
+    [
+      "reuse",
+      "one-off response",
+      "reusable procurement artifact"
+    ]
+  ],
+  "agialpha": "AGIALPHA coordinates sponsor funding, builder claim, proof submission, reviewer validation, proof-card registration, credential issuance, and reputation for procurement proof work.",
+  "rsi": "Accepted procurement artifacts become future context only if the proof room survives evidence review and claim-boundary checks.",
+  "extra_contracts": [
+    "ProcurementTrustRoomRegistry",
+    "ClaimBoundaryRegistry"
   ],
   "contracts": [
     "AEPGoalOSCommitRegistry",
     "AEPRunCommitmentRegistry",
+    "ProcurementTrustRoomRegistry",
+    "ClaimBoundaryRegistry",
+    "AEPAgentRegistry",
+    "AEPArtifactRegistry",
     "JobRegistry",
     "JobClaimBondManager",
     "ProofSubmissionRegistry",
@@ -38,10 +76,35 @@
     "ReputationRegistry",
     "AEPEvidenceDocketRegistry",
     "AEPSelectionGate",
+    "AEPRolloutRouter",
+    "AEPRollbackRegistry",
     "AEPChronicleRegistry",
+    "AlphaWorkUnitLedger",
+    "AEPRewardVault",
+    "TreasuryRouter",
+    "CommercializationPerformanceVault",
+    "AEPBenchmarkRegistry",
+    "AEPExperimentRegistry",
+    "AEPAutoresearchPortfolioRegistry",
+    "AEPClaimBoundaryRegistry",
     "AEPConformanceRegistry",
-    "LaunchGateRegistry"
+    "AEPFalsificationRegistry",
+    "LaunchGateRegistry",
+    "AEPEvaluatorStakingRegistry",
+    "AEPCommitRevealValidationRegistry",
+    "AEPSlashingCourt",
+    "MandateEpochRegistry"
   ],
-  "rsi": "The accepted artifact may influence future work only after evidence, evaluator review, reviewer validation, scope control, challenge window, rollback readiness, Selection Gate approval, and Chronicle entry.",
-  "status": "illustrative_until_live_evidence_docket"
+  "evidence": [
+    "Claim matrix with public/private boundary",
+    "GoalOSCommit and RunCommitment",
+    "Task manifest and baseline",
+    "ProofBundle with artifact hashes",
+    "Evaluator report and cost ledger",
+    "Reviewer attestation",
+    "Red-team or challenge report where applicable",
+    "SelectionCertificate or rejection note",
+    "Rollback / non-propagation path",
+    "Chronicle entry and delayed-outcome update"
+  ]
 }

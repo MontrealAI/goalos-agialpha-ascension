@@ -1,34 +1,74 @@
 {
   "id": "003",
-  "slug": "sovereign-ai-procurement-control-tower",
   "title": "Sovereign AI Procurement Control Tower",
-  "phase": "Control Tower",
-  "problem": "Enterprise AI adoption stalls when buyers cannot see governance, review, rollback, evidence, and improvement history in one place.",
-  "mission": "Build a procurement control tower that connects proof cards, Evidence Dockets, reviewer decisions, rollout status, rollback paths, credentials, and reputation into one decision surface.",
-  "incremental": "Adds operating control: the buyer sees not just trust artifacts, but a governance route for decisions.",
-  "value": "Higher buyer confidence, clearer executive approval pathway, better risk control, and a stronger corporate sales motion.",
+  "domain": "AI procurement / governance",
+  "level": "control tower",
+  "short": "A complex AI vendor-evaluation process becomes a governed proof mission portfolio.",
+  "problem": "Serious buyers need to compare AI systems across security, governance, rollback, data handling, cost, and operational fit. Manual evaluation is slow and inconsistent.",
+  "mission": "Build a procurement control tower that decomposes AI-adoption questions into proof missions, routes them to specialist agents, validates evidence, and produces a public-safe decision dossier.",
+  "why": "This shifts GoalOS from a product into a decision infrastructure layer for AI adoption. It becomes the control plane for institutional AI procurement.",
+  "agents": [
+    "Aim Council",
+    "Procurement Strategist",
+    "Security Reviewer",
+    "Cost Analyst",
+    "Risk Analyst",
+    "Proof Engineer",
+    "Red Team",
+    "Selection Gate"
+  ],
   "skills": [
-    "Control-tower design",
-    "Governance routing",
-    "Evidence visualization",
-    "Risk escalation design",
-    "Executive decision support"
+    "AI vendor evaluation",
+    "control-plane design",
+    "risk scoring",
+    "cost ledgering",
+    "red-team review",
+    "decision-docket synthesis"
   ],
   "plans": [
-    "Sovereign AI Procurement Control Tower proof mission plan",
-    "Evidence Docket route",
-    "Reviewer and red-team plan",
-    "Selection Gate upgrade policy"
+    "define decision criteria",
+    "route proof missions",
+    "collect evidence",
+    "run evaluator checks",
+    "review and red-team claims",
+    "produce procurement decision dossier"
   ],
   "goals": [
-    "Create replayable institutional proof",
-    "Demonstrate AGIALPHA proof-settled coordination",
-    "Promote only proven artifacts",
-    "Strengthen the evidence graph"
+    "make AI procurement repeatable",
+    "reduce adoption risk",
+    "create a reusable decision framework",
+    "make proof the basis for procurement"
+  ],
+  "metrics": [
+    [
+      "decision quality",
+      "manual judgment",
+      "evidence-weighted decision"
+    ],
+    [
+      "repeatability",
+      "custom process",
+      "control tower template"
+    ],
+    [
+      "risk control",
+      "unchecked claims",
+      "reviewed claim boundary"
+    ]
+  ],
+  "agialpha": "AGIALPHA funds and coordinates the procurement proof mission portfolio, including builder, reviewer, red-team, proof-card, credential, and reputation actions.",
+  "rsi": "Procurement criteria and rubrics evolve only when validated decisions improve future evaluations without weakening risk controls.",
+  "extra_contracts": [
+    "ProcurementControlTowerRegistry",
+    "RiskLedgerRegistry"
   ],
   "contracts": [
     "AEPGoalOSCommitRegistry",
     "AEPRunCommitmentRegistry",
+    "ProcurementControlTowerRegistry",
+    "RiskLedgerRegistry",
+    "AEPAgentRegistry",
+    "AEPArtifactRegistry",
     "JobRegistry",
     "JobClaimBondManager",
     "ProofSubmissionRegistry",
@@ -38,10 +78,35 @@
     "ReputationRegistry",
     "AEPEvidenceDocketRegistry",
     "AEPSelectionGate",
-    "AEPChronicleRegistry",
     "AEPRolloutRouter",
-    "AEPRollbackRegistry"
+    "AEPRollbackRegistry",
+    "AEPChronicleRegistry",
+    "AlphaWorkUnitLedger",
+    "AEPRewardVault",
+    "TreasuryRouter",
+    "CommercializationPerformanceVault",
+    "AEPBenchmarkRegistry",
+    "AEPExperimentRegistry",
+    "AEPAutoresearchPortfolioRegistry",
+    "AEPClaimBoundaryRegistry",
+    "AEPConformanceRegistry",
+    "AEPFalsificationRegistry",
+    "LaunchGateRegistry",
+    "AEPEvaluatorStakingRegistry",
+    "AEPCommitRevealValidationRegistry",
+    "AEPSlashingCourt",
+    "MandateEpochRegistry"
   ],
-  "rsi": "The accepted artifact may influence future work only after evidence, evaluator review, reviewer validation, scope control, challenge window, rollback readiness, Selection Gate approval, and Chronicle entry.",
-  "status": "illustrative_until_live_evidence_docket"
+  "evidence": [
+    "Claim matrix with public/private boundary",
+    "GoalOSCommit and RunCommitment",
+    "Task manifest and baseline",
+    "ProofBundle with artifact hashes",
+    "Evaluator report and cost ledger",
+    "Reviewer attestation",
+    "Red-team or challenge report where applicable",
+    "SelectionCertificate or rejection note",
+    "Rollback / non-propagation path",
+    "Chronicle entry and delayed-outcome update"
+  ]
 }

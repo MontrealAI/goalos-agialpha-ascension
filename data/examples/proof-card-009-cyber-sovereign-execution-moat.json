@@ -1,35 +1,88 @@
 {
   "id": "009",
-  "slug": "cyber-sovereign-execution-moat",
   "title": "Cyber-Sovereign Execution Moat",
-  "phase": "Defensive Execution Moat",
-  "problem": "Cyber risk is a high-value sovereign corporate domain where unverified automation is dangerous. The system needs authorized scope, defensive boundaries, evidence, regression harnesses, red-team review, and rollback readiness.",
-  "mission": "Turn authorized cyber weakness remediation into proof-settled work: map assets, triage risk, build remediation candidates, run security regression harnesses, validate through reviewers and red teams, and promote only safe remediations.",
-  "incremental": "Moves the foundry into a high-value cyber-sovereign execution domain.",
-  "value": "Creates a defensible execution moat around trusted remediation, secure deployment velocity, supply-chain evidence, and reusable defensive capability.",
+  "domain": "defensive cybersecurity",
+  "level": "hard execution moat",
+  "short": "Authorized cyber risk becomes proof-backed defensive capability.",
+  "problem": "Cyber work is expensive, high-stakes, and difficult to trust. A claim that a weakness was fixed is not enough. Serious buyers need proof, regression tests, red-team challenge, rollback, and long-term memory.",
+  "mission": "Turn an authorized defensive weakness into a proof mission: map asset graph, generate remediation candidate, run security regression harness, package ProofBundle, validate with reviewers and red team, then select safe improvements.",
+  "why": "This card makes the execution moat concrete. Defensive cyber work can produce replayable evidence, reusable remediation patterns, and trust signals that are commercially valuable.",
+  "agents": [
+    "Cyber Aim Council",
+    "Asset Graph Cartographers",
+    "Threat Intelligence Scouts",
+    "Exploitability Analysts",
+    "Remediation Builders",
+    "Evaluator Operators",
+    "Proof Engineers",
+    "Reviewer Council",
+    "Red-Team Court",
+    "Rollback Desk"
+  ],
   "skills": [
-    "Cyber asset mapping",
-    "Defensive remediation",
-    "Security regression testing",
+    "asset graphing",
     "SBOM/VEX evidence",
-    "Incident rollback planning",
-    "Red-team validation"
+    "defensive remediation",
+    "security regression testing",
+    "red-team challenge design",
+    "incident rollback planning",
+    "cyber evidence packaging"
   ],
   "plans": [
-    "Cyber-Sovereign Execution Moat proof mission plan",
-    "Evidence Docket route",
-    "Reviewer and red-team plan",
-    "Selection Gate upgrade policy"
+    "authorize scope",
+    "map affected assets",
+    "build remediation candidate",
+    "run regression harness",
+    "red-team challenge",
+    "review evidence",
+    "select and chronicle"
   ],
   "goals": [
-    "Create replayable institutional proof",
-    "Demonstrate AGIALPHA proof-settled coordination",
-    "Promote only proven artifacts",
-    "Strengthen the evidence graph"
+    "make cyber remediation auditable",
+    "compound defensive capability",
+    "reduce recurrence risk",
+    "create a cyber-sovereign proof moat"
+  ],
+  "metrics": [
+    [
+      "trust",
+      "patch claim",
+      "reviewed remediation docket"
+    ],
+    [
+      "safety",
+      "manual test",
+      "security regression harness"
+    ],
+    [
+      "memory",
+      "forgotten incident",
+      "Chronicle pattern"
+    ]
+  ],
+  "agialpha": "AGIALPHA coordinates defensive proof missions, builder claims, reviewer/red-team bonds, proof submission, credentials, reputation, and settlement.",
+  "rsi": "Cyber RSI means only proven remediations, harnesses, and rollback playbooks can shape future defensive operations.",
+  "extra_contracts": [
+    "CyberAssetGraphRegistry",
+    "SBOMEvidenceRegistry",
+    "VEXAttestationRegistry",
+    "RemediationPatchRegistry",
+    "SecurityRegressionHarnessRegistry",
+    "RedTeamChallengeRegistry",
+    "IncidentRollbackRegistry"
   ],
   "contracts": [
     "AEPGoalOSCommitRegistry",
     "AEPRunCommitmentRegistry",
+    "CyberAssetGraphRegistry",
+    "SBOMEvidenceRegistry",
+    "VEXAttestationRegistry",
+    "RemediationPatchRegistry",
+    "SecurityRegressionHarnessRegistry",
+    "RedTeamChallengeRegistry",
+    "IncidentRollbackRegistry",
+    "AEPAgentRegistry",
+    "AEPArtifactRegistry",
     "JobRegistry",
     "JobClaimBondManager",
     "ProofSubmissionRegistry",
@@ -39,15 +92,35 @@
     "ReputationRegistry",
     "AEPEvidenceDocketRegistry",
     "AEPSelectionGate",
+    "AEPRolloutRouter",
+    "AEPRollbackRegistry",
     "AEPChronicleRegistry",
-    "CyberAssetGraphRegistry",
-    "SBOMEvidenceRegistry",
-    "VEXAttestationRegistry",
-    "RemediationPatchRegistry",
-    "SecurityRegressionHarnessRegistry",
-    "RedTeamChallengeRegistry",
-    "IncidentRollbackRegistry"
+    "AlphaWorkUnitLedger",
+    "AEPRewardVault",
+    "TreasuryRouter",
+    "CommercializationPerformanceVault",
+    "AEPBenchmarkRegistry",
+    "AEPExperimentRegistry",
+    "AEPAutoresearchPortfolioRegistry",
+    "AEPClaimBoundaryRegistry",
+    "AEPConformanceRegistry",
+    "AEPFalsificationRegistry",
+    "LaunchGateRegistry",
+    "AEPEvaluatorStakingRegistry",
+    "AEPCommitRevealValidationRegistry",
+    "AEPSlashingCourt",
+    "MandateEpochRegistry"
   ],
-  "rsi": "The accepted artifact may influence future work only after evidence, evaluator review, reviewer validation, scope control, challenge window, rollback readiness, Selection Gate approval, and Chronicle entry.",
-  "status": "illustrative_until_live_evidence_docket"
+  "evidence": [
+    "Claim matrix with public/private boundary",
+    "GoalOSCommit and RunCommitment",
+    "Task manifest and baseline",
+    "ProofBundle with artifact hashes",
+    "Evaluator report and cost ledger",
+    "Reviewer attestation",
+    "Red-team or challenge report where applicable",
+    "SelectionCertificate or rejection note",
+    "Rollback / non-propagation path",
+    "Chronicle entry and delayed-outcome update"
+  ]
 }

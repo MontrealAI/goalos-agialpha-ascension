@@ -1,35 +1,78 @@
 {
   "id": "007",
-  "slug": "sovereign-enterprise-autoresearch-reactor",
   "title": "Sovereign Enterprise Autoresearch Reactor",
-  "phase": "Autoresearch Layer",
-  "problem": "Automated discovery is useful only when the system can generate hypotheses, test them, validate them, reject failures, combine branches, and remember what worked.",
-  "mission": "Run parallel enterprise improvement threads: Domain Scouts identify opportunities, Hypothesis Engineers propose interventions, Builder Cells execute, Evaluator Operators test, Reviewers validate, Red Teams falsify, and the Selection Gate promotes only proven improvements.",
-  "incremental": "Adds autonomous discovery and experimental search to the enterprise operating system.",
-  "value": "Creates a repeatable machinery for finding improvements across corporate workflows, risk controls, security, procurement, compute, finance, and operations.",
+  "domain": "autoresearch / enterprise improvement",
+  "level": "parallel experiment engine",
+  "short": "Parallel enterprise improvement threads become proof-gated, reviewable, and reusable.",
+  "problem": "Automated improvement loops are powerful but fragile if they lack governance, replay, review, settlement, and rollback. Enterprise autoresearch requires an institution, not only an experiment loop.",
+  "mission": "Run multiple enterprise improvement hypotheses in parallel, require evaluator harnesses and ProofBundles, route results through reviewer and red-team validation, and promote only selected artifacts.",
+  "why": "This card turns autoresearch into an enterprise reactor: discovery becomes valuable only when it is proven, reproducible, settleable, and safe to reuse.",
+  "agents": [
+    "Portfolio Strategists",
+    "Domain Scouts",
+    "Hypothesis Engineers",
+    "Builder Cells",
+    "Evaluator Operators",
+    "Proof Engineers",
+    "Reviewer Council",
+    "Red-Team Court",
+    "Treasury Desk",
+    "Chronicle Office"
+  ],
   "skills": [
-    "Hypothesis generation",
-    "Experiment design",
-    "Evaluator harnessing",
-    "Parallel branch management",
-    "Reward-hack detection",
-    "Red-team challenge design"
+    "hypothesis generation",
+    "parallel mission routing",
+    "evaluator-harness design",
+    "branch comparison",
+    "reward-hack screening",
+    "falsification testing",
+    "chronicle synthesis"
   ],
   "plans": [
-    "Sovereign Enterprise Autoresearch Reactor proof mission plan",
-    "Evidence Docket route",
-    "Reviewer and red-team plan",
-    "Selection Gate upgrade policy"
+    "define opportunity portfolio",
+    "spawn hypothesis missions",
+    "run parallel experiments",
+    "compare candidates",
+    "red-team results",
+    "select validated artifacts",
+    "chronicle lessons"
   ],
   "goals": [
-    "Create replayable institutional proof",
-    "Demonstrate AGIALPHA proof-settled coordination",
-    "Promote only proven artifacts",
-    "Strengthen the evidence graph"
+    "turn autoresearch into institutional capability",
+    "make experiments replayable",
+    "separate true progress from noise",
+    "compound selected improvements"
+  ],
+  "metrics": [
+    [
+      "throughput",
+      "single-thread research",
+      "parallel proof missions"
+    ],
+    [
+      "validity",
+      "unreviewed result",
+      "reviewed ProofBundle"
+    ],
+    [
+      "reuse",
+      "temporary experiment",
+      "selected upgrade artifact"
+    ]
+  ],
+  "agialpha": "AGIALPHA coordinates budgets, claim bonds, proof bonds, reviewer/red-team bonds, evaluator incentives, reward-vault settlement, and reputation-weighted routing.",
+  "rsi": "Autoresearch becomes RSI only when selected discoveries change future research context under scope limits, monitoring, and rollback.",
+  "extra_contracts": [
+    "AEPAutoresearchPortfolioRegistry",
+    "AEPExperimentRegistry"
   ],
   "contracts": [
     "AEPGoalOSCommitRegistry",
     "AEPRunCommitmentRegistry",
+    "AEPAutoresearchPortfolioRegistry",
+    "AEPExperimentRegistry",
+    "AEPAgentRegistry",
+    "AEPArtifactRegistry",
     "JobRegistry",
     "JobClaimBondManager",
     "ProofSubmissionRegistry",
@@ -39,15 +82,33 @@
     "ReputationRegistry",
     "AEPEvidenceDocketRegistry",
     "AEPSelectionGate",
+    "AEPRolloutRouter",
+    "AEPRollbackRegistry",
     "AEPChronicleRegistry",
-    "AEPExperimentRegistry",
+    "AlphaWorkUnitLedger",
+    "AEPRewardVault",
+    "TreasuryRouter",
+    "CommercializationPerformanceVault",
     "AEPBenchmarkRegistry",
-    "AEPAutoresearchPortfolioRegistry",
+    "AEPClaimBoundaryRegistry",
+    "AEPConformanceRegistry",
+    "AEPFalsificationRegistry",
+    "LaunchGateRegistry",
     "AEPEvaluatorStakingRegistry",
     "AEPCommitRevealValidationRegistry",
     "AEPSlashingCourt",
-    "AEPFalsificationRegistry"
+    "MandateEpochRegistry"
   ],
-  "rsi": "The accepted artifact may influence future work only after evidence, evaluator review, reviewer validation, scope control, challenge window, rollback readiness, Selection Gate approval, and Chronicle entry.",
-  "status": "illustrative_until_live_evidence_docket"
+  "evidence": [
+    "Claim matrix with public/private boundary",
+    "GoalOSCommit and RunCommitment",
+    "Task manifest and baseline",
+    "ProofBundle with artifact hashes",
+    "Evaluator report and cost ledger",
+    "Reviewer attestation",
+    "Red-team or challenge report where applicable",
+    "SelectionCertificate or rejection note",
+    "Rollback / non-propagation path",
+    "Chronicle entry and delayed-outcome update"
+  ]
 }

@@ -1,35 +1,78 @@
 {
   "id": "006",
-  "slug": "sovereign-enterprise-rsi-operating-system",
   "title": "Sovereign Enterprise RSI Operating System",
-  "phase": "Enterprise Operating Layer",
-  "problem": "A sovereign enterprise needs more than isolated tools. It needs a multi-agent operating system with aim, strategy, execution, proof, risk control, settlement, rollback, and memory.",
-  "mission": "Coordinate specialist agent roles\u2014Aim Council, Strategy Desk, Builders, Proof Engineers, Reviewers, Red Team, Treasury, Rollback Desk, and Evidence Office\u2014through proof-backed workflows and AGIALPHA settlement.",
-  "incremental": "Turns the proof flywheel into an enterprise operating system.",
-  "value": "Creates the institutional form needed for scalable, accountable, multi-agent enterprise execution.",
+  "domain": "enterprise operations",
+  "level": "operating system",
+  "short": "A large specialist-agent institution coordinates enterprise work through evidence and upgrade rights.",
+  "problem": "Enterprises do not need a loose swarm. They need a controlled operating system: aims, roles, accountability, evidence, rollback, settlement, and reusable capability.",
+  "mission": "Define a sovereign enterprise RSI operating system where specialist agents coordinate through GoalOS commits, AGIALPHA proof missions, Evidence Dockets, Selection Gates, and Chronicle memory.",
+  "why": "This card shows the organizational anatomy required for AI work to become enterprise-grade: no vague autonomy, only bounded authority and audit trails.",
+  "agents": [
+    "Aim Council",
+    "Strategy Desk",
+    "Domain Operators",
+    "Builders",
+    "Proof Engineers",
+    "Reviewers",
+    "Red Team",
+    "Treasury Desk",
+    "Rollback Desk",
+    "Evidence Office"
+  ],
   "skills": [
-    "Enterprise operating model design",
-    "Multi-agent routing",
-    "Proof engineering",
-    "Risk governance",
-    "Rollback planning",
-    "Institutional memory"
+    "enterprise operating model design",
+    "role governance",
+    "proof mission routing",
+    "workflow construction",
+    "risk review",
+    "rollback planning",
+    "audit-ready documentation"
   ],
   "plans": [
-    "Sovereign Enterprise RSI Operating System proof mission plan",
-    "Evidence Docket route",
-    "Reviewer and red-team plan",
-    "Selection Gate upgrade policy"
+    "define enterprise aim",
+    "assign specialist roles",
+    "route proof missions",
+    "build artifacts",
+    "validate and red-team",
+    "select and deploy",
+    "chronicle outcomes"
   ],
   "goals": [
-    "Create replayable institutional proof",
-    "Demonstrate AGIALPHA proof-settled coordination",
-    "Promote only proven artifacts",
-    "Strengthen the evidence graph"
+    "coordinate enterprise-scale AI work",
+    "make specialist agents accountable",
+    "preserve evidence",
+    "enable controlled RSI"
+  ],
+  "metrics": [
+    [
+      "coordination",
+      "human bottleneck",
+      "specialist-agent institution"
+    ],
+    [
+      "governance",
+      "opaque autonomy",
+      "bounded roles"
+    ],
+    [
+      "resilience",
+      "manual recovery",
+      "rollback path"
+    ]
+  ],
+  "agialpha": "AGIALPHA coordinates enterprise proof missions, role-linked bonds, settlement, credentialing, reputation, and treasury routing.",
+  "rsi": "Enterprise RSI works only when accepted artifacts earn scoped upgrade rights and can be rolled back if evidence later fails.",
+  "extra_contracts": [
+    "EnterpriseRoleRegistry",
+    "RollbackRegistry"
   ],
   "contracts": [
     "AEPGoalOSCommitRegistry",
     "AEPRunCommitmentRegistry",
+    "EnterpriseRoleRegistry",
+    "RollbackRegistry",
+    "AEPAgentRegistry",
+    "AEPArtifactRegistry",
     "JobRegistry",
     "JobClaimBondManager",
     "ProofSubmissionRegistry",
@@ -39,10 +82,35 @@
     "ReputationRegistry",
     "AEPEvidenceDocketRegistry",
     "AEPSelectionGate",
+    "AEPRolloutRouter",
+    "AEPRollbackRegistry",
     "AEPChronicleRegistry",
-    "AEPAgentRegistry",
-    "AEPRollbackRegistry"
+    "AlphaWorkUnitLedger",
+    "AEPRewardVault",
+    "TreasuryRouter",
+    "CommercializationPerformanceVault",
+    "AEPBenchmarkRegistry",
+    "AEPExperimentRegistry",
+    "AEPAutoresearchPortfolioRegistry",
+    "AEPClaimBoundaryRegistry",
+    "AEPConformanceRegistry",
+    "AEPFalsificationRegistry",
+    "LaunchGateRegistry",
+    "AEPEvaluatorStakingRegistry",
+    "AEPCommitRevealValidationRegistry",
+    "AEPSlashingCourt",
+    "MandateEpochRegistry"
   ],
-  "rsi": "The accepted artifact may influence future work only after evidence, evaluator review, reviewer validation, scope control, challenge window, rollback readiness, Selection Gate approval, and Chronicle entry.",
-  "status": "illustrative_until_live_evidence_docket"
+  "evidence": [
+    "Claim matrix with public/private boundary",
+    "GoalOSCommit and RunCommitment",
+    "Task manifest and baseline",
+    "ProofBundle with artifact hashes",
+    "Evaluator report and cost ledger",
+    "Reviewer attestation",
+    "Red-team or challenge report where applicable",
+    "SelectionCertificate or rejection note",
+    "Rollback / non-propagation path",
+    "Chronicle entry and delayed-outcome update"
+  ]
 }

@@ -1,34 +1,73 @@
 {
   "id": "004",
-  "slug": "persistent-goal-seeking-intelligence-accumulation-engine",
   "title": "Persistent Goal-Seeking Intelligence Accumulation Engine",
-  "phase": "Persistent Memory",
-  "problem": "One-off AI tasks do not compound. They answer, then disappear. A persistent system must accumulate capabilities, evidence, and value over time.",
-  "mission": "Define the accumulation layer: every accepted workflow improvement becomes an artifact; every artifact receives evidence; every evidence-backed artifact can earn credentials, reputation, and future routing rights.",
-  "incremental": "Moves from individual proof cards to compounding institutional memory.",
-  "value": "Capabilities stop being ephemeral and become reusable operating assets that improve future missions.",
+  "domain": "persistent memory / goal seeking",
+  "level": "compounding intelligence substrate",
+  "short": "The system accumulates capabilities, evidence, and economic value over time.",
+  "problem": "Most AI work is episodic. It answers, acts, and disappears. A persistent intelligence system must remember what worked, under which constraints, and how it should influence future work.",
+  "mission": "Demonstrate an experimental framework where GoalOS sets persistent aims, AGIALPHA coordinates proof work, Evidence Dockets preserve results, and selected artifacts accumulate into future operating context.",
+  "why": "This is the transition from task automation to institutional intelligence. It defines how a system can compound capability rather than merely produce outputs.",
+  "agents": [
+    "GoalOS Aim Council",
+    "Memory Curator",
+    "Artifact Librarian",
+    "Proof Engineer",
+    "Reviewer",
+    "Selection Gate",
+    "Chronicle Office"
+  ],
   "skills": [
-    "Capability inventory",
-    "Artifact versioning",
-    "Evidence tracking",
-    "Reputation design",
-    "Chronicle memory design"
+    "persistent goal management",
+    "artifact archival",
+    "evidence graph construction",
+    "selection policy",
+    "reputation tracking",
+    "context governance"
   ],
   "plans": [
-    "Persistent Goal-Seeking Intelligence Accumulation Engine proof mission plan",
-    "Evidence Docket route",
-    "Reviewer and red-team plan",
-    "Selection Gate upgrade policy"
+    "define durable aim",
+    "run proof mission",
+    "package ProofBundle",
+    "review result",
+    "record Chronicle entry",
+    "reuse selected artifact in next mission"
   ],
   "goals": [
-    "Create replayable institutional proof",
-    "Demonstrate AGIALPHA proof-settled coordination",
-    "Promote only proven artifacts",
-    "Strengthen the evidence graph"
+    "accumulate capability",
+    "preserve institutional memory",
+    "make evidence reusable",
+    "prevent unproven context propagation"
+  ],
+  "metrics": [
+    [
+      "persistence",
+      "forgotten work",
+      "Chronicle memory"
+    ],
+    [
+      "capability",
+      "isolated output",
+      "selected reusable artifact"
+    ],
+    [
+      "evidence",
+      "claim only",
+      "Evidence Docket"
+    ]
+  ],
+  "agialpha": "AGIALPHA coordinates recurring proof work, settlement, credentialing, and reputation across a persistent mission history.",
+  "rsi": "Recursive self-improvement becomes a controlled memory mechanism: selected artifacts may influence the next run; rejected artifacts cannot.",
+  "extra_contracts": [
+    "PersistentAimRegistry",
+    "CapabilityMemoryRegistry"
   ],
   "contracts": [
     "AEPGoalOSCommitRegistry",
     "AEPRunCommitmentRegistry",
+    "PersistentAimRegistry",
+    "CapabilityMemoryRegistry",
+    "AEPAgentRegistry",
+    "AEPArtifactRegistry",
     "JobRegistry",
     "JobClaimBondManager",
     "ProofSubmissionRegistry",
@@ -38,10 +77,35 @@
     "ReputationRegistry",
     "AEPEvidenceDocketRegistry",
     "AEPSelectionGate",
+    "AEPRolloutRouter",
+    "AEPRollbackRegistry",
     "AEPChronicleRegistry",
-    "AEPArtifactRegistry",
-    "AlphaWorkUnitLedger"
+    "AlphaWorkUnitLedger",
+    "AEPRewardVault",
+    "TreasuryRouter",
+    "CommercializationPerformanceVault",
+    "AEPBenchmarkRegistry",
+    "AEPExperimentRegistry",
+    "AEPAutoresearchPortfolioRegistry",
+    "AEPClaimBoundaryRegistry",
+    "AEPConformanceRegistry",
+    "AEPFalsificationRegistry",
+    "LaunchGateRegistry",
+    "AEPEvaluatorStakingRegistry",
+    "AEPCommitRevealValidationRegistry",
+    "AEPSlashingCourt",
+    "MandateEpochRegistry"
   ],
-  "rsi": "The accepted artifact may influence future work only after evidence, evaluator review, reviewer validation, scope control, challenge window, rollback readiness, Selection Gate approval, and Chronicle entry.",
-  "status": "illustrative_until_live_evidence_docket"
+  "evidence": [
+    "Claim matrix with public/private boundary",
+    "GoalOSCommit and RunCommitment",
+    "Task manifest and baseline",
+    "ProofBundle with artifact hashes",
+    "Evaluator report and cost ledger",
+    "Reviewer attestation",
+    "Red-team or challenge report where applicable",
+    "SelectionCertificate or rejection note",
+    "Rollback / non-propagation path",
+    "Chronicle entry and delayed-outcome update"
+  ]
 }
