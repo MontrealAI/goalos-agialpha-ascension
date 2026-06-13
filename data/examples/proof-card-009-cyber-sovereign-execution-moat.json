@@ -1,0 +1,167 @@
+{
+  "title": "Cyber-Sovereign Execution Moat",
+  "skills": [
+    [
+      "Cyber asset graph construction",
+      "Map assets, dependencies, owners, controls, SBOM/CBOM, and criticality."
+    ],
+    [
+      "Defensive vulnerability triage",
+      "Prioritize weaknesses by exploitability, blast radius, business impact, and remediation confidence."
+    ],
+    [
+      "Defensive remediation generation",
+      "Create bounded patches, policy changes, config changes, and compensating controls."
+    ],
+    [
+      "Security regression harness design",
+      "Validate remediation without breaking functionality or policy."
+    ],
+    [
+      "Evidence Docket engineering",
+      "Package claim, baseline, artifacts, tests, ledgers, reviewer attestations, rollback path, and replay path."
+    ],
+    [
+      "Reviewer and red-team validation",
+      "Stress-test the proof, hunt for reward hacks, validate negative controls, and record bounded challenges."
+    ],
+    [
+      "AGIALPHA proof-settlement routing",
+      "Coordinate budgets, bonds, proof submission, review, credentials, reputation, and settlement."
+    ],
+    [
+      "Sovereign RSI selection",
+      "Grant scoped upgrade rights only after evidence, validation, risk control, and rollback readiness."
+    ]
+  ],
+  "plans": [
+    [
+      "Cyber Mandate Epoch Plan",
+      "30/60/90-day portfolio across identity, supply chain, access, deployment gates, and rollback."
+    ],
+    [
+      "Execution Moat Evidence Plan",
+      "One controlled defensive cyber remediation loop with public-safe Evidence Docket."
+    ],
+    [
+      "Verifier Coverage Plan",
+      "Unit/security tests, static analysis, SBOM/VEX-style evidence, reviewer attestation, red-team challenge, delayed monitoring."
+    ],
+    [
+      "Capability Reinvestment Plan",
+      "Route verified value into stronger agents, better harnesses, deeper asset graphs, higher-value missions, and safer rollout paths."
+    ]
+  ],
+  "goals": [
+    [
+      "Reduce verified cyber risk",
+      "Prove that a remediation lowers risk under authorized tests and reviewer scrutiny."
+    ],
+    [
+      "Increase trusted deployment velocity",
+      "Accelerate security/procurement review without weakening controls."
+    ],
+    [
+      "Build a replayable evidence graph",
+      "Ensure accepted improvements leave proof future missions can reuse."
+    ],
+    [
+      "Compound corporate resilience",
+      "Convert security lessons into reusable capability across teams, suppliers, and workflows."
+    ],
+    [
+      "Advance the productive-capacity frontier",
+      "Reinvest verified work into stronger agents, tools, audits, compute, science infrastructure, and energy-relevant experimentation without claiming present superintelligence."
+    ]
+  ],
+  "agents": [
+    [
+      "Cyber Aim Council",
+      "scope, authority, risk appetite, claim boundary"
+    ],
+    [
+      "Asset Graph Cartographers",
+      "asset graph, SBOM/CBOM, dependency ownership"
+    ],
+    [
+      "Threat Intelligence Scouts",
+      "public-safe threat context and exposure mapping"
+    ],
+    [
+      "Exploitability Analysts",
+      "defensive triage and blast-radius estimate"
+    ],
+    [
+      "Remediation Builders",
+      "patches, config changes, compensating controls"
+    ],
+    [
+      "Evaluator Operators",
+      "tests, static analysis, regression harnesses"
+    ],
+    [
+      "Proof Engineers",
+      "ProofBundle, hashes, cost/risk ledger"
+    ],
+    [
+      "Reviewer Council",
+      "bonded EvalAttestation"
+    ],
+    [
+      "Red-Team Court",
+      "challenge results and reward-hack review"
+    ],
+    [
+      "Rollback Desk",
+      "recovery path and rollback receipt"
+    ],
+    [
+      "Treasury Desk",
+      "AGIALPHA settlement and reinvestment"
+    ],
+    [
+      "Chronicle Office",
+      "durable institutional memory"
+    ]
+  ],
+  "contracts": [
+    "AEPGoalOSCommitRegistry",
+    "AEPRunCommitmentRegistry",
+    "AEPAgentRegistry",
+    "AEPArtifactRegistry",
+    "JobRegistry",
+    "JobClaimBondManager",
+    "ProofSubmissionRegistry",
+    "ReviewerBondRegistry",
+    "ProofCardRegistry",
+    "ProofCredentialRegistry",
+    "ReputationRegistry",
+    "AEPEvidenceDocketRegistry",
+    "AEPSelectionGate",
+    "AEPRolloutRouter",
+    "AEPRollbackRegistry",
+    "AEPChronicleRegistry",
+    "AlphaWorkUnitLedger",
+    "AEPRewardVault",
+    "TreasuryRouter",
+    "CommercializationPerformanceVault",
+    "AEPBenchmarkRegistry",
+    "AEPExperimentRegistry",
+    "AEPAutoresearchPortfolioRegistry",
+    "AEPClaimBoundaryRegistry",
+    "AEPConformanceRegistry",
+    "AEPFalsificationRegistry",
+    "LaunchGateRegistry",
+    "AEPEvaluatorStakingRegistry",
+    "AEPCommitRevealValidationRegistry",
+    "AEPSlashingCourt",
+    "MandateEpochRegistry",
+    "CyberAssetGraphRegistry",
+    "SBOMEvidenceRegistry",
+    "VEXAttestationRegistry",
+    "RemediationPatchRegistry",
+    "SecurityRegressionHarnessRegistry",
+    "RedTeamChallengeRegistry",
+    "IncidentRollbackRegistry"
+  ]
+}

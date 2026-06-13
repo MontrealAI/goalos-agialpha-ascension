@@ -1,0 +1,227 @@
+{
+  "generated_at": "2026-06-13T17:49:15Z",
+  "agialpha_token": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
+  "proof_cards": [
+    {
+      "id": "001",
+      "title": "Buyer Rescue Workflow",
+      "one": "A buyer support issue becomes a proof-backed workflow improvement.",
+      "tag": "Customer trust"
+    },
+    {
+      "id": "002",
+      "title": "Sovereign Procurement Trust Room",
+      "one": "A buyer asks whether the system can be evaluated, governed, audited, and trusted.",
+      "tag": "Procurement trust"
+    },
+    {
+      "id": "003",
+      "title": "Sovereign AI Procurement Control Tower",
+      "one": "A serious buyer asks whether AI workflows can be governed, audited, rolled back, and improved safely.",
+      "tag": "Institutional control"
+    },
+    {
+      "id": "004",
+      "title": "Persistent Goal-Seeking Intelligence Accumulation Engine",
+      "one": "An experimental framework accumulates capabilities, evidence, and economic value over time.",
+      "tag": "Accumulation"
+    },
+    {
+      "id": "005",
+      "title": "Sovereign RSI Value-to-Capability Treasury",
+      "one": "Verified value can be governed and reinvested into future capability.",
+      "tag": "Economic compounding"
+    },
+    {
+      "id": "006",
+      "title": "Sovereign Enterprise RSI Operating System",
+      "one": "A proof-governed orchestration fabric coordinates goals, missions, proof, settlement, reinvestment, and reusable upgrade rights.",
+      "tag": "Enterprise RSI"
+    },
+    {
+      "id": "007",
+      "title": "Sovereign Enterprise Autoresearch Reactor",
+      "one": "A proof-governed autoresearch system runs many improvement threads and promotes only proven artifacts into future workflows.",
+      "tag": "Autoresearch"
+    },
+    {
+      "id": "008",
+      "title": "Sovereign Corporate Capability Foundry",
+      "one": "A portfolio-level foundry allocates AGIALPHA-coordinated proof missions across profitable sovereign corporate domains.",
+      "tag": "Capability foundry"
+    },
+    {
+      "id": "009",
+      "title": "Cyber-Sovereign Execution Moat",
+      "one": "A defensive cyber RSI institution turns security weaknesses into replayable Evidence Dockets, validated remediations, reusable controls, and compounding enterprise resilience.",
+      "tag": "Defensive cyber autonomy"
+    }
+  ],
+  "proof_card_009": {
+    "title": "Cyber-Sovereign Execution Moat",
+    "skills": [
+      [
+        "Cyber asset graph construction",
+        "Map assets, dependencies, owners, controls, SBOM/CBOM, and criticality."
+      ],
+      [
+        "Defensive vulnerability triage",
+        "Prioritize weaknesses by exploitability, blast radius, business impact, and remediation confidence."
+      ],
+      [
+        "Defensive remediation generation",
+        "Create bounded patches, policy changes, config changes, and compensating controls."
+      ],
+      [
+        "Security regression harness design",
+        "Validate remediation without breaking functionality or policy."
+      ],
+      [
+        "Evidence Docket engineering",
+        "Package claim, baseline, artifacts, tests, ledgers, reviewer attestations, rollback path, and replay path."
+      ],
+      [
+        "Reviewer and red-team validation",
+        "Stress-test the proof, hunt for reward hacks, validate negative controls, and record bounded challenges."
+      ],
+      [
+        "AGIALPHA proof-settlement routing",
+        "Coordinate budgets, bonds, proof submission, review, credentials, reputation, and settlement."
+      ],
+      [
+        "Sovereign RSI selection",
+        "Grant scoped upgrade rights only after evidence, validation, risk control, and rollback readiness."
+      ]
+    ],
+    "plans": [
+      [
+        "Cyber Mandate Epoch Plan",
+        "30/60/90-day portfolio across identity, supply chain, access, deployment gates, and rollback."
+      ],
+      [
+        "Execution Moat Evidence Plan",
+        "One controlled defensive cyber remediation loop with public-safe Evidence Docket."
+      ],
+      [
+        "Verifier Coverage Plan",
+        "Unit/security tests, static analysis, SBOM/VEX-style evidence, reviewer attestation, red-team challenge, delayed monitoring."
+      ],
+      [
+        "Capability Reinvestment Plan",
+        "Route verified value into stronger agents, better harnesses, deeper asset graphs, higher-value missions, and safer rollout paths."
+      ]
+    ],
+    "goals": [
+      [
+        "Reduce verified cyber risk",
+        "Prove that a remediation lowers risk under authorized tests and reviewer scrutiny."
+      ],
+      [
+        "Increase trusted deployment velocity",
+        "Accelerate security/procurement review without weakening controls."
+      ],
+      [
+        "Build a replayable evidence graph",
+        "Ensure accepted improvements leave proof future missions can reuse."
+      ],
+      [
+        "Compound corporate resilience",
+        "Convert security lessons into reusable capability across teams, suppliers, and workflows."
+      ],
+      [
+        "Advance the productive-capacity frontier",
+        "Reinvest verified work into stronger agents, tools, audits, compute, science infrastructure, and energy-relevant experimentation without claiming present superintelligence."
+      ]
+    ],
+    "agents": [
+      [
+        "Cyber Aim Council",
+        "scope, authority, risk appetite, claim boundary"
+      ],
+      [
+        "Asset Graph Cartographers",
+        "asset graph, SBOM/CBOM, dependency ownership"
+      ],
+      [
+        "Threat Intelligence Scouts",
+        "public-safe threat context and exposure mapping"
+      ],
+      [
+        "Exploitability Analysts",
+        "defensive triage and blast-radius estimate"
+      ],
+      [
+        "Remediation Builders",
+        "patches, config changes, compensating controls"
+      ],
+      [
+        "Evaluator Operators",
+        "tests, static analysis, regression harnesses"
+      ],
+      [
+        "Proof Engineers",
+        "ProofBundle, hashes, cost/risk ledger"
+      ],
+      [
+        "Reviewer Council",
+        "bonded EvalAttestation"
+      ],
+      [
+        "Red-Team Court",
+        "challenge results and reward-hack review"
+      ],
+      [
+        "Rollback Desk",
+        "recovery path and rollback receipt"
+      ],
+      [
+        "Treasury Desk",
+        "AGIALPHA settlement and reinvestment"
+      ],
+      [
+        "Chronicle Office",
+        "durable institutional memory"
+      ]
+    ],
+    "contracts": [
+      "AEPGoalOSCommitRegistry",
+      "AEPRunCommitmentRegistry",
+      "AEPAgentRegistry",
+      "AEPArtifactRegistry",
+      "JobRegistry",
+      "JobClaimBondManager",
+      "ProofSubmissionRegistry",
+      "ReviewerBondRegistry",
+      "ProofCardRegistry",
+      "ProofCredentialRegistry",
+      "ReputationRegistry",
+      "AEPEvidenceDocketRegistry",
+      "AEPSelectionGate",
+      "AEPRolloutRouter",
+      "AEPRollbackRegistry",
+      "AEPChronicleRegistry",
+      "AlphaWorkUnitLedger",
+      "AEPRewardVault",
+      "TreasuryRouter",
+      "CommercializationPerformanceVault",
+      "AEPBenchmarkRegistry",
+      "AEPExperimentRegistry",
+      "AEPAutoresearchPortfolioRegistry",
+      "AEPClaimBoundaryRegistry",
+      "AEPConformanceRegistry",
+      "AEPFalsificationRegistry",
+      "LaunchGateRegistry",
+      "AEPEvaluatorStakingRegistry",
+      "AEPCommitRevealValidationRegistry",
+      "AEPSlashingCourt",
+      "MandateEpochRegistry",
+      "CyberAssetGraphRegistry",
+      "SBOMEvidenceRegistry",
+      "VEXAttestationRegistry",
+      "RemediationPatchRegistry",
+      "SecurityRegressionHarnessRegistry",
+      "RedTeamChallengeRegistry",
+      "IncidentRollbackRegistry"
+    ]
+  }
+}
