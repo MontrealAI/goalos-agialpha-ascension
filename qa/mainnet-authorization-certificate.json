@@ -1,13 +1,13 @@
 {
   "schemaVersion": "1.0",
-  "generatedAt": "2026-06-12T23:39:56.195768+00:00",
+  "generatedAt": "2026-06-13T00:07:01.290193+00:00",
   "generatedBy": "scripts/generate-mainnet-authorization-certificate.py",
   "repository": "MontrealAI/goalos-agialpha-ascension",
-  "commit": "e1e1a651f4df8a6bbc41c3f08112db92604b7700",
-  "sourceCommit": "e1e1a651f4df8a6bbc41c3f08112db92604b7700",
+  "commit": "f818003194e56fc0a3876d9de9b15d557cd9848e",
+  "sourceCommit": "f818003194e56fc0a3876d9de9b15d557cd9848e",
   "branch": "work",
   "sourceBranch": "work",
-  "currentHeadAtGeneration": "e1e1a651f4df8a6bbc41c3f08112db92604b7700",
+  "currentHeadAtGeneration": "f818003194e56fc0a3876d9de9b15d557cd9848e",
   "gitValidationMode": "GIT_CHECKOUT",
   "evidenceHashesFreshForCurrentCheckout": true,
   "sourceCommitIsAncestorOfCurrentHead": true,
@@ -152,5 +152,5 @@
   "blockers": [],
   "warnings": [],
   "nextAction": "Founder/deployer may run npm run deploy:ethereum-mainnet:gated with local runtime RPC/key after optional branch-protection hardening.",
-  "certificateHash": "0xe57107980ba5eca61a208e18a03d4132742861565070acad77dabad7fde64d43"
+  "certificateHash": "0x470157ba76a679bb55fb71041b362033338d826dd07b82d0d8dd0484b8a757d8"
 }

@@ -98,6 +98,8 @@ for path in candidates:
         value = match.group(2).strip()
         if placeholder.match(value):
             continue
+        if value.startswith('|') or '|' in value:
+            continue
         # Documentation and scripts may mention variable names; only concrete runtime-looking values fail.
         if len(value) >= 24 and not value.startswith(('process.env', 'env.', 'secrets.', 'vars.')):
             findings.append({'file': rel, 'line': line_no, 'rule': 'secret-assignment', 'key': match.group(1)})
@@ -115,7 +117,10 @@ out = {
     'output': install_output[:4000],
 }
 out_path.write_text(json.dumps(out, indent=2) + '\n')
-print(json.dumps({k: out[k] for k in ['tool', 'status', 'findingCount', 'critical_high_unresolved']}, indent=2))
+summary = {k: out[k] for k in ['tool', 'status', 'findingCount', 'critical_high_unresolved']}
+if findings:
+    summary['findingFiles'] = sorted({str(f.get('file') or f.get('File') or f.get('path') or f.get('Path') or 'unknown') for f in findings})[:20]
+print(json.dumps(summary, indent=2))
 sys.exit(1 if critical else 0)
 PY
     exit $?

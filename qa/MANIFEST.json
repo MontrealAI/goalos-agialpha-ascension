@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-12T23:40:23.369343+00:00",
+  "generated_at": "2026-06-13T00:07:27.882012+00:00",
   "files": [
     {
       "path": ".editorconfig",
@@ -5139,7 +5139,7 @@
     {
       "path": "docs/CURRENT_STATUS.md",
       "bytes": 1252,
-      "sha256": "dfbe23e436a1deb31fb4ef2188b4b78c4943dc03afcdda71f08b7763b5ada797"
+      "sha256": "09f6ebf1ad63dd2951e42d8e72fe5a9655dfd3b26b8948b7ae47d30efa1d8bd5"
     },
     {
       "path": "docs/DEPENDABOT_LABEL_FIX.md",
@@ -5179,7 +5179,7 @@
     {
       "path": "docs/ETHEREUM_MAINNET_AUTHORIZATION_DECISION.json",
       "bytes": 5150,
-      "sha256": "547022dc7b48d4fb6f63332a63b585cbf70478fc8858ccce4f721c9a610ed09b"
+      "sha256": "630c36d7562bb69c86f5c5be1c0fab424b7e7febb5d061567506d220f7409a99"
     },
     {
       "path": "docs/ETHEREUM_MAINNET_AUTHORIZATION_DECISION.md",
@@ -5424,7 +5424,7 @@
     {
       "path": "docs/MAINNET_DEPLOYMENT_AUTHORIZATION_DECISION.json",
       "bytes": 5079,
-      "sha256": "9c60c835d70f8dc4cb87896262561793d7d9c7fb2ad2d3c0a573e89a576eb101"
+      "sha256": "2fcc2b6799235bdc44ce179eb343ba7e63641530bf4d671764558977882ef89c"
     },
     {
       "path": "docs/MAINNET_DEPLOYMENT_AUTHORIZATION_DECISION.md",
@@ -5449,7 +5449,7 @@
     {
       "path": "docs/MAINNET_TECHNICAL_READINESS_DECISION.json",
       "bytes": 5071,
-      "sha256": "8d55597013426bb96d395d6841d626c64d1a1e593841feee5d93b846d3e8adf7"
+      "sha256": "99c35b2f58d9f980134a53a460197e8c4a52b31548e1b6ac9edae52436b1fef9"
     },
     {
       "path": "docs/MAINNET_TECHNICAL_READINESS_DECISION.md",
@@ -6159,12 +6159,12 @@
     {
       "path": "qa/V15_RELEASE_INTEGRITY_REPORT.json",
       "bytes": 16511,
-      "sha256": "088e52dc540337da06611b4437ea102845309432cfbc6910e0df7a02f7dd3aa0"
+      "sha256": "f6586653fbc797a67ea40622e1f3665dfb54e452c834eca207badf2873003c35"
     },
     {
       "path": "qa/V15_RELEASE_INTEGRITY_REPORT.md",
       "bytes": 1928,
-      "sha256": "cea5bf9ab5a02d7d5d5dfe89fbd65c3a7f4dc9082dd770b872c0aafca3d3ad8f"
+      "sha256": "41c3913f8e5bb4557cb5ee79cdb210ddeb6221271de29df5275962cc8d56c68f"
     },
     {
       "path": "qa/V4_4_0_PUBLIC_CERTIFICATE_AUTHORIZATION_COMMAND_OUTPUTS.json",
@@ -6209,7 +6209,7 @@
     {
       "path": "qa/mainnet-authorization-certificate.json",
       "bytes": 6590,
-      "sha256": "d1fd6634ab9be36885c02944b5064fe24177d8b8781b9dfefe6fb4a7836be16f"
+      "sha256": "ae3fc00bafed9b58ca9cce157354f3546285730a0344ed7aa47722548097ee76"
     },
     {
       "path": "qa/public-agialpha-token-code-evidence.json",
@@ -6403,8 +6403,8 @@
     },
     {
       "path": "scripts/audit/run-gitleaks.sh",
-      "bytes": 6489,
-      "sha256": "20f0660e04af8fa6cd6bf55a0b496477717a0a41370e4e424482bc7488d5d155"
+      "bytes": 6737,
+      "sha256": "d02431ff58a312693a4d25f1d8ab64362323d90cddf69388680c1d4dcf82586e"
     },
     {
       "path": "scripts/audit/run-halmos.sh",
