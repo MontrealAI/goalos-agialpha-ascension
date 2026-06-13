@@ -7,16 +7,17 @@ on:
     paths:
       - "README.md"
       - "docs/**"
-      - "docs/examples/**"
-      - "data/examples/**"
-      - "evidence/examples/**"
-      - "scripts/add_goalos_agialpha_main_site_proof_cards_v16.py"
-      - "scripts/verify_goalos_agialpha_main_site_proof_cards_v16.py"
       - "qa/**"
       - "audit/**"
       - "deployments/**"
       - "package.json"
       - ".github/workflows/autonomous-github-pages.yml"
+      - "scripts/integrate_goalos_agialpha_proof_cards_v17.py"
+      - "scripts/verify_goalos_agialpha_proof_cards_v17.py"
+      - "data/proof-cards/**"
+      - "docs/examples/proof-card-*.md"
+      - "data/examples/proof-card-*.json"
+      - "evidence/examples/proof-card-*-evidence-docket-template.json"
   workflow_dispatch:
 
 concurrency:
@@ -1624,6 +1625,16 @@ jobs:
           print(f"Evidence artifacts copied: {len(copied_evidence)}")
           PY
 
+      - name: Integrate Proof Cards 001-010 into canonical main website root
+        shell: bash
+        run: |
+          python3 scripts/integrate_goalos_agialpha_proof_cards_v17.py --site site
+
+      - name: Verify Proof Cards 001-010 on canonical main website root
+        shell: bash
+        run: |
+          python3 scripts/verify_goalos_agialpha_proof_cards_v17.py --site site --expected 10
+
       - name: Validate generated website artifact
         shell: bash
         run: |
@@ -1642,12 +1653,6 @@ jobs:
           fi
 
           echo "Generated website artifact validated."
-
-      - name: Add Proof Cards 001-010 to main website
-        run: python3 scripts/add_goalos_agialpha_main_site_proof_cards_v16.py --site site
-
-      - name: Verify Proof Cards 001-010 on main website
-        run: python3 scripts/verify_goalos_agialpha_main_site_proof_cards_v16.py --site site
 
       - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v4

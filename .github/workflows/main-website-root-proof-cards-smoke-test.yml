@@ -1,0 +1,38 @@
+name: Main Website Root Proof Cards Smoke Test
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+    paths:
+      - "scripts/integrate_goalos_agialpha_proof_cards_v17.py"
+      - "scripts/verify_goalos_agialpha_proof_cards_v17.py"
+      - "data/proof-cards/**"
+      - "docs/examples/proof-card-*.md"
+      - "data/examples/proof-card-*.json"
+      - "evidence/examples/**"
+      - ".github/workflows/main-website-root-proof-cards-smoke-test.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  smoke-test:
+    name: Verify Proof Cards 001-010 integration without deploying
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+      - name: Create local main-site fixture
+        run: |
+          mkdir -p site
+          if [ -f app/index.html ]; then cp app/index.html site/index.html; elif [ -f index.html ]; then cp index.html site/index.html; else printf '<!doctype html><html><head><title>GoalOS AGIALPHA Ascension</title></head><body><main><h1>GoalOS AGIALPHA Ascension</h1></main></body></html>' > site/index.html; fi
+      - name: Integrate proof cards
+        run: python3 scripts/integrate_goalos_agialpha_proof_cards_v17.py --site site
+      - name: Verify proof cards
+        run: python3 scripts/verify_goalos_agialpha_proof_cards_v17.py --site site --expected 10
+      - name: Upload smoke-test site artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: proof-card-root-smoke-test-site
+          path: site
