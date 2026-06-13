@@ -1,0 +1,33 @@
+name: Flagship Proof Card 003 Smoke Test
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "scripts/add_goalos_agialpha_flagship_proof_card_003_to_site.py"
+      - "scripts/build_existing_site_with_flagship_proof_card_003.py"
+      - "scripts/verify_goalos_agialpha_flagship_proof_card_003_site.py"
+      - "docs/examples/**"
+      - "data/examples/**"
+      - "evidence/examples/**"
+
+permissions:
+  contents: read
+
+jobs:
+  smoke-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+      - name: Build preview with flagship use case
+        run: python scripts/build_existing_site_with_flagship_proof_card_003.py
+      - name: Verify preview
+        run: python scripts/verify_goalos_agialpha_flagship_proof_card_003_site.py
+      - name: Upload preview artifact
+        uses: actions/upload-artifact@v5
+        with:
+          name: flagship-proof-card-003-site-preview
+          path: site

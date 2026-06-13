@@ -7,10 +7,6 @@ on:
     paths:
       - "README.md"
       - "docs/**"
-      - "data/**"
-      - "evidence/**"
-      - "scripts/add_goalos_agialpha_proof_card_002_to_site.py"
-      - "scripts/verify_goalos_agialpha_proof_card_002_site.py"
       - "qa/**"
       - "audit/**"
       - "deployments/**"
@@ -1623,6 +1619,12 @@ jobs:
           print(f"Evidence artifacts copied: {len(copied_evidence)}")
           PY
 
+      - name: Add flagship Proof Card 003 demand engine
+        shell: bash
+        run: |
+          python3 scripts/add_goalos_agialpha_flagship_proof_card_003_to_site.py
+          python3 scripts/verify_goalos_agialpha_flagship_proof_card_003_site.py
+
       - name: Validate generated website artifact
         shell: bash
         run: |
@@ -1641,16 +1643,6 @@ jobs:
           fi
 
           echo "Generated website artifact validated."
-
-      - name: Add Proof Card 002 elite use case pages
-        shell: bash
-        run: |
-          python3 scripts/add_goalos_agialpha_proof_card_002_to_site.py --site site
-
-      - name: Verify Proof Card 002 elite use case pages
-        shell: bash
-        run: |
-          python3 scripts/verify_goalos_agialpha_proof_card_002_site.py --site site
 
       - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v4
