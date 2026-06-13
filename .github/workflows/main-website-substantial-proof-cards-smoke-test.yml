@@ -1,0 +1,33 @@
+name: Main Website Substantial Proof Cards Smoke Test
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches: [ main ]
+    paths:
+      - "scripts/integrate_goalos_agialpha_substantial_proof_cards_v18.py"
+      - "scripts/verify_goalos_agialpha_substantial_proof_cards_v18.py"
+      - "data/proof-cards/**"
+      - "docs/examples/**"
+      - "data/examples/**"
+      - "evidence/examples/**"
+      - ".github/workflows/main-website-substantial-proof-cards-smoke-test.yml"
+
+jobs:
+  smoke-test:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+      - name: Build small local root for integration smoke test
+        run: |
+          mkdir -p site
+          cat > site/index.html <<'HTML'
+          <!doctype html><html><head><title>GoalOS AGIALPHA Ascension</title></head><body><main><h1>GoalOS AGIALPHA Ascension</h1><p>Main website root smoke-test shell.</p></main></body></html>
+          HTML
+      - name: Integrate substantial proof cards
+        run: python3 scripts/integrate_goalos_agialpha_substantial_proof_cards_v18.py --site site
+      - name: Verify substantial proof cards
+        run: python3 scripts/verify_goalos_agialpha_substantial_proof_cards_v18.py --site site
