@@ -1,6 +1,8 @@
 # Branch Protection Next Action
 
-Main branch protection/ruleset enforcement is public-risk accepted for v4.4.0 authorization. Before actual Ethereum Mainnet deployment, the repository owner should enable operational hardening:
+Main branch protection/ruleset status is **PUBLIC_RISK_ACCEPTED** for v4.4.0 authorization.
+
+Before actual Ethereum Mainnet deployment, the owner should enable:
 
 - PR required before merge.
 - Required status checks.
@@ -9,6 +11,4 @@ Main branch protection/ruleset enforcement is public-risk accepted for v4.4.0 au
 - Conversation resolution.
 - CODEOWNER review for sensitive paths.
 
-This is operational hardening. It does not mean CI can deploy Ethereum Mainnet, and it does not change the Ethereum Mainnet deployed status.
-
-Current public authorization remains certificate-backed manual, local, gated deployment authorization only. Ethereum Mainnet deployed remains **NO** until real chainId 1 transaction evidence exists.
+This is operational hardening. It does not mean CI can deploy mainnet and it does not change Ethereum Mainnet deployed status, which remains **NO** until real transaction evidence exists.

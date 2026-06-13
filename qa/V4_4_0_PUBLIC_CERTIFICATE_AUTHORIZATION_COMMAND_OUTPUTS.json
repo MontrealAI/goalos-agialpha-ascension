@@ -1,20 +1,14 @@
 {
-  "status": "PUBLIC_CERTIFICATE_AUTHORIZATION_READY",
-  "version": "4.4.0",
+  "schemaVersion": "1.0",
+  "version": "v4.4.0",
+  "status": "PUBLIC_CERTIFICATE_AUTHORIZATION_ACTIVE",
   "publicCertificateModelActive": true,
   "privateOperatorPackageOptional": true,
   "publicYesRequiresPrivateRpcKeyFounderSignatureOrAddressCeremony": false,
   "runtimeRpcKeyRequiredOnlyForActualBroadcast": true,
   "mainnetDeployed": "NO",
-  "commands": [
-    "npm run mainnet:certificate",
-    "npm run mainnet:certificate:validate",
-    "npm run docs:status",
-    "npm run assert:public-status",
-    "npm run qa:manifest",
-    "npm run qa:manifest:verify"
-  ],
-  "finalManualDeploymentCommand": "npm run deploy:ethereum-mainnet:gated",
+  "preflightWithoutRuntimeRpc": "PUBLIC_AUTHORIZATION_MODE_NO_RUNTIME_RPC",
+  "agialphaTokenVerificationEvidence": "qa/public-agialpha-token-verification.json",
   "containsSecrets": false,
   "containsPrivateAddresses": false,
   "redacted": true

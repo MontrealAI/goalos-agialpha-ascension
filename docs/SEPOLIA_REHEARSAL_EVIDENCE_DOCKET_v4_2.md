@@ -1,3 +1,5 @@
+> Historical/deprecated note: this document describes a prior pre-certificate authorization model. The active source of truth is `qa/mainnet-authorization-certificate.json`.
+
 # Sepolia Rehearsal Evidence Docket v4.2
 
 This docket is the required evidence package for moving from audit candidate to mainnet discussion.

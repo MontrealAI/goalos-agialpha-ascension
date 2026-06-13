@@ -1,3 +1,5 @@
+> Historical/deprecated note: this document describes a prior pre-certificate authorization model. The active source of truth is `qa/mainnet-authorization-certificate.json`.
+
 # Mainnet Blockers
 
 Mainnet is **NOT AUTHORIZED** unless all real gates are complete:

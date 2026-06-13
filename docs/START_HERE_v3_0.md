@@ -1,3 +1,5 @@
+> Historical/deprecated note: this document describes a prior pre-certificate authorization model. The active source of truth is `qa/mainnet-authorization-certificate.json`.
+
 # START HERE — GoalOS AGIALPHA Ascension v3.0
 
 This is the reference-grounded Ethereum implementation package.

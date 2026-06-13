@@ -1,3 +1,5 @@
+> Historical/deprecated note: this document describes a prior pre-certificate authorization model. The active source of truth is `qa/mainnet-authorization-certificate.json`.
+
 # Governance Role Ceremony v4.2
 
 Before mainnet, privileged roles must be reviewed and intentionally assigned.

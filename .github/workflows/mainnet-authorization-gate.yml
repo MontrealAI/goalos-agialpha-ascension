@@ -38,6 +38,7 @@ jobs:
       - run: npm run audit:fail-on-critical
       - run: npm run audit:clearance-report
       - run: npm run verify:agialpha-token:public || true
+      - run: npm run papers:verify
       - run: npm run mainnet:certificate
       - run: npm run mainnet:certificate:validate
       - run: npm run docs:status
@@ -59,3 +60,5 @@ jobs:
             docs/MAINNET_TECHNICAL_READINESS_DECISION.json
             docs/MAINNET_DEPLOYMENT_AUTHORIZATION_DECISION.json
             docs/ETHEREUM_MAINNET_AUTHORIZATION_DECISION.json
+            docs/papers/sovereign-rsi/v6.3/CHECKSUMS.sha256
+            docs/papers/sovereign-rsi/v6.3/PAPER_ASSET_MANIFEST.json

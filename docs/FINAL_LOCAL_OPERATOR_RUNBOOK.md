@@ -1,3 +1,5 @@
+> Historical/deprecated note: this document describes a prior pre-certificate authorization model. The active source of truth is `qa/mainnet-authorization-certificate.json`.
+
 # Final Local Operator Runbook
 
 This runbook is for the private operator. GitHub Actions must not execute the final deployment command.

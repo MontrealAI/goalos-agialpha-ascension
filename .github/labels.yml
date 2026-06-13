@@ -61,3 +61,7 @@
 - name: release
   color: C5DEF5
   description: Release readiness, notes, tags, and publication artifacts
+
+- name: paper-publication
+  color: C5DEF5
+  description: Sovereign RSI paper publication, manifest, and release assets

@@ -1,0 +1,43 @@
+npm ci	0	2026-06-13T01:47:25Z	2026-06-13T01:47:40Z
+npm run verify:compiler-alignment	0	2026-06-13T01:47:40Z	2026-06-13T01:47:44Z
+npm run repo:all	0	2026-06-13T01:47:44Z	2026-06-13T01:48:07Z
+npm run repo:no-private-operator-data	0	2026-06-13T01:48:07Z	2026-06-13T01:48:18Z
+npm run repo:no-paid-products	0	2026-06-13T01:48:18Z	2026-06-13T01:48:22Z
+npm run compile:ci	0	2026-06-13T01:48:22Z	2026-06-13T01:49:03Z
+npm run test:ci	0	2026-06-13T01:49:03Z	2026-06-13T01:49:48Z
+npm run test:all	0	2026-06-13T01:49:48Z	2026-06-13T01:50:33Z
+npm run static-check	0	2026-06-13T01:50:33Z	2026-06-13T01:50:40Z
+npm run readiness:v4.3	0	2026-06-13T01:50:40Z	2026-06-13T01:50:48Z
+npm run evidence:docket:template	0	2026-06-13T01:50:48Z	2026-06-13T01:50:51Z
+npm run rehearse:local	0	2026-06-13T01:50:51Z	2026-06-13T01:51:37Z
+npm run evidence:local	0	2026-06-13T01:51:37Z	2026-06-13T01:51:40Z
+npm run audit:slither	0	2026-06-13T01:51:40Z	2026-06-13T01:54:08Z
+npm run audit:semgrep	0	2026-06-13T01:54:08Z	2026-06-13T01:54:36Z
+npm run audit:solhint	0	2026-06-13T01:54:36Z	2026-06-13T01:54:54Z
+npm run audit:actions	0	2026-06-13T01:54:54Z	2026-06-13T01:55:37Z
+npm run audit:shell	0	2026-06-13T01:55:37Z	2026-06-13T01:55:40Z
+npm run audit:secrets	0	2026-06-13T01:55:40Z	2026-06-13T01:57:01Z
+npm run audit:npm	0	2026-06-13T01:57:01Z	2026-06-13T01:57:07Z
+npm run audit:osv || true	0	2026-06-13T01:57:07Z	2026-06-13T01:59:38Z
+npm run audit:foundry || true	0	2026-06-13T01:59:38Z	2026-06-13T01:59:40Z
+npm run audit:echidna || true	0	2026-06-13T01:59:40Z	2026-06-13T01:59:42Z
+npm run audit:medusa || true	0	2026-06-13T01:59:42Z	2026-06-13T01:59:45Z
+npm run audit:mythril || true	0	2026-06-13T01:59:45Z	2026-06-13T01:59:47Z
+npm run audit:halmos || true	0	2026-06-13T01:59:47Z	2026-06-13T01:59:50Z
+npm run audit:smt || true	0	2026-06-13T01:59:50Z	2026-06-13T01:59:52Z
+npm run audit:summarize	0	2026-06-13T01:59:52Z	2026-06-13T01:59:56Z
+npm run audit:fail-on-critical	1	2026-06-13T01:59:56Z	2026-06-13T01:59:59Z
+npm run audit:clearance-report	1	2026-06-13T01:59:59Z	2026-06-13T02:00:02Z
+npm run verify:agialpha-token:public || true	0	2026-06-13T02:00:02Z	2026-06-13T02:00:06Z
+npm run papers:verify	0	2026-06-13T02:00:06Z	2026-06-13T02:00:09Z
+npm run mainnet:certificate	0	2026-06-13T02:00:09Z	2026-06-13T02:00:13Z
+npm run mainnet:certificate:validate	0	2026-06-13T02:00:13Z	2026-06-13T02:00:16Z
+npm run docs:status	0	2026-06-13T02:00:16Z	2026-06-13T02:00:19Z
+npm run assert:public-status	0	2026-06-13T02:00:19Z	2026-06-13T02:00:22Z
+npm run mainnet:readiness-check	1	2026-06-13T02:00:22Z	2026-06-13T02:00:25Z
+npm run mainnet:deployment-authorization-check	1	2026-06-13T02:00:25Z	2026-06-13T02:00:28Z
+npm run mainnet:authorization-check	1	2026-06-13T02:00:28Z	2026-06-13T02:00:32Z
+npm run qa:manifest	0	2026-06-13T02:00:32Z	2026-06-13T02:00:38Z
+npm run qa:manifest:verify	1	2026-06-13T02:00:38Z	2026-06-13T02:00:44Z
+npm run mainnet:status	0	2026-06-13T02:00:44Z	2026-06-13T02:00:47Z
+npm run mainnet:next	0	2026-06-13T02:00:47Z	2026-06-13T02:00:51Z

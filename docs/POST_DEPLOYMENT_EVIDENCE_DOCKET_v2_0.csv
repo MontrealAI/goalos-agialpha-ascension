@@ -1,3 +1,5 @@
+> Historical/deprecated note: this document describes a prior pre-certificate authorization model. The active source of truth is `qa/mainnet-authorization-certificate.json`.
+
 evidence_item,status,location_or_hash
 Ethereum Sepolia deployment manifest,,
 AGIALPHA token verification output,,
