@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-13T20:07:43.178318+00:00",
+  "generated_at": "2026-06-13T20:19:43.148930+00:00",
   "files": [
     {
       "path": ".editorconfig",
@@ -78,8 +78,8 @@
     },
     {
       "path": ".github/workflows/autonomous-github-pages.yml",
-      "bytes": 63778,
-      "sha256": "2a4c6a6e7b5439ed700d0e123a2b3ce13412b8f4fd1952144e46560b4a3aecb0"
+      "bytes": 63806,
+      "sha256": "cda54fb3d6c29e5f2525b1d96c0201c5a2b08f1689e181271b54fcd3b94195e5"
     },
     {
       "path": ".github/workflows/dependabot-upgrade-triage.yml",
@@ -4642,6 +4642,21 @@
       "sha256": "a2e0d0601362438e6b3a6fa8872c010cd3e00fe07eb2130523707cce864ae9aa"
     },
     {
+      "path": "audit/reports/2026-06-13-201822/semgrep.json",
+      "bytes": 11726,
+      "sha256": "d5bd9e571d71a2ffc9ebbf4225111413c90d1d4ad0711c93c6c8c367bb55195f"
+    },
+    {
+      "path": "audit/reports/2026-06-13-201822/semgrep.txt",
+      "bytes": 4248,
+      "sha256": "69e85337121690545aa7017dd2e5593d463a44774ae71c4e1e0d43750dca51b5"
+    },
+    {
+      "path": "audit/reports/current-run.txt",
+      "bytes": 32,
+      "sha256": "74f685c0fcbcd173e76034f4594a9a6a5e9f8f5a7e2202836757764b521dce23"
+    },
+    {
       "path": "audit/reports/dependency-triage/README.md",
       "bytes": 126,
       "sha256": "3b92a642dcdb6b72b59242794263b968e7609e4164737d5175858eabfcaaaadf"
@@ -4719,7 +4734,7 @@
     {
       "path": "audit/reports/latest.txt",
       "bytes": 32,
-      "sha256": "34ae09daf0da05777f7dfde36fee02205df515de14edbba626f483fc4565ad9f"
+      "sha256": "74f685c0fcbcd173e76034f4594a9a6a5e9f8f5a7e2202836757764b521dce23"
     },
     {
       "path": "audit/reports/mainnet-toolchain-latest/actionlint.txt",
@@ -6619,7 +6634,7 @@
     {
       "path": "qa/QA_REPORT.json",
       "bytes": 921,
-      "sha256": "6901843289f329480a3a10e846aefaa481caabd8744da1b6da8c1942a5de1c05"
+      "sha256": "d737cfa71e58b5f1039a5f92c4b9660a7a1ff02fec324c0201a2c3d6c32989c4"
     },
     {
       "path": "qa/QA_REPORT_v4_0.json",
