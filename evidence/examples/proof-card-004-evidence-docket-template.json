@@ -1,0 +1,41 @@
+{
+  "evidence_docket_id": "goalos-agialpha-proof-card-004-docket-template",
+  "proof_card": "proof-card-004",
+  "status": "template_until_live_rehearsal",
+  "required_evidence": [
+    "GoalOSCommit hash",
+    "RunCommitment hash",
+    "mission id",
+    "builder claim transaction",
+    "proof submission hash",
+    "reviewer attestation",
+    "Proof Card URI/hash",
+    "credential id",
+    "reputation update",
+    "SelectionCertificate",
+    "Chronicle entry",
+    "rollback path"
+  ],
+  "private_evidence_boundary": [
+    "private prompts",
+    "buyer data",
+    "internal policy files",
+    "private workflow artifacts"
+  ],
+  "public_evidence_boundary": [
+    "public-safe proof note",
+    "hashes",
+    "card URI",
+    "credential id",
+    "review decision summary",
+    "claim boundary"
+  ],
+  "rsi_acceptance_gate": [
+    "evidence complete",
+    "eval passed",
+    "reviewer validation passed",
+    "scope approved",
+    "challenge window observed",
+    "rollback path documented"
+  ]
+}
