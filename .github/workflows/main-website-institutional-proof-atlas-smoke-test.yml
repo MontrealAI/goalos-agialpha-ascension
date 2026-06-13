@@ -1,0 +1,25 @@
+name: Main Website Institutional Proof Atlas Smoke Test
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+    paths:
+      - 'scripts/integrate_goalos_agialpha_proof_card_atlas_v19.py'
+      - 'scripts/verify_goalos_agialpha_proof_card_atlas_v19.py'
+      - 'data/proof-cards/proof-cards-v19.json'
+      - '.github/workflows/main-website-institutional-proof-atlas-smoke-test.yml'
+
+jobs:
+  smoke-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Build minimal site fixture
+        run: |
+          mkdir -p site
+          printf '<!doctype html><html><body><h1>GoalOS AGIALPHA Ascension</h1></body></html>' > site/index.html
+      - name: Integrate Proof Atlas
+        run: python3 scripts/integrate_goalos_agialpha_proof_card_atlas_v19.py --site site
+      - name: Verify Proof Atlas
+        run: python3 scripts/verify_goalos_agialpha_proof_card_atlas_v19.py --site site
