@@ -1,19 +1,21 @@
 {
-  "proof_card_id": "PC-001",
+  "proof_card_id": "001",
   "title": "Buyer Rescue Workflow",
-  "status": "template_until_live_evidence_docket_completed",
-  "agialpha_token": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
+  "status": "template_until_live_docket",
   "required_evidence": [
     "GoalOSCommit",
     "RunCommitment",
+    "task_manifest",
+    "baseline",
+    "candidate_artifact",
     "ProofBundle",
-    "Reviewer attestation",
-    "Proof Card hash",
-    "Credential record",
-    "Reputation update",
-    "Selection Gate decision",
-    "Rollback boundary",
-    "Chronicle entry"
-  ],
-  "claim_boundary": "Illustrative until completed with a live Evidence Docket."
+    "EvaluatorReport",
+    "ReviewerAttestation",
+    "CostLedger",
+    "SafetyLedger",
+    "RiskLedger",
+    "SelectionCertificate",
+    "RollbackPlan",
+    "ChronicleEntry"
+  ]
 }

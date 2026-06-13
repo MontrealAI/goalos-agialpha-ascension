@@ -1,0 +1,488 @@
+{
+  "version": "v17.0",
+  "generated_at": "2026-06-13T19:02:11Z",
+  "cards": [
+    {
+      "id": "001",
+      "slug": "buyer-rescue-workflow",
+      "title": "Buyer Rescue Workflow",
+      "phase": "Frontline Trust",
+      "problem": "A buyer cannot access a purchased file or needs help after checkout. A normal AI response may be polite but incomplete; it may miss access-state classification, refund boundaries, escalation logic, or a public-safe proof note.",
+      "mission": "Convert a recurring support scenario into a reusable GoalOS workflow: classify the issue, generate a safe response, flag human review when needed, preserve private buyer data off-chain, and produce a Proof Card showing what improved.",
+      "incremental": "Establishes the first proof surface: AI work becomes an auditable workflow improvement rather than a disposable answer.",
+      "value": "Faster support, clearer buyer experience, fewer repeated mistakes, and the first public demonstration that proof-backed workflow improvement can be understood by non-technical buyers.",
+      "skills": [
+        "Support triage",
+        "Policy-bound response writing",
+        "Private-data minimization",
+        "Proof-note drafting",
+        "Reviewer-ready evidence packaging"
+      ],
+      "plans": [
+        "Buyer Rescue Workflow proof mission plan",
+        "Evidence Docket route",
+        "Reviewer and red-team plan",
+        "Selection Gate upgrade policy"
+      ],
+      "goals": [
+        "Create replayable institutional proof",
+        "Demonstrate AGIALPHA proof-settled coordination",
+        "Promote only proven artifacts",
+        "Strengthen the evidence graph"
+      ],
+      "contracts": [
+        "AEPGoalOSCommitRegistry",
+        "AEPRunCommitmentRegistry",
+        "JobRegistry",
+        "JobClaimBondManager",
+        "ProofSubmissionRegistry",
+        "ReviewerBondRegistry",
+        "ProofCardRegistry",
+        "ProofCredentialRegistry",
+        "ReputationRegistry",
+        "AEPEvidenceDocketRegistry",
+        "AEPSelectionGate",
+        "AEPChronicleRegistry",
+        "AEPClaimBoundaryRegistry"
+      ],
+      "rsi": "The accepted artifact may influence future work only after evidence, evaluator review, reviewer validation, scope control, challenge window, rollback readiness, Selection Gate approval, and Chronicle entry."
+    },
+    {
+      "id": "002",
+      "slug": "sovereign-procurement-trust-room",
+      "title": "Sovereign Procurement Trust Room",
+      "phase": "Trust Architecture",
+      "problem": "A serious buyer asks whether the system can be evaluated, audited, and trusted. A generic sales page is not enough for procurement, compliance, or institutional review.",
+      "mission": "Turn procurement due diligence into a proof mission: assemble a trust room with public-safe evidence, claim boundaries, security posture, token-utility explanation, Proof Cards, reviewer notes, and an Evidence Docket checklist.",
+      "incremental": "Moves from buyer support to institutional trust: proof becomes useful in procurement conversations.",
+      "value": "Better procurement readiness, faster sponsor conversations, clearer risk posture, and reusable answers for future enterprise buyers.",
+      "skills": [
+        "Procurement response design",
+        "Trust-center evidence mapping",
+        "Compliance-oriented explanation",
+        "Claim-boundary editing",
+        "Evidence Docket assembly"
+      ],
+      "plans": [
+        "Sovereign Procurement Trust Room proof mission plan",
+        "Evidence Docket route",
+        "Reviewer and red-team plan",
+        "Selection Gate upgrade policy"
+      ],
+      "goals": [
+        "Create replayable institutional proof",
+        "Demonstrate AGIALPHA proof-settled coordination",
+        "Promote only proven artifacts",
+        "Strengthen the evidence graph"
+      ],
+      "contracts": [
+        "AEPGoalOSCommitRegistry",
+        "AEPRunCommitmentRegistry",
+        "JobRegistry",
+        "JobClaimBondManager",
+        "ProofSubmissionRegistry",
+        "ReviewerBondRegistry",
+        "ProofCardRegistry",
+        "ProofCredentialRegistry",
+        "ReputationRegistry",
+        "AEPEvidenceDocketRegistry",
+        "AEPSelectionGate",
+        "AEPChronicleRegistry",
+        "AEPConformanceRegistry",
+        "LaunchGateRegistry"
+      ],
+      "rsi": "The accepted artifact may influence future work only after evidence, evaluator review, reviewer validation, scope control, challenge window, rollback readiness, Selection Gate approval, and Chronicle entry."
+    },
+    {
+      "id": "003",
+      "slug": "sovereign-ai-procurement-control-tower",
+      "title": "Sovereign AI Procurement Control Tower",
+      "phase": "Control Tower",
+      "problem": "Enterprise AI adoption stalls when buyers cannot see governance, review, rollback, evidence, and improvement history in one place.",
+      "mission": "Build a procurement control tower that connects proof cards, Evidence Dockets, reviewer decisions, rollout status, rollback paths, credentials, and reputation into one decision surface.",
+      "incremental": "Adds operating control: the buyer sees not just trust artifacts, but a governance route for decisions.",
+      "value": "Higher buyer confidence, clearer executive approval pathway, better risk control, and a stronger corporate sales motion.",
+      "skills": [
+        "Control-tower design",
+        "Governance routing",
+        "Evidence visualization",
+        "Risk escalation design",
+        "Executive decision support"
+      ],
+      "plans": [
+        "Sovereign AI Procurement Control Tower proof mission plan",
+        "Evidence Docket route",
+        "Reviewer and red-team plan",
+        "Selection Gate upgrade policy"
+      ],
+      "goals": [
+        "Create replayable institutional proof",
+        "Demonstrate AGIALPHA proof-settled coordination",
+        "Promote only proven artifacts",
+        "Strengthen the evidence graph"
+      ],
+      "contracts": [
+        "AEPGoalOSCommitRegistry",
+        "AEPRunCommitmentRegistry",
+        "JobRegistry",
+        "JobClaimBondManager",
+        "ProofSubmissionRegistry",
+        "ReviewerBondRegistry",
+        "ProofCardRegistry",
+        "ProofCredentialRegistry",
+        "ReputationRegistry",
+        "AEPEvidenceDocketRegistry",
+        "AEPSelectionGate",
+        "AEPChronicleRegistry",
+        "AEPRolloutRouter",
+        "AEPRollbackRegistry"
+      ],
+      "rsi": "The accepted artifact may influence future work only after evidence, evaluator review, reviewer validation, scope control, challenge window, rollback readiness, Selection Gate approval, and Chronicle entry."
+    },
+    {
+      "id": "004",
+      "slug": "persistent-goal-seeking-intelligence-accumulation-engine",
+      "title": "Persistent Goal-Seeking Intelligence Accumulation Engine",
+      "phase": "Persistent Memory",
+      "problem": "One-off AI tasks do not compound. They answer, then disappear. A persistent system must accumulate capabilities, evidence, and value over time.",
+      "mission": "Define the accumulation layer: every accepted workflow improvement becomes an artifact; every artifact receives evidence; every evidence-backed artifact can earn credentials, reputation, and future routing rights.",
+      "incremental": "Moves from individual proof cards to compounding institutional memory.",
+      "value": "Capabilities stop being ephemeral and become reusable operating assets that improve future missions.",
+      "skills": [
+        "Capability inventory",
+        "Artifact versioning",
+        "Evidence tracking",
+        "Reputation design",
+        "Chronicle memory design"
+      ],
+      "plans": [
+        "Persistent Goal-Seeking Intelligence Accumulation Engine proof mission plan",
+        "Evidence Docket route",
+        "Reviewer and red-team plan",
+        "Selection Gate upgrade policy"
+      ],
+      "goals": [
+        "Create replayable institutional proof",
+        "Demonstrate AGIALPHA proof-settled coordination",
+        "Promote only proven artifacts",
+        "Strengthen the evidence graph"
+      ],
+      "contracts": [
+        "AEPGoalOSCommitRegistry",
+        "AEPRunCommitmentRegistry",
+        "JobRegistry",
+        "JobClaimBondManager",
+        "ProofSubmissionRegistry",
+        "ReviewerBondRegistry",
+        "ProofCardRegistry",
+        "ProofCredentialRegistry",
+        "ReputationRegistry",
+        "AEPEvidenceDocketRegistry",
+        "AEPSelectionGate",
+        "AEPChronicleRegistry",
+        "AEPArtifactRegistry",
+        "AlphaWorkUnitLedger"
+      ],
+      "rsi": "The accepted artifact may influence future work only after evidence, evaluator review, reviewer validation, scope control, challenge window, rollback readiness, Selection Gate approval, and Chronicle entry."
+    },
+    {
+      "id": "005",
+      "slug": "sovereign-rsi-value-to-capability-treasury",
+      "title": "Sovereign RSI Value-to-Capability Treasury",
+      "phase": "Reinvestment Engine",
+      "problem": "Accumulated value must not remain inert. It must be governed, budgeted, and reinvested into stronger future capabilities.",
+      "mission": "Turn verified value into governed capability budgets: successful proof missions produce value signals; value is routed through treasury controls; stronger future proof missions receive budget, talent, tools, and review capacity.",
+      "incremental": "Adds economic recursion: verified value funds stronger future work.",
+      "value": "Connects proof to reinvestment, allowing the system to improve its own operating capacity without relying only on manual planning.",
+      "skills": [
+        "Treasury routing",
+        "Value-to-capability accounting",
+        "Budget prioritization",
+        "Portfolio allocation",
+        "Capability ROI tracking"
+      ],
+      "plans": [
+        "Sovereign RSI Value-to-Capability Treasury proof mission plan",
+        "Evidence Docket route",
+        "Reviewer and red-team plan",
+        "Selection Gate upgrade policy"
+      ],
+      "goals": [
+        "Create replayable institutional proof",
+        "Demonstrate AGIALPHA proof-settled coordination",
+        "Promote only proven artifacts",
+        "Strengthen the evidence graph"
+      ],
+      "contracts": [
+        "AEPGoalOSCommitRegistry",
+        "AEPRunCommitmentRegistry",
+        "JobRegistry",
+        "JobClaimBondManager",
+        "ProofSubmissionRegistry",
+        "ReviewerBondRegistry",
+        "ProofCardRegistry",
+        "ProofCredentialRegistry",
+        "ReputationRegistry",
+        "AEPEvidenceDocketRegistry",
+        "AEPSelectionGate",
+        "AEPChronicleRegistry",
+        "AEPRewardVault",
+        "TreasuryRouter",
+        "CommercializationPerformanceVault"
+      ],
+      "rsi": "The accepted artifact may influence future work only after evidence, evaluator review, reviewer validation, scope control, challenge window, rollback readiness, Selection Gate approval, and Chronicle entry."
+    },
+    {
+      "id": "006",
+      "slug": "sovereign-enterprise-rsi-operating-system",
+      "title": "Sovereign Enterprise RSI Operating System",
+      "phase": "Enterprise Operating Layer",
+      "problem": "A sovereign enterprise needs more than isolated tools. It needs a multi-agent operating system with aim, strategy, execution, proof, risk control, settlement, rollback, and memory.",
+      "mission": "Coordinate specialist agent roles\u2014Aim Council, Strategy Desk, Builders, Proof Engineers, Reviewers, Red Team, Treasury, Rollback Desk, and Evidence Office\u2014through proof-backed workflows and AGIALPHA settlement.",
+      "incremental": "Turns the proof flywheel into an enterprise operating system.",
+      "value": "Creates the institutional form needed for scalable, accountable, multi-agent enterprise execution.",
+      "skills": [
+        "Enterprise operating model design",
+        "Multi-agent routing",
+        "Proof engineering",
+        "Risk governance",
+        "Rollback planning",
+        "Institutional memory"
+      ],
+      "plans": [
+        "Sovereign Enterprise RSI Operating System proof mission plan",
+        "Evidence Docket route",
+        "Reviewer and red-team plan",
+        "Selection Gate upgrade policy"
+      ],
+      "goals": [
+        "Create replayable institutional proof",
+        "Demonstrate AGIALPHA proof-settled coordination",
+        "Promote only proven artifacts",
+        "Strengthen the evidence graph"
+      ],
+      "contracts": [
+        "AEPGoalOSCommitRegistry",
+        "AEPRunCommitmentRegistry",
+        "JobRegistry",
+        "JobClaimBondManager",
+        "ProofSubmissionRegistry",
+        "ReviewerBondRegistry",
+        "ProofCardRegistry",
+        "ProofCredentialRegistry",
+        "ReputationRegistry",
+        "AEPEvidenceDocketRegistry",
+        "AEPSelectionGate",
+        "AEPChronicleRegistry",
+        "AEPAgentRegistry",
+        "AEPRollbackRegistry"
+      ],
+      "rsi": "The accepted artifact may influence future work only after evidence, evaluator review, reviewer validation, scope control, challenge window, rollback readiness, Selection Gate approval, and Chronicle entry."
+    },
+    {
+      "id": "007",
+      "slug": "sovereign-enterprise-autoresearch-reactor",
+      "title": "Sovereign Enterprise Autoresearch Reactor",
+      "phase": "Autoresearch Layer",
+      "problem": "Automated discovery is useful only when the system can generate hypotheses, test them, validate them, reject failures, combine branches, and remember what worked.",
+      "mission": "Run parallel enterprise improvement threads: Domain Scouts identify opportunities, Hypothesis Engineers propose interventions, Builder Cells execute, Evaluator Operators test, Reviewers validate, Red Teams falsify, and the Selection Gate promotes only proven improvements.",
+      "incremental": "Adds autonomous discovery and experimental search to the enterprise operating system.",
+      "value": "Creates a repeatable machinery for finding improvements across corporate workflows, risk controls, security, procurement, compute, finance, and operations.",
+      "skills": [
+        "Hypothesis generation",
+        "Experiment design",
+        "Evaluator harnessing",
+        "Parallel branch management",
+        "Reward-hack detection",
+        "Red-team challenge design"
+      ],
+      "plans": [
+        "Sovereign Enterprise Autoresearch Reactor proof mission plan",
+        "Evidence Docket route",
+        "Reviewer and red-team plan",
+        "Selection Gate upgrade policy"
+      ],
+      "goals": [
+        "Create replayable institutional proof",
+        "Demonstrate AGIALPHA proof-settled coordination",
+        "Promote only proven artifacts",
+        "Strengthen the evidence graph"
+      ],
+      "contracts": [
+        "AEPGoalOSCommitRegistry",
+        "AEPRunCommitmentRegistry",
+        "JobRegistry",
+        "JobClaimBondManager",
+        "ProofSubmissionRegistry",
+        "ReviewerBondRegistry",
+        "ProofCardRegistry",
+        "ProofCredentialRegistry",
+        "ReputationRegistry",
+        "AEPEvidenceDocketRegistry",
+        "AEPSelectionGate",
+        "AEPChronicleRegistry",
+        "AEPExperimentRegistry",
+        "AEPBenchmarkRegistry",
+        "AEPAutoresearchPortfolioRegistry",
+        "AEPEvaluatorStakingRegistry",
+        "AEPCommitRevealValidationRegistry",
+        "AEPSlashingCourt",
+        "AEPFalsificationRegistry"
+      ],
+      "rsi": "The accepted artifact may influence future work only after evidence, evaluator review, reviewer validation, scope control, challenge window, rollback readiness, Selection Gate approval, and Chronicle entry."
+    },
+    {
+      "id": "008",
+      "slug": "sovereign-corporate-capability-foundry",
+      "title": "Sovereign Corporate Capability Foundry",
+      "phase": "Portfolio Foundry",
+      "problem": "Enterprises need capability growth across multiple profitable domains, not only one research benchmark. The system must allocate missions across procurement, finance, security, operations, energy, compute, and R&D.",
+      "mission": "Create a portfolio-level capability foundry that assigns proof missions to specialist cells, measures alpha-Work Units, validates output, issues proof cards, and reinvests verified value across domains.",
+      "incremental": "Moves from autoresearch to portfolio-level corporate capability formation.",
+      "value": "Shows how a sovereign corporation can systematically convert work into a growing library of reusable capabilities.",
+      "skills": [
+        "Portfolio allocation",
+        "Domain scouting",
+        "Capability formation",
+        "AlphaWorkUnit metrology",
+        "Cross-domain reuse",
+        "Treasury prioritization"
+      ],
+      "plans": [
+        "Sovereign Corporate Capability Foundry proof mission plan",
+        "Evidence Docket route",
+        "Reviewer and red-team plan",
+        "Selection Gate upgrade policy"
+      ],
+      "goals": [
+        "Create replayable institutional proof",
+        "Demonstrate AGIALPHA proof-settled coordination",
+        "Promote only proven artifacts",
+        "Strengthen the evidence graph"
+      ],
+      "contracts": [
+        "AEPGoalOSCommitRegistry",
+        "AEPRunCommitmentRegistry",
+        "JobRegistry",
+        "JobClaimBondManager",
+        "ProofSubmissionRegistry",
+        "ReviewerBondRegistry",
+        "ProofCardRegistry",
+        "ProofCredentialRegistry",
+        "ReputationRegistry",
+        "AEPEvidenceDocketRegistry",
+        "AEPSelectionGate",
+        "AEPChronicleRegistry",
+        "MandateEpochRegistry",
+        "TreasuryRouter",
+        "CommercializationPerformanceVault",
+        "AEPAutoresearchPortfolioRegistry"
+      ],
+      "rsi": "The accepted artifact may influence future work only after evidence, evaluator review, reviewer validation, scope control, challenge window, rollback readiness, Selection Gate approval, and Chronicle entry."
+    },
+    {
+      "id": "009",
+      "slug": "cyber-sovereign-execution-moat",
+      "title": "Cyber-Sovereign Execution Moat",
+      "phase": "Defensive Execution Moat",
+      "problem": "Cyber risk is a high-value sovereign corporate domain where unverified automation is dangerous. The system needs authorized scope, defensive boundaries, evidence, regression harnesses, red-team review, and rollback readiness.",
+      "mission": "Turn authorized cyber weakness remediation into proof-settled work: map assets, triage risk, build remediation candidates, run security regression harnesses, validate through reviewers and red teams, and promote only safe remediations.",
+      "incremental": "Moves the foundry into a high-value cyber-sovereign execution domain.",
+      "value": "Creates a defensible execution moat around trusted remediation, secure deployment velocity, supply-chain evidence, and reusable defensive capability.",
+      "skills": [
+        "Cyber asset mapping",
+        "Defensive remediation",
+        "Security regression testing",
+        "SBOM/VEX evidence",
+        "Incident rollback planning",
+        "Red-team validation"
+      ],
+      "plans": [
+        "Cyber-Sovereign Execution Moat proof mission plan",
+        "Evidence Docket route",
+        "Reviewer and red-team plan",
+        "Selection Gate upgrade policy"
+      ],
+      "goals": [
+        "Create replayable institutional proof",
+        "Demonstrate AGIALPHA proof-settled coordination",
+        "Promote only proven artifacts",
+        "Strengthen the evidence graph"
+      ],
+      "contracts": [
+        "AEPGoalOSCommitRegistry",
+        "AEPRunCommitmentRegistry",
+        "JobRegistry",
+        "JobClaimBondManager",
+        "ProofSubmissionRegistry",
+        "ReviewerBondRegistry",
+        "ProofCardRegistry",
+        "ProofCredentialRegistry",
+        "ReputationRegistry",
+        "AEPEvidenceDocketRegistry",
+        "AEPSelectionGate",
+        "AEPChronicleRegistry",
+        "CyberAssetGraphRegistry",
+        "SBOMEvidenceRegistry",
+        "VEXAttestationRegistry",
+        "RemediationPatchRegistry",
+        "SecurityRegressionHarnessRegistry",
+        "RedTeamChallengeRegistry",
+        "IncidentRollbackRegistry"
+      ],
+      "rsi": "The accepted artifact may influence future work only after evidence, evaluator review, reviewer validation, scope control, challenge window, rollback readiness, Selection Gate approval, and Chronicle entry."
+    },
+    {
+      "id": "010",
+      "slug": "cyber-sovereign-proof-benchmark-market",
+      "title": "Cyber-Sovereign Proof Benchmark Market",
+      "phase": "Replayable Benchmark Market",
+      "problem": "Architecture is not enough. A durable execution moat requires replayable benchmarks, independent reproduction, hardened evaluators, and public-safe evidence that buyers can inspect.",
+      "mission": "Build a cyber-sovereign proof benchmark market: authorized defensive tasks, baseline manifests, evaluator harnesses, candidate artifacts, ProofBundles, reviewer attestations, red-team falsification reports, reproduction receipts, and AGIALPHA settlement.",
+      "incremental": "Turns the cyber execution moat into a benchmark market where results can be replayed and compared.",
+      "value": "Creates market-legible proof: not merely a claim of improvement, but a reproducible path showing what improved, what it cost, what risks were controlled, and what may propagate.",
+      "skills": [
+        "Benchmark design",
+        "Evaluator hardening",
+        "Reproduction packaging",
+        "Defensive task manifesting",
+        "Falsification testing",
+        "Result comparison"
+      ],
+      "plans": [
+        "Cyber-Sovereign Proof Benchmark Market proof mission plan",
+        "Evidence Docket route",
+        "Reviewer and red-team plan",
+        "Selection Gate upgrade policy"
+      ],
+      "goals": [
+        "Create replayable institutional proof",
+        "Demonstrate AGIALPHA proof-settled coordination",
+        "Promote only proven artifacts",
+        "Strengthen the evidence graph"
+      ],
+      "contracts": [
+        "AEPGoalOSCommitRegistry",
+        "AEPRunCommitmentRegistry",
+        "JobRegistry",
+        "JobClaimBondManager",
+        "ProofSubmissionRegistry",
+        "ReviewerBondRegistry",
+        "ProofCardRegistry",
+        "ProofCredentialRegistry",
+        "ReputationRegistry",
+        "AEPEvidenceDocketRegistry",
+        "AEPSelectionGate",
+        "AEPChronicleRegistry",
+        "CyberBenchmarkRegistry",
+        "AEPBenchmarkRegistry",
+        "AEPExperimentRegistry",
+        "AEPEvaluatorStakingRegistry",
+        "AEPCommitRevealValidationRegistry",
+        "AEPSlashingCourt",
+        "AEPFalsificationRegistry"
+      ],
+      "rsi": "The accepted artifact may influence future work only after evidence, evaluator review, reviewer validation, scope control, challenge window, rollback readiness, Selection Gate approval, and Chronicle entry."
+    }
+  ]
+}

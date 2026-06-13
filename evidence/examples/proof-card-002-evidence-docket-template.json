@@ -1,19 +1,21 @@
 {
-  "proof_card_id": "PC-002",
+  "proof_card_id": "002",
   "title": "Sovereign Procurement Trust Room",
-  "status": "template_until_live_evidence_docket_completed",
-  "agialpha_token": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
+  "status": "template_until_live_docket",
   "required_evidence": [
     "GoalOSCommit",
     "RunCommitment",
+    "task_manifest",
+    "baseline",
+    "candidate_artifact",
     "ProofBundle",
-    "Reviewer attestation",
-    "Proof Card hash",
-    "Credential record",
-    "Reputation update",
-    "Selection Gate decision",
-    "Rollback boundary",
-    "Chronicle entry"
-  ],
-  "claim_boundary": "Illustrative until a live buyer/sponsor Evidence Docket is completed."
+    "EvaluatorReport",
+    "ReviewerAttestation",
+    "CostLedger",
+    "SafetyLedger",
+    "RiskLedger",
+    "SelectionCertificate",
+    "RollbackPlan",
+    "ChronicleEntry"
+  ]
 }

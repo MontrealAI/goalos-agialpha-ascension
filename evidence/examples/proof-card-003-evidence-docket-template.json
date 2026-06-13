@@ -1,19 +1,21 @@
 {
-  "proof_card_id": "PC-003",
+  "proof_card_id": "003",
   "title": "Sovereign AI Procurement Control Tower",
-  "status": "template_until_live_evidence_docket_completed",
-  "agialpha_token": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
+  "status": "template_until_live_docket",
   "required_evidence": [
     "GoalOSCommit",
     "RunCommitment",
+    "task_manifest",
+    "baseline",
+    "candidate_artifact",
     "ProofBundle",
-    "Reviewer attestation",
-    "Proof Card hash",
-    "Credential record",
-    "Reputation update",
-    "Selection Gate decision",
-    "Rollback boundary",
-    "Chronicle entry"
-  ],
-  "claim_boundary": "Public-safe illustrative proof card until the real proof-work loop is executed."
+    "EvaluatorReport",
+    "ReviewerAttestation",
+    "CostLedger",
+    "SafetyLedger",
+    "RiskLedger",
+    "SelectionCertificate",
+    "RollbackPlan",
+    "ChronicleEntry"
+  ]
 }

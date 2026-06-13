@@ -1,29 +1,66 @@
 # Proof Card 004 — Persistent Goal-Seeking Intelligence Accumulation Engine
 
-Show how GoalOS AGIALPHA Ascension accumulates capability, evidence, and economic value over time.
+**Phase:** Persistent Memory
 
 ## Problem
 
-Most AI workflows disappear after use. The organization loses what worked, why it worked, who reviewed it, and whether it should improve future work.
+One-off AI tasks do not compound. They answer, then disappear. A persistent system must accumulate capabilities, evidence, and value over time.
 
 ## Proof mission
 
-Demonstrate the persistent accumulation loop: goals become proof missions; proof missions create evidence; evidence creates credentials and reputation; accepted artifacts earn scoped upgrade rights; future work improves.
+Define the accumulation layer: every accepted workflow improvement becomes an artifact; every artifact receives evidence; every evidence-backed artifact can earn credentials, reputation, and future routing rights.
+
+## Incremental improvement
+
+Moves from individual proof cards to compounding institutional memory.
 
 ## Where AGIALPHA becomes useful
 
-AGIALPHA coordinates the economic accountability layer for the accumulation loop: posted missions, bonded participation, proof actions, reviewer accountability, settlement, credentialing, and reputation-linked access.
+AGIALPHA coordinates sponsor funding, builder claim bonds, proof submission bonds, reviewer bonds, proof-card registration, credential issuance, reputation-linked routing, settlement, and Chronicle memory.
 
-AGIALPHA token: `0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA`
+## Skills used
+
+- Capability inventory
+- Artifact versioning
+- Evidence tracking
+- Reputation design
+- Chronicle memory design
+
+## Plans used
+
+- Persistent Goal-Seeking Intelligence Accumulation Engine proof mission plan
+- Evidence Docket route
+- Reviewer and red-team plan
+- Selection Gate upgrade policy
+
+## Goals used
+
+- Create replayable institutional proof
+- Demonstrate AGIALPHA proof-settled coordination
+- Promote only proven artifacts
+- Strengthen the evidence graph
+
+## Contracts / registries used
+
+- AEPGoalOSCommitRegistry
+- AEPRunCommitmentRegistry
+- JobRegistry
+- JobClaimBondManager
+- ProofSubmissionRegistry
+- ReviewerBondRegistry
+- ProofCardRegistry
+- ProofCredentialRegistry
+- ReputationRegistry
+- AEPEvidenceDocketRegistry
+- AEPSelectionGate
+- AEPChronicleRegistry
+- AEPArtifactRegistry
+- AlphaWorkUnitLedger
 
 ## RSI upgrade logic
 
-This is the meta-card: Recursive Self-Improvement becomes proof-backed accumulation. A capability shapes future work only after it passes evidence, evaluation, review, selection, monitoring, and rollback criteria.
-
-## Value
-
-A compounding evidence graph: validated workflows, rubrics, policies, proof templates, procurement answers, reviewer attestations, economic records, and reusable institutional intelligence.
+The accepted artifact may influence future work only after evidence, evaluator review, reviewer validation, scope control, challenge window, rollback readiness, Selection Gate approval, and Chronicle entry.
 
 ## Claim boundary
 
-Illustrative until repeated live Evidence Dockets prove accumulation over time. No claim of achieved AGI, ASI, legal approval, tax approval, security approval, guaranteed return, or mainnet deployment.
+This proof card is an experimental public-safe proof template until a live Evidence Docket is completed. It does not claim achieved AGI, achieved superintelligence, guaranteed ROI, legal/tax/security approval, Ethereum mainnet deployment, or Kardashev Type II achievement.

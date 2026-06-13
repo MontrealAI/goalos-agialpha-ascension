@@ -2,12 +2,46 @@
   "id": "003",
   "slug": "sovereign-ai-procurement-control-tower",
   "title": "Sovereign AI Procurement Control Tower",
-  "tag": "Flagship institutional use case",
-  "level": "Institutional control",
-  "problem": "A sovereign or enterprise buyer asks: can this system be trusted, governed, audited, rolled back, and improved safely?",
-  "mission": "Turn the procurement question into a proof mission: build the control-tower response, collect evidence, validate it, and register the resulting Proof Card.",
-  "agialpha": "AGIALPHA coordinates the complete route: mission posting, builder claim bond, proof submission bond, reviewer bond, proof-card action, credential action, reputation, reward settlement, Evidence Docket anchoring, and upgrade rights.",
-  "rsi": "The accepted control-tower artifact improves future procurement responses only if it survives evidence review, challenge window, monitoring, rollback readiness, and Selection Gate approval.",
-  "value": "Creates a serious buyer-facing control plane for governance, diligence, and adoption decisions.",
-  "claim": "Public-safe illustrative proof card until the real proof-work loop is executed."
+  "phase": "Control Tower",
+  "problem": "Enterprise AI adoption stalls when buyers cannot see governance, review, rollback, evidence, and improvement history in one place.",
+  "mission": "Build a procurement control tower that connects proof cards, Evidence Dockets, reviewer decisions, rollout status, rollback paths, credentials, and reputation into one decision surface.",
+  "incremental": "Adds operating control: the buyer sees not just trust artifacts, but a governance route for decisions.",
+  "value": "Higher buyer confidence, clearer executive approval pathway, better risk control, and a stronger corporate sales motion.",
+  "skills": [
+    "Control-tower design",
+    "Governance routing",
+    "Evidence visualization",
+    "Risk escalation design",
+    "Executive decision support"
+  ],
+  "plans": [
+    "Sovereign AI Procurement Control Tower proof mission plan",
+    "Evidence Docket route",
+    "Reviewer and red-team plan",
+    "Selection Gate upgrade policy"
+  ],
+  "goals": [
+    "Create replayable institutional proof",
+    "Demonstrate AGIALPHA proof-settled coordination",
+    "Promote only proven artifacts",
+    "Strengthen the evidence graph"
+  ],
+  "contracts": [
+    "AEPGoalOSCommitRegistry",
+    "AEPRunCommitmentRegistry",
+    "JobRegistry",
+    "JobClaimBondManager",
+    "ProofSubmissionRegistry",
+    "ReviewerBondRegistry",
+    "ProofCardRegistry",
+    "ProofCredentialRegistry",
+    "ReputationRegistry",
+    "AEPEvidenceDocketRegistry",
+    "AEPSelectionGate",
+    "AEPChronicleRegistry",
+    "AEPRolloutRouter",
+    "AEPRollbackRegistry"
+  ],
+  "rsi": "The accepted artifact may influence future work only after evidence, evaluator review, reviewer validation, scope control, challenge window, rollback readiness, Selection Gate approval, and Chronicle entry.",
+  "status": "illustrative_until_live_evidence_docket"
 }

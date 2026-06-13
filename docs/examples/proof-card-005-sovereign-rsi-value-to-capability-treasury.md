@@ -1,27 +1,67 @@
-# Proof Card 005 - Sovereign RSI Value-to-Capability Treasury
+# Proof Card 005 — Sovereign RSI Value-to-Capability Treasury
 
-**Status:** public-safe template until live Evidence Docket is completed.
+**Phase:** Reinvestment Engine
 
 ## Problem
 
-Accumulating capabilities and evidence is powerful, but the system becomes strategically exceptional only when verified value is reinvested into better future capability instead of being forgotten or spent blindly.
+Accumulated value must not remain inert. It must be governed, budgeted, and reinvested into stronger future capabilities.
 
 ## Proof mission
 
-Turn verified workflow value into governed reinvestment: measure the value created by accepted proof work, allocate a bounded capability budget, post higher-value proof missions, validate the outputs, and record how each cycle improves future work.
+Turn verified value into governed capability budgets: successful proof missions produce value signals; value is routed through treasury controls; stronger future proof missions receive budget, talent, tools, and review capacity.
+
+## Incremental improvement
+
+Adds economic recursion: verified value funds stronger future work.
 
 ## Where AGIALPHA becomes useful
 
-AGIALPHA coordinates the value-to-capability loop: sponsor funding, reward vault allocation, builder claim bond, proof submission bond, reviewer bond, proof-card registration, credential issuance, reputation-linked access, settlement, AlphaWorkUnit metrology, TreasuryRouter records, and Chronicle memory.
+AGIALPHA coordinates sponsor funding, builder claim bonds, proof submission bonds, reviewer bonds, proof-card registration, credential issuance, reputation-linked routing, settlement, and Chronicle memory.
 
-## Sovereign RSI upgrade logic
+## Skills used
 
-RSI becomes economically efficient when the Selection Gate grants upgrade rights only to artifacts that prove value, safety, reproducibility, and rollback readiness. Accepted artifacts can influence future routing, budgeting, prompts, rubrics, procurement answers, and proof missions; rejected artifacts cannot.
+- Treasury routing
+- Value-to-capability accounting
+- Budget prioritization
+- Portfolio allocation
+- Capability ROI tracking
 
-## Commercial / institutional value
+## Plans used
 
-Creates the missing compounding layer: verified value funds better missions; better missions create stronger artifacts; stronger artifacts improve future workflows; future workflows produce more proof-backed value.
+- Sovereign RSI Value-to-Capability Treasury proof mission plan
+- Evidence Docket route
+- Reviewer and red-team plan
+- Selection Gate upgrade policy
+
+## Goals used
+
+- Create replayable institutional proof
+- Demonstrate AGIALPHA proof-settled coordination
+- Promote only proven artifacts
+- Strengthen the evidence graph
+
+## Contracts / registries used
+
+- AEPGoalOSCommitRegistry
+- AEPRunCommitmentRegistry
+- JobRegistry
+- JobClaimBondManager
+- ProofSubmissionRegistry
+- ReviewerBondRegistry
+- ProofCardRegistry
+- ProofCredentialRegistry
+- ReputationRegistry
+- AEPEvidenceDocketRegistry
+- AEPSelectionGate
+- AEPChronicleRegistry
+- AEPRewardVault
+- TreasuryRouter
+- CommercializationPerformanceVault
+
+## RSI upgrade logic
+
+The accepted artifact may influence future work only after evidence, evaluator review, reviewer validation, scope control, challenge window, rollback readiness, Selection Gate approval, and Chronicle entry.
 
 ## Claim boundary
 
-Experimental proof-card template. It does not claim token price appreciation, investment return, guaranteed ROI, legal approval, tax approval, security approval, achieved AGI, or Ethereum mainnet deployment.
+This proof card is an experimental public-safe proof template until a live Evidence Docket is completed. It does not claim achieved AGI, achieved superintelligence, guaranteed ROI, legal/tax/security approval, Ethereum mainnet deployment, or Kardashev Type II achievement.

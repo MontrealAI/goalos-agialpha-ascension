@@ -1,27 +1,66 @@
-# Proof Card 003 - Sovereign AI Procurement Control Tower
+# Proof Card 003 — Sovereign AI Procurement Control Tower
 
-**Status:** public-safe template until live Evidence Docket is completed.
+**Phase:** Control Tower
 
 ## Problem
 
-A sovereign or enterprise buyer asks: can this system be trusted, governed, audited, rolled back, and improved safely?
+Enterprise AI adoption stalls when buyers cannot see governance, review, rollback, evidence, and improvement history in one place.
 
 ## Proof mission
 
-Turn the procurement question into a proof mission: build the control-tower response, collect evidence, validate it, and register the resulting Proof Card.
+Build a procurement control tower that connects proof cards, Evidence Dockets, reviewer decisions, rollout status, rollback paths, credentials, and reputation into one decision surface.
+
+## Incremental improvement
+
+Adds operating control: the buyer sees not just trust artifacts, but a governance route for decisions.
 
 ## Where AGIALPHA becomes useful
 
-AGIALPHA coordinates the complete route: mission posting, builder claim bond, proof submission bond, reviewer bond, proof-card action, credential action, reputation, reward settlement, Evidence Docket anchoring, and upgrade rights.
+AGIALPHA coordinates sponsor funding, builder claim bonds, proof submission bonds, reviewer bonds, proof-card registration, credential issuance, reputation-linked routing, settlement, and Chronicle memory.
 
-## Sovereign RSI upgrade logic
+## Skills used
 
-The accepted control-tower artifact improves future procurement responses only if it survives evidence review, challenge window, monitoring, rollback readiness, and Selection Gate approval.
+- Control-tower design
+- Governance routing
+- Evidence visualization
+- Risk escalation design
+- Executive decision support
 
-## Commercial / institutional value
+## Plans used
 
-Creates a serious buyer-facing control plane for governance, diligence, and adoption decisions.
+- Sovereign AI Procurement Control Tower proof mission plan
+- Evidence Docket route
+- Reviewer and red-team plan
+- Selection Gate upgrade policy
+
+## Goals used
+
+- Create replayable institutional proof
+- Demonstrate AGIALPHA proof-settled coordination
+- Promote only proven artifacts
+- Strengthen the evidence graph
+
+## Contracts / registries used
+
+- AEPGoalOSCommitRegistry
+- AEPRunCommitmentRegistry
+- JobRegistry
+- JobClaimBondManager
+- ProofSubmissionRegistry
+- ReviewerBondRegistry
+- ProofCardRegistry
+- ProofCredentialRegistry
+- ReputationRegistry
+- AEPEvidenceDocketRegistry
+- AEPSelectionGate
+- AEPChronicleRegistry
+- AEPRolloutRouter
+- AEPRollbackRegistry
+
+## RSI upgrade logic
+
+The accepted artifact may influence future work only after evidence, evaluator review, reviewer validation, scope control, challenge window, rollback readiness, Selection Gate approval, and Chronicle entry.
 
 ## Claim boundary
 
-Public-safe illustrative proof card until the real proof-work loop is executed.
+This proof card is an experimental public-safe proof template until a live Evidence Docket is completed. It does not claim achieved AGI, achieved superintelligence, guaranteed ROI, legal/tax/security approval, Ethereum mainnet deployment, or Kardashev Type II achievement.

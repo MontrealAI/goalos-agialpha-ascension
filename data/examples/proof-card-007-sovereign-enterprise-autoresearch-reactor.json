@@ -2,20 +2,34 @@
   "id": "007",
   "slug": "sovereign-enterprise-autoresearch-reactor",
   "title": "Sovereign Enterprise Autoresearch Reactor",
-  "tag": "Autonomous domain optimization",
-  "one": "A proof-governed autoresearch system that runs many sovereign enterprise improvement threads, validates them through Evidence Dockets, and promotes only proven artifacts into future workflows.",
-  "problem": "Proof Card 006 established the enterprise RSI operating system. The next frontier is autonomous domain optimization: a large institution needs many specialist agents to search for improvements across procurement, security, finance, operations, science, energy, compute, and commercialization without letting unproven discoveries pollute future work.",
-  "mission": "Launch a sovereign enterprise autoresearch program: decompose a strategic objective into parallel proof missions; route missions to specialist agent cells; run experiments and workflow improvements; require ProofBundles, evaluator harnesses, reviewer attestations, falsification tests, and cost/safety ledgers; settle validated work through AGIALPHA; and grant scoped upgrade rights only after Selection Gate approval.",
-  "agialpha": "AGIALPHA coordinates a full autoresearch market: sponsor funding, mission budgets, builder claim bonds, proof submission bonds, reviewer and red-team bonds, evaluator incentives, proof-card registration, credential issuance, reputation-weighted routing, reward-vault settlement, AlphaWorkUnit metrology, TreasuryRouter reinvestment, commercialization-performance milestones, and Chronicle memory.",
-  "rsi": "Recursive self-improvement (RSI) becomes an autonomous improvement market. Weak artifacts spawn hypothesis missions; multiple agent cells test competing improvements; reviewers and red-teamers validate evidence; Selection Gates select only the best safe artifacts; accepted artifacts earn scoped upgrade rights; treasury routing funds the next frontier; Chronicle memory prevents repeated mistakes and compounds discovery over time.",
-  "value": "This is the autoresearch layer for sovereign enterprises: verified work becomes reusable capability; reusable capability becomes productive capacity; productive capacity funds better agents, tools, audits, compute, experiments, and energy-relevant infrastructure work. It is a bounded practical path toward the value-to-capacity horizon behind the Kardashev-scale thesis.",
-  "claim": "Experimental proof-card template. It does not claim achieved AGI, superintelligence, guaranteed financial return, legal/tax/security approval, Ethereum mainnet deployment, or Kardashev Type II achievement. It defines a proof program for testing whether RSI-driven enterprise autoresearch can compound evidence, capability, and verified value.",
-  "agialphaToken": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
+  "phase": "Autoresearch Layer",
+  "problem": "Automated discovery is useful only when the system can generate hypotheses, test them, validate them, reject failures, combine branches, and remember what worked.",
+  "mission": "Run parallel enterprise improvement threads: Domain Scouts identify opportunities, Hypothesis Engineers propose interventions, Builder Cells execute, Evaluator Operators test, Reviewers validate, Red Teams falsify, and the Selection Gate promotes only proven improvements.",
+  "incremental": "Adds autonomous discovery and experimental search to the enterprise operating system.",
+  "value": "Creates a repeatable machinery for finding improvements across corporate workflows, risk controls, security, procurement, compute, finance, and operations.",
+  "skills": [
+    "Hypothesis generation",
+    "Experiment design",
+    "Evaluator harnessing",
+    "Parallel branch management",
+    "Reward-hack detection",
+    "Red-team challenge design"
+  ],
+  "plans": [
+    "Sovereign Enterprise Autoresearch Reactor proof mission plan",
+    "Evidence Docket route",
+    "Reviewer and red-team plan",
+    "Selection Gate upgrade policy"
+  ],
+  "goals": [
+    "Create replayable institutional proof",
+    "Demonstrate AGIALPHA proof-settled coordination",
+    "Promote only proven artifacts",
+    "Strengthen the evidence graph"
+  ],
   "contracts": [
     "AEPGoalOSCommitRegistry",
     "AEPRunCommitmentRegistry",
-    "AEPAgentRegistry",
-    "AEPArtifactRegistry",
     "JobRegistry",
     "JobClaimBondManager",
     "ProofSubmissionRegistry",
@@ -25,165 +39,15 @@
     "ReputationRegistry",
     "AEPEvidenceDocketRegistry",
     "AEPSelectionGate",
-    "AEPRolloutRouter",
-    "AEPRollbackRegistry",
     "AEPChronicleRegistry",
-    "AlphaWorkUnitLedger",
-    "AEPRewardVault",
-    "TreasuryRouter",
-    "CommercializationPerformanceVault",
-    "AEPClaimBoundaryRegistry",
-    "AEPConformanceRegistry",
-    "AEPFalsificationRegistry",
-    "LaunchGateRegistry",
+    "AEPExperimentRegistry",
+    "AEPBenchmarkRegistry",
+    "AEPAutoresearchPortfolioRegistry",
     "AEPEvaluatorStakingRegistry",
     "AEPCommitRevealValidationRegistry",
     "AEPSlashingCourt",
-    "MandateEpochRegistry",
-    "AEPBenchmarkRegistry",
-    "AEPExperimentRegistry",
-    "AEPAutoresearchPortfolioRegistry"
+    "AEPFalsificationRegistry"
   ],
-  "skillsUsed": [
-    [
-      "Sovereign Aim Decomposition",
-      "Turns board-level objectives into bounded GoalOSCommit objects with authority, risk, budget, evidence requirements, and measurable success metrics."
-    ],
-    [
-      "Autoresearch Portfolio Design",
-      "Splits a strategic enterprise objective into many parallel research and workflow-improvement threads."
-    ],
-    [
-      "Hypothesis Generation and Routing",
-      "Assigns hypotheses to specialized agent cells based on domain, cost, risk, evidence burden, and reputation."
-    ],
-    [
-      "Evaluator Harness Construction",
-      "Creates measurable tests, baselines, anti-gaming checks, and repeatability requirements for each mission."
-    ],
-    [
-      "ProofBundle Engineering",
-      "Packages traces, outputs, cost, safety, evaluation, and replay metadata into auditable Evidence Dockets."
-    ],
-    [
-      "Reviewer Council Arbitration",
-      "Coordinates bonded reviewers, red-teamers, challenge windows, attestations, and acceptance/rejection decisions."
-    ],
-    [
-      "Selection Gate Promotion",
-      "Grants scoped upgrade rights only to artifacts that survive evidence, evaluation, risk review, and rollback readiness."
-    ],
-    [
-      "Value-to-Capability Treasury Routing",
-      "Allocates verified value into future mission budgets, tooling, audit, compute, and capability-building work."
-    ],
-    [
-      "Chronicle Memory Distillation",
-      "Stores proven patterns, failed attempts, rejection rationales, and reusable artifacts for future work."
-    ],
-    [
-      "Claim Boundary Enforcement",
-      "Prevents the public website and proof cards from claiming achieved AGI, guaranteed ROI, legal approval, security approval, or deployment unless evidence exists."
-    ]
-  ],
-  "plansUsed": [
-    [
-      "Plan A - Strategic mandate intake",
-      "Define the sovereign enterprise objective, affected domain, risk class, budget, and measurable proof target."
-    ],
-    [
-      "Plan B - Autoresearch portfolio launch",
-      "Spawn a portfolio of proof missions across agent cells with different hypotheses and evaluation plans."
-    ],
-    [
-      "Plan C - Evidence-gated execution",
-      "Require each builder cell to submit a ProofBundle, evidence root, cost ledger, safety ledger, and reproducibility notes."
-    ],
-    [
-      "Plan D - Reviewer and red-team validation",
-      "Use bonded reviewers, red-teamers, challenge windows, and falsification checks before promotion."
-    ],
-    [
-      "Plan E - Selection and scoped propagation",
-      "Only selected artifacts receive upgrade rights to influence future workflows, prompts, policies, routes, budgets, or product responses."
-    ],
-    [
-      "Plan F - Treasury reinvestment",
-      "Route verified value into higher-value proof missions, better tools, stronger agent cells, audits, compute, and infrastructure work."
-    ]
-  ],
-  "goalsUsed": [
-    [
-      "Goal 1 - Compound validated capability",
-      "Ensure each accepted artifact can improve future work instead of remaining a one-off output."
-    ],
-    [
-      "Goal 2 - Preserve sovereign trust",
-      "Keep private intelligence and sensitive evidence off-chain while making public proof anchors verifiable."
-    ],
-    [
-      "Goal 3 - Maximize risk-adjusted productive capacity",
-      "Optimize for verified capacity after cost, risk, uncertainty, coordination overhead, and rollback burden."
-    ],
-    [
-      "Goal 4 - Build a proof market for enterprise improvement",
-      "Use AGIALPHA to coordinate sponsors, builders, reviewers, red-teamers, credentials, reputation, and settlement."
-    ],
-    [
-      "Goal 5 - Approach the value-to-capacity horizon",
-      "Translate verified work into reusable capability, productive capacity, and reinvestment into compute, science, infrastructure, and energy-relevant experimentation."
-    ]
-  ],
-  "agentCells": [
-    [
-      "Aim Council",
-      "Defines sovereign objectives and decides what outcomes matter."
-    ],
-    [
-      "Portfolio Strategists",
-      "Break objectives into mission portfolios and success metrics."
-    ],
-    [
-      "Domain Scouts",
-      "Find high-leverage enterprise improvement opportunities."
-    ],
-    [
-      "Hypothesis Engineers",
-      "Generate candidate improvements and experiment designs."
-    ],
-    [
-      "Builder Cells",
-      "Implement workflow, policy, procurement, security, finance, or technical artifacts."
-    ],
-    [
-      "Evaluator Operators",
-      "Run measurement harnesses, baselines, benchmarks, and replay checks."
-    ],
-    [
-      "Proof Engineers",
-      "Package ProofBundles, hashes, Evidence Dockets, and proof-card artifacts."
-    ],
-    [
-      "Reviewer Council",
-      "Validates evidence and issues attestations under challenge windows."
-    ],
-    [
-      "Red-Team Court",
-      "Searches for reward hacks, unsafe claims, privacy failures, and brittle artifacts."
-    ],
-    [
-      "Treasury Desk",
-      "Routes verified value into future capability budgets."
-    ],
-    [
-      "Rollback Desk",
-      "Maintains recovery paths and canary logic."
-    ],
-    [
-      "Chronicle Office",
-      "Preserves memory of accepted and rejected discoveries."
-    ]
-  ],
-  "generatedAt": "2026-06-13T16:29:42Z",
-  "status": "illustrative until live Evidence Docket is completed"
+  "rsi": "The accepted artifact may influence future work only after evidence, evaluator review, reviewer validation, scope control, challenge window, rollback readiness, Selection Gate approval, and Chronicle entry.",
+  "status": "illustrative_until_live_evidence_docket"
 }

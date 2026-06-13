@@ -1,5 +1,53 @@
 {
-  "id": "PC-010",
+  "id": "010",
+  "slug": "cyber-sovereign-proof-benchmark-market",
   "title": "Cyber-Sovereign Proof Benchmark Market",
-  "statement": "GoalOS-native alpha-AGI Ascension turns cyber-sovereign defensive work into replayable proof benchmarks: AGIALPHA coordinates missions, specialist agents execute, reviewers and red teams validate, independent reproduction hardens the result, and only proven artifacts earn scoped upgrade rights."
+  "phase": "Replayable Benchmark Market",
+  "problem": "Architecture is not enough. A durable execution moat requires replayable benchmarks, independent reproduction, hardened evaluators, and public-safe evidence that buyers can inspect.",
+  "mission": "Build a cyber-sovereign proof benchmark market: authorized defensive tasks, baseline manifests, evaluator harnesses, candidate artifacts, ProofBundles, reviewer attestations, red-team falsification reports, reproduction receipts, and AGIALPHA settlement.",
+  "incremental": "Turns the cyber execution moat into a benchmark market where results can be replayed and compared.",
+  "value": "Creates market-legible proof: not merely a claim of improvement, but a reproducible path showing what improved, what it cost, what risks were controlled, and what may propagate.",
+  "skills": [
+    "Benchmark design",
+    "Evaluator hardening",
+    "Reproduction packaging",
+    "Defensive task manifesting",
+    "Falsification testing",
+    "Result comparison"
+  ],
+  "plans": [
+    "Cyber-Sovereign Proof Benchmark Market proof mission plan",
+    "Evidence Docket route",
+    "Reviewer and red-team plan",
+    "Selection Gate upgrade policy"
+  ],
+  "goals": [
+    "Create replayable institutional proof",
+    "Demonstrate AGIALPHA proof-settled coordination",
+    "Promote only proven artifacts",
+    "Strengthen the evidence graph"
+  ],
+  "contracts": [
+    "AEPGoalOSCommitRegistry",
+    "AEPRunCommitmentRegistry",
+    "JobRegistry",
+    "JobClaimBondManager",
+    "ProofSubmissionRegistry",
+    "ReviewerBondRegistry",
+    "ProofCardRegistry",
+    "ProofCredentialRegistry",
+    "ReputationRegistry",
+    "AEPEvidenceDocketRegistry",
+    "AEPSelectionGate",
+    "AEPChronicleRegistry",
+    "CyberBenchmarkRegistry",
+    "AEPBenchmarkRegistry",
+    "AEPExperimentRegistry",
+    "AEPEvaluatorStakingRegistry",
+    "AEPCommitRevealValidationRegistry",
+    "AEPSlashingCourt",
+    "AEPFalsificationRegistry"
+  ],
+  "rsi": "The accepted artifact may influence future work only after evidence, evaluator review, reviewer validation, scope control, challenge window, rollback readiness, Selection Gate approval, and Chronicle entry.",
+  "status": "illustrative_until_live_evidence_docket"
 }

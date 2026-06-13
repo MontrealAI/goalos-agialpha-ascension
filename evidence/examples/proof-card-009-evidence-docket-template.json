@@ -1,24 +1,21 @@
 {
   "proof_card_id": "009",
   "title": "Cyber-Sovereign Execution Moat",
-  "status": "template",
+  "status": "template_until_live_docket",
   "required_evidence": [
     "GoalOSCommit",
     "RunCommitment",
-    "Asset graph",
-    "SBOM/CBOM inventory",
-    "VEX-style exploitability note",
-    "Remediation artifact",
-    "Security regression harness",
+    "task_manifest",
+    "baseline",
+    "candidate_artifact",
     "ProofBundle",
-    "Evaluator report",
-    "Reviewer attestation",
-    "Red-team challenge result",
-    "Cost ledger",
-    "Risk ledger",
+    "EvaluatorReport",
+    "ReviewerAttestation",
+    "CostLedger",
+    "SafetyLedger",
+    "RiskLedger",
     "SelectionCertificate",
-    "RollbackReceipt",
-    "AGIALPHA settlement receipt",
-    "Chronicle entry"
+    "RollbackPlan",
+    "ChronicleEntry"
   ]
 }

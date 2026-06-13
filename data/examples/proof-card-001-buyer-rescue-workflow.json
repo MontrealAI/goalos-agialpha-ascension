@@ -2,12 +2,45 @@
   "id": "001",
   "slug": "buyer-rescue-workflow",
   "title": "Buyer Rescue Workflow",
-  "tag": "First public proof loop",
-  "level": "Customer trust",
-  "problem": "A buyer cannot access a download or needs help after purchase. A normal AI answer may be polite, but it can miss access classification, refund boundaries, escalation, or evidence requirements.",
-  "mission": "Improve a support workflow from v1.0 to v1.1, prove the improvement, and preserve a public-safe Proof Card without exposing buyer data.",
-  "agialpha": "AGIALPHA coordinates mission posting, builder claim bond, proof submission bond, reviewer validation, proof-card action, credential action, and settlement.",
-  "rsi": "The accepted support workflow can be reused in future support cases only after evidence, reviewer validation, and scoped upgrade approval.",
-  "value": "Faster buyer rescue, less repeated support work, and a clearer foundation for the first public proof loop.",
-  "claim": "Illustrative until completed with a live Evidence Docket."
+  "phase": "Frontline Trust",
+  "problem": "A buyer cannot access a purchased file or needs help after checkout. A normal AI response may be polite but incomplete; it may miss access-state classification, refund boundaries, escalation logic, or a public-safe proof note.",
+  "mission": "Convert a recurring support scenario into a reusable GoalOS workflow: classify the issue, generate a safe response, flag human review when needed, preserve private buyer data off-chain, and produce a Proof Card showing what improved.",
+  "incremental": "Establishes the first proof surface: AI work becomes an auditable workflow improvement rather than a disposable answer.",
+  "value": "Faster support, clearer buyer experience, fewer repeated mistakes, and the first public demonstration that proof-backed workflow improvement can be understood by non-technical buyers.",
+  "skills": [
+    "Support triage",
+    "Policy-bound response writing",
+    "Private-data minimization",
+    "Proof-note drafting",
+    "Reviewer-ready evidence packaging"
+  ],
+  "plans": [
+    "Buyer Rescue Workflow proof mission plan",
+    "Evidence Docket route",
+    "Reviewer and red-team plan",
+    "Selection Gate upgrade policy"
+  ],
+  "goals": [
+    "Create replayable institutional proof",
+    "Demonstrate AGIALPHA proof-settled coordination",
+    "Promote only proven artifacts",
+    "Strengthen the evidence graph"
+  ],
+  "contracts": [
+    "AEPGoalOSCommitRegistry",
+    "AEPRunCommitmentRegistry",
+    "JobRegistry",
+    "JobClaimBondManager",
+    "ProofSubmissionRegistry",
+    "ReviewerBondRegistry",
+    "ProofCardRegistry",
+    "ProofCredentialRegistry",
+    "ReputationRegistry",
+    "AEPEvidenceDocketRegistry",
+    "AEPSelectionGate",
+    "AEPChronicleRegistry",
+    "AEPClaimBoundaryRegistry"
+  ],
+  "rsi": "The accepted artifact may influence future work only after evidence, evaluator review, reviewer validation, scope control, challenge window, rollback readiness, Selection Gate approval, and Chronicle entry.",
+  "status": "illustrative_until_live_evidence_docket"
 }

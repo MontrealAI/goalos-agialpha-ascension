@@ -1,0 +1,47 @@
+{
+  "id": "004",
+  "slug": "persistent-goal-seeking-intelligence-accumulation-engine",
+  "title": "Persistent Goal-Seeking Intelligence Accumulation Engine",
+  "phase": "Persistent Memory",
+  "problem": "One-off AI tasks do not compound. They answer, then disappear. A persistent system must accumulate capabilities, evidence, and value over time.",
+  "mission": "Define the accumulation layer: every accepted workflow improvement becomes an artifact; every artifact receives evidence; every evidence-backed artifact can earn credentials, reputation, and future routing rights.",
+  "incremental": "Moves from individual proof cards to compounding institutional memory.",
+  "value": "Capabilities stop being ephemeral and become reusable operating assets that improve future missions.",
+  "skills": [
+    "Capability inventory",
+    "Artifact versioning",
+    "Evidence tracking",
+    "Reputation design",
+    "Chronicle memory design"
+  ],
+  "plans": [
+    "Persistent Goal-Seeking Intelligence Accumulation Engine proof mission plan",
+    "Evidence Docket route",
+    "Reviewer and red-team plan",
+    "Selection Gate upgrade policy"
+  ],
+  "goals": [
+    "Create replayable institutional proof",
+    "Demonstrate AGIALPHA proof-settled coordination",
+    "Promote only proven artifacts",
+    "Strengthen the evidence graph"
+  ],
+  "contracts": [
+    "AEPGoalOSCommitRegistry",
+    "AEPRunCommitmentRegistry",
+    "JobRegistry",
+    "JobClaimBondManager",
+    "ProofSubmissionRegistry",
+    "ReviewerBondRegistry",
+    "ProofCardRegistry",
+    "ProofCredentialRegistry",
+    "ReputationRegistry",
+    "AEPEvidenceDocketRegistry",
+    "AEPSelectionGate",
+    "AEPChronicleRegistry",
+    "AEPArtifactRegistry",
+    "AlphaWorkUnitLedger"
+  ],
+  "rsi": "The accepted artifact may influence future work only after evidence, evaluator review, reviewer validation, scope control, challenge window, rollback readiness, Selection Gate approval, and Chronicle entry.",
+  "status": "illustrative_until_live_evidence_docket"
+}

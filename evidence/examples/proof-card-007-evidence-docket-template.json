@@ -1,21 +1,21 @@
 {
-  "proofCardId": "007",
+  "proof_card_id": "007",
   "title": "Sovereign Enterprise Autoresearch Reactor",
-  "status": "template",
-  "mustCollect": [
-    "GoalOSCommit hash",
-    "RunCommitment hash",
-    "ProofBundle URI/hash",
-    "Evaluator report",
-    "Reviewer attestation",
-    "Red-team/falsification report",
-    "Cost ledger",
-    "Safety ledger",
+  "status": "template_until_live_docket",
+  "required_evidence": [
+    "GoalOSCommit",
+    "RunCommitment",
+    "task_manifest",
+    "baseline",
+    "candidate_artifact",
+    "ProofBundle",
+    "EvaluatorReport",
+    "ReviewerAttestation",
+    "CostLedger",
+    "SafetyLedger",
+    "RiskLedger",
     "SelectionCertificate",
-    "RollbackReceipt",
-    "Chronicle entry",
-    "AGIALPHA settlement receipts"
-  ],
-  "claimBoundary": "Experimental proof-card template. It does not claim achieved AGI, superintelligence, guaranteed financial return, legal/tax/security approval, Ethereum mainnet deployment, or Kardashev Type II achievement. It defines a proof program for testing whether RSI-driven enterprise autoresearch can compound evidence, capability, and verified value.",
-  "generatedAt": "2026-06-13T16:29:42Z"
+    "RollbackPlan",
+    "ChronicleEntry"
+  ]
 }

@@ -1,13 +1,21 @@
 {
-  "proof_card": "PC-010",
+  "proof_card_id": "010",
+  "title": "Cyber-Sovereign Proof Benchmark Market",
+  "status": "template_until_live_docket",
   "required_evidence": [
+    "GoalOSCommit",
+    "RunCommitment",
     "task_manifest",
     "baseline",
+    "candidate_artifact",
     "ProofBundle",
-    "reviewer_attestation",
-    "red_team_report",
-    "reproduction_receipt",
+    "EvaluatorReport",
+    "ReviewerAttestation",
+    "CostLedger",
+    "SafetyLedger",
+    "RiskLedger",
     "SelectionCertificate",
-    "Chronicle_entry"
+    "RollbackPlan",
+    "ChronicleEntry"
   ]
 }

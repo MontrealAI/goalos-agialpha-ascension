@@ -2,12 +2,46 @@
   "id": "002",
   "slug": "sovereign-procurement-trust-room",
   "title": "Sovereign Procurement Trust Room",
-  "tag": "Enterprise trust gateway",
-  "level": "Procurement trust",
-  "problem": "A serious buyer asks whether the AI workflow system can be evaluated, governed, audited, and trusted without exposing private data.",
-  "mission": "Create a procurement trust-room response with evidence checklist, risk boundaries, reviewer rubric, and public-safe proof artifacts.",
-  "agialpha": "AGIALPHA coordinates sponsor-funded proof work, builder bonds, reviewer bonds, proof-card registration, credential issuance, and reputation update.",
-  "rsi": "The accepted trust-room response becomes a reusable procurement artifact for future due-diligence workflows after Selection Gate approval.",
-  "value": "Reduces buyer uncertainty and turns procurement friction into a reusable trust asset.",
-  "claim": "Illustrative until a live buyer/sponsor Evidence Docket is completed."
+  "phase": "Trust Architecture",
+  "problem": "A serious buyer asks whether the system can be evaluated, audited, and trusted. A generic sales page is not enough for procurement, compliance, or institutional review.",
+  "mission": "Turn procurement due diligence into a proof mission: assemble a trust room with public-safe evidence, claim boundaries, security posture, token-utility explanation, Proof Cards, reviewer notes, and an Evidence Docket checklist.",
+  "incremental": "Moves from buyer support to institutional trust: proof becomes useful in procurement conversations.",
+  "value": "Better procurement readiness, faster sponsor conversations, clearer risk posture, and reusable answers for future enterprise buyers.",
+  "skills": [
+    "Procurement response design",
+    "Trust-center evidence mapping",
+    "Compliance-oriented explanation",
+    "Claim-boundary editing",
+    "Evidence Docket assembly"
+  ],
+  "plans": [
+    "Sovereign Procurement Trust Room proof mission plan",
+    "Evidence Docket route",
+    "Reviewer and red-team plan",
+    "Selection Gate upgrade policy"
+  ],
+  "goals": [
+    "Create replayable institutional proof",
+    "Demonstrate AGIALPHA proof-settled coordination",
+    "Promote only proven artifacts",
+    "Strengthen the evidence graph"
+  ],
+  "contracts": [
+    "AEPGoalOSCommitRegistry",
+    "AEPRunCommitmentRegistry",
+    "JobRegistry",
+    "JobClaimBondManager",
+    "ProofSubmissionRegistry",
+    "ReviewerBondRegistry",
+    "ProofCardRegistry",
+    "ProofCredentialRegistry",
+    "ReputationRegistry",
+    "AEPEvidenceDocketRegistry",
+    "AEPSelectionGate",
+    "AEPChronicleRegistry",
+    "AEPConformanceRegistry",
+    "LaunchGateRegistry"
+  ],
+  "rsi": "The accepted artifact may influence future work only after evidence, evaluator review, reviewer validation, scope control, challenge window, rollback readiness, Selection Gate approval, and Chronicle entry.",
+  "status": "illustrative_until_live_evidence_docket"
 }

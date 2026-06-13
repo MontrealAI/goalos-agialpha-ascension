@@ -1,22 +1,33 @@
 {
   "id": "006",
+  "slug": "sovereign-enterprise-rsi-operating-system",
   "title": "Sovereign Enterprise RSI Operating System",
-  "canonicalStatement": "GoalOS-native alpha-AGI Ascension uses AGIALPHA to coordinate a large multi-agent sovereign enterprise system that turns verified work into capability, capability into governed operating capacity, and operating capacity into higher-value proof missions over time.",
-  "agialphaToken": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
-  "proofCard": {
-    "id": "006",
-    "title": "Sovereign Enterprise RSI Operating System",
-    "slug": "sovereign-enterprise-rsi-operating-system",
-    "tag": "Enterprise capability reactor",
-    "level": "Sovereign enterprise compounding",
-    "problem": "Even a treasury that reinvests verified value is not enough. A sovereign enterprise needs an operating system that turns many proof cycles into coordinated departments, better missions, higher trust, stronger capability, and measurable productive capacity across time.",
-    "mission": "Coordinate a large multi-agent operating theater that converts verified proof work into reusable enterprise capability, then routes that capability into higher-value missions across procurement, support, compliance, research operations, security, and market expansion.",
-    "agialpha": "AGIALPHA coordinates enterprise-scale proof settlement: sponsor funding, domain mission budgets, builder claim bonds, proof bonds, reviewer bonds, proof-card registration, credential issuance, reputation-linked access, AlphaWorkUnit metrology, reward vault allocations, TreasuryRouter records, CommercializationPerformanceVault milestones, and Chronicle memory.",
-    "rsi": "Sovereign RSI becomes an operating system when the Selection Gate grants scoped upgrade rights to proven artifacts, then uses those artifacts to improve future planning, routing, evaluation, procurement responses, proof missions, budget allocation, rollback paths, and market-facing trust rooms. The system learns efficiently because unproven artifacts cannot shape the next generation of work.",
-    "value": "Creates the strongest current proof-card layer: verified enterprise work becomes reusable capability; reusable capability increases mission quality; mission quality improves trust, revenue potential, and productive capacity; productive capacity funds stronger future agents, tools, reviews, audits, and infrastructure.",
-    "claim": "Experimental proof-card template. It does not claim achieved AGI, superintelligence, investment return, guaranteed ROI, legal/tax/security approval, Ethereum mainnet deployment, or Kardashev Type II achievement. It defines a bounded mechanism for testing whether verified enterprise work can compound into durable capability and productive capacity."
-  },
-  "route": [
+  "phase": "Enterprise Operating Layer",
+  "problem": "A sovereign enterprise needs more than isolated tools. It needs a multi-agent operating system with aim, strategy, execution, proof, risk control, settlement, rollback, and memory.",
+  "mission": "Coordinate specialist agent roles\u2014Aim Council, Strategy Desk, Builders, Proof Engineers, Reviewers, Red Team, Treasury, Rollback Desk, and Evidence Office\u2014through proof-backed workflows and AGIALPHA settlement.",
+  "incremental": "Turns the proof flywheel into an enterprise operating system.",
+  "value": "Creates the institutional form needed for scalable, accountable, multi-agent enterprise execution.",
+  "skills": [
+    "Enterprise operating model design",
+    "Multi-agent routing",
+    "Proof engineering",
+    "Risk governance",
+    "Rollback planning",
+    "Institutional memory"
+  ],
+  "plans": [
+    "Sovereign Enterprise RSI Operating System proof mission plan",
+    "Evidence Docket route",
+    "Reviewer and red-team plan",
+    "Selection Gate upgrade policy"
+  ],
+  "goals": [
+    "Create replayable institutional proof",
+    "Demonstrate AGIALPHA proof-settled coordination",
+    "Promote only proven artifacts",
+    "Strengthen the evidence graph"
+  ],
+  "contracts": [
     "AEPGoalOSCommitRegistry",
     "AEPRunCommitmentRegistry",
     "JobRegistry",
@@ -29,158 +40,9 @@
     "AEPEvidenceDocketRegistry",
     "AEPSelectionGate",
     "AEPChronicleRegistry",
-    "AlphaWorkUnitLedger",
-    "AEPRewardVault",
-    "TreasuryRouter",
-    "CommercializationPerformanceVault",
-    "AEPConformanceRegistry",
-    "AEPClaimBoundaryRegistry",
-    "AEPFalsificationRegistry",
+    "AEPAgentRegistry",
     "AEPRollbackRegistry"
   ],
-  "roles": [
-    [
-      "Aim Council",
-      "Defines sovereign enterprise goals and risk boundaries",
-      "GoalOSCommit"
-    ],
-    [
-      "Strategy Desk",
-      "Turns goals into mission portfolios and proof paths",
-      "Mission Plan"
-    ],
-    [
-      "Domain Operators",
-      "Route procurement, support, compliance, security, and research work",
-      "RunCommitment"
-    ],
-    [
-      "Builders",
-      "Produce improved workflows, artifacts, and operating procedures",
-      "Workflow Artifact"
-    ],
-    [
-      "Proof Engineers",
-      "Package traces, before/after evidence, and reproducibility notes",
-      "ProofBundle"
-    ],
-    [
-      "Reviewer Council",
-      "Validate evidence under rubric and challenge window",
-      "EvalAttestation"
-    ],
-    [
-      "Red Team",
-      "Test claim boundaries, failure modes, rollback, and unsafe propagation",
-      "Risk Report"
-    ],
-    [
-      "Treasury Desk",
-      "Allocate verified value into bounded future capability budgets",
-      "Treasury Allocation"
-    ],
-    [
-      "Selection Gate",
-      "Grants scoped upgrade rights only to proven artifacts",
-      "SelectionCertificate"
-    ],
-    [
-      "Evidence Office",
-      "Publishes public-safe proof cards and private evidence dockets",
-      "Evidence Docket"
-    ]
-  ],
-  "goals": [
-    [
-      "Make AI adoption auditable",
-      "Convert trust questions into proof missions."
-    ],
-    [
-      "Make improvement governable",
-      "Allow only proven artifacts to shape future work."
-    ],
-    [
-      "Make value compounding measurable",
-      "Track capability, evidence, and productive capacity across cycles."
-    ],
-    [
-      "Make sovereignty operational",
-      "Keep private intelligence private while making public proof verifiable."
-    ],
-    [
-      "Make enterprise RSI practical",
-      "Move from one-off outputs to proof-backed operating capacity."
-    ]
-  ],
-  "plans": [
-    [
-      "Season 001",
-      "Publish and validate Proof Cards 001-006 as public-safe examples."
-    ],
-    [
-      "Sepolia rehearsal",
-      "Run the proof-work loop before any mainnet claims."
-    ],
-    [
-      "Enterprise Trust Room",
-      "Use Proof Cards 002, 003, and 006 in procurement conversations."
-    ],
-    [
-      "RSI Treasury Loop",
-      "Use verified value to fund higher-value proof missions."
-    ],
-    [
-      "Evidence Graph Expansion",
-      "Connect every accepted artifact to future routing and audits."
-    ]
-  ],
-  "skills": [
-    [
-      "Sovereign goal decomposition",
-      "Converts strategic aim into bounded missions"
-    ],
-    [
-      "Proof mission design",
-      "Builds GoalOS jobs with evidence requirements"
-    ],
-    [
-      "AGIALPHA settlement routing",
-      "Uses AGIALPHA for bonds, rewards, proof-card actions, credentials, and settlement"
-    ],
-    [
-      "Reviewer rubric design",
-      "Makes evidence validation repeatable"
-    ],
-    [
-      "Evidence Docket assembly",
-      "Packages private and public proof surfaces"
-    ],
-    [
-      "Selection Gate analysis",
-      "Decides if an artifact earns upgrade rights"
-    ],
-    [
-      "Rollback planning",
-      "Keeps recursive improvement safe and reversible"
-    ],
-    [
-      "Treasury-to-capability allocation",
-      "Reinvests verified value into better future missions"
-    ],
-    [
-      "Chronicle memory",
-      "Turns accepted proof into durable institutional memory"
-    ]
-  ],
-  "claimBoundary": {
-    "achievedAGI": false,
-    "achievedSuperintelligence": false,
-    "investmentReturn": false,
-    "guaranteedROI": false,
-    "legalApproval": false,
-    "taxApproval": false,
-    "securityApproval": false,
-    "ethereumMainnetDeployment": false,
-    "kardashevTypeIIAchievement": false
-  }
+  "rsi": "The accepted artifact may influence future work only after evidence, evaluator review, reviewer validation, scope control, challenge window, rollback readiness, Selection Gate approval, and Chronicle entry.",
+  "status": "illustrative_until_live_evidence_docket"
 }
