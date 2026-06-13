@@ -1,41 +1,17 @@
 {
-  "evidence_docket_id": "goalos-agialpha-proof-card-004-docket-template",
-  "proof_card": "proof-card-004",
-  "status": "template_until_live_rehearsal",
-  "required_evidence": [
-    "GoalOSCommit hash",
-    "RunCommitment hash",
-    "mission id",
-    "builder claim transaction",
-    "proof submission hash",
-    "reviewer attestation",
-    "Proof Card URI/hash",
-    "credential id",
-    "reputation update",
-    "SelectionCertificate",
-    "Chronicle entry",
-    "rollback path"
-  ],
-  "private_evidence_boundary": [
-    "private prompts",
-    "buyer data",
-    "internal policy files",
-    "private workflow artifacts"
-  ],
-  "public_evidence_boundary": [
-    "public-safe proof note",
-    "hashes",
-    "card URI",
-    "credential id",
-    "review decision summary",
-    "claim boundary"
-  ],
-  "rsi_acceptance_gate": [
-    "evidence complete",
-    "eval passed",
-    "reviewer validation passed",
-    "scope approved",
-    "challenge window observed",
-    "rollback path documented"
+  "proofCard": "004",
+  "title": "Persistent Goal-Seeking Intelligence Accumulation Engine",
+  "status": "Illustrative until repeated live Evidence Dockets prove accumulation over time.",
+  "agialphaToken": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
+  "requiredEvidence": [
+    "GoalOSCommit",
+    "RunCommitment",
+    "ProofBundle",
+    "ReviewerAttestation",
+    "ProofCardHash",
+    "CredentialReceipt",
+    "ReputationUpdate",
+    "SelectionDecision",
+    "RollbackNotes"
   ]
 }

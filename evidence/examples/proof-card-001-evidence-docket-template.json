@@ -1,51 +1,17 @@
 {
-  "proof_card_id": "001",
+  "proofCard": "001",
   "title": "Buyer Rescue Workflow",
-  "status": "template",
-  "required_evidence": [
-    "Workflow v1.0 prompt/spec",
-    "Private buyer scenario redacted",
-    "v1.0 output",
-    "Scorecard and diagnosis",
-    "Workflow v1.1 prompt/spec",
-    "v1.1 output",
-    "Before/after comparison",
-    "Reviewer attestation",
-    "Proof Card hash",
-    "Rollback note"
-  ],
-  "on_chain_anchors": [
-    "AEPGoalOSCommitRegistry",
-    "AEPRunCommitmentRegistry",
-    "JobRegistry",
-    "JobClaimBondManager",
-    "ProofSubmissionRegistry",
-    "ReviewerBondRegistry",
-    "ProofCardRegistry",
-    "ProofCredentialRegistry",
-    "ReputationRegistry",
-    "AEPEvidenceDocketRegistry",
-    "AEPSelectionGate",
-    "AEPChronicleRegistry"
-  ],
-  "agialpha_uses": [
-    "mission_posting",
-    "builder_claim_bond",
-    "proof_submission_bond",
-    "reviewer_bond",
-    "proof_card_action",
-    "credential_action",
-    "reward_settlement",
-    "reputation_linked_access"
-  ],
-  "rsi_gate": [
-    "evidence",
-    "evaluation",
-    "reviewer_validation",
-    "scope_control",
-    "challenge_window",
-    "monitoring",
-    "rollback_readiness",
-    "selection_gate_approval"
+  "status": "Illustrative until a live Evidence Docket is completed.",
+  "agialphaToken": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
+  "requiredEvidence": [
+    "GoalOSCommit",
+    "RunCommitment",
+    "ProofBundle",
+    "ReviewerAttestation",
+    "ProofCardHash",
+    "CredentialReceipt",
+    "ReputationUpdate",
+    "SelectionDecision",
+    "RollbackNotes"
   ]
 }
