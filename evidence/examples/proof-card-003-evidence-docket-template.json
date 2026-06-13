@@ -1,0 +1,23 @@
+{
+  "schema": "goalos.agialpha.evidence_docket.v5.0.template",
+  "proofCardId": "proof-card-003-sovereign-ai-procurement-control-tower",
+  "requiredEvidence": [
+    "goalosCommit",
+    "proofMission",
+    "builderClaim",
+    "proofSubmission",
+    "reviewerAttestation",
+    "proofCard",
+    "credential",
+    "reputationUpdate",
+    "selectionCertificate",
+    "chronicleEntry"
+  ],
+  "privateAppendices": [
+    "buyerData",
+    "internalNotes",
+    "prompts",
+    "unredactedReview"
+  ],
+  "publicBoundary": "public-safe hashes, summaries, credential IDs and attestations only"
+}
