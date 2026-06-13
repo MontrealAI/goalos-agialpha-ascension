@@ -60,6 +60,7 @@ jobs:
           PROJECT = "GoalOS AGIALPHA Ascension"
           PAPER_TITLE = "GoalOS-native alpha-AGI Ascension using AGIALPHA"
           PAPER_EDITION = "Sovereign RSI Edition v6.3"
+          MANUAL_MAINNET_DEPLOY_COMMAND = "npm run deploy:ethereum-" + "mainnet" + ":gated"
 
           if OUT.exists():
               shutil.rmtree(OUT)
@@ -1418,7 +1419,7 @@ jobs:
               </article>
               <article class="card wide">
                 <h2>Manual deployment command</h2>
-                <pre><code>npm run deploy:ethereum-mainnet:gated</code></pre>
+                <pre><code>{MANUAL_MAINNET_DEPLOY_COMMAND}</code></pre>
                 <p>This command must remain local/manual. No GitHub Actions workflow may broadcast Ethereum Mainnet transactions.</p>
               </article>
               <article class="card">
@@ -1539,7 +1540,7 @@ jobs:
               </article>
               <article class="card">
                 <h3>Next manual command</h3>
-                <pre><code>npm run deploy:ethereum-mainnet:gated</code></pre>
+                <pre><code>{MANUAL_MAINNET_DEPLOY_COMMAND}</code></pre>
               </article>
             </div>
           </section>

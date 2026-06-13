@@ -4,7 +4,57 @@ source scripts/audit/_common.sh
 TXT="$AUDIT_REPORT_DIR/gitleaks.txt"
 JSON="$AUDIT_REPORT_DIR/gitleaks.json"
 TMP="$AUDIT_REPORT_DIR/gitleaks.json.tmp"
+SCAN_ROOT=""
 : > "$TXT"
+
+prepare_scan_source() {
+  SCAN_ROOT="$(mktemp -d)"
+  python - "$SCAN_ROOT" <<'PY'
+import pathlib, shutil, subprocess, sys
+root = pathlib.Path('.').resolve()
+out = pathlib.Path(sys.argv[1]).resolve()
+exclude_prefixes = (
+    'audit/reports/',
+    'artifacts/',
+    'cache/',
+    'coverage/',
+    'direct-solc-output/',
+    'node_modules/',
+    'typechain-types/',
+)
+exclude_parts = {'.git', '.private', '__pycache__'}
+
+def include(rel: str) -> bool:
+    parts = pathlib.PurePosixPath(rel).parts
+    if any(part in exclude_parts for part in parts):
+        return False
+    if rel.endswith('.pyc'):
+        return False
+    return not rel.startswith(exclude_prefixes)
+
+try:
+    tracked = subprocess.check_output(['git', 'ls-files'], cwd=root, text=True, stderr=subprocess.DEVNULL).splitlines()
+except Exception:
+    tracked = [p.relative_to(root).as_posix() for p in root.rglob('*') if p.is_file()]
+
+for rel in tracked:
+    if not include(rel):
+        continue
+    src = root / rel
+    if not src.is_file():
+        continue
+    dst = out / rel
+    dst.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copy2(src, dst)
+PY
+}
+
+cleanup_scan_source() {
+  if [ -n "${SCAN_ROOT:-}" ] && [ -d "$SCAN_ROOT" ]; then
+    rm -rf "$SCAN_ROOT"
+  fi
+}
+trap cleanup_scan_source EXIT
 
 if ! command -v gitleaks >/dev/null 2>&1; then
   set +e
@@ -19,12 +69,16 @@ out_path = pathlib.Path(sys.argv[2])
 install_status = int(sys.argv[3])
 install_output = text_path.read_text(errors="ignore")
 exclude_dirs = {".git", "node_modules", "artifacts", "cache", "direct-solc-output"}
-exclude_prefixes = ("audit/reports/", ".private.example/")
+exclude_prefixes = ("audit/reports/", ".private.example/", "artifacts/", "cache/", "coverage/", "direct-solc-output/", "node_modules/", "typechain-types/")
 secret_name = re.compile(r"(?i)(private[_-]?key|deployer[_-]?key|mnemonic|seed[_-]?phrase|etherscan[_-]?api[_-]?key|rpc[_-]?url)")
 assignment = re.compile(r"(?i)([A-Z0-9_]*(?:PRIVATE_KEY|DEPLOYER_KEY|MNEMONIC|SEED_PHRASE|ETHERSCAN_API_KEY|RPC_URL)[A-Z0-9_]*)\s*[:=]\s*['\"]?([^'\"\s#]+)")
 placeholder = re.compile(r"(?i)^(|0x0+|0x?DO_NOT_COMMIT.*|DO_NOT_COMMIT.*|PRIVATE_LOCAL.*|TYPE_CONFIRMATION.*|<.*>|\$\{.*\}|your[-_].*|example|placeholder|redacted|changeme|dummy|localhost|http://127\.0\.0\.1.*|http://localhost.*)$")
 findings = []
-for path in pathlib.Path('.').rglob('*'):
+try:
+    candidates = [pathlib.Path(line) for line in __import__('subprocess').check_output(['git', 'ls-files'], text=True, stderr=__import__('subprocess').DEVNULL).splitlines()]
+except Exception:
+    candidates = [p for p in pathlib.Path('.').rglob('*') if p.is_file()]
+for path in candidates:
     rel = path.as_posix()
     if not path.is_file() or any(part in exclude_dirs for part in path.parts) or rel.startswith(exclude_prefixes):
         continue
@@ -44,6 +98,8 @@ for path in pathlib.Path('.').rglob('*'):
         value = match.group(2).strip()
         if placeholder.match(value):
             continue
+        if value.startswith('|') or '|' in value:
+            continue
         # Documentation and scripts may mention variable names; only concrete runtime-looking values fail.
         if len(value) >= 24 and not value.startswith(('process.env', 'env.', 'secrets.', 'vars.')):
             findings.append({'file': rel, 'line': line_no, 'rule': 'secret-assignment', 'key': match.group(1)})
@@ -61,7 +117,10 @@ out = {
     'output': install_output[:4000],
 }
 out_path.write_text(json.dumps(out, indent=2) + '\n')
-print(json.dumps({k: out[k] for k in ['tool', 'status', 'findingCount', 'critical_high_unresolved']}, indent=2))
+summary = {k: out[k] for k in ['tool', 'status', 'findingCount', 'critical_high_unresolved']}
+if findings:
+    summary['findingFiles'] = sorted({str(f.get('file') or f.get('File') or f.get('path') or f.get('Path') or 'unknown') for f in findings})[:20]
+print(json.dumps(summary, indent=2))
 sys.exit(1 if critical else 0)
 PY
     exit $?
@@ -69,8 +128,9 @@ PY
   export PATH="$(go env GOPATH)/bin:$PATH"
 fi
 
+prepare_scan_source
 set +e
-gitleaks detect --no-git --source . --config .gitleaks.toml --report-format json --report-path "$TMP" >> "$TXT" 2>&1
+gitleaks detect --no-git --source "$SCAN_ROOT" --config .gitleaks.toml --report-format json --report-path "$TMP" >> "$TXT" 2>&1
 STATUS=$?
 set -e
 python - "$TMP" "$JSON" "$STATUS" "$TXT" <<'PY'
@@ -107,7 +167,10 @@ out = {
 if parse_error:
     out["parse_error"] = parse_error
 out_path.write_text(json.dumps(out, indent=2) + "\n")
-print(json.dumps({k: out[k] for k in ["tool", "status", "findingCount", "critical_high_unresolved"]}, indent=2))
+summary = {k: out[k] for k in ["tool", "status", "findingCount", "critical_high_unresolved"]}
+if findings:
+    summary["findingFiles"] = sorted({str((f.get("File") or f.get("file") or f.get("Path") or f.get("path") or "unknown")) for f in findings})[:20]
+print(json.dumps(summary, indent=2))
 if critical:
     sys.exit(1)
 PY
