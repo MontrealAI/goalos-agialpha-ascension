@@ -11,13 +11,13 @@ on:
       - "audit/**"
       - "deployments/**"
       - "package.json"
-      - ".github/workflows/autonomous-github-pages.yml"
-      - "scripts/integrate_goalos_agialpha_premium_proof_cards_v20.py"
-      - "scripts/verify_goalos_agialpha_premium_proof_cards_v20.py"
-      - "data/proof-cards/proof-cards-v20.json"
-      - "docs/examples/**"
+      - "data/proof-cards/**"
       - "data/examples/**"
+      - "docs/examples/**"
       - "evidence/examples/**"
+      - "scripts/integrate_goalos_agialpha_premium_proof_cards_v22.py"
+      - "scripts/verify_goalos_agialpha_premium_proof_cards_v22.py"
+      - ".github/workflows/autonomous-github-pages.yml"
   workflow_dispatch:
 
 concurrency:
@@ -1625,15 +1625,14 @@ jobs:
           print(f"Evidence artifacts copied: {len(copied_evidence)}")
           PY
 
-      - name: Integrate substantial Proof Cards 001-010 into main website
-        shell: bash
-        run: |
-          python3 scripts/integrate_goalos_agialpha_premium_proof_cards_v20.py --site site
 
-      - name: Verify substantial Proof Card Command Center
+      - name: Integrate premium proof-card atlas into main website
         shell: bash
-        run: |
-          python3 scripts/verify_goalos_agialpha_premium_proof_cards_v20.py --site site
+        run: python3 scripts/integrate_goalos_agialpha_premium_proof_cards_v22.py --site site --data data/proof-cards/proof-cards-v22.json
+
+      - name: Verify premium proof-card atlas
+        shell: bash
+        run: python3 scripts/verify_goalos_agialpha_premium_proof_cards_v22.py --site site
 
       - name: Validate generated website artifact
         shell: bash

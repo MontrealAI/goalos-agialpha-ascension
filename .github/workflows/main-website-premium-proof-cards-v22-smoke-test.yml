@@ -1,0 +1,24 @@
+name: Main Website Premium Proof Cards v22 Smoke Test
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches: [ main ]
+    paths:
+      - "scripts/integrate_goalos_agialpha_premium_proof_cards_v22.py"
+      - "scripts/verify_goalos_agialpha_premium_proof_cards_v22.py"
+      - "data/proof-cards/proof-cards-v22.json"
+      - ".github/workflows/main-website-premium-proof-cards-v22-smoke-test.yml"
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Build proof-card atlas smoke site
+        run: |
+          mkdir -p site
+          printf '<!doctype html><html><head><title>Smoke</title></head><body><h1>GoalOS AGIALPHA Ascension</h1></body></html>' > site/index.html
+          python3 scripts/integrate_goalos_agialpha_premium_proof_cards_v22.py --site site --data data/proof-cards/proof-cards-v22.json
+      - name: Verify proof-card atlas
+        run: python3 scripts/verify_goalos_agialpha_premium_proof_cards_v22.py --site site
