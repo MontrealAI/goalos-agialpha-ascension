@@ -1263,7 +1263,7 @@ jobs:
           sovereign_body = f"""
           <section class="hero">
             <div class="hero-card">
-              <div class="eyebrow">Sovereign Recursive Self-Improvement</div>
+              <div class="eyebrow">Sovereign RSI</div>
               <h1>RSI as proof-backed upgrade rights</h1>
               <p class="subtitle">
                 The base model is not silently rewriting itself. The institution recursively improves
@@ -1619,13 +1619,13 @@ jobs:
           print(f"Evidence artifacts copied: {len(copied_evidence)}")
           PY
 
-      - name: Add Proof Cards 001-005 to the existing main website
+      - name: Add Proof Cards 001-006 to the main website
         shell: bash
-        run: python3 scripts/add_goalos_agialpha_main_site_proof_cards_v11.py --site site
+        run: python3 scripts/add_goalos_agialpha_main_site_proof_cards_v12.py --site site
 
-      - name: Verify main website and Proof Cards 001-005
+      - name: Verify main website and Proof Cards 001-006
         shell: bash
-        run: python3 scripts/verify_goalos_agialpha_main_site_proof_cards_v11.py --site site
+        run: python3 scripts/verify_goalos_agialpha_main_site_proof_cards_v12.py --site site
 
       - name: Validate generated website artifact
         shell: bash
