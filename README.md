@@ -1,5 +1,16 @@
 # GoalOS AGIALPHA Ascension
 
+[![Repository Validation](https://github.com/MontrealAI/goalos-agialpha-ascension/actions/workflows/repository-validation.yml/badge.svg)](https://github.com/MontrealAI/goalos-agialpha-ascension/actions/workflows/repository-validation.yml)
+[![Final Public Mainnet Authorization](https://github.com/MontrealAI/goalos-agialpha-ascension/actions/workflows/final-public-mainnet-authorization.yml/badge.svg)](https://github.com/MontrealAI/goalos-agialpha-ascension/actions/workflows/final-public-mainnet-authorization.yml)
+[![Mainnet Authorization Gate](https://github.com/MontrealAI/goalos-agialpha-ascension/actions/workflows/mainnet-authorization-gate.yml/badge.svg)](https://github.com/MontrealAI/goalos-agialpha-ascension/actions/workflows/mainnet-authorization-gate.yml)
+[![Solidity Audit Toolchain](https://github.com/MontrealAI/goalos-agialpha-ascension/actions/workflows/solidity-audit-toolchain.yml/badge.svg)](https://github.com/MontrealAI/goalos-agialpha-ascension/actions/workflows/solidity-audit-toolchain.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](NOTICE.md)
+[![Solidity 0.8.35](https://img.shields.io/badge/Solidity-0.8.35-363636?logo=solidity)](package.json)
+[![Hardhat 2.28.6](https://img.shields.io/badge/Hardhat-2.28.6-f5d061?logo=ethereum)](package.json)
+[![TypeScript 5.9.3](https://img.shields.io/badge/TypeScript-5.9.3-3178c6?logo=typescript&logoColor=white)](package.json)
+[![Mainnet Authorized](https://img.shields.io/badge/Ethereum%20Mainnet-Authorized%20for%20manual%20gated%20deployment-success)](qa/mainnet-authorization-certificate.json)
+[![Mainnet Deployed](https://img.shields.io/badge/Ethereum%20Mainnet%20Deployed-NO-critical)](qa/mainnet-authorization-certificate.json)
+
 GoalOS AGIALPHA Ascension v4.4.0 mainnet authorization candidate.
 
 Automated/internal security toolchain: passed.
@@ -18,6 +29,24 @@ It does not claim external audit completion, legal approval, tax review, guarant
 
 Public Sepolia deployment is recommended but not mandatory for public authorization; local deterministic rehearsal and mainnet-shaped simulation are the active public gates.
 
+
+## Executive overview
+
+GoalOS AGIALPHA Ascension is the institutional, evidence-first package for proof-settled AI workflow coordination using the existing AGIALPHA token. The repository is designed for reviewers, operators, auditors, and governance stakeholders who need a clear source of truth, reproducible checks, and strict public-claims boundaries.
+
+**Official source of truth:** `qa/mainnet-authorization-certificate.json`. Public README/status documents summarize that certificate; they do not override it.
+
+## Quick start for institutional reviewers
+
+1. Read this README for current status, safety boundaries, and canonical commands.
+2. Confirm the certificate in `qa/mainnet-authorization-certificate.json`.
+3. Run `npm run mainnet:public-authorize` to validate the public authorization gates.
+4. Run `npm run mainnet:local-checks` before any operator handoff or release review.
+5. Use `npm run deploy:ethereum-mainnet:gated` only from a local operator environment with runtime RPC URL and deployer key supplied outside GitHub.
+
+## Official badge policy
+
+Badges at the top of this README are intentionally limited to official, auditable repository signals: GitHub Actions workflow status, package-declared tool versions, license, authorization state, and deployment state. Workflow badges update automatically from GitHub Actions. Static status badges mirror `qa/mainnet-authorization-certificate.json` and must be updated only when the certificate changes. See `docs/OFFICIAL_BADGES.md` for maintenance rules.
 
 ## Core doctrine
 
