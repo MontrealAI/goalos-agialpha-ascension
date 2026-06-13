@@ -1,0 +1,19 @@
+{
+  "schema": "goalos.agialpha.evidence_docket.template.v3.1",
+  "status": "template-not-live-evidence",
+  "requiredEvidence": [
+    "GoalOSCommit hash",
+    "RunCommitment hash",
+    "JobRegistry job id",
+    "Claim bond event",
+    "ProofSubmission submission id",
+    "Reviewer attestation",
+    "ProofCard id",
+    "Credential id",
+    "Reputation update",
+    "Evidence Docket id",
+    "SelectionCertificate",
+    "Chronicle entry",
+    "Rollback target"
+  ]
+}

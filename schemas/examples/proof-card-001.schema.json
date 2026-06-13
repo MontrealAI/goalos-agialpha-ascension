@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GoalOS AGIALPHA Proof Card 001",
+  "type": "object",
+  "required": [
+    "schema",
+    "id",
+    "title",
+    "agialphaToken",
+    "contractFlow",
+    "rsiLoop",
+    "claimBoundary"
+  ]
+}
