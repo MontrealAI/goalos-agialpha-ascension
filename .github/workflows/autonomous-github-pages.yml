@@ -12,6 +12,11 @@ on:
       - "deployments/**"
       - "package.json"
       - ".github/workflows/autonomous-github-pages.yml"
+      - "scripts/augment_main_website_with_proof_cards_v10.py"
+      - "scripts/verify_main_website_proof_cards_v10.py"
+      - "docs/examples/**"
+      - "data/examples/**"
+      - "evidence/examples/**"
   workflow_dispatch:
 
 concurrency:
@@ -1619,11 +1624,11 @@ jobs:
           print(f"Evidence artifacts copied: {len(copied_evidence)}")
           PY
 
-      - name: Add flagship Proof Card 003 demand engine
+      - name: Add Proof Card Command Center to main website
         shell: bash
         run: |
-          python3 scripts/add_goalos_agialpha_flagship_proof_card_003_to_site.py
-          python3 scripts/verify_goalos_agialpha_flagship_proof_card_003_site.py
+          python3 scripts/augment_main_website_with_proof_cards_v10.py --site site
+          python3 scripts/verify_main_website_proof_cards_v10.py --site site
 
       - name: Validate generated website artifact
         shell: bash

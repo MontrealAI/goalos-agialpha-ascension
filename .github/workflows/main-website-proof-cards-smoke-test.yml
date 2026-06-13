@@ -1,0 +1,37 @@
+name: Main Website Proof Cards Smoke Test
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "scripts/augment_main_website_with_proof_cards_v10.py"
+      - "scripts/verify_main_website_proof_cards_v10.py"
+      - "docs/examples/**"
+      - "data/examples/**"
+      - "evidence/examples/**"
+      - ".github/workflows/main-website-proof-cards-smoke-test.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  smoke-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Build existing premium site, augment with proof cards, verify
+        shell: bash
+        run: |
+          mkdir -p /tmp/workflow_extract
+          python3 - <<'PY'
+          from pathlib import Path
+          import textwrap
+          workflow = Path('.github/workflows/autonomous-github-pages.yml').read_text(encoding='utf-8')
+          start = workflow.index("python3 - <<'PY'\n") + len("python3 - <<'PY'\n")
+          end = workflow.index("\n          PY", start)
+          code = textwrap.dedent(workflow[start:end])
+          Path('/tmp/workflow_extract/build_premium_site.py').write_text(code, encoding='utf-8')
+          PY
+          python3 /tmp/workflow_extract/build_premium_site.py
+          python3 scripts/augment_main_website_with_proof_cards_v10.py --site site
+          python3 scripts/verify_main_website_proof_cards_v10.py --site site
