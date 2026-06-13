@@ -1,17 +1,19 @@
 {
-  "proofCard": "004",
+  "proof_card_id": "PC-004",
   "title": "Persistent Goal-Seeking Intelligence Accumulation Engine",
-  "status": "Illustrative until repeated live Evidence Dockets prove accumulation over time.",
-  "agialphaToken": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
-  "requiredEvidence": [
+  "status": "template_until_live_evidence_docket_completed",
+  "agialpha_token": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
+  "required_evidence": [
     "GoalOSCommit",
     "RunCommitment",
     "ProofBundle",
-    "ReviewerAttestation",
-    "ProofCardHash",
-    "CredentialReceipt",
-    "ReputationUpdate",
-    "SelectionDecision",
-    "RollbackNotes"
-  ]
+    "Reviewer attestation",
+    "Proof Card hash",
+    "Credential record",
+    "Reputation update",
+    "Selection Gate decision",
+    "Rollback boundary",
+    "Chronicle entry"
+  ],
+  "claim_boundary": "Experimental framework. Does not claim achieved AGI, guaranteed ROI, legal approval, tax approval, security approval, or mainnet deployment."
 }

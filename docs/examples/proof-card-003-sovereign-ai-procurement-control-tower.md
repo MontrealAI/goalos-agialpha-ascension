@@ -1,29 +1,27 @@
-# Proof Card 003 — Sovereign AI Procurement Control Tower
+# Proof Card 003 - Sovereign AI Procurement Control Tower
 
-A flagship control tower for trust, evidence, rollout, rollback, and upgrade rights.
+**Status:** public-safe template until live Evidence Docket is completed.
 
 ## Problem
 
-A sovereign or enterprise buyer needs more than a demo: it needs a control plane for evaluating AI workflows, validating evidence, managing risk, and deciding what can improve future work.
+A sovereign or enterprise buyer asks: can this system be trusted, governed, audited, rolled back, and improved safely?
 
 ## Proof mission
 
-Build a procurement control tower with GoalOS commitments, run commitments, proof submissions, reviewer validation, Evidence Docket, Proof Card, credential, reputation, and Selection Gate path.
+Turn the procurement question into a proof mission: build the control-tower response, collect evidence, validate it, and register the resulting Proof Card.
 
 ## Where AGIALPHA becomes useful
 
-AGIALPHA is used across the whole coordination route: mission posting, claim bonds, proof bonds, reviewer bonds, settlement, proof-card action, credential action, and reputation-linked access.
+AGIALPHA coordinates the complete route: mission posting, builder claim bond, proof submission bond, reviewer bond, proof-card action, credential action, reputation, reward settlement, Evidence Docket anchoring, and upgrade rights.
 
-AGIALPHA token: `0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA`
+## Sovereign RSI upgrade logic
 
-## RSI upgrade logic
+The accepted control-tower artifact improves future procurement responses only if it survives evidence review, challenge window, monitoring, rollback readiness, and Selection Gate approval.
 
-The control tower grants proof-backed upgrade rights only to procurement artifacts that survive evidence, evaluator review, scope control, monitoring, and rollback readiness.
+## Commercial / institutional value
 
-## Value
-
-An enterprise-grade route from buyer trust question to audited proof, making adoption legible to boards, procurement teams, risk owners, and sovereign institutions.
+Creates a serious buyer-facing control plane for governance, diligence, and adoption decisions.
 
 ## Claim boundary
 
-Illustrative until a live Evidence Docket is completed. No claim of achieved AGI, ASI, legal approval, tax approval, security approval, guaranteed return, or mainnet deployment.
+Public-safe illustrative proof card until the real proof-work loop is executed.

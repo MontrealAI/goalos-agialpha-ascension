@@ -1,53 +1,13 @@
 {
-  "id": "proof-card-004",
+  "id": "004",
+  "slug": "persistent-intelligence-accumulation",
   "title": "Persistent Goal-Seeking Intelligence Accumulation Engine",
-  "canonical_statement": "GoalOS AGIALPHA Ascension is an experimental framework for a persistent, goal-seeking, self-improving intelligence system that accumulates capabilities, evidence, and economic value over time.",
-  "status": "illustrative-until-live-evidence-docket",
-  "claim_boundary": [
-    "Not achieved AGI",
-    "Not achieved ASI",
-    "Not guaranteed ROI",
-    "Not legal/tax/security advice",
-    "Not mainnet authorization",
-    "Economic value means measurable workflow value, sponsor demand, evidence-backed trust, and reusable capability - not token price or investment return"
-  ],
-  "agialpha_uses": [
-    "mission posting",
-    "builder claim bond",
-    "proof submission bond",
-    "reviewer bond",
-    "proof-card action",
-    "credential action",
-    "reward settlement",
-    "reputation-linked access"
-  ],
-  "contract_route": [
-    "AEPGoalOSCommitRegistry",
-    "AEPRunCommitmentRegistry",
-    "JobRegistry",
-    "JobClaimBondManager",
-    "ProofSubmissionRegistry",
-    "ReviewerBondRegistry",
-    "ProofCardRegistry",
-    "ProofCredentialRegistry",
-    "ReputationRegistry",
-    "AEPEvidenceDocketRegistry",
-    "AEPSelectionGate",
-    "AEPChronicleRegistry"
-  ],
-  "rsi_loop": [
-    "observe weakness",
-    "improve artifact",
-    "prove change",
-    "review evidence",
-    "selection gate",
-    "scoped upgrade rights",
-    "future workflow improves",
-    "chronicle memory"
-  ],
-  "accumulates": {
-    "capabilities": "validated workflows, rubrics, policies, mission plans, and reusable artifacts",
-    "evidence": "ProofBundles, attestations, Evidence Dockets, reviews, challenge outcomes, and chronicle entries",
-    "economic_value": "measured productivity, sponsor demand, trust, lower repeated work, and better proof-work routing"
-  }
+  "tag": "Meta-proof of compounding capability",
+  "level": "Capability accumulation",
+  "problem": "One-off AI outputs do not create durable institutional memory. The system needs to accumulate capabilities, evidence, and economic value over time.",
+  "mission": "Show how GoalOS AGIALPHA Ascension accumulates validated artifacts, Evidence Dockets, credentials, reputation, and reusable capability across proof cycles.",
+  "agialpha": "AGIALPHA coordinates repeated proof-settled work: missions, bonds, reviews, credentials, reputation-linked access, and settlement events that feed the Evidence Docket and Chronicle.",
+  "rsi": "RSI is expressed as proof-backed upgrade rights: only proven artifacts influence future workflows, routing, evaluation, and institutional memory.",
+  "value": "Turns scattered work into a durable evidence graph of reusable institutional intelligence.",
+  "claim": "Experimental framework. Does not claim achieved AGI, guaranteed ROI, legal approval, tax approval, security approval, or mainnet deployment."
 }

@@ -1,29 +1,27 @@
-# Proof Card 001 — Buyer Rescue Workflow
+# Proof Card 001 - Buyer Rescue Workflow
 
-Turn a buyer support problem into verified workflow improvement.
+**Status:** public-safe template until live Evidence Docket is completed.
 
 ## Problem
 
-A buyer cannot access a purchased file or needs a clear next step. A normal AI reply may be helpful, but it is not yet a reusable, reviewed workflow asset.
+A buyer cannot access a download or needs help after purchase. A normal AI answer may be polite, but it can miss access classification, refund boundaries, escalation, or evidence requirements.
 
 ## Proof mission
 
-Create and validate a support workflow that classifies the issue, drafts the reply, flags human review when needed, and records a public-safe proof summary.
+Improve a support workflow from v1.0 to v1.1, prove the improvement, and preserve a public-safe Proof Card without exposing buyer data.
 
 ## Where AGIALPHA becomes useful
 
-AGIALPHA coordinates the proof mission: sponsor posting, builder claim bond, proof submission bond, reviewer bond, proof-card registration, credential action, and reward settlement.
+AGIALPHA coordinates mission posting, builder claim bond, proof submission bond, reviewer validation, proof-card action, credential action, and settlement.
 
-AGIALPHA token: `0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA`
+## Sovereign RSI upgrade logic
 
-## RSI upgrade logic
+The accepted support workflow can be reused in future support cases only after evidence, reviewer validation, and scoped upgrade approval.
 
-The accepted support workflow becomes a scoped reusable artifact for future support cases only after evidence, review, and Selection Gate acceptance.
+## Commercial / institutional value
 
-## Value
-
-Better buyer experience, lower repeated support work, clearer refund/access handling, and first public-safe proof that useful work can become reusable capability.
+Faster buyer rescue, less repeated support work, and a clearer foundation for the first public proof loop.
 
 ## Claim boundary
 
-Illustrative until a live Evidence Docket is completed. No claim of achieved AGI, ASI, legal approval, tax approval, security approval, guaranteed return, or mainnet deployment.
+Illustrative until completed with a live Evidence Docket.

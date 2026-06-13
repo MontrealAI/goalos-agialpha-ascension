@@ -1,29 +1,27 @@
-# Proof Card 002 — Sovereign Procurement Trust Room
+# Proof Card 002 - Sovereign Procurement Trust Room
 
-Convert buyer diligence into an auditable trust-room workflow.
+**Status:** public-safe template until live Evidence Docket is completed.
 
 ## Problem
 
-A serious buyer asks whether GoalOS AGIALPHA Ascension can be trusted, governed, audited, and explained without exposing private intelligence or private evidence.
+A serious buyer asks whether the AI workflow system can be evaluated, governed, audited, and trusted without exposing private data.
 
 ## Proof mission
 
-Assemble a procurement-ready trust room: claim boundary, security posture, evidence checklist, proof-card summary, reviewer rubric, and rollback path.
+Create a procurement trust-room response with evidence checklist, risk boundaries, reviewer rubric, and public-safe proof artifacts.
 
 ## Where AGIALPHA becomes useful
 
-AGIALPHA coordinates the sponsored trust-room mission and creates accountable commitments for builders and reviewers through bonds, proof actions, credentials, and reputation updates.
+AGIALPHA coordinates sponsor-funded proof work, builder bonds, reviewer bonds, proof-card registration, credential issuance, and reputation update.
 
-AGIALPHA token: `0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA`
+## Sovereign RSI upgrade logic
 
-## RSI upgrade logic
+The accepted trust-room response becomes a reusable procurement artifact for future due-diligence workflows after Selection Gate approval.
 
-The accepted trust-room template improves future procurement responses because the system reuses only reviewed evidence structures and rejects unproven claims.
+## Commercial / institutional value
 
-## Value
-
-Shorter diligence cycles, stronger enterprise trust, safer public claims, better sponsor conversations, and a reusable due-diligence operating asset.
+Reduces buyer uncertainty and turns procurement friction into a reusable trust asset.
 
 ## Claim boundary
 
-Illustrative until a live Evidence Docket is completed. No claim of achieved AGI, ASI, legal approval, tax approval, security approval, guaranteed return, or mainnet deployment.
+Illustrative until a live buyer/sponsor Evidence Docket is completed.

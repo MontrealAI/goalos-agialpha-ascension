@@ -1,0 +1,27 @@
+{
+  "proof_card_id": "PC-005",
+  "title": "Sovereign RSI Value-to-Capability Treasury",
+  "status": "template_until_live_evidence_docket_completed",
+  "agialpha_token": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
+  "required_evidence": [
+    "GoalOSCommit",
+    "RunCommitment",
+    "ProofBundle",
+    "Reviewer attestation",
+    "Proof Card hash",
+    "Credential record",
+    "Reputation update",
+    "Selection Gate decision",
+    "Rollback boundary",
+    "Chronicle entry"
+  ],
+  "claim_boundary": "Experimental proof-card template. It does not claim token price appreciation, investment return, guaranteed ROI, legal approval, tax approval, security approval, achieved AGI, or Ethereum mainnet deployment.",
+  "additional_value_to_capability_evidence": [
+    "verified value record",
+    "AlphaWorkUnit measurement",
+    "reward vault allocation",
+    "treasury routing note",
+    "reinvestment mission post",
+    "future-work improvement comparison"
+  ]
+}
