@@ -1,11 +1,9 @@
 # Proof Card 003 - Sovereign AI Procurement Control Tower
 
-A sovereign or enterprise buyer needs to evaluate an AI workflow system. GoalOS converts the trust question into a proof mission. AGIALPHA coordinates the proof work. Builders produce the Trust Room workflow. Reviewers validate the evidence. The Evidence Docket makes the result auditable. Accepted artifacts earn scoped upgrade rights through the Selection Gate.
+A sovereign or enterprise buyer asks whether an AI workflow system can be trusted, governed, audited, rolled back, and improved safely.
 
-## AGIALPHA utility
+GoalOS turns that due-diligence question into a proof mission. AGIALPHA coordinates the sponsor, builder, reviewer, proof, settlement, credential, and reputation route. The Evidence Docket makes the answer auditable. The Selection Gate decides whether the accepted artifact may improve future procurement responses.
 
-AGIALPHA is used for mission posting, builder claim bonds, proof submission bonds, reviewer bonds, proof-card actions, credential actions, reward settlement and reputation-linked access.
+AGIALPHA is used for mission posting, builder claim bonds, proof submission bonds, reviewer bonds, proof-card actions, credential actions, reward settlement, and reputation-linked access.
 
-## RSI
-
-RSI is proof-backed upgrade rights. The artifact improves future work only after evidence, evaluation, reviewer validation, scope control, challenge window, monitoring and rollback readiness.
+Recursive self-improvement is implemented as proof-backed upgrade rights. The system reuses an artifact only when it survives evidence, evaluation, reviewer validation, scope control, challenge window, monitoring, rollback readiness, and Selection Gate approval.

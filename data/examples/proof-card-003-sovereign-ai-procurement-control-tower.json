@@ -1,11 +1,21 @@
 {
+  "schema": "goalos.agialpha.proof_card.v7",
   "id": "proof-card-003-sovereign-ai-procurement-control-tower",
-  "title": "Proof Card 003 - Sovereign AI Procurement Control Tower",
   "status": "illustrative_until_live_evidence_docket",
-  "agialphaToken": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
-  "smartContractRoute": [
-    "GoalOSCommitRegistry",
-    "ProofSeed / Artifact Registry",
+  "agialpha_token": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
+  "agialpha_utility": [
+    "mission posting",
+    "builder claim bond",
+    "proof submission bond",
+    "reviewer bond",
+    "proof-card action",
+    "credential action",
+    "reward settlement",
+    "reputation-linked access"
+  ],
+  "contract_route": [
+    "AEPGoalOSCommitRegistry",
+    "AEPRunCommitmentRegistry",
     "JobRegistry",
     "JobClaimBondManager",
     "ProofSubmissionRegistry",
@@ -13,26 +23,14 @@
     "ProofCardRegistry",
     "ProofCredentialRegistry",
     "ReputationRegistry",
-    "EvidenceDocketRegistry",
-    "SelectionGate",
-    "ChronicleRegistry"
+    "AEPEvidenceDocketRegistry",
+    "AEPSelectionGate",
+    "AEPChronicleRegistry"
   ],
-  "rsiLoop": [
-    "observe weakness",
-    "build artifact",
-    "prove change",
-    "review evidence",
-    "select artifact",
-    "propagate scoped upgrade",
-    "monitor",
-    "rollback if needed"
-  ],
-  "claimBoundary": {
-    "liveCustomerResult": false,
-    "investmentReturn": false,
-    "mainnetDeploymentClaim": false,
-    "legalApproval": false,
-    "taxApproval": false,
-    "securityApproval": false
-  }
+  "claim_boundary": [
+    "illustrative until live Evidence Docket completion",
+    "not investment advice",
+    "not legal/tax/security approval",
+    "not Ethereum Mainnet deployment authorization"
+  ]
 }
