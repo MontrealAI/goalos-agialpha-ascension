@@ -1,0 +1,70 @@
+{
+  "id": "011",
+  "title": "Cyber-Sovereign Evidence Graph & Benchmark-to-Production RSI Flywheel",
+  "short": "Convert benchmark results into a production-grade evidence graph that improves future routing.",
+  "domain": "Evidence graph / production RSI flywheel",
+  "proof_level": "Evidence-graph moat proof",
+  "status": "Illustrative proof-card template",
+  "problem": "Benchmarks prove isolated results; institutions need an evidence graph that remembers what worked, who proved it, who reviewed it, what reproduced, what failed, and how it performed later.",
+  "mission": "Build an evidence graph that connects benchmark evidence to production routing, delayed outcomes, reviewer reliability, settlement memory, and future Selection Gate decisions.",
+  "why": "This is the hard-to-copy moat: a long-running evidence graph cannot be retroactively fabricated.",
+  "agents": [
+    "Sovereign Aim Council",
+    "Evidence Graph Architect",
+    "Mission Portfolio Governor",
+    "Domain Scout Swarm",
+    "Builder Cells",
+    "Evaluator Operators",
+    "Proof Engineers",
+    "Reviewer Council",
+    "Red-Team Court",
+    "Independent Reproduction Cell",
+    "Routing Intelligence Desk",
+    "Chronicle Office"
+  ],
+  "skills": [
+    "Evidence graph modeling",
+    "Trust-edge scoring",
+    "Route memory construction",
+    "Delayed outcome tracking",
+    "Reviewer reliability scoring",
+    "Benchmark-to-production mapping"
+  ],
+  "plans": [
+    "Create evidence graph schema",
+    "Link proof missions to outcomes",
+    "Record reviewer reliability",
+    "Track delayed results",
+    "Route future work through proven artifacts",
+    "Reinvest based on evidence"
+  ],
+  "goals": [
+    "Make evidence cumulative",
+    "Improve routing quality",
+    "Strengthen reviewer market",
+    "Turn validated work into production capability"
+  ],
+  "contracts": [
+    "AEPEvidenceGraphRegistry",
+    "AEPGraphQueryRegistry",
+    "AEPTrustEdgeRegistry",
+    "AEPRouteMemoryRegistry",
+    "AEPReinvestmentIndexRegistry",
+    "AEPDelayedOutcomeRegistry",
+    "AEPChronicleRegistry"
+  ],
+  "metrics": {
+    "Proof clarity": 96,
+    "Privacy boundary": 95,
+    "Reuse potential": 99,
+    "RSI readiness": 98,
+    "Enterprise value": 98
+  },
+  "value_steps": [
+    "proof missions",
+    "evidence graph",
+    "route memory",
+    "delayed outcomes",
+    "production RSI flywheel"
+  ]
+}

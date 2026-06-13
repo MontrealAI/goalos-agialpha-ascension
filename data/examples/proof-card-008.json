@@ -1,66 +1,69 @@
 {
   "id": "008",
   "title": "Sovereign Corporate Capability Foundry",
-  "level": "Portfolio capability production",
-  "domain": "Corporate capability portfolios",
-  "thesis": "A sovereign enterprise can allocate proof missions across domains to manufacture reusable capability, not just isolated task outputs.",
-  "problem": "Corporate AI programs often create disconnected experiments that fail to become durable capability across departments.",
-  "mission": "Build a portfolio foundry that turns domain weaknesses into proof missions, accepted artifacts, credentials, reputation, and capability budgets.",
-  "why": "This is the portfolio-scale version of RSI: many domains, many agents, one evidence graph.",
+  "short": "Coordinate portfolios of proof missions across high-value sovereign corporate domains.",
+  "domain": "Corporate capability foundry",
+  "proof_level": "Portfolio proof",
+  "status": "Illustrative proof-card template",
+  "problem": "A single successful mission is not enough. Institutions need a portfolio system that allocates proof work across procurement, finance, compliance, security, operations, compute, and R&D.",
+  "mission": "Turn the autoresearch reactor into a capability foundry that manages domain portfolios, benchmarks, experiments, and reinvestment decisions.",
+  "why": "This card shows the route from isolated improvement to scalable corporate capability formation.",
+  "agents": [
+    "Portfolio Governor",
+    "Domain Scouts",
+    "Capability Architects",
+    "Builder Cells",
+    "Evaluator Operators",
+    "Proof Engineers",
+    "Reviewer Council",
+    "Treasury Desk",
+    "Selection Gate",
+    "Chronicle Office"
+  ],
+  "skills": [
+    "Portfolio allocation",
+    "Domain opportunity analysis",
+    "Capability architecture",
+    "Benchmark design",
+    "Proof mission economics",
+    "Treasury reinvestment"
+  ],
+  "plans": [
+    "Set mandate epoch",
+    "Prioritize domains",
+    "Launch proof missions",
+    "Evaluate artifacts",
+    "Select upgrades",
+    "Allocate reinvestment",
+    "Chronicle capability growth"
+  ],
+  "goals": [
+    "Increase domain capability",
+    "Generate reusable corporate artifacts",
+    "Improve proof mission ROI",
+    "Create compounding institutional memory"
+  ],
   "contracts": [
     "MandateEpochRegistry",
     "AEPAutoresearchPortfolioRegistry",
     "AEPBenchmarkRegistry",
     "AEPExperimentRegistry",
-    "AEPRewardVault",
+    "AlphaWorkUnitLedger",
     "TreasuryRouter",
-    "CommercializationPerformanceVault",
     "AEPChronicleRegistry"
   ],
-  "skills": [
-    "Portfolio governance",
-    "Domain scouting",
-    "Capability packaging",
-    "AlphaWorkUnit metrology",
-    "Capability reinvestment"
-  ],
-  "plans": [
-    "Open mandate epoch",
-    "Select domain portfolio",
-    "Route proof missions",
-    "Measure capability yield",
-    "Reinvest into stronger missions"
-  ],
-  "goals": [
-    "Move from tasks to capability portfolios",
-    "Prioritize profitable sovereign corporate domains",
-    "Compound accepted artifacts across departments"
-  ],
-  "rsi": "The foundry improves by learning which domains, agent cells, evaluators, and artifacts generate repeatable verified capability.",
-  "agialpha": "AGIALPHA coordinates portfolio budgets, mission settlement, evaluator incentives, proof-card actions, credential issuance, treasury routing, and commercialization milestone evidence.",
-  "evidence": [
-    "Mandate epoch record",
-    "Portfolio map",
-    "Domain proof cards",
-    "AlphaWorkUnit report",
-    "Treasury allocation",
-    "Chronicle portfolio memory"
-  ],
-  "metrics": [
-    [
-      "domain coverage",
-      "isolated demo",
-      "portfolio foundry"
-    ],
-    [
-      "economic focus",
-      "unclear value",
-      "profitable sovereign domains"
-    ],
-    [
-      "learning",
-      "manual roadmap",
-      "evidence-driven portfolio routing"
-    ]
+  "metrics": {
+    "Proof clarity": 94,
+    "Privacy boundary": 93,
+    "Reuse potential": 97,
+    "RSI readiness": 96,
+    "Enterprise value": 96
+  },
+  "value_steps": [
+    "domain mandate",
+    "mission portfolio",
+    "proof-selected artifacts",
+    "capability foundry",
+    "corporate compounding"
   ]
 }

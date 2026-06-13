@@ -1,66 +1,64 @@
 {
   "id": "004",
   "title": "Persistent Goal-Seeking Intelligence Accumulation Engine",
-  "level": "Compounding memory",
-  "domain": "Persistent organizational intelligence",
-  "thesis": "GoalOS AGIALPHA Ascension is an experimental framework for a persistent, goal-seeking, self-improving intelligence system that accumulates capabilities, evidence, and economic value over time.",
-  "problem": "Most AI work is transient: prompts, outputs, and one-off tasks are lost instead of becoming institutional capability.",
-  "mission": "Make every accepted proof into durable institutional memory: capability, evidence, credential, reputation, and reusable context.",
-  "why": "Persistent accumulation is the bridge from useful AI work to sovereign RSI.",
+  "short": "Show how the system accumulates capability, evidence, and economic value over time.",
+  "domain": "Persistent intelligence / evidence accumulation",
+  "proof_level": "System meta-proof",
+  "status": "Illustrative proof-card template",
+  "problem": "One-off automations do not create durable institutional intelligence unless the system remembers what worked, where, why, and under what constraints.",
+  "mission": "Define a persistent GoalOS loop where missions produce artifacts, artifacts produce evidence, evidence produces selection, and selected artifacts improve future work.",
+  "why": "This card establishes the system as a persistent self-improving institution rather than a single AI workflow demo.",
+  "agents": [
+    "Aim Council",
+    "Mission Router",
+    "Artifact Curator",
+    "Proof Engineer",
+    "Reviewer Council",
+    "Chronicle Office",
+    "Route Memory Steward"
+  ],
+  "skills": [
+    "Capability cataloging",
+    "Evidence Docket design",
+    "Artifact versioning",
+    "Route memory construction",
+    "Proof-card publishing",
+    "Selection-gate design"
+  ],
+  "plans": [
+    "Create mission portfolio",
+    "Store accepted artifacts",
+    "Track evidence lineage",
+    "Record reviewer outcomes",
+    "Route future work through proven artifacts",
+    "Chronicle outcome"
+  ],
+  "goals": [
+    "Accumulate reusable capability",
+    "Make evidence durable",
+    "Improve future routing",
+    "Prevent unproven propagation"
+  ],
   "contracts": [
     "AEPArtifactRegistry",
-    "ProofCardRegistry",
-    "ProofCredentialRegistry",
-    "ReputationRegistry",
     "AEPEvidenceDocketRegistry",
     "AEPSelectionGate",
     "AEPChronicleRegistry",
-    "AlphaWorkUnitLedger"
+    "AEPRouteMemoryRegistry",
+    "ReputationRegistry"
   ],
-  "skills": [
-    "Capability archiving",
-    "Evidence graph design",
-    "Reputation accounting",
-    "Artifact versioning",
-    "Chronicle construction"
-  ],
-  "plans": [
-    "Capture accepted artifacts",
-    "Map evidence to capability",
-    "Issue credentials",
-    "Update reputation",
-    "Chronicle the institutional memory"
-  ],
-  "goals": [
-    "Stop losing useful work",
-    "Accumulate reusable intelligence",
-    "Create measurable capability memory"
-  ],
-  "rsi": "Accepted artifacts become candidate operating context for future work. Unproven artifacts remain outside the system memory that shapes future missions.",
-  "agialpha": "AGIALPHA coordinates the work that creates, validates, and settles proof-bearing artifacts while the Chronicle preserves what may influence future missions.",
-  "evidence": [
-    "Capability inventory",
-    "Proof Card lineage",
-    "Credential history",
-    "Reputation update",
-    "Chronicle entry",
-    "Artifact version map"
-  ],
-  "metrics": [
-    [
-      "memory",
-      "ephemeral output",
-      "chronicle-backed capability"
-    ],
-    [
-      "proof",
-      "unverified work",
-      "reviewed evidence"
-    ],
-    [
-      "economic value",
-      "isolated task",
-      "compounding artifact"
-    ]
+  "metrics": {
+    "Proof clarity": 91,
+    "Privacy boundary": 95,
+    "Reuse potential": 96,
+    "RSI readiness": 89,
+    "Enterprise value": 87
+  },
+  "value_steps": [
+    "mission evidence",
+    "accepted artifacts",
+    "route memory",
+    "better future work",
+    "compounding institutional capability"
   ]
 }

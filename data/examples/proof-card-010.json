@@ -1,70 +1,69 @@
 {
   "id": "010",
   "title": "Cyber-Sovereign Proof Benchmark Market",
-  "level": "Replayable benchmark-market moat",
-  "domain": "Cyber benchmark markets",
-  "thesis": "Cyber-sovereign work becomes an execution moat when improvements are benchmarked, independently reproduced, settled, and admitted into future context only after proof.",
-  "problem": "A single cyber improvement is not enough. Serious buyers need benchmarks, task manifests, reproduction receipts, and challenge history.",
-  "mission": "Create a proof benchmark market for authorized defensive cyber tasks: run candidate improvements, validate, red-team, reproduce independently, settle, and Chronicle.",
-  "why": "This converts cyber proof from internal work into a market-readable execution moat.",
+  "short": "Make cyber proof work benchmarked, replayable, independently reproducible, and settleable.",
+  "domain": "Cyber benchmark market / execution moat",
+  "proof_level": "Benchmark-market proof",
+  "status": "Illustrative proof-card template",
+  "problem": "Execution moats are fragile unless results can be replayed, benchmarked, independently reproduced, and compared over time.",
+  "mission": "Create a cyber-sovereign benchmark market where tasks produce manifests, evaluator harnesses, ProofBundles, reviewer reports, reproduction receipts, AGIALPHA settlement, and SelectionCertificates.",
+  "why": "This card raises the moat from defensive work to benchmarked proof markets with independent reproduction.",
+  "agents": [
+    "Benchmark Foundry",
+    "Asset Graph Cell",
+    "Hypothesis Engineers",
+    "Remediation Builders",
+    "Evaluator Operators",
+    "Proof Engineers",
+    "Reviewer Council",
+    "Red-Team Court",
+    "External Reproduction Cell",
+    "Chronicle Office"
+  ],
+  "skills": [
+    "Benchmark task design",
+    "Evaluator harness engineering",
+    "Independent reproduction",
+    "ProofBundle preparation",
+    "Falsification testing",
+    "Reward-hack detection"
+  ],
+  "plans": [
+    "Define benchmark",
+    "Run candidate improvements",
+    "Evaluate and prove",
+    "Review and red-team",
+    "Reproduce independently",
+    "Select winners",
+    "Chronicle benchmark history"
+  ],
+  "goals": [
+    "Make results replayable",
+    "Improve benchmark credibility",
+    "Reduce reward hacking",
+    "Create reusable benchmarked capability"
+  ],
   "contracts": [
     "CyberBenchmarkRegistry",
     "AEPBenchmarkRegistry",
     "AEPExperimentRegistry",
-    "AEPCommitRevealValidationRegistry",
-    "AEPSlashingCourt",
+    "RedTeamChallengeRegistry",
     "AEPFalsificationRegistry",
     "AEPSelectionGate",
     "AEPChronicleRegistry"
   ],
-  "skills": [
-    "Benchmark design",
-    "Independent reproduction",
-    "Evaluator hardening",
-    "Red-team challenge design",
-    "Replayable evidence packaging"
-  ],
-  "plans": [
-    "Define benchmark task family",
-    "Publish task manifest",
-    "Run parallel missions",
-    "Validate and red-team",
-    "Collect reproduction receipt",
-    "Issue SelectionCertificate"
-  ],
-  "goals": [
-    "Turn cyber work into replayable proof",
-    "Create external trust signals",
-    "Make the execution moat measurable"
-  ],
-  "rsi": "Only reproduced and validated benchmark improvements can become future operating context; every accepted benchmark improves the next benchmark market.",
-  "agialpha": "AGIALPHA coordinates benchmark mission budgets, builder claims, reviewer/red-team bonds, evaluator incentives, proof-card actions, credential issuance, reward-vault settlement, and reputation-weighted routing.",
-  "evidence": [
-    "CyberBenchmarkDocket",
-    "Task manifest",
-    "Baseline",
-    "Candidate artifact",
-    "Evaluator report",
-    "Red-team report",
-    "ReproductionReceipt",
-    "SelectionCertificate",
-    "Chronicle entry"
-  ],
-  "metrics": [
-    [
-      "proof",
-      "internal result",
-      "replayable benchmark"
-    ],
-    [
-      "trust",
-      "single validator",
-      "review + red-team + reproduction"
-    ],
-    [
-      "market",
-      "manual security service",
-      "proof benchmark market"
-    ]
+  "metrics": {
+    "Proof clarity": 96,
+    "Privacy boundary": 94,
+    "Reuse potential": 98,
+    "RSI readiness": 97,
+    "Enterprise value": 97
+  },
+  "value_steps": [
+    "benchmark manifest",
+    "candidate improvement",
+    "independent reproduction",
+    "selection",
+    "benchmarked capability"
   ]
 }

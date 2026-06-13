@@ -1,12 +1,49 @@
 {
   "id": "009",
   "title": "Cyber-Sovereign Execution Moat",
-  "level": "Defensive cyber execution moat",
-  "domain": "Cyber-sovereign security operations",
-  "thesis": "Cyber-sovereign work becomes a compounding execution moat when authorized weaknesses are remediated through proof, review, red-team challenge, rollback, and Chronicle memory.",
-  "problem": "Security teams need verified remediation, not speculative automation. The proof must be authorized, replayable, and safe to roll back.",
-  "mission": "Coordinate defensive cyber proof missions from authorized weakness to validated remediation artifact with regression harness and rollback path.",
-  "why": "Cyber is a high-value enterprise domain where proof, safety, replayability, and trust are mandatory.",
+  "short": "Turn defensive cyber work into proof-backed, reusable enterprise capability.",
+  "domain": "Cyber-sovereign defense / execution moat",
+  "proof_level": "Cyber execution proof",
+  "status": "Illustrative proof-card template",
+  "problem": "Cybersecurity work is hard to trust unless it is authorized, bounded, tested, reviewed, red-teamed, and rollback-ready.",
+  "mission": "Coordinate defensive remediation work through specialist agents, security regression harnesses, reviewer attestations, red-team challenges, and proof-backed upgrade rights.",
+  "why": "This card makes the execution moat concrete in a high-value domain where trust, replayability, and rollback matter.",
+  "agents": [
+    "Cyber Aim Council",
+    "Asset Graph Cartographers",
+    "Threat Intelligence Scouts",
+    "Exploitability Analysts",
+    "Remediation Builders",
+    "Evaluator Operators",
+    "Proof Engineers",
+    "Reviewer Council",
+    "Red-Team Court",
+    "Rollback Desk"
+  ],
+  "skills": [
+    "Asset graph analysis",
+    "Defensive remediation planning",
+    "SBOM/VEX evidence handling",
+    "Regression harness construction",
+    "Red-team challenge design",
+    "Rollback planning"
+  ],
+  "plans": [
+    "Authorize defensive scope",
+    "Map assets",
+    "Triage weakness",
+    "Build remediation",
+    "Run regression harness",
+    "Review and red-team",
+    "Select or reject",
+    "Chronicle outcome"
+  ],
+  "goals": [
+    "Reduce validated cyber risk",
+    "Improve deployment confidence",
+    "Build reusable security capability",
+    "Prevent unsafe propagation"
+  ],
   "contracts": [
     "CyberAssetGraphRegistry",
     "SBOMEvidenceRegistry",
@@ -14,56 +51,20 @@
     "RemediationPatchRegistry",
     "SecurityRegressionHarnessRegistry",
     "RedTeamChallengeRegistry",
-    "IncidentRollbackRegistry",
-    "AEPFalsificationRegistry"
+    "IncidentRollbackRegistry"
   ],
-  "skills": [
-    "Asset graph mapping",
-    "Vulnerability triage",
-    "Defensive remediation",
-    "Security regression harnessing",
-    "Incident rollback planning"
-  ],
-  "plans": [
-    "Authorize scope",
-    "Map asset graph",
-    "Generate remediation candidate",
-    "Run regression harness",
-    "Review and red-team",
-    "Chronicle reusable remediation"
-  ],
-  "goals": [
-    "Build defensive security capability",
-    "Avoid unsafe/offensive claims",
-    "Create replayable remediation evidence"
-  ],
-  "rsi": "Each validated remediation improves the next security mission: stronger harnesses, better triage, reusable patches, and known rollback paths.",
-  "agialpha": "AGIALPHA coordinates mission budgets, builder claim bonds, proof bonds, reviewer/red-team bonds, evaluator incentives, proof-card registration, credentialing, and settlement.",
-  "evidence": [
-    "Authorized scope",
-    "Asset graph",
-    "SBOM/VEX evidence",
-    "Patch artifact",
-    "Regression harness result",
-    "Red-team report",
-    "RollbackReceipt",
-    "Chronicle entry"
-  ],
-  "metrics": [
-    [
-      "execution",
-      "manual remediation",
-      "proof-routed remediation"
-    ],
-    [
-      "security",
-      "unverified fix",
-      "regression + red-team"
-    ],
-    [
-      "moat",
-      "single patch",
-      "reusable cyber capability"
-    ]
+  "metrics": {
+    "Proof clarity": 95,
+    "Privacy boundary": 94,
+    "Reuse potential": 97,
+    "RSI readiness": 96,
+    "Enterprise value": 97
+  },
+  "value_steps": [
+    "authorized weakness",
+    "defensive patch",
+    "security harness",
+    "red-team review",
+    "reusable cyber capability"
   ]
 }

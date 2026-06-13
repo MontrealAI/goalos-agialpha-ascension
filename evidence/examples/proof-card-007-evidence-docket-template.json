@@ -1,15 +1,14 @@
 {
-  "proof_card_id": "007",
+  "proofCard": "007",
   "title": "Sovereign Enterprise Autoresearch Reactor",
-  "status": "template_until_live_run",
-  "claim_matrix": [],
-  "goalos_commit": null,
-  "run_commitment": null,
-  "proof_bundle": null,
-  "evaluator_report": null,
-  "reviewer_attestation": null,
-  "red_team_report": null,
-  "selection_certificate": null,
-  "rollback_plan": null,
-  "chronicle_entry": null
+  "requiredEvidence": [
+    "GoalOSCommit with scope, success criteria, risk boundary, and claim boundary",
+    "RunCommitment with agents, tools, artifact versions, and replay context",
+    "ProofBundle containing output hash, trace root, evaluator result, and cost/risk ledger",
+    "Reviewer or red-team attestation with challenge window and decision rationale",
+    "SelectionCertificate or rejection note explaining whether upgrade rights were earned",
+    "RollbackReceipt or recovery path for unsafe or failed changes",
+    "ChronicleEntry that preserves the outcome for future routing and RSI"
+  ],
+  "claimBoundary": "public-safe experimental proof-card template"
 }

@@ -1,0 +1,746 @@
+{
+  "version": "v22.0",
+  "generatedAt": "2026-06-13T22:24:24.126287Z",
+  "agialpha": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
+  "cards": [
+    {
+      "id": "001",
+      "title": "Buyer Rescue Workflow",
+      "short": "Turn a buyer support breakdown into a proof-backed workflow upgrade.",
+      "domain": "Customer trust / buyer success",
+      "proof_level": "Workflow proof",
+      "status": "Illustrative proof-card template",
+      "problem": "A buyer cannot access a download or paid resource. A one-off AI reply might be helpful, but the institution needs a reusable workflow that prevents repeat confusion, handles escalation, and leaves evidence.",
+      "mission": "Convert the support incident into a GoalOS proof mission: classify the issue, draft a clear response, score the response, improve the workflow, record a public-safe Proof Card, and preserve private buyer data off-chain.",
+      "why": "This is the simplest credible proof: everyone understands support. It demonstrates that GoalOS is not just answering; it is improving an operational workflow.",
+      "agents": [
+        "Support Aim Steward",
+        "Buyer Context Resolver",
+        "Workflow Builder",
+        "Evidence Scribe",
+        "Reviewer",
+        "Rollback / Escalation Guard"
+      ],
+      "skills": [
+        "Support classification",
+        "Plain-language response drafting",
+        "Refund/access policy routing",
+        "Private-data minimization",
+        "Proof-note writing",
+        "Human escalation detection"
+      ],
+      "plans": [
+        "Define buyer issue categories",
+        "Run baseline response",
+        "Score for clarity and safety",
+        "Improve workflow artifact",
+        "Submit ProofBundle",
+        "Register public-safe Proof Card"
+      ],
+      "goals": [
+        "Reduce repeated support friction",
+        "Improve response consistency",
+        "Protect buyer privacy",
+        "Create reusable support capability"
+      ],
+      "contracts": [
+        "AEPGoalOSCommitRegistry",
+        "AEPRunCommitmentRegistry",
+        "JobRegistry",
+        "ProofSubmissionRegistry",
+        "ReviewerBondRegistry",
+        "ProofCardRegistry",
+        "ProofCredentialRegistry",
+        "ReputationRegistry"
+      ],
+      "metrics": {
+        "Proof clarity": 92,
+        "Privacy boundary": 98,
+        "Reuse potential": 88,
+        "RSI readiness": 76,
+        "Enterprise value": 70
+      },
+      "value_steps": [
+        "faster buyer resolution",
+        "fewer repeated support replies",
+        "reusable support playbook",
+        "proof-backed trust signal",
+        "better next workflow"
+      ]
+    },
+    {
+      "id": "002",
+      "title": "Sovereign Procurement Trust Room",
+      "short": "Help serious buyers understand what can be trusted, audited, and safely shared.",
+      "domain": "Procurement / trust",
+      "proof_level": "Trust-room proof",
+      "status": "Illustrative proof-card template",
+      "problem": "Enterprise and sovereign buyers do not buy vague AI claims. They need evidence, boundaries, review logic, and a clear path to due diligence.",
+      "mission": "Build a procurement trust room that explains the product, proof flow, claim boundaries, on-chain/off-chain split, review controls, and evidence requirements.",
+      "why": "Procurement trust is a revenue gate. This card shows how the system converts buyer diligence into proof infrastructure.",
+      "agents": [
+        "Procurement Aim Steward",
+        "Trust-Room Architect",
+        "Policy Boundary Analyst",
+        "Evidence Docket Builder",
+        "Reviewer",
+        "Claims-Safety Officer"
+      ],
+      "skills": [
+        "Procurement response drafting",
+        "Trust-center structuring",
+        "Claim-boundary drafting",
+        "Evidence classification",
+        "Risk register drafting",
+        "Reviewer rubric design"
+      ],
+      "plans": [
+        "Collect buyer diligence questions",
+        "Map evidence sources",
+        "Build trust-room response",
+        "Review claims",
+        "Register proof card",
+        "Route accepted artifact to future procurement workflows"
+      ],
+      "goals": [
+        "Increase enterprise trust",
+        "Reduce diligence time",
+        "Improve claim discipline",
+        "Create reusable procurement artifact"
+      ],
+      "contracts": [
+        "AEPGoalOSCommitRegistry",
+        "ProofCardRegistry",
+        "AEPEvidenceDocketRegistry",
+        "AEPClaimBoundaryRegistry",
+        "ReputationRegistry",
+        "AEPSelectionGate"
+      ],
+      "metrics": {
+        "Proof clarity": 90,
+        "Privacy boundary": 96,
+        "Reuse potential": 92,
+        "RSI readiness": 80,
+        "Enterprise value": 86
+      },
+      "value_steps": [
+        "clearer procurement answers",
+        "evidence-ready trust room",
+        "reusable claim boundaries",
+        "lower enterprise friction",
+        "stronger sponsor confidence"
+      ]
+    },
+    {
+      "id": "003",
+      "title": "Sovereign AI Procurement Control Tower",
+      "short": "Coordinate procurement proof, risk, review, and rollout decisions across a serious buyer workflow.",
+      "domain": "Enterprise procurement / governance",
+      "proof_level": "Control-tower proof",
+      "status": "Illustrative proof-card template",
+      "problem": "A sovereign or enterprise buyer needs to decide whether an AI workflow system can be trusted, governed, audited, rolled back, and improved safely.",
+      "mission": "Create a procurement control tower: map buyer risk, prepare evidence, assign specialist cells, validate proof, produce a public-safe card, and route accepted artifacts to future trust-room work.",
+      "why": "This is the first flagship enterprise proof card because it connects proof work to real purchasing decisions.",
+      "agents": [
+        "Procurement Aim Council",
+        "Risk Cartographer",
+        "Evidence Architect",
+        "Builder Cell",
+        "Reviewer Council",
+        "Red-Team Gate",
+        "Selection Gate Steward",
+        "Chronicle Scribe"
+      ],
+      "skills": [
+        "Risk mapping",
+        "Trust framework analysis",
+        "Evidence Docket construction",
+        "Reviewer attestation",
+        "Falsification review",
+        "Rollout readiness scoring"
+      ],
+      "plans": [
+        "Create procurement GoalOSCommit",
+        "Decompose proof mission",
+        "Run builder/reviewer flow",
+        "Red-team claims",
+        "Issue SelectionCertificate",
+        "Chronicle result"
+      ],
+      "goals": [
+        "Make buyer diligence auditable",
+        "Prove governance readiness",
+        "Create reusable procurement proof",
+        "Reduce future sales friction"
+      ],
+      "contracts": [
+        "AEPGoalOSCommitRegistry",
+        "AEPRunCommitmentRegistry",
+        "JobRegistry",
+        "ProofSubmissionRegistry",
+        "ReviewerBondRegistry",
+        "AEPEvidenceDocketRegistry",
+        "AEPSelectionGate",
+        "AEPChronicleRegistry"
+      ],
+      "metrics": {
+        "Proof clarity": 94,
+        "Privacy boundary": 96,
+        "Reuse potential": 94,
+        "RSI readiness": 84,
+        "Enterprise value": 91
+      },
+      "value_steps": [
+        "diligence mapped",
+        "evidence validated",
+        "claims controlled",
+        "selection certificate issued",
+        "future procurement improved"
+      ]
+    },
+    {
+      "id": "004",
+      "title": "Persistent Goal-Seeking Intelligence Accumulation Engine",
+      "short": "Show how the system accumulates capability, evidence, and economic value over time.",
+      "domain": "Persistent intelligence / evidence accumulation",
+      "proof_level": "System meta-proof",
+      "status": "Illustrative proof-card template",
+      "problem": "One-off automations do not create durable institutional intelligence unless the system remembers what worked, where, why, and under what constraints.",
+      "mission": "Define a persistent GoalOS loop where missions produce artifacts, artifacts produce evidence, evidence produces selection, and selected artifacts improve future work.",
+      "why": "This card establishes the system as a persistent self-improving institution rather than a single AI workflow demo.",
+      "agents": [
+        "Aim Council",
+        "Mission Router",
+        "Artifact Curator",
+        "Proof Engineer",
+        "Reviewer Council",
+        "Chronicle Office",
+        "Route Memory Steward"
+      ],
+      "skills": [
+        "Capability cataloging",
+        "Evidence Docket design",
+        "Artifact versioning",
+        "Route memory construction",
+        "Proof-card publishing",
+        "Selection-gate design"
+      ],
+      "plans": [
+        "Create mission portfolio",
+        "Store accepted artifacts",
+        "Track evidence lineage",
+        "Record reviewer outcomes",
+        "Route future work through proven artifacts",
+        "Chronicle outcome"
+      ],
+      "goals": [
+        "Accumulate reusable capability",
+        "Make evidence durable",
+        "Improve future routing",
+        "Prevent unproven propagation"
+      ],
+      "contracts": [
+        "AEPArtifactRegistry",
+        "AEPEvidenceDocketRegistry",
+        "AEPSelectionGate",
+        "AEPChronicleRegistry",
+        "AEPRouteMemoryRegistry",
+        "ReputationRegistry"
+      ],
+      "metrics": {
+        "Proof clarity": 91,
+        "Privacy boundary": 95,
+        "Reuse potential": 96,
+        "RSI readiness": 89,
+        "Enterprise value": 87
+      },
+      "value_steps": [
+        "mission evidence",
+        "accepted artifacts",
+        "route memory",
+        "better future work",
+        "compounding institutional capability"
+      ]
+    },
+    {
+      "id": "005",
+      "title": "Sovereign RSI Value-to-Capability Treasury",
+      "short": "Convert verified value into governed reinvestment for stronger future capability.",
+      "domain": "Treasury / reinvestment / capability compounding",
+      "proof_level": "Value-to-capability proof",
+      "status": "Illustrative proof-card template",
+      "problem": "Value created by AI work can dissipate unless it is measured, governed, and reinvested into better missions, audits, tools, data, and agents.",
+      "mission": "Create a treasury loop where verified value funds a capability budget, which funds stronger proof missions and creates stronger future artifacts.",
+      "why": "This card turns RSI into an economic flywheel: value is not merely captured; it becomes governed capability capital.",
+      "agents": [
+        "Treasury Desk",
+        "Value Metrologist",
+        "Mission Portfolio Governor",
+        "Budget Steward",
+        "Proof Engineer",
+        "Reviewer Council",
+        "Chronicle Office"
+      ],
+      "skills": [
+        "Value attribution",
+        "AlphaWorkUnit measurement",
+        "Treasury routing",
+        "Mission portfolio design",
+        "Capability budgeting",
+        "Evidence-based reinvestment"
+      ],
+      "plans": [
+        "Measure verified value",
+        "Allocate capability budget",
+        "Fund higher-value proof missions",
+        "Track return to capability",
+        "Chronicle outcomes",
+        "Revise mission allocation"
+      ],
+      "goals": [
+        "Convert value to capability",
+        "Increase proof mission quality",
+        "Strengthen evaluator and audit capacity",
+        "Improve future productive capacity"
+      ],
+      "contracts": [
+        "AlphaWorkUnitLedger",
+        "AEPRewardVault",
+        "TreasuryRouter",
+        "CommercializationPerformanceVault",
+        "AEPChronicleRegistry",
+        "AEPSelectionGate"
+      ],
+      "metrics": {
+        "Proof clarity": 92,
+        "Privacy boundary": 94,
+        "Reuse potential": 95,
+        "RSI readiness": 91,
+        "Enterprise value": 92
+      },
+      "value_steps": [
+        "verified value",
+        "capability budget",
+        "better proof missions",
+        "stronger artifacts",
+        "future value"
+      ]
+    },
+    {
+      "id": "006",
+      "title": "Sovereign Enterprise RSI Operating System",
+      "short": "Coordinate a full sovereign enterprise operating theater through proof-backed upgrade rights.",
+      "domain": "Enterprise operating system / RSI governance",
+      "proof_level": "Enterprise system proof",
+      "status": "Illustrative proof-card template",
+      "problem": "Enterprise-scale RSI requires more than builders. It requires aim setting, strategy, routing, proof, review, treasury, rollback, evidence, and memory.",
+      "mission": "Model a sovereign enterprise operating system with specialist agent cells that coordinate through auditable artifacts and AGIALPHA proof settlement.",
+      "why": "This card demonstrates that GoalOS-native Ascension is an institution, not a chat interface.",
+      "agents": [
+        "Aim Council",
+        "Strategy Desk",
+        "Domain Operators",
+        "Builder Cells",
+        "Proof Engineers",
+        "Reviewer Council",
+        "Red-Team Court",
+        "Treasury Desk",
+        "Rollback Desk",
+        "Evidence Office",
+        "Chronicle"
+      ],
+      "skills": [
+        "Institutional goal setting",
+        "Mission decomposition",
+        "Specialist-agent routing",
+        "ProofBundle construction",
+        "Reviewer attestation",
+        "Rollback planning",
+        "Chronicle memory"
+      ],
+      "plans": [
+        "Set sovereign aim",
+        "Decompose into proof missions",
+        "Route to agent cells",
+        "Evaluate and review",
+        "Issue SelectionCertificate",
+        "Rollout or rollback",
+        "Chronicle result"
+      ],
+      "goals": [
+        "Autonomously coordinate specialist work",
+        "Protect institution with review and rollback",
+        "Turn accepted work into future capability"
+      ],
+      "contracts": [
+        "AEPGoalOSCommitRegistry",
+        "AEPRunCommitmentRegistry",
+        "AEPAgentRegistry",
+        "ProofSubmissionRegistry",
+        "AEPSelectionGate",
+        "AEPRollbackRegistry",
+        "AEPChronicleRegistry"
+      ],
+      "metrics": {
+        "Proof clarity": 93,
+        "Privacy boundary": 95,
+        "Reuse potential": 96,
+        "RSI readiness": 94,
+        "Enterprise value": 94
+      },
+      "value_steps": [
+        "enterprise aim",
+        "agent theater",
+        "proof selection",
+        "rollback-ready rollout",
+        "stronger operations"
+      ]
+    },
+    {
+      "id": "007",
+      "title": "Sovereign Enterprise Autoresearch Reactor",
+      "short": "Run parallel improvement hypotheses, validate evidence, and promote only what survives review.",
+      "domain": "Autoresearch / institutional experimentation",
+      "proof_level": "Autoresearch proof",
+      "status": "Illustrative proof-card template",
+      "problem": "Autonomous research is useful only if discoveries are evaluated, red-teamed, reproduced, settled, and converted into safe institutional upgrades.",
+      "mission": "Run an autoresearch reactor where specialist cells generate hypotheses, build artifacts, evaluate results, and route accepted artifacts through proof-backed Selection Gates.",
+      "why": "This card moves from enterprise operations to autonomous research under institutional proof control.",
+      "agents": [
+        "Portfolio Strategists",
+        "Domain Scouts",
+        "Hypothesis Engineers",
+        "Builder Cells",
+        "Evaluator Operators",
+        "Proof Engineers",
+        "Reviewer Council",
+        "Red-Team Court",
+        "Treasury Desk",
+        "Chronicle Office"
+      ],
+      "skills": [
+        "Hypothesis generation",
+        "Experiment design",
+        "Evaluator harness design",
+        "Reward-hack inspection",
+        "ProofBundle analysis",
+        "SelectionCertificate drafting"
+      ],
+      "plans": [
+        "Create domain portfolio",
+        "Generate hypotheses",
+        "Run parallel experiments",
+        "Validate and red-team evidence",
+        "Select winners",
+        "Chronicle learnings",
+        "Reinvest into next cycle"
+      ],
+      "goals": [
+        "Accelerate discovery safely",
+        "Prevent reward hacking",
+        "Promote proven artifacts",
+        "Improve future experiments"
+      ],
+      "contracts": [
+        "AEPExperimentRegistry",
+        "AEPAutoresearchPortfolioRegistry",
+        "AEPBenchmarkRegistry",
+        "AEPFalsificationRegistry",
+        "AEPEvaluatorStakingRegistry",
+        "AEPSelectionGate"
+      ],
+      "metrics": {
+        "Proof clarity": 93,
+        "Privacy boundary": 93,
+        "Reuse potential": 97,
+        "RSI readiness": 96,
+        "Enterprise value": 95
+      },
+      "value_steps": [
+        "hypothesis portfolio",
+        "parallel experiments",
+        "proof bundles",
+        "selection",
+        "autoresearch memory"
+      ]
+    },
+    {
+      "id": "008",
+      "title": "Sovereign Corporate Capability Foundry",
+      "short": "Coordinate portfolios of proof missions across high-value sovereign corporate domains.",
+      "domain": "Corporate capability foundry",
+      "proof_level": "Portfolio proof",
+      "status": "Illustrative proof-card template",
+      "problem": "A single successful mission is not enough. Institutions need a portfolio system that allocates proof work across procurement, finance, compliance, security, operations, compute, and R&D.",
+      "mission": "Turn the autoresearch reactor into a capability foundry that manages domain portfolios, benchmarks, experiments, and reinvestment decisions.",
+      "why": "This card shows the route from isolated improvement to scalable corporate capability formation.",
+      "agents": [
+        "Portfolio Governor",
+        "Domain Scouts",
+        "Capability Architects",
+        "Builder Cells",
+        "Evaluator Operators",
+        "Proof Engineers",
+        "Reviewer Council",
+        "Treasury Desk",
+        "Selection Gate",
+        "Chronicle Office"
+      ],
+      "skills": [
+        "Portfolio allocation",
+        "Domain opportunity analysis",
+        "Capability architecture",
+        "Benchmark design",
+        "Proof mission economics",
+        "Treasury reinvestment"
+      ],
+      "plans": [
+        "Set mandate epoch",
+        "Prioritize domains",
+        "Launch proof missions",
+        "Evaluate artifacts",
+        "Select upgrades",
+        "Allocate reinvestment",
+        "Chronicle capability growth"
+      ],
+      "goals": [
+        "Increase domain capability",
+        "Generate reusable corporate artifacts",
+        "Improve proof mission ROI",
+        "Create compounding institutional memory"
+      ],
+      "contracts": [
+        "MandateEpochRegistry",
+        "AEPAutoresearchPortfolioRegistry",
+        "AEPBenchmarkRegistry",
+        "AEPExperimentRegistry",
+        "AlphaWorkUnitLedger",
+        "TreasuryRouter",
+        "AEPChronicleRegistry"
+      ],
+      "metrics": {
+        "Proof clarity": 94,
+        "Privacy boundary": 93,
+        "Reuse potential": 97,
+        "RSI readiness": 96,
+        "Enterprise value": 96
+      },
+      "value_steps": [
+        "domain mandate",
+        "mission portfolio",
+        "proof-selected artifacts",
+        "capability foundry",
+        "corporate compounding"
+      ]
+    },
+    {
+      "id": "009",
+      "title": "Cyber-Sovereign Execution Moat",
+      "short": "Turn defensive cyber work into proof-backed, reusable enterprise capability.",
+      "domain": "Cyber-sovereign defense / execution moat",
+      "proof_level": "Cyber execution proof",
+      "status": "Illustrative proof-card template",
+      "problem": "Cybersecurity work is hard to trust unless it is authorized, bounded, tested, reviewed, red-teamed, and rollback-ready.",
+      "mission": "Coordinate defensive remediation work through specialist agents, security regression harnesses, reviewer attestations, red-team challenges, and proof-backed upgrade rights.",
+      "why": "This card makes the execution moat concrete in a high-value domain where trust, replayability, and rollback matter.",
+      "agents": [
+        "Cyber Aim Council",
+        "Asset Graph Cartographers",
+        "Threat Intelligence Scouts",
+        "Exploitability Analysts",
+        "Remediation Builders",
+        "Evaluator Operators",
+        "Proof Engineers",
+        "Reviewer Council",
+        "Red-Team Court",
+        "Rollback Desk"
+      ],
+      "skills": [
+        "Asset graph analysis",
+        "Defensive remediation planning",
+        "SBOM/VEX evidence handling",
+        "Regression harness construction",
+        "Red-team challenge design",
+        "Rollback planning"
+      ],
+      "plans": [
+        "Authorize defensive scope",
+        "Map assets",
+        "Triage weakness",
+        "Build remediation",
+        "Run regression harness",
+        "Review and red-team",
+        "Select or reject",
+        "Chronicle outcome"
+      ],
+      "goals": [
+        "Reduce validated cyber risk",
+        "Improve deployment confidence",
+        "Build reusable security capability",
+        "Prevent unsafe propagation"
+      ],
+      "contracts": [
+        "CyberAssetGraphRegistry",
+        "SBOMEvidenceRegistry",
+        "VEXAttestationRegistry",
+        "RemediationPatchRegistry",
+        "SecurityRegressionHarnessRegistry",
+        "RedTeamChallengeRegistry",
+        "IncidentRollbackRegistry"
+      ],
+      "metrics": {
+        "Proof clarity": 95,
+        "Privacy boundary": 94,
+        "Reuse potential": 97,
+        "RSI readiness": 96,
+        "Enterprise value": 97
+      },
+      "value_steps": [
+        "authorized weakness",
+        "defensive patch",
+        "security harness",
+        "red-team review",
+        "reusable cyber capability"
+      ]
+    },
+    {
+      "id": "010",
+      "title": "Cyber-Sovereign Proof Benchmark Market",
+      "short": "Make cyber proof work benchmarked, replayable, independently reproducible, and settleable.",
+      "domain": "Cyber benchmark market / execution moat",
+      "proof_level": "Benchmark-market proof",
+      "status": "Illustrative proof-card template",
+      "problem": "Execution moats are fragile unless results can be replayed, benchmarked, independently reproduced, and compared over time.",
+      "mission": "Create a cyber-sovereign benchmark market where tasks produce manifests, evaluator harnesses, ProofBundles, reviewer reports, reproduction receipts, AGIALPHA settlement, and SelectionCertificates.",
+      "why": "This card raises the moat from defensive work to benchmarked proof markets with independent reproduction.",
+      "agents": [
+        "Benchmark Foundry",
+        "Asset Graph Cell",
+        "Hypothesis Engineers",
+        "Remediation Builders",
+        "Evaluator Operators",
+        "Proof Engineers",
+        "Reviewer Council",
+        "Red-Team Court",
+        "External Reproduction Cell",
+        "Chronicle Office"
+      ],
+      "skills": [
+        "Benchmark task design",
+        "Evaluator harness engineering",
+        "Independent reproduction",
+        "ProofBundle preparation",
+        "Falsification testing",
+        "Reward-hack detection"
+      ],
+      "plans": [
+        "Define benchmark",
+        "Run candidate improvements",
+        "Evaluate and prove",
+        "Review and red-team",
+        "Reproduce independently",
+        "Select winners",
+        "Chronicle benchmark history"
+      ],
+      "goals": [
+        "Make results replayable",
+        "Improve benchmark credibility",
+        "Reduce reward hacking",
+        "Create reusable benchmarked capability"
+      ],
+      "contracts": [
+        "CyberBenchmarkRegistry",
+        "AEPBenchmarkRegistry",
+        "AEPExperimentRegistry",
+        "RedTeamChallengeRegistry",
+        "AEPFalsificationRegistry",
+        "AEPSelectionGate",
+        "AEPChronicleRegistry"
+      ],
+      "metrics": {
+        "Proof clarity": 96,
+        "Privacy boundary": 94,
+        "Reuse potential": 98,
+        "RSI readiness": 97,
+        "Enterprise value": 97
+      },
+      "value_steps": [
+        "benchmark manifest",
+        "candidate improvement",
+        "independent reproduction",
+        "selection",
+        "benchmarked capability"
+      ]
+    },
+    {
+      "id": "011",
+      "title": "Cyber-Sovereign Evidence Graph & Benchmark-to-Production RSI Flywheel",
+      "short": "Convert benchmark results into a production-grade evidence graph that improves future routing.",
+      "domain": "Evidence graph / production RSI flywheel",
+      "proof_level": "Evidence-graph moat proof",
+      "status": "Illustrative proof-card template",
+      "problem": "Benchmarks prove isolated results; institutions need an evidence graph that remembers what worked, who proved it, who reviewed it, what reproduced, what failed, and how it performed later.",
+      "mission": "Build an evidence graph that connects benchmark evidence to production routing, delayed outcomes, reviewer reliability, settlement memory, and future Selection Gate decisions.",
+      "why": "This is the hard-to-copy moat: a long-running evidence graph cannot be retroactively fabricated.",
+      "agents": [
+        "Sovereign Aim Council",
+        "Evidence Graph Architect",
+        "Mission Portfolio Governor",
+        "Domain Scout Swarm",
+        "Builder Cells",
+        "Evaluator Operators",
+        "Proof Engineers",
+        "Reviewer Council",
+        "Red-Team Court",
+        "Independent Reproduction Cell",
+        "Routing Intelligence Desk",
+        "Chronicle Office"
+      ],
+      "skills": [
+        "Evidence graph modeling",
+        "Trust-edge scoring",
+        "Route memory construction",
+        "Delayed outcome tracking",
+        "Reviewer reliability scoring",
+        "Benchmark-to-production mapping"
+      ],
+      "plans": [
+        "Create evidence graph schema",
+        "Link proof missions to outcomes",
+        "Record reviewer reliability",
+        "Track delayed results",
+        "Route future work through proven artifacts",
+        "Reinvest based on evidence"
+      ],
+      "goals": [
+        "Make evidence cumulative",
+        "Improve routing quality",
+        "Strengthen reviewer market",
+        "Turn validated work into production capability"
+      ],
+      "contracts": [
+        "AEPEvidenceGraphRegistry",
+        "AEPGraphQueryRegistry",
+        "AEPTrustEdgeRegistry",
+        "AEPRouteMemoryRegistry",
+        "AEPReinvestmentIndexRegistry",
+        "AEPDelayedOutcomeRegistry",
+        "AEPChronicleRegistry"
+      ],
+      "metrics": {
+        "Proof clarity": 96,
+        "Privacy boundary": 95,
+        "Reuse potential": 99,
+        "RSI readiness": 98,
+        "Enterprise value": 98
+      },
+      "value_steps": [
+        "proof missions",
+        "evidence graph",
+        "route memory",
+        "delayed outcomes",
+        "production RSI flywheel"
+      ]
+    }
+  ]
+}

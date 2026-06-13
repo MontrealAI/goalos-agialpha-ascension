@@ -1,67 +1,68 @@
 {
   "id": "007",
   "title": "Sovereign Enterprise Autoresearch Reactor",
-  "level": "Autonomous improvement search",
-  "domain": "Enterprise autoresearch",
-  "thesis": "A sovereign enterprise can run parallel improvement searches, validate them, and propagate only the artifacts that survive proof.",
-  "problem": "Automated improvement loops can produce useful candidates, but without governance they risk reward hacking, brittle gains, and unsafe propagation.",
-  "mission": "Run many bounded proof missions across enterprise domains, evaluate candidates, red-team claims, and promote only replayable improvements.",
-  "why": "This is the institutional answer to autoresearch: search plus proof, settlement, rollback, and memory.",
-  "contracts": [
-    "AEPBenchmarkRegistry",
-    "AEPExperimentRegistry",
-    "AEPAutoresearchPortfolioRegistry",
-    "AEPEvaluatorStakingRegistry",
-    "AEPCommitRevealValidationRegistry",
-    "AEPSlashingCourt",
-    "AEPFalsificationRegistry",
-    "AEPSelectionGate"
+  "short": "Run parallel improvement hypotheses, validate evidence, and promote only what survives review.",
+  "domain": "Autoresearch / institutional experimentation",
+  "proof_level": "Autoresearch proof",
+  "status": "Illustrative proof-card template",
+  "problem": "Autonomous research is useful only if discoveries are evaluated, red-teamed, reproduced, settled, and converted into safe institutional upgrades.",
+  "mission": "Run an autoresearch reactor where specialist cells generate hypotheses, build artifacts, evaluate results, and route accepted artifacts through proof-backed Selection Gates.",
+  "why": "This card moves from enterprise operations to autonomous research under institutional proof control.",
+  "agents": [
+    "Portfolio Strategists",
+    "Domain Scouts",
+    "Hypothesis Engineers",
+    "Builder Cells",
+    "Evaluator Operators",
+    "Proof Engineers",
+    "Reviewer Council",
+    "Red-Team Court",
+    "Treasury Desk",
+    "Chronicle Office"
   ],
   "skills": [
     "Hypothesis generation",
-    "Experiment portfolio management",
+    "Experiment design",
     "Evaluator harness design",
-    "Reward-hack detection",
-    "Red-team validation"
+    "Reward-hack inspection",
+    "ProofBundle analysis",
+    "SelectionCertificate drafting"
   ],
   "plans": [
-    "Define benchmark family",
-    "Launch parallel missions",
-    "Evaluate candidate improvements",
-    "Red-team and replay",
-    "Promote safe candidates"
+    "Create domain portfolio",
+    "Generate hypotheses",
+    "Run parallel experiments",
+    "Validate and red-team evidence",
+    "Select winners",
+    "Chronicle learnings",
+    "Reinvest into next cycle"
   ],
   "goals": [
-    "Search for enterprise improvements",
-    "Prevent unproven artifacts from propagating",
-    "Create a replayable autoresearch institution"
+    "Accelerate discovery safely",
+    "Prevent reward hacking",
+    "Promote proven artifacts",
+    "Improve future experiments"
   ],
-  "rsi": "The reactor improves itself by converting accepted experiment outputs into new priors, harnesses, rubrics, and mission templates - but only after proof and review.",
-  "agialpha": "AGIALPHA coordinates mission funding, builder and reviewer bonds, evaluator incentives, reward-vault settlement, reputation updates, and portfolio reinvestment.",
-  "evidence": [
-    "Benchmark docket",
-    "Experiment manifest",
-    "Candidate artifacts",
-    "Evaluator report",
-    "Falsification report",
-    "SelectionCertificate",
-    "Chronicle entry"
+  "contracts": [
+    "AEPExperimentRegistry",
+    "AEPAutoresearchPortfolioRegistry",
+    "AEPBenchmarkRegistry",
+    "AEPFalsificationRegistry",
+    "AEPEvaluatorStakingRegistry",
+    "AEPSelectionGate"
   ],
-  "metrics": [
-    [
-      "search",
-      "single experiment",
-      "parallel portfolio"
-    ],
-    [
-      "validity",
-      "self-reported gain",
-      "review + replay"
-    ],
-    [
-      "reuse",
-      "one-off optimization",
-      "autoresearch memory"
-    ]
+  "metrics": {
+    "Proof clarity": 93,
+    "Privacy boundary": 93,
+    "Reuse potential": 97,
+    "RSI readiness": 96,
+    "Enterprise value": 95
+  },
+  "value_steps": [
+    "hypothesis portfolio",
+    "parallel experiments",
+    "proof bundles",
+    "selection",
+    "autoresearch memory"
   ]
 }

@@ -1,70 +1,65 @@
 {
   "id": "001",
   "title": "Buyer Rescue Workflow",
-  "level": "First proof of practical value",
-  "domain": "Customer support / buyer trust",
-  "thesis": "A buyer support failure becomes a reusable, verified workflow improvement rather than a forgotten ticket.",
-  "problem": "A buyer cannot access a download, receipt, or onboarding step. Ordinary support replies solve one case but rarely improve the system.",
-  "mission": "Convert the support scenario into a GoalOS proof mission: diagnose the weak workflow, generate v1.1, validate with a reviewer, and publish a public-safe Proof Card.",
-  "why": "This is the simplest proof that GoalOS turns everyday AI work into reusable operational intelligence.",
+  "short": "Turn a buyer support breakdown into a proof-backed workflow upgrade.",
+  "domain": "Customer trust / buyer success",
+  "proof_level": "Workflow proof",
+  "status": "Illustrative proof-card template",
+  "problem": "A buyer cannot access a download or paid resource. A one-off AI reply might be helpful, but the institution needs a reusable workflow that prevents repeat confusion, handles escalation, and leaves evidence.",
+  "mission": "Convert the support incident into a GoalOS proof mission: classify the issue, draft a clear response, score the response, improve the workflow, record a public-safe Proof Card, and preserve private buyer data off-chain.",
+  "why": "This is the simplest credible proof: everyone understands support. It demonstrates that GoalOS is not just answering; it is improving an operational workflow.",
+  "agents": [
+    "Support Aim Steward",
+    "Buyer Context Resolver",
+    "Workflow Builder",
+    "Evidence Scribe",
+    "Reviewer",
+    "Rollback / Escalation Guard"
+  ],
+  "skills": [
+    "Support classification",
+    "Plain-language response drafting",
+    "Refund/access policy routing",
+    "Private-data minimization",
+    "Proof-note writing",
+    "Human escalation detection"
+  ],
+  "plans": [
+    "Define buyer issue categories",
+    "Run baseline response",
+    "Score for clarity and safety",
+    "Improve workflow artifact",
+    "Submit ProofBundle",
+    "Register public-safe Proof Card"
+  ],
+  "goals": [
+    "Reduce repeated support friction",
+    "Improve response consistency",
+    "Protect buyer privacy",
+    "Create reusable support capability"
+  ],
   "contracts": [
     "AEPGoalOSCommitRegistry",
     "AEPRunCommitmentRegistry",
     "JobRegistry",
-    "JobClaimBondManager",
     "ProofSubmissionRegistry",
     "ReviewerBondRegistry",
     "ProofCardRegistry",
     "ProofCredentialRegistry",
-    "ReputationRegistry",
-    "AEPEvidenceDocketRegistry",
-    "AEPChronicleRegistry"
+    "ReputationRegistry"
   ],
-  "skills": [
-    "Support triage classification",
-    "Policy-bound response drafting",
-    "Private-data minimization",
-    "Evidence-note writing",
-    "Reviewer-ready proof packaging"
-  ],
-  "plans": [
-    "Capture baseline support response",
-    "Score clarity/access/refund/escalation handling",
-    "Improve workflow v1.1",
-    "Validate public-safe proof",
-    "Chronicle the accepted artifact"
-  ],
-  "goals": [
-    "Reduce repeated support failures",
-    "Create the first public-safe Proof Card",
-    "Show non-technical buyers why proof matters"
-  ],
-  "rsi": "The improved support workflow earns scoped reuse only after evidence, review, and claim-boundary checks. Future support work inherits the validated artifact, not the unproven draft.",
-  "agialpha": "AGIALPHA coordinates the sponsor mission, builder claim bond, proof submission bond, reviewer bond, proof-card action, credential action, and reputation-linked settlement.",
-  "evidence": [
-    "Original support scenario redacted",
-    "Workflow v1.0 output",
-    "Scorecard and diagnosis",
-    "Workflow v1.1 output",
-    "Reviewer attestation",
-    "Proof Card hash",
-    "Chronicle entry"
-  ],
-  "metrics": [
-    [
-      "access clarity",
-      "baseline unclear",
-      "v1.1 gives exact next action"
-    ],
-    [
-      "privacy",
-      "risk of overexposure",
-      "redacted public proof"
-    ],
-    [
-      "reuse",
-      "one-off reply",
-      "reusable support playbook"
-    ]
+  "metrics": {
+    "Proof clarity": 92,
+    "Privacy boundary": 98,
+    "Reuse potential": 88,
+    "RSI readiness": 76,
+    "Enterprise value": 70
+  },
+  "value_steps": [
+    "faster buyer resolution",
+    "fewer repeated support replies",
+    "reusable support playbook",
+    "proof-backed trust signal",
+    "better next workflow"
   ]
 }

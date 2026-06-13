@@ -1,68 +1,67 @@
 {
   "id": "003",
   "title": "Sovereign AI Procurement Control Tower",
-  "level": "Institutional control plane",
-  "domain": "AI procurement governance",
-  "thesis": "A procurement workflow becomes a control tower that routes risk, evidence, approval, rollback, and upgrade rights.",
-  "problem": "AI adoption fails when procurement, legal, security, finance, and operations evaluate systems separately without a shared proof trail.",
-  "mission": "Build a control tower that coordinates the evaluation of AI systems through roles, evidence, contracts, approvals, and Proof Cards.",
-  "why": "This is the enterprise version of proof-backed adoption: one command surface for trust, risk, and capability.",
+  "short": "Coordinate procurement proof, risk, review, and rollout decisions across a serious buyer workflow.",
+  "domain": "Enterprise procurement / governance",
+  "proof_level": "Control-tower proof",
+  "status": "Illustrative proof-card template",
+  "problem": "A sovereign or enterprise buyer needs to decide whether an AI workflow system can be trusted, governed, audited, rolled back, and improved safely.",
+  "mission": "Create a procurement control tower: map buyer risk, prepare evidence, assign specialist cells, validate proof, produce a public-safe card, and route accepted artifacts to future trust-room work.",
+  "why": "This is the first flagship enterprise proof card because it connects proof work to real purchasing decisions.",
+  "agents": [
+    "Procurement Aim Council",
+    "Risk Cartographer",
+    "Evidence Architect",
+    "Builder Cell",
+    "Reviewer Council",
+    "Red-Team Gate",
+    "Selection Gate Steward",
+    "Chronicle Scribe"
+  ],
+  "skills": [
+    "Risk mapping",
+    "Trust framework analysis",
+    "Evidence Docket construction",
+    "Reviewer attestation",
+    "Falsification review",
+    "Rollout readiness scoring"
+  ],
+  "plans": [
+    "Create procurement GoalOSCommit",
+    "Decompose proof mission",
+    "Run builder/reviewer flow",
+    "Red-team claims",
+    "Issue SelectionCertificate",
+    "Chronicle result"
+  ],
+  "goals": [
+    "Make buyer diligence auditable",
+    "Prove governance readiness",
+    "Create reusable procurement proof",
+    "Reduce future sales friction"
+  ],
   "contracts": [
     "AEPGoalOSCommitRegistry",
     "AEPRunCommitmentRegistry",
     "JobRegistry",
+    "ProofSubmissionRegistry",
     "ReviewerBondRegistry",
-    "AEPSelectionGate",
-    "AEPRolloutRouter",
-    "AEPRollbackRegistry",
     "AEPEvidenceDocketRegistry",
+    "AEPSelectionGate",
     "AEPChronicleRegistry"
   ],
-  "skills": [
-    "Cross-functional AI procurement",
-    "Risk routing",
-    "Control-plane design",
-    "Evidence synthesis",
-    "Rollback planning"
-  ],
-  "plans": [
-    "Define procurement mandate",
-    "Route diligence tasks to specialist cells",
-    "Collect ProofBundles",
-    "Validate with reviewers/red-team",
-    "Issue scoped adoption recommendation"
-  ],
-  "goals": [
-    "Turn AI adoption into a governed proof process",
-    "Reduce procurement uncertainty",
-    "Create repeatable enterprise control infrastructure"
-  ],
-  "rsi": "Future procurement routes improve because accepted evidence templates, reviewer rubrics, and rollback paths become upgradeable institutional memory.",
-  "agialpha": "AGIALPHA coordinates task budgets, reviewer bonds, proof-card actions, credential issuance, settlement, and reputation-linked access for procurement-control specialists.",
-  "evidence": [
-    "Mandate record",
-    "Control tower workflow",
-    "Specialist task outputs",
-    "Reviewer attestations",
-    "Rollback plan",
-    "SelectionCertificate",
-    "Chronicle entry"
-  ],
-  "metrics": [
-    [
-      "coordination",
-      "fragmented review",
-      "single control tower"
-    ],
-    [
-      "risk",
-      "unclear ownership",
-      "assigned specialists"
-    ],
-    [
-      "reuse",
-      "one-off evaluation",
-      "repeatable procurement system"
-    ]
+  "metrics": {
+    "Proof clarity": 94,
+    "Privacy boundary": 96,
+    "Reuse potential": 94,
+    "RSI readiness": 84,
+    "Enterprise value": 91
+  },
+  "value_steps": [
+    "diligence mapped",
+    "evidence validated",
+    "claims controlled",
+    "selection certificate issued",
+    "future procurement improved"
   ]
 }

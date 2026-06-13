@@ -1,66 +1,63 @@
 {
   "id": "002",
   "title": "Sovereign Procurement Trust Room",
-  "level": "Enterprise trust surface",
-  "domain": "Procurement / due diligence",
-  "thesis": "A buyer diligence question becomes an auditable Trust Room rather than an improvised sales response.",
-  "problem": "Enterprise and sovereign buyers ask whether an AI workflow system can be trusted, governed, audited, and safely adopted.",
-  "mission": "Create a Trust Room artifact that answers procurement questions with evidence boundaries, proof routes, reviewer decisions, and safe public claims.",
-  "why": "Procurement trust is a high-value bottleneck. Solving it converts interest into qualified institutional demand.",
-  "contracts": [
-    "AEPGoalOSCommitRegistry",
-    "AEPClaimBoundaryRegistry",
-    "AEPConformanceRegistry",
-    "AEPEvidenceDocketRegistry",
-    "ProofCardRegistry",
-    "ProofCredentialRegistry",
-    "ReputationRegistry",
-    "AEPSelectionGate"
+  "short": "Help serious buyers understand what can be trusted, audited, and safely shared.",
+  "domain": "Procurement / trust",
+  "proof_level": "Trust-room proof",
+  "status": "Illustrative proof-card template",
+  "problem": "Enterprise and sovereign buyers do not buy vague AI claims. They need evidence, boundaries, review logic, and a clear path to due diligence.",
+  "mission": "Build a procurement trust room that explains the product, proof flow, claim boundaries, on-chain/off-chain split, review controls, and evidence requirements.",
+  "why": "Procurement trust is a revenue gate. This card shows how the system converts buyer diligence into proof infrastructure.",
+  "agents": [
+    "Procurement Aim Steward",
+    "Trust-Room Architect",
+    "Policy Boundary Analyst",
+    "Evidence Docket Builder",
+    "Reviewer",
+    "Claims-Safety Officer"
   ],
   "skills": [
-    "Procurement response architecture",
-    "Trust-center documentation",
-    "Claim-boundary review",
-    "Evidence Docket compilation",
+    "Procurement response drafting",
+    "Trust-center structuring",
+    "Claim-boundary drafting",
+    "Evidence classification",
+    "Risk register drafting",
     "Reviewer rubric design"
   ],
   "plans": [
-    "Map buyer questions",
-    "Build trust-room artifact",
-    "Attach public-safe evidence",
-    "Run reviewer validation",
-    "Publish Proof Card 002"
+    "Collect buyer diligence questions",
+    "Map evidence sources",
+    "Build trust-room response",
+    "Review claims",
+    "Register proof card",
+    "Route accepted artifact to future procurement workflows"
   ],
   "goals": [
-    "Shorten buyer diligence cycles",
-    "Create a reusable procurement answer",
-    "Make proof legible to non-technical executives"
+    "Increase enterprise trust",
+    "Reduce diligence time",
+    "Improve claim discipline",
+    "Create reusable procurement artifact"
   ],
-  "rsi": "The Trust Room becomes a reusable artifact for future procurement conversations only after it survives review, claim-boundary validation, and Evidence Docket anchoring.",
-  "agialpha": "AGIALPHA coordinates mission funding, builder proof work, reviewer validation, proof-card registration, credential issuance, and reputation updates for trust-room specialists.",
-  "evidence": [
-    "Procurement question set",
-    "Trust Room v1.0",
-    "Claim-boundary checklist",
-    "Reviewer attestation",
-    "Proof Card 002",
-    "Evidence Docket template"
+  "contracts": [
+    "AEPGoalOSCommitRegistry",
+    "ProofCardRegistry",
+    "AEPEvidenceDocketRegistry",
+    "AEPClaimBoundaryRegistry",
+    "ReputationRegistry",
+    "AEPSelectionGate"
   ],
-  "metrics": [
-    [
-      "buyer confidence",
-      "ad hoc answer",
-      "auditable trust-room"
-    ],
-    [
-      "sales reuse",
-      "custom reply",
-      "standardized diligence asset"
-    ],
-    [
-      "claim safety",
-      "marketing-heavy",
-      "bounded evidence language"
-    ]
+  "metrics": {
+    "Proof clarity": 90,
+    "Privacy boundary": 96,
+    "Reuse potential": 92,
+    "RSI readiness": 80,
+    "Enterprise value": 86
+  },
+  "value_steps": [
+    "clearer procurement answers",
+    "evidence-ready trust room",
+    "reusable claim boundaries",
+    "lower enterprise friction",
+    "stronger sponsor confidence"
   ]
 }

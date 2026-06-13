@@ -1,69 +1,70 @@
 {
   "id": "006",
   "title": "Sovereign Enterprise RSI Operating System",
-  "level": "Enterprise operating layer",
-  "domain": "Sovereign enterprise operations",
-  "thesis": "A large specialist-agent institution can coordinate work, proof, review, treasury, rollback, and memory through an evidence-governed RSI operating system.",
-  "problem": "Enterprises cannot safely adopt autonomous work unless responsibility, evaluation, rollback, settlement, and evidence are explicit.",
-  "mission": "Build an operating theater of specialist agent cells whose work is routed, reviewed, settled, and chronicled.",
-  "why": "This is the organizational layer that turns proof cards into an operating system.",
+  "short": "Coordinate a full sovereign enterprise operating theater through proof-backed upgrade rights.",
+  "domain": "Enterprise operating system / RSI governance",
+  "proof_level": "Enterprise system proof",
+  "status": "Illustrative proof-card template",
+  "problem": "Enterprise-scale RSI requires more than builders. It requires aim setting, strategy, routing, proof, review, treasury, rollback, evidence, and memory.",
+  "mission": "Model a sovereign enterprise operating system with specialist agent cells that coordinate through auditable artifacts and AGIALPHA proof settlement.",
+  "why": "This card demonstrates that GoalOS-native Ascension is an institution, not a chat interface.",
+  "agents": [
+    "Aim Council",
+    "Strategy Desk",
+    "Domain Operators",
+    "Builder Cells",
+    "Proof Engineers",
+    "Reviewer Council",
+    "Red-Team Court",
+    "Treasury Desk",
+    "Rollback Desk",
+    "Evidence Office",
+    "Chronicle"
+  ],
+  "skills": [
+    "Institutional goal setting",
+    "Mission decomposition",
+    "Specialist-agent routing",
+    "ProofBundle construction",
+    "Reviewer attestation",
+    "Rollback planning",
+    "Chronicle memory"
+  ],
+  "plans": [
+    "Set sovereign aim",
+    "Decompose into proof missions",
+    "Route to agent cells",
+    "Evaluate and review",
+    "Issue SelectionCertificate",
+    "Rollout or rollback",
+    "Chronicle result"
+  ],
+  "goals": [
+    "Autonomously coordinate specialist work",
+    "Protect institution with review and rollback",
+    "Turn accepted work into future capability"
+  ],
   "contracts": [
     "AEPGoalOSCommitRegistry",
     "AEPRunCommitmentRegistry",
     "AEPAgentRegistry",
-    "AEPArtifactRegistry",
-    "JobRegistry",
     "ProofSubmissionRegistry",
-    "ReviewerBondRegistry",
     "AEPSelectionGate",
     "AEPRollbackRegistry",
     "AEPChronicleRegistry"
   ],
-  "skills": [
-    "Multi-agent orchestration",
-    "Enterprise operating design",
-    "Proof engineering",
-    "Reviewer coordination",
-    "Rollback planning"
-  ],
-  "plans": [
-    "Define enterprise aim",
-    "Route missions to agent cells",
-    "Collect ProofBundles",
-    "Review and red-team",
-    "Promote only accepted artifacts"
-  ],
-  "goals": [
-    "Operate many specialist agents safely",
-    "Make responsibility explicit",
-    "Build enterprise-scale evidence memory"
-  ],
-  "rsi": "An enterprise artifact is not upgraded because it performs once. It earns scoped upgrade rights only after proof, evaluation, review, monitoring, and rollback readiness.",
-  "agialpha": "AGIALPHA coordinates mission budgets, agent claims, proof bonds, reviewer bonds, credentials, reputation, reward settlement, and treasury routing across the operating system.",
-  "evidence": [
-    "GoalOSCommit",
-    "RunCommitment",
-    "ProofBundle",
-    "EvalAttestation",
-    "Risk report",
-    "RollbackReceipt",
-    "Chronicle entry"
-  ],
-  "metrics": [
-    [
-      "coordination",
-      "ad hoc teams",
-      "specialist-agent operating theater"
-    ],
-    [
-      "safety",
-      "informal approval",
-      "Selection Gate + rollback"
-    ],
-    [
-      "scale",
-      "single workflow",
-      "enterprise mission portfolio"
-    ]
+  "metrics": {
+    "Proof clarity": 93,
+    "Privacy boundary": 95,
+    "Reuse potential": 96,
+    "RSI readiness": 94,
+    "Enterprise value": 94
+  },
+  "value_steps": [
+    "enterprise aim",
+    "agent theater",
+    "proof selection",
+    "rollback-ready rollout",
+    "stronger operations"
   ]
 }

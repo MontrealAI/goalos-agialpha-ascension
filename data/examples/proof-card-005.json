@@ -1,65 +1,64 @@
 {
   "id": "005",
   "title": "Sovereign RSI Value-to-Capability Treasury",
-  "level": "Reinvestment engine",
-  "domain": "Treasury / capability allocation",
-  "thesis": "Verified value can be governed and reinvested into future capability.",
-  "problem": "Even when AI work creates value, organizations often fail to convert that value into stronger future systems.",
-  "mission": "Route verified value into capability budgets for better missions, stronger agents, better evaluators, security review, compute, and evidence infrastructure.",
-  "why": "This is where RSI becomes economically useful: value funds capability, capability produces better value.",
-  "contracts": [
-    "AEPRewardVault",
-    "TreasuryRouter",
-    "CommercializationPerformanceVault",
-    "AlphaWorkUnitLedger",
-    "AEPSelectionGate",
-    "AEPChronicleRegistry",
-    "LaunchGateRegistry"
+  "short": "Convert verified value into governed reinvestment for stronger future capability.",
+  "domain": "Treasury / reinvestment / capability compounding",
+  "proof_level": "Value-to-capability proof",
+  "status": "Illustrative proof-card template",
+  "problem": "Value created by AI work can dissipate unless it is measured, governed, and reinvested into better missions, audits, tools, data, and agents.",
+  "mission": "Create a treasury loop where verified value funds a capability budget, which funds stronger proof missions and creates stronger future artifacts.",
+  "why": "This card turns RSI into an economic flywheel: value is not merely captured; it becomes governed capability capital.",
+  "agents": [
+    "Treasury Desk",
+    "Value Metrologist",
+    "Mission Portfolio Governor",
+    "Budget Steward",
+    "Proof Engineer",
+    "Reviewer Council",
+    "Chronicle Office"
   ],
   "skills": [
-    "Treasury routing",
-    "Capability budgeting",
+    "Value attribution",
     "AlphaWorkUnit measurement",
-    "Reinvestment planning",
-    "Governance accounting"
+    "Treasury routing",
+    "Mission portfolio design",
+    "Capability budgeting",
+    "Evidence-based reinvestment"
   ],
   "plans": [
     "Measure verified value",
     "Allocate capability budget",
     "Fund higher-value proof missions",
-    "Review outcomes",
-    "Chronicle reinvestment effectiveness"
+    "Track return to capability",
+    "Chronicle outcomes",
+    "Revise mission allocation"
   ],
   "goals": [
-    "Turn value into capability",
-    "Avoid speculative value claims",
-    "Create a disciplined reinvestment flywheel"
+    "Convert value to capability",
+    "Increase proof mission quality",
+    "Strengthen evaluator and audit capacity",
+    "Improve future productive capacity"
   ],
-  "rsi": "The system improves because verified value funds the next generation of proof missions, evaluator harnesses, specialist cells, and review capacity.",
-  "agialpha": "AGIALPHA coordinates settlement, reward-vault allocation, treasury records, milestone release, and capability-budget routing after proof and review.",
-  "evidence": [
-    "Value ledger",
-    "AlphaWorkUnit report",
-    "Treasury allocation record",
-    "RewardVault record",
-    "Commercialization milestone proof",
-    "Chronicle entry"
+  "contracts": [
+    "AlphaWorkUnitLedger",
+    "AEPRewardVault",
+    "TreasuryRouter",
+    "CommercializationPerformanceVault",
+    "AEPChronicleRegistry",
+    "AEPSelectionGate"
   ],
-  "metrics": [
-    [
-      "value capture",
-      "untracked benefit",
-      "measured value ledger"
-    ],
-    [
-      "reinvestment",
-      "manual decision",
-      "governed capability budget"
-    ],
-    [
-      "future capability",
-      "static team",
-      "stronger mission portfolio"
-    ]
+  "metrics": {
+    "Proof clarity": 92,
+    "Privacy boundary": 94,
+    "Reuse potential": 95,
+    "RSI readiness": 91,
+    "Enterprise value": 92
+  },
+  "value_steps": [
+    "verified value",
+    "capability budget",
+    "better proof missions",
+    "stronger artifacts",
+    "future value"
   ]
 }
