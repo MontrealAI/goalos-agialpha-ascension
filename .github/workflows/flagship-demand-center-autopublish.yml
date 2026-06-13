@@ -1,0 +1,40 @@
+name: Flagship Demand Center Autopublish
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+    paths:
+      - "scripts/build_goalos_agialpha_flagship_demand_center_v7.py"
+      - "scripts/verify_goalos_agialpha_flagship_demand_center_v7.py"
+      - "docs/examples/**"
+      - "data/examples/**"
+      - "evidence/examples/**"
+      - ".github/workflows/flagship-demand-center-autopublish.yml"
+concurrency:
+  group: flagship-demand-center-pages
+  cancel-in-progress: false
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+environment:
+  name: github-pages
+  url: ${{ steps.deployment.outputs.page_url }}
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+      - name: Build flagship demand center
+        run: python3 scripts/build_goalos_agialpha_flagship_demand_center_v7.py --out site
+      - name: Verify website before deployment
+        run: python3 scripts/verify_goalos_agialpha_flagship_demand_center_v7.py --site site
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
