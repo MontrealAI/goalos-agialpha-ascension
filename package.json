@@ -2,7 +2,7 @@
   "name": "goalos-agialpha-ascension",
   "version": "4.4.0",
   "description": "GoalOS-native reimplementation of \u03b1-AGI Ascension using existing AGIALPHA for proof-settled AI workflow work.",
-  "license": "MIT",
+  "license": "UNLICENSED",
   "scripts": {
     "compile": "hardhat compile",
     "test": "hardhat test",

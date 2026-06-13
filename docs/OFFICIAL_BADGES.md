@@ -18,7 +18,7 @@ This document defines the official badge set for the GoalOS AGIALPHA Ascension r
 | Final Public Mainnet Authorization | `.github/workflows/final-public-mainnet-authorization.yml` | Dynamic GitHub Actions badge |
 | Mainnet Authorization Gate | `.github/workflows/mainnet-authorization-gate.yml` | Dynamic GitHub Actions badge |
 | Solidity Audit Toolchain | `.github/workflows/solidity-audit-toolchain.yml` | Dynamic GitHub Actions badge |
-| License: MIT | `NOTICE.md` and package metadata | Static repository metadata badge |
+| License posture | `LICENSE_DECISION.md` and package metadata | Static repository metadata badge |
 | Solidity version | `package.json` | Static package-declared version badge |
 | Hardhat version | `package.json` | Static package-declared version badge |
 | TypeScript version | `package.json` | Static package-declared version badge |
@@ -41,6 +41,7 @@ Do not add badges that claim or imply:
 
 - external audit completion unless a real external audit artifact exists;
 - legal, tax, securities, or investment approval;
+- permissive or open-source licensing while `LICENSE_DECISION.md` says no license is granted;
 - guaranteed security or exploit immunity;
 - live Ethereum Mainnet deployment while `MAINNET_DEPLOYED` is `NO`;
 - new AGIALPHA token deployment, minting, yield, revenue share, or price appreciation.
