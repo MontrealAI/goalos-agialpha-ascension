@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-13T20:19:43.148930+00:00",
+  "generated_at": "2026-06-13T22:50:27.785737+00:00",
   "files": [
     {
       "path": ".editorconfig",
@@ -4642,21 +4642,6 @@
       "sha256": "a2e0d0601362438e6b3a6fa8872c010cd3e00fe07eb2130523707cce864ae9aa"
     },
     {
-      "path": "audit/reports/2026-06-13-201822/semgrep.json",
-      "bytes": 11726,
-      "sha256": "d5bd9e571d71a2ffc9ebbf4225111413c90d1d4ad0711c93c6c8c367bb55195f"
-    },
-    {
-      "path": "audit/reports/2026-06-13-201822/semgrep.txt",
-      "bytes": 4248,
-      "sha256": "69e85337121690545aa7017dd2e5593d463a44774ae71c4e1e0d43750dca51b5"
-    },
-    {
-      "path": "audit/reports/current-run.txt",
-      "bytes": 32,
-      "sha256": "74f685c0fcbcd173e76034f4594a9a6a5e9f8f5a7e2202836757764b521dce23"
-    },
-    {
       "path": "audit/reports/dependency-triage/README.md",
       "bytes": 126,
       "sha256": "3b92a642dcdb6b72b59242794263b968e7609e4164737d5175858eabfcaaaadf"
@@ -4734,7 +4719,7 @@
     {
       "path": "audit/reports/latest.txt",
       "bytes": 32,
-      "sha256": "74f685c0fcbcd173e76034f4594a9a6a5e9f8f5a7e2202836757764b521dce23"
+      "sha256": "34ae09daf0da05777f7dfde36fee02205df515de14edbba626f483fc4565ad9f"
     },
     {
       "path": "audit/reports/mainnet-toolchain-latest/actionlint.txt",
@@ -6602,11 +6587,6 @@
       "sha256": "5bec23f6f81501b3e8b32a9e28d0c68df4e06a968b56b67e1218cca399f84629"
     },
     {
-      "path": "qa/MANIFEST_MAINNET_AUTHORIZATION_v4_4_0.json",
-      "bytes": 243628,
-      "sha256": "3c7576101de4e6ad93adc2a3b02d034b0a1f57daf42431121e2923c4b73a09be"
-    },
-    {
       "path": "qa/MANIFEST_v4_0.json",
       "bytes": 21763,
       "sha256": "7133aeca6b0d236c44f29e75a39fb6a854cd088ecabf9dd50f1c22e155c44920"
@@ -6617,14 +6597,14 @@
       "sha256": "14a2f90ab020413f66e90e5ed201f1ed3887f1aae3332951e5dfdc1f8476c75f"
     },
     {
+      "path": "qa/MANIFEST_v4_3.json",
+      "bytes": 243978,
+      "sha256": "a9085a15ad217ad08e2cd2202571b71cac537acfe02ca1a91d2f365ded7fafda"
+    },
+    {
       "path": "qa/MANIFEST_v4_3_FINAL.json",
       "bytes": 28291,
       "sha256": "fee8b122c23b954a5f9db5acd3e99e8d17c66dc4526f4e51fe23c36063d2dfd8"
-    },
-    {
-      "path": "qa/MANIFEST_v4_4.json",
-      "bytes": 243628,
-      "sha256": "3c7576101de4e6ad93adc2a3b02d034b0a1f57daf42431121e2923c4b73a09be"
     },
     {
       "path": "qa/POLICY_SIGNOFFS_OR_WAIVERS.json",
