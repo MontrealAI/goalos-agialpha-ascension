@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-13T02:05:04.466129+00:00",
+  "generated_at": "2026-06-13T02:19:12.718180+00:00",
   "files": [
     {
       "path": ".editorconfig",
@@ -4638,8 +4638,8 @@
     },
     {
       "path": "audit/reports/2026-06-13-015142/unresolved-findings.csv",
-      "bytes": 59,
-      "sha256": "6fa6ff6a376e34a9ea37c3fb031e9f0e57dae8a6b98355711fd51c88af2715b4"
+      "bytes": 58,
+      "sha256": "a2e0d0601362438e6b3a6fa8872c010cd3e00fe07eb2130523707cce864ae9aa"
     },
     {
       "path": "audit/reports/dependency-triage/README.md",
@@ -4943,8 +4943,8 @@
     },
     {
       "path": "configs/semgrep.yml",
-      "bytes": 870,
-      "sha256": "5f52df28b82e07a5cd0c578e99b0e20d80526e328537ae3424e0f58a35844d7b"
+      "bytes": 1038,
+      "sha256": "e3c3f55ff1342419e557ef51e722bdd25562512ae75fdb8410878cb6da6c3b89"
     },
     {
       "path": "configs/slither.config.json",
@@ -6788,8 +6788,8 @@
     },
     {
       "path": "scripts/audit/run-semgrep.sh",
-      "bytes": 1348,
-      "sha256": "f42d8ecacb056e54b6ac8f1e234b0a6563828ffa2dec22433bb6f1c5035fc7b0"
+      "bytes": 1712,
+      "sha256": "76b2430d88401c7c8c0531c379ee49f569ad649596ad571e9bf64fd55fbab361"
     },
     {
       "path": "scripts/audit/run-shellcheck.sh",
