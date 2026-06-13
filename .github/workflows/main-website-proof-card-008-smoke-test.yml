@@ -1,0 +1,27 @@
+name: Main Website Proof Card 008 Smoke Test
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "scripts/add_goalos_agialpha_main_site_proof_cards_v14.py"
+      - "scripts/verify_goalos_agialpha_main_site_proof_cards_v14.py"
+      - "docs/examples/**"
+      - "data/examples/**"
+      - "evidence/examples/**"
+      - "assets/**"
+      - ".github/workflows/main-website-proof-card-008-smoke-test.yml"
+
+jobs:
+  smoke-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+      - name: Build local test site
+        run: |
+          mkdir -p site
+          if [ -d app ]; then cp -R app/. site/; elif [ -f index.html ]; then cp index.html site/index.html; else echo '<!doctype html><html><body><main>GoalOS AGIALPHA Ascension</main></body></html>' > site/index.html; fi
+          python3 scripts/add_goalos_agialpha_main_site_proof_cards_v14.py --site site
+      - name: Verify local test site
+        run: python3 scripts/verify_goalos_agialpha_main_site_proof_cards_v14.py --site site
