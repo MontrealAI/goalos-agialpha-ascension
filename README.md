@@ -19,12 +19,27 @@ It does not claim external audit completion, legal approval, tax review, guarant
 Public Sepolia deployment is recommended but not mandatory for public authorization; local deterministic rehearsal and mainnet-shaped simulation are the active public gates.
 
 
+## Research paper
+
+**GoalOS-native alpha-AGI Ascension using AGIALPHA — Sovereign RSI Edition v6.3**
+
+This paper defines the GoalOS-native reimplementation of alpha-AGI Ascension using AGIALPHA as a sovereign RSI architecture for evidence-governed intelligence organizations.
+
+- [Read the paper](docs/papers/sovereign-rsi/v6.3/GoalOS_native_alpha_AGI_Ascension_using_AGIALPHA_v6.3_Sovereign_RSI.md)
+- [Download the PDF](docs/papers/sovereign-rsi/v6.3/GoalOS_native_alpha_AGI_Ascension_using_AGIALPHA_v6.3_Sovereign_RSI.pdf)
+- [Download the editable DOCX](docs/papers/sovereign-rsi/v6.3/GoalOS_native_alpha_AGI_Ascension_using_AGIALPHA_v6.3_Sovereign_RSI.docx)
+- [View the TeX source](docs/papers/sovereign-rsi/v6.3/GoalOS_native_alpha_AGI_Ascension_using_AGIALPHA_v6.3_Sovereign_RSI.tex)
+
+Publication-safe boundary: this is an architecture, protocol, benchmark, and implementation-doctrine paper. It does not claim achieved AGI, ASI, superintelligence, empirical SOTA, guaranteed economic return, legal approval, tax approval, security approval, energy abundance, or achieved Kardashev-scale capability.
+
 ## Core doctrine
 
 - GoalOS decides what may evolve.
 - AGIALPHA coordinates proof-settled work.
 - Evidence Dockets make claims auditable.
 - Do not put intelligence on-chain; put proof of intelligence on-chain.
+- Aim -> Act -> Prove -> Evolve.
+- Request -> Escrow -> Execute -> Proof -> Validate -> Settle -> Chronicle.
 - No proof, no evolution. No eval, no propagation. No rollback, no release.
 
 ## Ethereum Mainnet authorization
@@ -45,10 +60,10 @@ CI cannot deploy Ethereum Mainnet. Runtime RPC URL, deployer key, and runtime ad
 
 ## Sovereign RSI v6.3 research paper
 
-The Sovereign RSI v6.3 publication folder is `docs/papers/sovereign-rsi/v6.3/`. Paper assets may be pending upload if they are not present in the tree; do not fabricate missing PDF/DOCX/source files.
+The Sovereign RSI v6.3 publication folder is `docs/papers/sovereign-rsi/v6.3/`. The canonical asset manifest is `docs/papers/sovereign-rsi/v6.3/PAPER_ASSET_MANIFEST.json`; checksums are in `docs/papers/sovereign-rsi/v6.3/CHECKSUMS.sha256`.
 
 Core thesis: GoalOS sets sovereign aims. AGIALPHA coordinates proof-settled work. AEP-001 defines valid evidence. The Proof Gradient decides what may evolve. The intelligence stays private. The proof becomes verifiable.
 
 RSI means proof-backed upgrade rights. An artifact may influence future work only after evidence, evaluation, reviewer validation, scope control, challenge window, canary rollout, monitoring, rollback readiness, and chronicle memory.
 
-Claim boundary: this paper does not claim achieved AGI, ASI, superintelligence, autonomous sovereignty, guaranteed ROI, safety certification, legal approval, tax approval, security approval, energy abundance, or Kardashev Type II achievement.
+Claim boundary: this paper does not claim achieved AGI, ASI, superintelligence, autonomous sovereignty, guaranteed ROI, investment return, safety certification, legal approval, tax approval, security approval, energy abundance, empirical SOTA, or Kardashev Type II achievement.

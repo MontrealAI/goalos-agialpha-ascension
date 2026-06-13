@@ -1,3 +1,5 @@
+> Historical/deprecated note: this document describes a prior pre-certificate authorization model. The active source of truth is `qa/mainnet-authorization-certificate.json`.
+
 # AGIALPHA Utility Mapping v3.0
 
 AGIALPHA replaces JOBS in the same utility coordination role.

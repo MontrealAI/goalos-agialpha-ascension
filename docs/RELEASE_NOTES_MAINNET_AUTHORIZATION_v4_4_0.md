@@ -1,14 +1,12 @@
-# Release Notes: Mainnet Authorization v4.4.0
+# Release Notes: GoalOS AGIALPHA Ascension v4.4.0
 
-Release tag: `mainnet-authorization-v4.4.0`.
-
-Release title: **GoalOS AGIALPHA Ascension v4.4.0 — Certificate-Backed Manual Ethereum Mainnet Authorization**.
+GoalOS AGIALPHA Ascension v4.4.0 — Certificate-Backed Manual Ethereum Mainnet Authorization.
 
 - Authorized for manual, local, gated Ethereum Mainnet deployment.
-- Ethereum Mainnet technical readiness: **YES**.
-- Ethereum Mainnet deployment authorization: **YES**.
-- Ethereum Mainnet authorization: **YES**.
-- Ethereum Mainnet deployed: **NO**.
+- Ethereum Mainnet technical readiness: YES.
+- Ethereum Mainnet deployment authorization: YES.
+- Ethereum Mainnet authorization: YES.
+- Ethereum Mainnet deployed: NO.
 - Not externally audited.
 - No legal/tax/security approval claim.
 - No guaranteed security claim.
@@ -20,5 +18,4 @@ Release title: **GoalOS AGIALPHA Ascension v4.4.0 — Certificate-Backed Manual 
 - Canonical AGIALPHA token address: `0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA`.
 - Public Sepolia is recommended but not mandatory for public authorization.
 - Branch protection is public-risk accepted, with pre-deployment hardening recommended.
-
-No Ethereum Mainnet deployment occurred in this release preparation.
+- Research paper v6.3 is published under `docs/papers/sovereign-rsi/v6.3/`.

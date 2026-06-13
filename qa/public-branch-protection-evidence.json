@@ -1,16 +1,12 @@
 {
+  "schemaVersion": "1.0",
   "status": "PUBLIC_RISK_ACCEPTED",
   "branchProtection": "PUBLIC_RISK_ACCEPTED",
   "actualBranchProtectionDetected": null,
   "preDeploymentHardeningRecommended": true,
-  "technicalMainnetBlocker": false,
-  "governanceAccepted": true,
+  "ciCanDeployMainnet": false,
+  "mainnetDeployed": "NO",
   "containsSecrets": false,
   "containsPrivateAddresses": false,
-  "redacted": true,
-  "notes": [
-    "Main branch protection/ruleset enforcement is public-risk accepted for v4.4.0 authorization.",
-    "Before actual mainnet deployment, enable PR-required merges, required status checks, no force push, no deletion, conversation resolution, and CODEOWNER review for sensitive paths.",
-    "This does not allow CI to deploy mainnet and does not change MAINNET_DEPLOYED from NO."
-  ]
+  "redacted": true
 }

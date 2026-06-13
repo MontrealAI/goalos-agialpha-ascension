@@ -5,7 +5,7 @@
   "status": "YES",
   "MAINNET_DEPLOYMENT_AUTHORIZED": "YES",
   "mainnetDeploymentAuthorized": "YES",
-  "commit": "2f17dab8306d2277a81874fd77a036a111b9cf7a",
+  "commit": "5c203e408c589073cb259cdd62c8d75ee51c0ada",
   "chain": "ethereum",
   "chainId": 1,
   "agialphaToken": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
@@ -61,7 +61,7 @@
     },
     "tier1SecurityToolchain": {
       "path": "audit/TOOLCHAIN_CLEARANCE_REPORT.md",
-      "sha256": "0x5c1a89158c607e8d072395d5e994a3dfe47bb0078213e048518fcb9b900704df"
+      "sha256": "0xe4f295a3370454b084c6bb17fe9e0ddf917e4365af553fdb6e5ed8a9f481f566"
     },
     "tier2SecurityToolchain": {
       "path": "audit/AUTOMATED_SECURITY_TOOLCHAIN.md",
@@ -69,7 +69,7 @@
     },
     "toolchainClearance": {
       "path": "qa/public-toolchain-clearance-evidence.json",
-      "sha256": "0x8bffc244b32b9893bd796191220a2cbdfa91f70521c35eea6c6e8d2ed8b5fbcf"
+      "sha256": "0x1c5196f6fb89bb1abe5b088ddc705210452e3e6dea4b5edf6286ad7362dd4b6a"
     },
     "unresolvedFindings": {
       "path": "audit/AUDIT_FINDINGS_REGISTER.csv",
@@ -81,15 +81,15 @@
     },
     "localRehearsal": {
       "path": "qa/local-rehearsal-report.json",
-      "sha256": "0x939569e088eeddb4eeceb93dd35f3ebdf2a001913ffd8c70a47979dbf9d8e213"
+      "sha256": "0xbae17416e6c00a253d0cb411da7d75e8a4a57328a194dbf367986245765e97f2"
     },
     "localEvidenceDocket": {
       "path": "evidence/local/EVIDENCE_DOCKET.json",
-      "sha256": "0xab95f4d0310b27b4166d30877843f7b76af35dc82ae9beb98bfc60b02178b040"
+      "sha256": "0xe84ac17566724e60284e1e8206f25f8bdf8b04850428cd014e71929c9440af26"
     },
     "agialphaTokenVerification": {
       "path": "qa/public-agialpha-token-verification.json",
-      "sha256": "0x5961ec050aa9c363b9d2e6a056019240d8b005d08000c14ecd6f01f446fdf742"
+      "sha256": "0x735540ae5415e04ea1fc793003ef3051226996bfc570a50ec855c25104f160ea"
     },
     "mainnetGuardrails": {
       "path": "scripts/deploy-ethereum-mainnet-gated.ts",
@@ -105,11 +105,11 @@
     },
     "packageScripts": {
       "path": "package.json",
-      "sha256": "0x22089f1b6dae4b655f3acaf035531c01155c701dfb932ab3f7043fbe4adf1b60"
+      "sha256": "0x938619519fd070282bb6d72cd84fe7a66b11c2b373e26f5c0858d5cd26901ed3"
     },
     "branchProtectionOrRiskAcceptance": {
       "path": "qa/public-branch-protection-evidence.json",
-      "sha256": "0x34d98704b31ff021b2458c3c49aadea6ab034fb93ffc03e8df059c6c337f7445"
+      "sha256": "0x01493f14125dcb6ab7f6e46e4c92c05edb0402ab626571f655b6bcf7d30453c5"
     },
     "publicGovernanceApproval": {
       "path": "qa/public-governance-approval-evidence.json",
@@ -125,6 +125,6 @@
     }
   },
   "blockers": [],
-  "generatedAt": "2026-06-12T22:58:14.342270+00:00",
+  "generatedAt": "2026-06-13T02:03:53.221908+00:00",
   "generatedBy": "scripts/mainnet-deployment-authorization-check.py"
 }

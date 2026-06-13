@@ -8,6 +8,6 @@
   "addressHasCode": true,
   "codeSha256": "0x9fd51d9b20b0cf7b179d53254bde67131b3a7f632d1ea899359bbed2d3fe5575",
   "evidenceSource": "live-public-read-only-rpc",
-  "observedAt": "2026-06-12T22:56:41.521077+00:00",
+  "observedAt": "2026-06-13T02:00:06.478502+00:00",
   "sourceMethod": "https://ethereum-rpc.publicnode.com eth_getCode"
 }

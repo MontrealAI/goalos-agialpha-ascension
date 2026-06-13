@@ -1,3 +1,5 @@
+> Historical/deprecated note: this document describes a prior pre-certificate authorization model. The active source of truth is `qa/mainnet-authorization-certificate.json`.
+
 # Private Operator Handoff
 
 Private operators run the custody-sensitive evidence workflow locally. Do not paste private inputs into GitHub, GitHub Actions secrets, PR comments, public docs, logs, artifacts, or committed files.
