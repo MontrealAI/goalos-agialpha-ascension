@@ -145,6 +145,14 @@ describe("deployment UX safety layer", function () {
     expect(verifier).to.include("shouldSkipExternalAgialpha");
   });
 
+
+  it("keeps reviewed public website proof-journey zip assets explicitly path-allowlisted", function () {
+    const source = fs.readFileSync("scripts/no_paid_products_check.py", "utf8");
+    expect(source).to.include("site-assets/main-website-v33/resources/GoalOS_Personal_Proof_Journey_Pack_v3.zip");
+    expect(source).to.include("site-assets/main-website-v34/resources/GoalOS_Personal_Proof_Journey_Pack_v3.zip");
+    expect(source).to.include("rel not in allowed_zip_paths");
+  });
+
   it("committed examples and docs do not contain obvious secret values", function () {
     for (const file of [".env.sepolia.example", ".env.mainnet.example", "docs/DEPLOYMENT_START_HERE.md"]) {
       const text = fs.readFileSync(file, "utf8");

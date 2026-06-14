@@ -24,7 +24,12 @@ suspicious_patterns = [
     r"squarespace.*orders",
 ]
 
-allowed_zip_names = set()
+allowed_zip_paths = {
+    # Explicitly reviewed public website proof-journey packs. These are tracked site assets,
+    # not private operator inputs or paid-product exports. Keep this allowlist path-specific.
+    "site-assets/main-website-v33/resources/GoalOS_Personal_Proof_Journey_Pack_v3.zip",
+    "site-assets/main-website-v34/resources/GoalOS_Personal_Proof_Journey_Pack_v3.zip",
+}
 
 def tracked_files() -> list[Path]:
     try:
@@ -42,7 +47,7 @@ for path in tracked_files():
     for pat in suspicious_patterns:
         if re.search(pat, rel, flags=re.IGNORECASE):
             errors.append(f"Possible paid/private product file: {rel}")
-    if path.suffix.lower() == ".zip" and path.name not in allowed_zip_names:
+    if path.suffix.lower() == ".zip" and rel not in allowed_zip_paths:
         errors.append(f"ZIP file should not be committed without explicit review: {rel}")
 
 if errors:
