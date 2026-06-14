@@ -1,0 +1,1074 @@
+{
+  "version": "23.0",
+  "generatedAt": "2026-06-13T23:23:01.854312Z",
+  "agialpha": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
+  "cards": [
+    {
+      "id": "001",
+      "title": "Buyer Rescue Workflow",
+      "domain": "Customer trust",
+      "thesis": "Convert a support failure into a reviewed workflow improvement that protects the buyer and creates reusable trust.",
+      "plain": "A buyer cannot access a deliverable. Instead of treating the reply as a one-off support message, GoalOS turns the problem into a proof mission: improve the support workflow, validate it, publish a public-safe Proof Card, and reuse only the approved artifact in future support work.",
+      "why": "This is the simplest proof that AI work can become an institutional asset. Customer support is understandable to everyone, and a small improvement can create visible trust, lower support cost, and produce the first reusable proof artifact.",
+      "mission": "Improve the Buyer Rescue Workflow from a helpful but incomplete response into a repeatable, reviewed, claim-safe support procedure.",
+      "flow": [
+        "Buyer issue",
+        "GoalOS aim",
+        "Builder workflow",
+        "Review",
+        "Proof Card",
+        "Reuse"
+      ],
+      "roles": [
+        [
+          "Sovereign Aim Council",
+          "Defines the bounded mission, success criteria, authority, risk class, and upgrade constraints.",
+          "GoalOSCommit; success criteria; claim boundary."
+        ],
+        [
+          "Portfolio Strategists",
+          "Decompose the aim into mission lanes and prioritize by expected institutional value, risk, and replayability.",
+          "Mission portfolio; route plan; budget recommendation."
+        ],
+        [
+          "Domain Scout Swarm",
+          "Surfaces the relevant workflow, benchmark, artifact, system, buyer, or risk surface to improve.",
+          "Opportunity Docket; baseline map; evidence gaps."
+        ],
+        [
+          "Builder Cells",
+          "Produce candidate workflow, policy, remediation, benchmark, procurement, or capability artifacts.",
+          "Candidate artifact; implementation note; artifact hash."
+        ],
+        [
+          "Evaluator Operators",
+          "Run objective checks, regression tests, harnesses, scorecards, and cost/risk measurements.",
+          "Evaluator report; metric table; failure log."
+        ],
+        [
+          "Proof Engineers",
+          "Package evidence into public-safe ProofBundles and Evidence Docket entries.",
+          "ProofBundle; evidence manifest; reproducibility notes."
+        ],
+        [
+          "Reviewer Council",
+          "Reviews evidence quality, claim safety, replayability, usefulness, and upgrade readiness.",
+          "EvalAttestation; approval/rejection rationale."
+        ],
+        [
+          "Red-Team Court",
+          "Challenges reward hacks, unsafe claims, leakage, brittle evaluations, and unearned upgrade rights.",
+          "Falsification report; challenge outcome; mitigation notes."
+        ]
+      ],
+      "skills": [
+        "Support triage",
+        "Access recovery mapping",
+        "Refund boundary analysis",
+        "Claim-safe writing",
+        "Evidence packaging",
+        "Reviewer response QA"
+      ],
+      "plans": [
+        "Baseline support reply",
+        "Improved workflow v1.1",
+        "Escalation rules",
+        "Public-safe proof note",
+        "Reviewer checklist"
+      ],
+      "goals": [
+        "Reduce buyer confusion",
+        "Increase support consistency",
+        "Avoid unsafe promises",
+        "Create reusable response pattern"
+      ],
+      "status": "Illustrative until live Evidence Docket is completed."
+    },
+    {
+      "id": "002",
+      "title": "Sovereign Procurement Trust Room",
+      "domain": "Procurement trust",
+      "thesis": "Turn enterprise due diligence into a proof mission that produces a reusable trust-room artifact.",
+      "plain": "A serious buyer asks whether the system can be trusted. GoalOS converts that buyer concern into a structured proof mission: collect the evidence, define the claim boundary, review the result, and publish a public-safe trust room.",
+      "why": "Procurement friction blocks adoption. A trust room lowers buyer uncertainty by making evidence visible, organized, and reviewable without exposing private operational data.",
+      "mission": "Create a public-safe procurement trust room that explains status, evidence, boundaries, risks, contracts, and the next gate.",
+      "flow": [
+        "Buyer question",
+        "Evidence request",
+        "Trust room",
+        "Review",
+        "Proof Card",
+        "Procurement reuse"
+      ],
+      "roles": [
+        [
+          "Sovereign Aim Council",
+          "Defines the bounded mission, success criteria, authority, risk class, and upgrade constraints.",
+          "GoalOSCommit; success criteria; claim boundary."
+        ],
+        [
+          "Portfolio Strategists",
+          "Decompose the aim into mission lanes and prioritize by expected institutional value, risk, and replayability.",
+          "Mission portfolio; route plan; budget recommendation."
+        ],
+        [
+          "Domain Scout Swarm",
+          "Surfaces the relevant workflow, benchmark, artifact, system, buyer, or risk surface to improve.",
+          "Opportunity Docket; baseline map; evidence gaps."
+        ],
+        [
+          "Builder Cells",
+          "Produce candidate workflow, policy, remediation, benchmark, procurement, or capability artifacts.",
+          "Candidate artifact; implementation note; artifact hash."
+        ],
+        [
+          "Evaluator Operators",
+          "Run objective checks, regression tests, harnesses, scorecards, and cost/risk measurements.",
+          "Evaluator report; metric table; failure log."
+        ],
+        [
+          "Proof Engineers",
+          "Package evidence into public-safe ProofBundles and Evidence Docket entries.",
+          "ProofBundle; evidence manifest; reproducibility notes."
+        ],
+        [
+          "Reviewer Council",
+          "Reviews evidence quality, claim safety, replayability, usefulness, and upgrade readiness.",
+          "EvalAttestation; approval/rejection rationale."
+        ],
+        [
+          "Red-Team Court",
+          "Challenges reward hacks, unsafe claims, leakage, brittle evaluations, and unearned upgrade rights.",
+          "Falsification report; challenge outcome; mitigation notes."
+        ],
+        [
+          "Treasury Desk",
+          "Tracks AGIALPHA budgets, bonds, reward-vault settlement, and reinvestment routing.",
+          "SettlementReceipt; treasury allocation; AlphaWorkUnit notes."
+        ],
+        [
+          "Rollback Desk",
+          "Defines recovery plan, rollback trigger, and containment route before any upgrade is allowed to propagate.",
+          "RollbackReceipt; canary plan; incident path."
+        ],
+        [
+          "Chronicle Office",
+          "Records durable memory so future missions can reuse what proved itself and avoid what failed.",
+          "ChronicleEntry; route memory; delayed-outcome update."
+        ]
+      ],
+      "skills": [
+        "Procurement evidence mapping",
+        "Risk disclosure",
+        "Claims boundary writing",
+        "Security posture summarization",
+        "Evidence Docket design",
+        "Reviewer governance"
+      ],
+      "plans": [
+        "Procurement questionnaire map",
+        "Evidence Room structure",
+        "Claims review route",
+        "Redaction plan",
+        "Trust-room publication"
+      ],
+      "goals": [
+        "Increase buyer confidence",
+        "Reduce repeated diligence work",
+        "Make evidence inspectable",
+        "Protect private information"
+      ],
+      "status": "Illustrative until live buyer/procurement Evidence Docket is completed."
+    },
+    {
+      "id": "003",
+      "title": "Sovereign AI Procurement Control Tower",
+      "domain": "Enterprise control",
+      "thesis": "Create a control tower for evaluating, governing, approving, and rolling back AI workflow adoption.",
+      "plain": "A sovereign or enterprise buyer needs to know whether an AI workflow system can be trusted, governed, audited, rolled back, and improved safely. This Proof Card converts that into a governed control tower with evidence, review, and upgrade rights.",
+      "why": "AI adoption fails when buyers cannot inspect the operating surface. A control tower gives executives one place to see what was tested, who reviewed it, what failed, what passed, and what can be safely reused.",
+      "mission": "Build a procurement control tower that shows the proof route from mission definition to evidence, reviewer approval, selection, rollout, and rollback.",
+      "flow": [
+        "AI adoption risk",
+        "Control tower",
+        "Evidence",
+        "Review",
+        "Selection",
+        "Governed rollout"
+      ],
+      "roles": [
+        [
+          "Sovereign Aim Council",
+          "Defines the bounded mission, success criteria, authority, risk class, and upgrade constraints.",
+          "GoalOSCommit; success criteria; claim boundary."
+        ],
+        [
+          "Portfolio Strategists",
+          "Decompose the aim into mission lanes and prioritize by expected institutional value, risk, and replayability.",
+          "Mission portfolio; route plan; budget recommendation."
+        ],
+        [
+          "Domain Scout Swarm",
+          "Surfaces the relevant workflow, benchmark, artifact, system, buyer, or risk surface to improve.",
+          "Opportunity Docket; baseline map; evidence gaps."
+        ],
+        [
+          "Builder Cells",
+          "Produce candidate workflow, policy, remediation, benchmark, procurement, or capability artifacts.",
+          "Candidate artifact; implementation note; artifact hash."
+        ],
+        [
+          "Evaluator Operators",
+          "Run objective checks, regression tests, harnesses, scorecards, and cost/risk measurements.",
+          "Evaluator report; metric table; failure log."
+        ],
+        [
+          "Proof Engineers",
+          "Package evidence into public-safe ProofBundles and Evidence Docket entries.",
+          "ProofBundle; evidence manifest; reproducibility notes."
+        ],
+        [
+          "Reviewer Council",
+          "Reviews evidence quality, claim safety, replayability, usefulness, and upgrade readiness.",
+          "EvalAttestation; approval/rejection rationale."
+        ],
+        [
+          "Red-Team Court",
+          "Challenges reward hacks, unsafe claims, leakage, brittle evaluations, and unearned upgrade rights.",
+          "Falsification report; challenge outcome; mitigation notes."
+        ],
+        [
+          "Treasury Desk",
+          "Tracks AGIALPHA budgets, bonds, reward-vault settlement, and reinvestment routing.",
+          "SettlementReceipt; treasury allocation; AlphaWorkUnit notes."
+        ],
+        [
+          "Rollback Desk",
+          "Defines recovery plan, rollback trigger, and containment route before any upgrade is allowed to propagate.",
+          "RollbackReceipt; canary plan; incident path."
+        ],
+        [
+          "Chronicle Office",
+          "Records durable memory so future missions can reuse what proved itself and avoid what failed.",
+          "ChronicleEntry; route memory; delayed-outcome update."
+        ]
+      ],
+      "skills": [
+        "AI governance mapping",
+        "Control surface design",
+        "Vendor risk translation",
+        "Evaluation report design",
+        "Rollback planning",
+        "Executive briefing"
+      ],
+      "plans": [
+        "Control tower map",
+        "Approval route",
+        "Rollback path",
+        "Evidence policy",
+        "Reviewer operating procedure"
+      ],
+      "goals": [
+        "Make adoption governable",
+        "Reduce hidden risk",
+        "Clarify approval logic",
+        "Create enterprise-ready proof surface"
+      ],
+      "status": "Illustrative until live enterprise control-tower Evidence Docket is completed."
+    },
+    {
+      "id": "004",
+      "title": "Persistent Goal-Seeking Intelligence Accumulation Engine",
+      "domain": "Persistent intelligence",
+      "thesis": "Frame GoalOS AGIALPHA Ascension as an experimental framework for accumulating capability, evidence, and economic value over time.",
+      "plain": "This card introduces the persistent layer: the system is not a one-off agent demo. It is an experimental framework that keeps memory of goals, evidence, artifacts, outcomes, reviews, credentials, and what may shape future work.",
+      "why": "A persistent intelligence system becomes valuable when it remembers what worked, what failed, who proved it, and which artifacts deserve reuse. This is the first step toward compounding institutional intelligence.",
+      "mission": "Create a persistent proof memory that links goals, runs, artifacts, reviews, proof cards, credentials, reputation, and future routing.",
+      "flow": [
+        "Goal",
+        "Run",
+        "Proof",
+        "Evidence",
+        "Chronicle",
+        "Future routing"
+      ],
+      "roles": [
+        [
+          "Sovereign Aim Council",
+          "Defines the bounded mission, success criteria, authority, risk class, and upgrade constraints.",
+          "GoalOSCommit; success criteria; claim boundary."
+        ],
+        [
+          "Portfolio Strategists",
+          "Decompose the aim into mission lanes and prioritize by expected institutional value, risk, and replayability.",
+          "Mission portfolio; route plan; budget recommendation."
+        ],
+        [
+          "Domain Scout Swarm",
+          "Surfaces the relevant workflow, benchmark, artifact, system, buyer, or risk surface to improve.",
+          "Opportunity Docket; baseline map; evidence gaps."
+        ],
+        [
+          "Builder Cells",
+          "Produce candidate workflow, policy, remediation, benchmark, procurement, or capability artifacts.",
+          "Candidate artifact; implementation note; artifact hash."
+        ],
+        [
+          "Evaluator Operators",
+          "Run objective checks, regression tests, harnesses, scorecards, and cost/risk measurements.",
+          "Evaluator report; metric table; failure log."
+        ],
+        [
+          "Proof Engineers",
+          "Package evidence into public-safe ProofBundles and Evidence Docket entries.",
+          "ProofBundle; evidence manifest; reproducibility notes."
+        ],
+        [
+          "Reviewer Council",
+          "Reviews evidence quality, claim safety, replayability, usefulness, and upgrade readiness.",
+          "EvalAttestation; approval/rejection rationale."
+        ],
+        [
+          "Red-Team Court",
+          "Challenges reward hacks, unsafe claims, leakage, brittle evaluations, and unearned upgrade rights.",
+          "Falsification report; challenge outcome; mitigation notes."
+        ],
+        [
+          "Treasury Desk",
+          "Tracks AGIALPHA budgets, bonds, reward-vault settlement, and reinvestment routing.",
+          "SettlementReceipt; treasury allocation; AlphaWorkUnit notes."
+        ],
+        [
+          "Rollback Desk",
+          "Defines recovery plan, rollback trigger, and containment route before any upgrade is allowed to propagate.",
+          "RollbackReceipt; canary plan; incident path."
+        ],
+        [
+          "Chronicle Office",
+          "Records durable memory so future missions can reuse what proved itself and avoid what failed.",
+          "ChronicleEntry; route memory; delayed-outcome update."
+        ]
+      ],
+      "skills": [
+        "Goal memory design",
+        "Evidence graph design",
+        "Artifact versioning",
+        "Credential mapping",
+        "Outcome tracking",
+        "Chronicle design"
+      ],
+      "plans": [
+        "Persistent memory schema",
+        "Proof-card sequence",
+        "Reputation route",
+        "Chronicle policy",
+        "Future routing rules"
+      ],
+      "goals": [
+        "Accumulate capabilities",
+        "Accumulate evidence",
+        "Accumulate economic value",
+        "Prevent unproven reuse"
+      ],
+      "status": "Experimental framework; not a claim of achieved AGI or superintelligence."
+    },
+    {
+      "id": "005",
+      "title": "Sovereign RSI Value-to-Capability Treasury",
+      "domain": "Value reinvestment",
+      "thesis": "Route verified value into stronger future capability budgets.",
+      "plain": "Proof Card 005 adds the reinvestment layer: verified work can generate value, and that value can be governed and routed into better missions, audits, tools, reviewers, and future capabilities.",
+      "why": "A self-improving institution needs a disciplined treasury loop. Without governance, value leaks into noise. With evidence-based allocation, verified value strengthens the next round of capability creation.",
+      "mission": "Design a Value-to-Capability Treasury that connects proof outcomes, AlphaWorkUnits, reviewer confidence, and AGIALPHA settlement to future mission budgets.",
+      "flow": [
+        "Verified value",
+        "Treasury route",
+        "Capability budget",
+        "Better missions",
+        "Stronger artifacts",
+        "More value"
+      ],
+      "roles": [
+        [
+          "Sovereign Aim Council",
+          "Defines the bounded mission, success criteria, authority, risk class, and upgrade constraints.",
+          "GoalOSCommit; success criteria; claim boundary."
+        ],
+        [
+          "Portfolio Strategists",
+          "Decompose the aim into mission lanes and prioritize by expected institutional value, risk, and replayability.",
+          "Mission portfolio; route plan; budget recommendation."
+        ],
+        [
+          "Domain Scout Swarm",
+          "Surfaces the relevant workflow, benchmark, artifact, system, buyer, or risk surface to improve.",
+          "Opportunity Docket; baseline map; evidence gaps."
+        ],
+        [
+          "Builder Cells",
+          "Produce candidate workflow, policy, remediation, benchmark, procurement, or capability artifacts.",
+          "Candidate artifact; implementation note; artifact hash."
+        ],
+        [
+          "Evaluator Operators",
+          "Run objective checks, regression tests, harnesses, scorecards, and cost/risk measurements.",
+          "Evaluator report; metric table; failure log."
+        ],
+        [
+          "Proof Engineers",
+          "Package evidence into public-safe ProofBundles and Evidence Docket entries.",
+          "ProofBundle; evidence manifest; reproducibility notes."
+        ],
+        [
+          "Reviewer Council",
+          "Reviews evidence quality, claim safety, replayability, usefulness, and upgrade readiness.",
+          "EvalAttestation; approval/rejection rationale."
+        ],
+        [
+          "Red-Team Court",
+          "Challenges reward hacks, unsafe claims, leakage, brittle evaluations, and unearned upgrade rights.",
+          "Falsification report; challenge outcome; mitigation notes."
+        ],
+        [
+          "Treasury Desk",
+          "Tracks AGIALPHA budgets, bonds, reward-vault settlement, and reinvestment routing.",
+          "SettlementReceipt; treasury allocation; AlphaWorkUnit notes."
+        ],
+        [
+          "Rollback Desk",
+          "Defines recovery plan, rollback trigger, and containment route before any upgrade is allowed to propagate.",
+          "RollbackReceipt; canary plan; incident path."
+        ],
+        [
+          "Chronicle Office",
+          "Records durable memory so future missions can reuse what proved itself and avoid what failed.",
+          "ChronicleEntry; route memory; delayed-outcome update."
+        ]
+      ],
+      "skills": [
+        "Treasury routing",
+        "AlphaWorkUnit metrology",
+        "Capability budgeting",
+        "Milestone verification",
+        "Reinvestment policy",
+        "Commercialization governance"
+      ],
+      "plans": [
+        "Budget route",
+        "Milestone gate",
+        "Reward-vault policy",
+        "Reinvestment index",
+        "Treasury review"
+      ],
+      "goals": [
+        "Reinvest based on evidence",
+        "Improve future missions",
+        "Track value responsibly",
+        "Avoid speculative claims"
+      ],
+      "status": "Experimental treasury architecture; not financial advice or guaranteed return."
+    },
+    {
+      "id": "006",
+      "title": "Sovereign Enterprise RSI Operating System",
+      "domain": "Enterprise operating system",
+      "thesis": "Coordinate large specialist-agent institutions so verified work becomes sovereign enterprise operating capacity.",
+      "plain": "This card upgrades from individual proof missions to an enterprise operating system. Multiple agent cells coordinate through evidence, review, AGIALPHA settlement, rollback readiness, and Chronicle memory.",
+      "why": "Enterprises need more than clever agents. They need repeatable operating capacity: bounded roles, evidence, approvals, budgets, audits, rollback, and reusable capability.",
+      "mission": "Model a large specialist-agent operating system for converting enterprise work into evidence-backed reusable capability.",
+      "flow": [
+        "Aim council",
+        "Agent theater",
+        "Evidence",
+        "Selection",
+        "Rollout",
+        "Rollback",
+        "Chronicle"
+      ],
+      "roles": [
+        [
+          "Sovereign Aim Council",
+          "Defines the bounded mission, success criteria, authority, risk class, and upgrade constraints.",
+          "GoalOSCommit; success criteria; claim boundary."
+        ],
+        [
+          "Portfolio Strategists",
+          "Decompose the aim into mission lanes and prioritize by expected institutional value, risk, and replayability.",
+          "Mission portfolio; route plan; budget recommendation."
+        ],
+        [
+          "Domain Scout Swarm",
+          "Surfaces the relevant workflow, benchmark, artifact, system, buyer, or risk surface to improve.",
+          "Opportunity Docket; baseline map; evidence gaps."
+        ],
+        [
+          "Builder Cells",
+          "Produce candidate workflow, policy, remediation, benchmark, procurement, or capability artifacts.",
+          "Candidate artifact; implementation note; artifact hash."
+        ],
+        [
+          "Evaluator Operators",
+          "Run objective checks, regression tests, harnesses, scorecards, and cost/risk measurements.",
+          "Evaluator report; metric table; failure log."
+        ],
+        [
+          "Proof Engineers",
+          "Package evidence into public-safe ProofBundles and Evidence Docket entries.",
+          "ProofBundle; evidence manifest; reproducibility notes."
+        ],
+        [
+          "Reviewer Council",
+          "Reviews evidence quality, claim safety, replayability, usefulness, and upgrade readiness.",
+          "EvalAttestation; approval/rejection rationale."
+        ],
+        [
+          "Red-Team Court",
+          "Challenges reward hacks, unsafe claims, leakage, brittle evaluations, and unearned upgrade rights.",
+          "Falsification report; challenge outcome; mitigation notes."
+        ],
+        [
+          "Treasury Desk",
+          "Tracks AGIALPHA budgets, bonds, reward-vault settlement, and reinvestment routing.",
+          "SettlementReceipt; treasury allocation; AlphaWorkUnit notes."
+        ],
+        [
+          "Rollback Desk",
+          "Defines recovery plan, rollback trigger, and containment route before any upgrade is allowed to propagate.",
+          "RollbackReceipt; canary plan; incident path."
+        ],
+        [
+          "Chronicle Office",
+          "Records durable memory so future missions can reuse what proved itself and avoid what failed.",
+          "ChronicleEntry; route memory; delayed-outcome update."
+        ]
+      ],
+      "skills": [
+        "Operating theater design",
+        "Role decomposition",
+        "Enterprise workflow mapping",
+        "Proof bundle construction",
+        "Rollback planning",
+        "Chronicle routing"
+      ],
+      "plans": [
+        "Enterprise RSI map",
+        "Agent-cell routing plan",
+        "Selection Gate policy",
+        "Canary route",
+        "Chronicle schema"
+      ],
+      "goals": [
+        "Increase operating capacity",
+        "Coordinate specialist agents",
+        "Bound risk",
+        "Turn work into reusable capability"
+      ],
+      "status": "Institutional operating-system proof template; execution evidence required."
+    },
+    {
+      "id": "007",
+      "title": "Sovereign Enterprise Autoresearch Reactor",
+      "domain": "Autoresearch",
+      "thesis": "Turn automated research loops into a governed enterprise reactor with proof, review, settlement, rollback, and Chronicle memory.",
+      "plain": "This card shows how GoalOS-native Ascension can run many improvement threads, test ideas, validate results, red-team evidence, and promote only proven artifacts into future workflows.",
+      "why": "Autoresearch becomes commercially powerful when discoveries are not just found, but proven, reviewed, priced, settled, remembered, and safely reused across institutional workflows.",
+      "mission": "Create an enterprise autoresearch reactor that converts strategic goals into parallel proof missions and accepted artifacts into scoped upgrade rights.",
+      "flow": [
+        "Strategic aim",
+        "Hypotheses",
+        "Parallel missions",
+        "Evaluator harness",
+        "Review",
+        "Selection",
+        "Upgrade rights"
+      ],
+      "roles": [
+        [
+          "Sovereign Aim Council",
+          "Defines the bounded mission, success criteria, authority, risk class, and upgrade constraints.",
+          "GoalOSCommit; success criteria; claim boundary."
+        ],
+        [
+          "Portfolio Strategists",
+          "Decompose the aim into mission lanes and prioritize by expected institutional value, risk, and replayability.",
+          "Mission portfolio; route plan; budget recommendation."
+        ],
+        [
+          "Domain Scout Swarm",
+          "Surfaces the relevant workflow, benchmark, artifact, system, buyer, or risk surface to improve.",
+          "Opportunity Docket; baseline map; evidence gaps."
+        ],
+        [
+          "Builder Cells",
+          "Produce candidate workflow, policy, remediation, benchmark, procurement, or capability artifacts.",
+          "Candidate artifact; implementation note; artifact hash."
+        ],
+        [
+          "Evaluator Operators",
+          "Run objective checks, regression tests, harnesses, scorecards, and cost/risk measurements.",
+          "Evaluator report; metric table; failure log."
+        ],
+        [
+          "Proof Engineers",
+          "Package evidence into public-safe ProofBundles and Evidence Docket entries.",
+          "ProofBundle; evidence manifest; reproducibility notes."
+        ],
+        [
+          "Reviewer Council",
+          "Reviews evidence quality, claim safety, replayability, usefulness, and upgrade readiness.",
+          "EvalAttestation; approval/rejection rationale."
+        ],
+        [
+          "Red-Team Court",
+          "Challenges reward hacks, unsafe claims, leakage, brittle evaluations, and unearned upgrade rights.",
+          "Falsification report; challenge outcome; mitigation notes."
+        ],
+        [
+          "Treasury Desk",
+          "Tracks AGIALPHA budgets, bonds, reward-vault settlement, and reinvestment routing.",
+          "SettlementReceipt; treasury allocation; AlphaWorkUnit notes."
+        ],
+        [
+          "Rollback Desk",
+          "Defines recovery plan, rollback trigger, and containment route before any upgrade is allowed to propagate.",
+          "RollbackReceipt; canary plan; incident path."
+        ],
+        [
+          "Chronicle Office",
+          "Records durable memory so future missions can reuse what proved itself and avoid what failed.",
+          "ChronicleEntry; route memory; delayed-outcome update."
+        ]
+      ],
+      "skills": [
+        "Autoresearch portfolio design",
+        "Hypothesis generation",
+        "Experiment routing",
+        "Evaluator hardening",
+        "Reward-hack detection",
+        "Proof packaging"
+      ],
+      "plans": [
+        "Autoresearch portfolio",
+        "Benchmark route",
+        "Evaluator plan",
+        "Red-team review",
+        "Selection policy"
+      ],
+      "goals": [
+        "Accelerate discovery",
+        "Harden evidence",
+        "Prevent reward hacks",
+        "Promote only proven improvements"
+      ],
+      "status": "Autoresearch operating model; public replayable Evidence Docket remains the next gate."
+    },
+    {
+      "id": "008",
+      "title": "Sovereign Corporate Capability Foundry",
+      "domain": "Corporate capability",
+      "thesis": "Convert proof missions across sovereign corporate domains into a capability foundry that compounds accepted artifacts.",
+      "plain": "This card takes the autoresearch loop and turns it into a corporate foundry: procurement, finance, compliance, security, operations, energy, compute, and R&D each become lanes for proof missions and reusable capabilities.",
+      "why": "Large corporations need systematic capability production, not isolated automation experiments. A foundry model creates a portfolio of verified artifacts that can be reused, audited, improved, and funded.",
+      "mission": "Build a portfolio-level foundry for allocating AGIALPHA-coordinated proof missions across high-value sovereign corporate domains.",
+      "flow": [
+        "Corporate aim",
+        "Mandate epoch",
+        "Mission portfolio",
+        "Agent cells",
+        "Proof",
+        "Selection",
+        "Capability foundry"
+      ],
+      "roles": [
+        [
+          "Sovereign Aim Council",
+          "Defines the bounded mission, success criteria, authority, risk class, and upgrade constraints.",
+          "GoalOSCommit; success criteria; claim boundary."
+        ],
+        [
+          "Portfolio Strategists",
+          "Decompose the aim into mission lanes and prioritize by expected institutional value, risk, and replayability.",
+          "Mission portfolio; route plan; budget recommendation."
+        ],
+        [
+          "Domain Scout Swarm",
+          "Surfaces the relevant workflow, benchmark, artifact, system, buyer, or risk surface to improve.",
+          "Opportunity Docket; baseline map; evidence gaps."
+        ],
+        [
+          "Builder Cells",
+          "Produce candidate workflow, policy, remediation, benchmark, procurement, or capability artifacts.",
+          "Candidate artifact; implementation note; artifact hash."
+        ],
+        [
+          "Evaluator Operators",
+          "Run objective checks, regression tests, harnesses, scorecards, and cost/risk measurements.",
+          "Evaluator report; metric table; failure log."
+        ],
+        [
+          "Proof Engineers",
+          "Package evidence into public-safe ProofBundles and Evidence Docket entries.",
+          "ProofBundle; evidence manifest; reproducibility notes."
+        ],
+        [
+          "Reviewer Council",
+          "Reviews evidence quality, claim safety, replayability, usefulness, and upgrade readiness.",
+          "EvalAttestation; approval/rejection rationale."
+        ],
+        [
+          "Red-Team Court",
+          "Challenges reward hacks, unsafe claims, leakage, brittle evaluations, and unearned upgrade rights.",
+          "Falsification report; challenge outcome; mitigation notes."
+        ],
+        [
+          "Treasury Desk",
+          "Tracks AGIALPHA budgets, bonds, reward-vault settlement, and reinvestment routing.",
+          "SettlementReceipt; treasury allocation; AlphaWorkUnit notes."
+        ],
+        [
+          "Rollback Desk",
+          "Defines recovery plan, rollback trigger, and containment route before any upgrade is allowed to propagate.",
+          "RollbackReceipt; canary plan; incident path."
+        ],
+        [
+          "Chronicle Office",
+          "Records durable memory so future missions can reuse what proved itself and avoid what failed.",
+          "ChronicleEntry; route memory; delayed-outcome update."
+        ]
+      ],
+      "skills": [
+        "Portfolio architecture",
+        "Corporate domain mapping",
+        "Capability taxonomy",
+        "Mission portfolio scoring",
+        "Cross-domain reuse",
+        "Treasury reinvestment"
+      ],
+      "plans": [
+        "Mandate epoch",
+        "Portfolio allocation",
+        "Domain map",
+        "Capability registry",
+        "Reinvestment route"
+      ],
+      "goals": [
+        "Create enterprise capability",
+        "Scale across domains",
+        "Improve reuse",
+        "Strengthen execution moat"
+      ],
+      "status": "Corporate capability architecture; requires live proof missions for empirical claims."
+    },
+    {
+      "id": "009",
+      "title": "Cyber-Sovereign Execution Moat",
+      "domain": "Cyber-sovereign defense",
+      "thesis": "Turn authorized cyber weaknesses into proof-backed defensive capability that compounds over time.",
+      "plain": "This card brings the system into a high-value cyber-sovereign domain. Authorized weaknesses become bounded missions, specialist agents propose remediations, harnesses test them, reviewers and red teams validate them, and only proven remediations can shape future operations.",
+      "why": "Cyber defense is an execution moat because trust depends on evidence, speed, replayability, and safe rollout. A cyber proof system must prevent unverified fixes from becoming operational context.",
+      "mission": "Create a cyber-sovereign execution moat using authorized defensive remediation, regression harnesses, red-team challenge, rollback paths, and evidence-backed upgrade rights.",
+      "flow": [
+        "Authorized weakness",
+        "Remediation cells",
+        "Security harness",
+        "Review",
+        "Red-team",
+        "Selection",
+        "Reusable defense"
+      ],
+      "roles": [
+        [
+          "Sovereign Aim Council",
+          "Defines the bounded mission, success criteria, authority, risk class, and upgrade constraints.",
+          "GoalOSCommit; success criteria; claim boundary."
+        ],
+        [
+          "Portfolio Strategists",
+          "Decompose the aim into mission lanes and prioritize by expected institutional value, risk, and replayability.",
+          "Mission portfolio; route plan; budget recommendation."
+        ],
+        [
+          "Domain Scout Swarm",
+          "Surfaces the relevant workflow, benchmark, artifact, system, buyer, or risk surface to improve.",
+          "Opportunity Docket; baseline map; evidence gaps."
+        ],
+        [
+          "Builder Cells",
+          "Produce candidate workflow, policy, remediation, benchmark, procurement, or capability artifacts.",
+          "Candidate artifact; implementation note; artifact hash."
+        ],
+        [
+          "Evaluator Operators",
+          "Run objective checks, regression tests, harnesses, scorecards, and cost/risk measurements.",
+          "Evaluator report; metric table; failure log."
+        ],
+        [
+          "Proof Engineers",
+          "Package evidence into public-safe ProofBundles and Evidence Docket entries.",
+          "ProofBundle; evidence manifest; reproducibility notes."
+        ],
+        [
+          "Reviewer Council",
+          "Reviews evidence quality, claim safety, replayability, usefulness, and upgrade readiness.",
+          "EvalAttestation; approval/rejection rationale."
+        ],
+        [
+          "Red-Team Court",
+          "Challenges reward hacks, unsafe claims, leakage, brittle evaluations, and unearned upgrade rights.",
+          "Falsification report; challenge outcome; mitigation notes."
+        ],
+        [
+          "Treasury Desk",
+          "Tracks AGIALPHA budgets, bonds, reward-vault settlement, and reinvestment routing.",
+          "SettlementReceipt; treasury allocation; AlphaWorkUnit notes."
+        ],
+        [
+          "Rollback Desk",
+          "Defines recovery plan, rollback trigger, and containment route before any upgrade is allowed to propagate.",
+          "RollbackReceipt; canary plan; incident path."
+        ],
+        [
+          "Chronicle Office",
+          "Records durable memory so future missions can reuse what proved itself and avoid what failed.",
+          "ChronicleEntry; route memory; delayed-outcome update."
+        ],
+        [
+          "SBOM/VEX Evidence Cell",
+          "Maintains supply-chain evidence, vulnerability-exploitability status, and remediation traceability.",
+          "SBOM evidence; VEX attestation; dependency risk map."
+        ]
+      ],
+      "skills": [
+        "Threat triage",
+        "Asset graph modeling",
+        "Security regression design",
+        "SBOM/VEX evidence",
+        "Remediation patch review",
+        "Incident rollback"
+      ],
+      "plans": [
+        "Cyber mission plan",
+        "Regression harness",
+        "Patch route",
+        "Red-team challenge",
+        "Rollback path"
+      ],
+      "goals": [
+        "Improve defensive execution",
+        "Create reusable cyber capability",
+        "Harden supply chain",
+        "Avoid unsafe security claims"
+      ],
+      "status": "Defensive, authorized, public-safe proof template only."
+    },
+    {
+      "id": "010",
+      "title": "Cyber-Sovereign Proof Benchmark Market",
+      "domain": "Replayable cyber benchmarks",
+      "thesis": "Turn cyber-sovereign work into replayable proof benchmarks with independent reproduction and AGIALPHA settlement.",
+      "plain": "This card converts cyber execution into a benchmark market. A task must have a manifest, baseline, evaluator harness, ProofBundle, reviewer report, red-team challenge, reproduction receipt, and Selection Certificate before it can influence future operations.",
+      "why": "Benchmark-visible execution is stronger than claims. A replayable benchmark market makes progress legible to buyers, reviewers, engineers, and sponsors.",
+      "mission": "Create a cyber-sovereign proof benchmark market for replayable, independently reproducible defensive improvements.",
+      "flow": [
+        "Benchmark",
+        "Manifest",
+        "Parallel agents",
+        "Evaluator",
+        "Reproduction",
+        "Selection",
+        "Benchmark memory"
+      ],
+      "roles": [
+        [
+          "Sovereign Aim Council",
+          "Defines the bounded mission, success criteria, authority, risk class, and upgrade constraints.",
+          "GoalOSCommit; success criteria; claim boundary."
+        ],
+        [
+          "Portfolio Strategists",
+          "Decompose the aim into mission lanes and prioritize by expected institutional value, risk, and replayability.",
+          "Mission portfolio; route plan; budget recommendation."
+        ],
+        [
+          "Domain Scout Swarm",
+          "Surfaces the relevant workflow, benchmark, artifact, system, buyer, or risk surface to improve.",
+          "Opportunity Docket; baseline map; evidence gaps."
+        ],
+        [
+          "Builder Cells",
+          "Produce candidate workflow, policy, remediation, benchmark, procurement, or capability artifacts.",
+          "Candidate artifact; implementation note; artifact hash."
+        ],
+        [
+          "Evaluator Operators",
+          "Run objective checks, regression tests, harnesses, scorecards, and cost/risk measurements.",
+          "Evaluator report; metric table; failure log."
+        ],
+        [
+          "Proof Engineers",
+          "Package evidence into public-safe ProofBundles and Evidence Docket entries.",
+          "ProofBundle; evidence manifest; reproducibility notes."
+        ],
+        [
+          "Reviewer Council",
+          "Reviews evidence quality, claim safety, replayability, usefulness, and upgrade readiness.",
+          "EvalAttestation; approval/rejection rationale."
+        ],
+        [
+          "Red-Team Court",
+          "Challenges reward hacks, unsafe claims, leakage, brittle evaluations, and unearned upgrade rights.",
+          "Falsification report; challenge outcome; mitigation notes."
+        ],
+        [
+          "Treasury Desk",
+          "Tracks AGIALPHA budgets, bonds, reward-vault settlement, and reinvestment routing.",
+          "SettlementReceipt; treasury allocation; AlphaWorkUnit notes."
+        ],
+        [
+          "Rollback Desk",
+          "Defines recovery plan, rollback trigger, and containment route before any upgrade is allowed to propagate.",
+          "RollbackReceipt; canary plan; incident path."
+        ],
+        [
+          "Chronicle Office",
+          "Records durable memory so future missions can reuse what proved itself and avoid what failed.",
+          "ChronicleEntry; route memory; delayed-outcome update."
+        ],
+        [
+          "External Reproduction Cell",
+          "Attempts independent reproduction before upgrade rights are granted.",
+          "ReproductionReceipt; variance notes; replay path."
+        ]
+      ],
+      "skills": [
+        "Benchmark design",
+        "Task manifest writing",
+        "Harness hardening",
+        "Independent reproduction",
+        "Variance control",
+        "Reward-hack audit"
+      ],
+      "plans": [
+        "Benchmark docket",
+        "Evaluator harness",
+        "Reproduction route",
+        "Red-team benchmark review",
+        "Selection certificate"
+      ],
+      "goals": [
+        "Make execution replayable",
+        "Improve benchmark trust",
+        "Create hard evidence moat",
+        "Promote only reproduced improvements"
+      ],
+      "status": "Benchmark-market proof template; public replay run remains the next empirical gate."
+    },
+    {
+      "id": "011",
+      "title": "Cyber-Sovereign Evidence Graph & Benchmark-to-Production RSI Flywheel",
+      "domain": "Evidence graph moat",
+      "thesis": "Convert benchmark and production evidence into a durable graph that improves future routing, review, selection, and reinvestment.",
+      "plain": "Proof Card 011 is the evidence-graph card. It links missions, artifacts, ProofBundles, evaluator reports, reviewer attestations, red-team challenges, cost/risk ledgers, AGIALPHA settlement, delayed outcomes, and future routing decisions.",
+      "why": "A page can be copied. A long-running evidence graph cannot be retroactively fabricated. The execution moat is the living memory of what actually worked and under which constraints.",
+      "mission": "Build an evidence graph that connects benchmark evidence to production routing, delayed outcomes, reviewer reliability, settlement memory, and future RSI decisions.",
+      "flow": [
+        "Benchmark evidence",
+        "Production evidence",
+        "Trust edges",
+        "Route memory",
+        "Delayed outcomes",
+        "Selection",
+        "Future work"
+      ],
+      "roles": [
+        [
+          "Sovereign Aim Council",
+          "Defines the bounded mission, success criteria, authority, risk class, and upgrade constraints.",
+          "GoalOSCommit; success criteria; claim boundary."
+        ],
+        [
+          "Portfolio Strategists",
+          "Decompose the aim into mission lanes and prioritize by expected institutional value, risk, and replayability.",
+          "Mission portfolio; route plan; budget recommendation."
+        ],
+        [
+          "Domain Scout Swarm",
+          "Surfaces the relevant workflow, benchmark, artifact, system, buyer, or risk surface to improve.",
+          "Opportunity Docket; baseline map; evidence gaps."
+        ],
+        [
+          "Builder Cells",
+          "Produce candidate workflow, policy, remediation, benchmark, procurement, or capability artifacts.",
+          "Candidate artifact; implementation note; artifact hash."
+        ],
+        [
+          "Evaluator Operators",
+          "Run objective checks, regression tests, harnesses, scorecards, and cost/risk measurements.",
+          "Evaluator report; metric table; failure log."
+        ],
+        [
+          "Proof Engineers",
+          "Package evidence into public-safe ProofBundles and Evidence Docket entries.",
+          "ProofBundle; evidence manifest; reproducibility notes."
+        ],
+        [
+          "Reviewer Council",
+          "Reviews evidence quality, claim safety, replayability, usefulness, and upgrade readiness.",
+          "EvalAttestation; approval/rejection rationale."
+        ],
+        [
+          "Red-Team Court",
+          "Challenges reward hacks, unsafe claims, leakage, brittle evaluations, and unearned upgrade rights.",
+          "Falsification report; challenge outcome; mitigation notes."
+        ],
+        [
+          "Treasury Desk",
+          "Tracks AGIALPHA budgets, bonds, reward-vault settlement, and reinvestment routing.",
+          "SettlementReceipt; treasury allocation; AlphaWorkUnit notes."
+        ],
+        [
+          "Rollback Desk",
+          "Defines recovery plan, rollback trigger, and containment route before any upgrade is allowed to propagate.",
+          "RollbackReceipt; canary plan; incident path."
+        ],
+        [
+          "Chronicle Office",
+          "Records durable memory so future missions can reuse what proved itself and avoid what failed.",
+          "ChronicleEntry; route memory; delayed-outcome update."
+        ],
+        [
+          "Evidence Graph Architect",
+          "Designs the graph of missions, artifacts, reviewers, outcomes, trust edges, route memory, and delayed effects.",
+          "Evidence graph schema; trust-edge map; query plan."
+        ],
+        [
+          "Routing Intelligence Desk",
+          "Uses the evidence graph to route future missions through proven artifacts and reliable reviewers.",
+          "Routing recommendation; reviewer reliability score; reuse plan."
+        ]
+      ],
+      "skills": [
+        "Evidence graph modeling",
+        "Trust-edge scoring",
+        "Route memory construction",
+        "Delayed outcome tracking",
+        "Reviewer reliability scoring",
+        "Benchmark-to-production mapping"
+      ],
+      "plans": [
+        "Evidence graph schema",
+        "Outcome tracking plan",
+        "Reviewer reliability model",
+        "Production RSI route",
+        "Reinvestment index"
+      ],
+      "goals": [
+        "Make evidence cumulative",
+        "Improve routing quality",
+        "Strengthen reviewer market",
+        "Turn validated work into production capability"
+      ],
+      "status": "Evidence-graph proof template; requires repeated live Evidence Dockets to become a hard moat."
+    }
+  ]
+}
