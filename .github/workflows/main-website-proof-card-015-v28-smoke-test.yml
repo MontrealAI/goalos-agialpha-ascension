@@ -1,0 +1,30 @@
+name: Main Website Proof Card 015 v28 Smoke Test
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+    paths:
+      - "site-assets/proof-pages/**"
+      - "data/proof-cards/proof-cards-v28.json"
+      - "docs/examples/proof-card-015-ai-enterprise-civilization-scale-capability-grid.md"
+      - "data/examples/proof-card-015-ai-enterprise-civilization-scale-capability-grid.json"
+      - "evidence/examples/proof-card-015-evidence-docket-template.json"
+      - "scripts/integrate_goalos_agialpha_proof_card_015_v28.py"
+      - "scripts/verify_goalos_agialpha_proof_card_015_v28.py"
+      - ".github/workflows/main-website-proof-card-015-v28-smoke-test.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  smoke-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Build local proof-card site
+        run: |
+          mkdir -p site
+          python3 scripts/integrate_goalos_agialpha_proof_card_015_v28.py --site site
+      - name: Verify proof-card site
+        run: python3 scripts/verify_goalos_agialpha_proof_card_015_v28.py --site site
