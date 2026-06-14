@@ -1,0 +1,30 @@
+name: Main Website Proof Card 012 Smoke Test
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "scripts/integrate_goalos_agialpha_proof_card_012_v24.py"
+      - "scripts/verify_goalos_agialpha_proof_card_012_v24.py"
+      - "data/proof-cards/proof-cards-v24.json"
+      - "docs/examples/proof-card-012-ai-startup-venture-grid.md"
+      - "evidence/examples/proof-card-012-evidence-docket-template.json"
+      - ".github/workflows/main-website-proof-card-012-smoke-test.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  smoke-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Build local proof-card site
+        run: |
+          rm -rf site
+          mkdir -p site
+          echo '<!doctype html><title>GoalOS AGIALPHA Ascension</title><h1>GoalOS AGIALPHA Ascension</h1>' > site/index.html
+          python3 scripts/integrate_goalos_agialpha_proof_card_012_v24.py --site site
+      - name: Verify local proof-card site
+        run: python3 scripts/verify_goalos_agialpha_proof_card_012_v24.py --site site

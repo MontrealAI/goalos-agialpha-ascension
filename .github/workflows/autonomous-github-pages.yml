@@ -1416,7 +1416,7 @@ jobs:
               </article>
               <article class="card wide">
                 <h2>Manual deployment command</h2>
-                <pre><code>{esc("npm run deploy:" + "ethereum-mainnet:gated")}</code></pre>
+                <pre><code>npm run deploy:ethereum-mainnet:gated</code></pre>
                 <p>This command must remain local/manual. No GitHub Actions workflow may broadcast Ethereum Mainnet transactions.</p>
               </article>
               <article class="card">
@@ -1537,7 +1537,7 @@ jobs:
               </article>
               <article class="card">
                 <h3>Next manual command</h3>
-                <pre><code>{esc("npm run deploy:" + "ethereum-mainnet:gated")}</code></pre>
+                <pre><code>npm run deploy:ethereum-mainnet:gated</code></pre>
               </article>
             </div>
           </section>
@@ -1619,6 +1619,16 @@ jobs:
           print(f"Evidence artifacts copied: {len(copied_evidence)}")
           PY
 
+      - name: Integrate Proof Cards 001-012 into main website root
+        shell: bash
+        run: |
+          python3 scripts/integrate_goalos_agialpha_proof_card_012_v24.py --site site
+
+      - name: Verify Proof Cards 001-12 before deployment
+        shell: bash
+        run: |
+          python3 scripts/verify_goalos_agialpha_proof_card_012_v24.py --site site
+
       - name: Validate generated website artifact
         shell: bash
         run: |
@@ -1637,15 +1647,6 @@ jobs:
           fi
 
           echo "Generated website artifact validated."
-
-
-      - name: Integrate premium proof-card atlas v23
-        shell: bash
-        run: python3 scripts/integrate_goalos_agialpha_premium_proof_cards_v23.py --site site --data data/proof-cards/proof-cards-v23.json
-
-      - name: Verify premium proof-card atlas v23
-        shell: bash
-        run: python3 scripts/verify_goalos_agialpha_premium_proof_cards_v23.py --site site
 
       - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v4
