@@ -87,7 +87,7 @@ describe("deployment UX safety layer", function () {
 
   it("does not let generated mainnet docs claim deployed YES without transaction evidence", function () {
     const commandCenter = fs.readFileSync("scripts/deployment/goalos-deploy-command-center.ts", "utf8");
-    expect(commandCenter).to.include("Mainnet evidence blocked: no real chainId=1 deployment manifest exists");
+    expect(commandCenter).to.include("Mainnet evidence blocked: manifest is template/partial or lacks real chainId=1 tx evidence");
     expect(commandCenter).to.include("Mainnet deployed: ${main?\"NO unless this report was generated from a real chainId=1 manifest with transactions\":\"N/A\"}");
   });
 

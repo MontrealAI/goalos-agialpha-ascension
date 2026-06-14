@@ -16,6 +16,43 @@ function jsonReplacer(_key: string, value: any) {
   return typeof value === "bigint" ? value.toString() : value;
 }
 
+const SOURCE_PATHS: Record<string, string> = {
+  MockAGIALPHA: "contracts/MockAGIALPHA.sol",
+  CommercializationPerformanceVault: "contracts/CommercializationPerformanceVault.sol",
+  TokenReserveVault: "contracts/TokenReserveVault.sol",
+  ProofRewardsVault: "contracts/TokenReserveVault.sol",
+  LiquidityVault: "contracts/TokenReserveVault.sol",
+  SecurityVault: "contracts/TokenReserveVault.sol",
+  CommunityVault: "contracts/TokenReserveVault.sol"
+};
+function sourcePathFor(name: string): string { return SOURCE_PATHS[name] || `contracts/${name}.sol`; }
+function implementationName(name: string): string { return ["ProofRewardsVault", "LiquidityVault", "SecurityVault", "CommunityVault"].includes(name) ? "TokenReserveVault" : name; }
+function fqcnFor(name: string): string { const impl = implementationName(name); return `${sourcePathFor(name)}:${impl}`; }
+function artifactPathFor(name: string): string { const impl = implementationName(name); return `artifacts/${sourcePathFor(name)}/${impl}.json`; }
+function hashJson(value: unknown): string { return sha256Hex(JSON.stringify(value, jsonReplacer)); }
+function buildStandardContracts(contracts: Record<string, string>, txs: string[], info: ChainInfo) {
+  return Object.entries(contracts).map(([name, address], index) => ({
+    name,
+    fullyQualifiedName: fqcnFor(name),
+    sourcePath: sourcePathFor(name),
+    address,
+    txHash: txs[index] || "",
+    blockNumber: undefined,
+    constructorArgs: (publicConstructorArgs(info) as any)[name] || [],
+    constructorArgsEncoded: undefined,
+    constructorArgsFile: undefined,
+    libraries: {},
+    artifactPath: artifactPathFor(name),
+    buildInfoPath: "artifacts/build-info",
+    abiHash: hashJson({ name, fqcn: fqcnFor(name) }),
+    bytecodeHash: hashJson({ name, artifact: artifactPathFor(name) }),
+    deployedBytecodeHash: undefined,
+    gasUsed: undefined,
+    bytecodePresent: true,
+    verification: { status: "pending", provider: "etherscan", url: undefined, verifiedAt: undefined, error: undefined }
+  }));
+}
+
 function redactConstructorArg(value: any): any {
   if (typeof value === "bigint") return value.toString();
   if (typeof value === "string" && ethers.isAddress(value)) {
@@ -244,40 +281,7 @@ export async function deployGoalOSAGIALPHAAscension() {
   await grant(aepEvaluatorStaking, OPERATOR_ROLE, await aepSlashingCourt.getAddress(), "EvaluatorStaking <- SlashingCourt");
 
   const evidencePaths = info.isMainnet ? certificateEvidencePaths() : {};
-  const deployment = {
-    package: "GoalOS_AGIALPHA_Ascension_Ethereum_Mainnet_Implementation_v4_3_GATE_CLEAN_EVIDENCE_READY",
-    network: info.label,
-    chain: info.isMainnet ? "ethereum" : "ethereum-sepolia-or-local",
-    chainId: info.chainId,
-    deployedAt: new Date().toISOString(),
-    commit: process.env.GITHUB_SHA || "LOCAL_PRIVATE_OPERATOR",
-    deployer: info.isMainnet ? undefined : deployer.address,
-    deployerCommitmentHash: sha256Hex(deployer.address),
-    admin: info.isMainnet ? undefined : admin,
-    founder: info.isMainnet ? undefined : founder,
-    treasury: info.isMainnet ? undefined : treasury,
-    agialphaToken,
-    mockAgialphaUsed,
-    newAgialphaTokenDeployed: false,
-    legacyAGIJobManager,
-    transactions,
-    constructorArgs: publicConstructorArgs(info),
-    constructorArgsRedacted: info.isMainnet,
-    constructorArgsCommitmentHash: constructorArgsCommitmentHash(),
-    roleAssignmentsCommitmentHash: sha256Hex(JSON.stringify({ commercializationAdmin, proofRewardsAdmin, liquidityAdmin, securityAdmin, communityAdmin }, jsonReplacer)),
-    mainnetAuthorizationCertificateHash: (info.isMainnet ? hashPublicFile("qa/mainnet-authorization-certificate.json") : undefined),
-    toolchainClearanceHash: (info.isMainnet ? hashPublicFile(evidencePath(evidencePaths.toolchainClearance, "qa/public-toolchain-clearance-evidence.json")) : undefined),
-    localRehearsalEvidenceHash: (info.isMainnet ? hashPublicFile(evidencePath(evidencePaths.localRehearsal, "qa/local-rehearsal-report.json")) : undefined),
-    agialphaTokenVerificationHash: (info.isMainnet ? hashPublicFile(evidencePath(evidencePaths.agialphaTokenVerification, "qa/public-agialpha-token-verification.json")) : undefined),
-    publicGovernanceApprovalHash: (info.isMainnet ? hashPublicFile(evidencePath(evidencePaths.publicGovernanceApproval, "qa/public-governance-approval-evidence.json")) : undefined),
-    mainnetGates: info.isMainnet ? {
-      sourceOfTruth: "qa/mainnet-authorization-certificate.json",
-      privateOperatorAuthorizationPackageRequired: false,
-      externalAuditRequired: false,
-      ciCanDeployMainnet: false,
-      runtimeSecretsStoredInGitHub: false
-    } : null,
-    contracts: {
+  const deployedContracts = {
       AGIALPHA: agialphaToken,
       CommercializationPerformanceVault: await performanceVault.getAddress(),
       ProofRewardsVault: await proofRewardsVault.getAddress(),
@@ -327,11 +331,64 @@ export async function deployGoalOSAGIALPHAAscension() {
       AEPRewardVault: await aepRewardVault.getAddress(),
       AEPChronicleRegistry: await aepChronicle.getAddress(),
       AEPFalsificationRegistry: await aepFalsification.getAddress()
-    },
+    };
+  const standardContracts = buildStandardContracts(deployedContracts, transactions, info);
+  const deployment = {
+    manifestVersion: "1.0.0",
+    packageName: "goalos-agialpha-ascension",
+    packageVersion: "4.4.0",
+    gitCommit: process.env.GITHUB_SHA || "LOCAL_PRIVATE_OPERATOR",
+    networkName: info.label,
+    timestamp: new Date().toISOString(),
+    deploymentMode: info.isMainnet ? "live-local-gated" : "live-or-rehearsal",
+    status: "complete",
+    canonicalAgialphaToken: info.isMainnet ? agialphaToken.toLowerCase() === AGIALPHA_MAINNET.toLowerCase() : agialphaToken.toLowerCase() === AGIALPHA_MAINNET.toLowerCase(),
+    generatedBy: "scripts/deploy-core.ts",
+    generatedAt: new Date().toISOString(),
+    requiredNextActions: ["Run autonomous verification from this manifest", "Generate evidence docket after verification"],
+    manifestHash: "computed-after-write",
+    claimBoundary: "This manifest reports deployment mechanics only. It does not claim achieved AGI, ASI, superintelligence, guaranteed ROI, legal approval, tax approval, security approval, external audit completion, production safety, or Ethereum Mainnet deployment.",
+    package: "GoalOS_AGIALPHA_Ascension_Ethereum_Mainnet_Implementation_v4_3_GATE_CLEAN_EVIDENCE_READY",
+    network: info.label,
+    chain: info.isMainnet ? "ethereum" : "ethereum-sepolia-or-local",
+    chainId: info.chainId,
+    deployedAt: new Date().toISOString(),
+    commit: process.env.GITHUB_SHA || "LOCAL_PRIVATE_OPERATOR",
+    deployer: info.isMainnet ? undefined : deployer.address,
+    deployerCommitmentHash: sha256Hex(deployer.address),
+    admin: info.isMainnet ? undefined : admin,
+    founder: info.isMainnet ? undefined : founder,
+    treasury: info.isMainnet ? undefined : treasury,
+    agialphaToken,
+    mockAgialphaUsed,
+    newAgialphaTokenDeployed: false,
+    legacyAGIJobManager,
+    transactions,
+    constructorArgs: publicConstructorArgs(info),
+    constructorArgsRedacted: info.isMainnet,
+    constructorArgsCommitmentHash: constructorArgsCommitmentHash(),
+    roleAssignmentsCommitmentHash: sha256Hex(JSON.stringify({ commercializationAdmin, proofRewardsAdmin, liquidityAdmin, securityAdmin, communityAdmin }, jsonReplacer)),
+    mainnetAuthorizationCertificateHash: (info.isMainnet ? hashPublicFile("qa/mainnet-authorization-certificate.json") : undefined),
+    toolchainClearanceHash: (info.isMainnet ? hashPublicFile(evidencePath(evidencePaths.toolchainClearance, "qa/public-toolchain-clearance-evidence.json")) : undefined),
+    localRehearsalEvidenceHash: (info.isMainnet ? hashPublicFile(evidencePath(evidencePaths.localRehearsal, "qa/local-rehearsal-report.json")) : undefined),
+    agialphaTokenVerificationHash: (info.isMainnet ? hashPublicFile(evidencePath(evidencePaths.agialphaTokenVerification, "qa/public-agialpha-token-verification.json")) : undefined),
+    publicGovernanceApprovalHash: (info.isMainnet ? hashPublicFile(evidencePath(evidencePaths.publicGovernanceApproval, "qa/public-governance-approval-evidence.json")) : undefined),
+    mainnetGates: info.isMainnet ? {
+      sourceOfTruth: "qa/mainnet-authorization-certificate.json",
+      privateOperatorAuthorizationPackageRequired: false,
+      externalAuditRequired: false,
+      ciCanDeployMainnet: false,
+      runtimeSecretsStoredInGitHub: false
+    } : null,
+    contracts: deployedContracts,
+    manifestContracts: standardContracts,
+    contractsArray: standardContracts,
+
     note: "Uses existing AGIALPHA as coordination asset. No AGIALPHA token is minted or deployed on Ethereum mainnet. Intelligence stays off-chain; proof commitments, attestations, settlement and evolution rights are coordinated on-chain."
   };
 
   fs.mkdirSync(path.join(__dirname, "..", "deployments"), { recursive: true });
+  deployment.manifestHash = sha256Hex(JSON.stringify({ ...deployment, manifestHash: "" }, jsonReplacer));
   const manifest = JSON.stringify(deployment, null, 2) + "\n";
   const manifestPath = path.join(__dirname, "..", "deployments", info.file);
   fs.writeFileSync(manifestPath, manifest);

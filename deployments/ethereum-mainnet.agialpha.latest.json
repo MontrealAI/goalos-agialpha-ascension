@@ -8,5 +8,6 @@
   "newAgialphaTokenDeployed": false,
   "contracts": {},
   "transactions": [],
-  "note": "Template only. Replace only after real Ethereum Mainnet broadcast and post-deployment verification."
+  "note": "Template only. Replace only after real Ethereum Mainnet broadcast and post-deployment verification.",
+  "network": "ethereum-mainnet"
 }

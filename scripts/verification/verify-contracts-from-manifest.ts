@@ -16,6 +16,8 @@ function isMainnet(n:string){ return /mainnet/i.test(n); }
 function manifestPath(network:string){ return arg("--manifest") || (isMainnet(network)?"deployments/ethereum-mainnet.agialpha.latest.json":"deployments/ethereum-sepolia.agialpha.latest.json"); }
 function sha(p:string){ return crypto.createHash("sha256").update(fs.readFileSync(p)).digest("hex"); }
 function contractEntries(m:any): any[] {
+  if (Array.isArray(m.manifestContracts)) return m.manifestContracts;
+  if (Array.isArray(m.contractsArray)) return m.contractsArray;
   if (Array.isArray(m.contracts)) return m.contracts;
   return Object.entries(m.contracts || {}).map(([name,address]) => ({ name, address, fullyQualifiedName: m.fullyQualifiedNames?.[name as string], constructorArgs: m.constructorArgs?.[name as string] }));
 }
