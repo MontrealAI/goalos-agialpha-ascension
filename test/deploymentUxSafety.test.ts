@@ -146,6 +146,31 @@ describe("deployment UX safety layer", function () {
   });
 
 
+
+  it("runs real no-broadcast mainnet preflight in preflight workflow mode", function () {
+    const workflow = fs.readFileSync(".github/workflows/mainnet-preflight-and-operator-packet.yml", "utf8");
+    expect(workflow).to.include("Run real no-broadcast Mainnet preflight");
+    expect(workflow).to.include("if: inputs.mode == 'preflight'");
+    expect(workflow).to.include("STRICT_MAINNET_PREFLIGHT");
+    expect(workflow).to.include("run: npm run deploy:mainnet:preflight");
+    expect(workflow).not.to.include("npm run deploy:mainnet:doctor -- --no-broadcast || true");
+  });
+
+  it("uploads only run-scoped Sepolia artifacts for modes that generate them", function () {
+    const workflow = fs.readFileSync(".github/workflows/deploy-ethereum-sepolia.yml", "utf8");
+    expect(workflow).to.include("Collect run-generated Sepolia artifacts");
+    expect(workflow).to.include(".deployment-run-artifacts");
+    expect(workflow).to.include("if: inputs.mode == 'deploy' || inputs.mode == 'evidence' || inputs.mode == 'full'");
+    expect(workflow).to.include("path: .deployment-run-artifacts");
+  });
+
+  it("preserves transactionHashes objects when generating deployment evidence", function () {
+    const source = fs.readFileSync("scripts/deployment/goalos-deploy-command-center.ts", "utf8");
+    expect(source).to.include("manifestTransactionHashes");
+    expect(source).to.include("m.transactionHashes ?? m.transactions");
+    expect(source).to.include("Object.values(source)");
+  });
+
   it("keeps reviewed public website proof-journey zip assets explicitly path-allowlisted", function () {
     const source = fs.readFileSync("scripts/no_paid_products_check.py", "utf8");
     expect(source).to.include("site-assets/main-website-v33/resources/GoalOS_Personal_Proof_Journey_Pack_v3.zip");

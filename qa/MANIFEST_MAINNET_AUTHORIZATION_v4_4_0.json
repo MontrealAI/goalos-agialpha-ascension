@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-14T17:01:08.880416+00:00",
+  "generated_at": "2026-06-14T17:23:04.042818+00:00",
   "files": [
     {
       "path": ".editorconfig",
@@ -98,8 +98,8 @@
     },
     {
       "path": ".github/workflows/deploy-ethereum-sepolia.yml",
-      "bytes": 2735,
-      "sha256": "29c2542433384dbd6dda9bc54684dc9ea279f6799c549472e30d5e5508c271ab"
+      "bytes": 3898,
+      "sha256": "d1a33733a54b3ce4183a48e55160091397a4f69aba78b0ed33ce21e16bd62a1c"
     },
     {
       "path": ".github/workflows/ethereum-sepolia-rehearsal.yml",
@@ -253,8 +253,8 @@
     },
     {
       "path": ".github/workflows/mainnet-preflight-and-operator-packet.yml",
-      "bytes": 1373,
-      "sha256": "741761006e4c73471eebedd6a68a789dab5d4ea623ce9313b8b9b63510db6d6a"
+      "bytes": 1518,
+      "sha256": "8115f8bda29ae16464152965fc10cd4cd61bb74592fc1432abb17f2ea44e5ad6"
     },
     {
       "path": ".github/workflows/proof-card-001-demand-engine-autopublish.yml",
@@ -7248,8 +7248,8 @@
     },
     {
       "path": "qa/sepolia-deployment-evidence.json",
-      "bytes": 4326,
-      "sha256": "9535a4bb42f770e98f08748b8c85112f1c0fe0792a10783eddc50c5f05b601b6"
+      "bytes": 5472,
+      "sha256": "a05e2b07bc1a2f0dceeac43cffa8fead459a4d335c65fb14f7fa7d8a26bf0dc5"
     },
     {
       "path": "schemas/agialpha-mainnet-gate-v4.3.schema.json",
@@ -7613,8 +7613,8 @@
     },
     {
       "path": "scripts/deployment/goalos-deploy-command-center.ts",
-      "bytes": 11161,
-      "sha256": "0d78b07f7e1e20f2adeea834d3d385bb66c5447e423e7b83fc16aaa7f1f5e522"
+      "bytes": 11551,
+      "sha256": "bc35aa5b3d686fc8b59665fa28abf85f8fe628aa20a7ba451148e7e20e4d0672"
     },
     {
       "path": "scripts/deployment/lib/mainnetGuards.ts",
@@ -8328,8 +8328,8 @@
     },
     {
       "path": "test/deploymentUxSafety.test.ts",
-      "bytes": 10022,
-      "sha256": "043bb3cccd73b9464c7d2786f29ac02ee1f4a0bc9c559cfa8ff11fe42f3889a0"
+      "bytes": 11509,
+      "sha256": "93814d9162c5811f41046a14e00a386d927c7610a508d307719db0a3b45cfa67"
     },
     {
       "path": "test/invariants/README.md",

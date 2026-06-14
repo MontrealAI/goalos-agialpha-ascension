@@ -22,8 +22,12 @@ jobs:
       - run: npm ci
       - run: npm run test:ci
       - run: npm run static-check
-      - run: echo "This workflow cannot deploy Ethereum Mainnet. Final deployment must be local operator broadcast."
-      - run: npm run deploy:mainnet:doctor -- --no-broadcast || true
+      - run: echo "This workflow cannot deploy Ethereum Mainnet. Final Ethereum Mainnet deployment must be local-only operator broadcast."
+      - name: Run real no-broadcast Mainnet preflight
+        if: inputs.mode == 'preflight'
+        env:
+          STRICT_MAINNET_PREFLIGHT: "1"
+        run: npm run deploy:mainnet:preflight
       - run: npm run mainnet:final-check
         if: inputs.mode == 'final_check'
       - run: npm run deploy:mainnet:prepare-local

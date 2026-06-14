@@ -54,12 +54,30 @@ jobs:
             evidence) npm run deploy:sepolia:evidence ;;
             full) npm run deploy:sepolia:doctor && npm run deploy:sepolia:dry-run && npm run deploy:sepolia:live && npm run deploy:sepolia:verify && npm run deploy:sepolia:evidence ;;
           esac
+      - name: Collect run-generated Sepolia artifacts
+        if: inputs.mode == 'deploy' || inputs.mode == 'evidence' || inputs.mode == 'full'
+        env:
+          DEPLOY_MODE: ${{ inputs.mode }}
+        run: |
+          rm -rf .deployment-run-artifacts
+          mkdir -p .deployment-run-artifacts/deployments .deployment-run-artifacts/qa .deployment-run-artifacts/docs
+          case "$DEPLOY_MODE" in
+            deploy|full)
+              cp deployments/ethereum-sepolia.agialpha.latest.json .deployment-run-artifacts/deployments/ 2>/dev/null || true
+              cp deployments/ethereum-sepolia.agialpha.latest.sha256 .deployment-run-artifacts/deployments/ 2>/dev/null || true
+              ;;
+          esac
+          case "$DEPLOY_MODE" in
+            evidence|full)
+              cp qa/sepolia-deployment-evidence.json .deployment-run-artifacts/qa/ 2>/dev/null || true
+              cp docs/SEPOLIA_DEPLOYMENT_REPORT.md .deployment-run-artifacts/docs/ 2>/dev/null || true
+              cp deployments/ethereum-sepolia.agialpha.latest.json .deployment-run-artifacts/deployments/ 2>/dev/null || true
+              cp deployments/ethereum-sepolia.agialpha.latest.sha256 .deployment-run-artifacts/deployments/ 2>/dev/null || true
+              ;;
+          esac
       - uses: actions/upload-artifact@v4
+        if: inputs.mode == 'deploy' || inputs.mode == 'evidence' || inputs.mode == 'full'
         with:
           name: sepolia-deployment-evidence
-          path: |
-            deployments/ethereum-sepolia.agialpha.latest.json
-            deployments/ethereum-sepolia.agialpha.latest.sha256
-            qa/sepolia-deployment-evidence.json
-            docs/SEPOLIA_DEPLOYMENT_REPORT.md
-          if-no-files-found: ignore
+          path: .deployment-run-artifacts
+          if-no-files-found: error
