@@ -163,11 +163,20 @@ export async function deployGoalOSAGIALPHAAscension() {
     console.log({ deployer: deployer.address, admin, founder, treasury, agialphaToken, legacyAGIJobManager });
   }
 
-  const performanceVault = await deploy("CommercializationPerformanceVault", [commercializationAdmin, agialphaToken]);
-  const proofRewardsVault = await deploy("TokenReserveVault", [proofRewardsAdmin, agialphaToken, "AGIALPHA Proof Jobs / Builder Rewards"]);
-  const liquidityVault = await deploy("TokenReserveVault", [liquidityAdmin, agialphaToken, "AGIALPHA Liquidity / Operations"]);
-  const securityVault = await deploy("TokenReserveVault", [securityAdmin, agialphaToken, "Security / Audits / Bug Bounties"]);
-  const communityVault = await deploy("TokenReserveVault", [communityAdmin, agialphaToken, "AGI Club / Genesis Community / Credentials"]);
+  const performanceVaultArgs = [commercializationAdmin, agialphaToken];
+  const proofRewardsVaultArgs = [proofRewardsAdmin, agialphaToken, "AGIALPHA Proof Jobs / Builder Rewards"];
+  const liquidityVaultArgs = [liquidityAdmin, agialphaToken, "AGIALPHA Liquidity / Operations"];
+  const securityVaultArgs = [securityAdmin, agialphaToken, "Security / Audits / Bug Bounties"];
+  const communityVaultArgs = [communityAdmin, agialphaToken, "AGI Club / Genesis Community / Credentials"];
+  const performanceVault = await deploy("CommercializationPerformanceVault", performanceVaultArgs);
+  const proofRewardsVault = await deploy("TokenReserveVault", proofRewardsVaultArgs);
+  constructorArgs.ProofRewardsVault = proofRewardsVaultArgs;
+  const liquidityVault = await deploy("TokenReserveVault", liquidityVaultArgs);
+  constructorArgs.LiquidityVault = liquidityVaultArgs;
+  const securityVault = await deploy("TokenReserveVault", securityVaultArgs);
+  constructorArgs.SecurityVault = securityVaultArgs;
+  const communityVault = await deploy("TokenReserveVault", communityVaultArgs);
+  constructorArgs.CommunityVault = communityVaultArgs;
 
   const proofSeeds = await deploy("ProofSeedRegistry", [admin, agialphaToken, treasury]);
   const legacyRegistry = await deploy("LegacyAGIJobManagerRegistry", [admin, legacyAGIJobManager]);

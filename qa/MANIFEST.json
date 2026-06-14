@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-14T16:08:36.179037+00:00",
+  "generated_at": "2026-06-14T16:29:24.105287+00:00",
   "files": [
     {
       "path": ".editorconfig",
@@ -18,8 +18,8 @@
     },
     {
       "path": ".env.sepolia.example",
-      "bytes": 909,
-      "sha256": "fde12ec621d6e09891d2cd696ff77e7f01c2f53ecd46236e7a4d7e06bfc7cd7c"
+      "bytes": 1169,
+      "sha256": "8068e0f5419cd9f91508c91129efcaf03b74933ac45e17d18dc68e5b35bd1979"
     },
     {
       "path": ".gitattributes",
@@ -6868,8 +6868,8 @@
     },
     {
       "path": "hardhat.config.ts",
-      "bytes": 1948,
-      "sha256": "cd999422acc5325d66aec93061da736b65871cff4868968256790563f8c65755"
+      "bytes": 1887,
+      "sha256": "3b1884678b5c7a2945953326e7a15779fa969980cdd901c6af4fded2db475efe"
     },
     {
       "path": "ignition/modules/GoalOSAGIALPHAAscension.ts",
@@ -7583,8 +7583,8 @@
     },
     {
       "path": "scripts/config/loadEnv.ts",
-      "bytes": 757,
-      "sha256": "85f52240b26fa01b158a7b640112d41cce1126bb17d8a2e173e00686075a79fe"
+      "bytes": 1316,
+      "sha256": "1362bfa4261eb85711a105afc4295c74eb7b9736e566829e3d1541dc77b33ead"
     },
     {
       "path": "scripts/config/networkConfig.ts",
@@ -7593,8 +7593,8 @@
     },
     {
       "path": "scripts/deploy-core.ts",
-      "bytes": 20524,
-      "sha256": "9e5a4f35cdb41f04644f4b5ea522a000e28f864d35ff7549e1e5533c35346368"
+      "bytes": 21001,
+      "sha256": "0133a57f26e0230a18ae32093f23c90fe6953b6e350ab682fdbbcec8691ab9f9"
     },
     {
       "path": "scripts/deploy-ethereum-mainnet-gated.ts",
@@ -7643,8 +7643,8 @@
     },
     {
       "path": "scripts/deployment/verify-deployment-friendly.ts",
-      "bytes": 4000,
-      "sha256": "5fe877047b4c1dcbbdce54b3cd30f4066e09f09803bdb152be62814a43265576"
+      "bytes": 4234,
+      "sha256": "fa656e83e1419fe7899077e97937e58240c5535b9a8f36020e7cb30a116d8d7a"
     },
     {
       "path": "scripts/direct-solc-compile.js",
@@ -7813,13 +7813,13 @@
     },
     {
       "path": "scripts/no_paid_products_check.py",
-      "bytes": 1271,
-      "sha256": "ed865850de41ec9e7a0eaded9b278e7ec3f191f57fb61b8962531dc69d5f0511"
+      "bytes": 1588,
+      "sha256": "977b8ea769c2899005f315b504fbad79f30e22e4cc2962cf387d05fdbb33fcfc"
     },
     {
       "path": "scripts/no_private_operator_data_check.py",
-      "bytes": 3732,
-      "sha256": "78a66c3498e2ed48f8edea20de2d1bda70a7cf2485a06f05e3deadeb8b2f61f3"
+      "bytes": 3772,
+      "sha256": "a55267bc6dbc6d2671228c9938854998aaed9d96a3b3ac3555a4d115e00a960e"
     },
     {
       "path": "scripts/patch_existing_pages_workflow_for_proof_cards_v11.py",
@@ -8328,8 +8328,8 @@
     },
     {
       "path": "test/deploymentUxSafety.test.ts",
-      "bytes": 7313,
-      "sha256": "2b4047be7c0c265ebdfe675292be0e9e1a0c34b43a92d73af9b01b0bb7698cdb"
+      "bytes": 8445,
+      "sha256": "9d60ccd09e07b015ebfdc6b044cbd70822bd7b002f40d588c3a05026174ec379"
     },
     {
       "path": "test/invariants/README.md",

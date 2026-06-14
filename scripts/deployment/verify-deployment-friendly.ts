@@ -27,7 +27,8 @@ async function main(){
  for(const [name,address] of Object.entries(m.contracts||{})){
    if(name==="AGIALPHA") { results.push({name,address,status:"SKIPPED_EXTERNAL_TOKEN"}); continue; }
    if(!realAddress(address)) { results.push({name,address,status:"FAILED",hint:"Manifest address is not a real 20-byte contract address."}); continue; }
-   const args=(m.constructorArgs && m.constructorArgs[name]) || [];
+   if(!m.constructorArgs || !(name in m.constructorArgs)) { results.push({name,address,status:"FAILED",hint:`Constructor args for ${name} are missing from manifest; rerun deployment with the current manifest writer or provide a private args file.`}); continue; }
+   const args=m.constructorArgs[name];
    if(!Array.isArray(args)) { results.push({name,address,status:"FAILED",hint:"Constructor args are unavailable or redacted; provide a private unredacted args file for manual verification."}); continue; }
    const argsFile=`.verification-${network}-${name}.json`; fs.writeFileSync(argsFile, JSON.stringify(args));
    try{ execFileSync("npx",["hardhat","verify","--network",network,String(address),"--constructor-args",argsFile],{stdio:"pipe"}); results.push({name,address,status:"VERIFIED"}); }

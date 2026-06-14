@@ -93,12 +93,35 @@ describe("deployment UX safety layer", function () {
     expect(fs.readFileSync("docs/DEPLOYMENT_START_HERE.md", "utf8")).to.include(CLAIM_BOUNDARY);
   });
 
+
+
+  it("documents required Sepolia deployment role addresses", function () {
+    const text = fs.readFileSync(".env.sepolia.example", "utf8");
+    for (const name of ["FOUNDER_ADDRESS", "TREASURY_ADDRESS", "COMMERCIALIZATION_PERFORMANCE_ADMIN", "PROOF_REWARDS_ADMIN", "LIQUIDITY_ADMIN", "SECURITY_ADMIN", "COMMUNITY_ADMIN"]) {
+      expect(text).to.include(`${name}=`);
+    }
+  });
+
+  it("loads local env files when Hardhat passes --network on the CLI", function () {
+    const loader = fs.readFileSync("scripts/config/loadEnv.ts", "utf8");
+    expect(loader).to.include('process.argv.indexOf("--network")');
+    expect(fs.readFileSync("hardhat.config.ts", "utf8")).to.include("loadDeploymentEnv();");
+  });
+
+  it("records constructor args for TokenReserveVault manifest aliases", function () {
+    const source = fs.readFileSync("scripts/deploy-core.ts", "utf8");
+    for (const alias of ["ProofRewardsVault", "LiquidityVault", "SecurityVault", "CommunityVault"]) {
+      expect(source).to.include(`constructorArgs.${alias}`);
+    }
+  });
+
   it("verification layer treats already-verified contracts as success", function () {
     const verifier = fs.readFileSync("scripts/deployment/verify-deployment-friendly.ts", "utf8");
     expect(verifier).to.include("already verified|already been verified");
     expect(verifier).to.include("ALREADY_VERIFIED");
     expect(verifier).to.include("manifest has no contracts");
     expect(verifier).to.include("constructorArgs are redacted");
+    expect(verifier).to.include("Constructor args for ${name} are missing from manifest");
   });
 
   it("committed examples and docs do not contain obvious secret values", function () {

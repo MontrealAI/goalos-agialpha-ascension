@@ -1,4 +1,5 @@
 from pathlib import Path
+import subprocess
 import sys
 import re
 
@@ -25,7 +26,14 @@ suspicious_patterns = [
 
 allowed_zip_names = set()
 
-for path in ROOT.rglob("*"):
+def tracked_files() -> list[Path]:
+    try:
+        out = subprocess.check_output(["git", "ls-files"], cwd=ROOT, text=True, stderr=subprocess.DEVNULL)
+        return [ROOT / line for line in out.splitlines() if line]
+    except Exception:
+        return [p for p in ROOT.rglob("*") if p.is_file()]
+
+for path in tracked_files():
     if not path.is_file() or any(part in SKIP_PARTS for part in path.parts):
         continue
     if path.name in SKIP_FILES:

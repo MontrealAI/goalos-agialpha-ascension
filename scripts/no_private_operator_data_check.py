@@ -28,6 +28,7 @@ ALLOWLIST_FILES = {
     "hardhat.config.ts",
     "scripts/repository_safety_check.py",
     "scripts/verify-readiness-v4-2.py",
+    "scripts/deployment/lib/redact.ts",
 }
 
 
