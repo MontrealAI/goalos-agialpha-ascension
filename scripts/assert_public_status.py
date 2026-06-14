@@ -4,7 +4,7 @@ import json, re, sys
 from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 CERT = ROOT / 'qa/mainnet-authorization-certificate.json'
-DOCS = [ROOT / 'README.md', ROOT / 'docs/CURRENT_STATUS.md', ROOT / 'docs/MAINNET_AUTHORIZATION_CERTIFICATE.md', ROOT / 'docs/MAINNET_TECHNICAL_READINESS_DECISION.md', ROOT / 'docs/MAINNET_DEPLOYMENT_AUTHORIZATION_DECISION.md', ROOT / 'docs/ETHEREUM_MAINNET_AUTHORIZATION_DECISION.md', ROOT / 'docs/START_HERE_MAINNET.md']
+DOCS = [ROOT / 'START_HERE.md', ROOT / 'README.md', ROOT / 'docs/CURRENT_STATUS.md', ROOT / 'docs/MAINNET_AUTHORIZATION_CERTIFICATE.md', ROOT / 'docs/MAINNET_TECHNICAL_READINESS_DECISION.md', ROOT / 'docs/MAINNET_DEPLOYMENT_AUTHORIZATION_DECISION.md', ROOT / 'docs/ETHEREUM_MAINNET_AUTHORIZATION_DECISION.md', ROOT / 'docs/START_HERE_MAINNET.md']
 texts = {p: p.read_text(encoding='utf-8', errors='ignore') for p in DOCS if p.exists()}
 combined = '\n'.join(texts.values()); low = combined.lower(); errors: list[str] = []
 cert = None
@@ -40,7 +40,7 @@ for forbidden, allowed_context in [
             l=line.lower()
             if forbidden in l and allowed_context not in l and 'not ' not in l and 'no ' not in l and 'must not' not in l and 'do not' not in l and 'does not' not in l and 'unless' not in l:
                 errors.append(f'{path.relative_to(ROOT)}:{i}: unsafe public claim: {forbidden}')
-active_gate_files = {'README.md','docs/CURRENT_STATUS.md','docs/START_HERE_MAINNET.md','docs/MAINNET_AUTHORIZATION_CERTIFICATE.md','docs/MAINNET_TECHNICAL_READINESS_DECISION.md','docs/MAINNET_DEPLOYMENT_AUTHORIZATION_DECISION.md','docs/ETHEREUM_MAINNET_AUTHORIZATION_DECISION.md'}
+active_gate_files = {'START_HERE.md','README.md','docs/CURRENT_STATUS.md','docs/START_HERE_MAINNET.md','docs/MAINNET_AUTHORIZATION_CERTIFICATE.md','docs/MAINNET_TECHNICAL_READINESS_DECISION.md','docs/MAINNET_DEPLOYMENT_AUTHORIZATION_DECISION.md','docs/ETHEREUM_MAINNET_AUTHORIZATION_DECISION.md'}
 for path, text in texts.items():
     rel=str(path.relative_to(ROOT))
     if rel in active_gate_files:

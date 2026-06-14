@@ -23,9 +23,9 @@ Ethereum Mainnet deployed: NO.
 
 ## What this means
 
-The repository package is authorized for **manual gated Ethereum Mainnet deployment**. It does **not** mean Ethereum Mainnet deployment has occurred. Actual deployment still requires a runtime RPC URL and deployer key supplied outside GitHub.
+The repository package is authorized for manual gated Ethereum Mainnet deployment. It does not mean Ethereum Mainnet deployment has occurred. Actual deployment still requires a runtime RPC URL and deployer key outside GitHub.
 
-The active source of truth is `qa/mainnet-authorization-certificate.json`. README and status documents are summaries; they cannot create authorization independently.
+The active source of truth is `qa/mainnet-authorization-certificate.json`. README and status documents are generated summaries; they cannot create authorization independently.
 
 ## Read in this order
 

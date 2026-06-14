@@ -12,7 +12,6 @@
 [![Mainnet Deployed](https://img.shields.io/badge/Ethereum%20Mainnet%20Deployed-NO-critical)](qa/mainnet-authorization-certificate.json)
 
 GoalOS AGIALPHA Ascension v4.4.0 mainnet authorization candidate.
-
 Automated/internal security toolchain: passed.
 Local deterministic rehearsal: passed.
 Local Evidence Docket: generated.
