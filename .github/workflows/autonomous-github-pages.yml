@@ -17,8 +17,8 @@ on:
       - "data/examples/**"
       - "docs/examples/**"
       - "evidence/examples/**"
-      - "scripts/integrate_goalos_agialpha_proof_card_015_v28.py"
-      - "scripts/verify_goalos_agialpha_proof_card_015_v28.py"
+      - "scripts/integrate_goalos_agialpha_proof_card_015_v29.py"
+      - "scripts/verify_goalos_agialpha_proof_card_015_v29.py"
   workflow_dispatch:
 
 concurrency:
@@ -1645,13 +1645,13 @@ jobs:
 
           echo "Generated website artifact validated."
 
-      - name: Integrate Proof Cards 001-015 v28 into canonical main website root
+      - name: Integrate Proof Cards 001-015 v29 into canonical main website root
         shell: bash
-        run: python3 scripts/integrate_goalos_agialpha_proof_card_015_v28.py --site site
+        run: python3 scripts/integrate_goalos_agialpha_proof_card_015_v29.py --site site
 
-      - name: Verify Proof Cards 001-015 v28 before deployment
+      - name: Verify Proof Cards 001-015 v29 before deployment
         shell: bash
-        run: python3 scripts/verify_goalos_agialpha_proof_card_015_v28.py --site site
+        run: python3 scripts/verify_goalos_agialpha_proof_card_015_v29.py --site site
 
       - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v4
