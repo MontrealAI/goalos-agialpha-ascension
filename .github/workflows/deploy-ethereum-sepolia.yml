@@ -31,6 +31,15 @@ jobs:
           PRIVATE_SEPOLIA_RPC_URL: ${{ secrets.PRIVATE_SEPOLIA_RPC_URL }}
           PRIVATE_SEPOLIA_DEPLOYER_PRIVATE_KEY: ${{ secrets.PRIVATE_SEPOLIA_DEPLOYER_PRIVATE_KEY }}
           ETHERSCAN_API_KEY: ${{ secrets.ETHERSCAN_API_KEY }}
+          FOUNDER_ADDRESS: ${{ secrets.SEPOLIA_FOUNDER_ADDRESS }}
+          TREASURY_ADDRESS: ${{ secrets.SEPOLIA_TREASURY_ADDRESS }}
+          COMMERCIALIZATION_PERFORMANCE_ADMIN: ${{ secrets.SEPOLIA_COMMERCIALIZATION_PERFORMANCE_ADMIN }}
+          PROOF_REWARDS_ADMIN: ${{ secrets.SEPOLIA_PROOF_REWARDS_ADMIN }}
+          LIQUIDITY_ADMIN: ${{ secrets.SEPOLIA_LIQUIDITY_ADMIN }}
+          SECURITY_ADMIN: ${{ secrets.SEPOLIA_SECURITY_ADMIN }}
+          COMMUNITY_ADMIN: ${{ secrets.SEPOLIA_COMMUNITY_ADMIN }}
+          AGIALPHA_TOKEN_ADDRESS: ${{ secrets.SEPOLIA_AGIALPHA_TOKEN_ADDRESS }}
+          MOCK_AGIALPHA_ADDRESS: ${{ secrets.SEPOLIA_MOCK_AGIALPHA_ADDRESS }}
         run: |
           test "${{ inputs.confirm_network }}" = "ethereumSepolia"
           case "${{ inputs.mode }}" in

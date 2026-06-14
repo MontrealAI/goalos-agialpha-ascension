@@ -20,6 +20,8 @@ jobs:
       - uses: actions/setup-node@v4
         with: { node-version: '20' }
       - run: npm ci
+      - run: npm run test:ci
+      - run: npm run static-check
       - run: echo "This workflow cannot deploy Ethereum Mainnet. Final deployment must be local operator broadcast."
       - run: npm run deploy:mainnet:doctor -- --no-broadcast || true
       - run: npm run mainnet:final-check

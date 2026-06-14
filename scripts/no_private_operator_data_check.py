@@ -20,6 +20,8 @@ ADDRESS_RE = re.compile(r"0x[0-9a-fA-F]{40}")
 ALLOWLIST_FILES = {
     "README.md",
     ".env.example",
+    ".env.sepolia.example",
+    ".env.mainnet.example",
     "docs/FOUNDER_MAINNET_DEPLOYMENT_APPROVAL_MESSAGE.txt",
     "docs/MAINNET_AUTHORIZATION_INPUTS_REQUIRED.md",
     "docs/PRIVATE_INPUTS_REQUIRED_BUT_NOT_COMMITTED.md",
@@ -46,7 +48,7 @@ for path in tracked_files():
     rel = rel_path.as_posix()
     if any(part in SKIP_PARTS for part in rel_parts):
         continue
-    if path.name in FORBIDDEN_NAMES or (path.name.startswith(".env") and path.name != ".env.example"):
+    if path.name in FORBIDDEN_NAMES or (path.name.startswith(".env") and path.name not in {".env.example", ".env.sepolia.example", ".env.mainnet.example"}):
         errors.append(f"Forbidden private/env file committed: {rel}")
     if (any(part in FORBIDDEN_PARTS for part in rel_parts) and not rel.startswith(".private.example/")) or (rel_parts and rel_parts[0] == "private"):
         errors.append(f"Forbidden private operator path committed: {rel}")

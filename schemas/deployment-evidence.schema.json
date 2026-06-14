@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GoalOS Deployment Evidence",
+  "type": "object",
+  "required": ["networkName", "chainId", "timestamp", "gitCommit", "packageVersion", "hardhatVersion", "solidityCompilerVersion", "agialphaTokenAddress", "mockTokenUsed", "newAgialphaTokenDeployed", "deployedContractAddresses", "transactionHashes", "verificationStatus", "manifestHash", "claimBoundary", "nextRecommendedAction"],
+  "properties": {
+    "networkName": { "type": "string" },
+    "chainId": { "type": "number" },
+    "deployerPublicAddress": { "type": "string" },
+    "timestamp": { "type": "string" },
+    "gitCommit": { "type": "string" },
+    "packageVersion": { "type": "string" },
+    "hardhatVersion": { "type": "string" },
+    "solidityCompilerVersion": { "type": "string" },
+    "agialphaTokenAddress": { "type": "string" },
+    "mockTokenUsed": { "type": "boolean" },
+    "newAgialphaTokenDeployed": { "type": "boolean" },
+    "deployedContractAddresses": { "type": "object" },
+    "transactionHashes": { "type": "array" },
+    "gasUsedOrEstimated": {},
+    "verificationStatus": { "type": "string" },
+    "manifestHash": { "type": "string" },
+    "postDeploymentChecks": { "type": "array" },
+    "claimBoundary": { "type": "string" },
+    "nextRecommendedAction": { "type": "string" }
+  }
+}

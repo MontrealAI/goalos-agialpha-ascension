@@ -1,8 +1,11 @@
 import { expect } from "chai";
 import fs from "fs";
 import { AGIALPHA_MAINNET_TOKEN, assertAgialphaMainnetToken, assertNoMockTokenOnMainnet, getExpectedChainId, getRequiredPrivateKey, getRequiredRpcUrl } from "../scripts/config/networkConfig";
+import { assertExpectedChainId } from "../scripts/deployment/lib/networkGuards";
+import { assertMainnetOperatorEnv, assertRealMainnetManifest, MAINNET_ALLOW_VALUE, MAINNET_CONFIRMATION_PHRASE } from "../scripts/deployment/lib/mainnetGuards";
+import { redactObject, redactString } from "../scripts/deployment/lib/redact";
 
-const CLAIM_BOUNDARY = "This evidence reports deployment mechanics only. It does not claim achieved AGI, ASI, superintelligence, guaranteed ROI, legal approval, tax approval, security approval, external audit completion, or production safety.";
+const CLAIM_BOUNDARY = "This evidence reports deployment mechanics only. It does not claim achieved AGI, ASI, superintelligence, guaranteed ROI, legal approval, tax approval, security approval, external audit completion, production safety, or Ethereum Mainnet deployment.";
 const CONFIRM_PHRASE = "DEPLOY_GOALOS_AGIALPHA_ASCENSION_TO_ETHEREUM_MAINNET";
 
 describe("deployment UX safety layer", function () {
@@ -34,6 +37,40 @@ describe("deployment UX safety layer", function () {
     expect(() => getRequiredPrivateKey("ethereumSepolia")).to.throw("Invalid private-key shape");
   });
 
+
+
+  it("blocks wrong Sepolia and Mainnet chain IDs before broadcast", async function () {
+    let sepoliaError = "";
+    try { await assertExpectedChainId("ethereumSepolia", { getNetwork: async () => ({ chainId: 1 }) }); } catch (error: any) { sepoliaError = error.message; }
+    expect(sepoliaError).to.include("expected chainId 11155111");
+    let mainnetError = "";
+    try { await assertExpectedChainId("ethereumMainnet", { getNetwork: async () => ({ chainId: 11155111 }) }); } catch (error: any) { mainnetError = error.message; }
+    expect(mainnetError).to.include("expected chainId 1");
+  });
+
+  it("requires exact local Mainnet operator gate values", function () {
+    const env = { ...process.env, CI: "", GITHUB_ACTIONS: "", MAINNET_TARGET: "ethereum", AGIALPHA_TOKEN_ADDRESS: AGIALPHA_MAINNET_TOKEN, MAINNET_DEPLOYMENT_CONFIRMATION: MAINNET_CONFIRMATION_PHRASE, ALLOW_MAINNET_DEPLOYMENT: MAINNET_ALLOW_VALUE };
+    expect(() => assertMainnetOperatorEnv(env)).not.to.throw();
+    expect(() => assertMainnetOperatorEnv({ ...env, CI: "true" })).to.throw("forbidden in CI");
+    expect(() => assertMainnetOperatorEnv({ ...env, GITHUB_ACTIONS: "true" })).to.throw("forbidden in CI");
+    expect(() => assertMainnetOperatorEnv({ ...env, MOCK_AGIALPHA_ADDRESS: "0x0000000000000000000000000000000000000001" })).to.throw("MockAGIALPHA");
+    expect(() => assertMainnetOperatorEnv({ ...env, DEPLOY_NEW_AGIALPHA_TOKEN: "true" })).to.throw("forbidden");
+    expect(() => assertMainnetOperatorEnv({ ...env, MAINNET_DEPLOYMENT_CONFIRMATION: "NO" })).to.throw("Typed confirmation");
+    expect(() => assertMainnetOperatorEnv({ ...env, ALLOW_MAINNET_DEPLOYMENT: "NO" })).to.throw("ALLOW_MAINNET_DEPLOYMENT");
+  });
+
+  it("rejects template or empty Mainnet manifests before verification can pass", function () {
+    expect(() => assertRealMainnetManifest({ status: "TEMPLATE_NO_DEPLOYMENT", chainId: 1, contracts: {}, transactions: [] })).to.throw("template/no-deployment");
+    expect(() => assertRealMainnetManifest({ chainId: 1, agialphaToken: AGIALPHA_MAINNET_TOKEN, contracts: {}, transactions: [] })).to.throw("no deployed contracts");
+    expect(() => assertRealMainnetManifest({ chainId: 1, agialphaToken: AGIALPHA_MAINNET_TOKEN, contracts: { A: "0x0000000000000000000000000000000000000001" }, transactions: [] })).to.throw("no transaction hashes");
+  });
+
+  it("redacts sensitive output values", function () {
+    expect(redactString("https://example.com/super-secret-rpc")).to.equal("[REDACTED]");
+    expect(redactString("0x" + "a".repeat(64))).to.equal("[REDACTED]");
+    expect(redactObject({ PRIVATE_KEY: "0x" + "b".repeat(64), normal: "ok" })).to.deep.equal({ PRIVATE_KEY: "[REDACTED]", normal: "ok" });
+  });
+
   it("keeps mainnet gates local-only, canonical-token-only, and confirmation-gated", function () {
     const source = fs.readFileSync("scripts/deploy-ethereum-mainnet-gated.ts", "utf8");
     expect(source).to.include("GITHUB_ACTIONS");
@@ -46,13 +83,13 @@ describe("deployment UX safety layer", function () {
   });
 
   it("does not let generated mainnet docs claim deployed YES without transaction evidence", function () {
-    const commandCenter = fs.readFileSync("scripts/wizard/deploy-command-center.ts", "utf8");
+    const commandCenter = fs.readFileSync("scripts/deployment/goalos-deploy-command-center.ts", "utf8");
     expect(commandCenter).to.include("Mainnet evidence blocked: no real chainId=1 deployment manifest exists");
     expect(commandCenter).to.include("Mainnet deployed: ${main?\"NO unless this report was generated from a real chainId=1 manifest with transactions\":\"N/A\"}");
   });
 
   it("evidence and docs contain the deployment claim boundary", function () {
-    expect(fs.readFileSync("scripts/wizard/deploy-command-center.ts", "utf8")).to.include(CLAIM_BOUNDARY);
+    expect(fs.readFileSync("scripts/deployment/goalos-deploy-command-center.ts", "utf8")).to.include(CLAIM_BOUNDARY);
     expect(fs.readFileSync("docs/DEPLOYMENT_START_HERE.md", "utf8")).to.include(CLAIM_BOUNDARY);
   });
 
@@ -60,6 +97,8 @@ describe("deployment UX safety layer", function () {
     const verifier = fs.readFileSync("scripts/deployment/verify-deployment-friendly.ts", "utf8");
     expect(verifier).to.include("already verified|already been verified");
     expect(verifier).to.include("ALREADY_VERIFIED");
+    expect(verifier).to.include("manifest has no contracts");
+    expect(verifier).to.include("constructorArgs are redacted");
   });
 
   it("committed examples and docs do not contain obvious secret values", function () {

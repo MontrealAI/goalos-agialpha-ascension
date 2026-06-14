@@ -49,4 +49,8 @@ Public addresses, transaction hashes, manifest hashes, verification reports, and
 Private keys, RPC URLs, mnemonics, seeds, signatures, and `.private/*` filled operator files.
 
 ## 10. Final claim boundary
-This evidence reports deployment mechanics only. It does not claim achieved AGI, ASI, superintelligence, guaranteed ROI, legal approval, tax approval, security approval, external audit completion, or production safety.
+This evidence reports deployment mechanics only. It does not claim achieved AGI, ASI, superintelligence, guaranteed ROI, legal approval, tax approval, security approval, external audit completion, production safety, or Ethereum Mainnet deployment.
+
+
+## Partial deployment recovery
+If a deployment fails after some contracts broadcast, stop and preserve terminal output. Do not claim success. Inspect any partial manifest, then choose one recovery path: resume from the partial manifest if supported, abandon and redeploy with a clean manifest, or inspect manually with an engineer. A deployment is complete only after all required contracts, transaction hashes, and post-checks pass.
