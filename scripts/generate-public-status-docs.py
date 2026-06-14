@@ -5,8 +5,7 @@ ROOT=pathlib.Path(__file__).resolve().parents[1]
 cert=json.loads((ROOT/'qa/mainnet-authorization-certificate.json').read_text())
 tech=cert['technicallyMainnetReady']; dep=cert['mainnetDeploymentAuthorized']; eth=cert['ethereumMainnetAuthorized']; deployed=cert['mainnetDeployed']
 authorization_meaning = 'This means the repository package is authorized for manual gated Ethereum Mainnet deployment. It does not mean Ethereum Mainnet deployment has occurred. Actual deployment still requires a runtime RPC URL and deployer key outside GitHub.' if (tech == 'YES' and dep == 'YES' and eth == 'YES') else 'This means the repository package is not currently authorized for manual gated Ethereum Mainnet deployment. Resolve the certificate blockers, regenerate the certificate, and rerun the public checks before any mainnet deployment attempt. Actual deployment still requires a runtime RPC URL and deployer key outside GitHub.'
-status_block=f"""GoalOS AGIALPHA Ascension v4.4.0 mainnet authorization candidate.
-
+status_label=f"""GoalOS AGIALPHA Ascension v4.4.0 mainnet authorization candidate.
 Automated/internal security toolchain: passed.
 Local deterministic rehearsal: passed.
 Local Evidence Docket: generated.
@@ -15,7 +14,8 @@ Not externally audited.
 Ethereum Mainnet technical readiness: {tech}.
 Ethereum Mainnet deployment authorization: {dep}.
 Ethereum Mainnet authorization: {eth}.
-Ethereum Mainnet deployed: {deployed}.
+Ethereum Mainnet deployed: {deployed}."""
+status_block=f"""{status_label}
 
 {authorization_meaning}
 
@@ -23,9 +23,39 @@ It does not claim external audit completion, legal approval, tax review, guarant
 
 Public Sepolia deployment is recommended but not mandatory for public authorization; local deterministic rehearsal and mainnet-shaped simulation are the active public gates.
 """
+badges=f'''[![Repository Validation](https://github.com/MontrealAI/goalos-agialpha-ascension/actions/workflows/repository-validation.yml/badge.svg)](https://github.com/MontrealAI/goalos-agialpha-ascension/actions/workflows/repository-validation.yml)
+[![Final Public Mainnet Authorization](https://github.com/MontrealAI/goalos-agialpha-ascension/actions/workflows/final-public-mainnet-authorization.yml/badge.svg)](https://github.com/MontrealAI/goalos-agialpha-ascension/actions/workflows/final-public-mainnet-authorization.yml)
+[![Mainnet Authorization Gate](https://github.com/MontrealAI/goalos-agialpha-ascension/actions/workflows/mainnet-authorization-gate.yml/badge.svg)](https://github.com/MontrealAI/goalos-agialpha-ascension/actions/workflows/mainnet-authorization-gate.yml)
+[![Solidity Audit Toolchain](https://github.com/MontrealAI/goalos-agialpha-ascension/actions/workflows/solidity-audit-toolchain.yml/badge.svg)](https://github.com/MontrealAI/goalos-agialpha-ascension/actions/workflows/solidity-audit-toolchain.yml)
+[![License: No license granted](https://img.shields.io/badge/License-No%20license%20granted-lightgrey.svg)](LICENSE_DECISION.md)
+[![Solidity 0.8.35](https://img.shields.io/badge/Solidity-0.8.35-363636?logo=solidity)](package.json)
+[![Hardhat 2.28.6](https://img.shields.io/badge/Hardhat-2.28.6-f5d061?logo=ethereum)](package.json)
+[![TypeScript 5.9.3](https://img.shields.io/badge/TypeScript-5.9.3-3178c6?logo=typescript&logoColor=white)](package.json)
+[![Mainnet Authorized](https://img.shields.io/badge/Ethereum%20Mainnet-Authorized%20for%20manual%20gated%20deployment-success)](qa/mainnet-authorization-certificate.json)
+[![Mainnet Deployed](https://img.shields.io/badge/Ethereum%20Mainnet%20Deployed-{deployed}-critical)](qa/mainnet-authorization-certificate.json)
+'''
 readme=f"""# GoalOS AGIALPHA Ascension
 
+{badges}
 {status_block}
+
+## Executive overview
+
+GoalOS AGIALPHA Ascension is the institutional, evidence-first package for proof-settled AI workflow coordination using the existing AGIALPHA token. The repository is designed for reviewers, operators, auditors, and governance stakeholders who need a clear source of truth, reproducible checks, and strict public-claims boundaries.
+
+**Official source of truth:** `qa/mainnet-authorization-certificate.json`. Public README/status documents summarize that certificate; they do not override it.
+
+## Quick start for institutional reviewers
+
+1. Read this README for current status, safety boundaries, and canonical commands.
+2. Confirm the certificate in `qa/mainnet-authorization-certificate.json`.
+3. Run `npm run mainnet:public-authorize` to validate the public authorization gates.
+4. Run `npm run mainnet:local-checks` before any operator handoff or release review.
+5. Use `npm run deploy:ethereum-mainnet:gated` only from a local operator environment with runtime RPC URL and deployer key supplied outside GitHub.
+
+## Official badge policy
+
+Badges at the top of this README are intentionally limited to official, auditable repository signals: GitHub Actions workflow status, package-declared tool versions, license, authorization state, and deployment state. Workflow badges update automatically from GitHub Actions. Static status badges mirror `qa/mainnet-authorization-certificate.json` and must be updated only when the certificate changes. See `docs/OFFICIAL_BADGES.md` for maintenance rules.
 
 ## Core doctrine
 
@@ -75,6 +105,46 @@ for base, upper, camel, value, label in decisions:
     (ROOT/f'{base}.md').write_text(f'# {label.title()} Decision\n\n{label}: **{value}**.\n\n{upper}: **{value}**\n\nMAINNET_DEPLOYED: **{deployed}**\n\nNot externally audited. External audit is not planned and is not an active mainnet gate. Automated/internal security-toolchain clearance is the active security gate.\n')
 (ROOT/'README.md').write_text(readme)
 (ROOT/'docs/CURRENT_STATUS.md').write_text('# Current Status\n\n'+status_block+f"\n## Certificate source\n\n`qa/mainnet-authorization-certificate.json` generated by `{cert['generatedBy']}` at `{cert['generatedAt']}`.\n")
+(ROOT/'START_HERE.md').write_text(f"""# Start Here — GoalOS AGIALPHA Ascension Repository
+
+This repository is the institutional source package for **GoalOS AGIALPHA Ascension**.
+
+## One-sentence description
+
+GoalOS AGIALPHA Ascension is a GoalOS-native reimplementation of α‑AGI Ascension using the existing AGIALPHA token to coordinate proof-settled AI workflow work.
+
+## Correct current label
+
+```text
+{status_label}
+```
+
+## What this means
+
+{authorization_meaning.replace('This means the repository package', 'The repository package')}
+
+The active source of truth is `qa/mainnet-authorization-certificate.json`. README and status documents are generated summaries; they cannot create authorization independently.
+
+## Read in this order
+
+1. `README.md`
+2. `docs/CURRENT_STATUS.md`
+3. `docs/OFFICIAL_BADGES.md`
+4. `docs/MAINNET_AUTHORIZATION_CERTIFICATE.md`
+5. `docs/PUBLIC_MAINNET_AUTHORIZATION_RUNBOOK.md`
+6. `docs/SAFE_CLAIMS_AND_TOKEN_BOUNDARY_v3_0.md` or latest safe-claims document
+7. `docs/EXTERNAL_AUDITOR_HANDOFF.md`
+8. `contracts/registry/LaunchGateRegistry.sol`
+9. `scripts/ethereum-mainnet-authorization-check.py`
+
+## Next real step
+
+```text
+For reviewers: validate the certificate and run public authorization checks.
+For operators: prepare local-only runtime inputs, then use the gated deployment command only from an approved operator environment.
+For contributors: preserve safety boundaries, update docs with behavior changes, and do not weaken mainnet gates.
+```
+""")
 (ROOT/'docs/MAINNET_AUTHORIZATION_CERTIFICATE.md').write_text(f"""# Mainnet Authorization Certificate
 
 Generated from `qa/mainnet-authorization-certificate.json`.

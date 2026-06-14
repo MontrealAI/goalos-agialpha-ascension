@@ -1,20 +1,22 @@
 {
   "schemaVersion": "1.0",
-  "generatedAt": "2026-06-13T00:07:01.290193+00:00",
+  "generatedAt": "2026-06-14T01:20:49.585248+00:00",
   "generatedBy": "scripts/generate-mainnet-authorization-certificate.py",
   "repository": "MontrealAI/goalos-agialpha-ascension",
-  "commit": "f818003194e56fc0a3876d9de9b15d557cd9848e",
-  "sourceCommit": "f818003194e56fc0a3876d9de9b15d557cd9848e",
+  "commit": "d7b8d8f2dd9a617c53d2cc8f03f35090b228f87d",
+  "sourceCommit": "d7b8d8f2dd9a617c53d2cc8f03f35090b228f87d",
   "branch": "work",
   "sourceBranch": "work",
-  "currentHeadAtGeneration": "f818003194e56fc0a3876d9de9b15d557cd9848e",
+  "currentHeadAtGeneration": "d7b8d8f2dd9a617c53d2cc8f03f35090b228f87d",
   "gitValidationMode": "GIT_CHECKOUT",
   "evidenceHashesFreshForCurrentCheckout": true,
   "sourceCommitIsAncestorOfCurrentHead": true,
   "generatedDocsFromCertificate": [
     "README.md",
+    "START_HERE.md",
     "docs/CURRENT_STATUS.md",
     "docs/MAINNET_AUTHORIZATION_CERTIFICATE.md",
+    "docs/START_HERE_MAINNET.md",
     "docs/MAINNET_TECHNICAL_READINESS_DECISION.json",
     "docs/MAINNET_DEPLOYMENT_AUTHORIZATION_DECISION.json",
     "docs/ETHEREUM_MAINNET_AUTHORIZATION_DECISION.json"
@@ -70,7 +72,7 @@
     },
     "publicStatus": {
       "path": "scripts/assert_public_status.py",
-      "sha256": "0xb4ce73eedf6c9ce0ef107e46163e06fa385e21c2e9b2826934032a3df5542e02"
+      "sha256": "0x74d360f2e316c3f6ebdfb8fd5b76b3a597e8a7b0490b49573b1d4270806b84c1"
     },
     "noPrivateOperatorData": {
       "path": "scripts/no_private_operator_data_check.py",
@@ -122,7 +124,7 @@
     },
     "certificateGenerator": {
       "path": "scripts/generate-mainnet-authorization-certificate.py",
-      "sha256": "0x59fa08bde414c23ff674bceb16f1575a467d5a74326ce0fcaef09a130a4fb199"
+      "sha256": "0xb6b21017f97a29388b5d2c2ee5b7a29dc0c13283af022cdf3aadc867792de9c9"
     },
     "certificateValidator": {
       "path": "scripts/validate-mainnet-authorization-certificate.py",
@@ -130,7 +132,7 @@
     },
     "packageScripts": {
       "path": "package.json",
-      "sha256": "0x22089f1b6dae4b655f3acaf035531c01155c701dfb932ab3f7043fbe4adf1b60"
+      "sha256": "0x451f1beb04985eef31fe7df7b12cbf533da7b60c5e8bf3a90d4f2784c56bc6aa"
     },
     "branchProtectionOrRiskAcceptance": {
       "path": "qa/public-branch-protection-evidence.json",
@@ -152,5 +154,5 @@
   "blockers": [],
   "warnings": [],
   "nextAction": "Founder/deployer may run npm run deploy:ethereum-mainnet:gated with local runtime RPC/key after optional branch-protection hardening.",
-  "certificateHash": "0x470157ba76a679bb55fb71041b362033338d826dd07b82d0d8dd0484b8a757d8"
+  "certificateHash": "0x9aff6ced650f0a9ff2df22f8489407230a454200ada0ea0693cbce4432fe1030"
 }
