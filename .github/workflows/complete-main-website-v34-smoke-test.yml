@@ -1,0 +1,22 @@
+name: Main Website Complete v34 Smoke Test
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+    paths:
+      - "site-assets/main-website-v34/**"
+      - "scripts/build_goalos_agialpha_complete_main_website_v34.py"
+      - "scripts/verify_goalos_agialpha_complete_main_website_v34.py"
+      - ".github/workflows/complete-main-website-v34-smoke-test.yml"
+
+jobs:
+  smoke-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Build local site
+        run: python3 scripts/build_goalos_agialpha_complete_main_website_v34.py --site site
+      - name: Verify local site
+        run: python3 scripts/verify_goalos_agialpha_complete_main_website_v34.py --site site
