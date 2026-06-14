@@ -2,8 +2,7 @@ name: Premium Autonomous GitHub Pages Website
 
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
     paths:
       - "README.md"
       - "docs/**"
@@ -14,11 +13,8 @@ on:
       - ".github/workflows/autonomous-github-pages.yml"
       - "site-assets/proof-pages/**"
       - "data/proof-cards/**"
-      - "data/examples/**"
-      - "docs/examples/**"
-      - "evidence/examples/**"
-      - "scripts/integrate_goalos_agialpha_proof_card_017_v31.py"
-      - "scripts/verify_goalos_agialpha_proof_card_017_v31.py"
+      - "scripts/integrate_goalos_agialpha_main_website_root_v32.py"
+      - "scripts/verify_goalos_agialpha_main_website_root_v32.py"
   workflow_dispatch:
 
 concurrency:
@@ -41,26 +37,23 @@ jobs:
       - name: Build existing premium website if builder exists
         shell: bash
         run: |
-          if [ -f scripts/build_premium_website.py ]; then
-            python3 scripts/build_premium_website.py --out site
-          elif [ -f scripts/build_goalos_agialpha_website.py ]; then
-            python3 scripts/build_goalos_agialpha_website.py --out site
+          set -e
+          if [ -f scripts/build_premium_autonomous_website.py ]; then
+            python3 scripts/build_premium_autonomous_website.py --out site
           elif [ -f scripts/build_website.py ]; then
             python3 scripts/build_website.py --out site
+          elif [ -f site/index.html ]; then
+            echo "Existing site/ directory found."
           else
             mkdir -p site
-            if [ -f README.md ]; then
-              printf '<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>GoalOS AGIALPHA Ascension</title></head><body><main><h1>GoalOS AGIALPHA Ascension</h1><p>Repository-generated website shell.</p></main></body></html>' > site/index.html
-            else
-              printf '<!doctype html><html><body><main><h1>GoalOS AGIALPHA Ascension</h1></main></body></html>' > site/index.html
-            fi
+            cp site-assets/proof-pages/index.html site/index.html
           fi
-      - name: Integrate Proof Card 016 into main website root
+      - name: Integrate Proof Card Atlas into main website root
         shell: bash
-        run: python3 scripts/integrate_goalos_agialpha_proof_card_017_v31.py --site site
-      - name: Verify Proof Cards 001-017 before deployment
+        run: python3 scripts/integrate_goalos_agialpha_main_website_root_v32.py --site site
+      - name: Verify main website root and proof cards before deployment
         shell: bash
-        run: python3 scripts/verify_goalos_agialpha_proof_card_017_v31.py --site site
+        run: python3 scripts/verify_goalos_agialpha_main_website_root_v32.py --site site
       - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v4
         with:
