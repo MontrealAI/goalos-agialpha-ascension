@@ -152,6 +152,8 @@ describe("deployment UX safety layer", function () {
     expect(workflow).to.include("Run real no-broadcast Mainnet preflight");
     expect(workflow).to.include("if: inputs.mode == 'preflight'");
     expect(workflow).to.include("STRICT_MAINNET_PREFLIGHT");
+    expect(workflow).to.include("PRIVATE_MAINNET_RPC_URL: ${{ secrets.MAINNET_PREFLIGHT_RPC_URL }}");
+    expect(workflow).to.include("MAINNET_RPC_URL: ${{ vars.MAINNET_PREFLIGHT_RPC_URL }}");
     expect(workflow).to.include("run: npm run deploy:mainnet:preflight");
     expect(workflow).not.to.include("npm run deploy:mainnet:doctor -- --no-broadcast || true");
   });
@@ -176,6 +178,14 @@ describe("deployment UX safety layer", function () {
     expect(source).to.include("site-assets/main-website-v33/resources/GoalOS_Personal_Proof_Journey_Pack_v3.zip");
     expect(source).to.include("site-assets/main-website-v34/resources/GoalOS_Personal_Proof_Journey_Pack_v3.zip");
     expect(source).to.include("rel not in allowed_zip_paths");
+  });
+
+
+  it("keeps env examples filename-allowed but still secret-scanned", function () {
+    const source = fs.readFileSync("scripts/no_private_operator_data_check.py", "utf8");
+    expect(source).to.include("ENV_EXAMPLE_FILES");
+    expect(source).to.include("SECRET_SCAN_ALLOWLIST_FILES = ALLOWLIST_FILES - ENV_EXAMPLE_FILES");
+    expect(source).to.include("rel not in SECRET_SCAN_ALLOWLIST_FILES");
   });
 
   it("committed examples and docs do not contain obvious secret values", function () {

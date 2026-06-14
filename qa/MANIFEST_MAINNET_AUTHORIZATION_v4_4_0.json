@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-14T17:23:04.042818+00:00",
+  "generated_at": "2026-06-14T17:37:57.443974+00:00",
   "files": [
     {
       "path": ".editorconfig",
@@ -253,8 +253,8 @@
     },
     {
       "path": ".github/workflows/mainnet-preflight-and-operator-packet.yml",
-      "bytes": 1518,
-      "sha256": "8115f8bda29ae16464152965fc10cd4cd61bb74592fc1432abb17f2ea44e5ad6"
+      "bytes": 1659,
+      "sha256": "e0929702627b8fce7e726932649c39b3fd2b1eb0f2d3ada820c158fd0664aabf"
     },
     {
       "path": ".github/workflows/proof-card-001-demand-engine-autopublish.yml",
@@ -7818,8 +7818,8 @@
     },
     {
       "path": "scripts/no_private_operator_data_check.py",
-      "bytes": 3772,
-      "sha256": "a55267bc6dbc6d2671228c9938854998aaed9d96a3b3ac3555a4d115e00a960e"
+      "bytes": 3887,
+      "sha256": "6051f3b30e7643269cdcdf38b0cb2c30d5e26ad69c5d27792734ba741d0ee1af"
     },
     {
       "path": "scripts/patch_existing_pages_workflow_for_proof_cards_v11.py",
@@ -8328,8 +8328,8 @@
     },
     {
       "path": "test/deploymentUxSafety.test.ts",
-      "bytes": 11509,
-      "sha256": "93814d9162c5811f41046a14e00a386d927c7610a508d307719db0a3b45cfa67"
+      "bytes": 12107,
+      "sha256": "f758f9f2f35b66d359bd39947eb1f1282d35ec0f9ff3ad0cbd44910047aa6ded"
     },
     {
       "path": "test/invariants/README.md",
