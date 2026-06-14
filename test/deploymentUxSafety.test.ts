@@ -120,6 +120,8 @@ describe("deployment UX safety layer", function () {
     }
     expect(source).to.include("deploymentTxHashes[manifestName] = tx.hash");
     expect(source).to.include("txHashFor(name)");
+    expect(source).to.include("constructorArgsForManifest(name, info)");
+    expect(source).to.include("publicArgs.AGIALPHA || publicArgs.MockAGIALPHA");
     expect(source).not.to.include("txs[index]");
   });
 
@@ -134,6 +136,8 @@ describe("deployment UX safety layer", function () {
     ]) {
       expect(source).to.include(expected);
     }
+    expect(source).to.include("manifestSourceKey(name, info)");
+    expect(source).to.include('if (name === "AGIALPHA" && !info.isMainnet) return "MockAGIALPHA"');
   });
 
 
@@ -199,6 +203,9 @@ describe("deployment UX safety layer", function () {
     expect(source).to.include("site-assets/main-website-v36/resources/GoalOS_Personal_Proof_Journey_Pack_v3.zip");
     expect(source).to.include("site-assets/main-website-v36/resources/autopilot/GoalOS_AGIALPHA_Autopilot_Command_Center_v2.zip");
     expect(source).to.include("site-assets/main-website-v36/resources/autopilot/technical_assets/AGIALPHA_Autopilot_Code_Kit_v2.zip");
+    expect(source).to.include("site-assets/main-website-v38/resources/GoalOS_Personal_Proof_Journey_Pack_v3.zip");
+    expect(source).to.include("site-assets/main-website-v38/resources/autopilot/GoalOS_AGIALPHA_Autopilot_Command_Center_v2.zip");
+    expect(source).to.include("site-assets/main-website-v38/resources/autopilot/technical_assets/AGIALPHA_Autopilot_Code_Kit_v2.zip");
     expect(source).to.include("rel not in allowed_zip_paths");
   });
 

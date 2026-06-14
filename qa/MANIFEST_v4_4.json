@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-14T19:55:10.503104+00:00",
+  "generated_at": "2026-06-14T20:07:44.006670+00:00",
   "files": [
     {
       "path": ".editorconfig",
@@ -7733,8 +7733,8 @@
     },
     {
       "path": "scripts/deploy-core.ts",
-      "bytes": 28828,
-      "sha256": "3cb757a99f3f7f95e7c65b6eb028a6bb5293c88d823c258812f6a6db680551c4"
+      "bytes": 29314,
+      "sha256": "6856edd493617b79c061d29d31e0522440a4c7dec809214477cee0279184e900"
     },
     {
       "path": "scripts/deploy-ethereum-mainnet-gated.ts",
@@ -7963,8 +7963,8 @@
     },
     {
       "path": "scripts/no_paid_products_check.py",
-      "bytes": 2419,
-      "sha256": "20395420a355a075b8ff7555faf90b7679d0688669dfb1350e3b6dea070ddfc7"
+      "bytes": 2897,
+      "sha256": "a0da9e4b690aacc2bd9129f9aa7cd0053d18df5aae0fa754f9c83aabf491dc17"
     },
     {
       "path": "scripts/no_private_operator_data_check.py",
@@ -9203,8 +9203,8 @@
     },
     {
       "path": "test/deploymentUxSafety.test.ts",
-      "bytes": 14568,
-      "sha256": "d70dd0017d55104558c33201efc9cc78b33bc50b4569c9e33ca2bd12982bcfe3"
+      "bytes": 15267,
+      "sha256": "fa483e70cee0f60a6f955638d3a815d7f0dfb0431385962b7fe91ac7888685d3"
     },
     {
       "path": "test/invariants/README.md",
