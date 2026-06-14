@@ -78,6 +78,9 @@ describe("deployment UX safety layer", function () {
     expect(source).to.include("MOCK_AGIALPHA_ADDRESS");
     expect(source).to.include("DEPLOY_NEW_AGIALPHA_TOKEN");
     expect(source).to.include(CONFIRM_PHRASE);
+    expect(source).to.include("ALLOW_MAINNET_DEPLOYMENT_VALUE");
+    expect(source).to.include("process.env.ALLOW_MAINNET_DEPLOYMENT !== ALLOW_MAINNET_DEPLOYMENT_VALUE");
+    expect(source).not.to.include("process.env.ALLOW_MAINNET_DEPLOYMENT =");
     expect(() => assertAgialphaMainnetToken(AGIALPHA_MAINNET_TOKEN)).not.to.throw();
     expect(() => assertNoMockTokenOnMainnet(1, "0x0000000000000000000000000000000000000001")).to.throw("MockAGIALPHA is forbidden");
   });

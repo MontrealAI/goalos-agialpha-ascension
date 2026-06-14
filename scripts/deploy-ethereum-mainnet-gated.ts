@@ -5,6 +5,7 @@ import { deployGoalOSAGIALPHAAscension } from "./deploy-core";
 import { AGIALPHA_MAINNET_TOKEN, assertAgialphaMainnetToken, assertNoMockTokenOnMainnet, assertNoSecretLogging } from "./config/networkConfig";
 
 const CONFIRM_PHRASE = "DEPLOY_GOALOS_AGIALPHA_ASCENSION_TO_ETHEREUM_MAINNET";
+const ALLOW_MAINNET_DEPLOYMENT_VALUE = "YES_PUBLIC_REPOSITORY_AUTHORIZED_MANUAL_DEPLOYMENT";
 function readJson(path: string) { if (!fs.existsSync(path)) throw new Error(`${path} is missing.`); return JSON.parse(fs.readFileSync(path, "utf8")); }
 function hashFile(path: string) { return "0x" + crypto.createHash("sha256").update(fs.readFileSync(path)).digest("hex"); }
 function evidencePath(entry: any, fallback: string): string { return (entry && typeof entry === "object" && entry.path) ? entry.path : (typeof entry === "string" ? entry : fallback); }
@@ -43,7 +44,7 @@ async function main() {
   if (rehearsal.status !== "PASSED") throw new Error("Local deterministic rehearsal evidence is not PASSED.");
   const tokenVerification = readJson(tokenVerificationPath);
   if (tokenVerification.status !== "PASSED" && tokenVerification.status !== "ACCEPTED_BY_PUBLIC_GOVERNANCE") throw new Error("Public AGIALPHA verification evidence is not passed/accepted.");
-  process.env.ALLOW_MAINNET_DEPLOYMENT = "YES_PUBLIC_REPOSITORY_AUTHORIZED_MANUAL_DEPLOYMENT";
+  if (process.env.ALLOW_MAINNET_DEPLOYMENT !== ALLOW_MAINNET_DEPLOYMENT_VALUE) throw new Error(`ALLOW_MAINNET_DEPLOYMENT must equal ${ALLOW_MAINNET_DEPLOYMENT_VALUE} for local Ethereum Mainnet broadcast.`);
   if (process.env.MAINNET_DEPLOYMENT_CONFIRMATION !== CONFIRM_PHRASE && process.env.FINAL_DEPLOY_CONFIRMATION !== CONFIRM_PHRASE) throw new Error(`Typed confirmation phrase is required: ${CONFIRM_PHRASE}`);
   console.log(JSON.stringify({ status: "MAINNET_DEPLOYMENT_GATES_PASSED_REDACTED", chain: "ethereum", chainId: 1, agialphaToken: AGIALPHA_MAINNET_TOKEN, privateOperatorPackageRequired: false, noMainnetMock: true }, null, 2));
   const deployment = await deployGoalOSAGIALPHAAscension();
