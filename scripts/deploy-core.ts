@@ -71,39 +71,42 @@ const SOURCE_PATHS: Record<string, string> = {
 };
 const TOKEN_RESERVE_ALIASES = ["ProofRewardsVault", "LiquidityVault", "SecurityVault", "CommunityVault"];
 function implementationName(name: string): string { return TOKEN_RESERVE_ALIASES.includes(name) ? "TokenReserveVault" : name; }
-function isExternalAgialpha(name: string, info: ChainInfo): boolean { return name === "AGIALPHA" && info.isMainnet; }
-function manifestSourceKey(name: string, info: ChainInfo): string {
-  if (name === "AGIALPHA" && !info.isMainnet) return "MockAGIALPHA";
+function isExternalAgialpha(name: string, info: ChainInfo, mockAgialphaUsed = false): boolean { return name === "AGIALPHA" && (info.isMainnet || !mockAgialphaUsed); }
+function manifestSourceKey(name: string, info: ChainInfo, mockAgialphaUsed: boolean): string {
+  if (name === "AGIALPHA" && !info.isMainnet && mockAgialphaUsed) return "MockAGIALPHA";
   return name;
 }
-function constructorArgsForManifest(name: string, info: ChainInfo): any[] {
+function constructorArgsForManifest(name: string, info: ChainInfo, mockAgialphaUsed: boolean): any[] {
+  if (info.isMainnet) return [];
   const publicArgs = publicConstructorArgs(info) as any;
-  if (name === "AGIALPHA" && !info.isMainnet) return publicArgs.AGIALPHA || publicArgs.MockAGIALPHA || [];
+  if (name === "AGIALPHA" && mockAgialphaUsed) return publicArgs.AGIALPHA || publicArgs.MockAGIALPHA || [];
+  if (name === "AGIALPHA") return [];
   return publicArgs[name] || [];
 }
-function sourcePathFor(name: string, info?: ChainInfo): string {
-  if (info && isExternalAgialpha(name, info)) return "";
-  const sourcePath = SOURCE_PATHS[info ? manifestSourceKey(name, info) : name];
+function sourcePathFor(name: string, info?: ChainInfo, mockAgialphaUsed = false): string {
+  if (info && isExternalAgialpha(name, info, mockAgialphaUsed)) return "";
+  const sourcePath = SOURCE_PATHS[info ? manifestSourceKey(name, info, mockAgialphaUsed) : name];
   if (!sourcePath) throw new Error(`Missing source-path mapping for ${name}; update SOURCE_PATHS before generating verification manifests.`);
   return sourcePath;
 }
-function fqcnFor(name: string, info?: ChainInfo): string { if (info && isExternalAgialpha(name, info)) return ""; const key = info ? manifestSourceKey(name, info) : name; const impl = key === "AGIALPHA" ? "MockAGIALPHA" : implementationName(key); return `${sourcePathFor(key, info)}:${impl}`; }
-function artifactPathFor(name: string, info?: ChainInfo): string { if (info && isExternalAgialpha(name, info)) return ""; const key = info ? manifestSourceKey(name, info) : name; const impl = key === "AGIALPHA" ? "MockAGIALPHA" : implementationName(key); return `artifacts/${sourcePathFor(key, info)}/${impl}.json`; }
+function fqcnFor(name: string, info?: ChainInfo, mockAgialphaUsed = false): string { if (info && isExternalAgialpha(name, info, mockAgialphaUsed)) return ""; const key = info ? manifestSourceKey(name, info, mockAgialphaUsed) : name; const impl = key === "AGIALPHA" ? "MockAGIALPHA" : implementationName(key); return `${sourcePathFor(key, info, mockAgialphaUsed)}:${impl}`; }
+function artifactPathFor(name: string, info?: ChainInfo, mockAgialphaUsed = false): string { if (info && isExternalAgialpha(name, info, mockAgialphaUsed)) return ""; const key = info ? manifestSourceKey(name, info, mockAgialphaUsed) : name; const impl = key === "AGIALPHA" ? "MockAGIALPHA" : implementationName(key); return `artifacts/${sourcePathFor(key, info, mockAgialphaUsed)}/${impl}.json`; }
 function hashJson(value: unknown): string { return sha256Hex(JSON.stringify(value, jsonReplacer)); }
 function txHashFor(name: string): string { return deploymentTxHashes[name] || (name === "AGIALPHA" ? deploymentTxHashes.MockAGIALPHA : "") || ""; }
-function buildStandardContracts(contracts: Record<string, string>, info: ChainInfo) {
+function buildStandardContracts(contracts: Record<string, string>, info: ChainInfo, mockAgialphaUsed: boolean) {
   return Object.entries(contracts).map(([name, address]) => {
-    const externalAgialpha = isExternalAgialpha(name, info);
-    const fqcn = fqcnFor(name, info);
-    const artifactPath = artifactPathFor(name, info);
+    const externalAgialpha = isExternalAgialpha(name, info, mockAgialphaUsed);
+    const fqcn = fqcnFor(name, info, mockAgialphaUsed);
+    const artifactPath = artifactPathFor(name, info, mockAgialphaUsed);
     return {
       name,
       fullyQualifiedName: fqcn,
-      sourcePath: sourcePathFor(name, info),
+      sourcePath: sourcePathFor(name, info, mockAgialphaUsed),
       address,
       txHash: externalAgialpha ? "" : txHashFor(name),
       blockNumber: undefined,
-      constructorArgs: externalAgialpha ? [] : constructorArgsForManifest(name, info),
+      constructorArgs: externalAgialpha ? [] : constructorArgsForManifest(name, info, mockAgialphaUsed),
+      constructorArgsRedacted: info.isMainnet && !externalAgialpha,
       constructorArgsEncoded: undefined,
       constructorArgsFile: undefined,
       libraries: {},
@@ -398,7 +401,7 @@ export async function deployGoalOSAGIALPHAAscension() {
       AEPChronicleRegistry: await aepChronicle.getAddress(),
       AEPFalsificationRegistry: await aepFalsification.getAddress()
     };
-  const standardContracts = buildStandardContracts(deployedContracts, info);
+  const standardContracts = buildStandardContracts(deployedContracts, info, mockAgialphaUsed);
   const deployment = {
     manifestVersion: "1.0.0",
     packageName: "goalos-agialpha-ascension",

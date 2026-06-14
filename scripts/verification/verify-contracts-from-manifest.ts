@@ -51,6 +51,7 @@ async function main(){
     if (Array.isArray(args)) { constructorArgsFile = writeConstructorArgsFile(`${argsDir}/${name}.args.ts`, args); }
     const base = { name, fqcn, address, bytecodePresent: c.bytecodePresent ?? "unchecked", constructorArgsPresent: Array.isArray(args), alreadyVerified:false, verificationUrl:c.verificationUrl||null };
     if (c.verification?.status === "skipped") { results.push({...base, etherscanStatus:"skipped", sourcifyStatus:"not_run", error:c.verification?.error || "Verification skipped by manifest."}); continue; }
+    if (c.constructorArgsRedacted === true || (isMainnet(network) && m.constructorArgsRedacted === true)) { results.push({...base, etherscanStatus:"failed", sourcifyStatus:"not_run", error:"Constructor args are redacted in the public Mainnet manifest; provide a private unredacted constructor-args source before automatic verification."}); continue; }
     if (!isAddressLike(address)) { results.push({...base, etherscanStatus:"failed", sourcifyStatus:"not_run", error:"Invalid or missing deployed contract address"}); continue; }
     if (!Array.isArray(args)) { results.push({...base, etherscanStatus:"failed", sourcifyStatus:"not_run", error:"Constructor args missing; manual verification args file required"}); continue; }
     let ok=false, already=false, error="";

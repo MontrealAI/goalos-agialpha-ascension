@@ -87,7 +87,8 @@ describe("deployment UX safety layer", function () {
 
   it("does not let generated mainnet docs claim deployed YES without transaction evidence", function () {
     const commandCenter = fs.readFileSync("scripts/deployment/goalos-deploy-command-center.ts", "utf8");
-    expect(commandCenter).to.include("Mainnet evidence blocked: manifest is template/partial or lacks real chainId=1 tx evidence");
+    expect(commandCenter).to.include("Mainnet evidence blocked: manifest must be complete and include real chainId=1 per-contract tx evidence");
+    expect(commandCenter).to.include("requiredManifestContractsComplete");
     expect(commandCenter).to.include("Mainnet deployed: ${main?\"NO unless this report was generated from a real chainId=1 manifest with transactions\":\"N/A\"}");
   });
 
@@ -120,8 +121,10 @@ describe("deployment UX safety layer", function () {
     }
     expect(source).to.include("deploymentTxHashes[manifestName] = tx.hash");
     expect(source).to.include("txHashFor(name)");
-    expect(source).to.include("constructorArgsForManifest(name, info)");
+    expect(source).to.include("constructorArgsForManifest(name, info, mockAgialphaUsed)");
     expect(source).to.include("publicArgs.AGIALPHA || publicArgs.MockAGIALPHA");
+    expect(source).to.include("if (info.isMainnet) return []");
+    expect(source).to.include("constructorArgsRedacted: info.isMainnet");
     expect(source).not.to.include("txs[index]");
   });
 
@@ -136,8 +139,8 @@ describe("deployment UX safety layer", function () {
     ]) {
       expect(source).to.include(expected);
     }
-    expect(source).to.include("manifestSourceKey(name, info)");
-    expect(source).to.include('if (name === "AGIALPHA" && !info.isMainnet) return "MockAGIALPHA"');
+    expect(source).to.include("manifestSourceKey(name, info, mockAgialphaUsed)");
+    expect(source).to.include('if (name === "AGIALPHA" && !info.isMainnet && mockAgialphaUsed) return "MockAGIALPHA"');
   });
 
 
@@ -242,6 +245,7 @@ describe("deployment UX safety layer", function () {
     }
     expect(verifier).to.include("classifyVerificationOutput");
     expect(verifier).to.include("writeVerificationReport");
+    expect(verifier).to.include("Constructor args are redacted in the public Mainnet manifest");
     expect(verifier).to.include('if (failed && !has("--allow-partial")) process.exitCode = 1');
   });
 
