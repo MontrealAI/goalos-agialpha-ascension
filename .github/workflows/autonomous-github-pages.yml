@@ -4,15 +4,9 @@ on:
   push:
     branches: [ main ]
     paths:
-      - "README.md"
-      - "docs/**"
-      - "qa/**"
-      - "audit/**"
-      - "deployments/**"
-      - "package.json"
-      - "site-assets/main-website-v38/**"
-      - "scripts/build_goalos_agialpha_final_main_website_v38.py"
-      - "scripts/verify_goalos_agialpha_final_main_website_v38.py"
+      - "site-assets/main-website-v39/**"
+      - "scripts/build_goalos_agialpha_final_main_website_v39.py"
+      - "scripts/verify_goalos_agialpha_final_main_website_v39.py"
       - ".github/workflows/autonomous-github-pages.yml"
   workflow_dispatch:
 
@@ -24,28 +18,23 @@ permissions: {}
 
 jobs:
   build:
-    name: Build final main website v38
+    name: Build final production website v39
     runs-on: ubuntu-latest
     permissions:
       contents: read
     steps:
       - name: Checkout repository
         uses: actions/checkout@v6
-
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
-
-      - name: Build production website
-        run: python3 scripts/build_goalos_agialpha_final_main_website_v38.py --out site
-
-      - name: Verify production website
-        run: python3 scripts/verify_goalos_agialpha_final_main_website_v38.py --site site
-
+      - name: Build final main website
+        run: python3 scripts/build_goalos_agialpha_final_main_website_v39.py --out site
+      - name: Verify final main website
+        run: python3 scripts/verify_goalos_agialpha_final_main_website_v39.py --site site
       - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v4
         with:
           path: site
-
   deploy:
     name: Deploy final website to GitHub Pages
     runs-on: ubuntu-latest
