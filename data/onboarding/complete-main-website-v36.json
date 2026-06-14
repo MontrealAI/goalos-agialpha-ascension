@@ -1,0 +1,18 @@
+{
+  "version": "v36.0",
+  "pages": [
+    "index.html",
+    "start-here.html",
+    "personal-proof-sprint.html",
+    "proof-sprint-builder.html",
+    "autopilot-mission-builder.html",
+    "use-cases.html",
+    "resources.html",
+    "proof-cards.html",
+    "agialpha-ledger-route.html",
+    "sovereign-rsi-control-plane.html",
+    "evidence-docket.html"
+  ],
+  "proof_cards": 17,
+  "autopilot": true
+}
