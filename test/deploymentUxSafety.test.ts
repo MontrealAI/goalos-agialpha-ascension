@@ -203,4 +203,23 @@ describe("deployment UX safety layer", function () {
       expect(text).not.to.match(/https:\/\/[^\s]*(alchemy|infura)[^\s]*[A-Za-z0-9_-]{20,}/i);
     }
   });
+
+  it("exposes autonomous verification helper seams without fabricating success", function () {
+    const verifier = fs.readFileSync("scripts/verification/verify-contracts-from-manifest.ts", "utf8");
+    for (const helper of [
+      "./lib/verifyWithHardhat",
+      "./lib/verifyWithEtherscan",
+      "./lib/verifyWithSourcify",
+      "./lib/verificationStatus",
+      "./lib/constructorArgs",
+      "./lib/bytecodeChecks",
+      "./lib/reportVerification"
+    ]) {
+      expect(fs.existsSync(`scripts/verification/lib/${helper.split('/').pop()}.ts`)).to.equal(true);
+    }
+    expect(verifier).to.include("classifyVerificationOutput");
+    expect(verifier).to.include("writeVerificationReport");
+    expect(verifier).to.include('if (failed && !has("--allow-partial")) process.exitCode = 1');
+  });
+
 });
