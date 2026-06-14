@@ -1,11 +1,15 @@
 import fs from "fs";
 import crypto from "crypto";
-import { execFileSync } from "child_process";
 import { redactString } from "../deployment/lib/redact";
 import { assertRealMainnetManifest } from "../deployment/lib/mainnetGuards";
+import { constructorArgsFor, writeConstructorArgsFile } from "./lib/constructorArgs";
+import { isAddressLike } from "./lib/bytecodeChecks";
+import { classifyVerificationOutput, verificationSucceeded } from "./lib/verificationStatus";
+import { verifyWithEtherscan } from "./lib/verifyWithEtherscan";
+import { sourcifyRequested } from "./lib/verifyWithSourcify";
+import { writeVerificationReport } from "./lib/reportVerification";
 
 const CLAIM_BOUNDARY = "This evidence reports deployment and verification mechanics only. It does not claim achieved AGI, ASI, superintelligence, guaranteed ROI, legal approval, tax approval, security approval, external audit completion, production safety, or Ethereum Mainnet deployment.";
-const ALREADY = /already verified|already been verified|already verified contract/i;
 function arg(name:string, fallback?:string){ const i=process.argv.indexOf(name); return i>=0 ? process.argv[i+1] : fallback; }
 function has(name:string){ return process.argv.includes(name); }
 function isMainnet(n:string){ return /mainnet/i.test(n); }
@@ -15,7 +19,6 @@ function contractEntries(m:any): any[] {
   if (Array.isArray(m.contracts)) return m.contracts;
   return Object.entries(m.contracts || {}).map(([name,address]) => ({ name, address, fullyQualifiedName: m.fullyQualifiedNames?.[name as string], constructorArgs: m.constructorArgs?.[name as string] }));
 }
-function argsFor(c:any, m:any){ return Array.isArray(c.constructorArgs) ? c.constructorArgs : (Array.isArray(m.constructorArgs?.[c.name]) ? m.constructorArgs[c.name] : undefined); }
 function fqcnFor(c:any){ return c.fullyQualifiedName || c.fqcn || c.contract || c.name; }
 function writeManual(network:string, failed:any[]) {
   const dir = isMainnet(network) ? "verification-args/mainnet" : "verification-args/sepolia";
@@ -41,18 +44,18 @@ async function main(){
   const results:any[]=[];
   const argsDir = isMainnet(network)?"verification-args/mainnet":"verification-args/sepolia"; fs.mkdirSync(argsDir,{recursive:true});
   for (const c of contracts) {
-    const address = c.address; const name = c.name || c.contractName || "UnknownContract"; const fqcn = fqcnFor(c); const args = argsFor(c,m);
+    const address = c.address; const name = c.name || c.contractName || "UnknownContract"; const fqcn = fqcnFor(c); const args = constructorArgsFor(c,m);
     let constructorArgsFile: string | undefined;
-    if (Array.isArray(args)) { constructorArgsFile = `${argsDir}/${name}.args.ts`; fs.writeFileSync(constructorArgsFile, `export default ${JSON.stringify(args, null, 2)};\n`); }
+    if (Array.isArray(args)) { constructorArgsFile = writeConstructorArgsFile(`${argsDir}/${name}.args.ts`, args); }
     const base = { name, fqcn, address, bytecodePresent: c.bytecodePresent ?? "unchecked", constructorArgsPresent: Array.isArray(args), alreadyVerified:false, verificationUrl:c.verificationUrl||null };
-    if (!/^0x[0-9a-fA-F]{40}$/.test(String(address))) { results.push({...base, etherscanStatus:"failed", sourcifyStatus:"not_run", error:"Invalid or missing deployed contract address"}); continue; }
+    if (!isAddressLike(address)) { results.push({...base, etherscanStatus:"failed", sourcifyStatus:"not_run", error:"Invalid or missing deployed contract address"}); continue; }
     if (!Array.isArray(args)) { results.push({...base, etherscanStatus:"failed", sourcifyStatus:"not_run", error:"Constructor args missing; manual verification args file required"}); continue; }
     let ok=false, already=false, error="";
     for (let attempt=0; attempt<retryCount && !ok; attempt++) {
-      try { execFileSync("npx", ["hardhat","verify","--network",network,"--contract",fqcn,"--constructor-args",constructorArgsFile!,String(address)], {stdio:"pipe"}); ok=true; }
-      catch(e:any){ const out=redactString(String(e.stdout||"")+String(e.stderr||"")); if(ALREADY.test(out)){ok=true; already=true;} else { error=out.slice(0,1200); if(retryDelayMs) await new Promise(r=>setTimeout(r,retryDelayMs)); } }
+      try { const out = verifyWithEtherscan(network, fqcn, String(address), constructorArgsFile!); const status = classifyVerificationOutput(out || "successfully verified"); ok = verificationSucceeded(status) || status === "verified"; already = status === "already_verified"; }
+      catch(e:any){ const out=redactString(String(e.stdout||"")+String(e.stderr||"")); const status = classifyVerificationOutput(out); if(status === "already_verified"){ok=true; already=true;} else { error=out.slice(0,1200); if(retryDelayMs) await new Promise(r=>setTimeout(r,retryDelayMs)); } }
     }
-    results.push({...base, etherscanStatus: ok ? "verified" : "failed", sourcifyStatus: has("--provider") && arg("--provider") === "sourcify" ? "requested" : "not_run", alreadyVerified: already, verificationProvider:"hardhat-etherscan", verificationTimestamp:new Date().toISOString(), error: ok?null:error, constructorArgsFile});
+    results.push({...base, etherscanStatus: ok ? "verified" : "failed", sourcifyStatus: sourcifyRequested(arg("--provider", "both")!) ? "requested" : "not_run", alreadyVerified: already, verificationProvider:"hardhat-etherscan", verificationTimestamp:new Date().toISOString(), error: ok?null:error, constructorArgsFile});
   }
   const verified = results.filter(r=>r.etherscanStatus==="verified").length;
   const alreadyVerified = results.filter(r=>r.alreadyVerified).length;
@@ -62,7 +65,7 @@ async function main(){
   const out = isMainnet(network)?"qa/mainnet-contract-verification-evidence.json":"qa/sepolia-contract-verification-evidence.json";
   const report = isMainnet(network)?"docs/ETHEREUM_MAINNET_CONTRACT_VERIFICATION_REPORT.md":"docs/SEPOLIA_CONTRACT_VERIFICATION_REPORT.md";
   fs.writeFileSync(out, JSON.stringify(evidence,null,2)+"\n");
-  fs.writeFileSync(report, `# ${isMainnet(network)?"Ethereum Mainnet":"Sepolia"} Contract Verification Report\n\nVerified means the block explorer matched deployed bytecode to source/metadata. Already verified is counted as success. Bytecode present but unverified means source verification is missing. Missing bytecode means the address is wrong or deployment failed. Constructor args missing means automatic verification may fail. Partial verification is not production verification.\n\nSummary: ${verified}/${results.length} verified. Failed: ${failed}.\n\nClaim boundary: ${CLAIM_BOUNDARY}\n`);
+  writeVerificationReport(report, `${isMainnet(network)?"Ethereum Mainnet":"Sepolia"} Contract Verification Report`, `Verified means the block explorer matched deployed bytecode to source/metadata. Already verified is counted as success. Bytecode present but unverified means source verification is missing. Missing bytecode means the address is wrong or deployment failed. Constructor args missing means automatic verification may fail. Partial verification is not production verification.\n\nSummary: ${verified}/${results.length} verified. Failed: ${failed}.`, CLAIM_BOUNDARY);
   writeManual(network, results.filter(r=>r.etherscanStatus!=="verified"));
   console.log(JSON.stringify({ readyToVerify: failed===0?"YES":"NO", evidence:out, report, failed }, null, 2));
   if (failed && !has("--allow-partial")) process.exitCode = 1;
