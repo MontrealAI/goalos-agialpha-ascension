@@ -17,16 +17,20 @@ SECRET_PATTERNS = [
 ]
 PRIVATE_ADDRESS_CONTEXT = re.compile(r"(founder|treasury|deployer|admin|vault|security|community|operator|ceremony).{0,80}0x[0-9a-fA-F]{40}", re.I)
 ADDRESS_RE = re.compile(r"0x[0-9a-fA-F]{40}")
+ENV_EXAMPLE_FILES = {".env.sepolia.example", ".env.mainnet.example"}
 ALLOWLIST_FILES = {
     "README.md",
     ".env.example",
+    *ENV_EXAMPLE_FILES,
     "docs/FOUNDER_MAINNET_DEPLOYMENT_APPROVAL_MESSAGE.txt",
     "docs/MAINNET_AUTHORIZATION_INPUTS_REQUIRED.md",
     "docs/PRIVATE_INPUTS_REQUIRED_BUT_NOT_COMMITTED.md",
     "hardhat.config.ts",
     "scripts/repository_safety_check.py",
     "scripts/verify-readiness-v4-2.py",
+    "scripts/deployment/lib/redact.ts",
 }
+SECRET_SCAN_ALLOWLIST_FILES = ALLOWLIST_FILES - ENV_EXAMPLE_FILES
 
 
 def tracked_files() -> list[pathlib.Path]:
@@ -46,7 +50,7 @@ for path in tracked_files():
     rel = rel_path.as_posix()
     if any(part in SKIP_PARTS for part in rel_parts):
         continue
-    if path.name in FORBIDDEN_NAMES or (path.name.startswith(".env") and path.name != ".env.example"):
+    if path.name in FORBIDDEN_NAMES or (path.name.startswith(".env") and path.name not in {".env.example", ".env.sepolia.example", ".env.mainnet.example"}):
         errors.append(f"Forbidden private/env file committed: {rel}")
     if (any(part in FORBIDDEN_PARTS for part in rel_parts) and not rel.startswith(".private.example/")) or (rel_parts and rel_parts[0] == "private"):
         errors.append(f"Forbidden private operator path committed: {rel}")
@@ -56,7 +60,7 @@ for path in tracked_files():
         text = path.read_text(encoding="utf-8", errors="ignore")
     except Exception:
         continue
-    if rel not in ALLOWLIST_FILES and not rel.startswith(".private.example/"):
+    if rel not in SECRET_SCAN_ALLOWLIST_FILES and not rel.startswith(".private.example/"):
         for pattern in SECRET_PATTERNS:
             if pattern.search(text):
                 errors.append(f"Potential secret/RPC/private artifact in {rel}")

@@ -135,10 +135,12 @@ export async function deployGoalOSAGIALPHAAscension() {
   const securityAdmin = requireEnvAddress("SECURITY_ADMIN");
   const communityAdmin = requireEnvAddress("COMMUNITY_ADMIN");
 
+  let mockAgialphaUsed = false;
   let agialphaToken = optionalEnvAddress("AGIALPHA_TOKEN_ADDRESS");
   const mainnetTokenProvidedOnNonMainnet = Boolean(agialphaToken) && !info.isMainnet && agialphaToken!.toLowerCase() === AGIALPHA_MAINNET.toLowerCase();
   if ((!agialphaToken || mainnetTokenProvidedOnNonMainnet) && !info.isMainnet) {
     const mock = await deploy("MockAGIALPHA", [deployer.address]);
+    mockAgialphaUsed = true;
     agialphaToken = await mock.getAddress();
     console.log(`Non-mainnet rehearsal deployed MockAGIALPHA: ${agialphaToken}`);
   }
@@ -147,6 +149,7 @@ export async function deployGoalOSAGIALPHAAscension() {
   if (tokenCode === "0x") {
     if (!info.isMainnet && process.env.ALLOW_NONMAINNET_MOCK_ON_MISSING_TOKEN === "YES") {
       const mock = await deploy("MockAGIALPHA", [deployer.address]);
+      mockAgialphaUsed = true;
       agialphaToken = await mock.getAddress();
       tokenCode = await ethers.provider.getCode(agialphaToken);
       console.log(`Non-mainnet token address had no code; deployed MockAGIALPHA due to explicit override: ${agialphaToken}`);
@@ -163,11 +166,20 @@ export async function deployGoalOSAGIALPHAAscension() {
     console.log({ deployer: deployer.address, admin, founder, treasury, agialphaToken, legacyAGIJobManager });
   }
 
-  const performanceVault = await deploy("CommercializationPerformanceVault", [commercializationAdmin, agialphaToken]);
-  const proofRewardsVault = await deploy("TokenReserveVault", [proofRewardsAdmin, agialphaToken, "AGIALPHA Proof Jobs / Builder Rewards"]);
-  const liquidityVault = await deploy("TokenReserveVault", [liquidityAdmin, agialphaToken, "AGIALPHA Liquidity / Operations"]);
-  const securityVault = await deploy("TokenReserveVault", [securityAdmin, agialphaToken, "Security / Audits / Bug Bounties"]);
-  const communityVault = await deploy("TokenReserveVault", [communityAdmin, agialphaToken, "AGI Club / Genesis Community / Credentials"]);
+  const performanceVaultArgs = [commercializationAdmin, agialphaToken];
+  const proofRewardsVaultArgs = [proofRewardsAdmin, agialphaToken, "AGIALPHA Proof Jobs / Builder Rewards"];
+  const liquidityVaultArgs = [liquidityAdmin, agialphaToken, "AGIALPHA Liquidity / Operations"];
+  const securityVaultArgs = [securityAdmin, agialphaToken, "Security / Audits / Bug Bounties"];
+  const communityVaultArgs = [communityAdmin, agialphaToken, "AGI Club / Genesis Community / Credentials"];
+  const performanceVault = await deploy("CommercializationPerformanceVault", performanceVaultArgs);
+  const proofRewardsVault = await deploy("TokenReserveVault", proofRewardsVaultArgs);
+  constructorArgs.ProofRewardsVault = proofRewardsVaultArgs;
+  const liquidityVault = await deploy("TokenReserveVault", liquidityVaultArgs);
+  constructorArgs.LiquidityVault = liquidityVaultArgs;
+  const securityVault = await deploy("TokenReserveVault", securityVaultArgs);
+  constructorArgs.SecurityVault = securityVaultArgs;
+  const communityVault = await deploy("TokenReserveVault", communityVaultArgs);
+  constructorArgs.CommunityVault = communityVaultArgs;
 
   const proofSeeds = await deploy("ProofSeedRegistry", [admin, agialphaToken, treasury]);
   const legacyRegistry = await deploy("LegacyAGIJobManagerRegistry", [admin, legacyAGIJobManager]);
@@ -245,7 +257,7 @@ export async function deployGoalOSAGIALPHAAscension() {
     founder: info.isMainnet ? undefined : founder,
     treasury: info.isMainnet ? undefined : treasury,
     agialphaToken,
-    mockAgialphaUsed: false,
+    mockAgialphaUsed,
     newAgialphaTokenDeployed: false,
     legacyAGIJobManager,
     transactions,

@@ -1,0 +1,83 @@
+name: Deploy Ethereum Sepolia
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        type: choice
+        options: [doctor, dry_run, deploy, verify, evidence, full]
+        required: true
+      confirm_network:
+        type: choice
+        options: [ethereumSepolia]
+        required: true
+        default: ethereumSepolia
+      deployment_note:
+        required: false
+permissions:
+  contents: read
+concurrency:
+  group: goalos-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  sepolia:
+    environment: sepolia
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: '20' }
+      - run: npm ci
+      - run: npm run test:ci
+      - name: Run selected Sepolia mode
+        env:
+          PRIVATE_SEPOLIA_RPC_URL: ${{ secrets.PRIVATE_SEPOLIA_RPC_URL }}
+          PRIVATE_SEPOLIA_DEPLOYER_PRIVATE_KEY: ${{ secrets.PRIVATE_SEPOLIA_DEPLOYER_PRIVATE_KEY }}
+          ETHERSCAN_API_KEY: ${{ secrets.ETHERSCAN_API_KEY }}
+          FOUNDER_ADDRESS: ${{ secrets.SEPOLIA_FOUNDER_ADDRESS }}
+          TREASURY_ADDRESS: ${{ secrets.SEPOLIA_TREASURY_ADDRESS }}
+          COMMERCIALIZATION_PERFORMANCE_ADMIN: ${{ secrets.SEPOLIA_COMMERCIALIZATION_PERFORMANCE_ADMIN }}
+          PROOF_REWARDS_ADMIN: ${{ secrets.SEPOLIA_PROOF_REWARDS_ADMIN }}
+          LIQUIDITY_ADMIN: ${{ secrets.SEPOLIA_LIQUIDITY_ADMIN }}
+          SECURITY_ADMIN: ${{ secrets.SEPOLIA_SECURITY_ADMIN }}
+          COMMUNITY_ADMIN: ${{ secrets.SEPOLIA_COMMUNITY_ADMIN }}
+          AGIALPHA_TOKEN_ADDRESS: ${{ secrets.SEPOLIA_AGIALPHA_TOKEN_ADDRESS }}
+          MOCK_AGIALPHA_ADDRESS: ${{ secrets.SEPOLIA_MOCK_AGIALPHA_ADDRESS }}
+          CONFIRM_NETWORK: ${{ inputs.confirm_network }}
+          DEPLOY_MODE: ${{ inputs.mode }}
+        run: |
+          test "$CONFIRM_NETWORK" = "ethereumSepolia"
+          case "$DEPLOY_MODE" in
+            doctor) npm run deploy:sepolia:doctor ;;
+            dry_run) npm run deploy:sepolia:dry-run ;;
+            deploy) npm run deploy:sepolia:live ;;
+            verify) npm run deploy:sepolia:verify ;;
+            evidence) npm run deploy:sepolia:evidence ;;
+            full) npm run deploy:sepolia:doctor && npm run deploy:sepolia:dry-run && npm run deploy:sepolia:live && npm run deploy:sepolia:verify && npm run deploy:sepolia:evidence ;;
+          esac
+      - name: Collect run-generated Sepolia artifacts
+        if: inputs.mode == 'deploy' || inputs.mode == 'evidence' || inputs.mode == 'full'
+        env:
+          DEPLOY_MODE: ${{ inputs.mode }}
+        run: |
+          rm -rf .deployment-run-artifacts
+          mkdir -p .deployment-run-artifacts/deployments .deployment-run-artifacts/qa .deployment-run-artifacts/docs
+          case "$DEPLOY_MODE" in
+            deploy|full)
+              cp deployments/ethereum-sepolia.agialpha.latest.json .deployment-run-artifacts/deployments/ 2>/dev/null || true
+              cp deployments/ethereum-sepolia.agialpha.latest.sha256 .deployment-run-artifacts/deployments/ 2>/dev/null || true
+              ;;
+          esac
+          case "$DEPLOY_MODE" in
+            evidence|full)
+              cp qa/sepolia-deployment-evidence.json .deployment-run-artifacts/qa/ 2>/dev/null || true
+              cp docs/SEPOLIA_DEPLOYMENT_REPORT.md .deployment-run-artifacts/docs/ 2>/dev/null || true
+              cp deployments/ethereum-sepolia.agialpha.latest.json .deployment-run-artifacts/deployments/ 2>/dev/null || true
+              cp deployments/ethereum-sepolia.agialpha.latest.sha256 .deployment-run-artifacts/deployments/ 2>/dev/null || true
+              ;;
+          esac
+      - uses: actions/upload-artifact@v4
+        if: inputs.mode == 'deploy' || inputs.mode == 'evidence' || inputs.mode == 'full'
+        with:
+          name: sepolia-deployment-evidence
+          path: .deployment-run-artifacts
+          if-no-files-found: error
