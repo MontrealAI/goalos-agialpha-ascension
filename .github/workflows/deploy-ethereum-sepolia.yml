@@ -7,6 +7,8 @@ on:
         options: [doctor, dry_run, deploy, verify, evidence, full]
         required: true
       confirm_network:
+        type: choice
+        options: [ethereumSepolia]
         required: true
         default: ethereumSepolia
       deployment_note:
@@ -40,9 +42,11 @@ jobs:
           COMMUNITY_ADMIN: ${{ secrets.SEPOLIA_COMMUNITY_ADMIN }}
           AGIALPHA_TOKEN_ADDRESS: ${{ secrets.SEPOLIA_AGIALPHA_TOKEN_ADDRESS }}
           MOCK_AGIALPHA_ADDRESS: ${{ secrets.SEPOLIA_MOCK_AGIALPHA_ADDRESS }}
+          CONFIRM_NETWORK: ${{ inputs.confirm_network }}
+          DEPLOY_MODE: ${{ inputs.mode }}
         run: |
-          test "${{ inputs.confirm_network }}" = "ethereumSepolia"
-          case "${{ inputs.mode }}" in
+          test "$CONFIRM_NETWORK" = "ethereumSepolia"
+          case "$DEPLOY_MODE" in
             doctor) npm run deploy:sepolia:doctor ;;
             dry_run) npm run deploy:sepolia:dry-run ;;
             deploy) npm run deploy:sepolia:live ;;

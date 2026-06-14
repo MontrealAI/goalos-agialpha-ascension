@@ -95,10 +95,12 @@ describe("deployment UX safety layer", function () {
 
 
 
-  it("documents required Sepolia deployment role addresses", function () {
-    const text = fs.readFileSync(".env.sepolia.example", "utf8");
+  it("documents required Sepolia and Mainnet deployment role addresses", function () {
+    const sepolia = fs.readFileSync(".env.sepolia.example", "utf8");
+    const mainnet = fs.readFileSync(".env.mainnet.example", "utf8");
     for (const name of ["FOUNDER_ADDRESS", "TREASURY_ADDRESS", "COMMERCIALIZATION_PERFORMANCE_ADMIN", "PROOF_REWARDS_ADMIN", "LIQUIDITY_ADMIN", "SECURITY_ADMIN", "COMMUNITY_ADMIN"]) {
-      expect(text).to.include(`${name}=`);
+      expect(sepolia).to.include(`${name}=`);
+      expect(mainnet).to.include(`${name}=`);
     }
   });
 
@@ -115,6 +117,23 @@ describe("deployment UX safety layer", function () {
     }
   });
 
+
+
+  it("keeps Sepolia workflow dispatch inputs out of the secret-bearing shell script", function () {
+    const workflow = fs.readFileSync(".github/workflows/deploy-ethereum-sepolia.yml", "utf8");
+    expect(workflow).to.include("options: [ethereumSepolia]");
+    expect(workflow).to.include("CONFIRM_NETWORK: ${{ inputs.confirm_network }}");
+    expect(workflow).to.include('test "$CONFIRM_NETWORK" = "ethereumSepolia"');
+    expect(workflow).not.to.include('test "${{ inputs.confirm_network }}"');
+  });
+
+  it("records mock AGIALPHA usage for non-mainnet auto-mock deployments", function () {
+    const source = fs.readFileSync("scripts/deploy-core.ts", "utf8");
+    expect(source).to.include("let mockAgialphaUsed = false");
+    expect(source).to.include("mockAgialphaUsed = true");
+    expect(source).to.include("mockAgialphaUsed,");
+  });
+
   it("verification layer treats already-verified contracts as success", function () {
     const verifier = fs.readFileSync("scripts/deployment/verify-deployment-friendly.ts", "utf8");
     expect(verifier).to.include("already verified|already been verified");
@@ -122,6 +141,8 @@ describe("deployment UX safety layer", function () {
     expect(verifier).to.include("manifest has no contracts");
     expect(verifier).to.include("constructorArgs are redacted");
     expect(verifier).to.include("Constructor args for ${name} are missing from manifest");
+    expect(verifier).to.include("MockAGIALPHA");
+    expect(verifier).to.include("shouldSkipExternalAgialpha");
   });
 
   it("committed examples and docs do not contain obvious secret values", function () {

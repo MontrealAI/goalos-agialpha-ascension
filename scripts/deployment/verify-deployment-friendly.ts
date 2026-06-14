@@ -7,6 +7,14 @@ const ALREADY = /already verified|already been verified/i;
 function arg(n:string){ const i=process.argv.indexOf(n); return i>=0?process.argv[i+1]:undefined; }
 function isMainnetNetwork(network: string) { return network === "ethereumMainnet" || network === "mainnet" || network.toLowerCase().includes("mainnet"); }
 function realAddress(value: unknown): value is string { return typeof value === "string" && /^0x[0-9a-fA-F]{40}$/.test(value); }
+function constructorKeyFor(name: string, manifest: any): string | undefined {
+  if (manifest.constructorArgs && name in manifest.constructorArgs) return name;
+  if (name === "AGIALPHA" && !isMainnetNetwork(String(manifest.network || "")) && manifest.constructorArgs && "MockAGIALPHA" in manifest.constructorArgs) return "MockAGIALPHA";
+  return undefined;
+}
+function shouldSkipExternalAgialpha(name: string, address: unknown, network: string, manifest: any): boolean {
+  return name === "AGIALPHA" && isMainnetNetwork(network) && typeof address === "string" && String(manifest.agialphaToken || "").toLowerCase() === address.toLowerCase();
+}
 function assertVerifiableManifest(network: string, manifest: any) {
   const contracts = manifest.contracts || {};
   if (!contracts || Object.keys(contracts).length === 0) throw new Error("Verification blocked: deployment manifest has no contracts. A template or empty manifest cannot be verified.");
@@ -25,10 +33,11 @@ async function main(){
  assertVerifiableManifest(network, m);
  const results:any[]=[];
  for(const [name,address] of Object.entries(m.contracts||{})){
-   if(name==="AGIALPHA") { results.push({name,address,status:"SKIPPED_EXTERNAL_TOKEN"}); continue; }
+   if(shouldSkipExternalAgialpha(name, address, network, m)) { results.push({name,address,status:"SKIPPED_EXTERNAL_TOKEN"}); continue; }
    if(!realAddress(address)) { results.push({name,address,status:"FAILED",hint:"Manifest address is not a real 20-byte contract address."}); continue; }
-   if(!m.constructorArgs || !(name in m.constructorArgs)) { results.push({name,address,status:"FAILED",hint:`Constructor args for ${name} are missing from manifest; rerun deployment with the current manifest writer or provide a private args file.`}); continue; }
-   const args=m.constructorArgs[name];
+   const constructorKey = constructorKeyFor(name, m);
+   if(!constructorKey) { results.push({name,address,status:"FAILED",hint:`Constructor args for ${name} are missing from manifest; rerun deployment with the current manifest writer or provide a private args file.`}); continue; }
+   const args=m.constructorArgs[constructorKey];
    if(!Array.isArray(args)) { results.push({name,address,status:"FAILED",hint:"Constructor args are unavailable or redacted; provide a private unredacted args file for manual verification."}); continue; }
    const argsFile=`.verification-${network}-${name}.json`; fs.writeFileSync(argsFile, JSON.stringify(args));
    try{ execFileSync("npx",["hardhat","verify","--network",network,String(address),"--constructor-args",argsFile],{stdio:"pipe"}); results.push({name,address,status:"VERIFIED"}); }

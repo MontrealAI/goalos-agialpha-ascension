@@ -135,10 +135,12 @@ export async function deployGoalOSAGIALPHAAscension() {
   const securityAdmin = requireEnvAddress("SECURITY_ADMIN");
   const communityAdmin = requireEnvAddress("COMMUNITY_ADMIN");
 
+  let mockAgialphaUsed = false;
   let agialphaToken = optionalEnvAddress("AGIALPHA_TOKEN_ADDRESS");
   const mainnetTokenProvidedOnNonMainnet = Boolean(agialphaToken) && !info.isMainnet && agialphaToken!.toLowerCase() === AGIALPHA_MAINNET.toLowerCase();
   if ((!agialphaToken || mainnetTokenProvidedOnNonMainnet) && !info.isMainnet) {
     const mock = await deploy("MockAGIALPHA", [deployer.address]);
+    mockAgialphaUsed = true;
     agialphaToken = await mock.getAddress();
     console.log(`Non-mainnet rehearsal deployed MockAGIALPHA: ${agialphaToken}`);
   }
@@ -147,6 +149,7 @@ export async function deployGoalOSAGIALPHAAscension() {
   if (tokenCode === "0x") {
     if (!info.isMainnet && process.env.ALLOW_NONMAINNET_MOCK_ON_MISSING_TOKEN === "YES") {
       const mock = await deploy("MockAGIALPHA", [deployer.address]);
+      mockAgialphaUsed = true;
       agialphaToken = await mock.getAddress();
       tokenCode = await ethers.provider.getCode(agialphaToken);
       console.log(`Non-mainnet token address had no code; deployed MockAGIALPHA due to explicit override: ${agialphaToken}`);
@@ -254,7 +257,7 @@ export async function deployGoalOSAGIALPHAAscension() {
     founder: info.isMainnet ? undefined : founder,
     treasury: info.isMainnet ? undefined : treasury,
     agialphaToken,
-    mockAgialphaUsed: false,
+    mockAgialphaUsed,
     newAgialphaTokenDeployed: false,
     legacyAGIJobManager,
     transactions,
