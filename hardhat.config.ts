@@ -1,5 +1,7 @@
 import { HardhatUserConfig } from "hardhat/config";
 import "@nomicfoundation/hardhat-toolbox";
+import { loadDeploymentEnv } from "./scripts/config/loadEnv";
+loadDeploymentEnv(process.env.HARDHAT_NETWORK || process.env.npm_config_network);
 import { getOptionalPrivateKey, getOptionalRpcUrl } from "./scripts/config/networkConfig";
 
 const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY || "";

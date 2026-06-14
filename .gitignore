@@ -8,7 +8,8 @@ coverage/
 .DS_Store
 
 # Private operator inputs/evidence (never commit)
-.private/
+.private/*
+!.private/
 /private/
 *.private.json
 *.private.env
@@ -39,3 +40,5 @@ __pycache__/
 audit/reports/current-run.txt
 # Local direct solc compiler output
 direct-solc-output/
+
+!.private/README.md

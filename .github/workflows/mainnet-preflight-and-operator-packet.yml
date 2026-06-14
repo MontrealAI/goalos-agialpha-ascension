@@ -1,0 +1,37 @@
+name: Mainnet Preflight and Operator Packet
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        type: choice
+        options: [preflight, final_check, package_operator_instructions]
+        required: true
+permissions:
+  contents: read
+concurrency:
+  group: goalos-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  mainnet-preflight:
+    environment: mainnet-preflight
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: '20' }
+      - run: npm ci
+      - run: echo "This workflow cannot deploy Ethereum Mainnet. Final deployment must be local operator broadcast."
+      - run: npm run deploy:mainnet:doctor -- --no-broadcast || true
+      - run: npm run mainnet:final-check
+        if: inputs.mode == 'final_check'
+      - run: npm run deploy:mainnet:prepare-local
+        if: inputs.mode == 'package_operator_instructions'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: redacted-mainnet-operator-packet
+          path: |
+            .private/mainnet-operator.env.template
+            .private/mainnet-operator-checklist.md
+            .private/mainnet-final-command.txt
+            .private/mainnet-preflight-summary.redacted.json
+          if-no-files-found: ignore

@@ -80,3 +80,31 @@ Core thesis: GoalOS sets sovereign aims. AGIALPHA coordinates proof-settled work
 RSI means proof-backed upgrade rights. An artifact may influence future work only after evidence, evaluation, reviewer validation, scope control, challenge window, canary rollout, monitoring, rollback readiness, and chronicle memory.
 
 Claim boundary: this paper does not claim achieved AGI, ASI, superintelligence, autonomous sovereignty, guaranteed ROI, safety certification, legal approval, tax approval, security approval, energy abundance, or Kardashev Type II achievement.
+
+## Deployment Command Center
+
+Shortest safe path for authorized operators.
+
+**Sepolia**
+```bash
+npm run deploy:sepolia:doctor
+npm run deploy:sepolia:dry-run
+npm run deploy:sepolia:live
+npm run deploy:sepolia:verify
+npm run deploy:sepolia:evidence
+```
+
+**Mainnet**
+```bash
+npm run deploy:mainnet:doctor
+npm run deploy:mainnet:preflight
+npm run deploy:mainnet:fork-rehearsal
+npm run deploy:mainnet:prepare-local
+npm run deploy:mainnet:live-local-gated
+npm run deploy:mainnet:verify
+npm run deploy:mainnet:evidence
+```
+
+> **Warning:** Sepolia can be deployed through protected GitHub Actions. Ethereum Mainnet must not be deployed by CI. Mainnet final broadcast is local-only.
+
+Start with `docs/DEPLOYMENT_START_HERE.md`.

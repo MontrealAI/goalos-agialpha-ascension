@@ -1,0 +1,52 @@
+name: Deploy Ethereum Sepolia
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        type: choice
+        options: [doctor, dry_run, deploy, verify, evidence, full]
+        required: true
+      confirm_network:
+        required: true
+        default: ethereumSepolia
+      deployment_note:
+        required: false
+permissions:
+  contents: read
+concurrency:
+  group: goalos-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  sepolia:
+    environment: sepolia
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: '20' }
+      - run: npm ci
+      - run: npm run test:ci
+      - name: Run selected Sepolia mode
+        env:
+          PRIVATE_SEPOLIA_RPC_URL: ${{ secrets.PRIVATE_SEPOLIA_RPC_URL }}
+          PRIVATE_SEPOLIA_DEPLOYER_PRIVATE_KEY: ${{ secrets.PRIVATE_SEPOLIA_DEPLOYER_PRIVATE_KEY }}
+          ETHERSCAN_API_KEY: ${{ secrets.ETHERSCAN_API_KEY }}
+        run: |
+          test "${{ inputs.confirm_network }}" = "ethereumSepolia"
+          case "${{ inputs.mode }}" in
+            doctor) npm run deploy:sepolia:doctor ;;
+            dry_run) npm run deploy:sepolia:dry-run ;;
+            deploy) npm run deploy:sepolia:live ;;
+            verify) npm run deploy:sepolia:verify ;;
+            evidence) npm run deploy:sepolia:evidence ;;
+            full) npm run deploy:sepolia:doctor && npm run deploy:sepolia:dry-run && npm run deploy:sepolia:live && npm run deploy:sepolia:verify && npm run deploy:sepolia:evidence ;;
+          esac
+      - uses: actions/upload-artifact@v4
+        with:
+          name: sepolia-deployment-evidence
+          path: |
+            deployments/ethereum-sepolia.agialpha.latest.json
+            deployments/ethereum-sepolia.agialpha.latest.sha256
+            qa/sepolia-deployment-evidence.json
+            docs/SEPOLIA_DEPLOYMENT_REPORT.md
+          if-no-files-found: ignore
