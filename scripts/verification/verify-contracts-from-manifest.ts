@@ -50,6 +50,7 @@ async function main(){
     let constructorArgsFile: string | undefined;
     if (Array.isArray(args)) { constructorArgsFile = writeConstructorArgsFile(`${argsDir}/${name}.args.ts`, args); }
     const base = { name, fqcn, address, bytecodePresent: c.bytecodePresent ?? "unchecked", constructorArgsPresent: Array.isArray(args), alreadyVerified:false, verificationUrl:c.verificationUrl||null };
+    if (c.verification?.status === "skipped") { results.push({...base, etherscanStatus:"skipped", sourcifyStatus:"not_run", error:c.verification?.error || "Verification skipped by manifest."}); continue; }
     if (!isAddressLike(address)) { results.push({...base, etherscanStatus:"failed", sourcifyStatus:"not_run", error:"Invalid or missing deployed contract address"}); continue; }
     if (!Array.isArray(args)) { results.push({...base, etherscanStatus:"failed", sourcifyStatus:"not_run", error:"Constructor args missing; manual verification args file required"}); continue; }
     let ok=false, already=false, error="";
@@ -61,14 +62,15 @@ async function main(){
   }
   const verified = results.filter(r=>r.etherscanStatus==="verified").length;
   const alreadyVerified = results.filter(r=>r.alreadyVerified).length;
-  const failed = results.length - verified;
-  const evidence = { network, chainId: expected, manifestPath:p, manifestHash:sha(p), verifiedAt:new Date().toISOString(), verifierToolVersions:{ hardhat:"2.28.6", solidity:"0.8.35" }, etherscanApiConfigured:Boolean(process.env.ETHERSCAN_API_KEY), sourcifyEnabled:(process.env.SOURCIFY_ENABLED||"true")!=="false", contracts:results, summary:{ totalContracts:results.length, verified, alreadyVerified, failed, partial:failed>0&&verified>0, complete:failed===0 }, claimBoundary:CLAIM_BOUNDARY };
+  const skipped = results.filter(r=>r.etherscanStatus==="skipped").length;
+  const failed = results.filter(r=>r.etherscanStatus!=="verified" && r.etherscanStatus!=="skipped").length;
+  const evidence = { network, chainId: expected, manifestPath:p, manifestHash:sha(p), verifiedAt:new Date().toISOString(), verifierToolVersions:{ hardhat:"2.28.6", solidity:"0.8.35" }, etherscanApiConfigured:Boolean(process.env.ETHERSCAN_API_KEY), sourcifyEnabled:(process.env.SOURCIFY_ENABLED||"true")!=="false", contracts:results, summary:{ totalContracts:results.length, verified, alreadyVerified, skipped, failed, partial:failed>0&&verified>0, complete:failed===0 }, claimBoundary:CLAIM_BOUNDARY };
   fs.mkdirSync("qa",{recursive:true}); fs.mkdirSync("docs",{recursive:true});
   const out = isMainnet(network)?"qa/mainnet-contract-verification-evidence.json":"qa/sepolia-contract-verification-evidence.json";
   const report = isMainnet(network)?"docs/ETHEREUM_MAINNET_CONTRACT_VERIFICATION_REPORT.md":"docs/SEPOLIA_CONTRACT_VERIFICATION_REPORT.md";
   fs.writeFileSync(out, JSON.stringify(evidence,null,2)+"\n");
   writeVerificationReport(report, `${isMainnet(network)?"Ethereum Mainnet":"Sepolia"} Contract Verification Report`, `Verified means the block explorer matched deployed bytecode to source/metadata. Already verified is counted as success. Bytecode present but unverified means source verification is missing. Missing bytecode means the address is wrong or deployment failed. Constructor args missing means automatic verification may fail. Partial verification is not production verification.\n\nSummary: ${verified}/${results.length} verified. Failed: ${failed}.`, CLAIM_BOUNDARY);
-  writeManual(network, results.filter(r=>r.etherscanStatus!=="verified"));
+  writeManual(network, results.filter(r=>r.etherscanStatus!=="verified" && r.etherscanStatus!=="skipped"));
   console.log(JSON.stringify({ readyToVerify: failed===0?"YES":"NO", evidence:out, report, failed }, null, 2));
   if (failed && !has("--allow-partial")) process.exitCode = 1;
 }

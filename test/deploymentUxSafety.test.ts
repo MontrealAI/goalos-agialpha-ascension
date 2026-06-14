@@ -113,10 +113,26 @@ describe("deployment UX safety layer", function () {
     expect(fs.readFileSync("hardhat.config.ts", "utf8")).to.include("loadDeploymentEnv();");
   });
 
-  it("records constructor args for TokenReserveVault manifest aliases", function () {
+  it("records constructor args and deployment tx hashes by manifest alias", function () {
     const source = fs.readFileSync("scripts/deploy-core.ts", "utf8");
     for (const alias of ["ProofRewardsVault", "LiquidityVault", "SecurityVault", "CommunityVault"]) {
-      expect(source).to.include(`constructorArgs.${alias}`);
+      expect(source).to.include(`deploy("TokenReserveVault", ${alias.charAt(0).toLowerCase() + alias.slice(1).replace("Vault", "VaultArgs")}, "${alias}")`);
+    }
+    expect(source).to.include("deploymentTxHashes[manifestName] = tx.hash");
+    expect(source).to.include("txHashFor(name)");
+    expect(source).not.to.include("txs[index]");
+  });
+
+  it("uses real nested contract source paths in verification manifests", function () {
+    const source = fs.readFileSync("scripts/deploy-core.ts", "utf8");
+    for (const expected of [
+      'MockAGIALPHA: "contracts/token/MockAGIALPHA.sol"',
+      'CommercializationPerformanceVault: "contracts/vaults/CommercializationPerformanceVault.sol"',
+      'JobRegistry: "contracts/registry/JobRegistry.sol"',
+      'DisputeRegistry: "contracts/optional/DisputeRegistry.sol"',
+      'AEPAgentRegistry: "contracts/aep/AEPAgentRegistry.sol"'
+    ]) {
+      expect(source).to.include(expected);
     }
   });
 
