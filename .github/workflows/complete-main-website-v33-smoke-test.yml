@@ -1,0 +1,30 @@
+name: Complete Main Website v33 Smoke Test
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+    paths:
+      - "site-assets/main-website-v33/**"
+      - "data/onboarding/**"
+      - "data/proof-cards/**"
+      - "scripts/build_goalos_agialpha_complete_main_website_v33.py"
+      - "scripts/verify_goalos_agialpha_complete_main_website_v33.py"
+      - ".github/workflows/complete-main-website-v33-smoke-test.yml"
+
+jobs:
+  smoke:
+    name: Build and verify complete main website locally
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Build complete main website
+        run: python3 scripts/build_goalos_agialpha_complete_main_website_v33.py --out site
+      - name: Verify complete main website
+        run: python3 scripts/verify_goalos_agialpha_complete_main_website_v33.py --site site
+      - name: Upload local smoke-test artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: complete-main-website-v33
+          path: site
