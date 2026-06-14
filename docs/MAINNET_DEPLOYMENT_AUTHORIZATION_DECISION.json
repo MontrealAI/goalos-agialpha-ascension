@@ -2,7 +2,7 @@
   "status": "YES",
   "MAINNET_DEPLOYMENT_AUTHORIZED": "YES",
   "mainnetDeploymentAuthorized": "YES",
-  "commit": "5b837481c06e2767da7994aa3042da80ebaaa45d",
+  "commit": "3ed171d9b63aebc910fabb68edc26fdf0b04396d",
   "chain": "ethereum",
   "chainId": 1,
   "agialphaToken": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
@@ -119,6 +119,6 @@
     }
   },
   "blockers": [],
-  "generatedAt": "2026-06-13T23:28:28.657070+00:00",
+  "generatedAt": "2026-06-14T01:01:14.127159+00:00",
   "generatedBy": "scripts/generate-public-status-docs.py"
 }
