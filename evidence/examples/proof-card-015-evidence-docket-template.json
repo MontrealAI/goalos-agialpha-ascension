@@ -1,24 +1,24 @@
 {
-  "proof_card": "proof-card-015",
+  "proof_card": "015",
   "title": "AI Enterprise Civilization-Scale Capability Grid",
-  "required_evidence": [
-    "GoalOSCommit",
-    "Domain portfolio docket",
+  "status": "template",
+  "claim_boundary": "Experimental; not a claim of achieved AGI, superintelligence, guaranteed financial return, legal/tax/security approval, Ethereum mainnet deployment, or Kardashev Type II achievement.",
+  "evidence_items": [
+    "Enterprise mandate",
+    "Domain portfolio map",
     "RunCommitment",
     "Workflow artifact pack",
+    "Compute ledger",
     "Benchmark report",
-    "Security / privacy / governance note",
-    "Pilot or production receipt",
-    "Revenue quality ledger",
     "ProofBundle",
     "Reviewer attestation",
     "Red-team challenge report",
-    "SelectionCertificate",
-    "RollbackReceipt",
+    "Canary rollout receipt",
+    "Revenue-quality ledger",
     "Treasury allocation memo",
-    "ChronicleEntry",
+    "SelectionCertificate",
+    "Rollback path",
+    "Chronicle entry",
     "Delayed outcome update"
-  ],
-  "status": "template",
-  "claim_boundary": "No achieved AGI, achieved superintelligence, guaranteed ROI, legal/tax/security approval, Ethereum mainnet deployment, or Kardashev Type II achievement is claimed."
+  ]
 }

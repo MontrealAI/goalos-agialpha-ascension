@@ -1,15 +1,9 @@
 # Proof Card 015 — AI Enterprise Civilization-Scale Capability Grid
 
-GoalOS-native α‑AGI Ascension coordinates AI enterprises into a proof-backed industrial capability grid.
+GoalOS AGIALPHA Ascension turns AI-enterprise work into a civilization-scale capability grid: specialist agents coordinate enterprise missions, prove outcomes, route verified value into stronger capability, and only proven artifacts earn the right to improve future work.
 
 ## Mission
-
-Convert enterprise work into auditable capability, revenue-quality evidence, compute discipline, infrastructure learning, and reinvestable productive capacity.
-
-## Core loop
-
-enterprise mandate → mission portfolio → build → benchmark → canary rollout → revenue quality → Selection Gate → treasury reinvestment → stronger future work
+Coordinate enterprise missions, proof outcomes, revenue-quality learning, compute discipline, treasury reinvestment, infrastructure capacity, and RSI upgrade rights through a large specialist-agent institution.
 
 ## Claim boundary
-
-This is an experimental proof-card template. It does not claim achieved AGI, achieved superintelligence, guaranteed financial return, legal/tax/security approval, Ethereum mainnet deployment, or Kardashev Type II achievement.
+Experimental proof-card page. It does not claim achieved AGI, achieved superintelligence, guaranteed financial return, legal/tax/security approval, Ethereum mainnet deployment, Kardashev Type II achievement, or actual enterprise revenue.
