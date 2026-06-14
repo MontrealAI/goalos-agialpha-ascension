@@ -54,3 +54,29 @@ This evidence reports deployment mechanics only. It does not claim achieved AGI,
 
 ## Partial deployment recovery
 If a deployment fails after some contracts broadcast, stop and preserve terminal output. Do not claim success. Inspect any partial manifest, then choose one recovery path: resume from the partial manifest if supported, abandon and redeploy with a clean manifest, or inspect manually with an engineer. A deployment is complete only after all required contracts, transaction hashes, and post-checks pass.
+
+## Deployment and Verification Command Center
+
+Shortest safe paths:
+
+Sepolia:
+```bash
+npm run deploy:sepolia:doctor
+npm run deploy:sepolia:dry-run
+npm run deploy:sepolia:live
+npm run verify:sepolia:all
+npm run deploy:sepolia:evidence
+```
+
+Mainnet:
+```bash
+npm run deploy:mainnet:doctor
+npm run deploy:mainnet:preflight
+npm run deploy:mainnet:fork-rehearsal
+npm run deploy:mainnet:prepare-local
+npm run deploy:mainnet:live-local-gated
+npm run verify:mainnet:all
+npm run deploy:mainnet:evidence
+```
+
+> Sepolia may be deployed through protected GitHub Actions. Ethereum Mainnet must not be deployed by CI. Mainnet final broadcast is local-only. Mainnet contract verification may run from GitHub Actions only after deployment, using a manifest and no deployer key.

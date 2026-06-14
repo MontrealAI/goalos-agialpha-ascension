@@ -108,3 +108,27 @@ npm run deploy:mainnet:evidence
 > **Warning:** Sepolia can be deployed through protected GitHub Actions. Ethereum Mainnet must not be deployed by CI. Mainnet final broadcast is local-only.
 
 Start with `docs/DEPLOYMENT_START_HERE.md`.
+
+## Deployment and Verification Command Center
+
+Sepolia:
+```bash
+npm run deploy:sepolia:doctor
+npm run deploy:sepolia:dry-run
+npm run deploy:sepolia:live
+npm run verify:sepolia:all
+npm run deploy:sepolia:evidence
+```
+
+Mainnet:
+```bash
+npm run deploy:mainnet:doctor
+npm run deploy:mainnet:preflight
+npm run deploy:mainnet:fork-rehearsal
+npm run deploy:mainnet:prepare-local
+npm run deploy:mainnet:live-local-gated
+npm run verify:mainnet:all
+npm run deploy:mainnet:evidence
+```
+
+> Sepolia may be deployed through protected GitHub Actions. Ethereum Mainnet must not be deployed by CI. Mainnet final broadcast is local-only. Mainnet contract verification may run from GitHub Actions only after deployment, using a manifest and no deployer key.
