@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-14T21:45:50.136146+00:00",
+  "generated_at": "2026-06-14T21:55:58.915314+00:00",
   "files": [
     {
       "path": ".editorconfig",
@@ -7963,8 +7963,8 @@
     },
     {
       "path": "scripts/no_paid_products_check.py",
-      "bytes": 4044,
-      "sha256": "db3300ad4b9fcf4f86d7476edc07555a6b0e0b112561c354709971ea388ee871"
+      "bytes": 4532,
+      "sha256": "73ac52ecff44cfab5d427d1db3f9779f25cba2e4895731712b15fca5b3712e73"
     },
     {
       "path": "scripts/no_private_operator_data_check.py",
@@ -8098,8 +8098,8 @@
     },
     {
       "path": "scripts/repository_safety_check.py",
-      "bytes": 2388,
-      "sha256": "cdd586c69d39f5d476403658fd9168f4ef7521a12740cfef5c92b750b201341d"
+      "bytes": 2444,
+      "sha256": "a68463220e6c0f6ee896210ce675510e7b12fe507a14a32ccf40200009fa653f"
     },
     {
       "path": "scripts/repository_status_check.py",
@@ -9203,8 +9203,8 @@
     },
     {
       "path": "test/deploymentUxSafety.test.ts",
-      "bytes": 16122,
-      "sha256": "278d2212f4327d20c4599182149c7f84abf794a686021cf878667b2405f34d67"
+      "bytes": 16887,
+      "sha256": "43be4d670e18e64237d2eb00d8ac15a724ba9569a868d9e33973aade9e5e5080"
     },
     {
       "path": "test/invariants/README.md",

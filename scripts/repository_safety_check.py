@@ -16,6 +16,7 @@ SKIP_FILES = {
     # The literals are scanner rules, not committed secrets.
     "verify_goalos_agialpha_final_main_website_v39.py",
     "verify_goalos_agialpha_final_main_website_v40.py",
+    "verify_goalos_agialpha_final_main_website_v41.py",
 }
 
 SECRET_PATTERNS = [

@@ -213,7 +213,17 @@ describe("deployment UX safety layer", function () {
     expect(source).to.include("site-assets/main-website-v39/downloads/GoalOS_Personal_Proof_Journey_Pack_v3.zip");
     expect(source).to.include("site-assets/main-website-v40/downloads/GoalOS_AGIALPHA_Autopilot_Command_Center_v2_2.zip");
     expect(source).to.include("site-assets/main-website-v40/downloads/GoalOS_Personal_Proof_Journey_Pack_v3.zip");
+    expect(source).to.include("site-assets/main-website-v41/downloads/GoalOS_AGIALPHA_Autopilot_Command_Center_v2_2.zip");
+    expect(source).to.include("site-assets/main-website-v41/downloads/GoalOS_Personal_Proof_Journey_Pack_v3.zip");
     expect(source).to.include("rel not in allowed_zip_paths");
+  });
+
+  it("keeps website verifier denylist regex scripts scanner-exempt by exact filename", function () {
+    const source = fs.readFileSync("scripts/repository_safety_check.py", "utf8");
+    expect(source).to.include("verify_goalos_agialpha_final_main_website_v39.py");
+    expect(source).to.include("verify_goalos_agialpha_final_main_website_v40.py");
+    expect(source).to.include("verify_goalos_agialpha_final_main_website_v41.py");
+    expect(source).to.include("The literals are scanner rules, not committed secrets");
   });
 
 
