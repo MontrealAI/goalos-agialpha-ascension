@@ -1,0 +1,20 @@
+name: Final Main Website v40 WOW Smoke Test
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "site-assets/main-website-v40/**"
+      - "scripts/build_goalos_agialpha_final_main_website_v40.py"
+      - "scripts/verify_goalos_agialpha_final_main_website_v40.py"
+      - ".github/workflows/final-main-website-v40-wow-smoke-test.yml"
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Build site
+        run: python3 scripts/build_goalos_agialpha_final_main_website_v40.py --out site
+      - name: Verify site
+        run: python3 scripts/verify_goalos_agialpha_final_main_website_v40.py --site site
