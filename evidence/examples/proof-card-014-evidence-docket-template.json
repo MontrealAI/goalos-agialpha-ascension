@@ -1,0 +1,31 @@
+{
+  "proofCard": "014",
+  "title": "AI-Startup Category Dominance Engine & RSI Venture Capital Flywheel",
+  "requiredEvidence": [
+    "GoalOSCommit",
+    "RunCommitment",
+    "Category thesis memo",
+    "Market-signal graph",
+    "ICP and customer-discovery dossier",
+    "MVP artifact pack",
+    "Benchmark and evaluator report",
+    "Security / trust-room evidence",
+    "Pilot / paid proof record",
+    "Revenue and unit-economics ledger",
+    "Distribution evidence",
+    "Reviewer attestation",
+    "Red-team challenge report",
+    "SelectionCertificate or rejection note",
+    "Reproduction receipt",
+    "ChronicleEntry",
+    "Delayed outcome update"
+  ],
+  "claimBoundary": {
+    "achievedAGI": false,
+    "achievedSuperintelligence": false,
+    "guaranteedFinancialReturn": false,
+    "legalTaxSecurityApproval": false,
+    "kardashevTypeIIAchieved": false
+  },
+  "status": "template"
+}

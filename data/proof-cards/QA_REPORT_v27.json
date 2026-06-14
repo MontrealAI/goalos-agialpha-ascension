@@ -1,0 +1,26 @@
+{
+  "package": "GoalOS_AGIALPHA_Proof_Card_014_Main_Website_v27.0",
+  "proof_card": "014",
+  "title": "AI-Startup Category Dominance Engine & RSI Venture Capital Flywheel",
+  "checks": {
+    "proof_card_014_exists": true,
+    "homepage_links_to_014": true,
+    "gallery_links_to_014": true,
+    "autonomous_workflow_included": true,
+    "smoke_test_workflow_included": true,
+    "integration_script_included": true,
+    "verifier_script_included": true,
+    "site_assets_include_all_cards": true,
+    "proof_card_014_inline_css": true,
+    "proof_card_014_tables": 6,
+    "proof_card_014_svg_visuals": 3,
+    "agialpha_present": true,
+    "evidence_docket_present": true,
+    "rsi_present": true,
+    "claim_boundary_present": true,
+    "contract_route_present": true,
+    "named_competitor_url_absent": true,
+    "secret_like_absent": true,
+    "local_integration_verifier_passed": true
+  }
+}
