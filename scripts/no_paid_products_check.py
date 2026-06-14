@@ -29,6 +29,12 @@ allowed_zip_paths = {
     # not private operator inputs or paid-product exports. Keep this allowlist path-specific.
     "site-assets/main-website-v33/resources/GoalOS_Personal_Proof_Journey_Pack_v3.zip",
     "site-assets/main-website-v34/resources/GoalOS_Personal_Proof_Journey_Pack_v3.zip",
+
+    # Explicitly reviewed v36 public website/autopilot downloadable assets. These are
+    # tracked site resources, not private operator inputs, customer exports, or secrets.
+    "site-assets/main-website-v36/resources/GoalOS_Personal_Proof_Journey_Pack_v3.zip",
+    "site-assets/main-website-v36/resources/autopilot/GoalOS_AGIALPHA_Autopilot_Command_Center_v2.zip",
+    "site-assets/main-website-v36/resources/autopilot/technical_assets/AGIALPHA_Autopilot_Code_Kit_v2.zip",
 }
 
 def tracked_files() -> list[Path]:

@@ -17,7 +17,7 @@ SECRET_PATTERNS = [
 ]
 PRIVATE_ADDRESS_CONTEXT = re.compile(r"(founder|treasury|deployer|admin|vault|security|community|operator|ceremony).{0,80}0x[0-9a-fA-F]{40}", re.I)
 ADDRESS_RE = re.compile(r"0x[0-9a-fA-F]{40}")
-ENV_EXAMPLE_FILES = {".env.sepolia.example", ".env.mainnet.example"}
+ENV_EXAMPLE_FILES = {".env.sepolia.example", ".env.mainnet.example", ".env.verification.example"}
 ALLOWLIST_FILES = {
     "README.md",
     ".env.example",
@@ -29,6 +29,8 @@ ALLOWLIST_FILES = {
     "scripts/repository_safety_check.py",
     "scripts/verify-readiness-v4-2.py",
     "scripts/deployment/lib/redact.ts",
+    # Public Sepolia verification fallback commands contain public contract addresses, not private operator addresses.
+    "qa/manual-verification-commands.sepolia.md",
 }
 SECRET_SCAN_ALLOWLIST_FILES = ALLOWLIST_FILES - ENV_EXAMPLE_FILES
 
@@ -50,7 +52,7 @@ for path in tracked_files():
     rel = rel_path.as_posix()
     if any(part in SKIP_PARTS for part in rel_parts):
         continue
-    if path.name in FORBIDDEN_NAMES or (path.name.startswith(".env") and path.name not in {".env.example", ".env.sepolia.example", ".env.mainnet.example"}):
+    if path.name in FORBIDDEN_NAMES or (path.name.startswith(".env") and path.name not in {".env.example", ".env.sepolia.example", ".env.mainnet.example", ".env.verification.example"}):
         errors.append(f"Forbidden private/env file committed: {rel}")
     if (any(part in FORBIDDEN_PARTS for part in rel_parts) and not rel.startswith(".private.example/")) or (rel_parts and rel_parts[0] == "private"):
         errors.append(f"Forbidden private operator path committed: {rel}")

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-14T17:37:57.443974+00:00",
+  "generated_at": "2026-06-14T18:50:00.155068+00:00",
   "files": [
     {
       "path": ".editorconfig",
@@ -20,6 +20,11 @@
       "path": ".env.sepolia.example",
       "bytes": 1169,
       "sha256": "8068e0f5419cd9f91508c91129efcaf03b74933ac45e17d18dc68e5b35bd1979"
+    },
+    {
+      "path": ".env.verification.example",
+      "bytes": 272,
+      "sha256": "9c044a9a2bb35711cd8de725ec31316cbe465d1b7b39b3e0f8cf86eb09537495"
     },
     {
       "path": ".gitattributes",
@@ -88,8 +93,18 @@
     },
     {
       "path": ".github/workflows/autonomous-github-pages.yml",
-      "bytes": 2305,
-      "sha256": "b77c0a16b0d9847d2bff0be9632991fc13fb7e30f3dcf2c9345f41188a331409"
+      "bytes": 1578,
+      "sha256": "517bda4f558e0d76ecac57e9414e571c2398c52653d03294e878c547e3ed3f4d"
+    },
+    {
+      "path": ".github/workflows/complete-main-website-v33-smoke-test.yml",
+      "bytes": 1034,
+      "sha256": "9466d85c5c0e3a4e99af2947241e334f8eaeb20d0f7d1113aa83c0c941c97190"
+    },
+    {
+      "path": ".github/workflows/complete-main-website-v34-smoke-test.yml",
+      "bytes": 736,
+      "sha256": "d94c3675f0d445eb89ae5b49d9483a7ecfe0418bb76747511cf0f3c99bee305f"
     },
     {
       "path": ".github/workflows/dependabot-upgrade-triage.yml",
@@ -302,9 +317,19 @@
       "sha256": "2f6a85489fa93fdb0fe211bfc365a5991c730c0be0fe6d0dc7df422e14581828"
     },
     {
+      "path": ".github/workflows/verify-ethereum-mainnet-contracts.yml",
+      "bytes": 1083,
+      "sha256": "238ad783019ad6dfb5c45d89a4a3ebe9198a624c248e672e3d0da02e66d8dbcd"
+    },
+    {
+      "path": ".github/workflows/verify-ethereum-sepolia-contracts.yml",
+      "bytes": 867,
+      "sha256": "b594b390bc6e968b255d54b3b2f5ca4c9571eb66d16484590beae0308f0d0c4a"
+    },
+    {
       "path": ".gitignore",
-      "bytes": 676,
-      "sha256": "ffe9f72f7a8cbba118ea17b5714d869f6e03534691eb83e7db23741dc8e3a0df"
+      "bytes": 703,
+      "sha256": "2754e57feeec8e016021d9abaebeff440ba9e09fd05afe22a18c26d35f604683"
     },
     {
       "path": ".gitleaks.toml",
@@ -358,8 +383,8 @@
     },
     {
       "path": "AGENTS.md",
-      "bytes": 874,
-      "sha256": "88ffa4ad61f9399dda1995660e07f9843dd44452d04519e30dbc110d4c685592"
+      "bytes": 1218,
+      "sha256": "5ce445271228596e09d9849447eb7e8e566ca4a519831450f28e74f8dcffed2f"
     },
     {
       "path": "BATCH_README.md",
@@ -513,8 +538,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 7153,
-      "sha256": "cf43b81dfb65a5d6b04fa9e431113f68bb56beae46c79473df51319fdabbf909"
+      "bytes": 7893,
+      "sha256": "e20cc41b067be1065fc242678e5faf9eb338a842dc08d5262565f45a66f902f1"
     },
     {
       "path": "README_PROOF_CARD_001_DEMAND_ENGINE_V31.md",
@@ -5462,6 +5487,16 @@
       "sha256": "da6ff1c86185f62ad3af1bc99ff900f10b49e4201641212cb41cfa86652fcac6"
     },
     {
+      "path": "data/onboarding/regular-people-v33.json",
+      "bytes": 699,
+      "sha256": "8fc4ae6c613451100e195620e7272dd04ee89354c5dd315599d36f785a485f3e"
+    },
+    {
+      "path": "data/onboarding/regular-people-v34.json",
+      "bytes": 147,
+      "sha256": "aa4da0bed92c5d1cfca924515477bd44801f16400c82c422455eb1a0fe6bbfd1"
+    },
+    {
       "path": "data/proof-cards/QA_REPORT_v27.json",
       "bytes": 893,
       "sha256": "575f5d923289b0d44aa34b014f288028072c7f4898f98b4affd05a04ac756d7b"
@@ -5530,6 +5565,16 @@
       "path": "data/proof-cards/proof-cards-v32.json",
       "bytes": 3819,
       "sha256": "f814bf72c89137efb362c8e298d58c7daf98e5bf646eee380b542cc94a7bf991"
+    },
+    {
+      "path": "data/proof-cards/proof-cards-v33.json",
+      "bytes": 3348,
+      "sha256": "5457c4ae66370ba5e598ac7bf85bb62ac0c0c93440dee82ca1c64db684422062"
+    },
+    {
+      "path": "data/proof-cards/proof-cards-v34.json",
+      "bytes": 4807,
+      "sha256": "18efd59b56f78ea029aca1facd23856f1d5888e9f68b8068e69ae5518708ea5e"
     },
     {
       "path": "data/proof_cards_v15.json",
@@ -5697,6 +5742,16 @@
       "sha256": "4d3bd46207fe7977c38479da880658f8391347096a011910b457c1249e3b5b0d"
     },
     {
+      "path": "docs/CONTRACT_VERIFICATION_GUIDE.md",
+      "bytes": 1991,
+      "sha256": "2127ad456a70ea799650f41b67bcde383f148f3a4496663b87219d44233046d7"
+    },
+    {
+      "path": "docs/CONTRACT_VERIFICATION_START_HERE.md",
+      "bytes": 1991,
+      "sha256": "2127ad456a70ea799650f41b67bcde383f148f3a4496663b87219d44233046d7"
+    },
+    {
       "path": "docs/CURRENT_STATUS.md",
       "bytes": 1251,
       "sha256": "f7b9a3233b0e4fd3dae8c73242e8b1decf966a13485959fe65d6f28084d750d7"
@@ -5727,6 +5782,11 @@
       "sha256": "72ce14bf784568f108a83876f00989a96b5238255b94251d289125999888d2c2"
     },
     {
+      "path": "docs/DEPLOYMENT_AND_VERIFICATION_FAQ.md",
+      "bytes": 1991,
+      "sha256": "2127ad456a70ea799650f41b67bcde383f148f3a4496663b87219d44233046d7"
+    },
+    {
       "path": "docs/DEPLOYMENT_CLAIM_BOUNDARY.md",
       "bytes": 1342,
       "sha256": "7a840689c27e5f149fdb9b3c89f99d9c92b8580f88f53db3be0b2e96f7451134"
@@ -5738,8 +5798,8 @@
     },
     {
       "path": "docs/DEPLOYMENT_START_HERE.md",
-      "bytes": 2774,
-      "sha256": "18891b286aa1e4f18058d56b67880c566e83b5b6f8e6babc89fb387e3adce372"
+      "bytes": 3536,
+      "sha256": "80baf57ec39f395ca99c18bc1c6faff017cd5480dccd2cc6c68af68d9d662d5b"
     },
     {
       "path": "docs/DEPLOYMENT_TROUBLESHOOTING.md",
@@ -5765,6 +5825,11 @@
       "path": "docs/ETHEREUM_MAINNET_AUTHORIZATION_DECISION.md",
       "bytes": 315,
       "sha256": "b4f57b3214fdc0cb95a4fa4ed4b2a15bfd071dd018d3fd9bfd9769f95f418345"
+    },
+    {
+      "path": "docs/ETHEREUM_MAINNET_CONTRACT_VERIFICATION_REPORT.md",
+      "bytes": 1991,
+      "sha256": "2127ad456a70ea799650f41b67bcde383f148f3a4496663b87219d44233046d7"
     },
     {
       "path": "docs/ETHEREUM_MAINNET_DEPLOYMENT_REPORT.md",
@@ -6307,6 +6372,11 @@
       "sha256": "5c342fca59d134a5cce9126321642003d6d02727c9be04c2e4f8b6d9abd4a842"
     },
     {
+      "path": "docs/SEPOLIA_CONTRACT_VERIFICATION_REPORT.md",
+      "bytes": 732,
+      "sha256": "b6f6aa03126cb5730a5c2b94aedc72c24f4b0a25f9e078654c11cfb79ff0176c"
+    },
+    {
       "path": "docs/SEPOLIA_DEPLOYMENT_GUIDE.md",
       "bytes": 1859,
       "sha256": "3f7444a23c14a7ed3b45a72eb7e82c5ea95a35dff876980322812b54a58d3320"
@@ -6420,6 +6490,11 @@
       "path": "docs/V4_AUDIT_CANDIDATE_DELTA.md",
       "bytes": 1221,
       "sha256": "c61b59672e5bc34b15480d659c75507cde47ffd35a87d63b6efb3e1edfcd91b6"
+    },
+    {
+      "path": "docs/VERIFICATION_TROUBLESHOOTING.md",
+      "bytes": 1991,
+      "sha256": "2127ad456a70ea799650f41b67bcde383f148f3a4496663b87219d44233046d7"
     },
     {
       "path": "docs/WHAT_YES_MEANS_AND_DOES_NOT_MEAN.md",
@@ -6610,6 +6685,16 @@
       "path": "docs/examples/proof-card-017-everyday-billion-user-utility-engine.md",
       "bytes": 644,
       "sha256": "3989aaa04a6bd19ee5ca7e7039d5e6dfc66ce1310b3c963f96238fe67ba5d045"
+    },
+    {
+      "path": "docs/onboarding/MAIN_WEBSITE_COMPLETE_V33.md",
+      "bytes": 681,
+      "sha256": "7a1144a791358df838bb7fe762ac488bc6f688bd2a8b79f0484945c3989746a1"
+    },
+    {
+      "path": "docs/onboarding/MAIN_WEBSITE_COMPLETE_V34.md",
+      "bytes": 160,
+      "sha256": "706bd0ad9e9cfd7296799c2ff892d279f75f97673d7d7af164fe6e1f9de7c615"
     },
     {
       "path": "docs/papers/sovereign-rsi/v6.3/GoalOS_native_alpha_AGI_Ascension_using_AGIALPHA_Sovereign_RSI_Paper_v5.docx",
@@ -6903,8 +6988,8 @@
     },
     {
       "path": "package.json",
-      "bytes": 12383,
-      "sha256": "325d496dcc78a8e519eb4ec3d16ab496f2acf5f6ec15b8db82c096e61701bc4f"
+      "bytes": 14389,
+      "sha256": "0e03bd8965a885c31e7fc0a94fc4cc8a62fb2e790e2e83bf6138a063b9872d82"
     },
     {
       "path": "proof-card-001.html",
@@ -7207,6 +7292,11 @@
       "sha256": "8bb393e826f63552767c32a65001ffbc41d55f13169e544451968767807e1a4c"
     },
     {
+      "path": "qa/manual-verification-commands.sepolia.md",
+      "bytes": 6039,
+      "sha256": "9e6dccc68b2ade6a22f9f41dd4893de36bb0914b7452b04afc8502e9bd3e8ef3"
+    },
+    {
       "path": "qa/public-agialpha-token-code-evidence.json",
       "bytes": 474,
       "sha256": "68d80c737ab6a3e41865634454f2a3a52862a90901a53e293624ee9cc889a9eb"
@@ -7247,6 +7337,11 @@
       "sha256": "8a5958a3d9fe915dbc3a7a81d9c1dcb372802068c7076ec8a661793dcb7b10d3"
     },
     {
+      "path": "qa/sepolia-contract-verification-evidence.json",
+      "bytes": 22559,
+      "sha256": "e6ac87287fe40096a8c5e5153958481b8667da4bb0efaf7035b746e9c2e9dd09"
+    },
+    {
       "path": "qa/sepolia-deployment-evidence.json",
       "bytes": 5472,
       "sha256": "a05e2b07bc1a2f0dceeac43cffa8fead459a4d335c65fb14f7fa7d8a26bf0dc5"
@@ -7267,6 +7362,11 @@
       "sha256": "b1bdcb06a0cf301f35afaa948ed304186626dfdf2580f0081aec1005bebba6b1"
     },
     {
+      "path": "schemas/contract-verification-evidence.schema.json",
+      "bytes": 736,
+      "sha256": "03ab932c5eec98373114e9526a948d3a3b626179b8e76fad48feefb46e988d9f"
+    },
+    {
       "path": "schemas/credential.schema.json",
       "bytes": 391,
       "sha256": "10c52410e50123b3655c9565420665ec68cb12b3416b248105f2bbf123acbaf6"
@@ -7275,6 +7375,11 @@
       "path": "schemas/deployment-evidence.schema.json",
       "bytes": 1338,
       "sha256": "c8ad08179907f3432dcf40ced49139ed587311893c5ae2a62382db54ac5bdd91"
+    },
+    {
+      "path": "schemas/deployment-manifest.schema.json",
+      "bytes": 1782,
+      "sha256": "611743bdd057b1effd7bed267152a5fd1424536996352830564a12bbff94bbb0"
     },
     {
       "path": "schemas/evidence-docket-v4.2.schema.json",
@@ -7542,6 +7647,16 @@
       "sha256": "0a4207f1eac5515ac445fbc965e8565e3b402728218a8dbcdfe6ee81b1c54ecf"
     },
     {
+      "path": "scripts/build_goalos_agialpha_complete_main_website_v33.py",
+      "bytes": 638,
+      "sha256": "aa8b4d74869d61b2ecf0e777b4f7d4cd2065a8acb6edf597565a157796be1057"
+    },
+    {
+      "path": "scripts/build_goalos_agialpha_complete_main_website_v34.py",
+      "bytes": 659,
+      "sha256": "dc536ccf4e2d74f556e1d0708739c59a223c5f8228c58c19d154ee95b96d02fa"
+    },
+    {
       "path": "scripts/build_goalos_agialpha_flagship_demand_center_v7.py",
       "bytes": 25640,
       "sha256": "2748650046fb46a179c09d7efd2c3cdbe886ecbd04f509cd0ebd5d499010d10a"
@@ -7598,8 +7713,8 @@
     },
     {
       "path": "scripts/deploy-ethereum-mainnet-gated.ts",
-      "bytes": 5818,
-      "sha256": "d8a7de08236570a03b930b5f2dbb7d0992a06a348883571b2bbbfc2cfa57a02e"
+      "bytes": 6023,
+      "sha256": "6bdd88ad78eb1e8933edeb620d3022af7b32fa8efd268de8d914423d63e33b5e"
     },
     {
       "path": "scripts/deploy-ethereum-sepolia.ts",
@@ -7612,9 +7727,14 @@
       "sha256": "917cc99645a5bc4c16b183ae937d2e53d4172f47aeb20c1b814179ea0c16689a"
     },
     {
+      "path": "scripts/deployment/goalos-command-center.ts",
+      "bytes": 41,
+      "sha256": "1e73a6425a9fbc550d2647684c69a2b1060f0c49c3ed732aef554bb1cc631294"
+    },
+    {
       "path": "scripts/deployment/goalos-deploy-command-center.ts",
-      "bytes": 11551,
-      "sha256": "bc35aa5b3d686fc8b59665fa28abf85f8fe628aa20a7ba451148e7e20e4d0672"
+      "bytes": 12176,
+      "sha256": "b3d9022c2ec0a158a06aecae36b5b27cba48d448c0e7fb2afb29fe12435ee493"
     },
     {
       "path": "scripts/deployment/lib/mainnetGuards.ts",
@@ -7635,6 +7755,11 @@
       "path": "scripts/deployment/lib/tokenGuards.ts",
       "bytes": 886,
       "sha256": "c45495b16406a2e392be57c1b44325f081d033c533dd545e53d11375344fbfe3"
+    },
+    {
+      "path": "scripts/deployment/validate-json-files.js",
+      "bytes": 187,
+      "sha256": "6a1fc04b25893bf663e41faaed184699615f52cd169e8f463868ac88e49bd871"
     },
     {
       "path": "scripts/deployment/validate_deployment_evidence.py",
@@ -7813,13 +7938,13 @@
     },
     {
       "path": "scripts/no_paid_products_check.py",
-      "bytes": 1943,
-      "sha256": "4164b7ef99106c8fb1c98ba3028552e3c81c4f0811bbd3d378c4d6713c317195"
+      "bytes": 2419,
+      "sha256": "20395420a355a075b8ff7555faf90b7679d0688669dfb1350e3b6dea070ddfc7"
     },
     {
       "path": "scripts/no_private_operator_data_check.py",
-      "bytes": 3887,
-      "sha256": "6051f3b30e7643269cdcdf38b0cb2c30d5e26ad69c5d27792734ba741d0ee1af"
+      "bytes": 4114,
+      "sha256": "428c3ce4c1e840bfc1aa05076c68e1475210c9e0dae87f44ac410eef497df22d"
     },
     {
       "path": "scripts/patch_existing_pages_workflow_for_proof_cards_v11.py",
@@ -7972,6 +8097,46 @@
       "sha256": "960e7aeb4b91eb47a1f05860e46df7e853958d72c650c07216d5449bfba7c944"
     },
     {
+      "path": "scripts/verification/lib/bytecodeChecks.ts",
+      "bytes": 11,
+      "sha256": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881"
+    },
+    {
+      "path": "scripts/verification/lib/constructorArgs.ts",
+      "bytes": 11,
+      "sha256": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881"
+    },
+    {
+      "path": "scripts/verification/lib/reportVerification.ts",
+      "bytes": 11,
+      "sha256": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881"
+    },
+    {
+      "path": "scripts/verification/lib/verificationStatus.ts",
+      "bytes": 11,
+      "sha256": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881"
+    },
+    {
+      "path": "scripts/verification/lib/verifyWithEtherscan.ts",
+      "bytes": 11,
+      "sha256": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881"
+    },
+    {
+      "path": "scripts/verification/lib/verifyWithHardhat.ts",
+      "bytes": 11,
+      "sha256": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881"
+    },
+    {
+      "path": "scripts/verification/lib/verifyWithSourcify.ts",
+      "bytes": 11,
+      "sha256": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881"
+    },
+    {
+      "path": "scripts/verification/verify-contracts-from-manifest.ts",
+      "bytes": 7783,
+      "sha256": "d4abc18dbbb8b27410dd61b0798ffb87dea53aa667dbbd03193988f1280c73af"
+    },
+    {
       "path": "scripts/verify-agialpha-token.ts",
       "bytes": 2254,
       "sha256": "92fcf067ac12162df67d82e4a9df4c7ceea04ee5750c9cee5252c5ec996a6b2f"
@@ -8005,6 +8170,16 @@
       "path": "scripts/verify_agialpha_token_public.py",
       "bytes": 5524,
       "sha256": "c273a1d6aafbe86faa2932c20f795fb1443431c0262173ea00ebcbfa5309f922"
+    },
+    {
+      "path": "scripts/verify_goalos_agialpha_complete_main_website_v33.py",
+      "bytes": 2058,
+      "sha256": "8511693235a407f5078df2314fbbfb7c563815d39bee422c5243c9fd8ecc5db6"
+    },
+    {
+      "path": "scripts/verify_goalos_agialpha_complete_main_website_v34.py",
+      "bytes": 1793,
+      "sha256": "f0c05487d2e13ac5e3509513d75481ef542fdc7cfd15001a32c21d86aeb670c7"
     },
     {
       "path": "scripts/verify_goalos_agialpha_flagship_demand_center_v7.py",
@@ -8197,6 +8372,376 @@
       "sha256": "5ddaf3db9b8b07b2bdaa8ee8a49966cded9fee60cb8322ee13d068f5cc403026"
     },
     {
+      "path": "site-assets/main-website-v33/agialpha-ledger-route.html",
+      "bytes": 16645,
+      "sha256": "984b73a6228462bad4ef973298dca9e307a717d17b84273c012a1f0fd7234e46"
+    },
+    {
+      "path": "site-assets/main-website-v33/evidence-docket.html",
+      "bytes": 14840,
+      "sha256": "5f78d02e5f3f0f3c7713519845252737116799f5126f60ea4f5274fe9179f479"
+    },
+    {
+      "path": "site-assets/main-website-v33/index.html",
+      "bytes": 27309,
+      "sha256": "158e818d0a577d7870c6ae60aada9ae890b0515203d35051e5b177d0657d3f4c"
+    },
+    {
+      "path": "site-assets/main-website-v33/personal-proof-sprint.html",
+      "bytes": 16486,
+      "sha256": "ce65bf355cc841d0dc01c0116d7e0016ca9ed8236d53b55d5561064f504337d6"
+    },
+    {
+      "path": "site-assets/main-website-v33/proof-card-001.html",
+      "bytes": 21226,
+      "sha256": "5cd0479e62d51668f6d7d8f37577beb489b5e5a00071c70bb83e739871ce1302"
+    },
+    {
+      "path": "site-assets/main-website-v33/proof-card-002.html",
+      "bytes": 21236,
+      "sha256": "6c341aca64df7d73a83418027c22bd2a1dd0fb2ce98fac2ccb9734d7b6d80c22"
+    },
+    {
+      "path": "site-assets/main-website-v33/proof-card-003.html",
+      "bytes": 21257,
+      "sha256": "861702aa3ee7f009196b1b2bdc4c07e2097bae3caab21316352d18d2d1a2cc68"
+    },
+    {
+      "path": "site-assets/main-website-v33/proof-card-004.html",
+      "bytes": 21182,
+      "sha256": "90f0673a3e45ce77820a7bdee3f1c62db47a95d760e56332489273187397d71f"
+    },
+    {
+      "path": "site-assets/main-website-v33/proof-card-005.html",
+      "bytes": 21151,
+      "sha256": "3adbca41982875ef14a3ba6f8dfb7ff134a74b2fc12b1d4a77b49b4294da5cca"
+    },
+    {
+      "path": "site-assets/main-website-v33/proof-card-006.html",
+      "bytes": 21272,
+      "sha256": "071f41ee72eef379372c4424e7ad8ed33ccd589b6f27db533de93971857343dc"
+    },
+    {
+      "path": "site-assets/main-website-v33/proof-card-007.html",
+      "bytes": 21350,
+      "sha256": "444f99060e7e1721a99c41e5a3dc4749e6caf0811ebd2c738d3e3f3af3d2a263"
+    },
+    {
+      "path": "site-assets/main-website-v33/proof-card-008.html",
+      "bytes": 21284,
+      "sha256": "e0ffc9ba5ef185cb269beac536d44bb788520e8cc8f4659ccd7385ce26a5829f"
+    },
+    {
+      "path": "site-assets/main-website-v33/proof-card-009.html",
+      "bytes": 21235,
+      "sha256": "a6b4bb2be51c6dfa15afa4eba63b600ea3817363ce0d536f82aa594b189bee1b"
+    },
+    {
+      "path": "site-assets/main-website-v33/proof-card-010.html",
+      "bytes": 21299,
+      "sha256": "242e0abf97f18a9b36f7ba31109121ad6fefdb316d470878ba4eb7c75e0e694d"
+    },
+    {
+      "path": "site-assets/main-website-v33/proof-card-011.html",
+      "bytes": 21417,
+      "sha256": "758c7d7da6977feec40ff586ec945fb00e36e35c5f1d8ea98d37f8087b0c11a5"
+    },
+    {
+      "path": "site-assets/main-website-v33/proof-card-012.html",
+      "bytes": 21477,
+      "sha256": "0765f8e9e0e2607d6bf5e03155436b6500cb78a82fd0cae9a011b6ea51447fec"
+    },
+    {
+      "path": "site-assets/main-website-v33/proof-card-013.html",
+      "bytes": 21438,
+      "sha256": "d3c91a1c9ceaddc86051d5c891d4b90726d66aacbbfcf3bad53a36f62ce4006a"
+    },
+    {
+      "path": "site-assets/main-website-v33/proof-card-014.html",
+      "bytes": 21455,
+      "sha256": "aa489e1ffcd882815d8487c2ccbfaad5e9b689c2a2a9b93388e93fc3fbf1cc60"
+    },
+    {
+      "path": "site-assets/main-website-v33/proof-card-015.html",
+      "bytes": 40482,
+      "sha256": "1d1422638763c2cbc46b1cf8abe2b48bec3fd7625599d25612a2aa9e6284cc9d"
+    },
+    {
+      "path": "site-assets/main-website-v33/proof-card-016.html",
+      "bytes": 34544,
+      "sha256": "7681e9b67c58b9172b5493389c778961ce22ffc40b7da061a948a2df9628dd46"
+    },
+    {
+      "path": "site-assets/main-website-v33/proof-card-017.html",
+      "bytes": 38425,
+      "sha256": "682fda0028f636b38079daafa1cee6e9a4303155447ea584a30d8caa9a3349e6"
+    },
+    {
+      "path": "site-assets/main-website-v33/proof-cards.html",
+      "bytes": 17686,
+      "sha256": "91128b064459de99355bfaceb588e144915a7cce76eab777826553741f209fc4"
+    },
+    {
+      "path": "site-assets/main-website-v33/proof-sprint-builder.html",
+      "bytes": 17283,
+      "sha256": "c3948c8627bc783803d3816c08d3616004527710eed882f44db2a6af24f0d117"
+    },
+    {
+      "path": "site-assets/main-website-v33/resources/00_OPEN_FIRST_GoalOS_for_Regular_People_v3.pdf",
+      "bytes": 61335,
+      "sha256": "c87d4471a82861d18e62676c6431356dec4e837bf183e187c4ea3abf0c673846"
+    },
+    {
+      "path": "site-assets/main-website-v33/resources/01_How_to_Earn_with_GoalOS_Essay_v3.pdf",
+      "bytes": 79282,
+      "sha256": "497d8544ce1e6ea3a831ebe05c1bba4b8ce54d0deac7aa251959adb8c56357fe"
+    },
+    {
+      "path": "site-assets/main-website-v33/resources/02_Regular_Person_GoalOS_Playbook_v3.pdf",
+      "bytes": 94087,
+      "sha256": "08af8d3d8d6d69ef3b2097f82d73cada52c788b36dc01dd00fa867d417c79025"
+    },
+    {
+      "path": "site-assets/main-website-v33/resources/03_30_Day_GoalOS_Proof_Sprint_Workbook_v3.pdf",
+      "bytes": 99473,
+      "sha256": "99702a04cebc9672e98ab42eb01a49c01b50250dc93f29b706e7ff104d45835d"
+    },
+    {
+      "path": "site-assets/main-website-v33/resources/04_Autonomous_GoalOS_Experience_Blueprint_v3.pdf",
+      "bytes": 80766,
+      "sha256": "3e3e56b00c77b2c8a7b431edd56fe4c60526e595e68f9e441d1cec08abdd7fe9"
+    },
+    {
+      "path": "site-assets/main-website-v33/resources/05_GoalOS_Launch_Copy_and_Onboarding_Scripts_v3.pdf",
+      "bytes": 54164,
+      "sha256": "ce3c81d81e900ca9f57879a4f5d001bfd913df7e80b9d270ede6872aab4ef847"
+    },
+    {
+      "path": "site-assets/main-website-v33/resources/07_GoalOS_Personal_Proof_Tracker_v3.xlsx",
+      "bytes": 36154,
+      "sha256": "836916836eed096245833be673e466b2f2b61eafd103f15b54b03b560583a528"
+    },
+    {
+      "path": "site-assets/main-website-v33/resources/GoalOS_Personal_Proof_Journey_All_in_One_v3.pdf",
+      "bytes": 501854,
+      "sha256": "e2aa9be95edf69746e83b1db1dc4d35be90e22b90c5dffa9d05fe68dd7ea5003"
+    },
+    {
+      "path": "site-assets/main-website-v33/resources/GoalOS_Personal_Proof_Journey_Pack_v3.zip",
+      "bytes": 10564186,
+      "sha256": "1680999ca01856ea8a0c3e7e5bbd5610285f9a0a6dd2222dcb1f772fab1cfd59"
+    },
+    {
+      "path": "site-assets/main-website-v33/resources/GoalOS_Personal_Proof_Sprint_Builder_v3.html",
+      "bytes": 7724,
+      "sha256": "03fea1b68f0b76e70b507559a64bfc35a5ae2c5fe07b606b3d3470a3a26ed3c9"
+    },
+    {
+      "path": "site-assets/main-website-v33/resources.html",
+      "bytes": 14524,
+      "sha256": "34e40ed2417916cfaa3debdb3cd421caa095b5782cb7c67f2744137b42203ab2"
+    },
+    {
+      "path": "site-assets/main-website-v33/sovereign-rsi-control-plane.html",
+      "bytes": 15897,
+      "sha256": "42fb6e0b7e443dc63346e53647499318bb01a84c8c66a9d36152f2f85cd3ef7b"
+    },
+    {
+      "path": "site-assets/main-website-v33/start-here.html",
+      "bytes": 16562,
+      "sha256": "4e34cae88127456575ce8b05ed37b92829a4307e3cba94abcdc24e55df71224a"
+    },
+    {
+      "path": "site-assets/main-website-v33/use-cases.html",
+      "bytes": 15567,
+      "sha256": "448cc6a0711d2328ae7826d60d70ef77f19821761ce45738646726979ae5bd31"
+    },
+    {
+      "path": "site-assets/main-website-v34/agialpha-ledger-route.html",
+      "bytes": 16922,
+      "sha256": "fa4a18d586a94f0a9f2df4e1e22c3bda8020944de5a96709b8cbebf0c7a3ce36"
+    },
+    {
+      "path": "site-assets/main-website-v34/evidence-docket.html",
+      "bytes": 15078,
+      "sha256": "9f1806be653229214b967d7c4d6e3ef076c8fececed32f298d71afa330b3e65c"
+    },
+    {
+      "path": "site-assets/main-website-v34/index.html",
+      "bytes": 24835,
+      "sha256": "e3955f8d0ba981a09b99ac64fb30bbfe8be6b7d33dd73083221151488d71963d"
+    },
+    {
+      "path": "site-assets/main-website-v34/personal-proof-sprint.html",
+      "bytes": 19910,
+      "sha256": "474afede0078090bec04d5ee4d37df1414f56acb33c431e2c936a80368b34adf"
+    },
+    {
+      "path": "site-assets/main-website-v34/proof-card-001.html",
+      "bytes": 27380,
+      "sha256": "4cae16b4cbb28319458c02788123dcfcaca071bb02b93c8652074b8bcc2dfc28"
+    },
+    {
+      "path": "site-assets/main-website-v34/proof-card-002.html",
+      "bytes": 27402,
+      "sha256": "081b0a6f29b4a94679ce25377b41c9a8aacc3cc06c433a1236a30f3991d129f4"
+    },
+    {
+      "path": "site-assets/main-website-v34/proof-card-003.html",
+      "bytes": 27456,
+      "sha256": "436632f751244037944c808757d4fe38ca4251ac46bdae31dd045d5c86e99020"
+    },
+    {
+      "path": "site-assets/main-website-v34/proof-card-004.html",
+      "bytes": 27442,
+      "sha256": "6bf966660f5697259d692e9b659064ceff8b406f10fbdab91c5c52b8de724b90"
+    },
+    {
+      "path": "site-assets/main-website-v34/proof-card-005.html",
+      "bytes": 27316,
+      "sha256": "0d6e4de4d66b48249582ddc99dfd25015e13bd39a3e228d210dc83cd813e036c"
+    },
+    {
+      "path": "site-assets/main-website-v34/proof-card-006.html",
+      "bytes": 27456,
+      "sha256": "e1a52c8dae367e5c17b48ffbe3e989e52303ef2bfecd6706a3584f53ce374ba6"
+    },
+    {
+      "path": "site-assets/main-website-v34/proof-card-007.html",
+      "bytes": 27496,
+      "sha256": "fc283ef727814efebedcb531b895709e9d9c3210a5fbd99c9d9995013c795750"
+    },
+    {
+      "path": "site-assets/main-website-v34/proof-card-008.html",
+      "bytes": 27546,
+      "sha256": "8fd9d9d2a53871da308079671657e2fe143d9f8651a873c7f591ef7951d355cc"
+    },
+    {
+      "path": "site-assets/main-website-v34/proof-card-009.html",
+      "bytes": 27448,
+      "sha256": "ff71e35e007c31184ef21bbac46a8a84def750c754064521a80dc56ea1bb8792"
+    },
+    {
+      "path": "site-assets/main-website-v34/proof-card-010.html",
+      "bytes": 27496,
+      "sha256": "72dd010278380ff7ddfdec94deccefe93d141e5dc30dde4bc9a5fc277b3d4241"
+    },
+    {
+      "path": "site-assets/main-website-v34/proof-card-011.html",
+      "bytes": 27586,
+      "sha256": "b16d456be8edb1d9b5ddb7f52c47bfd2a55bf0aa8ae7d44c81759bce78d36a74"
+    },
+    {
+      "path": "site-assets/main-website-v34/proof-card-012.html",
+      "bytes": 27480,
+      "sha256": "ab1ed0ab9f68f8ca29182da44c2802ac46c1c9394b18b8a0e8e97bb5b72c079b"
+    },
+    {
+      "path": "site-assets/main-website-v34/proof-card-013.html",
+      "bytes": 27496,
+      "sha256": "f9e23177a3a270b680b21644f5e8c925a8054941feda4a8a8554af725742ef8d"
+    },
+    {
+      "path": "site-assets/main-website-v34/proof-card-014.html",
+      "bytes": 27598,
+      "sha256": "ff03f2e755c52889576f784e8b5d77a67df980c99d8b59bc83053a4f3731a225"
+    },
+    {
+      "path": "site-assets/main-website-v34/proof-card-015.html",
+      "bytes": 27488,
+      "sha256": "3167af80a4c77ba4457a639070faf92c41470611cae2ae119b04d9d601c1b429"
+    },
+    {
+      "path": "site-assets/main-website-v34/proof-card-016.html",
+      "bytes": 27574,
+      "sha256": "14759517d27d4351c80996d7e31bfb93262159d4a784fb5c5521424d0ce6a6a8"
+    },
+    {
+      "path": "site-assets/main-website-v34/proof-card-017.html",
+      "bytes": 27470,
+      "sha256": "b7099a0fcce80732d9e6a3f1273d3a044171142e1902c4bc564696d029c64270"
+    },
+    {
+      "path": "site-assets/main-website-v34/proof-cards.html",
+      "bytes": 18845,
+      "sha256": "91b25a55e2aa3c4625e011706d8af4dce6d751963f0f11997bbdf909859eabb9"
+    },
+    {
+      "path": "site-assets/main-website-v34/proof-sprint-builder.html",
+      "bytes": 16520,
+      "sha256": "5facb4337b11c90cb4395b6e5d88cb2834a175af5dd237c5e02d729c934f1509"
+    },
+    {
+      "path": "site-assets/main-website-v34/resources/00_OPEN_FIRST_GoalOS_for_Regular_People_v3.pdf",
+      "bytes": 61335,
+      "sha256": "c87d4471a82861d18e62676c6431356dec4e837bf183e187c4ea3abf0c673846"
+    },
+    {
+      "path": "site-assets/main-website-v34/resources/01_How_to_Earn_with_GoalOS_Essay_v3.pdf",
+      "bytes": 79282,
+      "sha256": "497d8544ce1e6ea3a831ebe05c1bba4b8ce54d0deac7aa251959adb8c56357fe"
+    },
+    {
+      "path": "site-assets/main-website-v34/resources/02_Regular_Person_GoalOS_Playbook_v3.pdf",
+      "bytes": 94087,
+      "sha256": "08af8d3d8d6d69ef3b2097f82d73cada52c788b36dc01dd00fa867d417c79025"
+    },
+    {
+      "path": "site-assets/main-website-v34/resources/03_30_Day_GoalOS_Proof_Sprint_Workbook_v3.pdf",
+      "bytes": 99473,
+      "sha256": "99702a04cebc9672e98ab42eb01a49c01b50250dc93f29b706e7ff104d45835d"
+    },
+    {
+      "path": "site-assets/main-website-v34/resources/04_Autonomous_GoalOS_Experience_Blueprint_v3.pdf",
+      "bytes": 80766,
+      "sha256": "3e3e56b00c77b2c8a7b431edd56fe4c60526e595e68f9e441d1cec08abdd7fe9"
+    },
+    {
+      "path": "site-assets/main-website-v34/resources/05_GoalOS_Launch_Copy_and_Onboarding_Scripts_v3.pdf",
+      "bytes": 54164,
+      "sha256": "ce3c81d81e900ca9f57879a4f5d001bfd913df7e80b9d270ede6872aab4ef847"
+    },
+    {
+      "path": "site-assets/main-website-v34/resources/07_GoalOS_Personal_Proof_Tracker_v3.xlsx",
+      "bytes": 36154,
+      "sha256": "836916836eed096245833be673e466b2f2b61eafd103f15b54b03b560583a528"
+    },
+    {
+      "path": "site-assets/main-website-v34/resources/GoalOS_Personal_Proof_Journey_All_in_One_v3.pdf",
+      "bytes": 501854,
+      "sha256": "e2aa9be95edf69746e83b1db1dc4d35be90e22b90c5dffa9d05fe68dd7ea5003"
+    },
+    {
+      "path": "site-assets/main-website-v34/resources/GoalOS_Personal_Proof_Journey_Pack_v3.zip",
+      "bytes": 10564186,
+      "sha256": "1680999ca01856ea8a0c3e7e5bbd5610285f9a0a6dd2222dcb1f772fab1cfd59"
+    },
+    {
+      "path": "site-assets/main-website-v34/resources/GoalOS_Personal_Proof_Sprint_Builder_v3.html",
+      "bytes": 7724,
+      "sha256": "03fea1b68f0b76e70b507559a64bfc35a5ae2c5fe07b606b3d3470a3a26ed3c9"
+    },
+    {
+      "path": "site-assets/main-website-v34/resources.html",
+      "bytes": 17273,
+      "sha256": "8e210a2c63834d5d0f6e6d1d10858bcee000dff7a9e35a0aa8e68fef6a0efec8"
+    },
+    {
+      "path": "site-assets/main-website-v34/sovereign-rsi-control-plane.html",
+      "bytes": 16555,
+      "sha256": "781e471df0a83eadb3e0ee1c1d4c26a137ab6822efdea51a8406610c6428e737"
+    },
+    {
+      "path": "site-assets/main-website-v34/start-here.html",
+      "bytes": 17042,
+      "sha256": "83817b8fd7f9dd0ba1a1ca0352bde54b3ae664286b0d23b6fd8ee55ef89391e4"
+    },
+    {
+      "path": "site-assets/main-website-v34/use-cases.html",
+      "bytes": 16412,
+      "sha256": "5d89b5e0ce8dfb9e3886673f22f4154f020acc9c310ea40c7532215f533178dc"
+    },
+    {
       "path": "site-assets/proof-pages/agialpha-ledger-route.html",
       "bytes": 16895,
       "sha256": "56cb9436a4f5dd55bb28f6c0cd89d3074bca59c1094ccaa59c97b4c81c888465"
@@ -8328,8 +8873,8 @@
     },
     {
       "path": "test/deploymentUxSafety.test.ts",
-      "bytes": 12107,
-      "sha256": "f758f9f2f35b66d359bd39947eb1f1282d35ec0f9ff3ad0cbd44910047aa6ded"
+      "bytes": 12873,
+      "sha256": "01ba268950617555ecc06ea07852b9c4bfe2d1b55c11802e30c2bf929543d0ef"
     },
     {
       "path": "test/invariants/README.md",

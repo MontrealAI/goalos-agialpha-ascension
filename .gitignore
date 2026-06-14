@@ -20,6 +20,7 @@ coverage/
 !.env.example
 !.env.sepolia.example
 !.env.mainnet.example
+!.env.verification.example
 wallets/
 keys/
 founder-approval-private.*

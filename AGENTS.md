@@ -11,3 +11,8 @@ This is an evidence-first, claim-bounded Ethereum/Hardhat repository.
 - Any generated deployment doc/report must preserve the claim boundary.
 - Ethereum Mainnet deployed = YES requires real chainId=1 transaction evidence and post-deployment verification.
 - PRs must list commands run, tests passed/failed, and claim-boundary impact.
+- Do not fabricate verification evidence.
+- Preserve official AGIALPHA token boundary.
+- Preserve public/private proof boundary.
+- Contract verified = YES requires block-explorer/source verification evidence or already-verified confirmation.
+- PRs must include commands run, tests passed/failed, generated artifacts, and claim-boundary impact.

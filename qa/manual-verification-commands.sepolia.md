@@ -1,0 +1,53 @@
+# Manual verification commands (ethereumSepolia)
+
+These commands are generated only for contracts that automatic verification could not complete. Review before running. Do not add secrets.
+
+npx hardhat verify --network ethereumSepolia --contract AGIALPHA 0x6F6f570F45833E249e27022648a26F4076F48f78
+npx hardhat verify --network ethereumSepolia --contract CommercializationPerformanceVault 0xCA8c8688914e0F7096c920146cd0Ad85cD7Ae8b9
+npx hardhat verify --network ethereumSepolia --contract ProofRewardsVault 0xB0f05d25e41FbC2b52013099ED9616f1206Ae21B
+npx hardhat verify --network ethereumSepolia --contract LiquidityVault 0x5FeaeBfB4439F3516c74939A9D04e95AFE82C4ae
+npx hardhat verify --network ethereumSepolia --contract SecurityVault 0x976fcd02f7C4773dd89C309fBF55D5923B4c98a1
+npx hardhat verify --network ethereumSepolia --contract CommunityVault 0x19cEcCd6942ad38562Ee10bAfd44776ceB67e923
+npx hardhat verify --network ethereumSepolia --contract ProofSeedRegistry 0xD42912755319665397FF090fBB63B1a31aE87Cee
+npx hardhat verify --network ethereumSepolia --contract LegacyAGIJobManagerRegistry 0xfcDB4564c18A9134002b9771816092C9693622e3
+npx hardhat verify --network ethereumSepolia --contract ReputationRegistry 0x927b167526bAbB9be047421db732C663a0b77B11
+npx hardhat verify --network ethereumSepolia --contract ReferralRegistry 0x32EEce76C2C2e8758584A83Ee2F522D4788feA0f
+npx hardhat verify --network ethereumSepolia --contract ProofCardRegistry 0x01c1DeF3b91672704716159C9041Aeca392DdFfb
+npx hardhat verify --network ethereumSepolia --contract ProofCredentialRegistry 0x02b0B4EFd909240FCB2Eb5FAe060dC60D112E3a4
+npx hardhat verify --network ethereumSepolia --contract JobRegistry 0x638A246F0Ec8883eF68280293FFE8Cfbabe61B44
+npx hardhat verify --network ethereumSepolia --contract JobClaimBondManager 0x6C2d83262fF84cBaDb3e416D527403135D757892
+npx hardhat verify --network ethereumSepolia --contract PremiumAccessRegistry 0xFD6F7A6a5c21A3f503EBaE7a473639974379c351
+npx hardhat verify --network ethereumSepolia --contract ProofSubmissionRegistry 0xa6e99A4ED7498b3cdDCBB61a6A607a4925Faa1B7
+npx hardhat verify --network ethereumSepolia --contract ReviewerBondRegistry 0x5302E909d1e93e30F05B5D6Eea766363D14F9892
+npx hardhat verify --network ethereumSepolia --contract TreasuryRouter 0x0ed64d01D0B4B655E410EF1441dD677B695639E7
+npx hardhat verify --network ethereumSepolia --contract ProtocolConfigRegistry 0x4bf010f1b9beDA5450a8dD702ED602A104ff65EE
+npx hardhat verify --network ethereumSepolia --contract LaunchGateRegistry 0x40a42Baf86Fc821f972Ad2aC878729063CeEF403
+npx hardhat verify --network ethereumSepolia --contract DisputeRegistry 0x96F3Ce39Ad2BfDCf92C0F6E2C2CAbF83874660Fc
+npx hardhat verify --network ethereumSepolia --contract AppealRegistry 0x986aaa537b8cc170761FDAC6aC4fc7F9d8a20A8C
+npx hardhat verify --network ethereumSepolia --contract SponsorRegistry 0xde2Bd2ffEA002b8E84ADeA96e5976aF664115E2c
+npx hardhat verify --network ethereumSepolia --contract BuilderProfileRegistry 0xefc1aB2475ACb7E60499Efb171D173be19928a05
+npx hardhat verify --network ethereumSepolia --contract CredentialRevocationRegistry 0x870526b7973b56163a6997bB7C886F5E4EA53638
+npx hardhat verify --network ethereumSepolia --contract AEPAgentRegistry 0xD49a0e9A4CD5979aE36840f542D2d7f02C4817Be
+npx hardhat verify --network ethereumSepolia --contract AEPArtifactRegistry 0xe1Fd27F4390DcBE165f4D60DBF821e4B9Bb02dEd
+npx hardhat verify --network ethereumSepolia --contract AEPGoalOSCommitRegistry 0xc582Bc0317dbb0908203541971a358c44b1F3766
+npx hardhat verify --network ethereumSepolia --contract AEPRunCommitmentRegistry 0xB2b580ce436E6F77A5713D80887e14788Ef49c9A
+npx hardhat verify --network ethereumSepolia --contract AEPProofLedger 0xB377a2EeD7566Ac9fCb0BA673604F9BF875e2Bab
+npx hardhat verify --network ethereumSepolia --contract AEPEvalRegistry 0x66F625B8c4c635af8b74ECe2d7eD0D58b4af3C3d
+npx hardhat verify --network ethereumSepolia --contract AEPAttestationRegistry 0x8bCe54ff8aB45CB075b044AE117b8fD91F9351aB
+npx hardhat verify --network ethereumSepolia --contract AEPSelectionGate 0x74Cf9087AD26D541930BaC724B7ab21bA8F00a27
+npx hardhat verify --network ethereumSepolia --contract AEPRolloutRouter 0xefAB0Beb0A557E452b398035eA964948c750b2Fd
+npx hardhat verify --network ethereumSepolia --contract AEPRollbackRegistry 0xaca81583840B1bf2dDF6CDe824ada250C1936B4D
+npx hardhat verify --network ethereumSepolia --contract AEPEvidenceDocketRegistry 0x70bDA08DBe07363968e9EE53d899dFE48560605B
+npx hardhat verify --network ethereumSepolia --contract AEPProofBundleRegistry 0x26B862f640357268Bd2d9E95bc81553a2Aa81D7E
+npx hardhat verify --network ethereumSepolia --contract AlphaWorkUnitLedger 0xA56F946D6398Dd7d9D4D9B337Cf9E0F68982ca5B
+npx hardhat verify --network ethereumSepolia --contract MandateEpochRegistry 0x5D42EBdBBa61412295D7b0302d6F50aC449Ddb4F
+npx hardhat verify --network ethereumSepolia --contract AGIEthNamespaceRegistry 0xddE78e6202518FF4936b5302cC2891ec180E8bFf
+npx hardhat verify --network ethereumSepolia --contract AEPConformanceRegistry 0xB06c856C8eaBd1d8321b687E188204C1018BC4E5
+npx hardhat verify --network ethereumSepolia --contract AEPClaimBoundaryRegistry 0xaB7B4c595d3cE8C85e16DA86630f2fc223B05057
+npx hardhat verify --network ethereumSepolia --contract AEPReplayRegistry 0xAD523115cd35a8d4E60B3C0953E0E0ac10418309
+npx hardhat verify --network ethereumSepolia --contract AEPCommitRevealValidationRegistry 0x045857BDEAE7C1c7252d611eB24eB55564198b4C
+npx hardhat verify --network ethereumSepolia --contract AEPEvaluatorStakingRegistry 0x2b5A4e5493d4a54E717057B127cf0C000C876f9B
+npx hardhat verify --network ethereumSepolia --contract AEPSlashingCourt 0x413b1AfCa96a3df5A686d8BFBF93d30688a7f7D9
+npx hardhat verify --network ethereumSepolia --contract AEPRewardVault 0x02df3a3F960393F5B349E40A599FEda91a7cc1A7
+npx hardhat verify --network ethereumSepolia --contract AEPChronicleRegistry 0x821f3361D454cc98b7555221A06Be563a7E2E0A6
+npx hardhat verify --network ethereumSepolia --contract AEPFalsificationRegistry 0x1780bCf4103D3F501463AD3414c7f4b654bb7aFd

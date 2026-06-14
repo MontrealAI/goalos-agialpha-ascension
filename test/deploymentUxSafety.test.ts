@@ -180,6 +180,9 @@ describe("deployment UX safety layer", function () {
     const source = fs.readFileSync("scripts/no_paid_products_check.py", "utf8");
     expect(source).to.include("site-assets/main-website-v33/resources/GoalOS_Personal_Proof_Journey_Pack_v3.zip");
     expect(source).to.include("site-assets/main-website-v34/resources/GoalOS_Personal_Proof_Journey_Pack_v3.zip");
+    expect(source).to.include("site-assets/main-website-v36/resources/GoalOS_Personal_Proof_Journey_Pack_v3.zip");
+    expect(source).to.include("site-assets/main-website-v36/resources/autopilot/GoalOS_AGIALPHA_Autopilot_Command_Center_v2.zip");
+    expect(source).to.include("site-assets/main-website-v36/resources/autopilot/technical_assets/AGIALPHA_Autopilot_Code_Kit_v2.zip");
     expect(source).to.include("rel not in allowed_zip_paths");
   });
 
@@ -187,6 +190,8 @@ describe("deployment UX safety layer", function () {
   it("keeps env examples filename-allowed but still secret-scanned", function () {
     const source = fs.readFileSync("scripts/no_private_operator_data_check.py", "utf8");
     expect(source).to.include("ENV_EXAMPLE_FILES");
+    expect(source).to.include(".env.verification.example");
+    expect(source).to.include("qa/manual-verification-commands.sepolia.md");
     expect(source).to.include("SECRET_SCAN_ALLOWLIST_FILES = ALLOWLIST_FILES - ENV_EXAMPLE_FILES");
     expect(source).to.include("rel not in SECRET_SCAN_ALLOWLIST_FILES");
   });
