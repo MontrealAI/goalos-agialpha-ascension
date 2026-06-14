@@ -11,12 +11,6 @@ on:
       - "audit/**"
       - "deployments/**"
       - "package.json"
-      - "data/proof-cards/**"
-      - "data/examples/**"
-      - "docs/examples/**"
-      - "evidence/examples/**"
-      - "scripts/integrate_goalos_agialpha_premium_proof_cards_v22.py"
-      - "scripts/verify_goalos_agialpha_premium_proof_cards_v22.py"
       - ".github/workflows/autonomous-github-pages.yml"
   workflow_dispatch:
 
@@ -1625,15 +1619,6 @@ jobs:
           print(f"Evidence artifacts copied: {len(copied_evidence)}")
           PY
 
-
-      - name: Integrate premium proof-card atlas into main website
-        shell: bash
-        run: python3 scripts/integrate_goalos_agialpha_premium_proof_cards_v22.py --site site --data data/proof-cards/proof-cards-v22.json
-
-      - name: Verify premium proof-card atlas
-        shell: bash
-        run: python3 scripts/verify_goalos_agialpha_premium_proof_cards_v22.py --site site
-
       - name: Validate generated website artifact
         shell: bash
         run: |
@@ -1652,6 +1637,15 @@ jobs:
           fi
 
           echo "Generated website artifact validated."
+
+
+      - name: Integrate premium proof-card atlas v23
+        shell: bash
+        run: python3 scripts/integrate_goalos_agialpha_premium_proof_cards_v23.py --site site --data data/proof-cards/proof-cards-v23.json
+
+      - name: Verify premium proof-card atlas v23
+        shell: bash
+        run: python3 scripts/verify_goalos_agialpha_premium_proof_cards_v23.py --site site
 
       - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v4
