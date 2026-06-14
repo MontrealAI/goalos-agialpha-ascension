@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-14T21:23:33.877341+00:00",
+  "generated_at": "2026-06-14T21:45:50.136146+00:00",
   "files": [
     {
       "path": ".editorconfig",
@@ -7963,8 +7963,8 @@
     },
     {
       "path": "scripts/no_paid_products_check.py",
-      "bytes": 2897,
-      "sha256": "a0da9e4b690aacc2bd9129f9aa7cd0053d18df5aae0fa754f9c83aabf491dc17"
+      "bytes": 4044,
+      "sha256": "db3300ad4b9fcf4f86d7476edc07555a6b0e0b112561c354709971ea388ee871"
     },
     {
       "path": "scripts/no_private_operator_data_check.py",
@@ -9203,8 +9203,8 @@
     },
     {
       "path": "test/deploymentUxSafety.test.ts",
-      "bytes": 15646,
-      "sha256": "97a323a9a5fc21a32572b6da6dac7f0c729734f36116352c44ac90ed5901bec9"
+      "bytes": 16122,
+      "sha256": "278d2212f4327d20c4599182149c7f84abf794a686021cf878667b2405f34d67"
     },
     {
       "path": "test/invariants/README.md",

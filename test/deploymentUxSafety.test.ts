@@ -209,6 +209,10 @@ describe("deployment UX safety layer", function () {
     expect(source).to.include("site-assets/main-website-v38/resources/GoalOS_Personal_Proof_Journey_Pack_v3.zip");
     expect(source).to.include("site-assets/main-website-v38/resources/autopilot/GoalOS_AGIALPHA_Autopilot_Command_Center_v2.zip");
     expect(source).to.include("site-assets/main-website-v38/resources/autopilot/technical_assets/AGIALPHA_Autopilot_Code_Kit_v2.zip");
+    expect(source).to.include("site-assets/main-website-v39/downloads/GoalOS_AGIALPHA_Autopilot_Command_Center_v2_2.zip");
+    expect(source).to.include("site-assets/main-website-v39/downloads/GoalOS_Personal_Proof_Journey_Pack_v3.zip");
+    expect(source).to.include("site-assets/main-website-v40/downloads/GoalOS_AGIALPHA_Autopilot_Command_Center_v2_2.zip");
+    expect(source).to.include("site-assets/main-website-v40/downloads/GoalOS_Personal_Proof_Journey_Pack_v3.zip");
     expect(source).to.include("rel not in allowed_zip_paths");
   });
 
