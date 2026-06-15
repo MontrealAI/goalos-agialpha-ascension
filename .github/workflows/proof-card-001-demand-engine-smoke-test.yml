@@ -8,6 +8,7 @@ on:
       - "data/examples/**"
       - "scripts/add_goalos_agialpha_proof_card_001_to_site.py"
       - "scripts/build_existing_site_with_proof_card_001.py"
+      - "scripts/build_goalos_agialpha_final_main_website_v46.py"
       - "scripts/verify_goalos_agialpha_proof_card_001_site.py"
       - ".github/workflows/proof-card-001-demand-engine-smoke-test.yml"
 
