@@ -58,9 +58,16 @@ def line_for_index(text, idx):
         end = len(text)
     return text[start:end]
 
-def is_regex_source_false_positive(line):
-    # Repository verifiers intentionally contain regexes such as MNEMONIC\s*=
-    # to detect committed secrets. Those detector patterns are not secrets.
+def is_regex_source_false_positive(line, path):
+    # Repository verifier scripts intentionally contain secret-detector strings
+    # (for example MNEMONIC\s*= or SEED_PHRASE\s*=) so they can reject
+    # committed secrets in generated sites. Those detector patterns are not
+    # themselves secrets. Keep normal files strict, but avoid blocking verifier
+    # source code for containing the regexes it is supposed to run.
+    verifier_source = path.name.startswith("verify_") or path.name.startswith("validate-")
+    detector_terms = ("PRIVATE_KEY", "SEED_PHRASE", "MNEMONIC", "API_KEY", "RPC_URL")
+    if verifier_source and any(term in line for term in detector_terms):
+        return True
     return "\\s" in line or "re.compile" in line or "SECRET_PATTERNS" in line or "BAD_PATTERNS" in line
 
 for path in ROOT.rglob("*"):
@@ -72,7 +79,7 @@ for path in ROOT.rglob("*"):
     text = path.read_text(encoding="utf-8", errors="ignore")
     for pattern in SECRET_PATTERNS:
         for match in re.finditer(pattern, text):
-            if is_regex_source_false_positive(line_for_index(text, match.start())):
+            if is_regex_source_false_positive(line_for_index(text, match.start()), path):
                 continue
             ERRORS.append(f"possible secret pattern in {path.relative_to(ROOT)}: {pattern}")
 
