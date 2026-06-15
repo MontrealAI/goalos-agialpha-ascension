@@ -1,0 +1,29 @@
+name: Final Main Website v44 Web UI Smoke Test
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "scripts/build_goalos_agialpha_final_main_website_v44.py"
+      - "scripts/verify_goalos_agialpha_final_main_website_v44.py"
+      - ".github/workflows/final-main-website-v44-web-ui-smoke-test.yml"
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Build site
+        run: python3 scripts/build_goalos_agialpha_final_main_website_v44.py --out site
+
+      - name: Verify site
+        run: python3 scripts/verify_goalos_agialpha_final_main_website_v44.py --site site
+
+      - name: Confirm GitHub upload folder contains no zip files
+        run: |
+          if find . -path "./.git" -prune -o -name "*.zip" -print | grep -q .; then
+            echo "Zip file found in repository upload tree."
+            exit 1
+          fi
+          echo "No zip files found in repository upload tree."

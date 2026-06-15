@@ -4,10 +4,10 @@ on:
   push:
     branches: [ main ]
     paths:
-      - "site-assets/main-website-v42/**"
-      - "scripts/build_goalos_agialpha_final_main_website_v42.py"
-      - "scripts/verify_goalos_agialpha_final_main_website_v42.py"
+      - "scripts/build_goalos_agialpha_final_main_website_v44.py"
+      - "scripts/verify_goalos_agialpha_final_main_website_v44.py"
       - ".github/workflows/autonomous-github-pages.yml"
+      - ".github/workflows/final-main-website-v44-web-ui-smoke-test.yml"
   workflow_dispatch:
 
 concurrency:
@@ -18,23 +18,28 @@ permissions: {}
 
 jobs:
   build:
-    name: Build final world-ready website v42
+    name: Build final world-launch website v44
     runs-on: ubuntu-latest
     permissions:
       contents: read
     steps:
       - name: Checkout repository
         uses: actions/checkout@v6
+
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
+
       - name: Build final main website
-        run: python3 scripts/build_goalos_agialpha_final_main_website_v42.py --out site
+        run: python3 scripts/build_goalos_agialpha_final_main_website_v44.py --out site
+
       - name: Verify final main website
-        run: python3 scripts/verify_goalos_agialpha_final_main_website_v42.py --site site
+        run: python3 scripts/verify_goalos_agialpha_final_main_website_v44.py --site site
+
       - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v4
         with:
           path: site
+
   deploy:
     name: Deploy final website to GitHub Pages
     runs-on: ubuntu-latest
