@@ -398,12 +398,15 @@ No eval, no propagation. No rollback, no release.
     mode = mission.get("ethereum_settlement_mode", "none")
     chain_id = 1 if network == "ethereumMainnet" else (11155111 if network == "ethereumSepolia" else 0)
     canonical = "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA"
+    token_address = mission.get("agialpha_token_address", canonical)
+    canonical_token_ok = network != "ethereumMainnet" or str(token_address).lower() == canonical.lower()
+    automation_forbidden_request = bool(mission.get("requires_mainnet_broadcast", False)) or bool(mission.get("requires_token_movement", False))
     readiness = {
         "mission_id": mission_id,
         "run_id": f"{mission_id}-{cycle}",
         "network": network,
         "chain_id": chain_id,
-        "agialpha_token_address": mission.get("agialpha_token_address", canonical),
+        "agialpha_token_address": token_address,
         "canonical_token_required": network == "ethereumMainnet",
         "mock_token_forbidden": network == "ethereumMainnet",
         "new_token_deployment_forbidden": True,
@@ -418,8 +421,9 @@ No eval, no propagation. No rollback, no release.
         "chronicle_entry_hash": sha256_file(out_dir / "ChronicleEntry.md"),
         "alpha_work_unit_estimate": "readiness-only",
         "validator_status": "human_review_required",
-        "accepted": not bool(mission.get("requires_mainnet_broadcast", False)) and not bool(mission.get("requires_token_movement", False)),
-        "rejected": bool(mission.get("requires_mainnet_broadcast", False)) or bool(mission.get("requires_token_movement", False)),
+        "canonical_token_ok": canonical_token_ok,
+        "accepted": canonical_token_ok and not automation_forbidden_request,
+        "rejected": (not canonical_token_ok) or automation_forbidden_request,
         "requires_human_review": True,
         "recommended_settlement_mode": mode,
         "mainnet_deployed_status": "NO",
