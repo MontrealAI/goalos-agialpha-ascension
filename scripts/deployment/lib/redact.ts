@@ -2,7 +2,7 @@ const SENSITIVE_KEY = new RegExp(["KEY", "SECRET", "TOKEN", "PRIVATE", "RPC", "M
 const PRIVATE_KEY = /0x[0-9a-fA-F]{64}/g;
 const URL = /https?:\/\/[^\s"']+/g;
 const BEARER = /Bearer\s+[A-Za-z0-9._~+/=-]+/gi;
-const LABELED_SECRET = /\b([A-Z0-9_ -]*(?:KEY|SECRET|TOKEN|PRIVATE|RPC|SIGNATURE|BEARER|AUTHORIZATION)[A-Z0-9_ -]*\s*[:=]\s*)([^\s"']+)/gi;
+const LABELED_SECRET = /\b((?:[A-Z][A-Z0-9_]*(?:KEY|SECRET|PRIVATE|RPC|SIGNATURE|BEARER|AUTHORIZATION)[A-Z0-9_]*|(?:API|ACCESS|REFRESH|AUTH|BEARER|BOT)_TOKEN(?:_[A-Z0-9]+)?)\s*[:=]\s*)([^\s"']+)/g;
 const MNEMONIC_LABELS = ["MNEMONIC", "SEED(?:\\s+PHRASE)?"].join("|");
 const LABEL_SEPARATOR = "\\s*[:=]\\s*";
 const LABELED_RECOVERY_PHRASE = new RegExp("\\b((?:" + MNEMONIC_LABELS + ")" + LABEL_SEPARATOR + ")((?:[a-z]+\\s+){11,23}[a-z]+)\\b", "gi");

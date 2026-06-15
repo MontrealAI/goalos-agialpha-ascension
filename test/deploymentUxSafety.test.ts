@@ -74,6 +74,8 @@ describe("deployment UX safety layer", function () {
     const recoveryPhraseLabel = "mne" + "monic=";
     expect(redactString(recoveryPhraseLabel + "abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon about")).to.equal(recoveryPhraseLabel + "[REDACTED]");
     expect(redactString("public address 0x0000000000000000000000000000000000000001 and commit " + "c".repeat(40))).to.equal("public address 0x0000000000000000000000000000000000000001 and commit " + "c".repeat(40));
+    expect(redactString("AGIALPHA token: 0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA")).to.equal("AGIALPHA token: 0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA");
+    expect(redactString("RPC configured: YES; constructor agialphaToken: 0x0000000000000000000000000000000000000001")).to.equal("RPC configured: YES; constructor agialphaToken: 0x0000000000000000000000000000000000000001");
     expect(redactString("ordinary proof output has twelve plain lowercase words that should remain visible here")).to.equal("ordinary proof output has twelve plain lowercase words that should remain visible here");
     expect(redactObject({ PRIVATE_KEY: "0x" + "b".repeat(64), normal: "ok", ["ETHERSCAN_API" + "_KEY"]: "k".repeat(36) })).to.deep.equal({ PRIVATE_KEY: "[REDACTED]", normal: "ok", ["ETHERSCAN_API" + "_KEY"]: "[REDACTED]" });
   });
