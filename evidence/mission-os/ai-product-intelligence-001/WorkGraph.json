@@ -1,0 +1,76 @@
+{
+  "edges": [
+    [
+      "intake",
+      "plan"
+    ],
+    [
+      "plan",
+      "claims"
+    ],
+    [
+      "claims",
+      "verify"
+    ],
+    [
+      "verify",
+      "docket"
+    ],
+    [
+      "docket",
+      "decision"
+    ],
+    [
+      "decision",
+      "action"
+    ],
+    [
+      "action",
+      "chronicle"
+    ]
+  ],
+  "generated_at": "2026-06-15T16:01:50+00:00",
+  "mission_id": "ai-product-intelligence-001",
+  "nodes": [
+    {
+      "id": "intake",
+      "label": "Mission Contract",
+      "status": "complete"
+    },
+    {
+      "id": "plan",
+      "label": "Planning Graph",
+      "status": "complete"
+    },
+    {
+      "id": "claims",
+      "label": "Claims Matrix",
+      "status": "complete"
+    },
+    {
+      "id": "verify",
+      "label": "Verifier Mesh",
+      "status": "complete"
+    },
+    {
+      "id": "docket",
+      "label": "Evidence Docket",
+      "status": "complete"
+    },
+    {
+      "id": "decision",
+      "label": "Governed Decision State",
+      "status": "complete"
+    },
+    {
+      "id": "action",
+      "label": "Action Graph",
+      "status": "complete"
+    },
+    {
+      "id": "chronicle",
+      "label": "Chronicle",
+      "status": "complete"
+    }
+  ]
+}

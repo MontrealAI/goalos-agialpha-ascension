@@ -1,0 +1,27 @@
+{
+  "claim_boundary": [
+    "Decision support only; not legal, financial, medical, or investment advice.",
+    "No achieved AGI, ASI, guaranteed ROI, external audit, security certification, or Mainnet deployment claim.",
+    "Public artifacts must remain evidence-bounded and human-reviewed."
+  ],
+  "confidence": "structure_ready_not_source_certified",
+  "decision_to_support": "Which product wedge should GoalOS Mission OS launch first to convert autonomous output into proof-backed institutional action?",
+  "mission_id": "ai-product-intelligence-001",
+  "mission_title": "Map the autonomous AI work market and define the strongest GoalOS commercial wedge",
+  "recommended_options": [
+    {
+      "condition": "Evidence Docket and source checks are accepted.",
+      "option": "Proceed to human review"
+    },
+    {
+      "condition": "Claims are under-supported or contradictions remain.",
+      "option": "Request more evidence"
+    },
+    {
+      "condition": "Claim-boundary, privacy, or risk gates fail.",
+      "option": "Do not publish"
+    }
+  ],
+  "required_human_review": true,
+  "state": "human_review_ready"
+}

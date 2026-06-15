@@ -1,0 +1,5 @@
+source_id,source_family,expected_use,freshness_requirement,public_private_boundary
+S-001,public web sources,"Support, challenge, or bound mission claims.",Record retrieval date for time-sensitive facts.,"No private customer data, secrets, credentials, private keys, or privileged documents may be placed in public artifacts."
+S-002,official documentation,"Support, challenge, or bound mission claims.",Record retrieval date for time-sensitive facts.,"No private customer data, secrets, credentials, private keys, or privileged documents may be placed in public artifacts."
+S-003,user-provided public-safe notes,"Support, challenge, or bound mission claims.",Record retrieval date for time-sensitive facts.,"No private customer data, secrets, credentials, private keys, or privileged documents may be placed in public artifacts."
+S-004,internal GoalOS doctrine documents,"Support, challenge, or bound mission claims.",Record retrieval date for time-sensitive facts.,"No private customer data, secrets, credentials, private keys, or privileged documents may be placed in public artifacts."
