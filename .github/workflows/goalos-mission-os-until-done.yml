@@ -1,0 +1,107 @@
+name: GoalOS Mission OS Until Done
+
+on:
+  workflow_dispatch:
+    inputs:
+      mission_file:
+        description: "Path to mission JSON"
+        required: true
+        default: "examples/mission-os/ai-product-intelligence.json"
+      output_dir:
+        description: "Output directory"
+        required: true
+        default: "evidence/mission-os/ai-product-intelligence-001"
+      max_cycles:
+        description: "Maximum autonomous repair cycles"
+        required: true
+        default: "8"
+      open_pull_request:
+        description: "Open a human-review PR with generated artifacts"
+        required: true
+        default: "false"
+        type: choice
+        options: ["false", "true"]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: goalos-mission-os-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  generate:
+    name: Generate proof-backed governed decision state
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Run Mission OS until DONE
+        run: |
+          python scripts/mission-os/mission_os_until_done.py \
+            --mission "${{ inputs.mission_file }}" \
+            --out "${{ inputs.output_dir }}" \
+            --max-cycles "${{ inputs.max_cycles }}" \
+            --json
+
+      - name: Claim-boundary check
+        run: python scripts/mission-os/claim_boundary_check.py --dir "${{ inputs.output_dir }}"
+
+      - name: DONE check
+        run: python scripts/mission-os/done_check.py --dir "${{ inputs.output_dir }}"
+
+      - name: Upload Mission OS artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: goalos-mission-os-artifacts
+          path: ${{ inputs.output_dir }}
+
+  open-pr:
+    name: Open human-review PR (no automerge)
+    if: ${{ inputs.open_pull_request == 'true' }}
+    needs: generate
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Regenerate artifacts for review branch
+        run: |
+          python scripts/mission-os/mission_os_until_done.py \
+            --mission "${{ inputs.mission_file }}" \
+            --out "${{ inputs.output_dir }}" \
+            --max-cycles "${{ inputs.max_cycles }}" \
+            --json
+          python scripts/mission-os/claim_boundary_check.py --dir "${{ inputs.output_dir }}"
+          python scripts/mission-os/done_check.py --dir "${{ inputs.output_dir }}"
+
+      - name: Create pull request with GitHub CLI
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          BRANCH="mission-os/$(date -u +%Y%m%d%H%M%S)"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -b "$BRANCH"
+          git add "${{ inputs.output_dir }}"
+          git commit -m "Add GoalOS Mission OS governed decision state"
+          git push origin "$BRANCH"
+          gh pr create \
+            --title "GoalOS Mission OS: review generated governed decision state" \
+            --body "Human review required. This workflow does not auto-merge, broadcast Mainnet transactions, move tokens, or publish unsupported claims. Review EvidenceDocket.md, ClaimBoundaryReport.md, QAReport.md, RiskLedger.csv, ActionGraph.md, and run-state.json before publication." \
+            --base main \
+            --head "$BRANCH"
