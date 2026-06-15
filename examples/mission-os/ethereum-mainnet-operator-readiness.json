@@ -1,5 +1,5 @@
 {
-  "agialpha_token_address": "",
+  "agialpha_token_address": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
   "allowed_sources": [
     "public web sources",
     "official documentation",
@@ -16,30 +16,30 @@
     "Claim-bounded conclusions",
     "Human review before publication"
   ],
-  "deadline": "72 hours",
-  "decision_to_support": "Which repeatable workflow should be converted into a GoalOS proof room first?",
+  "deadline": "48 hours",
+  "decision_to_support": "Which readiness evidence should an operator review before using existing Hardhat deployment and verification runbooks?",
   "done_condition": [
     "All required artifacts exist.",
     "Claim-boundary report passes.",
     "QA report passes.",
     "Human review packet is ready."
   ],
-  "ethereum_network": "none",
-  "ethereum_settlement_mode": "none",
+  "ethereum_network": "ethereumMainnet",
+  "ethereum_settlement_mode": "mainnet-readiness",
   "failure_criteria": [
-    "ungated automation recommendation",
-    "no rollback path",
-    "privacy boundary failure"
+    "unsupported competitor claims",
+    "unbounded market claims",
+    "no action graph"
   ],
-  "mission_id": "enterprise-ai-adoption-001",
-  "mission_title": "Design a proof-backed AI adoption path for a mid-market enterprise",
-  "objective": "Design a proof-backed AI adoption path for a mid-market enterprise",
+  "mission_id": "ethereum-mainnet-operator-readiness-001",
+  "mission_title": "Prepare a local-only Ethereum Mainnet operator-readiness proof package",
+  "objective": "Prepare a local-only Ethereum Mainnet operator-readiness proof package",
   "output_package": [
     "Evidence Docket",
-    "Risk Ledger",
+    "Governed Decision State",
     "Action Graph",
     "Executive Brief",
-    "Selection Gate Plan"
+    "Capability Package"
   ],
   "private_data_boundary": "No private customer data, secrets, credentials, private keys, or privileged documents may be placed in public artifacts.",
   "requires_contract_deployment": false,
@@ -47,11 +47,11 @@
   "requires_mainnet_broadcast": false,
   "requires_token_movement": false,
   "reviewer_required": true,
-  "risk_class": "high",
+  "risk_class": "medium",
   "success_criteria": [
-    "workflow selection",
-    "risk ledger",
-    "evidence plan",
-    "rollout gates"
+    "clear category map",
+    "proof-to-action differentiation",
+    "pricing hypothesis",
+    "launch actions"
   ]
 }

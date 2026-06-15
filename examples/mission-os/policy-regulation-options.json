@@ -1,4 +1,5 @@
 {
+  "agialpha_token_address": "",
   "allowed_sources": [
     "public web sources",
     "official documentation",
@@ -23,6 +24,8 @@
     "QA report passes.",
     "Human review packet is ready."
   ],
+  "ethereum_network": "none",
+  "ethereum_settlement_mode": "none",
   "failure_criteria": [
     "legal advice framing",
     "unsupported certainty",
@@ -30,6 +33,7 @@
   ],
   "mission_id": "policy-regulation-options-001",
   "mission_title": "Produce a governed options map for a fast-moving AI policy issue",
+  "objective": "Produce a governed options map for a fast-moving AI policy issue",
   "output_package": [
     "Evidence Docket",
     "Policy Options Map",
@@ -38,6 +42,10 @@
     "Executive Brief"
   ],
   "private_data_boundary": "No private customer data, secrets, credentials, private keys, or privileged documents may be placed in public artifacts.",
+  "requires_contract_deployment": false,
+  "requires_contract_verification": false,
+  "requires_mainnet_broadcast": false,
+  "requires_token_movement": false,
   "reviewer_required": true,
   "risk_class": "strategic",
   "success_criteria": [

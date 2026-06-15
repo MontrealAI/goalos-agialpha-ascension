@@ -1,50 +1,45 @@
 # GoalOS Mission OS — Start Here
 
-**GoalOS Mission OS** is the commercial Proof OS product that turns a high-stakes objective into a governed decision state.
+GoalOS Mission OS is **The Proof OS for Autonomous AI Work**.
 
-> **Set the objective. GoalOS runs until proof is done.**
+Set the objective. GoalOS runs until proof is done.
 
-## What it produces
+## What does it do?
+It turns an objective into a governed decision state: objective, decision context, claims, evidence, provenance, contradictions, risks, validation, action graph, claim boundary, and Chronicle memory.
 
-A Mission OS run generates:
+## What does it not do?
+It does not provide legal, financial, medical, or tax advice. It does not claim AGI, ASI, production safety, external audit, Mainnet deployment, contract verification, guaranteed outcomes, or investment return. It does not broadcast Mainnet transactions or move tokens.
 
-- `GoalOSCommit.md`
-- `RunCommitment.md`
-- `MissionPlan.md`
-- `WorkGraph.json`
-- `ClaimsMatrix.csv`
-- `SourceProvenance.csv`
-- `ContradictionRegister.md`
-- `EvidenceDocket.md`
-- `VerifierReport.md`
-- `RiskLedger.csv`
-- `DecisionState.json`
-- `ExecutiveBrief.md`
-- `DecisionDeck.md`
-- `ActionGraph.md`
-- `ChronicleEntry.md`
-- `CapabilityPackage.md`
-- `ClaimBoundaryReport.md`
-- `QAReport.md`
-- `artifact-manifest.json`
-- `index.html`
-- `run-state.json`
-
-## Quick start
+## How do I run an example mission?
 
 ```bash
 npm run mission-os:run
-npm run mission-os:done
+npm run mission-os:done-check -- --dir evidence/mission-os/ai-product-intelligence-001
 ```
 
-This runs the default example mission and writes outputs to:
+## How do I know it worked?
+Open `evidence/mission-os/ai-product-intelligence-001/run-state.json` and confirm `done` is true. Also review `ClaimBoundaryReport.md` and `QAReport.md` for PASS.
 
-```text
-evidence/mission-os/ai-product-intelligence-001/
-```
+## What does DONE=true mean?
+DONE=true means the required artifact package exists, claim-boundary checks passed, QA checks passed, and the package is ready for human review. It does not mean the mission is publicly approved.
 
-## Important boundary
+## What is an Evidence Docket?
+An evidence room containing claims, source provenance, contradictions, risks, verifier notes, decision state, and publication boundaries.
 
-The workflow generates evidence packages. It does **not** auto-merge, broadcast Mainnet transactions, move tokens, publish unsupported claims, or claim production readiness.
+## What is a governed decision state?
+The inspectable mission result that shows what can be decided, why, what risks remain, and what action comes next.
 
-> Autonomy does not bypass governance. Autonomy produces proof until governance can decide.
+## What is an Action Graph?
+A governed next-step map with review, dependency, rollback, and stop conditions.
+
+## What is Chronicle memory?
+Reusable memory describing what the mission proved, what patterns can be reused, and what should be checked in future missions.
+
+## Where does $AGIALPHA fit?
+$AGIALPHA is not the product. Verified work is the product. $AGIALPHA is proof-settlement fuel. Mission OS produces readiness by default and does not move tokens.
+
+## What is safe to publish?
+Only claim-bounded, secret-free, human-reviewed artifacts.
+
+## What remains human-reviewed?
+Public propagation, final decisions, real-world source acceptance, any settlement action, and all Mainnet operator actions.

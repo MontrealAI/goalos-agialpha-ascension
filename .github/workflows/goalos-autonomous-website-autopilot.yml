@@ -1,0 +1,21 @@
+name: GoalOS Autonomous Website Autopilot
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+  pull-requests: write
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - run: python scripts/mission-os/generate_mission_page.py
+      - run: test -s mission-os.html
+      - uses: peter-evans/create-pull-request@v7
+        with:
+          commit-message: Generate GoalOS Mission OS website page
+          title: Generate GoalOS Mission OS website page
+          body: Human review required. No auto-merge. No Mainnet broadcast. No token movement.
+          branch: mission-os/website-autopilot

@@ -1,21 +1,21 @@
-# GoalOS Mission OS — Claim Boundary
+# GoalOS Mission OS Claim Boundary
 
-GoalOS Mission OS is a proof-to-action product. It generates structured mission artifacts, Evidence Dockets, verifier reports, risk ledgers, decision states, action graphs, and Chronicle entries.
+## Allowed
+- GoalOS Mission OS is The Proof OS for Autonomous AI Work.
+- Set the objective. GoalOS runs until proof is done.
+- AI creates output. GoalOS creates proof.
+- The deliverable is a governed decision state.
+- $AGIALPHA is proof-settlement fuel when not framed as investment-return.
 
-It does **not** claim:
-
-- achieved AGI;
-- achieved ASI;
-- superintelligence achieved;
-- guaranteed ROI;
-- legal, financial, or medical advice;
-- production readiness;
-- external audit completion;
-- cybersecurity certification;
-- Ethereum Mainnet deployment;
-- guaranteed market outcome;
-- guaranteed investment outcome.
-
-The correct claim is:
-
-> GoalOS Mission OS creates a human-review-ready, proof-backed governed decision state from a bounded mission.
+## Blocked unless exact evidence exists
+- achieved AGI or ASI
+- superintelligence achieved
+- empirical SOTA
+- guaranteed ROI, guaranteed-profit, investment-return, price-target, dividend, equity, ownership
+- legal, financial, medical, or tax advice
+- production-ready
+- externally-audited
+- cybersecurity-certified
+- Mainnet deployed
+- contracts-verified
+- Kardashev achieved or energy abundance achieved
