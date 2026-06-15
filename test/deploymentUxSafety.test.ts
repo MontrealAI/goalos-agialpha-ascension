@@ -118,8 +118,11 @@ describe("deployment UX safety layer", function () {
       expect(source).to.include(field);
     }
     expect(source).to.include("assertMainnetAuthorizationCertificate");
+    expect(source).to.include("validate-mainnet-authorization-certificate.py");
+    expect(source).to.include("spawnSync");
     expect(source).to.include('main ? "missing"');
     expect(source).not.to.include("main ? AGIALPHA_MAINNET_TOKEN");
+    expect(source).not.to.include('process.env.MOCK_AGIALPHA_ADDRESS || "not configured"');
   });
 
 
