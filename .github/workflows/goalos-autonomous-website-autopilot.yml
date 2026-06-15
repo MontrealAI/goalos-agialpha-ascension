@@ -4,8 +4,10 @@ on:
     inputs:
       open_pull_request:
         description: Open a human-review pull request for generated mission-os.html
-        type: boolean
-        default: false
+        required: true
+        default: "false"
+        type: choice
+        options: ["false", "true"]
 permissions:
   contents: write
   pull-requests: write
@@ -20,7 +22,7 @@ jobs:
       - run: python scripts/mission-os/generate_mission_page.py
       - run: test -s mission-os.html
       - name: Open human-review PR
-        if: ${{ inputs.open_pull_request }}
+        if: ${{ inputs.open_pull_request == 'true' }}
         uses: peter-evans/create-pull-request@v6
         with:
           commit-message: "Generate GoalOS Mission OS public page"
