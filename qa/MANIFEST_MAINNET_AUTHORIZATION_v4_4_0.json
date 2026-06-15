@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-15T01:00:04.489461+00:00",
+  "generated_at": "2026-06-15T01:22:28.394692+00:00",
   "files": [
     {
       "path": ".editorconfig",
@@ -7758,8 +7758,8 @@
     },
     {
       "path": "scripts/deployment/goalos-deploy-command-center.ts",
-      "bytes": 16125,
-      "sha256": "c6cf7a6b624c1f6a7dcd56341b59464de5339b9cfd2181e853db820546e5de8f"
+      "bytes": 16481,
+      "sha256": "51451e99a9ab4103c330a5fce0758c1daa1f359890395eb453238093368de4f7"
     },
     {
       "path": "scripts/deployment/lib/mainnetGuards.ts",
@@ -8098,8 +8098,8 @@
     },
     {
       "path": "scripts/repository_safety_check.py",
-      "bytes": 2444,
-      "sha256": "a68463220e6c0f6ee896210ce675510e7b12fe507a14a32ccf40200009fa653f"
+      "bytes": 2500,
+      "sha256": "761123d104a31432945462f59c30cc9c376e6bcddfcf89c0b58198088c707763"
     },
     {
       "path": "scripts/repository_status_check.py",
@@ -9203,8 +9203,8 @@
     },
     {
       "path": "test/deploymentUxSafety.test.ts",
-      "bytes": 18645,
-      "sha256": "0cd157779edaaa0ef6fc5c6c5d5753e26ac6d4e9ac574c7d523505b1016f944d"
+      "bytes": 19419,
+      "sha256": "0888c4588bb19c4550227170f4065f4971156c2d00474fc291a8d68ebed942d8"
     },
     {
       "path": "test/invariants/README.md",

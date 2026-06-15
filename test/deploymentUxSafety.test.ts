@@ -100,6 +100,9 @@ describe("deployment UX safety layer", function () {
       status: "complete",
       chainId: 1,
       agialphaToken: AGIALPHA_MAINNET_TOKEN,
+      canonicalAgialphaToken: true,
+      mockAgialphaUsed: false,
+      newAgialphaTokenDeployed: false,
       contracts: { AEPAgentRegistry: address },
       transactionHashes: { AEPAgentRegistry: tx },
       manifestContracts: [{ name: "AEPAgentRegistry", address, txHash: tx, bytecodePresent: true, verification: { status: "pending" } }]
@@ -111,6 +114,10 @@ describe("deployment UX safety layer", function () {
     expect(() => assertMainnetEvidenceManifest({ ...complete, manifestContracts: [{ ...complete.manifestContracts[0], txHash: "" }] })).to.throw("Mainnet evidence blocked");
     expect(() => assertMainnetEvidenceManifest({ ...complete, manifestContracts: [{ ...complete.manifestContracts[0], bytecodePresent: false }] })).to.throw("Mainnet evidence blocked");
     expect(() => assertMainnetEvidenceManifest({ ...complete, manifestContracts: [{ ...complete.manifestContracts[0], verification: { status: "skipped" } }] })).to.throw("Mainnet evidence blocked");
+    expect(() => assertMainnetEvidenceManifest({ ...complete, agialphaToken: "0x0000000000000000000000000000000000000002" })).to.throw("canonical Ethereum Mainnet AGIALPHA token");
+    expect(() => assertMainnetEvidenceManifest({ ...complete, canonicalAgialphaToken: false })).to.throw("canonical Ethereum Mainnet AGIALPHA token");
+    expect(() => assertMainnetEvidenceManifest({ ...complete, mockAgialphaUsed: true })).to.throw("MockAGIALPHA");
+    expect(() => assertMainnetEvidenceManifest({ ...complete, newAgialphaTokenDeployed: true })).to.throw("deploy a new AGIALPHA token");
     expect(() => assertMainnetEvidenceManifest(complete)).not.to.throw();
   });
 
@@ -246,6 +253,7 @@ describe("deployment UX safety layer", function () {
     expect(source).to.include("verify_goalos_agialpha_final_main_website_v39.py");
     expect(source).to.include("verify_goalos_agialpha_final_main_website_v40.py");
     expect(source).to.include("verify_goalos_agialpha_final_main_website_v41.py");
+    expect(source).to.include("verify_goalos_agialpha_final_main_website_v42.py");
     expect(source).to.include("The literals are scanner rules, not committed secrets");
   });
 

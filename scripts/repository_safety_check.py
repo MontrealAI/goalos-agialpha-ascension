@@ -17,6 +17,7 @@ SKIP_FILES = {
     "verify_goalos_agialpha_final_main_website_v39.py",
     "verify_goalos_agialpha_final_main_website_v40.py",
     "verify_goalos_agialpha_final_main_website_v41.py",
+    "verify_goalos_agialpha_final_main_website_v42.py",
 }
 
 SECRET_PATTERNS = [
