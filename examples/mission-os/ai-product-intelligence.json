@@ -1,4 +1,5 @@
 {
+  "agialpha_token_address": "",
   "allowed_sources": [
     "public web sources",
     "official documentation",
@@ -23,6 +24,8 @@
     "QA report passes.",
     "Human review packet is ready."
   ],
+  "ethereum_network": "none",
+  "ethereum_settlement_mode": "none",
   "failure_criteria": [
     "unsupported competitor claims",
     "unbounded market claims",
@@ -30,6 +33,7 @@
   ],
   "mission_id": "ai-product-intelligence-001",
   "mission_title": "Map the autonomous AI work market and define the strongest GoalOS commercial wedge",
+  "objective": "Map the autonomous AI work market and define the strongest GoalOS commercial wedge",
   "output_package": [
     "Evidence Docket",
     "Governed Decision State",
@@ -38,6 +42,10 @@
     "Capability Package"
   ],
   "private_data_boundary": "No private customer data, secrets, credentials, private keys, or privileged documents may be placed in public artifacts.",
+  "requires_contract_deployment": false,
+  "requires_contract_verification": false,
+  "requires_mainnet_broadcast": false,
+  "requires_token_movement": false,
   "reviewer_required": true,
   "risk_class": "medium",
   "success_criteria": [

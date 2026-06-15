@@ -3,16 +3,85 @@
   "$id": "https://montrealai.github.io/goalos-agialpha-ascension/schemas/goalos-mission-os-run-state.schema.json",
   "title": "GoalOS Mission OS Run State",
   "type": "object",
-  "required": ["mission_id", "state", "done", "cycles", "artifacts", "claim_boundary_passed", "qa_passed", "generated_at"],
+  "required": [
+    "mission_id",
+    "mission_title",
+    "run_id",
+    "status",
+    "done",
+    "current_state",
+    "cycle_count",
+    "max_cycles",
+    "created_at",
+    "updated_at",
+    "required_artifacts",
+    "artifact_status",
+    "qa_status",
+    "claim_boundary_status",
+    "settlement_readiness_status",
+    "ethereum_network_status",
+    "human_review_required",
+    "public_claim_boundary",
+    "next_action"
+  ],
   "properties": {
-    "mission_id": {"type": "string"},
-    "state": {"type": "string"},
-    "done": {"type": "boolean"},
-    "cycles": {"type": "integer", "minimum": 0},
-    "artifacts": {"type": "array", "items": {"type": "string"}},
-    "missing_artifacts": {"type": "array", "items": {"type": "string"}},
-    "claim_boundary_passed": {"type": "boolean"},
-    "qa_passed": {"type": "boolean"},
-    "generated_at": {"type": "string"}
-  }
+    "mission_id": {
+      "type": "string"
+    },
+    "mission_title": {
+      "type": "string"
+    },
+    "run_id": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "done": {
+      "type": "boolean"
+    },
+    "current_state": {
+      "type": "string"
+    },
+    "cycle_count": {
+      "type": "integer"
+    },
+    "max_cycles": {
+      "type": "integer"
+    },
+    "created_at": {
+      "type": "string"
+    },
+    "updated_at": {
+      "type": "string"
+    },
+    "required_artifacts": {
+      "type": "array"
+    },
+    "artifact_status": {
+      "type": "object"
+    },
+    "qa_status": {
+      "type": "string"
+    },
+    "claim_boundary_status": {
+      "type": "string"
+    },
+    "settlement_readiness_status": {
+      "type": "string"
+    },
+    "ethereum_network_status": {
+      "type": "string"
+    },
+    "human_review_required": {
+      "type": "boolean"
+    },
+    "public_claim_boundary": {
+      "type": "array"
+    },
+    "next_action": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": true
 }

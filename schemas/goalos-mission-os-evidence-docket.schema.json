@@ -1,0 +1,1 @@
+{"$schema":"https://json-schema.org/draft/2020-12/schema","title":"GoalOS Mission OS Evidence Docket","type":"object","required":["mission_id","artifacts","claim_boundary"],"properties":{"mission_id":{"type":"string"},"artifacts":{"type":"array"},"claim_boundary":{"type":"array"}},"additionalProperties":true}

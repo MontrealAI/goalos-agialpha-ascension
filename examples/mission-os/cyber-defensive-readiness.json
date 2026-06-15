@@ -1,4 +1,5 @@
 {
+  "agialpha_token_address": "",
   "allowed_sources": [
     "public web sources",
     "official documentation",
@@ -23,6 +24,8 @@
     "QA report passes.",
     "Human review packet is ready."
   ],
+  "ethereum_network": "none",
+  "ethereum_settlement_mode": "none",
   "failure_criteria": [
     "offensive instruction",
     "external target scan",
@@ -31,6 +34,7 @@
   ],
   "mission_id": "cyber-defensive-readiness-001",
   "mission_title": "Create a defensive cybersecurity readiness proof mission for a repo-owned surface",
+  "objective": "Create a defensive cybersecurity readiness proof mission for a repo-owned surface",
   "output_package": [
     "Evidence Docket",
     "Verifier Report",
@@ -39,6 +43,10 @@
     "Human Review Packet"
   ],
   "private_data_boundary": "No private customer data, secrets, credentials, private keys, or privileged documents may be placed in public artifacts.",
+  "requires_contract_deployment": false,
+  "requires_contract_verification": false,
+  "requires_mainnet_broadcast": false,
+  "requires_token_movement": false,
   "reviewer_required": true,
   "risk_class": "high",
   "success_criteria": [

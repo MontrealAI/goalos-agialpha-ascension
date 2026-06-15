@@ -1,0 +1,16 @@
+name: GoalOS Mission OS QA
+on:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  qa:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - run: python -m unittest discover -s test/mission_os -p '*_test.py'
+      - run: python scripts/mission-os/generate_mission_page.py
+      - run: python scripts/mission-os/claim_boundary_check.py --dir .

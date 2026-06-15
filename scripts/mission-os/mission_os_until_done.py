@@ -29,13 +29,17 @@ STAGES = [
     "MISSION_CREATED",
     "COMMIT_READY",
     "PLAN_READY",
-    "RESEARCH_READY",
+    "WORKGRAPH_READY",
     "CLAIMS_READY",
+    "SOURCE_PROVENANCE_READY",
+    "CONTRADICTIONS_READY",
     "VERIFICATION_READY",
+    "RISK_LEDGER_READY",
     "DOCKET_READY",
     "DECISION_STATE_READY",
     "ACTION_GRAPH_READY",
     "CHRONICLE_READY",
+    "SETTLEMENT_READINESS_READY",
     "QA_PASSED",
     "HUMAN_REVIEW_READY",
     "DONE",
@@ -115,6 +119,24 @@ Autonomous artifact generation with human-gated publication.
 ## Gating rule
 The run may generate artifacts autonomously. It may not auto-publish, auto-merge, broadcast Mainnet transactions, move tokens, or promote unsupported claims.
 """)
+
+
+    write_json(out_dir / "MissionContract.json", {
+        "mission_id": mission_id,
+        "mission_title": mission["mission_title"],
+        "objective": mission.get("objective", mission["mission_title"]),
+        "decision_to_support": mission["decision_to_support"],
+        "success_criteria": mission["success_criteria"],
+        "failure_criteria": mission["failure_criteria"],
+        "constraints": mission.get("constraints", []),
+        "private_data_boundary": mission["private_data_boundary"],
+        "ethereum_settlement_mode": mission.get("ethereum_settlement_mode", "none"),
+        "ethereum_network": mission.get("ethereum_network", "none"),
+        "requires_mainnet_broadcast": bool(mission.get("requires_mainnet_broadcast", False)),
+        "requires_token_movement": bool(mission.get("requires_token_movement", False)),
+        "human_review_required": bool(mission["reviewer_required"]),
+        "created_at": now
+    })
 
     write_text(out_dir / "MissionPlan.md", f"""
 # MissionPlan — {mission['mission_title']}
@@ -371,6 +393,72 @@ Reusable as a template for future Mission OS runs after human review.
 No eval, no propagation. No rollback, no release.
 """)
 
+
+    network = mission.get("ethereum_network", "none")
+    chain_id = {"ethereumSepolia": 11155111, "sepolia": 11155111, "ethereumMainnet": 1, "mainnet": 1}.get(network, 0)
+    settlement = {
+        "mission_id": mission_id,
+        "run_id": f"{mission_id}-run-{cycle:03d}",
+        "evidence_docket_hash": sha256_file(out_dir / "EvidenceDocket.md"),
+        "claims_matrix_hash": sha256_file(out_dir / "ClaimsMatrix.csv"),
+        "risk_ledger_hash": sha256_file(out_dir / "RiskLedger.csv"),
+        "verifier_report_hash": sha256_file(out_dir / "VerifierReport.md"),
+        "chronicle_entry_hash": sha256_file(out_dir / "ChronicleEntry.md"),
+        "alpha_work_unit_estimate": "human_review_required_before_any_settlement",
+        "validator_status": "structure_ready_not_settled",
+        "accepted": False,
+        "rejected": False,
+        "requires_human_review": True,
+        "recommended_settlement_mode": mission.get("ethereum_settlement_mode", "none"),
+        "agialpha_token_address": mission.get("agialpha_token_address", ""),
+        "network": network,
+        "chain_id": chain_id,
+        "mainnet_deployed_status": "NO unless real chainId=1 transaction evidence exists",
+        "contract_verification_status": "NO unless verification evidence or already-verified status exists",
+        "token_movement_required": False,
+        "token_movement_performed": False,
+        "claim_boundary": "$AGIALPHA is not the product. Verified work is the product. $AGIALPHA is proof-settlement fuel."
+    }
+    write_json(out_dir / "MissionSettlementReadiness.json", settlement)
+    write_text(out_dir / "AGIALPHASettlementPlan.md", f"""
+# AGIALPHA Settlement Plan — {mission['mission_title']}
+
+$AGIALPHA is not the product. Verified work is the product. $AGIALPHA is proof-settlement fuel.
+
+## Status
+- Token movement required: false
+- Token movement performed: false
+- Recommended mode: {mission.get('ethereum_settlement_mode', 'none')}
+- Network: {network}
+- Chain ID: {chain_id}
+- Ethereum Mainnet deployment status is NO unless real chainId=1 transaction evidence exists.
+- Mainnet broadcast: local-only.
+- Canonical Mainnet AGIALPHA token only.
+""")
+    write_text(out_dir / "EthereumDeploymentCompatibilityReport.md", f"""
+# Ethereum Deployment Compatibility Report
+
+Mission OS is off-chain proof-to-action work. It reads and packages evidence; it does not deploy contracts, broadcast Mainnet transactions, or move tokens. Existing Hardhat Sepolia/Mainnet deployment and verification command-center scripts remain the deployment path.
+
+## Network posture
+- Requested mission network: {network}
+- Chain ID: {chain_id}
+- Mainnet final broadcast: local-only operator path.
+- GitHub Actions Mainnet broadcast: forbidden.
+- Canonical Mainnet AGIALPHA address is 0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA
+""")
+    write_text(out_dir / "NoMainnetBroadcastCertificate.md", """
+# No Mainnet Broadcast Certificate
+
+Mission OS generated readiness and proof artifacts only.
+
+- No Ethereum Mainnet transaction was broadcast.
+- No deployer private key was requested or used.
+- No Mainnet RPC secret was requested or used.
+- No AGIALPHA token movement was performed.
+- Human review remains required before any public propagation or local operator action.
+""")
+
     # Claim boundary report is generated before QA; it is safe because generated text avoids forbidden claims.
     generated_paths = artifact_files(out_dir)
     ok, findings = scan_forbidden_claims(generated_paths, policy.get("forbiddenClaims", []))
@@ -491,12 +579,28 @@ def run_until_done(mission_path: Path, out_dir: Path, policy_path: Path, max_cyc
         return 2
     policy = load_policy(policy_path)
     out_dir.mkdir(parents=True, exist_ok=True)
+    created = utc_now()
     state = {
         "mission_id": mission["mission_id"],
-        "started_at": utc_now(),
-        "cycles": [],
+        "mission_title": mission["mission_title"],
+        "run_id": f"{mission['mission_id']}-run",
+        "status": "running",
         "done": False,
-        "stage": "MISSION_CREATED",
+        "current_state": "MISSION_CREATED",
+        "cycle_count": 0,
+        "max_cycles": max_cycles,
+        "created_at": created,
+        "updated_at": created,
+        "required_artifacts": load_policy(policy_path).get("requiredArtifacts", []),
+        "artifact_status": {},
+        "qa_status": "not_run",
+        "claim_boundary_status": "not_run",
+        "settlement_readiness_status": "not_run",
+        "ethereum_network_status": mission.get("ethereum_network", "none"),
+        "human_review_required": bool(mission["reviewer_required"]),
+        "public_claim_boundary": mission["claim_boundary"],
+        "next_action": "generate_artifacts",
+        "cycles": []
     }
     for cycle in range(1, max_cycles + 1):
         create_artifacts(mission, out_dir, policy, cycle)
@@ -504,9 +608,18 @@ def run_until_done(mission_path: Path, out_dir: Path, policy_path: Path, max_cyc
         write_json(out_dir / "run-state.json", state)
         result = compute_done(out_dir, policy)
         stage = "DONE" if result["done"] else "REPAIR_REQUIRED"
+        present = {p.name for p in artifact_files(out_dir)}
         state["cycles"].append({"cycle": cycle, "time": utc_now(), "stage": stage, "result": result})
         state["done"] = result["done"]
-        state["stage"] = stage
+        state["status"] = "done" if result["done"] else "repair_required"
+        state["current_state"] = "DONE" if result["done"] else "CLAIMS_READY"
+        state["cycle_count"] = cycle
+        state["updated_at"] = utc_now()
+        state["artifact_status"] = {name: (name in present) for name in state["required_artifacts"]}
+        state["qa_status"] = "PASS" if result["gates"].get("qa_passed") else "FAIL"
+        state["claim_boundary_status"] = "PASS" if result["gates"].get("claim_boundary_passed") else "FAIL"
+        state["settlement_readiness_status"] = "READY" if "MissionSettlementReadiness.json" in present else "MISSING"
+        state["next_action"] = "human_review" if result["done"] else "repair_missing_or_failed_artifacts"
         state["completed_at"] = utc_now() if result["done"] else None
         write_json(out_dir / "run-state.json", state)
         if result["done"]:
