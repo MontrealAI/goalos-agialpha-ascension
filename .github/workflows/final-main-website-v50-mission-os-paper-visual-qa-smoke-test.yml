@@ -1,0 +1,28 @@
+name: Final Main Website v50 Mission OS Paper Visual QA Smoke Test
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "docs/papers/mission-os/**"
+      - "scripts/build_goalos_agialpha_final_main_website_v50.py"
+      - "scripts/verify_goalos_agialpha_final_main_website_v50.py"
+      - ".github/workflows/final-main-website-v50-mission-os-paper-visual-qa-smoke-test.yml"
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Build site
+        run: python3 scripts/build_goalos_agialpha_final_main_website_v50.py --out site
+      - name: Verify site
+        run: python3 scripts/verify_goalos_agialpha_final_main_website_v50.py --site site
+      - name: Confirm generated public site contains no ZIP files
+        run: |
+          if find site -name "*.zip" -print | grep -q .; then
+            echo "Generated public site contains ZIP files."; exit 1
+          fi
+      - name: Warn about legacy repository ZIPs without failing
+        run: |
+          find . -path "./.git" -prune -o -name "*.zip" -print || true
