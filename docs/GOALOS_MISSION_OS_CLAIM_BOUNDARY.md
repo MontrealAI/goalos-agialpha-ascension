@@ -1,21 +1,36 @@
-# GoalOS Mission OS — Claim Boundary
+# GOALOS MISSION OS CLAIM BOUNDARY
 
-GoalOS Mission OS is a proof-to-action product. It generates structured mission artifacts, Evidence Dockets, verifier reports, risk ledgers, decision states, action graphs, and Chronicle entries.
+GoalOS Mission OS is The Proof OS for Autonomous AI Work. Set the objective. GoalOS runs until proof is done.
 
-It does **not** claim:
+AI creates output. GoalOS creates proof. The deliverable is not a document. The deliverable is a governed decision state.
 
-- achieved AGI;
-- achieved ASI;
-- superintelligence achieved;
-- guaranteed ROI;
-- legal, financial, or medical advice;
-- production readiness;
-- external audit completion;
-- cybersecurity certification;
-- Ethereum Mainnet deployment;
-- guaranteed market outcome;
-- guaranteed investment outcome.
+## Operator summary
+Run an example with:
 
-The correct claim is:
+```bash
+npm run mission-os:run
+npm run mission-os:done-check -- --dir evidence/mission-os/ai-product-intelligence-001
+```
 
-> GoalOS Mission OS creates a human-review-ready, proof-backed governed decision state from a bounded mission.
+DONE=true means required artifacts exist, claim-boundary and QA pass, no secrets are emitted, no unsupported claims are present, settlement readiness is bounded, and human review remains required before public propagation.
+
+## Evidence Docket
+An Evidence Docket is the evidence room for claims, provenance, contradictions, risk, verification, and decision context.
+
+## Governed decision state
+A governed decision state contains objective, claims, evidence, provenance, contradictions, risks, validation, action graph, claim boundary, settlement-readiness, and Chronicle memory.
+
+## Action Graph and Chronicle
+The Action Graph turns review into governed next steps. Chronicle memory records reusable capability after review.
+
+## AGIALPHA boundary
+$AGIALPHA is not the product. Verified work is the product. $AGIALPHA is proof-settlement fuel. No investment, yield, equity, price-target, or guaranteed-value claim is made.
+
+## Ethereum boundary
+Mission OS is off-chain proof-to-action work. Hardhat deployment remains separate. Sepolia is for rehearsal. Mainnet final broadcast remains local-only. Mission OS does not deploy Mainnet or move tokens by default. The canonical Mainnet AGIALPHA token is `0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA`.
+
+## Safe publication
+The website is not hand-edited. It is generated from proof-aligned source, checked by automation, reviewed by a human, and then published.
+
+## Blocked claims
+No AGI, ASI, empirical SOTA, guaranteed ROI, legal/financial/medical/tax advice, production readiness, external audit completion, cybersecurity certification, Mainnet deployment, or contract verification claims without exact evidence.

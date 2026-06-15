@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "mission_id",
+    "run_id",
+    "network",
+    "chain_id",
+    "agialpha_token_address",
+    "requires_token_movement",
+    "token_movement_performed",
+    "requires_mainnet_broadcast",
+    "mainnet_broadcast_performed",
+    "accepted",
+    "requires_human_review",
+    "mainnet_deployed_status"
+  ],
+  "properties": {}
+}

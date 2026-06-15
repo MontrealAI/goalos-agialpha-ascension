@@ -1,4 +1,4 @@
-# GOALOS MISSION OS OPERATOR RUNBOOK
+# GOALOS MISSION OS PAPER WEBSITE AUTOPUBLISHER
 
 GoalOS Mission OS is The Proof OS for Autonomous AI Work. Set the objective. GoalOS runs until proof is done.
 

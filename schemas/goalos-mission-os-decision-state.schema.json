@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "mission_id",
+    "mission_title",
+    "decision_to_support",
+    "state",
+    "required_human_review"
+  ],
+  "properties": {
+    "mission_id": {
+      "type": "string"
+    },
+    "mission_title": {
+      "type": "string"
+    },
+    "decision_to_support": {
+      "type": "string"
+    },
+    "state": {
+      "type": "string"
+    },
+    "required_human_review": {
+      "type": "boolean"
+    }
+  }
+}

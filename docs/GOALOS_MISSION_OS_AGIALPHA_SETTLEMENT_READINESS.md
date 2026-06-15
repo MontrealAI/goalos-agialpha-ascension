@@ -1,4 +1,4 @@
-# GOALOS MISSION OS OPERATOR RUNBOOK
+# GOALOS MISSION OS AGIALPHA SETTLEMENT READINESS
 
 GoalOS Mission OS is The Proof OS for Autonomous AI Work. Set the objective. GoalOS runs until proof is done.
 

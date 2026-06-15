@@ -1,49 +1,47 @@
 {
-  "allowed_sources": [
-    "public web sources",
-    "official documentation",
-    "user-provided public-safe notes",
-    "internal GoalOS doctrine documents"
-  ],
-  "claim_boundary": [
-    "Decision support only; not legal, financial, medical, or investment advice.",
-    "No achieved AGI, ASI, guaranteed ROI, external audit, security certification, or Mainnet deployment claim.",
-    "Public artifacts must remain evidence-bounded and human-reviewed."
-  ],
-  "constraints": [
-    "Public-safe output",
-    "Claim-bounded conclusions",
-    "Human review before publication"
-  ],
-  "deadline": "72 hours",
-  "decision_to_support": "Which repeatable workflow should be converted into a GoalOS proof room first?",
-  "done_condition": [
-    "All required artifacts exist.",
-    "Claim-boundary report passes.",
-    "QA report passes.",
-    "Human review packet is ready."
+  "mission_id": "enterprise-ai-adoption-001",
+  "mission_title": "Enterprise AI Adoption Mission",
+  "objective": "Create proof-backed options for an AI product decision.",
+  "decision_to_support": "Choose the safest next product intelligence action.",
+  "success_criteria": [
+    "Evidence docket present",
+    "Decision state ready"
   ],
   "failure_criteria": [
-    "ungated automation recommendation",
-    "no rollback path",
-    "privacy boundary failure"
+    "Unsupported public claim",
+    "Private data leakage"
   ],
-  "mission_id": "enterprise-ai-adoption-001",
-  "mission_title": "Design a proof-backed AI adoption path for a mid-market enterprise",
+  "constraints": [
+    "Human review before publication"
+  ],
+  "allowed_sources": [
+    "operator-provided sources",
+    "public documentation",
+    "primary sources where possible"
+  ],
+  "private_data_boundary": "No private customer data in public artifacts.",
+  "risk_class": "strategic",
+  "deadline": "2026-12-31",
   "output_package": [
-    "Evidence Docket",
-    "Risk Ledger",
-    "Action Graph",
-    "Executive Brief",
-    "Selection Gate Plan"
+    "governed decision state",
+    "evidence docket",
+    "action graph"
   ],
-  "private_data_boundary": "No private customer data, secrets, credentials, private keys, or privileged documents may be placed in public artifacts.",
   "reviewer_required": true,
-  "risk_class": "high",
-  "success_criteria": [
-    "workflow selection",
-    "risk ledger",
-    "evidence plan",
-    "rollout gates"
-  ]
+  "claim_boundary": [
+    "No AGI/ASI/SOTA/ROI/Mainnet claims without evidence"
+  ],
+  "done_condition": [
+    "DONE true only after required artifacts and gates pass"
+  ],
+  "ethereum_settlement_mode": "none",
+  "ethereum_network": "none",
+  "agialpha_token_address": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
+  "requires_contract_deployment": false,
+  "requires_contract_verification": false,
+  "requires_mainnet_broadcast": false,
+  "requires_token_movement": false,
+  "publication_mode": "human-review-pr",
+  "paper_links_required": true,
+  "website_publication_required": false
 }

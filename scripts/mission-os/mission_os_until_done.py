@@ -29,13 +29,17 @@ STAGES = [
     "MISSION_CREATED",
     "COMMIT_READY",
     "PLAN_READY",
-    "RESEARCH_READY",
+    "WORKGRAPH_READY",
     "CLAIMS_READY",
+    "SOURCE_PROVENANCE_READY",
+    "CONTRADICTIONS_READY",
     "VERIFICATION_READY",
+    "RISK_LEDGER_READY",
     "DOCKET_READY",
     "DECISION_STATE_READY",
     "ACTION_GRAPH_READY",
     "CHRONICLE_READY",
+    "SETTLEMENT_READINESS_READY",
     "QA_PASSED",
     "HUMAN_REVIEW_READY",
     "DONE",
@@ -55,6 +59,24 @@ def create_artifacts(mission: Dict[str, Any], out_dir: Path, policy: Dict[str, A
     mission_id = slugify(mission["mission_id"])
     now = utc_now()
     claims = mission_claims(mission)
+
+
+    write_json(out_dir / "MissionContract.json", {
+        "mission_id": mission_id,
+        "mission_title": mission["mission_title"],
+        "objective": mission.get("objective", mission["mission_title"]),
+        "decision_to_support": mission["decision_to_support"],
+        "success_criteria": mission["success_criteria"],
+        "failure_criteria": mission["failure_criteria"],
+        "constraints": mission.get("constraints", []),
+        "private_data_boundary": mission["private_data_boundary"],
+        "reviewer_required": mission["reviewer_required"],
+        "ethereum_settlement_mode": mission.get("ethereum_settlement_mode", "none"),
+        "requires_mainnet_broadcast": mission.get("requires_mainnet_broadcast", False),
+        "requires_token_movement": mission.get("requires_token_movement", False),
+        "publication_mode": mission.get("publication_mode", "human-review-pr"),
+        "claim_boundary": mission["claim_boundary"],
+    })
 
     write_text(out_dir / "GoalOSCommit.md", f"""
 # GoalOSCommit — {mission['mission_title']}
@@ -371,6 +393,64 @@ Reusable as a template for future Mission OS runs after human review.
 No eval, no propagation. No rollback, no release.
 """)
 
+
+    network = mission.get("ethereum_network", "none")
+    mode = mission.get("ethereum_settlement_mode", "none")
+    chain_id = 1 if network == "ethereumMainnet" else (11155111 if network == "ethereumSepolia" else 0)
+    canonical = "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA"
+    readiness = {
+        "mission_id": mission_id,
+        "run_id": f"{mission_id}-{cycle}",
+        "network": network,
+        "chain_id": chain_id,
+        "agialpha_token_address": mission.get("agialpha_token_address", canonical),
+        "canonical_token_required": network == "ethereumMainnet",
+        "mock_token_forbidden": network == "ethereumMainnet",
+        "new_token_deployment_forbidden": True,
+        "requires_token_movement": bool(mission.get("requires_token_movement", False)),
+        "token_movement_performed": False,
+        "requires_mainnet_broadcast": bool(mission.get("requires_mainnet_broadcast", False)),
+        "mainnet_broadcast_performed": False,
+        "evidence_docket_hash": sha256_file(out_dir / "EvidenceDocket.md"),
+        "claims_matrix_hash": sha256_file(out_dir / "ClaimsMatrix.csv"),
+        "risk_ledger_hash": sha256_file(out_dir / "RiskLedger.csv"),
+        "verifier_report_hash": sha256_file(out_dir / "VerifierReport.md"),
+        "chronicle_entry_hash": sha256_file(out_dir / "ChronicleEntry.md"),
+        "alpha_work_unit_estimate": "readiness-only",
+        "validator_status": "human_review_required",
+        "accepted": not bool(mission.get("requires_mainnet_broadcast", False)) and not bool(mission.get("requires_token_movement", False)),
+        "rejected": bool(mission.get("requires_mainnet_broadcast", False)) or bool(mission.get("requires_token_movement", False)),
+        "requires_human_review": True,
+        "recommended_settlement_mode": mode,
+        "mainnet_deployed_status": "NO",
+        "contract_verification_status": "NO_VERIFICATION_CLAIM",
+        "deployment_manifest_path": "read-only operator supplied manifest when available",
+        "verification_evidence_path": "read-only operator supplied evidence when available",
+        "claim_boundary": "$AGIALPHA is not the product. Verified work is the product. $AGIALPHA is proof-settlement fuel.",
+    }
+    write_json(out_dir / "MissionSettlementReadiness.json", readiness)
+    write_text(out_dir / "AGIALPHASettlementPlan.md", f"""
+# AGIALPHA Settlement Plan — {mission['mission_title']}
+
+$AGIALPHA is not the product. Verified work is the product. $AGIALPHA is proof-settlement fuel.
+
+## Mode
+{mode}
+
+## Boundary
+No token movement is performed by Mission OS. Mainnet output is readiness-only unless a local human operator supplies evidence.
+""")
+    write_text(out_dir / "EthereumDeploymentCompatibilityReport.md", f"""
+# Ethereum Deployment Compatibility Report — {mission['mission_title']}
+
+Mission OS is an off-chain proof-to-action layer. It reads and hashes evidence artifacts; it does not deploy Mainnet, move tokens, mint AGIALPHA, or weaken Sepolia/Mainnet Hardhat gates.
+
+- Sepolia chainId: 11155111
+- Ethereum Mainnet chainId: 1
+- Canonical AGIALPHA token address is `{canonical}`.
+- Ethereum Mainnet deployment status remains NO unless real chainId=1 transaction evidence exists.
+""")
+
     # Claim boundary report is generated before QA; it is safe because generated text avoids forbidden claims.
     generated_paths = artifact_files(out_dir)
     ok, findings = scan_forbidden_claims(generated_paths, policy.get("forbiddenClaims", []))
@@ -492,11 +572,14 @@ def run_until_done(mission_path: Path, out_dir: Path, policy_path: Path, max_cyc
     policy = load_policy(policy_path)
     out_dir.mkdir(parents=True, exist_ok=True)
     state = {
-        "mission_id": mission["mission_id"],
-        "started_at": utc_now(),
-        "cycles": [],
-        "done": False,
-        "stage": "MISSION_CREATED",
+        "mission_id": mission["mission_id"], "mission_title": mission["mission_title"],
+        "run_id": f"{mission['mission_id']}-run", "status": "running", "done": False,
+        "current_state": "MISSION_CREATED", "cycle_count": 0, "max_cycles": max_cycles,
+        "created_at": utc_now(), "updated_at": utc_now(), "required_artifacts": load_policy(policy_path).get("requiredArtifacts", []),
+        "artifact_status": {}, "qa_status": "PENDING", "claim_boundary_status": "PENDING",
+        "settlement_readiness_status": "PENDING", "ethereum_network_status": mission.get("ethereum_network", "none"),
+        "human_review_required": True, "public_claim_boundary": mission.get("claim_boundary", []),
+        "next_action": "run until DONE", "cycles": [], "stage": "MISSION_CREATED",
     }
     for cycle in range(1, max_cycles + 1):
         create_artifacts(mission, out_dir, policy, cycle)
@@ -506,6 +589,15 @@ def run_until_done(mission_path: Path, out_dir: Path, policy_path: Path, max_cyc
         stage = "DONE" if result["done"] else "REPAIR_REQUIRED"
         state["cycles"].append({"cycle": cycle, "time": utc_now(), "stage": stage, "result": result})
         state["done"] = result["done"]
+        state["status"] = "DONE" if result["done"] else "REPAIR_REQUIRED"
+        state["current_state"] = stage
+        state["cycle_count"] = cycle
+        state["updated_at"] = utc_now()
+        state["artifact_status"] = {name: (name not in result["missing"]) for name in policy.get("requiredArtifacts", [])}
+        state["qa_status"] = "PASS" if result["gates"].get("qa_passed") else "FAIL"
+        state["claim_boundary_status"] = "PASS" if result["gates"].get("claim_boundary_passed") else "FAIL"
+        state["settlement_readiness_status"] = "PASS" if (out_dir / "MissionSettlementReadiness.json").exists() else "NOT_REQUESTED"
+        state["next_action"] = "human review" if result["done"] else "repair missing artifacts"
         state["stage"] = stage
         state["completed_at"] = utc_now() if result["done"] else None
         write_json(out_dir / "run-state.json", state)
