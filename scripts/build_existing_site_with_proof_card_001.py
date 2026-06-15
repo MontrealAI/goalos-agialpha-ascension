@@ -21,7 +21,12 @@ def extract_inline_builder(workflow: Path, out_py: Path) -> bool:
 
 def main():
     ap=argparse.ArgumentParser(); ap.add_argument('--out',default='site'); args=ap.parse_args(); site=Path(args.out)
-    candidates=[['python3','scripts/build_premium_autonomous_website.py','--out',args.out],['python3','scripts/build_premium_website.py','--out',args.out],['python3','scripts/build_site.py','--out',args.out]]
+    candidates=[
+        ['python3','scripts/build_goalos_agialpha_final_main_website_v46.py','--out',args.out],
+        ['python3','scripts/build_premium_autonomous_website.py','--out',args.out],
+        ['python3','scripts/build_premium_website.py','--out',args.out],
+        ['python3','scripts/build_site.py','--out',args.out],
+    ]
     built=False
     for cmd in candidates:
         if Path(cmd[1]).exists():

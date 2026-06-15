@@ -9,6 +9,7 @@ on:
       - "data/examples/**"
       - "scripts/add_goalos_agialpha_proof_card_001_to_site.py"
       - "scripts/build_existing_site_with_proof_card_001.py"
+      - "scripts/build_goalos_agialpha_final_main_website_v46.py"
       - "scripts/verify_goalos_agialpha_proof_card_001_site.py"
       - ".github/workflows/proof-card-001-demand-engine-autopublish.yml"
       - "README.md"
@@ -24,25 +25,19 @@ concurrency:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
 jobs:
-  build-and-deploy:
-    name: Build existing site, add Proof Card 001, verify, deploy
+  build-and-verify:
+    name: Build existing site, add Proof Card 001, verify
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v6
-      - uses: actions/configure-pages@v5
       - name: Build current site and add Proof Card 001 demand engine
         run: python3 scripts/build_existing_site_with_proof_card_001.py --out site
       - name: Verify Proof Card 001 site integration
         run: python3 scripts/verify_goalos_agialpha_proof_card_001_site.py
-      - uses: actions/upload-pages-artifact@v4
+      - uses: actions/upload-artifact@v5
+        if: always()
         with:
+          name: proof-card-001-demand-engine-site
           path: site
-      - id: deployment
-        uses: actions/deploy-pages@v4
