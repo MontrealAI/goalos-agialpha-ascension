@@ -1,0 +1,30 @@
+name: Final Main Website v47 Mission OS Smoke Test
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "scripts/build_goalos_agialpha_final_main_website_v47.py"
+      - "scripts/verify_goalos_agialpha_final_main_website_v47.py"
+      - ".github/workflows/final-main-website-v47-mission-os-smoke-test.yml"
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Build site
+        run: python3 scripts/build_goalos_agialpha_final_main_website_v47.py --out site
+      - name: Verify site
+        run: python3 scripts/verify_goalos_agialpha_final_main_website_v47.py --site site
+      - name: Confirm generated public site contains no ZIP files
+        run: |
+          if find site -name "*.zip" -print | grep -q .; then
+            echo "Generated public site contains ZIP files."
+            exit 1
+          fi
+      - name: Warn about legacy repository ZIP files without failing
+        run: |
+          LEGACY_ZIPS=$(find . -path "./.git" -prune -o -name "*.zip" -print || true)
+          if [ -n "$LEGACY_ZIPS" ]; then
+            echo "Legacy repository ZIP files were found, but this smoke test only blocks ZIP files in the generated public site."
+            echo "$LEGACY_ZIPS"
+          fi
