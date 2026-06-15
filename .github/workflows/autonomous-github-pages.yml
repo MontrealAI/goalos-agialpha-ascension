@@ -4,9 +4,10 @@ on:
   push:
     branches: [ main ]
     paths:
-      - "scripts/build_goalos_agialpha_final_main_website_v45.py"
-      - "scripts/verify_goalos_agialpha_final_main_website_v45.py"
+      - "scripts/build_goalos_agialpha_final_main_website_v46.py"
+      - "scripts/verify_goalos_agialpha_final_main_website_v46.py"
       - ".github/workflows/autonomous-github-pages.yml"
+      - ".github/workflows/final-main-website-v46-mission-os-hotfix-smoke-test.yml"
   workflow_dispatch:
 
 concurrency:
@@ -17,7 +18,7 @@ permissions: {}
 
 jobs:
   build:
-    name: Build final website v45
+    name: Build final website v46
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -27,9 +28,15 @@ jobs:
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
       - name: Build final main website
-        run: python3 scripts/build_goalos_agialpha_final_main_website_v45.py --out site
+        run: python3 scripts/build_goalos_agialpha_final_main_website_v46.py --out site
       - name: Verify final main website
-        run: python3 scripts/verify_goalos_agialpha_final_main_website_v45.py --site site
+        run: python3 scripts/verify_goalos_agialpha_final_main_website_v46.py --site site
+      - name: Confirm generated public site contains no zip files
+        run: |
+          if find site -name "*.zip" -print | grep -q .; then
+            echo "Generated public site contains zip files."
+            exit 1
+          fi
       - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v4
         with:
