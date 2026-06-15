@@ -4,6 +4,7 @@ import { AGIALPHA_MAINNET_TOKEN, assertAgialphaMainnetToken, assertNoMockTokenOn
 import { assertExpectedChainId } from "../scripts/deployment/lib/networkGuards";
 import { assertMainnetOperatorEnv, assertRealMainnetManifest, MAINNET_ALLOW_VALUE, MAINNET_CONFIRMATION_PHRASE } from "../scripts/deployment/lib/mainnetGuards";
 import { redactObject, redactString } from "../scripts/deployment/lib/redact";
+import { assertMainnetEvidenceManifest } from "../scripts/deployment/goalos-deploy-command-center";
 
 const CLAIM_BOUNDARY = "This evidence reports deployment mechanics only. It does not claim achieved AGI, ASI, superintelligence, guaranteed ROI, legal approval, tax approval, security approval, external audit completion, production safety, or Ethereum Mainnet deployment.";
 const CONFIRM_PHRASE = "DEPLOY_GOALOS_AGIALPHA_ASCENSION_TO_ETHEREUM_MAINNET";
@@ -90,6 +91,27 @@ describe("deployment UX safety layer", function () {
     expect(commandCenter).to.include("Mainnet evidence blocked: manifest must be complete and include real chainId=1 per-contract tx evidence");
     expect(commandCenter).to.include("requiredManifestContractsComplete");
     expect(commandCenter).to.include("Mainnet deployed: ${main?\"NO unless this report was generated from a real chainId=1 manifest with transactions\":\"N/A\"}");
+  });
+
+  it("blocks Mainnet evidence manifests with template, partial, missing, or skipped per-contract tx evidence", function () {
+    const tx = "0x" + "a".repeat(64);
+    const address = "0x0000000000000000000000000000000000000001";
+    const complete = {
+      status: "complete",
+      chainId: 1,
+      agialphaToken: AGIALPHA_MAINNET_TOKEN,
+      contracts: { AEPAgentRegistry: address },
+      transactionHashes: { AEPAgentRegistry: tx },
+      manifestContracts: [{ name: "AEPAgentRegistry", address, txHash: tx, bytecodePresent: true, verification: { status: "pending" } }]
+    };
+
+    expect(() => assertMainnetEvidenceManifest({ ...complete, status: "partial_failed" })).to.throw("Mainnet evidence blocked");
+    expect(() => assertMainnetEvidenceManifest({ ...complete, chainId: 11155111 })).to.throw("Mainnet evidence blocked");
+    expect(() => assertMainnetEvidenceManifest({ ...complete, transactionHashes: {} })).to.throw("Mainnet evidence blocked");
+    expect(() => assertMainnetEvidenceManifest({ ...complete, manifestContracts: [{ ...complete.manifestContracts[0], txHash: "" }] })).to.throw("Mainnet evidence blocked");
+    expect(() => assertMainnetEvidenceManifest({ ...complete, manifestContracts: [{ ...complete.manifestContracts[0], bytecodePresent: false }] })).to.throw("Mainnet evidence blocked");
+    expect(() => assertMainnetEvidenceManifest({ ...complete, manifestContracts: [{ ...complete.manifestContracts[0], verification: { status: "skipped" } }] })).to.throw("Mainnet evidence blocked");
+    expect(() => assertMainnetEvidenceManifest(complete)).not.to.throw();
   });
 
   it("evidence and docs contain the deployment claim boundary", function () {
