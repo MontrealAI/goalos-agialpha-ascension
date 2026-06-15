@@ -107,6 +107,8 @@ def validate_mission(mission: Dict[str, Any]) -> List[str]:
         errors.append("ethereum_settlement_mode must be none, simulation, sepolia, mainnet-readiness, or mainnet-local-only-after-human-gate")
     if mission.get("ethereum_network") == "ethereumMainnet" and str(mission.get("agialpha_token_address", "")).lower() != CANONICAL_AGIALPHA_MAINNET_TOKEN.lower():
         errors.append(f"ethereumMainnet missions must use canonical AGIALPHA token {CANONICAL_AGIALPHA_MAINNET_TOKEN}; MockAGIALPHA, zero address, and replacement token addresses are forbidden.")
+    if mission.get("requires_contract_verification") is True:
+        errors.append("Mission OS cannot accept requires_contract_verification=true until deployment manifest, constructor arguments, and verification evidence capture are supplied; use existing Hardhat verification workflows and evidence validators.")
     if mission.get("requires_mainnet_broadcast") is True or mission.get("requires_token_movement") is True:
         errors.append("Mission OS cannot request Mainnet broadcast or token movement from automation; use local operator docs.")
     return errors

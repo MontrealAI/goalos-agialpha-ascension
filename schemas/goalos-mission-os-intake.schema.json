@@ -144,7 +144,9 @@
     },
     "requires_contract_verification": {
       "type": "boolean",
-      "default": false
+      "default": false,
+      "const": false,
+      "description": "Mission OS does not accept verification-required intake until deployment manifest, constructor arguments, and verification evidence capture are supplied. Use existing Hardhat verification workflows and evidence validators."
     },
     "requires_mainnet_broadcast": {
       "type": "boolean",
