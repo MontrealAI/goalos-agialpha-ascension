@@ -96,6 +96,29 @@ describe("deployment UX safety layer", function () {
     expect(fs.readFileSync("docs/DEPLOYMENT_START_HERE.md", "utf8")).to.include(CLAIM_BOUNDARY);
   });
 
+  it("prints the operator-facing deployment status fields requested by the command center UX", function () {
+    const source = fs.readFileSync("scripts/deployment/goalos-deploy-command-center.ts", "utf8");
+    for (const field of [
+      "RPC configured",
+      "Deployer key configured",
+      "Deployer address",
+      "Deployer balance",
+      "Nonce",
+      "Etherscan API configured",
+      "Compiler alignment",
+      "Tests",
+      "Static checks",
+      "AGIALPHA token",
+      "Mock token used",
+      "New AGIALPHA token deployment",
+      "Authorization gates",
+      "Deployment manifest",
+      "Evidence files"
+    ]) {
+      expect(source).to.include(field);
+    }
+  });
+
 
 
   it("documents required Sepolia and Mainnet deployment role addresses", function () {
