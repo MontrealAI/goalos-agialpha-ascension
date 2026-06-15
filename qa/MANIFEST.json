@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-15T13:03:04.668040+00:00",
+  "generated_at": "2026-06-15T14:04:31.074245+00:00",
   "files": [
     {
       "path": ".editorconfig",
@@ -11233,8 +11233,8 @@
     },
     {
       "path": "test/deploymentUxSafety.test.ts",
-      "bytes": 15817,
-      "sha256": "c89f5c6c277b042cba931a0564905d45ca0960389a4a45ae1de7d4632bd1628e"
+      "bytes": 16061,
+      "sha256": "9d5ecac34b6f1329930dfadd15cd47c42a7ec439ce946a3706a4ed8005b0c379"
     },
     {
       "path": "test/invariants/README.md",

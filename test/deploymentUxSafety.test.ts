@@ -140,7 +140,10 @@ describe("deployment UX safety layer", function () {
       }
     });
     expect(result.status).to.not.equal(0);
-    expect(result.stdout).to.include('"status": "FAIL"');
+    const output = JSON.parse(result.stdout.slice(result.stdout.indexOf("{")));
+    const authorization = output.checks.find((check: any) => check.name === "Authorization gates");
+    expect(authorization.status).to.equal("FAIL");
+    expect(authorization.nextAction).to.include("Validator reported");
     expect(result.stdout).to.include('"AGIALPHA token"');
   });
 
