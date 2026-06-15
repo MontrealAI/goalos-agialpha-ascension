@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://montrealai.github.io/goalos-agialpha-ascension/schemas/goalos-mission-os-run-state.schema.json",
+  "title": "GoalOS Mission OS Run State",
+  "type": "object",
+  "required": ["mission_id", "state", "done", "cycles", "artifacts", "claim_boundary_passed", "qa_passed", "generated_at"],
+  "properties": {
+    "mission_id": {"type": "string"},
+    "state": {"type": "string"},
+    "done": {"type": "boolean"},
+    "cycles": {"type": "integer", "minimum": 0},
+    "artifacts": {"type": "array", "items": {"type": "string"}},
+    "missing_artifacts": {"type": "array", "items": {"type": "string"}},
+    "claim_boundary_passed": {"type": "boolean"},
+    "qa_passed": {"type": "boolean"},
+    "generated_at": {"type": "string"}
+  }
+}

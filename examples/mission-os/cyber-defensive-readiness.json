@@ -1,0 +1,50 @@
+{
+  "allowed_sources": [
+    "public web sources",
+    "official documentation",
+    "user-provided public-safe notes",
+    "internal GoalOS doctrine documents"
+  ],
+  "claim_boundary": [
+    "Decision support only; not legal, financial, medical, or investment advice.",
+    "No achieved AGI, ASI, guaranteed ROI, external audit, security certification, or Mainnet deployment claim.",
+    "Public artifacts must remain evidence-bounded and human-reviewed."
+  ],
+  "constraints": [
+    "Public-safe output",
+    "Claim-bounded conclusions",
+    "Human review before publication"
+  ],
+  "deadline": "48 hours",
+  "decision_to_support": "Which defensive remediation workflow should be proposed for human review without unsafe autonomy?",
+  "done_condition": [
+    "All required artifacts exist.",
+    "Claim-boundary report passes.",
+    "QA report passes.",
+    "Human review packet is ready."
+  ],
+  "failure_criteria": [
+    "offensive instruction",
+    "external target scan",
+    "secret leakage",
+    "unsafe auto-merge"
+  ],
+  "mission_id": "cyber-defensive-readiness-001",
+  "mission_title": "Create a defensive cybersecurity readiness proof mission for a repo-owned surface",
+  "output_package": [
+    "Evidence Docket",
+    "Verifier Report",
+    "Risk Ledger",
+    "Action Graph",
+    "Human Review Packet"
+  ],
+  "private_data_boundary": "No private customer data, secrets, credentials, private keys, or privileged documents may be placed in public artifacts.",
+  "reviewer_required": true,
+  "risk_class": "high",
+  "success_criteria": [
+    "defensive scope",
+    "repo-owned boundary",
+    "no external scanning",
+    "safe PR review path"
+  ]
+}

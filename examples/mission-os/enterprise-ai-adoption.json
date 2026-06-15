@@ -1,0 +1,49 @@
+{
+  "allowed_sources": [
+    "public web sources",
+    "official documentation",
+    "user-provided public-safe notes",
+    "internal GoalOS doctrine documents"
+  ],
+  "claim_boundary": [
+    "Decision support only; not legal, financial, medical, or investment advice.",
+    "No achieved AGI, ASI, guaranteed ROI, external audit, security certification, or Mainnet deployment claim.",
+    "Public artifacts must remain evidence-bounded and human-reviewed."
+  ],
+  "constraints": [
+    "Public-safe output",
+    "Claim-bounded conclusions",
+    "Human review before publication"
+  ],
+  "deadline": "72 hours",
+  "decision_to_support": "Which repeatable workflow should be converted into a GoalOS proof room first?",
+  "done_condition": [
+    "All required artifacts exist.",
+    "Claim-boundary report passes.",
+    "QA report passes.",
+    "Human review packet is ready."
+  ],
+  "failure_criteria": [
+    "ungated automation recommendation",
+    "no rollback path",
+    "privacy boundary failure"
+  ],
+  "mission_id": "enterprise-ai-adoption-001",
+  "mission_title": "Design a proof-backed AI adoption path for a mid-market enterprise",
+  "output_package": [
+    "Evidence Docket",
+    "Risk Ledger",
+    "Action Graph",
+    "Executive Brief",
+    "Selection Gate Plan"
+  ],
+  "private_data_boundary": "No private customer data, secrets, credentials, private keys, or privileged documents may be placed in public artifacts.",
+  "reviewer_required": true,
+  "risk_class": "high",
+  "success_criteria": [
+    "workflow selection",
+    "risk ledger",
+    "evidence plan",
+    "rollout gates"
+  ]
+}
