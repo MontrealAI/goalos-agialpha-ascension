@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-14T19:09:50.932741+00:00",
+  "generated_at": "2026-06-15T01:31:29.574327+00:00",
   "files": [
     {
       "path": ".editorconfig",
@@ -5593,8 +5593,8 @@
     },
     {
       "path": "deployments/ethereum-mainnet.agialpha.latest.json",
-      "bytes": 392,
-      "sha256": "2267ee5741d973a6c8e4215d8be569b88c1d2fe4debc36bd174712a24f210a80"
+      "bytes": 425,
+      "sha256": "9a0ba8ad5bc7ede77b226f2f2fbe4c12c9c3a10ed48798796b029ed484e4239f"
     },
     {
       "path": "deployments/ethereum-mainnet.agialpha.template.json",
@@ -7398,8 +7398,8 @@
     },
     {
       "path": "schemas/deployment-manifest.schema.json",
-      "bytes": 1782,
-      "sha256": "611743bdd057b1effd7bed267152a5fd1424536996352830564a12bbff94bbb0"
+      "bytes": 3268,
+      "sha256": "6c639d8332dd1ac94473b05d31dbd94804d199d77099e1c7230fa497982e791f"
     },
     {
       "path": "schemas/evidence-docket-v4.2.schema.json",
@@ -7733,8 +7733,8 @@
     },
     {
       "path": "scripts/deploy-core.ts",
-      "bytes": 21086,
-      "sha256": "a83874d450b5377caee21391f926f72547f2708db0785798ea91b23442353a20"
+      "bytes": 29934,
+      "sha256": "11bed4ad91817bfe39e2734a784982a4d3f76da5f3a4bf91df772e982dbf59bb"
     },
     {
       "path": "scripts/deploy-ethereum-mainnet-gated.ts",
@@ -7758,8 +7758,8 @@
     },
     {
       "path": "scripts/deployment/goalos-deploy-command-center.ts",
-      "bytes": 12176,
-      "sha256": "b3d9022c2ec0a158a06aecae36b5b27cba48d448c0e7fb2afb29fe12435ee493"
+      "bytes": 16481,
+      "sha256": "51451e99a9ab4103c330a5fce0758c1daa1f359890395eb453238093368de4f7"
     },
     {
       "path": "scripts/deployment/lib/mainnetGuards.ts",
@@ -7963,8 +7963,8 @@
     },
     {
       "path": "scripts/no_paid_products_check.py",
-      "bytes": 2419,
-      "sha256": "20395420a355a075b8ff7555faf90b7679d0688669dfb1350e3b6dea070ddfc7"
+      "bytes": 2898,
+      "sha256": "8e611d5bae1b6acae31fc8edbbd9fac8a577a811385d31fbf26ae38cf21b14c2"
     },
     {
       "path": "scripts/no_private_operator_data_check.py",
@@ -8098,8 +8098,8 @@
     },
     {
       "path": "scripts/repository_safety_check.py",
-      "bytes": 2056,
-      "sha256": "371db96a00241dddf49b2cfef583a8eb5afc81f71fbce425d540a73f05910b83"
+      "bytes": 2500,
+      "sha256": "761123d104a31432945462f59c30cc9c376e6bcddfcf89c0b58198088c707763"
     },
     {
       "path": "scripts/repository_status_check.py",
@@ -8158,8 +8158,8 @@
     },
     {
       "path": "scripts/verification/verify-contracts-from-manifest.ts",
-      "bytes": 7962,
-      "sha256": "e3d8185f1149fc4d2b36c314c8f2e40c81c78aec07e288a887992805665a7db3"
+      "bytes": 8835,
+      "sha256": "2800c5b31baf9e126b47f3b958237d67af8a02867a4816537beed8e31ef24cfc"
     },
     {
       "path": "scripts/verify-agialpha-token.ts",
@@ -9203,8 +9203,8 @@
     },
     {
       "path": "test/deploymentUxSafety.test.ts",
-      "bytes": 13673,
-      "sha256": "22b9eefc03fe908c5e6aa99bfa64eed42a5da085835f29db7ba33d911216cc74"
+      "bytes": 19030,
+      "sha256": "205af48da8601540470b01d4a899bd371ccc7e201794036e757ad0f3a78e117d"
     },
     {
       "path": "test/invariants/README.md",

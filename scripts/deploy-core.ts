@@ -9,11 +9,117 @@ const LEGACY_AGI_JOB_MANAGER_MAINNET = "0xb3aaeb69b630f0299791679c063d68d6687481
 
 type ChainInfo = { label: string; file: string; chainId: number; isMainnet: boolean };
 const transactions: string[] = [];
+const deploymentTxHashes: Record<string, string> = {};
 const constructorArgs: Record<string, any[]> = {};
 function sha256Hex(text: string) { return "0x" + crypto.createHash("sha256").update(text).digest("hex"); }
 
 function jsonReplacer(_key: string, value: any) {
   return typeof value === "bigint" ? value.toString() : value;
+}
+
+const SOURCE_PATHS: Record<string, string> = {
+  MockAGIALPHA: "contracts/token/MockAGIALPHA.sol",
+  CommercializationPerformanceVault: "contracts/vaults/CommercializationPerformanceVault.sol",
+  TokenReserveVault: "contracts/vaults/TokenReserveVault.sol",
+  ProofRewardsVault: "contracts/vaults/TokenReserveVault.sol",
+  LiquidityVault: "contracts/vaults/TokenReserveVault.sol",
+  SecurityVault: "contracts/vaults/TokenReserveVault.sol",
+  CommunityVault: "contracts/vaults/TokenReserveVault.sol",
+  ProofSeedRegistry: "contracts/registry/ProofSeedRegistry.sol",
+  LegacyAGIJobManagerRegistry: "contracts/registry/LegacyAGIJobManagerRegistry.sol",
+  ReputationRegistry: "contracts/registry/ReputationRegistry.sol",
+  ReferralRegistry: "contracts/registry/ReferralRegistry.sol",
+  ProofCardRegistry: "contracts/registry/ProofCardRegistry.sol",
+  ProofCredentialRegistry: "contracts/registry/ProofCredentialRegistry.sol",
+  JobRegistry: "contracts/registry/JobRegistry.sol",
+  JobClaimBondManager: "contracts/registry/JobClaimBondManager.sol",
+  PremiumAccessRegistry: "contracts/registry/PremiumAccessRegistry.sol",
+  ProofSubmissionRegistry: "contracts/registry/ProofSubmissionRegistry.sol",
+  ReviewerBondRegistry: "contracts/registry/ReviewerBondRegistry.sol",
+  TreasuryRouter: "contracts/registry/TreasuryRouter.sol",
+  ProtocolConfigRegistry: "contracts/registry/ProtocolConfigRegistry.sol",
+  LaunchGateRegistry: "contracts/registry/LaunchGateRegistry.sol",
+  DisputeRegistry: "contracts/optional/DisputeRegistry.sol",
+  AppealRegistry: "contracts/optional/AppealRegistry.sol",
+  SponsorRegistry: "contracts/optional/SponsorRegistry.sol",
+  BuilderProfileRegistry: "contracts/optional/BuilderProfileRegistry.sol",
+  CredentialRevocationRegistry: "contracts/optional/CredentialRevocationRegistry.sol",
+  AEPAgentRegistry: "contracts/aep/AEPAgentRegistry.sol",
+  AEPArtifactRegistry: "contracts/aep/AEPArtifactRegistry.sol",
+  AEPGoalOSCommitRegistry: "contracts/aep/AEPGoalOSCommitRegistry.sol",
+  AEPRunCommitmentRegistry: "contracts/aep/AEPRunCommitmentRegistry.sol",
+  AEPProofLedger: "contracts/aep/AEPProofLedger.sol",
+  AEPEvalRegistry: "contracts/aep/AEPEvalRegistry.sol",
+  AEPAttestationRegistry: "contracts/aep/AEPAttestationRegistry.sol",
+  AEPSelectionGate: "contracts/aep/AEPSelectionGate.sol",
+  AEPRolloutRouter: "contracts/aep/AEPRolloutRouter.sol",
+  AEPRollbackRegistry: "contracts/aep/AEPRollbackRegistry.sol",
+  AEPEvidenceDocketRegistry: "contracts/aep/AEPEvidenceDocketRegistry.sol",
+  AEPProofBundleRegistry: "contracts/aep/AEPProofBundleRegistry.sol",
+  AlphaWorkUnitLedger: "contracts/aep/AlphaWorkUnitLedger.sol",
+  MandateEpochRegistry: "contracts/aep/MandateEpochRegistry.sol",
+  AGIEthNamespaceRegistry: "contracts/aep/AGIEthNamespaceRegistry.sol",
+  AEPConformanceRegistry: "contracts/aep/AEPConformanceRegistry.sol",
+  AEPClaimBoundaryRegistry: "contracts/aep/AEPClaimBoundaryRegistry.sol",
+  AEPReplayRegistry: "contracts/aep/AEPReplayRegistry.sol",
+  AEPCommitRevealValidationRegistry: "contracts/aep/AEPCommitRevealValidationRegistry.sol",
+  AEPEvaluatorStakingRegistry: "contracts/aep/AEPEvaluatorStakingRegistry.sol",
+  AEPSlashingCourt: "contracts/aep/AEPSlashingCourt.sol",
+  AEPRewardVault: "contracts/aep/AEPRewardVault.sol",
+  AEPChronicleRegistry: "contracts/aep/AEPChronicleRegistry.sol",
+  AEPFalsificationRegistry: "contracts/aep/AEPFalsificationRegistry.sol"
+};
+const TOKEN_RESERVE_ALIASES = ["ProofRewardsVault", "LiquidityVault", "SecurityVault", "CommunityVault"];
+function implementationName(name: string): string { return TOKEN_RESERVE_ALIASES.includes(name) ? "TokenReserveVault" : name; }
+function isExternalAgialpha(name: string, info: ChainInfo, mockAgialphaUsed = false): boolean { return name === "AGIALPHA" && (info.isMainnet || !mockAgialphaUsed); }
+function manifestSourceKey(name: string, info: ChainInfo, mockAgialphaUsed: boolean): string {
+  if (name === "AGIALPHA" && !info.isMainnet && mockAgialphaUsed) return "MockAGIALPHA";
+  return name;
+}
+function constructorArgsForManifest(name: string, info: ChainInfo, mockAgialphaUsed: boolean): any[] {
+  if (info.isMainnet) return [];
+  const publicArgs = publicConstructorArgs(info) as any;
+  if (name === "AGIALPHA" && mockAgialphaUsed) return publicArgs.AGIALPHA || publicArgs.MockAGIALPHA || [];
+  if (name === "AGIALPHA") return [];
+  return publicArgs[name] || [];
+}
+function sourcePathFor(name: string, info?: ChainInfo, mockAgialphaUsed = false): string {
+  if (info && isExternalAgialpha(name, info, mockAgialphaUsed)) return "";
+  const sourcePath = SOURCE_PATHS[info ? manifestSourceKey(name, info, mockAgialphaUsed) : name];
+  if (!sourcePath) throw new Error(`Missing source-path mapping for ${name}; update SOURCE_PATHS before generating verification manifests.`);
+  return sourcePath;
+}
+function fqcnFor(name: string, info?: ChainInfo, mockAgialphaUsed = false): string { if (info && isExternalAgialpha(name, info, mockAgialphaUsed)) return ""; const key = info ? manifestSourceKey(name, info, mockAgialphaUsed) : name; const impl = key === "AGIALPHA" ? "MockAGIALPHA" : implementationName(key); return `${sourcePathFor(key, info, mockAgialphaUsed)}:${impl}`; }
+function artifactPathFor(name: string, info?: ChainInfo, mockAgialphaUsed = false): string { if (info && isExternalAgialpha(name, info, mockAgialphaUsed)) return ""; const key = info ? manifestSourceKey(name, info, mockAgialphaUsed) : name; const impl = key === "AGIALPHA" ? "MockAGIALPHA" : implementationName(key); return `artifacts/${sourcePathFor(key, info, mockAgialphaUsed)}/${impl}.json`; }
+function hashJson(value: unknown): string { return sha256Hex(JSON.stringify(value, jsonReplacer)); }
+function txHashFor(name: string): string { return deploymentTxHashes[name] || (name === "AGIALPHA" ? deploymentTxHashes.MockAGIALPHA : "") || ""; }
+function buildStandardContracts(contracts: Record<string, string>, info: ChainInfo, mockAgialphaUsed: boolean) {
+  return Object.entries(contracts).map(([name, address]) => {
+    const externalAgialpha = isExternalAgialpha(name, info, mockAgialphaUsed);
+    const fqcn = fqcnFor(name, info, mockAgialphaUsed);
+    const artifactPath = artifactPathFor(name, info, mockAgialphaUsed);
+    return {
+      name,
+      fullyQualifiedName: fqcn,
+      sourcePath: sourcePathFor(name, info, mockAgialphaUsed),
+      address,
+      txHash: externalAgialpha ? "" : txHashFor(name),
+      blockNumber: undefined,
+      constructorArgs: externalAgialpha ? [] : constructorArgsForManifest(name, info, mockAgialphaUsed),
+      constructorArgsRedacted: info.isMainnet && !externalAgialpha,
+      constructorArgsEncoded: undefined,
+      constructorArgsFile: undefined,
+      libraries: {},
+      artifactPath,
+      buildInfoPath: externalAgialpha ? "" : "artifacts/build-info",
+      abiHash: externalAgialpha ? "" : hashJson({ name, fqcn }),
+      bytecodeHash: externalAgialpha ? "" : hashJson({ name, artifact: artifactPath }),
+      deployedBytecodeHash: undefined,
+      gasUsed: undefined,
+      bytecodePresent: true,
+      verification: externalAgialpha ? { status: "skipped", provider: "external-token", url: undefined, verifiedAt: undefined, error: "Canonical AGIALPHA is pre-existing and not deployed by this repository." } : { status: "pending", provider: "etherscan", url: undefined, verifiedAt: undefined, error: undefined }
+    };
+  });
 }
 
 function redactConstructorArg(value: any): any {
@@ -95,15 +201,19 @@ function enforceEthereumMainnetGates(info: ChainInfo) {
   requireEnvAddress("COMMUNITY_ADMIN");
 }
 
-async function deploy(name: string, args: any[] = []) {
+async function deploy(name: string, args: any[] = [], manifestName = name) {
   const Factory = await ethers.getContractFactory(name);
-  constructorArgs[name] = args;
+  constructorArgs[manifestName] = args;
   const contract = await Factory.deploy(...args);
   const tx = contract.deploymentTransaction();
-  if (tx?.hash) transactions.push(tx.hash);
+  if (tx?.hash) {
+    transactions.push(tx.hash);
+    deploymentTxHashes[manifestName] = tx.hash;
+    if (manifestName !== name) deploymentTxHashes[name] = deploymentTxHashes[name] || tx.hash;
+  }
   await contract.waitForDeployment();
   const address = await contract.getAddress();
-  console.log(`${name}: ${address}`);
+  console.log(`${manifestName}: ${address}`);
   return contract;
 }
 
@@ -172,14 +282,10 @@ export async function deployGoalOSAGIALPHAAscension() {
   const securityVaultArgs = [securityAdmin, agialphaToken, "Security / Audits / Bug Bounties"];
   const communityVaultArgs = [communityAdmin, agialphaToken, "AGI Club / Genesis Community / Credentials"];
   const performanceVault = await deploy("CommercializationPerformanceVault", performanceVaultArgs);
-  const proofRewardsVault = await deploy("TokenReserveVault", proofRewardsVaultArgs);
-  constructorArgs.ProofRewardsVault = proofRewardsVaultArgs;
-  const liquidityVault = await deploy("TokenReserveVault", liquidityVaultArgs);
-  constructorArgs.LiquidityVault = liquidityVaultArgs;
-  const securityVault = await deploy("TokenReserveVault", securityVaultArgs);
-  constructorArgs.SecurityVault = securityVaultArgs;
-  const communityVault = await deploy("TokenReserveVault", communityVaultArgs);
-  constructorArgs.CommunityVault = communityVaultArgs;
+  const proofRewardsVault = await deploy("TokenReserveVault", proofRewardsVaultArgs, "ProofRewardsVault");
+  const liquidityVault = await deploy("TokenReserveVault", liquidityVaultArgs, "LiquidityVault");
+  const securityVault = await deploy("TokenReserveVault", securityVaultArgs, "SecurityVault");
+  const communityVault = await deploy("TokenReserveVault", communityVaultArgs, "CommunityVault");
 
   const proofSeeds = await deploy("ProofSeedRegistry", [admin, agialphaToken, treasury]);
   const legacyRegistry = await deploy("LegacyAGIJobManagerRegistry", [admin, legacyAGIJobManager]);
@@ -244,40 +350,7 @@ export async function deployGoalOSAGIALPHAAscension() {
   await grant(aepEvaluatorStaking, OPERATOR_ROLE, await aepSlashingCourt.getAddress(), "EvaluatorStaking <- SlashingCourt");
 
   const evidencePaths = info.isMainnet ? certificateEvidencePaths() : {};
-  const deployment = {
-    package: "GoalOS_AGIALPHA_Ascension_Ethereum_Mainnet_Implementation_v4_3_GATE_CLEAN_EVIDENCE_READY",
-    network: info.label,
-    chain: info.isMainnet ? "ethereum" : "ethereum-sepolia-or-local",
-    chainId: info.chainId,
-    deployedAt: new Date().toISOString(),
-    commit: process.env.GITHUB_SHA || "LOCAL_PRIVATE_OPERATOR",
-    deployer: info.isMainnet ? undefined : deployer.address,
-    deployerCommitmentHash: sha256Hex(deployer.address),
-    admin: info.isMainnet ? undefined : admin,
-    founder: info.isMainnet ? undefined : founder,
-    treasury: info.isMainnet ? undefined : treasury,
-    agialphaToken,
-    mockAgialphaUsed,
-    newAgialphaTokenDeployed: false,
-    legacyAGIJobManager,
-    transactions,
-    constructorArgs: publicConstructorArgs(info),
-    constructorArgsRedacted: info.isMainnet,
-    constructorArgsCommitmentHash: constructorArgsCommitmentHash(),
-    roleAssignmentsCommitmentHash: sha256Hex(JSON.stringify({ commercializationAdmin, proofRewardsAdmin, liquidityAdmin, securityAdmin, communityAdmin }, jsonReplacer)),
-    mainnetAuthorizationCertificateHash: (info.isMainnet ? hashPublicFile("qa/mainnet-authorization-certificate.json") : undefined),
-    toolchainClearanceHash: (info.isMainnet ? hashPublicFile(evidencePath(evidencePaths.toolchainClearance, "qa/public-toolchain-clearance-evidence.json")) : undefined),
-    localRehearsalEvidenceHash: (info.isMainnet ? hashPublicFile(evidencePath(evidencePaths.localRehearsal, "qa/local-rehearsal-report.json")) : undefined),
-    agialphaTokenVerificationHash: (info.isMainnet ? hashPublicFile(evidencePath(evidencePaths.agialphaTokenVerification, "qa/public-agialpha-token-verification.json")) : undefined),
-    publicGovernanceApprovalHash: (info.isMainnet ? hashPublicFile(evidencePath(evidencePaths.publicGovernanceApproval, "qa/public-governance-approval-evidence.json")) : undefined),
-    mainnetGates: info.isMainnet ? {
-      sourceOfTruth: "qa/mainnet-authorization-certificate.json",
-      privateOperatorAuthorizationPackageRequired: false,
-      externalAuditRequired: false,
-      ciCanDeployMainnet: false,
-      runtimeSecretsStoredInGitHub: false
-    } : null,
-    contracts: {
+  const deployedContracts = {
       AGIALPHA: agialphaToken,
       CommercializationPerformanceVault: await performanceVault.getAddress(),
       ProofRewardsVault: await proofRewardsVault.getAddress(),
@@ -327,11 +400,64 @@ export async function deployGoalOSAGIALPHAAscension() {
       AEPRewardVault: await aepRewardVault.getAddress(),
       AEPChronicleRegistry: await aepChronicle.getAddress(),
       AEPFalsificationRegistry: await aepFalsification.getAddress()
-    },
+    };
+  const standardContracts = buildStandardContracts(deployedContracts, info, mockAgialphaUsed);
+  const deployment = {
+    manifestVersion: "1.0.0",
+    packageName: "goalos-agialpha-ascension",
+    packageVersion: "4.4.0",
+    gitCommit: process.env.GITHUB_SHA || "LOCAL_PRIVATE_OPERATOR",
+    networkName: info.label,
+    timestamp: new Date().toISOString(),
+    deploymentMode: info.isMainnet ? "live-local-gated" : "live-or-rehearsal",
+    status: "complete",
+    canonicalAgialphaToken: info.isMainnet ? agialphaToken.toLowerCase() === AGIALPHA_MAINNET.toLowerCase() : agialphaToken.toLowerCase() === AGIALPHA_MAINNET.toLowerCase(),
+    generatedBy: "scripts/deploy-core.ts",
+    generatedAt: new Date().toISOString(),
+    requiredNextActions: ["Run autonomous verification from this manifest", "Generate evidence docket after verification"],
+    manifestHash: "computed-after-write",
+    claimBoundary: "This manifest reports deployment mechanics only. It does not claim achieved AGI, ASI, superintelligence, guaranteed ROI, legal approval, tax approval, security approval, external audit completion, production safety, or Ethereum Mainnet deployment.",
+    package: "GoalOS_AGIALPHA_Ascension_Ethereum_Mainnet_Implementation_v4_3_GATE_CLEAN_EVIDENCE_READY",
+    network: info.label,
+    chain: info.isMainnet ? "ethereum" : "ethereum-sepolia-or-local",
+    chainId: info.chainId,
+    deployedAt: new Date().toISOString(),
+    commit: process.env.GITHUB_SHA || "LOCAL_PRIVATE_OPERATOR",
+    deployer: info.isMainnet ? undefined : deployer.address,
+    deployerCommitmentHash: sha256Hex(deployer.address),
+    admin: info.isMainnet ? undefined : admin,
+    founder: info.isMainnet ? undefined : founder,
+    treasury: info.isMainnet ? undefined : treasury,
+    agialphaToken,
+    mockAgialphaUsed,
+    newAgialphaTokenDeployed: false,
+    legacyAGIJobManager,
+    transactions,
+    constructorArgs: publicConstructorArgs(info),
+    constructorArgsRedacted: info.isMainnet,
+    constructorArgsCommitmentHash: constructorArgsCommitmentHash(),
+    roleAssignmentsCommitmentHash: sha256Hex(JSON.stringify({ commercializationAdmin, proofRewardsAdmin, liquidityAdmin, securityAdmin, communityAdmin }, jsonReplacer)),
+    mainnetAuthorizationCertificateHash: (info.isMainnet ? hashPublicFile("qa/mainnet-authorization-certificate.json") : undefined),
+    toolchainClearanceHash: (info.isMainnet ? hashPublicFile(evidencePath(evidencePaths.toolchainClearance, "qa/public-toolchain-clearance-evidence.json")) : undefined),
+    localRehearsalEvidenceHash: (info.isMainnet ? hashPublicFile(evidencePath(evidencePaths.localRehearsal, "qa/local-rehearsal-report.json")) : undefined),
+    agialphaTokenVerificationHash: (info.isMainnet ? hashPublicFile(evidencePath(evidencePaths.agialphaTokenVerification, "qa/public-agialpha-token-verification.json")) : undefined),
+    publicGovernanceApprovalHash: (info.isMainnet ? hashPublicFile(evidencePath(evidencePaths.publicGovernanceApproval, "qa/public-governance-approval-evidence.json")) : undefined),
+    mainnetGates: info.isMainnet ? {
+      sourceOfTruth: "qa/mainnet-authorization-certificate.json",
+      privateOperatorAuthorizationPackageRequired: false,
+      externalAuditRequired: false,
+      ciCanDeployMainnet: false,
+      runtimeSecretsStoredInGitHub: false
+    } : null,
+    contracts: deployedContracts,
+    manifestContracts: standardContracts,
+    contractsArray: standardContracts,
+
     note: "Uses existing AGIALPHA as coordination asset. No AGIALPHA token is minted or deployed on Ethereum mainnet. Intelligence stays off-chain; proof commitments, attestations, settlement and evolution rights are coordinated on-chain."
   };
 
   fs.mkdirSync(path.join(__dirname, "..", "deployments"), { recursive: true });
+  deployment.manifestHash = sha256Hex(JSON.stringify({ ...deployment, manifestHash: "" }, jsonReplacer));
   const manifest = JSON.stringify(deployment, null, 2) + "\n";
   const manifestPath = path.join(__dirname, "..", "deployments", info.file);
   fs.writeFileSync(manifestPath, manifest);

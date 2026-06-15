@@ -35,6 +35,13 @@ allowed_zip_paths = {
     "site-assets/main-website-v36/resources/GoalOS_Personal_Proof_Journey_Pack_v3.zip",
     "site-assets/main-website-v36/resources/autopilot/GoalOS_AGIALPHA_Autopilot_Command_Center_v2.zip",
     "site-assets/main-website-v36/resources/autopilot/technical_assets/AGIALPHA_Autopilot_Code_Kit_v2.zip",
+
+    # Explicitly reviewed v38 public website/autopilot downloadable assets. These mirror
+    # the v36 public resources and are not private operator inputs or customer exports.
+    "site-assets/main-website-v38/resources/GoalOS_Personal_Proof_Journey_Pack_v3.zip",
+    "site-assets/main-website-v38/resources/autopilot/GoalOS_AGIALPHA_Autopilot_Command_Center_v2.zip",
+    "site-assets/main-website-v38/resources/autopilot/technical_assets/AGIALPHA_Autopilot_Code_Kit_v2.zip",
+
 }
 
 def tracked_files() -> list[Path]:

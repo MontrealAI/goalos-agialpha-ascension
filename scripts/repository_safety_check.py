@@ -11,6 +11,13 @@ SKIP_FILES = {
     "repository_production_readiness_check.py",
     "verify-readiness-v4-2.py",
     "verify-readiness-v4-3.py",
+    # These website verification scripts contain literal denylist regexes such as
+    # MNEMONIC\s*= and SEED_PHRASE\s*= to detect secrets in generated sites.
+    # The literals are scanner rules, not committed secrets.
+    "verify_goalos_agialpha_final_main_website_v39.py",
+    "verify_goalos_agialpha_final_main_website_v40.py",
+    "verify_goalos_agialpha_final_main_website_v41.py",
+    "verify_goalos_agialpha_final_main_website_v42.py",
 }
 
 SECRET_PATTERNS = [

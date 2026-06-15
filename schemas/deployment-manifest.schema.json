@@ -1,1 +1,88 @@
-{"$schema":"https://json-schema.org/draft/2020-12/schema","title":"GoalOS Deployment Manifest","type":"object","required":["manifestVersion","packageName","packageVersion","gitCommit","networkName","chainId","timestamp","deployer","agialphaToken","canonicalAgialphaToken","mockAgialphaUsed","newAgialphaTokenDeployed","contracts","manifestHash","claimBoundary"],"properties":{"manifestVersion":{"type":"string"},"packageName":{"type":"string"},"packageVersion":{"type":"string"},"gitCommit":{"type":"string"},"networkName":{"type":"string"},"chainId":{"type":"integer"},"timestamp":{"type":"string"},"deployer":{"type":"string"},"agialphaToken":{"type":"string"},"canonicalAgialphaToken":{"type":"boolean"},"mockAgialphaUsed":{"type":"boolean"},"newAgialphaTokenDeployed":{"type":"boolean"},"contracts":{"type":"array","items":{"type":"object","required":["name","fullyQualifiedName","sourcePath","address","txHash","constructorArgs","artifactPath","abiHash","bytecodeHash","verificationStatus"],"properties":{"name":{"type":"string"},"fullyQualifiedName":{"type":"string"},"sourcePath":{"type":"string"},"address":{"type":"string"},"txHash":{"type":"string"},"constructorArgs":{"type":"array"},"constructorArgsEncoded":{"type":"string"},"libraries":{"type":"object"},"artifactPath":{"type":"string"},"abiHash":{"type":"string"},"bytecodeHash":{"type":"string"},"deployedBytecodeHash":{"type":"string"},"gasUsed":{"type":["string","number"]},"blockNumber":{"type":["integer","string"]},"verificationStatus":{"type":"string"},"verificationProvider":{"type":"string"},"verificationUrl":{"type":"string"},"verificationTimestamp":{"type":"string"},"verificationError":{"type":"string"}}}},"manifestHash":{"type":"string"},"claimBoundary":{"type":"string"}},"additionalProperties":true}
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GoalOS Deployment Manifest",
+  "type": "object",
+  "required": [
+    "chainId",
+    "agialphaToken",
+    "mockAgialphaUsed",
+    "newAgialphaTokenDeployed",
+    "contracts"
+  ],
+  "properties": {
+    "manifestVersion": { "type": "string" },
+    "packageName": { "type": "string" },
+    "packageVersion": { "type": "string" },
+    "gitCommit": { "type": "string" },
+    "networkName": { "type": "string" },
+    "network": { "type": "string" },
+    "chainId": { "type": "integer" },
+    "timestamp": { "type": "string" },
+    "deployedAt": { "type": "string" },
+    "deployer": { "type": ["string", "null"] },
+    "deployerCommitmentHash": { "type": "string" },
+    "agialphaToken": { "type": "string" },
+    "canonicalAgialphaToken": { "type": "boolean" },
+    "mockAgialphaUsed": { "type": "boolean" },
+    "newAgialphaTokenDeployed": { "type": "boolean" },
+    "deploymentMode": { "type": "string" },
+    "status": { "enum": ["complete", "partial_failed", "failed", "rehearsal", "TEMPLATE_NO_DEPLOYMENT"] },
+    "contracts": {
+      "oneOf": [
+        { "type": "object", "additionalProperties": { "type": "string" } },
+        { "$ref": "#/$defs/contractArray" }
+      ]
+    },
+    "manifestContracts": { "$ref": "#/$defs/contractArray" },
+    "contractsArray": { "$ref": "#/$defs/contractArray" },
+    "transactions": { "type": "array" },
+    "constructorArgs": { "type": "object" },
+    "manifestHash": { "type": "string" },
+    "claimBoundary": { "type": "string" },
+    "generatedBy": { "type": "string" },
+    "generatedAt": { "type": "string" },
+    "requiredNextActions": { "type": "array", "items": { "type": "string" } }
+  },
+  "$defs": {
+    "contractArray": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "fullyQualifiedName", "sourcePath", "address", "txHash", "constructorArgs", "artifactPath", "abiHash", "bytecodeHash", "bytecodePresent", "verification"],
+        "properties": {
+          "name": { "type": "string" },
+          "fullyQualifiedName": { "type": "string" },
+          "sourcePath": { "type": "string" },
+          "address": { "type": "string" },
+          "txHash": { "type": "string" },
+          "blockNumber": {},
+          "constructorArgs": { "type": "array" },
+          "constructorArgsEncoded": {},
+          "constructorArgsFile": {},
+          "libraries": { "type": "object" },
+          "artifactPath": { "type": "string" },
+          "buildInfoPath": {},
+          "abiHash": { "type": "string" },
+          "bytecodeHash": { "type": "string" },
+          "deployedBytecodeHash": {},
+          "gasUsed": {},
+          "bytecodePresent": { "type": "boolean" },
+          "verification": {
+            "type": "object",
+            "required": ["status", "provider"],
+            "properties": {
+              "status": { "enum": ["pending", "verified", "already_verified", "failed", "skipped"] },
+              "provider": { "type": "string" },
+              "url": {},
+              "verifiedAt": {},
+              "error": {}
+            },
+            "additionalProperties": true
+          }
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": true
+}
