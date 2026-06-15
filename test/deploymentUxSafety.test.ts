@@ -147,6 +147,26 @@ describe("deployment UX safety layer", function () {
     expect(result.stdout).to.include('"AGIALPHA token"');
   });
 
+  it("does not treat CI/no-key as broadcast readiness failures during no-broadcast Mainnet preflight", function () {
+    const result = spawnSync("node_modules/.bin/ts-node", ["scripts/deployment/goalos-deploy-command-center.ts", "mainnet:preflight", "--network", "ethereumMainnet", "--no-broadcast", "--json"], {
+      encoding: "utf8",
+      env: {
+        ...process.env,
+        CI: "true",
+        GITHUB_ACTIONS: "true",
+        PRIVATE_MAINNET_DEPLOYER_PRIVATE_KEY: "",
+        MAINNET_DEPLOYER_PRIVATE_KEY: "",
+        AGIALPHA_TOKEN_ADDRESS: ""
+      }
+    });
+    const output = JSON.parse(result.stdout.slice(result.stdout.indexOf("{")));
+    const keyCheck = output.checks.find((check: any) => check.name === "Deployer key configured");
+    const ciCheck = output.checks.find((check: any) => check.name === "CI mainnet broadcast gate");
+    expect(keyCheck.status).to.equal("WARN");
+    expect(ciCheck.status).to.equal("PASS");
+    expect(ciCheck.value).to.equal("CI-safe no-broadcast mode");
+  });
+
 
 
   it("documents required Sepolia and Mainnet deployment role addresses", function () {
