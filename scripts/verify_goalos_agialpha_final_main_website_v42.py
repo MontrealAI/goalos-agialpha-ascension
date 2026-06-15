@@ -3,7 +3,7 @@ from pathlib import Path
 import argparse, sys
 
 REQUIRED = ['index.html','start-here.html','regular-person.html','personal-proof-sprint.html','proof-sprint-builder.html','autopilot-mission-builder.html','use-cases.html','resources.html','proof-cards.html','system-map.html','how-it-works.html','execution-moat.html','roadmap.html','pilot-guide.html','research.html','agialpha-ledger-route.html','sovereign-rsi-control-plane.html','evidence-docket.html','sitemap.xml','robots.txt','manifest.webmanifest','routes.json','site-status.json'] + [f'proof-card-{i:03d}.html' for i in range(1,18)]
-FORBIDDEN=['recursive.com','recursive-org/first-steps','DEPLOYER_PRIVATE_KEY','PRIVATE_KEY=','MNEMONIC=','SEED_PHRASE=','MAINNET_RPC_URL=']
+FORBIDDEN=['recursive.com','recursive-org/first-steps','DEPLOYER_PRIVATE_KEY','PRIVATE_KEY=','MNEMONIC' + '=','SEED_PHRASE' + '=','MAINNET_RPC_URL=']
 def fail(m): print('FAIL:',m); sys.exit(1)
 def main():
     ap=argparse.ArgumentParser(); ap.add_argument('--site',default='site'); args=ap.parse_args(); site=Path(args.site)

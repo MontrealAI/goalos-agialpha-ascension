@@ -117,6 +117,9 @@ describe("deployment UX safety layer", function () {
     ]) {
       expect(source).to.include(field);
     }
+    expect(source).to.include("assertMainnetAuthorizationCertificate");
+    expect(source).to.include('main ? "missing"');
+    expect(source).not.to.include("main ? AGIALPHA_MAINNET_TOKEN");
   });
 
 
@@ -206,6 +209,8 @@ describe("deployment UX safety layer", function () {
     expect(source).to.include("site-assets/main-website-v36/resources/GoalOS_Personal_Proof_Journey_Pack_v3.zip");
     expect(source).to.include("site-assets/main-website-v36/resources/autopilot/GoalOS_AGIALPHA_Autopilot_Command_Center_v2.zip");
     expect(source).to.include("site-assets/main-website-v36/resources/autopilot/technical_assets/AGIALPHA_Autopilot_Code_Kit_v2.zip");
+    expect(source).to.include("site-assets/main-website-v38/resources/autopilot/technical_assets/AGIALPHA_Autopilot_Code_Kit_v2.zip");
+    expect(source).to.include("site-assets/main-website-v41/resources/autopilot/technical_assets/AGIALPHA_Autopilot_Code_Kit_v2.zip");
     expect(source).to.include("rel not in allowed_zip_paths");
   });
 
