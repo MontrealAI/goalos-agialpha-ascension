@@ -69,7 +69,9 @@ describe("deployment UX safety layer", function () {
   it("redacts sensitive output values", function () {
     expect(redactString("https://example.com/super-secret-rpc")).to.equal("[REDACTED]");
     expect(redactString("0x" + "a".repeat(64))).to.equal("[REDACTED]");
-    expect(redactObject({ PRIVATE_KEY: "0x" + "b".repeat(64), normal: "ok" })).to.deep.equal({ PRIVATE_KEY: "[REDACTED]", normal: "ok" });
+    expect(redactString("api " + "x".repeat(40))).to.equal("api [REDACTED]");
+    expect(redactString("abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon about")).to.equal("[REDACTED]");
+    expect(redactObject({ PRIVATE_KEY: "0x" + "b".repeat(64), normal: "ok", ETHERSCAN_API_KEY: "k".repeat(36) })).to.deep.equal({ PRIVATE_KEY: "[REDACTED]", normal: "ok", ETHERSCAN_API_KEY: "[REDACTED]" });
   });
 
   it("keeps mainnet gates local-only, canonical-token-only, and confirmation-gated", function () {

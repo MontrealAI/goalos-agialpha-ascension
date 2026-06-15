@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-15T14:19:56.896236+00:00",
+  "generated_at": "2026-06-15T14:44:36.488117+00:00",
   "files": [
     {
       "path": ".editorconfig",
@@ -7823,8 +7823,8 @@
     },
     {
       "path": "scripts/deployment/lib/redact.ts",
-      "bytes": 1348,
-      "sha256": "f7041e1dbdbc055f84789063d9fa1bc9b229510d6ba657f1cf278a99209c302c"
+      "bytes": 1575,
+      "sha256": "20e3a118f406e127706e8c2c7dd83f11ffdb7282dd683c24b4d302fcc9014c31"
     },
     {
       "path": "scripts/deployment/lib/tokenGuards.ts",
@@ -11233,8 +11233,8 @@
     },
     {
       "path": "test/deploymentUxSafety.test.ts",
-      "bytes": 17073,
-      "sha256": "864c2294c7ffd363c8d29cac7c9cecd853c5bb4c5e745c7fb94669ccebd67796"
+      "bytes": 17365,
+      "sha256": "e2065ea4e3465af09d7669157e0e2e7d2715d6955bb4d2519fbf167577d84871"
     },
     {
       "path": "test/invariants/README.md",

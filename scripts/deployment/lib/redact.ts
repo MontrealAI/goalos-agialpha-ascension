@@ -2,6 +2,8 @@ const SENSITIVE_KEY = /(KEY|SECRET|TOKEN|PRIVATE|RPC|MNEMONIC|SEED|SIGNATURE|BEA
 const PRIVATE_KEY = /0x[0-9a-fA-F]{64}/g;
 const URL = /https?:\/\/[^\s"']+/g;
 const BEARER = /Bearer\s+[A-Za-z0-9._~+/=-]+/gi;
+const API_LIKE_TOKEN = /(?<![A-Za-z0-9])[A-Za-z0-9_-]{32,}(?![A-Za-z0-9])/g;
+const MNEMONIC_LIKE = /\b(?:[a-z]+\s+){11,23}[a-z]+\b/gi;
 
 export const REDACTED = "[REDACTED]";
 
@@ -11,7 +13,12 @@ export function isSensitiveEnvName(name: string): boolean {
 
 export function redactString(value: string | undefined): string {
   if (!value) return "";
-  return value.replace(BEARER, "Bearer [REDACTED]").replace(PRIVATE_KEY, REDACTED).replace(URL, REDACTED);
+  return value
+    .replace(BEARER, "Bearer [REDACTED]")
+    .replace(PRIVATE_KEY, REDACTED)
+    .replace(URL, REDACTED)
+    .replace(MNEMONIC_LIKE, REDACTED)
+    .replace(API_LIKE_TOKEN, REDACTED);
 }
 
 export function redactValue(key: string, value: unknown): unknown {
