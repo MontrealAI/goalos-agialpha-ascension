@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-14T19:09:50.932741+00:00",
+  "generated_at": "2026-06-15T14:19:56.896236+00:00",
   "files": [
     {
       "path": ".editorconfig",
@@ -93,8 +93,8 @@
     },
     {
       "path": ".github/workflows/autonomous-github-pages.yml",
-      "bytes": 1659,
-      "sha256": "73ad42b1f1f11095e03f434443cd507dd3aa915c04586d4acf576cde28d3846c"
+      "bytes": 1473,
+      "sha256": "9b2e80a420a6576049d26998ab82353dfe771b207ec8a33d0f8c6bb503df6c96"
     },
     {
       "path": ".github/workflows/complete-main-website-v33-smoke-test.yml",
@@ -130,6 +130,31 @@
       "path": ".github/workflows/final-authorization-evidence-check.yml",
       "bytes": 1168,
       "sha256": "533e16158c867ce60727c7fcf5028aa42843c7fe4c0ae1e459778d998c56e427"
+    },
+    {
+      "path": ".github/workflows/final-main-website-v38-smoke-test.yml",
+      "bytes": 953,
+      "sha256": "360f73d9c2b9127c5d3c5761df9c68b6fae37b52c0621751304ee45210395be5"
+    },
+    {
+      "path": ".github/workflows/final-main-website-v39-smoke-test.yml",
+      "bytes": 651,
+      "sha256": "e4a6c66cab2eaa4fe7bf6bb9954bffaf82e7fbf29717153812d1f4872899b774"
+    },
+    {
+      "path": ".github/workflows/final-main-website-v40-wow-smoke-test.yml",
+      "bytes": 659,
+      "sha256": "72721dca45810e042f59ed45ce50a2a6d54db3ff3d2121542bff342463eac065"
+    },
+    {
+      "path": ".github/workflows/final-main-website-v41-wow-smoke-test.yml",
+      "bytes": 659,
+      "sha256": "1bdbc69d88b0f02a633acbd486abc549f687bd3d64f10dcc24d7162d849de1c8"
+    },
+    {
+      "path": ".github/workflows/final-main-website-v42-wow-smoke-test.yml",
+      "bytes": 659,
+      "sha256": "5bcfe3f3c85150b787af2dc400fd5ed172e9749f814388b02d7a71df0650fd59"
     },
     {
       "path": ".github/workflows/final-public-mainnet-authorization.yml",
@@ -7682,6 +7707,31 @@
       "sha256": "ff428080963db6701d2f65e31a8ad80efad0e5a96f50ea052164629c2f9c630c"
     },
     {
+      "path": "scripts/build_goalos_agialpha_final_main_website_v38.py",
+      "bytes": 655,
+      "sha256": "e67ad5490e8f4eca48ffe42a220f3f26f39b31b1cf3a88c429472c74d300e18d"
+    },
+    {
+      "path": "scripts/build_goalos_agialpha_final_main_website_v39.py",
+      "bytes": 656,
+      "sha256": "0e1f4ae221bb81ba3eac024091b5e1326414b99f706a37b4395ccd9d582c56be"
+    },
+    {
+      "path": "scripts/build_goalos_agialpha_final_main_website_v40.py",
+      "bytes": 655,
+      "sha256": "8246b4ff799d9955bf41b656dceeb77e4e939f906cbc9de128d547442fa811f1"
+    },
+    {
+      "path": "scripts/build_goalos_agialpha_final_main_website_v41.py",
+      "bytes": 655,
+      "sha256": "eefb595fd7691c68360198d6b96db447f379f6462bdc4501c87f537590bc85ed"
+    },
+    {
+      "path": "scripts/build_goalos_agialpha_final_main_website_v42.py",
+      "bytes": 603,
+      "sha256": "6caf1520df623be011b004d0f84f2d55a9825a0bced54a1f8ddcc370255f6085"
+    },
+    {
       "path": "scripts/build_goalos_agialpha_flagship_demand_center_v7.py",
       "bytes": 25640,
       "sha256": "2748650046fb46a179c09d7efd2c3cdbe886ecbd04f509cd0ebd5d499010d10a"
@@ -7758,8 +7808,8 @@
     },
     {
       "path": "scripts/deployment/goalos-deploy-command-center.ts",
-      "bytes": 12176,
-      "sha256": "b3d9022c2ec0a158a06aecae36b5b27cba48d448c0e7fb2afb29fe12435ee493"
+      "bytes": 14974,
+      "sha256": "92e7c44e2345f074e8ed77311d51042b2950006ede0d9f95a4a323b748c780ad"
     },
     {
       "path": "scripts/deployment/lib/mainnetGuards.ts",
@@ -7963,8 +8013,8 @@
     },
     {
       "path": "scripts/no_paid_products_check.py",
-      "bytes": 2419,
-      "sha256": "20395420a355a075b8ff7555faf90b7679d0688669dfb1350e3b6dea070ddfc7"
+      "bytes": 3855,
+      "sha256": "76d74a3daf076733ac1fa89ff25e2f3bfbeed9076339ad8d81f84a67b0be4501"
     },
     {
       "path": "scripts/no_private_operator_data_check.py",
@@ -8210,6 +8260,31 @@
       "path": "scripts/verify_goalos_agialpha_complete_main_website_v36.py",
       "bytes": 1882,
       "sha256": "ed5c38a992c071bbd14a0dee59cd58c5a6d43021c6fc47574877aedcc7e03c52"
+    },
+    {
+      "path": "scripts/verify_goalos_agialpha_final_main_website_v38.py",
+      "bytes": 3259,
+      "sha256": "57910e78581e2553bc9326772e29f22bc0e4f02ef0bdfc91c67a120ed84af014"
+    },
+    {
+      "path": "scripts/verify_goalos_agialpha_final_main_website_v39.py",
+      "bytes": 2527,
+      "sha256": "c0a9b29655d94cb23558d2941c0c292b130a4ea3414e9487203b33ed584c88e4"
+    },
+    {
+      "path": "scripts/verify_goalos_agialpha_final_main_website_v40.py",
+      "bytes": 1940,
+      "sha256": "ff725b1579a76fdb72d4aa168c8fab077b91f94a67b24389f086b324b6477165"
+    },
+    {
+      "path": "scripts/verify_goalos_agialpha_final_main_website_v41.py",
+      "bytes": 2008,
+      "sha256": "fddf2edfb802578958b3f787971e8966ddafa29caaf98990869b0837711cd786"
+    },
+    {
+      "path": "scripts/verify_goalos_agialpha_final_main_website_v42.py",
+      "bytes": 2367,
+      "sha256": "d30032f03dfee56f6d4586c523583983d7282558a1b19f46095bdb5a3cbeb7e0"
     },
     {
       "path": "scripts/verify_goalos_agialpha_flagship_demand_center_v7.py",
@@ -9072,6 +9147,1961 @@
       "sha256": "6ee19f077fef4fd3397f9b0b5049e85b1be0b547a74269810deca78732030999"
     },
     {
+      "path": "site-assets/main-website-v38/agialpha-ledger-route.html",
+      "bytes": 17622,
+      "sha256": "be029e2316977554d1a5a03002a921d39316278a668d25407787b9fb413cd191"
+    },
+    {
+      "path": "site-assets/main-website-v38/autopilot-mission-builder.html",
+      "bytes": 18873,
+      "sha256": "355a676659a8e602904259c0415c60680bdf891f522b87ce0c642969fa32eeb8"
+    },
+    {
+      "path": "site-assets/main-website-v38/evidence-docket.html",
+      "bytes": 15059,
+      "sha256": "fbcd94ef194aed743d4548e29cafac896da42a6a4993fbbe61d83ca067fccb86"
+    },
+    {
+      "path": "site-assets/main-website-v38/index.html",
+      "bytes": 24962,
+      "sha256": "84d73d47d0eb7691627f59a19de7a0797666a390dbf0657e6130078bd2f6d581"
+    },
+    {
+      "path": "site-assets/main-website-v38/manifest.webmanifest",
+      "bytes": 258,
+      "sha256": "5ee3e68628031c15a798b01e06e5cfbded809c53035f064fc124a86d7f055331"
+    },
+    {
+      "path": "site-assets/main-website-v38/personal-proof-sprint.html",
+      "bytes": 15726,
+      "sha256": "147779d468cc1b85226a744243bb65b8aaf02efbdb1ecd9ef6276c6528dbd92b"
+    },
+    {
+      "path": "site-assets/main-website-v38/proof-card-001.html",
+      "bytes": 31140,
+      "sha256": "53f60fc2dfe8b78300b93cfd5980cf7bd093b5a85d238e4351cc36acdb14a28d"
+    },
+    {
+      "path": "site-assets/main-website-v38/proof-card-002.html",
+      "bytes": 31162,
+      "sha256": "939d2549e3b411ec292222a97b68eff6574810f36df3c564f81da6ff1649c7c1"
+    },
+    {
+      "path": "site-assets/main-website-v38/proof-card-003.html",
+      "bytes": 31216,
+      "sha256": "3b62788f504a1034d42946fa2ab6d71b736c36ac16c24bdd97bdfa2bc6902f73"
+    },
+    {
+      "path": "site-assets/main-website-v38/proof-card-004.html",
+      "bytes": 31202,
+      "sha256": "a39914cffc6abe50259f1d1905903c7ddadbfab6fea20b1e347f3db180cd4225"
+    },
+    {
+      "path": "site-assets/main-website-v38/proof-card-005.html",
+      "bytes": 31076,
+      "sha256": "cabcde69c5a998234a51b2c1fb6e0878b334a516aa936b63946696a68263e3ec"
+    },
+    {
+      "path": "site-assets/main-website-v38/proof-card-006.html",
+      "bytes": 31216,
+      "sha256": "bed6d76d49b0632415750099666e27b40a297c911afa447a882b4135b74022fb"
+    },
+    {
+      "path": "site-assets/main-website-v38/proof-card-007.html",
+      "bytes": 31256,
+      "sha256": "b2e480c41f64bad16546526f3016902b72d34edc0a6c5c30fa313a9d332ea850"
+    },
+    {
+      "path": "site-assets/main-website-v38/proof-card-008.html",
+      "bytes": 31306,
+      "sha256": "e8adfc2f6fd5fcbc61eb902288e7e4ea8c519cab48983ad11e755b47d4da79d6"
+    },
+    {
+      "path": "site-assets/main-website-v38/proof-card-009.html",
+      "bytes": 31208,
+      "sha256": "f3844884028022a8937dee51b312327a4dd1b84d1dba1cd3cc8229fab2c50d4c"
+    },
+    {
+      "path": "site-assets/main-website-v38/proof-card-010.html",
+      "bytes": 31256,
+      "sha256": "a64b1e809d0a00c75c52dc00f31906782e96acdf6139a1ccd4b17b64db36a2a5"
+    },
+    {
+      "path": "site-assets/main-website-v38/proof-card-011.html",
+      "bytes": 31346,
+      "sha256": "fe01a2611cddcfdaba7f75d3fafdeee744997187406b1b65bcacdcca904585ba"
+    },
+    {
+      "path": "site-assets/main-website-v38/proof-card-012.html",
+      "bytes": 31240,
+      "sha256": "f05e468c9131a4d078df2654c18e454cd613433eb259ab5758f3b3226cd48d3a"
+    },
+    {
+      "path": "site-assets/main-website-v38/proof-card-013.html",
+      "bytes": 31256,
+      "sha256": "1d0c5f8891e5c988e701fdb1d93e295a75b2bad6886ec34b2f21837e0144cc93"
+    },
+    {
+      "path": "site-assets/main-website-v38/proof-card-014.html",
+      "bytes": 31358,
+      "sha256": "35f667393cc90e4310871298f66ddbab17e437eaf80ac99e8613e95bc06e9196"
+    },
+    {
+      "path": "site-assets/main-website-v38/proof-card-015.html",
+      "bytes": 31248,
+      "sha256": "1916c532ce340247d66593172934894726b912f43eba40231cf3aaec26e567b5"
+    },
+    {
+      "path": "site-assets/main-website-v38/proof-card-016.html",
+      "bytes": 31334,
+      "sha256": "4f593341f243dd24053ea8a7c95baf351f7b42b35fb9fc52666b87a360453760"
+    },
+    {
+      "path": "site-assets/main-website-v38/proof-card-017.html",
+      "bytes": 31230,
+      "sha256": "35316a68cf6c00511ce39e58a7e5e83649e30db2d6bb4c501c7a3e4301f37f68"
+    },
+    {
+      "path": "site-assets/main-website-v38/proof-cards.html",
+      "bytes": 19007,
+      "sha256": "2cbdee454606806557a1835e3a4ba53f079cfd08ebe0e9dee38d687e7db2a8a8"
+    },
+    {
+      "path": "site-assets/main-website-v38/proof-sprint-builder.html",
+      "bytes": 16957,
+      "sha256": "96593059109bfb997765583586bbbb39740f7f078e16f4c022382e56afd0be76"
+    },
+    {
+      "path": "site-assets/main-website-v38/resources/00_OPEN_FIRST_GoalOS_for_Regular_People_v3.pdf",
+      "bytes": 61335,
+      "sha256": "c87d4471a82861d18e62676c6431356dec4e837bf183e187c4ea3abf0c673846"
+    },
+    {
+      "path": "site-assets/main-website-v38/resources/01_How_to_Earn_with_GoalOS_Essay_v3.pdf",
+      "bytes": 79282,
+      "sha256": "497d8544ce1e6ea3a831ebe05c1bba4b8ce54d0deac7aa251959adb8c56357fe"
+    },
+    {
+      "path": "site-assets/main-website-v38/resources/02_Regular_Person_GoalOS_Playbook_v3.pdf",
+      "bytes": 94087,
+      "sha256": "08af8d3d8d6d69ef3b2097f82d73cada52c788b36dc01dd00fa867d417c79025"
+    },
+    {
+      "path": "site-assets/main-website-v38/resources/03_30_Day_GoalOS_Proof_Sprint_Workbook_v3.pdf",
+      "bytes": 99473,
+      "sha256": "99702a04cebc9672e98ab42eb01a49c01b50250dc93f29b706e7ff104d45835d"
+    },
+    {
+      "path": "site-assets/main-website-v38/resources/04_Autonomous_GoalOS_Experience_Blueprint_v3.pdf",
+      "bytes": 80766,
+      "sha256": "3e3e56b00c77b2c8a7b431edd56fe4c60526e595e68f9e441d1cec08abdd7fe9"
+    },
+    {
+      "path": "site-assets/main-website-v38/resources/05_GoalOS_Launch_Copy_and_Onboarding_Scripts_v3.pdf",
+      "bytes": 54164,
+      "sha256": "ce3c81d81e900ca9f57879a4f5d001bfd913df7e80b9d270ede6872aab4ef847"
+    },
+    {
+      "path": "site-assets/main-website-v38/resources/07_GoalOS_Personal_Proof_Tracker_v3.xlsx",
+      "bytes": 36154,
+      "sha256": "836916836eed096245833be673e466b2f2b61eafd103f15b54b03b560583a528"
+    },
+    {
+      "path": "site-assets/main-website-v38/resources/GoalOS_Personal_Proof_Journey_All_in_One_v3.pdf",
+      "bytes": 501854,
+      "sha256": "e2aa9be95edf69746e83b1db1dc4d35be90e22b90c5dffa9d05fe68dd7ea5003"
+    },
+    {
+      "path": "site-assets/main-website-v38/resources/GoalOS_Personal_Proof_Journey_Pack_v3.zip",
+      "bytes": 10564186,
+      "sha256": "1680999ca01856ea8a0c3e7e5bbd5610285f9a0a6dd2222dcb1f772fab1cfd59"
+    },
+    {
+      "path": "site-assets/main-website-v38/resources/GoalOS_Personal_Proof_Sprint_Builder_v3.html",
+      "bytes": 7724,
+      "sha256": "03fea1b68f0b76e70b507559a64bfc35a5ae2c5fe07b606b3d3470a3a26ed3c9"
+    },
+    {
+      "path": "site-assets/main-website-v38/resources/autopilot/GoalOS_AGIALPHA_Autopilot_Command_Center_v2.zip",
+      "bytes": 1258693,
+      "sha256": "4fd5bfcd46f5a796bb18fa98ac2bcccc67f56327397ddb0e0873ca2b4036d0ec"
+    },
+    {
+      "path": "site-assets/main-website-v38/resources/autopilot/editable_docs/00_OPEN_FIRST_AGIALPHA_Autopilot_Command_Center_v2.docx",
+      "bytes": 38463,
+      "sha256": "140ea656e763bdd7312d971e9a8d84ac648d0aa37f2aa73cb6ddc10a85795f2b"
+    },
+    {
+      "path": "site-assets/main-website-v38/resources/autopilot/editable_docs/01_AGIALPHA_Autopilot_Master_Playbook_v2.docx",
+      "bytes": 40100,
+      "sha256": "7f4b10040b71f8aaa79e3442aaa839a7e4d7d6e008fe527aacd8c8a379ab9d03"
+    },
+    {
+      "path": "site-assets/main-website-v38/resources/autopilot/editable_docs/02_Codex_Implementation_Prompt_AGIALPHA_Autopilot_v2.docx",
+      "bytes": 40062,
+      "sha256": "69f90c36e10a0749bb97090c52c218b12527e8addf0e1286d3543d10117ea65d"
+    },
+    {
+      "path": "site-assets/main-website-v38/resources/autopilot/editable_docs/03_AGIALPHA_Autopilot_Operator_Runbook_v2.docx",
+      "bytes": 38597,
+      "sha256": "8dd5f5ab7be3efe4126716faf09b648ffcea90850544c96bc5bdfbedd408b289"
+    },
+    {
+      "path": "site-assets/main-website-v38/resources/autopilot/editable_docs/04_AGIALPHA_Autopilot_Safety_and_Claim_Boundary_v2.docx",
+      "bytes": 38094,
+      "sha256": "000e1845362923759447066b901894af2c36af97c24431b07e2b6c688090ed8c"
+    },
+    {
+      "path": "site-assets/main-website-v38/resources/autopilot/editable_docs/08_One_Page_Launch_Roadmap_v2.docx",
+      "bytes": 37603,
+      "sha256": "bd49879ef0bd03cc8b5d8a53138e20991076a5f505aa8005ae6895b55d7c3407"
+    },
+    {
+      "path": "site-assets/main-website-v38/resources/autopilot/editable_docs/09_GitHub_Actions_Setup_Guide_v2.docx",
+      "bytes": 37835,
+      "sha256": "bd9f838079811259a7f4dd4f648f4c92a908f10e33b9fb7db346b1f61c242564"
+    },
+    {
+      "path": "site-assets/main-website-v38/resources/autopilot/editable_docs/GoalOS_AGIALPHA_Autopilot_All_in_One_Book_v2.docx",
+      "bytes": 44596,
+      "sha256": "bb28a973973119f7e406b52857f7441ac96dfdfb6f49a32f725e396cec014a3d"
+    },
+    {
+      "path": "site-assets/main-website-v38/resources/autopilot/interactive/07_AGIALPHA_Autopilot_Mission_Builder_v2.html",
+      "bytes": 3991,
+      "sha256": "f6b1748ea9e153381e5228c4f1c6eef50c328969bec76399e0f77432b49ab0dd"
+    },
+    {
+      "path": "site-assets/main-website-v38/resources/autopilot/pdfs/00_OPEN_FIRST_AGIALPHA_Autopilot_Command_Center_v2.pdf",
+      "bytes": 61804,
+      "sha256": "2fe789dd062d6bb0130e7da3801692cda0b494efeb76ce0bb9c5f6c5f92ac194"
+    },
+    {
+      "path": "site-assets/main-website-v38/resources/autopilot/pdfs/01_AGIALPHA_Autopilot_Master_Playbook_v2.pdf",
+      "bytes": 113705,
+      "sha256": "cc2c0370e7c54c54e87e9a80cffc06eab16258fa36aebf95784fff209097b9bc"
+    },
+    {
+      "path": "site-assets/main-website-v38/resources/autopilot/pdfs/02_Codex_Implementation_Prompt_AGIALPHA_Autopilot_v2.pdf",
+      "bytes": 49273,
+      "sha256": "e422cff72530a3305743287ac7e827768eb08b99cc95d7466cbdb9442578e2de"
+    },
+    {
+      "path": "site-assets/main-website-v38/resources/autopilot/pdfs/03_AGIALPHA_Autopilot_Operator_Runbook_v2.pdf",
+      "bytes": 73377,
+      "sha256": "aade6d9413b34c27800b9f72d16e04f66b9985cdd707ada84106346def766190"
+    },
+    {
+      "path": "site-assets/main-website-v38/resources/autopilot/pdfs/04_AGIALPHA_Autopilot_Safety_and_Claim_Boundary_v2.pdf",
+      "bytes": 54322,
+      "sha256": "4095a76e59e01a2c6e81ab57176b4504975b779f731bfd8807f127ac8bd0f220"
+    },
+    {
+      "path": "site-assets/main-website-v38/resources/autopilot/pdfs/05_AGIALPHA_Autopilot_Deck_v2.pdf",
+      "bytes": 84106,
+      "sha256": "7b5bd8b62858c01812441ebbb89abc5c0b9b66d40e17db568f0b7a4097a7cdb7"
+    },
+    {
+      "path": "site-assets/main-website-v38/resources/autopilot/pdfs/08_One_Page_Launch_Roadmap_v2.pdf",
+      "bytes": 40097,
+      "sha256": "a734d47a7bcadab772cec4484144561beb54b7cb8ef61b52695b3125bdc924b9"
+    },
+    {
+      "path": "site-assets/main-website-v38/resources/autopilot/pdfs/09_GitHub_Actions_Setup_Guide_v2.pdf",
+      "bytes": 54642,
+      "sha256": "62b8a0b053893b53afa849ee1aec828551ea3abbbb7094ff89b1496a93a67b54"
+    },
+    {
+      "path": "site-assets/main-website-v38/resources/autopilot/pdfs/GoalOS_AGIALPHA_Autopilot_All_in_One_Book_v2.pdf",
+      "bytes": 234254,
+      "sha256": "85daf7ade0cd088222b8e37bc256f9fecd4898c61c41a6c183ca08de78e28c48"
+    },
+    {
+      "path": "site-assets/main-website-v38/resources/autopilot/slides/05_AGIALPHA_Autopilot_Deck_v2.pptx",
+      "bytes": 42404,
+      "sha256": "e295eb4f58501d8782d6f3ef4fcd336035709223d3846c5867cbc0c92de09bf4"
+    },
+    {
+      "path": "site-assets/main-website-v38/resources/autopilot/spreadsheets/06_AGIALPHA_Autopilot_Economics_Thermostat_Model_v2.xlsx",
+      "bytes": 15143,
+      "sha256": "967a0e1386c278ff4734b3359b2a543d2e195de6feb25689cba16bbc464654f2"
+    },
+    {
+      "path": "site-assets/main-website-v38/resources/autopilot/technical_assets/AGIALPHA_Autopilot_Code_Kit_v2.zip",
+      "bytes": 19638,
+      "sha256": "59827574e322cd6e1b418b70748dd3cd3e3f2856a2deb296beadc3474f856c43"
+    },
+    {
+      "path": "site-assets/main-website-v38/resources.html",
+      "bytes": 20345,
+      "sha256": "6db848bf678747595b7b967f201d04f114c12bf0ac92c08f71361bec975148e9"
+    },
+    {
+      "path": "site-assets/main-website-v38/robots.txt",
+      "bytes": 99,
+      "sha256": "84f6a9d120cff431f9b99b49bf865cdec90c4bf3717630ba82a15b1086af6f38"
+    },
+    {
+      "path": "site-assets/main-website-v38/routes.json",
+      "bytes": 721,
+      "sha256": "dc7c660aa227ec4e6965b0cee3143e5d387bd5b61f9bc060c8147f53acf208ab"
+    },
+    {
+      "path": "site-assets/main-website-v38/site-status.json",
+      "bytes": 233,
+      "sha256": "e3b0e7feae8a0006d5561aa672d7aecd612638f7db390f1758fb0728f558ce55"
+    },
+    {
+      "path": "site-assets/main-website-v38/sitemap.xml",
+      "bytes": 2901,
+      "sha256": "b53d206e508510c38c60bf11fbb0b37fc3b112e85bd8aa21a7ffb7ac102a3972"
+    },
+    {
+      "path": "site-assets/main-website-v38/sovereign-rsi-control-plane.html",
+      "bytes": 16920,
+      "sha256": "7412b685cfcbabebfd9dfedb36233e8f8cb663303a556d1fc235eeebfc1c2616"
+    },
+    {
+      "path": "site-assets/main-website-v38/start-here.html",
+      "bytes": 15695,
+      "sha256": "005b2da3949a612f0cc3a1e568042159e27dfc16b47c3e734452d68195045935"
+    },
+    {
+      "path": "site-assets/main-website-v38/use-cases.html",
+      "bytes": 17296,
+      "sha256": "f667c2e61188bdbf68d9cdd8be57d1f7ddd3f22b413a4ded2991739ef8e7e2f9"
+    },
+    {
+      "path": "site-assets/main-website-v39/agialpha-ledger-route.html",
+      "bytes": 15393,
+      "sha256": "a015b39499bd4f1b919f3714cee1ea97e83b461951592507ea28eb40c38b076d"
+    },
+    {
+      "path": "site-assets/main-website-v39/autopilot-mission-builder.html",
+      "bytes": 18873,
+      "sha256": "355a676659a8e602904259c0415c60680bdf891f522b87ce0c642969fa32eeb8"
+    },
+    {
+      "path": "site-assets/main-website-v39/downloads/00_OPEN_FIRST_GoalOS_for_Regular_People_v3.pdf",
+      "bytes": 61335,
+      "sha256": "c87d4471a82861d18e62676c6431356dec4e837bf183e187c4ea3abf0c673846"
+    },
+    {
+      "path": "site-assets/main-website-v39/downloads/01_How_to_Earn_with_GoalOS_Essay_v3.pdf",
+      "bytes": 79282,
+      "sha256": "497d8544ce1e6ea3a831ebe05c1bba4b8ce54d0deac7aa251959adb8c56357fe"
+    },
+    {
+      "path": "site-assets/main-website-v39/downloads/02_Regular_Person_GoalOS_Playbook_v3.pdf",
+      "bytes": 94087,
+      "sha256": "08af8d3d8d6d69ef3b2097f82d73cada52c788b36dc01dd00fa867d417c79025"
+    },
+    {
+      "path": "site-assets/main-website-v39/downloads/03_30_Day_GoalOS_Proof_Sprint_Workbook_v3.pdf",
+      "bytes": 99473,
+      "sha256": "99702a04cebc9672e98ab42eb01a49c01b50250dc93f29b706e7ff104d45835d"
+    },
+    {
+      "path": "site-assets/main-website-v39/downloads/04_Autonomous_GoalOS_Experience_Blueprint_v3.pdf",
+      "bytes": 80766,
+      "sha256": "3e3e56b00c77b2c8a7b431edd56fe4c60526e595e68f9e441d1cec08abdd7fe9"
+    },
+    {
+      "path": "site-assets/main-website-v39/downloads/05_GoalOS_Launch_Copy_and_Onboarding_Scripts_v3.pdf",
+      "bytes": 54164,
+      "sha256": "ce3c81d81e900ca9f57879a4f5d001bfd913df7e80b9d270ede6872aab4ef847"
+    },
+    {
+      "path": "site-assets/main-website-v39/downloads/07_GoalOS_Personal_Proof_Tracker_v3.xlsx",
+      "bytes": 36154,
+      "sha256": "836916836eed096245833be673e466b2f2b61eafd103f15b54b03b560583a528"
+    },
+    {
+      "path": "site-assets/main-website-v39/downloads/GoalOS_Personal_Proof_Journey_All_in_One_v3.pdf",
+      "bytes": 501854,
+      "sha256": "e2aa9be95edf69746e83b1db1dc4d35be90e22b90c5dffa9d05fe68dd7ea5003"
+    },
+    {
+      "path": "site-assets/main-website-v39/downloads/GoalOS_Personal_Proof_Sprint_Builder_v3.html",
+      "bytes": 7724,
+      "sha256": "03fea1b68f0b76e70b507559a64bfc35a5ae2c5fe07b606b3d3470a3a26ed3c9"
+    },
+    {
+      "path": "site-assets/main-website-v39/evidence-docket.html",
+      "bytes": 15462,
+      "sha256": "c5a19d5d888e5e064790760c4f0d56efb9b5be90f2bc11361beafc615295e6f5"
+    },
+    {
+      "path": "site-assets/main-website-v39/execution-moat.html",
+      "bytes": 17784,
+      "sha256": "3b43788ec36fd26bd03dacf9d199f286077f0e15adafcd715a372eb7356c5103"
+    },
+    {
+      "path": "site-assets/main-website-v39/how-it-works.html",
+      "bytes": 18210,
+      "sha256": "eed1b9e8180ffa67bd92071c22333dc5259ed729665b33b433c50c717def6ed4"
+    },
+    {
+      "path": "site-assets/main-website-v39/index.html",
+      "bytes": 28064,
+      "sha256": "1717d1052d7fb5e3c4bf955d0e01d28091ecc0b98d55cb93929b9260c7ace124"
+    },
+    {
+      "path": "site-assets/main-website-v39/manifest.webmanifest",
+      "bytes": 267,
+      "sha256": "7bf9ae58f455993ef755482dbe514704c7cdfa01e3eba962dfca75916e7ced0e"
+    },
+    {
+      "path": "site-assets/main-website-v39/personal-proof-sprint.html",
+      "bytes": 15726,
+      "sha256": "147779d468cc1b85226a744243bb65b8aaf02efbdb1ecd9ef6276c6528dbd92b"
+    },
+    {
+      "path": "site-assets/main-website-v39/pilot-guide.html",
+      "bytes": 15574,
+      "sha256": "e95fc7380f138ebeeeef4655d0f114f499849d27c24abddadf6c2fca832888b1"
+    },
+    {
+      "path": "site-assets/main-website-v39/proof-card-001.html",
+      "bytes": 31140,
+      "sha256": "53f60fc2dfe8b78300b93cfd5980cf7bd093b5a85d238e4351cc36acdb14a28d"
+    },
+    {
+      "path": "site-assets/main-website-v39/proof-card-002.html",
+      "bytes": 31162,
+      "sha256": "939d2549e3b411ec292222a97b68eff6574810f36df3c564f81da6ff1649c7c1"
+    },
+    {
+      "path": "site-assets/main-website-v39/proof-card-003.html",
+      "bytes": 31216,
+      "sha256": "3b62788f504a1034d42946fa2ab6d71b736c36ac16c24bdd97bdfa2bc6902f73"
+    },
+    {
+      "path": "site-assets/main-website-v39/proof-card-004.html",
+      "bytes": 31202,
+      "sha256": "a39914cffc6abe50259f1d1905903c7ddadbfab6fea20b1e347f3db180cd4225"
+    },
+    {
+      "path": "site-assets/main-website-v39/proof-card-005.html",
+      "bytes": 31076,
+      "sha256": "cabcde69c5a998234a51b2c1fb6e0878b334a516aa936b63946696a68263e3ec"
+    },
+    {
+      "path": "site-assets/main-website-v39/proof-card-006.html",
+      "bytes": 31216,
+      "sha256": "bed6d76d49b0632415750099666e27b40a297c911afa447a882b4135b74022fb"
+    },
+    {
+      "path": "site-assets/main-website-v39/proof-card-007.html",
+      "bytes": 31256,
+      "sha256": "b2e480c41f64bad16546526f3016902b72d34edc0a6c5c30fa313a9d332ea850"
+    },
+    {
+      "path": "site-assets/main-website-v39/proof-card-008.html",
+      "bytes": 31306,
+      "sha256": "e8adfc2f6fd5fcbc61eb902288e7e4ea8c519cab48983ad11e755b47d4da79d6"
+    },
+    {
+      "path": "site-assets/main-website-v39/proof-card-009.html",
+      "bytes": 31208,
+      "sha256": "f3844884028022a8937dee51b312327a4dd1b84d1dba1cd3cc8229fab2c50d4c"
+    },
+    {
+      "path": "site-assets/main-website-v39/proof-card-010.html",
+      "bytes": 31256,
+      "sha256": "a64b1e809d0a00c75c52dc00f31906782e96acdf6139a1ccd4b17b64db36a2a5"
+    },
+    {
+      "path": "site-assets/main-website-v39/proof-card-011.html",
+      "bytes": 31346,
+      "sha256": "fe01a2611cddcfdaba7f75d3fafdeee744997187406b1b65bcacdcca904585ba"
+    },
+    {
+      "path": "site-assets/main-website-v39/proof-card-012.html",
+      "bytes": 31240,
+      "sha256": "f05e468c9131a4d078df2654c18e454cd613433eb259ab5758f3b3226cd48d3a"
+    },
+    {
+      "path": "site-assets/main-website-v39/proof-card-013.html",
+      "bytes": 31256,
+      "sha256": "1d0c5f8891e5c988e701fdb1d93e295a75b2bad6886ec34b2f21837e0144cc93"
+    },
+    {
+      "path": "site-assets/main-website-v39/proof-card-014.html",
+      "bytes": 31358,
+      "sha256": "35f667393cc90e4310871298f66ddbab17e437eaf80ac99e8613e95bc06e9196"
+    },
+    {
+      "path": "site-assets/main-website-v39/proof-card-015.html",
+      "bytes": 31248,
+      "sha256": "1916c532ce340247d66593172934894726b912f43eba40231cf3aaec26e567b5"
+    },
+    {
+      "path": "site-assets/main-website-v39/proof-card-016.html",
+      "bytes": 31334,
+      "sha256": "4f593341f243dd24053ea8a7c95baf351f7b42b35fb9fc52666b87a360453760"
+    },
+    {
+      "path": "site-assets/main-website-v39/proof-card-017.html",
+      "bytes": 31230,
+      "sha256": "35316a68cf6c00511ce39e58a7e5e83649e30db2d6bb4c501c7a3e4301f37f68"
+    },
+    {
+      "path": "site-assets/main-website-v39/proof-cards.html",
+      "bytes": 18673,
+      "sha256": "752e7e87270db73bf80899660d1a67006ef869c1e44f1bc1d13c8b60eac8ed67"
+    },
+    {
+      "path": "site-assets/main-website-v39/proof-sprint-builder.html",
+      "bytes": 16957,
+      "sha256": "96593059109bfb997765583586bbbb39740f7f078e16f4c022382e56afd0be76"
+    },
+    {
+      "path": "site-assets/main-website-v39/regular-person.html",
+      "bytes": 15978,
+      "sha256": "c5dc82bf97adcc467ae739e906a4ba82a33248a35d0168269836ade05b31487f"
+    },
+    {
+      "path": "site-assets/main-website-v39/research.html",
+      "bytes": 15558,
+      "sha256": "981f1d76f326ace5f103f34e434be032283bbd38ac8d886a10634b38b3fd39d3"
+    },
+    {
+      "path": "site-assets/main-website-v39/resources/00_OPEN_FIRST_GoalOS_for_Regular_People_v3.pdf",
+      "bytes": 61335,
+      "sha256": "c87d4471a82861d18e62676c6431356dec4e837bf183e187c4ea3abf0c673846"
+    },
+    {
+      "path": "site-assets/main-website-v39/resources/01_How_to_Earn_with_GoalOS_Essay_v3.pdf",
+      "bytes": 79282,
+      "sha256": "497d8544ce1e6ea3a831ebe05c1bba4b8ce54d0deac7aa251959adb8c56357fe"
+    },
+    {
+      "path": "site-assets/main-website-v39/resources/02_Regular_Person_GoalOS_Playbook_v3.pdf",
+      "bytes": 94087,
+      "sha256": "08af8d3d8d6d69ef3b2097f82d73cada52c788b36dc01dd00fa867d417c79025"
+    },
+    {
+      "path": "site-assets/main-website-v39/resources/03_30_Day_GoalOS_Proof_Sprint_Workbook_v3.pdf",
+      "bytes": 99473,
+      "sha256": "99702a04cebc9672e98ab42eb01a49c01b50250dc93f29b706e7ff104d45835d"
+    },
+    {
+      "path": "site-assets/main-website-v39/resources/04_Autonomous_GoalOS_Experience_Blueprint_v3.pdf",
+      "bytes": 80766,
+      "sha256": "3e3e56b00c77b2c8a7b431edd56fe4c60526e595e68f9e441d1cec08abdd7fe9"
+    },
+    {
+      "path": "site-assets/main-website-v39/resources/05_GoalOS_Launch_Copy_and_Onboarding_Scripts_v3.pdf",
+      "bytes": 54164,
+      "sha256": "ce3c81d81e900ca9f57879a4f5d001bfd913df7e80b9d270ede6872aab4ef847"
+    },
+    {
+      "path": "site-assets/main-website-v39/resources/07_GoalOS_Personal_Proof_Tracker_v3.xlsx",
+      "bytes": 36154,
+      "sha256": "836916836eed096245833be673e466b2f2b61eafd103f15b54b03b560583a528"
+    },
+    {
+      "path": "site-assets/main-website-v39/resources/GoalOS_Personal_Proof_Journey_All_in_One_v3.pdf",
+      "bytes": 501854,
+      "sha256": "e2aa9be95edf69746e83b1db1dc4d35be90e22b90c5dffa9d05fe68dd7ea5003"
+    },
+    {
+      "path": "site-assets/main-website-v39/resources/GoalOS_Personal_Proof_Journey_Pack_v3.zip",
+      "bytes": 10564186,
+      "sha256": "1680999ca01856ea8a0c3e7e5bbd5610285f9a0a6dd2222dcb1f772fab1cfd59"
+    },
+    {
+      "path": "site-assets/main-website-v39/resources/GoalOS_Personal_Proof_Sprint_Builder_v3.html",
+      "bytes": 7724,
+      "sha256": "03fea1b68f0b76e70b507559a64bfc35a5ae2c5fe07b606b3d3470a3a26ed3c9"
+    },
+    {
+      "path": "site-assets/main-website-v39/resources/autopilot/GoalOS_AGIALPHA_Autopilot_Command_Center_v2.zip",
+      "bytes": 1258693,
+      "sha256": "4fd5bfcd46f5a796bb18fa98ac2bcccc67f56327397ddb0e0873ca2b4036d0ec"
+    },
+    {
+      "path": "site-assets/main-website-v39/resources/autopilot/editable_docs/00_OPEN_FIRST_AGIALPHA_Autopilot_Command_Center_v2.docx",
+      "bytes": 38463,
+      "sha256": "140ea656e763bdd7312d971e9a8d84ac648d0aa37f2aa73cb6ddc10a85795f2b"
+    },
+    {
+      "path": "site-assets/main-website-v39/resources/autopilot/editable_docs/01_AGIALPHA_Autopilot_Master_Playbook_v2.docx",
+      "bytes": 40100,
+      "sha256": "7f4b10040b71f8aaa79e3442aaa839a7e4d7d6e008fe527aacd8c8a379ab9d03"
+    },
+    {
+      "path": "site-assets/main-website-v39/resources/autopilot/editable_docs/02_Codex_Implementation_Prompt_AGIALPHA_Autopilot_v2.docx",
+      "bytes": 40062,
+      "sha256": "69f90c36e10a0749bb97090c52c218b12527e8addf0e1286d3543d10117ea65d"
+    },
+    {
+      "path": "site-assets/main-website-v39/resources/autopilot/editable_docs/03_AGIALPHA_Autopilot_Operator_Runbook_v2.docx",
+      "bytes": 38597,
+      "sha256": "8dd5f5ab7be3efe4126716faf09b648ffcea90850544c96bc5bdfbedd408b289"
+    },
+    {
+      "path": "site-assets/main-website-v39/resources/autopilot/editable_docs/04_AGIALPHA_Autopilot_Safety_and_Claim_Boundary_v2.docx",
+      "bytes": 38094,
+      "sha256": "000e1845362923759447066b901894af2c36af97c24431b07e2b6c688090ed8c"
+    },
+    {
+      "path": "site-assets/main-website-v39/resources/autopilot/editable_docs/08_One_Page_Launch_Roadmap_v2.docx",
+      "bytes": 37603,
+      "sha256": "bd49879ef0bd03cc8b5d8a53138e20991076a5f505aa8005ae6895b55d7c3407"
+    },
+    {
+      "path": "site-assets/main-website-v39/resources/autopilot/editable_docs/09_GitHub_Actions_Setup_Guide_v2.docx",
+      "bytes": 37835,
+      "sha256": "bd9f838079811259a7f4dd4f648f4c92a908f10e33b9fb7db346b1f61c242564"
+    },
+    {
+      "path": "site-assets/main-website-v39/resources/autopilot/editable_docs/GoalOS_AGIALPHA_Autopilot_All_in_One_Book_v2.docx",
+      "bytes": 44596,
+      "sha256": "bb28a973973119f7e406b52857f7441ac96dfdfb6f49a32f725e396cec014a3d"
+    },
+    {
+      "path": "site-assets/main-website-v39/resources/autopilot/interactive/07_AGIALPHA_Autopilot_Mission_Builder_v2.html",
+      "bytes": 3991,
+      "sha256": "f6b1748ea9e153381e5228c4f1c6eef50c328969bec76399e0f77432b49ab0dd"
+    },
+    {
+      "path": "site-assets/main-website-v39/resources/autopilot/pdfs/00_OPEN_FIRST_AGIALPHA_Autopilot_Command_Center_v2.pdf",
+      "bytes": 61804,
+      "sha256": "2fe789dd062d6bb0130e7da3801692cda0b494efeb76ce0bb9c5f6c5f92ac194"
+    },
+    {
+      "path": "site-assets/main-website-v39/resources/autopilot/pdfs/01_AGIALPHA_Autopilot_Master_Playbook_v2.pdf",
+      "bytes": 113705,
+      "sha256": "cc2c0370e7c54c54e87e9a80cffc06eab16258fa36aebf95784fff209097b9bc"
+    },
+    {
+      "path": "site-assets/main-website-v39/resources/autopilot/pdfs/02_Codex_Implementation_Prompt_AGIALPHA_Autopilot_v2.pdf",
+      "bytes": 49273,
+      "sha256": "e422cff72530a3305743287ac7e827768eb08b99cc95d7466cbdb9442578e2de"
+    },
+    {
+      "path": "site-assets/main-website-v39/resources/autopilot/pdfs/03_AGIALPHA_Autopilot_Operator_Runbook_v2.pdf",
+      "bytes": 73377,
+      "sha256": "aade6d9413b34c27800b9f72d16e04f66b9985cdd707ada84106346def766190"
+    },
+    {
+      "path": "site-assets/main-website-v39/resources/autopilot/pdfs/04_AGIALPHA_Autopilot_Safety_and_Claim_Boundary_v2.pdf",
+      "bytes": 54322,
+      "sha256": "4095a76e59e01a2c6e81ab57176b4504975b779f731bfd8807f127ac8bd0f220"
+    },
+    {
+      "path": "site-assets/main-website-v39/resources/autopilot/pdfs/05_AGIALPHA_Autopilot_Deck_v2.pdf",
+      "bytes": 84106,
+      "sha256": "7b5bd8b62858c01812441ebbb89abc5c0b9b66d40e17db568f0b7a4097a7cdb7"
+    },
+    {
+      "path": "site-assets/main-website-v39/resources/autopilot/pdfs/08_One_Page_Launch_Roadmap_v2.pdf",
+      "bytes": 40097,
+      "sha256": "a734d47a7bcadab772cec4484144561beb54b7cb8ef61b52695b3125bdc924b9"
+    },
+    {
+      "path": "site-assets/main-website-v39/resources/autopilot/pdfs/09_GitHub_Actions_Setup_Guide_v2.pdf",
+      "bytes": 54642,
+      "sha256": "62b8a0b053893b53afa849ee1aec828551ea3abbbb7094ff89b1496a93a67b54"
+    },
+    {
+      "path": "site-assets/main-website-v39/resources/autopilot/pdfs/GoalOS_AGIALPHA_Autopilot_All_in_One_Book_v2.pdf",
+      "bytes": 234254,
+      "sha256": "85daf7ade0cd088222b8e37bc256f9fecd4898c61c41a6c183ca08de78e28c48"
+    },
+    {
+      "path": "site-assets/main-website-v39/resources/autopilot/slides/05_AGIALPHA_Autopilot_Deck_v2.pptx",
+      "bytes": 42404,
+      "sha256": "e295eb4f58501d8782d6f3ef4fcd336035709223d3846c5867cbc0c92de09bf4"
+    },
+    {
+      "path": "site-assets/main-website-v39/resources/autopilot/spreadsheets/06_AGIALPHA_Autopilot_Economics_Thermostat_Model_v2.xlsx",
+      "bytes": 15143,
+      "sha256": "967a0e1386c278ff4734b3359b2a543d2e195de6feb25689cba16bbc464654f2"
+    },
+    {
+      "path": "site-assets/main-website-v39/resources/autopilot/technical_assets/AGIALPHA_Autopilot_Code_Kit_v2.zip",
+      "bytes": 19638,
+      "sha256": "59827574e322cd6e1b418b70748dd3cd3e3f2856a2deb296beadc3474f856c43"
+    },
+    {
+      "path": "site-assets/main-website-v39/resources.html",
+      "bytes": 16953,
+      "sha256": "7f04d492db74bbb0e5b3485d6cd2c303994e9a5dd2421dbe760ba134d2dc4612"
+    },
+    {
+      "path": "site-assets/main-website-v39/roadmap.html",
+      "bytes": 16050,
+      "sha256": "78915ef342681af04292dafe4eab8b898474cebc6256a2ed897247579f280219"
+    },
+    {
+      "path": "site-assets/main-website-v39/robots.txt",
+      "bytes": 99,
+      "sha256": "84f6a9d120cff431f9b99b49bf865cdec90c4bf3717630ba82a15b1086af6f38"
+    },
+    {
+      "path": "site-assets/main-website-v39/routes.json",
+      "bytes": 2751,
+      "sha256": "ed586d294ebbc7c144dfa1a128202c79cc7181e3aed8c569cea029ea655de787"
+    },
+    {
+      "path": "site-assets/main-website-v39/site-status.json",
+      "bytes": 411,
+      "sha256": "eea392cd028ea776d5b3e7b1aced4b5a338f9824fb44777fb7f663eb81b23d74"
+    },
+    {
+      "path": "site-assets/main-website-v39/sitemap.xml",
+      "bytes": 3561,
+      "sha256": "707d703bfb9bc5af8613211b0331d2c0e0c44fd0ea50aa3e010f7ba1b488420d"
+    },
+    {
+      "path": "site-assets/main-website-v39/sovereign-rsi-control-plane.html",
+      "bytes": 17104,
+      "sha256": "56df8fe0807d9178415bbc9df2531ce212047697db21ac22665d5efb22288704"
+    },
+    {
+      "path": "site-assets/main-website-v39/start-here.html",
+      "bytes": 17253,
+      "sha256": "5bdc094ecfc028883838ded883c1995cba53ff2926c70d79d217b68250908895"
+    },
+    {
+      "path": "site-assets/main-website-v39/system-map.html",
+      "bytes": 19156,
+      "sha256": "3ccd331fe46a712c3c31c98a18161890014a8a9ba6e895f9b57fe1c2bd4777d2"
+    },
+    {
+      "path": "site-assets/main-website-v39/use-cases.html",
+      "bytes": 15831,
+      "sha256": "a25e607f1297446040c6b84a66526092fdf3cc99e947d0dde64c045c118101f1"
+    },
+    {
+      "path": "site-assets/main-website-v40/agialpha-ledger-route.html",
+      "bytes": 15436,
+      "sha256": "4c7e04a78c424165587c393673e2c4559add8004f884fffaf1867ae38d1458dc"
+    },
+    {
+      "path": "site-assets/main-website-v40/assets/wow.js",
+      "bytes": 4230,
+      "sha256": "2c3f5531052b4befe5f78a34d6c125c5cce6fa551e4860bcaf9e98efd4ff5476"
+    },
+    {
+      "path": "site-assets/main-website-v40/autopilot-mission-builder.html",
+      "bytes": 18916,
+      "sha256": "8b42872066b35a927f55e1a244a34a156cb48b95f7d20423f5b3012f84a0b666"
+    },
+    {
+      "path": "site-assets/main-website-v40/downloads/00_OPEN_FIRST_GoalOS_for_Regular_People_v3.pdf",
+      "bytes": 61335,
+      "sha256": "c87d4471a82861d18e62676c6431356dec4e837bf183e187c4ea3abf0c673846"
+    },
+    {
+      "path": "site-assets/main-website-v40/downloads/01_How_to_Earn_with_GoalOS_Essay_v3.pdf",
+      "bytes": 79282,
+      "sha256": "497d8544ce1e6ea3a831ebe05c1bba4b8ce54d0deac7aa251959adb8c56357fe"
+    },
+    {
+      "path": "site-assets/main-website-v40/downloads/02_Regular_Person_GoalOS_Playbook_v3.pdf",
+      "bytes": 94087,
+      "sha256": "08af8d3d8d6d69ef3b2097f82d73cada52c788b36dc01dd00fa867d417c79025"
+    },
+    {
+      "path": "site-assets/main-website-v40/downloads/03_30_Day_GoalOS_Proof_Sprint_Workbook_v3.pdf",
+      "bytes": 99473,
+      "sha256": "99702a04cebc9672e98ab42eb01a49c01b50250dc93f29b706e7ff104d45835d"
+    },
+    {
+      "path": "site-assets/main-website-v40/downloads/04_Autonomous_GoalOS_Experience_Blueprint_v3.pdf",
+      "bytes": 80766,
+      "sha256": "3e3e56b00c77b2c8a7b431edd56fe4c60526e595e68f9e441d1cec08abdd7fe9"
+    },
+    {
+      "path": "site-assets/main-website-v40/downloads/05_GoalOS_Launch_Copy_and_Onboarding_Scripts_v3.pdf",
+      "bytes": 54164,
+      "sha256": "ce3c81d81e900ca9f57879a4f5d001bfd913df7e80b9d270ede6872aab4ef847"
+    },
+    {
+      "path": "site-assets/main-website-v40/downloads/07_GoalOS_Personal_Proof_Tracker_v3.xlsx",
+      "bytes": 36154,
+      "sha256": "836916836eed096245833be673e466b2f2b61eafd103f15b54b03b560583a528"
+    },
+    {
+      "path": "site-assets/main-website-v40/downloads/GoalOS_Personal_Proof_Journey_All_in_One_v3.pdf",
+      "bytes": 501854,
+      "sha256": "e2aa9be95edf69746e83b1db1dc4d35be90e22b90c5dffa9d05fe68dd7ea5003"
+    },
+    {
+      "path": "site-assets/main-website-v40/downloads/GoalOS_Personal_Proof_Sprint_Builder_v3.html",
+      "bytes": 7724,
+      "sha256": "03fea1b68f0b76e70b507559a64bfc35a5ae2c5fe07b606b3d3470a3a26ed3c9"
+    },
+    {
+      "path": "site-assets/main-website-v40/evidence-docket.html",
+      "bytes": 15505,
+      "sha256": "d5ae36792441419b76c4ff6d2edfd00abb268ff1eda0fbf7289fda45b9ef6bec"
+    },
+    {
+      "path": "site-assets/main-website-v40/execution-moat.html",
+      "bytes": 17827,
+      "sha256": "0bc121f48f167c92096d308c8c92b52f0fe1e422883e970bb3a0e16850134edf"
+    },
+    {
+      "path": "site-assets/main-website-v40/how-it-works.html",
+      "bytes": 18253,
+      "sha256": "ea821e8bf7bdb44fbb634b7f92d7b6458e2ce3e543c317f5bcab2ad74ae89e84"
+    },
+    {
+      "path": "site-assets/main-website-v40/index.html",
+      "bytes": 34401,
+      "sha256": "22ee8c3965efd017b791c6532ade2fe5b267c4ac6b673f22645a504bd1e8a4df"
+    },
+    {
+      "path": "site-assets/main-website-v40/manifest.webmanifest",
+      "bytes": 267,
+      "sha256": "7bf9ae58f455993ef755482dbe514704c7cdfa01e3eba962dfca75916e7ced0e"
+    },
+    {
+      "path": "site-assets/main-website-v40/personal-proof-sprint.html",
+      "bytes": 15769,
+      "sha256": "3ecc59a73018c4f1f2658c27fb9bcce308eca4c842f44b87451e7a6d79bbd967"
+    },
+    {
+      "path": "site-assets/main-website-v40/pilot-guide.html",
+      "bytes": 15617,
+      "sha256": "c82329d10c17d0a9413929ea9ae0ee2d6735c73b156d11398e9ccc2c984fe00c"
+    },
+    {
+      "path": "site-assets/main-website-v40/proof-card-001.html",
+      "bytes": 31183,
+      "sha256": "421afc385e16b5306c9f47d4371d88ae9383de506ebc0ec256a455f0d9c109e1"
+    },
+    {
+      "path": "site-assets/main-website-v40/proof-card-002.html",
+      "bytes": 31205,
+      "sha256": "9361a893c359fe5e2830145a19f4937d09545d53603cd70ce29feb8ebf0b7c79"
+    },
+    {
+      "path": "site-assets/main-website-v40/proof-card-003.html",
+      "bytes": 31259,
+      "sha256": "7c76d0176b84786630d34a2ad39ceff4c6a6bf64586954123e4d6df028bb5980"
+    },
+    {
+      "path": "site-assets/main-website-v40/proof-card-004.html",
+      "bytes": 31245,
+      "sha256": "63649c96133223917735455c4112ef305e819555faf9891962de41177b72a5aa"
+    },
+    {
+      "path": "site-assets/main-website-v40/proof-card-005.html",
+      "bytes": 31119,
+      "sha256": "6abda0d34313dabb403ecff292bfa1af633fceb67de9fb33fe4a9ca2e5cc299d"
+    },
+    {
+      "path": "site-assets/main-website-v40/proof-card-006.html",
+      "bytes": 31259,
+      "sha256": "792a6418071fadcb7748bc769fc0904284303b93a43fdb9a7f7f1634305c291e"
+    },
+    {
+      "path": "site-assets/main-website-v40/proof-card-007.html",
+      "bytes": 31299,
+      "sha256": "7eafcd86daad53f72ac3b33bd15f1498a7b88a925aaaa22301e0644a726df948"
+    },
+    {
+      "path": "site-assets/main-website-v40/proof-card-008.html",
+      "bytes": 31349,
+      "sha256": "0a3bcdfb8b772f301df3a2f98e9798704990b7e55bb0c8f5c33e22020375e8d8"
+    },
+    {
+      "path": "site-assets/main-website-v40/proof-card-009.html",
+      "bytes": 31251,
+      "sha256": "71358d43ddabcb5c5e4a1538700cdfe1d9ad6bacdf20535e4b6242ae7bab0999"
+    },
+    {
+      "path": "site-assets/main-website-v40/proof-card-010.html",
+      "bytes": 31299,
+      "sha256": "6403fb1b77a125fc72d17a0125baafc724a4488ea480d6fd48c168ec4e5fbeea"
+    },
+    {
+      "path": "site-assets/main-website-v40/proof-card-011.html",
+      "bytes": 31389,
+      "sha256": "acfbd3cc17934cf8b905ec5fb6aaece2e7afeb9cd023479bcb0d9b0bef7042e1"
+    },
+    {
+      "path": "site-assets/main-website-v40/proof-card-012.html",
+      "bytes": 31283,
+      "sha256": "c9e0ebedfae504bafa8335e3f2c55945130d2acad56274df992aa84fdc43da39"
+    },
+    {
+      "path": "site-assets/main-website-v40/proof-card-013.html",
+      "bytes": 31299,
+      "sha256": "40709c09a1c172f92f8b3f2efa4424033c5b08178dc3c7d0133e0f5a7d79da9c"
+    },
+    {
+      "path": "site-assets/main-website-v40/proof-card-014.html",
+      "bytes": 31401,
+      "sha256": "09d340dc65684e7ed1215d867181761756e7730e4cd6e95a85e969d7f2d0638a"
+    },
+    {
+      "path": "site-assets/main-website-v40/proof-card-015.html",
+      "bytes": 31291,
+      "sha256": "fa42e6895d663a2c1d7007f6322dd0446cf0169d4b8b73f1990e55cde6f20f7a"
+    },
+    {
+      "path": "site-assets/main-website-v40/proof-card-016.html",
+      "bytes": 31377,
+      "sha256": "6376408b1608eb793cd5eb0902b2cef37b14b93e4eac2747cb5a35d0dec5fb70"
+    },
+    {
+      "path": "site-assets/main-website-v40/proof-card-017.html",
+      "bytes": 31273,
+      "sha256": "c8a74e81d6e8c3eb1b0a669387c6e1a0aa31f04cff1b5f3e9883db2e6c44a9ed"
+    },
+    {
+      "path": "site-assets/main-website-v40/proof-cards.html",
+      "bytes": 18716,
+      "sha256": "9a3a9fb42d0847f833a8aa8d03944918c355bf5117446f1a537847ed95b4304a"
+    },
+    {
+      "path": "site-assets/main-website-v40/proof-sprint-builder.html",
+      "bytes": 17000,
+      "sha256": "bb7c9527f3cf7dcc1bd24a3952de4fff949e3ee19e6b8c96890a6e9bf282e745"
+    },
+    {
+      "path": "site-assets/main-website-v40/regular-person.html",
+      "bytes": 16021,
+      "sha256": "316258f0f792b266b600ba9eeb0296d236ff771c2dd0ca53fa6a7caa613a6518"
+    },
+    {
+      "path": "site-assets/main-website-v40/research.html",
+      "bytes": 15601,
+      "sha256": "ce944bbdcf444f36662c3f1df2f8fe73575f412efd6f71abc1a46be62b0ee160"
+    },
+    {
+      "path": "site-assets/main-website-v40/resources/00_OPEN_FIRST_GoalOS_for_Regular_People_v3.pdf",
+      "bytes": 61335,
+      "sha256": "c87d4471a82861d18e62676c6431356dec4e837bf183e187c4ea3abf0c673846"
+    },
+    {
+      "path": "site-assets/main-website-v40/resources/01_How_to_Earn_with_GoalOS_Essay_v3.pdf",
+      "bytes": 79282,
+      "sha256": "497d8544ce1e6ea3a831ebe05c1bba4b8ce54d0deac7aa251959adb8c56357fe"
+    },
+    {
+      "path": "site-assets/main-website-v40/resources/02_Regular_Person_GoalOS_Playbook_v3.pdf",
+      "bytes": 94087,
+      "sha256": "08af8d3d8d6d69ef3b2097f82d73cada52c788b36dc01dd00fa867d417c79025"
+    },
+    {
+      "path": "site-assets/main-website-v40/resources/03_30_Day_GoalOS_Proof_Sprint_Workbook_v3.pdf",
+      "bytes": 99473,
+      "sha256": "99702a04cebc9672e98ab42eb01a49c01b50250dc93f29b706e7ff104d45835d"
+    },
+    {
+      "path": "site-assets/main-website-v40/resources/04_Autonomous_GoalOS_Experience_Blueprint_v3.pdf",
+      "bytes": 80766,
+      "sha256": "3e3e56b00c77b2c8a7b431edd56fe4c60526e595e68f9e441d1cec08abdd7fe9"
+    },
+    {
+      "path": "site-assets/main-website-v40/resources/05_GoalOS_Launch_Copy_and_Onboarding_Scripts_v3.pdf",
+      "bytes": 54164,
+      "sha256": "ce3c81d81e900ca9f57879a4f5d001bfd913df7e80b9d270ede6872aab4ef847"
+    },
+    {
+      "path": "site-assets/main-website-v40/resources/07_GoalOS_Personal_Proof_Tracker_v3.xlsx",
+      "bytes": 36154,
+      "sha256": "836916836eed096245833be673e466b2f2b61eafd103f15b54b03b560583a528"
+    },
+    {
+      "path": "site-assets/main-website-v40/resources/GoalOS_Personal_Proof_Journey_All_in_One_v3.pdf",
+      "bytes": 501854,
+      "sha256": "e2aa9be95edf69746e83b1db1dc4d35be90e22b90c5dffa9d05fe68dd7ea5003"
+    },
+    {
+      "path": "site-assets/main-website-v40/resources/GoalOS_Personal_Proof_Journey_Pack_v3.zip",
+      "bytes": 10564186,
+      "sha256": "1680999ca01856ea8a0c3e7e5bbd5610285f9a0a6dd2222dcb1f772fab1cfd59"
+    },
+    {
+      "path": "site-assets/main-website-v40/resources/GoalOS_Personal_Proof_Sprint_Builder_v3.html",
+      "bytes": 7724,
+      "sha256": "03fea1b68f0b76e70b507559a64bfc35a5ae2c5fe07b606b3d3470a3a26ed3c9"
+    },
+    {
+      "path": "site-assets/main-website-v40/resources/autopilot/GoalOS_AGIALPHA_Autopilot_Command_Center_v2.zip",
+      "bytes": 1258693,
+      "sha256": "4fd5bfcd46f5a796bb18fa98ac2bcccc67f56327397ddb0e0873ca2b4036d0ec"
+    },
+    {
+      "path": "site-assets/main-website-v40/resources/autopilot/editable_docs/00_OPEN_FIRST_AGIALPHA_Autopilot_Command_Center_v2.docx",
+      "bytes": 38463,
+      "sha256": "140ea656e763bdd7312d971e9a8d84ac648d0aa37f2aa73cb6ddc10a85795f2b"
+    },
+    {
+      "path": "site-assets/main-website-v40/resources/autopilot/editable_docs/01_AGIALPHA_Autopilot_Master_Playbook_v2.docx",
+      "bytes": 40100,
+      "sha256": "7f4b10040b71f8aaa79e3442aaa839a7e4d7d6e008fe527aacd8c8a379ab9d03"
+    },
+    {
+      "path": "site-assets/main-website-v40/resources/autopilot/editable_docs/02_Codex_Implementation_Prompt_AGIALPHA_Autopilot_v2.docx",
+      "bytes": 40062,
+      "sha256": "69f90c36e10a0749bb97090c52c218b12527e8addf0e1286d3543d10117ea65d"
+    },
+    {
+      "path": "site-assets/main-website-v40/resources/autopilot/editable_docs/03_AGIALPHA_Autopilot_Operator_Runbook_v2.docx",
+      "bytes": 38597,
+      "sha256": "8dd5f5ab7be3efe4126716faf09b648ffcea90850544c96bc5bdfbedd408b289"
+    },
+    {
+      "path": "site-assets/main-website-v40/resources/autopilot/editable_docs/04_AGIALPHA_Autopilot_Safety_and_Claim_Boundary_v2.docx",
+      "bytes": 38094,
+      "sha256": "000e1845362923759447066b901894af2c36af97c24431b07e2b6c688090ed8c"
+    },
+    {
+      "path": "site-assets/main-website-v40/resources/autopilot/editable_docs/08_One_Page_Launch_Roadmap_v2.docx",
+      "bytes": 37603,
+      "sha256": "bd49879ef0bd03cc8b5d8a53138e20991076a5f505aa8005ae6895b55d7c3407"
+    },
+    {
+      "path": "site-assets/main-website-v40/resources/autopilot/editable_docs/09_GitHub_Actions_Setup_Guide_v2.docx",
+      "bytes": 37835,
+      "sha256": "bd9f838079811259a7f4dd4f648f4c92a908f10e33b9fb7db346b1f61c242564"
+    },
+    {
+      "path": "site-assets/main-website-v40/resources/autopilot/editable_docs/GoalOS_AGIALPHA_Autopilot_All_in_One_Book_v2.docx",
+      "bytes": 44596,
+      "sha256": "bb28a973973119f7e406b52857f7441ac96dfdfb6f49a32f725e396cec014a3d"
+    },
+    {
+      "path": "site-assets/main-website-v40/resources/autopilot/interactive/07_AGIALPHA_Autopilot_Mission_Builder_v2.html",
+      "bytes": 3991,
+      "sha256": "f6b1748ea9e153381e5228c4f1c6eef50c328969bec76399e0f77432b49ab0dd"
+    },
+    {
+      "path": "site-assets/main-website-v40/resources/autopilot/pdfs/00_OPEN_FIRST_AGIALPHA_Autopilot_Command_Center_v2.pdf",
+      "bytes": 61804,
+      "sha256": "2fe789dd062d6bb0130e7da3801692cda0b494efeb76ce0bb9c5f6c5f92ac194"
+    },
+    {
+      "path": "site-assets/main-website-v40/resources/autopilot/pdfs/01_AGIALPHA_Autopilot_Master_Playbook_v2.pdf",
+      "bytes": 113705,
+      "sha256": "cc2c0370e7c54c54e87e9a80cffc06eab16258fa36aebf95784fff209097b9bc"
+    },
+    {
+      "path": "site-assets/main-website-v40/resources/autopilot/pdfs/02_Codex_Implementation_Prompt_AGIALPHA_Autopilot_v2.pdf",
+      "bytes": 49273,
+      "sha256": "e422cff72530a3305743287ac7e827768eb08b99cc95d7466cbdb9442578e2de"
+    },
+    {
+      "path": "site-assets/main-website-v40/resources/autopilot/pdfs/03_AGIALPHA_Autopilot_Operator_Runbook_v2.pdf",
+      "bytes": 73377,
+      "sha256": "aade6d9413b34c27800b9f72d16e04f66b9985cdd707ada84106346def766190"
+    },
+    {
+      "path": "site-assets/main-website-v40/resources/autopilot/pdfs/04_AGIALPHA_Autopilot_Safety_and_Claim_Boundary_v2.pdf",
+      "bytes": 54322,
+      "sha256": "4095a76e59e01a2c6e81ab57176b4504975b779f731bfd8807f127ac8bd0f220"
+    },
+    {
+      "path": "site-assets/main-website-v40/resources/autopilot/pdfs/05_AGIALPHA_Autopilot_Deck_v2.pdf",
+      "bytes": 84106,
+      "sha256": "7b5bd8b62858c01812441ebbb89abc5c0b9b66d40e17db568f0b7a4097a7cdb7"
+    },
+    {
+      "path": "site-assets/main-website-v40/resources/autopilot/pdfs/08_One_Page_Launch_Roadmap_v2.pdf",
+      "bytes": 40097,
+      "sha256": "a734d47a7bcadab772cec4484144561beb54b7cb8ef61b52695b3125bdc924b9"
+    },
+    {
+      "path": "site-assets/main-website-v40/resources/autopilot/pdfs/09_GitHub_Actions_Setup_Guide_v2.pdf",
+      "bytes": 54642,
+      "sha256": "62b8a0b053893b53afa849ee1aec828551ea3abbbb7094ff89b1496a93a67b54"
+    },
+    {
+      "path": "site-assets/main-website-v40/resources/autopilot/pdfs/GoalOS_AGIALPHA_Autopilot_All_in_One_Book_v2.pdf",
+      "bytes": 234254,
+      "sha256": "85daf7ade0cd088222b8e37bc256f9fecd4898c61c41a6c183ca08de78e28c48"
+    },
+    {
+      "path": "site-assets/main-website-v40/resources/autopilot/slides/05_AGIALPHA_Autopilot_Deck_v2.pptx",
+      "bytes": 42404,
+      "sha256": "e295eb4f58501d8782d6f3ef4fcd336035709223d3846c5867cbc0c92de09bf4"
+    },
+    {
+      "path": "site-assets/main-website-v40/resources/autopilot/spreadsheets/06_AGIALPHA_Autopilot_Economics_Thermostat_Model_v2.xlsx",
+      "bytes": 15143,
+      "sha256": "967a0e1386c278ff4734b3359b2a543d2e195de6feb25689cba16bbc464654f2"
+    },
+    {
+      "path": "site-assets/main-website-v40/resources/autopilot/technical_assets/AGIALPHA_Autopilot_Code_Kit_v2.zip",
+      "bytes": 19638,
+      "sha256": "59827574e322cd6e1b418b70748dd3cd3e3f2856a2deb296beadc3474f856c43"
+    },
+    {
+      "path": "site-assets/main-website-v40/resources.html",
+      "bytes": 16996,
+      "sha256": "0d45bffddd8c932ebe2991acaa9b06d4e94a29c039de24af2f97f133398a5b18"
+    },
+    {
+      "path": "site-assets/main-website-v40/roadmap.html",
+      "bytes": 16093,
+      "sha256": "7335d35806705e826b1d9846c9e441975eceba5b637bc1d55cada7b4136f6006"
+    },
+    {
+      "path": "site-assets/main-website-v40/robots.txt",
+      "bytes": 99,
+      "sha256": "84f6a9d120cff431f9b99b49bf865cdec90c4bf3717630ba82a15b1086af6f38"
+    },
+    {
+      "path": "site-assets/main-website-v40/routes.json",
+      "bytes": 2751,
+      "sha256": "ed586d294ebbc7c144dfa1a128202c79cc7181e3aed8c569cea029ea655de787"
+    },
+    {
+      "path": "site-assets/main-website-v40/site-status.json",
+      "bytes": 415,
+      "sha256": "d3575d234361324ef596b747ad933c1b638ef91e1c30bfe3f8d1f7653549cda4"
+    },
+    {
+      "path": "site-assets/main-website-v40/sitemap.xml",
+      "bytes": 3561,
+      "sha256": "707d703bfb9bc5af8613211b0331d2c0e0c44fd0ea50aa3e010f7ba1b488420d"
+    },
+    {
+      "path": "site-assets/main-website-v40/sovereign-rsi-control-plane.html",
+      "bytes": 17147,
+      "sha256": "7548dfcde7d74a4923010a1bc28bd0ec4c4c34dced126a2b29b9da1ad40a748e"
+    },
+    {
+      "path": "site-assets/main-website-v40/start-here.html",
+      "bytes": 17296,
+      "sha256": "eaba438e26e128cd5c768da865043d550fc87591fcf92c0d7761c70913b3642d"
+    },
+    {
+      "path": "site-assets/main-website-v40/system-map.html",
+      "bytes": 19199,
+      "sha256": "29f41cf13f1c5f3b7dd8f31d254a0c6c884781fe777d91471395b23847c994d0"
+    },
+    {
+      "path": "site-assets/main-website-v40/use-cases.html",
+      "bytes": 15874,
+      "sha256": "c109af994094b3eebff5871145eecdda83f7b66d4186192fc384b826e6c02ef3"
+    },
+    {
+      "path": "site-assets/main-website-v41/agialpha-ledger-route.html",
+      "bytes": 15436,
+      "sha256": "4c7e04a78c424165587c393673e2c4559add8004f884fffaf1867ae38d1458dc"
+    },
+    {
+      "path": "site-assets/main-website-v41/assets/wow-v41.js",
+      "bytes": 3456,
+      "sha256": "62a1a5cf7904cbc3720a7a91f8f4533672c35a37e8d791fd4349f97869e7afde"
+    },
+    {
+      "path": "site-assets/main-website-v41/assets/wow.js",
+      "bytes": 4230,
+      "sha256": "2c3f5531052b4befe5f78a34d6c125c5cce6fa551e4860bcaf9e98efd4ff5476"
+    },
+    {
+      "path": "site-assets/main-website-v41/autopilot-mission-builder.html",
+      "bytes": 18916,
+      "sha256": "8b42872066b35a927f55e1a244a34a156cb48b95f7d20423f5b3012f84a0b666"
+    },
+    {
+      "path": "site-assets/main-website-v41/downloads/00_OPEN_FIRST_GoalOS_for_Regular_People_v3.pdf",
+      "bytes": 61335,
+      "sha256": "c87d4471a82861d18e62676c6431356dec4e837bf183e187c4ea3abf0c673846"
+    },
+    {
+      "path": "site-assets/main-website-v41/downloads/01_How_to_Earn_with_GoalOS_Essay_v3.pdf",
+      "bytes": 79282,
+      "sha256": "497d8544ce1e6ea3a831ebe05c1bba4b8ce54d0deac7aa251959adb8c56357fe"
+    },
+    {
+      "path": "site-assets/main-website-v41/downloads/02_Regular_Person_GoalOS_Playbook_v3.pdf",
+      "bytes": 94087,
+      "sha256": "08af8d3d8d6d69ef3b2097f82d73cada52c788b36dc01dd00fa867d417c79025"
+    },
+    {
+      "path": "site-assets/main-website-v41/downloads/03_30_Day_GoalOS_Proof_Sprint_Workbook_v3.pdf",
+      "bytes": 99473,
+      "sha256": "99702a04cebc9672e98ab42eb01a49c01b50250dc93f29b706e7ff104d45835d"
+    },
+    {
+      "path": "site-assets/main-website-v41/downloads/04_Autonomous_GoalOS_Experience_Blueprint_v3.pdf",
+      "bytes": 80766,
+      "sha256": "3e3e56b00c77b2c8a7b431edd56fe4c60526e595e68f9e441d1cec08abdd7fe9"
+    },
+    {
+      "path": "site-assets/main-website-v41/downloads/05_GoalOS_Launch_Copy_and_Onboarding_Scripts_v3.pdf",
+      "bytes": 54164,
+      "sha256": "ce3c81d81e900ca9f57879a4f5d001bfd913df7e80b9d270ede6872aab4ef847"
+    },
+    {
+      "path": "site-assets/main-website-v41/downloads/07_GoalOS_Personal_Proof_Tracker_v3.xlsx",
+      "bytes": 36154,
+      "sha256": "836916836eed096245833be673e466b2f2b61eafd103f15b54b03b560583a528"
+    },
+    {
+      "path": "site-assets/main-website-v41/downloads/GoalOS_Personal_Proof_Journey_All_in_One_v3.pdf",
+      "bytes": 501854,
+      "sha256": "e2aa9be95edf69746e83b1db1dc4d35be90e22b90c5dffa9d05fe68dd7ea5003"
+    },
+    {
+      "path": "site-assets/main-website-v41/downloads/GoalOS_Personal_Proof_Sprint_Builder_v3.html",
+      "bytes": 7724,
+      "sha256": "03fea1b68f0b76e70b507559a64bfc35a5ae2c5fe07b606b3d3470a3a26ed3c9"
+    },
+    {
+      "path": "site-assets/main-website-v41/evidence-docket.html",
+      "bytes": 15505,
+      "sha256": "d5ae36792441419b76c4ff6d2edfd00abb268ff1eda0fbf7289fda45b9ef6bec"
+    },
+    {
+      "path": "site-assets/main-website-v41/execution-moat.html",
+      "bytes": 17827,
+      "sha256": "0bc121f48f167c92096d308c8c92b52f0fe1e422883e970bb3a0e16850134edf"
+    },
+    {
+      "path": "site-assets/main-website-v41/how-it-works.html",
+      "bytes": 18253,
+      "sha256": "ea821e8bf7bdb44fbb634b7f92d7b6458e2ce3e543c317f5bcab2ad74ae89e84"
+    },
+    {
+      "path": "site-assets/main-website-v41/index.html",
+      "bytes": 37675,
+      "sha256": "20be568846c4cdf4e8a43ef8ff54e96b91565b4cfca4fd75e9ce1cd93838041b"
+    },
+    {
+      "path": "site-assets/main-website-v41/manifest.webmanifest",
+      "bytes": 267,
+      "sha256": "7bf9ae58f455993ef755482dbe514704c7cdfa01e3eba962dfca75916e7ced0e"
+    },
+    {
+      "path": "site-assets/main-website-v41/personal-proof-sprint.html",
+      "bytes": 15769,
+      "sha256": "3ecc59a73018c4f1f2658c27fb9bcce308eca4c842f44b87451e7a6d79bbd967"
+    },
+    {
+      "path": "site-assets/main-website-v41/pilot-guide.html",
+      "bytes": 15617,
+      "sha256": "c82329d10c17d0a9413929ea9ae0ee2d6735c73b156d11398e9ccc2c984fe00c"
+    },
+    {
+      "path": "site-assets/main-website-v41/proof-card-001.html",
+      "bytes": 31183,
+      "sha256": "421afc385e16b5306c9f47d4371d88ae9383de506ebc0ec256a455f0d9c109e1"
+    },
+    {
+      "path": "site-assets/main-website-v41/proof-card-002.html",
+      "bytes": 31205,
+      "sha256": "9361a893c359fe5e2830145a19f4937d09545d53603cd70ce29feb8ebf0b7c79"
+    },
+    {
+      "path": "site-assets/main-website-v41/proof-card-003.html",
+      "bytes": 31259,
+      "sha256": "7c76d0176b84786630d34a2ad39ceff4c6a6bf64586954123e4d6df028bb5980"
+    },
+    {
+      "path": "site-assets/main-website-v41/proof-card-004.html",
+      "bytes": 31245,
+      "sha256": "63649c96133223917735455c4112ef305e819555faf9891962de41177b72a5aa"
+    },
+    {
+      "path": "site-assets/main-website-v41/proof-card-005.html",
+      "bytes": 31119,
+      "sha256": "6abda0d34313dabb403ecff292bfa1af633fceb67de9fb33fe4a9ca2e5cc299d"
+    },
+    {
+      "path": "site-assets/main-website-v41/proof-card-006.html",
+      "bytes": 31259,
+      "sha256": "792a6418071fadcb7748bc769fc0904284303b93a43fdb9a7f7f1634305c291e"
+    },
+    {
+      "path": "site-assets/main-website-v41/proof-card-007.html",
+      "bytes": 31299,
+      "sha256": "7eafcd86daad53f72ac3b33bd15f1498a7b88a925aaaa22301e0644a726df948"
+    },
+    {
+      "path": "site-assets/main-website-v41/proof-card-008.html",
+      "bytes": 31349,
+      "sha256": "0a3bcdfb8b772f301df3a2f98e9798704990b7e55bb0c8f5c33e22020375e8d8"
+    },
+    {
+      "path": "site-assets/main-website-v41/proof-card-009.html",
+      "bytes": 31251,
+      "sha256": "71358d43ddabcb5c5e4a1538700cdfe1d9ad6bacdf20535e4b6242ae7bab0999"
+    },
+    {
+      "path": "site-assets/main-website-v41/proof-card-010.html",
+      "bytes": 31299,
+      "sha256": "6403fb1b77a125fc72d17a0125baafc724a4488ea480d6fd48c168ec4e5fbeea"
+    },
+    {
+      "path": "site-assets/main-website-v41/proof-card-011.html",
+      "bytes": 31389,
+      "sha256": "acfbd3cc17934cf8b905ec5fb6aaece2e7afeb9cd023479bcb0d9b0bef7042e1"
+    },
+    {
+      "path": "site-assets/main-website-v41/proof-card-012.html",
+      "bytes": 31283,
+      "sha256": "c9e0ebedfae504bafa8335e3f2c55945130d2acad56274df992aa84fdc43da39"
+    },
+    {
+      "path": "site-assets/main-website-v41/proof-card-013.html",
+      "bytes": 31299,
+      "sha256": "40709c09a1c172f92f8b3f2efa4424033c5b08178dc3c7d0133e0f5a7d79da9c"
+    },
+    {
+      "path": "site-assets/main-website-v41/proof-card-014.html",
+      "bytes": 31401,
+      "sha256": "09d340dc65684e7ed1215d867181761756e7730e4cd6e95a85e969d7f2d0638a"
+    },
+    {
+      "path": "site-assets/main-website-v41/proof-card-015.html",
+      "bytes": 31291,
+      "sha256": "fa42e6895d663a2c1d7007f6322dd0446cf0169d4b8b73f1990e55cde6f20f7a"
+    },
+    {
+      "path": "site-assets/main-website-v41/proof-card-016.html",
+      "bytes": 31377,
+      "sha256": "6376408b1608eb793cd5eb0902b2cef37b14b93e4eac2747cb5a35d0dec5fb70"
+    },
+    {
+      "path": "site-assets/main-website-v41/proof-card-017.html",
+      "bytes": 31273,
+      "sha256": "c8a74e81d6e8c3eb1b0a669387c6e1a0aa31f04cff1b5f3e9883db2e6c44a9ed"
+    },
+    {
+      "path": "site-assets/main-website-v41/proof-cards.html",
+      "bytes": 18716,
+      "sha256": "9a3a9fb42d0847f833a8aa8d03944918c355bf5117446f1a537847ed95b4304a"
+    },
+    {
+      "path": "site-assets/main-website-v41/proof-sprint-builder.html",
+      "bytes": 17000,
+      "sha256": "bb7c9527f3cf7dcc1bd24a3952de4fff949e3ee19e6b8c96890a6e9bf282e745"
+    },
+    {
+      "path": "site-assets/main-website-v41/regular-person.html",
+      "bytes": 16021,
+      "sha256": "316258f0f792b266b600ba9eeb0296d236ff771c2dd0ca53fa6a7caa613a6518"
+    },
+    {
+      "path": "site-assets/main-website-v41/research.html",
+      "bytes": 15601,
+      "sha256": "ce944bbdcf444f36662c3f1df2f8fe73575f412efd6f71abc1a46be62b0ee160"
+    },
+    {
+      "path": "site-assets/main-website-v41/resources/00_OPEN_FIRST_GoalOS_for_Regular_People_v3.pdf",
+      "bytes": 61335,
+      "sha256": "c87d4471a82861d18e62676c6431356dec4e837bf183e187c4ea3abf0c673846"
+    },
+    {
+      "path": "site-assets/main-website-v41/resources/01_How_to_Earn_with_GoalOS_Essay_v3.pdf",
+      "bytes": 79282,
+      "sha256": "497d8544ce1e6ea3a831ebe05c1bba4b8ce54d0deac7aa251959adb8c56357fe"
+    },
+    {
+      "path": "site-assets/main-website-v41/resources/02_Regular_Person_GoalOS_Playbook_v3.pdf",
+      "bytes": 94087,
+      "sha256": "08af8d3d8d6d69ef3b2097f82d73cada52c788b36dc01dd00fa867d417c79025"
+    },
+    {
+      "path": "site-assets/main-website-v41/resources/03_30_Day_GoalOS_Proof_Sprint_Workbook_v3.pdf",
+      "bytes": 99473,
+      "sha256": "99702a04cebc9672e98ab42eb01a49c01b50250dc93f29b706e7ff104d45835d"
+    },
+    {
+      "path": "site-assets/main-website-v41/resources/04_Autonomous_GoalOS_Experience_Blueprint_v3.pdf",
+      "bytes": 80766,
+      "sha256": "3e3e56b00c77b2c8a7b431edd56fe4c60526e595e68f9e441d1cec08abdd7fe9"
+    },
+    {
+      "path": "site-assets/main-website-v41/resources/05_GoalOS_Launch_Copy_and_Onboarding_Scripts_v3.pdf",
+      "bytes": 54164,
+      "sha256": "ce3c81d81e900ca9f57879a4f5d001bfd913df7e80b9d270ede6872aab4ef847"
+    },
+    {
+      "path": "site-assets/main-website-v41/resources/07_GoalOS_Personal_Proof_Tracker_v3.xlsx",
+      "bytes": 36154,
+      "sha256": "836916836eed096245833be673e466b2f2b61eafd103f15b54b03b560583a528"
+    },
+    {
+      "path": "site-assets/main-website-v41/resources/GoalOS_Personal_Proof_Journey_All_in_One_v3.pdf",
+      "bytes": 501854,
+      "sha256": "e2aa9be95edf69746e83b1db1dc4d35be90e22b90c5dffa9d05fe68dd7ea5003"
+    },
+    {
+      "path": "site-assets/main-website-v41/resources/GoalOS_Personal_Proof_Journey_Pack_v3.zip",
+      "bytes": 10564186,
+      "sha256": "1680999ca01856ea8a0c3e7e5bbd5610285f9a0a6dd2222dcb1f772fab1cfd59"
+    },
+    {
+      "path": "site-assets/main-website-v41/resources/GoalOS_Personal_Proof_Sprint_Builder_v3.html",
+      "bytes": 7724,
+      "sha256": "03fea1b68f0b76e70b507559a64bfc35a5ae2c5fe07b606b3d3470a3a26ed3c9"
+    },
+    {
+      "path": "site-assets/main-website-v41/resources/autopilot/GoalOS_AGIALPHA_Autopilot_Command_Center_v2.zip",
+      "bytes": 1258693,
+      "sha256": "4fd5bfcd46f5a796bb18fa98ac2bcccc67f56327397ddb0e0873ca2b4036d0ec"
+    },
+    {
+      "path": "site-assets/main-website-v41/resources/autopilot/editable_docs/00_OPEN_FIRST_AGIALPHA_Autopilot_Command_Center_v2.docx",
+      "bytes": 38463,
+      "sha256": "140ea656e763bdd7312d971e9a8d84ac648d0aa37f2aa73cb6ddc10a85795f2b"
+    },
+    {
+      "path": "site-assets/main-website-v41/resources/autopilot/editable_docs/01_AGIALPHA_Autopilot_Master_Playbook_v2.docx",
+      "bytes": 40100,
+      "sha256": "7f4b10040b71f8aaa79e3442aaa839a7e4d7d6e008fe527aacd8c8a379ab9d03"
+    },
+    {
+      "path": "site-assets/main-website-v41/resources/autopilot/editable_docs/02_Codex_Implementation_Prompt_AGIALPHA_Autopilot_v2.docx",
+      "bytes": 40062,
+      "sha256": "69f90c36e10a0749bb97090c52c218b12527e8addf0e1286d3543d10117ea65d"
+    },
+    {
+      "path": "site-assets/main-website-v41/resources/autopilot/editable_docs/03_AGIALPHA_Autopilot_Operator_Runbook_v2.docx",
+      "bytes": 38597,
+      "sha256": "8dd5f5ab7be3efe4126716faf09b648ffcea90850544c96bc5bdfbedd408b289"
+    },
+    {
+      "path": "site-assets/main-website-v41/resources/autopilot/editable_docs/04_AGIALPHA_Autopilot_Safety_and_Claim_Boundary_v2.docx",
+      "bytes": 38094,
+      "sha256": "000e1845362923759447066b901894af2c36af97c24431b07e2b6c688090ed8c"
+    },
+    {
+      "path": "site-assets/main-website-v41/resources/autopilot/editable_docs/08_One_Page_Launch_Roadmap_v2.docx",
+      "bytes": 37603,
+      "sha256": "bd49879ef0bd03cc8b5d8a53138e20991076a5f505aa8005ae6895b55d7c3407"
+    },
+    {
+      "path": "site-assets/main-website-v41/resources/autopilot/editable_docs/09_GitHub_Actions_Setup_Guide_v2.docx",
+      "bytes": 37835,
+      "sha256": "bd9f838079811259a7f4dd4f648f4c92a908f10e33b9fb7db346b1f61c242564"
+    },
+    {
+      "path": "site-assets/main-website-v41/resources/autopilot/editable_docs/GoalOS_AGIALPHA_Autopilot_All_in_One_Book_v2.docx",
+      "bytes": 44596,
+      "sha256": "bb28a973973119f7e406b52857f7441ac96dfdfb6f49a32f725e396cec014a3d"
+    },
+    {
+      "path": "site-assets/main-website-v41/resources/autopilot/interactive/07_AGIALPHA_Autopilot_Mission_Builder_v2.html",
+      "bytes": 3991,
+      "sha256": "f6b1748ea9e153381e5228c4f1c6eef50c328969bec76399e0f77432b49ab0dd"
+    },
+    {
+      "path": "site-assets/main-website-v41/resources/autopilot/pdfs/00_OPEN_FIRST_AGIALPHA_Autopilot_Command_Center_v2.pdf",
+      "bytes": 61804,
+      "sha256": "2fe789dd062d6bb0130e7da3801692cda0b494efeb76ce0bb9c5f6c5f92ac194"
+    },
+    {
+      "path": "site-assets/main-website-v41/resources/autopilot/pdfs/01_AGIALPHA_Autopilot_Master_Playbook_v2.pdf",
+      "bytes": 113705,
+      "sha256": "cc2c0370e7c54c54e87e9a80cffc06eab16258fa36aebf95784fff209097b9bc"
+    },
+    {
+      "path": "site-assets/main-website-v41/resources/autopilot/pdfs/02_Codex_Implementation_Prompt_AGIALPHA_Autopilot_v2.pdf",
+      "bytes": 49273,
+      "sha256": "e422cff72530a3305743287ac7e827768eb08b99cc95d7466cbdb9442578e2de"
+    },
+    {
+      "path": "site-assets/main-website-v41/resources/autopilot/pdfs/03_AGIALPHA_Autopilot_Operator_Runbook_v2.pdf",
+      "bytes": 73377,
+      "sha256": "aade6d9413b34c27800b9f72d16e04f66b9985cdd707ada84106346def766190"
+    },
+    {
+      "path": "site-assets/main-website-v41/resources/autopilot/pdfs/04_AGIALPHA_Autopilot_Safety_and_Claim_Boundary_v2.pdf",
+      "bytes": 54322,
+      "sha256": "4095a76e59e01a2c6e81ab57176b4504975b779f731bfd8807f127ac8bd0f220"
+    },
+    {
+      "path": "site-assets/main-website-v41/resources/autopilot/pdfs/05_AGIALPHA_Autopilot_Deck_v2.pdf",
+      "bytes": 84106,
+      "sha256": "7b5bd8b62858c01812441ebbb89abc5c0b9b66d40e17db568f0b7a4097a7cdb7"
+    },
+    {
+      "path": "site-assets/main-website-v41/resources/autopilot/pdfs/08_One_Page_Launch_Roadmap_v2.pdf",
+      "bytes": 40097,
+      "sha256": "a734d47a7bcadab772cec4484144561beb54b7cb8ef61b52695b3125bdc924b9"
+    },
+    {
+      "path": "site-assets/main-website-v41/resources/autopilot/pdfs/09_GitHub_Actions_Setup_Guide_v2.pdf",
+      "bytes": 54642,
+      "sha256": "62b8a0b053893b53afa849ee1aec828551ea3abbbb7094ff89b1496a93a67b54"
+    },
+    {
+      "path": "site-assets/main-website-v41/resources/autopilot/pdfs/GoalOS_AGIALPHA_Autopilot_All_in_One_Book_v2.pdf",
+      "bytes": 234254,
+      "sha256": "85daf7ade0cd088222b8e37bc256f9fecd4898c61c41a6c183ca08de78e28c48"
+    },
+    {
+      "path": "site-assets/main-website-v41/resources/autopilot/slides/05_AGIALPHA_Autopilot_Deck_v2.pptx",
+      "bytes": 42404,
+      "sha256": "e295eb4f58501d8782d6f3ef4fcd336035709223d3846c5867cbc0c92de09bf4"
+    },
+    {
+      "path": "site-assets/main-website-v41/resources/autopilot/spreadsheets/06_AGIALPHA_Autopilot_Economics_Thermostat_Model_v2.xlsx",
+      "bytes": 15143,
+      "sha256": "967a0e1386c278ff4734b3359b2a543d2e195de6feb25689cba16bbc464654f2"
+    },
+    {
+      "path": "site-assets/main-website-v41/resources/autopilot/technical_assets/AGIALPHA_Autopilot_Code_Kit_v2.zip",
+      "bytes": 19638,
+      "sha256": "59827574e322cd6e1b418b70748dd3cd3e3f2856a2deb296beadc3474f856c43"
+    },
+    {
+      "path": "site-assets/main-website-v41/resources.html",
+      "bytes": 16996,
+      "sha256": "0d45bffddd8c932ebe2991acaa9b06d4e94a29c039de24af2f97f133398a5b18"
+    },
+    {
+      "path": "site-assets/main-website-v41/roadmap.html",
+      "bytes": 16093,
+      "sha256": "7335d35806705e826b1d9846c9e441975eceba5b637bc1d55cada7b4136f6006"
+    },
+    {
+      "path": "site-assets/main-website-v41/robots.txt",
+      "bytes": 99,
+      "sha256": "84f6a9d120cff431f9b99b49bf865cdec90c4bf3717630ba82a15b1086af6f38"
+    },
+    {
+      "path": "site-assets/main-website-v41/routes.json",
+      "bytes": 2751,
+      "sha256": "ed586d294ebbc7c144dfa1a128202c79cc7181e3aed8c569cea029ea655de787"
+    },
+    {
+      "path": "site-assets/main-website-v41/site-status.json",
+      "bytes": 410,
+      "sha256": "6fb85952bc548a1727d44704fdaf52d39d899dff133b0eb839e619f2c53d655c"
+    },
+    {
+      "path": "site-assets/main-website-v41/sitemap.xml",
+      "bytes": 3561,
+      "sha256": "707d703bfb9bc5af8613211b0331d2c0e0c44fd0ea50aa3e010f7ba1b488420d"
+    },
+    {
+      "path": "site-assets/main-website-v41/sovereign-rsi-control-plane.html",
+      "bytes": 17147,
+      "sha256": "7548dfcde7d74a4923010a1bc28bd0ec4c4c34dced126a2b29b9da1ad40a748e"
+    },
+    {
+      "path": "site-assets/main-website-v41/start-here.html",
+      "bytes": 17296,
+      "sha256": "eaba438e26e128cd5c768da865043d550fc87591fcf92c0d7761c70913b3642d"
+    },
+    {
+      "path": "site-assets/main-website-v41/system-map.html",
+      "bytes": 19199,
+      "sha256": "29f41cf13f1c5f3b7dd8f31d254a0c6c884781fe777d91471395b23847c994d0"
+    },
+    {
+      "path": "site-assets/main-website-v41/use-cases.html",
+      "bytes": 15874,
+      "sha256": "c109af994094b3eebff5871145eecdda83f7b66d4186192fc384b826e6c02ef3"
+    },
+    {
+      "path": "site-assets/main-website-v42/agialpha-ledger-route.html",
+      "bytes": 22611,
+      "sha256": "68797991b9c8a0744dc879da5f326be39a047131694265361de00294d1a0ab7e"
+    },
+    {
+      "path": "site-assets/main-website-v42/assets/wow-v41.js",
+      "bytes": 3456,
+      "sha256": "62a1a5cf7904cbc3720a7a91f8f4533672c35a37e8d791fd4349f97869e7afde"
+    },
+    {
+      "path": "site-assets/main-website-v42/assets/wow.js",
+      "bytes": 4230,
+      "sha256": "2c3f5531052b4befe5f78a34d6c125c5cce6fa551e4860bcaf9e98efd4ff5476"
+    },
+    {
+      "path": "site-assets/main-website-v42/autopilot-mission-builder.html",
+      "bytes": 26091,
+      "sha256": "3c7b43b54d45c8a818ed056a3717b2c72736a5050dc0f221ddbd6b2100bcf910"
+    },
+    {
+      "path": "site-assets/main-website-v42/downloads/00_OPEN_FIRST_GoalOS_for_Regular_People_v3.pdf",
+      "bytes": 61335,
+      "sha256": "c87d4471a82861d18e62676c6431356dec4e837bf183e187c4ea3abf0c673846"
+    },
+    {
+      "path": "site-assets/main-website-v42/downloads/01_How_to_Earn_with_GoalOS_Essay_v3.pdf",
+      "bytes": 79282,
+      "sha256": "497d8544ce1e6ea3a831ebe05c1bba4b8ce54d0deac7aa251959adb8c56357fe"
+    },
+    {
+      "path": "site-assets/main-website-v42/downloads/02_Regular_Person_GoalOS_Playbook_v3.pdf",
+      "bytes": 94087,
+      "sha256": "08af8d3d8d6d69ef3b2097f82d73cada52c788b36dc01dd00fa867d417c79025"
+    },
+    {
+      "path": "site-assets/main-website-v42/downloads/03_30_Day_GoalOS_Proof_Sprint_Workbook_v3.pdf",
+      "bytes": 99473,
+      "sha256": "99702a04cebc9672e98ab42eb01a49c01b50250dc93f29b706e7ff104d45835d"
+    },
+    {
+      "path": "site-assets/main-website-v42/downloads/04_Autonomous_GoalOS_Experience_Blueprint_v3.pdf",
+      "bytes": 80766,
+      "sha256": "3e3e56b00c77b2c8a7b431edd56fe4c60526e595e68f9e441d1cec08abdd7fe9"
+    },
+    {
+      "path": "site-assets/main-website-v42/downloads/05_GoalOS_Launch_Copy_and_Onboarding_Scripts_v3.pdf",
+      "bytes": 54164,
+      "sha256": "ce3c81d81e900ca9f57879a4f5d001bfd913df7e80b9d270ede6872aab4ef847"
+    },
+    {
+      "path": "site-assets/main-website-v42/downloads/07_GoalOS_Personal_Proof_Tracker_v3.xlsx",
+      "bytes": 36154,
+      "sha256": "836916836eed096245833be673e466b2f2b61eafd103f15b54b03b560583a528"
+    },
+    {
+      "path": "site-assets/main-website-v42/downloads/GoalOS_Personal_Proof_Journey_All_in_One_v3.pdf",
+      "bytes": 501854,
+      "sha256": "e2aa9be95edf69746e83b1db1dc4d35be90e22b90c5dffa9d05fe68dd7ea5003"
+    },
+    {
+      "path": "site-assets/main-website-v42/downloads/GoalOS_Personal_Proof_Sprint_Builder_v3.html",
+      "bytes": 7724,
+      "sha256": "03fea1b68f0b76e70b507559a64bfc35a5ae2c5fe07b606b3d3470a3a26ed3c9"
+    },
+    {
+      "path": "site-assets/main-website-v42/evidence-docket.html",
+      "bytes": 22680,
+      "sha256": "0afb3fede53fd7df484f779fc646236794e493451b71ebef153c00d2ded8cee4"
+    },
+    {
+      "path": "site-assets/main-website-v42/execution-moat.html",
+      "bytes": 25002,
+      "sha256": "a74a23094a19f6871b13e1010ebe0522e26d94cfb9b4b171cd2b5458968b6a25"
+    },
+    {
+      "path": "site-assets/main-website-v42/how-it-works.html",
+      "bytes": 25428,
+      "sha256": "5c507c043ae37b7672df76cf95a6225c9c927d4e5e28f2e0f335d9d3fa968beb"
+    },
+    {
+      "path": "site-assets/main-website-v42/index.html",
+      "bytes": 44123,
+      "sha256": "c76642cd5cbeccfbc04109c8a7b00a4a141ff00278de909e1b1249ce6e168d76"
+    },
+    {
+      "path": "site-assets/main-website-v42/manifest.webmanifest",
+      "bytes": 267,
+      "sha256": "e49854a9a05d911cb2ec5236a3de7dac10242a6719a5ad29842aaf1808f88a59"
+    },
+    {
+      "path": "site-assets/main-website-v42/personal-proof-sprint.html",
+      "bytes": 22944,
+      "sha256": "369e346a69214fbb4d9c18e296caddc0a115b0501ffc80b3aa96c94805dcaf11"
+    },
+    {
+      "path": "site-assets/main-website-v42/pilot-guide.html",
+      "bytes": 22792,
+      "sha256": "7c9fed54a4e8004e291b788ee07ad2621a77e0b90bb7e686e356686f25154571"
+    },
+    {
+      "path": "site-assets/main-website-v42/proof-card-001.html",
+      "bytes": 38358,
+      "sha256": "befa14b71cbd6e9c03308b546fefa6a463e0cd9fae9d2e2a252e65c17d561745"
+    },
+    {
+      "path": "site-assets/main-website-v42/proof-card-002.html",
+      "bytes": 38380,
+      "sha256": "2fd415548bc7a92ef857d6655ac5755ed27705516996e8b383dde13f34575915"
+    },
+    {
+      "path": "site-assets/main-website-v42/proof-card-003.html",
+      "bytes": 38434,
+      "sha256": "858e36ce4e817d05af0393f0bcb14bd95693420664137b2a93450cb4fc9a2c34"
+    },
+    {
+      "path": "site-assets/main-website-v42/proof-card-004.html",
+      "bytes": 38420,
+      "sha256": "4861acd5e837d72bf7d532824149e593f39492fa0be0e31ca92ad47033ac01d3"
+    },
+    {
+      "path": "site-assets/main-website-v42/proof-card-005.html",
+      "bytes": 38294,
+      "sha256": "318d342e62b29a9e147003dab74562859858eab8252e17b484aab5abebe3bcdd"
+    },
+    {
+      "path": "site-assets/main-website-v42/proof-card-006.html",
+      "bytes": 38434,
+      "sha256": "a1c5da9d07deccdeb87fcee0d7eb80ebab1a98ded6f683ea599fc0a83cc6baab"
+    },
+    {
+      "path": "site-assets/main-website-v42/proof-card-007.html",
+      "bytes": 38474,
+      "sha256": "529cc63027555957a1c3a44fbcf315985ddd64b598894128afbd171a063c8e60"
+    },
+    {
+      "path": "site-assets/main-website-v42/proof-card-008.html",
+      "bytes": 38524,
+      "sha256": "2b280136258c954094ee23f2e506d3d35462b6a813e9fcda3a04d6bdce142ccf"
+    },
+    {
+      "path": "site-assets/main-website-v42/proof-card-009.html",
+      "bytes": 38426,
+      "sha256": "288664adb69f1c8500242e680c84b4c78f12c4a427dce0a2e1adb513db54c948"
+    },
+    {
+      "path": "site-assets/main-website-v42/proof-card-010.html",
+      "bytes": 38474,
+      "sha256": "0a017b3e0b6b37a5ca00157d9263ecfcb0431464408ee10ab00df1d880eaffb9"
+    },
+    {
+      "path": "site-assets/main-website-v42/proof-card-011.html",
+      "bytes": 38564,
+      "sha256": "fc547f0a0be5a77c4d39d00b0d305e17673b98a39443f5c39c52ae310d6b8367"
+    },
+    {
+      "path": "site-assets/main-website-v42/proof-card-012.html",
+      "bytes": 38458,
+      "sha256": "f42e1c91bc06f584a1fba7363344784cc4548f769fb17bc35fd23797f04c8e59"
+    },
+    {
+      "path": "site-assets/main-website-v42/proof-card-013.html",
+      "bytes": 38474,
+      "sha256": "f02790ce360b7d0b49c540b1a68657de9efa5b9fa4bc92a38d2408cca4bda32a"
+    },
+    {
+      "path": "site-assets/main-website-v42/proof-card-014.html",
+      "bytes": 38576,
+      "sha256": "cde996833f5beeccaa5826dc288c08b0aa00aae6a29d1e4bcf473de857a3c1ac"
+    },
+    {
+      "path": "site-assets/main-website-v42/proof-card-015.html",
+      "bytes": 38466,
+      "sha256": "97143a89eaf0f99c6d764523069b625accb33e6ed1e4fcce6fed576b8ee690da"
+    },
+    {
+      "path": "site-assets/main-website-v42/proof-card-016.html",
+      "bytes": 38552,
+      "sha256": "c9a3f592d7d2d5150c967cddf694a7e2b60676901ca464df06c10c843585fcb8"
+    },
+    {
+      "path": "site-assets/main-website-v42/proof-card-017.html",
+      "bytes": 38448,
+      "sha256": "f35ead9123f7dd6fa5431455e66f790148d528501f8ae68dd8ab15ff2ec0a2bf"
+    },
+    {
+      "path": "site-assets/main-website-v42/proof-cards.html",
+      "bytes": 25891,
+      "sha256": "2302add05066d5d1a22b30836700558c73a79d97ae3d8e8988c3a5cc838f8699"
+    },
+    {
+      "path": "site-assets/main-website-v42/proof-sprint-builder.html",
+      "bytes": 24175,
+      "sha256": "f52bd773e5b564252d325e0f602afcbc3c5660f314dd15c707736d20710714bb"
+    },
+    {
+      "path": "site-assets/main-website-v42/regular-person.html",
+      "bytes": 23196,
+      "sha256": "913653c84effba172b6234c902b1e14f4aa41234da7ec550c58befd9581283c1"
+    },
+    {
+      "path": "site-assets/main-website-v42/research.html",
+      "bytes": 22776,
+      "sha256": "e0c9a81699813c8704c976efbb700871a358efff122aa6a1e7101df48851da5e"
+    },
+    {
+      "path": "site-assets/main-website-v42/resources/00_OPEN_FIRST_GoalOS_for_Regular_People_v3.pdf",
+      "bytes": 61335,
+      "sha256": "c87d4471a82861d18e62676c6431356dec4e837bf183e187c4ea3abf0c673846"
+    },
+    {
+      "path": "site-assets/main-website-v42/resources/01_How_to_Earn_with_GoalOS_Essay_v3.pdf",
+      "bytes": 79282,
+      "sha256": "497d8544ce1e6ea3a831ebe05c1bba4b8ce54d0deac7aa251959adb8c56357fe"
+    },
+    {
+      "path": "site-assets/main-website-v42/resources/02_Regular_Person_GoalOS_Playbook_v3.pdf",
+      "bytes": 94087,
+      "sha256": "08af8d3d8d6d69ef3b2097f82d73cada52c788b36dc01dd00fa867d417c79025"
+    },
+    {
+      "path": "site-assets/main-website-v42/resources/03_30_Day_GoalOS_Proof_Sprint_Workbook_v3.pdf",
+      "bytes": 99473,
+      "sha256": "99702a04cebc9672e98ab42eb01a49c01b50250dc93f29b706e7ff104d45835d"
+    },
+    {
+      "path": "site-assets/main-website-v42/resources/04_Autonomous_GoalOS_Experience_Blueprint_v3.pdf",
+      "bytes": 80766,
+      "sha256": "3e3e56b00c77b2c8a7b431edd56fe4c60526e595e68f9e441d1cec08abdd7fe9"
+    },
+    {
+      "path": "site-assets/main-website-v42/resources/05_GoalOS_Launch_Copy_and_Onboarding_Scripts_v3.pdf",
+      "bytes": 54164,
+      "sha256": "ce3c81d81e900ca9f57879a4f5d001bfd913df7e80b9d270ede6872aab4ef847"
+    },
+    {
+      "path": "site-assets/main-website-v42/resources/07_GoalOS_Personal_Proof_Tracker_v3.xlsx",
+      "bytes": 36154,
+      "sha256": "836916836eed096245833be673e466b2f2b61eafd103f15b54b03b560583a528"
+    },
+    {
+      "path": "site-assets/main-website-v42/resources/GoalOS_Personal_Proof_Journey_All_in_One_v3.pdf",
+      "bytes": 501854,
+      "sha256": "e2aa9be95edf69746e83b1db1dc4d35be90e22b90c5dffa9d05fe68dd7ea5003"
+    },
+    {
+      "path": "site-assets/main-website-v42/resources/GoalOS_Personal_Proof_Sprint_Builder_v3.html",
+      "bytes": 7724,
+      "sha256": "03fea1b68f0b76e70b507559a64bfc35a5ae2c5fe07b606b3d3470a3a26ed3c9"
+    },
+    {
+      "path": "site-assets/main-website-v42/resources/autopilot/editable_docs/00_OPEN_FIRST_AGIALPHA_Autopilot_Command_Center_v2.docx",
+      "bytes": 38463,
+      "sha256": "140ea656e763bdd7312d971e9a8d84ac648d0aa37f2aa73cb6ddc10a85795f2b"
+    },
+    {
+      "path": "site-assets/main-website-v42/resources/autopilot/editable_docs/01_AGIALPHA_Autopilot_Master_Playbook_v2.docx",
+      "bytes": 40100,
+      "sha256": "7f4b10040b71f8aaa79e3442aaa839a7e4d7d6e008fe527aacd8c8a379ab9d03"
+    },
+    {
+      "path": "site-assets/main-website-v42/resources/autopilot/editable_docs/02_Codex_Implementation_Prompt_AGIALPHA_Autopilot_v2.docx",
+      "bytes": 40062,
+      "sha256": "69f90c36e10a0749bb97090c52c218b12527e8addf0e1286d3543d10117ea65d"
+    },
+    {
+      "path": "site-assets/main-website-v42/resources/autopilot/editable_docs/03_AGIALPHA_Autopilot_Operator_Runbook_v2.docx",
+      "bytes": 38597,
+      "sha256": "8dd5f5ab7be3efe4126716faf09b648ffcea90850544c96bc5bdfbedd408b289"
+    },
+    {
+      "path": "site-assets/main-website-v42/resources/autopilot/editable_docs/04_AGIALPHA_Autopilot_Safety_and_Claim_Boundary_v2.docx",
+      "bytes": 38094,
+      "sha256": "000e1845362923759447066b901894af2c36af97c24431b07e2b6c688090ed8c"
+    },
+    {
+      "path": "site-assets/main-website-v42/resources/autopilot/editable_docs/08_One_Page_Launch_Roadmap_v2.docx",
+      "bytes": 37603,
+      "sha256": "bd49879ef0bd03cc8b5d8a53138e20991076a5f505aa8005ae6895b55d7c3407"
+    },
+    {
+      "path": "site-assets/main-website-v42/resources/autopilot/editable_docs/09_GitHub_Actions_Setup_Guide_v2.docx",
+      "bytes": 37835,
+      "sha256": "bd9f838079811259a7f4dd4f648f4c92a908f10e33b9fb7db346b1f61c242564"
+    },
+    {
+      "path": "site-assets/main-website-v42/resources/autopilot/editable_docs/GoalOS_AGIALPHA_Autopilot_All_in_One_Book_v2.docx",
+      "bytes": 44596,
+      "sha256": "bb28a973973119f7e406b52857f7441ac96dfdfb6f49a32f725e396cec014a3d"
+    },
+    {
+      "path": "site-assets/main-website-v42/resources/autopilot/interactive/07_AGIALPHA_Autopilot_Mission_Builder_v2.html",
+      "bytes": 3991,
+      "sha256": "f6b1748ea9e153381e5228c4f1c6eef50c328969bec76399e0f77432b49ab0dd"
+    },
+    {
+      "path": "site-assets/main-website-v42/resources/autopilot/pdfs/00_OPEN_FIRST_AGIALPHA_Autopilot_Command_Center_v2.pdf",
+      "bytes": 61804,
+      "sha256": "2fe789dd062d6bb0130e7da3801692cda0b494efeb76ce0bb9c5f6c5f92ac194"
+    },
+    {
+      "path": "site-assets/main-website-v42/resources/autopilot/pdfs/01_AGIALPHA_Autopilot_Master_Playbook_v2.pdf",
+      "bytes": 113705,
+      "sha256": "cc2c0370e7c54c54e87e9a80cffc06eab16258fa36aebf95784fff209097b9bc"
+    },
+    {
+      "path": "site-assets/main-website-v42/resources/autopilot/pdfs/02_Codex_Implementation_Prompt_AGIALPHA_Autopilot_v2.pdf",
+      "bytes": 49273,
+      "sha256": "e422cff72530a3305743287ac7e827768eb08b99cc95d7466cbdb9442578e2de"
+    },
+    {
+      "path": "site-assets/main-website-v42/resources/autopilot/pdfs/03_AGIALPHA_Autopilot_Operator_Runbook_v2.pdf",
+      "bytes": 73377,
+      "sha256": "aade6d9413b34c27800b9f72d16e04f66b9985cdd707ada84106346def766190"
+    },
+    {
+      "path": "site-assets/main-website-v42/resources/autopilot/pdfs/04_AGIALPHA_Autopilot_Safety_and_Claim_Boundary_v2.pdf",
+      "bytes": 54322,
+      "sha256": "4095a76e59e01a2c6e81ab57176b4504975b779f731bfd8807f127ac8bd0f220"
+    },
+    {
+      "path": "site-assets/main-website-v42/resources/autopilot/pdfs/05_AGIALPHA_Autopilot_Deck_v2.pdf",
+      "bytes": 84106,
+      "sha256": "7b5bd8b62858c01812441ebbb89abc5c0b9b66d40e17db568f0b7a4097a7cdb7"
+    },
+    {
+      "path": "site-assets/main-website-v42/resources/autopilot/pdfs/08_One_Page_Launch_Roadmap_v2.pdf",
+      "bytes": 40097,
+      "sha256": "a734d47a7bcadab772cec4484144561beb54b7cb8ef61b52695b3125bdc924b9"
+    },
+    {
+      "path": "site-assets/main-website-v42/resources/autopilot/pdfs/09_GitHub_Actions_Setup_Guide_v2.pdf",
+      "bytes": 54642,
+      "sha256": "62b8a0b053893b53afa849ee1aec828551ea3abbbb7094ff89b1496a93a67b54"
+    },
+    {
+      "path": "site-assets/main-website-v42/resources/autopilot/pdfs/GoalOS_AGIALPHA_Autopilot_All_in_One_Book_v2.pdf",
+      "bytes": 234254,
+      "sha256": "85daf7ade0cd088222b8e37bc256f9fecd4898c61c41a6c183ca08de78e28c48"
+    },
+    {
+      "path": "site-assets/main-website-v42/resources/autopilot/slides/05_AGIALPHA_Autopilot_Deck_v2.pptx",
+      "bytes": 42404,
+      "sha256": "e295eb4f58501d8782d6f3ef4fcd336035709223d3846c5867cbc0c92de09bf4"
+    },
+    {
+      "path": "site-assets/main-website-v42/resources/autopilot/spreadsheets/06_AGIALPHA_Autopilot_Economics_Thermostat_Model_v2.xlsx",
+      "bytes": 15143,
+      "sha256": "967a0e1386c278ff4734b3359b2a543d2e195de6feb25689cba16bbc464654f2"
+    },
+    {
+      "path": "site-assets/main-website-v42/resources.html",
+      "bytes": 41347,
+      "sha256": "b9cdeca97dc57f029d0fe09f81e86eb61d484f043e3b7397662cdfca25249ed8"
+    },
+    {
+      "path": "site-assets/main-website-v42/roadmap.html",
+      "bytes": 23268,
+      "sha256": "8bbb6326bcdfb822db02a4380814ca16279f1e9c8de442b5b22af5e70b52a2b5"
+    },
+    {
+      "path": "site-assets/main-website-v42/robots.txt",
+      "bytes": 99,
+      "sha256": "84f6a9d120cff431f9b99b49bf865cdec90c4bf3717630ba82a15b1086af6f38"
+    },
+    {
+      "path": "site-assets/main-website-v42/routes.json",
+      "bytes": 2751,
+      "sha256": "ed586d294ebbc7c144dfa1a128202c79cc7181e3aed8c569cea029ea655de787"
+    },
+    {
+      "path": "site-assets/main-website-v42/site-status.json",
+      "bytes": 372,
+      "sha256": "c81d6581e33a687718850d267b08312ee7b2094889b33c7a16b542409bb17bd1"
+    },
+    {
+      "path": "site-assets/main-website-v42/sitemap.xml",
+      "bytes": 3561,
+      "sha256": "707d703bfb9bc5af8613211b0331d2c0e0c44fd0ea50aa3e010f7ba1b488420d"
+    },
+    {
+      "path": "site-assets/main-website-v42/sovereign-rsi-control-plane.html",
+      "bytes": 24322,
+      "sha256": "5b69e71b263f943822fe2f8f6f2089aae2d17a245cb18ec038874f81831e6d60"
+    },
+    {
+      "path": "site-assets/main-website-v42/start-here.html",
+      "bytes": 24471,
+      "sha256": "491f08b52997440a9a26a069106c7346fb7455466d45d96bd441557b255b8385"
+    },
+    {
+      "path": "site-assets/main-website-v42/system-map.html",
+      "bytes": 26374,
+      "sha256": "429f6b14f5c6cd3b082de15a6dd74c60b8646c5369f8cad9a2c02d415ba66e63"
+    },
+    {
+      "path": "site-assets/main-website-v42/use-cases.html",
+      "bytes": 23049,
+      "sha256": "be7969d94f9ee18cfa0e0724b3806b06c47909b9fb6f4ec97c477cef0a4d8824"
+    },
+    {
       "path": "site-assets/proof-pages/agialpha-ledger-route.html",
       "bytes": 16895,
       "sha256": "56cb9436a4f5dd55bb28f6c0cd89d3074bca59c1094ccaa59c97b4c81c888465"
@@ -9203,8 +11233,8 @@
     },
     {
       "path": "test/deploymentUxSafety.test.ts",
-      "bytes": 13673,
-      "sha256": "22b9eefc03fe908c5e6aa99bfa64eed42a5da085835f29db7ba33d911216cc74"
+      "bytes": 17073,
+      "sha256": "864c2294c7ffd363c8d29cac7c9cecd853c5bb4c5e745c7fb94669ccebd67796"
     },
     {
       "path": "test/invariants/README.md",

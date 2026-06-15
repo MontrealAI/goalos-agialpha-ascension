@@ -35,6 +35,22 @@ allowed_zip_paths = {
     "site-assets/main-website-v36/resources/GoalOS_Personal_Proof_Journey_Pack_v3.zip",
     "site-assets/main-website-v36/resources/autopilot/GoalOS_AGIALPHA_Autopilot_Command_Center_v2.zip",
     "site-assets/main-website-v36/resources/autopilot/technical_assets/AGIALPHA_Autopilot_Code_Kit_v2.zip",
+
+    # Explicitly reviewed v38-v41 public website/autopilot downloadable assets. These
+    # follow the same public resource pattern as v36 and are not private operator data,
+    # customer exports, or paid-product fulfillment bundles.
+    "site-assets/main-website-v38/resources/GoalOS_Personal_Proof_Journey_Pack_v3.zip",
+    "site-assets/main-website-v38/resources/autopilot/GoalOS_AGIALPHA_Autopilot_Command_Center_v2.zip",
+    "site-assets/main-website-v38/resources/autopilot/technical_assets/AGIALPHA_Autopilot_Code_Kit_v2.zip",
+    "site-assets/main-website-v39/resources/GoalOS_Personal_Proof_Journey_Pack_v3.zip",
+    "site-assets/main-website-v39/resources/autopilot/GoalOS_AGIALPHA_Autopilot_Command_Center_v2.zip",
+    "site-assets/main-website-v39/resources/autopilot/technical_assets/AGIALPHA_Autopilot_Code_Kit_v2.zip",
+    "site-assets/main-website-v40/resources/GoalOS_Personal_Proof_Journey_Pack_v3.zip",
+    "site-assets/main-website-v40/resources/autopilot/GoalOS_AGIALPHA_Autopilot_Command_Center_v2.zip",
+    "site-assets/main-website-v40/resources/autopilot/technical_assets/AGIALPHA_Autopilot_Code_Kit_v2.zip",
+    "site-assets/main-website-v41/resources/GoalOS_Personal_Proof_Journey_Pack_v3.zip",
+    "site-assets/main-website-v41/resources/autopilot/GoalOS_AGIALPHA_Autopilot_Command_Center_v2.zip",
+    "site-assets/main-website-v41/resources/autopilot/technical_assets/AGIALPHA_Autopilot_Code_Kit_v2.zip",
 }
 
 def tracked_files() -> list[Path]:

@@ -1,5 +1,6 @@
 import { expect } from "chai";
 import fs from "fs";
+import { spawnSync } from "child_process";
 import { AGIALPHA_MAINNET_TOKEN, assertAgialphaMainnetToken, assertNoMockTokenOnMainnet, getExpectedChainId, getRequiredPrivateKey, getRequiredRpcUrl } from "../scripts/config/networkConfig";
 import { assertExpectedChainId } from "../scripts/deployment/lib/networkGuards";
 import { assertMainnetOperatorEnv, assertRealMainnetManifest, MAINNET_ALLOW_VALUE, MAINNET_CONFIRMATION_PHRASE } from "../scripts/deployment/lib/mainnetGuards";
@@ -96,6 +97,76 @@ describe("deployment UX safety layer", function () {
     expect(fs.readFileSync("docs/DEPLOYMENT_START_HERE.md", "utf8")).to.include(CLAIM_BOUNDARY);
   });
 
+  it("prints the operator-facing deployment status fields requested by the command center UX", function () {
+    const source = fs.readFileSync("scripts/deployment/goalos-deploy-command-center.ts", "utf8");
+    for (const field of [
+      "RPC configured",
+      "Deployer key configured",
+      "Deployer address",
+      "Deployer balance",
+      "Nonce",
+      "Etherscan API configured",
+      "Compiler alignment",
+      "Tests",
+      "Static checks",
+      "AGIALPHA token",
+      "Mock token used",
+      "New AGIALPHA token deployment",
+      "Authorization gates",
+      "Deployment manifest",
+      "Evidence files"
+    ]) {
+      expect(source).to.include(field);
+    }
+    expect(source).to.include("assertMainnetAuthorizationCertificate");
+    expect(source).to.include("validate-mainnet-authorization-certificate.py");
+    expect(source).to.include("spawnSync");
+    expect(source).to.include('main ? "missing"');
+    expect(source).not.to.include("main ? AGIALPHA_MAINNET_TOKEN");
+    expect(source).not.to.include('process.env.MOCK_AGIALPHA_ADDRESS || "not configured"');
+  });
+
+  it("exits non-zero when command-center checks include FAIL statuses", function () {
+    const result = spawnSync("node_modules/.bin/ts-node", ["scripts/deployment/goalos-deploy-command-center.ts", "mainnet:doctor", "--network", "ethereumMainnet", "--json"], {
+      encoding: "utf8",
+      env: {
+        ...process.env,
+        PRIVATE_MAINNET_RPC_URL: "",
+        MAINNET_RPC_URL: "",
+        ETHEREUM_MAINNET_RPC_URL: "",
+        PRIVATE_MAINNET_DEPLOYER_PRIVATE_KEY: "",
+        MAINNET_DEPLOYER_PRIVATE_KEY: "",
+        AGIALPHA_TOKEN_ADDRESS: ""
+      }
+    });
+    expect(result.status).to.not.equal(0);
+    const output = JSON.parse(result.stdout.slice(result.stdout.indexOf("{")));
+    const authorization = output.checks.find((check: any) => check.name === "Authorization gates");
+    expect(authorization.status).to.equal("FAIL");
+    expect(authorization.nextAction).to.include("Validator reported");
+    expect(result.stdout).to.include('"AGIALPHA token"');
+  });
+
+  it("does not treat CI/no-key as broadcast readiness failures during no-broadcast Mainnet preflight", function () {
+    const result = spawnSync("node_modules/.bin/ts-node", ["scripts/deployment/goalos-deploy-command-center.ts", "mainnet:preflight", "--network", "ethereumMainnet", "--no-broadcast", "--json"], {
+      encoding: "utf8",
+      env: {
+        ...process.env,
+        CI: "true",
+        GITHUB_ACTIONS: "true",
+        PRIVATE_MAINNET_DEPLOYER_PRIVATE_KEY: "",
+        MAINNET_DEPLOYER_PRIVATE_KEY: "",
+        AGIALPHA_TOKEN_ADDRESS: ""
+      }
+    });
+    const output = JSON.parse(result.stdout.slice(result.stdout.indexOf("{")));
+    const keyCheck = output.checks.find((check: any) => check.name === "Deployer key configured");
+    const ciCheck = output.checks.find((check: any) => check.name === "CI mainnet broadcast gate");
+    expect(keyCheck.status).to.equal("WARN");
+    expect(ciCheck.status).to.equal("PASS");
+    expect(ciCheck.value).to.equal("CI-safe no-broadcast mode");
+  });
+
 
 
   it("documents required Sepolia and Mainnet deployment role addresses", function () {
@@ -183,6 +254,8 @@ describe("deployment UX safety layer", function () {
     expect(source).to.include("site-assets/main-website-v36/resources/GoalOS_Personal_Proof_Journey_Pack_v3.zip");
     expect(source).to.include("site-assets/main-website-v36/resources/autopilot/GoalOS_AGIALPHA_Autopilot_Command_Center_v2.zip");
     expect(source).to.include("site-assets/main-website-v36/resources/autopilot/technical_assets/AGIALPHA_Autopilot_Code_Kit_v2.zip");
+    expect(source).to.include("site-assets/main-website-v38/resources/autopilot/technical_assets/AGIALPHA_Autopilot_Code_Kit_v2.zip");
+    expect(source).to.include("site-assets/main-website-v41/resources/autopilot/technical_assets/AGIALPHA_Autopilot_Code_Kit_v2.zip");
     expect(source).to.include("rel not in allowed_zip_paths");
   });
 

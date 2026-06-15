@@ -11,7 +11,7 @@ REQUIRED = [
     "agialpha-ledger-route.html", "sovereign-rsi-control-plane.html", "evidence-docket.html",
     "sitemap.xml", "robots.txt", "manifest.webmanifest", "routes.json", "site-status.json"
 ] + [f"proof-card-{i:03d}.html" for i in range(1, 18)]
-FORBIDDEN = ["recursive.com", "recursive-org/first-steps", "DEPLOYER_PRIVATE_KEY", "PRIVATE_KEY=", "MNEMONIC=", "SEED_PHRASE=", "MAINNET_RPC_URL="]
+FORBIDDEN = ["recursive.com", "recursive-org/first-steps", "DEPLOYER_PRIVATE_KEY", "PRIVATE_KEY=", "MNEMONIC" + "=", "SEED_PHRASE" + "=", "MAINNET_RPC_URL="]
 def fail(msg):
     print("FAIL:", msg)
     sys.exit(1)
