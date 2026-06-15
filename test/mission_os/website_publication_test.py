@@ -1,7 +1,15 @@
 import subprocess
+import unittest
 from pathlib import Path
 
-def test_generate_mission_page_not_blank():
-    subprocess.check_call('python scripts/mission-os/generate_mission_page.py', shell=True)
-    t=Path('mission-os.html').read_text()
-    assert 'GoalOS Mission OS' in t and 'GoalOS_Mission_OS_Paper.pdf' in t
+
+class WebsitePublicationTest(unittest.TestCase):
+    def test_generate_mission_page_not_blank(self):
+        subprocess.check_call(["python", "scripts/mission-os/generate_mission_page.py"])
+        text = Path("mission-os.html").read_text()
+        self.assertIn("GoalOS Mission OS", text)
+        self.assertIn("GoalOS_Mission_OS_Paper.pdf", text)
+
+
+if __name__ == "__main__":
+    unittest.main()
