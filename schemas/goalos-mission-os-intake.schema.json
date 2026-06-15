@@ -140,7 +140,9 @@
     },
     "requires_contract_deployment": {
       "type": "boolean",
-      "default": false
+      "default": false,
+      "const": false,
+      "description": "Mission OS does not accept deployment-required intake until deployment manifest, constructor arguments, and transaction evidence capture are supplied. Use existing Hardhat deployment workflows and evidence validators."
     },
     "requires_contract_verification": {
       "type": "boolean",

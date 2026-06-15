@@ -21,6 +21,22 @@ class SettlementReadinessTest(unittest.TestCase):
             self.assertEqual(result.returncode, 2)
             self.assertIn("canonical AGIALPHA token", result.stderr)
 
+    def test_deployment_required_intake_is_rejected_until_evidence_capture_exists(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            mission = json.loads(Path("examples/mission-os/ethereum-sepolia-deployment-readiness.json").read_text())
+            mission["requires_contract_deployment"] = True
+            mission_path = Path(tmp) / "deployment-required.json"
+            mission_path.write_text(json.dumps(mission))
+            out = Path(tmp) / "deployment-required"
+            result = subprocess.run([
+                "python", "scripts/mission-os/mission_os_until_done.py",
+                "--mission", str(mission_path),
+                "--out", str(out),
+            ], text=True, capture_output=True)
+            self.assertEqual(result.returncode, 2)
+            self.assertIn("requires_contract_deployment=true", result.stderr)
+            self.assertIn("transaction evidence", result.stderr)
+
     def test_verification_required_intake_is_rejected_until_evidence_capture_exists(self):
         with tempfile.TemporaryDirectory() as tmp:
             mission = json.loads(Path("examples/mission-os/ethereum-sepolia-deployment-readiness.json").read_text())
