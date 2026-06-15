@@ -1,6 +1,6 @@
 {
-  "mission_id": "cyber-defensive-readiness-001",
-  "mission_title": "Cyber Defensive Readiness Mission",
+  "mission_id": "ethereum-sepolia-deployment-readiness-001",
+  "mission_title": "Ethereum Sepolia Deployment Readiness Mission",
   "objective": "Create proof-backed options for an AI product decision.",
   "decision_to_support": "Choose the safest next product intelligence action.",
   "success_criteria": [
@@ -34,8 +34,8 @@
   "done_condition": [
     "DONE true only after required artifacts and gates pass"
   ],
-  "ethereum_settlement_mode": "none",
-  "ethereum_network": "none",
+  "ethereum_settlement_mode": "sepolia",
+  "ethereum_network": "ethereumSepolia",
   "agialpha_token_address": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
   "requires_contract_deployment": false,
   "requires_contract_verification": false,

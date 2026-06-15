@@ -1,50 +1,36 @@
-# GoalOS Mission OS — Start Here
+# GOALOS MISSION OS START HERE
 
-**GoalOS Mission OS** is the commercial Proof OS product that turns a high-stakes objective into a governed decision state.
+GoalOS Mission OS is The Proof OS for Autonomous AI Work. Set the objective. GoalOS runs until proof is done.
 
-> **Set the objective. GoalOS runs until proof is done.**
+AI creates output. GoalOS creates proof. The deliverable is not a document. The deliverable is a governed decision state.
 
-## What it produces
-
-A Mission OS run generates:
-
-- `GoalOSCommit.md`
-- `RunCommitment.md`
-- `MissionPlan.md`
-- `WorkGraph.json`
-- `ClaimsMatrix.csv`
-- `SourceProvenance.csv`
-- `ContradictionRegister.md`
-- `EvidenceDocket.md`
-- `VerifierReport.md`
-- `RiskLedger.csv`
-- `DecisionState.json`
-- `ExecutiveBrief.md`
-- `DecisionDeck.md`
-- `ActionGraph.md`
-- `ChronicleEntry.md`
-- `CapabilityPackage.md`
-- `ClaimBoundaryReport.md`
-- `QAReport.md`
-- `artifact-manifest.json`
-- `index.html`
-- `run-state.json`
-
-## Quick start
+## Operator summary
+Run an example with:
 
 ```bash
 npm run mission-os:run
-npm run mission-os:done
+npm run mission-os:done-check -- --dir evidence/mission-os/ai-product-intelligence-001
 ```
 
-This runs the default example mission and writes outputs to:
+DONE=true means required artifacts exist, claim-boundary and QA pass, no secrets are emitted, no unsupported claims are present, settlement readiness is bounded, and human review remains required before public propagation.
 
-```text
-evidence/mission-os/ai-product-intelligence-001/
-```
+## Evidence Docket
+An Evidence Docket is the evidence room for claims, provenance, contradictions, risk, verification, and decision context.
 
-## Important boundary
+## Governed decision state
+A governed decision state contains objective, claims, evidence, provenance, contradictions, risks, validation, action graph, claim boundary, settlement-readiness, and Chronicle memory.
 
-The workflow generates evidence packages. It does **not** auto-merge, broadcast Mainnet transactions, move tokens, publish unsupported claims, or claim production readiness.
+## Action Graph and Chronicle
+The Action Graph turns review into governed next steps. Chronicle memory records reusable capability after review.
 
-> Autonomy does not bypass governance. Autonomy produces proof until governance can decide.
+## AGIALPHA boundary
+$AGIALPHA is not the product. Verified work is the product. $AGIALPHA is proof-settlement fuel. No investment, yield, equity, price-target, or guaranteed-value claim is made.
+
+## Ethereum boundary
+Mission OS is off-chain proof-to-action work. Hardhat deployment remains separate. Sepolia is for rehearsal. Mainnet final broadcast remains local-only. Mission OS does not deploy Mainnet or move tokens by default. The canonical Mainnet AGIALPHA token is `0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA`.
+
+## Safe publication
+The website is not hand-edited. It is generated from proof-aligned source, checked by automation, reviewed by a human, and then published.
+
+## Blocked claims
+No AGI, ASI, empirical SOTA, guaranteed ROI, legal/financial/medical/tax advice, production readiness, external audit completion, cybersecurity certification, Mainnet deployment, or contract verification claims without exact evidence.

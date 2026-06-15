@@ -1,7 +1,7 @@
 {
   "name": "goalos-agialpha-ascension",
   "version": "4.4.0",
-  "description": "GoalOS-native reimplementation of α-AGI Ascension using existing AGIALPHA for proof-settled AI workflow work.",
+  "description": "GoalOS-native reimplementation of \u03b1-AGI Ascension using existing AGIALPHA for proof-settled AI workflow work.",
   "license": "UNLICENSED",
   "scripts": {
     "compile": "hardhat compile",
@@ -129,7 +129,19 @@
     "verify:bytecode:mainnet": "ts-node scripts/verification/verify-contracts-from-manifest.ts --network ethereumMainnet --chain-id 1 --allow-partial --json",
     "manifest:deployment:validate": "node scripts/deployment/validate-json-files.js schemas/deployment-manifest.schema.json",
     "verification:evidence:validate": "node scripts/deployment/validate-json-files.js schemas/contract-verification-evidence.schema.json",
-    "verification:claim-boundary:check": "python scripts/deployment/claim_boundary_check.py"
+    "verification:claim-boundary:check": "python scripts/deployment/claim_boundary_check.py",
+    "mission-os:test": "python -m pytest test/mission_os",
+    "mission-os:run": "python scripts/mission-os/mission_os_until_done.py --mission examples/mission-os/ai-product-intelligence.json --out evidence/mission-os/ai-product-intelligence-001 --max-cycles 3",
+    "mission-os:run:enterprise": "python scripts/mission-os/mission_os_until_done.py --mission examples/mission-os/enterprise-ai-adoption.json --out evidence/mission-os/enterprise-ai-adoption-001 --max-cycles 3",
+    "mission-os:run:policy": "python scripts/mission-os/mission_os_until_done.py --mission examples/mission-os/policy-regulation-options.json --out evidence/mission-os/policy-regulation-options-001 --max-cycles 3",
+    "mission-os:run:cyber": "python scripts/mission-os/mission_os_until_done.py --mission examples/mission-os/cyber-defensive-readiness.json --out evidence/mission-os/cyber-defensive-readiness-001 --max-cycles 3",
+    "mission-os:run:sepolia-readiness": "python scripts/mission-os/mission_os_until_done.py --mission examples/mission-os/ethereum-sepolia-deployment-readiness.json --out evidence/mission-os/ethereum-sepolia-deployment-readiness-001 --max-cycles 3",
+    "mission-os:run:mainnet-readiness": "python scripts/mission-os/mission_os_until_done.py --mission examples/mission-os/ethereum-mainnet-operator-readiness.json --out evidence/mission-os/ethereum-mainnet-operator-readiness-001 --max-cycles 3",
+    "mission-os:claim-boundary": "python scripts/mission-os/claim_boundary_check.py",
+    "mission-os:done-check": "python scripts/mission-os/done_check.py",
+    "mission-os:qa": "python scripts/mission-os/qa_check.py --dir evidence/mission-os/ai-product-intelligence-001",
+    "mission-os:settlement-readiness": "python scripts/mission-os/generate_settlement_readiness.py --mission examples/mission-os/ai-product-intelligence.json --out evidence/mission-os/ai-product-intelligence-001 --max-cycles 1",
+    "mission-os:all": "npm run mission-os:run && npm run mission-os:claim-boundary -- --dir evidence/mission-os/ai-product-intelligence-001 && npm run mission-os:done-check -- --dir evidence/mission-os/ai-product-intelligence-001 && npm run mission-os:qa"
   },
   "dependencies": {
     "@openzeppelin/contracts": "4.9.6",

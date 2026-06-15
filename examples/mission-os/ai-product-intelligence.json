@@ -45,5 +45,16 @@
     "proof-to-action differentiation",
     "pricing hypothesis",
     "launch actions"
-  ]
+  ],
+  "objective": "Create proof-backed options for an AI product decision.",
+  "ethereum_settlement_mode": "none",
+  "ethereum_network": "none",
+  "agialpha_token_address": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
+  "requires_contract_deployment": false,
+  "requires_contract_verification": false,
+  "requires_mainnet_broadcast": false,
+  "requires_token_movement": false,
+  "publication_mode": "human-review-pr",
+  "paper_links_required": true,
+  "website_publication_required": false
 }

@@ -26,7 +26,7 @@ DEFAULT_SCHEMA_PATH = Path("schemas/goalos-mission-os-intake.schema.json")
 
 SECRET_PATTERNS = [
     re.compile(r"0x[a-fA-F0-9]{64}"),
-    re.compile(r"(?i)(api[_-]?key|private[_-]?key|secret|token|mnemonic|seed[_-]?phrase)\s*[:=]\s*[^\s`]+"),
+    re.compile(r"(?i)(api[_-]?key|private[_-]?key|secret|private[_-]?token|mnemonic|seed[_-]?phrase)\s*[:=]\s*[^\s`]+"),
     re.compile(r"(?i)bearer\s+[a-z0-9._~+/=-]{16,}"),
 ]
 
@@ -83,10 +83,10 @@ def load_policy(path: Path | None = None) -> Dict[str, Any]:
 
 def validate_mission(mission: Dict[str, Any]) -> List[str]:
     required = [
-        "mission_id", "mission_title", "decision_to_support", "success_criteria",
+        "mission_id", "mission_title", "objective", "decision_to_support", "success_criteria",
         "failure_criteria", "constraints", "allowed_sources", "private_data_boundary",
         "risk_class", "deadline", "output_package", "reviewer_required",
-        "claim_boundary", "done_condition",
+        "claim_boundary", "done_condition", "ethereum_settlement_mode", "ethereum_network", "agialpha_token_address",
     ]
     errors: List[str] = []
     for key in required:
@@ -101,6 +101,10 @@ def validate_mission(mission: Dict[str, Any]) -> List[str]:
         errors.append("risk_class must be low, medium, high, or strategic")
     if not isinstance(mission.get("reviewer_required"), bool):
         errors.append("reviewer_required must be boolean")
+    if mission.get("ethereum_settlement_mode") not in {"none", "simulation", "sepolia", "mainnet-readiness", "mainnet-local-only-after-human-gate"}:
+        errors.append("ethereum_settlement_mode must be none, simulation, sepolia, mainnet-readiness, or mainnet-local-only-after-human-gate")
+    if mission.get("requires_mainnet_broadcast") is True or mission.get("requires_token_movement") is True:
+        errors.append("Mission OS cannot request Mainnet broadcast or token movement from automation; use local operator docs.")
     return errors
 
 

@@ -1,0 +1,29 @@
+name: GoalOS Mission OS Paper Pages
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: false
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.11' }
+      - run: python scripts/build_goalos_agialpha_final_main_website_v49.py
+      - run: mkdir -p site/docs/papers/mission-os && cp docs/papers/mission-os/GoalOS_Mission_OS_Paper.pdf docs/papers/mission-os/GoalOS_Mission_OS_One_Page_Field_Card.pdf site/docs/papers/mission-os/
+      - run: test -s site/docs/papers/mission-os/GoalOS_Mission_OS_Paper.pdf && test -s site/mission-os.html
+      - uses: actions/upload-pages-artifact@v3
+        with: { path: site }
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment: { name: github-pages, url: '${{ steps.deployment.outputs.page_url }}' }
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
