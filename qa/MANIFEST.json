@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-15T12:38:15.951164+00:00",
+  "generated_at": "2026-06-15T13:03:04.668040+00:00",
   "files": [
     {
       "path": ".editorconfig",
@@ -7808,8 +7808,8 @@
     },
     {
       "path": "scripts/deployment/goalos-deploy-command-center.ts",
-      "bytes": 14559,
-      "sha256": "93b96f071a79c338fa076e2cc7be331cc021ef8ff7e3aa2d1407ef61a293c89a"
+      "bytes": 14655,
+      "sha256": "fe71ba8890a86b49b5e6a6c62a591eb58d4ffe9fb61ead62ced26fba38c59af4"
     },
     {
       "path": "scripts/deployment/lib/mainnetGuards.ts",
@@ -11233,8 +11233,8 @@
     },
     {
       "path": "test/deploymentUxSafety.test.ts",
-      "bytes": 15038,
-      "sha256": "4d5932e230587d24958af2e9f0d8b3bf4e7ab041b6034f52e4c1b8b5d5fbc0a3"
+      "bytes": 15817,
+      "sha256": "c89f5c6c277b042cba931a0564905d45ca0960389a4a45ae1de7d4632bd1628e"
     },
     {
       "path": "test/invariants/README.md",
