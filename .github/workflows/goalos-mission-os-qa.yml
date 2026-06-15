@@ -10,6 +10,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
-        with: { python-version: '3.11' }
+        with:
+          python-version: '3.11'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
       - run: npm run mission-os:test
       - run: npm run mission-os:all
+      - run: python scripts/mission-os/verify_mission_outputs.py --dir evidence/mission-os/ai-product-intelligence-001
+      - run: python scripts/mission-os/qa_check.py --dir evidence/mission-os/ai-product-intelligence-001
