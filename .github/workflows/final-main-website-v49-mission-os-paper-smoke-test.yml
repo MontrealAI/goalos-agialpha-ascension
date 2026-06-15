@@ -1,0 +1,33 @@
+name: Final Main Website v49 Mission OS Paper Smoke Test
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "scripts/build_goalos_agialpha_final_main_website_v49.py"
+      - "scripts/verify_goalos_agialpha_final_main_website_v49.py"
+      - ".github/workflows/final-main-website-v49-mission-os-paper-smoke-test.yml"
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Build site
+        run: python3 scripts/build_goalos_agialpha_final_main_website_v49.py --out site
+      - name: Verify site
+        run: python3 scripts/verify_goalos_agialpha_final_main_website_v49.py --site site
+      - name: Confirm upload folder has no zip files
+        shell: bash
+        run: |
+          if find scripts .github -name "*.zip" -print | grep -q .; then
+            echo "Upload folder files include zip files." >&2
+            exit 1
+          fi
+      - name: Confirm generated public site has no zip files
+        shell: bash
+        run: |
+          if find site -name "*.zip" -print | grep -q .; then
+            echo "Generated site contains zip files." >&2
+            exit 1
+          fi
