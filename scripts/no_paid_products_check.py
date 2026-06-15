@@ -61,6 +61,15 @@ allowed_zip_paths = {
     "site-assets/main-website-v41/resources/autopilot/technical_assets/AGIALPHA_Autopilot_Code_Kit_v2.zip",
 }
 
+# Keep pattern review narrow: these patterns cover the generated public website
+# download location for the reviewed AGIALPHA autopilot command-center ZIPs only.
+allowed_zip_path_patterns = [
+    r"site-assets/main-website-v(?:39|40|41)/downloads/GoalOS_AGIALPHA_Autopilot_Command_Center_v2_2\.zip",
+]
+
+def is_allowed_zip_path(rel: str) -> bool:
+    return rel in allowed_zip_paths or any(re.fullmatch(pattern, rel) for pattern in allowed_zip_path_patterns)
+
 def tracked_files() -> list[Path]:
     try:
         out = subprocess.check_output(["git", "ls-files"], cwd=ROOT, text=True, stderr=subprocess.DEVNULL)
@@ -77,7 +86,7 @@ for path in tracked_files():
     for pat in suspicious_patterns:
         if re.search(pat, rel, flags=re.IGNORECASE):
             errors.append(f"Possible paid/private product file: {rel}")
-    if path.suffix.lower() == ".zip" and rel not in allowed_zip_paths:
+    if path.suffix.lower() == ".zip" and not is_allowed_zip_path(rel):
         errors.append(f"ZIP file should not be committed without explicit review: {rel}")
 
 if errors:
