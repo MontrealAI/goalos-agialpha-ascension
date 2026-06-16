@@ -48,10 +48,11 @@ GoalOS AGIALPHA Ascension is the institutional, evidence-first package for proof
 ## Quick start for institutional reviewers
 
 1. Read this README for current status, safety boundaries, and canonical commands.
-2. Confirm the certificate in `qa/mainnet-authorization-certificate.json`.
-3. Run `npm run mainnet:public-authorize` to validate the public authorization gates.
-4. Run `npm run mainnet:local-checks` before any operator handoff or release review.
-5. Use `npm run deploy:ethereum-mainnet:gated` only from a local operator environment with runtime RPC URL and deployer key supplied outside GitHub.
+2. Use `docs/DOCUMENTATION_INDEX.md` to choose the right reviewer, operator, auditor, or contributor path.
+3. Confirm the certificate in `qa/mainnet-authorization-certificate.json`.
+4. Run `npm run mainnet:public-authorize` to validate the public authorization gates.
+5. Run `npm run mainnet:local-checks` before any operator handoff or release review.
+6. Use `npm run deploy:ethereum-mainnet:gated` only from a local operator environment with runtime RPC URL and deployer key supplied outside GitHub.
 
 ## Official badge policy
 
@@ -80,6 +81,32 @@ The source of truth is `qa/mainnet-authorization-certificate.json`. README/statu
 ## Safety boundary
 
 CI cannot deploy Ethereum Mainnet. Runtime RPC URL, deployer key, and runtime addresses are local broadcast inputs only and are not stored in GitHub. MockAGIALPHA is local/Sepolia-only and is forbidden on Ethereum Mainnet. No new AGIALPHA token is deployed on Ethereum Mainnet.
+
+## Deployment and verification command center
+
+Use `docs/DEPLOYMENT_START_HERE.md` as the operator-facing command path. Shortest safe paths:
+
+**Sepolia**
+```bash
+npm run deploy:sepolia:doctor
+npm run deploy:sepolia:dry-run
+npm run deploy:sepolia:live
+npm run deploy:sepolia:verify
+npm run deploy:sepolia:evidence
+```
+
+**Ethereum Mainnet**
+```bash
+npm run deploy:mainnet:doctor
+npm run deploy:mainnet:preflight
+npm run deploy:mainnet:fork-rehearsal
+npm run deploy:mainnet:prepare-local
+npm run deploy:mainnet:live-local-gated
+npm run deploy:mainnet:verify
+npm run deploy:mainnet:evidence
+```
+
+> Sepolia may be deployed through protected GitHub Actions. Ethereum Mainnet final broadcast is local-only and must not be deployed by CI. Mainnet contract verification may run from GitHub Actions only after deployment, using a manifest and no deployer key.
 
 ## Sovereign RSI v6.3 research paper
 
@@ -128,14 +155,15 @@ The active source of truth is `qa/mainnet-authorization-certificate.json`. READM
 ## Read in this order
 
 1. `README.md`
-2. `docs/CURRENT_STATUS.md`
-3. `docs/OFFICIAL_BADGES.md`
-4. `docs/MAINNET_AUTHORIZATION_CERTIFICATE.md`
-5. `docs/PUBLIC_MAINNET_AUTHORIZATION_RUNBOOK.md`
-6. `docs/SAFE_CLAIMS_AND_TOKEN_BOUNDARY_v3_0.md` or latest safe-claims document
-7. `docs/EXTERNAL_AUDITOR_HANDOFF.md`
-8. `contracts/registry/LaunchGateRegistry.sol`
-9. `scripts/ethereum-mainnet-authorization-check.py`
+2. `docs/DOCUMENTATION_INDEX.md`
+3. `docs/CURRENT_STATUS.md`
+4. `docs/OFFICIAL_BADGES.md`
+5. `docs/MAINNET_AUTHORIZATION_CERTIFICATE.md`
+6. `docs/PUBLIC_MAINNET_AUTHORIZATION_RUNBOOK.md`
+7. `docs/SAFE_CLAIMS_AND_TOKEN_BOUNDARY_v3_0.md` or latest safe-claims document
+8. `docs/EXTERNAL_AUDITOR_HANDOFF.md`
+9. `contracts/registry/LaunchGateRegistry.sol`
+10. `scripts/ethereum-mainnet-authorization-check.py`
 
 ## Next real step
 
