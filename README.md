@@ -39,10 +39,15 @@ GoalOS AGIALPHA Ascension is the institutional, evidence-first package for proof
 
 1. Read this README for current status, safety boundaries, and canonical commands.
 2. Use `docs/DOCUMENTATION_INDEX.md` to choose the right reviewer, operator, auditor, or contributor path.
-3. Confirm the certificate in `qa/mainnet-authorization-certificate.json`.
-4. Run `npm run mainnet:public-authorize` to validate the public authorization gates.
-5. Run `npm run mainnet:local-checks` before any operator handoff or release review.
-6. Use `npm run deploy:ethereum-mainnet:gated` only from a local operator environment with runtime RPC URL and deployer key supplied outside GitHub.
+3. Use `docs/DOCUMENTATION_MAINTENANCE.md` before editing public docs, runbooks, or claim-boundary materials.
+4. Confirm the certificate in `qa/mainnet-authorization-certificate.json`.
+5. Run `npm run mainnet:public-authorize` to validate the public authorization gates.
+6. Run `npm run mainnet:local-checks` before any operator handoff or release review.
+7. Use `npm run deploy:ethereum-mainnet:gated` only from a local operator environment with runtime RPC URL and deployer key supplied outside GitHub.
+
+## Documentation maintenance
+
+Documentation is evidence-first. Before editing README files, runbooks, public website copy, generated status docs, or claim-boundary materials, use `docs/DOCUMENTATION_MAINTENANCE.md` for the source-of-truth order, update checklist, required validation commands, and PR documentation expectations. Public docs must summarize certificate-backed evidence and must not create deployment, verification, audit, legal, tax, token-classification, investment, yield, or production claims without evidence.
 
 ## Official badge policy
 

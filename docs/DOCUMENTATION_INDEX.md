@@ -7,6 +7,7 @@ This index is the routing page for reviewers, operators, auditors, and contribut
 - `README.md` — public overview, badges, current label, safety boundary, and canonical command summary.
 - `START_HERE.md` — shortest repository entry point and recommended read order.
 - `docs/CURRENT_STATUS.md` — generated current status summary.
+- `docs/DOCUMENTATION_MAINTENANCE.md` — documentation source-of-truth order, update checklist, validation matrix, and PR documentation expectations.
 - `qa/mainnet-authorization-certificate.json` — active certificate backing technical readiness, deployment authorization, Ethereum Mainnet authorization, and deployment status.
 - `docs/MAINNET_AUTHORIZATION_CERTIFICATE.md` — human-readable certificate summary generated from the certificate JSON.
 
@@ -46,6 +47,7 @@ This index is the routing page for reviewers, operators, auditors, and contribut
 
 ## Maintenance expectations
 
+- Use `docs/DOCUMENTATION_MAINTENANCE.md` before changing README files, runbooks, public website copy, generated status docs, or claim-boundary materials.
 - Regenerate certificate-derived public status docs with `npm run docs:status` after certificate changes.
 - Run `npm run assert:public-status` after editing generated status docs or their generator.
 - Run `npm run deployment:claim-boundary:check` after editing deployment, verification, or deployment-evidence docs.
