@@ -38,10 +38,11 @@ GoalOS AGIALPHA Ascension is the institutional, evidence-first package for proof
 ## Quick start for institutional reviewers
 
 1. Read this README for current status, safety boundaries, and canonical commands.
-2. Confirm the certificate in `qa/mainnet-authorization-certificate.json`.
-3. Run `npm run mainnet:public-authorize` to validate the public authorization gates.
-4. Run `npm run mainnet:local-checks` before any operator handoff or release review.
-5. Use `npm run deploy:ethereum-mainnet:gated` only from a local operator environment with runtime RPC URL and deployer key supplied outside GitHub.
+2. Use `docs/DOCUMENTATION_INDEX.md` to choose the right reviewer, operator, auditor, or contributor path.
+3. Confirm the certificate in `qa/mainnet-authorization-certificate.json`.
+4. Run `npm run mainnet:public-authorize` to validate the public authorization gates.
+5. Run `npm run mainnet:local-checks` before any operator handoff or release review.
+6. Use `npm run deploy:ethereum-mainnet:gated` only from a local operator environment with runtime RPC URL and deployer key supplied outside GitHub.
 
 ## Official badge policy
 
@@ -71,47 +72,11 @@ The source of truth is `qa/mainnet-authorization-certificate.json`. README/statu
 
 CI cannot deploy Ethereum Mainnet. Runtime RPC URL, deployer key, and runtime addresses are local broadcast inputs only and are not stored in GitHub. MockAGIALPHA is local/Sepolia-only and is forbidden on Ethereum Mainnet. No new AGIALPHA token is deployed on Ethereum Mainnet.
 
-## Sovereign RSI v6.3 research paper
+## Deployment and verification command center
 
-The Sovereign RSI v6.3 publication folder is `docs/papers/sovereign-rsi/v6.3/`. Paper assets may be pending upload if they are not present in the tree; do not fabricate missing PDF/DOCX/source files.
-
-Core thesis: GoalOS sets sovereign aims. AGIALPHA coordinates proof-settled work. AEP-001 defines valid evidence. The Proof Gradient decides what may evolve. The intelligence stays private. The proof becomes verifiable.
-
-RSI means proof-backed upgrade rights. An artifact may influence future work only after evidence, evaluation, reviewer validation, scope control, challenge window, canary rollout, monitoring, rollback readiness, and chronicle memory.
-
-Claim boundary: this paper does not claim achieved AGI, ASI, superintelligence, autonomous sovereignty, guaranteed ROI, safety certification, legal approval, tax approval, security approval, energy abundance, or Kardashev Type II achievement.
-
-## Deployment Command Center
-
-Shortest safe path for authorized operators.
+Use `docs/DEPLOYMENT_START_HERE.md` as the operator-facing command path. Shortest safe paths:
 
 **Sepolia**
-```bash
-npm run deploy:sepolia:doctor
-npm run deploy:sepolia:dry-run
-npm run deploy:sepolia:live
-npm run deploy:sepolia:verify
-npm run deploy:sepolia:evidence
-```
-
-**Mainnet**
-```bash
-npm run deploy:mainnet:doctor
-npm run deploy:mainnet:preflight
-npm run deploy:mainnet:fork-rehearsal
-npm run deploy:mainnet:prepare-local
-npm run deploy:mainnet:live-local-gated
-npm run deploy:mainnet:verify
-npm run deploy:mainnet:evidence
-```
-
-> **Warning:** Sepolia can be deployed through protected GitHub Actions. Ethereum Mainnet must not be deployed by CI. Mainnet final broadcast is local-only.
-
-Start with `docs/DEPLOYMENT_START_HERE.md`.
-
-## Deployment and Verification Command Center
-
-Sepolia:
 ```bash
 npm run deploy:sepolia:doctor
 npm run deploy:sepolia:dry-run
@@ -120,7 +85,7 @@ npm run verify:sepolia:all
 npm run deploy:sepolia:evidence
 ```
 
-Mainnet:
+**Ethereum Mainnet**
 ```bash
 npm run deploy:mainnet:doctor
 npm run deploy:mainnet:preflight
@@ -131,4 +96,14 @@ npm run verify:mainnet:all
 npm run deploy:mainnet:evidence
 ```
 
-> Sepolia may be deployed through protected GitHub Actions. Ethereum Mainnet must not be deployed by CI. Mainnet final broadcast is local-only. Mainnet contract verification may run from GitHub Actions only after deployment, using a manifest and no deployer key.
+> Sepolia may be deployed through protected GitHub Actions. Ethereum Mainnet final broadcast is local-only and must not be deployed by CI. Mainnet contract verification may run from GitHub Actions only after deployment, using a manifest and no deployer key.
+
+## Sovereign RSI v6.3 research paper
+
+The Sovereign RSI v6.3 publication folder is `docs/papers/sovereign-rsi/v6.3/`. Paper assets may be pending upload if they are not present in the tree; do not fabricate missing PDF/DOCX/source files.
+
+Core thesis: GoalOS sets sovereign aims. AGIALPHA coordinates proof-settled work. AEP-001 defines valid evidence. The Proof Gradient decides what may evolve. The intelligence stays private. The proof becomes verifiable.
+
+RSI means proof-backed upgrade rights. An artifact may influence future work only after evidence, evaluation, reviewer validation, scope control, challenge window, canary rollout, monitoring, rollback readiness, and chronicle memory.
+
+Claim boundary: this paper does not claim achieved AGI, ASI, superintelligence, autonomous sovereignty, guaranteed ROI, safety certification, legal approval, tax approval, security approval, energy abundance, or Kardashev Type II achievement.

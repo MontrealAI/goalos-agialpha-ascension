@@ -30,14 +30,15 @@ The active source of truth is `qa/mainnet-authorization-certificate.json`. READM
 ## Read in this order
 
 1. `README.md`
-2. `docs/CURRENT_STATUS.md`
-3. `docs/OFFICIAL_BADGES.md`
-4. `docs/MAINNET_AUTHORIZATION_CERTIFICATE.md`
-5. `docs/PUBLIC_MAINNET_AUTHORIZATION_RUNBOOK.md`
-6. `docs/SAFE_CLAIMS_AND_TOKEN_BOUNDARY_v3_0.md` or latest safe-claims document
-7. `docs/EXTERNAL_AUDITOR_HANDOFF.md`
-8. `contracts/registry/LaunchGateRegistry.sol`
-9. `scripts/ethereum-mainnet-authorization-check.py`
+2. `docs/DOCUMENTATION_INDEX.md`
+3. `docs/CURRENT_STATUS.md`
+4. `docs/OFFICIAL_BADGES.md`
+5. `docs/MAINNET_AUTHORIZATION_CERTIFICATE.md`
+6. `docs/PUBLIC_MAINNET_AUTHORIZATION_RUNBOOK.md`
+7. `docs/SAFE_CLAIMS_AND_TOKEN_BOUNDARY_v3_0.md` or latest safe-claims document
+8. `docs/EXTERNAL_AUDITOR_HANDOFF.md`
+9. `contracts/registry/LaunchGateRegistry.sol`
+10. `scripts/ethereum-mainnet-authorization-check.py`
 
 ## Next real step
 
