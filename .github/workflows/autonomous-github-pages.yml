@@ -5,11 +5,11 @@ on:
     branches: [ main ]
     paths:
       - "docs/papers/mission-os/**"
-      - "data/proof-treasury-simulation-004/**"
-      - "evidence/proof-treasury-simulation-004/**"
-      - "examples/mission-os/proof-treasury-simulation-004.json"
-      - "scripts/build_goalos_agialpha_final_main_website_v67.py"
-      - "scripts/verify_goalos_agialpha_final_main_website_v67.py"
+      - "data/proof-treasury-simulation-005/**"
+      - "evidence/mission-os/proof-treasury-simulation-005/**"
+      - "examples/mission-os/proof-treasury-simulation-005.json"
+      - "scripts/build_goalos_agialpha_final_main_website_v68.py"
+      - "scripts/verify_goalos_agialpha_final_main_website_v68.py"
       - ".github/workflows/autonomous-github-pages.yml"
   workflow_dispatch:
 
@@ -21,7 +21,7 @@ permissions: {}
 
 jobs:
   build:
-    name: Build Proof Treasury Simulation 004 website v67
+    name: Build Proof Treasury Simulation 005 website v68
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -31,9 +31,9 @@ jobs:
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
       - name: Build website
-        run: python3 scripts/build_goalos_agialpha_final_main_website_v67.py --out site
+        run: python3 scripts/build_goalos_agialpha_final_main_website_v68.py --out site
       - name: Verify website
-        run: python3 scripts/verify_goalos_agialpha_final_main_website_v67.py --site site
+        run: python3 scripts/verify_goalos_agialpha_final_main_website_v68.py --site site
       - name: Confirm generated public site contains no ZIP files
         run: |
           if find site -name "*.zip" -print | grep -q .; then
@@ -43,6 +43,7 @@ jobs:
         uses: actions/upload-pages-artifact@v4
         with:
           path: site
+
   deploy:
     name: Deploy website to GitHub Pages
     runs-on: ubuntu-latest
