@@ -81,7 +81,7 @@ Use `docs/DEPLOYMENT_START_HERE.md` as the operator-facing command path. Shortes
 npm run deploy:sepolia:doctor
 npm run deploy:sepolia:dry-run
 npm run deploy:sepolia:live
-npm run verify:sepolia:all
+npm run deploy:sepolia:verify
 npm run deploy:sepolia:evidence
 ```
 
@@ -92,7 +92,7 @@ npm run deploy:mainnet:preflight
 npm run deploy:mainnet:fork-rehearsal
 npm run deploy:mainnet:prepare-local
 npm run deploy:mainnet:live-local-gated
-npm run verify:mainnet:all
+npm run deploy:mainnet:verify
 npm run deploy:mainnet:evidence
 ```
 

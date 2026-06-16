@@ -17,7 +17,7 @@ cp .env.sepolia.example .env.sepolia.local
 npm run deploy:sepolia:doctor
 npm run deploy:sepolia:dry-run
 npm run deploy:sepolia:live
-npm run verify:sepolia:all
+npm run deploy:sepolia:verify
 npm run deploy:sepolia:evidence
 ```
 
@@ -29,7 +29,7 @@ npm run deploy:mainnet:fork-rehearsal
 npm run deploy:mainnet:prepare-local
 source .private/mainnet-operator.env
 npm run deploy:mainnet:live-local-gated
-npm run verify:mainnet:all
+npm run deploy:mainnet:verify
 npm run deploy:mainnet:evidence
 ```
 
