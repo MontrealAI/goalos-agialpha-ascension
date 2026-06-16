@@ -1,0 +1,55 @@
+#!/usr/bin/env python3
+from pathlib import Path
+import argparse, sys
+
+REQUIRED = [
+    "index.html","proof-treasury-simulation-003.html","proof-treasury-simulation-004.html",
+    "proof-treasury-simulation-005.html","mission-os.html","mission-os-paper.html",
+    "autopilot-mission-builder.html","proof-cards.html","routes.json","sitemap.xml","site-status.json"
+] + [f"proof-card-{i:03d}.html" for i in list(range(1,23)) + list(range(24,32))]
+
+FORBIDDEN = ["recursive.com","recursive-org/first-steps","DEPLOYER_PRIVATE_KEY","PRIVATE_KEY=","MNEMONIC=","SEED_PHRASE=","MAINNET_RPC_URL="]
+
+def fail(msg):
+    print("FAIL:", msg)
+    sys.exit(1)
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--site", default="site")
+    args = ap.parse_args()
+    site = Path(args.site)
+    if not site.exists():
+        fail(f"missing site folder: {site}")
+    for name in REQUIRED:
+        if not (site / name).exists():
+            fail(f"missing required page/file: {name}")
+    index = (site / "index.html").read_text(encoding="utf-8", errors="replace")
+    sim = (site / "proof-treasury-simulation-005.html").read_text(encoding="utf-8", errors="replace")
+    if "proof-treasury-simulation-005.html" not in index:
+        fail("homepage does not link Simulation 005")
+    required_sim = [
+        "No delayed-outcome clearance, no Ascension reserve compounding",
+        "Delayed-Outcome Covenant",
+        "Ascension Reserve",
+        "total simulated $AGIALPHA budget",
+        "Sovereign invention reserve",
+        "Capital-to-compute",
+        "Evidence Docket",
+        "Claim boundary",
+    ]
+    for needle in required_sim:
+        if needle not in sim:
+            fail(f"Simulation 005 page missing: {needle}")
+    if ".sim5-table td" not in sim or "color:#06111f" not in sim:
+        fail("Simulation 005 contrast hardening missing")
+    if list(site.rglob("*.zip")):
+        fail("generated public site contains ZIP files")
+    for p in site.rglob("*"):
+        if p.is_file() and p.suffix.lower() in {".html",".json",".txt",".xml",".webmanifest"}:
+            text = p.read_text(encoding="utf-8", errors="replace")
+            for bad in FORBIDDEN:
+                if bad.lower() in text.lower():
+                    fail(f"forbidden public string {bad} in {p}")
+    print("GoalOS AGIALPHA final main website v68 verification passed.")
+if __name__ == "__main__": main()
