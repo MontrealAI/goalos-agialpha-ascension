@@ -5,8 +5,8 @@ on:
     branches: [ main ]
     paths:
       - "docs/papers/mission-os/**"
-      - "scripts/build_goalos_agialpha_final_main_website_v60.py"
-      - "scripts/verify_goalos_agialpha_final_main_website_v60.py"
+      - "scripts/build_goalos_agialpha_final_main_website_v61.py"
+      - "scripts/verify_goalos_agialpha_final_main_website_v61.py"
       - ".github/workflows/autonomous-github-pages.yml"
   workflow_dispatch:
 
@@ -18,7 +18,7 @@ permissions: {}
 
 jobs:
   build:
-    name: Build Proof Card 026 Ascension website v60
+    name: Build Proof Card 027 website v61
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -28,9 +28,9 @@ jobs:
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
       - name: Build website
-        run: python3 scripts/build_goalos_agialpha_final_main_website_v60.py --out site
+        run: python3 scripts/build_goalos_agialpha_final_main_website_v61.py --out site
       - name: Verify website
-        run: python3 scripts/verify_goalos_agialpha_final_main_website_v60.py --site site
+        run: python3 scripts/verify_goalos_agialpha_final_main_website_v61.py --site site
       - name: Confirm generated public site contains no ZIP files
         run: |
           if find site -name "*.zip" -print | grep -q .; then
@@ -40,7 +40,6 @@ jobs:
         uses: actions/upload-pages-artifact@v4
         with:
           path: site
-
   deploy:
     name: Deploy website to GitHub Pages
     runs-on: ubuntu-latest
