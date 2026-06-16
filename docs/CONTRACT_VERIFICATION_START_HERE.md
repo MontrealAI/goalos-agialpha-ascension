@@ -22,16 +22,16 @@ Redacted manifests, generated evidence JSON, verification reports, transaction h
 
 Sepolia default operator path:
 ```bash
-npm run verify:doctor
+npm run verify:doctor -- --network ethereumSepolia
 npm run deploy:sepolia:verify
-npm run verify:contracts:status
+npm run verify:contracts:status -- --network ethereumSepolia
 ```
 
 Ethereum Mainnet guarded operator path:
 ```bash
-npm run verify:doctor
+npm run verify:doctor -- --network ethereumMainnet
 npm run deploy:mainnet:verify
-npm run verify:contracts:status
+npm run verify:contracts:status -- --network ethereumMainnet
 ```
 
 Manifest-only verifier path for unredacted manifests:
