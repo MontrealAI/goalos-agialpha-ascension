@@ -13,7 +13,7 @@ This index is the routing page for reviewers, operators, auditors, and contribut
 ## Deployment and verification
 
 - `docs/DEPLOYMENT_START_HERE.md` — shortest safe Sepolia and Ethereum Mainnet deployment and verification command paths.
-- `docs/CONTRACT_VERIFICATION_START_HERE.md` — contract verification entry point.
+- `docs/CONTRACT_VERIFICATION_START_HERE.md` — contract verification entry point; use wrapper commands for default Sepolia and Mainnet operator verification, not raw Mainnet manifest-only verification when constructor args are redacted.
 - `docs/SEPOLIA_DEPLOYMENT_GUIDE.md` — Sepolia operator guide.
 - `docs/MAINNET_OPERATOR_RUNBOOK.md` — Mainnet operator runbook.
 - `docs/DEPLOYMENT_TROUBLESHOOTING.md` — deployment failure recovery and troubleshooting.
