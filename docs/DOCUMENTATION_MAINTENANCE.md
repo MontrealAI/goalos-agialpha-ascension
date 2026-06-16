@@ -35,7 +35,7 @@ Use this checklist for any README, runbook, website copy, or documentation updat
 | Generated public status, certificate summary, or README status text | `npm run docs:status` then `npm run assert:public-status` |
 | Deployment, verification, Mainnet, Sepolia, or evidence docs | `npm run deployment:claim-boundary:check` |
 | Contributor, security, or governance docs | `npm run repo:all` when practical; otherwise run the most relevant repository safety checks and document the reason |
-| Website or public marketing copy | `npm run deployment:claim-boundary:check` and a manual safe-claims review against `docs/SAFE_CLAIMS_AND_TOKEN_BOUNDARY_v3_0.md`; the checker scans public copy paths such as `app/`, `content/`, `site/`, `site-assets/`, and `templates/` |
+| Website or public marketing copy | `npm run deployment:claim-boundary:check` and a manual safe-claims review against `docs/SAFE_CLAIMS_AND_TOKEN_BOUNDARY_v3_0.md`; the checker scans public copy paths such as root-level HTML files, `app/`, `content/`, `LOCAL_QA_SITE/`, `site/`, `site-assets/`, and `templates/` |
 | Schema-linked docs or evidence templates | Relevant schema validation plus `npm run qa:manifest:verify` when manifests are touched |
 
 ## Versioning and generated-doc hygiene

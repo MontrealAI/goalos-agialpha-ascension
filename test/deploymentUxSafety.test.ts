@@ -107,7 +107,7 @@ describe("deployment UX safety layer", function () {
 
   it("routes public website copy through the claim-boundary checker", function () {
     const checker = fs.readFileSync("scripts/deployment/claim_boundary_check.py", "utf8");
-    for (const publicPath of ["app", "content", "site", "site-assets", "templates"]) {
+    for (const publicPath of ["app", "content", "LOCAL_QA_SITE", "site", "site-assets", "templates"]) {
       expect(checker).to.include(`"${publicPath}"`);
     }
     for (const suffix of [".html", ".md", ".json", ".webmanifest"]) {
@@ -115,6 +115,7 @@ describe("deployment UX safety layer", function () {
     }
     expect(checker).to.include("public_copy_bases");
     expect(checker).to.include("public_copy_suffixes");
+    expect(checker).to.include("ROOT.iterdir()");
     expect(checker).to.include("safe_negated_line(line, phrase)");
     expect(checker).not.to.include('("does not claim", "not claim", "no ", "not ", "without ")');
   });

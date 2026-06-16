@@ -9,7 +9,7 @@ BLOCKED = [
 ]
 MAINNET_YES = re.compile(r"Mainnet deployed:\s*YES|MAINNET_DEPLOYED\W+YES|mainnetDeployed\W+YES", re.I)
 candidate_names = {"DEPLOYMENT_START_HERE.md", "SEPOLIA_DEPLOYMENT_GUIDE.md", "MAINNET_OPERATOR_RUNBOOK.md", "DEPLOYMENT_TROUBLESHOOTING.md", "DEPLOYMENT_FAQ.md", "DEPLOYMENT_CLAIM_BOUNDARY.md", "SEPOLIA_DEPLOYMENT_REPORT.md", "ETHEREUM_MAINNET_DEPLOYMENT_REPORT.md", "sepolia-deployment-evidence.json", "mainnet-deployment-evidence.json", "ethereum-mainnet.agialpha.latest.json", "ethereum-sepolia.agialpha.latest.json"}
-public_copy_bases = ["app", "content", "site", "site-assets", "templates"]
+public_copy_bases = ["app", "content", "LOCAL_QA_SITE", "site", "site-assets", "templates"]
 public_copy_suffixes = {".html", ".htm", ".md", ".txt", ".json", ".xml", ".webmanifest"}
 paths = [p for base in ["docs", "qa", "deployments"] for p in (ROOT/base).rglob("*") if p.is_file() and p.name in candidate_names]
 paths += [
@@ -18,6 +18,11 @@ paths += [
     if (ROOT / base).exists()
     for p in (ROOT / base).rglob("*")
     if p.is_file() and p.suffix.lower() in public_copy_suffixes
+]
+paths += [
+    p
+    for p in ROOT.iterdir()
+    if p.is_file() and p.suffix.lower() in {".html", ".htm"}
 ]
 errors=[]
 manifest_path = ROOT / "deployments/ethereum-mainnet.agialpha.latest.json"
