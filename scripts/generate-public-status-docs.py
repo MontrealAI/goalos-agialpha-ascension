@@ -49,10 +49,15 @@ GoalOS AGIALPHA Ascension is the institutional, evidence-first package for proof
 
 1. Read this README for current status, safety boundaries, and canonical commands.
 2. Use `docs/DOCUMENTATION_INDEX.md` to choose the right reviewer, operator, auditor, or contributor path.
-3. Confirm the certificate in `qa/mainnet-authorization-certificate.json`.
-4. Run `npm run mainnet:public-authorize` to validate the public authorization gates.
-5. Run `npm run mainnet:local-checks` before any operator handoff or release review.
-6. Use `npm run deploy:ethereum-mainnet:gated` only from a local operator environment with runtime RPC URL and deployer key supplied outside GitHub.
+3. Use `docs/DOCUMENTATION_MAINTENANCE.md` before editing public docs, runbooks, or claim-boundary materials.
+4. Confirm the certificate in `qa/mainnet-authorization-certificate.json`.
+5. Run `npm run mainnet:public-authorize` to validate the public authorization gates.
+6. Run `npm run mainnet:local-checks` before any operator handoff or release review.
+7. Use `npm run deploy:ethereum-mainnet:gated` only from a local operator environment with runtime RPC URL and deployer key supplied outside GitHub.
+
+## Documentation maintenance
+
+Documentation is evidence-first. Before editing README files, runbooks, public website copy, generated status docs, or claim-boundary materials, use `docs/DOCUMENTATION_MAINTENANCE.md` for the source-of-truth order, update checklist, required validation commands, and PR documentation expectations. Public docs must summarize certificate-backed evidence and must not create deployment, verification, audit, legal, tax, token-classification, investment, yield, or production claims without evidence.
 
 ## Official badge policy
 
@@ -156,14 +161,15 @@ The active source of truth is `qa/mainnet-authorization-certificate.json`. READM
 
 1. `README.md`
 2. `docs/DOCUMENTATION_INDEX.md`
-3. `docs/CURRENT_STATUS.md`
-4. `docs/OFFICIAL_BADGES.md`
-5. `docs/MAINNET_AUTHORIZATION_CERTIFICATE.md`
-6. `docs/PUBLIC_MAINNET_AUTHORIZATION_RUNBOOK.md`
-7. `docs/SAFE_CLAIMS_AND_TOKEN_BOUNDARY_v3_0.md` or latest safe-claims document
-8. `docs/EXTERNAL_AUDITOR_HANDOFF.md`
-9. `contracts/registry/LaunchGateRegistry.sol`
-10. `scripts/ethereum-mainnet-authorization-check.py`
+3. `docs/DOCUMENTATION_MAINTENANCE.md`
+4. `docs/CURRENT_STATUS.md`
+5. `docs/OFFICIAL_BADGES.md`
+6. `docs/MAINNET_AUTHORIZATION_CERTIFICATE.md`
+7. `docs/PUBLIC_MAINNET_AUTHORIZATION_RUNBOOK.md`
+8. `docs/SAFE_CLAIMS_AND_TOKEN_BOUNDARY_v3_0.md` or latest safe-claims document
+9. `docs/EXTERNAL_AUDITOR_HANDOFF.md`
+10. `contracts/registry/LaunchGateRegistry.sol`
+11. `scripts/ethereum-mainnet-authorization-check.py`
 
 ## Next real step
 
