@@ -1,0 +1,25 @@
+name: Final Main Website v63 Proof Card 029 Smoke Test
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "scripts/build_goalos_agialpha_final_main_website_v63.py"
+      - "scripts/verify_goalos_agialpha_final_main_website_v63.py"
+      - ".github/workflows/final-main-website-v63-proof-card-029-smoke-test.yml"
+      - "docs/papers/mission-os/**"
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Build site
+        run: python3 scripts/build_goalos_agialpha_final_main_website_v63.py --out site
+      - name: Verify site
+        run: python3 scripts/verify_goalos_agialpha_final_main_website_v63.py --site site
+      - name: Confirm generated public site contains no ZIP files
+        run: |
+          if find site -name "*.zip" -print | grep -q .; then
+            echo "Generated public site contains ZIP files."; exit 1
+          fi
