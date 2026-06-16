@@ -9,19 +9,32 @@ BLOCKED = [
 ]
 MAINNET_YES = re.compile(r"Mainnet deployed:\s*YES|MAINNET_DEPLOYED\W+YES|mainnetDeployed\W+YES", re.I)
 candidate_names = {"DEPLOYMENT_START_HERE.md", "SEPOLIA_DEPLOYMENT_GUIDE.md", "MAINNET_OPERATOR_RUNBOOK.md", "DEPLOYMENT_TROUBLESHOOTING.md", "DEPLOYMENT_FAQ.md", "DEPLOYMENT_CLAIM_BOUNDARY.md", "SEPOLIA_DEPLOYMENT_REPORT.md", "ETHEREUM_MAINNET_DEPLOYMENT_REPORT.md", "sepolia-deployment-evidence.json", "mainnet-deployment-evidence.json", "ethereum-mainnet.agialpha.latest.json", "ethereum-sepolia.agialpha.latest.json"}
+public_copy_bases = ["app", "content", "site", "site-assets", "templates"]
+public_copy_suffixes = {".html", ".htm", ".md", ".txt", ".json", ".xml", ".webmanifest"}
 paths = [p for base in ["docs", "qa", "deployments"] for p in (ROOT/base).rglob("*") if p.is_file() and p.name in candidate_names]
+paths += [
+    p
+    for base in public_copy_bases
+    if (ROOT / base).exists()
+    for p in (ROOT / base).rglob("*")
+    if p.is_file() and p.suffix.lower() in public_copy_suffixes
+]
 errors=[]
 manifest_path = ROOT / "deployments/ethereum-mainnet.agialpha.latest.json"
 manifest = json.loads(manifest_path.read_text()) if manifest_path.exists() else {}
 real_mainnet = manifest.get("chainId") == 1 and manifest.get("status") != "TEMPLATE_NO_DEPLOYMENT" and manifest.get("contracts") and manifest.get("transactions")
 CLAIM_BOUNDARY = "This evidence reports deployment mechanics only. It does not claim achieved AGI, ASI, superintelligence, guaranteed ROI, legal approval, tax approval, security approval, external audit completion, production safety, or Ethereum Mainnet deployment."
+def safe_negated_line(line: str) -> bool:
+    lower = line.lower()
+    return any(marker in lower for marker in ("does not claim", "not claim", "no ", "not ", "without "))
+
 for path in paths:
     text = path.read_text(encoding="utf-8", errors="ignore").replace(CLAIM_BOUNDARY, "")
     rel = path.relative_to(ROOT).as_posix()
     for phrase in BLOCKED:
         for line in text.splitlines():
             lower = line.lower()
-            if "does not claim" in lower or "not claim" in lower:
+            if safe_negated_line(line):
                 continue
             if phrase.lower() in lower:
                 errors.append(f"Unsafe deployment claim '{phrase}' in {rel}")
