@@ -14,16 +14,28 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
-        with: { python-version: '3.11' }
-      - run: python scripts/build_goalos_agialpha_final_main_website_v49.py
+        with:
+          python-version: '3.11'
+      - run: python scripts/build_goalos_agialpha_final_main_website_v49.py --out site
       - run: mkdir -p site/docs/papers/mission-os && cp docs/papers/mission-os/GoalOS_Mission_OS_Paper.pdf docs/papers/mission-os/GoalOS_Mission_OS_One_Page_Field_Card.pdf site/docs/papers/mission-os/
-      - run: test -s site/docs/papers/mission-os/GoalOS_Mission_OS_Paper.pdf && test -s site/mission-os.html
-      - uses: actions/upload-pages-artifact@v3
-        with: { path: site }
+      - run: test -s site/docs/papers/mission-os/GoalOS_Mission_OS_Paper.pdf && test -s site/docs/papers/mission-os/GoalOS_Mission_OS_One_Page_Field_Card.pdf && test -s site/mission-os.html && test -s site/resources.html
+      - run: python scripts/verify_goalos_agialpha_final_main_website_v49.py --site site
+      - name: Verify no zip files are published
+        run: |
+          if find site -name '*.zip' -print -quit | grep -q .; then
+            echo "zip files must not be published in the Pages artifact" >&2
+            find site -name '*.zip' -print >&2
+            exit 1
+          fi
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: site
   deploy:
     needs: build
     runs-on: ubuntu-latest
-    environment: { name: github-pages, url: '${{ steps.deployment.outputs.page_url }}' }
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - id: deployment
         uses: actions/deploy-pages@v4

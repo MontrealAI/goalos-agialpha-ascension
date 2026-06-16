@@ -24,6 +24,8 @@ CANONICAL_LINES = [
 DEFAULT_POLICY_PATH = Path("config/goalos-mission-os.policy.json")
 DEFAULT_SCHEMA_PATH = Path("schemas/goalos-mission-os-intake.schema.json")
 
+CANONICAL_AGIALPHA_MAINNET_TOKEN = "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA"
+
 SECRET_PATTERNS = [
     re.compile(r"0x[a-fA-F0-9]{64}"),
     re.compile(r"(?i)(api[_-]?key|private[_-]?key|secret|private[_-]?token|mnemonic|seed[_-]?phrase)\s*[:=]\s*[^\s`]+"),
@@ -103,6 +105,12 @@ def validate_mission(mission: Dict[str, Any]) -> List[str]:
         errors.append("reviewer_required must be boolean")
     if mission.get("ethereum_settlement_mode") not in {"none", "simulation", "sepolia", "mainnet-readiness", "mainnet-local-only-after-human-gate"}:
         errors.append("ethereum_settlement_mode must be none, simulation, sepolia, mainnet-readiness, or mainnet-local-only-after-human-gate")
+    if mission.get("ethereum_network") == "ethereumMainnet" and str(mission.get("agialpha_token_address", "")).lower() != CANONICAL_AGIALPHA_MAINNET_TOKEN.lower():
+        errors.append(f"ethereumMainnet missions must use canonical AGIALPHA token {CANONICAL_AGIALPHA_MAINNET_TOKEN}; MockAGIALPHA, zero address, and replacement token addresses are forbidden.")
+    if mission.get("requires_contract_deployment") is True:
+        errors.append("Mission OS cannot accept requires_contract_deployment=true until deployment manifest, constructor arguments, and transaction evidence capture are supplied; use existing Hardhat deployment workflows and evidence validators.")
+    if mission.get("requires_contract_verification") is True:
+        errors.append("Mission OS cannot accept requires_contract_verification=true until deployment manifest, constructor arguments, and verification evidence capture are supplied; use existing Hardhat verification workflows and evidence validators.")
     if mission.get("requires_mainnet_broadcast") is True or mission.get("requires_token_movement") is True:
         errors.append("Mission OS cannot request Mainnet broadcast or token movement from automation; use local operator docs.")
     return errors
