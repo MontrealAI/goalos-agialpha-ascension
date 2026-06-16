@@ -105,6 +105,21 @@ describe("deployment UX safety layer", function () {
     expect(fs.readFileSync("docs/DEPLOYMENT_START_HERE.md", "utf8")).to.include(CLAIM_BOUNDARY);
   });
 
+  it("routes public website copy through the claim-boundary checker", function () {
+    const checker = fs.readFileSync("scripts/deployment/claim_boundary_check.py", "utf8");
+    for (const publicPath of ["app", "content", "LOCAL_QA_SITE", "site", "site-assets", "templates"]) {
+      expect(checker).to.include(`"${publicPath}"`);
+    }
+    for (const suffix of [".html", ".md", ".json", ".webmanifest"]) {
+      expect(checker).to.include(`"${suffix}"`);
+    }
+    expect(checker).to.include("public_copy_bases");
+    expect(checker).to.include("public_copy_suffixes");
+    expect(checker).to.include("ROOT.iterdir()");
+    expect(checker).to.include("safe_negated_line(line, phrase)");
+    expect(checker).not.to.include('("does not claim", "not claim", "no ", "not ", "without ")');
+  });
+
   it("prints the operator-facing deployment status fields requested by the command center UX", function () {
     const source = fs.readFileSync("scripts/deployment/goalos-deploy-command-center.ts", "utf8");
     for (const field of [

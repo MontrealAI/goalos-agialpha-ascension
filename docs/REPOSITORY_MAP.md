@@ -11,6 +11,7 @@
 | `LICENSE_DECISION.md` | License posture and decision options. |
 | `SECURITY.md` | Security disclosure and no-secrets rules. |
 | `CONTRIBUTING.md` | Contribution rules. |
+| `docs/DOCUMENTATION_MAINTENANCE.md` | Documentation update checklist, source-of-truth order, validation matrix, and PR expectations. |
 | `GOVERNANCE.md` | Mainnet/public-claims governance. |
 
 ## Implementation
@@ -28,6 +29,8 @@
 
 | Path | Purpose |
 |---|---|
+| `docs/DOCUMENTATION_INDEX.md` | Current reviewer/operator/auditor/contributor routing index. |
+| `docs/DOCUMENTATION_MAINTENANCE.md` | Current documentation-maintenance standard. |
 | `docs/START_HERE_v4_3.md` | v4.3 orientation. |
 | `docs/AUDITOR_HANDOFF_v4_3.md` | External auditor handoff. |
 | `docs/MAINNET_NOT_AUTHORIZED_DECISION_v4_3.md` | Mainnet status. |
