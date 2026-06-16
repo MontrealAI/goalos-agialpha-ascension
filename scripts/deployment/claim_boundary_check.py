@@ -24,9 +24,18 @@ manifest_path = ROOT / "deployments/ethereum-mainnet.agialpha.latest.json"
 manifest = json.loads(manifest_path.read_text()) if manifest_path.exists() else {}
 real_mainnet = manifest.get("chainId") == 1 and manifest.get("status") != "TEMPLATE_NO_DEPLOYMENT" and manifest.get("contracts") and manifest.get("transactions")
 CLAIM_BOUNDARY = "This evidence reports deployment mechanics only. It does not claim achieved AGI, ASI, superintelligence, guaranteed ROI, legal approval, tax approval, security approval, external audit completion, production safety, or Ethereum Mainnet deployment."
-def safe_negated_line(line: str) -> bool:
+def safe_negated_line(line: str, phrase: str) -> bool:
     lower = line.lower()
-    return any(marker in lower for marker in ("does not claim", "not claim", "no ", "not ", "without "))
+    escaped_phrase = re.escape(phrase.lower())
+    scoped_denials = [
+        rf"\bdoes\s+not\s+claim\b.*\b{escaped_phrase}\b",
+        rf"\bnot\s+claim\b.*\b{escaped_phrase}\b",
+        rf"\bnot\b.{{0,160}}\bproof\s+of\s+{escaped_phrase}\b",
+        rf"\bno\s+{escaped_phrase}\b",
+        rf"\bnot\s+{escaped_phrase}\b",
+        rf"\bwithout\s+{escaped_phrase}\b",
+    ]
+    return any(re.search(pattern, lower) for pattern in scoped_denials)
 
 for path in paths:
     text = path.read_text(encoding="utf-8", errors="ignore").replace(CLAIM_BOUNDARY, "")
@@ -34,7 +43,7 @@ for path in paths:
     for phrase in BLOCKED:
         for line in text.splitlines():
             lower = line.lower()
-            if safe_negated_line(line):
+            if safe_negated_line(line, phrase):
                 continue
             if phrase.lower() in lower:
                 errors.append(f"Unsafe deployment claim '{phrase}' in {rel}")

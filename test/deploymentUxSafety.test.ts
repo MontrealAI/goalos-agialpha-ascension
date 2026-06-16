@@ -115,6 +115,8 @@ describe("deployment UX safety layer", function () {
     }
     expect(checker).to.include("public_copy_bases");
     expect(checker).to.include("public_copy_suffixes");
+    expect(checker).to.include("safe_negated_line(line, phrase)");
+    expect(checker).not.to.include('("does not claim", "not claim", "no ", "not ", "without ")');
   });
 
   it("prints the operator-facing deployment status fields requested by the command center UX", function () {
