@@ -18,14 +18,9 @@ print(json.dumps({k:out[k] for k in ['tool','status','exitStatus','critical_high
 PY
   exit 1
 fi
-go install github.com/rhysd/actionlint/cmd/actionlint@latest >> "$TXT" 2>&1
-export PATH="$(go env GOPATH)/bin:$PATH"
-set +e
-actionlint > "$TXT.tmp" 2>&1
-STATUS=$?
-cat "$TXT.tmp" >> "$TXT" 2>/dev/null || true
-set -e
-python - "$TXT" "$JSON" "$STATUS" <<'PY'
+write_result() {
+  local status="$1"
+  python - "$TXT" "$JSON" "$status" <<'PY'
 import json,pathlib,sys
 text=pathlib.Path(sys.argv[1]).read_text(errors='ignore'); status=int(sys.argv[3])
 out={'tool':'actionlint','status':'COMPLETED' if status==0 else 'FAILED','exitStatus':status,'critical_high_unresolved':0 if status==0 else 1,'output':text[:4000]}
@@ -36,3 +31,18 @@ if status:
     print(text[-4000:])
     sys.exit(1)
 PY
+}
+set +e
+go install github.com/rhysd/actionlint/cmd/actionlint@latest >> "$TXT" 2>&1
+INSTALL_STATUS=$?
+set -e
+if [ "$INSTALL_STATUS" -ne 0 ]; then
+  write_result "$INSTALL_STATUS"
+fi
+export PATH="$(go env GOPATH)/bin:$PATH"
+set +e
+actionlint > "$TXT.tmp" 2>&1
+STATUS=$?
+cat "$TXT.tmp" >> "$TXT" 2>/dev/null || true
+set -e
+write_result "$STATUS"
