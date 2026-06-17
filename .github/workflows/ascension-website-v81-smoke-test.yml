@@ -1,0 +1,39 @@
+name: Ascension Website v81 Smoke Test
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "scripts/**"
+      - "website/content/**"
+      - "assets/**"
+      - "docs/**"
+      - ".github/workflows/**"
+permissions:
+  contents: read
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install PDF renderer and Playwright
+        run: |
+          sudo apt-get update && sudo apt-get install -y poppler-utils
+          npm init -y
+          npm i -D playwright
+          npx playwright install --with-deps chromium
+      - name: Build
+        run: python3 scripts/build_goalos_agialpha_ascension_website_v81.py --out site
+      - name: Verify
+        run: python3 scripts/verify_goalos_agialpha_ascension_website_v81.py --site site
+      - name: Browser layout QA
+        run: node scripts/visual_layout_check_v81.js site
+      - name: Reject ZIP files
+        run: |
+          if find site -name "*.zip" -print | grep -q .; then echo "ZIP files found in site"; exit 1; fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ascension-website-v81-qa
+          path: |
+            site/qa/**
+            docs/*ASCENSION_WEBSITE_v81.md

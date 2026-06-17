@@ -1,0 +1,51 @@
+name: Autonomous Ascension Website v81
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+    paths:
+      - "scripts/build_goalos_agialpha_ascension_website_v81.py"
+      - "scripts/verify_goalos_agialpha_ascension_website_v81.py"
+      - "website/content/**"
+      - "assets/**"
+      - "docs/papers/**"
+      - ".github/workflows/autonomous-ascension-website-v81.yml"
+concurrency:
+  group: goalos-ascension-website-v81
+  cancel-in-progress: false
+permissions: {}
+jobs:
+  build:
+    name: Build and verify v81
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
+      - name: Install optional PDF renderer
+        run: sudo apt-get update && sudo apt-get install -y poppler-utils
+      - name: Build website
+        run: python3 scripts/build_goalos_agialpha_ascension_website_v81.py --out site
+      - name: Verify website
+        run: python3 scripts/verify_goalos_agialpha_ascension_website_v81.py --site site
+      - name: Reject ZIP files in public site
+        run: |
+          if find site -name "*.zip" -print | grep -q .; then echo "ZIP files found in site"; exit 1; fi
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: site
+  deploy:
+    name: Deploy to GitHub Pages
+    runs-on: ubuntu-latest
+    needs: build
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4
