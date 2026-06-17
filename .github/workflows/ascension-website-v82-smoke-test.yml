@@ -1,0 +1,39 @@
+name: Ascension Website v82 Smoke Test
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'scripts/**'
+      - 'website/content/**'
+      - 'assets/**'
+      - 'docs/**'
+      - '.github/workflows/ascension-website-v82-smoke-test.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install optional PDF renderer
+        run: sudo apt-get update && sudo apt-get install -y poppler-utils
+      - name: Build
+        run: python3 scripts/build_goalos_agialpha_ascension_website_v82.py --out site
+      - name: Verify
+        run: python3 scripts/verify_goalos_agialpha_ascension_website_v82.py --site site
+      - name: Layout QA
+        run: node scripts/visual_layout_check_v82.js site
+      - name: Reject ZIPs in public site
+        run: |
+          if find site -name "*.zip" -print | grep -q .; then
+            echo "ZIP file found in public site"; exit 1; fi
+      - name: Upload QA reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: ascension-website-v82-qa
+          path: |
+            site/qa
+            docs/*ASCENSION_WEBSITE_v82.md
