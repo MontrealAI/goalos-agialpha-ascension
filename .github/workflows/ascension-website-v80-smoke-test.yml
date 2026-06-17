@@ -1,0 +1,47 @@
+name: Ascension Website v80 Smoke Test
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "scripts/build_goalos_agialpha_ascension_website_v80.py"
+      - "scripts/verify_goalos_agialpha_ascension_website_v80.py"
+      - "website/**"
+      - "assets/**"
+      - "docs/**"
+      - ".github/workflows/autonomous-ascension-website-v80.yml"
+      - ".github/workflows/ascension-website-v80-smoke-test.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  smoke-test:
+    name: Build and verify v80 site without deployment
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Install optional PDF preview renderer
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y poppler-utils
+      - name: Build website
+        run: python3 scripts/build_goalos_agialpha_ascension_website_v80.py --out site
+      - name: Verify website
+        run: python3 scripts/verify_goalos_agialpha_ascension_website_v80.py --site site
+      - name: Confirm generated public site contains no ZIP files
+        run: |
+          if find site -name "*.zip" -print | grep -q .; then
+            echo "Generated public site contains ZIP files." >&2
+            exit 1
+          fi
+      - name: Upload QA reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ascension-website-v80-qa
+          path: |
+            site/QA_ASCENSION_WEBSITE_v80.json
+            site/QA_ASCENSION_WEBSITE_v80.md
+            site/site-status.json
