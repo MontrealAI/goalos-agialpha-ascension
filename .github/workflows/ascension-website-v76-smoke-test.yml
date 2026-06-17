@@ -1,0 +1,55 @@
+name: Ascension Website v76 Platinum Smoke Test
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "scripts/build_goalos_agialpha_ascension_website_v76.py"
+      - "scripts/verify_goalos_agialpha_ascension_website_v76.py"
+      - "docs/**"
+      - "data/**"
+      - "website/**"
+      - "assets/**"
+      - "site-assets/**"
+      - "proof-card-*.html"
+      - "mission-os.html"
+      - "index.html"
+      - ".github/workflows/ascension-website-v76-smoke-test.yml"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: goalos-ascension-website-v76-smoke-test-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  smoke-test:
+    name: Build and verify v76 site
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Build website
+        run: python3 scripts/build_goalos_agialpha_ascension_website_v76.py --out site
+
+      - name: Verify website
+        run: python3 scripts/verify_goalos_agialpha_ascension_website_v76.py --site site
+
+      - name: Confirm generated public site contains no ZIP files
+        run: |
+          if find site -name "*.zip" -print | grep -q .; then
+            echo "Generated public site contains ZIP files." >&2
+            exit 1
+          fi
+
+      - name: Upload QA reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ascension-website-v76-smoke-test-qa
+          path: |
+            site/qa/QA_ASCENSION_WEBSITE_v76.json
+            site/qa/QA_ASCENSION_WEBSITE_v76.md
+          if-no-files-found: ignore
