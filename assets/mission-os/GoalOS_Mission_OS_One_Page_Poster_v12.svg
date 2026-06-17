@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1600" viewBox="0 0 1200 1600">
+<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#061224"/><stop offset="0.65" stop-color="#0B1F46"/><stop offset="1" stop-color="#172B5A"/></linearGradient></defs>
+<rect width="1200" height="1600" fill="url(#g)"/>
+<circle cx="880" cy="340" r="220" fill="none" stroke="#4A72FF" stroke-width="2" opacity="0.5"/>
+<circle cx="880" cy="340" r="120" fill="none" stroke="#D9B45C" stroke-width="2" opacity="0.8"/>
+<text x="80" y="110" fill="#D9B45C" font-family="Arial" font-size="30" font-weight="700">GOALOS MISSION OS</text>
+<text x="80" y="245" fill="white" font-family="Georgia" font-size="70" font-weight="700">Set the objective.</text>
+<text x="80" y="330" fill="white" font-family="Georgia" font-size="70" font-weight="700">GoalOS runs until</text>
+<text x="80" y="415" fill="white" font-family="Georgia" font-size="70" font-weight="700">proof is done.</text>
+<text x="80" y="520" fill="#DCE6F7" font-family="Arial" font-size="30">The Proof OS for autonomous AI work.</text>
+<rect x="80" y="620" width="1040" height="130" rx="24" fill="#0B1224" stroke="#D9B45C" stroke-width="3"/>
+<text x="120" y="678" fill="white" font-family="Arial" font-size="32" font-weight="700">AI creates output. GoalOS creates proof.</text>
+<text x="120" y="725" fill="#D9B45C" font-family="Arial" font-size="27" font-weight="700">No proof, no settlement. No rollback, no release.</text>
+<text x="80" y="850" fill="white" font-family="Georgia" font-size="44">Governed Decision State</text>
+<text x="80" y="910" fill="#DCE6F7" font-family="Arial" font-size="25">Evidence Docket • Verifier Report • Risk Ledger • Action Graph • Chronicle</text>
+<text x="80" y="1050" fill="white" font-family="Georgia" font-size="44">The moat is the evidence graph.</text>
+<text x="80" y="1110" fill="#DCE6F7" font-family="Arial" font-size="25">A report can be copied. A living record of missions, proofs, reviews, decisions, and reusable capability cannot.</text>
+<text x="80" y="1290" fill="white" font-family="Georgia" font-size="44">From topic to mission.</text>
+<text x="80" y="1350" fill="white" font-family="Georgia" font-size="44">From report to proof.</text>
+<text x="80" y="1410" fill="white" font-family="Georgia" font-size="44">From insight to action.</text>
+<text x="80" y="1530" fill="#D9B45C" font-family="Arial" font-size="28" font-weight="700">Launch a Mission → View a Proof Bundle</text>
+</svg>

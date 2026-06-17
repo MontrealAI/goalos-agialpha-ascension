@@ -1,24 +1,104 @@
-# QA_ASCENSION_WEBSITE_v75
+# QA — v75 Apex Institutional Command
 
-This document is the source QA note for the v75 autonomous website system. The workflow also emits generated QA reports into `site/qa/` after every build.
-
-## Required checks
-
-- Pages generated into `site/`.
-- Required local links resolve.
-- Main image appears on homepage.
-- Mission OS Paper is featured near the top of the homepage.
-- AGI Alpha continuity section is present.
-- Proof Card 023 is explicitly reserved.
-- Proof Cards 024–031 are present and linked.
-- Proof Treasury Simulation 005 is present and linked.
-- No ZIP files are emitted into the public site.
-- No secrets, private keys, private RPC URLs, or private deployment materials are exposed.
-- No unsupported claims appear.
-- $AGIALPHA remains proof-settlement fuel and protocol utility, not an investment-style claim.
-- Reduced-motion fallback exists.
-- Important text is live HTML, not raster-image text.
-
-## Next recommended artifact
-
-Proof Run 001 public Evidence Docket.
+```json
+{
+  "version": "v75.7",
+  "release": "Apex Institutional Command \u2014 enriched",
+  "pages_generated": 62,
+  "html_pages": [
+    "agialpha-ledger-route.html",
+    "ascension.html",
+    "autopilot-mission-builder.html",
+    "biography.html",
+    "developers.html",
+    "evidence-docket.html",
+    "execution-moat.html",
+    "executive-brief.html",
+    "how-it-works.html",
+    "index.html",
+    "jobs.html",
+    "mission-os-paper.html",
+    "mission-os.html",
+    "personal-proof-sprint.html",
+    "pilot-guide.html",
+    "proof-card-001.html",
+    "proof-card-002.html",
+    "proof-card-003.html",
+    "proof-card-004.html",
+    "proof-card-005.html",
+    "proof-card-006.html",
+    "proof-card-007.html",
+    "proof-card-008.html",
+    "proof-card-009.html",
+    "proof-card-010.html",
+    "proof-card-011.html",
+    "proof-card-012.html",
+    "proof-card-013.html",
+    "proof-card-014.html",
+    "proof-card-015.html",
+    "proof-card-016.html",
+    "proof-card-017.html",
+    "proof-card-018.html",
+    "proof-card-019.html",
+    "proof-card-020.html",
+    "proof-card-021.html",
+    "proof-card-022.html",
+    "proof-card-023.html",
+    "proof-card-024.html",
+    "proof-card-025.html",
+    "proof-card-026.html",
+    "proof-card-027.html",
+    "proof-card-028.html",
+    "proof-card-029.html",
+    "proof-card-030.html",
+    "proof-card-031.html",
+    "proof-cards.html",
+    "proof-observatory.html",
+    "proof-sprint-builder.html",
+    "proof-treasury-simulation-003.html",
+    "proof-treasury-simulation-004.html",
+    "proof-treasury-simulation-005.html",
+    "proof-treasury.html",
+    "regular-person.html",
+    "research.html",
+    "resources.html",
+    "roadmap.html",
+    "sovereign-rsi-control-plane.html",
+    "start-here.html",
+    "system-map.html",
+    "use-cases.html",
+    "whitepaper.html"
+  ],
+  "important_page_sizes": {
+    "whitepaper.html": 22051,
+    "biography.html": 18012,
+    "developers.html": 19522,
+    "jobs.html": 20618,
+    "evidence-docket.html": 21988,
+    "agialpha-ledger-route.html": 18083,
+    "sovereign-rsi-control-plane.html": 20950
+  },
+  "missing_internal_assets_or_links": [],
+  "checks": {
+    "v74_baseline_retained": true,
+    "required_pages_added": true,
+    "trust_and_missing_pages_enriched": true,
+    "v75_apex_css_present": true,
+    "v75_nav_applied": true,
+    "internal_link_check": "passed",
+    "node_check_v75_js": "passed",
+    "python_scripts_static_check": "passed in overlayed repository",
+    "npm_deployment_claim_boundary_check": "passed in overlayed repository after wording fix",
+    "npm_repo_no_paid_products": "passed in overlayed repository",
+    "npm_repo_safety": "attempted; timed out in sandbox before completion",
+    "npm_repo_no_private_operator_data": "attempted; timed out in sandbox before completion",
+    "browser_visual_qa": "not claimed; Chromium/Playwright rendering unavailable or unreliable in sandbox"
+  },
+  "claim_boundary": "Strict public-alpha language. No unsupported AGI/ASI/superintelligence, ROI, token appreciation, production, audit, legal/tax, or Mainnet claims introduced as affirmative claims.",
+  "notes": [
+    "Uses v74/v72 quality bar as baseline, not the thin prior overlay.",
+    "Adds and enriches institutional pages with additional custom figures/tables.",
+    "Expanded to 62 HTML pages."
+  ]
+}
+```

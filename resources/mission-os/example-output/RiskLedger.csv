@@ -1,0 +1,4 @@
+risk,likelihood,impact,mitigation
+unsupported market claims,medium,high,claim-boundary check + human review
+missing source provenance,medium,high,claim-boundary check + human review
+no action graph,medium,high,claim-boundary check + human review

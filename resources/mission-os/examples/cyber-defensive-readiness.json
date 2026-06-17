@@ -1,0 +1,41 @@
+{
+  "mission_title": "Cyber Defensive Readiness Proof Mission",
+  "decision_to_support": "Assess a repo-owned defensive readiness workflow without external scanning.",
+  "success_criteria": [
+    "defensive evidence only",
+    "no secret leakage",
+    "safe remediation plan"
+  ],
+  "failure_criteria": [
+    "external target scan",
+    "exploit instructions",
+    "secret exposure"
+  ],
+  "constraints": [
+    "repo-owned only",
+    "defensive only",
+    "no external scans"
+  ],
+  "allowed_sources": [
+    "repo files",
+    "public documentation"
+  ],
+  "private_data_boundary": "No secrets printed.",
+  "risk_class": "high",
+  "deadline": "48 hours",
+  "output_package": [
+    "EvidenceDocket",
+    "RiskLedger",
+    "VerifierReport",
+    "ActionGraph"
+  ],
+  "reviewer_required": true,
+  "claim_boundary": [
+    "not cybersecurity certification",
+    "not external audit"
+  ],
+  "done_condition": [
+    "safety invariants pass",
+    "human review ready"
+  ]
+}

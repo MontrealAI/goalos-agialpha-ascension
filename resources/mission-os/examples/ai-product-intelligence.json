@@ -1,0 +1,43 @@
+{
+  "mission_title": "AI Product Intelligence Mission",
+  "decision_to_support": "Define the strongest unoccupied commercial wedge for GoalOS Mission OS.",
+  "success_criteria": [
+    "category map",
+    "evidence-backed product wedge",
+    "risk register",
+    "launch action graph"
+  ],
+  "failure_criteria": [
+    "unsupported market claims",
+    "missing source provenance",
+    "no action graph"
+  ],
+  "constraints": [
+    "public-safe",
+    "claim-bounded"
+  ],
+  "allowed_sources": [
+    "public web",
+    "uploaded docs",
+    "public repository"
+  ],
+  "private_data_boundary": "No private customer data.",
+  "risk_class": "medium",
+  "deadline": "48 hours",
+  "output_package": [
+    "EvidenceDocket",
+    "DecisionState",
+    "ActionGraph",
+    "ExecutiveBrief"
+  ],
+  "reviewer_required": true,
+  "claim_boundary": [
+    "no guaranteed market outcome",
+    "no ROI claim"
+  ],
+  "done_condition": [
+    "all required artifacts exist",
+    "claim boundary passes",
+    "human review ready"
+  ]
+}
