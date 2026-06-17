@@ -1,0 +1,23 @@
+{
+  "release": "v82",
+  "contract": "Substantial Page Contract",
+  "major_pages_min_words": {
+    "index.html": 3500,
+    "mission-os.html": 3000,
+    "ascension.html": 3000,
+    "proof-treasury.html": 2500,
+    "proof-cards.html": 2500,
+    "resources.html": 2500,
+    "paper.html": 2000,
+    "start-here.html": 2000,
+    "evidence-docket.html": 2200,
+    "agialpha-continuity.html": 2000,
+    "mission-builder.html": 2000,
+    "autopilot.html": 2000,
+    "observatory.html": 2000,
+    "executive.html": 2000,
+    "proof-run-001.html": 1800
+  },
+  "proof_card_min_words": 1200,
+  "treasury_simulation_min_words": 1800
+}

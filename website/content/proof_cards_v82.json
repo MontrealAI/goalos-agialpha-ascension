@@ -1,0 +1,281 @@
+[
+  {
+    "id": 1,
+    "title": "Objective Proof",
+    "subtitle": "Turning goals into signed, bounded institutional intent",
+    "thesis": "Every mission starts as a proof-bearing objective, not a vague prompt.",
+    "group": "Everyday Proof",
+    "slug": "proof-card-001.html",
+    "reserved": false
+  },
+  {
+    "id": 2,
+    "title": "Mission Contract",
+    "subtitle": "The contract that gives agents boundaries before action",
+    "thesis": "Mission contracts turn ambition into constraints, evaluators, budgets, and rollback obligations.",
+    "group": "Mission OS",
+    "slug": "proof-card-002.html",
+    "reserved": false
+  },
+  {
+    "id": 3,
+    "title": "Evidence Docket",
+    "subtitle": "The public-safe proof room for autonomous AI work",
+    "thesis": "Evidence Dockets separate claims, sources, risks, and replay paths from hype.",
+    "group": "Mission OS",
+    "slug": "proof-card-003.html",
+    "reserved": false
+  },
+  {
+    "id": 4,
+    "title": "Verifier Gate",
+    "subtitle": "Why accepted work requires checkable evidence",
+    "thesis": "Verifier gates decide what can be trusted, reused, settled, or escalated.",
+    "group": "Governance",
+    "slug": "proof-card-004.html",
+    "reserved": false
+  },
+  {
+    "id": 5,
+    "title": "Risk Ledger",
+    "subtitle": "Making cost, safety, legal, and security risk visible",
+    "thesis": "Risk ledgers prevent hidden externalities from compounding into institutional default.",
+    "group": "Governance",
+    "slug": "proof-card-005.html",
+    "reserved": false
+  },
+  {
+    "id": 6,
+    "title": "Chronicle Memory",
+    "subtitle": "Durable memory for what worked, failed, and can be reused",
+    "thesis": "The Chronicle turns completed work into institutional memory and future capability.",
+    "group": "Verified Experience",
+    "slug": "proof-card-006.html",
+    "reserved": false
+  },
+  {
+    "id": 7,
+    "title": "Rollback Readiness",
+    "subtitle": "No release without a path back",
+    "thesis": "Rollback transforms AI adoption from irreversible gamble into governed experiment.",
+    "group": "Governance",
+    "slug": "proof-card-007.html",
+    "reserved": false
+  },
+  {
+    "id": 8,
+    "title": "Claim Boundary",
+    "subtitle": "Grand ambition with exact public claims",
+    "thesis": "Claim boundaries make the website credible by separating architecture from achieved evidence.",
+    "group": "Governance",
+    "slug": "proof-card-008.html",
+    "reserved": false
+  },
+  {
+    "id": 9,
+    "title": "Proof-Backed Upgrade Right",
+    "subtitle": "How an artifact earns the right to influence future work",
+    "thesis": "Artifacts do not propagate because they sound smart; they propagate after proof.",
+    "group": "Mission OS",
+    "slug": "proof-card-009.html",
+    "reserved": false
+  },
+  {
+    "id": 10,
+    "title": "\u03b1-Work Unit Metrology",
+    "subtitle": "Measuring accepted verified machine labor",
+    "thesis": "\u03b1\u2011Work Units are settlement-grade units of verified work, not raw tokens or effort.",
+    "group": "$AGIALPHA",
+    "slug": "proof-card-010.html",
+    "reserved": false
+  },
+  {
+    "id": 11,
+    "title": "$AGIALPHA Utility Rail",
+    "subtitle": "The economic rail that activates only after proof",
+    "thesis": "$AGIALPHA makes accepted proof economically consequential through escrow, bonds, settlement, and capacity allocation.",
+    "group": "$AGIALPHA",
+    "slug": "proof-card-011.html",
+    "reserved": false
+  },
+  {
+    "id": 12,
+    "title": "Proof Treasury",
+    "subtitle": "Treasury logic where proof controls future capacity",
+    "thesis": "Proof Treasury simulations show how settlement, replay, stress, and delayed outcomes gate capacity.",
+    "group": "Proof Treasury",
+    "slug": "proof-card-012.html",
+    "reserved": false
+  },
+  {
+    "id": 13,
+    "title": "AI-First Startup Proof",
+    "subtitle": "Turning user pain into proof-backed startup capability",
+    "thesis": "GoalOS converts unmet needs into missions, prototypes, user proof, and reusable capability.",
+    "group": "AI-First Startup",
+    "slug": "proof-card-013.html",
+    "reserved": false
+  },
+  {
+    "id": 14,
+    "title": "Enterprise Governance Proof",
+    "subtitle": "A governance layer for AI work inside institutions",
+    "thesis": "Enterprises need evidence, rollback, and review before AI output changes policy or operations.",
+    "group": "Governance",
+    "slug": "proof-card-014.html",
+    "reserved": false
+  },
+  {
+    "id": 15,
+    "title": "Cyber-Sovereign Defensive Proof",
+    "subtitle": "Bounded defensive capability under human-governed remediation",
+    "thesis": "Defensive cyber work becomes useful only when claims, safety boundaries, and review are explicit.",
+    "group": "Cyber-Sovereign Proof",
+    "slug": "proof-card-015.html",
+    "reserved": false
+  },
+  {
+    "id": 16,
+    "title": "Verified Data Foundry",
+    "subtitle": "Open-ended verified data rather than unlimited noise",
+    "thesis": "GoalOS can generate proof-bearing institutional experience when tasks, tools, validators, and budgets exist.",
+    "group": "Verified Experience",
+    "slug": "proof-card-016.html",
+    "reserved": false
+  },
+  {
+    "id": 17,
+    "title": "Superintelligence Substrate Boundary",
+    "subtitle": "A horizon for governed capability, not a present achievement claim",
+    "thesis": "Ascension is a substrate architecture and strategic horizon, not a claim of achieved ASI.",
+    "group": "Verified Experience",
+    "slug": "proof-card-017.html",
+    "reserved": false
+  },
+  {
+    "id": 18,
+    "title": "Proof-Debt Prevention",
+    "subtitle": "Stopping unverified AI output from becoming default infrastructure",
+    "thesis": "Proof debt accumulates when unverified outputs influence future behavior without checks.",
+    "group": "Governance",
+    "slug": "proof-card-018.html",
+    "reserved": false
+  },
+  {
+    "id": 19,
+    "title": "Earned Autonomy",
+    "subtitle": "Autonomy as an earned right, not a default setting",
+    "thesis": "GoalOS grants autonomy through proof history, validator trust, rollback readiness, and risk class.",
+    "group": "Multi-Agent",
+    "slug": "proof-card-019.html",
+    "reserved": false
+  },
+  {
+    "id": 20,
+    "title": "Proof Gradient Promotion",
+    "subtitle": "Selecting upgrades by verified value, not vibes",
+    "thesis": "The proof gradient promotes only what clears evidence, evals, risk, scope, and rollback gates.",
+    "group": "RSI",
+    "slug": "proof-card-020.html",
+    "reserved": false
+  },
+  {
+    "id": 21,
+    "title": "Multi-Agent Theater",
+    "subtitle": "Specialist-agent coordination for maximum verified effect",
+    "thesis": "GoalOS coordinates roles, tools, validators, and memory into proof-producing work.",
+    "group": "Multi-Agent",
+    "slug": "proof-card-021.html",
+    "reserved": false
+  },
+  {
+    "id": 22,
+    "title": "External Replay",
+    "subtitle": "Independent replay as the gate to stronger claims",
+    "thesis": "No external replay, no capacity scale; replay is where trust leaves self-reporting.",
+    "group": "Proof Treasury",
+    "slug": "proof-card-022.html",
+    "reserved": false
+  },
+  {
+    "id": 23,
+    "title": "Reserved",
+    "subtitle": "Reserved for continuity and future publication",
+    "thesis": "The number is preserved intentionally so the public sequence stays stable.",
+    "group": "Reserved",
+    "slug": "proof-card-023.html",
+    "reserved": true
+  },
+  {
+    "id": 24,
+    "title": "Ascension Communications",
+    "subtitle": "The public doctrine of proof-governed compounding intelligence",
+    "thesis": "Communication must make proof, settlement, and claim boundaries memorable without overclaim.",
+    "group": "Ascension Sequence",
+    "slug": "proof-card-024.html",
+    "reserved": false
+  },
+  {
+    "id": 25,
+    "title": "Ascension",
+    "subtitle": "SOTA is a measurement. Ascension is the mission",
+    "thesis": "Ascension governs consequence: proof becomes verified experience and reusable capability.",
+    "group": "Ascension Sequence",
+    "slug": "proof-card-025.html",
+    "reserved": false
+  },
+  {
+    "id": 26,
+    "title": "Ascension Operating Theater",
+    "subtitle": "Large specialist-agent institutions under proof",
+    "thesis": "An operating theater coordinates multiple cells to maximum verified effect.",
+    "group": "Ascension Sequence",
+    "slug": "proof-card-026.html",
+    "reserved": false
+  },
+  {
+    "id": 27,
+    "title": "Ascension Prime",
+    "subtitle": "AI-first startup sovereign engine",
+    "thesis": "Unmet need becomes proof-backed capability through missions, users, dockets, and Chronicle memory.",
+    "group": "Ascension Sequence",
+    "slug": "proof-card-027.html",
+    "reserved": false
+  },
+  {
+    "id": 28,
+    "title": "Ascension Helix",
+    "subtitle": "Verified capability and proof economics as a double helix",
+    "thesis": "One strand produces evidence; the other allocates capacity to accepted proof.",
+    "group": "Ascension Sequence",
+    "slug": "proof-card-028.html",
+    "reserved": false
+  },
+  {
+    "id": 29,
+    "title": "Ascension Apex Prime",
+    "subtitle": "Sovereign verified-experience engine",
+    "thesis": "The product is proof-backed capability that earns the right to shape future capacity.",
+    "group": "Ascension Sequence",
+    "slug": "proof-card-029.html",
+    "reserved": false
+  },
+  {
+    "id": 30,
+    "title": "Ascension Zenith",
+    "subtitle": "Civilization-scale capability horizon under claim boundary",
+    "thesis": "Verified work can compound toward infrastructure, compute, science, and useful-energy proxies.",
+    "group": "Ascension Sequence",
+    "slug": "proof-card-030.html",
+    "reserved": false
+  },
+  {
+    "id": 31,
+    "title": "Ascension Helios",
+    "subtitle": "Value-to-energy flywheel and $AGIALPHA capacity rail",
+    "thesis": "Proof directs future capacity; delayed outcomes decide what may compound.",
+    "group": "Ascension Sequence",
+    "slug": "proof-card-031.html",
+    "reserved": false
+  }
+]
