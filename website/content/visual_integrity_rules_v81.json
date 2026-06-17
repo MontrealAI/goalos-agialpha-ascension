@@ -1,0 +1,15 @@
+{
+  "viewports": [
+    "320x800",
+    "375x812",
+    "768x1024",
+    "1024x768",
+    "1440x1000"
+  ],
+  "constraints": [
+    "no horizontal scroll",
+    "figures fit inside boxes",
+    "SVGs have viewBox and scale to container",
+    "no Proof Run 001 in primary nav"
+  ]
+}

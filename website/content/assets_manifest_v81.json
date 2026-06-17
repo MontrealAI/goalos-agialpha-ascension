@@ -1,0 +1,150 @@
+{
+  "release": "v81",
+  "strategy": "Assets are treated as institutional figures throughout the website, not as a generic gallery.",
+  "required": [
+    {
+      "file": "assets/bafybeiac2gpbwwcllldemjwxblsxb3pb3devm64eshti3knyrydohasjxa.png",
+      "semantic_role": "main hero / Ascension Command Display",
+      "pages_using_it": [
+        "index.html",
+        "ascension.html",
+        "agialpha-continuity.html"
+      ],
+      "section_using_it": "Hero",
+      "alt_text": "GoalOS AGIALPHA Ascension visual",
+      "caption": "GoalOS AGIALPHA Ascension: proof-governed autonomous AI work.",
+      "contains_embedded_text": "unknown; critical concepts are duplicated as live HTML",
+      "live_html_duplicates_important_concepts": true,
+      "decorative_or_informative": "informative",
+      "responsive_display_rule": "figure-frame img { max-width:100%; height:auto; object-fit:contain; }"
+    },
+    {
+      "file": "assets/AGI_ALPHA_v12.png",
+      "semantic_role": "AGI Alpha continuity / Ascension AI figure / multi-agent coordination figure",
+      "pages_using_it": [
+        "index.html",
+        "proof-cards.html",
+        "resources.html"
+      ],
+      "section_using_it": "Curated institutional figures",
+      "alt_text": "AGI ALPHA v12",
+      "caption": "Curated AGI Alpha / Ascension visual figure used as institutional context.",
+      "contains_embedded_text": "unknown; critical concepts are duplicated as live HTML",
+      "live_html_duplicates_important_concepts": true,
+      "decorative_or_informative": "informative",
+      "responsive_display_rule": "figure-frame img { max-width:100%; height:auto; object-fit:contain; }"
+    },
+    {
+      "file": "assets/AGI_ALPHA_v13.png",
+      "semantic_role": "AGI Alpha continuity / Ascension AI figure / multi-agent coordination figure",
+      "pages_using_it": [
+        "index.html",
+        "proof-cards.html",
+        "resources.html"
+      ],
+      "section_using_it": "Curated institutional figures",
+      "alt_text": "AGI ALPHA v13",
+      "caption": "Curated AGI Alpha / Ascension visual figure used as institutional context.",
+      "contains_embedded_text": "unknown; critical concepts are duplicated as live HTML",
+      "live_html_duplicates_important_concepts": true,
+      "decorative_or_informative": "informative",
+      "responsive_display_rule": "figure-frame img { max-width:100%; height:auto; object-fit:contain; }"
+    },
+    {
+      "file": "assets/AGI_ALPHA_v14.png",
+      "semantic_role": "AGI Alpha continuity / Ascension AI figure / multi-agent coordination figure",
+      "pages_using_it": [
+        "index.html",
+        "proof-cards.html",
+        "resources.html"
+      ],
+      "section_using_it": "Curated institutional figures",
+      "alt_text": "AGI ALPHA v14",
+      "caption": "Curated AGI Alpha / Ascension visual figure used as institutional context.",
+      "contains_embedded_text": "unknown; critical concepts are duplicated as live HTML",
+      "live_html_duplicates_important_concepts": true,
+      "decorative_or_informative": "informative",
+      "responsive_display_rule": "figure-frame img { max-width:100%; height:auto; object-fit:contain; }"
+    },
+    {
+      "file": "assets/AGI_ALPHA_v16.png",
+      "semantic_role": "AGI Alpha continuity / Ascension AI figure / multi-agent coordination figure",
+      "pages_using_it": [
+        "index.html",
+        "proof-cards.html",
+        "resources.html"
+      ],
+      "section_using_it": "Curated institutional figures",
+      "alt_text": "AGI ALPHA v16",
+      "caption": "Curated AGI Alpha / Ascension visual figure used as institutional context.",
+      "contains_embedded_text": "unknown; critical concepts are duplicated as live HTML",
+      "live_html_duplicates_important_concepts": true,
+      "decorative_or_informative": "informative",
+      "responsive_display_rule": "figure-frame img { max-width:100%; height:auto; object-fit:contain; }"
+    },
+    {
+      "file": "assets/AGI_ALPHA_v18.png",
+      "semantic_role": "AGI Alpha continuity / Ascension AI figure / multi-agent coordination figure",
+      "pages_using_it": [
+        "index.html",
+        "proof-cards.html",
+        "resources.html"
+      ],
+      "section_using_it": "Curated institutional figures",
+      "alt_text": "AGI ALPHA v18",
+      "caption": "Curated AGI Alpha / Ascension visual figure used as institutional context.",
+      "contains_embedded_text": "unknown; critical concepts are duplicated as live HTML",
+      "live_html_duplicates_important_concepts": true,
+      "decorative_or_informative": "informative",
+      "responsive_display_rule": "figure-frame img { max-width:100%; height:auto; object-fit:contain; }"
+    },
+    {
+      "file": "assets/AGI_ALPHA_v20.png",
+      "semantic_role": "AGI Alpha continuity / Ascension AI figure / multi-agent coordination figure",
+      "pages_using_it": [
+        "index.html",
+        "proof-cards.html",
+        "resources.html"
+      ],
+      "section_using_it": "Curated institutional figures",
+      "alt_text": "AGI ALPHA v20",
+      "caption": "Curated AGI Alpha / Ascension visual figure used as institutional context.",
+      "contains_embedded_text": "unknown; critical concepts are duplicated as live HTML",
+      "live_html_duplicates_important_concepts": true,
+      "decorative_or_informative": "informative",
+      "responsive_display_rule": "figure-frame img { max-width:100%; height:auto; object-fit:contain; }"
+    },
+    {
+      "file": "assets/AGI_Ascension_Autonomous_Multi-Agent_Coordination_v10.png",
+      "semantic_role": "AGI Alpha continuity / Ascension AI figure / multi-agent coordination figure",
+      "pages_using_it": [
+        "index.html",
+        "proof-cards.html",
+        "resources.html"
+      ],
+      "section_using_it": "Curated institutional figures",
+      "alt_text": "AGI Ascension Autonomous Multi-Agent Coordination v10",
+      "caption": "Curated AGI Alpha / Ascension visual figure used as institutional context.",
+      "contains_embedded_text": "unknown; critical concepts are duplicated as live HTML",
+      "live_html_duplicates_important_concepts": true,
+      "decorative_or_informative": "informative",
+      "responsive_display_rule": "figure-frame img { max-width:100%; height:auto; object-fit:contain; }"
+    },
+    {
+      "file": "assets/AGI_Ascension_Autonomous_Multi-Agent_Coordination_v9.png",
+      "semantic_role": "AGI Alpha continuity / Ascension AI figure / multi-agent coordination figure",
+      "pages_using_it": [
+        "index.html",
+        "proof-cards.html",
+        "resources.html"
+      ],
+      "section_using_it": "Curated institutional figures",
+      "alt_text": "AGI Ascension Autonomous Multi-Agent Coordination v9",
+      "caption": "Curated AGI Alpha / Ascension visual figure used as institutional context.",
+      "contains_embedded_text": "unknown; critical concepts are duplicated as live HTML",
+      "live_html_duplicates_important_concepts": true,
+      "decorative_or_informative": "informative",
+      "responsive_display_rule": "figure-frame img { max-width:100%; height:auto; object-fit:contain; }"
+    }
+  ]
+}

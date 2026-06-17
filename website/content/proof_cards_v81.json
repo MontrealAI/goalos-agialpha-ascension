@@ -1,0 +1,312 @@
+[
+  {
+    "id": 1,
+    "slug": "proof-card-001.html",
+    "title": "Everyday Proof",
+    "subtitle": "Convert one useful task into a proof-backed win",
+    "thesis": "Everyday proof begins when one real action becomes evidence, not just output.",
+    "group": "Everyday Proof",
+    "reserved": false,
+    "motif": "helix"
+  },
+  {
+    "id": 2,
+    "slug": "proof-card-002.html",
+    "title": "Evidence Docket",
+    "subtitle": "The public-safe proof room",
+    "thesis": "A proof page is not marketing; it is a room where claims meet evidence, boundaries, and replay.",
+    "group": "Mission OS",
+    "reserved": false,
+    "motif": "ledger"
+  },
+  {
+    "id": 3,
+    "slug": "proof-card-003.html",
+    "title": "Claim Boundary",
+    "subtitle": "Grand ambition, exact claims",
+    "thesis": "Strong institutions grow by separating horizon from achievement and proof from aspiration.",
+    "group": "Governance",
+    "reserved": false,
+    "motif": "gate"
+  },
+  {
+    "id": 4,
+    "slug": "proof-card-004.html",
+    "title": "Mission Contract",
+    "subtitle": "Objectives become governed commitments",
+    "thesis": "A mission becomes actionable only when goals, constraints, authority, risk, budget, and rollback are explicit.",
+    "group": "Mission OS",
+    "reserved": false,
+    "motif": "flywheel"
+  },
+  {
+    "id": 5,
+    "slug": "proof-card-005.html",
+    "title": "Action Graph",
+    "subtitle": "From intent to bounded work",
+    "thesis": "GoalOS routes action through bounded steps so work can be inspected, replayed, and improved.",
+    "group": "Mission OS",
+    "reserved": false,
+    "motif": "constellation"
+  },
+  {
+    "id": 6,
+    "slug": "proof-card-006.html",
+    "title": "Verifier Gate",
+    "subtitle": "Scores advise; gates decide",
+    "thesis": "Verification converts AI output into work that may influence institutional decisions.",
+    "group": "Governance",
+    "reserved": false,
+    "motif": "docket"
+  },
+  {
+    "id": 7,
+    "slug": "proof-card-007.html",
+    "title": "Chronicle Memory",
+    "subtitle": "What worked becomes durable capability",
+    "thesis": "Chronicle memory turns accepted work into reusable institutional memory and future routing knowledge.",
+    "group": "Verified Experience",
+    "reserved": false,
+    "motif": "treasury"
+  },
+  {
+    "id": 8,
+    "slug": "proof-card-008.html",
+    "title": "Agent Constellation",
+    "subtitle": "Maximum verified effect",
+    "thesis": "The goal is not many agents; it is a specialist-agent constellation organized around proof.",
+    "group": "Multi-Agent",
+    "reserved": false,
+    "motif": "orbit"
+  },
+  {
+    "id": 9,
+    "slug": "proof-card-009.html",
+    "title": "Capability Flywheel",
+    "subtitle": "Proof-backed capability compounds",
+    "thesis": "Accepted proof becomes reusable capability; reusable capability lowers the cost and risk of future work.",
+    "group": "AI-First Startup",
+    "reserved": false,
+    "motif": "helix"
+  },
+  {
+    "id": 10,
+    "slug": "proof-card-010.html",
+    "title": "Proof Gradient",
+    "subtitle": "Selection pressure for trustworthy work",
+    "thesis": "GoalOS promotes what survives evidence, risk, cost, and rollback gates.",
+    "group": "Governance",
+    "reserved": false,
+    "motif": "ledger"
+  },
+  {
+    "id": 11,
+    "slug": "proof-card-011.html",
+    "title": "Private Intelligence / Public Proof",
+    "subtitle": "Keep intelligence private; publish proof",
+    "thesis": "GoalOS preserves private context while making proof commitments auditable.",
+    "group": "Governance",
+    "reserved": false,
+    "motif": "gate"
+  },
+  {
+    "id": 12,
+    "slug": "proof-card-012.html",
+    "title": "Proof OS for AI Work",
+    "subtitle": "The institutional interface for autonomous work",
+    "thesis": "Mission OS turns objectives into governed decision states and proof packages.",
+    "group": "Mission OS",
+    "reserved": false,
+    "motif": "flywheel"
+  },
+  {
+    "id": 13,
+    "slug": "proof-card-013.html",
+    "title": "Alpha Work Units",
+    "subtitle": "Measuring verified machine labor",
+    "thesis": "\u03b1-Work Units meter accepted, policy-bound, validator-cleared machine labor.",
+    "group": "$AGIALPHA",
+    "reserved": false,
+    "motif": "constellation"
+  },
+  {
+    "id": 14,
+    "slug": "proof-card-014.html",
+    "title": "Settlement Discipline",
+    "subtitle": "No proof, no settlement",
+    "thesis": "Economic consequence begins only when evidence changes state.",
+    "group": "$AGIALPHA",
+    "reserved": false,
+    "motif": "docket"
+  },
+  {
+    "id": 15,
+    "slug": "proof-card-015.html",
+    "title": "Replay Before Reinvestment",
+    "subtitle": "No replay, no reinvestment",
+    "thesis": "Replay prevents the treasury from compounding fragile or unreproducible work.",
+    "group": "Proof Treasury",
+    "reserved": false,
+    "motif": "treasury"
+  },
+  {
+    "id": 16,
+    "slug": "proof-card-016.html",
+    "title": "External Replay Market",
+    "subtitle": "Capacity scale needs outside challenge",
+    "thesis": "External replay turns local proof into capacity allocation confidence.",
+    "group": "Proof Treasury",
+    "reserved": false,
+    "motif": "orbit"
+  },
+  {
+    "id": 17,
+    "slug": "proof-card-017.html",
+    "title": "Institutional Stress Gate",
+    "subtitle": "No stress clearance, no institutional scale",
+    "thesis": "Stress tests detect validator weakness, reward hacking, boundary failure, and systemic risk before scale.",
+    "group": "Proof Treasury",
+    "reserved": false,
+    "motif": "helix"
+  },
+  {
+    "id": 18,
+    "slug": "proof-card-018.html",
+    "title": "Delayed Outcome Covenant",
+    "subtitle": "Time is a verifier",
+    "thesis": "Delayed outcomes decide which proof deserves reserve compounding.",
+    "group": "Proof Treasury",
+    "reserved": false,
+    "motif": "ledger"
+  },
+  {
+    "id": 19,
+    "slug": "proof-card-019.html",
+    "title": "Proof Treasury",
+    "subtitle": "The economic control plane for proof",
+    "thesis": "Proof Treasury simulates how $AGIALPHA can allocate rewards, bonds, slashing, and future capacity.",
+    "group": "$AGIALPHA",
+    "reserved": false,
+    "motif": "gate"
+  },
+  {
+    "id": 20,
+    "slug": "proof-card-020.html",
+    "title": "RSI Through Proof",
+    "subtitle": "Recursive improvement needs authority",
+    "thesis": "RSI guides exploration, but only evidence authorizes propagation.",
+    "group": "RSI",
+    "reserved": false,
+    "motif": "flywheel"
+  },
+  {
+    "id": 21,
+    "slug": "proof-card-021.html",
+    "title": "Sovereign Experience Stream",
+    "subtitle": "Verified work becomes training signal",
+    "thesis": "GoalOS turns missions, validations, costs, risks, and delayed outcomes into governed experience.",
+    "group": "Verified Experience",
+    "reserved": false,
+    "motif": "constellation"
+  },
+  {
+    "id": 22,
+    "slug": "proof-card-022.html",
+    "title": "Superintelligence Thermostat",
+    "subtitle": "Proof controls acceleration",
+    "thesis": "The pathway to higher capability is not ungated output; it is proof-controlled acceleration.",
+    "group": "Ascension",
+    "reserved": false,
+    "motif": "docket"
+  },
+  {
+    "id": 23,
+    "slug": "proof-card-023.html",
+    "title": "Reserved",
+    "subtitle": "Continuity placeholder",
+    "thesis": "Proof Card 023 is intentionally reserved for continuity and future publication.",
+    "group": "Reserved",
+    "reserved": true,
+    "motif": "treasury"
+  },
+  {
+    "id": 24,
+    "slug": "proof-card-024.html",
+    "title": "Ascension Communications",
+    "subtitle": "The public doctrine of proof-governed progress",
+    "thesis": "Ascension communicates why proof-backed capability matters more than raw output.",
+    "group": "Ascension Sequence",
+    "reserved": false,
+    "motif": "orbit"
+  },
+  {
+    "id": 25,
+    "slug": "proof-card-025.html",
+    "title": "Ascension",
+    "subtitle": "SOTA is a measurement. Ascension is the mission.",
+    "thesis": "Ascension is proof-governed compounding intelligence, not merely a benchmark score.",
+    "group": "Ascension Sequence",
+    "reserved": false,
+    "motif": "helix"
+  },
+  {
+    "id": 26,
+    "slug": "proof-card-026.html",
+    "title": "Ascension Operating Theater",
+    "subtitle": "Specialist-agent institution for verified work",
+    "thesis": "The operating theater coordinates specialized cells around maximum verified effect.",
+    "group": "Ascension Sequence",
+    "reserved": false,
+    "motif": "ledger"
+  },
+  {
+    "id": 27,
+    "slug": "proof-card-027.html",
+    "title": "Ascension Prime",
+    "subtitle": "AI-first startup sovereign engine",
+    "thesis": "Ascension Prime turns unmet need into proof-backed capability and useful startup progress.",
+    "group": "Ascension Sequence",
+    "reserved": false,
+    "motif": "gate"
+  },
+  {
+    "id": 28,
+    "slug": "proof-card-028.html",
+    "title": "Ascension Helix",
+    "subtitle": "Proof and capacity move together",
+    "thesis": "Verified experience and $AGIALPHA capacity form a double helix of compounding capability.",
+    "group": "Ascension Sequence",
+    "reserved": false,
+    "motif": "flywheel"
+  },
+  {
+    "id": 29,
+    "slug": "proof-card-029.html",
+    "title": "Ascension Apex Prime",
+    "subtitle": "Sovereign verified-experience engine",
+    "thesis": "Apex Prime frames GoalOS as a capability foundry for proof-backed institutional work.",
+    "group": "Ascension Sequence",
+    "reserved": false,
+    "motif": "constellation"
+  },
+  {
+    "id": 30,
+    "slug": "proof-card-030.html",
+    "title": "Ascension Zenith",
+    "subtitle": "Civilization-scale capability horizon",
+    "thesis": "Zenith names the proof-governed capability engine that points toward larger productive capacity.",
+    "group": "Ascension Sequence",
+    "reserved": false,
+    "motif": "docket"
+  },
+  {
+    "id": 31,
+    "slug": "proof-card-031.html",
+    "title": "Ascension Helios",
+    "subtitle": "Value-to-energy flywheel",
+    "thesis": "Helios treats verified work as the first link in a claim-bounded value-to-energy flywheel.",
+    "group": "Ascension Sequence",
+    "reserved": false,
+    "motif": "treasury"
+  }
+]
