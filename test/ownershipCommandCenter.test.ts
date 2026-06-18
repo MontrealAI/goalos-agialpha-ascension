@@ -42,8 +42,10 @@ describe("ownership command-center safety gates", function () {
 
   it("refuses to write public Mainnet evidence from a Hardhat fork", function () {
     expect(() => hooks.forbidForkedMainnetEvidence("ethereum-mainnet", true, "hardhat")).to.throw("Refusing to write Mainnet ownership PASSED evidence");
+    expect(() => hooks.forbidForkedMainnetEvidence("ethereum-mainnet", true, "ethereumMainnet", "http://127.0.0.1:8545")).to.throw("local RPC URL");
     expect(() => hooks.forbidForkedMainnetEvidence("ethereum-mainnet", false, "hardhat")).not.to.throw();
     expect(() => hooks.forbidForkedMainnetEvidence("ethereum-sepolia", true, "hardhat")).not.to.throw();
+    expect(hooks.isLocalRpcUrl("https://eth-mainnet.example.invalid")).to.equal(false);
   });
 
   it("rejects proof messages without exact chain binding", function () {

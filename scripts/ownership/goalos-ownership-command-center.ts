@@ -118,9 +118,36 @@ function forbidCiMainnet(chainId: bigint): void {
   }
 }
 
-function forbidForkedMainnetEvidence(label: string, writeEvidence: boolean, networkName: string): void {
+function isLocalRpcUrl(rpcUrl?: string): boolean {
+  if (!rpcUrl) return false;
+  try {
+    const host = new URL(rpcUrl).hostname.toLowerCase();
+    return host === "localhost" || host === "127.0.0.1" || host === "0.0.0.0" || host === "::1" || host === "[::1]";
+  } catch {
+    return false;
+  }
+}
+
+function forbidForkedMainnetEvidence(label: string, writeEvidence: boolean, networkName: string, rpcUrl?: string): void {
+  if (!writeEvidence || label !== "ethereum-mainnet") return;
   if (writeEvidence && label === "ethereum-mainnet" && networkName === "hardhat") {
     throw new Error("Refusing to write Mainnet ownership PASSED evidence from a Hardhat fork/local network");
+  }
+  if (isLocalRpcUrl(rpcUrl)) {
+    throw new Error(`Refusing to write Mainnet ownership PASSED evidence from local RPC URL ${rpcUrl}`);
+  }
+}
+
+async function forbidForkedMainnetClientEvidence(label: string, writeEvidence: boolean): Promise<void> {
+  if (!writeEvidence || label !== "ethereum-mainnet") return;
+  try {
+    const clientVersion = String(await ethers.provider.send("web3_clientVersion", []));
+    if (/hardhat|anvil|ganache/i.test(clientVersion)) {
+      throw new Error(`Refusing to write Mainnet ownership PASSED evidence from local fork client ${clientVersion}`);
+    }
+  } catch (error: any) {
+    if (String(error?.message || error).includes("Refusing to write Mainnet ownership PASSED evidence")) throw error;
+    // Some managed RPC providers do not expose web3_clientVersion. Chain ID and RPC URL gates still apply.
   }
 }
 
@@ -514,7 +541,8 @@ async function verify(label: string, writeEvidence = true): Promise<void> {
   const net = await ethers.provider.getNetwork();
   requireExpectedChain(label, net.chainId);
   forbidCiMainnet(net.chainId);
-  forbidForkedMainnetEvidence(label, writeEvidence, hre.network.name);
+  forbidForkedMainnetEvidence(label, writeEvidence, hre.network.name, (hre.network.config as any).url);
+  await forbidForkedMainnetClientEvidence(label, writeEvidence);
   const finalOwner = requireAddress("FINAL_OWNER_ADDRESS");
   const permanentOwners = optionalAddressesFromEnv();
   const [connectedSigner] = await ethers.getSigners();
@@ -630,7 +658,9 @@ export const ownershipCommandCenterTestHooks = {
   expectedMainnetConfirmation,
   findJournaledTransfer,
   forbidCiMainnet,
+  forbidForkedMainnetClientEvidence,
   forbidForkedMainnetEvidence,
+  isLocalRpcUrl,
   proofMessageIncludesBindings,
   requireManagedEntries,
   resolveDisposableOwnerWithoutPlan,
