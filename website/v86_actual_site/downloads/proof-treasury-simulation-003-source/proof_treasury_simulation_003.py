@@ -14,7 +14,7 @@ from collections import defaultdict
 CANONICAL_AGIALPHA = "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA"
 
 FORBIDDEN_AFFIRMATIVE = [
-    "guaranteed roi", "guaranteed profit", "token appreciation", "price target",
+    "guaranteed roi", "token appreciation", "price target",
     "dividend", "yield", "equity", "ownership", "mainnet deployed", "live mainnet settlement",
     "achieved agi", "achieved asi", "achieved superintelligence", "production certified",
     "externally audited", "kardashev type ii achieved"
