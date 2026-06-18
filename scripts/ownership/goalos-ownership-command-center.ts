@@ -181,6 +181,34 @@ function entries(manifest: any): ManagedEntry[] {
     .sort((a, b) => a.name.localeCompare(b.name));
 }
 
+function requireManagedEntries(manifest: any): ManagedEntry[] {
+  const managed = entries(manifest);
+  if (!managed.length) throw new Error("No managed contracts found in manifest");
+  return managed;
+}
+
+function entryKey(entry: ManagedEntry): string {
+  return `${entry.name}:${ethers.getAddress(entry.address)}`;
+}
+
+function assertPlanCoversManifest(planEntries: PlannedEntry[], manifestEntries: ManagedEntry[]): void {
+  if (!Array.isArray(planEntries)) throw new Error("Ownership plan managedContracts must be an array");
+  const planKeys = new Set<string>();
+  for (const entry of planEntries) {
+    const key = entryKey(entry);
+    if (planKeys.has(key)) throw new Error(`Ownership plan duplicate managed contract ${key}`);
+    planKeys.add(key);
+  }
+  const manifestKeys = new Set(manifestEntries.map(entryKey));
+  for (const entry of manifestEntries) {
+    const key = entryKey(entry);
+    if (!planKeys.has(key)) throw new Error(`Ownership plan missing manifest contract ${key}`);
+  }
+  for (const key of planKeys) {
+    if (!manifestKeys.has(key)) throw new Error(`Ownership plan contains non-manifest contract ${key}`);
+  }
+}
+
 async function contractAt(address: string): Promise<any> {
   return new ethers.Contract(
     address,
@@ -285,8 +313,7 @@ async function doctor(label: string): Promise<void> {
   if (deployerAddress === finalOwner) throw new Error("FINAL_OWNER_ADDRESS must differ from disposable deployer");
   if (permanentOwners.has(deployerAddress)) throw new Error("Disposable deployer is listed as an approved permanent owner");
   const manifest = readManifest(label);
-  const list = entries(manifest.data);
-  if (!list.length) throw new Error("No managed contracts found in manifest");
+  const list = requireManagedEntries(manifest.data);
   const seen = new Set<string>();
   for (const entry of list) {
     if (seen.has(entry.address)) throw new Error(`Duplicate managed address ${entry.address}`);
@@ -318,8 +345,7 @@ async function plan(label: string): Promise<void> {
   const deployer = await signerForOwner(deployerAddress, connectedSigner);
   if (permanentOwners.has(deployerAddress)) throw new Error("Disposable deployer is listed as an approved permanent owner");
   const proof = await validateProof(net.chainId, finalOwner, manifest.hash);
-  const manifestEntries = entries(manifest.data);
-  if (!manifestEntries.length) throw new Error("No managed contracts found in manifest");
+  const manifestEntries = requireManagedEntries(manifest.data);
   const managed: PlannedEntry[] = [];
   let totalGas = 0n;
   for (const entry of manifestEntries) {
@@ -369,6 +395,17 @@ function validateLoadedPlan(plan: any, label: string, chainId: bigint, manifestH
   const expiresAtMs = Date.parse(plan.expiresAt);
   if (!Number.isFinite(expiresAtMs)) throw new Error("Ownership plan expiry is invalid");
   if (expiresAtMs <= Date.now()) throw new Error("Plan expired");
+}
+
+function expectedMainnetConfirmation(finalOwner: string, planHashValue: string): string {
+  return `ETHEREUM_MAINNET-1-${ethers.getAddress(finalOwner)}-${planHashValue}`;
+}
+
+function validateMainnetTypedConfirmation(chainId: bigint, finalOwner: string, planHashValue: string, skip: boolean): void {
+  if (chainId !== 1n || skip) return;
+  if (process.env.OWNERSHIP_MAINNET_CONFIRMATION !== expectedMainnetConfirmation(finalOwner, planHashValue)) {
+    throw new Error("Missing exact OWNERSHIP_MAINNET_CONFIRMATION");
+  }
 }
 
 function findJournaledTransfer(journalData: any, entry: PlannedEntry): JournaledTransfer | undefined {
@@ -422,13 +459,13 @@ async function transfer(label: string, options: TransferOptions = {}): Promise<v
   if (!fs.existsSync(p)) throw new Error("Run ownership plan first");
   const loadedPlan = JSON.parse(fs.readFileSync(p, "utf8"));
   validateLoadedPlan(loadedPlan, label, net.chainId, manifest.hash, deployerAddress, finalOwner);
+  const manifestEntries = requireManagedEntries(manifest.data);
+  assertPlanCoversManifest(loadedPlan.managedContracts, manifestEntries);
   const currentProof = await validateProof(net.chainId, finalOwner, manifest.hash);
   if (loadedPlan.finalOwnerControlProof?.required && loadedPlan.finalOwnerControlProof.commitment !== currentProof.commitment) {
     throw new Error("Final-owner control proof changed since plan creation; rerun ownership plan");
   }
-  if (net.chainId === 1n && !options.skipMainnetTypedConfirmation && process.env.OWNERSHIP_MAINNET_CONFIRMATION !== `ETHEREUM_MAINNET-1-${finalOwner}-${loadedPlan.planHash}`) {
-    throw new Error("Missing exact OWNERSHIP_MAINNET_CONFIRMATION");
-  }
+  validateMainnetTypedConfirmation(net.chainId, finalOwner, loadedPlan.planHash, Boolean(options.skipMainnetTypedConfirmation));
   const journal = path.join(ROOT, ".private", `${label}.ownership-journal.json`);
   const journalData = fs.existsSync(journal) ? JSON.parse(fs.readFileSync(journal, "utf8")) : { transactions: [] };
   const confirmations = Number(process.env.OWNERSHIP_CONFIRMATIONS || (net.chainId === 1n ? 5 : 1));
@@ -472,8 +509,7 @@ async function verify(label: string, writeEvidence = true): Promise<void> {
   const manifest = readManifest(label);
   const loadedPlanForOwner = readPlanIfPresent(label);
   const deployerAddress = ethers.getAddress(loadedPlanForOwner?.disposableOwner || resolveDisposableOwner(label, manifest.data, ethers.getAddress(connectedSigner.address)));
-  const managedEntries = entries(manifest.data);
-  if (!managedEntries.length) throw new Error("No managed contracts found in manifest");
+  const managedEntries = requireManagedEntries(manifest.data);
   const results = [];
   for (const entry of managedEntries) {
     const c = await contractAt(entry.address);
@@ -572,7 +608,20 @@ async function main(): Promise<void> {
   throw new Error(`Unknown ownership command ${cmd}`);
 }
 
-main().catch((error) => {
-  console.error(`FAIL ${error.message}`);
-  process.exit(1);
-});
+export const ownershipCommandCenterTestHooks = {
+  assertPlanCoversManifest,
+  expectedMainnetConfirmation,
+  findJournaledTransfer,
+  forbidCiMainnet,
+  proofMessageIncludesBindings,
+  requireManagedEntries,
+  validateLoadedPlan,
+  validateMainnetTypedConfirmation,
+};
+
+if (process.env.GOALOS_OWNERSHIP_COMMAND_CENTER_TEST !== "1") {
+  main().catch((error) => {
+    console.error(`FAIL ${error.message}`);
+    process.exit(1);
+  });
+}

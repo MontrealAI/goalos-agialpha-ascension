@@ -142,7 +142,7 @@
     "mission-os:qa": "python scripts/mission-os/qa_check.py --dir evidence/mission-os/ai-product-intelligence-001",
     "mission-os:settlement-readiness": "python scripts/mission-os/generate_settlement_readiness.py --mission examples/mission-os/ai-product-intelligence.json --out evidence/mission-os/ai-product-intelligence-001 --max-cycles 1",
     "mission-os:all": "npm run mission-os:run && npm run mission-os:claim-boundary -- --dir evidence/mission-os/ai-product-intelligence-001 && npm run mission-os:done-check -- --dir evidence/mission-os/ai-product-intelligence-001 && npm run mission-os:qa",
-    "test:ownership": "npm run compile:ci && hardhat test --no-compile test/ownershipHandoff.test.ts",
+    "test:ownership": "npm run compile:ci && hardhat test --no-compile test/ownershipHandoff.test.ts test/ownershipCommandCenter.test.ts",
     "ownership:sepolia:doctor": "OWNERSHIP_COMMAND=sepolia:doctor hardhat run --network ethereumSepolia scripts/ownership/goalos-ownership-command-center.ts",
     "ownership:sepolia:plan": "OWNERSHIP_COMMAND=sepolia:plan hardhat run --network ethereumSepolia scripts/ownership/goalos-ownership-command-center.ts",
     "ownership:sepolia:dry-run": "OWNERSHIP_COMMAND=sepolia:dry-run hardhat run --network ethereumSepolia scripts/ownership/goalos-ownership-command-center.ts",
