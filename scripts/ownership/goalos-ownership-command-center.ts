@@ -47,6 +47,12 @@ const EIP1271_MAGIC_VALUE = "0x1626ba7e";
 type ManagedEntry = { name: string; address: string };
 type PlannedEntry = ManagedEntry & { currentOwner: string; action: string; gasEstimate: string };
 type TransferOptions = { rehearsalInterruptAfter?: number; skipMainnetTypedConfirmation?: boolean };
+type JournaledTransfer = ManagedEntry & {
+  hash: string;
+  submittedAt?: string;
+  confirmedAt?: string;
+  status?: string;
+};
 
 function sha256(buf: Buffer | string): string {
   return "0x" + crypto.createHash("sha256").update(buf).digest("hex");
@@ -365,6 +371,42 @@ function validateLoadedPlan(plan: any, label: string, chainId: bigint, manifestH
   if (expiresAtMs <= Date.now()) throw new Error("Plan expired");
 }
 
+function findJournaledTransfer(journalData: any, entry: PlannedEntry): JournaledTransfer | undefined {
+  const transactions = Array.isArray(journalData.transactions) ? journalData.transactions : [];
+  const entryAddress = ethers.getAddress(entry.address);
+  return [...transactions]
+    .reverse()
+    .find((tx: JournaledTransfer) => tx.hash && tx.name === entry.name && ethers.getAddress(tx.address) === entryAddress);
+}
+
+async function waitForJournaledTransfer(
+  c: any,
+  entry: PlannedEntry,
+  finalOwner: string,
+  journalData: any,
+  journalPath: string,
+  confirmations: number,
+): Promise<boolean> {
+  const journaled = findJournaledTransfer(journalData, entry);
+  if (!journaled) return false;
+
+  const receipt = await ethers.provider.waitForTransaction(journaled.hash, confirmations);
+  if (!receipt) {
+    throw new Error(`Journaled ownership transfer pending for ${entry.name}: ${journaled.hash}`);
+  }
+  if (receipt.status !== 1) {
+    throw new Error(`Journaled ownership transfer failed for ${entry.name}: ${journaled.hash}`);
+  }
+  if (ethers.getAddress(await c.owner()) !== finalOwner) {
+    throw new Error(`Journaled ownership transfer owner mismatch for ${entry.name}: ${journaled.hash}`);
+  }
+
+  journaled.status = "CONFIRMED";
+  journaled.confirmedAt = new Date().toISOString();
+  writeJsonAtomic(journalPath, journalData);
+  return true;
+}
+
 async function transfer(label: string, options: TransferOptions = {}): Promise<void> {
   const net = await ethers.provider.getNetwork();
   requireExpectedChain(label, net.chainId);
@@ -389,6 +431,7 @@ async function transfer(label: string, options: TransferOptions = {}): Promise<v
   }
   const journal = path.join(ROOT, ".private", `${label}.ownership-journal.json`);
   const journalData = fs.existsSync(journal) ? JSON.parse(fs.readFileSync(journal, "utf8")) : { transactions: [] };
+  const confirmations = Number(process.env.OWNERSHIP_CONFIRMATIONS || (net.chainId === 1n ? 5 : 1));
   let transferred = 0;
   for (const entry of loadedPlan.managedContracts as PlannedEntry[]) {
     const c = (await contractAt(entry.address)).connect(deployer);
@@ -401,10 +444,14 @@ async function transfer(label: string, options: TransferOptions = {}): Promise<v
       continue;
     }
     if (owner !== deployerAddress || entry.action !== "TRANSFER") throw new Error(`Unexpected owner/action for ${entry.name}: ${owner}/${entry.action}`);
+    if (await waitForJournaledTransfer(c, entry, finalOwner, journalData, journal, confirmations)) {
+      transferred += 1;
+      continue;
+    }
     const tx = await c.transferOwnership(finalOwner);
     journalData.transactions.push({ name: entry.name, address: entry.address, hash: tx.hash, submittedAt: new Date().toISOString() });
     writeJsonAtomic(journal, journalData);
-    const receipt = await tx.wait(Number(process.env.OWNERSHIP_CONFIRMATIONS || (net.chainId === 1n ? 5 : 1)));
+    const receipt = await tx.wait(confirmations);
     if (!receipt || receipt.status !== 1) throw new Error(`Transfer failed ${entry.name}`);
     if (ethers.getAddress(await c.owner()) !== finalOwner) throw new Error(`Post-transfer owner mismatch ${entry.name}`);
     transferred += 1;
