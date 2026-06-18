@@ -1,0 +1,8 @@
+risk_id,risk,severity,status,mitigation,capital_at_risk
+S004-001,External replay market degradation,0.28,cleared,increase replay grants; slow settlement; raise replay quorum,4100000
+S004-002,Validator collusion / false approval pocket,0.34,failed,increase bonds; slash dishonest verdicts; diversify council,5300000
+S004-003,Claim-boundary overreach,0.42,failed,zero settlement; require rewrite; block public propagation,6600000
+S004-004,Liquidity / coverage shock,0.31,cleared,pause exploratory mandates; preserve settlement and disputes,7200000
+S004-005,Reward hacking / proxy score exploit,0.26,cleared,negative controls; delayed outcomes; red-team review,3900000
+S004-006,Governance capture attempt,0.22,cleared,emergency brake; require human review; freeze scale,4800000
+S004-007,Safety rollback drill,0.18,cleared,reserve drawdown; rollback proof; quarantine affected class,2500000

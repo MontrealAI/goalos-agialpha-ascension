@@ -1,0 +1,9 @@
+job_id,domain,internal_replay_status,external_replay_required,external_replay_status,external_replay_gate,replay_interpretation
+PTS003-J01,AI-First Startup,passed,True,passed,pass,Capacity scaling requires external replay for high-impact work.
+PTS003-J02,Enterprise Governance,passed,True,passed,pass,Capacity scaling requires external replay for high-impact work.
+PTS003-J03,Defensive Security,passed,True,pending,pending,Capacity scaling requires external replay for high-impact work.
+PTS003-J04,Compute Efficiency,passed,True,failed,fail,Capacity scaling requires external replay for high-impact work.
+PTS003-J05,Scientific Invention,pending,True,pending,pending,Capacity scaling requires external replay for high-impact work.
+PTS003-J06,Agentic Market,failed,True,failed,fail,Capacity scaling requires external replay for high-impact work.
+PTS003-J07,Regular-Person Utility,passed,False,not_required_low_risk,pass,Capacity scaling requires external replay for high-impact work.
+PTS003-J08,Sovereign Operations,not_applicable,True,not_applicable,fail,Capacity scaling requires external replay for high-impact work.

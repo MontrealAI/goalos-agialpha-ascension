@@ -1,0 +1,8 @@
+domain,base_priority,scale_gate,notes
+AI-First Startup,0.2,external_replay_and_stress_pass,proof-to-revenue and user proof leverage
+Enterprise Governance,0.16,external_replay_and_stress_pass,auditor-ready institutional AI operations
+Cyber-Defensive Organ,0.16,human_review_and_replay,"defensive-only, repo-owned, no external scans"
+Compute & Efficiency,0.14,stress_pass_required,capacity leverage needs cost/risk proof
+Scientific / Technical Invention,0.12,external_replay_required,"high upside, higher validation burden"
+Regular-Person Utility,0.08,qa_claim_boundary_pass,low-risk adoption and user usefulness
+Sovereign AI Operations,0.14,stress_pass_required,institutional control-room capabilities

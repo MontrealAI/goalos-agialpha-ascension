@@ -1,0 +1,16 @@
+job_id,source,reason,simulated_agialpha_slashed
+A004-003,validator-alpha,validator_false_or_unsafe_verdict_under_stress,90000
+A004-003,validator-epsilon,validator_false_or_unsafe_verdict_under_stress,90000
+A004-004,validator-delta,validator_false_or_unsafe_verdict_under_stress,90000
+A004-004,validator-gamma,validator_false_or_unsafe_verdict_under_stress,90000
+A004-005,work_object,blocked_external_replay_failed,155000
+A004-005,validator-alpha,validator_false_or_unsafe_verdict_under_stress,90000
+A004-005,validator-beta,validator_false_or_unsafe_verdict_under_stress,90000
+A004-005,validator-eta,validator_false_or_unsafe_verdict_under_stress,90000
+A004-006,work_object,rejected_claim_boundary_fail,145000
+A004-006,validator-beta,validator_false_or_unsafe_verdict_under_stress,90000
+A004-006,validator-gamma,validator_false_or_unsafe_verdict_under_stress,90000
+A004-006,validator-zeta,validator_false_or_unsafe_verdict_under_stress,90000
+A004-010,work_object,rejected_qa_fail,60000
+A004-010,validator-beta,validator_false_or_unsafe_verdict_under_stress,90000
+A004-010,validator-gamma,validator_false_or_unsafe_verdict_under_stress,90000

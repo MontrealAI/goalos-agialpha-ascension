@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GoalOS Personal Proof Sprint Builder</title>
+<style>
+:root{--navy:#0b1020;--slate:#1e293b;--gold:#facc15;--green:#22c55e;--blue:#60a5fa;--violet:#a78bfa;--muted:#94a3b8;--bg:#f8fafc;--text:#0f172a;}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:linear-gradient(135deg,#0b1020,#111827 55%,#0f172a);color:white;line-height:1.55}.wrap{max-width:1100px;margin:0 auto;padding:32px 20px 80px}.hero{display:grid;gap:18px;grid-template-columns:1.2fr .8fr;align-items:center;min-height:520px}.kicker{color:var(--gold);font-weight:800;letter-spacing:.12em;font-size:.85rem}.hero h1{font-size:clamp(2.4rem,6vw,5.2rem);line-height:.95;margin:.2em 0}.hero p{font-size:1.22rem;color:#dbeafe;max-width:690px}.pill{display:inline-block;background:var(--gold);color:var(--navy);font-weight:900;padding:11px 17px;border-radius:999px;margin:4px 8px 4px 0}.card{background:rgba(30,41,59,.82);border:1px solid rgba(250,204,21,.35);border-radius:24px;padding:22px;box-shadow:0 20px 60px rgba(0,0,0,.28)}.card h2,.card h3{margin-top:0}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.step{border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:18px;background:rgba(255,255,255,.04)}.step b{color:var(--gold)}label{font-weight:800;display:block;margin:14px 0 6px;color:#e2e8f0}input,textarea,select{width:100%;padding:12px 13px;border-radius:12px;border:1px solid rgba(148,163,184,.45);background:#0f172a;color:white;font-size:1rem}textarea{min-height:90px;resize:vertical}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.btn{border:0;border-radius:14px;padding:14px 18px;font-weight:900;font-size:1rem;cursor:pointer;background:var(--green);color:#052e16;margin:18px 10px 0 0}.btn.secondary{background:#334155;color:white}.result{white-space:pre-wrap;background:#f8fafc;color:#0f172a;border-radius:18px;padding:22px;margin-top:22px;border:4px solid var(--gold);font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}.small{font-size:.92rem;color:#cbd5e1}.footer{margin-top:50px;color:#94a3b8;font-size:.9rem}.share{background:linear-gradient(135deg,#facc15,#22c55e);color:#0b1020;border-radius:22px;padding:26px;margin:30px 0;text-align:center;font-weight:900;font-size:1.3rem}@media(max-width:850px){.hero,.grid,.formgrid{grid-template-columns:1fr}.hero{min-height:auto}.wrap{padding-top:22px}}
+
+/* GoalOS AGIALPHA Ascension Website v71 — Autonomous 10/10 Ascension System */
+:root{
+  --ink:#06111f; --ink2:#111a33; --panel:rgba(12,23,43,.78); --panel2:rgba(255,255,255,.08);
+  --gold:#ffe08a; --gold2:#d8b45a; --mint:#76ffd7; --cyan:#7ec8ff; --violet:#a58bff;
+  --cream:#fff6df; --text:#f7fbff; --muted:#b8c4d8; --danger:#ff7a8a; --ok:#79f2a6;
+  --radius-xl:32px; --radius-lg:22px; --shadow-hero:0 40px 150px rgba(6,17,31,.42);
+}
+.v71-system-nav{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:center;padding:18px 18px;background:linear-gradient(90deg,#071326,#0b1d3a);border-top:1px solid rgba(255,255,255,.12)}
+.v71-system-nav a{color:var(--text);text-decoration:none;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.06);border-radius:999px;padding:8px 12px;font-weight:850;font-size:.9rem}
+.v71-system-nav a:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.v71-system-doctrine{background:#030712;color:var(--text);padding:18px 22px;text-align:center;border-top:1px solid rgba(255,255,255,.10);font-size:.92rem;line-height:1.75}
+.v71-system-doctrine strong{color:var(--gold)}
+.v71-reserved-card{border:1px dashed rgba(216,180,90,.75)!important;background:linear-gradient(180deg,rgba(255,224,138,.10),rgba(255,255,255,.05))!important}
+@media(max-width:760px){.v71-system-nav{justify-content:flex-start;overflow-x:auto;flex-wrap:nowrap}.v71-system-nav a{white-space:nowrap}.v71-title{font-size:clamp(3rem,18vw,5rem)!important}table{min-width:680px}.v71-table-wrap,.table-wrap{overflow-x:auto}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+</style>
+</head>
+<body>
+<div class="wrap">
+  <section class="hero">
+    <div>
+      <div class="kicker">GOALOS PERSONAL PROOF SPRINT</div>
+      <h1>Turn one goal into proof.</h1>
+      <p>Use AI to act every day. Use GoalOS to collect evidence, decide what worked, and turn your best result into a reusable capability.</p>
+      <span class="pill">Aim</span><span class="pill">Act</span><span class="pill">Prove</span><span class="pill">Evolve</span>
+    </div>
+    <div class="card">
+      <h2>Why this feels different</h2>
+      <p>Most AI tools give you outputs. GoalOS gives you a proof path.</p>
+      <p class="small">No code. No crypto. No mainnet. Just a clear goal, daily action, evidence, and a final proof page.</p>
+    </div>
+  </section>
+  <div class="share">AI makes action cheap. GoalOS makes progress provable.</div>
+  <section class="grid">
+    <div class="step"><b>1. Aim</b><br>Choose one goal and define what proof would count.</div>
+    <div class="step"><b>2. Act</b><br>Take one AI-assisted action per day.</div>
+    <div class="step"><b>3. Prove</b><br>Save screenshots, links, replies, files, results, and notes.</div>
+    <div class="step"><b>4. Select</b><br>Promote, retry, reject, or roll back based on evidence.</div>
+    <div class="step"><b>5. Evolve</b><br>Save what worked as a reusable template, workflow, or habit.</div>
+    <div class="step"><b>6. Share</b><br>Share a public-safe proof page if it helps you and others.</div>
+  </section>
+  <section class="card" style="margin-top:28px">
+    <h2>Build your first GoalOSCommit</h2>
+    <p class="small">Fill this in. Click generate. You will get a simple Evidence Docket draft you can copy into a document.</p>
+    <div class="formgrid">
+      <div><label>Your goal</label><textarea id="goal" placeholder="Example: In 30 days, get 5 buyer conversations for one AI-assisted service offer."></textarea></div>
+      <div><label>Success proof</label><textarea id="proof" placeholder="Example: screenshots of replies, calendar bookings, call notes, payment receipt if any."></textarea></div>
+      <div><label>Baseline today</label><textarea id="baseline" placeholder="Example: no offer tested, no outreach sent, no calls booked."></textarea></div>
+      <div><label>Allowed tools</label><textarea id="tools" placeholder="Example: ChatGPT, email, LinkedIn, Google Sheets, landing page."></textarea></div>
+      <div><label>Constraints</label><textarea id="constraints" placeholder="Example: no spam, no false claims, no guaranteed income promises, no private data shared."></textarea></div>
+      <div><label>Rollback plan</label><textarea id="rollback" placeholder="Example: if reply rate is under 3% after 50 messages, stop that offer and rewrite it."></textarea></div>
+    </div>
+    <button class="btn" onclick="generate()">Generate my Proof Sprint</button>
+    <button class="btn secondary" onclick="copyResult()">Copy result</button>
+    <button class="btn secondary" onclick="window.print()">Print / Save as PDF</button>
+    <div id="result" class="result" style="display:none"></div>
+  </section>
+  <div class="footer">Claim boundary: this is not a guaranteed income system, investment advice, legal advice, financial advice, or proof of achieved AGI. It is a practical way to structure AI-assisted action around evidence.</div>
+</div>
+<script>
+function val(id){return document.getElementById(id).value.trim() || '[fill this in]'}
+function generate(){
+  const today = new Date().toISOString().slice(0,10);
+  const text = `GOALOS PERSONAL PROOF SPRINT\nGenerated: ${today}\n\nGOALOSCOMMIT\nGoal:\n${val('goal')}\n\nSuccess proof:\n${val('proof')}\n\nBaseline today:\n${val('baseline')}\n\nAllowed tools:\n${val('tools')}\n\nConstraints:\n${val('constraints')}\n\nRollback plan:\n${val('rollback')}\n\n7-DAY ACTION RHYTHM\nDay 1: clarify the offer or objective. Save the draft.\nDay 2: create the first action asset. Save the file/link.\nDay 3: send or test the first version. Save screenshots.\nDay 4: measure replies/results. Save tracker.\nDay 5: improve the best part. Save before/after.\nDay 6: repeat the improved action. Save evidence.\nDay 7: run the Selection Gate. Promote, retry, reject, or rollback.\n\nEVIDENCE DOCKET DRAFT\nClaim: I attempted one bounded goal and collected evidence of progress.\nEvidence to attach: screenshots, links, files, replies, notes, tracker rows, receipts if any.\nCost ledger: time spent, money spent, tools used.\nRisk boundary: no false claims, no private data leakage, no guaranteed outcome claim.\nSelection decision: [Promote / Retry / Reject / Rollback]\nReusable capability: [What worked well enough to use again?]\nNext test: [What is the next smallest honest experiment?]\n\nMOTTO\nNo proof, no progress. No evidence, no upgrade. No rollback, no scale.`;
+  const el=document.getElementById('result'); el.textContent=text; el.style.display='block';
+}
+function copyResult(){
+  const el=document.getElementById('result'); if(el.style.display==='none') generate();
+  navigator.clipboard.writeText(document.getElementById('result').textContent).then(()=>alert('Copied. Paste it into your GoalOS folder.'));
+}
+</script>
+<nav class="v71-system-nav" aria-label="GoalOS AGIALPHA primary site map"><a href="index.html">Home</a><a href="mission-os.html">Mission OS</a><a href="ascension.html">Ascension</a><a href="proof-treasury.html">Treasury</a><a href="proof-cards.html">Proof Cards</a><a href="resources.html">Resources</a></nav><div class="v71-system-doctrine"><strong>SOTA is a measurement. Ascension is the mission.</strong> Turn AI work into verified capability. AI creates output. GoalOS creates proof. GoalOS creates proof. $AGIALPHA makes accepted proof economically consequential. The product is not output. The product is proof-backed capability. No proof, no settlement. No replay, no reinvestment. No external replay, no capacity scale. No stress clearance, no institutional scale. No delayed-outcome clearance, no Ascension reserve compounding. 0 claims without proof.</div></body>
+</html>
