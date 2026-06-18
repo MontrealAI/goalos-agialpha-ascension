@@ -10,9 +10,11 @@ Never type a Ledger seed phrase, Ledger private key, MetaMask seed phrase, or wa
 FINAL_OWNER_ADDRESS=0x...
 FINAL_OWNER_KIND=LEDGER_EOA # or SAFE
 FINAL_OWNER_CONTROL_PROOF_PATH=.private/final-owner-control-proof.json
+OWNERSHIP_DISPOSABLE_OWNER_ADDRESS=0x... # public address of the disposable deployer/initial owner
 ```
 
 Mainnet also requires permanent founder, treasury, and vault/controller addresses to be non-disposable; single-deployer permanent address mode is blocked.
+`OWNERSHIP_DISPOSABLE_OWNER_ADDRESS` is not a secret. It lets standalone verification and Hardhat fork rehearsal check the original disposable owner even when the current local signer is a verifier or an impersonated fork account.
 
 ## Sepolia sequence
 

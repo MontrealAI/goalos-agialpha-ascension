@@ -122,6 +122,34 @@ function readManifest(label: string): { path: string; hash: string; data: any } 
   return { path: p, hash: sha256(raw), data: JSON.parse(raw.toString("utf8")) };
 }
 
+
+function readPlanIfPresent(label: string): any | undefined {
+  const planPath = latestPlanPath(label);
+  if (!fs.existsSync(planPath)) return undefined;
+  return JSON.parse(fs.readFileSync(planPath, "utf8"));
+}
+
+function resolveDisposableOwner(label: string, manifest: any, fallbackSigner: string): string {
+  const envOwner = process.env.OWNERSHIP_DISPOSABLE_OWNER_ADDRESS;
+  if (envOwner && ethers.isAddress(envOwner)) return ethers.getAddress(envOwner);
+  const plan = readPlanIfPresent(label);
+  if (plan?.disposableOwner && ethers.isAddress(plan.disposableOwner)) return ethers.getAddress(plan.disposableOwner);
+  if (manifest?.deployer && ethers.isAddress(manifest.deployer)) return ethers.getAddress(manifest.deployer);
+  if (label === "ethereum-mainnet") throw new Error("Missing disposable owner: set OWNERSHIP_DISPOSABLE_OWNER_ADDRESS or run ownership plan first");
+  return fallbackSigner;
+}
+
+async function signerForOwner(owner: string, fallbackSigner: any): Promise<any> {
+  const fallback = ethers.getAddress(fallbackSigner.address);
+  if (fallback === owner) return fallbackSigner;
+  if (hre.network.name === "hardhat") {
+    await ethers.provider.send("hardhat_impersonateAccount", [owner]);
+    await ethers.provider.send("hardhat_setBalance", [owner, "0x3635c9adc5dea00000"]);
+    return ethers.getSigner(owner);
+  }
+  throw new Error(`Connected signer ${fallback} is not the planned disposable owner ${owner}`);
+}
+
 function entries(manifest: any): ManagedEntry[] {
   const contracts = manifest.contracts || manifest.addresses || {};
   return Object.entries(contracts)
@@ -247,10 +275,11 @@ async function plan(label: string): Promise<void> {
   forbidCiMainnet(net.chainId);
   const finalOwner = requireAddress("FINAL_OWNER_ADDRESS");
   const permanentOwners = optionalAddressesFromEnv();
-  const [deployer] = await ethers.getSigners();
-  const deployerAddress = ethers.getAddress(deployer.address);
-  if (permanentOwners.has(deployerAddress)) throw new Error("Disposable deployer is listed as an approved permanent owner");
+  const [connectedSigner] = await ethers.getSigners();
   const manifest = readManifest(label);
+  const deployerAddress = resolveDisposableOwner(label, manifest.data, ethers.getAddress(connectedSigner.address));
+  const deployer = await signerForOwner(deployerAddress, connectedSigner);
+  if (permanentOwners.has(deployerAddress)) throw new Error("Disposable deployer is listed as an approved permanent owner");
   const proof = await validateProof(net.chainId, finalOwner, manifest.hash);
   const manifestEntries = entries(manifest.data);
   if (!manifestEntries.length) throw new Error("No managed contracts found in manifest");
@@ -309,9 +338,11 @@ async function transfer(label: string): Promise<void> {
   forbidCiMainnet(net.chainId);
   const finalOwner = requireAddress("FINAL_OWNER_ADDRESS");
   const permanentOwners = optionalAddressesFromEnv();
-  const [deployer] = await ethers.getSigners();
-  const deployerAddress = ethers.getAddress(deployer.address);
+  const [connectedSigner] = await ethers.getSigners();
   const manifest = readManifest(label);
+  const loadedPlanForOwner = readPlanIfPresent(label);
+  const deployerAddress = ethers.getAddress(loadedPlanForOwner?.disposableOwner || resolveDisposableOwner(label, manifest.data, ethers.getAddress(connectedSigner.address)));
+  const deployer = await signerForOwner(deployerAddress, connectedSigner);
   const p = latestPlanPath(label);
   if (!fs.existsSync(p)) throw new Error("Run ownership plan first");
   const loadedPlan = JSON.parse(fs.readFileSync(p, "utf8"));
@@ -352,9 +383,10 @@ async function verify(label: string): Promise<void> {
   forbidCiMainnet(net.chainId);
   const finalOwner = requireAddress("FINAL_OWNER_ADDRESS");
   const permanentOwners = optionalAddressesFromEnv();
-  const [deployer] = await ethers.getSigners();
-  const deployerAddress = ethers.getAddress(deployer.address);
+  const [connectedSigner] = await ethers.getSigners();
   const manifest = readManifest(label);
+  const loadedPlanForOwner = readPlanIfPresent(label);
+  const deployerAddress = ethers.getAddress(loadedPlanForOwner?.disposableOwner || resolveDisposableOwner(label, manifest.data, ethers.getAddress(connectedSigner.address)));
   const managedEntries = entries(manifest.data);
   if (!managedEntries.length) throw new Error("No managed contracts found in manifest");
   const results = [];

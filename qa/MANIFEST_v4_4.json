@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-18T18:11:06.351087+00:00",
+  "generated_at": "2026-06-18T18:39:47.045910+00:00",
   "files": [
     {
       "path": ".editorconfig",
@@ -13,13 +13,13 @@
     },
     {
       "path": ".env.mainnet.example",
-      "bytes": 1531,
-      "sha256": "1896840167bdb72090c5b3fc191592c04c14f28a7c5979f9b081e5264df5473b"
+      "bytes": 1725,
+      "sha256": "5b8c580102e65be6cd9243b345c00ff726d863905df451f5dd15e5da5daf8876"
     },
     {
       "path": ".env.sepolia.example",
-      "bytes": 1369,
-      "sha256": "0c0993db0246d626e0dcc5a98fd8ed414b0e35d703d111ac36181839dfc2f4c2"
+      "bytes": 1521,
+      "sha256": "0eb585c2c72883a215c2a8fe3bf6d4e16e1e7691025c3033476b236875905ca0"
     },
     {
       "path": ".env.verification.example",
@@ -6708,8 +6708,8 @@
     },
     {
       "path": "docs/OWNERSHIP_HANDOFF_RUNBOOK.md",
-      "bytes": 3435,
-      "sha256": "64d889896536e474f91548b8bada00f6df6760bdd16e6eb628ebe52cc45134bb"
+      "bytes": 3765,
+      "sha256": "196f4e936b21253c5e9319172e28f3172461c82edd5d977ec0913141e88d4fcd"
     },
     {
       "path": "docs/POLICY_SIGNOFFS_OR_FOUNDER_WAIVERS.md",
@@ -8389,7 +8389,7 @@
     {
       "path": "qa/QA_REPORT.json",
       "bytes": 921,
-      "sha256": "80609a3966b74347a13b8d07fd45f64c70138d7dcc25e273255475e202052e05"
+      "sha256": "a55698bd9ceb1ae24d876b5b20ac705702a90409efb12c62d748a192b5e02f19"
     },
     {
       "path": "qa/QA_REPORT_v4_0.json",
@@ -9853,8 +9853,8 @@
     },
     {
       "path": "scripts/ownership/goalos-ownership-command-center.ts",
-      "bytes": 21262,
-      "sha256": "8d2690f6f08f35020f30651e49cf19f8cbc7a2d8c3d0ff9ec824a40f315658ff"
+      "bytes": 23253,
+      "sha256": "d5d1415f8ab90d438d99f0627766899236f8851c5e06167f59b4ef0be5002513"
     },
     {
       "path": "scripts/patch_existing_pages_workflow_for_proof_cards_v11.py",
