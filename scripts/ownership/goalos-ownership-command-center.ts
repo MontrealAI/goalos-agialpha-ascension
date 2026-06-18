@@ -46,6 +46,7 @@ const EIP1271_MAGIC_VALUE = "0x1626ba7e";
 
 type ManagedEntry = { name: string; address: string };
 type PlannedEntry = ManagedEntry & { currentOwner: string; action: string; gasEstimate: string };
+type TransferOptions = { rehearsalInterruptAfter?: number; skipMainnetTypedConfirmation?: boolean };
 
 function sha256(buf: Buffer | string): string {
   return "0x" + crypto.createHash("sha256").update(buf).digest("hex");
@@ -359,10 +360,12 @@ function validateLoadedPlan(plan: any, label: string, chainId: bigint, manifestH
   if (plan.deploymentManifestSha256 !== manifestHash) throw new Error("Ownership plan manifest hash mismatch");
   if (ethers.getAddress(plan.disposableOwner) !== deployer) throw new Error("Ownership plan disposable owner mismatch");
   if (ethers.getAddress(plan.finalOwner) !== finalOwner) throw new Error("Ownership plan final owner mismatch");
-  if (Date.parse(plan.expiresAt) <= Date.now()) throw new Error("Plan expired");
+  const expiresAtMs = Date.parse(plan.expiresAt);
+  if (!Number.isFinite(expiresAtMs)) throw new Error("Ownership plan expiry is invalid");
+  if (expiresAtMs <= Date.now()) throw new Error("Plan expired");
 }
 
-async function transfer(label: string): Promise<void> {
+async function transfer(label: string, options: TransferOptions = {}): Promise<void> {
   const net = await ethers.provider.getNetwork();
   requireExpectedChain(label, net.chainId);
   forbidCiMainnet(net.chainId);
@@ -381,11 +384,12 @@ async function transfer(label: string): Promise<void> {
   if (loadedPlan.finalOwnerControlProof?.required && loadedPlan.finalOwnerControlProof.commitment !== currentProof.commitment) {
     throw new Error("Final-owner control proof changed since plan creation; rerun ownership plan");
   }
-  if (net.chainId === 1n && process.env.OWNERSHIP_MAINNET_CONFIRMATION !== `ETHEREUM_MAINNET-1-${finalOwner}-${loadedPlan.planHash}`) {
+  if (net.chainId === 1n && !options.skipMainnetTypedConfirmation && process.env.OWNERSHIP_MAINNET_CONFIRMATION !== `ETHEREUM_MAINNET-1-${finalOwner}-${loadedPlan.planHash}`) {
     throw new Error("Missing exact OWNERSHIP_MAINNET_CONFIRMATION");
   }
   const journal = path.join(ROOT, ".private", `${label}.ownership-journal.json`);
   const journalData = fs.existsSync(journal) ? JSON.parse(fs.readFileSync(journal, "utf8")) : { transactions: [] };
+  let transferred = 0;
   for (const entry of loadedPlan.managedContracts as PlannedEntry[]) {
     const c = (await contractAt(entry.address)).connect(deployer);
     const owner = ethers.getAddress(await c.owner());
@@ -403,11 +407,15 @@ async function transfer(label: string): Promise<void> {
     const receipt = await tx.wait(Number(process.env.OWNERSHIP_CONFIRMATIONS || (net.chainId === 1n ? 5 : 1)));
     if (!receipt || receipt.status !== 1) throw new Error(`Transfer failed ${entry.name}`);
     if (ethers.getAddress(await c.owner()) !== finalOwner) throw new Error(`Post-transfer owner mismatch ${entry.name}`);
+    transferred += 1;
+    if (options.rehearsalInterruptAfter && transferred >= options.rehearsalInterruptAfter) {
+      throw new Error(`OWNERSHIP_REHEARSAL_INTERRUPT_AFTER_${options.rehearsalInterruptAfter}`);
+    }
   }
   console.log("PASS ownership transfer completed/resumed");
 }
 
-async function verify(label: string): Promise<void> {
+async function verify(label: string, writeEvidence = true): Promise<void> {
   const net = await ethers.provider.getNetwork();
   requireExpectedChain(label, net.chainId);
   forbidCiMainnet(net.chainId);
@@ -455,14 +463,39 @@ async function verify(label: string): Promise<void> {
     results,
     claimBoundary: label === "ethereum-mainnet" ? "Mainnet PASSED evidence requires detected chainId 1 and live provider state." : "Sepolia/local rehearsal evidence only; not Mainnet evidence.",
   };
-  writeJsonAtomic(evidencePath(label), evidence);
-  writeJsonAtomic(publicHandoffPath(label), evidence);
-  fs.writeFileSync(reportPath(label), `# ${label} Ownership Handoff Report\n\nStatus: ${evidence.status}\n\nChain ID: ${evidence.chainId}\n\nManaged contracts: ${results.length}\n\nClaim boundary: ${evidence.claimBoundary}\n`);
+  if (writeEvidence) {
+    writeJsonAtomic(evidencePath(label), evidence);
+    writeJsonAtomic(publicHandoffPath(label), evidence);
+    fs.writeFileSync(reportPath(label), `# ${label} Ownership Handoff Report\n\nStatus: ${evidence.status}\n\nChain ID: ${evidence.chainId}\n\nManaged contracts: ${results.length}\n\nClaim boundary: ${evidence.claimBoundary}\n`);
+  }
   console.log(`PASS ownership verify ${label}: ${results.length}`);
 }
 
 async function evidence(label: string): Promise<void> {
   await verify(label);
+}
+
+async function forkRehearsal(label: string): Promise<void> {
+  if (hre.network.name !== "hardhat") throw new Error("Ownership fork rehearsal must run on the local Hardhat network");
+  await plan(label);
+  try {
+    await transfer(label, { rehearsalInterruptAfter: 1, skipMainnetTypedConfirmation: true });
+  } catch (error: any) {
+    if (!String(error?.message || error).includes("OWNERSHIP_REHEARSAL_INTERRUPT_AFTER_1")) throw error;
+    console.log("PASS ownership fork rehearsal deliberate interruption after 1 transfer");
+  }
+  await transfer(label, { skipMainnetTypedConfirmation: true });
+  await verify(label, false);
+  const localEvidence = {
+    schemaVersion: 1,
+    status: "PASSED",
+    network: label,
+    rehearsalOnly: true,
+    generatedAt: new Date().toISOString(),
+    claimBoundary: "Hardhat fork/local rehearsal only; not public-chain Mainnet handoff evidence.",
+  };
+  writeJsonAtomic(path.join(ROOT, ".private", `${label}.ownership-fork-rehearsal.latest.json`), localEvidence);
+  console.log("PASS ownership fork rehearsal transfer/resume/verify completed");
 }
 
 async function sweep(label: string): Promise<void> {
@@ -483,7 +516,8 @@ async function main(): Promise<void> {
   const label = cmd.includes("mainnet") ? "ethereum-mainnet" : "ethereum-sepolia";
   if (cmd.endsWith(":doctor")) return doctor(label);
   if (cmd.endsWith(":plan")) return plan(label);
-  if (cmd.endsWith(":dry-run") || cmd.endsWith(":fork-rehearsal")) return plan(label);
+  if (cmd.endsWith(":dry-run")) return plan(label);
+  if (cmd.endsWith(":fork-rehearsal")) return forkRehearsal(label);
   if (cmd.endsWith(":transfer") || cmd.endsWith(":transfer-local-gated")) return transfer(label);
   if (cmd.endsWith(":verify")) return verify(label);
   if (cmd.endsWith(":evidence")) return evidence(label);

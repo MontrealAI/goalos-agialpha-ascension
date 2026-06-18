@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-18T19:29:38.470492+00:00",
+  "generated_at": "2026-06-18T19:52:02.415585+00:00",
   "files": [
     {
       "path": ".editorconfig",
@@ -7638,8 +7638,8 @@
     },
     {
       "path": "downloads/proof-treasury-simulation-003-source/proof_treasury_simulation_003.py",
-      "bytes": 26280,
-      "sha256": "dc56e5ea4fe9934aa93071216fbd32fa777fafff46729952ccae2a845f648886"
+      "bytes": 26285,
+      "sha256": "2a7d1a0e3587f32212f764af1640dca67b9331d5b9e24c9d08b9b4a829b662f6"
     },
     {
       "path": "downloads/proof-treasury-simulation-004/AGIALPHABudgetLedger.csv",
@@ -7783,8 +7783,8 @@
     },
     {
       "path": "downloads/proof-treasury-simulation-004/proof_treasury_simulation_004.py",
-      "bytes": 32277,
-      "sha256": "7253c51eaee948c9d051e655ce00369752f62e5032021f70c591ea56f05f344b"
+      "bytes": 32282,
+      "sha256": "f957b4313c30fa4c1f9dd8694723e453e381fa61119f28a52867d02943a0583e"
     },
     {
       "path": "downloads/proof-treasury-simulation-004/run-state.json",
@@ -8389,7 +8389,7 @@
     {
       "path": "qa/QA_REPORT.json",
       "bytes": 921,
-      "sha256": "e40eb675812f5ee85dfd6099d0f5cc04114a3cf19c0ee85a5d2f283009931ff6"
+      "sha256": "449e9a5a86791c4e8508cfc49ea59d4ba28b8e74c6a0252a0ec614f188bd91e7"
     },
     {
       "path": "qa/QA_REPORT_v4_0.json",
@@ -9853,8 +9853,8 @@
     },
     {
       "path": "scripts/ownership/goalos-ownership-command-center.ts",
-      "bytes": 24366,
-      "sha256": "856925de40320f6c491ad3c5f914a1172abfe883f9769b24fe232f6780001343"
+      "bytes": 26078,
+      "sha256": "11f3213cc6a3d79ef942f7cccc60cbe714ea3cf73fb5f3b88da58c3cf46bae7f"
     },
     {
       "path": "scripts/patch_existing_pages_workflow_for_proof_cards_v11.py",
