@@ -262,3 +262,179 @@ svg {
     font-size: 13px !important;
   }
 }
+
+/* v86 top-blank + footer-button contrast hotfix 3.
+   Problem: older preserve CSS used body > *:not(.v86-ai-canvas), which accidentally
+   pulled .asi-canvas and .asi-bg into normal document flow. That created a blank
+   particle/aura viewport above the actual homepage. Keep the old site look, but pin
+   all background/canvas layers behind the content and guarantee live hero text is visible. */
+.asi-bg,
+.asi-canvas,
+.v86-ai-canvas,
+canvas.asi-canvas,
+canvas.v86-ai-canvas {
+  position: fixed !important;
+  inset: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  max-width: 100vw !important;
+  max-height: 100vh !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  pointer-events: none !important;
+  transform: none !important;
+  z-index: 0 !important;
+  display: block !important;
+}
+.asi-bg { z-index: 0 !important; }
+.asi-canvas,
+.v86-ai-canvas { z-index: 1 !important; }
+body > *:not(.asi-bg):not(.asi-canvas):not(.v86-ai-canvas) {
+  position: relative !important;
+  z-index: 3 !important;
+}
+header.top,
+.top,
+.site-header,
+header {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 1000 !important;
+}
+main,
+#main,
+.asi-hero,
+.hero,
+.v71-hero,
+.gm-hero {
+  position: relative !important;
+  z-index: 5 !important;
+}
+.asi-hero {
+  margin-top: 0 !important;
+  padding-top: clamp(54px, 7vw, 92px) !important;
+  min-height: auto !important;
+}
+.asi-hero .asi-wrap,
+.asi-hero .asi-grid,
+.asi-hero h1,
+.asi-hero p,
+.asi-hero .asi-kicker,
+.asi-hero .asi-actions,
+.asi-hero .asi-chips,
+.asi-hero .asi-visual {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+.asi-reveal {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
+}
+.asi-hero h1,
+.hero h1,
+.v71-title,
+.gm-hero h1 {
+  color: #ffffff !important;
+  text-shadow: 0 2px 28px rgba(0,0,0,.24) !important;
+}
+.asi-hero p,
+.hero p,
+.v71-lead,
+.gm-hero p {
+  color: #eaf6ff !important;
+}
+/* Strong, accessible buttons/chips everywhere, especially footer controls that previously
+   rendered as pale text on white pills. */
+a.asi-btn,
+.asi-btn,
+a.btn,
+.btn,
+a.button,
+.button,
+.cta a,
+a[class*="btn"],
+a[class*="button"],
+footer a,
+.footer a,
+.site-footer a,
+.gm-footer a,
+footer .pill,
+footer .chip,
+footer .btn,
+footer .button {
+  text-decoration: none !important;
+  text-shadow: none !important;
+  min-height: 44px !important;
+  line-height: 1.15 !important;
+}
+footer a,
+.footer a,
+.site-footer a,
+.gm-footer a,
+footer .pill,
+footer .chip,
+footer .btn,
+footer .button,
+.footer .pill,
+.footer .chip,
+.site-footer .pill,
+.site-footer .chip {
+  color: #06111f !important;
+  background: #ffffff !important;
+  border: 1px solid rgba(255,255,255,.75) !important;
+  box-shadow: 0 12px 34px rgba(0,0,0,.28) !important;
+  font-weight: 950 !important;
+  opacity: 1 !important;
+}
+footer a:hover,
+.footer a:hover,
+.site-footer a:hover,
+.gm-footer a:hover {
+  color: #06111f !important;
+  background: linear-gradient(135deg,#ffe08a,#ffffff) !important;
+}
+.dark a.asi-btn:not(.primary),
+.asi-section.dark a.asi-btn:not(.primary),
+.hero a.asi-btn:not(.primary),
+.asi-hero a.asi-btn:not(.primary),
+.dark .btn:not(.primary),
+.hero .btn:not(.primary),
+.asi-hero .btn:not(.primary) {
+  color: #ffffff !important;
+  background: rgba(255,255,255,.14) !important;
+  border-color: rgba(255,255,255,.32) !important;
+}
+a.asi-btn.primary,
+.asi-btn.primary,
+.btn.primary,
+a.btn.primary,
+.primary {
+  color: #06111f !important;
+  background: linear-gradient(135deg,#ffe08a,#fff4c7) !important;
+  border-color: rgba(255,224,138,.85) !important;
+}
+@media (max-width: 920px) {
+  .asi-hero {
+    padding-top: 44px !important;
+    border-bottom-left-radius: 34px !important;
+    border-bottom-right-radius: 34px !important;
+  }
+  .asi-grid,
+  .asi-hero .asi-grid {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+  .asi-actions,
+  .cta,
+  .v71-actions {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+  .asi-actions a,
+  .cta a,
+  .v71-actions a {
+    width: 100% !important;
+  }
+}

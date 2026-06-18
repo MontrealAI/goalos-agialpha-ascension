@@ -101,7 +101,20 @@ async def main_async(site: Path, screenshots: bool):
                           for(const a of document.querySelectorAll('a,button')){const r=a.getBoundingClientRect(); if(r.width>8 && r.height>8) clickable++;}
                           if(clickable<3) err.push(`too few visible clickable controls: ${clickable}`);
                           const css = [...document.styleSheets].length;
-                          const hasDynamicAI=!!document.querySelector('.v86-ai-canvas,[class*="aura"],[class*="orbit"],[class*="rsi"],[class*="AI"]');
+                          const hasDynamicAI=!!document.querySelector('.v86-ai-canvas,.asi-canvas,.asi-bg,[class*="aura"],[class*="orbit"],[class*="rsi"],[class*="AI"]');
+                          if(location.pathname.endsWith('/index.html') || location.pathname === '/'){
+                            const h1=document.querySelector('h1');
+                            if(!h1) err.push('homepage missing h1');
+                            else {
+                              const r=h1.getBoundingClientRect(); const cs=getComputedStyle(h1);
+                              if(r.bottom < 0 || r.top > vh*.95 || r.width < 40 || r.height < 30 || cs.visibility==='hidden' || parseFloat(cs.opacity||'1') < .5) err.push('homepage hero h1 not visible in first viewport');
+                            }
+                            const canvas=document.querySelector('.asi-canvas,.v86-ai-canvas');
+                            if(canvas){ const cs=getComputedStyle(canvas); if(cs.position !== 'fixed') err.push('dynamic AI canvas is not fixed; it may create blank top space'); }
+                          }
+                          for(const a of document.querySelectorAll('footer a,.footer a,.site-footer a,.gm-footer a')){
+                            const r=a.getBoundingClientRect(); if(r.width>8 && r.height>8){ const cs=getComputedStyle(a); const txt=cs.color.replace(/\s/g,''); const bg=cs.backgroundColor.replace(/\s/g,''); if((bg.includes('255,255,255')||bg.includes('255,255,255,1')) && (txt.includes('255,255,255')||txt.includes('248,250,252')||txt.includes('255,255,255,1'))) err.push('footer link has pale text on white background'); }
+                          }
                           return {errors:err, warnings:warn, viewport:vw, height:de.scrollHeight, hasDynamicAI, css};
                         }""")
                         if data["errors"]:
