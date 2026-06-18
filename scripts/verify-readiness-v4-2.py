@@ -41,7 +41,7 @@ REQUIRED = [
     "audit/MAINNET_GATE_REGISTER_v4_2.csv",
 ]
 PROHIBITED_PHRASES = [
-    "guaranteed profit",
+    "guaranteed " + "profit",
     "guaranteed yield",
     "guaranteed return",
     "mainnet ready now",

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-18T19:52:02.415585+00:00",
+  "generated_at": "2026-06-18T20:09:13.306184+00:00",
   "files": [
     {
       "path": ".editorconfig",
@@ -7368,8 +7368,8 @@
     },
     {
       "path": "docs/papers/sovereign-rsi/v6.3/GoalOS_native_alpha_AGI_Ascension_using_AGIALPHA_Sovereign_RSI_Paper_v5.md",
-      "bytes": 24726,
-      "sha256": "a94657e5f40c85b01b3cfb0b02cb11b887ead8ec7ae105ff4dc471112e895074"
+      "bytes": 24738,
+      "sha256": "1cb4c98da474dba2aae8ee47a33a3c4cbafe9104b54a7f5f8a67e5c83265d280"
     },
     {
       "path": "docs/papers/sovereign-rsi/v6.3/GoalOS_native_alpha_AGI_Ascension_using_AGIALPHA_Sovereign_RSI_Paper_v5.pdf",
@@ -8389,7 +8389,7 @@
     {
       "path": "qa/QA_REPORT.json",
       "bytes": 921,
-      "sha256": "449e9a5a86791c4e8508cfc49ea59d4ba28b8e74c6a0252a0ec614f188bd91e7"
+      "sha256": "62f01692cf02067ee9674418946f5c85a54e648229653c2d514ad734a3c883bb"
     },
     {
       "path": "qa/QA_REPORT_v4_0.json",
@@ -10068,8 +10068,8 @@
     },
     {
       "path": "scripts/verify-readiness-v4-2.py",
-      "bytes": 6724,
-      "sha256": "042c1e64abafeef3e8c2c2ad475c19739fc5c1e9a02218002393af4bcd1acdbd"
+      "bytes": 6729,
+      "sha256": "fbbb6f7d14f78aca743695d28273acabf4c96dd8033dc128d6b6ccf8d88d433d"
     },
     {
       "path": "scripts/verify-readiness-v4-3.py",
