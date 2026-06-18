@@ -181,7 +181,10 @@ async function validateProof(chainId: bigint, finalOwner: string, manifestHash: 
     throw new Error("Final-owner proof target/chain/manifest mismatch");
   }
   proofMessageIncludesBindings(message, chainId, finalOwner, manifestHash);
-  if (Date.parse(proof.expiresAt) <= Date.now()) throw new Error("Final-owner proof expired");
+  const expiresAtMs = Date.parse(proof.expiresAt);
+  if (!Number.isFinite(expiresAtMs)) throw new Error("Final-owner proof expiry is invalid");
+  if (!message.includes(proof.expiresAt)) throw new Error("Final-owner proof message missing exact expiry binding");
+  if (expiresAtMs <= Date.now()) throw new Error("Final-owner proof expired");
   if (kind === "LEDGER_EOA") {
     const recovered = ethers.getAddress(ethers.verifyMessage(message, signature));
     if (recovered !== finalOwner) throw new Error(`Final-owner proof signature recovered ${recovered}, expected ${finalOwner}`);

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-18T17:53:12.190184+00:00",
+  "generated_at": "2026-06-18T18:11:06.351087+00:00",
   "files": [
     {
       "path": ".editorconfig",
@@ -8078,8 +8078,8 @@
     },
     {
       "path": "package.json",
-      "bytes": 18835,
-      "sha256": "725dff697274cc55faf502e551d5974ee292ff3f558ab7388f9aa2517028140f"
+      "bytes": 18858,
+      "sha256": "f5a208efeafc85eddbabf0767b3986247fb69d888e454d919b689d93dbc60f42"
     },
     {
       "path": "personal-proof-sprint.html",
@@ -9768,8 +9768,8 @@
     },
     {
       "path": "scripts/local-mainnet-fork-simulation.ts",
-      "bytes": 9186,
-      "sha256": "ef8e384881c4ae31f79d775cb98835e22e47b18552ba901a6dd3e010b1ae971b"
+      "bytes": 9486,
+      "sha256": "df409a60c55c27958f330490d85b0e5a5d77af6e058b9f08c57fec050227e974"
     },
     {
       "path": "scripts/mainnet-authorization-check.py",
@@ -9853,8 +9853,8 @@
     },
     {
       "path": "scripts/ownership/goalos-ownership-command-center.ts",
-      "bytes": 21017,
-      "sha256": "032f13e6d27c79f8e892ae61aa4bd46ecb4e86c9fda67ed63c30a187b024d1bd"
+      "bytes": 21262,
+      "sha256": "8d2690f6f08f35020f30651e49cf19f8cbc7a2d8c3d0ff9ec824a40f315658ff"
     },
     {
       "path": "scripts/patch_existing_pages_workflow_for_proof_cards_v11.py",

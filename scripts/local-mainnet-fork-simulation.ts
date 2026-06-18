@@ -87,7 +87,7 @@ async function main() {
     setDefaultEnv("MAINNET_TARGET", "ethereum");
     setDefaultEnv("ALLOW_MAINNET_DEPLOYMENT", "YES_PUBLIC_REPOSITORY_AUTHORIZED_MANUAL_DEPLOYMENT");
     setDefaultEnv("AGIALPHA_TOKEN_ADDRESS", AGIALPHA);
-    setDefaultEnv("SINGLE_DEPLOYER_INITIAL_ADMIN_MODE", "true");
+    setDefaultEnv("MULTISIG_RUNTIME_MODE", "true");
     setDefaultEnv("LEGAL_SIGNOFF_HASH", bytes32("2"));
     setDefaultEnv("TAX_SIGNOFF_HASH", bytes32("3"));
     setDefaultEnv("SECURITY_REVIEW_HASH", bytes32("4"));
@@ -104,8 +104,13 @@ async function main() {
     setDefaultEnv("SEPOLIA_EVIDENCE_HASH", process.env.SEPOLIA_REHEARSAL_EVIDENCE_HASH || bytes32("8"));
     setDefaultEnv("MAINNET_PREFLIGHT_HASH", "0x" + "e".repeat(64));
     setDefaultEnv("LEGACY_AGI_JOB_MANAGER_ADDRESS", "0xb3aaeb69b630f0299791679c063d68d6687481d1");
-    setDefaultEnv("FOUNDER_ADDRESS", signers[0].address);
-    setDefaultEnv("TREASURY_ADDRESS", signers[0].address);
+    setDefaultEnv("FOUNDER_ADDRESS", signers[1].address);
+    setDefaultEnv("TREASURY_ADDRESS", signers[2].address);
+    setDefaultEnv("COMMERCIALIZATION_PERFORMANCE_ADMIN", signers[3].address);
+    setDefaultEnv("PROOF_REWARDS_ADMIN", signers[4].address);
+    setDefaultEnv("LIQUIDITY_ADMIN", signers[5].address);
+    setDefaultEnv("SECURITY_ADMIN", signers[6].address);
+    setDefaultEnv("COMMUNITY_ADMIN", signers[7].address);
     try {
       const deployment = await deployGoalOSAGIALPHAAscension();
       deployedContracts = Object.keys(deployment.contracts || {}).length;

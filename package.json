@@ -151,7 +151,7 @@
     "ownership:sepolia:evidence": "OWNERSHIP_COMMAND=sepolia:evidence hardhat run --network ethereumSepolia scripts/ownership/goalos-ownership-command-center.ts",
     "ownership:mainnet:doctor": "OWNERSHIP_COMMAND=mainnet:doctor hardhat run --network ethereumMainnet scripts/ownership/goalos-ownership-command-center.ts",
     "ownership:mainnet:plan": "OWNERSHIP_COMMAND=mainnet:plan hardhat run --network ethereumMainnet scripts/ownership/goalos-ownership-command-center.ts",
-    "ownership:mainnet:fork-rehearsal": "OWNERSHIP_COMMAND=mainnet:fork-rehearsal hardhat run --network hardhat scripts/ownership/goalos-ownership-command-center.ts",
+    "ownership:mainnet:fork-rehearsal": "HARDHAT_FORK_MAINNET=1 OWNERSHIP_COMMAND=mainnet:fork-rehearsal hardhat run --network hardhat scripts/ownership/goalos-ownership-command-center.ts",
     "ownership:mainnet:transfer-local-gated": "OWNERSHIP_COMMAND=mainnet:transfer-local-gated hardhat run --network ethereumMainnet scripts/ownership/goalos-ownership-command-center.ts",
     "ownership:mainnet:verify": "OWNERSHIP_COMMAND=mainnet:verify hardhat run --network ethereumMainnet scripts/ownership/goalos-ownership-command-center.ts",
     "ownership:mainnet:evidence": "OWNERSHIP_COMMAND=mainnet:evidence hardhat run --network ethereumMainnet scripts/ownership/goalos-ownership-command-center.ts",
