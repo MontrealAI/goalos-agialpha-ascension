@@ -157,3 +157,40 @@ footer a:hover,.footer a:hover,.site-footer a:hover{
   *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
   .v86-ai-canvas{display:none!important}
 }
+
+/* v86 hotfix 2: proof-flow and SVG containment across the preserved actual site.
+   This fixes GitHub QA failures where long inline SVG flow diagrams inherited fixed
+   minimum widths from older pages and escaped cards at tablet/desktop widths. */
+[class*="flow"], [class*="Flow"], [class*="diagram"], [class*="Diagram"],
+[class*="visual"], [class*="Visual"], figure, .card, .panel, .world-card,
+.proof-card-visual, .figure-frame, .diagram-frame, .visual-shell {
+  max-width: 100% !important;
+  min-width: 0 !important;
+  overflow: hidden !important;
+  box-sizing: border-box !important;
+}
+[class*="flow"] svg, [class*="Flow"] svg, [class*="diagram"] svg, [class*="Diagram"] svg,
+[class*="visual"] svg, [class*="Visual"] svg, figure svg, .card svg, .panel svg,
+.world-card svg, .proof-card-visual svg, .figure-frame svg, .diagram-frame svg, .visual-shell svg,
+.pc20-flow svg, .pc21-flow svg, .pc22-flow svg, .pc23-flow svg, .pc24-flow svg, .pc25-flow svg,
+.pc26-flow svg, .pc27-flow svg, .pc28-flow svg, .pc29-flow svg, .pc30-flow svg, .pc31-flow svg,
+.treasury-flow svg, .v75-flow svg, .world-flow svg, .mission-flow svg {
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  height: auto !important;
+  display: block !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+}
+/* Make formerly horizontal proof pipelines readable without escaping panels. */
+.pc20-flow, .pc21-flow, .pc22-flow, .pc23-flow, .pc24-flow, .pc25-flow, .pc26-flow, .pc27-flow,
+.pc28-flow, .pc29-flow, .pc30-flow, .pc31-flow, .treasury-flow, .world-flow, .mission-flow {
+  overflow: hidden !important;
+  contain: layout paint !important;
+}
+@media (max-width: 720px){
+  [class*="flow"] svg text, [class*="Flow"] svg text, .treasury-flow svg text{
+    font-size: 15px !important;
+  }
+}
