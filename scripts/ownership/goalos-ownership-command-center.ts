@@ -24,6 +24,22 @@ const RUNTIME_OWNER_ENV = [
   "COMMUNITY_ADMIN",
   "APPROVED_PERMANENT_OWNER_ADDRESSES",
 ];
+const RUNTIME_ADDRESS_GETTERS = [
+  "treasury",
+  "founder",
+  "commercializationAdmin",
+  "proofRewardsAdmin",
+  "liquidityAdmin",
+  "securityAdmin",
+  "communityAdmin",
+  "agialphaToken",
+  "credentialRegistry",
+  "evaluatorStaking",
+  "jobRegistry",
+  "legacyAGIJobManager",
+  "proofSubmissionRegistry",
+  "reputationRegistry",
+];
 const AGIALPHA = "AGIALPHA";
 const ERC173 = "0x7f5828d0";
 const EIP1271_MAGIC_VALUE = "0x1626ba7e";
@@ -167,6 +183,7 @@ async function contractAt(address: string): Promise<any> {
       "function supportsInterface(bytes4) view returns (bool)",
       "function hasRole(bytes32,address) view returns (bool)",
       ...MANAGED_ROLES.map((role) => `function ${role}() view returns (bytes32)`),
+      ...RUNTIME_ADDRESS_GETTERS.map((getter) => `function ${getter}() view returns (address)`),
       "function managedOwnershipRoleCount() view returns (uint256)",
       "event OwnershipTransferred(address indexed previousOwner,address indexed newOwner)",
       "event GoalOSOwnershipRolesMigrated(address indexed previousOwner,address indexed newOwner)",
@@ -178,6 +195,19 @@ async function contractAt(address: string): Promise<any> {
 async function roleIds(c: any): Promise<Record<string, string>> {
   const out: Record<string, string> = {};
   for (const role of MANAGED_ROLES) out[role] = await c[role]();
+  return out;
+}
+
+async function runtimeAddressAudit(c: any, disposableOwner: string): Promise<Array<{ getter: string; value: string; ok: boolean }>> {
+  const out: Array<{ getter: string; value: string; ok: boolean }> = [];
+  for (const getter of RUNTIME_ADDRESS_GETTERS) {
+    try {
+      const value = ethers.getAddress(await c[getter]());
+      out.push({ getter, value, ok: value !== disposableOwner });
+    } catch {
+      // Getter is absent on this contract or not callable with the expected address return.
+    }
+  }
   return out;
 }
 
@@ -394,6 +424,7 @@ async function verify(label: string): Promise<void> {
     const c = await contractAt(entry.address);
     const ids = await roleIds(c);
     const owner = ethers.getAddress(await c.owner());
+    const runtimeAddresses = await runtimeAddressAudit(c, deployerAddress);
     const ownerIsFinal = owner === finalOwner;
     const ownerIsApprovedPermanent = permanentOwners.has(owner);
     let ok = ownerIsFinal || ownerIsApprovedPermanent;
@@ -402,7 +433,8 @@ async function verify(label: string): Promise<void> {
       if (ownerIsApprovedPermanent && !(await c.hasRole(id, owner))) ok = false;
       if (await c.hasRole(id, deployerAddress)) ok = false;
     }
-    results.push({ ...entry, owner, ownerClass: ownerIsFinal ? "FINAL_OWNER" : ownerIsApprovedPermanent ? "APPROVED_PERMANENT_OWNER" : "UNEXPECTED", ok });
+    if (runtimeAddresses.some((item) => !item.ok)) ok = false;
+    results.push({ ...entry, owner, ownerClass: ownerIsFinal ? "FINAL_OWNER" : ownerIsApprovedPermanent ? "APPROVED_PERMANENT_OWNER" : "UNEXPECTED", runtimeAddresses, ok });
   }
   const failed = results.filter((result) => !result.ok);
   if (failed.length) throw new Error(`Ownership verification failed for ${failed.map((f) => f.name).join(",")}`);

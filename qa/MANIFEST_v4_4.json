@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-18T18:39:47.045910+00:00",
+  "generated_at": "2026-06-18T19:29:38.470492+00:00",
   "files": [
     {
       "path": ".editorconfig",
@@ -8018,8 +8018,8 @@
     },
     {
       "path": "hardhat.config.ts",
-      "bytes": 1887,
-      "sha256": "3b1884678b5c7a2945953326e7a15779fa969980cdd901c6af4fded2db475efe"
+      "bytes": 1971,
+      "sha256": "6dca807ac55b81b05d2edd69e0df1e91cb07cf673db83f0314025b153484fd1c"
     },
     {
       "path": "how-it-works.html",
@@ -8389,7 +8389,7 @@
     {
       "path": "qa/QA_REPORT.json",
       "bytes": 921,
-      "sha256": "a55698bd9ceb1ae24d876b5b20ac705702a90409efb12c62d748a192b5e02f19"
+      "sha256": "e40eb675812f5ee85dfd6099d0f5cc04114a3cf19c0ee85a5d2f283009931ff6"
     },
     {
       "path": "qa/QA_REPORT_v4_0.json",
@@ -9853,8 +9853,8 @@
     },
     {
       "path": "scripts/ownership/goalos-ownership-command-center.ts",
-      "bytes": 23253,
-      "sha256": "d5d1415f8ab90d438d99f0627766899236f8851c5e06167f59b4ef0be5002513"
+      "bytes": 24366,
+      "sha256": "856925de40320f6c491ad3c5f914a1172abfe883f9769b24fe232f6780001343"
     },
     {
       "path": "scripts/patch_existing_pages_workflow_for_proof_cards_v11.py",
