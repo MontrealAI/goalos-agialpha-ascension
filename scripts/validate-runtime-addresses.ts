@@ -39,6 +39,7 @@ export function runtimeAddressMode(): RuntimeAddressMode {
 }
 
 export function loadRuntimeAddresses(deployerAddress: string): { mode: RuntimeAddressMode; addresses: RuntimeAddresses } {
+  const deployer = requireValidAddress("deployer", deployerAddress);
   const mode = runtimeAddressMode();
   if (mode === "SINGLE_DEPLOYER_INITIAL_ADMIN_MODE") {
     requireValidAddress("single deployer", deployerAddress);
@@ -48,6 +49,11 @@ export function loadRuntimeAddresses(deployerAddress: string): { mode: RuntimeAd
   const addresses = Object.fromEntries(
     Object.entries(ENV_MAP).map(([key, envName]) => [key, requireValidAddress(envName, process.env[envName])])
   ) as RuntimeAddresses;
+  for (const [key, value] of Object.entries(addresses) as [keyof RuntimeAddresses, string][]) {
+    if (value === deployer) {
+      throw new Error(`Mainnet deployment blocked: ${ENV_MAP[key]} must not equal the disposable deployer. Use FINAL_OWNER_ADDRESS or an approved permanent multisig/controller address.`);
+    }
+  }
   return { mode, addresses };
 }
 

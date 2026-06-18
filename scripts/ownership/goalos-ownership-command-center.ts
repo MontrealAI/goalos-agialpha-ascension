@@ -305,6 +305,7 @@ async function transfer(label: string): Promise<void> {
   requireExpectedChain(label, net.chainId);
   forbidCiMainnet(net.chainId);
   const finalOwner = requireAddress("FINAL_OWNER_ADDRESS");
+  const permanentOwners = optionalAddressesFromEnv();
   const [deployer] = await ethers.getSigners();
   const deployerAddress = ethers.getAddress(deployer.address);
   const manifest = readManifest(label);
@@ -312,6 +313,10 @@ async function transfer(label: string): Promise<void> {
   if (!fs.existsSync(p)) throw new Error("Run ownership plan first");
   const loadedPlan = JSON.parse(fs.readFileSync(p, "utf8"));
   validateLoadedPlan(loadedPlan, label, net.chainId, manifest.hash, deployerAddress, finalOwner);
+  const currentProof = await validateProof(net.chainId, finalOwner, manifest.hash);
+  if (loadedPlan.finalOwnerControlProof?.required && loadedPlan.finalOwnerControlProof.commitment !== currentProof.commitment) {
+    throw new Error("Final-owner control proof changed since plan creation; rerun ownership plan");
+  }
   if (net.chainId === 1n && process.env.OWNERSHIP_MAINNET_CONFIRMATION !== `ETHEREUM_MAINNET-1-${finalOwner}-${loadedPlan.planHash}`) {
     throw new Error("Missing exact OWNERSHIP_MAINNET_CONFIRMATION");
   }
@@ -320,7 +325,13 @@ async function transfer(label: string): Promise<void> {
   for (const entry of loadedPlan.managedContracts as PlannedEntry[]) {
     const c = (await contractAt(entry.address)).connect(deployer);
     const owner = ethers.getAddress(await c.owner());
-    if (owner === finalOwner || entry.action === "PERMANENT_RUNTIME_OWNER") continue;
+    if (owner === finalOwner) continue;
+    if (entry.action === "PERMANENT_RUNTIME_OWNER") {
+      if (owner !== ethers.getAddress(entry.currentOwner) || !permanentOwners.has(owner)) {
+        throw new Error(`Unexpected runtime owner for ${entry.name}: live ${owner}, planned ${entry.currentOwner}`);
+      }
+      continue;
+    }
     if (owner !== deployerAddress || entry.action !== "TRANSFER") throw new Error(`Unexpected owner/action for ${entry.name}: ${owner}/${entry.action}`);
     const tx = await c.transferOwnership(finalOwner);
     journalData.transactions.push({ name: entry.name, address: entry.address, hash: tx.hash, submittedAt: new Date().toISOString() });
