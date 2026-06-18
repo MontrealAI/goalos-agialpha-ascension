@@ -1,0 +1,44 @@
+name: GoalOS AGIALPHA Ascension v86 Smoke Test
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'website/v86_actual_site/**'
+      - 'scripts/build_goalos_agialpha_ascension_website_v86.py'
+      - 'scripts/verify_goalos_agialpha_ascension_website_v86.py'
+      - 'scripts/visual_layout_check_v86.py'
+      - '.github/workflows/goalos-agialpha-ascension-v86-smoke-test.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  smoke-test:
+    name: Build, verify, and layout-test v86
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build preserved actual website
+        run: python3 scripts/build_goalos_agialpha_ascension_website_v86.py --out site
+      - name: Verify content, links, claims, and files
+        run: python3 scripts/verify_goalos_agialpha_ascension_website_v86.py --site site
+      - name: Install Playwright Chromium
+        run: |
+          python3 -m pip install --upgrade pip
+          python3 -m pip install playwright
+          python3 -m playwright install --with-deps chromium
+      - name: Run browser layout and mobile QA
+        run: python3 scripts/visual_layout_check_v86.py --site site --screenshots
+      - name: Reject archives in public site
+        run: |
+          if find site \( -name '*.zip' -o -name '*.7z' -o -name '*.tar' -o -name '*.gz' -o -name '*.rar' \) -print | grep -q .; then
+            echo 'Archive file found inside public site.'
+            exit 1
+          fi
+      - name: Upload QA evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: goalos-v86-smoke-qa
+          path: site/qa
