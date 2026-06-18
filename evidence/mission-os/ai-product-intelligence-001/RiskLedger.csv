@@ -1,0 +1,5 @@
+risk_id,risk,likelihood,impact,mitigation
+R-001,Unsupported claim promotion,medium,high,ClaimBoundaryReport and human review before publication.
+R-002,Source freshness drift,medium,medium,Record retrieval dates and refresh time-sensitive facts.
+R-003,Private data leakage,low,high,Public/private boundary and secret scan before PR.
+R-004,Action without governance,low,high,"No auto-merge, no token movement, no Mainnet broadcast."

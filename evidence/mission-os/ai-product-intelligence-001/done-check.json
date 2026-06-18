@@ -1,0 +1,14 @@
+{
+  "checked_at": "2026-06-15T16:04:08+00:00",
+  "done": true,
+  "gates": {
+    "claim_boundary_passed": true,
+    "human_review_ready": true,
+    "no_auto_merge": true,
+    "no_mainnet_broadcast": true,
+    "no_token_movement": true,
+    "qa_passed": true,
+    "required_artifacts": true
+  },
+  "missing": []
+}
