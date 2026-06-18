@@ -1,0 +1,73 @@
+step,caller,contract,function,simulated_amount,state_change,notes
+1,Treasury / Sponsor,AGIALPHA,"approve(ProofTreasuryVault,totalBudget)",100000000,simulation_only_approval,No wallet; no token movement; template only
+2,Treasury / Sponsor,ProofTreasuryVault,"fundEpoch(epochId,totalBudget,policyRoot)",100000000,epoch_budget_recorded,Simulation ledger only
+3,Operator,MandateEpochRegistry,"openEpoch(mandateHash,epochPolicyHash,budgetRoot)",0,epoch_opened_simulated,No chain broadcast
+4,Operator,ExternalReplayMarket,"openReplayRound(epochId,replayPolicyRoot)",7500000,external_replay_market_opened_simulated,Replay grants are simulation-only
+5,Governance Chamber,InstitutionalStressGate,"openStressGauntlet(epochId,scenarioRoot)",6500000,stress_gauntlet_opened_simulated,Stress clearance gates institutional scale
+6.1.1,Sponsor,JobRegistry,"postJob(missionHash,reward,evidenceURI,deadline,riskClass)",8800000,job_posted_simulated,AI-First Startup Proof-to-Revenue Wedge
+6.1.2,Builder,JobClaimBondManager,"claimJob(jobId,claimBond,proofBond)",200000,builder_bond_locked_simulated,No token movement
+6.1.3,Builder,ProofSubmissionRegistry,"submitProof(jobId,proofBundleHash,docketURI,alphaWUEstimate)",0,proof_submitted_simulated,A004-001
+6.1.4,Replay Council,ExternalReplayMarket,"submitReplayAttestation(jobId,replayVerdict,replayHash)",0,passed,External replay gate
+6.1.5,Stress Gate,InstitutionalStressGate,"recordStressVerdict(jobId,stressVerdict,stressRoot)",0,passed,Stress clearance gates institutional scale
+6.1.6,Protocol,JobRegistry,"releaseReward(jobId,builder)",8800000,settled_stress_cleared,Released only if gates pass
+6.1.7,Protocol,AlphaWorkUnitLedger,"recordAlphaWorkUnits(jobId,alphaWU,proofRoot)",0,alpha_wu_recorded,142.5
+6.2.1,Sponsor,JobRegistry,"postJob(missionHash,reward,evidenceURI,deadline,riskClass)",7600000,job_posted_simulated,Enterprise AI Governance Evidence Room
+6.2.2,Builder,JobClaimBondManager,"claimJob(jobId,claimBond,proofBond)",185000,builder_bond_locked_simulated,No token movement
+6.2.3,Builder,ProofSubmissionRegistry,"submitProof(jobId,proofBundleHash,docketURI,alphaWUEstimate)",0,proof_submitted_simulated,A004-002
+6.2.4,Replay Council,ExternalReplayMarket,"submitReplayAttestation(jobId,replayVerdict,replayHash)",0,passed,External replay gate
+6.2.5,Stress Gate,InstitutionalStressGate,"recordStressVerdict(jobId,stressVerdict,stressRoot)",0,passed,Stress clearance gates institutional scale
+6.2.6,Protocol,JobRegistry,"releaseReward(jobId,builder)",7600000,settled_stress_cleared,Released only if gates pass
+6.2.7,Protocol,AlphaWorkUnitLedger,"recordAlphaWorkUnits(jobId,alphaWU,proofRoot)",0,alpha_wu_recorded,118.2
+6.3.1,Sponsor,JobRegistry,"postJob(missionHash,reward,evidenceURI,deadline,riskClass)",9200000,job_posted_simulated,Cyber Defensive Organ Remediation Kit
+6.3.2,Builder,JobClaimBondManager,"claimJob(jobId,claimBond,proofBond)",250000,builder_bond_locked_simulated,No token movement
+6.3.3,Builder,ProofSubmissionRegistry,"submitProof(jobId,proofBundleHash,docketURI,alphaWUEstimate)",0,proof_submitted_simulated,A004-003
+6.3.4,Replay Council,ExternalReplayMarket,"submitReplayAttestation(jobId,replayVerdict,replayHash)",0,pending,External replay gate
+6.3.5,Stress Gate,InstitutionalStressGate,"recordStressVerdict(jobId,stressVerdict,stressRoot)",0,pending,Stress clearance gates institutional scale
+6.3.6,Protocol,JobRegistry,"releaseReward(jobId,builder)",0,locked_pending_external_replay,Released only if gates pass
+6.4.1,Sponsor,JobRegistry,"postJob(missionHash,reward,evidenceURI,deadline,riskClass)",6800000,job_posted_simulated,Compute Efficiency Foundry Candidate
+6.4.2,Builder,JobClaimBondManager,"claimJob(jobId,claimBond,proofBond)",170000,builder_bond_locked_simulated,No token movement
+6.4.3,Builder,ProofSubmissionRegistry,"submitProof(jobId,proofBundleHash,docketURI,alphaWUEstimate)",0,proof_submitted_simulated,A004-004
+6.4.4,Replay Council,ExternalReplayMarket,"submitReplayAttestation(jobId,replayVerdict,replayHash)",0,passed,External replay gate
+6.4.5,Stress Gate,InstitutionalStressGate,"recordStressVerdict(jobId,stressVerdict,stressRoot)",0,failed,Stress clearance gates institutional scale
+6.4.6,Protocol,JobRegistry,"releaseReward(jobId,builder)",3740000,settled_but_scale_blocked_stress_failed,Released only if gates pass
+6.4.7,Protocol,AlphaWorkUnitLedger,"recordAlphaWorkUnits(jobId,alphaWU,proofRoot)",0,alpha_wu_recorded,57.2
+6.5.1,Sponsor,JobRegistry,"postJob(missionHash,reward,evidenceURI,deadline,riskClass)",7400000,job_posted_simulated,Scientific Workflow Invention Dossier
+6.5.2,Builder,JobClaimBondManager,"claimJob(jobId,claimBond,proofBond)",195000,builder_bond_locked_simulated,No token movement
+6.5.3,Builder,ProofSubmissionRegistry,"submitProof(jobId,proofBundleHash,docketURI,alphaWUEstimate)",0,proof_submitted_simulated,A004-005
+6.5.4,Replay Council,ExternalReplayMarket,"submitReplayAttestation(jobId,replayVerdict,replayHash)",0,failed,External replay gate
+6.5.5,Stress Gate,InstitutionalStressGate,"recordStressVerdict(jobId,stressVerdict,stressRoot)",0,failed,Stress clearance gates institutional scale
+6.5.6,Protocol,JobRegistry,"releaseReward(jobId,builder)",0,blocked_external_replay_failed,Released only if gates pass
+6.6.1,Sponsor,JobRegistry,"postJob(missionHash,reward,evidenceURI,deadline,riskClass)",6600000,job_posted_simulated,Agentic Work Marketplace Pilot Ledger
+6.6.2,Builder,JobClaimBondManager,"claimJob(jobId,claimBond,proofBond)",155000,builder_bond_locked_simulated,No token movement
+6.6.3,Builder,ProofSubmissionRegistry,"submitProof(jobId,proofBundleHash,docketURI,alphaWUEstimate)",0,proof_submitted_simulated,A004-006
+6.6.4,Replay Council,ExternalReplayMarket,"submitReplayAttestation(jobId,replayVerdict,replayHash)",0,passed,External replay gate
+6.6.5,Stress Gate,InstitutionalStressGate,"recordStressVerdict(jobId,stressVerdict,stressRoot)",0,failed,Stress clearance gates institutional scale
+6.6.6,Protocol,JobRegistry,"releaseReward(jobId,builder)",0,rejected_claim_boundary_fail,Released only if gates pass
+6.7.1,Sponsor,JobRegistry,"postJob(missionHash,reward,evidenceURI,deadline,riskClass)",4300000,job_posted_simulated,Regular-Person Utility Mission Pack
+6.7.2,Builder,JobClaimBondManager,"claimJob(jobId,claimBond,proofBond)",95000,builder_bond_locked_simulated,No token movement
+6.7.3,Builder,ProofSubmissionRegistry,"submitProof(jobId,proofBundleHash,docketURI,alphaWUEstimate)",0,proof_submitted_simulated,A004-007
+6.7.4,Replay Council,ExternalReplayMarket,"submitReplayAttestation(jobId,replayVerdict,replayHash)",0,not_required,External replay gate
+6.7.5,Stress Gate,InstitutionalStressGate,"recordStressVerdict(jobId,stressVerdict,stressRoot)",0,passed,Stress clearance gates institutional scale
+6.7.6,Protocol,JobRegistry,"releaseReward(jobId,builder)",4300000,settled_low_risk_stress_cleared,Released only if gates pass
+6.7.7,Protocol,AlphaWorkUnitLedger,"recordAlphaWorkUnits(jobId,alphaWU,proofRoot)",0,alpha_wu_recorded,64.0
+6.8.1,Sponsor,JobRegistry,"postJob(missionHash,reward,evidenceURI,deadline,riskClass)",10200000,job_posted_simulated,Sovereign AI Operations Control Room
+6.8.2,Builder,JobClaimBondManager,"claimJob(jobId,claimBond,proofBond)",310000,builder_bond_locked_simulated,No token movement
+6.8.3,Builder,ProofSubmissionRegistry,"submitProof(jobId,proofBundleHash,docketURI,alphaWUEstimate)",0,proof_submitted_simulated,A004-008
+6.8.4,Replay Council,ExternalReplayMarket,"submitReplayAttestation(jobId,replayVerdict,replayHash)",0,passed,External replay gate
+6.8.5,Stress Gate,InstitutionalStressGate,"recordStressVerdict(jobId,stressVerdict,stressRoot)",0,passed,Stress clearance gates institutional scale
+6.8.6,Protocol,JobRegistry,"releaseReward(jobId,builder)",10200000,settled_stress_cleared,Released only if gates pass
+6.8.7,Protocol,AlphaWorkUnitLedger,"recordAlphaWorkUnits(jobId,alphaWU,proofRoot)",0,alpha_wu_recorded,170.0
+6.9.1,Sponsor,JobRegistry,"postJob(missionHash,reward,evidenceURI,deadline,riskClass)",7000000,job_posted_simulated,Kardashev Proxy Capacity Ledger
+6.9.2,Builder,JobClaimBondManager,"claimJob(jobId,claimBond,proofBond)",250000,builder_bond_locked_simulated,No token movement
+6.9.3,Builder,ProofSubmissionRegistry,"submitProof(jobId,proofBundleHash,docketURI,alphaWUEstimate)",0,proof_submitted_simulated,A004-009
+6.9.4,Replay Council,ExternalReplayMarket,"submitReplayAttestation(jobId,replayVerdict,replayHash)",0,pending,External replay gate
+6.9.5,Stress Gate,InstitutionalStressGate,"recordStressVerdict(jobId,stressVerdict,stressRoot)",0,pending,Stress clearance gates institutional scale
+6.9.6,Protocol,JobRegistry,"releaseReward(jobId,builder)",0,locked_or_rejected_not_accepted,Released only if gates pass
+6.10.1,Sponsor,JobRegistry,"postJob(missionHash,reward,evidenceURI,deadline,riskClass)",5200000,job_posted_simulated,Proof-Native Agent Workbench Upgrade
+6.10.2,Builder,JobClaimBondManager,"claimJob(jobId,claimBond,proofBond)",145000,builder_bond_locked_simulated,No token movement
+6.10.3,Builder,ProofSubmissionRegistry,"submitProof(jobId,proofBundleHash,docketURI,alphaWUEstimate)",0,proof_submitted_simulated,A004-010
+6.10.4,Replay Council,ExternalReplayMarket,"submitReplayAttestation(jobId,replayVerdict,replayHash)",0,passed,External replay gate
+6.10.5,Stress Gate,InstitutionalStressGate,"recordStressVerdict(jobId,stressVerdict,stressRoot)",0,failed,Stress clearance gates institutional scale
+6.10.6,Protocol,JobRegistry,"releaseReward(jobId,builder)",0,rejected_qa_fail,Released only if gates pass
+7,Treasury Router,TreasuryRouter,"allocateSovereignCapacity(epochId,reserveRoot,riskAdjustedPolicy)",9000000,capacity_reserve_allocated_simulated,Institutional scale only for stress-cleared proof.
+8,Chronicle,AEPChronicleRegistry,"recordEntry(epochId,chronicleHash)",0,chronicle_entry_recorded_simulated,Public-alpha record only.

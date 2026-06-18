@@ -1,0 +1,9 @@
+job_id,domain,alpha_wu_estimate,alpha_wu_recorded,proof_quality,validator_trust,reuse_potential,user_proof_strength,capacity_leverage,safety_margin,proof_root
+PTS003-J01,AI-First Startup,380,380.0,0.92,0.93,0.88,0.84,0.75,0.96,263fbd8c7df35a8eb0c559e54c287fabaad40a0a3df395765d83b7d34c418950
+PTS003-J02,Enterprise Governance,310,310.0,0.88,0.91,0.81,0.76,0.7,0.94,756e69b009a6a45de6ad58e5283c7abbbdc63ab40dc5ec83c7b4f417fe69cb79
+PTS003-J03,Defensive Security,330,0.0,0.86,0.88,0.84,0.64,0.77,0.9,8aca07fbdf86a43f12cf3beaaac4bb8e6570534a064fb7c326a94eb950914c99
+PTS003-J04,Compute Efficiency,350,0.0,0.77,0.62,0.79,0.55,0.91,0.7,1f158759618808800d4c196b14ca3a44192e34667b496b33d108b037a38b2f3e
+PTS003-J05,Scientific Invention,260,0.0,0.73,0.8,0.76,0.5,0.79,0.85,350cd1840afb643c00621163e4e69b420c89fa3a7ad97c2e9d3790629210528a
+PTS003-J06,Agentic Market,210,0.0,0.58,0.52,0.62,0.4,0.65,0.58,ea86acbb5d95434c8c440a5d2cfcd7aa8abc6e8cf99cf7652d0f3135ce50f312
+PTS003-J07,Regular-Person Utility,180,180.0,0.8,0.86,0.82,0.73,0.55,0.97,b9071b6ebe8cfdc12bed061ef2413e69eeff1a49a19a21d7eac1e96bae9244b4
+PTS003-J08,Sovereign Operations,0,0.0,0.4,0.45,0.55,0.2,0.8,0.35,5e89a9a05c4d2d598ed51039a6b33054974d81b37dad562a0250a527dbb857ca

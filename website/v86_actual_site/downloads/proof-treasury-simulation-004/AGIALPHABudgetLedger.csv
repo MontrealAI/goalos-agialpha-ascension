@@ -1,0 +1,9 @@
+bucket,configured_amount,scaled_amount,purpose
+challenge_and_slashing_reserve,6000000,6000000,challenge and slashing reserve
+compute_credit_pool,8000000,8000000,compute credit pool
+evidence_publication_pool,2000000,2000000,evidence publication pool
+external_replay_grants,7500000,7500000,external replay grants
+mission_reward_escrows,52000000,52000000,mission reward escrows
+safety_rollback_reserve,6500000,6500000,safety rollback reserve
+sovereign_capacity_reserve,9000000,9000000,sovereign capacity reserve
+validator_bonds_and_rewards,9000000,9000000,validator bonds and rewards

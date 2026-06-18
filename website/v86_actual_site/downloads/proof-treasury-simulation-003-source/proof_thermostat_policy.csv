@@ -1,0 +1,6 @@
+signal,actuator,rule
+external_replay_pass_rate,capacity_auction_pool,Higher pass rate permits larger replay-cleared capacity allocation.
+external_replay_fail_rate,validator_pressure,"Failure increases reviewer quorum, challenge windows, and slashing review."
+claim_boundary_fail_rate,settlement_speed,Claim-boundary failures block settlement and require rewrite.
+validator_false_verdict_rate,slashing_parameters,False approvals or false rejections update validator trust and simulated slashing.
+proof_debt,next_epoch_policy,High proof debt increases replay grants and reduces speculative exploration.

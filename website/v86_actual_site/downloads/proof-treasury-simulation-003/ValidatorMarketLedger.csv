@@ -1,0 +1,25 @@
+validator,job_id,verdict,final_replay_state,honest,simulated_reward,simulated_slash,trust_delta,notes
+V-A,PTS003-J01,approve,passed,True,8000,0,0.018,Validator market honesty scoring is simulation-only.
+V-B,PTS003-J01,approve,passed,True,8000,0,0.018,Validator market honesty scoring is simulation-only.
+V-C,PTS003-J01,approve,passed,True,8000,0,0.018,Validator market honesty scoring is simulation-only.
+V-A,PTS003-J02,approve,passed,True,8000,0,0.018,Validator market honesty scoring is simulation-only.
+V-B,PTS003-J02,approve,passed,True,8000,0,0.018,Validator market honesty scoring is simulation-only.
+V-C,PTS003-J02,approve,passed,True,8000,0,0.018,Validator market honesty scoring is simulation-only.
+V-A,PTS003-J03,approve,pending,False,0,22000,-0.075,Validator market honesty scoring is simulation-only.
+V-B,PTS003-J03,approve,pending,False,0,22000,-0.075,Validator market honesty scoring is simulation-only.
+V-C,PTS003-J03,approve,pending,False,0,22000,-0.075,Validator market honesty scoring is simulation-only.
+V-A,PTS003-J04,approve,failed,False,0,22000,-0.075,Validator market honesty scoring is simulation-only.
+V-B,PTS003-J04,approve,failed,False,0,22000,-0.075,Validator market honesty scoring is simulation-only.
+V-C,PTS003-J04,reject,failed,True,8000,0,0.018,Validator market honesty scoring is simulation-only.
+V-A,PTS003-J05,approve,pending,False,0,22000,-0.075,Validator market honesty scoring is simulation-only.
+V-B,PTS003-J05,pending,pending,True,0,0,0.018,Validator market honesty scoring is simulation-only.
+V-C,PTS003-J05,pending,pending,True,0,0,0.018,Validator market honesty scoring is simulation-only.
+V-A,PTS003-J06,approve,failed,False,0,22000,-0.075,Validator market honesty scoring is simulation-only.
+V-B,PTS003-J06,reject,failed,True,8000,0,0.018,Validator market honesty scoring is simulation-only.
+V-C,PTS003-J06,reject,failed,True,8000,0,0.018,Validator market honesty scoring is simulation-only.
+V-A,PTS003-J07,approve,not_required_low_risk,True,8000,0,0.018,Validator market honesty scoring is simulation-only.
+V-B,PTS003-J07,approve,not_required_low_risk,True,8000,0,0.018,Validator market honesty scoring is simulation-only.
+V-C,PTS003-J07,approve,not_required_low_risk,True,8000,0,0.018,Validator market honesty scoring is simulation-only.
+V-A,PTS003-J08,reject,not_applicable,True,8000,0,0.018,Validator market honesty scoring is simulation-only.
+V-B,PTS003-J08,reject,not_applicable,True,8000,0,0.018,Validator market honesty scoring is simulation-only.
+V-C,PTS003-J08,reject,not_applicable,True,8000,0,0.018,Validator market honesty scoring is simulation-only.

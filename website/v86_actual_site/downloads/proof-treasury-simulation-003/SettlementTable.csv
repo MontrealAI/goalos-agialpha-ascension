@@ -1,0 +1,9 @@
+job_id,name,domain,risk_class,reward_escrow,status,qa,claim_boundary,internal_replay,external_replay_required,external_replay,simulated_reward_released,simulated_locked,simulated_returned,simulated_slashed,alpha_wu_recorded,settlement_status,capacity_scale_eligible
+PTS003-J01,Proof-to-Revenue Launch Wedge,AI-First Startup,low,1000000,accepted,pass,pass,passed,True,passed,1000000,0,0,0,380.0,settled_external_replay_passed,True
+PTS003-J02,Enterprise AI Governance Docket,Enterprise Governance,medium,800000,accepted,pass,pass,passed,True,passed,800000,0,0,0,310.0,settled_external_replay_passed,True
+PTS003-J03,Cyber-Defensive Organ Evidence Docket,Defensive Security,medium,850000,accepted,pass,pass,passed,True,pending,0,850000,0,0,0.0,locked_pending_external_replay,False
+PTS003-J04,Compute Efficiency Capability Package,Compute Efficiency,medium,1050000,accepted,pass,pass,passed,True,failed,0,1050000,0,130000,0.0,blocked_external_replay_failed,False
+PTS003-J05,Scientific Invention Workflow Probe,Scientific Invention,medium,700000,accepted,pass,pass,pending,True,pending,0,700000,0,0,0.0,locked_pending_internal_replay,False
+PTS003-J06,Agentic Work Marketplace Prototype,Agentic Market,medium,600000,accepted,fail,pass,failed,True,failed,0,0,600000,25000,0.0,rejected_qa_fail,False
+PTS003-J07,Regular-Person Utility Grid Pilot,Regular-Person Utility,low,400000,accepted,pass,pass,passed,False,not_required_low_risk,400000,0,0,0,180.0,settled_low_risk_external_replay_not_required,True
+PTS003-J08,Sovereign AI Operations Claim Pack,Sovereign Operations,high,400000,rejected,pass,fail,not_applicable,True,not_applicable,0,0,400000,55000,0.0,rejected_claim_boundary_fail,False

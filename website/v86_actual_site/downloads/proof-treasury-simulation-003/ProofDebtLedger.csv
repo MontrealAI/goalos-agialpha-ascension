@@ -1,0 +1,6 @@
+job_id,reason,proof_debt_score,repair_required
+PTS003-J03,locked_pending_external_replay,0.15,complete replay before settlement
+PTS003-J04,blocked_external_replay_failed,0.75,investigate replay failure and slash/repair as needed
+PTS003-J05,locked_pending_internal_replay,0.2,complete replay before settlement
+PTS003-J06,rejected_qa_fail,0.65,fix QA failures and rerun
+PTS003-J08,rejected_claim_boundary_fail,0.9,rewrite claim boundary and rerun proof

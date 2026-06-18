@@ -1,0 +1,9 @@
+bucket,simulated_agialpha,purpose
+mission_reward_escrows,5800000,Default Proof Treasury Simulation 003 budget policy
+validator_bonds_and_rewards,800000,Default Proof Treasury Simulation 003 budget policy
+external_replay_grants,750000,Default Proof Treasury Simulation 003 budget policy
+challenge_and_slashing_reserve,500000,Default Proof Treasury Simulation 003 budget policy
+compute_credit_pool,600000,Default Proof Treasury Simulation 003 budget policy
+safety_and_rollback_reserve,500000,Default Proof Treasury Simulation 003 budget policy
+capacity_auction_pool,800000,Default Proof Treasury Simulation 003 budget policy
+evidence_publication_pool,250000,Default Proof Treasury Simulation 003 budget policy

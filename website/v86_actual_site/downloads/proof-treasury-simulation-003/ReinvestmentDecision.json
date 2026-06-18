@@ -1,0 +1,21 @@
+{
+  "alpha_work_units_recorded": 870.0,
+  "capacity_allocations": {
+    "AI-First Startup": 442070,
+    "Enterprise Governance": 256894,
+    "Regular-Person Utility": 101036
+  },
+  "capacity_auction_allocated": 800000,
+  "capacity_auction_pool": 800000,
+  "hard_rule": "No external replay, no capacity scale. Claim-boundary failure overrides all scores.",
+  "mainnet_broadcast": false,
+  "production_token_movement": false,
+  "simulated_locked_pending_replay": 2600000,
+  "simulated_returned_unsettled": 1000000,
+  "simulated_rewards_released": 2200000,
+  "simulated_validator_rewards": 120000,
+  "simulated_validator_slashed": 154000,
+  "simulated_work_object_slashed": 210000,
+  "simulation": "Proof Treasury Simulation 003",
+  "total_simulated_agialpha_budget": 10000000
+}

@@ -1,0 +1,8 @@
+scenario_id,name,category,severity,trigger,actuator,capital_at_risk,result,reserve_drawdown,notes
+S004-001,External replay market degradation,replay,0.28,external_replay_fail_rate > threshold,increase replay grants; slow settlement; raise replay quorum,4100000,cleared,738000,Simulation stress scenario; no funds move.
+S004-002,Validator collusion / false approval pocket,validator,0.34,validator_false_verdict_rate > threshold,increase bonds; slash dishonest verdicts; diversify council,5300000,failed,2226000,Simulation stress scenario; no funds move.
+S004-003,Claim-boundary overreach,claim_boundary,0.42,unsupported AGI/ASI/ROI/Mainnet claim detected,zero settlement; require rewrite; block public propagation,6600000,failed,2772000,Simulation stress scenario; no funds move.
+S004-004,Liquidity / coverage shock,coverage,0.31,reserve coverage below stress target,pause exploratory mandates; preserve settlement and disputes,7200000,cleared,1296000,Simulation stress scenario; no funds move.
+S004-005,Reward hacking / proxy score exploit,reward_hacking,0.26,score rises while replay/user proof fails,negative controls; delayed outcomes; red-team review,3900000,cleared,702000,Simulation stress scenario; no funds move.
+S004-006,Governance capture attempt,governance,0.22,policy bypass or emergency permission escalation,emergency brake; require human review; freeze scale,4800000,cleared,864000,Simulation stress scenario; no funds move.
+S004-007,Safety rollback drill,safety,0.18,high-risk domain requires rollback proof,reserve drawdown; rollback proof; quarantine affected class,2500000,cleared,450000,Simulation stress scenario; no funds move.

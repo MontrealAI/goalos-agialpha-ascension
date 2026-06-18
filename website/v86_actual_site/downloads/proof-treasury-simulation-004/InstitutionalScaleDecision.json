@@ -1,0 +1,20 @@
+{
+  "capacity_reserve_allocated": 9000000,
+  "claim_boundary_fail_rate": 0.1,
+  "core_line": "No stress clearance, no institutional scale.",
+  "decision": "institutional_scale_partial",
+  "external_replay_fail_rate": 0.1111,
+  "external_replay_pass_rate": 0.6667,
+  "external_replay_pending_rate": 0.2222,
+  "institutional_scale_pass": false,
+  "mainnet_broadcast": false,
+  "next_epoch_policy": "repair_claim_boundary_and_replay_failures_before_scale",
+  "production_token_movement": false,
+  "proof_debt": 0.2044,
+  "qa_fail_rate": 0.1,
+  "reserve_coverage_ratio": 2.2853,
+  "stress_clearance_rate_jobs": 0.4,
+  "stress_clearance_rate_scenarios": 0.7143,
+  "systemic_risk": 0.2223,
+  "validator_false_verdict_rate": 0.4286
+}

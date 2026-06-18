@@ -1,0 +1,13 @@
+{
+  "capacity_scale_gate": "partial_external_replay_cleared",
+  "claim_boundary_fail_rate": 0.125,
+  "external_replay_fail_rate": 0.2857,
+  "external_replay_pass_rate": 0.2857,
+  "external_replay_pending_rate": 0.2857,
+  "next_epoch_policy": "increase_external_replay_grants_and_validator_bonds",
+  "proof_debt": 0.2381,
+  "qa_fail_rate": 0.125,
+  "settlement_speed": "slow_until_external_replay",
+  "validator_false_verdict_rate": 0.2917,
+  "validator_pressure": "increase"
+}

@@ -1,0 +1,13 @@
+{
+  "capacity_auction_gate": "external_replay_cleared_only",
+  "claim_boundary_status": "PASS",
+  "created_at": "2026-06-16T18:18:16.123792+00:00",
+  "done": true,
+  "external_replay_gate": "enabled",
+  "mainnet_broadcast_performed": false,
+  "next_action": "Run Proof Treasury Simulation 004 after human review: delayed-outcome gauntlet and multi-epoch capacity compounding.",
+  "qa_status": "PASS",
+  "simulation_id": "proof-treasury-simulation-003",
+  "status": "DONE",
+  "token_movement_performed": false
+}

@@ -1,0 +1,11 @@
+job_id,name,domain,risk_class,reward_escrow,qa,claim_boundary,internal_replay,external_replay,stress_status,simulated_reward_released,simulated_locked,simulated_returned,simulated_slashed,alpha_wu_recorded,settlement_status,institutional_scale_eligible
+A004-001,AI-First Startup Proof-to-Revenue Wedge,AI-First Startup,medium,8800000,pass,pass,passed,passed,passed,8800000,0,0,0,142.5,settled_stress_cleared,True
+A004-002,Enterprise AI Governance Evidence Room,Enterprise Governance,medium,7600000,pass,pass,passed,passed,passed,7600000,0,0,0,118.2,settled_stress_cleared,True
+A004-003,Cyber Defensive Organ Remediation Kit,Cyber-Defensive Organ,high,9200000,pass,pass,passed,pending,pending,0,9200000,0,0,0.0,locked_pending_external_replay,False
+A004-004,Compute Efficiency Foundry Candidate,Compute & Efficiency,medium,6800000,pass,pass,passed,passed,failed,3740000,3060000,0,0,57.2,settled_but_scale_blocked_stress_failed,False
+A004-005,Scientific Workflow Invention Dossier,Scientific / Technical Invention,medium,7400000,pass,pass,passed,failed,failed,0,7400000,0,155000,0.0,blocked_external_replay_failed,False
+A004-006,Agentic Work Marketplace Pilot Ledger,Agentic Work Marketplace,medium,6600000,pass,fail,passed,passed,failed,0,0,6600000,145000,0.0,rejected_claim_boundary_fail,False
+A004-007,Regular-Person Utility Mission Pack,Regular-Person Utility,low,4300000,pass,pass,passed,not_required,passed,4300000,0,0,0,64.0,settled_low_risk_stress_cleared,True
+A004-008,Sovereign AI Operations Control Room,Sovereign AI Operations,high,10200000,pass,pass,passed,passed,passed,10200000,0,0,0,170.0,settled_stress_cleared,True
+A004-009,Kardashev Proxy Capacity Ledger,Civilizational Capacity Proxies,high,7000000,pass,pass,pending,pending,pending,0,7000000,0,0,0.0,locked_or_rejected_not_accepted,False
+A004-010,Proof-Native Agent Workbench Upgrade,Proof-Native Engineering,medium,5200000,fail,pass,passed,passed,failed,0,0,5200000,60000,0.0,rejected_qa_fail,False

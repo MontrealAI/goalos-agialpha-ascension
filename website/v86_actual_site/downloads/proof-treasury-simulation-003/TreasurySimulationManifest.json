@@ -1,0 +1,132 @@
+{
+  "acceptance_law": [
+    "No proof, no settlement.",
+    "No replay, no settlement for high-impact work.",
+    "No external replay, no capacity scale.",
+    "No governance, no acceleration.",
+    "No accepted ProofBundle, no alpha-Work Unit authority.",
+    "Claim-boundary failure overrides all scores."
+  ],
+  "budget_policy_matches_total": true,
+  "budget_policy_sum": 10000000,
+  "canonical_agialpha_token_reference": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
+  "created_at": "2026-06-16T18:18:16.123792+00:00",
+  "mainnet_broadcast_performed": false,
+  "mode": "simulation_only",
+  "no_private_key_required": true,
+  "no_wallet_required": true,
+  "outputs": [
+    {
+      "bytes": 653,
+      "file": "AGIALPHABudgetLedger.csv",
+      "sha256": "154f000a70ccd086cf1bb612941dd8ca0afd2da925be118818f568287b0a3cc7"
+    },
+    {
+      "bytes": 1231,
+      "file": "AlphaWorkUnitLedger.csv",
+      "sha256": "fb3bcabf9b6d101e92271e6260a2e3f7d48be77626b13c5e7886600dc5f9ad8a"
+    },
+    {
+      "bytes": 601,
+      "file": "CapacityAuctionAllocations.csv",
+      "sha256": "5fbd56ec38f63879837aacfd11aaf290ccfc3351e78667f091a698151d61e005"
+    },
+    {
+      "bytes": 1014,
+      "file": "ChronicleEntry.md",
+      "sha256": "54b6e3ef516f07aba325659994d4a9d166c4d0587cb3a4cef9ecbd11531920d2"
+    },
+    {
+      "bytes": 697,
+      "file": "ClaimBoundaryReport.md",
+      "sha256": "9ec2791572f0ba3dd9a3c979abca842287459fd99aa6a3380233c2901ad9385a"
+    },
+    {
+      "bytes": 6376,
+      "file": "ContractCallTrace.csv",
+      "sha256": "091ba8acb0c5be9fae7f947d84a55ffaaba3a87fd783ef191ffdb6e6822fb6cf"
+    },
+    {
+      "bytes": 1127,
+      "file": "ExternalReplayLedger.csv",
+      "sha256": "52d7454adc717493b704b65c757bd7adfb2b7a9ad987af3dd82c6fb937e3fd52"
+    },
+    {
+      "bytes": 472,
+      "file": "NoTokenMovementCertificate.md",
+      "sha256": "53ff1e71df3d16b6f32474309df1a3498983eeae69eabd385b5c37ec5faad4da"
+    },
+    {
+      "bytes": 457,
+      "file": "ProofDebtLedger.csv",
+      "sha256": "646c76d81b458643587bd32c64c33dfed8ca0cf3d87d82fbf79600f39b265fc2"
+    },
+    {
+      "bytes": 2379,
+      "file": "ProofTreasuryEvidenceDocket.md",
+      "sha256": "832d5bc861cdbfe821871c29724b8f03f98ef8dfb02d8e4b7063352caba6d4ab"
+    },
+    {
+      "bytes": 561,
+      "file": "QAReport.md",
+      "sha256": "128987dcd51b1437e13c93780ce04091cf27ab003fbac20fa1da88963c56f5ae"
+    },
+    {
+      "bytes": 775,
+      "file": "ReinvestmentDecision.json",
+      "sha256": "8a25e85bf26ea03cfe753c28c82af95a568a16bfd34b159541411266ee69881c"
+    },
+    {
+      "bytes": 1692,
+      "file": "SettlementTable.csv",
+      "sha256": "210b5e494147d73706bfe78f5dca20ef8d29314a9b5d2f04b0e2b33232263012"
+    },
+    {
+      "bytes": 476,
+      "file": "ThermostatSignals.json",
+      "sha256": "03b11d37c1aacd074c050f36f3a5bcffb99725f9ae6a1b94cf6b963d3493820f"
+    },
+    {
+      "bytes": 1412,
+      "file": "TreasurySimulationManifest.json",
+      "sha256": "eb17d9fd4037badf351d745e4225c8215c126571a5c0fc1be35a74c3100b73d4"
+    },
+    {
+      "bytes": 2635,
+      "file": "ValidatorMarketLedger.csv",
+      "sha256": "af23114946401a4bdc8c8dc255da0dbf94da9c249ef328048b00adf1bdc3a8d3"
+    },
+    {
+      "bytes": 609,
+      "file": "ValidatorSlashingLedger.csv",
+      "sha256": "cc2030123eeb9eaecb7a547dcc71bca5a2869c1c3af5483208c509b13ae6e021"
+    },
+    {
+      "bytes": 3380,
+      "file": "index.html",
+      "sha256": "b0b7b67cfe98ead4791da0d214d03ba8bae29bf466f0bcb3d228ab09af15328d"
+    },
+    {
+      "bytes": 510,
+      "file": "run-state.json",
+      "sha256": "42cf49a64eec1ba855c08669f8b663b63eba2253cc5fd212276b0a1f0cf8f3ce"
+    }
+  ],
+  "simulation_id": "proof-treasury-simulation-003",
+  "thermostat_signals": {
+    "capacity_scale_gate": "partial_external_replay_cleared",
+    "claim_boundary_fail_rate": 0.125,
+    "external_replay_fail_rate": 0.2857,
+    "external_replay_pass_rate": 0.2857,
+    "external_replay_pending_rate": 0.2857,
+    "next_epoch_policy": "increase_external_replay_grants_and_validator_bonds",
+    "proof_debt": 0.2381,
+    "qa_fail_rate": 0.125,
+    "settlement_speed": "slow_until_external_replay",
+    "validator_false_verdict_rate": 0.2917,
+    "validator_pressure": "increase"
+  },
+  "title": "Proof Treasury Simulation 003 \u2014 External Replay Market and Capacity Auction",
+  "token_movement_performed": false,
+  "total_budget": 10000000
+}

@@ -1,0 +1,70 @@
+<!doctype html><html lang='en'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>Proof Treasury Simulation 004</title><style>
+    :root{--bg:#07101f;--panel:#0e1a2f;--line:#293b61;--gold:#ffd76a;--cyan:#67e8f9;--green:#7dffa8;--red:#ff8b8b;--text:#f8fbff;--muted:#b8c4d6}
+    body{margin:0;background:radial-gradient(circle at 20% 0%,#1e2c53 0,#07101f 48%,#030712 100%);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Arial,sans-serif;line-height:1.55}
+    main{max-width:1180px;margin:auto;padding:42px 24px}
+    .hero{border:1px solid rgba(255,215,106,.35);border-radius:32px;padding:42px;background:linear-gradient(135deg,rgba(255,215,106,.08),rgba(103,232,249,.06));box-shadow:0 30px 80px rgba(0,0,0,.35)}
+    .kicker{letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-weight:800;font-size:13px}
+    h1{font-size:clamp(42px,8vw,92px);line-height:.92;margin:18px 0 16px;letter-spacing:-.06em}
+    h2{font-size:clamp(28px,4vw,44px);line-height:1.05;margin:48px 0 18px;letter-spacing:-.04em}
+    p.lead{font-size:clamp(18px,2.3vw,25px);max-width:920px;color:#dce8ff}
+    .law{display:inline-block;margin:20px 0;padding:14px 18px;border-radius:16px;background:#020817;border:1px solid rgba(125,255,168,.4);color:var(--green);font-weight:900}
+    .grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:26px 0}@media(max-width:900px){.grid{grid-template-columns:1fr 1fr}}@media(max-width:560px){.grid{grid-template-columns:1fr}}
+    .card{border:1px solid rgba(255,255,255,.12);background:rgba(14,26,47,.7);border-radius:22px;padding:18px;box-shadow:0 10px 30px rgba(0,0,0,.18)}
+    .num{font-size:30px;font-weight:950;color:var(--gold);letter-spacing:-.04em}.label{color:var(--muted);font-size:13px;text-transform:uppercase;letter-spacing:.1em}
+    table{width:100%;border-collapse:separate;border-spacing:0;margin:18px 0;border:1px solid rgba(255,255,255,.12);border-radius:18px;overflow:hidden;background:rgba(14,26,47,.55)}th,td{padding:14px 16px;border-bottom:1px solid rgba(255,255,255,.08);text-align:left;vertical-align:top}th{background:#101d34;color:var(--gold);font-size:12px;text-transform:uppercase;letter-spacing:.08em}tr:last-child td{border-bottom:0}
+    .flow{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0}.pill{padding:10px 13px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.05);font-weight:750}
+    .chart{padding:22px;border-radius:24px;border:1px solid rgba(103,232,249,.22);background:rgba(2,8,23,.5);overflow:auto}
+    code{background:#020817;border:1px solid rgba(255,255,255,.12);padding:2px 6px;border-radius:7px;color:#c7f9ff}
+    .boundary{border-left:4px solid var(--red);padding:14px 18px;background:rgba(255,139,139,.08);border-radius:14px}
+    a{color:var(--cyan)}
+    
+/* GoalOS AGIALPHA Ascension Website v71 — Autonomous 10/10 Ascension System */
+:root{
+  --ink:#06111f; --ink2:#111a33; --panel:rgba(12,23,43,.78); --panel2:rgba(255,255,255,.08);
+  --gold:#ffe08a; --gold2:#d8b45a; --mint:#76ffd7; --cyan:#7ec8ff; --violet:#a58bff;
+  --cream:#fff6df; --text:#f7fbff; --muted:#b8c4d8; --danger:#ff7a8a; --ok:#79f2a6;
+  --radius-xl:32px; --radius-lg:22px; --shadow-hero:0 40px 150px rgba(6,17,31,.42);
+}
+.v71-system-nav{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:center;padding:18px 18px;background:linear-gradient(90deg,#071326,#0b1d3a);border-top:1px solid rgba(255,255,255,.12)}
+.v71-system-nav a{color:var(--text);text-decoration:none;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.06);border-radius:999px;padding:8px 12px;font-weight:850;font-size:.9rem}
+.v71-system-nav a:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.v71-system-doctrine{background:#030712;color:var(--text);padding:18px 22px;text-align:center;border-top:1px solid rgba(255,255,255,.10);font-size:.92rem;line-height:1.75}
+.v71-system-doctrine strong{color:var(--gold)}
+.v71-reserved-card{border:1px dashed rgba(216,180,90,.75)!important;background:linear-gradient(180deg,rgba(255,224,138,.10),rgba(255,255,255,.05))!important}
+@media(max-width:760px){.v71-system-nav{justify-content:flex-start;overflow-x:auto;flex-wrap:nowrap}.v71-system-nav a{white-space:nowrap}.v71-title{font-size:clamp(3rem,18vw,5rem)!important}table{min-width:680px}.v71-table-wrap,.table-wrap{overflow-x:auto}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+</style></head><body><main>
+    <section class='hero'><div class='kicker'>GOALOS · $AGIALPHA · PROOF TREASURY SIMULATION 004</div><h1>Institutional Stress Gauntlet</h1><p class='lead'>A simulated sovereign-capacity treasury cycle where accepted proof must survive external replay, claim-boundary checks, validator honesty pressure, reserve coverage, and institutional stress before it can scale.</p><div class='law'>No stress clearance, no institutional scale.</div></section>
+    <section class='grid'><div class='card'><div class='num'>100,000,000</div><div class='label'>simulated $AGIALPHA budget</div></div><div class='card'><div class='num'>551.9</div><div class='label'>α-Work Units recorded</div></div><div class='card'><div class='num'>institutional_scale_partial</div><div class='label'>institutional scale decision</div></div><div class='card'><div class='num'>9,000,000</div><div class='label'>capacity reserve allocated</div></div></section>
+    <h2>Proof laws</h2><div class='flow'><span class='pill'>No proof, no settlement.</span><span class='pill'>No replay, no reinvestment.</span><span class='pill'>No external replay, no capacity scale.</span><span class='pill'>No stress clearance, no institutional scale.</span><span class='pill'>No governance, no acceleration.</span><span class='pill'>No accepted ProofBundle, no alpha-Work Unit authority.</span><span class='pill'>No claim boundary, no public propagation.</span></div>
+    <h2>Institutional stress signals</h2><div class='chart'><pre>{
+  "decision": "institutional_scale_partial",
+  "core_line": "No stress clearance, no institutional scale.",
+  "institutional_scale_pass": false,
+  "external_replay_pass_rate": 0.6667,
+  "external_replay_fail_rate": 0.1111,
+  "external_replay_pending_rate": 0.2222,
+  "claim_boundary_fail_rate": 0.1,
+  "qa_fail_rate": 0.1,
+  "validator_false_verdict_rate": 0.4286,
+  "stress_clearance_rate_jobs": 0.4,
+  "stress_clearance_rate_scenarios": 0.7143,
+  "proof_debt": 0.2044,
+  "systemic_risk": 0.2223,
+  "reserve_coverage_ratio": 2.2853,
+  "capacity_reserve_allocated": 9000000,
+  "production_token_movement": false,
+  "mainnet_broadcast": false,
+  "next_epoch_policy": "repair_claim_boundary_and_replay_failures_before_scale",
+  "validator_pressure": "increase",
+  "settlement_speed": "slow_until_stress_clearance",
+  "capacity_scale_gate": "institutional_scale_partial",
+  "emergency_brake": "armed_not_triggered",
+  "reserve_posture": "adequate",
+  "claim_boundary_posture": "repair_required"
+}</pre></div>
+    <h2>Budget ledger</h2><table><tr><th>Bucket</th><th>Scaled simulated $AGIALPHA</th></tr><tr><td>challenge_and_slashing_reserve</td><td>6000000</td></tr><tr><td>compute_credit_pool</td><td>8000000</td></tr><tr><td>evidence_publication_pool</td><td>2000000</td></tr><tr><td>external_replay_grants</td><td>7500000</td></tr><tr><td>mission_reward_escrows</td><td>52000000</td></tr><tr><td>safety_rollback_reserve</td><td>6500000</td></tr><tr><td>sovereign_capacity_reserve</td><td>9000000</td></tr><tr><td>validator_bonds_and_rewards</td><td>9000000</td></tr></table>
+    <h2>Sovereign capacity reserve allocation</h2><table><tr><th>Domain</th><th>Eligible jobs</th><th>Score</th><th>Allocation</th></tr><tr><td>Sovereign AI Operations</td><td>A004-008</td><td>87.5231</td><td>3203163</td></tr><tr><td>AI-First Startup</td><td>A004-001</td><td>77.243</td><td>2826931</td></tr><tr><td>Enterprise Governance</td><td>A004-002</td><td>56.5602</td><td>2069984</td></tr><tr><td>Regular-Person Utility</td><td>A004-007</td><td>24.5894</td><td>899922</td></tr></table>
+    <h2>Claim boundary</h2><div class='boundary'>Simulation only. No wallet. No private key. No token movement. No Mainnet broadcast. No guaranteed ROI. No token appreciation. No achieved AGI, ASI, superintelligence, production certification, external audit, energy abundance, or Kardashev Type II achievement claim.</div>
+    </main><nav class="v71-system-nav" aria-label="GoalOS AGIALPHA primary site map"><a href="index.html">Home</a><a href="mission-os.html">Mission OS</a><a href="ascension.html">Ascension</a><a href="proof-treasury.html">Treasury</a><a href="proof-cards.html">Proof Cards</a><a href="resources.html">Resources</a></nav><div class="v71-system-doctrine"><strong>SOTA is a measurement. Ascension is the mission.</strong> Turn AI work into verified capability. AI creates output. GoalOS creates proof. GoalOS creates proof. $AGIALPHA makes accepted proof economically consequential. The product is not output. The product is proof-backed capability. No proof, no settlement. No replay, no reinvestment. No external replay, no capacity scale. No stress clearance, no institutional scale. No delayed-outcome clearance, no Ascension reserve compounding. 0 claims without proof.</div></body></html>

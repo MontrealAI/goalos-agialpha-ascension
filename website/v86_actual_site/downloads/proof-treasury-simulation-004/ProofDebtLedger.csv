@@ -1,0 +1,7 @@
+job_id,reason,proof_debt_score,repair_required
+A004-003,locked_pending_external_replay,0.3,complete replay/stress review before settlement
+A004-004,settled_but_scale_blocked_stress_failed,0.28,clear institutional stress gate before scale
+A004-005,blocked_external_replay_failed,0.78,replay failure review; slash/repair as needed
+A004-006,rejected_claim_boundary_fail,0.92,rewrite claim boundary and rerun proof
+A004-009,locked_or_rejected_not_accepted,0.3,complete replay/stress review before settlement
+A004-010,rejected_qa_fail,0.7,fix QA failures and rerun

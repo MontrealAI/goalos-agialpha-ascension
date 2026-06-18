@@ -1,0 +1,6 @@
+scenario,expected_gate,interpretation
+accepted + QA pass + claim boundary pass + internal replay pass + external replay pass,settle_and_capacity_scale,High-impact work may receive simulated settlement and capacity allocation.
+accepted + internal replay pass + external replay pending,locked_pending_external_replay,No capacity scale until external replay clears.
+accepted + internal replay pass + external replay failed,blocked_external_replay_failed,"Settlement blocked, proof debt recorded, validator pressure increases."
+QA fail or claim-boundary fail,rejected,All scores overridden by gate failure.
+low-risk external replay not required,settle_low_risk,"May settle in simulation, but large-scale capacity allocation remains conservative."

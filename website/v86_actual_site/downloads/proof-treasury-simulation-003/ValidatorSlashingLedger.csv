@@ -1,0 +1,11 @@
+job_id,source,reason,simulated_agialpha_slashed
+PTS003-J03,V-A,validator_false_or_unsafe_verdict,22000
+PTS003-J03,V-B,validator_false_or_unsafe_verdict,22000
+PTS003-J03,V-C,validator_false_or_unsafe_verdict,22000
+PTS003-J04,work_object,blocked_external_replay_failed,130000
+PTS003-J04,V-A,validator_false_or_unsafe_verdict,22000
+PTS003-J04,V-B,validator_false_or_unsafe_verdict,22000
+PTS003-J05,V-A,validator_false_or_unsafe_verdict,22000
+PTS003-J06,work_object,rejected_qa_fail,25000
+PTS003-J06,V-A,validator_false_or_unsafe_verdict,22000
+PTS003-J08,work_object,rejected_claim_boundary_fail,55000

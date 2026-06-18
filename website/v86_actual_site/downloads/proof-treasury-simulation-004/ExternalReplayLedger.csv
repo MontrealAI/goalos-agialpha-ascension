@@ -1,0 +1,11 @@
+job_id,domain,external_replay_required,external_replay_status,stress_status,replay_gate,stress_gate,interpretation
+A004-001,AI-First Startup,True,passed,passed,pass,pass,Institutional scale requires stress clearance after replay.
+A004-002,Enterprise Governance,True,passed,passed,pass,pass,Institutional scale requires stress clearance after replay.
+A004-003,Cyber-Defensive Organ,True,pending,pending,fail_or_pending,fail_or_pending,Institutional scale requires stress clearance after replay.
+A004-004,Compute & Efficiency,True,passed,failed,pass,fail_or_pending,Institutional scale requires stress clearance after replay.
+A004-005,Scientific / Technical Invention,True,failed,failed,fail_or_pending,fail_or_pending,Institutional scale requires stress clearance after replay.
+A004-006,Agentic Work Marketplace,True,passed,failed,fail_or_pending,fail_or_pending,Institutional scale requires stress clearance after replay.
+A004-007,Regular-Person Utility,False,not_required,passed,pass,pass,Institutional scale requires stress clearance after replay.
+A004-008,Sovereign AI Operations,True,passed,passed,pass,pass,Institutional scale requires stress clearance after replay.
+A004-009,Civilizational Capacity Proxies,True,pending,pending,fail_or_pending,fail_or_pending,Institutional scale requires stress clearance after replay.
+A004-010,Proof-Native Engineering,True,passed,failed,fail_or_pending,fail_or_pending,Institutional scale requires stress clearance after replay.

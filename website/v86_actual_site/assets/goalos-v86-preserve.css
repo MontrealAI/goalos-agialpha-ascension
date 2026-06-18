@@ -1,0 +1,159 @@
+
+/* GoalOS AGIALPHA Ascension v86 — Actual Website Mobile & Integrity Patch
+   Purpose: preserve the existing v76 visual identity while fixing mobile layout, overflow,
+   unstyled first-render risk, footer contrast, and dynamic AI effects. */
+:root{
+  --v86-bg:#071427;
+  --v86-ink:#071427;
+  --v86-cream:#fff4df;
+  --v86-gold:#ffe08a;
+  --v86-mint:#7affd7;
+  --v86-cyan:#7ec8ff;
+  --v86-violet:#a68dff;
+  --v86-text:#f7fbff;
+  --v86-muted:#c9d4e5;
+  --v86-panel:rgba(10,22,40,.78);
+  --v86-border:rgba(255,255,255,.18);
+  --v86-radius:28px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{overflow-x:clip;max-width:100%;word-wrap:break-word}
+img,svg,canvas,video,iframe{max-width:100%;height:auto}
+svg{display:block}
+table{max-width:100%;border-collapse:collapse}
+pre,code{white-space:pre-wrap;overflow-wrap:anywhere}
+a{touch-action:manipulation}
+[hidden]{display:none!important}
+.v86-critical-note{position:absolute!important;left:-9999px!important}
+.v86-ai-canvas{
+  position:fixed; inset:0; width:100vw; height:100vh; pointer-events:none; z-index:0;
+  opacity:.26; mix-blend-mode:screen;
+}
+body > *:not(.v86-ai-canvas){position:relative; z-index:1}
+.top,.site-header,.nav,.navbar,header{
+  max-width:100%;
+}
+.topin,.nav-inner,.navbar-inner,.header-inner{
+  max-width:min(1240px, calc(100vw - 24px))!important;
+}
+.top nav,.nav,.navbar nav,header nav{
+  display:flex; flex-wrap:wrap; gap:8px; align-items:center; justify-content:flex-end;
+}
+.top a,.nav a,.navbar a,header a{
+  max-width:100%;
+}
+.hero,.section,.wrap,.container,.main,.page,.v75-hero,.v75-section,.v75-wrap,
+section,main,article{
+  max-width:100%;
+}
+.wrap,.container,.v75-wrap,.topin{
+  width:min(1180px, calc(100vw - 32px));
+  margin-left:auto; margin-right:auto;
+}
+.hero-grid,.split,.grid,.cards,.v75-grid,.v75-split{
+  min-width:0;
+}
+.card,.panel,.glass,.hero-card,.visual-shell,.figure-frame,.diagram-frame,.proof-card-visual,
+.v75-card,.v75-panel,.mission-card,.proof-card,.resource-card,.roadmap-card,figure{
+  max-width:100%;
+  overflow:hidden;
+  contain:layout paint;
+}
+.figure-frame img,.diagram-frame img,.visual-shell img,.proof-card-visual img,
+.figure-frame svg,.diagram-frame svg,.visual-shell svg,.proof-card-visual svg,
+.card svg,.panel svg,figure svg{
+  width:100%;
+  max-width:100%;
+  height:auto;
+}
+.hero h1,.h1,h1{
+  overflow-wrap:normal;
+  text-wrap:balance;
+  max-width:100%;
+}
+h2,h3,h4,p,li,td,th{
+  overflow-wrap:anywhere;
+}
+.btn,.button,.cta,a[class*="btn"],a[class*="button"]{
+  min-height:44px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  line-height:1.15;
+  text-align:center;
+}
+footer a, .footer a, .site-footer a{
+  color:#ffffff!important;
+  background:rgba(255,255,255,.12);
+  border:1px solid rgba(255,255,255,.35);
+  border-radius:999px;
+  padding:.48rem .72rem;
+  text-decoration:none!important;
+}
+footer a:hover,.footer a:hover,.site-footer a:hover{
+  background:rgba(255,224,138,.22);
+  color:#ffe08a!important;
+}
+.v86-scroll-table{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.v86-scroll-table table{min-width:640px}
+.v86-mobile-menu-button{display:none}
+.v86-nav-panel{display:flex; flex-wrap:wrap; gap:8px; align-items:center; justify-content:flex-end}
+@media (max-width: 980px){
+  .wrap,.container,.v75-wrap,.topin{width:min(100% - 24px, 760px)!important}
+  .hero,.v75-hero{padding-top: clamp(42px, 8vw, 86px)!important}
+  .hero-grid,.split,.grid,.v75-grid,.v75-split,.cards{
+    grid-template-columns:1fr!important;
+  }
+  h1,.hero h1,.h1{font-size:clamp(3rem, 14vw, 5.6rem)!important; line-height:.88!important}
+  h2{font-size:clamp(2.1rem, 8vw, 3.4rem)!important; line-height:.95!important}
+  p,li{font-size:clamp(1rem, 3.8vw, 1.16rem)}
+  .topin,.nav-inner,.navbar-inner,.header-inner{min-height:64px}
+  .v86-mobile-menu-button{
+    display:inline-flex;
+    border:1px solid rgba(255,255,255,.22);
+    color:#06111f;
+    background:#fff4df;
+    border-radius:999px;
+    padding:.62rem .85rem;
+    font-weight:900;
+    margin-left:auto;
+  }
+  .v86-nav-panel{
+    width:100%;
+    display:none!important;
+    flex-direction:column;
+    align-items:stretch!important;
+    justify-content:flex-start!important;
+    padding:12px;
+    border-radius:18px;
+    background:rgba(6,17,31,.96);
+    border:1px solid rgba(255,255,255,.16);
+    box-shadow:0 20px 60px rgba(0,0,0,.35);
+  }
+  .v86-nav-panel.v86-open{display:flex!important}
+  .v86-nav-panel a{
+    color:#fff!important;
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.14);
+    border-radius:14px;
+    padding:.78rem .9rem;
+    width:100%;
+  }
+  .figure-frame,.diagram-frame,.visual-shell,.proof-card-visual,figure{
+    border-radius:22px!important;
+  }
+}
+@media (max-width: 520px){
+  .wrap,.container,.v75-wrap,.topin{width:min(100% - 18px, 500px)!important}
+  h1,.hero h1,.h1{font-size:clamp(2.55rem, 15vw, 4.2rem)!important}
+  h2{font-size:clamp(1.75rem, 9.5vw, 2.65rem)!important}
+  .btn,.button,.cta,a[class*="btn"],a[class*="button"]{width:100%; margin-bottom:8px}
+  .chip,.pill,.badge{max-width:100%; white-space:normal!important}
+  .card,.panel,.glass,.v75-card,.v75-panel{border-radius:20px!important}
+  .v86-scroll-table table{min-width:560px}
+}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
+  .v86-ai-canvas{display:none!important}
+}
