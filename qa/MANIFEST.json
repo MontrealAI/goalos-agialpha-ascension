@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-15T16:10:58.725798+00:00",
+  "generated_at": "2026-06-18T16:30:11.570952+00:00",
   "files": [
     {
       "path": ".editorconfig",
@@ -13,13 +13,13 @@
     },
     {
       "path": ".env.mainnet.example",
-      "bytes": 1331,
-      "sha256": "90462a169570623c4192239271b9f249f15e2726c5b022d65bda1151b5f6eb01"
+      "bytes": 1531,
+      "sha256": "1896840167bdb72090c5b3fc191592c04c14f28a7c5979f9b081e5264df5473b"
     },
     {
       "path": ".env.sepolia.example",
-      "bytes": 1169,
-      "sha256": "8068e0f5419cd9f91508c91129efcaf03b74933ac45e17d18dc68e5b35bd1979"
+      "bytes": 1369,
+      "sha256": "0c0993db0246d626e0dcc5a98fd8ed414b0e35d703d111ac36181839dfc2f4c2"
     },
     {
       "path": ".env.verification.example",
@@ -92,9 +92,99 @@
       "sha256": "bce6ab94368650eab075c66b7677b85d49b6b8f3a7f2140976cc5bc6560ace33"
     },
     {
+      "path": ".github/workflows/ascension-website-v71-smoke-test.yml",
+      "bytes": 1411,
+      "sha256": "29b9515fae3c64c9202d936fe021188631b715e69b05bf1c6f3573bf4ff5405d"
+    },
+    {
+      "path": ".github/workflows/ascension-website-v72-smoke-test.yml",
+      "bytes": 864,
+      "sha256": "1cc83e216bce64e10b98ad8501b622505764a5e46fd9c920905092b30a9830d9"
+    },
+    {
+      "path": ".github/workflows/ascension-website-v73-smoke-test.yml",
+      "bytes": 875,
+      "sha256": "822acee8e42754fa094bd4eb84813c301eae1353974546c739b2f58df753467c"
+    },
+    {
+      "path": ".github/workflows/ascension-website-v74-smoke-test.yml",
+      "bytes": 873,
+      "sha256": "2200116d0ce24b35c1268f09feba2b4a71004e689bcc13b8291de282195cbd65"
+    },
+    {
+      "path": ".github/workflows/ascension-website-v75-smoke-test.yml",
+      "bytes": 1700,
+      "sha256": "a91bfb747581c16e94fd0cb4b4fc7ad38d365aae7627ba93925418bb7bd0da1d"
+    },
+    {
+      "path": ".github/workflows/ascension-website-v76-smoke-test.yml",
+      "bytes": 1565,
+      "sha256": "ccbbc8e16dd90f1ed568f93c8e64fa5ed278b0842c1e6b44d4e6798d7e92b499"
+    },
+    {
+      "path": ".github/workflows/ascension-website-v80-smoke-test.yml",
+      "bytes": 1536,
+      "sha256": "e8f81132f42f4089bf7df2cdd61fa5d9b7026d83e2586fc3776f2fcf388426fa"
+    },
+    {
+      "path": ".github/workflows/ascension-website-v81-smoke-test.yml",
+      "bytes": 1228,
+      "sha256": "0240e4032e54653d67587b6e4e8b259385448cab865099a62b620f53820d238e"
+    },
+    {
+      "path": ".github/workflows/ascension-website-v82-smoke-test.yml",
+      "bytes": 1169,
+      "sha256": "aef2543158871297d88bd602399b05ed2ec09edf02b2f9dfdfbc7c6f6a8672c8"
+    },
+    {
+      "path": ".github/workflows/autonomous-ascension-website-v71.yml",
+      "bytes": 1971,
+      "sha256": "b74bbe22429dce42fcfecb1b3eb61180cee7f1d4ac24c52a1853a4f5dabbd0a2"
+    },
+    {
+      "path": ".github/workflows/autonomous-ascension-website-v72.yml",
+      "bytes": 1425,
+      "sha256": "b7fe82f2e28aff90f0dfef606c332fa4cd24d7e25a02c0551544f453b3c551b0"
+    },
+    {
+      "path": ".github/workflows/autonomous-ascension-website-v73.yml",
+      "bytes": 1425,
+      "sha256": "64bed52acf2a749e944fa7315ae378af03f4ce8925d748511d7559c919956ff4"
+    },
+    {
+      "path": ".github/workflows/autonomous-ascension-website-v74.yml",
+      "bytes": 1425,
+      "sha256": "4e5f0548002f29f87b8a38a0acc16d300e2ad42f9b3d3ba966fcd6e29fb08541"
+    },
+    {
+      "path": ".github/workflows/autonomous-ascension-website-v75.yml",
+      "bytes": 2830,
+      "sha256": "0e1b953d1ace83778331e52b38fb2c68e38c8cc48ad36646ee067eb697187860"
+    },
+    {
+      "path": ".github/workflows/autonomous-ascension-website-v76.yml",
+      "bytes": 2138,
+      "sha256": "b264e8996c4879ff3c72d9944f2e770486018e2564874561bd21e454000984fe"
+    },
+    {
+      "path": ".github/workflows/autonomous-ascension-website-v80.yml",
+      "bytes": 1944,
+      "sha256": "99565de0791842f939b129a4a31af532d354582fec096f2bb4bc724ffa4b87d7"
+    },
+    {
+      "path": ".github/workflows/autonomous-ascension-website-v81.yml",
+      "bytes": 1599,
+      "sha256": "6cb34ff3d1817aec0bb3f5a776eb26d9b243815f7feab16448cd8208c93723c2"
+    },
+    {
+      "path": ".github/workflows/autonomous-ascension-website-v82.yml",
+      "bytes": 1723,
+      "sha256": "3fe3adf5dff249743aa9d8570214905ef62a99217d7b2db4ce1cc554625ab594"
+    },
+    {
       "path": ".github/workflows/autonomous-github-pages.yml",
-      "bytes": 1473,
-      "sha256": "9b2e80a420a6576049d26998ab82353dfe771b207ec8a33d0f8c6bb503df6c96"
+      "bytes": 1662,
+      "sha256": "44d12d65c56c888309239b329a67bda36172f1db8a691b11f6dc9a6d676d1c3d"
     },
     {
       "path": ".github/workflows/complete-main-website-v33-smoke-test.yml",
@@ -157,6 +247,126 @@
       "sha256": "5bcfe3f3c85150b787af2dc400fd5ed172e9749f814388b02d7a71df0650fd59"
     },
     {
+      "path": ".github/workflows/final-main-website-v44-web-ui-smoke-test.yml",
+      "bytes": 1476,
+      "sha256": "6f8bd504e5e2662b1f48ca7fbaa02386407351166b46bf5f13bc294d6478cc14"
+    },
+    {
+      "path": ".github/workflows/final-main-website-v45-web-ui-safe-smoke-test.yml",
+      "bytes": 1468,
+      "sha256": "c2b0162bd6b309cb9685554b4750f1ba9eac54dca61e00c31227c120e4739919"
+    },
+    {
+      "path": ".github/workflows/final-main-website-v46-mission-os-hotfix-smoke-test.yml",
+      "bytes": 1119,
+      "sha256": "0d378fd4b90411a0b446d8d7b8c563c1b9f7a4fb7f2f53a0016264e4267ab399"
+    },
+    {
+      "path": ".github/workflows/final-main-website-v47-mission-os-smoke-test.yml",
+      "bytes": 1252,
+      "sha256": "58cf02f3d95ff41c6b077a82d22effd4fb9224fc7cbbe653747fba50e95aeee9"
+    },
+    {
+      "path": ".github/workflows/final-main-website-v48-mission-os-visual-qa-smoke-test.yml",
+      "bytes": 1139,
+      "sha256": "f2ceff374bd7d47e94d98df1f1e12d9d74dbcdc3abc0068f43e8797bb79ca64b"
+    },
+    {
+      "path": ".github/workflows/final-main-website-v49-mission-os-paper-smoke-test.yml",
+      "bytes": 1146,
+      "sha256": "33b651f9453895e2608b4c438494ee98b68d29b1ab286d580f7a777ac4b1dcd1"
+    },
+    {
+      "path": ".github/workflows/final-main-website-v50-mission-os-paper-visual-qa-smoke-test.yml",
+      "bytes": 1074,
+      "sha256": "10176b7930fb5569dcd59d42dd990a42b747b11f6c5c0c7e91fc622031832dd4"
+    },
+    {
+      "path": ".github/workflows/final-main-website-v52-proof-card-018-smoke-test.yml",
+      "bytes": 1050,
+      "sha256": "05c1846ddbd13d08a8246aeb9a1fc5fd0b7c7c9963ca10a86e8f21f2633ae737"
+    },
+    {
+      "path": ".github/workflows/final-main-website-v54-proof-card-019-smoke-test.yml",
+      "bytes": 1002,
+      "sha256": "6e1ca3b634f6cfe3f69dc66f255f03b93af073983ca2dc63b5188d8049171714"
+    },
+    {
+      "path": ".github/workflows/final-main-website-v55-proof-card-020-smoke-test.yml",
+      "bytes": 900,
+      "sha256": "f213e3a9bd78e45770a805d94460be55b659ef09eeaeed1386939380ee04d407"
+    },
+    {
+      "path": ".github/workflows/final-main-website-v56-proof-card-021-smoke-test.yml",
+      "bytes": 900,
+      "sha256": "e81ba77fbb7c4683a8e942919a09ee67ae22873f67dc434b3221281de37f4d29"
+    },
+    {
+      "path": ".github/workflows/final-main-website-v58-proof-card-024-smoke-test.yml",
+      "bytes": 910,
+      "sha256": "c0dd4e5ea895f0a495a4128d4a8352eee606bea4162b7f9a280995eabc392b27"
+    },
+    {
+      "path": ".github/workflows/final-main-website-v59-proof-card-025-ascension-smoke-test.yml",
+      "bytes": 920,
+      "sha256": "dfbc2cc734ecd6dce8eafe70f067f904aae227c0c008ffe1fd5c51a456484fa7"
+    },
+    {
+      "path": ".github/workflows/final-main-website-v60-proof-card-026-ascension-smoke-test.yml",
+      "bytes": 920,
+      "sha256": "c26c58bf5cf08606146ea8ab7e40fd9588003eacc49b260d782aa316a6c418dd"
+    },
+    {
+      "path": ".github/workflows/final-main-website-v61-proof-card-027-smoke-test.yml",
+      "bytes": 900,
+      "sha256": "eea0bfdf9c4decfe9770dde25eaad3b8b88e06314f59801ab58b2fad183f13c0"
+    },
+    {
+      "path": ".github/workflows/final-main-website-v62-proof-card-028-smoke-test.yml",
+      "bytes": 900,
+      "sha256": "8979d440b01233645117de3e02ed27fc566c6b8bfd8005e5ac23776b52e61574"
+    },
+    {
+      "path": ".github/workflows/final-main-website-v63-proof-card-029-smoke-test.yml",
+      "bytes": 900,
+      "sha256": "28f6bb9a6ba027a3a8e281e67cd11f91be70459128337ad93ff1be4321f8332e"
+    },
+    {
+      "path": ".github/workflows/final-main-website-v64-proof-card-030-smoke-test.yml",
+      "bytes": 900,
+      "sha256": "acb50901b1b51a04a7c9cff7d30cab7f7b2483cb5584b185fe789d9a7469e997"
+    },
+    {
+      "path": ".github/workflows/final-main-website-v65-proof-card-031-smoke-test.yml",
+      "bytes": 900,
+      "sha256": "912e9c12ff39e6d24204a68146539c49d1a9cf7791c0daf5f9103f7dcf2eeec8"
+    },
+    {
+      "path": ".github/workflows/final-main-website-v66-proof-treasury-sim-003-smoke-test.yml",
+      "bytes": 1099,
+      "sha256": "b05f24721e4f9c45eae43f229304748421779448be5bbadaee0d64861383c7cb"
+    },
+    {
+      "path": ".github/workflows/final-main-website-v67-proof-treasury-sim-004-smoke-test.yml",
+      "bytes": 987,
+      "sha256": "6594616e5d83c086b6235412fa00f580d9367caa2b992b94396be6bd669fa99a"
+    },
+    {
+      "path": ".github/workflows/final-main-website-v68-proof-treasury-sim-005-smoke-test.yml",
+      "bytes": 1034,
+      "sha256": "a3a0689e4b14db04ecf634d10ed5f8bab155dde7bbac7e1d7bd175c4dc9c6f0b"
+    },
+    {
+      "path": ".github/workflows/final-main-website-v70-world-launch-smoke-test.yml",
+      "bytes": 908,
+      "sha256": "5a6bde03bbe44100c5c28fda947d5bb59eaa3ddc3de7e8b20b35437ff8e6acc7"
+    },
+    {
+      "path": ".github/workflows/final-main-website-v71-ascension-helix-smoke-test.yml",
+      "bytes": 902,
+      "sha256": "82a23f3844cc78f0ed0d473343bca0a8f18d7aa8ff160e1f5218b8e17ef0dbc9"
+    },
+    {
       "path": ".github/workflows/final-public-mainnet-authorization.yml",
       "bytes": 2175,
       "sha256": "a8cd1488fca92fefd07b3122961b7e2a084da9c71e6d3cdd551825f5d9b0d824"
@@ -185,6 +395,41 @@
       "path": ".github/workflows/four-proof-card-demand-center-smoke-test.yml",
       "bytes": 837,
       "sha256": "e61e55eb840467755a9053e610cf99f4a8570e24c63f74a78bd061de2842a4ef"
+    },
+    {
+      "path": ".github/workflows/goalos-agialpha-ascension-autonomous-world-release.yml",
+      "bytes": 7774,
+      "sha256": "ad7438a48495db93e9eed448008896a65cd42571ed1d38376e523ad1c68811f8"
+    },
+    {
+      "path": ".github/workflows/goalos-agialpha-ascension-v85-final.yml",
+      "bytes": 2705,
+      "sha256": "615f472492276946cc38efd839245bc01f6fd6065919687625afcb16bae5d246"
+    },
+    {
+      "path": ".github/workflows/goalos-agialpha-ascension-v85-smoke-test.yml",
+      "bytes": 2125,
+      "sha256": "749183ad5a4aaedd8ede7456ac2716134dd3b6354fccc89c6a3e342a2c0d3e07"
+    },
+    {
+      "path": ".github/workflows/goalos-autonomous-website-autopilot.yml",
+      "bytes": 1104,
+      "sha256": "8f24b0b616e412a8fe1ecd1e1c45ffc319e80920543299eab92c9b87bc1ed803"
+    },
+    {
+      "path": ".github/workflows/goalos-mission-os-paper-pages.yml",
+      "bytes": 1539,
+      "sha256": "9c26cf27098952a96dc8f54dba945a35391629c0c0e1ebadd474024293d5fdb6"
+    },
+    {
+      "path": ".github/workflows/goalos-mission-os-qa.yml",
+      "bytes": 643,
+      "sha256": "856512a13defc2df809407905a11cf970b4e0f170c6c26b4265aebf5cf0fd6a2"
+    },
+    {
+      "path": ".github/workflows/goalos-mission-os-until-done.yml",
+      "bytes": 3681,
+      "sha256": "4293510a6c9cd4f7f75362ec0400a98186ee43a3dc95046791116748ff1c053b"
     },
     {
       "path": ".github/workflows/main-website-institutional-proof-atlas-smoke-test.yml",
@@ -303,13 +548,13 @@
     },
     {
       "path": ".github/workflows/proof-card-001-demand-engine-autopublish.yml",
-      "bytes": 1432,
-      "sha256": "0e37992105c74e2fbf3ca2df70fb0ff233f1a7dc1acf6a264e731b790eb62e77"
+      "bytes": 1326,
+      "sha256": "00024b3ed7153910ea3d86d401b8a89573c1e844607f5656248c985bb2da826a"
     },
     {
       "path": ".github/workflows/proof-card-001-demand-engine-smoke-test.yml",
-      "bytes": 944,
-      "sha256": "3d0be1ea9c8ccd818320cccfb25cfbf870959b9d354a4cbce5bf53d47826e49e"
+      "bytes": 1010,
+      "sha256": "8c39c24c9c7798308a3d8ca6dcf6c327064f815bdb8c2ce958b5d2b6ffaef56b"
     },
     {
       "path": ".github/workflows/proof-card-002-elite-use-case-smoke-test.yml",
@@ -365,6 +610,11 @@
       "path": ".gitleaks.toml",
       "bytes": 321,
       "sha256": "1c78bd5d2fe4f9b29ecdc80c416407b2381ea07f0579ec0e760c36a65d26058f"
+    },
+    {
+      "path": ".nojekyll",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
     },
     {
       "path": ".npmrc",
@@ -438,8 +688,8 @@
     },
     {
       "path": "CONTRIBUTING.md",
-      "bytes": 822,
-      "sha256": "73398427c97910941c7860360e2ef7ad2addfa0c78d9605b1ed16c06b47f3f15"
+      "bytes": 1351,
+      "sha256": "266bb65662da39a25130c10586984c55690c68a05da7d19f9bc4a8c729692024"
     },
     {
       "path": "CREATE_REPOSITORY_WEB_UI_GUIDE.md",
@@ -567,14 +817,39 @@
       "sha256": "ce57b6309a6179c9447405fcb6d0feaf79e2c0e0d6450e151b4ee6cd47dbc654"
     },
     {
+      "path": "QA_REPORT.json",
+      "bytes": 4815,
+      "sha256": "b4eef22e6502f095ab5945c267df8d9d45ba39248417cfeb12bac1c81232b2a8"
+    },
+    {
+      "path": "QA_REPORT_v76.json",
+      "bytes": 4815,
+      "sha256": "b4eef22e6502f095ab5945c267df8d9d45ba39248417cfeb12bac1c81232b2a8"
+    },
+    {
       "path": "README.md",
-      "bytes": 7893,
-      "sha256": "e20cc41b067be1065fc242678e5faf9eb338a842dc08d5262565f45a66f902f1"
+      "bytes": 8432,
+      "sha256": "1398bc489ee25580195a7f8b0483d62a7db166a1a3992fcde56c550ae9ba918c"
     },
     {
       "path": "README_PROOF_CARD_001_DEMAND_ENGINE_V31.md",
       "bytes": 585,
       "sha256": "2487e9d7c4a83350eb7eba01f36a715228cb55f1f56933d0b31d2e84e02513e2"
+    },
+    {
+      "path": "README_UPLOAD_ASCENSION_WEBSITE_v81.md",
+      "bytes": 609,
+      "sha256": "a033a60282616fcc6fcde6e275bfa307fd1450f24b6c244814392363e960fd52"
+    },
+    {
+      "path": "README_UPLOAD_ASCENSION_WEBSITE_v82.md",
+      "bytes": 1020,
+      "sha256": "0c25c2a4b8eb2eac9aca379550d69058e1eb8818af2db0ceac2ab3c1325b55c8"
+    },
+    {
+      "path": "README_UPLOAD_GOALOS_ASCENSION_v76_WORLD_RELEASE.md",
+      "bytes": 4030,
+      "sha256": "71580743320b7cc46806c5f045e4951d0ba8f7a041d2160c90aefa1083a881c2"
     },
     {
       "path": "SECURITY.md",
@@ -588,18 +863,83 @@
     },
     {
       "path": "START_HERE.md",
-      "bytes": 2000,
-      "sha256": "b074284e81324f819229e4ed3bf5c572cfbce9a1629183980dd597d067e42c22"
+      "bytes": 2074,
+      "sha256": "b3f5da8ef9d65c6dc60c9f1055605ecdde900787335ef93c8fe6d8986224b219"
     },
     {
       "path": "agialpha-ledger-route.html",
-      "bytes": 14462,
-      "sha256": "4b69f9527eb449b0d51929dcad2919bc8ab7998e8b88a6bc31724d8224ca5b6a"
+      "bytes": 18083,
+      "sha256": "3195a893e82312109be147ce6e5bc1e89b646199e93581f9e1c1a2cc4b9272ed"
     },
     {
       "path": "app/index.html",
       "bytes": 858,
       "sha256": "97e4fca3a513a2c81c5730885bead9033194c02faf3d3f811d70b0e0784f6065"
+    },
+    {
+      "path": "ascension.html",
+      "bytes": 70194,
+      "sha256": "25441e054c58a83c9a60649f1fc40e6931f941b7866f6138c976249a99af4b5f"
+    },
+    {
+      "path": "assets/AGI_ALPHA_v12.png",
+      "bytes": 2467491,
+      "sha256": "6fb87bb6485ef640de2323f8f63514dcb874265ff68437855716c84d7ff6a601"
+    },
+    {
+      "path": "assets/AGI_ALPHA_v13.png",
+      "bytes": 2367548,
+      "sha256": "17990c0d69df3693f3c5d7a9cc7be1b0553472558f87cd74c102651ee6fb86c8"
+    },
+    {
+      "path": "assets/AGI_ALPHA_v14.png",
+      "bytes": 2397850,
+      "sha256": "40646523cec3ccded9579ab662087dc05d784457d9c27f8b9d10f2b1e915ce79"
+    },
+    {
+      "path": "assets/AGI_ALPHA_v16.png",
+      "bytes": 1878633,
+      "sha256": "4c0f49a45fe1d91f2dc4d0b94e306c6d194dd8685deb62d15c48294529c76977"
+    },
+    {
+      "path": "assets/AGI_ALPHA_v18.png",
+      "bytes": 2704817,
+      "sha256": "0c5dbaa77f9aa6e5ed02a98f42db5084f796871c35c7e2e55fae59e7889d02c1"
+    },
+    {
+      "path": "assets/AGI_ALPHA_v20.png",
+      "bytes": 2337971,
+      "sha256": "ee64f4d7203054add911586ab30c2025cebd343ea6f583bb944fffcd3afac1b9"
+    },
+    {
+      "path": "assets/AGI_Ascension_Autonomous_Multi-Agent_Coordination_v10.png",
+      "bytes": 2689739,
+      "sha256": "487e8df582246a05f9d9803021ce63335bb29599c5f386fdbc39d07a26fd1328"
+    },
+    {
+      "path": "assets/AGI_Ascension_Autonomous_Multi-Agent_Coordination_v9.png",
+      "bytes": 1980688,
+      "sha256": "ee86210013f34259a630c9d0fc991839fd4c1994c882b196e3e443b133d1b48a"
+    },
+    {
+      "path": "assets/bafybeiac2gpbwwcllldemjwxblsxb3pb3devm64eshti3knyrydohasjxa.png",
+      "bytes": 9251020,
+      "sha256": "9cb6e75487b4633043461b229e5bf0fc15bc0d2feb6d9bcfbf7af0897bce4389"
+    },
+    {
+      "path": "assets/mission-os/GoalOS_Mission_OS_Hero_v12.png",
+      "bytes": 1808583,
+      "sha256": "97636d75e4a8735f44b5b5b3a80b6c93b48cd656026e765f674bbbbb90d3ec6c"
+    },
+    {
+      "path": "assets/mission-os/GoalOS_Mission_OS_One_Page_Poster_v12.png",
+      "bytes": 105190,
+      "sha256": "6472fe16d09798ad3f24c36421ec3ff32bf46c7710e4b977ae3a90d6555bf947"
+    },
+    {
+      "path": "assets/mission-os/GoalOS_Mission_OS_One_Page_Poster_v12.svg",
+      "bytes": 2510,
+      "sha256": "b490731b5579ce16fa80bfbfdfc9fad6ceb7383965577741b6ca2f89e1a5b6d0"
     },
     {
       "path": "assets/pc008_agent_coordination_matrix.png",
@@ -635,6 +975,26 @@
       "path": "assets/pc009_radar.png",
       "bytes": 251699,
       "sha256": "f4b8eaa442dbfede8d33f08925467794258a5b9f8ae16e5b29d88ccbe7b3b9b6"
+    },
+    {
+      "path": "assets/v75-apex.css",
+      "bytes": 11407,
+      "sha256": "4218356e8a4594e6e7affa8dafcb0c3236981fafecab037ecb600f0ef6a57d8d"
+    },
+    {
+      "path": "assets/v75-apex.js",
+      "bytes": 753,
+      "sha256": "dc5339200b7fe3113c1c5c51b1dd8974a0766d4f30e973607d9c0d512dc5a730"
+    },
+    {
+      "path": "assets/wow-v41.js",
+      "bytes": 3456,
+      "sha256": "62a1a5cf7904cbc3720a7a91f8f4533672c35a37e8d791fd4349f97869e7afde"
+    },
+    {
+      "path": "assets/wow.js",
+      "bytes": 4230,
+      "sha256": "2c3f5531052b4befe5f78a34d6c125c5cce6fa551e4860bcaf9e98efd4ff5476"
     },
     {
       "path": "audit/AUDIT_FINDINGS_REGISTER.csv",
@@ -698,8 +1058,8 @@
     },
     {
       "path": "audit/OSV_AUDIT_TRIAGE.json",
-      "bytes": 1724,
-      "sha256": "1f8e0ab818860dc521fdf2d7f4f3ebca0f4d38455ebd747724711a97b8c6a577"
+      "bytes": 3015,
+      "sha256": "aba99762ba9d721567e0fd592f4b6f897d18aeed225f07ef818ece154d060cbc"
     },
     {
       "path": "audit/OSV_AUDIT_TRIAGE.md",
@@ -5072,6 +5432,21 @@
       "sha256": "b77c0a16b0d9847d2bff0be9632991fc13fb7e30f3dcf2c9345f41188a331409"
     },
     {
+      "path": "autopilot-mission-builder.html",
+      "bytes": 118041,
+      "sha256": "d8954ba33ddbf6168eda38bea7d8e88a6540d7b5b38dbe86da7fa54719a8a2be"
+    },
+    {
+      "path": "biography.html",
+      "bytes": 18012,
+      "sha256": "bc5d0e77415fc985921f35462bf0a0e0ceb1c23a0ab6a882fbcb4d9460d438e7"
+    },
+    {
+      "path": "config/goalos-mission-os.policy.json",
+      "bytes": 2301,
+      "sha256": "e957c0a5503cbbb22fdaaeebbda1a981dcfeea56b767224d1d391b85fe26345c"
+    },
+    {
       "path": "configs/echidna.yaml",
       "bytes": 165,
       "sha256": "7bcb813f06d4fa3be134607f148433fb3f0a21dbbdc74534e71aba983036ef65"
@@ -5097,9 +5472,14 @@
       "sha256": "19740a47b93b343f78620de6afbb970959520a1c9766bb39f7c10be79bc50dcb"
     },
     {
+      "path": "content/mission-os.page.json",
+      "bytes": 252,
+      "sha256": "59ceb1b479b3d2792ceb177232b46ce391220deed31dc86b2f0c26abc444d1a7"
+    },
+    {
       "path": "contracts/access/GoalOSAccessControl.sol",
-      "bytes": 1874,
-      "sha256": "38a987d1fcf2803dea064e2a31641e7abc364d1c6681f55adb854fc42d5843f3"
+      "bytes": 4379,
+      "sha256": "1681c22e993802ac9695011a1122836d88dfd1f7476f7732c7d2500af4168bcc"
     },
     {
       "path": "contracts/aep/AEPAgentRegistry.sol",
@@ -5298,8 +5678,8 @@
     },
     {
       "path": "contracts/registry/ProofCredentialRegistry.sol",
-      "bytes": 2917,
-      "sha256": "1fe443d3694fec2bf2874269720b606f43cf62350614f2520150a74f1623091f"
+      "bytes": 2923,
+      "sha256": "fa28f69cd47e906587fe4991bb80d1e1338dcf482e802f740815e340467d9ed3"
     },
     {
       "path": "contracts/registry/ProofSeedRegistry.sol",
@@ -5647,6 +6027,11 @@
       "sha256": "c3ceab80df68ea260fe0f88838fb3759dc459a305b02e7b059eabaaec800f46b"
     },
     {
+      "path": "developers.html",
+      "bytes": 19522,
+      "sha256": "f57b759b77ea113c457765064ffb925966130f84b44969cffda07073728df568"
+    },
+    {
       "path": "docs/AGIALPHA_ASCENSION_OVERVIEW.md",
       "bytes": 793,
       "sha256": "a250e5bd2d249be6db3e3616a8cd7ad27d3467aae6f82167936a902c636e5ada"
@@ -5717,6 +6102,16 @@
       "sha256": "4b7baacbab346406ab15dd42756fc60e261dcf565e30d88a53f0f6cd6e154b8b"
     },
     {
+      "path": "docs/AUTONOMOUS_GITHUB_ACTION_v75_APEX.md",
+      "bytes": 1528,
+      "sha256": "f8312e6137ae3e18abf8aa7a5c36193a2f50171850e06028c485b3bae1177435"
+    },
+    {
+      "path": "docs/AUTONOMOUS_GITHUB_ACTION_v76_WORLD_RELEASE.md",
+      "bytes": 1001,
+      "sha256": "639950ca31432d2b93b60ef66659ce782182916ae38f46ba9f8b73e72021b088"
+    },
+    {
       "path": "docs/BRANCH_PROTECTION_AND_RULESET_REQUIREMENTS.md",
       "bytes": 359,
       "sha256": "023fe3416e9f47cceaf78429c67fa26a906115cf147c11506e3918027764cab4"
@@ -5742,6 +6137,51 @@
       "sha256": "b0d2db345f9c676ecada3b499d9abde2f8a430afeb413c4110de2e94f51cc406"
     },
     {
+      "path": "docs/CHANGELOG_ASCENSION_WEBSITE_v71.md",
+      "bytes": 917,
+      "sha256": "3d6ec31d3e14f8344a9872a71d7bf77fd0851c65dc790adf56df1f54461f7e6c"
+    },
+    {
+      "path": "docs/CHANGELOG_ASCENSION_WEBSITE_v72.md",
+      "bytes": 550,
+      "sha256": "513548a9c031c8d211ac3c03ee2551c2528c5ea154985757a8cbd87e246771e8"
+    },
+    {
+      "path": "docs/CHANGELOG_ASCENSION_WEBSITE_v73.md",
+      "bytes": 353,
+      "sha256": "28c2fe321c9e79ae4f49573ebef11d5d59fbfc38d58ba594a6eca4dc5afc8718"
+    },
+    {
+      "path": "docs/CHANGELOG_ASCENSION_WEBSITE_v74.md",
+      "bytes": 357,
+      "sha256": "8da43c32c2ad3fb06999ea8e2c95dc72d95aa2ff2501934312ec016a41329073"
+    },
+    {
+      "path": "docs/CHANGELOG_ASCENSION_WEBSITE_v75.md",
+      "bytes": 431,
+      "sha256": "dc581fdd8a1b3be2e2ec7951a95bdfefede7e4f9276c9a4148cac357b29f0ac7"
+    },
+    {
+      "path": "docs/CHANGELOG_ASCENSION_WEBSITE_v76.md",
+      "bytes": 900,
+      "sha256": "19aba235da6fc11358397bac73c403bca3c9dc886ffc73d1a918f92ebbbeb823"
+    },
+    {
+      "path": "docs/CHANGELOG_ASCENSION_WEBSITE_v80.md",
+      "bytes": 1627,
+      "sha256": "d93d02420a3251b76f888c0f2a2293e518ea3dbfa8798ec7c389b6c09932df5b"
+    },
+    {
+      "path": "docs/CHANGELOG_ASCENSION_WEBSITE_v81.md",
+      "bytes": 491,
+      "sha256": "a79aa7ea44354516ad66edb64a1e5d22cc06fb015997ae5bde265bf75a870820"
+    },
+    {
+      "path": "docs/CHANGELOG_ASCENSION_WEBSITE_v82.md",
+      "bytes": 737,
+      "sha256": "e42bbc16f31500b0e06327c9f05830a7ac3298167b2b156905bb7e4320052f62"
+    },
+    {
       "path": "docs/CODEX_AUDITOR_HANDOFF_v4_2.md",
       "bytes": 951,
       "sha256": "393a429185498596cbf48af78fee7689aecaed56de405f037a89cde45fd9b328"
@@ -5755,6 +6195,11 @@
       "path": "docs/CODEX_RUN_LOG.md",
       "bytes": 3940,
       "sha256": "e61c9120047606a9e89717feb6dac2ae8a4b4d26bb7818661f70d46945f1506b"
+    },
+    {
+      "path": "docs/CONTENT_QA_ASCENSION_WEBSITE_v82.md",
+      "bytes": 4480,
+      "sha256": "8b012a663db59ad7e4d6c301721ed2eecd877181adfc278323dd3d6d3b61669f"
     },
     {
       "path": "docs/CONTRACT_SUITE_INDEX_v3_0.csv",
@@ -5783,8 +6228,8 @@
     },
     {
       "path": "docs/CONTRACT_VERIFICATION_START_HERE.md",
-      "bytes": 1991,
-      "sha256": "2127ad456a70ea799650f41b67bcde383f148f3a4496663b87219d44233046d7"
+      "bytes": 3049,
+      "sha256": "5e73936f68e59cd0eaf9babb287e7e70aebb0763e29c74499f79f24c93d4062f"
     },
     {
       "path": "docs/CURRENT_STATUS.md",
@@ -5833,8 +6278,8 @@
     },
     {
       "path": "docs/DEPLOYMENT_START_HERE.md",
-      "bytes": 3536,
-      "sha256": "80baf57ec39f395ca99c18bc1c6faff017cd5480dccd2cc6c68af68d9d662d5b"
+      "bytes": 3300,
+      "sha256": "e539eb99a86e6133df51b13fff0d3da6b8d8bd6316b2d46d2cb5afa728f83835"
     },
     {
       "path": "docs/DEPLOYMENT_TROUBLESHOOTING.md",
@@ -5850,6 +6295,16 @@
       "path": "docs/DETERMINISTIC_SOLIDITY_COMPILER_POLICY.md",
       "bytes": 897,
       "sha256": "c9778eeea12f588c01c3a446c9cb0ebf0085cb8530fac1671881ac2022a25359"
+    },
+    {
+      "path": "docs/DOCUMENTATION_INDEX.md",
+      "bytes": 3689,
+      "sha256": "f4267a60568209305655daeff68d2490361560ba79ff633037b2da4b20aedf48"
+    },
+    {
+      "path": "docs/DOCUMENTATION_MAINTENANCE.md",
+      "bytes": 4141,
+      "sha256": "51f7b1ea5cdcecfdd34b083958056c011b7094e37bd84f95c6b8b5f150c8d920"
     },
     {
       "path": "docs/DO_NOT_UPLOAD.md",
@@ -5895,6 +6350,11 @@
       "path": "docs/ETHEREUM_MAINNET_GATES_v2_0.md",
       "bytes": 710,
       "sha256": "d7a9b02c73347dd15aab1dfbc89af535ff0610c6828b86eab65c202d4f3aa72a"
+    },
+    {
+      "path": "docs/ETHEREUM_MAINNET_OWNERSHIP_HANDOFF_REPORT.md",
+      "bytes": 296,
+      "sha256": "902f8d22dc19e4d02c74aadf540a2b0e34cf89d5aca20647ffc5f51b72dd0b4c"
     },
     {
       "path": "docs/ETHEREUM_MAINNET_PREFLIGHT_POLICY.md",
@@ -6012,6 +6472,46 @@
       "sha256": "1829ad02857790ef8f01bf967bb9aa78b39afaafd608fca8f927e48a6f45add1"
     },
     {
+      "path": "docs/GOALOS_GOVERNED_DECISION_STATE.md",
+      "bytes": 2091,
+      "sha256": "f2a956f3d3f4e4598116c21d623992f5a9889921b29d35c16323cc8082e478e0"
+    },
+    {
+      "path": "docs/GOALOS_MISSION_OS_AGIALPHA_SETTLEMENT_READINESS.md",
+      "bytes": 2108,
+      "sha256": "d5aec8aa0818d1f4d35731b81c4688708aaa927c8f5959a600616548d1c23058"
+    },
+    {
+      "path": "docs/GOALOS_MISSION_OS_AUTONOMOUS_WEBSITE_PUBLICATION.md",
+      "bytes": 2109,
+      "sha256": "70f20b380c767b6ca7aa89d9ba715702567c28528a25c43f5e4b1f1114522dec"
+    },
+    {
+      "path": "docs/GOALOS_MISSION_OS_CLAIM_BOUNDARY.md",
+      "bytes": 2093,
+      "sha256": "2eade61d8e25470713c742eda35c553d471342d3f31023d4c7d20abcc0be904c"
+    },
+    {
+      "path": "docs/GOALOS_MISSION_OS_ETHEREUM_DEPLOYMENT_COMPATIBILITY.md",
+      "bytes": 2112,
+      "sha256": "d9908e68db49ccedc9129523241e576433cbba725d9ae6a01e4ae4ed5edc3b9c"
+    },
+    {
+      "path": "docs/GOALOS_MISSION_OS_OPERATOR_RUNBOOK.md",
+      "bytes": 2095,
+      "sha256": "f036f922ea3735817fb7856268cc2d71069f60d87edb5efec7219a9377267d49"
+    },
+    {
+      "path": "docs/GOALOS_MISSION_OS_PAPER_WEBSITE_AUTOPUBLISHER.md",
+      "bytes": 2106,
+      "sha256": "2ec8987b8b6753991672ebda5a304efb2f0e76add6e0c0f13fcd68595ef2a4eb"
+    },
+    {
+      "path": "docs/GOALOS_MISSION_OS_START_HERE.md",
+      "bytes": 2089,
+      "sha256": "86ee833f7ab4575228af27b0347a290a231c84c63745b5b58f390e946f922497"
+    },
+    {
       "path": "docs/GOVERNANCE_ROLE_CEREMONY_v4_2.md",
       "bytes": 775,
       "sha256": "943e89d262dfcaebf1d4feccec19bb6c3c63b3c67abf54ad4493161bd36e710e"
@@ -6050,6 +6550,16 @@
       "path": "docs/ISSUE_SEED_MANIFEST.csv",
       "bytes": 1203,
       "sha256": "ee85bacf3ad4759f24d6786cc2d71b0b2e2eea9487889af059291dfb84546817"
+    },
+    {
+      "path": "docs/LAYOUT_QA_ASCENSION_WEBSITE_v81.md",
+      "bytes": 311,
+      "sha256": "94c4f9c48d351a1857846c84b0e0e4d06e5f338a0ec817f992a46e68de268c15"
+    },
+    {
+      "path": "docs/LAYOUT_QA_ASCENSION_WEBSITE_v82.md",
+      "bytes": 228,
+      "sha256": "a16fb445f212664a91b310eb4cd5f398c83da2c83c3f53de7fac24af7c41c132"
     },
     {
       "path": "docs/LEGACY_AGIJOBMANAGER_BRIDGE.md",
@@ -6152,6 +6662,11 @@
       "sha256": "4c27240b340bcc378d38fadd903fde5395aa8f3f95fc35fb6e111aa5a021a00b"
     },
     {
+      "path": "docs/MISSION_OS_IMPLEMENTATION_GAP_REPORT.md",
+      "bytes": 4619,
+      "sha256": "c155957affce806c5ab962c8143a2174120df2cc7344eb4aa1fdcf90341e5567"
+    },
+    {
       "path": "docs/NEAR_10_SCORECARD_v4_3.md",
       "bytes": 411,
       "sha256": "ec79b26fcf05aa4603745920539c951199abbb81f1f92dfb3fa8d8e42658b462"
@@ -6190,6 +6705,11 @@
       "path": "docs/OPTIONAL_PRIVATE_OPERATOR_PACKAGE.md",
       "bytes": 262,
       "sha256": "47a3a1ab5f9e5971f130308a212e90213ed726dcd80843c5175d0ea63bc14509"
+    },
+    {
+      "path": "docs/OWNERSHIP_HANDOFF_RUNBOOK.md",
+      "bytes": 3435,
+      "sha256": "64d889896536e474f91548b8bada00f6df6760bdd16e6eb628ebe52cc45134bb"
     },
     {
       "path": "docs/POLICY_SIGNOFFS_OR_FOUNDER_WAIVERS.md",
@@ -6277,6 +6797,11 @@
       "sha256": "21bb102dd07fe48d8364b0a5b71df202ecbe71988410f9d67c74b8d09617d36d"
     },
     {
+      "path": "docs/PROOF_CARD_028_REFORMULATION_v76.md",
+      "bytes": 967,
+      "sha256": "790cba2d9b09e4a43f75df1865ac672b38dd6e1554eb91a7a71824f8e9a5c94e"
+    },
+    {
       "path": "docs/PUBLIC_CLAIMS_REVIEW_v4_2.md",
       "bytes": 741,
       "sha256": "5e050c770ea9e00151179998a73390cbcc00ade445b48fdc7804ffb0ff292a8f"
@@ -6310,6 +6835,51 @@
       "path": "docs/PUBLIC_SEPOLIA_POLICY.md",
       "bytes": 320,
       "sha256": "7e37ffed9f40dafad30f82e8c3c1605d7bf434fb99ce8e4d46325b82f3ef12bc"
+    },
+    {
+      "path": "docs/QA_ASCENSION_WEBSITE_v71.md",
+      "bytes": 893,
+      "sha256": "7a097ec84914c81c7cf2cf372b1a151865cc4f2376b1d83fee082b06a42e38b8"
+    },
+    {
+      "path": "docs/QA_ASCENSION_WEBSITE_v72.md",
+      "bytes": 485,
+      "sha256": "4b410e490160a741b89ac8df4c2dbcfb63fc1569d3898ab07cc6c6fee0734b44"
+    },
+    {
+      "path": "docs/QA_ASCENSION_WEBSITE_v73.md",
+      "bytes": 292,
+      "sha256": "81df17cbeee758300a9a5c0a6874b43768e39b53ef82438717c55ef417001b43"
+    },
+    {
+      "path": "docs/QA_ASCENSION_WEBSITE_v74.md",
+      "bytes": 336,
+      "sha256": "d12230ee18a7d6c9c34947efa172dc7fa8bf46c34085cdecc564fe04580838c5"
+    },
+    {
+      "path": "docs/QA_ASCENSION_WEBSITE_v75.md",
+      "bytes": 3371,
+      "sha256": "26a191eede478160c1788c6c8a802ea98eb5515a863b49a1544c429991be06f1"
+    },
+    {
+      "path": "docs/QA_ASCENSION_WEBSITE_v76.md",
+      "bytes": 481,
+      "sha256": "ecfd30cb0ff6f9f032960065fb0a1a7fb4ac250a85380afa13cf01e22da0a657"
+    },
+    {
+      "path": "docs/QA_ASCENSION_WEBSITE_v80.md",
+      "bytes": 992,
+      "sha256": "7b404cbd15cfa62284139d2bc788bc7b40d658ef84ef81f46499bf024a74d947"
+    },
+    {
+      "path": "docs/QA_ASCENSION_WEBSITE_v81.md",
+      "bytes": 92,
+      "sha256": "8645222d610d2d4ac9cc3be5313be95cfcdd1f72b49d256f8e521391c9aeb5e8"
+    },
+    {
+      "path": "docs/QA_ASCENSION_WEBSITE_v82.md",
+      "bytes": 4472,
+      "sha256": "c8941bf34cb520cc948691940b4135d2d44fbb5f5574662838ffd07fa01bbc06"
     },
     {
       "path": "docs/REFERENCE_GROUNDED_ARCHITECTURE_v3_0.md",
@@ -6353,8 +6923,8 @@
     },
     {
       "path": "docs/REPOSITORY_MAP.md",
-      "bytes": 1305,
-      "sha256": "f87cffd00bb95959b7c6ecd4dabeccec9e5bb4d6525dbffb47f56be2152fe0a2"
+      "bytes": 1625,
+      "sha256": "f15548491410b33bae145e9145dc88cb488d8bdcd82eb6399845eb8bae1bf07d"
     },
     {
       "path": "docs/REPOSITORY_SOURCE_OF_TRUTH.md",
@@ -6368,8 +6938,8 @@
     },
     {
       "path": "docs/RUNTIME_ADDRESS_POLICY.md",
-      "bytes": 708,
-      "sha256": "6b23e2a1388ae6b1b0a844e203e667f91a7cf14d0ef2d34d1957af68294e4303"
+      "bytes": 1109,
+      "sha256": "61465d73bc35b5c9d74ba41f8b813d4716486c3faaa7d8d5b1272c1d02709418"
     },
     {
       "path": "docs/RUNTIME_DEPLOYMENT_INPUTS_NOT_COMMITTED.md",
@@ -6430,6 +7000,11 @@
       "path": "docs/SEPOLIA_INPUTS_REQUIRED.md",
       "bytes": 610,
       "sha256": "d1b0e3131457ef32b497c8f547120a127de9aa6abaeb84d225b5b23eb19d9bcc"
+    },
+    {
+      "path": "docs/SEPOLIA_OWNERSHIP_HANDOFF_REPORT.md",
+      "bytes": 158,
+      "sha256": "6646939efb02e73ac23b0f1a2132cce3e071dea26edc6d43eb131654d6cc6c8d"
     },
     {
       "path": "docs/SEPOLIA_REHEARSAL_EVIDENCE_DOCKET_v4_2.md",
@@ -6540,6 +7115,11 @@
       "path": "docs/WHAT_YES_MEANS_AND_DOES_NOT_MEAN.md",
       "bytes": 347,
       "sha256": "bc2b51d53d8db1a45438771f2f55abb2ace2d8c375fb1275605fdf7459645fb5"
+    },
+    {
+      "path": "docs/content-report-v82.preview.json",
+      "bytes": 6026,
+      "sha256": "019f67690f99b79fc16af145710188bb9eb48b5b32b536d9d9752ea912ced6fa"
     },
     {
       "path": "docs/diagrams/agialpha_work_settlement_v3.mmd",
@@ -6727,6 +7307,11 @@
       "sha256": "3989aaa04a6bd19ee5ca7e7039d5e6dfc66ce1310b3c963f96238fe67ba5d045"
     },
     {
+      "path": "docs/layout-report-v82.preview.json",
+      "bytes": 142,
+      "sha256": "b80ff3939cc828cb85a971f721d1782073572812fe93e0b30df80e7356256580"
+    },
+    {
       "path": "docs/onboarding/MAIN_WEBSITE_COMPLETE_V33.md",
       "bytes": 681,
       "sha256": "7a1144a791358df838bb7fe762ac488bc6f688bd2a8b79f0484945c3989746a1"
@@ -6740,6 +7325,41 @@
       "path": "docs/onboarding/MAIN_WEBSITE_COMPLETE_V36.md",
       "bytes": 153,
       "sha256": "5a04dd7849fd9de73b1fb1928d515c3dd8aef37be0f87c6315716415a1182ab9"
+    },
+    {
+      "path": "docs/papers/mission-os/GoalOS_Mission_OS_One_Page_Field_Card.pdf",
+      "bytes": 116256,
+      "sha256": "9a9805f5757c5adc7f48898f40fb824591eb6b0302d1d7bd023e64c336ea63b7"
+    },
+    {
+      "path": "docs/papers/mission-os/GoalOS_Mission_OS_One_Page_Field_Card.tex",
+      "bytes": 4593,
+      "sha256": "f16e91ea0230460709c0ac2d7da4e4458f838376d49d86b1fc631a3a358349e5"
+    },
+    {
+      "path": "docs/papers/mission-os/GoalOS_Mission_OS_Paper.docx",
+      "bytes": 38335,
+      "sha256": "209fb5a7c342faf8d0502768f06155e1a3f8cf35d057fba0cb0e98151c76af2f"
+    },
+    {
+      "path": "docs/papers/mission-os/GoalOS_Mission_OS_Paper.md",
+      "bytes": 2065,
+      "sha256": "70fca9426267c32f0c2129351635ae07cdec233731aad516c3f9a7951cfc8f2f"
+    },
+    {
+      "path": "docs/papers/mission-os/GoalOS_Mission_OS_Paper.pdf",
+      "bytes": 240592,
+      "sha256": "686afb9e7540a4c04def88775da7070421468c3a1cceb45e2cb339c8fac67159"
+    },
+    {
+      "path": "docs/papers/mission-os/GoalOS_Mission_OS_Paper.tex",
+      "bytes": 24521,
+      "sha256": "c4c247641911fdb552b2d7e7cee636c9497d1c4ff7c6ebe47265e53e6810764f"
+    },
+    {
+      "path": "docs/papers/mission-os/README.md",
+      "bytes": 1328,
+      "sha256": "4c8a38595355cd149313156735d9a1b321d55e3c3e2b610481a2b98232880eec"
     },
     {
       "path": "docs/papers/sovereign-rsi/v6.3/GoalOS_native_alpha_AGI_Ascension_using_AGIALPHA_Sovereign_RSI_Paper_v5.docx",
@@ -6807,9 +7427,369 @@
       "sha256": "33e793b07ab171d4875bd2a300d48dd6d2f3a9ce41a0c458e1d206072a73b786"
     },
     {
+      "path": "docs/verify-report-v82.preview.json",
+      "bytes": 24,
+      "sha256": "0d8fdd87211df1785979fb9c8098f25c3f8954cd10834f44cff41f1090f2e056"
+    },
+    {
       "path": "docs/website/USAGE_EXAMPLE_OPERATOR_GUIDE.md",
       "bytes": 2189,
       "sha256": "0539951d0f1274974bc5e11ce9eeef9c05ddad00caf458389e829be80cdabe32"
+    },
+    {
+      "path": "downloads/00_OPEN_FIRST_GoalOS_for_Regular_People_v3.pdf",
+      "bytes": 61335,
+      "sha256": "c87d4471a82861d18e62676c6431356dec4e837bf183e187c4ea3abf0c673846"
+    },
+    {
+      "path": "downloads/01_How_to_Earn_with_GoalOS_Essay_v3.pdf",
+      "bytes": 79282,
+      "sha256": "497d8544ce1e6ea3a831ebe05c1bba4b8ce54d0deac7aa251959adb8c56357fe"
+    },
+    {
+      "path": "downloads/02_Regular_Person_GoalOS_Playbook_v3.pdf",
+      "bytes": 94087,
+      "sha256": "08af8d3d8d6d69ef3b2097f82d73cada52c788b36dc01dd00fa867d417c79025"
+    },
+    {
+      "path": "downloads/03_30_Day_GoalOS_Proof_Sprint_Workbook_v3.pdf",
+      "bytes": 99473,
+      "sha256": "99702a04cebc9672e98ab42eb01a49c01b50250dc93f29b706e7ff104d45835d"
+    },
+    {
+      "path": "downloads/04_Autonomous_GoalOS_Experience_Blueprint_v3.pdf",
+      "bytes": 80766,
+      "sha256": "3e3e56b00c77b2c8a7b431edd56fe4c60526e595e68f9e441d1cec08abdd7fe9"
+    },
+    {
+      "path": "downloads/05_GoalOS_Launch_Copy_and_Onboarding_Scripts_v3.pdf",
+      "bytes": 54164,
+      "sha256": "ce3c81d81e900ca9f57879a4f5d001bfd913df7e80b9d270ede6872aab4ef847"
+    },
+    {
+      "path": "downloads/07_GoalOS_Personal_Proof_Tracker_v3.xlsx",
+      "bytes": 36154,
+      "sha256": "836916836eed096245833be673e466b2f2b61eafd103f15b54b03b560583a528"
+    },
+    {
+      "path": "downloads/GoalOS_Personal_Proof_Journey_All_in_One_v3.pdf",
+      "bytes": 501854,
+      "sha256": "e2aa9be95edf69746e83b1db1dc4d35be90e22b90c5dffa9d05fe68dd7ea5003"
+    },
+    {
+      "path": "downloads/GoalOS_Personal_Proof_Sprint_Builder_v3.html",
+      "bytes": 10295,
+      "sha256": "7a208b50d2244d947510dfb3fd00e6eb7a5f203b0df32974f085f443a84d79c5"
+    },
+    {
+      "path": "downloads/mission-os/GoalOS_Mission_OS_One_Page_Field_Card.pdf",
+      "bytes": 116256,
+      "sha256": "9a9805f5757c5adc7f48898f40fb824591eb6b0302d1d7bd023e64c336ea63b7"
+    },
+    {
+      "path": "downloads/mission-os/GoalOS_Mission_OS_One_Page_Field_Card.tex",
+      "bytes": 4593,
+      "sha256": "f16e91ea0230460709c0ac2d7da4e4458f838376d49d86b1fc631a3a358349e5"
+    },
+    {
+      "path": "downloads/mission-os/GoalOS_Mission_OS_Paper.docx",
+      "bytes": 38335,
+      "sha256": "209fb5a7c342faf8d0502768f06155e1a3f8cf35d057fba0cb0e98151c76af2f"
+    },
+    {
+      "path": "downloads/mission-os/GoalOS_Mission_OS_Paper.md",
+      "bytes": 2065,
+      "sha256": "70fca9426267c32f0c2129351635ae07cdec233731aad516c3f9a7951cfc8f2f"
+    },
+    {
+      "path": "downloads/mission-os/GoalOS_Mission_OS_Paper.pdf",
+      "bytes": 240592,
+      "sha256": "686afb9e7540a4c04def88775da7070421468c3a1cceb45e2cb339c8fac67159"
+    },
+    {
+      "path": "downloads/mission-os/GoalOS_Mission_OS_Paper.tex",
+      "bytes": 24521,
+      "sha256": "c4c247641911fdb552b2d7e7cee636c9497d1c4ff7c6ebe47265e53e6810764f"
+    },
+    {
+      "path": "downloads/mission-os/README.md",
+      "bytes": 1328,
+      "sha256": "4c8a38595355cd149313156735d9a1b321d55e3c3e2b610481a2b98232880eec"
+    },
+    {
+      "path": "downloads/proof-treasury-simulation-003/AGIALPHABudgetLedger.csv",
+      "bytes": 653,
+      "sha256": "154f000a70ccd086cf1bb612941dd8ca0afd2da925be118818f568287b0a3cc7"
+    },
+    {
+      "path": "downloads/proof-treasury-simulation-003/AlphaWorkUnitLedger.csv",
+      "bytes": 1231,
+      "sha256": "fb3bcabf9b6d101e92271e6260a2e3f7d48be77626b13c5e7886600dc5f9ad8a"
+    },
+    {
+      "path": "downloads/proof-treasury-simulation-003/CapacityAuctionAllocations.csv",
+      "bytes": 601,
+      "sha256": "5fbd56ec38f63879837aacfd11aaf290ccfc3351e78667f091a698151d61e005"
+    },
+    {
+      "path": "downloads/proof-treasury-simulation-003/ChronicleEntry.md",
+      "bytes": 1014,
+      "sha256": "54b6e3ef516f07aba325659994d4a9d166c4d0587cb3a4cef9ecbd11531920d2"
+    },
+    {
+      "path": "downloads/proof-treasury-simulation-003/ClaimBoundaryReport.md",
+      "bytes": 697,
+      "sha256": "9ec2791572f0ba3dd9a3c979abca842287459fd99aa6a3380233c2901ad9385a"
+    },
+    {
+      "path": "downloads/proof-treasury-simulation-003/ContractCallTrace.csv",
+      "bytes": 6376,
+      "sha256": "091ba8acb0c5be9fae7f947d84a55ffaaba3a87fd783ef191ffdb6e6822fb6cf"
+    },
+    {
+      "path": "downloads/proof-treasury-simulation-003/ExternalReplayLedger.csv",
+      "bytes": 1127,
+      "sha256": "52d7454adc717493b704b65c757bd7adfb2b7a9ad987af3dd82c6fb937e3fd52"
+    },
+    {
+      "path": "downloads/proof-treasury-simulation-003/NoTokenMovementCertificate.md",
+      "bytes": 472,
+      "sha256": "53ff1e71df3d16b6f32474309df1a3498983eeae69eabd385b5c37ec5faad4da"
+    },
+    {
+      "path": "downloads/proof-treasury-simulation-003/ProofDebtLedger.csv",
+      "bytes": 457,
+      "sha256": "646c76d81b458643587bd32c64c33dfed8ca0cf3d87d82fbf79600f39b265fc2"
+    },
+    {
+      "path": "downloads/proof-treasury-simulation-003/ProofTreasuryEvidenceDocket.md",
+      "bytes": 2379,
+      "sha256": "832d5bc861cdbfe821871c29724b8f03f98ef8dfb02d8e4b7063352caba6d4ab"
+    },
+    {
+      "path": "downloads/proof-treasury-simulation-003/QAReport.md",
+      "bytes": 561,
+      "sha256": "128987dcd51b1437e13c93780ce04091cf27ab003fbac20fa1da88963c56f5ae"
+    },
+    {
+      "path": "downloads/proof-treasury-simulation-003/ReinvestmentDecision.json",
+      "bytes": 775,
+      "sha256": "8a25e85bf26ea03cfe753c28c82af95a568a16bfd34b159541411266ee69881c"
+    },
+    {
+      "path": "downloads/proof-treasury-simulation-003/SettlementTable.csv",
+      "bytes": 1692,
+      "sha256": "210b5e494147d73706bfe78f5dca20ef8d29314a9b5d2f04b0e2b33232263012"
+    },
+    {
+      "path": "downloads/proof-treasury-simulation-003/ThermostatSignals.json",
+      "bytes": 476,
+      "sha256": "03b11d37c1aacd074c050f36f3a5bcffb99725f9ae6a1b94cf6b963d3493820f"
+    },
+    {
+      "path": "downloads/proof-treasury-simulation-003/TreasurySimulationManifest.json",
+      "bytes": 4392,
+      "sha256": "76d10ca7904a05d5e58d7aa6cda5961620d37545d5fa2dee470440c742bd4034"
+    },
+    {
+      "path": "downloads/proof-treasury-simulation-003/ValidatorMarketLedger.csv",
+      "bytes": 2635,
+      "sha256": "af23114946401a4bdc8c8dc255da0dbf94da9c249ef328048b00adf1bdc3a8d3"
+    },
+    {
+      "path": "downloads/proof-treasury-simulation-003/ValidatorSlashingLedger.csv",
+      "bytes": 609,
+      "sha256": "cc2030123eeb9eaecb7a547dcc71bca5a2869c1c3af5483208c509b13ae6e021"
+    },
+    {
+      "path": "downloads/proof-treasury-simulation-003/run-state.json",
+      "bytes": 510,
+      "sha256": "42cf49a64eec1ba855c08669f8b663b63eba2253cc5fd212276b0a1f0cf8f3ce"
+    },
+    {
+      "path": "downloads/proof-treasury-simulation-003/simulation-preview-index.html",
+      "bytes": 5951,
+      "sha256": "34b812dfb3265f79edc10f860f621ae7aa96b806bffc9da4909631f2b22d013a"
+    },
+    {
+      "path": "downloads/proof-treasury-simulation-003-source/PROOF_TREASURY_SIMULATION_003.md",
+      "bytes": 2449,
+      "sha256": "47634816874055c7ef2bc6fd5b8e95f4b671969d0a2e0c93035c49bbb3ec0dff"
+    },
+    {
+      "path": "downloads/proof-treasury-simulation-003-source/default_budget.csv",
+      "bytes": 717,
+      "sha256": "e664ee0aee6b1e7de197556b5d069c20af6005246a051d9b69d7aed52b90c590"
+    },
+    {
+      "path": "downloads/proof-treasury-simulation-003-source/external_replay_scenarios.csv",
+      "bytes": 749,
+      "sha256": "a115316affef6d1c88b05d9b4a8d8f066fb980dc750ae20006d97971b4c37254"
+    },
+    {
+      "path": "downloads/proof-treasury-simulation-003-source/proof-treasury-simulation-003.json",
+      "bytes": 10279,
+      "sha256": "58cdb0110d0fd7391b0d4e003ed346c4752d00f99ff057f78c9d6b220fe413c1"
+    },
+    {
+      "path": "downloads/proof-treasury-simulation-003-source/proof_thermostat_policy.csv",
+      "bytes": 607,
+      "sha256": "d7a6322b4e1063bd8264292fc10d00de701766aa6e52af771b5e1e59702e5a40"
+    },
+    {
+      "path": "downloads/proof-treasury-simulation-003-source/proof_treasury_simulation_003.py",
+      "bytes": 26272,
+      "sha256": "3c0238715a06e83ec7efe9c399f05c841a2700ae7b341925d66c342caf9b65df"
+    },
+    {
+      "path": "downloads/proof-treasury-simulation-004/AGIALPHABudgetLedger.csv",
+      "bytes": 590,
+      "sha256": "b904d43597153311741c3922ce8dc75fd892470cb6a8cdb6641cab7a19c7f670"
+    },
+    {
+      "path": "downloads/proof-treasury-simulation-004/AlphaWorkUnitLedger.csv",
+      "bytes": 1544,
+      "sha256": "91535e17ccd9d9d07d64b2705847c1699f4b996076ed97671f96a64e42a22e6b"
+    },
+    {
+      "path": "downloads/proof-treasury-simulation-004/ChronicleEntry.md",
+      "bytes": 853,
+      "sha256": "e56b2f84ea5b6e871959237ff7e388da03b9bfcbf520eb8efea8154f6b50b4c7"
+    },
+    {
+      "path": "downloads/proof-treasury-simulation-004/ClaimBoundaryReport.md",
+      "bytes": 650,
+      "sha256": "3135c3c9b4f4531347ad132f5f6aa0c1f5ed8e78ce094715be826191170a1f61"
+    },
+    {
+      "path": "downloads/proof-treasury-simulation-004/ContractCallTrace.csv",
+      "bytes": 9930,
+      "sha256": "be53af53ddfc36173aa59a2b23e9f235920b0b041ca84523074042fed31bb3c9"
+    },
+    {
+      "path": "downloads/proof-treasury-simulation-004/ExternalReplayLedger.csv",
+      "bytes": 1482,
+      "sha256": "46084529d5d900d40a943f0e588213248fdefa5865634b8f5cfe73ee358101af"
+    },
+    {
+      "path": "downloads/proof-treasury-simulation-004/InstitutionalScaleDecision.json",
+      "bytes": 726,
+      "sha256": "dc8fce04a18f3ca5bcedee8776c13f7fb910dae53495bebfe359507d4aaf18d2"
+    },
+    {
+      "path": "downloads/proof-treasury-simulation-004/InstitutionalStressLedger.csv",
+      "bytes": 1659,
+      "sha256": "ac1eda73aa43bfaa69e69070dea209c478978bff1d98fc77b6dd9bf4e115a047"
+    },
+    {
+      "path": "downloads/proof-treasury-simulation-004/NoTokenMovementCertificate.md",
+      "bytes": 610,
+      "sha256": "8801f241f80fde7985370fc42d1c484ccff2f2e85bc2332fd5a67dc2872964ed"
+    },
+    {
+      "path": "downloads/proof-treasury-simulation-004/PROOF_TREASURY_SIMULATION_004.md",
+      "bytes": 2260,
+      "sha256": "6074042a12e6717ea04452d036090e098c51ebcc1eb7f9cc1017085e98ecb7ab"
+    },
+    {
+      "path": "downloads/proof-treasury-simulation-004/ProofDebtLedger.csv",
+      "bytes": 567,
+      "sha256": "cdfcd22012f101e04e825d9e4caaec5a3f6d733704658763d126f926da87da9b"
+    },
+    {
+      "path": "downloads/proof-treasury-simulation-004/ProofTreasuryEvidenceDocket.md",
+      "bytes": 2041,
+      "sha256": "4e50377d09b40f24cf026a42be5c8cdf75aef01874bb9cfdbf60c33235c22533"
+    },
+    {
+      "path": "downloads/proof-treasury-simulation-004/QAReport.md",
+      "bytes": 509,
+      "sha256": "d89e30c25b1efb1d2299830809f27a9fe7edbbb775b86437c96ebd536430c156"
+    },
+    {
+      "path": "downloads/proof-treasury-simulation-004/README_UPLOAD_PROOF_TREASURY_SIM_004.md",
+      "bytes": 1101,
+      "sha256": "2fbf0d1b2957b4bca02222a2bc91e5e84eb74a15cd025d9db021949b3d2f6127"
+    },
+    {
+      "path": "downloads/proof-treasury-simulation-004/SHA256SUMS.txt",
+      "bytes": 3783,
+      "sha256": "11c89b6f711341f61a08f7fbea035e8633ab6ff78038b981a927f0af8ca6a968"
+    },
+    {
+      "path": "downloads/proof-treasury-simulation-004/SettlementTable.csv",
+      "bytes": 1979,
+      "sha256": "0613b52d252ba9d8f3364794546adccffd3e1c8ccbecff03a9b1744c05746d4e"
+    },
+    {
+      "path": "downloads/proof-treasury-simulation-004/SovereignCapacityReserveAllocations.csv",
+      "bytes": 893,
+      "sha256": "de7b65879510392ba51b593533ad1b1f2608100a8693cbf3b73b6dbba5d49252"
+    },
+    {
+      "path": "downloads/proof-treasury-simulation-004/SystemicRiskRegister.csv",
+      "bytes": 895,
+      "sha256": "35a369011180a23f8eec8aab72e0414e93e7724cef8f56aa6dc70951142d33f3"
+    },
+    {
+      "path": "downloads/proof-treasury-simulation-004/ThermostatSignals.json",
+      "bytes": 995,
+      "sha256": "72f9352b73cef383587c6efe6a3d0b6560c782b6d8d6a6a275a0a0b67e52b0f0"
+    },
+    {
+      "path": "downloads/proof-treasury-simulation-004/TreasurySimulationManifest.json",
+      "bytes": 1102,
+      "sha256": "5a3b7d5d64d793f0f9986a68dbebf5c94315a8b4416a9cca75c8a52c101ea0b4"
+    },
+    {
+      "path": "downloads/proof-treasury-simulation-004/ValidatorMarketLedger.csv",
+      "bytes": 4286,
+      "sha256": "45921cad9ed1c57caa7b18d15ee9e78e3362046d0189ab573434301f88df235a"
+    },
+    {
+      "path": "downloads/proof-treasury-simulation-004/ValidatorSlashingLedger.csv",
+      "bytes": 1156,
+      "sha256": "8252347eb04d294055acf4d01fdec2dce68b9d8aa05a0484d04ebf2eb100d65b"
+    },
+    {
+      "path": "downloads/proof-treasury-simulation-004/default_budget.csv",
+      "bytes": 512,
+      "sha256": "42686f6fda87931cc028883df4e4bdfed540b8c990914c6fe6c3a2196664f42c"
+    },
+    {
+      "path": "downloads/proof-treasury-simulation-004/index.html",
+      "bytes": 9377,
+      "sha256": "a14eda1329d5cbf5b79e0a8bc1a1e3b08c9b3cd34252db4d0f5755bc36ef6726"
+    },
+    {
+      "path": "downloads/proof-treasury-simulation-004/institutional_capacity_policy.csv",
+      "bytes": 709,
+      "sha256": "7e1615a17fd089b93ee39bd7622af9684967f0e28fe281618aef1abd5dbc87d8"
+    },
+    {
+      "path": "downloads/proof-treasury-simulation-004/institutional_stress_scenarios.csv",
+      "bytes": 1222,
+      "sha256": "7798fbefac39f68f2616e5bd6e2c3d1a4c3b6a898f4a6c653d3b8a1fcd6ef9ed"
+    },
+    {
+      "path": "downloads/proof-treasury-simulation-004/proof-treasury-simulation-004.json",
+      "bytes": 13908,
+      "sha256": "77fcd9aaba24d54cf272994d04c6c8e0aa9f8768dab33d4a2f7d47d106c8d38e"
+    },
+    {
+      "path": "downloads/proof-treasury-simulation-004/proof_thermostat_policy.csv",
+      "bytes": 643,
+      "sha256": "6d6156d5ee6ff73a5adf8904dce621e3b81431f6271bd47be296983517ba3475"
+    },
+    {
+      "path": "downloads/proof-treasury-simulation-004/proof_treasury_simulation_004.py",
+      "bytes": 32117,
+      "sha256": "b25c2b1d8a1f5168c1ffe9591b9dd74b84ba2f84ae4e9aeb75b9a607a02c8871"
+    },
+    {
+      "path": "downloads/proof-treasury-simulation-004/run-state.json",
+      "bytes": 190,
+      "sha256": "26853386c697c625087d96eeed152c9deae634e64b917add317aabf4b879103c"
     },
     {
       "path": "evidence/SEPOLIA_EVIDENCE_DOCKET_TEMPLATE_v4_2.json",
@@ -6988,8 +7968,48 @@
     },
     {
       "path": "evidence-docket.html",
-      "bytes": 13908,
-      "sha256": "e1c2c2914d5beddabd8b29c57614a48ffe9393d72f9f974afdc61138aa6ad6a3"
+      "bytes": 21988,
+      "sha256": "9c6be7c089b563b8d6143b89c8b5791a3467de486884dfb5c8cadede352fbc9b"
+    },
+    {
+      "path": "examples/mission-os/ai-product-intelligence.json",
+      "bytes": 2183,
+      "sha256": "cb4063dd8b181dfc33101bc17cd9424926fc4346963c26d907eaf02c777edd8b"
+    },
+    {
+      "path": "examples/mission-os/cyber-defensive-readiness.json",
+      "bytes": 1475,
+      "sha256": "e6ed2410e685adb231ca3a67ed3c5364393cd05dc6eb91f5df85f93db881cb2a"
+    },
+    {
+      "path": "examples/mission-os/enterprise-ai-adoption.json",
+      "bytes": 1469,
+      "sha256": "42208e9fe183bf20285d600415c0fb4b228c97c5d7f0f2d411280c2a3a4a1d05"
+    },
+    {
+      "path": "examples/mission-os/ethereum-mainnet-operator-readiness.json",
+      "bytes": 1519,
+      "sha256": "113aee07121ae2903cbb043dd51f89e087e45c5398a7eb84521c721100196c5a"
+    },
+    {
+      "path": "examples/mission-os/ethereum-sepolia-deployment-readiness.json",
+      "bytes": 1513,
+      "sha256": "2a636ce2f71f978ce361b56d84c63b55728700cd88527f73c3baf3979dc6782a"
+    },
+    {
+      "path": "examples/mission-os/policy-regulation-options.json",
+      "bytes": 1475,
+      "sha256": "476cc76f950dd4ce52e7aefd14b5a3d406032798c802aa16832743efd333d41e"
+    },
+    {
+      "path": "execution-moat.html",
+      "bytes": 114357,
+      "sha256": "f734e3118ad6b183f2494fe42fbbbf9037178aeb10e595e0eb7f1e045bd3f3de"
+    },
+    {
+      "path": "executive-brief.html",
+      "bytes": 68206,
+      "sha256": "1e460390056bb2bf8c5e8aeb3d327c50baddd4c3c6c21e3c4d1bf23d8e10a334"
     },
     {
       "path": "foundry.toml",
@@ -7000,6 +8020,11 @@
       "path": "hardhat.config.ts",
       "bytes": 1887,
       "sha256": "3b1884678b5c7a2945953326e7a15779fa969980cdd901c6af4fded2db475efe"
+    },
+    {
+      "path": "how-it-works.html",
+      "bytes": 114397,
+      "sha256": "f12a27e78312bb5825d2264e7d5b435055139a35c2f78a1254027951533aab87"
     },
     {
       "path": "ignition/modules/GoalOSAGIALPHAAscension.ts",
@@ -7018,13 +8043,33 @@
     },
     {
       "path": "index.html",
-      "bytes": 18201,
-      "sha256": "0caa516a855de52e06aaaf311fa51106c0fcbc824c4df10fb2f337a86b1ad106"
+      "bytes": 108019,
+      "sha256": "a46668ef1d2db0460b88d2b57eba5acab6c46c37441edca25167c7d37784bb16"
+    },
+    {
+      "path": "jobs.html",
+      "bytes": 20618,
+      "sha256": "e9debc9080882ff183ff70586ae4a47123dac2218c1e34712a451dec35e764c9"
     },
     {
       "path": "main-website-root-proof-atlas-v32-smoke-test.yml",
       "bytes": 945,
       "sha256": "fb2a4d07a15a0c0fe83034eda3e8b59ee94acee86fd7783f254e914f878e9653"
+    },
+    {
+      "path": "manifest.webmanifest",
+      "bytes": 285,
+      "sha256": "a7a04c7968e677b117a221d77d30ce96fa16fe0ddb752ef562ce5acff1d9306f"
+    },
+    {
+      "path": "mission-os-paper.html",
+      "bytes": 127414,
+      "sha256": "5c1e9e04427b92b82ac84e1ba22ab1759ec8b1245bf72dafb4f34400f7d7cbc2"
+    },
+    {
+      "path": "mission-os.html",
+      "bytes": 144869,
+      "sha256": "59132c25f5e8a087a03b0ec67e693bcfd11b6f73852b2a7442370e9dd309dcf6"
     },
     {
       "path": "package-lock.json",
@@ -7033,78 +8078,208 @@
     },
     {
       "path": "package.json",
-      "bytes": 14389,
-      "sha256": "0e03bd8965a885c31e7fc0a94fc4cc8a62fb2e790e2e83bf6138a063b9872d82"
+      "bytes": 18545,
+      "sha256": "dfde9616cd625aaf8730d08a1b5237b40b940730febb9af4eddb64b367d493fd"
+    },
+    {
+      "path": "personal-proof-sprint.html",
+      "bytes": 114508,
+      "sha256": "360e952dc5b0b70ff1aa538504ae1234c7e19a77f8664bd354efaab0d42fd5d8"
+    },
+    {
+      "path": "pilot-guide.html",
+      "bytes": 111761,
+      "sha256": "2241d1a3f83fd33036be1091d10a60898e5e2ab2d30cc4190bef1504560d911e"
     },
     {
       "path": "proof-card-001.html",
-      "bytes": 29263,
-      "sha256": "9ad9b6ca115206196095ea76d7102d4be01a778b89b1dd968c6b5f7a3dc5d5a4"
+      "bytes": 126076,
+      "sha256": "245bf06587eef8bd2e5a962486b08315b0a9543cd3ecc401609da5713a796f0d"
     },
     {
       "path": "proof-card-002.html",
-      "bytes": 29228,
-      "sha256": "fc4bc28c9f727b6aef93997e3b6fcadcd4b6685b3e9e95a36d4289e374731826"
+      "bytes": 126098,
+      "sha256": "21f1370b6f863aee200562548bbfe18778d37453dc3bde1e8670ed8341add308"
     },
     {
       "path": "proof-card-003.html",
-      "bytes": 29255,
-      "sha256": "19b14117569640d3c5b0a290e649b57316d1271f3e7ae46e19383aaf0384262b"
+      "bytes": 126152,
+      "sha256": "646b1415d0d123ad6d8543910bb903189d5c066325d71fc3c96334accf764651"
     },
     {
       "path": "proof-card-004.html",
-      "bytes": 29174,
-      "sha256": "b1f2c9afb328b66ffd3523eec5dc0fefc5c42d668c87a96a8bae9bf716dba27d"
+      "bytes": 126138,
+      "sha256": "50d3cbf8a681e3e5d88a477609417dade86d10a27405cedd8f2b77c59f8cc93a"
     },
     {
       "path": "proof-card-005.html",
-      "bytes": 29134,
-      "sha256": "49da6d32ce1a7405af8a7cc0ebdda8912376ed21599f2b875fad51ae29c9084f"
+      "bytes": 126012,
+      "sha256": "f5a4823c06a322d6891ceeb7692da2a68e39f2802e08fd273c70352d5fd5b225"
     },
     {
       "path": "proof-card-006.html",
-      "bytes": 29270,
-      "sha256": "5cc9b37956a59b276c429c28dbd5f308ea7517d88b71e7e6c2c4ac70bc1a6e24"
+      "bytes": 126152,
+      "sha256": "8b89ce03de94ced8cf22ddf929db68df0f87d28b9fc44d7150e0733e23907965"
     },
     {
       "path": "proof-card-007.html",
-      "bytes": 29345,
-      "sha256": "a8e837e40bc4526507aafbd6ec58fd37402906936dca4124a38967d7d3ac206e"
+      "bytes": 126192,
+      "sha256": "82aabf2c70c79aa2d01970af2faf1ad439a3ffbd5032679015a6e6c1a6fe555f"
     },
     {
       "path": "proof-card-008.html",
-      "bytes": 29297,
-      "sha256": "e781cb2f3a3d39d9d3040993e6a53db448bc1faeceb1a9b7caddd1a6160e7e27"
+      "bytes": 126242,
+      "sha256": "fb062006cf99a5ea8e3d555a26e51ebc7a854577fa08547892271ecb75479447"
     },
     {
       "path": "proof-card-009.html",
-      "bytes": 29239,
-      "sha256": "ea32036b5fca27d5b628303de89829370ba8b5adbd90bc9b343e0c45e85a5144"
+      "bytes": 126144,
+      "sha256": "a9bfcbe6dbbafe953ce60ed194c752c478559e04a375a69f96be31db12db0d41"
     },
     {
       "path": "proof-card-010.html",
-      "bytes": 29303,
-      "sha256": "f16019d08585f21f0c535ebe457002bdee4fbc8c852ef97e552d3d25e688d1f9"
+      "bytes": 126192,
+      "sha256": "cfa76f77c74c4ff41284d609ca15fe2eb45e24f7104e5c338bbc9643dddf99ee"
     },
     {
       "path": "proof-card-011.html",
-      "bytes": 29418,
-      "sha256": "234e40d8397b165d35e6a0db867fbaf29161504d56919174f4f01fcf789c2304"
+      "bytes": 126282,
+      "sha256": "95f5e63f4f3d14c62e05073c7ece36482f8fcd00d40553520ee406369d8b343c"
     },
     {
       "path": "proof-card-012.html",
-      "bytes": 29481,
-      "sha256": "9467b3f529011875be5365eb59953b892478ff83e73fa8244a8f522789561716"
+      "bytes": 126176,
+      "sha256": "d32f653df2650a6b8616c6b6839b9086a45b860c294aa9ed1dc9eee78933c349"
     },
     {
       "path": "proof-card-013.html",
-      "bytes": 35988,
-      "sha256": "ccb01f9dec364f7abf61954e7a767addc9311f4dc3eca83ebbdcd2e2bfeda64c"
+      "bytes": 126192,
+      "sha256": "45c31885ece9181ccfc21677be5d8cb6c09dfd33ed413eb7cdbae261385693af"
+    },
+    {
+      "path": "proof-card-014.html",
+      "bytes": 126294,
+      "sha256": "6bd414755a7f9887855a2854ab98afdd2422b01b5e9b3a49c2ff9ad17223abc4"
+    },
+    {
+      "path": "proof-card-015.html",
+      "bytes": 126184,
+      "sha256": "a450b0a261bf0cbbfa2a9ec03a3fbae919402e99d33c910899eddac77880e474"
+    },
+    {
+      "path": "proof-card-016.html",
+      "bytes": 126270,
+      "sha256": "5d879418a71d96d63f36da82fb9ec437172eac24c39343e6389b46183275fe72"
+    },
+    {
+      "path": "proof-card-017.html",
+      "bytes": 126166,
+      "sha256": "ece9cea86e6a0d2b8666ab0b030000dd534e5743427e6df8dbdc1cd2f3dfff2d"
+    },
+    {
+      "path": "proof-card-018.html",
+      "bytes": 137030,
+      "sha256": "6a5b142fb6088c5a30c4d4f9ec9a0cec136c5b79dacbcf7ac930f98c740c9526"
+    },
+    {
+      "path": "proof-card-019.html",
+      "bytes": 93000,
+      "sha256": "b14dc9d06bc0b1edac55e10f97b530ef7b229b116e4fb8b4616a25257a2d36ed"
+    },
+    {
+      "path": "proof-card-020.html",
+      "bytes": 130106,
+      "sha256": "c269544bf671a3cc294fae1cf5668f79c3569f0db72642b6444b875c4c33a88d"
+    },
+    {
+      "path": "proof-card-021.html",
+      "bytes": 143510,
+      "sha256": "e46ab7002bc4e8f4423a795da38238b76d41ab2281dd0be495d11b0a77b36f08"
+    },
+    {
+      "path": "proof-card-022.html",
+      "bytes": 144380,
+      "sha256": "58198b7520689f812a6221ce992958104acfc3658739f16bad9294da50cb4f9f"
+    },
+    {
+      "path": "proof-card-023.html",
+      "bytes": 53310,
+      "sha256": "53853d6f358005ba46ada3c296b7d8d07983ffa48a681fe72bc074be2bc68a4b"
+    },
+    {
+      "path": "proof-card-024.html",
+      "bytes": 141589,
+      "sha256": "890fb339029900b0135b08ac5e61dc8c400c29a90e7291fea4f5726f63fd26a4"
+    },
+    {
+      "path": "proof-card-025.html",
+      "bytes": 147625,
+      "sha256": "f95389bc5c44b747c2af3183f7a182ec2e2e631952964906da39e550b0228bc9"
+    },
+    {
+      "path": "proof-card-026.html",
+      "bytes": 150415,
+      "sha256": "dd0d9d24afeb2c4e4a7901d1706f40d9a2af43eda13b4dabde5165c34e3658ac"
+    },
+    {
+      "path": "proof-card-027.html",
+      "bytes": 148643,
+      "sha256": "d771695c087a3eb9f8b39859bce3b65d580b178e53f927d281f3cc8db79122b3"
+    },
+    {
+      "path": "proof-card-028.html",
+      "bytes": 91436,
+      "sha256": "c2d9c24b2ca856f4c89ce9679756b9c944936f3a7ac8b2651d012a4e8a1482b7"
+    },
+    {
+      "path": "proof-card-029.html",
+      "bytes": 152542,
+      "sha256": "aeb1591a21178fb82459de45f5b72d3940f5864b5193d08e8dd5eb10ee46cb86"
+    },
+    {
+      "path": "proof-card-030.html",
+      "bytes": 101641,
+      "sha256": "ca96bb18e65ac896bef9196932c0dbd41e081ca3089790cdc5e1ebfe239e778f"
+    },
+    {
+      "path": "proof-card-031.html",
+      "bytes": 151474,
+      "sha256": "c13bf21d903bbb7a95a102c3e3f4b0f964452b44a4d5634438d050ce8da8cc07"
     },
     {
       "path": "proof-cards.html",
-      "bytes": 16710,
-      "sha256": "154d8ee8445dffd306e49976dc9d3cebc6dd46f47c8dc019d8e46658c53144bd"
+      "bytes": 107461,
+      "sha256": "ac453c6d5e767611e08dee575ef4cbbcce54ae1cafd49524f1e8781d9f940424"
+    },
+    {
+      "path": "proof-observatory.html",
+      "bytes": 72280,
+      "sha256": "a1509842f8c0db6fb8da162b4f94e3ea6a8537f03839dc18c322451780094443"
+    },
+    {
+      "path": "proof-sprint-builder.html",
+      "bytes": 113614,
+      "sha256": "95f66ec806d31cb50ce6b99f428ac2a0959477ee03bff9fef1c8e21d9c1f7936"
+    },
+    {
+      "path": "proof-treasury-simulation-003.html",
+      "bytes": 146146,
+      "sha256": "e69dd8a8246d4bc735d3b505be7882fd930f81e28b83b7822e0752c96472f323"
+    },
+    {
+      "path": "proof-treasury-simulation-004.html",
+      "bytes": 154448,
+      "sha256": "96a00a8a6f5b3ed752c99904c7cbeb66d8e7607ec93ced3ad1a949cc8ed3aa39"
+    },
+    {
+      "path": "proof-treasury-simulation-005.html",
+      "bytes": 155441,
+      "sha256": "85663006849f92595a805ad78f62333e94f8fc031201718219e82783f139c79e"
+    },
+    {
+      "path": "proof-treasury.html",
+      "bytes": 68486,
+      "sha256": "7c81cc06f6e45b42c1ec757b5bdf267b2f850183e85f3d88c86f8894ff0afcb1"
     },
     {
       "path": "qa/ADDRESS_CEREMONY.json",
@@ -7214,7 +8389,7 @@
     {
       "path": "qa/QA_REPORT.json",
       "bytes": 921,
-      "sha256": "c0e617688f9afb5e3d05d3484f85c9f8d5c455f56f07b06b3ba2be55f588f357"
+      "sha256": "ddd88868aa8dbcbdb6563d91d1021c5acc9499a72e7fe6755eb8dcc0e4a27615"
     },
     {
       "path": "qa/QA_REPORT_v4_0.json",
@@ -7392,6 +8567,396 @@
       "sha256": "a05e2b07bc1a2f0dceeac43cffa8fead459a4d335c65fb14f7fa7d8a26bf0dc5"
     },
     {
+      "path": "regular-person.html",
+      "bytes": 112165,
+      "sha256": "fd30cb5603a0432d071106be41b2fc39d5e47b5efc170c24cd778a5fa50c46d2"
+    },
+    {
+      "path": "research.html",
+      "bytes": 111745,
+      "sha256": "6ab3ebe4065f4856ff0987e0634e0381d6b253c014800d21bb8cd63a68f34c29"
+    },
+    {
+      "path": "resources/00_OPEN_FIRST_GoalOS_for_Regular_People_v3.pdf",
+      "bytes": 61335,
+      "sha256": "c87d4471a82861d18e62676c6431356dec4e837bf183e187c4ea3abf0c673846"
+    },
+    {
+      "path": "resources/01_How_to_Earn_with_GoalOS_Essay_v3.pdf",
+      "bytes": 79282,
+      "sha256": "497d8544ce1e6ea3a831ebe05c1bba4b8ce54d0deac7aa251959adb8c56357fe"
+    },
+    {
+      "path": "resources/02_Regular_Person_GoalOS_Playbook_v3.pdf",
+      "bytes": 94087,
+      "sha256": "08af8d3d8d6d69ef3b2097f82d73cada52c788b36dc01dd00fa867d417c79025"
+    },
+    {
+      "path": "resources/03_30_Day_GoalOS_Proof_Sprint_Workbook_v3.pdf",
+      "bytes": 99473,
+      "sha256": "99702a04cebc9672e98ab42eb01a49c01b50250dc93f29b706e7ff104d45835d"
+    },
+    {
+      "path": "resources/04_Autonomous_GoalOS_Experience_Blueprint_v3.pdf",
+      "bytes": 80766,
+      "sha256": "3e3e56b00c77b2c8a7b431edd56fe4c60526e595e68f9e441d1cec08abdd7fe9"
+    },
+    {
+      "path": "resources/05_GoalOS_Launch_Copy_and_Onboarding_Scripts_v3.pdf",
+      "bytes": 54164,
+      "sha256": "ce3c81d81e900ca9f57879a4f5d001bfd913df7e80b9d270ede6872aab4ef847"
+    },
+    {
+      "path": "resources/07_GoalOS_Personal_Proof_Tracker_v3.xlsx",
+      "bytes": 36154,
+      "sha256": "836916836eed096245833be673e466b2f2b61eafd103f15b54b03b560583a528"
+    },
+    {
+      "path": "resources/GoalOS_Personal_Proof_Journey_All_in_One_v3.pdf",
+      "bytes": 501854,
+      "sha256": "e2aa9be95edf69746e83b1db1dc4d35be90e22b90c5dffa9d05fe68dd7ea5003"
+    },
+    {
+      "path": "resources/GoalOS_Personal_Proof_Sprint_Builder_v3.html",
+      "bytes": 10295,
+      "sha256": "7a208b50d2244d947510dfb3fd00e6eb7a5f203b0df32974f085f443a84d79c5"
+    },
+    {
+      "path": "resources/autopilot/editable_docs/00_OPEN_FIRST_AGIALPHA_Autopilot_Command_Center_v2.docx",
+      "bytes": 38463,
+      "sha256": "140ea656e763bdd7312d971e9a8d84ac648d0aa37f2aa73cb6ddc10a85795f2b"
+    },
+    {
+      "path": "resources/autopilot/editable_docs/01_AGIALPHA_Autopilot_Master_Playbook_v2.docx",
+      "bytes": 40100,
+      "sha256": "7f4b10040b71f8aaa79e3442aaa839a7e4d7d6e008fe527aacd8c8a379ab9d03"
+    },
+    {
+      "path": "resources/autopilot/editable_docs/02_Codex_Implementation_Prompt_AGIALPHA_Autopilot_v2.docx",
+      "bytes": 40062,
+      "sha256": "69f90c36e10a0749bb97090c52c218b12527e8addf0e1286d3543d10117ea65d"
+    },
+    {
+      "path": "resources/autopilot/editable_docs/03_AGIALPHA_Autopilot_Operator_Runbook_v2.docx",
+      "bytes": 38597,
+      "sha256": "8dd5f5ab7be3efe4126716faf09b648ffcea90850544c96bc5bdfbedd408b289"
+    },
+    {
+      "path": "resources/autopilot/editable_docs/04_AGIALPHA_Autopilot_Safety_and_Claim_Boundary_v2.docx",
+      "bytes": 38094,
+      "sha256": "000e1845362923759447066b901894af2c36af97c24431b07e2b6c688090ed8c"
+    },
+    {
+      "path": "resources/autopilot/editable_docs/08_One_Page_Launch_Roadmap_v2.docx",
+      "bytes": 37603,
+      "sha256": "bd49879ef0bd03cc8b5d8a53138e20991076a5f505aa8005ae6895b55d7c3407"
+    },
+    {
+      "path": "resources/autopilot/editable_docs/09_GitHub_Actions_Setup_Guide_v2.docx",
+      "bytes": 37835,
+      "sha256": "bd9f838079811259a7f4dd4f648f4c92a908f10e33b9fb7db346b1f61c242564"
+    },
+    {
+      "path": "resources/autopilot/editable_docs/GoalOS_AGIALPHA_Autopilot_All_in_One_Book_v2.docx",
+      "bytes": 44596,
+      "sha256": "bb28a973973119f7e406b52857f7441ac96dfdfb6f49a32f725e396cec014a3d"
+    },
+    {
+      "path": "resources/autopilot/interactive/07_AGIALPHA_Autopilot_Mission_Builder_v2.html",
+      "bytes": 6562,
+      "sha256": "76b2933d609c3c294c3d5402c17ca7782e2751e441f3ac93ff2c94a70d26e745"
+    },
+    {
+      "path": "resources/autopilot/pdfs/00_OPEN_FIRST_AGIALPHA_Autopilot_Command_Center_v2.pdf",
+      "bytes": 61804,
+      "sha256": "2fe789dd062d6bb0130e7da3801692cda0b494efeb76ce0bb9c5f6c5f92ac194"
+    },
+    {
+      "path": "resources/autopilot/pdfs/01_AGIALPHA_Autopilot_Master_Playbook_v2.pdf",
+      "bytes": 113705,
+      "sha256": "cc2c0370e7c54c54e87e9a80cffc06eab16258fa36aebf95784fff209097b9bc"
+    },
+    {
+      "path": "resources/autopilot/pdfs/02_Codex_Implementation_Prompt_AGIALPHA_Autopilot_v2.pdf",
+      "bytes": 49273,
+      "sha256": "e422cff72530a3305743287ac7e827768eb08b99cc95d7466cbdb9442578e2de"
+    },
+    {
+      "path": "resources/autopilot/pdfs/03_AGIALPHA_Autopilot_Operator_Runbook_v2.pdf",
+      "bytes": 73377,
+      "sha256": "aade6d9413b34c27800b9f72d16e04f66b9985cdd707ada84106346def766190"
+    },
+    {
+      "path": "resources/autopilot/pdfs/04_AGIALPHA_Autopilot_Safety_and_Claim_Boundary_v2.pdf",
+      "bytes": 54322,
+      "sha256": "4095a76e59e01a2c6e81ab57176b4504975b779f731bfd8807f127ac8bd0f220"
+    },
+    {
+      "path": "resources/autopilot/pdfs/05_AGIALPHA_Autopilot_Deck_v2.pdf",
+      "bytes": 84106,
+      "sha256": "7b5bd8b62858c01812441ebbb89abc5c0b9b66d40e17db568f0b7a4097a7cdb7"
+    },
+    {
+      "path": "resources/autopilot/pdfs/08_One_Page_Launch_Roadmap_v2.pdf",
+      "bytes": 40097,
+      "sha256": "a734d47a7bcadab772cec4484144561beb54b7cb8ef61b52695b3125bdc924b9"
+    },
+    {
+      "path": "resources/autopilot/pdfs/09_GitHub_Actions_Setup_Guide_v2.pdf",
+      "bytes": 54642,
+      "sha256": "62b8a0b053893b53afa849ee1aec828551ea3abbbb7094ff89b1496a93a67b54"
+    },
+    {
+      "path": "resources/autopilot/pdfs/GoalOS_AGIALPHA_Autopilot_All_in_One_Book_v2.pdf",
+      "bytes": 234254,
+      "sha256": "85daf7ade0cd088222b8e37bc256f9fecd4898c61c41a6c183ca08de78e28c48"
+    },
+    {
+      "path": "resources/autopilot/slides/05_AGIALPHA_Autopilot_Deck_v2.pptx",
+      "bytes": 42404,
+      "sha256": "e295eb4f58501d8782d6f3ef4fcd336035709223d3846c5867cbc0c92de09bf4"
+    },
+    {
+      "path": "resources/autopilot/spreadsheets/06_AGIALPHA_Autopilot_Economics_Thermostat_Model_v2.xlsx",
+      "bytes": 15143,
+      "sha256": "967a0e1386c278ff4734b3359b2a543d2e195de6feb25689cba16bbc464654f2"
+    },
+    {
+      "path": "resources/mission-os/00_OPEN_FIRST_GoalOS_Mission_OS_v12.pdf",
+      "bytes": 2640628,
+      "sha256": "9820833b2782c65185ff1920bea66ec55a6dd7183feb6e94ad8d5d86063884a1"
+    },
+    {
+      "path": "resources/mission-os/01_GoalOS_Mission_OS_Whitepaper_v12.pdf",
+      "bytes": 136332,
+      "sha256": "71378cc607caec13edfc4f0fac5ccfa70d6a99bfa30e60098a682a0de0ea910f"
+    },
+    {
+      "path": "resources/mission-os/02_GoalOS_Mission_OS_Product_Spec_v12.pdf",
+      "bytes": 68804,
+      "sha256": "079e29f9bf3cbbfc7476c0e0cdcb44ccd18e5aff6cf389b9eeb23705fcfd1940"
+    },
+    {
+      "path": "resources/mission-os/03_Codex_Implementation_Prompt_v12.pdf",
+      "bytes": 68498,
+      "sha256": "0f2afee21d9c8639281b194b2f5ce7c5b243b26332161ec27bbbc21c13ce874f"
+    },
+    {
+      "path": "resources/mission-os/04_GitHub_Actions_Operator_Runbook_v12.pdf",
+      "bytes": 68248,
+      "sha256": "1ebd98acb70e57ce9560de1a3c1bc0e29d8810fae11817118de77e4e976a827f"
+    },
+    {
+      "path": "resources/mission-os/05_Launch_Copy_Sales_Pricing_v12.pdf",
+      "bytes": 67902,
+      "sha256": "71edcc1981a7dd374949a4bde643f44448a69fe96aaa60a2ce7639bec5299daf"
+    },
+    {
+      "path": "resources/mission-os/06_GoalOS_Mission_OS_Investor_Category_Deck_v12.pdf",
+      "bytes": 479722,
+      "sha256": "7af69daab16582aac1de62d39c0be3e334c578c987801fd899cb029e4900f00a"
+    },
+    {
+      "path": "resources/mission-os/07_GoalOS_Mission_OS_One_Page_Poster_v12.pdf",
+      "bytes": 99636,
+      "sha256": "317901f71d65cc2b91e33fafc07eb8fff14d7f316f69d128dc4a0043f730fe4d"
+    },
+    {
+      "path": "resources/mission-os/08_Mission_OS_Equations_One_Page_v12.pdf",
+      "bytes": 117828,
+      "sha256": "3d8b52c15e0be5cdbeb77c6573d3966f7b80b004e1e46b80613eef4a0b0dd5f9"
+    },
+    {
+      "path": "resources/mission-os/GoalOS_Mission_OS_All_in_One_Book_v12.pdf",
+      "bytes": 3725980,
+      "sha256": "a4842119d67add8fb6b3c7e5c269cc125656c78e44219a89e912a8af4a1de421"
+    },
+    {
+      "path": "resources/mission-os/docs/GOALOS_MISSION_OS_WEBSITE_PATCH_PLAN_v12.md",
+      "bytes": 265,
+      "sha256": "5927ce563a31e34e1a868b8b40c55d6ea79f356fab233c057e7dd322f53290c4"
+    },
+    {
+      "path": "resources/mission-os/docs/PACK_MANIFEST_v12.txt",
+      "bytes": 5749,
+      "sha256": "7b45ea8c7da2467264930e2868005d8f817e3ebc0ffaed87344a016b180115e3"
+    },
+    {
+      "path": "resources/mission-os/docs/QA_RENDER_NOTE_v12.md",
+      "bytes": 334,
+      "sha256": "3e749e1d16d47a58ca66743c98460747642686d06f605ee5ab5ec3750dfa9ce5"
+    },
+    {
+      "path": "resources/mission-os/example-output/ActionGraph.md",
+      "bytes": 155,
+      "sha256": "b17f8f50333a45a9ed3c383c7ca487999a31f218bc5aa4117ecd074fc832d959"
+    },
+    {
+      "path": "resources/mission-os/example-output/CapabilityPackage.md",
+      "bytes": 115,
+      "sha256": "2c06a05c1819263c1729188026767a59f0e14594d65e3ef1b6ef688c765be970"
+    },
+    {
+      "path": "resources/mission-os/example-output/ChronicleEntry.md",
+      "bytes": 131,
+      "sha256": "9a3ff12f4418c5769a61ba09022e33b9fe6ad72690b4e4f94394ba547d743855"
+    },
+    {
+      "path": "resources/mission-os/example-output/ClaimBoundaryReport.md",
+      "bytes": 256,
+      "sha256": "7c5577e1e849e76dc7c54bf2b3b72f9364ae1b91fcfcc8ea8b8c6cc479548d4e"
+    },
+    {
+      "path": "resources/mission-os/example-output/ClaimsMatrix.csv",
+      "bytes": 317,
+      "sha256": "738cfe7159beb6dd87fd0d74d37d47517eaeb0af362c99375f3ac7830cda8ee3"
+    },
+    {
+      "path": "resources/mission-os/example-output/ContradictionRegister.md",
+      "bytes": 130,
+      "sha256": "6dfda634a764a35c22343b9ae89711576f779cf781da4f37d56561cf0127dd86"
+    },
+    {
+      "path": "resources/mission-os/example-output/DecisionDeck.md",
+      "bytes": 136,
+      "sha256": "46bf0b64e0d5de5fd1549e88bec2eb1c70a53dec9e4eee01bc0c5d158a5adaed"
+    },
+    {
+      "path": "resources/mission-os/example-output/DecisionState.json",
+      "bytes": 391,
+      "sha256": "9d4e0810cba681476775ead672a4653b2b2d736de58658f4f03bf1a23c8a8ddd"
+    },
+    {
+      "path": "resources/mission-os/example-output/EvidenceDocket.md",
+      "bytes": 485,
+      "sha256": "6c1a4dfe554e6116ffc086f3529563d756db6c6de93c43597154ff4b3002f263"
+    },
+    {
+      "path": "resources/mission-os/example-output/ExecutiveBrief.md",
+      "bytes": 173,
+      "sha256": "6d9506bffc47af45aecf551a9a678c472798428505b8bdac7eb3efc55bf37f1b"
+    },
+    {
+      "path": "resources/mission-os/example-output/GoalOSCommit.md",
+      "bytes": 288,
+      "sha256": "504ac0bc37db9f168cd47fb5e76b402ee29a6e15a413cbda70a357bef06dee9c"
+    },
+    {
+      "path": "resources/mission-os/example-output/MissionPlan.md",
+      "bytes": 271,
+      "sha256": "721858044bcbf186479fa7183be08010ccec138d764db48adece1f8b7a7005fe"
+    },
+    {
+      "path": "resources/mission-os/example-output/QAReport.md",
+      "bytes": 55,
+      "sha256": "17ab3b4435dde943b9a04bea989905b29e5d41c5ec9b94d203e51f4d02d8c765"
+    },
+    {
+      "path": "resources/mission-os/example-output/RiskLedger.csv",
+      "bytes": 250,
+      "sha256": "24481646b8f3d6899a487de7d2786df989644a46ccbfd3d85c2f0da61391960b"
+    },
+    {
+      "path": "resources/mission-os/example-output/RunCommitment.md",
+      "bytes": 293,
+      "sha256": "469b4421b000514a839c7f4426b8ac228b3c03db2b145de8f389742839ff102a"
+    },
+    {
+      "path": "resources/mission-os/example-output/SourceProvenance.csv",
+      "bytes": 298,
+      "sha256": "a01389dea1a934dda8a045a88c299089a9b0d4d5063cf9268e4ec8878623f277"
+    },
+    {
+      "path": "resources/mission-os/example-output/VerifierReport.md",
+      "bytes": 162,
+      "sha256": "cf65e1a79071224648848ac2b1796e83557fc3585f1f01bc0b85fc32fa26e88c"
+    },
+    {
+      "path": "resources/mission-os/example-output/WorkGraph.json",
+      "bytes": 526,
+      "sha256": "aac0f95e77b4467300f6e6d8167a8b0ba3779828edb973b854643905dd6c8d8f"
+    },
+    {
+      "path": "resources/mission-os/example-output/artifact-manifest.json",
+      "bytes": 2512,
+      "sha256": "40ec08645907cb26046831abb69d12847c23de87793cba30bc37614cd2204fbf"
+    },
+    {
+      "path": "resources/mission-os/example-output/index.html",
+      "bytes": 1513,
+      "sha256": "adec9df0f85a8bf925f69c83315b6d905ee6c40eaec7981b8939c10d10ee881e"
+    },
+    {
+      "path": "resources/mission-os/examples/ai-product-intelligence.json",
+      "bytes": 1006,
+      "sha256": "55689516bf74b6cedf23137bbf69234c04ed169718262cf81fbff13d5f81c235"
+    },
+    {
+      "path": "resources/mission-os/examples/cyber-defensive-readiness.json",
+      "bytes": 963,
+      "sha256": "c8325a57861281cff93e657699de9dbf4a2cd49328365ef1cd629d2a2a285aad"
+    },
+    {
+      "path": "resources/mission-os/examples/enterprise-ai-adoption.json",
+      "bytes": 971,
+      "sha256": "6c77264d6b6d8b3ca2f236316d663c26f6242901bb346df0ea8afecb5947750a"
+    },
+    {
+      "path": "resources/mission-os/examples/policy-regulation-options.json",
+      "bytes": 900,
+      "sha256": "c0319438c162660fffe3377e95f0729f9777adeeeabb85e4825e1920205a976c"
+    },
+    {
+      "path": "resources/mission-os/templates/00_COPY_PASTE_CANONICAL_LINES_v12.txt",
+      "bytes": 468,
+      "sha256": "d313332bbad52d979130862dbb8ba7f2839afa0e5002220910cd7a898b998e2e"
+    },
+    {
+      "path": "resources/mission-os/templates/01_PUBLIC_LAUNCH_POST_v12.md",
+      "bytes": 621,
+      "sha256": "02c926eaa405fce04fb644a72919f9e84af320e5d6b31d752a3eab33cc236dc9"
+    },
+    {
+      "path": "resources/mission-os/templates/02_HOMEPAGE_COPY_v12.md",
+      "bytes": 251,
+      "sha256": "7b159f3dd9dbbd594765706168301ef23967a1896110ee76c7269c0cbd829408"
+    },
+    {
+      "path": "resources/mission-os/templates/03_SALES_EMAIL_v12.md",
+      "bytes": 538,
+      "sha256": "f87f170ef075f9aff25d1edac9eb342fb82311e399a73a76d9c783b7a3c0708f"
+    },
+    {
+      "path": "resources/mission-os/templates/04_PRICING_COPY_v12.md",
+      "bytes": 483,
+      "sha256": "cf3e419fccb4a6fe08fb8a2570635470eb3415a24594261d2f783a0604a40024"
+    },
+    {
+      "path": "resources/mission-os/web/GoalOS_Mission_OS_Landing_Page_v12.html",
+      "bytes": 7700,
+      "sha256": "f424326dce29f3f659d325576c57e05968f40583d3fcd96deeff8603f0edcd5c"
+    },
+    {
+      "path": "resources.html",
+      "bytes": 122925,
+      "sha256": "cf49d3c5cd0e7dfb56c5e2469767a395615606cb49ccce22fbd0b305df0fcf54"
+    },
+    {
+      "path": "roadmap.html",
+      "bytes": 112237,
+      "sha256": "7bd55f98f02b55502a2d99f8e667ec97d9688e13b29ff0dff2a7bdbeba4819e7"
+    },
+    {
+      "path": "robots.txt",
+      "bytes": 99,
+      "sha256": "84f6a9d120cff431f9b99b49bf865cdec90c4bf3717630ba82a15b1086af6f38"
+    },
+    {
+      "path": "routes.json",
+      "bytes": 1774,
+      "sha256": "dda89449f93357fa8d9231e4fa688cfe98098082602c56c80e978b318c52ad0d"
+    },
+    {
       "path": "schemas/agialpha-mainnet-gate-v4.3.schema.json",
       "bytes": 1714,
       "sha256": "04a43c9f6c0e16deb47fff2d4745d45f7c443ad776042d9cb722e34b7c1ec67e"
@@ -7437,6 +9002,36 @@
       "sha256": "dc6fda5bfd2156c834dcb52b1f6a27f6e54b8780fab5d4d0bc51503ae280dfa4"
     },
     {
+      "path": "schemas/goalos-mission-os-artifact-manifest.schema.json",
+      "bytes": 323,
+      "sha256": "d6f084199feecff1082b2033a8cd6a2e8185cd80eddba9b7d2d68ee710f9af4d"
+    },
+    {
+      "path": "schemas/goalos-mission-os-decision-state.schema.json",
+      "bytes": 503,
+      "sha256": "043b49f84657e36820fa594cb2b8f8240d75d82497b98b6ece2d53fa8c320516"
+    },
+    {
+      "path": "schemas/goalos-mission-os-evidence-docket.schema.json",
+      "bytes": 319,
+      "sha256": "56386641b05e233d80b5acf14ac9b00102bec1d6373e44c5cc2e4bae0a7e1543"
+    },
+    {
+      "path": "schemas/goalos-mission-os-intake.schema.json",
+      "bytes": 4757,
+      "sha256": "474cef8cf79f54178e4d5210d3b75cf876156104131f7369f73ae5dab84b8c93"
+    },
+    {
+      "path": "schemas/goalos-mission-os-run-state.schema.json",
+      "bytes": 806,
+      "sha256": "5351b9f5b55918f750abadd08d3e8703fbdd76c15f6aae91b7bd813546d165f9"
+    },
+    {
+      "path": "schemas/goalos-mission-os-settlement-readiness.schema.json",
+      "bytes": 425,
+      "sha256": "29cecc6ac0779455dad34ebadc649b54ffb1837928350182179d9eae437a4c94"
+    },
+    {
       "path": "schemas/job.schema.json",
       "bytes": 710,
       "sha256": "8cd5faaafe13bc24228ed4c1cdbb0fbd96af813ae7919c6e0ea2a53c867aaf7f"
@@ -7455,6 +9050,11 @@
       "path": "schemas/mainnet-gate.schema.json",
       "bytes": 1185,
       "sha256": "ba04c1b512ac283575bd0b92f317a0653f9d5ffcc2d1f5089d48af4adc604253"
+    },
+    {
+      "path": "schemas/ownership-handoff.schema.json",
+      "bytes": 408,
+      "sha256": "7f65a927e9c12f8668a1708ad5d7d72de2de605d7d487faeb40fafd043e6971d"
     },
     {
       "path": "schemas/private-mainnet-operator-input.schema.json",
@@ -7598,8 +9198,8 @@
     },
     {
       "path": "scripts/audit/run-actionlint.sh",
-      "bytes": 934,
-      "sha256": "a50890505f0ea83d3ec7dfb5d4a3312663b103f940e40dd07dc40ab917a96e2f"
+      "bytes": 1973,
+      "sha256": "d47da5bb4a1c54f80dddad90d5c48f819150929c9556f0ba2b055424fcd08f54"
     },
     {
       "path": "scripts/audit/run-all-audits.sh",
@@ -7688,8 +9288,68 @@
     },
     {
       "path": "scripts/build_existing_site_with_proof_card_001.py",
-      "bytes": 2054,
-      "sha256": "0a4207f1eac5515ac445fbc965e8565e3b402728218a8dbcdfe6ee81b1c54ecf"
+      "bytes": 2183,
+      "sha256": "a62a710968e042b7b82a75db6c1077eadf09b35525451a5719ed4b83d88615cd"
+    },
+    {
+      "path": "scripts/build_goalos_agialpha_ascension_website_v71.py",
+      "bytes": 15670499,
+      "sha256": "cf0b93506dc4ef697e10cba38e3fb774ede3ffe9aa1ebf0dc5fdf1932ad14230"
+    },
+    {
+      "path": "scripts/build_goalos_agialpha_ascension_website_v72.py",
+      "bytes": 15776212,
+      "sha256": "a7fc5210d989847e0037a7dfa36f65f4eab2bf009dd8dd6caa45f864ffffe91a"
+    },
+    {
+      "path": "scripts/build_goalos_agialpha_ascension_website_v73.py",
+      "bytes": 15935715,
+      "sha256": "4d3b697d8fcf490598ede35e7d94330bdbb1451786e8a8f6265caa173b945e8e"
+    },
+    {
+      "path": "scripts/build_goalos_agialpha_ascension_website_v74.py",
+      "bytes": 16116221,
+      "sha256": "dbccfef931740cd5d00afb4007fd466f60afcb924ba0218a7e8ba317633c06d2"
+    },
+    {
+      "path": "scripts/build_goalos_agialpha_ascension_website_v75.py",
+      "bytes": 46664,
+      "sha256": "6ca856161c1a66100ff611d653bf876a18f3feb015846e6cfea8350d65daa522"
+    },
+    {
+      "path": "scripts/build_goalos_agialpha_ascension_website_v75_apex.py",
+      "bytes": 5851,
+      "sha256": "56c6edb41f498ddd6aed1b6cc9717277abb57e1886a381ccd47de291b0bcf9b1"
+    },
+    {
+      "path": "scripts/build_goalos_agialpha_ascension_website_v76.py",
+      "bytes": 49199,
+      "sha256": "6905c46b081ace2c1bb7233cc0efb1f81fd967ca51020a09e622bbcbf0f99c14"
+    },
+    {
+      "path": "scripts/build_goalos_agialpha_ascension_website_v76_world_release.py",
+      "bytes": 5893,
+      "sha256": "d3b662c43199029061ae4923d38e7b88ec2fa8183aa00b55fc82cbfa68f7b670"
+    },
+    {
+      "path": "scripts/build_goalos_agialpha_ascension_website_v80.py",
+      "bytes": 56771,
+      "sha256": "718f1c82c69fd43788f7e272d7e1d3e6c7a9a981ba347e58bbcde4df20799560"
+    },
+    {
+      "path": "scripts/build_goalos_agialpha_ascension_website_v81.py",
+      "bytes": 39887,
+      "sha256": "cd1d2a02080ecc70c855d16d6ee53acc278040873fe6ff20f59aff6fe5deb055"
+    },
+    {
+      "path": "scripts/build_goalos_agialpha_ascension_website_v82.py",
+      "bytes": 30414,
+      "sha256": "a9bd9c23bdc164ac492abcfd9101739f37b707a5376044db85697f6ca8bcaebe"
+    },
+    {
+      "path": "scripts/build_goalos_agialpha_ascension_website_v85.py",
+      "bytes": 2166,
+      "sha256": "1913428bf9f76ae436bb97ca163c6a33fca1ed043747e128972051c6241e8fa2"
     },
     {
       "path": "scripts/build_goalos_agialpha_complete_main_website_v33.py",
@@ -7730,6 +9390,126 @@
       "path": "scripts/build_goalos_agialpha_final_main_website_v42.py",
       "bytes": 603,
       "sha256": "6caf1520df623be011b004d0f84f2d55a9825a0bced54a1f8ddcc370255f6085"
+    },
+    {
+      "path": "scripts/build_goalos_agialpha_final_main_website_v44.py",
+      "bytes": 14225343,
+      "sha256": "775b36ec9e11135241c9c962d12da4dce982322f44802fa28c4f1909a326d4f3"
+    },
+    {
+      "path": "scripts/build_goalos_agialpha_final_main_website_v45.py",
+      "bytes": 14225343,
+      "sha256": "775b36ec9e11135241c9c962d12da4dce982322f44802fa28c4f1909a326d4f3"
+    },
+    {
+      "path": "scripts/build_goalos_agialpha_final_main_website_v46.py",
+      "bytes": 14374600,
+      "sha256": "aacdfa522ab66bda187f24a88ce1751263ccb9307bcdd94b2c8c6a992ccbddb2"
+    },
+    {
+      "path": "scripts/build_goalos_agialpha_final_main_website_v47.py",
+      "bytes": 14370572,
+      "sha256": "e40a6e3812e5db8e2064fc1e8e37606206aa65feeeb1116ec0fbefa7aa06cada"
+    },
+    {
+      "path": "scripts/build_goalos_agialpha_final_main_website_v48.py",
+      "bytes": 14359201,
+      "sha256": "17de8da29050d5491889daa52d7f47e9a8c92011942042b26927b6a81f3a1074"
+    },
+    {
+      "path": "scripts/build_goalos_agialpha_final_main_website_v49.py",
+      "bytes": 14249301,
+      "sha256": "75bc80dc27a46683cfd9a82ad95c05983643ecc7fefc384c338bbccc1a374a92"
+    },
+    {
+      "path": "scripts/build_goalos_agialpha_final_main_website_v50.py",
+      "bytes": 14859028,
+      "sha256": "c7bb1b625369fca585e9a66e51539c98230a185d71c8fd86f841d8cdbdb409bb"
+    },
+    {
+      "path": "scripts/build_goalos_agialpha_final_main_website_v52.py",
+      "bytes": 14903261,
+      "sha256": "821d10d67d38ebe5e81ea228fb6ce7e4fdd8ac388a6c03bed52345633e118c4c"
+    },
+    {
+      "path": "scripts/build_goalos_agialpha_final_main_website_v54.py",
+      "bytes": 14898026,
+      "sha256": "c34b0e5f68e6e4a897bfdb836f1356a186a6fb93f15f7063822103e1cc6d60e3"
+    },
+    {
+      "path": "scripts/build_goalos_agialpha_final_main_website_v55.py",
+      "bytes": 14950456,
+      "sha256": "4c74b65f64e7926c05ddc25334b6d549af859324ebec3d48488985c7b1bea659"
+    },
+    {
+      "path": "scripts/build_goalos_agialpha_final_main_website_v56.py",
+      "bytes": 14976155,
+      "sha256": "424142ad0459a57212cf7e75ef194d1997ac043de46657352d6eaa7d4fb8842a"
+    },
+    {
+      "path": "scripts/build_goalos_agialpha_final_main_website_v58.py",
+      "bytes": 15029169,
+      "sha256": "d85382722ed0ea329833286945087c2b93f1ede85dd3b729d859168a42e504da"
+    },
+    {
+      "path": "scripts/build_goalos_agialpha_final_main_website_v59.py",
+      "bytes": 15054881,
+      "sha256": "c697a1417b568f3bbe29d503cf5305c0ba01295817e2089fb38ceeed50cbe310"
+    },
+    {
+      "path": "scripts/build_goalos_agialpha_final_main_website_v60.py",
+      "bytes": 15081329,
+      "sha256": "f52f29962be2df665976acaffe1a1f10b8a5f209b0a08a111678414ae45de408"
+    },
+    {
+      "path": "scripts/build_goalos_agialpha_final_main_website_v61.py",
+      "bytes": 15107174,
+      "sha256": "16e4b417ccee5141e3cdb1608ee01f82b44e7f2cfd239e5cfe74d0910dce576e"
+    },
+    {
+      "path": "scripts/build_goalos_agialpha_final_main_website_v62.py",
+      "bytes": 15122895,
+      "sha256": "47a58903686db955b69c4d85a9f7d0a1dfc58d9ec5c6f04d4582ed376f5f86f2"
+    },
+    {
+      "path": "scripts/build_goalos_agialpha_final_main_website_v63.py",
+      "bytes": 15150130,
+      "sha256": "e94e41bdd52843aee31f3dff3e911ccdcf09d39d81a706a703e27fb41d3bde34"
+    },
+    {
+      "path": "scripts/build_goalos_agialpha_final_main_website_v64.py",
+      "bytes": 15168402,
+      "sha256": "2c772519e42903dfe42cb1a1c96db94749b8191d9bd90e8b228b667fa35b1972"
+    },
+    {
+      "path": "scripts/build_goalos_agialpha_final_main_website_v65.py",
+      "bytes": 15196125,
+      "sha256": "fc3e9cf63827158d9c44be483df04f409a159810a0c9ecb55a17ead3dc88432c"
+    },
+    {
+      "path": "scripts/build_goalos_agialpha_final_main_website_v66.py",
+      "bytes": 15259117,
+      "sha256": "33fd863914616809a3be8ad6e954294c6076ba3cd117f596afd5deb97232b665"
+    },
+    {
+      "path": "scripts/build_goalos_agialpha_final_main_website_v67.py",
+      "bytes": 15334971,
+      "sha256": "f06ec0c76f475a7d5bc0912b4be05a095b5a568ae09e4e2a5350e4fe1fb5a979"
+    },
+    {
+      "path": "scripts/build_goalos_agialpha_final_main_website_v68.py",
+      "bytes": 15385978,
+      "sha256": "df8f17418a7a1f369e813f315d53119ba8c6f8772898ed53d3ba583d67eb4e08"
+    },
+    {
+      "path": "scripts/build_goalos_agialpha_final_main_website_v70.py",
+      "bytes": 15452300,
+      "sha256": "c0948510a976fb929b4c481144c47ae4ced3aff621ffe843d20cd795aa352005"
+    },
+    {
+      "path": "scripts/build_goalos_agialpha_final_main_website_v71.py",
+      "bytes": 15597531,
+      "sha256": "d5570e853a82f275f5dbb00de2cd9653a41670ec763ed84252e68f3709807bef"
     },
     {
       "path": "scripts/build_goalos_agialpha_flagship_demand_center_v7.py",
@@ -7798,8 +9578,8 @@
     },
     {
       "path": "scripts/deployment/claim_boundary_check.py",
-      "bytes": 2424,
-      "sha256": "917cc99645a5bc4c16b183ae937d2e53d4172f47aeb20c1b814179ea0c16689a"
+      "bytes": 3405,
+      "sha256": "0a32f6ce7f789f25201b2f08a63fba668be0ddd60c9567e16111bbc6aa105c26"
     },
     {
       "path": "scripts/deployment/goalos-command-center.ts",
@@ -7903,8 +9683,8 @@
     },
     {
       "path": "scripts/generate-public-status-docs.py",
-      "bytes": 12613,
-      "sha256": "faf69bb68a56af62e7e9f5096369d26b0daa8dc3de6415fd02a45c833e424ae4"
+      "bytes": 14285,
+      "sha256": "2a01fdc8a30403534b319215b9365f919ccef4f944137341ea5c5a7de11eaad2"
     },
     {
       "path": "scripts/generate-sepolia-evidence-docket.py",
@@ -8012,6 +9792,56 @@
       "sha256": "aed002e060db5a61d0bacec6bc9f4dd6aab3e28cc5f19859ef71edc2add6f4a3"
     },
     {
+      "path": "scripts/mission-os/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "scripts/mission-os/claim_boundary_check.py",
+      "bytes": 1805,
+      "sha256": "4d7e7daf8023bdf749f55d935d52450593931f5598bffef43f342ec88b67a7c2"
+    },
+    {
+      "path": "scripts/mission-os/common.py",
+      "bytes": 12187,
+      "sha256": "9e820d5a52dc92ceb211b9612771cf5e5ee188aafc127ece0feb04d01faf5903"
+    },
+    {
+      "path": "scripts/mission-os/done_check.py",
+      "bytes": 2171,
+      "sha256": "bff47e6a450d134162176a32ca2d18044b379ddacd61c68a8aa796036e6cf832"
+    },
+    {
+      "path": "scripts/mission-os/generate_chronicle_entry.py",
+      "bytes": 87,
+      "sha256": "29916b0ef2af27cba26e7c0facaaf440934fdd2b1aec957db65dbbef8cc17039"
+    },
+    {
+      "path": "scripts/mission-os/generate_mission_page.py",
+      "bytes": 1247,
+      "sha256": "ab892dab4cc3f7e7626dce9577909bbf1a767221289dce7f84f8b860184f81f9"
+    },
+    {
+      "path": "scripts/mission-os/generate_settlement_readiness.py",
+      "bytes": 87,
+      "sha256": "29916b0ef2af27cba26e7c0facaaf440934fdd2b1aec957db65dbbef8cc17039"
+    },
+    {
+      "path": "scripts/mission-os/mission_os_until_done.py",
+      "bytes": 25653,
+      "sha256": "54d744fc2fc7973697a69c540da23f9d1430855ea2da679948bd4cfac78c9808"
+    },
+    {
+      "path": "scripts/mission-os/qa_check.py",
+      "bytes": 1162,
+      "sha256": "089ac199bf5cf9617f7b6111fc0c22ec4766740d27304071b7c06c841bffb9e4"
+    },
+    {
+      "path": "scripts/mission-os/verify_mission_outputs.py",
+      "bytes": 74,
+      "sha256": "cf78874175b034b72e06761e0fb1ed26c7caa268565e35f44804e00b09d3715c"
+    },
+    {
       "path": "scripts/no_paid_products_check.py",
       "bytes": 3855,
       "sha256": "76d74a3daf076733ac1fa89ff25e2f3bfbeed9076339ad8d81f84a67b0be4501"
@@ -8020,6 +9850,11 @@
       "path": "scripts/no_private_operator_data_check.py",
       "bytes": 4114,
       "sha256": "428c3ce4c1e840bfc1aa05076c68e1475210c9e0dae87f44ac410eef497df22d"
+    },
+    {
+      "path": "scripts/ownership/goalos-ownership-command-center.ts",
+      "bytes": 17800,
+      "sha256": "d3056c2339efe03f21794be0e470aaa611847b0ce8635f057e508b5c13ba0ff4"
     },
     {
       "path": "scripts/patch_existing_pages_workflow_for_proof_cards_v11.py",
@@ -8168,8 +10003,8 @@
     },
     {
       "path": "scripts/validate-runtime-addresses.ts",
-      "bytes": 2623,
-      "sha256": "960e7aeb4b91eb47a1f05860e46df7e853958d72c650c07216d5449bfba7c944"
+      "bytes": 2424,
+      "sha256": "1e32dc6fbcbaac4dc57124b94df8f88b5ab87da5ab7a0d456db2f8d1932eb3e2"
     },
     {
       "path": "scripts/verification/lib/bytecodeChecks.ts",
@@ -8247,6 +10082,66 @@
       "sha256": "c273a1d6aafbe86faa2932c20f795fb1443431c0262173ea00ebcbfa5309f922"
     },
     {
+      "path": "scripts/verify_goalos_agialpha_ascension_website_v71.py",
+      "bytes": 11141,
+      "sha256": "d4a4bfa8ff586dc83c54a84b02232f9d3614ecad3ed9501a046cebc6e29c12b6"
+    },
+    {
+      "path": "scripts/verify_goalos_agialpha_ascension_website_v72.py",
+      "bytes": 2848,
+      "sha256": "9b04b9641bcc0cb45b197e8e172163cfa83c514fb759dcb770e90294408abba4"
+    },
+    {
+      "path": "scripts/verify_goalos_agialpha_ascension_website_v73.py",
+      "bytes": 2377,
+      "sha256": "5214c25a2e2a564290e3acda0332ba954afec1a46b820dcc5138098fd79993c2"
+    },
+    {
+      "path": "scripts/verify_goalos_agialpha_ascension_website_v74.py",
+      "bytes": 2461,
+      "sha256": "b9083bfc79b4ea64299fd12377891aee43248b9ce3270481c0f530258eaa8f42"
+    },
+    {
+      "path": "scripts/verify_goalos_agialpha_ascension_website_v75.py",
+      "bytes": 9986,
+      "sha256": "0069066986cbc387803569308d52875dc70e631ee0078906baaacaaf78a21c9d"
+    },
+    {
+      "path": "scripts/verify_goalos_agialpha_ascension_website_v75_apex.py",
+      "bytes": 6502,
+      "sha256": "93610dc8d183be408c028230b62c537583d421f3ef2276b7115b203b813c8789"
+    },
+    {
+      "path": "scripts/verify_goalos_agialpha_ascension_website_v76.py",
+      "bytes": 10187,
+      "sha256": "f933c5fd2ee8a190c1ef231e895606f3be257c26225c9b8e15062bcbe55c7724"
+    },
+    {
+      "path": "scripts/verify_goalos_agialpha_ascension_website_v76_world_release.py",
+      "bytes": 7612,
+      "sha256": "2d99f5b8b0bb627027d41680bc90aaa60bd9ee7b427728cdaa4cc349b9749841"
+    },
+    {
+      "path": "scripts/verify_goalos_agialpha_ascension_website_v80.py",
+      "bytes": 11401,
+      "sha256": "0459d7eeb8293581be9dda55f0708e8a52e0bc3f15d5c17ded7cdb34c837b5b2"
+    },
+    {
+      "path": "scripts/verify_goalos_agialpha_ascension_website_v81.py",
+      "bytes": 6242,
+      "sha256": "3060c44265c90a8f7e4ab6ab9b90202a717aa33d1a4c75d77dafa83515ab16f6"
+    },
+    {
+      "path": "scripts/verify_goalos_agialpha_ascension_website_v82.py",
+      "bytes": 4939,
+      "sha256": "df7453526ba4dc5644955cc4000663554df800a00be8382d039b5d0f8fe0dc1a"
+    },
+    {
+      "path": "scripts/verify_goalos_agialpha_ascension_website_v85.py",
+      "bytes": 3960,
+      "sha256": "ea958f2020d1c7634e3b5409651ba018ebb202fa2cb60b55087793c3ccdd4d94"
+    },
+    {
       "path": "scripts/verify_goalos_agialpha_complete_main_website_v33.py",
       "bytes": 2058,
       "sha256": "8511693235a407f5078df2314fbbfb7c563815d39bee422c5243c9fd8ecc5db6"
@@ -8285,6 +10180,126 @@
       "path": "scripts/verify_goalos_agialpha_final_main_website_v42.py",
       "bytes": 2367,
       "sha256": "d30032f03dfee56f6d4586c523583983d7282558a1b19f46095bdb5a3cbeb7e0"
+    },
+    {
+      "path": "scripts/verify_goalos_agialpha_final_main_website_v44.py",
+      "bytes": 2850,
+      "sha256": "a801e955670c24894e57f15ccfd38b01364c0035350141e1fcbcd40bdc397c2e"
+    },
+    {
+      "path": "scripts/verify_goalos_agialpha_final_main_website_v45.py",
+      "bytes": 2850,
+      "sha256": "9e3ffaf32d9e55f451faa4a673e2744406cc81a8683f91f8adde133430795e02"
+    },
+    {
+      "path": "scripts/verify_goalos_agialpha_final_main_website_v46.py",
+      "bytes": 2641,
+      "sha256": "ef82c28779ea3b740de794a69620c08b645350a2725eea9a06cb51040a88b421"
+    },
+    {
+      "path": "scripts/verify_goalos_agialpha_final_main_website_v47.py",
+      "bytes": 2389,
+      "sha256": "b320b5851386914f9c1c95aa996ae123de2ca730f3749792be4a8a60f9d29c8a"
+    },
+    {
+      "path": "scripts/verify_goalos_agialpha_final_main_website_v48.py",
+      "bytes": 2614,
+      "sha256": "db6a5fa25633d86ad051f0d9fa6eb7f350fc1a5f4747e30bb50bbd13b553650c"
+    },
+    {
+      "path": "scripts/verify_goalos_agialpha_final_main_website_v49.py",
+      "bytes": 2325,
+      "sha256": "2a19a344da09ba7be9e4955a4d1eb131307efb063340266edfcebf249a6d5831"
+    },
+    {
+      "path": "scripts/verify_goalos_agialpha_final_main_website_v50.py",
+      "bytes": 2687,
+      "sha256": "79974c30b1d4a52d3819a37cf385f1d6b8b99c92e1f608f3e6ae49c7f111780d"
+    },
+    {
+      "path": "scripts/verify_goalos_agialpha_final_main_website_v52.py",
+      "bytes": 2134,
+      "sha256": "a3e0834f718a26d1c999dd48ad9edc5bb8119cacfa1e22c2154fa6a321defe02"
+    },
+    {
+      "path": "scripts/verify_goalos_agialpha_final_main_website_v54.py",
+      "bytes": 2339,
+      "sha256": "e5ca477113c50af14b9d188a085433a31501b472318c4ef66e5d1ac53e3824a8"
+    },
+    {
+      "path": "scripts/verify_goalos_agialpha_final_main_website_v55.py",
+      "bytes": 2306,
+      "sha256": "29559e9a301e6df28e15f7af9c08b3a30fe9e10130431c1947821c8a15203950"
+    },
+    {
+      "path": "scripts/verify_goalos_agialpha_final_main_website_v56.py",
+      "bytes": 2599,
+      "sha256": "9d33e01f7e74684c2fc9e43481b26f2d5a89f88234bb870de76be0e37ead1d65"
+    },
+    {
+      "path": "scripts/verify_goalos_agialpha_final_main_website_v58.py",
+      "bytes": 2575,
+      "sha256": "73af5ce22470791f9b39785224cf0a124a4c006853d51212e009e25240d7b366"
+    },
+    {
+      "path": "scripts/verify_goalos_agialpha_final_main_website_v59.py",
+      "bytes": 2706,
+      "sha256": "49934ae091ce0c28ca5db436697daa8a7c9fcfda2050d2ac3f7548bd726b35f0"
+    },
+    {
+      "path": "scripts/verify_goalos_agialpha_final_main_website_v60.py",
+      "bytes": 2773,
+      "sha256": "c76ff60722d5f420e8ab0445ddb4f165710534c9449880f0ccccf886b9140a1f"
+    },
+    {
+      "path": "scripts/verify_goalos_agialpha_final_main_website_v61.py",
+      "bytes": 2332,
+      "sha256": "6c034d0ea2b0a4344e877200cd3a4acbf74f1c14ceff788d09bdbae2a4afc420"
+    },
+    {
+      "path": "scripts/verify_goalos_agialpha_final_main_website_v62.py",
+      "bytes": 2698,
+      "sha256": "bdf4980a5f5e54e3c20322bec115656d3f0e3b9a2be3d1a2bbe0cdb981415c29"
+    },
+    {
+      "path": "scripts/verify_goalos_agialpha_final_main_website_v63.py",
+      "bytes": 2717,
+      "sha256": "170799ca4a8994a30c97187652525a0f56b6d0b2a53d0759b93b69dc4b0be628"
+    },
+    {
+      "path": "scripts/verify_goalos_agialpha_final_main_website_v64.py",
+      "bytes": 2660,
+      "sha256": "9c86ca94408a0487ef5614ba0c286c15c0bd2478fcb916ea7d4548fabe3689c3"
+    },
+    {
+      "path": "scripts/verify_goalos_agialpha_final_main_website_v65.py",
+      "bytes": 2595,
+      "sha256": "afee7ad02babb580ddd066276197f52d09bf7552be521298048713c6dc78fbfa"
+    },
+    {
+      "path": "scripts/verify_goalos_agialpha_final_main_website_v66.py",
+      "bytes": 2445,
+      "sha256": "5e9bfe1e3bae0e3170309dc3ea731f18283ac265603345e6b890e6da9e86ab31"
+    },
+    {
+      "path": "scripts/verify_goalos_agialpha_final_main_website_v67.py",
+      "bytes": 2408,
+      "sha256": "a991cd3a513e1ac6dbb92653d40d4e3167950110e4f0f6f9c5f0e7947eaa5486"
+    },
+    {
+      "path": "scripts/verify_goalos_agialpha_final_main_website_v68.py",
+      "bytes": 2391,
+      "sha256": "f34c9cfc3980ccebc73e074adf85d691bf64c44c375b89c65554d32ba74b6a67"
+    },
+    {
+      "path": "scripts/verify_goalos_agialpha_final_main_website_v70.py",
+      "bytes": 2466,
+      "sha256": "ddad78bf48d89b06ee1e56defbdf163b57987b8b4f81d829239d4b9bc75e8326"
+    },
+    {
+      "path": "scripts/verify_goalos_agialpha_final_main_website_v71.py",
+      "bytes": 2564,
+      "sha256": "5b081afbd5d519180631b44c028ad4fb0ef449e29c785f0798d4009e2800ea55"
     },
     {
       "path": "scripts/verify_goalos_agialpha_flagship_demand_center_v7.py",
@@ -8420,6 +10435,16 @@
       "path": "scripts/verify_main_website_proof_cards_v10.py",
       "bytes": 3606,
       "sha256": "b122c6ad43de575bb9e0ac6b78344de6fd83ab729509a76eff6706665fd75ce2"
+    },
+    {
+      "path": "scripts/visual_layout_check_v81.js",
+      "bytes": 2443,
+      "sha256": "e2d12a7b2a689cebb93efa6f346067c59e0e6828862e0329d135d4afd5715bc7"
+    },
+    {
+      "path": "scripts/visual_layout_check_v82.js",
+      "bytes": 1458,
+      "sha256": "8c70bfb8cbd2886c35c7e5b973dd9975bbc4e8eb88b47e2a42089ca8855e4d78"
     },
     {
       "path": "scripts/wizard/mainnet-command-center.py",
@@ -11212,14 +13237,69 @@
       "sha256": "f57687d8a04b6113ae829aeb63af12bb0e3b5ac53d8e3c62b38f0e66ff990f93"
     },
     {
+      "path": "site-status.json",
+      "bytes": 305,
+      "sha256": "32d74c381f900b2d5291ee8343c60bcb4762de158473fd0ac95bfcce1dcd4455"
+    },
+    {
+      "path": "sitemap.xml",
+      "bytes": 2977,
+      "sha256": "3abbb15c71ac5a0fc67aa8920650a5bde7c953c6bdaa63ba5ddf356b4538dd1c"
+    },
+    {
       "path": "slither.config.json",
       "bytes": 110,
       "sha256": "e5a4dcfb4f147e0b723ff1738d2c0098b8ebdaaae7dfc96f531c7b57977b01d8"
     },
     {
       "path": "sovereign-rsi-control-plane.html",
-      "bytes": 14690,
-      "sha256": "d0a74f539549d02cad5c64bc16fb540e383f7f975c1f0652acb67a825947c86f"
+      "bytes": 20950,
+      "sha256": "e574f314c3df9645a6d1ccb82c3a7b107968cd5f8ae184a8c9883f9b765d4376"
+    },
+    {
+      "path": "start-here.html",
+      "bytes": 113440,
+      "sha256": "b89b4fcf892f498c98d091f08393ede30b4b891115852f4d0a5afa68ca5f8dfe"
+    },
+    {
+      "path": "system-map.html",
+      "bytes": 115729,
+      "sha256": "acbb611ee3501aab66092337477728acfc7e95940dfd24b6c306e3ee82489808"
+    },
+    {
+      "path": "templates/mission-os-evidence-docket-template.md",
+      "bytes": 97,
+      "sha256": "d124a35625d93ce89bca6e3631209b66b790e57b29956fe7e79b0569ea17331a"
+    },
+    {
+      "path": "templates/mission-os-homepage-copy.md",
+      "bytes": 638,
+      "sha256": "8c5dcb07d556ab78a531b0a2df98c1e5e7fdeeca22a032952a5120afaebc10cb"
+    },
+    {
+      "path": "templates/mission-os-launch-post.md",
+      "bytes": 672,
+      "sha256": "fa6a87b0a495e2fd88b882c51f20d79e9393b72658b9b3f85c9c645a31f3805e"
+    },
+    {
+      "path": "templates/mission-os-pr-review-checklist.md",
+      "bytes": 92,
+      "sha256": "4fe221202a4c5c0ea33627ca4945fb18af398571d17e3e795a98696df16fd446"
+    },
+    {
+      "path": "templates/mission-os-pricing.md",
+      "bytes": 554,
+      "sha256": "ca4482524f2e69c190bd67c5a75895808b99db08a81e197aeba96d72c28cc964"
+    },
+    {
+      "path": "templates/mission-os-sales-email.md",
+      "bytes": 484,
+      "sha256": "0d9dd219cda3084f3c6ea5c149e22e9e92c5d5eaaeadbfb98c62866771ddfb9b"
+    },
+    {
+      "path": "templates/mission-os-settlement-readiness-template.md",
+      "bytes": 102,
+      "sha256": "984fbe7905eb88483f3db5bb2c41f30f0bb930554359af380341c1d305ae25f5"
     },
     {
       "path": "test/aepAscensionFlow.test.ts",
@@ -11233,8 +13313,8 @@
     },
     {
       "path": "test/deploymentUxSafety.test.ts",
-      "bytes": 18373,
-      "sha256": "58844400e56043bdddb825dd37009a935cb23800949f7ec710349c13013d6ea5"
+      "bytes": 19167,
+      "sha256": "722afff0de98f3c48d28a5af9873bdacd4e50a9130d5b57cf065ac83307bd47f"
     },
     {
       "path": "test/invariants/README.md",
@@ -11245,6 +13325,41 @@
       "path": "test/invariants/mainnetBoundary.invariant.test.ts",
       "bytes": 2674,
       "sha256": "3aae9ec3a7185e1bdb25a3be670964493f07731ed1ba4d728c71abb4638cf192"
+    },
+    {
+      "path": "test/mission_os/claim_boundary_test.py",
+      "bytes": 658,
+      "sha256": "694ef81ec0463b502e9731daab0f143e30cb82df02904e59a19f28235e8327ad"
+    },
+    {
+      "path": "test/mission_os/done_check_test.py",
+      "bytes": 634,
+      "sha256": "352fdeeef640c33892dd1e27353d70c24f8fb639fea1685e96af2fd6ec21ed66"
+    },
+    {
+      "path": "test/mission_os/mission_os_test.py",
+      "bytes": 1056,
+      "sha256": "d3eb9f13afa4397a765443c408fff4945996f93c07c9b8bb4531842d28bc7832"
+    },
+    {
+      "path": "test/mission_os/settlement_readiness_test.py",
+      "bytes": 3668,
+      "sha256": "a38839acc302a697ba7e67beca0bcd0c5c183e219ee722aa2b070592cf511bc0"
+    },
+    {
+      "path": "test/mission_os/website_publication_test.py",
+      "bytes": 459,
+      "sha256": "7c95f28aac0c06491026060011dd423e96178079fe522f16209c572af1fdbe12"
+    },
+    {
+      "path": "test/mission_os/workflow_safety_test.py",
+      "bytes": 677,
+      "sha256": "ff776f2246f0d80a874d9351631f5f9b5d8292102af70fef225f345b5e6632e1"
+    },
+    {
+      "path": "test/ownershipHandoff.test.ts",
+      "bytes": 4159,
+      "sha256": "2c019be3b1a1e3c520e9ea37968a880154745c184e71ae85a5422a7b9ee9fad8"
     },
     {
       "path": "test/v4InstitutionalControls.test.ts",
@@ -11260,6 +13375,61 @@
       "path": "tsconfig.json",
       "bytes": 293,
       "sha256": "e6358cbad0d546c026b50abe512815f1bcc307be499fee46f1464e95d03e556a"
+    },
+    {
+      "path": "use-cases.html",
+      "bytes": 112018,
+      "sha256": "5dec5322e2a3c32f4c1ada2eb5b584dbc91e32d3d6ab014f9340630a4595a373"
+    },
+    {
+      "path": "website/content/assets_manifest_v81.json",
+      "bytes": 7120,
+      "sha256": "d91cf6f726ac05e10f4dd8924ebdd225fdebdb3a077dd4d81268f3a68c830ea6"
+    },
+    {
+      "path": "website/content/assets_manifest_v82.json",
+      "bytes": 3612,
+      "sha256": "1e60673f1d5d6ac18ecffe683ea87c3576da9c500f8b88db6e941b8f3cb284cd"
+    },
+    {
+      "path": "website/content/page_depth_requirements_v82.json",
+      "bytes": 620,
+      "sha256": "a046c186b8efdb401f4a9980ea901f653d98311c21a90c4b3fcbc9b11c45d6ce"
+    },
+    {
+      "path": "website/content/pages_v82.json",
+      "bytes": 163,
+      "sha256": "2a91ce64fe12f5810bd9407a9901dca9c3bb07a90102643780ed4ece7cc2fedd"
+    },
+    {
+      "path": "website/content/proof_cards_v81.json",
+      "bytes": 10134,
+      "sha256": "e1f01674eb9a0cc9490fb44ae050a80e59f7aa9098b94241de37f13bb8994dbc"
+    },
+    {
+      "path": "website/content/proof_cards_v82.json",
+      "bytes": 10012,
+      "sha256": "9c81f48ae8aa21c1d9dff846968dbd6451c9dd3d185cf33b2d1713490e623a37"
+    },
+    {
+      "path": "website/content/site_v82.css",
+      "bytes": 6249,
+      "sha256": "164a5abe0aff6c80359adfacc5db5ad484eadab2f7e1f1ed2d9f2a5989cb4057"
+    },
+    {
+      "path": "website/content/treasury_simulations_v82.json",
+      "bytes": 747,
+      "sha256": "203a493418fc75840fc9c3ddee3fb51c83f75a3a54ee8bb8a4941401a43f8714"
+    },
+    {
+      "path": "website/content/visual_integrity_rules_v81.json",
+      "bytes": 272,
+      "sha256": "5c444dc9bf6eafdadfefb78fb4294c89e0c185e81ed7420e0d291ac860752cbf"
+    },
+    {
+      "path": "whitepaper.html",
+      "bytes": 22051,
+      "sha256": "74d6ad8b38890962f8e0c9d8a55693905ef23b3ae93938890aaeac479ca52a33"
     }
   ]
 }

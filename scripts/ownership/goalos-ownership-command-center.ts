@@ -1,38 +1,382 @@
 import hre from "hardhat";
-const { ethers } = hre as any;
 import fs from "fs";
 import path from "path";
 import crypto from "crypto";
 
+const { ethers } = hre as any;
 const ROOT = path.join(__dirname, "../..");
 const MANAGED_ROLES = [
-  "DEFAULT_ADMIN_ROLE", "PROTOCOL_ADMIN_ROLE", "OPERATOR_ROLE", "REVIEWER_MANAGER_ROLE", "TREASURY_ROLE", "PAUSER_ROLE", "VAULT_MANAGER_ROLE",
+  "DEFAULT_ADMIN_ROLE",
+  "PROTOCOL_ADMIN_ROLE",
+  "OPERATOR_ROLE",
+  "REVIEWER_MANAGER_ROLE",
+  "TREASURY_ROLE",
+  "PAUSER_ROLE",
+  "VAULT_MANAGER_ROLE",
+];
+const RUNTIME_OWNER_ENV = [
+  "FOUNDER_ADDRESS",
+  "TREASURY_ADDRESS",
+  "COMMERCIALIZATION_PERFORMANCE_ADMIN",
+  "PROOF_REWARDS_ADMIN",
+  "LIQUIDITY_ADMIN",
+  "SECURITY_ADMIN",
+  "COMMUNITY_ADMIN",
+  "APPROVED_PERMANENT_OWNER_ADDRESSES",
 ];
 const AGIALPHA = "AGIALPHA";
 const ERC173 = "0x7f5828d0";
 
-function sha256(buf: Buffer | string) { return "0x" + crypto.createHash("sha256").update(buf).digest("hex"); }
-function writeJsonAtomic(file: string, data: any) { fs.mkdirSync(path.dirname(file), { recursive: true }); const tmp = `${file}.tmp-${process.pid}`; fs.writeFileSync(tmp, JSON.stringify(data, null, 2) + "\n"); fs.renameSync(tmp, file); fs.writeFileSync(`${file}.sha256`, sha256(fs.readFileSync(file)) + "  " + path.basename(file) + "\n"); }
-function requireAddress(name: string) { const v = process.env[name]; if (!v || !ethers.isAddress(v) || ethers.getAddress(v) === ethers.ZeroAddress) throw new Error(`Missing/invalid ${name}`); return ethers.getAddress(v); }
-function forbidCiMainnet(chainId: bigint) { if (chainId === 1n && (process.env.CI || process.env.GITHUB_ACTIONS)) throw new Error("Mainnet ownership handoff is local-only and forbidden in CI/GitHub Actions"); }
-function manifestPath(label: string) { return path.join(ROOT, "deployments", `${label}.agialpha.latest.json`); }
-function latestPlanPath(label: string) { return path.join(ROOT, ".private", `${label}.ownership-plan.latest.json`); }
-function publicHandoffPath(label: string) { return path.join(ROOT, "deployments", `${label}.ownership-handoff.latest.json`); }
-function evidencePath(label: string) { return path.join(ROOT, "qa", `${label.replace("ethereum-", "")}-ownership-handoff-evidence.json`); }
-function reportPath(label: string) { return path.join(ROOT, "docs", label === "ethereum-mainnet" ? "ETHEREUM_MAINNET_OWNERSHIP_HANDOFF_REPORT.md" : "SEPOLIA_OWNERSHIP_HANDOFF_REPORT.md"); }
-function readManifest(label: string) { const p = manifestPath(label); if (!fs.existsSync(p)) throw new Error(`Missing deployment manifest ${p}`); const raw = fs.readFileSync(p); return { path: p, hash: sha256(raw), data: JSON.parse(raw.toString("utf8")) }; }
-function entries(manifest: any) { const c = manifest.contracts || manifest.addresses || {}; return Object.entries(c).filter(([name, value]) => name !== AGIALPHA && typeof (value as any) === "string" && ethers.isAddress(value as string)).map(([name, address]) => ({ name, address: ethers.getAddress(address as string) })).sort((a,b)=>a.name.localeCompare(b.name)); }
-async function contractAt(address: string) { return new ethers.Contract(address, ["function owner() view returns (address)", "function transferOwnership(address)", "function supportsInterface(bytes4) view returns (bool)", "function hasRole(bytes32,address) view returns (bool)", ...MANAGED_ROLES.map(r=>`function ${r}() view returns (bytes32)`), "function managedOwnershipRoleCount() view returns (uint256)", "event OwnershipTransferred(address indexed previousOwner,address indexed newOwner)", "event GoalOSOwnershipRolesMigrated(address indexed previousOwner,address indexed newOwner)"], ethers.provider); }
-async function roleIds(c: any) { const out: any = {}; for (const r of MANAGED_ROLES) out[r] = await c[r](); return out; }
-async function validateProof(label: string, chainId: bigint, finalOwner: string, manifestHash: string) { if (chainId !== 1n) return { required: false }; const p = process.env.FINAL_OWNER_CONTROL_PROOF_PATH || ".private/final-owner-control-proof.json"; if (!fs.existsSync(path.join(ROOT,p))) throw new Error(`Missing Mainnet final-owner control proof ${p}`); const proof = JSON.parse(fs.readFileSync(path.join(ROOT,p),"utf8")); if (ethers.getAddress(proof.finalOwnerAddress) !== finalOwner || BigInt(proof.chainId) !== chainId || proof.deploymentManifestSha256 !== manifestHash) throw new Error("Final-owner proof target/chain/manifest mismatch"); if (Date.parse(proof.expiresAt) <= Date.now()) throw new Error("Final-owner proof expired"); return { required: true, commitment: sha256(JSON.stringify(proof)) };
+type ManagedEntry = { name: string; address: string };
+type PlannedEntry = ManagedEntry & { currentOwner: string; action: string; gasEstimate: string };
+
+function sha256(buf: Buffer | string): string {
+  return "0x" + crypto.createHash("sha256").update(buf).digest("hex");
 }
-async function doctor(label: string) { const net = await ethers.provider.getNetwork(); forbidCiMainnet(net.chainId); const finalOwner = requireAddress("FINAL_OWNER_ADDRESS"); const [deployer] = await ethers.getSigners(); if (ethers.getAddress(deployer.address) === finalOwner) throw new Error("FINAL_OWNER_ADDRESS must differ from disposable deployer"); const m = readManifest(label); const list = entries(m.data); if (!list.length) throw new Error("No managed contracts found in manifest"); const seen = new Set<string>(); for (const e of list) { if (seen.has(e.address)) throw new Error(`Duplicate managed address ${e.address}`); seen.add(e.address); const code = await ethers.provider.getCode(e.address); if (code === "0x") throw new Error(`No bytecode at ${e.name} ${e.address}`); const c = await contractAt(e.address); const owner = ethers.getAddress(await c.owner()); if (owner !== ethers.getAddress(deployer.address) && owner !== finalOwner) throw new Error(`Unexpected owner for ${e.name}: ${owner}`); try { if (!(await c.supportsInterface(ERC173))) throw new Error("false"); } catch { throw new Error(`${e.name} lacks ERC-173 support`); } }
- await validateProof(label, net.chainId, finalOwner, m.hash); console.log(`PASS ownership doctor ${label}: ${list.length} managed contracts, chainId ${net.chainId}`); }
-async function plan(label: string) { const net = await ethers.provider.getNetwork(); forbidCiMainnet(net.chainId); const finalOwner = requireAddress("FINAL_OWNER_ADDRESS"); const [deployer] = await ethers.getSigners(); const m = readManifest(label); await validateProof(label, net.chainId, finalOwner, m.hash); const manifestEntries = entries(m.data); if (!manifestEntries.length) throw new Error("No managed contracts found in manifest"); const managed=[]; let total=0n; for (const e of manifestEntries) { const c = (await contractAt(e.address)).connect(deployer); const owner=ethers.getAddress(await c.owner()); let gas="0"; let action = owner === finalOwner ? "ALREADY_FINAL_OWNER" : owner === ethers.getAddress(deployer.address) ? "TRANSFER" : "FAIL"; if (action === "TRANSFER") { try { gas = (await c.transferOwnership.estimateGas(finalOwner)).toString(); total += BigInt(gas); } catch { action = "FAIL"; } } managed.push({...e,currentOwner:owner,action,gasEstimate:gas}); }
- const out:any={schemaVersion:1,status:"PLANNED",network:label,chainId:Number(net.chainId),sourceManifest:path.relative(ROOT,m.path),deploymentManifestSha256:m.hash,disposableOwner:ethers.getAddress(deployer.address),finalOwner,finalOwnerKind:process.env.FINAL_OWNER_KIND||"LEDGER_EOA",managedRoles:MANAGED_ROLES,managedContracts:managed,totalGasEstimate:total.toString(),expiresAt:new Date(Date.now()+24*3600*1000).toISOString(),createdAt:new Date().toISOString(),claimBoundary:"Plan only; not evidence of public-chain handoff."}; out.planHash=sha256(JSON.stringify(out)); writeJsonAtomic(latestPlanPath(label), out); console.log(`PASS wrote ${latestPlanPath(label)} ${out.planHash}`); }
-async function transfer(label: string) { const net = await ethers.provider.getNetwork(); forbidCiMainnet(net.chainId); const finalOwner = requireAddress("FINAL_OWNER_ADDRESS"); const p=latestPlanPath(label); if (!fs.existsSync(p)) throw new Error("Run ownership plan first"); const pl=JSON.parse(fs.readFileSync(p,"utf8")); if (pl.planHash !== sha256(JSON.stringify({...pl, planHash: undefined}).replace(',\n  "planHash": undefined',''))) {/* tolerate old hash */} if (Date.parse(pl.expiresAt)<=Date.now()) throw new Error("Plan expired"); if (net.chainId===1n && process.env.OWNERSHIP_MAINNET_CONFIRMATION !== `ETHEREUM_MAINNET-1-${finalOwner}-${pl.planHash}`) throw new Error("Missing exact OWNERSHIP_MAINNET_CONFIRMATION"); const [deployer]=await ethers.getSigners(); const journal=path.join(ROOT,".private",`${label}.ownership-journal.json`); const j=fs.existsSync(journal)?JSON.parse(fs.readFileSync(journal,"utf8")):{transactions:[]}; for (const e of pl.managedContracts) { const c=(await contractAt(e.address)).connect(deployer); const owner=ethers.getAddress(await c.owner()); if (owner===finalOwner) continue; if (owner!==ethers.getAddress(deployer.address)) throw new Error(`Unexpected owner ${e.name} ${owner}`); const tx=await c.transferOwnership(finalOwner); j.transactions.push({name:e.name,address:e.address,hash:tx.hash,submittedAt:new Date().toISOString()}); writeJsonAtomic(journal,j); const rc=await tx.wait(Number(process.env.OWNERSHIP_CONFIRMATIONS|| (net.chainId===1n?5:1))); if (!rc || rc.status!==1) throw new Error(`Transfer failed ${e.name}`); if (ethers.getAddress(await c.owner())!==finalOwner) throw new Error(`Post-transfer owner mismatch ${e.name}`); } console.log("PASS ownership transfer completed/resumed"); }
-async function verify(label: string) { const finalOwner=requireAddress("FINAL_OWNER_ADDRESS"); const [deployer]=await ethers.getSigners(); const m=readManifest(label); const results=[]; for (const e of entries(m.data)) { const c=await contractAt(e.address); const r=await roleIds(c); const owner=ethers.getAddress(await c.owner()); let ok=owner===finalOwner; for (const [name,id] of Object.entries(r)) { if (!(await c.hasRole(id, finalOwner))) ok=false; if (await c.hasRole(id, deployer.address)) ok=false; } results.push({...e, owner, ok}); } const failed=results.filter(r=>!r.ok); if (failed.length) throw new Error(`Ownership verification failed for ${failed.map(f=>f.name).join(",")}`); const ev={schemaVersion:1,status:"PASSED",network:label,verifiedAt:new Date().toISOString(),deploymentManifestSha256:m.hash,managedContractCount:results.length,disposableDeployer:ethers.getAddress(deployer.address),finalOwner,results,claimBoundary:"Local/fork/public-provider query evidence only; Mainnet PASSED requires real chain state."}; writeJsonAtomic(evidencePath(label),ev); writeJsonAtomic(publicHandoffPath(label),ev); fs.writeFileSync(reportPath(label),`# ${label} Ownership Handoff Report\n\nStatus: ${ev.status}\n\nManaged contracts: ${results.length}\n\nClaim boundary: ${ev.claimBoundary}\n`); console.log(`PASS ownership verify ${label}: ${results.length}`); }
-async function evidence(label:string){ await verify(label); }
-async function sweep(label:string){ const net=await ethers.provider.getNetwork(); forbidCiMainnet(net.chainId); if (net.chainId===1n && !process.env.OWNERSHIP_SWEEP_CONFIRMATION) throw new Error("Missing OWNERSHIP_SWEEP_CONFIRMATION"); const finalOwner=requireAddress("FINAL_OWNER_ADDRESS"); const evp=evidencePath(label); if(!fs.existsSync(evp) || JSON.parse(fs.readFileSync(evp,"utf8")).status!=="PASSED") throw new Error("Ownership PASSED evidence required before ETH sweep"); console.log(`DRY SAFE: sweep command gated; implementer must fund/sign locally to sweep ETH to ${finalOwner}. No tokens are swept.`); }
-async function main(){ const cmd=process.argv[2]||""; const label=cmd.includes("mainnet")?"ethereum-mainnet":"ethereum-sepolia"; if(cmd.endsWith(":doctor")) return doctor(label); if(cmd.endsWith(":plan")) return plan(label); if(cmd.endsWith(":dry-run")||cmd.endsWith(":fork-rehearsal")) return plan(label); if(cmd.endsWith(":transfer")||cmd.endsWith(":transfer-local-gated")) return transfer(label); if(cmd.endsWith(":verify")) return verify(label); if(cmd.endsWith(":evidence")) return evidence(label); if(cmd.endsWith(":sweep-deployer-local-gated")) return sweep(label); throw new Error(`Unknown ownership command ${cmd}`); }
-main().catch(e=>{ console.error(`FAIL ${e.message}`); process.exit(1); });
+
+function canonicalJson(data: unknown): string {
+  return JSON.stringify(data, Object.keys(data as Record<string, unknown>).sort());
+}
+
+function planHash(plan: Record<string, unknown>): string {
+  const copy = { ...plan };
+  delete copy.planHash;
+  return sha256(JSON.stringify(copy));
+}
+
+function writeJsonAtomic(file: string, data: unknown): void {
+  fs.mkdirSync(path.dirname(file), { recursive: true });
+  const tmp = `${file}.tmp-${process.pid}`;
+  fs.writeFileSync(tmp, JSON.stringify(data, null, 2) + "\n");
+  fs.renameSync(tmp, file);
+  fs.writeFileSync(`${file}.sha256`, `${sha256(fs.readFileSync(file))}  ${path.basename(file)}\n`);
+}
+
+function requireAddress(name: string): string {
+  const value = process.env[name];
+  if (!value || !ethers.isAddress(value) || ethers.getAddress(value) === ethers.ZeroAddress) {
+    throw new Error(`Missing/invalid ${name}`);
+  }
+  return ethers.getAddress(value);
+}
+
+function optionalAddressesFromEnv(): Set<string> {
+  const out = new Set<string>();
+  for (const name of RUNTIME_OWNER_ENV) {
+    const value = process.env[name];
+    if (!value) continue;
+    for (const raw of value.split(",")) {
+      const trimmed = raw.trim();
+      if (trimmed && ethers.isAddress(trimmed) && ethers.getAddress(trimmed) !== ethers.ZeroAddress) {
+        out.add(ethers.getAddress(trimmed));
+      }
+    }
+  }
+  return out;
+}
+
+function expectedChainId(label: string): bigint {
+  if (label === "ethereum-mainnet") return 1n;
+  if (label === "ethereum-sepolia") return 11155111n;
+  throw new Error(`Unsupported ownership network label ${label}`);
+}
+
+function requireExpectedChain(label: string, actual: bigint): void {
+  const expected = expectedChainId(label);
+  if (actual !== expected) {
+    throw new Error(`Wrong chain for ${label}: detected ${actual}, expected ${expected}`);
+  }
+}
+
+function forbidCiMainnet(chainId: bigint): void {
+  if (chainId === 1n && (process.env.CI || process.env.GITHUB_ACTIONS)) {
+    throw new Error("Mainnet ownership handoff is local-only and forbidden in CI/GitHub Actions");
+  }
+}
+
+function manifestPath(label: string): string {
+  return path.join(ROOT, "deployments", `${label}.agialpha.latest.json`);
+}
+
+function latestPlanPath(label: string): string {
+  return path.join(ROOT, ".private", `${label}.ownership-plan.latest.json`);
+}
+
+function publicHandoffPath(label: string): string {
+  return path.join(ROOT, "deployments", `${label}.ownership-handoff.latest.json`);
+}
+
+function evidencePath(label: string): string {
+  return path.join(ROOT, "qa", `${label.replace("ethereum-", "")}-ownership-handoff-evidence.json`);
+}
+
+function reportPath(label: string): string {
+  return path.join(ROOT, "docs", label === "ethereum-mainnet" ? "ETHEREUM_MAINNET_OWNERSHIP_HANDOFF_REPORT.md" : "SEPOLIA_OWNERSHIP_HANDOFF_REPORT.md");
+}
+
+function readManifest(label: string): { path: string; hash: string; data: any } {
+  const p = manifestPath(label);
+  if (!fs.existsSync(p)) throw new Error(`Missing deployment manifest ${p}`);
+  const raw = fs.readFileSync(p);
+  return { path: p, hash: sha256(raw), data: JSON.parse(raw.toString("utf8")) };
+}
+
+function entries(manifest: any): ManagedEntry[] {
+  const contracts = manifest.contracts || manifest.addresses || {};
+  return Object.entries(contracts)
+    .filter(([name, value]) => name !== AGIALPHA && typeof value === "string" && ethers.isAddress(value))
+    .map(([name, address]) => ({ name, address: ethers.getAddress(address as string) }))
+    .sort((a, b) => a.name.localeCompare(b.name));
+}
+
+async function contractAt(address: string): Promise<any> {
+  return new ethers.Contract(
+    address,
+    [
+      "function owner() view returns (address)",
+      "function transferOwnership(address)",
+      "function supportsInterface(bytes4) view returns (bool)",
+      "function hasRole(bytes32,address) view returns (bool)",
+      ...MANAGED_ROLES.map((role) => `function ${role}() view returns (bytes32)`),
+      "function managedOwnershipRoleCount() view returns (uint256)",
+      "event OwnershipTransferred(address indexed previousOwner,address indexed newOwner)",
+      "event GoalOSOwnershipRolesMigrated(address indexed previousOwner,address indexed newOwner)",
+    ],
+    ethers.provider,
+  );
+}
+
+async function roleIds(c: any): Promise<Record<string, string>> {
+  const out: Record<string, string> = {};
+  for (const role of MANAGED_ROLES) out[role] = await c[role]();
+  return out;
+}
+
+async function validateProof(chainId: bigint, finalOwner: string, manifestHash: string): Promise<{ required: boolean; commitment?: string }> {
+  if (chainId !== 1n) return { required: false };
+  const proofPath = process.env.FINAL_OWNER_CONTROL_PROOF_PATH || ".private/final-owner-control-proof.json";
+  const absolute = path.join(ROOT, proofPath);
+  if (!fs.existsSync(absolute)) throw new Error(`Missing Mainnet final-owner control proof ${proofPath}`);
+  const proof = JSON.parse(fs.readFileSync(absolute, "utf8"));
+  if (ethers.getAddress(proof.finalOwnerAddress) !== finalOwner || BigInt(proof.chainId) !== chainId || proof.deploymentManifestSha256 !== manifestHash) {
+    throw new Error("Final-owner proof target/chain/manifest mismatch");
+  }
+  if (Date.parse(proof.expiresAt) <= Date.now()) throw new Error("Final-owner proof expired");
+  return { required: true, commitment: sha256(canonicalJson(proof)) };
+}
+
+function actionForOwner(owner: string, deployer: string, finalOwner: string, permanentOwners: Set<string>): string {
+  if (owner === finalOwner) return "ALREADY_FINAL_OWNER";
+  if (owner === deployer) return "TRANSFER";
+  if (permanentOwners.has(owner)) return "PERMANENT_RUNTIME_OWNER";
+  return "FAIL";
+}
+
+async function doctor(label: string): Promise<void> {
+  const net = await ethers.provider.getNetwork();
+  requireExpectedChain(label, net.chainId);
+  forbidCiMainnet(net.chainId);
+  const finalOwner = requireAddress("FINAL_OWNER_ADDRESS");
+  const permanentOwners = optionalAddressesFromEnv();
+  const [deployer] = await ethers.getSigners();
+  const deployerAddress = ethers.getAddress(deployer.address);
+  if (deployerAddress === finalOwner) throw new Error("FINAL_OWNER_ADDRESS must differ from disposable deployer");
+  if (permanentOwners.has(deployerAddress)) throw new Error("Disposable deployer is listed as an approved permanent owner");
+  const manifest = readManifest(label);
+  const list = entries(manifest.data);
+  if (!list.length) throw new Error("No managed contracts found in manifest");
+  const seen = new Set<string>();
+  for (const entry of list) {
+    if (seen.has(entry.address)) throw new Error(`Duplicate managed address ${entry.address}`);
+    seen.add(entry.address);
+    if ((await ethers.provider.getCode(entry.address)) === "0x") throw new Error(`No bytecode at ${entry.name} ${entry.address}`);
+    const c = await contractAt(entry.address);
+    const owner = ethers.getAddress(await c.owner());
+    const action = actionForOwner(owner, deployerAddress, finalOwner, permanentOwners);
+    if (action === "FAIL") throw new Error(`Unexpected owner for ${entry.name}: ${owner}`);
+    try {
+      if (!(await c.supportsInterface(ERC173))) throw new Error("false");
+    } catch {
+      throw new Error(`${entry.name} lacks ERC-173 support`);
+    }
+  }
+  await validateProof(net.chainId, finalOwner, manifest.hash);
+  console.log(`PASS ownership doctor ${label}: ${list.length} managed contracts, chainId ${net.chainId}`);
+}
+
+async function plan(label: string): Promise<void> {
+  const net = await ethers.provider.getNetwork();
+  requireExpectedChain(label, net.chainId);
+  forbidCiMainnet(net.chainId);
+  const finalOwner = requireAddress("FINAL_OWNER_ADDRESS");
+  const permanentOwners = optionalAddressesFromEnv();
+  const [deployer] = await ethers.getSigners();
+  const deployerAddress = ethers.getAddress(deployer.address);
+  if (permanentOwners.has(deployerAddress)) throw new Error("Disposable deployer is listed as an approved permanent owner");
+  const manifest = readManifest(label);
+  const proof = await validateProof(net.chainId, finalOwner, manifest.hash);
+  const manifestEntries = entries(manifest.data);
+  if (!manifestEntries.length) throw new Error("No managed contracts found in manifest");
+  const managed: PlannedEntry[] = [];
+  let totalGas = 0n;
+  for (const entry of manifestEntries) {
+    const c = (await contractAt(entry.address)).connect(deployer);
+    const owner = ethers.getAddress(await c.owner());
+    let gasEstimate = "0";
+    let action = actionForOwner(owner, deployerAddress, finalOwner, permanentOwners);
+    if (action === "TRANSFER") {
+      gasEstimate = (await c.transferOwnership.estimateGas(finalOwner)).toString();
+      totalGas += BigInt(gasEstimate);
+    }
+    managed.push({ ...entry, currentOwner: owner, action, gasEstimate });
+  }
+  if (managed.some((entry) => entry.action === "FAIL")) throw new Error("Ownership plan contains unexpected owners");
+  const out: Record<string, unknown> = {
+    schemaVersion: 1,
+    status: "PLANNED",
+    network: label,
+    chainId: Number(net.chainId),
+    sourceManifest: path.relative(ROOT, manifest.path),
+    deploymentManifestSha256: manifest.hash,
+    disposableOwner: deployerAddress,
+    finalOwner,
+    approvedPermanentOwners: [...permanentOwners].sort(),
+    finalOwnerKind: process.env.FINAL_OWNER_KIND || "LEDGER_EOA",
+    finalOwnerControlProof: proof,
+    managedRoles: MANAGED_ROLES,
+    managedContracts: managed,
+    totalGasEstimate: totalGas.toString(),
+    expiresAt: new Date(Date.now() + 24 * 3600 * 1000).toISOString(),
+    createdAt: new Date().toISOString(),
+    claimBoundary: "Plan only; not evidence of public-chain handoff.",
+  };
+  out.planHash = planHash(out);
+  writeJsonAtomic(latestPlanPath(label), out);
+  console.log(`PASS wrote ${latestPlanPath(label)} ${out.planHash}`);
+}
+
+function validateLoadedPlan(plan: any, label: string, chainId: bigint, manifestHash: string, deployer: string, finalOwner: string): void {
+  const actual = planHash(plan);
+  if (plan.planHash !== actual) throw new Error(`Ownership plan hash mismatch: stored ${plan.planHash}, computed ${actual}`);
+  if (plan.network !== label) throw new Error(`Ownership plan network mismatch: ${plan.network} !== ${label}`);
+  if (BigInt(plan.chainId) !== chainId) throw new Error(`Ownership plan chainId mismatch: ${plan.chainId} !== ${chainId}`);
+  if (plan.deploymentManifestSha256 !== manifestHash) throw new Error("Ownership plan manifest hash mismatch");
+  if (ethers.getAddress(plan.disposableOwner) !== deployer) throw new Error("Ownership plan disposable owner mismatch");
+  if (ethers.getAddress(plan.finalOwner) !== finalOwner) throw new Error("Ownership plan final owner mismatch");
+  if (Date.parse(plan.expiresAt) <= Date.now()) throw new Error("Plan expired");
+}
+
+async function transfer(label: string): Promise<void> {
+  const net = await ethers.provider.getNetwork();
+  requireExpectedChain(label, net.chainId);
+  forbidCiMainnet(net.chainId);
+  const finalOwner = requireAddress("FINAL_OWNER_ADDRESS");
+  const [deployer] = await ethers.getSigners();
+  const deployerAddress = ethers.getAddress(deployer.address);
+  const manifest = readManifest(label);
+  const p = latestPlanPath(label);
+  if (!fs.existsSync(p)) throw new Error("Run ownership plan first");
+  const loadedPlan = JSON.parse(fs.readFileSync(p, "utf8"));
+  validateLoadedPlan(loadedPlan, label, net.chainId, manifest.hash, deployerAddress, finalOwner);
+  if (net.chainId === 1n && process.env.OWNERSHIP_MAINNET_CONFIRMATION !== `ETHEREUM_MAINNET-1-${finalOwner}-${loadedPlan.planHash}`) {
+    throw new Error("Missing exact OWNERSHIP_MAINNET_CONFIRMATION");
+  }
+  const journal = path.join(ROOT, ".private", `${label}.ownership-journal.json`);
+  const journalData = fs.existsSync(journal) ? JSON.parse(fs.readFileSync(journal, "utf8")) : { transactions: [] };
+  for (const entry of loadedPlan.managedContracts as PlannedEntry[]) {
+    const c = (await contractAt(entry.address)).connect(deployer);
+    const owner = ethers.getAddress(await c.owner());
+    if (owner === finalOwner || entry.action === "PERMANENT_RUNTIME_OWNER") continue;
+    if (owner !== deployerAddress || entry.action !== "TRANSFER") throw new Error(`Unexpected owner/action for ${entry.name}: ${owner}/${entry.action}`);
+    const tx = await c.transferOwnership(finalOwner);
+    journalData.transactions.push({ name: entry.name, address: entry.address, hash: tx.hash, submittedAt: new Date().toISOString() });
+    writeJsonAtomic(journal, journalData);
+    const receipt = await tx.wait(Number(process.env.OWNERSHIP_CONFIRMATIONS || (net.chainId === 1n ? 5 : 1)));
+    if (!receipt || receipt.status !== 1) throw new Error(`Transfer failed ${entry.name}`);
+    if (ethers.getAddress(await c.owner()) !== finalOwner) throw new Error(`Post-transfer owner mismatch ${entry.name}`);
+  }
+  console.log("PASS ownership transfer completed/resumed");
+}
+
+async function verify(label: string): Promise<void> {
+  const net = await ethers.provider.getNetwork();
+  requireExpectedChain(label, net.chainId);
+  forbidCiMainnet(net.chainId);
+  const finalOwner = requireAddress("FINAL_OWNER_ADDRESS");
+  const permanentOwners = optionalAddressesFromEnv();
+  const [deployer] = await ethers.getSigners();
+  const deployerAddress = ethers.getAddress(deployer.address);
+  const manifest = readManifest(label);
+  const results = [];
+  for (const entry of entries(manifest.data)) {
+    const c = await contractAt(entry.address);
+    const ids = await roleIds(c);
+    const owner = ethers.getAddress(await c.owner());
+    const ownerIsFinal = owner === finalOwner;
+    const ownerIsApprovedPermanent = permanentOwners.has(owner);
+    let ok = ownerIsFinal || ownerIsApprovedPermanent;
+    for (const id of Object.values(ids)) {
+      if (ownerIsFinal && !(await c.hasRole(id, finalOwner))) ok = false;
+      if (await c.hasRole(id, deployerAddress)) ok = false;
+    }
+    results.push({ ...entry, owner, ownerClass: ownerIsFinal ? "FINAL_OWNER" : ownerIsApprovedPermanent ? "APPROVED_PERMANENT_OWNER" : "UNEXPECTED", ok });
+  }
+  const failed = results.filter((result) => !result.ok);
+  if (failed.length) throw new Error(`Ownership verification failed for ${failed.map((f) => f.name).join(",")}`);
+  const block = await ethers.provider.getBlock("latest");
+  const evidence = {
+    schemaVersion: 1,
+    status: "PASSED",
+    network: label,
+    chainId: Number(net.chainId),
+    verifiedAt: new Date().toISOString(),
+    confirmedBlockNumber: block?.number,
+    confirmedBlockHash: block?.hash,
+    deploymentManifestSha256: manifest.hash,
+    managedContractCount: results.length,
+    disposableDeployer: deployerAddress,
+    finalOwner,
+    approvedPermanentOwners: [...permanentOwners].sort(),
+    results,
+    claimBoundary: label === "ethereum-mainnet" ? "Mainnet PASSED evidence requires detected chainId 1 and live provider state." : "Sepolia/local rehearsal evidence only; not Mainnet evidence.",
+  };
+  writeJsonAtomic(evidencePath(label), evidence);
+  writeJsonAtomic(publicHandoffPath(label), evidence);
+  fs.writeFileSync(reportPath(label), `# ${label} Ownership Handoff Report\n\nStatus: ${evidence.status}\n\nChain ID: ${evidence.chainId}\n\nManaged contracts: ${results.length}\n\nClaim boundary: ${evidence.claimBoundary}\n`);
+  console.log(`PASS ownership verify ${label}: ${results.length}`);
+}
+
+async function evidence(label: string): Promise<void> {
+  await verify(label);
+}
+
+async function sweep(label: string): Promise<void> {
+  const net = await ethers.provider.getNetwork();
+  requireExpectedChain(label, net.chainId);
+  forbidCiMainnet(net.chainId);
+  const finalOwner = requireAddress("FINAL_OWNER_ADDRESS");
+  const evp = evidencePath(label);
+  if (!fs.existsSync(evp) || JSON.parse(fs.readFileSync(evp, "utf8")).status !== "PASSED") {
+    throw new Error("Ownership PASSED evidence required before ETH sweep");
+  }
+  if (net.chainId === 1n && !process.env.OWNERSHIP_SWEEP_CONFIRMATION) throw new Error("Missing OWNERSHIP_SWEEP_CONFIRMATION");
+  console.log(`DRY SAFE: sweep command gated; implementer must fund/sign locally to sweep ETH to ${finalOwner}. No tokens are swept.`);
+}
+
+async function main(): Promise<void> {
+  const cmd = process.argv[2] || "";
+  const label = cmd.includes("mainnet") ? "ethereum-mainnet" : "ethereum-sepolia";
+  if (cmd.endsWith(":doctor")) return doctor(label);
+  if (cmd.endsWith(":plan")) return plan(label);
+  if (cmd.endsWith(":dry-run") || cmd.endsWith(":fork-rehearsal")) return plan(label);
+  if (cmd.endsWith(":transfer") || cmd.endsWith(":transfer-local-gated")) return transfer(label);
+  if (cmd.endsWith(":verify")) return verify(label);
+  if (cmd.endsWith(":evidence")) return evidence(label);
+  if (cmd.endsWith(":sweep-deployer-local-gated")) return sweep(label);
+  throw new Error(`Unknown ownership command ${cmd}`);
+}
+
+main().catch((error) => {
+  console.error(`FAIL ${error.message}`);
+  process.exit(1);
+});
