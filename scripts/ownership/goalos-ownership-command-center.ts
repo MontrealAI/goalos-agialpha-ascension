@@ -446,6 +446,12 @@ function validateMainnetTypedConfirmation(chainId: bigint, finalOwner: string, p
   }
 }
 
+function requireMainnetEvidencePlan(label: string, writeEvidence: boolean, plan: any | undefined): void {
+  if (writeEvidence && label === "ethereum-mainnet" && !plan) {
+    throw new Error("Mainnet ownership evidence requires a validated ownership plan bound to the disposable owner");
+  }
+}
+
 function findJournaledTransfer(journalData: any, entry: PlannedEntry): JournaledTransfer | undefined {
   const transactions = Array.isArray(journalData.transactions) ? journalData.transactions : [];
   const entryAddress = ethers.getAddress(entry.address);
@@ -550,6 +556,7 @@ async function verify(label: string, writeEvidence = true): Promise<void> {
   const managedEntries = requireManagedEntries(manifest.data);
   const fallbackOwner = resolveDisposableOwnerWithoutPlan(label, manifest.data, ethers.getAddress(connectedSigner.address));
   const loadedPlanForOwner = readPlanIfPresent(label);
+  requireMainnetEvidencePlan(label, writeEvidence, loadedPlanForOwner);
   if (loadedPlanForOwner) {
     validateLoadedPlan(loadedPlanForOwner, label, net.chainId, manifest.hash, fallbackOwner, finalOwner);
     assertPlanCoversManifest(loadedPlanForOwner.managedContracts, managedEntries);
@@ -663,6 +670,7 @@ export const ownershipCommandCenterTestHooks = {
   isLocalRpcUrl,
   proofMessageIncludesBindings,
   requireManagedEntries,
+  requireMainnetEvidencePlan,
   resolveDisposableOwnerWithoutPlan,
   validateLoadedPlan,
   validateMainnetTypedConfirmation,

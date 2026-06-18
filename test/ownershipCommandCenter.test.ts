@@ -48,6 +48,13 @@ describe("ownership command-center safety gates", function () {
     expect(hooks.isLocalRpcUrl("https://eth-mainnet.example.invalid")).to.equal(false);
   });
 
+  it("requires a validated plan before writing public Mainnet ownership evidence", function () {
+    expect(() => hooks.requireMainnetEvidencePlan("ethereum-mainnet", true, undefined)).to.throw("requires a validated ownership plan");
+    expect(() => hooks.requireMainnetEvidencePlan("ethereum-mainnet", true, { planHash: "0xplan" })).not.to.throw();
+    expect(() => hooks.requireMainnetEvidencePlan("ethereum-mainnet", false, undefined)).not.to.throw();
+    expect(() => hooks.requireMainnetEvidencePlan("ethereum-sepolia", true, undefined)).not.to.throw();
+  });
+
   it("rejects proof messages without exact chain binding", function () {
     const manifestHash = "0x" + "22".repeat(32);
     expect(() => hooks.proofMessageIncludesBindings(`GoalOS chainId: 1 finalOwner: ${addrA} manifest: ${manifestHash}`, 1n, addrA, manifestHash)).not.to.throw();
