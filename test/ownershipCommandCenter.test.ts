@@ -21,6 +21,7 @@ describe("ownership command-center safety gates", function () {
     delete process.env.CI;
     delete process.env.GITHUB_ACTIONS;
     delete process.env.OWNERSHIP_MAINNET_CONFIRMATION;
+    delete process.env.OWNERSHIP_DISPOSABLE_OWNER_ADDRESS;
   });
 
   it("blocks Mainnet ownership operations in CI", function () {
@@ -39,6 +40,12 @@ describe("ownership command-center safety gates", function () {
     expect(() => hooks.validateMainnetTypedConfirmation(1n, addrA, planHash, false)).not.to.throw();
   });
 
+  it("refuses to write public Mainnet evidence from a Hardhat fork", function () {
+    expect(() => hooks.forbidForkedMainnetEvidence("ethereum-mainnet", true, "hardhat")).to.throw("Refusing to write Mainnet ownership PASSED evidence");
+    expect(() => hooks.forbidForkedMainnetEvidence("ethereum-mainnet", false, "hardhat")).not.to.throw();
+    expect(() => hooks.forbidForkedMainnetEvidence("ethereum-sepolia", true, "hardhat")).not.to.throw();
+  });
+
   it("rejects proof messages without exact chain binding", function () {
     const manifestHash = "0x" + "22".repeat(32);
     expect(() => hooks.proofMessageIncludesBindings(`GoalOS chainId: 1 finalOwner: ${addrA} manifest: ${manifestHash}`, 1n, addrA, manifestHash)).not.to.throw();
@@ -55,6 +62,14 @@ describe("ownership command-center safety gates", function () {
     expect(() => hooks.assertPlanCoversManifest(completePlan, manifestEntries)).not.to.throw();
     expect(() => hooks.assertPlanCoversManifest(completePlan.slice(0, 1), manifestEntries)).to.throw("missing manifest contract");
     expect(() => hooks.assertPlanCoversManifest([...completePlan, { name: "C", address: addrA, currentOwner: addrA, action: "TRANSFER", gasEstimate: "1" }], manifestEntries)).to.throw("non-manifest contract");
+  });
+
+  it("uses env or manifest deployer as the independent disposable-owner source for verification", function () {
+    const fallback = addrB;
+    expect(hooks.resolveDisposableOwnerWithoutPlan("ethereum-sepolia", { deployer: addrA }, fallback)).to.equal(addrA);
+    process.env.OWNERSHIP_DISPOSABLE_OWNER_ADDRESS = addrB;
+    expect(hooks.resolveDisposableOwnerWithoutPlan("ethereum-sepolia", { deployer: addrA }, fallback)).to.equal(addrB);
+    delete process.env.OWNERSHIP_DISPOSABLE_OWNER_ADDRESS;
   });
 
   it("finds a matching journaled transfer before a replacement can be submitted", function () {

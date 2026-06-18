@@ -118,6 +118,12 @@ function forbidCiMainnet(chainId: bigint): void {
   }
 }
 
+function forbidForkedMainnetEvidence(label: string, writeEvidence: boolean, networkName: string): void {
+  if (writeEvidence && label === "ethereum-mainnet" && networkName === "hardhat") {
+    throw new Error("Refusing to write Mainnet ownership PASSED evidence from a Hardhat fork/local network");
+  }
+}
+
 function manifestPath(label: string): string {
   return path.join(ROOT, "deployments", `${label}.agialpha.latest.json`);
 }
@@ -152,14 +158,19 @@ function readPlanIfPresent(label: string): any | undefined {
   return JSON.parse(fs.readFileSync(planPath, "utf8"));
 }
 
-function resolveDisposableOwner(label: string, manifest: any, fallbackSigner: string): string {
+function resolveDisposableOwnerWithoutPlan(label: string, manifest: any, fallbackSigner: string): string {
   const envOwner = process.env.OWNERSHIP_DISPOSABLE_OWNER_ADDRESS;
   if (envOwner && ethers.isAddress(envOwner)) return ethers.getAddress(envOwner);
-  const plan = readPlanIfPresent(label);
-  if (plan?.disposableOwner && ethers.isAddress(plan.disposableOwner)) return ethers.getAddress(plan.disposableOwner);
   if (manifest?.deployer && ethers.isAddress(manifest.deployer)) return ethers.getAddress(manifest.deployer);
   if (label === "ethereum-mainnet") throw new Error("Missing disposable owner: set OWNERSHIP_DISPOSABLE_OWNER_ADDRESS or run ownership plan first");
   return fallbackSigner;
+}
+
+function resolveDisposableOwner(label: string, manifest: any, fallbackSigner: string): string {
+  const envOrManifestOwner = resolveDisposableOwnerWithoutPlan(label, manifest, fallbackSigner);
+  const plan = readPlanIfPresent(label);
+  if (plan?.disposableOwner && ethers.isAddress(plan.disposableOwner)) return ethers.getAddress(plan.disposableOwner);
+  return envOrManifestOwner;
 }
 
 async function signerForOwner(owner: string, fallbackSigner: any): Promise<any> {
@@ -503,13 +514,19 @@ async function verify(label: string, writeEvidence = true): Promise<void> {
   const net = await ethers.provider.getNetwork();
   requireExpectedChain(label, net.chainId);
   forbidCiMainnet(net.chainId);
+  forbidForkedMainnetEvidence(label, writeEvidence, hre.network.name);
   const finalOwner = requireAddress("FINAL_OWNER_ADDRESS");
   const permanentOwners = optionalAddressesFromEnv();
   const [connectedSigner] = await ethers.getSigners();
   const manifest = readManifest(label);
-  const loadedPlanForOwner = readPlanIfPresent(label);
-  const deployerAddress = ethers.getAddress(loadedPlanForOwner?.disposableOwner || resolveDisposableOwner(label, manifest.data, ethers.getAddress(connectedSigner.address)));
   const managedEntries = requireManagedEntries(manifest.data);
+  const fallbackOwner = resolveDisposableOwnerWithoutPlan(label, manifest.data, ethers.getAddress(connectedSigner.address));
+  const loadedPlanForOwner = readPlanIfPresent(label);
+  if (loadedPlanForOwner) {
+    validateLoadedPlan(loadedPlanForOwner, label, net.chainId, manifest.hash, fallbackOwner, finalOwner);
+    assertPlanCoversManifest(loadedPlanForOwner.managedContracts, managedEntries);
+  }
+  const deployerAddress = ethers.getAddress(fallbackOwner);
   const results = [];
   for (const entry of managedEntries) {
     const c = await contractAt(entry.address);
@@ -613,8 +630,10 @@ export const ownershipCommandCenterTestHooks = {
   expectedMainnetConfirmation,
   findJournaledTransfer,
   forbidCiMainnet,
+  forbidForkedMainnetEvidence,
   proofMessageIncludesBindings,
   requireManagedEntries,
+  resolveDisposableOwnerWithoutPlan,
   validateLoadedPlan,
   validateMainnetTypedConfirmation,
 };
