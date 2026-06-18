@@ -161,7 +161,8 @@ function proofMessage(proof: any): string {
 
 function proofMessageIncludesBindings(message: string, chainId: bigint, finalOwner: string, manifestHash: string): void {
   const lower = message.toLowerCase();
-  if (!lower.includes(chainId.toString())) throw new Error("Final-owner proof message missing chainId binding");
+  const chainPattern = new RegExp(`(?:^|[^a-z0-9_])(?:chainId|chain_id|chain id)[\\s:=\"]+${chainId.toString()}(?:[^0-9]|$)`, "i");
+  if (!chainPattern.test(message)) throw new Error("Final-owner proof message missing exact chainId binding");
   if (!lower.includes(finalOwner.toLowerCase())) throw new Error("Final-owner proof message missing final owner binding");
   if (!lower.includes(manifestHash.toLowerCase())) throw new Error("Final-owner proof message missing manifest hash binding");
 }
@@ -352,6 +353,7 @@ async function verify(label: string): Promise<void> {
     let ok = ownerIsFinal || ownerIsApprovedPermanent;
     for (const id of Object.values(ids)) {
       if (ownerIsFinal && !(await c.hasRole(id, finalOwner))) ok = false;
+      if (ownerIsApprovedPermanent && !(await c.hasRole(id, owner))) ok = false;
       if (await c.hasRole(id, deployerAddress)) ok = false;
     }
     results.push({ ...entry, owner, ownerClass: ownerIsFinal ? "FINAL_OWNER" : ownerIsApprovedPermanent ? "APPROVED_PERMANENT_OWNER" : "UNEXPECTED", ok });
@@ -399,7 +401,7 @@ async function sweep(label: string): Promise<void> {
 }
 
 async function main(): Promise<void> {
-  const cmd = process.argv[2] || "";
+  const cmd = process.env.OWNERSHIP_COMMAND || process.argv.find((arg) => /^(sepolia|mainnet):/.test(arg)) || "";
   const label = cmd.includes("mainnet") ? "ethereum-mainnet" : "ethereum-sepolia";
   if (cmd.endsWith(":doctor")) return doctor(label);
   if (cmd.endsWith(":plan")) return plan(label);

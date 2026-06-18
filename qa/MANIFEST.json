@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-18T16:57:58.721076+00:00",
+  "generated_at": "2026-06-18T17:33:30.045982+00:00",
   "files": [
     {
       "path": ".editorconfig",
@@ -8078,8 +8078,8 @@
     },
     {
       "path": "package.json",
-      "bytes": 18545,
-      "sha256": "dfde9616cd625aaf8730d08a1b5237b40b940730febb9af4eddb64b367d493fd"
+      "bytes": 18835,
+      "sha256": "725dff697274cc55faf502e551d5974ee292ff3f558ab7388f9aa2517028140f"
     },
     {
       "path": "personal-proof-sprint.html",
@@ -9853,8 +9853,8 @@
     },
     {
       "path": "scripts/ownership/goalos-ownership-command-center.ts",
-      "bytes": 20111,
-      "sha256": "2320707db12352fe503b2c9722fcb7ce2e175cd9628f0078f11dc9a6ae4d6adc"
+      "bytes": 20399,
+      "sha256": "413547331034d88aa9e75296a5413fc28ebd8b2b52097cc8615fda34703ef5f0"
     },
     {
       "path": "scripts/patch_existing_pages_workflow_for_proof_cards_v11.py",
