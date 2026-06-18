@@ -56,3 +56,8 @@ This evidence reports deployment mechanics only. It does not claim achieved AGI,
 
 ## Partial deployment recovery
 If a deployment fails after some contracts broadcast, stop and preserve terminal output. Do not claim success. Inspect any partial manifest, then choose one recovery path: resume from the partial manifest if supported, abandon and redeploy with a clean manifest, or inspect manually with an engineer. A deployment is complete only after all required contracts, transaction hashes, and post-checks pass.
+
+
+## Ownership handoff
+
+GoalOS deployments require ERC-173 ownership handoff before being considered operationally complete. See `docs/OWNERSHIP_HANDOFF_RUNBOOK.md` and use `npm run ownership:sepolia:doctor|plan|dry-run|transfer|verify|evidence` or `npm run ownership:mainnet:doctor|plan|fork-rehearsal|transfer-local-gated|verify|evidence`. Mainnet single-deployer permanent-address mode is blocked.

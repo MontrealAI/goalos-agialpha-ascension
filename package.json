@@ -141,7 +141,21 @@
     "mission-os:done-check": "python scripts/mission-os/done_check.py",
     "mission-os:qa": "python scripts/mission-os/qa_check.py --dir evidence/mission-os/ai-product-intelligence-001",
     "mission-os:settlement-readiness": "python scripts/mission-os/generate_settlement_readiness.py --mission examples/mission-os/ai-product-intelligence.json --out evidence/mission-os/ai-product-intelligence-001 --max-cycles 1",
-    "mission-os:all": "npm run mission-os:run && npm run mission-os:claim-boundary -- --dir evidence/mission-os/ai-product-intelligence-001 && npm run mission-os:done-check -- --dir evidence/mission-os/ai-product-intelligence-001 && npm run mission-os:qa"
+    "mission-os:all": "npm run mission-os:run && npm run mission-os:claim-boundary -- --dir evidence/mission-os/ai-product-intelligence-001 && npm run mission-os:done-check -- --dir evidence/mission-os/ai-product-intelligence-001 && npm run mission-os:qa",
+    "test:ownership": "npm run compile:ci && hardhat test --no-compile test/ownershipHandoff.test.ts test/ownershipCommandCenter.test.ts",
+    "ownership:sepolia:doctor": "OWNERSHIP_COMMAND=sepolia:doctor hardhat run --network ethereumSepolia scripts/ownership/goalos-ownership-command-center.ts",
+    "ownership:sepolia:plan": "OWNERSHIP_COMMAND=sepolia:plan hardhat run --network ethereumSepolia scripts/ownership/goalos-ownership-command-center.ts",
+    "ownership:sepolia:dry-run": "OWNERSHIP_COMMAND=sepolia:dry-run hardhat run --network ethereumSepolia scripts/ownership/goalos-ownership-command-center.ts",
+    "ownership:sepolia:transfer": "OWNERSHIP_COMMAND=sepolia:transfer hardhat run --network ethereumSepolia scripts/ownership/goalos-ownership-command-center.ts",
+    "ownership:sepolia:verify": "OWNERSHIP_COMMAND=sepolia:verify hardhat run --network ethereumSepolia scripts/ownership/goalos-ownership-command-center.ts",
+    "ownership:sepolia:evidence": "OWNERSHIP_COMMAND=sepolia:evidence hardhat run --network ethereumSepolia scripts/ownership/goalos-ownership-command-center.ts",
+    "ownership:mainnet:doctor": "OWNERSHIP_COMMAND=mainnet:doctor hardhat run --network ethereumMainnet scripts/ownership/goalos-ownership-command-center.ts",
+    "ownership:mainnet:plan": "OWNERSHIP_COMMAND=mainnet:plan hardhat run --network ethereumMainnet scripts/ownership/goalos-ownership-command-center.ts",
+    "ownership:mainnet:fork-rehearsal": "HARDHAT_FORK_MAINNET=1 OWNERSHIP_COMMAND=mainnet:fork-rehearsal hardhat run --network hardhat scripts/ownership/goalos-ownership-command-center.ts",
+    "ownership:mainnet:transfer-local-gated": "OWNERSHIP_COMMAND=mainnet:transfer-local-gated hardhat run --network ethereumMainnet scripts/ownership/goalos-ownership-command-center.ts",
+    "ownership:mainnet:verify": "OWNERSHIP_COMMAND=mainnet:verify hardhat run --network ethereumMainnet scripts/ownership/goalos-ownership-command-center.ts",
+    "ownership:mainnet:evidence": "OWNERSHIP_COMMAND=mainnet:evidence hardhat run --network ethereumMainnet scripts/ownership/goalos-ownership-command-center.ts",
+    "ownership:mainnet:sweep-deployer-local-gated": "OWNERSHIP_COMMAND=mainnet:sweep-deployer-local-gated hardhat run --network ethereumMainnet scripts/ownership/goalos-ownership-command-center.ts"
   },
   "dependencies": {
     "@openzeppelin/contracts": "4.9.6",

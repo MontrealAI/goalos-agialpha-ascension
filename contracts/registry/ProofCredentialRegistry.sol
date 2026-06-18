@@ -75,7 +75,7 @@ contract ProofCredentialRegistry is ERC721, IERC5192, GoalOSAccessControl {
     function supportsInterface(bytes4 interfaceId)
         public
         view
-        override(ERC721, AccessControl)
+        override(ERC721, GoalOSAccessControl)
         returns (bool)
     {
         return interfaceId == type(IERC5192).interfaceId || super.supportsInterface(interfaceId);

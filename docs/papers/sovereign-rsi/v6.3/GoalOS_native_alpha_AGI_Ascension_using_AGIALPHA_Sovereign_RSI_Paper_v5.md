@@ -233,7 +233,7 @@ Publication-safe boundary: this paper does not claim achieved AGI, achieved ASI,
 | --- | --- | --- |
 | Architecture | A proof-carrying RSI institution design | achieved AGI/ASI |
 | Token utility | Coordination asset for staking, settlement, validation | equity, dividends, ownership, yield |
-| Sovereign domains | High-value deployment surfaces | guaranteed profits |
+| Sovereign domains | High-value deployment surfaces | unsupported profit guarantees |
 | Evidence | Dockets and ProofCards make claims auditable | marketing page as proof |
 | RSI | Institutional artifact evolution under gates | uncontrolled self-modification |
 
