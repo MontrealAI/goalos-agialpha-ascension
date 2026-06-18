@@ -1,0 +1,40 @@
+{
+  "mission_title": "Policy and Regulation Options Mission",
+  "decision_to_support": "Prepare a decision-ready options map for a fast-moving AI policy issue.",
+  "success_criteria": [
+    "source provenance",
+    "scenario map",
+    "risk register",
+    "action options"
+  ],
+  "failure_criteria": [
+    "legal advice",
+    "undated time-sensitive facts"
+  ],
+  "constraints": [
+    "public sources only",
+    "dated facts"
+  ],
+  "allowed_sources": [
+    "official sources",
+    "public reports"
+  ],
+  "private_data_boundary": "No private data.",
+  "risk_class": "high",
+  "deadline": "72 hours",
+  "output_package": [
+    "EvidenceDocket",
+    "DecisionState",
+    "ActionGraph"
+  ],
+  "reviewer_required": true,
+  "claim_boundary": [
+    "not legal advice",
+    "not policy advice"
+  ],
+  "done_condition": [
+    "all claims sourced",
+    "contradictions logged",
+    "human review ready"
+  ]
+}

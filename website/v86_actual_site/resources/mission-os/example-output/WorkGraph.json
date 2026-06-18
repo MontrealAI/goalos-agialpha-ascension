@@ -1,0 +1,47 @@
+{
+  "nodes": [
+    "intake",
+    "plan",
+    "research",
+    "claims",
+    "verify",
+    "docket",
+    "decision",
+    "action",
+    "chronicle"
+  ],
+  "edges": [
+    [
+      "intake",
+      "plan"
+    ],
+    [
+      "plan",
+      "research"
+    ],
+    [
+      "research",
+      "claims"
+    ],
+    [
+      "claims",
+      "verify"
+    ],
+    [
+      "verify",
+      "docket"
+    ],
+    [
+      "docket",
+      "decision"
+    ],
+    [
+      "decision",
+      "action"
+    ],
+    [
+      "action",
+      "chronicle"
+    ]
+  ]
+}

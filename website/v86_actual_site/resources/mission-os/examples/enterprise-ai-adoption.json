@@ -1,0 +1,41 @@
+{
+  "mission_title": "Enterprise AI Adoption Proof Mission",
+  "decision_to_support": "Design a governed AI adoption path for a mid-market enterprise.",
+  "success_criteria": [
+    "workflow map",
+    "proof controls",
+    "risk ledger",
+    "selection gate"
+  ],
+  "failure_criteria": [
+    "no rollback",
+    "unsupported compliance claims"
+  ],
+  "constraints": [
+    "no legal advice",
+    "public-safe"
+  ],
+  "allowed_sources": [
+    "public sources",
+    "company-provided non-confidential documents"
+  ],
+  "private_data_boundary": "Confidential data remains private.",
+  "risk_class": "medium",
+  "deadline": "72 hours",
+  "output_package": [
+    "EvidenceDocket",
+    "RiskLedger",
+    "ActionGraph",
+    "ExecutiveBrief"
+  ],
+  "reviewer_required": true,
+  "claim_boundary": [
+    "not legal advice",
+    "not production certification"
+  ],
+  "done_condition": [
+    "all required artifacts exist",
+    "risk ledger complete",
+    "claim boundary passes"
+  ]
+}
