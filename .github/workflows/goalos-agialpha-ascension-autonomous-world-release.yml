@@ -1,0 +1,227 @@
+name: GoalOS AGIALPHA Ascension — Autonomous World Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      strict_repository_checks:
+        description: "Advanced option: fail deployment if long repository-wide advisory checks fail or time out. Leave OFF for the normal website release."
+        required: true
+        type: boolean
+        default: false
+  push:
+    branches:
+      - main
+      - master
+    paths:
+      - "*.html"
+      - "assets/**"
+      - "downloads/**"
+      - "resources/**"
+      - "evidence/**"
+      - "data/**"
+      - "routes.json"
+      - "sitemap.xml"
+      - "robots.txt"
+      - "manifest.webmanifest"
+      - "site-status.json"
+      - "scripts/build_goalos_agialpha_ascension_website_v76_world_release.py"
+      - "scripts/verify_goalos_agialpha_ascension_website_v76_world_release.py"
+      - ".github/workflows/goalos-agialpha-ascension-autonomous-world-release.yml"
+
+concurrency:
+  group: goalos-agialpha-ascension-autonomous-pages
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+  actions: read
+
+jobs:
+  build_verify:
+    name: Build, verify, and package public website
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    outputs:
+      html_page_count: ${{ steps.release_summary.outputs.html_page_count }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Set up Node.js for repository checks
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: "npm"
+          cache-dependency-path: |
+            package-lock.json
+            npm-shrinkwrap.json
+
+      - name: Install Node dependencies when a lockfile exists
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ -f package-lock.json ] || [ -f npm-shrinkwrap.json ]; then
+            npm ci --ignore-scripts
+          else
+            echo "No npm lockfile found; skipping npm install."
+          fi
+
+      - name: Build clean public Pages artifact
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 scripts/build_goalos_agialpha_ascension_website_v76_world_release.py --out site
+
+      - name: Verify public Pages artifact
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 scripts/verify_goalos_agialpha_ascension_website_v76_world_release.py --site site
+
+      - name: Final public release gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f site/index.html
+          test -f site/proof-card-028.html
+          test -f site/assets/v75-apex.css
+          test -f site/assets/v75-apex.js
+          if find site -type f -iname "*.zip" -print | grep -q .; then
+            echo "Public site artifact contains ZIP files. Remove ZIP files before deployment." >&2
+            exit 1
+          fi
+          if grep -RInE "A superintelligent machine would be.{0,160}immense value" site --include='*.html' --include='*.md' --include='*.json' --include='*.txt'; then
+            echo "Legacy Proof Card 028 quote is still present in the public site." >&2
+            exit 1
+          fi
+          grep -R "The civilizational prize is not ownership of a mythical machine" site/proof-card-028.html >/dev/null
+
+      - name: Run fast blocking static repository check
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ -f scripts/static_check.py ]; then
+            python3 scripts/static_check.py
+          else
+            echo "::notice::scripts/static_check.py not found; skipped."
+          fi
+
+      - name: Run available advisory repository checks
+        shell: bash
+        env:
+          STRICT_REPOSITORY_CHECKS: ${{ inputs.strict_repository_checks || false }}
+        run: |
+          set -euo pipefail
+          has_npm_script() {
+            [ -f package.json ] || return 1
+            node -e "const p=require('./package.json'); process.exit(p.scripts && p.scripts[process.argv[1]] ? 0 : 1)" "$1"
+          }
+          run_advisory() {
+            local script="$1"
+            if ! has_npm_script "$script"; then
+              echo "::notice::$script not found; skipped."
+              return 0
+            fi
+            set +e
+            timeout 5m npm run "$script"
+            local rc=$?
+            set -e
+            if [ "$rc" -ne 0 ]; then
+              if [ "$STRICT_REPOSITORY_CHECKS" = "true" ]; then
+                echo "::error::$script failed or timed out, and strict_repository_checks is ON." >&2
+                exit "$rc"
+              fi
+              echo "::warning::$script failed or timed out. The public website artifact already passed the blocking release gates; continuing because strict_repository_checks is OFF."
+            fi
+          }
+          run_advisory "deployment:claim-boundary:check"
+          run_advisory "repo:no-paid-products"
+          run_advisory "repo:safety"
+          run_advisory "repo:no-private-operator-data"
+
+      - name: Summarize release artifact
+        id: release_summary
+        shell: bash
+        run: |
+          set -euo pipefail
+          count="$(find site -type f -name '*.html' | wc -l | tr -d ' ')"
+          echo "html_page_count=$count" >> "$GITHUB_OUTPUT"
+          {
+            echo "# GoalOS AGIALPHA Ascension — Autonomous World Release"
+            echo ""
+            echo "- HTML pages: $count"
+            echo "- Public artifact: site/"
+            echo "- Proof Card 028 reformulation: verified"
+            echo "- ZIP files in public artifact: blocked"
+            echo "- Deployment target: GitHub Pages"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload QA reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: goalos-agialpha-ascension-world-release-qa
+          path: |
+            site/qa/**
+            site/site-status.json
+            site/routes.json
+            site/sitemap.xml
+          if-no-files-found: ignore
+          retention-days: 14
+
+      - name: Upload GitHub Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+          retention-days: 7
+          include-hidden-files: true
+
+  deploy:
+    name: Deploy to GitHub Pages
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    needs: build_verify
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    outputs:
+      page_url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy public website
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+  smoke_test:
+    name: Post-deploy smoke test
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    needs: deploy
+    steps:
+      - name: Check published pages
+        shell: bash
+        run: |
+          set -euo pipefail
+          base="${{ needs.deploy.outputs.page_url }}"
+          base="${base%/}"
+          echo "Published URL: $base"
+          for path in "/" "/proof-cards.html" "/proof-card-028.html" "/evidence-docket.html" "/sovereign-rsi-control-plane.html"; do
+            echo "Checking $base$path"
+            curl -fsSL --retry 8 --retry-delay 10 --retry-all-errors "$base$path" -o /tmp/goalos-page.html
+          done
+          curl -fsSL --retry 8 --retry-delay 10 --retry-all-errors "$base/proof-card-028.html" -o /tmp/proof-card-028.html
+          grep -q "The civilizational prize is not ownership of a mythical machine" /tmp/proof-card-028.html
+          {
+            echo "# Published smoke test passed"
+            echo ""
+            echo "Site: $base"
+          } >> "$GITHUB_STEP_SUMMARY"
