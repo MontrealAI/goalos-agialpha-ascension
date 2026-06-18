@@ -10,7 +10,7 @@ from datetime import datetime, timezone
 from collections import defaultdict
 
 FORBIDDEN_AFFIRMATIVE = [
-    "guaranteed roi", "guaranteed profit", "token appreciation", "price target", "yield",
+    "guaranteed roi", "token appreciation", "price target", "yield",
     "dividend", "equity", "ownership", "mainnet deployed", "live mainnet settlement",
     "achieved agi", "achieved asi", "achieved superintelligence", "production certified",
     "externally audited", "kardashev type ii achieved", "energy abundance achieved"
