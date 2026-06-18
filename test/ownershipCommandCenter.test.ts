@@ -55,6 +55,13 @@ describe("ownership command-center safety gates", function () {
     expect(() => hooks.requireMainnetEvidencePlan("ethereum-sepolia", true, undefined)).not.to.throw();
   });
 
+  it("binds approved permanent owners to the reviewed ownership plan", function () {
+    const planOwners = hooks.approvedPermanentOwnersFromPlan({ approvedPermanentOwners: [addrA] });
+    expect(() => hooks.assertPermanentOwnersMatchPlan(new Set([addrA]), planOwners)).not.to.throw();
+    expect(() => hooks.assertPermanentOwnersMatchPlan(new Set([addrB]), planOwners)).to.throw("Approved permanent owners mismatch");
+    expect(() => hooks.approvedPermanentOwnersFromPlan({ approvedPermanentOwners: ["not-an-address"] })).to.throw("invalid approved permanent owner");
+  });
+
   it("rejects proof messages without exact chain binding", function () {
     const manifestHash = "0x" + "22".repeat(32);
     expect(() => hooks.proofMessageIncludesBindings(`GoalOS chainId: 1 finalOwner: ${addrA} manifest: ${manifestHash}`, 1n, addrA, manifestHash)).not.to.throw();

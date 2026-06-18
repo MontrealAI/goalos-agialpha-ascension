@@ -99,6 +99,28 @@ function optionalAddressesFromEnv(): Set<string> {
   return out;
 }
 
+function approvedPermanentOwnersFromPlan(plan: any): Set<string> {
+  const out = new Set<string>();
+  const approved = plan?.approvedPermanentOwners;
+  if (!approved) return out;
+  if (!Array.isArray(approved)) throw new Error("Ownership plan approvedPermanentOwners must be an array");
+  for (const value of approved) {
+    if (!ethers.isAddress(value) || ethers.getAddress(value) === ethers.ZeroAddress) {
+      throw new Error(`Ownership plan contains invalid approved permanent owner ${value}`);
+    }
+    out.add(ethers.getAddress(value));
+  }
+  return out;
+}
+
+function assertPermanentOwnersMatchPlan(envOwners: Set<string>, planOwners: Set<string>): void {
+  const env = [...envOwners].map((value) => ethers.getAddress(value)).sort();
+  const plan = [...planOwners].map((value) => ethers.getAddress(value)).sort();
+  if (env.length !== plan.length || env.some((value, index) => value !== plan[index])) {
+    throw new Error(`Approved permanent owners mismatch: env ${env.join(",") || "<none>"} vs plan ${plan.join(",") || "<none>"}`);
+  }
+}
+
 function expectedChainId(label: string): bigint {
   if (label === "ethereum-mainnet") return 1n;
   if (label === "ethereum-sepolia") return 11155111n;
@@ -493,7 +515,7 @@ async function transfer(label: string, options: TransferOptions = {}): Promise<v
   requireExpectedChain(label, net.chainId);
   forbidCiMainnet(net.chainId);
   const finalOwner = requireAddress("FINAL_OWNER_ADDRESS");
-  const permanentOwners = optionalAddressesFromEnv();
+  let permanentOwners = optionalAddressesFromEnv();
   const [connectedSigner] = await ethers.getSigners();
   const manifest = readManifest(label);
   const loadedPlanForOwner = readPlanIfPresent(label);
@@ -505,6 +527,9 @@ async function transfer(label: string, options: TransferOptions = {}): Promise<v
   validateLoadedPlan(loadedPlan, label, net.chainId, manifest.hash, deployerAddress, finalOwner);
   const manifestEntries = requireManagedEntries(manifest.data);
   assertPlanCoversManifest(loadedPlan.managedContracts, manifestEntries);
+  const planPermanentOwners = approvedPermanentOwnersFromPlan(loadedPlan);
+  assertPermanentOwnersMatchPlan(permanentOwners, planPermanentOwners);
+  permanentOwners = planPermanentOwners;
   const currentProof = await validateProof(net.chainId, finalOwner, manifest.hash);
   if (loadedPlan.finalOwnerControlProof?.required && loadedPlan.finalOwnerControlProof.commitment !== currentProof.commitment) {
     throw new Error("Final-owner control proof changed since plan creation; rerun ownership plan");
@@ -550,7 +575,7 @@ async function verify(label: string, writeEvidence = true): Promise<void> {
   forbidForkedMainnetEvidence(label, writeEvidence, hre.network.name, (hre.network.config as any).url);
   await forbidForkedMainnetClientEvidence(label, writeEvidence);
   const finalOwner = requireAddress("FINAL_OWNER_ADDRESS");
-  const permanentOwners = optionalAddressesFromEnv();
+  let permanentOwners = optionalAddressesFromEnv();
   const [connectedSigner] = await ethers.getSigners();
   const manifest = readManifest(label);
   const managedEntries = requireManagedEntries(manifest.data);
@@ -560,6 +585,9 @@ async function verify(label: string, writeEvidence = true): Promise<void> {
   if (loadedPlanForOwner) {
     validateLoadedPlan(loadedPlanForOwner, label, net.chainId, manifest.hash, fallbackOwner, finalOwner);
     assertPlanCoversManifest(loadedPlanForOwner.managedContracts, managedEntries);
+    const planPermanentOwners = approvedPermanentOwnersFromPlan(loadedPlanForOwner);
+    assertPermanentOwnersMatchPlan(permanentOwners, planPermanentOwners);
+    permanentOwners = planPermanentOwners;
   }
   const deployerAddress = ethers.getAddress(fallbackOwner);
   const results = [];
@@ -661,7 +689,9 @@ async function main(): Promise<void> {
 }
 
 export const ownershipCommandCenterTestHooks = {
+  approvedPermanentOwnersFromPlan,
   assertPlanCoversManifest,
+  assertPermanentOwnersMatchPlan,
   expectedMainnetConfirmation,
   findJournaledTransfer,
   forbidCiMainnet,
