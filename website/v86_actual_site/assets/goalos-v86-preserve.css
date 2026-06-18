@@ -194,3 +194,71 @@ footer a:hover,.footer a:hover,.site-footer a:hover{
     font-size: 15px !important;
   }
 }
+
+/* v86 layout hotfix 3 — preserved-site mobile containment.
+   Keep the actual v76/v86 look, but guarantee that decorative and long-form SVG/visual
+   modules cannot create user-visible horizontal scrolling on small screens. */
+html, body {
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow-x: hidden !important;
+}
+body, body * {
+  box-sizing: border-box !important;
+}
+main, article, section, header, footer, .top, .topin, .wrap, .container, .v75-wrap,
+.hero, .v75-hero, .hero-grid, .grid, .split, .cards, .panel, .card, .world-card,
+[class*="visual"], [class*="Visual"], [class*="diagram"], [class*="Diagram"],
+[class*="flow"], [class*="Flow"], .proof-card-visual, .figure-frame, .diagram-frame,
+.visual-shell, figure {
+  max-width: 100% !important;
+  min-width: 0 !important;
+  box-sizing: border-box !important;
+}
+.card, .panel, .world-card, .proof-card-visual, .figure-frame, .diagram-frame,
+.visual-shell, figure, [class*="visual"], [class*="Visual"], [class*="diagram"],
+[class*="Diagram"], [class*="flow"], [class*="Flow"] {
+  overflow: hidden !important;
+  contain: layout paint !important;
+}
+img, svg, canvas, video, iframe, object, embed {
+  max-width: 100% !important;
+  height: auto !important;
+  box-sizing: border-box !important;
+}
+svg {
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+}
+.hero-grid > *, .grid > *, .split > *, .cards > *, .v75-grid > *, .v75-split > * {
+  min-width: 0 !important;
+  max-width: 100% !important;
+}
+@media (max-width: 900px) {
+  [class*="visual"], [class*="Visual"], [class*="diagram"], [class*="Diagram"],
+  [class*="flow"], [class*="Flow"], .proof-card-visual, .figure-frame, .diagram-frame,
+  .visual-shell, figure {
+    width: min(100%, calc(100vw - 18px)) !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  .card, .panel, .world-card, .glass, .hero-card, .mission-panel {
+    width: 100% !important;
+    max-width: calc(100vw - 18px) !important;
+  }
+}
+@media (max-width: 520px) {
+  .wrap, .container, .v75-wrap, .topin {
+    width: min(100% - 16px, 504px) !important;
+  }
+  [class*="visual"], [class*="Visual"], [class*="diagram"], [class*="Diagram"],
+  [class*="flow"], [class*="Flow"], .proof-card-visual, .figure-frame, .diagram-frame,
+  .visual-shell, figure, .card, .panel, .world-card, .glass, .hero-card, .mission-panel {
+    max-width: calc(100vw - 16px) !important;
+  }
+  svg text {
+    font-size: 13px !important;
+  }
+}
