@@ -9,8 +9,8 @@ from pathlib import Path
 from datetime import datetime, timezone
 from collections import defaultdict
 
-FORBIDDEN_AFFIRMATIVE = [
-    "guaranteed roi", "guaranteed-profit", "token appreciation", "price target", "yield",
+BLOCKED_FORBIDDEN_AFFIRMATIVE = [
+    "guaranteed roi", "guaranteed profit", "token appreciation", "price target", "yield",
     "dividend", "equity", "ownership", "mainnet deployed", "live mainnet settlement",
     "achieved agi", "achieved asi", "achieved superintelligence", "production certified",
     "externally audited", "kardashev type ii achieved", "energy abundance achieved"
@@ -18,6 +18,9 @@ FORBIDDEN_AFFIRMATIVE = [
 
 def sha256_text(x: str) -> str:
     return hashlib.sha256(x.encode("utf-8")).hexdigest()
+
+def normalized_claim_text(x: str) -> str:
+    return " ".join("".join(ch if ch.isalnum() else " " for ch in x.lower()).split())
 
 def write_json(path: Path, data):
     path.write_text(json.dumps(data, indent=2, sort_keys=True), encoding="utf-8")
@@ -286,8 +289,8 @@ def run(mission_file: Path, out: Path, total_budget: int):
     # Scan affirmative operational fields, but do not treat explicit negated claim-boundary language
     # as a forbidden affirmative claim. This preserves strong public-safe disclaimers.
     affirmative_payload = {k: v for k, v in mission.items() if k != "claim_boundary"}
-    joined = json.dumps(affirmative_payload).lower()
-    for f in FORBIDDEN_AFFIRMATIVE:
+    joined = normalized_claim_text(json.dumps(affirmative_payload))
+    for f in BLOCKED_FORBIDDEN_AFFIRMATIVE:
         if f in joined:
             forbidden_hits.append(f)
     claim_boundary_pass = not forbidden_hits and mission.get("simulation_only") and not mission.get("requires_token_movement") and not mission.get("requires_mainnet_broadcast")

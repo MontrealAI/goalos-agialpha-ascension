@@ -26,6 +26,7 @@ const RUNTIME_OWNER_ENV = [
 ];
 const AGIALPHA = "AGIALPHA";
 const ERC173 = "0x7f5828d0";
+const EIP1271_MAGIC_VALUE = "0x1626ba7e";
 
 type ManagedEntry = { name: string; address: string };
 type PlannedEntry = ManagedEntry & { currentOwner: string; action: string; gasEstimate: string };
@@ -152,17 +153,49 @@ async function roleIds(c: any): Promise<Record<string, string>> {
   return out;
 }
 
-async function validateProof(chainId: bigint, finalOwner: string, manifestHash: string): Promise<{ required: boolean; commitment?: string }> {
+function proofMessage(proof: any): string {
+  const message = proof.message || proof.challenge || proof.statement;
+  if (!message || typeof message !== "string") throw new Error("Final-owner proof missing signed message/challenge");
+  return message;
+}
+
+function proofMessageIncludesBindings(message: string, chainId: bigint, finalOwner: string, manifestHash: string): void {
+  const lower = message.toLowerCase();
+  if (!lower.includes(chainId.toString())) throw new Error("Final-owner proof message missing chainId binding");
+  if (!lower.includes(finalOwner.toLowerCase())) throw new Error("Final-owner proof message missing final owner binding");
+  if (!lower.includes(manifestHash.toLowerCase())) throw new Error("Final-owner proof message missing manifest hash binding");
+}
+
+async function validateProof(chainId: bigint, finalOwner: string, manifestHash: string): Promise<{ required: boolean; commitment?: string; signer?: string; kind?: string }> {
   if (chainId !== 1n) return { required: false };
   const proofPath = process.env.FINAL_OWNER_CONTROL_PROOF_PATH || ".private/final-owner-control-proof.json";
   const absolute = path.join(ROOT, proofPath);
   if (!fs.existsSync(absolute)) throw new Error(`Missing Mainnet final-owner control proof ${proofPath}`);
   const proof = JSON.parse(fs.readFileSync(absolute, "utf8"));
+  const kind = proof.finalOwnerKind || proof.kind || process.env.FINAL_OWNER_KIND || "LEDGER_EOA";
+  const message = proofMessage(proof);
+  const signature = proof.signature;
+  if (!signature || typeof signature !== "string") throw new Error("Final-owner proof missing signature");
   if (ethers.getAddress(proof.finalOwnerAddress) !== finalOwner || BigInt(proof.chainId) !== chainId || proof.deploymentManifestSha256 !== manifestHash) {
     throw new Error("Final-owner proof target/chain/manifest mismatch");
   }
+  proofMessageIncludesBindings(message, chainId, finalOwner, manifestHash);
   if (Date.parse(proof.expiresAt) <= Date.now()) throw new Error("Final-owner proof expired");
-  return { required: true, commitment: sha256(canonicalJson(proof)) };
+  if (kind === "LEDGER_EOA") {
+    const recovered = ethers.getAddress(ethers.verifyMessage(message, signature));
+    if (recovered !== finalOwner) throw new Error(`Final-owner proof signature recovered ${recovered}, expected ${finalOwner}`);
+    return { required: true, commitment: sha256(canonicalJson(proof)), signer: recovered, kind };
+  }
+  if (kind === "SAFE") {
+    const code = await ethers.provider.getCode(finalOwner);
+    if (code === "0x") throw new Error("Safe final-owner proof target has no bytecode");
+    const safe = new ethers.Contract(finalOwner, ["function isValidSignature(bytes32,bytes) view returns (bytes4)"], ethers.provider);
+    const digest = ethers.hashMessage(message);
+    const magic = await safe.isValidSignature(digest, signature);
+    if (magic !== EIP1271_MAGIC_VALUE) throw new Error("Safe final-owner proof failed EIP-1271 validation");
+    return { required: true, commitment: sha256(canonicalJson(proof)), signer: finalOwner, kind };
+  }
+  throw new Error(`Unsupported FINAL_OWNER_KIND ${kind}`);
 }
 
 function actionForOwner(owner: string, deployer: string, finalOwner: string, permanentOwners: Set<string>): string {
@@ -307,8 +340,10 @@ async function verify(label: string): Promise<void> {
   const [deployer] = await ethers.getSigners();
   const deployerAddress = ethers.getAddress(deployer.address);
   const manifest = readManifest(label);
+  const managedEntries = entries(manifest.data);
+  if (!managedEntries.length) throw new Error("No managed contracts found in manifest");
   const results = [];
-  for (const entry of entries(manifest.data)) {
+  for (const entry of managedEntries) {
     const c = await contractAt(entry.address);
     const ids = await roleIds(c);
     const owner = ethers.getAddress(await c.owner());

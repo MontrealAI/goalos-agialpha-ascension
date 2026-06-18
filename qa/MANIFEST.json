@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-18T16:30:11.570952+00:00",
+  "generated_at": "2026-06-18T16:57:58.721076+00:00",
   "files": [
     {
       "path": ".editorconfig",
@@ -398,8 +398,8 @@
     },
     {
       "path": ".github/workflows/goalos-agialpha-ascension-autonomous-world-release.yml",
-      "bytes": 7774,
-      "sha256": "ad7438a48495db93e9eed448008896a65cd42571ed1d38376e523ad1c68811f8"
+      "bytes": 7737,
+      "sha256": "d5ef5fb1261883e4856e5c924ac3ace2fe56673de916e5fa3cca5448645e997a"
     },
     {
       "path": ".github/workflows/goalos-agialpha-ascension-v85-final.yml",
@@ -7638,8 +7638,8 @@
     },
     {
       "path": "downloads/proof-treasury-simulation-003-source/proof_treasury_simulation_003.py",
-      "bytes": 26272,
-      "sha256": "3c0238715a06e83ec7efe9c399f05c841a2700ae7b341925d66c342caf9b65df"
+      "bytes": 26280,
+      "sha256": "dc56e5ea4fe9934aa93071216fbd32fa777fafff46729952ccae2a845f648886"
     },
     {
       "path": "downloads/proof-treasury-simulation-004/AGIALPHABudgetLedger.csv",
@@ -7783,8 +7783,8 @@
     },
     {
       "path": "downloads/proof-treasury-simulation-004/proof_treasury_simulation_004.py",
-      "bytes": 32117,
-      "sha256": "b25c2b1d8a1f5168c1ffe9591b9dd74b84ba2f84ae4e9aeb75b9a607a02c8871"
+      "bytes": 32277,
+      "sha256": "7253c51eaee948c9d051e655ce00369752f62e5032021f70c591ea56f05f344b"
     },
     {
       "path": "downloads/proof-treasury-simulation-004/run-state.json",
@@ -8389,7 +8389,7 @@
     {
       "path": "qa/QA_REPORT.json",
       "bytes": 921,
-      "sha256": "ddd88868aa8dbcbdb6563d91d1021c5acc9499a72e7fe6755eb8dcc0e4a27615"
+      "sha256": "80609a3966b74347a13b8d07fd45f64c70138d7dcc25e273255475e202052e05"
     },
     {
       "path": "qa/QA_REPORT_v4_0.json",
@@ -9853,8 +9853,8 @@
     },
     {
       "path": "scripts/ownership/goalos-ownership-command-center.ts",
-      "bytes": 17800,
-      "sha256": "d3056c2339efe03f21794be0e470aaa611847b0ce8635f057e508b5c13ba0ff4"
+      "bytes": 20111,
+      "sha256": "2320707db12352fe503b2c9722fcb7ce2e175cd9628f0078f11dc9a6ae4d6adc"
     },
     {
       "path": "scripts/patch_existing_pages_workflow_for_proof_cards_v11.py",
