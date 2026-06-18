@@ -41,20 +41,8 @@ export function runtimeAddressMode(): RuntimeAddressMode {
 export function loadRuntimeAddresses(deployerAddress: string): { mode: RuntimeAddressMode; addresses: RuntimeAddresses } {
   const mode = runtimeAddressMode();
   if (mode === "SINGLE_DEPLOYER_INITIAL_ADMIN_MODE") {
-    const deployer = requireValidAddress("single deployer", deployerAddress);
-    console.warn("WARNING: SINGLE_DEPLOYER_INITIAL_ADMIN_MODE=true. Deployer is initial admin/treasury/guardian; post-deployment transfer runbook is required.");
-    return {
-      mode,
-      addresses: {
-        founder: deployer,
-        treasury: deployer,
-        commercializationAdmin: deployer,
-        proofRewardsAdmin: deployer,
-        liquidityAdmin: deployer,
-        securityAdmin: deployer,
-        communityAdmin: deployer,
-      },
-    };
+    requireValidAddress("single deployer", deployerAddress);
+    throw new Error("Mainnet deployment blocked: SINGLE_DEPLOYER_INITIAL_ADMIN_MODE=true would pin disposable deployer as permanent founder/treasury/vault controller. Use FINAL_OWNER_ADDRESS plus explicit permanent runtime addresses and docs/OWNERSHIP_HANDOFF_RUNBOOK.md.");
   }
 
   const addresses = Object.fromEntries(

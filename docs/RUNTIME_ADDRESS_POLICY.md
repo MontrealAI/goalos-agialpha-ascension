@@ -13,3 +13,8 @@ The deploy script prompts locally for runtime addresses. Values are validated an
 ## MULTISIG_RUNTIME_MODE
 
 Recommended production mode. The deploy script prompts locally for multisig addresses. No addresses are required before public authorization.
+
+
+## Ownership handoff
+
+GoalOS deployments require ERC-173 ownership handoff before being considered operationally complete. See `docs/OWNERSHIP_HANDOFF_RUNBOOK.md` and use `npm run ownership:sepolia:doctor|plan|dry-run|transfer|verify|evidence` or `npm run ownership:mainnet:doctor|plan|fork-rehearsal|transfer-local-gated|verify|evidence`. Mainnet single-deployer permanent-address mode is blocked.

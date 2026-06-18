@@ -1,7 +1,7 @@
 {
   "name": "goalos-agialpha-ascension",
   "version": "4.4.0",
-  "description": "GoalOS-native reimplementation of \u03b1-AGI Ascension using existing AGIALPHA for proof-settled AI workflow work.",
+  "description": "GoalOS-native reimplementation of α-AGI Ascension using existing AGIALPHA for proof-settled AI workflow work.",
   "license": "UNLICENSED",
   "scripts": {
     "compile": "hardhat compile",
@@ -141,7 +141,21 @@
     "mission-os:done-check": "python scripts/mission-os/done_check.py",
     "mission-os:qa": "python scripts/mission-os/qa_check.py --dir evidence/mission-os/ai-product-intelligence-001",
     "mission-os:settlement-readiness": "python scripts/mission-os/generate_settlement_readiness.py --mission examples/mission-os/ai-product-intelligence.json --out evidence/mission-os/ai-product-intelligence-001 --max-cycles 1",
-    "mission-os:all": "npm run mission-os:run && npm run mission-os:claim-boundary -- --dir evidence/mission-os/ai-product-intelligence-001 && npm run mission-os:done-check -- --dir evidence/mission-os/ai-product-intelligence-001 && npm run mission-os:qa"
+    "mission-os:all": "npm run mission-os:run && npm run mission-os:claim-boundary -- --dir evidence/mission-os/ai-product-intelligence-001 && npm run mission-os:done-check -- --dir evidence/mission-os/ai-product-intelligence-001 && npm run mission-os:qa",
+    "test:ownership": "npm run compile:ci && hardhat test --no-compile test/ownershipHandoff.test.ts",
+    "ownership:sepolia:doctor": "ts-node scripts/ownership/goalos-ownership-command-center.ts sepolia:doctor --network ethereumSepolia",
+    "ownership:sepolia:plan": "ts-node scripts/ownership/goalos-ownership-command-center.ts sepolia:plan --network ethereumSepolia",
+    "ownership:sepolia:dry-run": "ts-node scripts/ownership/goalos-ownership-command-center.ts sepolia:dry-run --network ethereumSepolia",
+    "ownership:sepolia:transfer": "ts-node scripts/ownership/goalos-ownership-command-center.ts sepolia:transfer --network ethereumSepolia",
+    "ownership:sepolia:verify": "ts-node scripts/ownership/goalos-ownership-command-center.ts sepolia:verify --network ethereumSepolia",
+    "ownership:sepolia:evidence": "ts-node scripts/ownership/goalos-ownership-command-center.ts sepolia:evidence --network ethereumSepolia",
+    "ownership:mainnet:doctor": "ts-node scripts/ownership/goalos-ownership-command-center.ts mainnet:doctor --network ethereumMainnet",
+    "ownership:mainnet:plan": "ts-node scripts/ownership/goalos-ownership-command-center.ts mainnet:plan --network ethereumMainnet",
+    "ownership:mainnet:fork-rehearsal": "ts-node scripts/ownership/goalos-ownership-command-center.ts mainnet:fork-rehearsal --network hardhat",
+    "ownership:mainnet:transfer-local-gated": "ts-node scripts/ownership/goalos-ownership-command-center.ts mainnet:transfer-local-gated --network ethereumMainnet",
+    "ownership:mainnet:verify": "ts-node scripts/ownership/goalos-ownership-command-center.ts mainnet:verify --network ethereumMainnet",
+    "ownership:mainnet:evidence": "ts-node scripts/ownership/goalos-ownership-command-center.ts mainnet:evidence --network ethereumMainnet",
+    "ownership:mainnet:sweep-deployer-local-gated": "ts-node scripts/ownership/goalos-ownership-command-center.ts mainnet:sweep-deployer-local-gated --network ethereumMainnet"
   },
   "dependencies": {
     "@openzeppelin/contracts": "4.9.6",
