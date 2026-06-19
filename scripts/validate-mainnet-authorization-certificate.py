@@ -41,7 +41,7 @@ def main() -> None:
     warnings: list[str] = []
     git_mode = 'GIT_CHECKOUT' if has_git_history() else 'SOURCE_ARCHIVE_NO_GIT'
 
-    for k in ['schemaVersion','generatedAt','repository','chain','chainId','agialphaToken','technicallyMainnetReady','mainnetDeploymentAuthorized','ethereumMainnetAuthorized','evidence','blockers']:
+    for k in ['schemaVersion','generatedAt','repository','chain','chainId','agialphaToken','technicallyMainnetReady','mainnetDeploymentAuthorized','ethereumMainnetAuthorized','evidence','blockers','gates']:
         if k not in cert:
             errors.append(f'missing {k}')
     if cert.get('chain') != 'ethereum' or cert.get('chainId') != 1:
@@ -60,6 +60,15 @@ def main() -> None:
         errors.append('external-audit fields invalid')
     if cert.get('technicallyMainnetReady') == 'YES' and cert.get('blockers'):
         errors.append('YES certificate cannot have blockers')
+    gates = cert.get('gates') if isinstance(cert.get('gates'), dict) else {}
+    required_gates = ['G1','G2','G3','G4','G5']
+    missing_gates = [g for g in required_gates if gates.get(g) != 'PASS']
+    if cert.get('technicallyMainnetReady') == 'YES' and missing_gates:
+        errors.append('YES certificate requires Gates 1-5 PASS')
+    if cert.get('technicallyMainnetReady') != 'YES' and cert.get('authorization') == 'AUTHORIZED':
+        errors.append('non-ready certificate cannot be AUTHORIZED')
+    if cert.get('MAINNET_VERIFIED', 'NO') != 'NO' or cert.get('LIVE_OWNER_HANDOFF_COMPLETE', 'NO') != 'NO' or cert.get('LIVE_CANARY_COMPLETE', 'NO') != 'NO':
+        errors.append('live evidence flags must remain NO without live chain-1 evidence')
 
     cert_commit = str(cert.get('sourceCommit') or cert.get('commit') or '')
     head = git(['rev-parse', 'HEAD'])

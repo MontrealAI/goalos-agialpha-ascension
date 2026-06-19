@@ -1,13 +1,102 @@
 {
+  "LIVE_CANARY_COMPLETE": "NO",
+  "LIVE_OWNER_HANDOFF_COMPLETE": "NO",
+  "MAINNET_DEPLOYED": "NO",
+  "MAINNET_VERIFIED": "NO",
+  "TECHNICALLY_READY_FOR_CONTROLLED_MAINNET_DEPLOYMENT": "NO",
+  "agialphaToken": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
   "authorization": "NOT_AUTHORIZED",
   "blockers": [
-    "Live/fork Phase A/B authority readback and private Safe/EOA commitment are absent.",
-    "Typed override coverage remains inventory-derived and requires contract-level execution evidence before PASS.",
-    "Exact on-chain accounting readback and canary enforcement evidence are absent.",
-    "Global lifecycle selector enforcement and migration/shutdown rehearsal evidence are absent.",
-    "One-million-action invariant campaign, secondary fuzz engine, mutation suite, independent build comparison, and real Mainnet fork RPC rehearsal are absent."
+    "G1 is BLOCKED: Live/fork Phase A/B authority readback and private Safe/EOA commitment are absent.",
+    "G2 is BLOCKED: Typed override coverage remains inventory-derived and requires contract-level execution evidence before PASS.",
+    "G3 is BLOCKED: Exact on-chain accounting readback and canary enforcement evidence are absent.",
+    "G4 is BLOCKED: Global lifecycle selector enforcement and migration/shutdown rehearsal evidence are absent.",
+    "G5 is BLOCKED: One-million-action invariant campaign, secondary fuzz engine, mutation suite, independent build comparison, and real Mainnet fork RPC rehearsal are absent.",
+    "Mainnet fork rehearsal is not PASS: No live Ethereum Mainnet fork RPC/block rehearsal evidence supplied.",
+    "Security docket is not PASS: Mandatory assurance categories are not all represented by fresh passing evidence."
   ],
-  "mainnetBroadcastOccurred": false,
-  "releaseIdentity": "a6fa052fa097d1236503143385e17425acbcc439e08d19acc64751231a782dae",
-  "status": "BLOCKED"
+  "branch": "codex/mainnet-five-gate-production-completion",
+  "certificateHash": "0x1a6f79893426ff43a9b7e7a3402a3ec719d84279b6677aa797e5a44ccdac2ff2",
+  "chain": "ethereum",
+  "chainId": 1,
+  "ciCanDeployMainnet": false,
+  "claimBoundary": "No Ethereum Mainnet broadcast, deployment, verification, live owner handoff, or live canary completion is claimed by this certificate.",
+  "commit": "76327fd6c84356c66d14fd4aebfab8318a38a969",
+  "dependencyLockHash": "981e04b39af29bc04dae677e1d9a98b9e0dc5f8a5995db99d8debd23eb02a709",
+  "ethereumMainnetAuthorized": "NO",
+  "evidence": {
+    "forkRehearsal": {
+      "path": "qa/mainnet-readiness/fork-rehearsal.json",
+      "sha256": "0x96eca2939f9dcfd2d558d40a99c339d913b37bc99214cc5fa45371e3ea5afe6f"
+    },
+    "gate1Authority": {
+      "path": "qa/mainnet-readiness/gate-1-authority.json",
+      "sha256": "0x6bc565c913e41e4dfe71113f8f84f74d37e3e9d4f2e8d68006b676f0e3f0ec38"
+    },
+    "gate2Overrides": {
+      "path": "qa/mainnet-readiness/gate-2-overrides.json",
+      "sha256": "0x04144c850daa87ded6e2ec9f9e6521f6005800cb9591419eb408f98d5f83abe2"
+    },
+    "gate3Accounting": {
+      "path": "qa/mainnet-readiness/gate-3-accounting.json",
+      "sha256": "0x1c03cc002a8ffeea23726aac339e8eec35317236e60ac99207427753718c138b"
+    },
+    "gate4Lifecycle": {
+      "path": "qa/mainnet-readiness/gate-4-lifecycle.json",
+      "sha256": "0x347a8e596c6995db0fe10b3aa75350588335d6e88f5cdc04215f3951d6265f84"
+    },
+    "gate5Assurance": {
+      "path": "qa/mainnet-readiness/gate-5-assurance.json",
+      "sha256": "0x6b467cad1c8600278169e1051526d3a1551d88580720c82dcc3ca199d5690232"
+    },
+    "operationalDossier": {
+      "path": "qa/mainnet-production-readiness-dossier.json",
+      "sha256": "0x43a9154ad961f3056a199dc0f9271fd17a1a791bbaabc53d85f2e1b1ab3418e7"
+    },
+    "packageScripts": {
+      "path": "package.json",
+      "sha256": "0xaea6b0eee02e8f1b0c00fbbe0679e12dde40ae3f8b3696fc8709f5525b0aeec9"
+    },
+    "productionReadiness": {
+      "path": "qa/mainnet-readiness/production-readiness.json",
+      "sha256": "0xdfa018bd9757f1c791513a7d3ad79c81ce8a37918be824fd856fb5ed4809ba33"
+    },
+    "releaseIdentity": {
+      "path": "qa/mainnet-readiness/release-identity.json",
+      "sha256": "0xc5693621fa23085fffe83f6f3a98fcbb71d8fcc0c2d9a178ad086a4bbe97ac65"
+    },
+    "securityDocket": {
+      "path": "qa/mainnet-readiness/security-docket.json",
+      "sha256": "0x01a867e50d636c8079f099a9f4863935efdf9449231264a153c7be8ca8d17ec7"
+    },
+    "systemInventory": {
+      "path": "qa/mainnet-readiness/system-inventory.json",
+      "sha256": "0x588006a4dc9e414187666c8c83eea2909ef4fb63cd987b98ceb8b746f190f1ec"
+    }
+  },
+  "externalAuditPlanned": false,
+  "externalAuditRequired": false,
+  "gates": {
+    "G1": "BLOCKED",
+    "G2": "BLOCKED",
+    "G3": "BLOCKED",
+    "G4": "BLOCKED",
+    "G5": "BLOCKED"
+  },
+  "generatedAt": "2026-06-19T23:28:06.652823+00:00",
+  "generatedBy": "scripts/generate-mainnet-authorization-certificate.py",
+  "gitValidationMode": "GIT_CHECKOUT",
+  "mainnetDeployed": "NO",
+  "mainnetDeploymentAuthorized": "NO",
+  "notExternallyAudited": true,
+  "privateOperatorAuthorizationPackageRequired": false,
+  "releaseIdentity": "a9c7b3fdc9899f66cf49f16833a4f2920553fc41052290cfe5e0e1f46ee6bdfc",
+  "repository": "MontrealAI/goalos-agialpha-ascension",
+  "runtimeSecretsStoredInGitHub": false,
+  "schemaVersion": "2.0",
+  "scope": "five-gate-technical-readiness-certificate-non-broadcasting",
+  "sourceCommit": "76327fd6c84356c66d14fd4aebfab8318a38a969",
+  "sourceTreeHash": "a9c7b3fdc9899f66cf49f16833a4f2920553fc41052290cfe5e0e1f46ee6bdfc",
+  "technicallyMainnetReady": "NO",
+  "warnings": []
 }
