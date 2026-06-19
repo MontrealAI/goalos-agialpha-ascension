@@ -3,64 +3,6 @@
     {
       "assetHolding": false,
       "assetHoldingEvidence": "none detected",
-      "contract": "GoalOSAccessControl",
-      "path": "contracts/access/GoalOSAccessControl.sol",
-      "roles": [
-        "OPERATOR_ROLE",
-        "PAUSER_ROLE",
-        "PROTOCOL_ADMIN_ROLE",
-        "REVIEWER_MANAGER_ROLE",
-        "TREASURY_ROLE",
-        "VAULT_MANAGER_ROLE"
-      ],
-      "sha256": "b9628e44c59fba1b4a18191fcdf567cb7894e5e05f416202407153234e69dab2",
-      "stateChangingSelectors": [
-        {
-          "attributes": "external",
-          "classification": "lifecycle_control_or_migration",
-          "name": "pause"
-        },
-        {
-          "attributes": "external",
-          "classification": "lifecycle_control_or_migration",
-          "name": "unpause"
-        },
-        {
-          "attributes": "public override onlyOwner",
-          "classification": "configuration",
-          "name": "transferOwnership"
-        },
-        {
-          "attributes": "public onlyOwner",
-          "classification": "owner_recovery_or_safe_exit",
-          "name": "cancelOwnershipTransfer"
-        },
-        {
-          "attributes": "public",
-          "classification": "configuration",
-          "name": "acceptOwnership"
-        },
-        {
-          "attributes": "public override",
-          "classification": "configuration",
-          "name": "grantRole"
-        },
-        {
-          "attributes": "public override",
-          "classification": "owner_recovery_or_safe_exit",
-          "name": "revokeRole"
-        },
-        {
-          "attributes": "public override",
-          "classification": "normal_operation_unclassified_review_required",
-          "name": "renounceRole"
-        }
-      ],
-      "workflow": false
-    },
-    {
-      "assetHolding": false,
-      "assetHoldingEvidence": "none detected",
       "contract": "AEPAgentRegistry",
       "path": "contracts/aep/AEPAgentRegistry.sol",
       "roles": [],
@@ -271,12 +213,12 @@
         },
         {
           "attributes": "external nonReentrant",
-          "classification": "new_obligation_or_risk_increase",
+          "classification": "safe_exit_or_settlement",
           "name": "requestUnstake"
         },
         {
           "attributes": "external nonReentrant",
-          "classification": "new_obligation_or_risk_increase",
+          "classification": "safe_exit_or_settlement",
           "name": "unstake"
         },
         {
@@ -598,120 +540,6 @@
       "workflow": true
     },
     {
-      "assetHolding": true,
-      "assetHoldingEvidence": "token/native inbound flow or asset-bearing name",
-      "contract": "IJobClaimBondManager",
-      "path": "contracts/interfaces/IJobClaimBondManager.sol",
-      "roles": [],
-      "sha256": "ed871159d7b0944e60231b6a7e87558d463299fff3971a4d69593adab2dc9cde",
-      "stateChangingSelectors": [
-        {
-          "attributes": "external",
-          "classification": "new_obligation_or_risk_increase",
-          "name": "releaseClaimBond"
-        },
-        {
-          "attributes": "external",
-          "classification": "owner_recovery_or_safe_exit",
-          "name": "slashClaimBond"
-        }
-      ],
-      "workflow": true
-    },
-    {
-      "assetHolding": false,
-      "assetHoldingEvidence": "none detected",
-      "contract": "IJobRegistry",
-      "path": "contracts/interfaces/IJobRegistry.sol",
-      "roles": [],
-      "sha256": "1b402492e622350f6cbba34f5c529fd9069b694e5fd34d7e83028217a31bc8ce",
-      "stateChangingSelectors": [
-        {
-          "attributes": "external",
-          "classification": "new_obligation_or_risk_increase",
-          "name": "markClaimed"
-        },
-        {
-          "attributes": "external",
-          "classification": "new_obligation_or_risk_increase",
-          "name": "markSubmitted"
-        },
-        {
-          "attributes": "external",
-          "classification": "new_obligation_or_risk_increase",
-          "name": "markApproved"
-        },
-        {
-          "attributes": "external",
-          "classification": "normal_operation_unclassified_review_required",
-          "name": "markRejected"
-        },
-        {
-          "attributes": "external",
-          "classification": "safe_exit_or_settlement",
-          "name": "releaseReward"
-        },
-        {
-          "attributes": "external",
-          "classification": "owner_recovery_or_safe_exit",
-          "name": "refundRejectedReward"
-        },
-        {
-          "attributes": "external",
-          "classification": "new_obligation_or_risk_increase",
-          "name": "expireClaimedJob"
-        }
-      ],
-      "workflow": true
-    },
-    {
-      "assetHolding": false,
-      "assetHoldingEvidence": "none detected",
-      "contract": "IProofSubmissionRegistry",
-      "path": "contracts/interfaces/IProofSubmissionRegistry.sol",
-      "roles": [],
-      "sha256": "b85eb761fa324e407f54dcade012a4c9ac3a301b9c297012f8ede5fad79eed7c",
-      "stateChangingSelectors": [
-        {
-          "attributes": "external",
-          "classification": "new_obligation_or_risk_increase",
-          "name": "approveSubmission"
-        },
-        {
-          "attributes": "external",
-          "classification": "normal_operation_unclassified_review_required",
-          "name": "rejectSubmission"
-        }
-      ],
-      "workflow": true
-    },
-    {
-      "assetHolding": false,
-      "assetHoldingEvidence": "none detected",
-      "contract": "IReputationRegistry",
-      "path": "contracts/interfaces/IReputationRegistry.sol",
-      "roles": [],
-      "sha256": "25585c2f0056292a57a75c9a0bdf5a4cb961c0b99756eecc350460b2d435f287",
-      "stateChangingSelectors": [
-        {
-          "attributes": "external",
-          "classification": "new_obligation_or_risk_increase",
-          "name": "recordApprovedProof"
-        },
-        {
-          "attributes": "external",
-          "classification": "normal_operation_unclassified_review_required",
-          "name": "recordRejectedProof"
-        },
-        {
-          "attributes": "external",
-          "classification": "normal_operation_unclassified_review_required",
-          "name": "recordCredential"
-        }
-      ],
-      "workflow": true
-    },
-    {
       "assetHolding": false,
       "assetHoldingEvidence": "none detected",
       "contract": "AppealRegistry",
@@ -846,7 +674,7 @@
         },
         {
           "attributes": "external onlyOperator nonReentrant",
-          "classification": "new_obligation_or_risk_increase",
+          "classification": "safe_exit_or_settlement",
           "name": "releaseClaimBond"
         },
         {
@@ -1271,36 +1099,6 @@
       "workflow": true
     },
     {
-      "assetHolding": false,
-      "assetHoldingEvidence": "none detected",
-      "contract": "LocalSafeFixture",
-      "path": "contracts/test/LocalSafeFixture.sol",
-      "roles": [],
-      "sha256": "12437e3c6448a288c1226fa25b9fc4b23cc112c830383086f7e921a323d41ac4",
-      "stateChangingSelectors": [],
-      "workflow": false
-    },
-    {
-      "assetHolding": false,
-      "assetHoldingEvidence": "none detected",
-      "contract": "LaunchGateInvariantHarness",
-      "path": "contracts/test-harnesses/LaunchGateInvariantHarness.sol",
-      "roles": [],
-      "sha256": "b49d0470e933ad956ebfae12012728ad34496c0a591e82ffbde786c47223c485",
-      "stateChangingSelectors": [],
-      "workflow": false
-    },
-    {
-      "assetHolding": false,
-      "assetHoldingEvidence": "none detected",
-      "contract": "MockAGIALPHA",
-      "path": "contracts/token/MockAGIALPHA.sol",
-      "roles": [],
-      "sha256": "d03d1b6f202897bad116240de0b449c93a981f87afb4c265cc7162b16c93a3fe",
-      "stateChangingSelectors": [],
-      "workflow": false
-    },
-    {
       "assetHolding": true,
       "assetHoldingEvidence": "token/native inbound flow or asset-bearing name",
       "contract": "CommercializationPerformanceVault",
@@ -1359,6 +1157,6 @@
     }
   ],
   "generatedBy": "scripts/mainnet_operational_readiness.py",
-  "sourceTreeHash": "6564dd99987a980843f2189f2d11b09ebf4b5d4a903a4a32bd4007aac1888e7c",
+  "sourceTreeHash": "a94c1c3b686bae10eaad8912c20d73182998d487a193cd4fb078e9bd2d7bcb38",
   "sourceTreeHashScope": "tracked HEAD content excluding generated readiness artifacts"
 }

@@ -208,42 +208,6 @@
       "testCoverage": "BLOCKED until contract-specific tests are complete"
     },
     {
-      "contract": "IJobClaimBondManager",
-      "evidence": [
-        "source inventory"
-      ],
-      "ownerRecoveryAction": "See classified selectors; add typed owner override before PASS if no recovery selector exists for a nonterminal state.",
-      "path": "contracts/interfaces/IJobClaimBondManager.sol",
-      "testCoverage": "BLOCKED until contract-specific tests are complete"
-    },
-    {
-      "contract": "IJobRegistry",
-      "evidence": [
-        "source inventory"
-      ],
-      "ownerRecoveryAction": "See classified selectors; add typed owner override before PASS if no recovery selector exists for a nonterminal state.",
-      "path": "contracts/interfaces/IJobRegistry.sol",
-      "testCoverage": "BLOCKED until contract-specific tests are complete"
-    },
-    {
-      "contract": "IProofSubmissionRegistry",
-      "evidence": [
-        "source inventory"
-      ],
-      "ownerRecoveryAction": "See classified selectors; add typed owner override before PASS if no recovery selector exists for a nonterminal state.",
-      "path": "contracts/interfaces/IProofSubmissionRegistry.sol",
-      "testCoverage": "BLOCKED until contract-specific tests are complete"
-    },
-    {
-      "contract": "IReputationRegistry",
-      "evidence": [
-        "source inventory"
-      ],
-      "ownerRecoveryAction": "See classified selectors; add typed owner override before PASS if no recovery selector exists for a nonterminal state.",
-      "path": "contracts/interfaces/IReputationRegistry.sol",
-      "testCoverage": "BLOCKED until contract-specific tests are complete"
-    },
-    {
       "contract": "AppealRegistry",
       "evidence": [
         "source inventory"

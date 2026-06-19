@@ -2,7 +2,6 @@
 
 Per-token accounting is required; unlike tokens must not be value-aggregated.
 
-- `GoalOSAccessControl`: NOT_ASSET_HOLDING (none detected)
 - `AEPAgentRegistry`: NOT_ASSET_HOLDING (none detected)
 - `AEPArtifactRegistry`: NOT_ASSET_HOLDING (none detected)
 - `AEPAttestationRegistry`: NOT_ASSET_HOLDING (none detected)
@@ -27,10 +26,6 @@ Per-token accounting is required; unlike tokens must not be value-aggregated.
 - `AGIEthNamespaceRegistry`: NOT_ASSET_HOLDING (none detected)
 - `AlphaWorkUnitLedger`: NOT_ASSET_HOLDING (none detected)
 - `MandateEpochRegistry`: NOT_ASSET_HOLDING (none detected)
-- `IJobClaimBondManager`: REQUIRES_EXACT_ONCHAIN_STATUS (token/native inbound flow or asset-bearing name)
-- `IJobRegistry`: NOT_ASSET_HOLDING (none detected)
-- `IProofSubmissionRegistry`: NOT_ASSET_HOLDING (none detected)
-- `IReputationRegistry`: NOT_ASSET_HOLDING (none detected)
 - `AppealRegistry`: NOT_ASSET_HOLDING (none detected)
 - `BuilderProfileRegistry`: NOT_ASSET_HOLDING (none detected)
 - `CredentialRevocationRegistry`: NOT_ASSET_HOLDING (none detected)
@@ -50,8 +45,5 @@ Per-token accounting is required; unlike tokens must not be value-aggregated.
 - `ReputationRegistry`: NOT_ASSET_HOLDING (none detected)
 - `ReviewerBondRegistry`: REQUIRES_EXACT_ONCHAIN_STATUS (token/native inbound flow or asset-bearing name)
 - `TreasuryRouter`: REQUIRES_EXACT_ONCHAIN_STATUS (token/native inbound flow or asset-bearing name)
-- `LocalSafeFixture`: NOT_ASSET_HOLDING (none detected)
-- `LaunchGateInvariantHarness`: NOT_ASSET_HOLDING (none detected)
-- `MockAGIALPHA`: NOT_ASSET_HOLDING (none detected)
 - `CommercializationPerformanceVault`: REQUIRES_EXACT_ONCHAIN_STATUS (token/native inbound flow or asset-bearing name)
 - `TokenReserveVault`: REQUIRES_EXACT_ONCHAIN_STATUS (token/native inbound flow or asset-bearing name)

@@ -1,13 +1,5 @@
 # Lifecycle Selector Policy
 
-- `GoalOSAccessControl.pause`: `lifecycle_control_or_migration`
-- `GoalOSAccessControl.unpause`: `lifecycle_control_or_migration`
-- `GoalOSAccessControl.transferOwnership`: `configuration`
-- `GoalOSAccessControl.cancelOwnershipTransfer`: `owner_recovery_or_safe_exit`
-- `GoalOSAccessControl.acceptOwnership`: `configuration`
-- `GoalOSAccessControl.grantRole`: `configuration`
-- `GoalOSAccessControl.revokeRole`: `owner_recovery_or_safe_exit`
-- `GoalOSAccessControl.renounceRole`: `normal_operation_unclassified_review_required`
 - `AEPAgentRegistry.registerAgent`: `normal_operation_unclassified_review_required`
 - `AEPAgentRegistry.updateAgent`: `normal_operation_unclassified_review_required`
 - `AEPArtifactRegistry.registerArtifactVersion`: `normal_operation_unclassified_review_required`
@@ -31,8 +23,8 @@
 - `AEPEvaluatorStakingRegistry.setUnstakeDelay`: `configuration`
 - `AEPEvaluatorStakingRegistry.setTreasury`: `configuration`
 - `AEPEvaluatorStakingRegistry.stake`: `new_obligation_or_risk_increase`
-- `AEPEvaluatorStakingRegistry.requestUnstake`: `new_obligation_or_risk_increase`
-- `AEPEvaluatorStakingRegistry.unstake`: `new_obligation_or_risk_increase`
+- `AEPEvaluatorStakingRegistry.requestUnstake`: `safe_exit_or_settlement`
+- `AEPEvaluatorStakingRegistry.unstake`: `safe_exit_or_settlement`
 - `AEPEvaluatorStakingRegistry.slashEvaluator`: `owner_recovery_or_safe_exit`
 - `AEPEvidenceDocketRegistry.registerEvidenceDocket`: `normal_operation_unclassified_review_required`
 - `AEPEvidenceDocketRegistry.setDocketActive`: `configuration`
@@ -63,20 +55,6 @@
 - `MandateEpochRegistry.openEpoch`: `normal_operation_unclassified_review_required`
 - `MandateEpochRegistry.commitEpochRoots`: `normal_operation_unclassified_review_required`
 - `MandateEpochRegistry.setEpochStatus`: `configuration`
-- `IJobClaimBondManager.releaseClaimBond`: `new_obligation_or_risk_increase`
-- `IJobClaimBondManager.slashClaimBond`: `owner_recovery_or_safe_exit`
-- `IJobRegistry.markClaimed`: `new_obligation_or_risk_increase`
-- `IJobRegistry.markSubmitted`: `new_obligation_or_risk_increase`
-- `IJobRegistry.markApproved`: `new_obligation_or_risk_increase`
-- `IJobRegistry.markRejected`: `normal_operation_unclassified_review_required`
-- `IJobRegistry.releaseReward`: `safe_exit_or_settlement`
-- `IJobRegistry.refundRejectedReward`: `owner_recovery_or_safe_exit`
-- `IJobRegistry.expireClaimedJob`: `new_obligation_or_risk_increase`
-- `IProofSubmissionRegistry.approveSubmission`: `new_obligation_or_risk_increase`
-- `IProofSubmissionRegistry.rejectSubmission`: `normal_operation_unclassified_review_required`
-- `IReputationRegistry.recordApprovedProof`: `new_obligation_or_risk_increase`
-- `IReputationRegistry.recordRejectedProof`: `normal_operation_unclassified_review_required`
-- `IReputationRegistry.recordCredential`: `normal_operation_unclassified_review_required`
 - `AppealRegistry.openAppeal`: `normal_operation_unclassified_review_required`
 - `AppealRegistry.decideAppeal`: `normal_operation_unclassified_review_required`
 - `BuilderProfileRegistry.registerBuilder`: `normal_operation_unclassified_review_required`
@@ -91,7 +69,7 @@
 - `JobClaimBondManager.setTreasury`: `configuration`
 - `JobClaimBondManager.claimJob`: `new_obligation_or_risk_increase`
 - `JobClaimBondManager.reclaimExpiredClaimedJob`: `new_obligation_or_risk_increase`
-- `JobClaimBondManager.releaseClaimBond`: `new_obligation_or_risk_increase`
+- `JobClaimBondManager.releaseClaimBond`: `safe_exit_or_settlement`
 - `JobClaimBondManager.slashClaimBond`: `owner_recovery_or_safe_exit`
 - `JobRegistry.setPostingFee`: `configuration`
 - `JobRegistry.setTreasury`: `configuration`

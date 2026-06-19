@@ -7,7 +7,7 @@
     "qa/controlled-mainnet-canary-template.json"
   ],
   "reason": "Fail-closed dossier: mandatory live/private fork, independent builds, symbolic, mutation, and exact Mainnet-fork evidence must be supplied before PASS. No Mainnet broadcast evidence is present or claimed.",
-  "sourceTreeHash": "6564dd99987a980843f2189f2d11b09ebf4b5d4a903a4a32bd4007aac1888e7c",
+  "sourceTreeHash": "a94c1c3b686bae10eaad8912c20d73182998d487a193cd4fb078e9bd2d7bcb38",
   "sourceTreeHashScope": "tracked HEAD content excluding generated readiness artifacts",
   "status": "BLOCKED"
 }

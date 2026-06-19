@@ -1,62 +1,6 @@
 {
   "selectors": [
     {
-      "attributes": "external",
-      "classification": "lifecycle_control_or_migration",
-      "contract": "GoalOSAccessControl",
-      "name": "pause",
-      "path": "contracts/access/GoalOSAccessControl.sol"
-    },
-    {
-      "attributes": "external",
-      "classification": "lifecycle_control_or_migration",
-      "contract": "GoalOSAccessControl",
-      "name": "unpause",
-      "path": "contracts/access/GoalOSAccessControl.sol"
-    },
-    {
-      "attributes": "public override onlyOwner",
-      "classification": "configuration",
-      "contract": "GoalOSAccessControl",
-      "name": "transferOwnership",
-      "path": "contracts/access/GoalOSAccessControl.sol"
-    },
-    {
-      "attributes": "public onlyOwner",
-      "classification": "owner_recovery_or_safe_exit",
-      "contract": "GoalOSAccessControl",
-      "name": "cancelOwnershipTransfer",
-      "path": "contracts/access/GoalOSAccessControl.sol"
-    },
-    {
-      "attributes": "public",
-      "classification": "configuration",
-      "contract": "GoalOSAccessControl",
-      "name": "acceptOwnership",
-      "path": "contracts/access/GoalOSAccessControl.sol"
-    },
-    {
-      "attributes": "public override",
-      "classification": "configuration",
-      "contract": "GoalOSAccessControl",
-      "name": "grantRole",
-      "path": "contracts/access/GoalOSAccessControl.sol"
-    },
-    {
-      "attributes": "public override",
-      "classification": "owner_recovery_or_safe_exit",
-      "contract": "GoalOSAccessControl",
-      "name": "revokeRole",
-      "path": "contracts/access/GoalOSAccessControl.sol"
-    },
-    {
-      "attributes": "public override",
-      "classification": "normal_operation_unclassified_review_required",
-      "contract": "GoalOSAccessControl",
-      "name": "renounceRole",
-      "path": "contracts/access/GoalOSAccessControl.sol"
-    },
-    {
       "attributes": "external onlyOperator returns (uint256 agentId)",
       "classification": "normal_operation_unclassified_review_required",
       "contract": "AEPAgentRegistry",
@@ -219,14 +163,14 @@
     },
     {
       "attributes": "external nonReentrant",
-      "classification": "new_obligation_or_risk_increase",
+      "classification": "safe_exit_or_settlement",
       "contract": "AEPEvaluatorStakingRegistry",
       "name": "requestUnstake",
       "path": "contracts/aep/AEPEvaluatorStakingRegistry.sol"
     },
     {
       "attributes": "external nonReentrant",
-      "classification": "new_obligation_or_risk_increase",
+      "classification": "safe_exit_or_settlement",
       "contract": "AEPEvaluatorStakingRegistry",
       "name": "unstake",
       "path": "contracts/aep/AEPEvaluatorStakingRegistry.sol"
@@ -442,104 +386,6 @@
       "path": "contracts/aep/MandateEpochRegistry.sol"
     },
     {
-      "attributes": "external",
-      "classification": "new_obligation_or_risk_increase",
-      "contract": "IJobClaimBondManager",
-      "name": "releaseClaimBond",
-      "path": "contracts/interfaces/IJobClaimBondManager.sol"
-    },
-    {
-      "attributes": "external",
-      "classification": "owner_recovery_or_safe_exit",
-      "contract": "IJobClaimBondManager",
-      "name": "slashClaimBond",
-      "path": "contracts/interfaces/IJobClaimBondManager.sol"
-    },
-    {
-      "attributes": "external",
-      "classification": "new_obligation_or_risk_increase",
-      "contract": "IJobRegistry",
-      "name": "markClaimed",
-      "path": "contracts/interfaces/IJobRegistry.sol"
-    },
-    {
-      "attributes": "external",
-      "classification": "new_obligation_or_risk_increase",
-      "contract": "IJobRegistry",
-      "name": "markSubmitted",
-      "path": "contracts/interfaces/IJobRegistry.sol"
-    },
-    {
-      "attributes": "external",
-      "classification": "new_obligation_or_risk_increase",
-      "contract": "IJobRegistry",
-      "name": "markApproved",
-      "path": "contracts/interfaces/IJobRegistry.sol"
-    },
-    {
-      "attributes": "external",
-      "classification": "normal_operation_unclassified_review_required",
-      "contract": "IJobRegistry",
-      "name": "markRejected",
-      "path": "contracts/interfaces/IJobRegistry.sol"
-    },
-    {
-      "attributes": "external",
-      "classification": "safe_exit_or_settlement",
-      "contract": "IJobRegistry",
-      "name": "releaseReward",
-      "path": "contracts/interfaces/IJobRegistry.sol"
-    },
-    {
-      "attributes": "external",
-      "classification": "owner_recovery_or_safe_exit",
-      "contract": "IJobRegistry",
-      "name": "refundRejectedReward",
-      "path": "contracts/interfaces/IJobRegistry.sol"
-    },
-    {
-      "attributes": "external",
-      "classification": "new_obligation_or_risk_increase",
-      "contract": "IJobRegistry",
-      "name": "expireClaimedJob",
-      "path": "contracts/interfaces/IJobRegistry.sol"
-    },
-    {
-      "attributes": "external",
-      "classification": "new_obligation_or_risk_increase",
-      "contract": "IProofSubmissionRegistry",
-      "name": "approveSubmission",
-      "path": "contracts/interfaces/IProofSubmissionRegistry.sol"
-    },
-    {
-      "attributes": "external",
-      "classification": "normal_operation_unclassified_review_required",
-      "contract": "IProofSubmissionRegistry",
-      "name": "rejectSubmission",
-      "path": "contracts/interfaces/IProofSubmissionRegistry.sol"
-    },
-    {
-      "attributes": "external",
-      "classification": "new_obligation_or_risk_increase",
-      "contract": "IReputationRegistry",
-      "name": "recordApprovedProof",
-      "path": "contracts/interfaces/IReputationRegistry.sol"
-    },
-    {
-      "attributes": "external",
-      "classification": "normal_operation_unclassified_review_required",
-      "contract": "IReputationRegistry",
-      "name": "recordRejectedProof",
-      "path": "contracts/interfaces/IReputationRegistry.sol"
-    },
-    {
-      "attributes": "external",
-      "classification": "normal_operation_unclassified_review_required",
-      "contract": "IReputationRegistry",
-      "name": "recordCredential",
-      "path": "contracts/interfaces/IReputationRegistry.sol"
-    },
-    {
       "attributes": "external returns (uint256 appealId)",
       "classification": "normal_operation_unclassified_review_required",
       "contract": "AppealRegistry",
@@ -639,7 +485,7 @@
     },
     {
       "attributes": "external onlyOperator nonReentrant",
-      "classification": "new_obligation_or_risk_increase",
+      "classification": "safe_exit_or_settlement",
       "contract": "JobClaimBondManager",
       "name": "releaseClaimBond",
       "path": "contracts/registry/JobClaimBondManager.sol"

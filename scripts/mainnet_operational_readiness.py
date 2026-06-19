@@ -98,12 +98,25 @@ def detects_asset_holding(contract_name, text):
     return False
 
 
+def excluded_mainnet_inventory_path(path):
+    rel = str(path.relative_to(ROOT))
+    return (
+        rel.startswith("contracts/test/")
+        or rel.startswith("contracts/test-harnesses/")
+        or rel == "contracts/token/MockAGIALPHA.sol"
+    )
+
+
 def contracts():
     out = []
     for path in sorted(CONTRACTS.rglob("*.sol")):
+        if excluded_mainnet_inventory_path(path):
+            continue
         text = path.read_text(errors="ignore")
         cleaned = strip_comments(text)
-        names = concrete_contract_names(text) or [path.stem]
+        names = concrete_contract_names(text)
+        if not names:
+            continue
         funcs = []
         for match in re.finditer(r"function\s+(\w+)\s*\([^)]*\)\s*([^;{]*)", cleaned):
             attrs = match.group(2)
@@ -136,10 +149,10 @@ def classify(fn):
         return "owner_recovery_or_safe_exit"
     if any(x in name for x in ["grant", "revoke", "set", "configure", "transferownership", "acceptownership"]):
         return "configuration"
+    if any(x in name for x in ["withdraw", "release", "pay", "settle", "return", "unstake"]):
+        return "safe_exit_or_settlement"
     if any(x in name for x in ["create", "submit", "claim", "deposit", "stake", "reserve", "fund", "approve", "postjob"]):
         return "new_obligation_or_risk_increase"
-    if any(x in name for x in ["withdraw", "release", "pay", "settle", "return"]):
-        return "safe_exit_or_settlement"
     return "normal_operation_unclassified_review_required"
 
 
