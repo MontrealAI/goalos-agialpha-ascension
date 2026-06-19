@@ -165,7 +165,7 @@
     "configure:mainnet:verify": "ts-node scripts/deployment/goalos-deploy-command-center.ts mainnet:configure-verify --network ethereumMainnet",
     "ownership:mainnet:verify-genesis": "npm run ownership:mainnet:verify",
     "configure:sepolia:prepare": "npm run ownership:sepolia:plan",
-    "configure:sepolia:verify": "ts-node scripts/deployment/goalos-deploy-command-center.ts sepolia:configure-verify --network ethereumSepolia",
+    "configure:sepolia:verify": "npm run ownership:sepolia:verify",
     "ownership:sepolia:verify-genesis": "npm run ownership:sepolia:verify",
     "ownership:sepolia:legacy-plan": "npm run ownership:sepolia:plan",
     "ownership:sepolia:legacy-initiate": "npm run ownership:sepolia:transfer",

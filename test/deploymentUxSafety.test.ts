@@ -300,6 +300,7 @@ describe("deployment UX safety layer", function () {
     expect(commandCenter).to.include("redacted grantees remain commitment-only");
     expect(pkg.scripts["configure:mainnet:prepare-safe"]).to.include("mainnet:prepare-safe");
     expect(pkg.scripts["configure:mainnet:verify"]).to.include("mainnet:configure-verify");
+    expect(pkg.scripts["configure:sepolia:verify"]).to.equal("npm run ownership:sepolia:verify");
   });
 
   it("keeps authority baseline reproducible instead of stamping a provisional HEAD", function () {
