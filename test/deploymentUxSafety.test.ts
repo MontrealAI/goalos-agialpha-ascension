@@ -302,6 +302,13 @@ describe("deployment UX safety layer", function () {
     expect(source).to.include("ALLOW_SINGLE_LEDGER_EOA_GOVERNANCE");
   });
 
+  it("requires Safe governance owners to have bytecode and Ledger EOA owners to have none", function () {
+    const source = fs.readFileSync("scripts/deploy-core.ts", "utf8");
+    expect(source).to.include("GOVERNANCE_OWNER_KIND=SAFE requires governance owner contract bytecode");
+    expect(source).to.include("GOVERNANCE_OWNER_KIND=LEDGER_EOA requires an EOA with no contract bytecode");
+    expect(source).to.include("ethers.provider.getCode(governanceOwner)");
+  });
+
   it("prepares Safe ownership acceptance instead of requiring a Safe to be an EOA signer", function () {
     const source = fs.readFileSync("scripts/ownership/goalos-ownership-command-center.ts", "utf8");
     expect(source).to.include("writeSafeAcceptancePlan");

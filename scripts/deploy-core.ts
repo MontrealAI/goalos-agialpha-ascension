@@ -136,6 +136,12 @@ export async function deployGoalOSAGIALPHAAscension() {
   const operationsAddress = info.isMainnet ? requireEnvAddress("OPERATIONS_ADDRESS") : (optionalEnvAddress("OPERATIONS_ADDRESS") ?? deployer.address);
   if (info.isMainnet && governanceOwner.toLowerCase() === deployer.address.toLowerCase()) throw new Error("Ethereum mainnet deployment blocked: GOVERNANCE_OWNER_ADDRESS must not equal disposable deployer.");
   if (info.isMainnet && operationsAddress.toLowerCase() === deployer.address.toLowerCase()) throw new Error("Ethereum mainnet deployment blocked: OPERATIONS_ADDRESS must not equal disposable deployer.");
+  if (info.isMainnet) {
+    const governanceOwnerKind = process.env.GOVERNANCE_OWNER_KIND;
+    const governanceOwnerCode = await ethers.provider.getCode(governanceOwner);
+    if (governanceOwnerKind === "SAFE" && governanceOwnerCode === "0x") throw new Error("Ethereum mainnet deployment blocked: GOVERNANCE_OWNER_KIND=SAFE requires governance owner contract bytecode.");
+    if (governanceOwnerKind === "LEDGER_EOA" && governanceOwnerCode !== "0x") throw new Error("Ethereum mainnet deployment blocked: GOVERNANCE_OWNER_KIND=LEDGER_EOA requires an EOA with no contract bytecode.");
+  }
   const admin = governanceOwner;
   const founder = requireEnvAddress("FOUNDER_ADDRESS");
   const treasury = requireEnvAddress("TREASURY_ADDRESS");
