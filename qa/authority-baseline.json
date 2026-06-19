@@ -746,7 +746,7 @@
   ],
   "sourceHashes": {
     "contracts/access/GoalOSAccessControl.sol": "b9628e44c59fba1b4a18191fcdf567cb7894e5e05f416202407153234e69dab2",
-    "scripts/deploy-core.ts": "a7fccbed387bf9ac2c5d635a0337a24efbfee6765f59418d80eca636ca9511dc",
+    "scripts/deploy-core.ts": "e77f4933e60168f99e64343a13321a76cc60a743e922116bb1a3ef24c488452c",
     "scripts/validate-runtime-addresses.ts": "b52028e0cdd2f48d706e860d272b01543d61ca61e88b31d177f7163912d49bbf"
   },
   "claimBoundary": "LOCAL_SOURCE_INVENTORY_ONLY; not deployment, verification, audit, Safe, Ledger, or chain evidence."

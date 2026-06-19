@@ -668,13 +668,15 @@ async function accept(label: string): Promise<void> {
   validateLoadedPlan(loadedPlan, label, net.chainId, manifest.hash, deployerAddress, finalOwner, { allowExpired: true });
   const manifestEntries = requireManagedEntries(manifest.data);
   assertPlanCoversManifest(loadedPlan.managedContracts, manifestEntries);
+  const permanentOwners = approvedPermanentOwnersFromPlan(loadedPlan);
   const pendingEntries: PlannedEntry[] = [];
   const notReadyEntries: string[] = [];
   for (const entry of loadedPlan.managedContracts as PlannedEntry[]) {
     const c = await contractAt(entry.address);
     const owner = ethers.getAddress(await c.owner());
-    if (owner === finalOwner) continue;
     const pending = await pendingOwnerOf(c);
+    if (!pendingOwnerAllowed(pending, finalOwner, permanentOwners)) { notReadyEntries.push(`${entry.name}:${owner}:${pending || "NO_PENDING_OWNER"}`); continue; }
+    if (owner === finalOwner || permanentOwners.has(owner)) continue;
     if (pending === finalOwner) pendingEntries.push(entry); else notReadyEntries.push(`${entry.name}:${owner}:${pending || "NO_PENDING_OWNER"}`);
   }
   if (notReadyEntries.length) throw new Error(`Ownership acceptance blocked; contracts are not pending to final owner: ${notReadyEntries.join(",")}`);

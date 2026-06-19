@@ -113,8 +113,15 @@ async function validateSafeGovernanceOwner(governanceOwner: string, deployerAddr
   if (owners.some((owner) => owner.toLowerCase() === deployerAddress.toLowerCase())) throw new Error("Ethereum mainnet deployment blocked: disposable deployer must not be a Safe owner.");
   if (!(await safe.isOwner(owners[0]))) throw new Error("Ethereum mainnet deployment blocked: Safe isOwner/getOwners consistency check failed.");
   const sentinel = "0x0000000000000000000000000000000000000001";
-  const modulesResult = await safe.getModulesPaginated(sentinel, 10);
-  const modules = (modulesResult[0] || []).map((moduleAddress: string) => ethers.getAddress(moduleAddress));
+  const modules: string[] = [];
+  let cursor = sentinel;
+  for (let page = 0; page < 100; page++) {
+    const modulesResult = await safe.getModulesPaginated(cursor, 10);
+    modules.push(...(modulesResult[0] || []).map((moduleAddress: string) => ethers.getAddress(moduleAddress)));
+    cursor = ethers.getAddress(modulesResult[1]);
+    if (cursor === sentinel) break;
+    if (page === 99) throw new Error("Ethereum mainnet deployment blocked: Safe module pagination did not terminate.");
+  }
   const allowedModules = new Set((allowed.allowModules || []).map((moduleAddress: string) => ethers.getAddress(moduleAddress)));
   const unexpectedModules = modules.filter((moduleAddress: string) => !allowedModules.has(moduleAddress));
   if (unexpectedModules.length) throw new Error(`Ethereum mainnet deployment blocked: Safe has unexpected enabled modules: ${unexpectedModules.join(",")}.`);
