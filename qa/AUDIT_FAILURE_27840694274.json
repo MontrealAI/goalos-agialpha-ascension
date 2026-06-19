@@ -1,0 +1,61 @@
+{
+  "branch": "codex/implement-business-operational-gates-for-goalos",
+  "commitSha": "0ea4fed44f84ba8f4a8aa85cc1797bb0f3acc6de",
+  "criticalHighUnresolvedReported": 4,
+  "exactFindings": [
+    {
+      "advisoryId": "GHSA-r5fr-rjxr-66jc",
+      "installedVersion": "4.17.21",
+      "package": "lodash",
+      "remediation": "Finding-specific temporary acceptance with expiry and reachability controls in audit/TRIAGE.json.",
+      "rootCause": "Transitive Hardhat/toolbox build dependencies pin lodash 4.x; no fixed 4.x release is available in npm metadata.",
+      "scanner": "npm audit",
+      "severity": "high"
+    },
+    {
+      "advisoryId": "GHSA-5c6j-r48x-rmvq",
+      "installedVersion": "6.0.2",
+      "package": "serialize-javascript",
+      "remediation": "package override to serialize-javascript 7.0.6.",
+      "rootCause": "Mocha transitive dependency under Hardhat used vulnerable serialize-javascript.",
+      "scanner": "npm audit",
+      "severity": "high"
+    },
+    {
+      "advisoryId": "GHSA-ph9p-34f9-6g65",
+      "installedVersion": "0.0.33",
+      "package": "tmp",
+      "remediation": "package override to tmp 0.2.7.",
+      "rootCause": "solc transitive tmp dependency used a vulnerable temporary-file library.",
+      "scanner": "npm audit",
+      "severity": "high"
+    },
+    {
+      "advisoryId": "GHSA-vrm6-8vpv-qv8q / GHSA-v9p9-hfj2-hcw8 / GHSA-vxpw-j846-p89q",
+      "installedVersion": "5.29.0",
+      "package": "undici",
+      "remediation": "package override to undici 6.27.0.",
+      "rootCause": "Hardhat and hardhat-verify pulled undici below the fixed 6.27.0 line.",
+      "scanner": "npm audit",
+      "severity": "high"
+    }
+  ],
+  "failedStep": "audit:fail-on-critical",
+  "jobId": 82398867793,
+  "pipelineDefects": [
+    "fail-on-critical-findings.py accepted missing and malformed evidence as success",
+    "audit summary exposed only aggregate critical_high_unresolved count for direct wrapper counts",
+    "scanner wrappers used unpinned @latest installs and stale current-run/latest pointers",
+    "normalized finding details were not required before gate evaluation"
+  ],
+  "rootCauses": [
+    "Transitive Hardhat/toolbox build dependencies pin lodash 4.x; no fixed 4.x release is available in npm metadata.",
+    "Mocha transitive dependency under Hardhat used vulnerable serialize-javascript.",
+    "solc transitive tmp dependency used a vulnerable temporary-file library.",
+    "Hardhat and hardhat-verify pulled undici below the fixed 6.27.0 line."
+  ],
+  "runId": 27840694274,
+  "status": "REMEDIATED_WITH_ONE_FINDING_SPECIFIC_TEMPORARY_ACCEPTANCE",
+  "summaryPath": "audit/reports/<run>/audit-summary.json",
+  "workflow": "GoalOS AGIALPHA Audit-Candidate CI"
+}

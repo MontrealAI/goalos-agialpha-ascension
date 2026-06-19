@@ -177,7 +177,11 @@
     "operational:inventory": "python scripts/mainnet_operational_readiness.py",
     "accounting:status": "python scripts/mainnet_operational_readiness.py --validate",
     "lifecycle:policy:check": "python scripts/mainnet_operational_readiness.py --validate",
-    "mainnet:production-readiness": "python scripts/mainnet_operational_readiness.py --validate"
+    "mainnet:production-readiness": "python scripts/mainnet_operational_readiness.py --validate",
+    "audit:reset": "python scripts/audit/reset-audit-run.py",
+    "audit:verify-schema": "python -m unittest discover -s test/audit_pipeline -p \"*.py\"",
+    "test:audit-pipeline": "python -m unittest discover -s test/audit_pipeline -p \"*.py\"",
+    "audit:reproduce-27840694274": "python scripts/audit/reproduce-27840694274.py"
   },
   "dependencies": {
     "@openzeppelin/contracts": "4.9.6",
@@ -189,5 +193,12 @@
     "typescript": "5.9.3",
     "ts-node": "10.9.2"
   },
-  "private": true
+  "private": true,
+  "overrides": {
+    "tmp": "0.2.7",
+    "serialize-javascript": "7.0.6",
+    "undici": "6.27.0",
+    "form-data": "4.0.6",
+    "ws": "8.21.0"
+  }
 }

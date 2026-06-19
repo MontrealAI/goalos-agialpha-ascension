@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["schemaVersion", "entries"],
+  "properties": {
+    "schemaVersion": {"type": "string"},
+    "entries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["advisoryId", "package", "installedVersion", "dependencyPaths", "severity", "status", "scope", "reachability", "rationale", "compensatingControls", "resolutionCommit", "evidencePaths", "approvedBy", "approvedAt", "expiresAt", "reviewAfterDependencyChange"],
+        "properties": {
+          "advisoryId": {"type": "string"},
+          "package": {"type": "string"},
+          "installedVersion": {"type": "string"},
+          "dependencyPaths": {"type": "array", "items": {"type": "string"}},
+          "severity": {"enum": ["critical", "high", "medium", "low", "info"]},
+          "status": {"enum": ["resolved", "false_positive", "temporarily_accepted"]},
+          "scope": {"enum": ["runtime", "build", "test", "deployment", "verification", "website"]},
+          "reachability": {"type": "string", "minLength": 1},
+          "rationale": {"type": "string", "minLength": 1},
+          "compensatingControls": {"type": "array", "items": {"type": "string"}},
+          "resolutionCommit": {"type": "string"},
+          "evidencePaths": {"type": "array", "items": {"type": "string"}},
+          "approvedBy": {"type": "string"},
+          "approvedAt": {"type": "string"},
+          "expiresAt": {"type": "string"},
+          "reviewAfterDependencyChange": {"type": "boolean"}
+        }
+      }
+    }
+  }
+}

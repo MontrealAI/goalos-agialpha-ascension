@@ -1,0 +1,37 @@
+{
+  "schemaVersion": "1.0",
+  "entries": [
+    {
+      "advisoryId": "GHSA-r5fr-rjxr-66jc",
+      "package": "lodash",
+      "installedVersion": "4.17.21",
+      "dependencyPaths": [
+        "hardhat>lodash",
+        "@nomicfoundation/hardhat-toolbox>@nomicfoundation/ignition-core>lodash",
+        "@nomicfoundation/hardhat-toolbox>@typechain/ethers-v6>lodash",
+        "@nomicfoundation/hardhat-toolbox>hardhat-gas-reporter>eth-gas-reporter>lodash",
+        "@nomicfoundation/hardhat-toolbox>solidity-coverage>lodash",
+        "@nomicfoundation/hardhat-toolbox>typechain>lodash"
+      ],
+      "severity": "high",
+      "status": "temporarily_accepted",
+      "scope": "build",
+      "reachability": "Lodash is present through Hardhat/coverage/typechain build tooling. The vulnerable _.template imports option is not invoked by repository deployment, verification, or deterministic compilation scripts; no maintained fixed lodash 4.x release exists as of this remediation.",
+      "rationale": "Finding-specific temporary acceptance while upstream packages migrate away from lodash 4.17.21 or npm advisory metadata is corrected; all other high package roots were remediated through dependency overrides.",
+      "compensatingControls": [
+        "No untrusted template strings are passed to lodash _.template by repository scripts.",
+        "Deterministic compile and tests run after dependency remediation.",
+        "This triage expires and is invalidated by dependency path/version changes."
+      ],
+      "resolutionCommit": "PENDING_FINAL_COMMIT",
+      "evidencePaths": [
+        "qa/AUDIT_FAILURE_27840694274.md",
+        "audit/reports/latest.txt"
+      ],
+      "approvedBy": "Codex remediation pending owner review",
+      "approvedAt": "2026-06-19",
+      "expiresAt": "2026-07-19",
+      "reviewAfterDependencyChange": true
+    }
+  ]
+}

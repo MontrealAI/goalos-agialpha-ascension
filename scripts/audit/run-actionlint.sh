@@ -33,7 +33,7 @@ if status:
 PY
 }
 set +e
-go install github.com/rhysd/actionlint/cmd/actionlint@latest >> "$TXT" 2>&1
+go install github.com/rhysd/actionlint/cmd/actionlint@v1.7.7 >> "$TXT" 2>&1
 INSTALL_STATUS=$?
 set -e
 if [ "$INSTALL_STATUS" -ne 0 ]; then

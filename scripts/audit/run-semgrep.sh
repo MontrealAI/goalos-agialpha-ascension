@@ -4,7 +4,7 @@ source scripts/audit/_common.sh
 TXT="$AUDIT_REPORT_DIR/semgrep.txt"; JSON="$AUDIT_REPORT_DIR/semgrep.json"
 CMD="semgrep scan --config configs/semgrep.yml --json --output $JSON ."
 if ! command -v semgrep >/dev/null 2>&1; then
-  python -m pip install --user semgrep --quiet >> "$TXT" 2>&1
+  python -m pip install --user semgrep==1.101.0 --quiet >> "$TXT" 2>&1
   export PATH="$HOME/.local/bin:$PATH"
 fi
 set +e

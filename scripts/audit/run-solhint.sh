@@ -8,7 +8,7 @@ if [ ! -f .solhint.json ]; then
   exit 1
 fi
 set +e
-npx --yes solhint@latest "contracts/**/*.sol" > "$TXT" 2>&1
+npx --yes solhint@6.2.3 "contracts/**/*.sol" > "$TXT" 2>&1
 STATUS=$?
 set -e
 python - "$TXT" "$JSON" "$STATUS" <<'PY'

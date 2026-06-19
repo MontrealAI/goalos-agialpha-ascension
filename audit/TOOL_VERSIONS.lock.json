@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "1.0",
+  "node": "20.x",
+  "npm": "11.4.2",
+  "tools": {
+    "npm-audit": {"command": "npm audit --json", "pinnedBy": "package-lock.json/npm"},
+    "osv-scanner": {"version": "v2.2.3", "install": "go install github.com/google/osv-scanner/v2/cmd/osv-scanner@v2.2.3"},
+    "semgrep": {"version": "1.101.0"},
+    "gitleaks": {"version": "8.24.2"},
+    "actionlint": {"version": "1.7.7"},
+    "slither": {"version": "0.10.4"}
+  }
+}
