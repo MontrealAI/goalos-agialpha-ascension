@@ -92,8 +92,14 @@ function readAuthorityPolicy(): any | undefined {
 async function validateSafeGovernanceOwner(governanceOwner: string, deployerAddress: string) {
   const policy = readAuthorityPolicy();
   const allowed = policy?.allowedSafeConfiguration || {};
-  const minimumOwners = Number(process.env.GOVERNANCE_SAFE_MINIMUM_OWNERS || allowed.minimumOwners || 3);
-  const minimumThreshold = Number(process.env.GOVERNANCE_SAFE_MINIMUM_THRESHOLD || allowed.minimumThreshold || 2);
+  const policyMinimumOwners = Number(allowed.minimumOwners || 3);
+  const policyMinimumThreshold = Number(allowed.minimumThreshold || 2);
+  const envMinimumOwners = process.env.GOVERNANCE_SAFE_MINIMUM_OWNERS ? Number(process.env.GOVERNANCE_SAFE_MINIMUM_OWNERS) : undefined;
+  const envMinimumThreshold = process.env.GOVERNANCE_SAFE_MINIMUM_THRESHOLD ? Number(process.env.GOVERNANCE_SAFE_MINIMUM_THRESHOLD) : undefined;
+  if (envMinimumOwners !== undefined && envMinimumOwners < policyMinimumOwners) throw new Error("Ethereum mainnet deployment blocked: GOVERNANCE_SAFE_MINIMUM_OWNERS cannot lower authority-policy minimumOwners.");
+  if (envMinimumThreshold !== undefined && envMinimumThreshold < policyMinimumThreshold) throw new Error("Ethereum mainnet deployment blocked: GOVERNANCE_SAFE_MINIMUM_THRESHOLD cannot lower authority-policy minimumThreshold.");
+  const minimumOwners = Math.max(policyMinimumOwners, envMinimumOwners || policyMinimumOwners);
+  const minimumThreshold = Math.max(policyMinimumThreshold, envMinimumThreshold || policyMinimumThreshold);
   const safe = new ethers.Contract(governanceOwner, [
     "function getOwners() view returns (address[])",
     "function getThreshold() view returns (uint256)",

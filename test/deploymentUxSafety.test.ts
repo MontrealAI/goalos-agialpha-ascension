@@ -309,6 +309,16 @@ describe("deployment UX safety layer", function () {
     expect(source).not.to.include("git rev-parse HEAD");
   });
 
+  it("documents new Mainnet authority env and delayed ownership acceptance", function () {
+    const env = fs.readFileSync(".env.mainnet.example", "utf8");
+    const runbook = fs.readFileSync("docs/OWNERSHIP_HANDOFF_RUNBOOK.md", "utf8");
+    expect(env).to.include("GOVERNANCE_OWNER_KIND=SAFE");
+    expect(env).to.include("GOVERNANCE_OWNER_ADDRESS=");
+    expect(env).to.include("OPERATIONS_ADDRESS=");
+    expect(runbook).to.include("ownership:mainnet:accept-local-gated");
+    expect(runbook).to.include("Wait until pendingOwnerAcceptAfter");
+  });
+
   it("requires explicit Mainnet governance-owner kind before runtime address loading", function () {
     const source = fs.readFileSync("scripts/validate-runtime-addresses.ts", "utf8");
     expect(source).to.include("GOVERNANCE_OWNER_KIND must be SAFE or LEDGER_EOA");
@@ -324,6 +334,8 @@ describe("deployment UX safety layer", function () {
     expect(source).to.include("Safe module pagination did not terminate");
     expect(source).to.include("guardStorageSlot");
     expect(source).to.include("does not match policy");
+    expect(source).to.include("GOVERNANCE_SAFE_MINIMUM_OWNERS cannot lower authority-policy minimumOwners");
+    expect(source).to.include("GOVERNANCE_SAFE_MINIMUM_THRESHOLD cannot lower authority-policy minimumThreshold");
     expect(source).to.include("disposable deployer must not be a Safe owner");
     expect(source).to.include("GOVERNANCE_OWNER_KIND=LEDGER_EOA requires an EOA with no contract bytecode");
     const rehearsal = fs.readFileSync("scripts/local-mainnet-fork-simulation.ts", "utf8");
