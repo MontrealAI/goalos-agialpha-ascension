@@ -12,6 +12,20 @@ CONTRACTS = ROOT / "contracts"
 QA = ROOT / "qa"
 DOCS = ROOT / "docs"
 RUNBOOKS = DOCS / "runbooks"
+RELEASE_ROOTS = (
+    "contracts/",
+    "scripts/",
+    "test/",
+    "qa/",
+    "docs/",
+    "schemas/",
+    "ignition/",
+    "package.json",
+    "package-lock.json",
+    "hardhat.config.ts",
+    "foundry.toml",
+    "tsconfig.json",
+)
 GENERATED_PREFIXES = (
     "qa/mainnet-operational",
     "qa/business-override-matrix.json",
@@ -45,15 +59,22 @@ def sh(cmd):
         return f"UNAVAILABLE: {exc}"
 
 
-def run_check(name, cmd):
-    try:
-        output = subprocess.check_output(cmd, cwd=ROOT, text=True, stderr=subprocess.STDOUT)
-        return {"name": name, "command": " ".join(cmd), "status": "PASS", "outputSha256": sha_bytes(output.encode()), "summary": output.strip().splitlines()[-20:]}
-    except subprocess.CalledProcessError as exc:
-        return {"name": name, "command": " ".join(cmd), "status": "FAIL", "exitCode": exc.returncode, "outputSha256": sha_bytes((exc.output or "").encode()), "summary": (exc.output or "").strip().splitlines()[-20:]}
-    except FileNotFoundError as exc:
-        return {"name": name, "command": " ".join(cmd), "status": "UNAVAILABLE", "reason": str(exc)}
 
+def release_relevant_dirty_paths():
+    # Only unstaged release-relevant dirt is recorded here. Staged content is
+    # already represented by sourceTreeHash, and generated artifacts are excluded
+    # so pre-commit generation does not embed transient self-dirt.
+    status = sh(["git", "diff", "--name-only"])
+    if status.startswith("UNAVAILABLE:"):
+        return [status]
+    dirty = []
+    for rel in status.splitlines():
+        if not rel.startswith(RELEASE_ROOTS):
+            continue
+        if rel.startswith(GENERATED_PREFIXES):
+            continue
+        dirty.append(rel)
+    return sorted(set(dirty))
 
 def git_index_text(rel):
     return subprocess.check_output(["git", "show", f":{rel}"], cwd=ROOT).decode("utf-8", errors="ignore")
@@ -86,9 +107,8 @@ def tracked_source_tree_hash():
     """
     listing = sh(["git", "ls-files"])
     h = hashlib.sha256()
-    release_roots = ("contracts/", "scripts/", "test/", "qa/", "docs/", "schemas/", "ignition/", "package.json", "package-lock.json", "hardhat.config.ts", "foundry.toml", "tsconfig.json")
     for rel in sorted(x for x in listing.splitlines() if x):
-        if not rel.startswith(release_roots):
+        if not rel.startswith(RELEASE_ROOTS):
             continue
         if rel.startswith(GENERATED_PREFIXES):
             continue
@@ -396,13 +416,14 @@ def generate():
         {"name": "authority inventory generation", "command": "npm run authority:inventory", "status": "REQUIRED_NOT_RUN_BY_GENERATOR"},
         {"name": "authority policy validation", "command": "npm run authority:policy:validate", "status": "REQUIRED_NOT_RUN_BY_GENERATOR"},
     ]
+    release_dirty_paths = release_relevant_dirty_paths()
     dossier = {
         "status": "BLOCKED",
         "reason": "Fail-closed dossier: mandatory live/private fork RPC, independent build comparison, symbolic execution, critical mutation, and exact Mainnet-fork evidence must be supplied before PASS. No Mainnet broadcast evidence is present or claimed.",
         "sourceTreeHash": source_hash,
         "sourceTreeHashScope": inventory["sourceTreeHashScope"],
         "baselineSha": sh(["git", "rev-parse", "HEAD"]),
-        "workingTreeStatus": sh(["git", "status", "--short"]),
+        "releaseRelevantDirtyPaths": release_dirty_paths,
         "selectorCoverageStatus": selector["coverageStatus"],
         "localCheckResults": local_checks,
         "mainnetBroadcastOccurred": False,
