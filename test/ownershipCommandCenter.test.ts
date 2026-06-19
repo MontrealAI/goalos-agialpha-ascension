@@ -89,9 +89,12 @@ describe("ownership command-center safety gates", function () {
   });
 
 
-  it("classifies two-step transfers pending final-owner acceptance", async function () {
+  it("classifies two-step transfers pending final-owner acceptance and rejects unsafe latent pending owners", async function () {
     const contract = { pendingOwner: async () => addrB };
     expect(await hooks.actionForContract(contract, addrA, addrA, addrB, new Set())).to.equal("PENDING_ACCEPTANCE");
+    const unsafe = { pendingOwner: async () => addrA };
+    expect(await hooks.actionForContract(unsafe, addrB, addrA, addrB, new Set())).to.equal("FAIL_PENDING_OWNER");
+    expect(hooks.pendingOwnerAllowed(addrA, addrB, new Set())).to.equal(false);
   });
 
   it("finds a matching journaled transfer before a replacement can be submitted", function () {

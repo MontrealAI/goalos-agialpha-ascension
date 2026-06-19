@@ -290,6 +290,8 @@ describe("deployment UX safety layer", function () {
     expect(deployCore).to.include("accountRedacted");
     expect(deployCore).to.include("redactAddress(account)");
     expect(commandCenter).to.include("function prepareSafeConfiguration");
+    expect(commandCenter).to.include("encodeFunctionData");
+    expect(commandCenter).not.to.include("CALldata_PREPARATION_REQUIRES_PRIVATE_OWNER_CONTEXT");
     expect(commandCenter).to.include('action.includes("prepare-safe")');
     expect(pkg.scripts["configure:mainnet:prepare-safe"]).to.include("mainnet:prepare-safe");
   });
@@ -298,6 +300,13 @@ describe("deployment UX safety layer", function () {
     const source = fs.readFileSync("scripts/validate-runtime-addresses.ts", "utf8");
     expect(source).to.include("GOVERNANCE_OWNER_KIND must be SAFE or LEDGER_EOA");
     expect(source).to.include("ALLOW_SINGLE_LEDGER_EOA_GOVERNANCE");
+  });
+
+  it("prepares Safe ownership acceptance instead of requiring a Safe to be an EOA signer", function () {
+    const source = fs.readFileSync("scripts/ownership/goalos-ownership-command-center.ts", "utf8");
+    expect(source).to.include("writeSafeAcceptancePlan");
+    expect(source).to.include("Safe ownership acceptance plan");
+    expect(source).to.include("acceptOwnership");
   });
 
 
