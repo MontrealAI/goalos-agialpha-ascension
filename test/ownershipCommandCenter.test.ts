@@ -97,6 +97,13 @@ describe("ownership command-center safety gates", function () {
     expect(hooks.pendingOwnerAllowed(addrA, addrB, new Set())).to.equal(false);
   });
 
+  it("allows acceptance validation to use the original expired initiation plan", function () {
+    const plan = { planHash: "", network: "ethereum-sepolia", chainId: 11155111, deploymentManifestSha256: "0x" + "11".repeat(32), disposableOwner: addrA, finalOwner: addrB, expiresAt: new Date(Date.now() - 1000).toISOString() };
+    plan.planHash = hooks.planHash(plan);
+    expect(() => hooks.validateLoadedPlan(plan, "ethereum-sepolia", 11155111n, plan.deploymentManifestSha256, addrA, addrB)).to.throw("Plan expired");
+    expect(() => hooks.validateLoadedPlan(plan, "ethereum-sepolia", 11155111n, plan.deploymentManifestSha256, addrA, addrB, { allowExpired: true })).not.to.throw();
+  });
+
   it("finds a matching journaled transfer before a replacement can be submitted", function () {
     const entry = { name: "A", address: addrA, currentOwner: addrA, action: "TRANSFER", gasEstimate: "1" };
     const journal = {

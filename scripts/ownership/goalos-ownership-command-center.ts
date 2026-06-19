@@ -484,7 +484,7 @@ async function plan(label: string): Promise<void> {
   console.log(`PASS wrote ${latestPlanPath(label)} ${out.planHash}`);
 }
 
-function validateLoadedPlan(plan: any, label: string, chainId: bigint, manifestHash: string, deployer: string, finalOwner: string): void {
+function validateLoadedPlan(plan: any, label: string, chainId: bigint, manifestHash: string, deployer: string, finalOwner: string, options: { allowExpired?: boolean } = {}): void {
   const actual = planHash(plan);
   if (plan.planHash !== actual) throw new Error(`Ownership plan hash mismatch: stored ${plan.planHash}, computed ${actual}`);
   if (plan.network !== label) throw new Error(`Ownership plan network mismatch: ${plan.network} !== ${label}`);
@@ -494,7 +494,7 @@ function validateLoadedPlan(plan: any, label: string, chainId: bigint, manifestH
   if (ethers.getAddress(plan.finalOwner) !== finalOwner) throw new Error("Ownership plan final owner mismatch");
   const expiresAtMs = Date.parse(plan.expiresAt);
   if (!Number.isFinite(expiresAtMs)) throw new Error("Ownership plan expiry is invalid");
-  if (expiresAtMs <= Date.now()) throw new Error("Plan expired");
+  if (!options.allowExpired && expiresAtMs <= Date.now()) throw new Error("Plan expired");
 }
 
 function expectedMainnetConfirmation(finalOwner: string, planHashValue: string): string {
@@ -567,7 +567,7 @@ async function transfer(label: string, options: TransferOptions = {}): Promise<v
   const p = latestPlanPath(label);
   if (!fs.existsSync(p)) throw new Error("Run ownership plan first");
   const loadedPlan = JSON.parse(fs.readFileSync(p, "utf8"));
-  validateLoadedPlan(loadedPlan, label, net.chainId, manifest.hash, deployerAddress, finalOwner);
+  validateLoadedPlan(loadedPlan, label, net.chainId, manifest.hash, deployerAddress, finalOwner, { allowExpired: true });
   const manifestEntries = requireManagedEntries(manifest.data);
   assertPlanCoversManifest(loadedPlan.managedContracts, manifestEntries);
   const planPermanentOwners = approvedPermanentOwnersFromPlan(loadedPlan);
@@ -655,7 +655,7 @@ async function accept(label: string): Promise<void> {
   const loadedPlan = readPlanIfPresent(label);
   if (!loadedPlan) throw new Error("Run ownership plan before acceptance");
   const deployerAddress = ethers.getAddress(loadedPlan.disposableOwner || resolveDisposableOwner(label, manifest.data, ethers.getAddress(connectedSigner.address)));
-  validateLoadedPlan(loadedPlan, label, net.chainId, manifest.hash, deployerAddress, finalOwner);
+  validateLoadedPlan(loadedPlan, label, net.chainId, manifest.hash, deployerAddress, finalOwner, { allowExpired: true });
   const manifestEntries = requireManagedEntries(manifest.data);
   assertPlanCoversManifest(loadedPlan.managedContracts, manifestEntries);
   const pendingEntries: PlannedEntry[] = [];
@@ -826,6 +826,7 @@ async function main(): Promise<void> {
 export const ownershipCommandCenterTestHooks = {
   actionForContract,
   pendingOwnerAllowed,
+  planHash,
   approvedPermanentOwnersFromPlan,
   assertPlanCoversManifest,
   assertPermanentOwnersMatchPlan,

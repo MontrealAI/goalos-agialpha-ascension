@@ -47,6 +47,9 @@ export function runtimeAddressMode(): RuntimeAddressMode {
     }
     return "LEDGER_EOA";
   }
+  if (process.env.GOVERNANCE_OWNER_KIND) {
+    throw new Error("Mainnet deployment blocked: GOVERNANCE_OWNER_KIND must be exactly SAFE or LEDGER_EOA.");
+  }
   return "RUNTIME_ADDRESS_PROMPT_MODE";
 }
 

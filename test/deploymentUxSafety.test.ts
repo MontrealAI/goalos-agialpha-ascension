@@ -300,6 +300,7 @@ describe("deployment UX safety layer", function () {
     const source = fs.readFileSync("scripts/validate-runtime-addresses.ts", "utf8");
     expect(source).to.include("GOVERNANCE_OWNER_KIND must be SAFE or LEDGER_EOA");
     expect(source).to.include("ALLOW_SINGLE_LEDGER_EOA_GOVERNANCE");
+    expect(source).to.include("GOVERNANCE_OWNER_KIND must be exactly SAFE or LEDGER_EOA");
   });
 
   it("requires Safe governance owners to have bytecode and Ledger EOA owners to have none", function () {
