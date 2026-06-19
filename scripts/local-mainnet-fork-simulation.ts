@@ -84,10 +84,16 @@ async function main() {
 
   if (blockers.length === 0 && !deterministicLocalMode) {
     const signers = await ethers.getSigners();
+    const SafeFixture = await ethers.getContractFactory("ProofCardRegistry");
+    const governanceSafeFixture = await SafeFixture.deploy(signers[1].address);
+    await governanceSafeFixture.waitForDeployment();
     setDefaultEnv("MAINNET_TARGET", "ethereum");
     setDefaultEnv("ALLOW_MAINNET_DEPLOYMENT", "YES_PUBLIC_REPOSITORY_AUTHORIZED_MANUAL_DEPLOYMENT");
     setDefaultEnv("AGIALPHA_TOKEN_ADDRESS", AGIALPHA);
     setDefaultEnv("MULTISIG_RUNTIME_MODE", "true");
+    setDefaultEnv("GOVERNANCE_OWNER_KIND", "SAFE");
+    setDefaultEnv("GOVERNANCE_OWNER_ADDRESS", await governanceSafeFixture.getAddress());
+    setDefaultEnv("OPERATIONS_ADDRESS", signers[8].address);
     setDefaultEnv("LEGAL_SIGNOFF_HASH", bytes32("2"));
     setDefaultEnv("TAX_SIGNOFF_HASH", bytes32("3"));
     setDefaultEnv("SECURITY_REVIEW_HASH", bytes32("4"));

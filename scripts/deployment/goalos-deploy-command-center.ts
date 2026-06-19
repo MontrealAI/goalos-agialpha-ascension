@@ -80,15 +80,19 @@ async function verifySafeConfiguration(networkName:string){
  const rpc=getOptionalRpcUrl(networkName);
  if(!rpc) throw new Error(`Missing RPC URL for ${networkName} configuration verification`);
  const provider=new ethers.JsonRpcProvider(rpc);
+ const expectedChainId=getExpectedChainId(networkName);
+ const detectedChainId=Number((await provider.getNetwork()).chainId);
+ if(detectedChainId!==expectedChainId) throw new Error(`Configuration verification RPC chainId mismatch: expected ${expectedChainId} for ${networkName}, got ${detectedChainId}`);
  const m=JSON.parse(fs.readFileSync(manifest,"utf8"));
+ if(Number(m.chainId)!==expectedChainId) throw new Error(`Deployment manifest chainId mismatch: expected ${expectedChainId}, got ${m.chainId}`);
  const grants=Array.isArray(m.phaseBGrants)?m.phaseBGrants:[];
  if(!grants.length) throw new Error("No phaseBGrants found in deployment manifest");
  const policy=readAuthorityPolicy();
  const abi=["function hasRole(bytes32 role,address account) view returns (bool)"];
  const results=[];
- for(const g of grants){ const grantee=resolveGrantAccount(g,policy); const c=new ethers.Contract(ethers.getAddress(g.target),abi,provider); const ok=await c.hasRole(g.role,grantee); results.push({target:ethers.getAddress(g.target),role:g.role,grantee,label:g.label,ok}); }
+ for(const g of grants){ const grantee=resolveGrantAccount(g,policy); const c=new ethers.Contract(ethers.getAddress(g.target),abi,provider); const ok=await c.hasRole(g.role,grantee); const redacted=Boolean(g.accountRedacted); results.push({target:ethers.getAddress(g.target),role:g.role,grantee:redacted?"redacted":grantee,granteeCommitmentHash:redacted?g.account?.commitmentHash:undefined,label:g.label,ok}); }
  const failed=results.filter((r)=>!r.ok);
- const out={schemaVersion:1,status:failed.length?"FAILED":"PASSED",networkName,chainId:m.chainId,checkedAt:new Date().toISOString(),deploymentManifest:manifest,grantCount:results.length,results,claimBoundary:"Phase-B configuration role check only; no transaction is broadcast."};
+ const out={schemaVersion:1,status:failed.length?"FAILED":"PASSED",networkName,chainId:detectedChainId,manifestChainId:m.chainId,checkedAt:new Date().toISOString(),deploymentManifest:manifest,grantCount:results.length,results,claimBoundary:"Phase-B configuration role check only; no transaction is broadcast; redacted grantees remain commitment-only in public QA output."};
  fs.mkdirSync("qa",{recursive:true}); const outPath=main?"qa/mainnet-configuration-verification.json":"qa/sepolia-configuration-verification.json"; fs.writeFileSync(outPath,JSON.stringify(out,null,2)+"\n");
  if(failed.length) throw new Error(`Phase-B configuration verification failed for ${failed.length} grants`);
  console.log(`PASS wrote ${outPath} with ${results.length} verified grants`);

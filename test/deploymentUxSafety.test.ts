@@ -295,6 +295,9 @@ describe("deployment UX safety layer", function () {
     expect(commandCenter).to.include('action.includes("prepare-safe")');
     expect(commandCenter).to.include("function verifySafeConfiguration");
     expect(commandCenter).to.include("hasRole(bytes32 role,address account)");
+    expect(commandCenter).to.include("detectedChainId!==expectedChainId");
+    expect(commandCenter).to.include("grantee:redacted?\"redacted\":grantee");
+    expect(commandCenter).to.include("redacted grantees remain commitment-only");
     expect(pkg.scripts["configure:mainnet:prepare-safe"]).to.include("mainnet:prepare-safe");
     expect(pkg.scripts["configure:mainnet:verify"]).to.include("mainnet:configure-verify");
   });
@@ -310,6 +313,10 @@ describe("deployment UX safety layer", function () {
     const source = fs.readFileSync("scripts/deploy-core.ts", "utf8");
     expect(source).to.include("GOVERNANCE_OWNER_KIND=SAFE requires governance owner contract bytecode");
     expect(source).to.include("GOVERNANCE_OWNER_KIND=LEDGER_EOA requires an EOA with no contract bytecode");
+    const rehearsal = fs.readFileSync("scripts/local-mainnet-fork-simulation.ts", "utf8");
+    expect(rehearsal).to.include("GOVERNANCE_OWNER_KIND");
+    expect(rehearsal).to.include("GOVERNANCE_OWNER_ADDRESS");
+    expect(rehearsal).to.include("OPERATIONS_ADDRESS");
     expect(source).to.include("ethers.provider.getCode(governanceOwner)");
   });
 
