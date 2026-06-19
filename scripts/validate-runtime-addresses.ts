@@ -52,6 +52,9 @@ export function runtimeAddressMode(): RuntimeAddressMode {
 
 export function loadRuntimeAddresses(deployerAddress: string): { mode: RuntimeAddressMode; addresses: RuntimeAddresses } {
   const deployer = requireValidAddress("deployer", deployerAddress);
+  if (!process.env.GOVERNANCE_OWNER_KIND) {
+    throw new Error("Mainnet deployment blocked: GOVERNANCE_OWNER_KIND must be SAFE or LEDGER_EOA.");
+  }
   const mode = runtimeAddressMode();
   const addresses = Object.fromEntries(
     Object.entries(ENV_MAP).map(([key, envName]) => [key, requireValidAddress(envName, process.env[envName])])

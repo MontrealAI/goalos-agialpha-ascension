@@ -222,7 +222,7 @@ function resolveDisposableOwner(label: string, manifest: any, fallbackSigner: st
   return envOrManifestOwner;
 }
 
-async function signerForOwner(owner: string, fallbackSigner: any): Promise<any> {
+async function signerForAuthority(owner: string, fallbackSigner: any, label: string): Promise<any> {
   const fallback = ethers.getAddress(fallbackSigner.address);
   if (fallback === owner) return fallbackSigner;
   if (hre.network.name === "hardhat") {
@@ -230,7 +230,11 @@ async function signerForOwner(owner: string, fallbackSigner: any): Promise<any> 
     await ethers.provider.send("hardhat_setBalance", [owner, "0x3635c9adc5dea00000"]);
     return ethers.getSigner(owner);
   }
-  throw new Error(`Connected signer ${fallback} is not the planned disposable owner ${owner}`);
+  throw new Error(`Connected signer ${fallback} is not the ${label} ${owner}`);
+}
+
+async function signerForOwner(owner: string, fallbackSigner: any): Promise<any> {
+  return signerForAuthority(owner, fallbackSigner, "planned disposable owner");
 }
 
 function entries(manifest: any): ManagedEntry[] {
@@ -275,11 +279,15 @@ async function contractAt(address: string): Promise<any> {
     [
       "function owner() view returns (address)",
       "function transferOwnership(address)",
+      "function acceptOwnership()",
+      "function pendingOwner() view returns (address)",
+      "function pendingOwnerAcceptAfter() view returns (uint48)",
       "function supportsInterface(bytes4) view returns (bool)",
       "function hasRole(bytes32,address) view returns (bool)",
       ...MANAGED_ROLES.map((role) => `function ${role}() view returns (bytes32)`),
       ...RUNTIME_ADDRESS_GETTERS.map((getter) => `function ${getter}() view returns (address)`),
       "function managedOwnershipRoleCount() view returns (uint256)",
+      "event OwnershipTransferStarted(address indexed previousOwner,address indexed newOwner)",
       "event OwnershipTransferred(address indexed previousOwner,address indexed newOwner)",
       "event GoalOSOwnershipRolesMigrated(address indexed previousOwner,address indexed newOwner)",
     ],
@@ -355,6 +363,17 @@ async function validateProof(chainId: bigint, finalOwner: string, manifestHash: 
   throw new Error(`Unsupported FINAL_OWNER_KIND ${kind}`);
 }
 
+async function actionForContract(c: any, owner: string, deployer: string, finalOwner: string, permanentOwners: Set<string>): Promise<string> {
+  if (owner !== finalOwner) {
+    try {
+      if (ethers.getAddress(await c.pendingOwner()) === finalOwner) return "PENDING_ACCEPTANCE";
+    } catch {
+      // Legacy one-step contracts or non-GoalOS artifacts will not expose pendingOwner.
+    }
+  }
+  return actionForOwner(owner, deployer, finalOwner, permanentOwners);
+}
+
 function actionForOwner(owner: string, deployer: string, finalOwner: string, permanentOwners: Set<string>): string {
   if (owner === finalOwner) return "ALREADY_FINAL_OWNER";
   if (owner === deployer) return "TRANSFER";
@@ -381,7 +400,7 @@ async function doctor(label: string): Promise<void> {
     if ((await ethers.provider.getCode(entry.address)) === "0x") throw new Error(`No bytecode at ${entry.name} ${entry.address}`);
     const c = await contractAt(entry.address);
     const owner = ethers.getAddress(await c.owner());
-    const action = actionForOwner(owner, deployerAddress, finalOwner, permanentOwners);
+    const action = await actionForContract(c, owner, deployerAddress, finalOwner, permanentOwners);
     if (action === "FAIL") throw new Error(`Unexpected owner for ${entry.name}: ${owner}`);
     try {
       if (!(await c.supportsInterface(ERC173))) throw new Error("false");
@@ -412,9 +431,13 @@ async function plan(label: string): Promise<void> {
     const c = (await contractAt(entry.address)).connect(deployer);
     const owner = ethers.getAddress(await c.owner());
     let gasEstimate = "0";
-    let action = actionForOwner(owner, deployerAddress, finalOwner, permanentOwners);
+    let action = await actionForContract(c, owner, deployerAddress, finalOwner, permanentOwners);
     if (action === "TRANSFER") {
       gasEstimate = (await c.transferOwnership.estimateGas(finalOwner)).toString();
+      totalGas += BigInt(gasEstimate);
+    } else if (action === "PENDING_ACCEPTANCE") {
+      const finalOwnerSigner = await signerForAuthority(finalOwner, connectedSigner, "planned final owner");
+      gasEstimate = (await c.connect(finalOwnerSigner).acceptOwnership.estimateGas()).toString();
       totalGas += BigInt(gasEstimate);
     }
     managed.push({ ...entry, currentOwner: owner, action, gasEstimate });
@@ -500,11 +523,14 @@ async function waitForJournaledTransfer(
   if (receipt.status !== 1) {
     throw new Error(`Journaled ownership transfer failed for ${entry.name}: ${journaled.hash}`);
   }
-  if (ethers.getAddress(await c.owner()) !== finalOwner) {
-    throw new Error(`Journaled ownership transfer owner mismatch for ${entry.name}: ${journaled.hash}`);
+  const owner = ethers.getAddress(await c.owner());
+  let pending: string | undefined;
+  try { pending = ethers.getAddress(await c.pendingOwner()); } catch {}
+  if (owner !== finalOwner && pending !== finalOwner) {
+    throw new Error(`Journaled ownership transfer state mismatch for ${entry.name}: ${journaled.hash}`);
   }
 
-  journaled.status = "CONFIRMED";
+  journaled.status = owner === finalOwner ? "ACCEPTED" : "PENDING_ACCEPTANCE";
   journaled.confirmedAt = new Date().toISOString();
   writeJsonAtomic(journalPath, journalData);
   return true;
@@ -543,6 +569,9 @@ async function transfer(label: string, options: TransferOptions = {}): Promise<v
     const c = (await contractAt(entry.address)).connect(deployer);
     const owner = ethers.getAddress(await c.owner());
     if (owner === finalOwner) continue;
+    try {
+      if (ethers.getAddress(await c.pendingOwner()) === finalOwner) continue;
+    } catch {}
     if (entry.action === "PERMANENT_RUNTIME_OWNER") {
       if (owner !== ethers.getAddress(entry.currentOwner) || !permanentOwners.has(owner)) {
         throw new Error(`Unexpected runtime owner for ${entry.name}: live ${owner}, planned ${entry.currentOwner}`);
@@ -558,14 +587,57 @@ async function transfer(label: string, options: TransferOptions = {}): Promise<v
     journalData.transactions.push({ name: entry.name, address: entry.address, hash: tx.hash, submittedAt: new Date().toISOString() });
     writeJsonAtomic(journal, journalData);
     const receipt = await tx.wait(confirmations);
-    if (!receipt || receipt.status !== 1) throw new Error(`Transfer failed ${entry.name}`);
-    if (ethers.getAddress(await c.owner()) !== finalOwner) throw new Error(`Post-transfer owner mismatch ${entry.name}`);
+    if (!receipt || receipt.status !== 1) throw new Error(`Transfer initiation failed ${entry.name}`);
+    if (ethers.getAddress(await c.pendingOwner()) !== finalOwner) throw new Error(`Post-transfer pending owner mismatch ${entry.name}`);
+    journalData.transactions[journalData.transactions.length - 1].status = "PENDING_ACCEPTANCE";
+    journalData.transactions[journalData.transactions.length - 1].confirmedAt = new Date().toISOString();
+    writeJsonAtomic(journal, journalData);
     transferred += 1;
     if (options.rehearsalInterruptAfter && transferred >= options.rehearsalInterruptAfter) {
       throw new Error(`OWNERSHIP_REHEARSAL_INTERRUPT_AFTER_${options.rehearsalInterruptAfter}`);
     }
   }
-  console.log("PASS ownership transfer completed/resumed");
+  console.log("PASS ownership transfer initiation completed/resumed; final owners must run acceptOwnership after delay");
+}
+
+async function accept(label: string): Promise<void> {
+  const net = await ethers.provider.getNetwork();
+  requireExpectedChain(label, net.chainId);
+  forbidCiMainnet(net.chainId);
+  const finalOwner = requireAddress("FINAL_OWNER_ADDRESS");
+  const [connectedSigner] = await ethers.getSigners();
+  const finalOwnerSigner = await signerForAuthority(finalOwner, connectedSigner, "planned final owner");
+  const manifest = readManifest(label);
+  const loadedPlan = readPlanIfPresent(label);
+  if (!loadedPlan) throw new Error("Run ownership plan before acceptance");
+  const deployerAddress = ethers.getAddress(loadedPlan.disposableOwner || resolveDisposableOwner(label, manifest.data, ethers.getAddress(connectedSigner.address)));
+  validateLoadedPlan(loadedPlan, label, net.chainId, manifest.hash, deployerAddress, finalOwner);
+  assertPlanCoversManifest(loadedPlan.managedContracts, requireManagedEntries(manifest.data));
+  const journal = path.join(ROOT, ".private", `${label}.ownership-acceptance-journal.json`);
+  const journalData = fs.existsSync(journal) ? JSON.parse(fs.readFileSync(journal, "utf8")) : { transactions: [] };
+  const confirmations = Number(process.env.OWNERSHIP_CONFIRMATIONS || (net.chainId === 1n ? 5 : 1));
+  let accepted = 0;
+  for (const entry of loadedPlan.managedContracts as PlannedEntry[]) {
+    const c = (await contractAt(entry.address)).connect(finalOwnerSigner);
+    const owner = ethers.getAddress(await c.owner());
+    if (owner === finalOwner) continue;
+    const pending = ethers.getAddress(await c.pendingOwner());
+    if (pending !== finalOwner) throw new Error(`Acceptance blocked for ${entry.name}: pending owner ${pending}`);
+    const acceptAfter = BigInt(await c.pendingOwnerAcceptAfter());
+    const latest = await ethers.provider.getBlock("latest");
+    if (latest && BigInt(latest.timestamp) < acceptAfter) throw new Error(`Acceptance delay not elapsed for ${entry.name}`);
+    const tx = await c.acceptOwnership();
+    journalData.transactions.push({ name: entry.name, address: entry.address, hash: tx.hash, submittedAt: new Date().toISOString(), status: "SUBMITTED" });
+    writeJsonAtomic(journal, journalData);
+    const receipt = await tx.wait(confirmations);
+    if (!receipt || receipt.status !== 1) throw new Error(`Acceptance failed ${entry.name}`);
+    if (ethers.getAddress(await c.owner()) !== finalOwner) throw new Error(`Post-accept owner mismatch ${entry.name}`);
+    journalData.transactions[journalData.transactions.length - 1].status = "ACCEPTED";
+    journalData.transactions[journalData.transactions.length - 1].confirmedAt = new Date().toISOString();
+    writeJsonAtomic(journal, journalData);
+    accepted += 1;
+  }
+  console.log(`PASS ownership acceptance completed/resumed: ${accepted}`);
 }
 
 async function verify(label: string, writeEvidence = true): Promise<void> {
@@ -648,6 +720,9 @@ async function forkRehearsal(label: string): Promise<void> {
     console.log("PASS ownership fork rehearsal deliberate interruption after 1 transfer");
   }
   await transfer(label, { skipMainnetTypedConfirmation: true });
+  await ethers.provider.send("evm_increaseTime", [24 * 60 * 60]);
+  await ethers.provider.send("evm_mine", []);
+  await accept(label);
   await verify(label, false);
   const localEvidence = {
     schemaVersion: 1,
@@ -682,6 +757,7 @@ async function main(): Promise<void> {
   if (cmd.endsWith(":dry-run")) return plan(label);
   if (cmd.endsWith(":fork-rehearsal")) return forkRehearsal(label);
   if (cmd.endsWith(":transfer") || cmd.endsWith(":transfer-local-gated")) return transfer(label);
+  if (cmd.endsWith(":accept") || cmd.endsWith(":accept-local-gated")) return accept(label);
   if (cmd.endsWith(":verify")) return verify(label);
   if (cmd.endsWith(":evidence")) return evidence(label);
   if (cmd.endsWith(":sweep-deployer-local-gated")) return sweep(label);
@@ -689,6 +765,7 @@ async function main(): Promise<void> {
 }
 
 export const ownershipCommandCenterTestHooks = {
+  actionForContract,
   approvedPermanentOwnersFromPlan,
   assertPlanCoversManifest,
   assertPermanentOwnersMatchPlan,

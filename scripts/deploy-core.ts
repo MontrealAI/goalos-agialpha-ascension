@@ -16,11 +16,15 @@ function jsonReplacer(_key: string, value: any) {
   return typeof value === "bigint" ? value.toString() : value;
 }
 
+function redactAddress(value: string): any {
+  if (value.toLowerCase() === AGIALPHA_MAINNET.toLowerCase()) return value;
+  return { redactedAddress: true, commitmentHash: sha256Hex(value.toLowerCase()) };
+}
+
 function redactConstructorArg(value: any): any {
   if (typeof value === "bigint") return value.toString();
   if (typeof value === "string" && ethers.isAddress(value)) {
-    if (value.toLowerCase() === AGIALPHA_MAINNET.toLowerCase()) return value;
-    return { redactedAddress: true, commitmentHash: sha256Hex(value.toLowerCase()) };
+    return redactAddress(value);
   }
   if (Array.isArray(value)) return value.map(redactConstructorArg);
   if (value && typeof value === "object") {
@@ -236,7 +240,17 @@ export async function deployGoalOSAGIALPHAAscension() {
   const OPERATOR_ROLE = await jobRegistry.OPERATOR_ROLE();
   const phaseBGrants: any[] = [];
   const queueGrant = async (contract: any, role: string, account: string, label: string) => {
-    if (info.isMainnet) { phaseBGrants.push({ target: await contract.getAddress(), role, account, label, method: "grantRole(bytes32,address)" }); return; }
+    if (info.isMainnet) {
+      phaseBGrants.push({
+        target: await contract.getAddress(),
+        role,
+        account: account.toLowerCase() === operationsAddress.toLowerCase() ? redactAddress(account) : account,
+        accountRedacted: account.toLowerCase() === operationsAddress.toLowerCase(),
+        label,
+        method: "grantRole(bytes32,address)",
+      });
+      return;
+    }
     await grant(contract, role, account, label);
   };
   await queueGrant(jobRegistry, OPERATOR_ROLE, await claimBond.getAddress(), "JobRegistry <- ClaimBond");

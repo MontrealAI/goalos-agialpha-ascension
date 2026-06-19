@@ -88,6 +88,12 @@ describe("ownership command-center safety gates", function () {
     delete process.env.OWNERSHIP_DISPOSABLE_OWNER_ADDRESS;
   });
 
+
+  it("classifies two-step transfers pending final-owner acceptance", async function () {
+    const contract = { pendingOwner: async () => addrB };
+    expect(await hooks.actionForContract(contract, addrA, addrA, addrB, new Set())).to.equal("PENDING_ACCEPTANCE");
+  });
+
   it("finds a matching journaled transfer before a replacement can be submitted", function () {
     const entry = { name: "A", address: addrA, currentOwner: addrA, action: "TRANSFER", gasEstimate: "1" };
     const journal = {

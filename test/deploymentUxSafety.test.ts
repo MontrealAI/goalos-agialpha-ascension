@@ -283,6 +283,24 @@ describe("deployment UX safety layer", function () {
   });
 
 
+  it("redacts private Phase-B operations grantees and exposes implemented Safe preparation", function () {
+    const deployCore = fs.readFileSync("scripts/deploy-core.ts", "utf8");
+    const commandCenter = fs.readFileSync("scripts/deployment/goalos-deploy-command-center.ts", "utf8");
+    const pkg = JSON.parse(fs.readFileSync("package.json", "utf8"));
+    expect(deployCore).to.include("accountRedacted");
+    expect(deployCore).to.include("redactAddress(account)");
+    expect(commandCenter).to.include("function prepareSafeConfiguration");
+    expect(commandCenter).to.include('action.includes("prepare-safe")');
+    expect(pkg.scripts["configure:mainnet:prepare-safe"]).to.include("mainnet:prepare-safe");
+  });
+
+  it("requires explicit Mainnet governance-owner kind before runtime address loading", function () {
+    const source = fs.readFileSync("scripts/validate-runtime-addresses.ts", "utf8");
+    expect(source).to.include("GOVERNANCE_OWNER_KIND must be SAFE or LEDGER_EOA");
+    expect(source).to.include("ALLOW_SINGLE_LEDGER_EOA_GOVERNANCE");
+  });
+
+
   it("keeps env examples filename-allowed but still secret-scanned", function () {
     const source = fs.readFileSync("scripts/no_private_operator_data_check.py", "utf8");
     expect(source).to.include("ENV_EXAMPLE_FILES");

@@ -1,7 +1,7 @@
 {
   "name": "goalos-agialpha-ascension",
   "version": "4.4.0",
-  "description": "GoalOS-native reimplementation of α-AGI Ascension using existing AGIALPHA for proof-settled AI workflow work.",
+  "description": "GoalOS-native reimplementation of \u03b1-AGI Ascension using existing AGIALPHA for proof-settled AI workflow work.",
   "license": "UNLICENSED",
   "scripts": {
     "compile": "hardhat compile",
@@ -159,7 +159,7 @@
     "authority:inventory": "ts-node scripts/authority-inventory.ts",
     "authority:policy:validate": "ts-node scripts/authority-policy-validate.ts",
     "ownership:test": "npm run test:ownership",
-    "configure:mainnet:prepare-safe": "ts-node scripts/deployment/goalos-deploy-command-center.ts mainnet:configure-safe --network ethereumMainnet --no-broadcast",
+    "configure:mainnet:prepare-safe": "ts-node scripts/deployment/goalos-deploy-command-center.ts mainnet:prepare-safe --network ethereumMainnet --no-broadcast",
     "deployer:mainnet:decommission-check": "OWNERSHIP_COMMAND=mainnet:verify hardhat run --network ethereumMainnet scripts/ownership/goalos-ownership-command-center.ts",
     "deployer:mainnet:sweep-eth": "OWNERSHIP_COMMAND=mainnet:sweep-deployer-local-gated hardhat run --network ethereumMainnet scripts/ownership/goalos-ownership-command-center.ts",
     "configure:mainnet:verify": "npm run ownership:mainnet:verify",
@@ -169,9 +169,11 @@
     "ownership:sepolia:verify-genesis": "npm run ownership:sepolia:verify",
     "ownership:sepolia:legacy-plan": "npm run ownership:sepolia:plan",
     "ownership:sepolia:legacy-initiate": "npm run ownership:sepolia:transfer",
-    "ownership:sepolia:legacy-accept-prepare": "npm run ownership:sepolia:plan",
+    "ownership:sepolia:legacy-accept-prepare": "npm run ownership:sepolia:accept",
     "ownership:sepolia:legacy-verify": "npm run ownership:sepolia:verify",
-    "ownership:sepolia:legacy-evidence": "npm run ownership:sepolia:evidence"
+    "ownership:sepolia:legacy-evidence": "npm run ownership:sepolia:evidence",
+    "ownership:sepolia:accept": "OWNERSHIP_COMMAND=sepolia:accept hardhat run --network ethereumSepolia scripts/ownership/goalos-ownership-command-center.ts",
+    "ownership:mainnet:accept-local-gated": "OWNERSHIP_COMMAND=mainnet:accept-local-gated hardhat run --network ethereumMainnet scripts/ownership/goalos-ownership-command-center.ts"
   },
   "dependencies": {
     "@openzeppelin/contracts": "4.9.6",
