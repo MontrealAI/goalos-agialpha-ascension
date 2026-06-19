@@ -1,0 +1,436 @@
+{
+  "entries": [
+    {
+      "contract": "AEPAgentRegistry",
+      "evidence": [
+        "source inventory"
+      ],
+      "ownerRecoveryAction": "See classified selectors; add typed owner override before PASS if no recovery selector exists for a nonterminal state.",
+      "path": "contracts/aep/AEPAgentRegistry.sol",
+      "testCoverage": "BLOCKED until contract-specific tests are complete"
+    },
+    {
+      "contract": "AEPArtifactRegistry",
+      "evidence": [
+        "source inventory"
+      ],
+      "ownerRecoveryAction": "See classified selectors; add typed owner override before PASS if no recovery selector exists for a nonterminal state.",
+      "path": "contracts/aep/AEPArtifactRegistry.sol",
+      "testCoverage": "BLOCKED until contract-specific tests are complete"
+    },
+    {
+      "contract": "AEPAttestationRegistry",
+      "evidence": [
+        "source inventory"
+      ],
+      "ownerRecoveryAction": "See classified selectors; add typed owner override before PASS if no recovery selector exists for a nonterminal state.",
+      "path": "contracts/aep/AEPAttestationRegistry.sol",
+      "testCoverage": "BLOCKED until contract-specific tests are complete"
+    },
+    {
+      "contract": "AEPChronicleRegistry",
+      "evidence": [
+        "source inventory"
+      ],
+      "ownerRecoveryAction": "See classified selectors; add typed owner override before PASS if no recovery selector exists for a nonterminal state.",
+      "path": "contracts/aep/AEPChronicleRegistry.sol",
+      "testCoverage": "BLOCKED until contract-specific tests are complete"
+    },
+    {
+      "contract": "AEPClaimBoundaryRegistry",
+      "evidence": [
+        "source inventory"
+      ],
+      "ownerRecoveryAction": "See classified selectors; add typed owner override before PASS if no recovery selector exists for a nonterminal state.",
+      "path": "contracts/aep/AEPClaimBoundaryRegistry.sol",
+      "testCoverage": "BLOCKED until contract-specific tests are complete"
+    },
+    {
+      "contract": "AEPCommitRevealValidationRegistry",
+      "evidence": [
+        "source inventory"
+      ],
+      "ownerRecoveryAction": "See classified selectors; add typed owner override before PASS if no recovery selector exists for a nonterminal state.",
+      "path": "contracts/aep/AEPCommitRevealValidationRegistry.sol",
+      "testCoverage": "BLOCKED until contract-specific tests are complete"
+    },
+    {
+      "contract": "AEPConformanceRegistry",
+      "evidence": [
+        "source inventory"
+      ],
+      "ownerRecoveryAction": "See classified selectors; add typed owner override before PASS if no recovery selector exists for a nonterminal state.",
+      "path": "contracts/aep/AEPConformanceRegistry.sol",
+      "testCoverage": "BLOCKED until contract-specific tests are complete"
+    },
+    {
+      "contract": "AEPEvalRegistry",
+      "evidence": [
+        "source inventory"
+      ],
+      "ownerRecoveryAction": "See classified selectors; add typed owner override before PASS if no recovery selector exists for a nonterminal state.",
+      "path": "contracts/aep/AEPEvalRegistry.sol",
+      "testCoverage": "BLOCKED until contract-specific tests are complete"
+    },
+    {
+      "contract": "AEPEvaluatorStakingRegistry",
+      "evidence": [
+        "source inventory"
+      ],
+      "ownerRecoveryAction": "See classified selectors; add typed owner override before PASS if no recovery selector exists for a nonterminal state.",
+      "path": "contracts/aep/AEPEvaluatorStakingRegistry.sol",
+      "testCoverage": "BLOCKED until contract-specific tests are complete"
+    },
+    {
+      "contract": "AEPEvidenceDocketRegistry",
+      "evidence": [
+        "source inventory"
+      ],
+      "ownerRecoveryAction": "See classified selectors; add typed owner override before PASS if no recovery selector exists for a nonterminal state.",
+      "path": "contracts/aep/AEPEvidenceDocketRegistry.sol",
+      "testCoverage": "BLOCKED until contract-specific tests are complete"
+    },
+    {
+      "contract": "AEPFalsificationRegistry",
+      "evidence": [
+        "source inventory"
+      ],
+      "ownerRecoveryAction": "See classified selectors; add typed owner override before PASS if no recovery selector exists for a nonterminal state.",
+      "path": "contracts/aep/AEPFalsificationRegistry.sol",
+      "testCoverage": "BLOCKED until contract-specific tests are complete"
+    },
+    {
+      "contract": "AEPGoalOSCommitRegistry",
+      "evidence": [
+        "source inventory"
+      ],
+      "ownerRecoveryAction": "See classified selectors; add typed owner override before PASS if no recovery selector exists for a nonterminal state.",
+      "path": "contracts/aep/AEPGoalOSCommitRegistry.sol",
+      "testCoverage": "BLOCKED until contract-specific tests are complete"
+    },
+    {
+      "contract": "AEPProofBundleRegistry",
+      "evidence": [
+        "source inventory"
+      ],
+      "ownerRecoveryAction": "See classified selectors; add typed owner override before PASS if no recovery selector exists for a nonterminal state.",
+      "path": "contracts/aep/AEPProofBundleRegistry.sol",
+      "testCoverage": "BLOCKED until contract-specific tests are complete"
+    },
+    {
+      "contract": "AEPProofLedger",
+      "evidence": [
+        "source inventory"
+      ],
+      "ownerRecoveryAction": "See classified selectors; add typed owner override before PASS if no recovery selector exists for a nonterminal state.",
+      "path": "contracts/aep/AEPProofLedger.sol",
+      "testCoverage": "BLOCKED until contract-specific tests are complete"
+    },
+    {
+      "contract": "AEPReplayRegistry",
+      "evidence": [
+        "source inventory"
+      ],
+      "ownerRecoveryAction": "See classified selectors; add typed owner override before PASS if no recovery selector exists for a nonterminal state.",
+      "path": "contracts/aep/AEPReplayRegistry.sol",
+      "testCoverage": "BLOCKED until contract-specific tests are complete"
+    },
+    {
+      "contract": "AEPRewardVault",
+      "evidence": [
+        "source inventory"
+      ],
+      "ownerRecoveryAction": "See classified selectors; add typed owner override before PASS if no recovery selector exists for a nonterminal state.",
+      "path": "contracts/aep/AEPRewardVault.sol",
+      "testCoverage": "BLOCKED until contract-specific tests are complete"
+    },
+    {
+      "contract": "AEPRollbackRegistry",
+      "evidence": [
+        "source inventory"
+      ],
+      "ownerRecoveryAction": "See classified selectors; add typed owner override before PASS if no recovery selector exists for a nonterminal state.",
+      "path": "contracts/aep/AEPRollbackRegistry.sol",
+      "testCoverage": "BLOCKED until contract-specific tests are complete"
+    },
+    {
+      "contract": "AEPRolloutRouter",
+      "evidence": [
+        "source inventory"
+      ],
+      "ownerRecoveryAction": "See classified selectors; add typed owner override before PASS if no recovery selector exists for a nonterminal state.",
+      "path": "contracts/aep/AEPRolloutRouter.sol",
+      "testCoverage": "BLOCKED until contract-specific tests are complete"
+    },
+    {
+      "contract": "AEPRunCommitmentRegistry",
+      "evidence": [
+        "source inventory"
+      ],
+      "ownerRecoveryAction": "See classified selectors; add typed owner override before PASS if no recovery selector exists for a nonterminal state.",
+      "path": "contracts/aep/AEPRunCommitmentRegistry.sol",
+      "testCoverage": "BLOCKED until contract-specific tests are complete"
+    },
+    {
+      "contract": "AEPSelectionGate",
+      "evidence": [
+        "source inventory"
+      ],
+      "ownerRecoveryAction": "See classified selectors; add typed owner override before PASS if no recovery selector exists for a nonterminal state.",
+      "path": "contracts/aep/AEPSelectionGate.sol",
+      "testCoverage": "BLOCKED until contract-specific tests are complete"
+    },
+    {
+      "contract": "AEPSlashingCourt",
+      "evidence": [
+        "source inventory"
+      ],
+      "ownerRecoveryAction": "See classified selectors; add typed owner override before PASS if no recovery selector exists for a nonterminal state.",
+      "path": "contracts/aep/AEPSlashingCourt.sol",
+      "testCoverage": "BLOCKED until contract-specific tests are complete"
+    },
+    {
+      "contract": "AGIEthNamespaceRegistry",
+      "evidence": [
+        "source inventory"
+      ],
+      "ownerRecoveryAction": "See classified selectors; add typed owner override before PASS if no recovery selector exists for a nonterminal state.",
+      "path": "contracts/aep/AGIEthNamespaceRegistry.sol",
+      "testCoverage": "BLOCKED until contract-specific tests are complete"
+    },
+    {
+      "contract": "AlphaWorkUnitLedger",
+      "evidence": [
+        "source inventory"
+      ],
+      "ownerRecoveryAction": "See classified selectors; add typed owner override before PASS if no recovery selector exists for a nonterminal state.",
+      "path": "contracts/aep/AlphaWorkUnitLedger.sol",
+      "testCoverage": "BLOCKED until contract-specific tests are complete"
+    },
+    {
+      "contract": "MandateEpochRegistry",
+      "evidence": [
+        "source inventory"
+      ],
+      "ownerRecoveryAction": "See classified selectors; add typed owner override before PASS if no recovery selector exists for a nonterminal state.",
+      "path": "contracts/aep/MandateEpochRegistry.sol",
+      "testCoverage": "BLOCKED until contract-specific tests are complete"
+    },
+    {
+      "contract": "AppealRegistry",
+      "evidence": [
+        "source inventory"
+      ],
+      "ownerRecoveryAction": "See classified selectors; add typed owner override before PASS if no recovery selector exists for a nonterminal state.",
+      "path": "contracts/optional/AppealRegistry.sol",
+      "testCoverage": "BLOCKED until contract-specific tests are complete"
+    },
+    {
+      "contract": "BuilderProfileRegistry",
+      "evidence": [
+        "source inventory"
+      ],
+      "ownerRecoveryAction": "See classified selectors; add typed owner override before PASS if no recovery selector exists for a nonterminal state.",
+      "path": "contracts/optional/BuilderProfileRegistry.sol",
+      "testCoverage": "BLOCKED until contract-specific tests are complete"
+    },
+    {
+      "contract": "CredentialRevocationRegistry",
+      "evidence": [
+        "source inventory"
+      ],
+      "ownerRecoveryAction": "See classified selectors; add typed owner override before PASS if no recovery selector exists for a nonterminal state.",
+      "path": "contracts/optional/CredentialRevocationRegistry.sol",
+      "testCoverage": "BLOCKED until contract-specific tests are complete"
+    },
+    {
+      "contract": "DisputeRegistry",
+      "evidence": [
+        "source inventory"
+      ],
+      "ownerRecoveryAction": "See classified selectors; add typed owner override before PASS if no recovery selector exists for a nonterminal state.",
+      "path": "contracts/optional/DisputeRegistry.sol",
+      "testCoverage": "BLOCKED until contract-specific tests are complete"
+    },
+    {
+      "contract": "SponsorRegistry",
+      "evidence": [
+        "source inventory"
+      ],
+      "ownerRecoveryAction": "See classified selectors; add typed owner override before PASS if no recovery selector exists for a nonterminal state.",
+      "path": "contracts/optional/SponsorRegistry.sol",
+      "testCoverage": "BLOCKED until contract-specific tests are complete"
+    },
+    {
+      "contract": "JobClaimBondManager",
+      "evidence": [
+        "source inventory"
+      ],
+      "ownerRecoveryAction": "See classified selectors; add typed owner override before PASS if no recovery selector exists for a nonterminal state.",
+      "path": "contracts/registry/JobClaimBondManager.sol",
+      "testCoverage": "BLOCKED until contract-specific tests are complete"
+    },
+    {
+      "contract": "JobRegistry",
+      "evidence": [
+        "source inventory"
+      ],
+      "ownerRecoveryAction": "See classified selectors; add typed owner override before PASS if no recovery selector exists for a nonterminal state.",
+      "path": "contracts/registry/JobRegistry.sol",
+      "testCoverage": "BLOCKED until contract-specific tests are complete"
+    },
+    {
+      "contract": "LaunchGateRegistry",
+      "evidence": [
+        "source inventory"
+      ],
+      "ownerRecoveryAction": "See classified selectors; add typed owner override before PASS if no recovery selector exists for a nonterminal state.",
+      "path": "contracts/registry/LaunchGateRegistry.sol",
+      "testCoverage": "BLOCKED until contract-specific tests are complete"
+    },
+    {
+      "contract": "LegacyAGIJobManagerRegistry",
+      "evidence": [
+        "source inventory"
+      ],
+      "ownerRecoveryAction": "See classified selectors; add typed owner override before PASS if no recovery selector exists for a nonterminal state.",
+      "path": "contracts/registry/LegacyAGIJobManagerRegistry.sol",
+      "testCoverage": "BLOCKED until contract-specific tests are complete"
+    },
+    {
+      "contract": "PremiumAccessRegistry",
+      "evidence": [
+        "source inventory"
+      ],
+      "ownerRecoveryAction": "See classified selectors; add typed owner override before PASS if no recovery selector exists for a nonterminal state.",
+      "path": "contracts/registry/PremiumAccessRegistry.sol",
+      "testCoverage": "BLOCKED until contract-specific tests are complete"
+    },
+    {
+      "contract": "ProofCardRegistry",
+      "evidence": [
+        "source inventory"
+      ],
+      "ownerRecoveryAction": "See classified selectors; add typed owner override before PASS if no recovery selector exists for a nonterminal state.",
+      "path": "contracts/registry/ProofCardRegistry.sol",
+      "testCoverage": "BLOCKED until contract-specific tests are complete"
+    },
+    {
+      "contract": "ProofCredentialRegistry",
+      "evidence": [
+        "source inventory"
+      ],
+      "ownerRecoveryAction": "See classified selectors; add typed owner override before PASS if no recovery selector exists for a nonterminal state.",
+      "path": "contracts/registry/ProofCredentialRegistry.sol",
+      "testCoverage": "BLOCKED until contract-specific tests are complete"
+    },
+    {
+      "contract": "ProofSeedRegistry",
+      "evidence": [
+        "source inventory"
+      ],
+      "ownerRecoveryAction": "See classified selectors; add typed owner override before PASS if no recovery selector exists for a nonterminal state.",
+      "path": "contracts/registry/ProofSeedRegistry.sol",
+      "testCoverage": "BLOCKED until contract-specific tests are complete"
+    },
+    {
+      "contract": "ProofSubmissionRegistry",
+      "evidence": [
+        "source inventory"
+      ],
+      "ownerRecoveryAction": "See classified selectors; add typed owner override before PASS if no recovery selector exists for a nonterminal state.",
+      "path": "contracts/registry/ProofSubmissionRegistry.sol",
+      "testCoverage": "BLOCKED until contract-specific tests are complete"
+    },
+    {
+      "contract": "ProtocolConfigRegistry",
+      "evidence": [
+        "source inventory"
+      ],
+      "ownerRecoveryAction": "See classified selectors; add typed owner override before PASS if no recovery selector exists for a nonterminal state.",
+      "path": "contracts/registry/ProtocolConfigRegistry.sol",
+      "testCoverage": "BLOCKED until contract-specific tests are complete"
+    },
+    {
+      "contract": "ReferralRegistry",
+      "evidence": [
+        "source inventory"
+      ],
+      "ownerRecoveryAction": "See classified selectors; add typed owner override before PASS if no recovery selector exists for a nonterminal state.",
+      "path": "contracts/registry/ReferralRegistry.sol",
+      "testCoverage": "BLOCKED until contract-specific tests are complete"
+    },
+    {
+      "contract": "ReputationRegistry",
+      "evidence": [
+        "source inventory"
+      ],
+      "ownerRecoveryAction": "See classified selectors; add typed owner override before PASS if no recovery selector exists for a nonterminal state.",
+      "path": "contracts/registry/ReputationRegistry.sol",
+      "testCoverage": "BLOCKED until contract-specific tests are complete"
+    },
+    {
+      "contract": "ReviewerBondRegistry",
+      "evidence": [
+        "source inventory"
+      ],
+      "ownerRecoveryAction": "See classified selectors; add typed owner override before PASS if no recovery selector exists for a nonterminal state.",
+      "path": "contracts/registry/ReviewerBondRegistry.sol",
+      "testCoverage": "BLOCKED until contract-specific tests are complete"
+    },
+    {
+      "contract": "TreasuryRouter",
+      "evidence": [
+        "source inventory"
+      ],
+      "ownerRecoveryAction": "See classified selectors; add typed owner override before PASS if no recovery selector exists for a nonterminal state.",
+      "path": "contracts/registry/TreasuryRouter.sol",
+      "testCoverage": "BLOCKED until contract-specific tests are complete"
+    },
+    {
+      "contract": "CommercializationPerformanceVault",
+      "evidence": [
+        "source inventory"
+      ],
+      "ownerRecoveryAction": "See classified selectors; add typed owner override before PASS if no recovery selector exists for a nonterminal state.",
+      "path": "contracts/vaults/CommercializationPerformanceVault.sol",
+      "testCoverage": "BLOCKED until contract-specific tests are complete"
+    },
+    {
+      "contract": "ProofRewardsVault",
+      "evidence": [
+        "source inventory"
+      ],
+      "ownerRecoveryAction": "See classified selectors; add typed owner override before PASS if no recovery selector exists for a nonterminal state.",
+      "path": "contracts/vaults/TokenReserveVault.sol",
+      "testCoverage": "BLOCKED until contract-specific tests are complete"
+    },
+    {
+      "contract": "LiquidityVault",
+      "evidence": [
+        "source inventory"
+      ],
+      "ownerRecoveryAction": "See classified selectors; add typed owner override before PASS if no recovery selector exists for a nonterminal state.",
+      "path": "contracts/vaults/TokenReserveVault.sol",
+      "testCoverage": "BLOCKED until contract-specific tests are complete"
+    },
+    {
+      "contract": "SecurityVault",
+      "evidence": [
+        "source inventory"
+      ],
+      "ownerRecoveryAction": "See classified selectors; add typed owner override before PASS if no recovery selector exists for a nonterminal state.",
+      "path": "contracts/vaults/TokenReserveVault.sol",
+      "testCoverage": "BLOCKED until contract-specific tests are complete"
+    },
+    {
+      "contract": "CommunityVault",
+      "evidence": [
+        "source inventory"
+      ],
+      "ownerRecoveryAction": "See classified selectors; add typed owner override before PASS if no recovery selector exists for a nonterminal state.",
+      "path": "contracts/vaults/TokenReserveVault.sol",
+      "testCoverage": "BLOCKED until contract-specific tests are complete"
+    }
+  ]
+}

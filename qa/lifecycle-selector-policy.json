@@ -1,0 +1,4212 @@
+{
+  "selectors": [
+    {
+      "attributes": "external onlyOperator returns (uint256 agentId)",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "AEPAgentRegistry",
+      "name": "registerAgent",
+      "path": "contracts/aep/AEPAgentRegistry.sol",
+      "signature": "registerAgent(address,bytes32,uint8,bytes32,bytes32,string)"
+    },
+    {
+      "attributes": "external onlyOperator",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "AEPAgentRegistry",
+      "name": "updateAgent",
+      "path": "contracts/aep/AEPAgentRegistry.sol",
+      "signature": "updateAgent(uint256,bytes32,bytes32,bool,string)"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "AEPAgentRegistry",
+      "name": "pause",
+      "path": "contracts/aep/AEPAgentRegistry.sol",
+      "signature": "pause()"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "AEPAgentRegistry",
+      "name": "unpause",
+      "path": "contracts/aep/AEPAgentRegistry.sol",
+      "signature": "unpause()"
+    },
+    {
+      "attributes": "public override onlyOwner",
+      "classification": "configuration",
+      "contract": "AEPAgentRegistry",
+      "name": "transferOwnership",
+      "path": "contracts/aep/AEPAgentRegistry.sol",
+      "signature": "transferOwnership(address)"
+    },
+    {
+      "attributes": "public onlyOwner",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "AEPAgentRegistry",
+      "name": "cancelOwnershipTransfer",
+      "path": "contracts/aep/AEPAgentRegistry.sol",
+      "signature": "cancelOwnershipTransfer()"
+    },
+    {
+      "attributes": "public",
+      "classification": "configuration",
+      "contract": "AEPAgentRegistry",
+      "name": "acceptOwnership",
+      "path": "contracts/aep/AEPAgentRegistry.sol",
+      "signature": "acceptOwnership()"
+    },
+    {
+      "attributes": "public override",
+      "classification": "configuration",
+      "contract": "AEPAgentRegistry",
+      "name": "grantRole",
+      "path": "contracts/aep/AEPAgentRegistry.sol",
+      "signature": "grantRole(bytes32,address)"
+    },
+    {
+      "attributes": "public override",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "AEPAgentRegistry",
+      "name": "revokeRole",
+      "path": "contracts/aep/AEPAgentRegistry.sol",
+      "signature": "revokeRole(bytes32,address)"
+    },
+    {
+      "attributes": "public override",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "AEPAgentRegistry",
+      "name": "renounceRole",
+      "path": "contracts/aep/AEPAgentRegistry.sol",
+      "signature": "renounceRole(bytes32,address)"
+    },
+    {
+      "attributes": "external onlyOperator returns (uint256 versionId)",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "AEPArtifactRegistry",
+      "name": "registerArtifactVersion",
+      "path": "contracts/aep/AEPArtifactRegistry.sol",
+      "signature": "registerArtifactVersion(bytes32,bytes32,bytes32,bytes32,bytes32,string)"
+    },
+    {
+      "attributes": "external onlyOperator",
+      "classification": "configuration",
+      "contract": "AEPArtifactRegistry",
+      "name": "setArtifactStatus",
+      "path": "contracts/aep/AEPArtifactRegistry.sol",
+      "signature": "setArtifactStatus(uint256,uint8,bytes32)"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "AEPArtifactRegistry",
+      "name": "pause",
+      "path": "contracts/aep/AEPArtifactRegistry.sol",
+      "signature": "pause()"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "AEPArtifactRegistry",
+      "name": "unpause",
+      "path": "contracts/aep/AEPArtifactRegistry.sol",
+      "signature": "unpause()"
+    },
+    {
+      "attributes": "public override onlyOwner",
+      "classification": "configuration",
+      "contract": "AEPArtifactRegistry",
+      "name": "transferOwnership",
+      "path": "contracts/aep/AEPArtifactRegistry.sol",
+      "signature": "transferOwnership(address)"
+    },
+    {
+      "attributes": "public onlyOwner",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "AEPArtifactRegistry",
+      "name": "cancelOwnershipTransfer",
+      "path": "contracts/aep/AEPArtifactRegistry.sol",
+      "signature": "cancelOwnershipTransfer()"
+    },
+    {
+      "attributes": "public",
+      "classification": "configuration",
+      "contract": "AEPArtifactRegistry",
+      "name": "acceptOwnership",
+      "path": "contracts/aep/AEPArtifactRegistry.sol",
+      "signature": "acceptOwnership()"
+    },
+    {
+      "attributes": "public override",
+      "classification": "configuration",
+      "contract": "AEPArtifactRegistry",
+      "name": "grantRole",
+      "path": "contracts/aep/AEPArtifactRegistry.sol",
+      "signature": "grantRole(bytes32,address)"
+    },
+    {
+      "attributes": "public override",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "AEPArtifactRegistry",
+      "name": "revokeRole",
+      "path": "contracts/aep/AEPArtifactRegistry.sol",
+      "signature": "revokeRole(bytes32,address)"
+    },
+    {
+      "attributes": "public override",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "AEPArtifactRegistry",
+      "name": "renounceRole",
+      "path": "contracts/aep/AEPArtifactRegistry.sol",
+      "signature": "renounceRole(bytes32,address)"
+    },
+    {
+      "attributes": "external onlyOperator returns (uint256 attestationId)",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "AEPAttestationRegistry",
+      "name": "attest",
+      "path": "contracts/aep/AEPAttestationRegistry.sol",
+      "signature": "attest(bytes32,uint256,bytes32,bytes32,string)"
+    },
+    {
+      "attributes": "external onlyOperator",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "AEPAttestationRegistry",
+      "name": "revokeAttestation",
+      "path": "contracts/aep/AEPAttestationRegistry.sol",
+      "signature": "revokeAttestation(uint256,bytes32)"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "AEPAttestationRegistry",
+      "name": "pause",
+      "path": "contracts/aep/AEPAttestationRegistry.sol",
+      "signature": "pause()"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "AEPAttestationRegistry",
+      "name": "unpause",
+      "path": "contracts/aep/AEPAttestationRegistry.sol",
+      "signature": "unpause()"
+    },
+    {
+      "attributes": "public override onlyOwner",
+      "classification": "configuration",
+      "contract": "AEPAttestationRegistry",
+      "name": "transferOwnership",
+      "path": "contracts/aep/AEPAttestationRegistry.sol",
+      "signature": "transferOwnership(address)"
+    },
+    {
+      "attributes": "public onlyOwner",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "AEPAttestationRegistry",
+      "name": "cancelOwnershipTransfer",
+      "path": "contracts/aep/AEPAttestationRegistry.sol",
+      "signature": "cancelOwnershipTransfer()"
+    },
+    {
+      "attributes": "public",
+      "classification": "configuration",
+      "contract": "AEPAttestationRegistry",
+      "name": "acceptOwnership",
+      "path": "contracts/aep/AEPAttestationRegistry.sol",
+      "signature": "acceptOwnership()"
+    },
+    {
+      "attributes": "public override",
+      "classification": "configuration",
+      "contract": "AEPAttestationRegistry",
+      "name": "grantRole",
+      "path": "contracts/aep/AEPAttestationRegistry.sol",
+      "signature": "grantRole(bytes32,address)"
+    },
+    {
+      "attributes": "public override",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "AEPAttestationRegistry",
+      "name": "revokeRole",
+      "path": "contracts/aep/AEPAttestationRegistry.sol",
+      "signature": "revokeRole(bytes32,address)"
+    },
+    {
+      "attributes": "public override",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "AEPAttestationRegistry",
+      "name": "renounceRole",
+      "path": "contracts/aep/AEPAttestationRegistry.sol",
+      "signature": "renounceRole(bytes32,address)"
+    },
+    {
+      "attributes": "external onlyOperator returns (uint256 entryId)",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "AEPChronicleRegistry",
+      "name": "recordEntry",
+      "path": "contracts/aep/AEPChronicleRegistry.sol",
+      "signature": "recordEntry(bytes32,bytes32,bytes32,string)"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "AEPChronicleRegistry",
+      "name": "pause",
+      "path": "contracts/aep/AEPChronicleRegistry.sol",
+      "signature": "pause()"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "AEPChronicleRegistry",
+      "name": "unpause",
+      "path": "contracts/aep/AEPChronicleRegistry.sol",
+      "signature": "unpause()"
+    },
+    {
+      "attributes": "public override onlyOwner",
+      "classification": "configuration",
+      "contract": "AEPChronicleRegistry",
+      "name": "transferOwnership",
+      "path": "contracts/aep/AEPChronicleRegistry.sol",
+      "signature": "transferOwnership(address)"
+    },
+    {
+      "attributes": "public onlyOwner",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "AEPChronicleRegistry",
+      "name": "cancelOwnershipTransfer",
+      "path": "contracts/aep/AEPChronicleRegistry.sol",
+      "signature": "cancelOwnershipTransfer()"
+    },
+    {
+      "attributes": "public",
+      "classification": "configuration",
+      "contract": "AEPChronicleRegistry",
+      "name": "acceptOwnership",
+      "path": "contracts/aep/AEPChronicleRegistry.sol",
+      "signature": "acceptOwnership()"
+    },
+    {
+      "attributes": "public override",
+      "classification": "configuration",
+      "contract": "AEPChronicleRegistry",
+      "name": "grantRole",
+      "path": "contracts/aep/AEPChronicleRegistry.sol",
+      "signature": "grantRole(bytes32,address)"
+    },
+    {
+      "attributes": "public override",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "AEPChronicleRegistry",
+      "name": "revokeRole",
+      "path": "contracts/aep/AEPChronicleRegistry.sol",
+      "signature": "revokeRole(bytes32,address)"
+    },
+    {
+      "attributes": "public override",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "AEPChronicleRegistry",
+      "name": "renounceRole",
+      "path": "contracts/aep/AEPChronicleRegistry.sol",
+      "signature": "renounceRole(bytes32,address)"
+    },
+    {
+      "attributes": "external onlyOperator returns (uint256 boundaryId)",
+      "classification": "new_obligation_or_risk_increase",
+      "contract": "AEPClaimBoundaryRegistry",
+      "name": "registerClaimBoundary",
+      "path": "contracts/aep/AEPClaimBoundaryRegistry.sol",
+      "signature": "registerClaimBoundary(bytes32,bytes32,bytes32,bytes32,bytes32,string)"
+    },
+    {
+      "attributes": "external onlyOperator",
+      "classification": "configuration",
+      "contract": "AEPClaimBoundaryRegistry",
+      "name": "setClaimBoundaryActive",
+      "path": "contracts/aep/AEPClaimBoundaryRegistry.sol",
+      "signature": "setClaimBoundaryActive(uint256,bool,bytes32)"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "AEPClaimBoundaryRegistry",
+      "name": "pause",
+      "path": "contracts/aep/AEPClaimBoundaryRegistry.sol",
+      "signature": "pause()"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "AEPClaimBoundaryRegistry",
+      "name": "unpause",
+      "path": "contracts/aep/AEPClaimBoundaryRegistry.sol",
+      "signature": "unpause()"
+    },
+    {
+      "attributes": "public override onlyOwner",
+      "classification": "configuration",
+      "contract": "AEPClaimBoundaryRegistry",
+      "name": "transferOwnership",
+      "path": "contracts/aep/AEPClaimBoundaryRegistry.sol",
+      "signature": "transferOwnership(address)"
+    },
+    {
+      "attributes": "public onlyOwner",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "AEPClaimBoundaryRegistry",
+      "name": "cancelOwnershipTransfer",
+      "path": "contracts/aep/AEPClaimBoundaryRegistry.sol",
+      "signature": "cancelOwnershipTransfer()"
+    },
+    {
+      "attributes": "public",
+      "classification": "configuration",
+      "contract": "AEPClaimBoundaryRegistry",
+      "name": "acceptOwnership",
+      "path": "contracts/aep/AEPClaimBoundaryRegistry.sol",
+      "signature": "acceptOwnership()"
+    },
+    {
+      "attributes": "public override",
+      "classification": "configuration",
+      "contract": "AEPClaimBoundaryRegistry",
+      "name": "grantRole",
+      "path": "contracts/aep/AEPClaimBoundaryRegistry.sol",
+      "signature": "grantRole(bytes32,address)"
+    },
+    {
+      "attributes": "public override",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "AEPClaimBoundaryRegistry",
+      "name": "revokeRole",
+      "path": "contracts/aep/AEPClaimBoundaryRegistry.sol",
+      "signature": "revokeRole(bytes32,address)"
+    },
+    {
+      "attributes": "public override",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "AEPClaimBoundaryRegistry",
+      "name": "renounceRole",
+      "path": "contracts/aep/AEPClaimBoundaryRegistry.sol",
+      "signature": "renounceRole(bytes32,address)"
+    },
+    {
+      "attributes": "external onlyOperator",
+      "classification": "configuration",
+      "contract": "AEPCommitRevealValidationRegistry",
+      "name": "setValidatorAllowed",
+      "path": "contracts/aep/AEPCommitRevealValidationRegistry.sol",
+      "signature": "setValidatorAllowed(address,bool)"
+    },
+    {
+      "attributes": "external onlyOperator returns (uint256 roundId)",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "AEPCommitRevealValidationRegistry",
+      "name": "openValidationRound",
+      "path": "contracts/aep/AEPCommitRevealValidationRegistry.sol",
+      "signature": "openValidationRound(bytes32,uint256,uint256,uint256,uint256,string)"
+    },
+    {
+      "attributes": "external onlyAllowedValidator",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "AEPCommitRevealValidationRegistry",
+      "name": "commitVerdict",
+      "path": "contracts/aep/AEPCommitRevealValidationRegistry.sol",
+      "signature": "commitVerdict(uint256,bytes32)"
+    },
+    {
+      "attributes": "external onlyAllowedValidator",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "AEPCommitRevealValidationRegistry",
+      "name": "revealVerdict",
+      "path": "contracts/aep/AEPCommitRevealValidationRegistry.sol",
+      "signature": "revealVerdict(uint256,bytes32,uint16,bytes32,bytes32)"
+    },
+    {
+      "attributes": "external onlyOperator",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "AEPCommitRevealValidationRegistry",
+      "name": "finalizeRound",
+      "path": "contracts/aep/AEPCommitRevealValidationRegistry.sol",
+      "signature": "finalizeRound(uint256,bytes32)"
+    },
+    {
+      "attributes": "external onlyOperator",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "AEPCommitRevealValidationRegistry",
+      "name": "cancelRound",
+      "path": "contracts/aep/AEPCommitRevealValidationRegistry.sol",
+      "signature": "cancelRound(uint256,bytes32)"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "AEPCommitRevealValidationRegistry",
+      "name": "pause",
+      "path": "contracts/aep/AEPCommitRevealValidationRegistry.sol",
+      "signature": "pause()"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "AEPCommitRevealValidationRegistry",
+      "name": "unpause",
+      "path": "contracts/aep/AEPCommitRevealValidationRegistry.sol",
+      "signature": "unpause()"
+    },
+    {
+      "attributes": "public override onlyOwner",
+      "classification": "configuration",
+      "contract": "AEPCommitRevealValidationRegistry",
+      "name": "transferOwnership",
+      "path": "contracts/aep/AEPCommitRevealValidationRegistry.sol",
+      "signature": "transferOwnership(address)"
+    },
+    {
+      "attributes": "public onlyOwner",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "AEPCommitRevealValidationRegistry",
+      "name": "cancelOwnershipTransfer",
+      "path": "contracts/aep/AEPCommitRevealValidationRegistry.sol",
+      "signature": "cancelOwnershipTransfer()"
+    },
+    {
+      "attributes": "public",
+      "classification": "configuration",
+      "contract": "AEPCommitRevealValidationRegistry",
+      "name": "acceptOwnership",
+      "path": "contracts/aep/AEPCommitRevealValidationRegistry.sol",
+      "signature": "acceptOwnership()"
+    },
+    {
+      "attributes": "public override",
+      "classification": "configuration",
+      "contract": "AEPCommitRevealValidationRegistry",
+      "name": "grantRole",
+      "path": "contracts/aep/AEPCommitRevealValidationRegistry.sol",
+      "signature": "grantRole(bytes32,address)"
+    },
+    {
+      "attributes": "public override",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "AEPCommitRevealValidationRegistry",
+      "name": "revokeRole",
+      "path": "contracts/aep/AEPCommitRevealValidationRegistry.sol",
+      "signature": "revokeRole(bytes32,address)"
+    },
+    {
+      "attributes": "public override",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "AEPCommitRevealValidationRegistry",
+      "name": "renounceRole",
+      "path": "contracts/aep/AEPCommitRevealValidationRegistry.sol",
+      "signature": "renounceRole(bytes32,address)"
+    },
+    {
+      "attributes": "external onlyOperator returns (uint256 recordId)",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "AEPConformanceRegistry",
+      "name": "recordConformance",
+      "path": "contracts/aep/AEPConformanceRegistry.sol",
+      "signature": "recordConformance(bytes32,uint8,bytes32,bytes32,bytes32,string)"
+    },
+    {
+      "attributes": "external onlyOperator",
+      "classification": "configuration",
+      "contract": "AEPConformanceRegistry",
+      "name": "setConformanceActive",
+      "path": "contracts/aep/AEPConformanceRegistry.sol",
+      "signature": "setConformanceActive(uint256,bool,bytes32)"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "AEPConformanceRegistry",
+      "name": "pause",
+      "path": "contracts/aep/AEPConformanceRegistry.sol",
+      "signature": "pause()"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "AEPConformanceRegistry",
+      "name": "unpause",
+      "path": "contracts/aep/AEPConformanceRegistry.sol",
+      "signature": "unpause()"
+    },
+    {
+      "attributes": "public override onlyOwner",
+      "classification": "configuration",
+      "contract": "AEPConformanceRegistry",
+      "name": "transferOwnership",
+      "path": "contracts/aep/AEPConformanceRegistry.sol",
+      "signature": "transferOwnership(address)"
+    },
+    {
+      "attributes": "public onlyOwner",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "AEPConformanceRegistry",
+      "name": "cancelOwnershipTransfer",
+      "path": "contracts/aep/AEPConformanceRegistry.sol",
+      "signature": "cancelOwnershipTransfer()"
+    },
+    {
+      "attributes": "public",
+      "classification": "configuration",
+      "contract": "AEPConformanceRegistry",
+      "name": "acceptOwnership",
+      "path": "contracts/aep/AEPConformanceRegistry.sol",
+      "signature": "acceptOwnership()"
+    },
+    {
+      "attributes": "public override",
+      "classification": "configuration",
+      "contract": "AEPConformanceRegistry",
+      "name": "grantRole",
+      "path": "contracts/aep/AEPConformanceRegistry.sol",
+      "signature": "grantRole(bytes32,address)"
+    },
+    {
+      "attributes": "public override",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "AEPConformanceRegistry",
+      "name": "revokeRole",
+      "path": "contracts/aep/AEPConformanceRegistry.sol",
+      "signature": "revokeRole(bytes32,address)"
+    },
+    {
+      "attributes": "public override",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "AEPConformanceRegistry",
+      "name": "renounceRole",
+      "path": "contracts/aep/AEPConformanceRegistry.sol",
+      "signature": "renounceRole(bytes32,address)"
+    },
+    {
+      "attributes": "external onlyOperator returns (uint256 schemaId)",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "AEPEvalRegistry",
+      "name": "registerEvalSchema",
+      "path": "contracts/aep/AEPEvalRegistry.sol",
+      "signature": "registerEvalSchema(bytes32,string,uint256)"
+    },
+    {
+      "attributes": "external onlyOperator returns (uint256 evalId)",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "AEPEvalRegistry",
+      "name": "recordEval",
+      "path": "contracts/aep/AEPEvalRegistry.sol",
+      "signature": "recordEval(uint256,uint256,bytes32,bytes32,uint8,bytes32)"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "AEPEvalRegistry",
+      "name": "pause",
+      "path": "contracts/aep/AEPEvalRegistry.sol",
+      "signature": "pause()"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "AEPEvalRegistry",
+      "name": "unpause",
+      "path": "contracts/aep/AEPEvalRegistry.sol",
+      "signature": "unpause()"
+    },
+    {
+      "attributes": "public override onlyOwner",
+      "classification": "configuration",
+      "contract": "AEPEvalRegistry",
+      "name": "transferOwnership",
+      "path": "contracts/aep/AEPEvalRegistry.sol",
+      "signature": "transferOwnership(address)"
+    },
+    {
+      "attributes": "public onlyOwner",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "AEPEvalRegistry",
+      "name": "cancelOwnershipTransfer",
+      "path": "contracts/aep/AEPEvalRegistry.sol",
+      "signature": "cancelOwnershipTransfer()"
+    },
+    {
+      "attributes": "public",
+      "classification": "configuration",
+      "contract": "AEPEvalRegistry",
+      "name": "acceptOwnership",
+      "path": "contracts/aep/AEPEvalRegistry.sol",
+      "signature": "acceptOwnership()"
+    },
+    {
+      "attributes": "public override",
+      "classification": "configuration",
+      "contract": "AEPEvalRegistry",
+      "name": "grantRole",
+      "path": "contracts/aep/AEPEvalRegistry.sol",
+      "signature": "grantRole(bytes32,address)"
+    },
+    {
+      "attributes": "public override",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "AEPEvalRegistry",
+      "name": "revokeRole",
+      "path": "contracts/aep/AEPEvalRegistry.sol",
+      "signature": "revokeRole(bytes32,address)"
+    },
+    {
+      "attributes": "public override",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "AEPEvalRegistry",
+      "name": "renounceRole",
+      "path": "contracts/aep/AEPEvalRegistry.sol",
+      "signature": "renounceRole(bytes32,address)"
+    },
+    {
+      "attributes": "external onlyAdmin",
+      "classification": "configuration",
+      "contract": "AEPEvaluatorStakingRegistry",
+      "name": "setMinEvaluatorStake",
+      "path": "contracts/aep/AEPEvaluatorStakingRegistry.sol",
+      "signature": "setMinEvaluatorStake(uint256)"
+    },
+    {
+      "attributes": "external onlyAdmin",
+      "classification": "configuration",
+      "contract": "AEPEvaluatorStakingRegistry",
+      "name": "setUnstakeDelay",
+      "path": "contracts/aep/AEPEvaluatorStakingRegistry.sol",
+      "signature": "setUnstakeDelay(uint256)"
+    },
+    {
+      "attributes": "external onlyAdmin",
+      "classification": "configuration",
+      "contract": "AEPEvaluatorStakingRegistry",
+      "name": "setTreasury",
+      "path": "contracts/aep/AEPEvaluatorStakingRegistry.sol",
+      "signature": "setTreasury(address)"
+    },
+    {
+      "attributes": "external nonReentrant whenNotPaused",
+      "classification": "new_obligation_or_risk_increase",
+      "contract": "AEPEvaluatorStakingRegistry",
+      "name": "stake",
+      "path": "contracts/aep/AEPEvaluatorStakingRegistry.sol",
+      "signature": "stake(uint256,string)"
+    },
+    {
+      "attributes": "external nonReentrant",
+      "classification": "safe_exit_or_settlement",
+      "contract": "AEPEvaluatorStakingRegistry",
+      "name": "requestUnstake",
+      "path": "contracts/aep/AEPEvaluatorStakingRegistry.sol",
+      "signature": "requestUnstake()"
+    },
+    {
+      "attributes": "external nonReentrant",
+      "classification": "safe_exit_or_settlement",
+      "contract": "AEPEvaluatorStakingRegistry",
+      "name": "unstake",
+      "path": "contracts/aep/AEPEvaluatorStakingRegistry.sol",
+      "signature": "unstake()"
+    },
+    {
+      "attributes": "external onlyOperator nonReentrant",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "AEPEvaluatorStakingRegistry",
+      "name": "slashEvaluator",
+      "path": "contracts/aep/AEPEvaluatorStakingRegistry.sol",
+      "signature": "slashEvaluator(address,uint256,bytes32)"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "AEPEvaluatorStakingRegistry",
+      "name": "pause",
+      "path": "contracts/aep/AEPEvaluatorStakingRegistry.sol",
+      "signature": "pause()"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "AEPEvaluatorStakingRegistry",
+      "name": "unpause",
+      "path": "contracts/aep/AEPEvaluatorStakingRegistry.sol",
+      "signature": "unpause()"
+    },
+    {
+      "attributes": "public override onlyOwner",
+      "classification": "configuration",
+      "contract": "AEPEvaluatorStakingRegistry",
+      "name": "transferOwnership",
+      "path": "contracts/aep/AEPEvaluatorStakingRegistry.sol",
+      "signature": "transferOwnership(address)"
+    },
+    {
+      "attributes": "public onlyOwner",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "AEPEvaluatorStakingRegistry",
+      "name": "cancelOwnershipTransfer",
+      "path": "contracts/aep/AEPEvaluatorStakingRegistry.sol",
+      "signature": "cancelOwnershipTransfer()"
+    },
+    {
+      "attributes": "public",
+      "classification": "configuration",
+      "contract": "AEPEvaluatorStakingRegistry",
+      "name": "acceptOwnership",
+      "path": "contracts/aep/AEPEvaluatorStakingRegistry.sol",
+      "signature": "acceptOwnership()"
+    },
+    {
+      "attributes": "public override",
+      "classification": "configuration",
+      "contract": "AEPEvaluatorStakingRegistry",
+      "name": "grantRole",
+      "path": "contracts/aep/AEPEvaluatorStakingRegistry.sol",
+      "signature": "grantRole(bytes32,address)"
+    },
+    {
+      "attributes": "public override",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "AEPEvaluatorStakingRegistry",
+      "name": "revokeRole",
+      "path": "contracts/aep/AEPEvaluatorStakingRegistry.sol",
+      "signature": "revokeRole(bytes32,address)"
+    },
+    {
+      "attributes": "public override",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "AEPEvaluatorStakingRegistry",
+      "name": "renounceRole",
+      "path": "contracts/aep/AEPEvaluatorStakingRegistry.sol",
+      "signature": "renounceRole(bytes32,address)"
+    },
+    {
+      "attributes": "external onlyOperator returns (uint256 docketId)",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "AEPEvidenceDocketRegistry",
+      "name": "registerEvidenceDocket",
+      "path": "contracts/aep/AEPEvidenceDocketRegistry.sol",
+      "signature": "registerEvidenceDocket(bytes32,bytes32,bytes32,bytes32,bytes32,bytes32,string)"
+    },
+    {
+      "attributes": "external onlyOperator",
+      "classification": "configuration",
+      "contract": "AEPEvidenceDocketRegistry",
+      "name": "setDocketActive",
+      "path": "contracts/aep/AEPEvidenceDocketRegistry.sol",
+      "signature": "setDocketActive(uint256,bool,bytes32)"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "AEPEvidenceDocketRegistry",
+      "name": "pause",
+      "path": "contracts/aep/AEPEvidenceDocketRegistry.sol",
+      "signature": "pause()"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "AEPEvidenceDocketRegistry",
+      "name": "unpause",
+      "path": "contracts/aep/AEPEvidenceDocketRegistry.sol",
+      "signature": "unpause()"
+    },
+    {
+      "attributes": "public override onlyOwner",
+      "classification": "configuration",
+      "contract": "AEPEvidenceDocketRegistry",
+      "name": "transferOwnership",
+      "path": "contracts/aep/AEPEvidenceDocketRegistry.sol",
+      "signature": "transferOwnership(address)"
+    },
+    {
+      "attributes": "public onlyOwner",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "AEPEvidenceDocketRegistry",
+      "name": "cancelOwnershipTransfer",
+      "path": "contracts/aep/AEPEvidenceDocketRegistry.sol",
+      "signature": "cancelOwnershipTransfer()"
+    },
+    {
+      "attributes": "public",
+      "classification": "configuration",
+      "contract": "AEPEvidenceDocketRegistry",
+      "name": "acceptOwnership",
+      "path": "contracts/aep/AEPEvidenceDocketRegistry.sol",
+      "signature": "acceptOwnership()"
+    },
+    {
+      "attributes": "public override",
+      "classification": "configuration",
+      "contract": "AEPEvidenceDocketRegistry",
+      "name": "grantRole",
+      "path": "contracts/aep/AEPEvidenceDocketRegistry.sol",
+      "signature": "grantRole(bytes32,address)"
+    },
+    {
+      "attributes": "public override",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "AEPEvidenceDocketRegistry",
+      "name": "revokeRole",
+      "path": "contracts/aep/AEPEvidenceDocketRegistry.sol",
+      "signature": "revokeRole(bytes32,address)"
+    },
+    {
+      "attributes": "public override",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "AEPEvidenceDocketRegistry",
+      "name": "renounceRole",
+      "path": "contracts/aep/AEPEvidenceDocketRegistry.sol",
+      "signature": "renounceRole(bytes32,address)"
+    },
+    {
+      "attributes": "external returns (uint256 falsificationId)",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "AEPFalsificationRegistry",
+      "name": "reportFalsification",
+      "path": "contracts/aep/AEPFalsificationRegistry.sol",
+      "signature": "reportFalsification(bytes32,bytes32,bytes32,string)"
+    },
+    {
+      "attributes": "external onlyOperator",
+      "classification": "configuration",
+      "contract": "AEPFalsificationRegistry",
+      "name": "setFalsificationStatus",
+      "path": "contracts/aep/AEPFalsificationRegistry.sol",
+      "signature": "setFalsificationStatus(uint256,uint8,bytes32)"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "AEPFalsificationRegistry",
+      "name": "pause",
+      "path": "contracts/aep/AEPFalsificationRegistry.sol",
+      "signature": "pause()"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "AEPFalsificationRegistry",
+      "name": "unpause",
+      "path": "contracts/aep/AEPFalsificationRegistry.sol",
+      "signature": "unpause()"
+    },
+    {
+      "attributes": "public override onlyOwner",
+      "classification": "configuration",
+      "contract": "AEPFalsificationRegistry",
+      "name": "transferOwnership",
+      "path": "contracts/aep/AEPFalsificationRegistry.sol",
+      "signature": "transferOwnership(address)"
+    },
+    {
+      "attributes": "public onlyOwner",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "AEPFalsificationRegistry",
+      "name": "cancelOwnershipTransfer",
+      "path": "contracts/aep/AEPFalsificationRegistry.sol",
+      "signature": "cancelOwnershipTransfer()"
+    },
+    {
+      "attributes": "public",
+      "classification": "configuration",
+      "contract": "AEPFalsificationRegistry",
+      "name": "acceptOwnership",
+      "path": "contracts/aep/AEPFalsificationRegistry.sol",
+      "signature": "acceptOwnership()"
+    },
+    {
+      "attributes": "public override",
+      "classification": "configuration",
+      "contract": "AEPFalsificationRegistry",
+      "name": "grantRole",
+      "path": "contracts/aep/AEPFalsificationRegistry.sol",
+      "signature": "grantRole(bytes32,address)"
+    },
+    {
+      "attributes": "public override",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "AEPFalsificationRegistry",
+      "name": "revokeRole",
+      "path": "contracts/aep/AEPFalsificationRegistry.sol",
+      "signature": "revokeRole(bytes32,address)"
+    },
+    {
+      "attributes": "public override",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "AEPFalsificationRegistry",
+      "name": "renounceRole",
+      "path": "contracts/aep/AEPFalsificationRegistry.sol",
+      "signature": "renounceRole(bytes32,address)"
+    },
+    {
+      "attributes": "external onlyAdmin",
+      "classification": "configuration",
+      "contract": "AEPGoalOSCommitRegistry",
+      "name": "setCommitFee",
+      "path": "contracts/aep/AEPGoalOSCommitRegistry.sol",
+      "signature": "setCommitFee(uint256)"
+    },
+    {
+      "attributes": "external nonReentrant whenNotPaused returns (uint256 commitId)",
+      "classification": "new_obligation_or_risk_increase",
+      "contract": "AEPGoalOSCommitRegistry",
+      "name": "createCommit",
+      "path": "contracts/aep/AEPGoalOSCommitRegistry.sol",
+      "signature": "createCommit(bytes32,bytes32,bytes32,bytes32,bytes32,bytes32,bytes32,uint8,string)"
+    },
+    {
+      "attributes": "external onlyOperator",
+      "classification": "configuration",
+      "contract": "AEPGoalOSCommitRegistry",
+      "name": "setCommitActive",
+      "path": "contracts/aep/AEPGoalOSCommitRegistry.sol",
+      "signature": "setCommitActive(uint256,bool,bytes32)"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "AEPGoalOSCommitRegistry",
+      "name": "pause",
+      "path": "contracts/aep/AEPGoalOSCommitRegistry.sol",
+      "signature": "pause()"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "AEPGoalOSCommitRegistry",
+      "name": "unpause",
+      "path": "contracts/aep/AEPGoalOSCommitRegistry.sol",
+      "signature": "unpause()"
+    },
+    {
+      "attributes": "public override onlyOwner",
+      "classification": "configuration",
+      "contract": "AEPGoalOSCommitRegistry",
+      "name": "transferOwnership",
+      "path": "contracts/aep/AEPGoalOSCommitRegistry.sol",
+      "signature": "transferOwnership(address)"
+    },
+    {
+      "attributes": "public onlyOwner",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "AEPGoalOSCommitRegistry",
+      "name": "cancelOwnershipTransfer",
+      "path": "contracts/aep/AEPGoalOSCommitRegistry.sol",
+      "signature": "cancelOwnershipTransfer()"
+    },
+    {
+      "attributes": "public",
+      "classification": "configuration",
+      "contract": "AEPGoalOSCommitRegistry",
+      "name": "acceptOwnership",
+      "path": "contracts/aep/AEPGoalOSCommitRegistry.sol",
+      "signature": "acceptOwnership()"
+    },
+    {
+      "attributes": "public override",
+      "classification": "configuration",
+      "contract": "AEPGoalOSCommitRegistry",
+      "name": "grantRole",
+      "path": "contracts/aep/AEPGoalOSCommitRegistry.sol",
+      "signature": "grantRole(bytes32,address)"
+    },
+    {
+      "attributes": "public override",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "AEPGoalOSCommitRegistry",
+      "name": "revokeRole",
+      "path": "contracts/aep/AEPGoalOSCommitRegistry.sol",
+      "signature": "revokeRole(bytes32,address)"
+    },
+    {
+      "attributes": "public override",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "AEPGoalOSCommitRegistry",
+      "name": "renounceRole",
+      "path": "contracts/aep/AEPGoalOSCommitRegistry.sol",
+      "signature": "renounceRole(bytes32,address)"
+    },
+    {
+      "attributes": "external onlyOperator returns (uint256 bundleId)",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "AEPProofBundleRegistry",
+      "name": "registerProofBundle",
+      "path": "contracts/aep/AEPProofBundleRegistry.sol",
+      "signature": "registerProofBundle(uint256,uint256,bytes32,bytes32,bytes32,bytes32,bytes32,uint256,string)"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "AEPProofBundleRegistry",
+      "name": "pause",
+      "path": "contracts/aep/AEPProofBundleRegistry.sol",
+      "signature": "pause()"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "AEPProofBundleRegistry",
+      "name": "unpause",
+      "path": "contracts/aep/AEPProofBundleRegistry.sol",
+      "signature": "unpause()"
+    },
+    {
+      "attributes": "public override onlyOwner",
+      "classification": "configuration",
+      "contract": "AEPProofBundleRegistry",
+      "name": "transferOwnership",
+      "path": "contracts/aep/AEPProofBundleRegistry.sol",
+      "signature": "transferOwnership(address)"
+    },
+    {
+      "attributes": "public onlyOwner",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "AEPProofBundleRegistry",
+      "name": "cancelOwnershipTransfer",
+      "path": "contracts/aep/AEPProofBundleRegistry.sol",
+      "signature": "cancelOwnershipTransfer()"
+    },
+    {
+      "attributes": "public",
+      "classification": "configuration",
+      "contract": "AEPProofBundleRegistry",
+      "name": "acceptOwnership",
+      "path": "contracts/aep/AEPProofBundleRegistry.sol",
+      "signature": "acceptOwnership()"
+    },
+    {
+      "attributes": "public override",
+      "classification": "configuration",
+      "contract": "AEPProofBundleRegistry",
+      "name": "grantRole",
+      "path": "contracts/aep/AEPProofBundleRegistry.sol",
+      "signature": "grantRole(bytes32,address)"
+    },
+    {
+      "attributes": "public override",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "AEPProofBundleRegistry",
+      "name": "revokeRole",
+      "path": "contracts/aep/AEPProofBundleRegistry.sol",
+      "signature": "revokeRole(bytes32,address)"
+    },
+    {
+      "attributes": "public override",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "AEPProofBundleRegistry",
+      "name": "renounceRole",
+      "path": "contracts/aep/AEPProofBundleRegistry.sol",
+      "signature": "renounceRole(bytes32,address)"
+    },
+    {
+      "attributes": "external onlyOperator returns (uint256 proofId)",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "AEPProofLedger",
+      "name": "appendProofRoot",
+      "path": "contracts/aep/AEPProofLedger.sol",
+      "signature": "appendProofRoot(uint256,bytes32,bytes32,bytes32,uint256,uint256,bytes32,string)"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "AEPProofLedger",
+      "name": "pause",
+      "path": "contracts/aep/AEPProofLedger.sol",
+      "signature": "pause()"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "AEPProofLedger",
+      "name": "unpause",
+      "path": "contracts/aep/AEPProofLedger.sol",
+      "signature": "unpause()"
+    },
+    {
+      "attributes": "public override onlyOwner",
+      "classification": "configuration",
+      "contract": "AEPProofLedger",
+      "name": "transferOwnership",
+      "path": "contracts/aep/AEPProofLedger.sol",
+      "signature": "transferOwnership(address)"
+    },
+    {
+      "attributes": "public onlyOwner",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "AEPProofLedger",
+      "name": "cancelOwnershipTransfer",
+      "path": "contracts/aep/AEPProofLedger.sol",
+      "signature": "cancelOwnershipTransfer()"
+    },
+    {
+      "attributes": "public",
+      "classification": "configuration",
+      "contract": "AEPProofLedger",
+      "name": "acceptOwnership",
+      "path": "contracts/aep/AEPProofLedger.sol",
+      "signature": "acceptOwnership()"
+    },
+    {
+      "attributes": "public override",
+      "classification": "configuration",
+      "contract": "AEPProofLedger",
+      "name": "grantRole",
+      "path": "contracts/aep/AEPProofLedger.sol",
+      "signature": "grantRole(bytes32,address)"
+    },
+    {
+      "attributes": "public override",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "AEPProofLedger",
+      "name": "revokeRole",
+      "path": "contracts/aep/AEPProofLedger.sol",
+      "signature": "revokeRole(bytes32,address)"
+    },
+    {
+      "attributes": "public override",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "AEPProofLedger",
+      "name": "renounceRole",
+      "path": "contracts/aep/AEPProofLedger.sol",
+      "signature": "renounceRole(bytes32,address)"
+    },
+    {
+      "attributes": "external onlyOperator returns (uint256 replayId)",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "AEPReplayRegistry",
+      "name": "recordReplay",
+      "path": "contracts/aep/AEPReplayRegistry.sol",
+      "signature": "recordReplay(uint256,bytes32,bytes32,bytes32,bytes32,uint8,string)"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "AEPReplayRegistry",
+      "name": "pause",
+      "path": "contracts/aep/AEPReplayRegistry.sol",
+      "signature": "pause()"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "AEPReplayRegistry",
+      "name": "unpause",
+      "path": "contracts/aep/AEPReplayRegistry.sol",
+      "signature": "unpause()"
+    },
+    {
+      "attributes": "public override onlyOwner",
+      "classification": "configuration",
+      "contract": "AEPReplayRegistry",
+      "name": "transferOwnership",
+      "path": "contracts/aep/AEPReplayRegistry.sol",
+      "signature": "transferOwnership(address)"
+    },
+    {
+      "attributes": "public onlyOwner",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "AEPReplayRegistry",
+      "name": "cancelOwnershipTransfer",
+      "path": "contracts/aep/AEPReplayRegistry.sol",
+      "signature": "cancelOwnershipTransfer()"
+    },
+    {
+      "attributes": "public",
+      "classification": "configuration",
+      "contract": "AEPReplayRegistry",
+      "name": "acceptOwnership",
+      "path": "contracts/aep/AEPReplayRegistry.sol",
+      "signature": "acceptOwnership()"
+    },
+    {
+      "attributes": "public override",
+      "classification": "configuration",
+      "contract": "AEPReplayRegistry",
+      "name": "grantRole",
+      "path": "contracts/aep/AEPReplayRegistry.sol",
+      "signature": "grantRole(bytes32,address)"
+    },
+    {
+      "attributes": "public override",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "AEPReplayRegistry",
+      "name": "revokeRole",
+      "path": "contracts/aep/AEPReplayRegistry.sol",
+      "signature": "revokeRole(bytes32,address)"
+    },
+    {
+      "attributes": "public override",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "AEPReplayRegistry",
+      "name": "renounceRole",
+      "path": "contracts/aep/AEPReplayRegistry.sol",
+      "signature": "renounceRole(bytes32,address)"
+    },
+    {
+      "attributes": "external nonReentrant",
+      "classification": "new_obligation_or_risk_increase",
+      "contract": "AEPRewardVault",
+      "name": "fund",
+      "path": "contracts/aep/AEPRewardVault.sol",
+      "signature": "fund(uint256)"
+    },
+    {
+      "attributes": "external onlyOperator nonReentrant returns (uint256 rewardId)",
+      "classification": "safe_exit_or_settlement",
+      "contract": "AEPRewardVault",
+      "name": "payReward",
+      "path": "contracts/aep/AEPRewardVault.sol",
+      "signature": "payReward(address,uint256,uint256,uint256,bytes32,string)"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "AEPRewardVault",
+      "name": "pause",
+      "path": "contracts/aep/AEPRewardVault.sol",
+      "signature": "pause()"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "AEPRewardVault",
+      "name": "unpause",
+      "path": "contracts/aep/AEPRewardVault.sol",
+      "signature": "unpause()"
+    },
+    {
+      "attributes": "public override onlyOwner",
+      "classification": "configuration",
+      "contract": "AEPRewardVault",
+      "name": "transferOwnership",
+      "path": "contracts/aep/AEPRewardVault.sol",
+      "signature": "transferOwnership(address)"
+    },
+    {
+      "attributes": "public onlyOwner",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "AEPRewardVault",
+      "name": "cancelOwnershipTransfer",
+      "path": "contracts/aep/AEPRewardVault.sol",
+      "signature": "cancelOwnershipTransfer()"
+    },
+    {
+      "attributes": "public",
+      "classification": "configuration",
+      "contract": "AEPRewardVault",
+      "name": "acceptOwnership",
+      "path": "contracts/aep/AEPRewardVault.sol",
+      "signature": "acceptOwnership()"
+    },
+    {
+      "attributes": "public override",
+      "classification": "configuration",
+      "contract": "AEPRewardVault",
+      "name": "grantRole",
+      "path": "contracts/aep/AEPRewardVault.sol",
+      "signature": "grantRole(bytes32,address)"
+    },
+    {
+      "attributes": "public override",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "AEPRewardVault",
+      "name": "revokeRole",
+      "path": "contracts/aep/AEPRewardVault.sol",
+      "signature": "revokeRole(bytes32,address)"
+    },
+    {
+      "attributes": "public override",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "AEPRewardVault",
+      "name": "renounceRole",
+      "path": "contracts/aep/AEPRewardVault.sol",
+      "signature": "renounceRole(bytes32,address)"
+    },
+    {
+      "attributes": "external onlyOperator returns (uint256 rollbackId)",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "AEPRollbackRegistry",
+      "name": "recordRollback",
+      "path": "contracts/aep/AEPRollbackRegistry.sol",
+      "signature": "recordRollback(uint256,uint256,bytes32,bytes32,bytes32,string)"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "AEPRollbackRegistry",
+      "name": "pause",
+      "path": "contracts/aep/AEPRollbackRegistry.sol",
+      "signature": "pause()"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "AEPRollbackRegistry",
+      "name": "unpause",
+      "path": "contracts/aep/AEPRollbackRegistry.sol",
+      "signature": "unpause()"
+    },
+    {
+      "attributes": "public override onlyOwner",
+      "classification": "configuration",
+      "contract": "AEPRollbackRegistry",
+      "name": "transferOwnership",
+      "path": "contracts/aep/AEPRollbackRegistry.sol",
+      "signature": "transferOwnership(address)"
+    },
+    {
+      "attributes": "public onlyOwner",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "AEPRollbackRegistry",
+      "name": "cancelOwnershipTransfer",
+      "path": "contracts/aep/AEPRollbackRegistry.sol",
+      "signature": "cancelOwnershipTransfer()"
+    },
+    {
+      "attributes": "public",
+      "classification": "configuration",
+      "contract": "AEPRollbackRegistry",
+      "name": "acceptOwnership",
+      "path": "contracts/aep/AEPRollbackRegistry.sol",
+      "signature": "acceptOwnership()"
+    },
+    {
+      "attributes": "public override",
+      "classification": "configuration",
+      "contract": "AEPRollbackRegistry",
+      "name": "grantRole",
+      "path": "contracts/aep/AEPRollbackRegistry.sol",
+      "signature": "grantRole(bytes32,address)"
+    },
+    {
+      "attributes": "public override",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "AEPRollbackRegistry",
+      "name": "revokeRole",
+      "path": "contracts/aep/AEPRollbackRegistry.sol",
+      "signature": "revokeRole(bytes32,address)"
+    },
+    {
+      "attributes": "public override",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "AEPRollbackRegistry",
+      "name": "renounceRole",
+      "path": "contracts/aep/AEPRollbackRegistry.sol",
+      "signature": "renounceRole(bytes32,address)"
+    },
+    {
+      "attributes": "external onlyOperator returns (uint256 rolloutId)",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "AEPRolloutRouter",
+      "name": "recordRollout",
+      "path": "contracts/aep/AEPRolloutRouter.sol",
+      "signature": "recordRollout(uint256,uint16,bytes32,bytes32,bytes32,string)"
+    },
+    {
+      "attributes": "external onlyOperator",
+      "classification": "configuration",
+      "contract": "AEPRolloutRouter",
+      "name": "setRolloutActive",
+      "path": "contracts/aep/AEPRolloutRouter.sol",
+      "signature": "setRolloutActive(uint256,bool,bytes32)"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "AEPRolloutRouter",
+      "name": "pause",
+      "path": "contracts/aep/AEPRolloutRouter.sol",
+      "signature": "pause()"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "AEPRolloutRouter",
+      "name": "unpause",
+      "path": "contracts/aep/AEPRolloutRouter.sol",
+      "signature": "unpause()"
+    },
+    {
+      "attributes": "public override onlyOwner",
+      "classification": "configuration",
+      "contract": "AEPRolloutRouter",
+      "name": "transferOwnership",
+      "path": "contracts/aep/AEPRolloutRouter.sol",
+      "signature": "transferOwnership(address)"
+    },
+    {
+      "attributes": "public onlyOwner",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "AEPRolloutRouter",
+      "name": "cancelOwnershipTransfer",
+      "path": "contracts/aep/AEPRolloutRouter.sol",
+      "signature": "cancelOwnershipTransfer()"
+    },
+    {
+      "attributes": "public",
+      "classification": "configuration",
+      "contract": "AEPRolloutRouter",
+      "name": "acceptOwnership",
+      "path": "contracts/aep/AEPRolloutRouter.sol",
+      "signature": "acceptOwnership()"
+    },
+    {
+      "attributes": "public override",
+      "classification": "configuration",
+      "contract": "AEPRolloutRouter",
+      "name": "grantRole",
+      "path": "contracts/aep/AEPRolloutRouter.sol",
+      "signature": "grantRole(bytes32,address)"
+    },
+    {
+      "attributes": "public override",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "AEPRolloutRouter",
+      "name": "revokeRole",
+      "path": "contracts/aep/AEPRolloutRouter.sol",
+      "signature": "revokeRole(bytes32,address)"
+    },
+    {
+      "attributes": "public override",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "AEPRolloutRouter",
+      "name": "renounceRole",
+      "path": "contracts/aep/AEPRolloutRouter.sol",
+      "signature": "renounceRole(bytes32,address)"
+    },
+    {
+      "attributes": "external onlyOperator returns (uint256 runId)",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "AEPRunCommitmentRegistry",
+      "name": "commitRun",
+      "path": "contracts/aep/AEPRunCommitmentRegistry.sol",
+      "signature": "commitRun(uint256,bytes32,bytes32,bytes32,bytes32,bytes32,bytes32,bytes32,uint256,uint256,string)"
+    },
+    {
+      "attributes": "external onlyOperator",
+      "classification": "configuration",
+      "contract": "AEPRunCommitmentRegistry",
+      "name": "setRunStatus",
+      "path": "contracts/aep/AEPRunCommitmentRegistry.sol",
+      "signature": "setRunStatus(uint256,uint8,bytes32)"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "AEPRunCommitmentRegistry",
+      "name": "pause",
+      "path": "contracts/aep/AEPRunCommitmentRegistry.sol",
+      "signature": "pause()"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "AEPRunCommitmentRegistry",
+      "name": "unpause",
+      "path": "contracts/aep/AEPRunCommitmentRegistry.sol",
+      "signature": "unpause()"
+    },
+    {
+      "attributes": "public override onlyOwner",
+      "classification": "configuration",
+      "contract": "AEPRunCommitmentRegistry",
+      "name": "transferOwnership",
+      "path": "contracts/aep/AEPRunCommitmentRegistry.sol",
+      "signature": "transferOwnership(address)"
+    },
+    {
+      "attributes": "public onlyOwner",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "AEPRunCommitmentRegistry",
+      "name": "cancelOwnershipTransfer",
+      "path": "contracts/aep/AEPRunCommitmentRegistry.sol",
+      "signature": "cancelOwnershipTransfer()"
+    },
+    {
+      "attributes": "public",
+      "classification": "configuration",
+      "contract": "AEPRunCommitmentRegistry",
+      "name": "acceptOwnership",
+      "path": "contracts/aep/AEPRunCommitmentRegistry.sol",
+      "signature": "acceptOwnership()"
+    },
+    {
+      "attributes": "public override",
+      "classification": "configuration",
+      "contract": "AEPRunCommitmentRegistry",
+      "name": "grantRole",
+      "path": "contracts/aep/AEPRunCommitmentRegistry.sol",
+      "signature": "grantRole(bytes32,address)"
+    },
+    {
+      "attributes": "public override",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "AEPRunCommitmentRegistry",
+      "name": "revokeRole",
+      "path": "contracts/aep/AEPRunCommitmentRegistry.sol",
+      "signature": "revokeRole(bytes32,address)"
+    },
+    {
+      "attributes": "public override",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "AEPRunCommitmentRegistry",
+      "name": "renounceRole",
+      "path": "contracts/aep/AEPRunCommitmentRegistry.sol",
+      "signature": "renounceRole(bytes32,address)"
+    },
+    {
+      "attributes": "external onlyOperator returns (uint256 selectionId)",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "AEPSelectionGate",
+      "name": "issueSelectionCertificate",
+      "path": "contracts/aep/AEPSelectionGate.sol",
+      "signature": "issueSelectionCertificate(uint256,bytes32,bytes32,uint8,bytes32,bytes32,bytes32,uint256,uint256,string)"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "AEPSelectionGate",
+      "name": "pause",
+      "path": "contracts/aep/AEPSelectionGate.sol",
+      "signature": "pause()"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "AEPSelectionGate",
+      "name": "unpause",
+      "path": "contracts/aep/AEPSelectionGate.sol",
+      "signature": "unpause()"
+    },
+    {
+      "attributes": "public override onlyOwner",
+      "classification": "configuration",
+      "contract": "AEPSelectionGate",
+      "name": "transferOwnership",
+      "path": "contracts/aep/AEPSelectionGate.sol",
+      "signature": "transferOwnership(address)"
+    },
+    {
+      "attributes": "public onlyOwner",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "AEPSelectionGate",
+      "name": "cancelOwnershipTransfer",
+      "path": "contracts/aep/AEPSelectionGate.sol",
+      "signature": "cancelOwnershipTransfer()"
+    },
+    {
+      "attributes": "public",
+      "classification": "configuration",
+      "contract": "AEPSelectionGate",
+      "name": "acceptOwnership",
+      "path": "contracts/aep/AEPSelectionGate.sol",
+      "signature": "acceptOwnership()"
+    },
+    {
+      "attributes": "public override",
+      "classification": "configuration",
+      "contract": "AEPSelectionGate",
+      "name": "grantRole",
+      "path": "contracts/aep/AEPSelectionGate.sol",
+      "signature": "grantRole(bytes32,address)"
+    },
+    {
+      "attributes": "public override",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "AEPSelectionGate",
+      "name": "revokeRole",
+      "path": "contracts/aep/AEPSelectionGate.sol",
+      "signature": "revokeRole(bytes32,address)"
+    },
+    {
+      "attributes": "public override",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "AEPSelectionGate",
+      "name": "renounceRole",
+      "path": "contracts/aep/AEPSelectionGate.sol",
+      "signature": "renounceRole(bytes32,address)"
+    },
+    {
+      "attributes": "external onlyOperator returns (uint256 caseId)",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "AEPSlashingCourt",
+      "name": "openCase",
+      "path": "contracts/aep/AEPSlashingCourt.sol",
+      "signature": "openCase(address,uint256,bytes32,bytes32,string)"
+    },
+    {
+      "attributes": "external onlyOperator",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "AEPSlashingCourt",
+      "name": "resolveCase",
+      "path": "contracts/aep/AEPSlashingCourt.sol",
+      "signature": "resolveCase(uint256,uint8,uint256,bytes32)"
+    },
+    {
+      "attributes": "external onlyOperator",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "AEPSlashingCourt",
+      "name": "cancelCase",
+      "path": "contracts/aep/AEPSlashingCourt.sol",
+      "signature": "cancelCase(uint256,bytes32)"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "AEPSlashingCourt",
+      "name": "pause",
+      "path": "contracts/aep/AEPSlashingCourt.sol",
+      "signature": "pause()"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "AEPSlashingCourt",
+      "name": "unpause",
+      "path": "contracts/aep/AEPSlashingCourt.sol",
+      "signature": "unpause()"
+    },
+    {
+      "attributes": "public override onlyOwner",
+      "classification": "configuration",
+      "contract": "AEPSlashingCourt",
+      "name": "transferOwnership",
+      "path": "contracts/aep/AEPSlashingCourt.sol",
+      "signature": "transferOwnership(address)"
+    },
+    {
+      "attributes": "public onlyOwner",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "AEPSlashingCourt",
+      "name": "cancelOwnershipTransfer",
+      "path": "contracts/aep/AEPSlashingCourt.sol",
+      "signature": "cancelOwnershipTransfer()"
+    },
+    {
+      "attributes": "public",
+      "classification": "configuration",
+      "contract": "AEPSlashingCourt",
+      "name": "acceptOwnership",
+      "path": "contracts/aep/AEPSlashingCourt.sol",
+      "signature": "acceptOwnership()"
+    },
+    {
+      "attributes": "public override",
+      "classification": "configuration",
+      "contract": "AEPSlashingCourt",
+      "name": "grantRole",
+      "path": "contracts/aep/AEPSlashingCourt.sol",
+      "signature": "grantRole(bytes32,address)"
+    },
+    {
+      "attributes": "public override",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "AEPSlashingCourt",
+      "name": "revokeRole",
+      "path": "contracts/aep/AEPSlashingCourt.sol",
+      "signature": "revokeRole(bytes32,address)"
+    },
+    {
+      "attributes": "public override",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "AEPSlashingCourt",
+      "name": "renounceRole",
+      "path": "contracts/aep/AEPSlashingCourt.sol",
+      "signature": "renounceRole(bytes32,address)"
+    },
+    {
+      "attributes": "external onlyOperator",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "AGIEthNamespaceRegistry",
+      "name": "registerEnvironment",
+      "path": "contracts/aep/AGIEthNamespaceRegistry.sol",
+      "signature": "registerEnvironment(bytes32,bytes32,bytes32,bytes32,bytes32,bytes32,bytes32,uint8,string)"
+    },
+    {
+      "attributes": "external onlyOperator",
+      "classification": "configuration",
+      "contract": "AGIEthNamespaceRegistry",
+      "name": "setEnvironmentStatus",
+      "path": "contracts/aep/AGIEthNamespaceRegistry.sol",
+      "signature": "setEnvironmentStatus(bytes32,uint8,bytes32)"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "AGIEthNamespaceRegistry",
+      "name": "pause",
+      "path": "contracts/aep/AGIEthNamespaceRegistry.sol",
+      "signature": "pause()"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "AGIEthNamespaceRegistry",
+      "name": "unpause",
+      "path": "contracts/aep/AGIEthNamespaceRegistry.sol",
+      "signature": "unpause()"
+    },
+    {
+      "attributes": "public override onlyOwner",
+      "classification": "configuration",
+      "contract": "AGIEthNamespaceRegistry",
+      "name": "transferOwnership",
+      "path": "contracts/aep/AGIEthNamespaceRegistry.sol",
+      "signature": "transferOwnership(address)"
+    },
+    {
+      "attributes": "public onlyOwner",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "AGIEthNamespaceRegistry",
+      "name": "cancelOwnershipTransfer",
+      "path": "contracts/aep/AGIEthNamespaceRegistry.sol",
+      "signature": "cancelOwnershipTransfer()"
+    },
+    {
+      "attributes": "public",
+      "classification": "configuration",
+      "contract": "AGIEthNamespaceRegistry",
+      "name": "acceptOwnership",
+      "path": "contracts/aep/AGIEthNamespaceRegistry.sol",
+      "signature": "acceptOwnership()"
+    },
+    {
+      "attributes": "public override",
+      "classification": "configuration",
+      "contract": "AGIEthNamespaceRegistry",
+      "name": "grantRole",
+      "path": "contracts/aep/AGIEthNamespaceRegistry.sol",
+      "signature": "grantRole(bytes32,address)"
+    },
+    {
+      "attributes": "public override",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "AGIEthNamespaceRegistry",
+      "name": "revokeRole",
+      "path": "contracts/aep/AGIEthNamespaceRegistry.sol",
+      "signature": "revokeRole(bytes32,address)"
+    },
+    {
+      "attributes": "public override",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "AGIEthNamespaceRegistry",
+      "name": "renounceRole",
+      "path": "contracts/aep/AGIEthNamespaceRegistry.sol",
+      "signature": "renounceRole(bytes32,address)"
+    },
+    {
+      "attributes": "external onlyOperator returns (uint256 recordId)",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "AlphaWorkUnitLedger",
+      "name": "recordAlphaWorkUnits",
+      "path": "contracts/aep/AlphaWorkUnitLedger.sol",
+      "signature": "recordAlphaWorkUnits(address,uint256,uint256,bytes32,uint16,uint16,uint16,bytes32)"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "AlphaWorkUnitLedger",
+      "name": "pause",
+      "path": "contracts/aep/AlphaWorkUnitLedger.sol",
+      "signature": "pause()"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "AlphaWorkUnitLedger",
+      "name": "unpause",
+      "path": "contracts/aep/AlphaWorkUnitLedger.sol",
+      "signature": "unpause()"
+    },
+    {
+      "attributes": "public override onlyOwner",
+      "classification": "configuration",
+      "contract": "AlphaWorkUnitLedger",
+      "name": "transferOwnership",
+      "path": "contracts/aep/AlphaWorkUnitLedger.sol",
+      "signature": "transferOwnership(address)"
+    },
+    {
+      "attributes": "public onlyOwner",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "AlphaWorkUnitLedger",
+      "name": "cancelOwnershipTransfer",
+      "path": "contracts/aep/AlphaWorkUnitLedger.sol",
+      "signature": "cancelOwnershipTransfer()"
+    },
+    {
+      "attributes": "public",
+      "classification": "configuration",
+      "contract": "AlphaWorkUnitLedger",
+      "name": "acceptOwnership",
+      "path": "contracts/aep/AlphaWorkUnitLedger.sol",
+      "signature": "acceptOwnership()"
+    },
+    {
+      "attributes": "public override",
+      "classification": "configuration",
+      "contract": "AlphaWorkUnitLedger",
+      "name": "grantRole",
+      "path": "contracts/aep/AlphaWorkUnitLedger.sol",
+      "signature": "grantRole(bytes32,address)"
+    },
+    {
+      "attributes": "public override",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "AlphaWorkUnitLedger",
+      "name": "revokeRole",
+      "path": "contracts/aep/AlphaWorkUnitLedger.sol",
+      "signature": "revokeRole(bytes32,address)"
+    },
+    {
+      "attributes": "public override",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "AlphaWorkUnitLedger",
+      "name": "renounceRole",
+      "path": "contracts/aep/AlphaWorkUnitLedger.sol",
+      "signature": "renounceRole(bytes32,address)"
+    },
+    {
+      "attributes": "external nonReentrant whenNotPaused returns (uint256 mandateId)",
+      "classification": "new_obligation_or_risk_increase",
+      "contract": "MandateEpochRegistry",
+      "name": "createMandate",
+      "path": "contracts/aep/MandateEpochRegistry.sol",
+      "signature": "createMandate(bytes32,bytes32,bytes32,bytes32,string)"
+    },
+    {
+      "attributes": "external onlyOperator returns (uint256 epochId)",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "MandateEpochRegistry",
+      "name": "openEpoch",
+      "path": "contracts/aep/MandateEpochRegistry.sol",
+      "signature": "openEpoch(uint256,uint256,uint256,string)"
+    },
+    {
+      "attributes": "external onlyOperator",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "MandateEpochRegistry",
+      "name": "commitEpochRoots",
+      "path": "contracts/aep/MandateEpochRegistry.sol",
+      "signature": "commitEpochRoots(uint256,bytes32,bytes32,bytes32,bytes32,bytes32,uint256)"
+    },
+    {
+      "attributes": "external onlyOperator",
+      "classification": "configuration",
+      "contract": "MandateEpochRegistry",
+      "name": "setEpochStatus",
+      "path": "contracts/aep/MandateEpochRegistry.sol",
+      "signature": "setEpochStatus(uint256,uint8,bytes32)"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "MandateEpochRegistry",
+      "name": "pause",
+      "path": "contracts/aep/MandateEpochRegistry.sol",
+      "signature": "pause()"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "MandateEpochRegistry",
+      "name": "unpause",
+      "path": "contracts/aep/MandateEpochRegistry.sol",
+      "signature": "unpause()"
+    },
+    {
+      "attributes": "public override onlyOwner",
+      "classification": "configuration",
+      "contract": "MandateEpochRegistry",
+      "name": "transferOwnership",
+      "path": "contracts/aep/MandateEpochRegistry.sol",
+      "signature": "transferOwnership(address)"
+    },
+    {
+      "attributes": "public onlyOwner",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "MandateEpochRegistry",
+      "name": "cancelOwnershipTransfer",
+      "path": "contracts/aep/MandateEpochRegistry.sol",
+      "signature": "cancelOwnershipTransfer()"
+    },
+    {
+      "attributes": "public",
+      "classification": "configuration",
+      "contract": "MandateEpochRegistry",
+      "name": "acceptOwnership",
+      "path": "contracts/aep/MandateEpochRegistry.sol",
+      "signature": "acceptOwnership()"
+    },
+    {
+      "attributes": "public override",
+      "classification": "configuration",
+      "contract": "MandateEpochRegistry",
+      "name": "grantRole",
+      "path": "contracts/aep/MandateEpochRegistry.sol",
+      "signature": "grantRole(bytes32,address)"
+    },
+    {
+      "attributes": "public override",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "MandateEpochRegistry",
+      "name": "revokeRole",
+      "path": "contracts/aep/MandateEpochRegistry.sol",
+      "signature": "revokeRole(bytes32,address)"
+    },
+    {
+      "attributes": "public override",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "MandateEpochRegistry",
+      "name": "renounceRole",
+      "path": "contracts/aep/MandateEpochRegistry.sol",
+      "signature": "renounceRole(bytes32,address)"
+    },
+    {
+      "attributes": "external returns (uint256 appealId)",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "AppealRegistry",
+      "name": "openAppeal",
+      "path": "contracts/optional/AppealRegistry.sol",
+      "signature": "openAppeal(uint256,bytes32)"
+    },
+    {
+      "attributes": "external onlyOperator",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "AppealRegistry",
+      "name": "decideAppeal",
+      "path": "contracts/optional/AppealRegistry.sol",
+      "signature": "decideAppeal(uint256,bool,bytes32)"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "AppealRegistry",
+      "name": "pause",
+      "path": "contracts/optional/AppealRegistry.sol",
+      "signature": "pause()"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "AppealRegistry",
+      "name": "unpause",
+      "path": "contracts/optional/AppealRegistry.sol",
+      "signature": "unpause()"
+    },
+    {
+      "attributes": "public override onlyOwner",
+      "classification": "configuration",
+      "contract": "AppealRegistry",
+      "name": "transferOwnership",
+      "path": "contracts/optional/AppealRegistry.sol",
+      "signature": "transferOwnership(address)"
+    },
+    {
+      "attributes": "public onlyOwner",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "AppealRegistry",
+      "name": "cancelOwnershipTransfer",
+      "path": "contracts/optional/AppealRegistry.sol",
+      "signature": "cancelOwnershipTransfer()"
+    },
+    {
+      "attributes": "public",
+      "classification": "configuration",
+      "contract": "AppealRegistry",
+      "name": "acceptOwnership",
+      "path": "contracts/optional/AppealRegistry.sol",
+      "signature": "acceptOwnership()"
+    },
+    {
+      "attributes": "public override",
+      "classification": "configuration",
+      "contract": "AppealRegistry",
+      "name": "grantRole",
+      "path": "contracts/optional/AppealRegistry.sol",
+      "signature": "grantRole(bytes32,address)"
+    },
+    {
+      "attributes": "public override",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "AppealRegistry",
+      "name": "revokeRole",
+      "path": "contracts/optional/AppealRegistry.sol",
+      "signature": "revokeRole(bytes32,address)"
+    },
+    {
+      "attributes": "public override",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "AppealRegistry",
+      "name": "renounceRole",
+      "path": "contracts/optional/AppealRegistry.sol",
+      "signature": "renounceRole(bytes32,address)"
+    },
+    {
+      "attributes": "external",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "BuilderProfileRegistry",
+      "name": "registerBuilder",
+      "path": "contracts/optional/BuilderProfileRegistry.sol",
+      "signature": "registerBuilder(string,bytes32)"
+    },
+    {
+      "attributes": "external onlyOperator",
+      "classification": "configuration",
+      "contract": "BuilderProfileRegistry",
+      "name": "setBuilderStatus",
+      "path": "contracts/optional/BuilderProfileRegistry.sol",
+      "signature": "setBuilderStatus(address,bool)"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "BuilderProfileRegistry",
+      "name": "pause",
+      "path": "contracts/optional/BuilderProfileRegistry.sol",
+      "signature": "pause()"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "BuilderProfileRegistry",
+      "name": "unpause",
+      "path": "contracts/optional/BuilderProfileRegistry.sol",
+      "signature": "unpause()"
+    },
+    {
+      "attributes": "public override onlyOwner",
+      "classification": "configuration",
+      "contract": "BuilderProfileRegistry",
+      "name": "transferOwnership",
+      "path": "contracts/optional/BuilderProfileRegistry.sol",
+      "signature": "transferOwnership(address)"
+    },
+    {
+      "attributes": "public onlyOwner",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "BuilderProfileRegistry",
+      "name": "cancelOwnershipTransfer",
+      "path": "contracts/optional/BuilderProfileRegistry.sol",
+      "signature": "cancelOwnershipTransfer()"
+    },
+    {
+      "attributes": "public",
+      "classification": "configuration",
+      "contract": "BuilderProfileRegistry",
+      "name": "acceptOwnership",
+      "path": "contracts/optional/BuilderProfileRegistry.sol",
+      "signature": "acceptOwnership()"
+    },
+    {
+      "attributes": "public override",
+      "classification": "configuration",
+      "contract": "BuilderProfileRegistry",
+      "name": "grantRole",
+      "path": "contracts/optional/BuilderProfileRegistry.sol",
+      "signature": "grantRole(bytes32,address)"
+    },
+    {
+      "attributes": "public override",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "BuilderProfileRegistry",
+      "name": "revokeRole",
+      "path": "contracts/optional/BuilderProfileRegistry.sol",
+      "signature": "revokeRole(bytes32,address)"
+    },
+    {
+      "attributes": "public override",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "BuilderProfileRegistry",
+      "name": "renounceRole",
+      "path": "contracts/optional/BuilderProfileRegistry.sol",
+      "signature": "renounceRole(bytes32,address)"
+    },
+    {
+      "attributes": "external returns (uint256 revocationId)",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "CredentialRevocationRegistry",
+      "name": "requestRevocation",
+      "path": "contracts/optional/CredentialRevocationRegistry.sol",
+      "signature": "requestRevocation(uint256,bytes32)"
+    },
+    {
+      "attributes": "external onlyOperator",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "CredentialRevocationRegistry",
+      "name": "executeRevocation",
+      "path": "contracts/optional/CredentialRevocationRegistry.sol",
+      "signature": "executeRevocation(uint256)"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "CredentialRevocationRegistry",
+      "name": "pause",
+      "path": "contracts/optional/CredentialRevocationRegistry.sol",
+      "signature": "pause()"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "CredentialRevocationRegistry",
+      "name": "unpause",
+      "path": "contracts/optional/CredentialRevocationRegistry.sol",
+      "signature": "unpause()"
+    },
+    {
+      "attributes": "public override onlyOwner",
+      "classification": "configuration",
+      "contract": "CredentialRevocationRegistry",
+      "name": "transferOwnership",
+      "path": "contracts/optional/CredentialRevocationRegistry.sol",
+      "signature": "transferOwnership(address)"
+    },
+    {
+      "attributes": "public onlyOwner",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "CredentialRevocationRegistry",
+      "name": "cancelOwnershipTransfer",
+      "path": "contracts/optional/CredentialRevocationRegistry.sol",
+      "signature": "cancelOwnershipTransfer()"
+    },
+    {
+      "attributes": "public",
+      "classification": "configuration",
+      "contract": "CredentialRevocationRegistry",
+      "name": "acceptOwnership",
+      "path": "contracts/optional/CredentialRevocationRegistry.sol",
+      "signature": "acceptOwnership()"
+    },
+    {
+      "attributes": "public override",
+      "classification": "configuration",
+      "contract": "CredentialRevocationRegistry",
+      "name": "grantRole",
+      "path": "contracts/optional/CredentialRevocationRegistry.sol",
+      "signature": "grantRole(bytes32,address)"
+    },
+    {
+      "attributes": "public override",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "CredentialRevocationRegistry",
+      "name": "revokeRole",
+      "path": "contracts/optional/CredentialRevocationRegistry.sol",
+      "signature": "revokeRole(bytes32,address)"
+    },
+    {
+      "attributes": "public override",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "CredentialRevocationRegistry",
+      "name": "renounceRole",
+      "path": "contracts/optional/CredentialRevocationRegistry.sol",
+      "signature": "renounceRole(bytes32,address)"
+    },
+    {
+      "attributes": "external returns (uint256 disputeId)",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "DisputeRegistry",
+      "name": "openDispute",
+      "path": "contracts/optional/DisputeRegistry.sol",
+      "signature": "openDispute(uint256,uint256,bytes32)"
+    },
+    {
+      "attributes": "external onlyOperator",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "DisputeRegistry",
+      "name": "resolveDispute",
+      "path": "contracts/optional/DisputeRegistry.sol",
+      "signature": "resolveDispute(uint256,bool,bytes32)"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "DisputeRegistry",
+      "name": "pause",
+      "path": "contracts/optional/DisputeRegistry.sol",
+      "signature": "pause()"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "DisputeRegistry",
+      "name": "unpause",
+      "path": "contracts/optional/DisputeRegistry.sol",
+      "signature": "unpause()"
+    },
+    {
+      "attributes": "public override onlyOwner",
+      "classification": "configuration",
+      "contract": "DisputeRegistry",
+      "name": "transferOwnership",
+      "path": "contracts/optional/DisputeRegistry.sol",
+      "signature": "transferOwnership(address)"
+    },
+    {
+      "attributes": "public onlyOwner",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "DisputeRegistry",
+      "name": "cancelOwnershipTransfer",
+      "path": "contracts/optional/DisputeRegistry.sol",
+      "signature": "cancelOwnershipTransfer()"
+    },
+    {
+      "attributes": "public",
+      "classification": "configuration",
+      "contract": "DisputeRegistry",
+      "name": "acceptOwnership",
+      "path": "contracts/optional/DisputeRegistry.sol",
+      "signature": "acceptOwnership()"
+    },
+    {
+      "attributes": "public override",
+      "classification": "configuration",
+      "contract": "DisputeRegistry",
+      "name": "grantRole",
+      "path": "contracts/optional/DisputeRegistry.sol",
+      "signature": "grantRole(bytes32,address)"
+    },
+    {
+      "attributes": "public override",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "DisputeRegistry",
+      "name": "revokeRole",
+      "path": "contracts/optional/DisputeRegistry.sol",
+      "signature": "revokeRole(bytes32,address)"
+    },
+    {
+      "attributes": "public override",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "DisputeRegistry",
+      "name": "renounceRole",
+      "path": "contracts/optional/DisputeRegistry.sol",
+      "signature": "renounceRole(bytes32,address)"
+    },
+    {
+      "attributes": "external",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "SponsorRegistry",
+      "name": "registerSponsor",
+      "path": "contracts/optional/SponsorRegistry.sol",
+      "signature": "registerSponsor(string,bytes32)"
+    },
+    {
+      "attributes": "external onlyOperator",
+      "classification": "configuration",
+      "contract": "SponsorRegistry",
+      "name": "setSponsorStatus",
+      "path": "contracts/optional/SponsorRegistry.sol",
+      "signature": "setSponsorStatus(address,bool)"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "SponsorRegistry",
+      "name": "pause",
+      "path": "contracts/optional/SponsorRegistry.sol",
+      "signature": "pause()"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "SponsorRegistry",
+      "name": "unpause",
+      "path": "contracts/optional/SponsorRegistry.sol",
+      "signature": "unpause()"
+    },
+    {
+      "attributes": "public override onlyOwner",
+      "classification": "configuration",
+      "contract": "SponsorRegistry",
+      "name": "transferOwnership",
+      "path": "contracts/optional/SponsorRegistry.sol",
+      "signature": "transferOwnership(address)"
+    },
+    {
+      "attributes": "public onlyOwner",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "SponsorRegistry",
+      "name": "cancelOwnershipTransfer",
+      "path": "contracts/optional/SponsorRegistry.sol",
+      "signature": "cancelOwnershipTransfer()"
+    },
+    {
+      "attributes": "public",
+      "classification": "configuration",
+      "contract": "SponsorRegistry",
+      "name": "acceptOwnership",
+      "path": "contracts/optional/SponsorRegistry.sol",
+      "signature": "acceptOwnership()"
+    },
+    {
+      "attributes": "public override",
+      "classification": "configuration",
+      "contract": "SponsorRegistry",
+      "name": "grantRole",
+      "path": "contracts/optional/SponsorRegistry.sol",
+      "signature": "grantRole(bytes32,address)"
+    },
+    {
+      "attributes": "public override",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "SponsorRegistry",
+      "name": "revokeRole",
+      "path": "contracts/optional/SponsorRegistry.sol",
+      "signature": "revokeRole(bytes32,address)"
+    },
+    {
+      "attributes": "public override",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "SponsorRegistry",
+      "name": "renounceRole",
+      "path": "contracts/optional/SponsorRegistry.sol",
+      "signature": "renounceRole(bytes32,address)"
+    },
+    {
+      "attributes": "external onlyAdmin",
+      "classification": "configuration",
+      "contract": "JobClaimBondManager",
+      "name": "setClaimBond",
+      "path": "contracts/registry/JobClaimBondManager.sol",
+      "signature": "setClaimBond(uint256)"
+    },
+    {
+      "attributes": "external onlyAdmin",
+      "classification": "configuration",
+      "contract": "JobClaimBondManager",
+      "name": "setTreasury",
+      "path": "contracts/registry/JobClaimBondManager.sol",
+      "signature": "setTreasury(address)"
+    },
+    {
+      "attributes": "external nonReentrant whenNotPaused",
+      "classification": "new_obligation_or_risk_increase",
+      "contract": "JobClaimBondManager",
+      "name": "claimJob",
+      "path": "contracts/registry/JobClaimBondManager.sol",
+      "signature": "claimJob(uint256)"
+    },
+    {
+      "attributes": "external nonReentrant",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "JobClaimBondManager",
+      "name": "reclaimExpiredClaimedJob",
+      "path": "contracts/registry/JobClaimBondManager.sol",
+      "signature": "reclaimExpiredClaimedJob(uint256,bytes32)"
+    },
+    {
+      "attributes": "external onlyOperator nonReentrant",
+      "classification": "safe_exit_or_settlement",
+      "contract": "JobClaimBondManager",
+      "name": "releaseClaimBond",
+      "path": "contracts/registry/JobClaimBondManager.sol",
+      "signature": "releaseClaimBond(uint256)"
+    },
+    {
+      "attributes": "external onlyOperator nonReentrant",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "JobClaimBondManager",
+      "name": "slashClaimBond",
+      "path": "contracts/registry/JobClaimBondManager.sol",
+      "signature": "slashClaimBond(uint256,bytes32)"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "JobClaimBondManager",
+      "name": "pause",
+      "path": "contracts/registry/JobClaimBondManager.sol",
+      "signature": "pause()"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "JobClaimBondManager",
+      "name": "unpause",
+      "path": "contracts/registry/JobClaimBondManager.sol",
+      "signature": "unpause()"
+    },
+    {
+      "attributes": "public override onlyOwner",
+      "classification": "configuration",
+      "contract": "JobClaimBondManager",
+      "name": "transferOwnership",
+      "path": "contracts/registry/JobClaimBondManager.sol",
+      "signature": "transferOwnership(address)"
+    },
+    {
+      "attributes": "public onlyOwner",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "JobClaimBondManager",
+      "name": "cancelOwnershipTransfer",
+      "path": "contracts/registry/JobClaimBondManager.sol",
+      "signature": "cancelOwnershipTransfer()"
+    },
+    {
+      "attributes": "public",
+      "classification": "configuration",
+      "contract": "JobClaimBondManager",
+      "name": "acceptOwnership",
+      "path": "contracts/registry/JobClaimBondManager.sol",
+      "signature": "acceptOwnership()"
+    },
+    {
+      "attributes": "public override",
+      "classification": "configuration",
+      "contract": "JobClaimBondManager",
+      "name": "grantRole",
+      "path": "contracts/registry/JobClaimBondManager.sol",
+      "signature": "grantRole(bytes32,address)"
+    },
+    {
+      "attributes": "public override",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "JobClaimBondManager",
+      "name": "revokeRole",
+      "path": "contracts/registry/JobClaimBondManager.sol",
+      "signature": "revokeRole(bytes32,address)"
+    },
+    {
+      "attributes": "public override",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "JobClaimBondManager",
+      "name": "renounceRole",
+      "path": "contracts/registry/JobClaimBondManager.sol",
+      "signature": "renounceRole(bytes32,address)"
+    },
+    {
+      "attributes": "external onlyAdmin",
+      "classification": "configuration",
+      "contract": "JobRegistry",
+      "name": "setPostingFee",
+      "path": "contracts/registry/JobRegistry.sol",
+      "signature": "setPostingFee(uint256)"
+    },
+    {
+      "attributes": "external onlyAdmin",
+      "classification": "configuration",
+      "contract": "JobRegistry",
+      "name": "setTreasury",
+      "path": "contracts/registry/JobRegistry.sol",
+      "signature": "setTreasury(address)"
+    },
+    {
+      "attributes": "external onlyAdmin",
+      "classification": "configuration",
+      "contract": "JobRegistry",
+      "name": "setRewardTokenAllowed",
+      "path": "contracts/registry/JobRegistry.sol",
+      "signature": "setRewardTokenAllowed(address,bool)"
+    },
+    {
+      "attributes": "external onlyAdmin",
+      "classification": "configuration",
+      "contract": "JobRegistry",
+      "name": "setRewardTokenAllowlistEnabled",
+      "path": "contracts/registry/JobRegistry.sol",
+      "signature": "setRewardTokenAllowlistEnabled(bool)"
+    },
+    {
+      "attributes": "external nonReentrant whenNotPaused returns (uint256 jobId)",
+      "classification": "new_obligation_or_risk_increase",
+      "contract": "JobRegistry",
+      "name": "postJob",
+      "path": "contracts/registry/JobRegistry.sol",
+      "signature": "postJob(string,bytes32,address,uint256,uint256)"
+    },
+    {
+      "attributes": "external onlyOperator",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "JobRegistry",
+      "name": "markClaimed",
+      "path": "contracts/registry/JobRegistry.sol",
+      "signature": "markClaimed(uint256,address)"
+    },
+    {
+      "attributes": "external onlyOperator",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "JobRegistry",
+      "name": "markSubmitted",
+      "path": "contracts/registry/JobRegistry.sol",
+      "signature": "markSubmitted(uint256,uint256)"
+    },
+    {
+      "attributes": "external onlyOperator",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "JobRegistry",
+      "name": "markApproved",
+      "path": "contracts/registry/JobRegistry.sol",
+      "signature": "markApproved(uint256)"
+    },
+    {
+      "attributes": "external onlyOperator",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "JobRegistry",
+      "name": "markRejected",
+      "path": "contracts/registry/JobRegistry.sol",
+      "signature": "markRejected(uint256,bytes32)"
+    },
+    {
+      "attributes": "external onlyOperator nonReentrant",
+      "classification": "safe_exit_or_settlement",
+      "contract": "JobRegistry",
+      "name": "releaseReward",
+      "path": "contracts/registry/JobRegistry.sol",
+      "signature": "releaseReward(uint256,address)"
+    },
+    {
+      "attributes": "external onlyOperator nonReentrant",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "JobRegistry",
+      "name": "refundRejectedReward",
+      "path": "contracts/registry/JobRegistry.sol",
+      "signature": "refundRejectedReward(uint256,bytes32)"
+    },
+    {
+      "attributes": "external onlyOperator nonReentrant",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "JobRegistry",
+      "name": "expireClaimedJob",
+      "path": "contracts/registry/JobRegistry.sol",
+      "signature": "expireClaimedJob(uint256,bytes32)"
+    },
+    {
+      "attributes": "external nonReentrant",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "JobRegistry",
+      "name": "cancelOpenJob",
+      "path": "contracts/registry/JobRegistry.sol",
+      "signature": "cancelOpenJob(uint256,bytes32)"
+    },
+    {
+      "attributes": "external nonReentrant",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "JobRegistry",
+      "name": "expireOpenJob",
+      "path": "contracts/registry/JobRegistry.sol",
+      "signature": "expireOpenJob(uint256,bytes32)"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "JobRegistry",
+      "name": "pause",
+      "path": "contracts/registry/JobRegistry.sol",
+      "signature": "pause()"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "JobRegistry",
+      "name": "unpause",
+      "path": "contracts/registry/JobRegistry.sol",
+      "signature": "unpause()"
+    },
+    {
+      "attributes": "public override onlyOwner",
+      "classification": "configuration",
+      "contract": "JobRegistry",
+      "name": "transferOwnership",
+      "path": "contracts/registry/JobRegistry.sol",
+      "signature": "transferOwnership(address)"
+    },
+    {
+      "attributes": "public onlyOwner",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "JobRegistry",
+      "name": "cancelOwnershipTransfer",
+      "path": "contracts/registry/JobRegistry.sol",
+      "signature": "cancelOwnershipTransfer()"
+    },
+    {
+      "attributes": "public",
+      "classification": "configuration",
+      "contract": "JobRegistry",
+      "name": "acceptOwnership",
+      "path": "contracts/registry/JobRegistry.sol",
+      "signature": "acceptOwnership()"
+    },
+    {
+      "attributes": "public override",
+      "classification": "configuration",
+      "contract": "JobRegistry",
+      "name": "grantRole",
+      "path": "contracts/registry/JobRegistry.sol",
+      "signature": "grantRole(bytes32,address)"
+    },
+    {
+      "attributes": "public override",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "JobRegistry",
+      "name": "revokeRole",
+      "path": "contracts/registry/JobRegistry.sol",
+      "signature": "revokeRole(bytes32,address)"
+    },
+    {
+      "attributes": "public override",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "JobRegistry",
+      "name": "renounceRole",
+      "path": "contracts/registry/JobRegistry.sol",
+      "signature": "renounceRole(bytes32,address)"
+    },
+    {
+      "attributes": "external onlyOperator",
+      "classification": "configuration",
+      "contract": "LaunchGateRegistry",
+      "name": "setGate",
+      "path": "contracts/registry/LaunchGateRegistry.sol",
+      "signature": "setGate(bytes32,bool,bytes32,string)"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "LaunchGateRegistry",
+      "name": "pause",
+      "path": "contracts/registry/LaunchGateRegistry.sol",
+      "signature": "pause()"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "LaunchGateRegistry",
+      "name": "unpause",
+      "path": "contracts/registry/LaunchGateRegistry.sol",
+      "signature": "unpause()"
+    },
+    {
+      "attributes": "public override onlyOwner",
+      "classification": "configuration",
+      "contract": "LaunchGateRegistry",
+      "name": "transferOwnership",
+      "path": "contracts/registry/LaunchGateRegistry.sol",
+      "signature": "transferOwnership(address)"
+    },
+    {
+      "attributes": "public onlyOwner",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "LaunchGateRegistry",
+      "name": "cancelOwnershipTransfer",
+      "path": "contracts/registry/LaunchGateRegistry.sol",
+      "signature": "cancelOwnershipTransfer()"
+    },
+    {
+      "attributes": "public",
+      "classification": "configuration",
+      "contract": "LaunchGateRegistry",
+      "name": "acceptOwnership",
+      "path": "contracts/registry/LaunchGateRegistry.sol",
+      "signature": "acceptOwnership()"
+    },
+    {
+      "attributes": "public override",
+      "classification": "configuration",
+      "contract": "LaunchGateRegistry",
+      "name": "grantRole",
+      "path": "contracts/registry/LaunchGateRegistry.sol",
+      "signature": "grantRole(bytes32,address)"
+    },
+    {
+      "attributes": "public override",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "LaunchGateRegistry",
+      "name": "revokeRole",
+      "path": "contracts/registry/LaunchGateRegistry.sol",
+      "signature": "revokeRole(bytes32,address)"
+    },
+    {
+      "attributes": "public override",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "LaunchGateRegistry",
+      "name": "renounceRole",
+      "path": "contracts/registry/LaunchGateRegistry.sol",
+      "signature": "renounceRole(bytes32,address)"
+    },
+    {
+      "attributes": "external onlyOperator returns (uint256 recordId)",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "LegacyAGIJobManagerRegistry",
+      "name": "addLegacyRecord",
+      "path": "contracts/registry/LegacyAGIJobManagerRegistry.sol",
+      "signature": "addLegacyRecord(uint256,bytes32,bytes32,string,bool)"
+    },
+    {
+      "attributes": "external onlyOperator",
+      "classification": "configuration",
+      "contract": "LegacyAGIJobManagerRegistry",
+      "name": "setLegacyRecordAccepted",
+      "path": "contracts/registry/LegacyAGIJobManagerRegistry.sol",
+      "signature": "setLegacyRecordAccepted(uint256,bool,bytes32)"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "LegacyAGIJobManagerRegistry",
+      "name": "pause",
+      "path": "contracts/registry/LegacyAGIJobManagerRegistry.sol",
+      "signature": "pause()"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "LegacyAGIJobManagerRegistry",
+      "name": "unpause",
+      "path": "contracts/registry/LegacyAGIJobManagerRegistry.sol",
+      "signature": "unpause()"
+    },
+    {
+      "attributes": "public override onlyOwner",
+      "classification": "configuration",
+      "contract": "LegacyAGIJobManagerRegistry",
+      "name": "transferOwnership",
+      "path": "contracts/registry/LegacyAGIJobManagerRegistry.sol",
+      "signature": "transferOwnership(address)"
+    },
+    {
+      "attributes": "public onlyOwner",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "LegacyAGIJobManagerRegistry",
+      "name": "cancelOwnershipTransfer",
+      "path": "contracts/registry/LegacyAGIJobManagerRegistry.sol",
+      "signature": "cancelOwnershipTransfer()"
+    },
+    {
+      "attributes": "public",
+      "classification": "configuration",
+      "contract": "LegacyAGIJobManagerRegistry",
+      "name": "acceptOwnership",
+      "path": "contracts/registry/LegacyAGIJobManagerRegistry.sol",
+      "signature": "acceptOwnership()"
+    },
+    {
+      "attributes": "public override",
+      "classification": "configuration",
+      "contract": "LegacyAGIJobManagerRegistry",
+      "name": "grantRole",
+      "path": "contracts/registry/LegacyAGIJobManagerRegistry.sol",
+      "signature": "grantRole(bytes32,address)"
+    },
+    {
+      "attributes": "public override",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "LegacyAGIJobManagerRegistry",
+      "name": "revokeRole",
+      "path": "contracts/registry/LegacyAGIJobManagerRegistry.sol",
+      "signature": "revokeRole(bytes32,address)"
+    },
+    {
+      "attributes": "public override",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "LegacyAGIJobManagerRegistry",
+      "name": "renounceRole",
+      "path": "contracts/registry/LegacyAGIJobManagerRegistry.sol",
+      "signature": "renounceRole(bytes32,address)"
+    },
+    {
+      "attributes": "external onlyOperator",
+      "classification": "configuration",
+      "contract": "PremiumAccessRegistry",
+      "name": "setAccessTier",
+      "path": "contracts/registry/PremiumAccessRegistry.sol",
+      "signature": "setAccessTier(bytes32,uint256,uint256,bool)"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "PremiumAccessRegistry",
+      "name": "pause",
+      "path": "contracts/registry/PremiumAccessRegistry.sol",
+      "signature": "pause()"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "PremiumAccessRegistry",
+      "name": "unpause",
+      "path": "contracts/registry/PremiumAccessRegistry.sol",
+      "signature": "unpause()"
+    },
+    {
+      "attributes": "public override onlyOwner",
+      "classification": "configuration",
+      "contract": "PremiumAccessRegistry",
+      "name": "transferOwnership",
+      "path": "contracts/registry/PremiumAccessRegistry.sol",
+      "signature": "transferOwnership(address)"
+    },
+    {
+      "attributes": "public onlyOwner",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "PremiumAccessRegistry",
+      "name": "cancelOwnershipTransfer",
+      "path": "contracts/registry/PremiumAccessRegistry.sol",
+      "signature": "cancelOwnershipTransfer()"
+    },
+    {
+      "attributes": "public",
+      "classification": "configuration",
+      "contract": "PremiumAccessRegistry",
+      "name": "acceptOwnership",
+      "path": "contracts/registry/PremiumAccessRegistry.sol",
+      "signature": "acceptOwnership()"
+    },
+    {
+      "attributes": "public override",
+      "classification": "configuration",
+      "contract": "PremiumAccessRegistry",
+      "name": "grantRole",
+      "path": "contracts/registry/PremiumAccessRegistry.sol",
+      "signature": "grantRole(bytes32,address)"
+    },
+    {
+      "attributes": "public override",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "PremiumAccessRegistry",
+      "name": "revokeRole",
+      "path": "contracts/registry/PremiumAccessRegistry.sol",
+      "signature": "revokeRole(bytes32,address)"
+    },
+    {
+      "attributes": "public override",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "PremiumAccessRegistry",
+      "name": "renounceRole",
+      "path": "contracts/registry/PremiumAccessRegistry.sol",
+      "signature": "renounceRole(bytes32,address)"
+    },
+    {
+      "attributes": "external onlyOperator returns (uint256 proofCardId)",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "ProofCardRegistry",
+      "name": "registerProofCard",
+      "path": "contracts/registry/ProofCardRegistry.sol",
+      "signature": "registerProofCard(uint256,uint256,address,address,bytes32,bytes32,string)"
+    },
+    {
+      "attributes": "external onlyOperator",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "ProofCardRegistry",
+      "name": "revokeProofCard",
+      "path": "contracts/registry/ProofCardRegistry.sol",
+      "signature": "revokeProofCard(uint256,bytes32)"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "ProofCardRegistry",
+      "name": "pause",
+      "path": "contracts/registry/ProofCardRegistry.sol",
+      "signature": "pause()"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "ProofCardRegistry",
+      "name": "unpause",
+      "path": "contracts/registry/ProofCardRegistry.sol",
+      "signature": "unpause()"
+    },
+    {
+      "attributes": "public override onlyOwner",
+      "classification": "configuration",
+      "contract": "ProofCardRegistry",
+      "name": "transferOwnership",
+      "path": "contracts/registry/ProofCardRegistry.sol",
+      "signature": "transferOwnership(address)"
+    },
+    {
+      "attributes": "public onlyOwner",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "ProofCardRegistry",
+      "name": "cancelOwnershipTransfer",
+      "path": "contracts/registry/ProofCardRegistry.sol",
+      "signature": "cancelOwnershipTransfer()"
+    },
+    {
+      "attributes": "public",
+      "classification": "configuration",
+      "contract": "ProofCardRegistry",
+      "name": "acceptOwnership",
+      "path": "contracts/registry/ProofCardRegistry.sol",
+      "signature": "acceptOwnership()"
+    },
+    {
+      "attributes": "public override",
+      "classification": "configuration",
+      "contract": "ProofCardRegistry",
+      "name": "grantRole",
+      "path": "contracts/registry/ProofCardRegistry.sol",
+      "signature": "grantRole(bytes32,address)"
+    },
+    {
+      "attributes": "public override",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "ProofCardRegistry",
+      "name": "revokeRole",
+      "path": "contracts/registry/ProofCardRegistry.sol",
+      "signature": "revokeRole(bytes32,address)"
+    },
+    {
+      "attributes": "public override",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "ProofCardRegistry",
+      "name": "renounceRole",
+      "path": "contracts/registry/ProofCardRegistry.sol",
+      "signature": "renounceRole(bytes32,address)"
+    },
+    {
+      "attributes": "external onlyOperator returns (uint256 tokenId)",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "ProofCredentialRegistry",
+      "name": "issueCredential",
+      "path": "contracts/registry/ProofCredentialRegistry.sol",
+      "signature": "issueCredential(address,uint256,bytes32,bytes32,string)"
+    },
+    {
+      "attributes": "external onlyOperator",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "ProofCredentialRegistry",
+      "name": "revokeCredential",
+      "path": "contracts/registry/ProofCredentialRegistry.sol",
+      "signature": "revokeCredential(uint256,bytes32)"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "ProofCredentialRegistry",
+      "name": "pause",
+      "path": "contracts/registry/ProofCredentialRegistry.sol",
+      "signature": "pause()"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "ProofCredentialRegistry",
+      "name": "unpause",
+      "path": "contracts/registry/ProofCredentialRegistry.sol",
+      "signature": "unpause()"
+    },
+    {
+      "attributes": "public override onlyOwner",
+      "classification": "configuration",
+      "contract": "ProofCredentialRegistry",
+      "name": "transferOwnership",
+      "path": "contracts/registry/ProofCredentialRegistry.sol",
+      "signature": "transferOwnership(address)"
+    },
+    {
+      "attributes": "public onlyOwner",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "ProofCredentialRegistry",
+      "name": "cancelOwnershipTransfer",
+      "path": "contracts/registry/ProofCredentialRegistry.sol",
+      "signature": "cancelOwnershipTransfer()"
+    },
+    {
+      "attributes": "public",
+      "classification": "configuration",
+      "contract": "ProofCredentialRegistry",
+      "name": "acceptOwnership",
+      "path": "contracts/registry/ProofCredentialRegistry.sol",
+      "signature": "acceptOwnership()"
+    },
+    {
+      "attributes": "public override",
+      "classification": "configuration",
+      "contract": "ProofCredentialRegistry",
+      "name": "grantRole",
+      "path": "contracts/registry/ProofCredentialRegistry.sol",
+      "signature": "grantRole(bytes32,address)"
+    },
+    {
+      "attributes": "public override",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "ProofCredentialRegistry",
+      "name": "revokeRole",
+      "path": "contracts/registry/ProofCredentialRegistry.sol",
+      "signature": "revokeRole(bytes32,address)"
+    },
+    {
+      "attributes": "public override",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "ProofCredentialRegistry",
+      "name": "renounceRole",
+      "path": "contracts/registry/ProofCredentialRegistry.sol",
+      "signature": "renounceRole(bytes32,address)"
+    },
+    {
+      "attributes": "public inherited ERC721",
+      "classification": "new_obligation_or_risk_increase",
+      "contract": "ProofCredentialRegistry",
+      "name": "approve",
+      "path": "contracts/registry/ProofCredentialRegistry.sol",
+      "signature": "approve(address,uint256)"
+    },
+    {
+      "attributes": "public inherited ERC721",
+      "classification": "configuration",
+      "contract": "ProofCredentialRegistry",
+      "name": "setApprovalForAll",
+      "path": "contracts/registry/ProofCredentialRegistry.sol",
+      "signature": "setApprovalForAll(address,bool)"
+    },
+    {
+      "attributes": "public inherited ERC721",
+      "classification": "safe_exit_or_settlement",
+      "contract": "ProofCredentialRegistry",
+      "name": "transferFrom",
+      "path": "contracts/registry/ProofCredentialRegistry.sol",
+      "signature": "transferFrom(address,address,uint256)"
+    },
+    {
+      "attributes": "public inherited ERC721",
+      "classification": "safe_exit_or_settlement",
+      "contract": "ProofCredentialRegistry",
+      "name": "safeTransferFrom",
+      "path": "contracts/registry/ProofCredentialRegistry.sol",
+      "signature": "safeTransferFrom(address,address,uint256)"
+    },
+    {
+      "attributes": "public inherited ERC721",
+      "classification": "safe_exit_or_settlement",
+      "contract": "ProofCredentialRegistry",
+      "name": "safeTransferFrom",
+      "path": "contracts/registry/ProofCredentialRegistry.sol",
+      "signature": "safeTransferFrom(address,address,uint256,bytes)"
+    },
+    {
+      "attributes": "external onlyAdmin",
+      "classification": "configuration",
+      "contract": "ProofSeedRegistry",
+      "name": "setProofSeedFee",
+      "path": "contracts/registry/ProofSeedRegistry.sol",
+      "signature": "setProofSeedFee(uint256)"
+    },
+    {
+      "attributes": "external onlyAdmin",
+      "classification": "configuration",
+      "contract": "ProofSeedRegistry",
+      "name": "setTreasury",
+      "path": "contracts/registry/ProofSeedRegistry.sol",
+      "signature": "setTreasury(address)"
+    },
+    {
+      "attributes": "external nonReentrant whenNotPaused returns (uint256 seedId)",
+      "classification": "new_obligation_or_risk_increase",
+      "contract": "ProofSeedRegistry",
+      "name": "createProofSeed",
+      "path": "contracts/registry/ProofSeedRegistry.sol",
+      "signature": "createProofSeed(bytes32,string,bytes32)"
+    },
+    {
+      "attributes": "external onlyOperator",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "ProofSeedRegistry",
+      "name": "markReviewed",
+      "path": "contracts/registry/ProofSeedRegistry.sol",
+      "signature": "markReviewed(uint256,bytes32)"
+    },
+    {
+      "attributes": "external onlyOperator",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "ProofSeedRegistry",
+      "name": "markSpawned",
+      "path": "contracts/registry/ProofSeedRegistry.sol",
+      "signature": "markSpawned(uint256,uint256)"
+    },
+    {
+      "attributes": "external onlyOperator",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "ProofSeedRegistry",
+      "name": "archiveSeed",
+      "path": "contracts/registry/ProofSeedRegistry.sol",
+      "signature": "archiveSeed(uint256,bytes32)"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "ProofSeedRegistry",
+      "name": "pause",
+      "path": "contracts/registry/ProofSeedRegistry.sol",
+      "signature": "pause()"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "ProofSeedRegistry",
+      "name": "unpause",
+      "path": "contracts/registry/ProofSeedRegistry.sol",
+      "signature": "unpause()"
+    },
+    {
+      "attributes": "public override onlyOwner",
+      "classification": "configuration",
+      "contract": "ProofSeedRegistry",
+      "name": "transferOwnership",
+      "path": "contracts/registry/ProofSeedRegistry.sol",
+      "signature": "transferOwnership(address)"
+    },
+    {
+      "attributes": "public onlyOwner",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "ProofSeedRegistry",
+      "name": "cancelOwnershipTransfer",
+      "path": "contracts/registry/ProofSeedRegistry.sol",
+      "signature": "cancelOwnershipTransfer()"
+    },
+    {
+      "attributes": "public",
+      "classification": "configuration",
+      "contract": "ProofSeedRegistry",
+      "name": "acceptOwnership",
+      "path": "contracts/registry/ProofSeedRegistry.sol",
+      "signature": "acceptOwnership()"
+    },
+    {
+      "attributes": "public override",
+      "classification": "configuration",
+      "contract": "ProofSeedRegistry",
+      "name": "grantRole",
+      "path": "contracts/registry/ProofSeedRegistry.sol",
+      "signature": "grantRole(bytes32,address)"
+    },
+    {
+      "attributes": "public override",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "ProofSeedRegistry",
+      "name": "revokeRole",
+      "path": "contracts/registry/ProofSeedRegistry.sol",
+      "signature": "revokeRole(bytes32,address)"
+    },
+    {
+      "attributes": "public override",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "ProofSeedRegistry",
+      "name": "renounceRole",
+      "path": "contracts/registry/ProofSeedRegistry.sol",
+      "signature": "renounceRole(bytes32,address)"
+    },
+    {
+      "attributes": "external onlyAdmin",
+      "classification": "configuration",
+      "contract": "ProofSubmissionRegistry",
+      "name": "setProofBond",
+      "path": "contracts/registry/ProofSubmissionRegistry.sol",
+      "signature": "setProofBond(uint256)"
+    },
+    {
+      "attributes": "external onlyAdmin",
+      "classification": "configuration",
+      "contract": "ProofSubmissionRegistry",
+      "name": "setProofActionFees",
+      "path": "contracts/registry/ProofSubmissionRegistry.sol",
+      "signature": "setProofActionFees(uint256,uint256)"
+    },
+    {
+      "attributes": "external onlyAdmin",
+      "classification": "configuration",
+      "contract": "ProofSubmissionRegistry",
+      "name": "setTreasury",
+      "path": "contracts/registry/ProofSubmissionRegistry.sol",
+      "signature": "setTreasury(address)"
+    },
+    {
+      "attributes": "external nonReentrant whenNotPaused returns (uint256 submissionId)",
+      "classification": "new_obligation_or_risk_increase",
+      "contract": "ProofSubmissionRegistry",
+      "name": "submitProof",
+      "path": "contracts/registry/ProofSubmissionRegistry.sol",
+      "signature": "submitProof(uint256,string,bytes32,bytes32)"
+    },
+    {
+      "attributes": "external onlyOperator nonReentrant",
+      "classification": "new_obligation_or_risk_increase",
+      "contract": "ProofSubmissionRegistry",
+      "name": "approveSubmission",
+      "path": "contracts/registry/ProofSubmissionRegistry.sol",
+      "signature": "approveSubmission(uint256,address,bytes32,string,bytes32)"
+    },
+    {
+      "attributes": "external onlyOperator nonReentrant",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "ProofSubmissionRegistry",
+      "name": "rejectSubmission",
+      "path": "contracts/registry/ProofSubmissionRegistry.sol",
+      "signature": "rejectSubmission(uint256,address,bytes32,bool)"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "ProofSubmissionRegistry",
+      "name": "pause",
+      "path": "contracts/registry/ProofSubmissionRegistry.sol",
+      "signature": "pause()"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "ProofSubmissionRegistry",
+      "name": "unpause",
+      "path": "contracts/registry/ProofSubmissionRegistry.sol",
+      "signature": "unpause()"
+    },
+    {
+      "attributes": "public override onlyOwner",
+      "classification": "configuration",
+      "contract": "ProofSubmissionRegistry",
+      "name": "transferOwnership",
+      "path": "contracts/registry/ProofSubmissionRegistry.sol",
+      "signature": "transferOwnership(address)"
+    },
+    {
+      "attributes": "public onlyOwner",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "ProofSubmissionRegistry",
+      "name": "cancelOwnershipTransfer",
+      "path": "contracts/registry/ProofSubmissionRegistry.sol",
+      "signature": "cancelOwnershipTransfer()"
+    },
+    {
+      "attributes": "public",
+      "classification": "configuration",
+      "contract": "ProofSubmissionRegistry",
+      "name": "acceptOwnership",
+      "path": "contracts/registry/ProofSubmissionRegistry.sol",
+      "signature": "acceptOwnership()"
+    },
+    {
+      "attributes": "public override",
+      "classification": "configuration",
+      "contract": "ProofSubmissionRegistry",
+      "name": "grantRole",
+      "path": "contracts/registry/ProofSubmissionRegistry.sol",
+      "signature": "grantRole(bytes32,address)"
+    },
+    {
+      "attributes": "public override",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "ProofSubmissionRegistry",
+      "name": "revokeRole",
+      "path": "contracts/registry/ProofSubmissionRegistry.sol",
+      "signature": "revokeRole(bytes32,address)"
+    },
+    {
+      "attributes": "public override",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "ProofSubmissionRegistry",
+      "name": "renounceRole",
+      "path": "contracts/registry/ProofSubmissionRegistry.sol",
+      "signature": "renounceRole(bytes32,address)"
+    },
+    {
+      "attributes": "external onlyOperator",
+      "classification": "configuration",
+      "contract": "ProtocolConfigRegistry",
+      "name": "setConfig",
+      "path": "contracts/registry/ProtocolConfigRegistry.sol",
+      "signature": "setConfig(bytes32,bytes32,string)"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "ProtocolConfigRegistry",
+      "name": "pause",
+      "path": "contracts/registry/ProtocolConfigRegistry.sol",
+      "signature": "pause()"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "ProtocolConfigRegistry",
+      "name": "unpause",
+      "path": "contracts/registry/ProtocolConfigRegistry.sol",
+      "signature": "unpause()"
+    },
+    {
+      "attributes": "public override onlyOwner",
+      "classification": "configuration",
+      "contract": "ProtocolConfigRegistry",
+      "name": "transferOwnership",
+      "path": "contracts/registry/ProtocolConfigRegistry.sol",
+      "signature": "transferOwnership(address)"
+    },
+    {
+      "attributes": "public onlyOwner",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "ProtocolConfigRegistry",
+      "name": "cancelOwnershipTransfer",
+      "path": "contracts/registry/ProtocolConfigRegistry.sol",
+      "signature": "cancelOwnershipTransfer()"
+    },
+    {
+      "attributes": "public",
+      "classification": "configuration",
+      "contract": "ProtocolConfigRegistry",
+      "name": "acceptOwnership",
+      "path": "contracts/registry/ProtocolConfigRegistry.sol",
+      "signature": "acceptOwnership()"
+    },
+    {
+      "attributes": "public override",
+      "classification": "configuration",
+      "contract": "ProtocolConfigRegistry",
+      "name": "grantRole",
+      "path": "contracts/registry/ProtocolConfigRegistry.sol",
+      "signature": "grantRole(bytes32,address)"
+    },
+    {
+      "attributes": "public override",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "ProtocolConfigRegistry",
+      "name": "revokeRole",
+      "path": "contracts/registry/ProtocolConfigRegistry.sol",
+      "signature": "revokeRole(bytes32,address)"
+    },
+    {
+      "attributes": "public override",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "ProtocolConfigRegistry",
+      "name": "renounceRole",
+      "path": "contracts/registry/ProtocolConfigRegistry.sol",
+      "signature": "renounceRole(bytes32,address)"
+    },
+    {
+      "attributes": "external whenNotPaused",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "ReferralRegistry",
+      "name": "assignReferral",
+      "path": "contracts/registry/ReferralRegistry.sol",
+      "signature": "assignReferral(address)"
+    },
+    {
+      "attributes": "external onlyOperator",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "ReferralRegistry",
+      "name": "assignReferralFor",
+      "path": "contracts/registry/ReferralRegistry.sol",
+      "signature": "assignReferralFor(address,address)"
+    },
+    {
+      "attributes": "external onlyOperator",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "ReferralRegistry",
+      "name": "recordConversion",
+      "path": "contracts/registry/ReferralRegistry.sol",
+      "signature": "recordConversion(address,bytes32)"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "ReferralRegistry",
+      "name": "pause",
+      "path": "contracts/registry/ReferralRegistry.sol",
+      "signature": "pause()"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "ReferralRegistry",
+      "name": "unpause",
+      "path": "contracts/registry/ReferralRegistry.sol",
+      "signature": "unpause()"
+    },
+    {
+      "attributes": "public override onlyOwner",
+      "classification": "configuration",
+      "contract": "ReferralRegistry",
+      "name": "transferOwnership",
+      "path": "contracts/registry/ReferralRegistry.sol",
+      "signature": "transferOwnership(address)"
+    },
+    {
+      "attributes": "public onlyOwner",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "ReferralRegistry",
+      "name": "cancelOwnershipTransfer",
+      "path": "contracts/registry/ReferralRegistry.sol",
+      "signature": "cancelOwnershipTransfer()"
+    },
+    {
+      "attributes": "public",
+      "classification": "configuration",
+      "contract": "ReferralRegistry",
+      "name": "acceptOwnership",
+      "path": "contracts/registry/ReferralRegistry.sol",
+      "signature": "acceptOwnership()"
+    },
+    {
+      "attributes": "public override",
+      "classification": "configuration",
+      "contract": "ReferralRegistry",
+      "name": "grantRole",
+      "path": "contracts/registry/ReferralRegistry.sol",
+      "signature": "grantRole(bytes32,address)"
+    },
+    {
+      "attributes": "public override",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "ReferralRegistry",
+      "name": "revokeRole",
+      "path": "contracts/registry/ReferralRegistry.sol",
+      "signature": "revokeRole(bytes32,address)"
+    },
+    {
+      "attributes": "public override",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "ReferralRegistry",
+      "name": "renounceRole",
+      "path": "contracts/registry/ReferralRegistry.sol",
+      "signature": "renounceRole(bytes32,address)"
+    },
+    {
+      "attributes": "external onlyOperator",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "ReputationRegistry",
+      "name": "recordApprovedProof",
+      "path": "contracts/registry/ReputationRegistry.sol",
+      "signature": "recordApprovedProof(address,address,uint256)"
+    },
+    {
+      "attributes": "external onlyOperator",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "ReputationRegistry",
+      "name": "recordRejectedProof",
+      "path": "contracts/registry/ReputationRegistry.sol",
+      "signature": "recordRejectedProof(address,address,bytes32)"
+    },
+    {
+      "attributes": "external onlyOperator",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "ReputationRegistry",
+      "name": "recordCredential",
+      "path": "contracts/registry/ReputationRegistry.sol",
+      "signature": "recordCredential(address,uint256)"
+    },
+    {
+      "attributes": "external onlyOperator",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "ReputationRegistry",
+      "name": "recordDispute",
+      "path": "contracts/registry/ReputationRegistry.sol",
+      "signature": "recordDispute(address,bytes32)"
+    },
+    {
+      "attributes": "external onlyOperator",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "ReputationRegistry",
+      "name": "adjustScore",
+      "path": "contracts/registry/ReputationRegistry.sol",
+      "signature": "adjustScore(address,int256,bytes32)"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "ReputationRegistry",
+      "name": "pause",
+      "path": "contracts/registry/ReputationRegistry.sol",
+      "signature": "pause()"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "ReputationRegistry",
+      "name": "unpause",
+      "path": "contracts/registry/ReputationRegistry.sol",
+      "signature": "unpause()"
+    },
+    {
+      "attributes": "public override onlyOwner",
+      "classification": "configuration",
+      "contract": "ReputationRegistry",
+      "name": "transferOwnership",
+      "path": "contracts/registry/ReputationRegistry.sol",
+      "signature": "transferOwnership(address)"
+    },
+    {
+      "attributes": "public onlyOwner",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "ReputationRegistry",
+      "name": "cancelOwnershipTransfer",
+      "path": "contracts/registry/ReputationRegistry.sol",
+      "signature": "cancelOwnershipTransfer()"
+    },
+    {
+      "attributes": "public",
+      "classification": "configuration",
+      "contract": "ReputationRegistry",
+      "name": "acceptOwnership",
+      "path": "contracts/registry/ReputationRegistry.sol",
+      "signature": "acceptOwnership()"
+    },
+    {
+      "attributes": "public override",
+      "classification": "configuration",
+      "contract": "ReputationRegistry",
+      "name": "grantRole",
+      "path": "contracts/registry/ReputationRegistry.sol",
+      "signature": "grantRole(bytes32,address)"
+    },
+    {
+      "attributes": "public override",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "ReputationRegistry",
+      "name": "revokeRole",
+      "path": "contracts/registry/ReputationRegistry.sol",
+      "signature": "revokeRole(bytes32,address)"
+    },
+    {
+      "attributes": "public override",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "ReputationRegistry",
+      "name": "renounceRole",
+      "path": "contracts/registry/ReputationRegistry.sol",
+      "signature": "renounceRole(bytes32,address)"
+    },
+    {
+      "attributes": "external onlyAdmin",
+      "classification": "configuration",
+      "contract": "ReviewerBondRegistry",
+      "name": "setReviewerBond",
+      "path": "contracts/registry/ReviewerBondRegistry.sol",
+      "signature": "setReviewerBond(uint256)"
+    },
+    {
+      "attributes": "external onlyAdmin",
+      "classification": "configuration",
+      "contract": "ReviewerBondRegistry",
+      "name": "setReviewChallengePeriod",
+      "path": "contracts/registry/ReviewerBondRegistry.sol",
+      "signature": "setReviewChallengePeriod(uint256)"
+    },
+    {
+      "attributes": "external onlyAdmin",
+      "classification": "configuration",
+      "contract": "ReviewerBondRegistry",
+      "name": "setAllowlistRequired",
+      "path": "contracts/registry/ReviewerBondRegistry.sol",
+      "signature": "setAllowlistRequired(bool)"
+    },
+    {
+      "attributes": "external",
+      "classification": "configuration",
+      "contract": "ReviewerBondRegistry",
+      "name": "setReviewerApproved",
+      "path": "contracts/registry/ReviewerBondRegistry.sol",
+      "signature": "setReviewerApproved(address,bool)"
+    },
+    {
+      "attributes": "external nonReentrant whenNotPaused",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "ReviewerBondRegistry",
+      "name": "bondAsReviewer",
+      "path": "contracts/registry/ReviewerBondRegistry.sol",
+      "signature": "bondAsReviewer(string)"
+    },
+    {
+      "attributes": "external nonReentrant",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "ReviewerBondRegistry",
+      "name": "unbondReviewer",
+      "path": "contracts/registry/ReviewerBondRegistry.sol",
+      "signature": "unbondReviewer()"
+    },
+    {
+      "attributes": "external nonReentrant whenNotPaused",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "ReviewerBondRegistry",
+      "name": "reviewSubmission",
+      "path": "contracts/registry/ReviewerBondRegistry.sol",
+      "signature": "reviewSubmission(uint256,bool,bytes32,string,bytes32,bool)"
+    },
+    {
+      "attributes": "external onlyOperator nonReentrant",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "ReviewerBondRegistry",
+      "name": "slashReviewer",
+      "path": "contracts/registry/ReviewerBondRegistry.sol",
+      "signature": "slashReviewer(address,uint256,bytes32)"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "ReviewerBondRegistry",
+      "name": "pause",
+      "path": "contracts/registry/ReviewerBondRegistry.sol",
+      "signature": "pause()"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "ReviewerBondRegistry",
+      "name": "unpause",
+      "path": "contracts/registry/ReviewerBondRegistry.sol",
+      "signature": "unpause()"
+    },
+    {
+      "attributes": "public override onlyOwner",
+      "classification": "configuration",
+      "contract": "ReviewerBondRegistry",
+      "name": "transferOwnership",
+      "path": "contracts/registry/ReviewerBondRegistry.sol",
+      "signature": "transferOwnership(address)"
+    },
+    {
+      "attributes": "public onlyOwner",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "ReviewerBondRegistry",
+      "name": "cancelOwnershipTransfer",
+      "path": "contracts/registry/ReviewerBondRegistry.sol",
+      "signature": "cancelOwnershipTransfer()"
+    },
+    {
+      "attributes": "public",
+      "classification": "configuration",
+      "contract": "ReviewerBondRegistry",
+      "name": "acceptOwnership",
+      "path": "contracts/registry/ReviewerBondRegistry.sol",
+      "signature": "acceptOwnership()"
+    },
+    {
+      "attributes": "public override",
+      "classification": "configuration",
+      "contract": "ReviewerBondRegistry",
+      "name": "grantRole",
+      "path": "contracts/registry/ReviewerBondRegistry.sol",
+      "signature": "grantRole(bytes32,address)"
+    },
+    {
+      "attributes": "public override",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "ReviewerBondRegistry",
+      "name": "revokeRole",
+      "path": "contracts/registry/ReviewerBondRegistry.sol",
+      "signature": "revokeRole(bytes32,address)"
+    },
+    {
+      "attributes": "public override",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "ReviewerBondRegistry",
+      "name": "renounceRole",
+      "path": "contracts/registry/ReviewerBondRegistry.sol",
+      "signature": "renounceRole(bytes32,address)"
+    },
+    {
+      "attributes": "external onlyAdmin",
+      "classification": "configuration",
+      "contract": "TreasuryRouter",
+      "name": "setTreasury",
+      "path": "contracts/registry/TreasuryRouter.sol",
+      "signature": "setTreasury(address)"
+    },
+    {
+      "attributes": "external onlyOperator",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "TreasuryRouter",
+      "name": "routeFrom",
+      "path": "contracts/registry/TreasuryRouter.sol",
+      "signature": "routeFrom(address,uint256,bytes32)"
+    },
+    {
+      "attributes": "external onlyOperator",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "TreasuryRouter",
+      "name": "routeHeld",
+      "path": "contracts/registry/TreasuryRouter.sol",
+      "signature": "routeHeld(address,uint256,bytes32)"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "TreasuryRouter",
+      "name": "pause",
+      "path": "contracts/registry/TreasuryRouter.sol",
+      "signature": "pause()"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "TreasuryRouter",
+      "name": "unpause",
+      "path": "contracts/registry/TreasuryRouter.sol",
+      "signature": "unpause()"
+    },
+    {
+      "attributes": "public override onlyOwner",
+      "classification": "configuration",
+      "contract": "TreasuryRouter",
+      "name": "transferOwnership",
+      "path": "contracts/registry/TreasuryRouter.sol",
+      "signature": "transferOwnership(address)"
+    },
+    {
+      "attributes": "public onlyOwner",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "TreasuryRouter",
+      "name": "cancelOwnershipTransfer",
+      "path": "contracts/registry/TreasuryRouter.sol",
+      "signature": "cancelOwnershipTransfer()"
+    },
+    {
+      "attributes": "public",
+      "classification": "configuration",
+      "contract": "TreasuryRouter",
+      "name": "acceptOwnership",
+      "path": "contracts/registry/TreasuryRouter.sol",
+      "signature": "acceptOwnership()"
+    },
+    {
+      "attributes": "public override",
+      "classification": "configuration",
+      "contract": "TreasuryRouter",
+      "name": "grantRole",
+      "path": "contracts/registry/TreasuryRouter.sol",
+      "signature": "grantRole(bytes32,address)"
+    },
+    {
+      "attributes": "public override",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "TreasuryRouter",
+      "name": "revokeRole",
+      "path": "contracts/registry/TreasuryRouter.sol",
+      "signature": "revokeRole(bytes32,address)"
+    },
+    {
+      "attributes": "public override",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "TreasuryRouter",
+      "name": "renounceRole",
+      "path": "contracts/registry/TreasuryRouter.sol",
+      "signature": "renounceRole(bytes32,address)"
+    },
+    {
+      "attributes": "external onlyAdmin",
+      "classification": "configuration",
+      "contract": "CommercializationPerformanceVault",
+      "name": "setMinApprovalDelay",
+      "path": "contracts/vaults/CommercializationPerformanceVault.sol",
+      "signature": "setMinApprovalDelay(uint256)"
+    },
+    {
+      "attributes": "external onlyOperator returns (uint256 trancheId)",
+      "classification": "new_obligation_or_risk_increase",
+      "contract": "CommercializationPerformanceVault",
+      "name": "proposeTranche",
+      "path": "contracts/vaults/CommercializationPerformanceVault.sol",
+      "signature": "proposeTranche(address,uint256,bytes32,bytes32,bytes32,uint256,string)"
+    },
+    {
+      "attributes": "external onlyAdmin",
+      "classification": "new_obligation_or_risk_increase",
+      "contract": "CommercializationPerformanceVault",
+      "name": "approveTranche",
+      "path": "contracts/vaults/CommercializationPerformanceVault.sol",
+      "signature": "approveTranche(uint256,bytes32)"
+    },
+    {
+      "attributes": "external whenNotPaused",
+      "classification": "safe_exit_or_settlement",
+      "contract": "CommercializationPerformanceVault",
+      "name": "releaseTranche",
+      "path": "contracts/vaults/CommercializationPerformanceVault.sol",
+      "signature": "releaseTranche(uint256)"
+    },
+    {
+      "attributes": "external onlyAdmin",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "CommercializationPerformanceVault",
+      "name": "cancelTranche",
+      "path": "contracts/vaults/CommercializationPerformanceVault.sol",
+      "signature": "cancelTranche(uint256,bytes32)"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "CommercializationPerformanceVault",
+      "name": "pause",
+      "path": "contracts/vaults/CommercializationPerformanceVault.sol",
+      "signature": "pause()"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "CommercializationPerformanceVault",
+      "name": "unpause",
+      "path": "contracts/vaults/CommercializationPerformanceVault.sol",
+      "signature": "unpause()"
+    },
+    {
+      "attributes": "public override onlyOwner",
+      "classification": "configuration",
+      "contract": "CommercializationPerformanceVault",
+      "name": "transferOwnership",
+      "path": "contracts/vaults/CommercializationPerformanceVault.sol",
+      "signature": "transferOwnership(address)"
+    },
+    {
+      "attributes": "public onlyOwner",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "CommercializationPerformanceVault",
+      "name": "cancelOwnershipTransfer",
+      "path": "contracts/vaults/CommercializationPerformanceVault.sol",
+      "signature": "cancelOwnershipTransfer()"
+    },
+    {
+      "attributes": "public",
+      "classification": "configuration",
+      "contract": "CommercializationPerformanceVault",
+      "name": "acceptOwnership",
+      "path": "contracts/vaults/CommercializationPerformanceVault.sol",
+      "signature": "acceptOwnership()"
+    },
+    {
+      "attributes": "public override",
+      "classification": "configuration",
+      "contract": "CommercializationPerformanceVault",
+      "name": "grantRole",
+      "path": "contracts/vaults/CommercializationPerformanceVault.sol",
+      "signature": "grantRole(bytes32,address)"
+    },
+    {
+      "attributes": "public override",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "CommercializationPerformanceVault",
+      "name": "revokeRole",
+      "path": "contracts/vaults/CommercializationPerformanceVault.sol",
+      "signature": "revokeRole(bytes32,address)"
+    },
+    {
+      "attributes": "public override",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "CommercializationPerformanceVault",
+      "name": "renounceRole",
+      "path": "contracts/vaults/CommercializationPerformanceVault.sol",
+      "signature": "renounceRole(bytes32,address)"
+    },
+    {
+      "attributes": "external onlyAdmin",
+      "classification": "configuration",
+      "contract": "ProofRewardsVault",
+      "name": "setPurpose",
+      "path": "contracts/vaults/TokenReserveVault.sol",
+      "signature": "setPurpose(string)"
+    },
+    {
+      "attributes": "external whenNotPaused",
+      "classification": "safe_exit_or_settlement",
+      "contract": "ProofRewardsVault",
+      "name": "release",
+      "path": "contracts/vaults/TokenReserveVault.sol",
+      "signature": "release(address,uint256,bytes32,string)"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "ProofRewardsVault",
+      "name": "pause",
+      "path": "contracts/vaults/TokenReserveVault.sol",
+      "signature": "pause()"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "ProofRewardsVault",
+      "name": "unpause",
+      "path": "contracts/vaults/TokenReserveVault.sol",
+      "signature": "unpause()"
+    },
+    {
+      "attributes": "public override onlyOwner",
+      "classification": "configuration",
+      "contract": "ProofRewardsVault",
+      "name": "transferOwnership",
+      "path": "contracts/vaults/TokenReserveVault.sol",
+      "signature": "transferOwnership(address)"
+    },
+    {
+      "attributes": "public onlyOwner",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "ProofRewardsVault",
+      "name": "cancelOwnershipTransfer",
+      "path": "contracts/vaults/TokenReserveVault.sol",
+      "signature": "cancelOwnershipTransfer()"
+    },
+    {
+      "attributes": "public",
+      "classification": "configuration",
+      "contract": "ProofRewardsVault",
+      "name": "acceptOwnership",
+      "path": "contracts/vaults/TokenReserveVault.sol",
+      "signature": "acceptOwnership()"
+    },
+    {
+      "attributes": "public override",
+      "classification": "configuration",
+      "contract": "ProofRewardsVault",
+      "name": "grantRole",
+      "path": "contracts/vaults/TokenReserveVault.sol",
+      "signature": "grantRole(bytes32,address)"
+    },
+    {
+      "attributes": "public override",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "ProofRewardsVault",
+      "name": "revokeRole",
+      "path": "contracts/vaults/TokenReserveVault.sol",
+      "signature": "revokeRole(bytes32,address)"
+    },
+    {
+      "attributes": "public override",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "ProofRewardsVault",
+      "name": "renounceRole",
+      "path": "contracts/vaults/TokenReserveVault.sol",
+      "signature": "renounceRole(bytes32,address)"
+    },
+    {
+      "attributes": "external onlyAdmin",
+      "classification": "configuration",
+      "contract": "LiquidityVault",
+      "name": "setPurpose",
+      "path": "contracts/vaults/TokenReserveVault.sol",
+      "signature": "setPurpose(string)"
+    },
+    {
+      "attributes": "external whenNotPaused",
+      "classification": "safe_exit_or_settlement",
+      "contract": "LiquidityVault",
+      "name": "release",
+      "path": "contracts/vaults/TokenReserveVault.sol",
+      "signature": "release(address,uint256,bytes32,string)"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "LiquidityVault",
+      "name": "pause",
+      "path": "contracts/vaults/TokenReserveVault.sol",
+      "signature": "pause()"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "LiquidityVault",
+      "name": "unpause",
+      "path": "contracts/vaults/TokenReserveVault.sol",
+      "signature": "unpause()"
+    },
+    {
+      "attributes": "public override onlyOwner",
+      "classification": "configuration",
+      "contract": "LiquidityVault",
+      "name": "transferOwnership",
+      "path": "contracts/vaults/TokenReserveVault.sol",
+      "signature": "transferOwnership(address)"
+    },
+    {
+      "attributes": "public onlyOwner",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "LiquidityVault",
+      "name": "cancelOwnershipTransfer",
+      "path": "contracts/vaults/TokenReserveVault.sol",
+      "signature": "cancelOwnershipTransfer()"
+    },
+    {
+      "attributes": "public",
+      "classification": "configuration",
+      "contract": "LiquidityVault",
+      "name": "acceptOwnership",
+      "path": "contracts/vaults/TokenReserveVault.sol",
+      "signature": "acceptOwnership()"
+    },
+    {
+      "attributes": "public override",
+      "classification": "configuration",
+      "contract": "LiquidityVault",
+      "name": "grantRole",
+      "path": "contracts/vaults/TokenReserveVault.sol",
+      "signature": "grantRole(bytes32,address)"
+    },
+    {
+      "attributes": "public override",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "LiquidityVault",
+      "name": "revokeRole",
+      "path": "contracts/vaults/TokenReserveVault.sol",
+      "signature": "revokeRole(bytes32,address)"
+    },
+    {
+      "attributes": "public override",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "LiquidityVault",
+      "name": "renounceRole",
+      "path": "contracts/vaults/TokenReserveVault.sol",
+      "signature": "renounceRole(bytes32,address)"
+    },
+    {
+      "attributes": "external onlyAdmin",
+      "classification": "configuration",
+      "contract": "SecurityVault",
+      "name": "setPurpose",
+      "path": "contracts/vaults/TokenReserveVault.sol",
+      "signature": "setPurpose(string)"
+    },
+    {
+      "attributes": "external whenNotPaused",
+      "classification": "safe_exit_or_settlement",
+      "contract": "SecurityVault",
+      "name": "release",
+      "path": "contracts/vaults/TokenReserveVault.sol",
+      "signature": "release(address,uint256,bytes32,string)"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "SecurityVault",
+      "name": "pause",
+      "path": "contracts/vaults/TokenReserveVault.sol",
+      "signature": "pause()"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "SecurityVault",
+      "name": "unpause",
+      "path": "contracts/vaults/TokenReserveVault.sol",
+      "signature": "unpause()"
+    },
+    {
+      "attributes": "public override onlyOwner",
+      "classification": "configuration",
+      "contract": "SecurityVault",
+      "name": "transferOwnership",
+      "path": "contracts/vaults/TokenReserveVault.sol",
+      "signature": "transferOwnership(address)"
+    },
+    {
+      "attributes": "public onlyOwner",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "SecurityVault",
+      "name": "cancelOwnershipTransfer",
+      "path": "contracts/vaults/TokenReserveVault.sol",
+      "signature": "cancelOwnershipTransfer()"
+    },
+    {
+      "attributes": "public",
+      "classification": "configuration",
+      "contract": "SecurityVault",
+      "name": "acceptOwnership",
+      "path": "contracts/vaults/TokenReserveVault.sol",
+      "signature": "acceptOwnership()"
+    },
+    {
+      "attributes": "public override",
+      "classification": "configuration",
+      "contract": "SecurityVault",
+      "name": "grantRole",
+      "path": "contracts/vaults/TokenReserveVault.sol",
+      "signature": "grantRole(bytes32,address)"
+    },
+    {
+      "attributes": "public override",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "SecurityVault",
+      "name": "revokeRole",
+      "path": "contracts/vaults/TokenReserveVault.sol",
+      "signature": "revokeRole(bytes32,address)"
+    },
+    {
+      "attributes": "public override",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "SecurityVault",
+      "name": "renounceRole",
+      "path": "contracts/vaults/TokenReserveVault.sol",
+      "signature": "renounceRole(bytes32,address)"
+    },
+    {
+      "attributes": "external onlyAdmin",
+      "classification": "configuration",
+      "contract": "CommunityVault",
+      "name": "setPurpose",
+      "path": "contracts/vaults/TokenReserveVault.sol",
+      "signature": "setPurpose(string)"
+    },
+    {
+      "attributes": "external whenNotPaused",
+      "classification": "safe_exit_or_settlement",
+      "contract": "CommunityVault",
+      "name": "release",
+      "path": "contracts/vaults/TokenReserveVault.sol",
+      "signature": "release(address,uint256,bytes32,string)"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "CommunityVault",
+      "name": "pause",
+      "path": "contracts/vaults/TokenReserveVault.sol",
+      "signature": "pause()"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "CommunityVault",
+      "name": "unpause",
+      "path": "contracts/vaults/TokenReserveVault.sol",
+      "signature": "unpause()"
+    },
+    {
+      "attributes": "public override onlyOwner",
+      "classification": "configuration",
+      "contract": "CommunityVault",
+      "name": "transferOwnership",
+      "path": "contracts/vaults/TokenReserveVault.sol",
+      "signature": "transferOwnership(address)"
+    },
+    {
+      "attributes": "public onlyOwner",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "CommunityVault",
+      "name": "cancelOwnershipTransfer",
+      "path": "contracts/vaults/TokenReserveVault.sol",
+      "signature": "cancelOwnershipTransfer()"
+    },
+    {
+      "attributes": "public",
+      "classification": "configuration",
+      "contract": "CommunityVault",
+      "name": "acceptOwnership",
+      "path": "contracts/vaults/TokenReserveVault.sol",
+      "signature": "acceptOwnership()"
+    },
+    {
+      "attributes": "public override",
+      "classification": "configuration",
+      "contract": "CommunityVault",
+      "name": "grantRole",
+      "path": "contracts/vaults/TokenReserveVault.sol",
+      "signature": "grantRole(bytes32,address)"
+    },
+    {
+      "attributes": "public override",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "CommunityVault",
+      "name": "revokeRole",
+      "path": "contracts/vaults/TokenReserveVault.sol",
+      "signature": "revokeRole(bytes32,address)"
+    },
+    {
+      "attributes": "public override",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "CommunityVault",
+      "name": "renounceRole",
+      "path": "contracts/vaults/TokenReserveVault.sol",
+      "signature": "renounceRole(bytes32,address)"
+    }
+  ]
+}
