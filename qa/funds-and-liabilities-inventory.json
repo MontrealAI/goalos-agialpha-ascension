@@ -312,7 +312,28 @@
       "accountingStatus": "REQUIRES_EXACT_ONCHAIN_STATUS",
       "assetHolding": true,
       "assetHoldingEvidence": "token/native inbound flow or asset-bearing name",
-      "contract": "TokenReserveVault",
+      "contract": "ProofRewardsVault",
+      "path": "contracts/vaults/TokenReserveVault.sol"
+    },
+    {
+      "accountingStatus": "REQUIRES_EXACT_ONCHAIN_STATUS",
+      "assetHolding": true,
+      "assetHoldingEvidence": "token/native inbound flow or asset-bearing name",
+      "contract": "LiquidityVault",
+      "path": "contracts/vaults/TokenReserveVault.sol"
+    },
+    {
+      "accountingStatus": "REQUIRES_EXACT_ONCHAIN_STATUS",
+      "assetHolding": true,
+      "assetHoldingEvidence": "token/native inbound flow or asset-bearing name",
+      "contract": "SecurityVault",
+      "path": "contracts/vaults/TokenReserveVault.sol"
+    },
+    {
+      "accountingStatus": "REQUIRES_EXACT_ONCHAIN_STATUS",
+      "assetHolding": true,
+      "assetHoldingEvidence": "token/native inbound flow or asset-bearing name",
+      "contract": "CommunityVault",
       "path": "contracts/vaults/TokenReserveVault.sol"
     }
   ],

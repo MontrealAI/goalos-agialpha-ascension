@@ -44,4 +44,7 @@
 - `ReviewerBondRegistry` (`contracts/registry/ReviewerBondRegistry.sol`): See classified selectors; add typed owner override before PASS if no recovery selector exists for a nonterminal state.
 - `TreasuryRouter` (`contracts/registry/TreasuryRouter.sol`): See classified selectors; add typed owner override before PASS if no recovery selector exists for a nonterminal state.
 - `CommercializationPerformanceVault` (`contracts/vaults/CommercializationPerformanceVault.sol`): See classified selectors; add typed owner override before PASS if no recovery selector exists for a nonterminal state.
-- `TokenReserveVault` (`contracts/vaults/TokenReserveVault.sol`): See classified selectors; add typed owner override before PASS if no recovery selector exists for a nonterminal state.
+- `ProofRewardsVault` (`contracts/vaults/TokenReserveVault.sol`): See classified selectors; add typed owner override before PASS if no recovery selector exists for a nonterminal state.
+- `LiquidityVault` (`contracts/vaults/TokenReserveVault.sol`): See classified selectors; add typed owner override before PASS if no recovery selector exists for a nonterminal state.
+- `SecurityVault` (`contracts/vaults/TokenReserveVault.sol`): See classified selectors; add typed owner override before PASS if no recovery selector exists for a nonterminal state.
+- `CommunityVault` (`contracts/vaults/TokenReserveVault.sol`): See classified selectors; add typed owner override before PASS if no recovery selector exists for a nonterminal state.

@@ -4,8 +4,10 @@
       "assetHolding": false,
       "assetHoldingEvidence": "none detected",
       "contract": "AEPAgentRegistry",
+      "deploymentAlias": null,
       "path": "contracts/aep/AEPAgentRegistry.sol",
       "roles": [
+        "DEFAULT_ADMIN_ROLE",
         "OPERATOR_ROLE",
         "PAUSER_ROLE",
         "PROTOCOL_ADMIN_ROLE",
@@ -14,6 +16,7 @@
         "VAULT_MANAGER_ROLE"
       ],
       "sha256": "3737a9de121e892864dcc38721aee0230108b6beab540d4b596c3837fe287ba9",
+      "sourceContract": "AEPAgentRegistry",
       "stateChangingSelectors": [
         {
           "attributes": "external onlyOperator returns (uint256 agentId)",
@@ -72,8 +75,10 @@
       "assetHolding": false,
       "assetHoldingEvidence": "none detected",
       "contract": "AEPArtifactRegistry",
+      "deploymentAlias": null,
       "path": "contracts/aep/AEPArtifactRegistry.sol",
       "roles": [
+        "DEFAULT_ADMIN_ROLE",
         "OPERATOR_ROLE",
         "PAUSER_ROLE",
         "PROTOCOL_ADMIN_ROLE",
@@ -82,6 +87,7 @@
         "VAULT_MANAGER_ROLE"
       ],
       "sha256": "a2e68f1471d89718375a26f601451bda0543aadc52341ebaeaa623d7130c34c8",
+      "sourceContract": "AEPArtifactRegistry",
       "stateChangingSelectors": [
         {
           "attributes": "external onlyOperator returns (uint256 versionId)",
@@ -140,8 +146,10 @@
       "assetHolding": false,
       "assetHoldingEvidence": "none detected",
       "contract": "AEPAttestationRegistry",
+      "deploymentAlias": null,
       "path": "contracts/aep/AEPAttestationRegistry.sol",
       "roles": [
+        "DEFAULT_ADMIN_ROLE",
         "OPERATOR_ROLE",
         "PAUSER_ROLE",
         "PROTOCOL_ADMIN_ROLE",
@@ -150,6 +158,7 @@
         "VAULT_MANAGER_ROLE"
       ],
       "sha256": "e627b4ec4c418b2a4f617dc16755e5a28749cccda8048a0cfa5ecdf15b97b7a1",
+      "sourceContract": "AEPAttestationRegistry",
       "stateChangingSelectors": [
         {
           "attributes": "external onlyOperator returns (uint256 attestationId)",
@@ -208,8 +217,10 @@
       "assetHolding": false,
       "assetHoldingEvidence": "none detected",
       "contract": "AEPChronicleRegistry",
+      "deploymentAlias": null,
       "path": "contracts/aep/AEPChronicleRegistry.sol",
       "roles": [
+        "DEFAULT_ADMIN_ROLE",
         "OPERATOR_ROLE",
         "PAUSER_ROLE",
         "PROTOCOL_ADMIN_ROLE",
@@ -218,6 +229,7 @@
         "VAULT_MANAGER_ROLE"
       ],
       "sha256": "70b41b824fc5e345db02eb7f6ccbf3674b01ffd08f0b2398b208c8bc8ca349b0",
+      "sourceContract": "AEPChronicleRegistry",
       "stateChangingSelectors": [
         {
           "attributes": "external onlyOperator returns (uint256 entryId)",
@@ -271,8 +283,10 @@
       "assetHolding": false,
       "assetHoldingEvidence": "none detected",
       "contract": "AEPClaimBoundaryRegistry",
+      "deploymentAlias": null,
       "path": "contracts/aep/AEPClaimBoundaryRegistry.sol",
       "roles": [
+        "DEFAULT_ADMIN_ROLE",
         "OPERATOR_ROLE",
         "PAUSER_ROLE",
         "PROTOCOL_ADMIN_ROLE",
@@ -281,6 +295,7 @@
         "VAULT_MANAGER_ROLE"
       ],
       "sha256": "b8f5901e2ce4fc4c561441d306ed3b12ecf6d3b3f2c4eda5de0bc0cd6c7135a1",
+      "sourceContract": "AEPClaimBoundaryRegistry",
       "stateChangingSelectors": [
         {
           "attributes": "external onlyOperator returns (uint256 boundaryId)",
@@ -289,7 +304,7 @@
         },
         {
           "attributes": "external onlyOperator",
-          "classification": "new_obligation_or_risk_increase",
+          "classification": "configuration",
           "name": "setClaimBoundaryActive"
         },
         {
@@ -339,8 +354,10 @@
       "assetHolding": false,
       "assetHoldingEvidence": "none detected",
       "contract": "AEPCommitRevealValidationRegistry",
+      "deploymentAlias": null,
       "path": "contracts/aep/AEPCommitRevealValidationRegistry.sol",
       "roles": [
+        "DEFAULT_ADMIN_ROLE",
         "OPERATOR_ROLE",
         "PAUSER_ROLE",
         "PROTOCOL_ADMIN_ROLE",
@@ -349,6 +366,7 @@
         "VAULT_MANAGER_ROLE"
       ],
       "sha256": "4edf627e01f35c29386f5f3490256348372a6f50fc54938d4e899f51a3dbbbc1",
+      "sourceContract": "AEPCommitRevealValidationRegistry",
       "stateChangingSelectors": [
         {
           "attributes": "external onlyOperator",
@@ -427,8 +445,10 @@
       "assetHolding": false,
       "assetHoldingEvidence": "none detected",
       "contract": "AEPConformanceRegistry",
+      "deploymentAlias": null,
       "path": "contracts/aep/AEPConformanceRegistry.sol",
       "roles": [
+        "DEFAULT_ADMIN_ROLE",
         "OPERATOR_ROLE",
         "PAUSER_ROLE",
         "PROTOCOL_ADMIN_ROLE",
@@ -437,6 +457,7 @@
         "VAULT_MANAGER_ROLE"
       ],
       "sha256": "9b909b6e6f4abf4455dddcefd3f0d335cac5eb48a07c4e51e236444a63f39eae",
+      "sourceContract": "AEPConformanceRegistry",
       "stateChangingSelectors": [
         {
           "attributes": "external onlyOperator returns (uint256 recordId)",
@@ -495,8 +516,10 @@
       "assetHolding": false,
       "assetHoldingEvidence": "none detected",
       "contract": "AEPEvalRegistry",
+      "deploymentAlias": null,
       "path": "contracts/aep/AEPEvalRegistry.sol",
       "roles": [
+        "DEFAULT_ADMIN_ROLE",
         "OPERATOR_ROLE",
         "PAUSER_ROLE",
         "PROTOCOL_ADMIN_ROLE",
@@ -505,6 +528,7 @@
         "VAULT_MANAGER_ROLE"
       ],
       "sha256": "85183bb9b6c29fd28c2fc45a4bb2f74b78ed0dd5d5f9da782cd89a18508976e0",
+      "sourceContract": "AEPEvalRegistry",
       "stateChangingSelectors": [
         {
           "attributes": "external onlyOperator returns (uint256 schemaId)",
@@ -563,8 +587,10 @@
       "assetHolding": true,
       "assetHoldingEvidence": "token/native inbound flow or asset-bearing name",
       "contract": "AEPEvaluatorStakingRegistry",
+      "deploymentAlias": null,
       "path": "contracts/aep/AEPEvaluatorStakingRegistry.sol",
       "roles": [
+        "DEFAULT_ADMIN_ROLE",
         "OPERATOR_ROLE",
         "PAUSER_ROLE",
         "PROTOCOL_ADMIN_ROLE",
@@ -573,15 +599,16 @@
         "VAULT_MANAGER_ROLE"
       ],
       "sha256": "72231a60ba05d1c8987e4097564473da991090befe7e0fb101926756f6295952",
+      "sourceContract": "AEPEvaluatorStakingRegistry",
       "stateChangingSelectors": [
         {
           "attributes": "external onlyAdmin",
-          "classification": "new_obligation_or_risk_increase",
+          "classification": "configuration",
           "name": "setMinEvaluatorStake"
         },
         {
           "attributes": "external onlyAdmin",
-          "classification": "safe_exit_or_settlement",
+          "classification": "configuration",
           "name": "setUnstakeDelay"
         },
         {
@@ -656,8 +683,10 @@
       "assetHolding": false,
       "assetHoldingEvidence": "none detected",
       "contract": "AEPEvidenceDocketRegistry",
+      "deploymentAlias": null,
       "path": "contracts/aep/AEPEvidenceDocketRegistry.sol",
       "roles": [
+        "DEFAULT_ADMIN_ROLE",
         "OPERATOR_ROLE",
         "PAUSER_ROLE",
         "PROTOCOL_ADMIN_ROLE",
@@ -666,6 +695,7 @@
         "VAULT_MANAGER_ROLE"
       ],
       "sha256": "41a2a75173c71037228f98f410a4daaa4fb2f729132ebfa2be5979c45929583f",
+      "sourceContract": "AEPEvidenceDocketRegistry",
       "stateChangingSelectors": [
         {
           "attributes": "external onlyOperator returns (uint256 docketId)",
@@ -724,8 +754,10 @@
       "assetHolding": false,
       "assetHoldingEvidence": "none detected",
       "contract": "AEPFalsificationRegistry",
+      "deploymentAlias": null,
       "path": "contracts/aep/AEPFalsificationRegistry.sol",
       "roles": [
+        "DEFAULT_ADMIN_ROLE",
         "OPERATOR_ROLE",
         "PAUSER_ROLE",
         "PROTOCOL_ADMIN_ROLE",
@@ -734,6 +766,7 @@
         "VAULT_MANAGER_ROLE"
       ],
       "sha256": "aa6a42114de4029a958e5bb888b24fde3d19d2a4b5fe36d72d3f9a9e1872509b",
+      "sourceContract": "AEPFalsificationRegistry",
       "stateChangingSelectors": [
         {
           "attributes": "external returns (uint256 falsificationId)",
@@ -792,8 +825,10 @@
       "assetHolding": false,
       "assetHoldingEvidence": "none detected",
       "contract": "AEPGoalOSCommitRegistry",
+      "deploymentAlias": null,
       "path": "contracts/aep/AEPGoalOSCommitRegistry.sol",
       "roles": [
+        "DEFAULT_ADMIN_ROLE",
         "OPERATOR_ROLE",
         "PAUSER_ROLE",
         "PROTOCOL_ADMIN_ROLE",
@@ -802,6 +837,7 @@
         "VAULT_MANAGER_ROLE"
       ],
       "sha256": "f92f004af2d836ab5a56a08d2a857b469d34ebf716b22c8d3b36ef0e2257c9d4",
+      "sourceContract": "AEPGoalOSCommitRegistry",
       "stateChangingSelectors": [
         {
           "attributes": "external onlyAdmin",
@@ -865,8 +901,10 @@
       "assetHolding": false,
       "assetHoldingEvidence": "none detected",
       "contract": "AEPProofBundleRegistry",
+      "deploymentAlias": null,
       "path": "contracts/aep/AEPProofBundleRegistry.sol",
       "roles": [
+        "DEFAULT_ADMIN_ROLE",
         "OPERATOR_ROLE",
         "PAUSER_ROLE",
         "PROTOCOL_ADMIN_ROLE",
@@ -875,6 +913,7 @@
         "VAULT_MANAGER_ROLE"
       ],
       "sha256": "d1a896da947c9ee020161f2b297e50fecaf823173a3813b0433b12d5776c7882",
+      "sourceContract": "AEPProofBundleRegistry",
       "stateChangingSelectors": [
         {
           "attributes": "external onlyOperator returns (uint256 bundleId)",
@@ -928,8 +967,10 @@
       "assetHolding": false,
       "assetHoldingEvidence": "none detected",
       "contract": "AEPProofLedger",
+      "deploymentAlias": null,
       "path": "contracts/aep/AEPProofLedger.sol",
       "roles": [
+        "DEFAULT_ADMIN_ROLE",
         "OPERATOR_ROLE",
         "PAUSER_ROLE",
         "PROTOCOL_ADMIN_ROLE",
@@ -938,6 +979,7 @@
         "VAULT_MANAGER_ROLE"
       ],
       "sha256": "3f213ef2e32864c3d6b37a7485f3d83a8fd65b710eac7f6157566f097e4fe003",
+      "sourceContract": "AEPProofLedger",
       "stateChangingSelectors": [
         {
           "attributes": "external onlyOperator returns (uint256 proofId)",
@@ -991,8 +1033,10 @@
       "assetHolding": false,
       "assetHoldingEvidence": "none detected",
       "contract": "AEPReplayRegistry",
+      "deploymentAlias": null,
       "path": "contracts/aep/AEPReplayRegistry.sol",
       "roles": [
+        "DEFAULT_ADMIN_ROLE",
         "OPERATOR_ROLE",
         "PAUSER_ROLE",
         "PROTOCOL_ADMIN_ROLE",
@@ -1001,6 +1045,7 @@
         "VAULT_MANAGER_ROLE"
       ],
       "sha256": "08020673fd36dd357b514d659a003c41c9733b83128234c1a3cfd4f1a44acc34",
+      "sourceContract": "AEPReplayRegistry",
       "stateChangingSelectors": [
         {
           "attributes": "external onlyOperator returns (uint256 replayId)",
@@ -1054,8 +1099,10 @@
       "assetHolding": true,
       "assetHoldingEvidence": "token/native inbound flow or asset-bearing name",
       "contract": "AEPRewardVault",
+      "deploymentAlias": null,
       "path": "contracts/aep/AEPRewardVault.sol",
       "roles": [
+        "DEFAULT_ADMIN_ROLE",
         "OPERATOR_ROLE",
         "PAUSER_ROLE",
         "PROTOCOL_ADMIN_ROLE",
@@ -1064,6 +1111,7 @@
         "VAULT_MANAGER_ROLE"
       ],
       "sha256": "6960558154389dbf4159b382fab422020c16c5dc4a020c13727ee789bb5e80a9",
+      "sourceContract": "AEPRewardVault",
       "stateChangingSelectors": [
         {
           "attributes": "external nonReentrant",
@@ -1122,8 +1170,10 @@
       "assetHolding": false,
       "assetHoldingEvidence": "none detected",
       "contract": "AEPRollbackRegistry",
+      "deploymentAlias": null,
       "path": "contracts/aep/AEPRollbackRegistry.sol",
       "roles": [
+        "DEFAULT_ADMIN_ROLE",
         "OPERATOR_ROLE",
         "PAUSER_ROLE",
         "PROTOCOL_ADMIN_ROLE",
@@ -1132,6 +1182,7 @@
         "VAULT_MANAGER_ROLE"
       ],
       "sha256": "fd824c789e538ac1870a8104d54741f30ccbd4fbe3c87e582f771d9bf0499c66",
+      "sourceContract": "AEPRollbackRegistry",
       "stateChangingSelectors": [
         {
           "attributes": "external onlyOperator returns (uint256 rollbackId)",
@@ -1185,8 +1236,10 @@
       "assetHolding": true,
       "assetHoldingEvidence": "token/native inbound flow or asset-bearing name",
       "contract": "AEPRolloutRouter",
+      "deploymentAlias": null,
       "path": "contracts/aep/AEPRolloutRouter.sol",
       "roles": [
+        "DEFAULT_ADMIN_ROLE",
         "OPERATOR_ROLE",
         "PAUSER_ROLE",
         "PROTOCOL_ADMIN_ROLE",
@@ -1195,6 +1248,7 @@
         "VAULT_MANAGER_ROLE"
       ],
       "sha256": "6662e41b6699ed4c45f8a8b009674c00e8314c3993bef45701e8052889476515",
+      "sourceContract": "AEPRolloutRouter",
       "stateChangingSelectors": [
         {
           "attributes": "external onlyOperator returns (uint256 rolloutId)",
@@ -1253,8 +1307,10 @@
       "assetHolding": false,
       "assetHoldingEvidence": "none detected",
       "contract": "AEPRunCommitmentRegistry",
+      "deploymentAlias": null,
       "path": "contracts/aep/AEPRunCommitmentRegistry.sol",
       "roles": [
+        "DEFAULT_ADMIN_ROLE",
         "OPERATOR_ROLE",
         "PAUSER_ROLE",
         "PROTOCOL_ADMIN_ROLE",
@@ -1263,6 +1319,7 @@
         "VAULT_MANAGER_ROLE"
       ],
       "sha256": "3b2dcc657b8e695faf16d18898247c530c202e8091b9c6f89ee19e72d808f8bd",
+      "sourceContract": "AEPRunCommitmentRegistry",
       "stateChangingSelectors": [
         {
           "attributes": "external onlyOperator returns (uint256 runId)",
@@ -1321,8 +1378,10 @@
       "assetHolding": false,
       "assetHoldingEvidence": "none detected",
       "contract": "AEPSelectionGate",
+      "deploymentAlias": null,
       "path": "contracts/aep/AEPSelectionGate.sol",
       "roles": [
+        "DEFAULT_ADMIN_ROLE",
         "OPERATOR_ROLE",
         "PAUSER_ROLE",
         "PROTOCOL_ADMIN_ROLE",
@@ -1331,6 +1390,7 @@
         "VAULT_MANAGER_ROLE"
       ],
       "sha256": "19ea55d3227a831e0a9fb7274947197a667884c565009dfb5c4a5ecacaee4e8f",
+      "sourceContract": "AEPSelectionGate",
       "stateChangingSelectors": [
         {
           "attributes": "external onlyOperator returns (uint256 selectionId)",
@@ -1384,8 +1444,10 @@
       "assetHolding": false,
       "assetHoldingEvidence": "none detected",
       "contract": "AEPSlashingCourt",
+      "deploymentAlias": null,
       "path": "contracts/aep/AEPSlashingCourt.sol",
       "roles": [
+        "DEFAULT_ADMIN_ROLE",
         "OPERATOR_ROLE",
         "PAUSER_ROLE",
         "PROTOCOL_ADMIN_ROLE",
@@ -1394,6 +1456,7 @@
         "VAULT_MANAGER_ROLE"
       ],
       "sha256": "c490276fded553e4dbcdc5a0ca0ffeab1a70800c5cb9e2f3816a3cdde5cd86e4",
+      "sourceContract": "AEPSlashingCourt",
       "stateChangingSelectors": [
         {
           "attributes": "external onlyOperator returns (uint256 caseId)",
@@ -1457,8 +1520,10 @@
       "assetHolding": false,
       "assetHoldingEvidence": "none detected",
       "contract": "AGIEthNamespaceRegistry",
+      "deploymentAlias": null,
       "path": "contracts/aep/AGIEthNamespaceRegistry.sol",
       "roles": [
+        "DEFAULT_ADMIN_ROLE",
         "OPERATOR_ROLE",
         "PAUSER_ROLE",
         "PROTOCOL_ADMIN_ROLE",
@@ -1467,6 +1532,7 @@
         "VAULT_MANAGER_ROLE"
       ],
       "sha256": "ee161300dc8155a359fe91249aa71ee65c8cb9a6edc407fffb30c173dcfbe0b6",
+      "sourceContract": "AGIEthNamespaceRegistry",
       "stateChangingSelectors": [
         {
           "attributes": "external onlyOperator",
@@ -1525,8 +1591,10 @@
       "assetHolding": false,
       "assetHoldingEvidence": "none detected",
       "contract": "AlphaWorkUnitLedger",
+      "deploymentAlias": null,
       "path": "contracts/aep/AlphaWorkUnitLedger.sol",
       "roles": [
+        "DEFAULT_ADMIN_ROLE",
         "OPERATOR_ROLE",
         "PAUSER_ROLE",
         "PROTOCOL_ADMIN_ROLE",
@@ -1535,6 +1603,7 @@
         "VAULT_MANAGER_ROLE"
       ],
       "sha256": "449052a1a4f969cecd9eb8fa00c05e82725c4faf6de1738885ff6b8a778db8cf",
+      "sourceContract": "AlphaWorkUnitLedger",
       "stateChangingSelectors": [
         {
           "attributes": "external onlyOperator returns (uint256 recordId)",
@@ -1588,8 +1657,10 @@
       "assetHolding": false,
       "assetHoldingEvidence": "none detected",
       "contract": "MandateEpochRegistry",
+      "deploymentAlias": null,
       "path": "contracts/aep/MandateEpochRegistry.sol",
       "roles": [
+        "DEFAULT_ADMIN_ROLE",
         "OPERATOR_ROLE",
         "PAUSER_ROLE",
         "PROTOCOL_ADMIN_ROLE",
@@ -1598,6 +1669,7 @@
         "VAULT_MANAGER_ROLE"
       ],
       "sha256": "5699586573f8adefb68df1b00cd8c640ec0e9501a750abf92b67ab560da9a9f1",
+      "sourceContract": "MandateEpochRegistry",
       "stateChangingSelectors": [
         {
           "attributes": "external nonReentrant whenNotPaused returns (uint256 mandateId)",
@@ -1666,8 +1738,10 @@
       "assetHolding": false,
       "assetHoldingEvidence": "none detected",
       "contract": "AppealRegistry",
+      "deploymentAlias": null,
       "path": "contracts/optional/AppealRegistry.sol",
       "roles": [
+        "DEFAULT_ADMIN_ROLE",
         "OPERATOR_ROLE",
         "PAUSER_ROLE",
         "PROTOCOL_ADMIN_ROLE",
@@ -1676,6 +1750,7 @@
         "VAULT_MANAGER_ROLE"
       ],
       "sha256": "4aae2d6e324a7cbd763b74b0873c2db88291888807a482a2d3148b73d24d7412",
+      "sourceContract": "AppealRegistry",
       "stateChangingSelectors": [
         {
           "attributes": "external returns (uint256 appealId)",
@@ -1734,8 +1809,10 @@
       "assetHolding": false,
       "assetHoldingEvidence": "none detected",
       "contract": "BuilderProfileRegistry",
+      "deploymentAlias": null,
       "path": "contracts/optional/BuilderProfileRegistry.sol",
       "roles": [
+        "DEFAULT_ADMIN_ROLE",
         "OPERATOR_ROLE",
         "PAUSER_ROLE",
         "PROTOCOL_ADMIN_ROLE",
@@ -1744,6 +1821,7 @@
         "VAULT_MANAGER_ROLE"
       ],
       "sha256": "d63bc8e5f6709d7ae1c271eb8bb7bc0e805c4b7983ca65a970e140cdcb29900d",
+      "sourceContract": "BuilderProfileRegistry",
       "stateChangingSelectors": [
         {
           "attributes": "external",
@@ -1802,8 +1880,10 @@
       "assetHolding": false,
       "assetHoldingEvidence": "none detected",
       "contract": "CredentialRevocationRegistry",
+      "deploymentAlias": null,
       "path": "contracts/optional/CredentialRevocationRegistry.sol",
       "roles": [
+        "DEFAULT_ADMIN_ROLE",
         "OPERATOR_ROLE",
         "PAUSER_ROLE",
         "PROTOCOL_ADMIN_ROLE",
@@ -1812,6 +1892,7 @@
         "VAULT_MANAGER_ROLE"
       ],
       "sha256": "7693a385eae209a3c8f01fd3587c8da88ad740dd48a289346f6ca967cdfbb0eb",
+      "sourceContract": "CredentialRevocationRegistry",
       "stateChangingSelectors": [
         {
           "attributes": "external returns (uint256 revocationId)",
@@ -1870,8 +1951,10 @@
       "assetHolding": false,
       "assetHoldingEvidence": "none detected",
       "contract": "DisputeRegistry",
+      "deploymentAlias": null,
       "path": "contracts/optional/DisputeRegistry.sol",
       "roles": [
+        "DEFAULT_ADMIN_ROLE",
         "OPERATOR_ROLE",
         "PAUSER_ROLE",
         "PROTOCOL_ADMIN_ROLE",
@@ -1880,6 +1963,7 @@
         "VAULT_MANAGER_ROLE"
       ],
       "sha256": "37ce52e98b973577fe14025bb6968c46fa1fce1b063c0261cb82e00fa43b1f05",
+      "sourceContract": "DisputeRegistry",
       "stateChangingSelectors": [
         {
           "attributes": "external returns (uint256 disputeId)",
@@ -1938,8 +2022,10 @@
       "assetHolding": false,
       "assetHoldingEvidence": "none detected",
       "contract": "SponsorRegistry",
+      "deploymentAlias": null,
       "path": "contracts/optional/SponsorRegistry.sol",
       "roles": [
+        "DEFAULT_ADMIN_ROLE",
         "OPERATOR_ROLE",
         "PAUSER_ROLE",
         "PROTOCOL_ADMIN_ROLE",
@@ -1948,6 +2034,7 @@
         "VAULT_MANAGER_ROLE"
       ],
       "sha256": "299662e4cb52b4002b829c0aa9a35604fc7bcfd1f992f52352b1433535766dbe",
+      "sourceContract": "SponsorRegistry",
       "stateChangingSelectors": [
         {
           "attributes": "external",
@@ -2006,8 +2093,10 @@
       "assetHolding": true,
       "assetHoldingEvidence": "token/native inbound flow or asset-bearing name",
       "contract": "JobClaimBondManager",
+      "deploymentAlias": null,
       "path": "contracts/registry/JobClaimBondManager.sol",
       "roles": [
+        "DEFAULT_ADMIN_ROLE",
         "OPERATOR_ROLE",
         "PAUSER_ROLE",
         "PROTOCOL_ADMIN_ROLE",
@@ -2016,10 +2105,11 @@
         "VAULT_MANAGER_ROLE"
       ],
       "sha256": "c9f8e9329010d8f355462fc4c23538947f2bf8d6b0cc5808d6aff218fba5c56b",
+      "sourceContract": "JobClaimBondManager",
       "stateChangingSelectors": [
         {
           "attributes": "external onlyAdmin",
-          "classification": "new_obligation_or_risk_increase",
+          "classification": "configuration",
           "name": "setClaimBond"
         },
         {
@@ -2094,8 +2184,10 @@
       "assetHolding": true,
       "assetHoldingEvidence": "token/native inbound flow or asset-bearing name",
       "contract": "JobRegistry",
+      "deploymentAlias": null,
       "path": "contracts/registry/JobRegistry.sol",
       "roles": [
+        "DEFAULT_ADMIN_ROLE",
         "OPERATOR_ROLE",
         "PAUSER_ROLE",
         "PROTOCOL_ADMIN_ROLE",
@@ -2104,6 +2196,7 @@
         "VAULT_MANAGER_ROLE"
       ],
       "sha256": "80e2c0c1d7ea4a892a8a0e4a85d47e8a770d7cfdcb30f0135345f754d6cf3ba6",
+      "sourceContract": "JobRegistry",
       "stateChangingSelectors": [
         {
           "attributes": "external onlyAdmin",
@@ -2222,8 +2315,10 @@
       "assetHolding": false,
       "assetHoldingEvidence": "none detected",
       "contract": "LaunchGateRegistry",
+      "deploymentAlias": null,
       "path": "contracts/registry/LaunchGateRegistry.sol",
       "roles": [
+        "DEFAULT_ADMIN_ROLE",
         "OPERATOR_ROLE",
         "PAUSER_ROLE",
         "PROTOCOL_ADMIN_ROLE",
@@ -2232,6 +2327,7 @@
         "VAULT_MANAGER_ROLE"
       ],
       "sha256": "9d80692f60731595ab0782e284f473de55793a84e4766e3511404ead1e959753",
+      "sourceContract": "LaunchGateRegistry",
       "stateChangingSelectors": [
         {
           "attributes": "external onlyOperator",
@@ -2285,8 +2381,10 @@
       "assetHolding": false,
       "assetHoldingEvidence": "none detected",
       "contract": "LegacyAGIJobManagerRegistry",
+      "deploymentAlias": null,
       "path": "contracts/registry/LegacyAGIJobManagerRegistry.sol",
       "roles": [
+        "DEFAULT_ADMIN_ROLE",
         "OPERATOR_ROLE",
         "PAUSER_ROLE",
         "PROTOCOL_ADMIN_ROLE",
@@ -2295,6 +2393,7 @@
         "VAULT_MANAGER_ROLE"
       ],
       "sha256": "33f0cde7f0a56e3cb769811554894ff4997fdd38b663d0f082e3b77076d49028",
+      "sourceContract": "LegacyAGIJobManagerRegistry",
       "stateChangingSelectors": [
         {
           "attributes": "external onlyOperator returns (uint256 recordId)",
@@ -2353,8 +2452,10 @@
       "assetHolding": false,
       "assetHoldingEvidence": "none detected",
       "contract": "PremiumAccessRegistry",
+      "deploymentAlias": null,
       "path": "contracts/registry/PremiumAccessRegistry.sol",
       "roles": [
+        "DEFAULT_ADMIN_ROLE",
         "OPERATOR_ROLE",
         "PAUSER_ROLE",
         "PROTOCOL_ADMIN_ROLE",
@@ -2363,6 +2464,7 @@
         "VAULT_MANAGER_ROLE"
       ],
       "sha256": "77f8c99f411429c3bb768fc3fbbf088255bffce8eb993ee259d34bbeede3aebd",
+      "sourceContract": "PremiumAccessRegistry",
       "stateChangingSelectors": [
         {
           "attributes": "external onlyOperator",
@@ -2416,8 +2518,10 @@
       "assetHolding": false,
       "assetHoldingEvidence": "none detected",
       "contract": "ProofCardRegistry",
+      "deploymentAlias": null,
       "path": "contracts/registry/ProofCardRegistry.sol",
       "roles": [
+        "DEFAULT_ADMIN_ROLE",
         "OPERATOR_ROLE",
         "PAUSER_ROLE",
         "PROTOCOL_ADMIN_ROLE",
@@ -2426,6 +2530,7 @@
         "VAULT_MANAGER_ROLE"
       ],
       "sha256": "fe5f342ac20065230f14b4e63888e406699a3aaee8e51cc9429dcd8482759f25",
+      "sourceContract": "ProofCardRegistry",
       "stateChangingSelectors": [
         {
           "attributes": "external onlyOperator returns (uint256 proofCardId)",
@@ -2484,8 +2589,10 @@
       "assetHolding": false,
       "assetHoldingEvidence": "none detected",
       "contract": "ProofCredentialRegistry",
+      "deploymentAlias": null,
       "path": "contracts/registry/ProofCredentialRegistry.sol",
       "roles": [
+        "DEFAULT_ADMIN_ROLE",
         "OPERATOR_ROLE",
         "PAUSER_ROLE",
         "PROTOCOL_ADMIN_ROLE",
@@ -2494,6 +2601,7 @@
         "VAULT_MANAGER_ROLE"
       ],
       "sha256": "fa28f69cd47e906587fe4991bb80d1e1338dcf482e802f740815e340467d9ed3",
+      "sourceContract": "ProofCredentialRegistry",
       "stateChangingSelectors": [
         {
           "attributes": "external onlyOperator returns (uint256 tokenId)",
@@ -2552,8 +2660,10 @@
       "assetHolding": false,
       "assetHoldingEvidence": "none detected",
       "contract": "ProofSeedRegistry",
+      "deploymentAlias": null,
       "path": "contracts/registry/ProofSeedRegistry.sol",
       "roles": [
+        "DEFAULT_ADMIN_ROLE",
         "OPERATOR_ROLE",
         "PAUSER_ROLE",
         "PROTOCOL_ADMIN_ROLE",
@@ -2562,6 +2672,7 @@
         "VAULT_MANAGER_ROLE"
       ],
       "sha256": "01ff1144d03116f917647e22b02664de3103713a4c8992880ffd09f3fffd6a9e",
+      "sourceContract": "ProofSeedRegistry",
       "stateChangingSelectors": [
         {
           "attributes": "external onlyAdmin",
@@ -2640,8 +2751,10 @@
       "assetHolding": true,
       "assetHoldingEvidence": "token/native inbound flow or asset-bearing name",
       "contract": "ProofSubmissionRegistry",
+      "deploymentAlias": null,
       "path": "contracts/registry/ProofSubmissionRegistry.sol",
       "roles": [
+        "DEFAULT_ADMIN_ROLE",
         "OPERATOR_ROLE",
         "PAUSER_ROLE",
         "PROTOCOL_ADMIN_ROLE",
@@ -2650,6 +2763,7 @@
         "VAULT_MANAGER_ROLE"
       ],
       "sha256": "04513fd5c3af07cf2aa7461b9ee23181b8a961a8551116a784bf0ce8b710a81b",
+      "sourceContract": "ProofSubmissionRegistry",
       "stateChangingSelectors": [
         {
           "attributes": "external onlyAdmin",
@@ -2728,8 +2842,10 @@
       "assetHolding": false,
       "assetHoldingEvidence": "none detected",
       "contract": "ProtocolConfigRegistry",
+      "deploymentAlias": null,
       "path": "contracts/registry/ProtocolConfigRegistry.sol",
       "roles": [
+        "DEFAULT_ADMIN_ROLE",
         "OPERATOR_ROLE",
         "PAUSER_ROLE",
         "PROTOCOL_ADMIN_ROLE",
@@ -2738,6 +2854,7 @@
         "VAULT_MANAGER_ROLE"
       ],
       "sha256": "95f4dd2f16990a9533d84cc2a610db007f5bb4988e5348e0aabe811d1721f765",
+      "sourceContract": "ProtocolConfigRegistry",
       "stateChangingSelectors": [
         {
           "attributes": "external onlyOperator",
@@ -2791,8 +2908,10 @@
       "assetHolding": false,
       "assetHoldingEvidence": "none detected",
       "contract": "ReferralRegistry",
+      "deploymentAlias": null,
       "path": "contracts/registry/ReferralRegistry.sol",
       "roles": [
+        "DEFAULT_ADMIN_ROLE",
         "OPERATOR_ROLE",
         "PAUSER_ROLE",
         "PROTOCOL_ADMIN_ROLE",
@@ -2801,6 +2920,7 @@
         "VAULT_MANAGER_ROLE"
       ],
       "sha256": "c945ff2a38380b4ee39a3dad3e78f91245dda29c8991182db0d467e13e1ac849",
+      "sourceContract": "ReferralRegistry",
       "stateChangingSelectors": [
         {
           "attributes": "external whenNotPaused",
@@ -2864,8 +2984,10 @@
       "assetHolding": false,
       "assetHoldingEvidence": "none detected",
       "contract": "ReputationRegistry",
+      "deploymentAlias": null,
       "path": "contracts/registry/ReputationRegistry.sol",
       "roles": [
+        "DEFAULT_ADMIN_ROLE",
         "OPERATOR_ROLE",
         "PAUSER_ROLE",
         "PROTOCOL_ADMIN_ROLE",
@@ -2874,6 +2996,7 @@
         "VAULT_MANAGER_ROLE"
       ],
       "sha256": "dea903faaee65b19faabfede666fb931c1f7f56d58b7e2f876ecfec0caceb333",
+      "sourceContract": "ReputationRegistry",
       "stateChangingSelectors": [
         {
           "attributes": "external onlyOperator",
@@ -2947,8 +3070,10 @@
       "assetHolding": true,
       "assetHoldingEvidence": "token/native inbound flow or asset-bearing name",
       "contract": "ReviewerBondRegistry",
+      "deploymentAlias": null,
       "path": "contracts/registry/ReviewerBondRegistry.sol",
       "roles": [
+        "DEFAULT_ADMIN_ROLE",
         "OPERATOR_ROLE",
         "PAUSER_ROLE",
         "PROTOCOL_ADMIN_ROLE",
@@ -2957,6 +3082,7 @@
         "VAULT_MANAGER_ROLE"
       ],
       "sha256": "6560070c176f983cb675c3e048bd6d9f30ab658c9567d88465a30484be4cdefe",
+      "sourceContract": "ReviewerBondRegistry",
       "stateChangingSelectors": [
         {
           "attributes": "external onlyAdmin",
@@ -3045,8 +3171,10 @@
       "assetHolding": true,
       "assetHoldingEvidence": "token/native inbound flow or asset-bearing name",
       "contract": "TreasuryRouter",
+      "deploymentAlias": null,
       "path": "contracts/registry/TreasuryRouter.sol",
       "roles": [
+        "DEFAULT_ADMIN_ROLE",
         "OPERATOR_ROLE",
         "PAUSER_ROLE",
         "PROTOCOL_ADMIN_ROLE",
@@ -3055,6 +3183,7 @@
         "VAULT_MANAGER_ROLE"
       ],
       "sha256": "63a20c0598683ddae4aed83ebfad6f04c87a6c8d09409748feb28ba22b51e2aa",
+      "sourceContract": "TreasuryRouter",
       "stateChangingSelectors": [
         {
           "attributes": "external onlyAdmin",
@@ -3118,8 +3247,10 @@
       "assetHolding": true,
       "assetHoldingEvidence": "token/native inbound flow or asset-bearing name",
       "contract": "CommercializationPerformanceVault",
+      "deploymentAlias": null,
       "path": "contracts/vaults/CommercializationPerformanceVault.sol",
       "roles": [
+        "DEFAULT_ADMIN_ROLE",
         "OPERATOR_ROLE",
         "PAUSER_ROLE",
         "PROTOCOL_ADMIN_ROLE",
@@ -3128,6 +3259,7 @@
         "VAULT_MANAGER_ROLE"
       ],
       "sha256": "9187688c54699200b9f3130919cfca8931bd652dada66d2dd000900b946d20ec",
+      "sourceContract": "CommercializationPerformanceVault",
       "stateChangingSelectors": [
         {
           "attributes": "external onlyAdmin",
@@ -3200,9 +3332,11 @@
     {
       "assetHolding": true,
       "assetHoldingEvidence": "token/native inbound flow or asset-bearing name",
-      "contract": "TokenReserveVault",
+      "contract": "ProofRewardsVault",
+      "deploymentAlias": "ProofRewardsVault",
       "path": "contracts/vaults/TokenReserveVault.sol",
       "roles": [
+        "DEFAULT_ADMIN_ROLE",
         "OPERATOR_ROLE",
         "PAUSER_ROLE",
         "PROTOCOL_ADMIN_ROLE",
@@ -3211,6 +3345,220 @@
         "VAULT_MANAGER_ROLE"
       ],
       "sha256": "557e6082fc48b48c1506a6885bf3b716a878d948384f240b086f6939d3413872",
+      "sourceContract": "TokenReserveVault",
+      "stateChangingSelectors": [
+        {
+          "attributes": "external onlyAdmin",
+          "classification": "configuration",
+          "name": "setPurpose"
+        },
+        {
+          "attributes": "external whenNotPaused",
+          "classification": "safe_exit_or_settlement",
+          "name": "release"
+        },
+        {
+          "attributes": "external",
+          "classification": "lifecycle_control_or_migration",
+          "name": "pause"
+        },
+        {
+          "attributes": "external",
+          "classification": "lifecycle_control_or_migration",
+          "name": "unpause"
+        },
+        {
+          "attributes": "public override onlyOwner",
+          "classification": "configuration",
+          "name": "transferOwnership"
+        },
+        {
+          "attributes": "public onlyOwner",
+          "classification": "owner_recovery_or_safe_exit",
+          "name": "cancelOwnershipTransfer"
+        },
+        {
+          "attributes": "public",
+          "classification": "configuration",
+          "name": "acceptOwnership"
+        },
+        {
+          "attributes": "public override",
+          "classification": "configuration",
+          "name": "grantRole"
+        },
+        {
+          "attributes": "public override",
+          "classification": "owner_recovery_or_safe_exit",
+          "name": "revokeRole"
+        },
+        {
+          "attributes": "public override",
+          "classification": "normal_operation_unclassified_review_required",
+          "name": "renounceRole"
+        }
+      ],
+      "workflow": true
+    },
+    {
+      "assetHolding": true,
+      "assetHoldingEvidence": "token/native inbound flow or asset-bearing name",
+      "contract": "LiquidityVault",
+      "deploymentAlias": "LiquidityVault",
+      "path": "contracts/vaults/TokenReserveVault.sol",
+      "roles": [
+        "DEFAULT_ADMIN_ROLE",
+        "OPERATOR_ROLE",
+        "PAUSER_ROLE",
+        "PROTOCOL_ADMIN_ROLE",
+        "REVIEWER_MANAGER_ROLE",
+        "TREASURY_ROLE",
+        "VAULT_MANAGER_ROLE"
+      ],
+      "sha256": "557e6082fc48b48c1506a6885bf3b716a878d948384f240b086f6939d3413872",
+      "sourceContract": "TokenReserveVault",
+      "stateChangingSelectors": [
+        {
+          "attributes": "external onlyAdmin",
+          "classification": "configuration",
+          "name": "setPurpose"
+        },
+        {
+          "attributes": "external whenNotPaused",
+          "classification": "safe_exit_or_settlement",
+          "name": "release"
+        },
+        {
+          "attributes": "external",
+          "classification": "lifecycle_control_or_migration",
+          "name": "pause"
+        },
+        {
+          "attributes": "external",
+          "classification": "lifecycle_control_or_migration",
+          "name": "unpause"
+        },
+        {
+          "attributes": "public override onlyOwner",
+          "classification": "configuration",
+          "name": "transferOwnership"
+        },
+        {
+          "attributes": "public onlyOwner",
+          "classification": "owner_recovery_or_safe_exit",
+          "name": "cancelOwnershipTransfer"
+        },
+        {
+          "attributes": "public",
+          "classification": "configuration",
+          "name": "acceptOwnership"
+        },
+        {
+          "attributes": "public override",
+          "classification": "configuration",
+          "name": "grantRole"
+        },
+        {
+          "attributes": "public override",
+          "classification": "owner_recovery_or_safe_exit",
+          "name": "revokeRole"
+        },
+        {
+          "attributes": "public override",
+          "classification": "normal_operation_unclassified_review_required",
+          "name": "renounceRole"
+        }
+      ],
+      "workflow": true
+    },
+    {
+      "assetHolding": true,
+      "assetHoldingEvidence": "token/native inbound flow or asset-bearing name",
+      "contract": "SecurityVault",
+      "deploymentAlias": "SecurityVault",
+      "path": "contracts/vaults/TokenReserveVault.sol",
+      "roles": [
+        "DEFAULT_ADMIN_ROLE",
+        "OPERATOR_ROLE",
+        "PAUSER_ROLE",
+        "PROTOCOL_ADMIN_ROLE",
+        "REVIEWER_MANAGER_ROLE",
+        "TREASURY_ROLE",
+        "VAULT_MANAGER_ROLE"
+      ],
+      "sha256": "557e6082fc48b48c1506a6885bf3b716a878d948384f240b086f6939d3413872",
+      "sourceContract": "TokenReserveVault",
+      "stateChangingSelectors": [
+        {
+          "attributes": "external onlyAdmin",
+          "classification": "configuration",
+          "name": "setPurpose"
+        },
+        {
+          "attributes": "external whenNotPaused",
+          "classification": "safe_exit_or_settlement",
+          "name": "release"
+        },
+        {
+          "attributes": "external",
+          "classification": "lifecycle_control_or_migration",
+          "name": "pause"
+        },
+        {
+          "attributes": "external",
+          "classification": "lifecycle_control_or_migration",
+          "name": "unpause"
+        },
+        {
+          "attributes": "public override onlyOwner",
+          "classification": "configuration",
+          "name": "transferOwnership"
+        },
+        {
+          "attributes": "public onlyOwner",
+          "classification": "owner_recovery_or_safe_exit",
+          "name": "cancelOwnershipTransfer"
+        },
+        {
+          "attributes": "public",
+          "classification": "configuration",
+          "name": "acceptOwnership"
+        },
+        {
+          "attributes": "public override",
+          "classification": "configuration",
+          "name": "grantRole"
+        },
+        {
+          "attributes": "public override",
+          "classification": "owner_recovery_or_safe_exit",
+          "name": "revokeRole"
+        },
+        {
+          "attributes": "public override",
+          "classification": "normal_operation_unclassified_review_required",
+          "name": "renounceRole"
+        }
+      ],
+      "workflow": true
+    },
+    {
+      "assetHolding": true,
+      "assetHoldingEvidence": "token/native inbound flow or asset-bearing name",
+      "contract": "CommunityVault",
+      "deploymentAlias": "CommunityVault",
+      "path": "contracts/vaults/TokenReserveVault.sol",
+      "roles": [
+        "DEFAULT_ADMIN_ROLE",
+        "OPERATOR_ROLE",
+        "PAUSER_ROLE",
+        "PROTOCOL_ADMIN_ROLE",
+        "REVIEWER_MANAGER_ROLE",
+        "TREASURY_ROLE",
+        "VAULT_MANAGER_ROLE"
+      ],
+      "sha256": "557e6082fc48b48c1506a6885bf3b716a878d948384f240b086f6939d3413872",
+      "sourceContract": "TokenReserveVault",
       "stateChangingSelectors": [
         {
           "attributes": "external onlyAdmin",
@@ -3267,6 +3615,6 @@
     }
   ],
   "generatedBy": "scripts/mainnet_operational_readiness.py",
-  "sourceTreeHash": "bc26887031988188d29c1ba56752c0b557db176ce26493c309140fe88b9bee53",
+  "sourceTreeHash": "4957ec7ed6cea8e9bbb35d113c76f557314d69453695122cadd62dae6ed41c0b",
   "sourceTreeHashScope": "tracked HEAD content excluding generated readiness artifacts"
 }

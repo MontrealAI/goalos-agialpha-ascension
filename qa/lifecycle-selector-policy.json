@@ -282,7 +282,7 @@
     },
     {
       "attributes": "external onlyOperator",
-      "classification": "new_obligation_or_risk_increase",
+      "classification": "configuration",
       "contract": "AEPClaimBoundaryRegistry",
       "name": "setClaimBoundaryActive",
       "path": "contracts/aep/AEPClaimBoundaryRegistry.sol"
@@ -583,14 +583,14 @@
     },
     {
       "attributes": "external onlyAdmin",
-      "classification": "new_obligation_or_risk_increase",
+      "classification": "configuration",
       "contract": "AEPEvaluatorStakingRegistry",
       "name": "setMinEvaluatorStake",
       "path": "contracts/aep/AEPEvaluatorStakingRegistry.sol"
     },
     {
       "attributes": "external onlyAdmin",
-      "classification": "safe_exit_or_settlement",
+      "classification": "configuration",
       "contract": "AEPEvaluatorStakingRegistry",
       "name": "setUnstakeDelay",
       "path": "contracts/aep/AEPEvaluatorStakingRegistry.sol"
@@ -2074,7 +2074,7 @@
     },
     {
       "attributes": "external onlyAdmin",
-      "classification": "new_obligation_or_risk_increase",
+      "classification": "configuration",
       "contract": "JobClaimBondManager",
       "name": "setClaimBond",
       "path": "contracts/registry/JobClaimBondManager.sol"
@@ -3370,70 +3370,280 @@
     {
       "attributes": "external onlyAdmin",
       "classification": "configuration",
-      "contract": "TokenReserveVault",
+      "contract": "ProofRewardsVault",
       "name": "setPurpose",
       "path": "contracts/vaults/TokenReserveVault.sol"
     },
     {
       "attributes": "external whenNotPaused",
       "classification": "safe_exit_or_settlement",
-      "contract": "TokenReserveVault",
+      "contract": "ProofRewardsVault",
       "name": "release",
       "path": "contracts/vaults/TokenReserveVault.sol"
     },
     {
       "attributes": "external",
       "classification": "lifecycle_control_or_migration",
-      "contract": "TokenReserveVault",
+      "contract": "ProofRewardsVault",
       "name": "pause",
       "path": "contracts/vaults/TokenReserveVault.sol"
     },
     {
       "attributes": "external",
       "classification": "lifecycle_control_or_migration",
-      "contract": "TokenReserveVault",
+      "contract": "ProofRewardsVault",
       "name": "unpause",
       "path": "contracts/vaults/TokenReserveVault.sol"
     },
     {
       "attributes": "public override onlyOwner",
       "classification": "configuration",
-      "contract": "TokenReserveVault",
+      "contract": "ProofRewardsVault",
       "name": "transferOwnership",
       "path": "contracts/vaults/TokenReserveVault.sol"
     },
     {
       "attributes": "public onlyOwner",
       "classification": "owner_recovery_or_safe_exit",
-      "contract": "TokenReserveVault",
+      "contract": "ProofRewardsVault",
       "name": "cancelOwnershipTransfer",
       "path": "contracts/vaults/TokenReserveVault.sol"
     },
     {
       "attributes": "public",
       "classification": "configuration",
-      "contract": "TokenReserveVault",
+      "contract": "ProofRewardsVault",
       "name": "acceptOwnership",
       "path": "contracts/vaults/TokenReserveVault.sol"
     },
     {
       "attributes": "public override",
       "classification": "configuration",
-      "contract": "TokenReserveVault",
+      "contract": "ProofRewardsVault",
       "name": "grantRole",
       "path": "contracts/vaults/TokenReserveVault.sol"
     },
     {
       "attributes": "public override",
       "classification": "owner_recovery_or_safe_exit",
-      "contract": "TokenReserveVault",
+      "contract": "ProofRewardsVault",
       "name": "revokeRole",
       "path": "contracts/vaults/TokenReserveVault.sol"
     },
     {
       "attributes": "public override",
       "classification": "normal_operation_unclassified_review_required",
-      "contract": "TokenReserveVault",
+      "contract": "ProofRewardsVault",
+      "name": "renounceRole",
+      "path": "contracts/vaults/TokenReserveVault.sol"
+    },
+    {
+      "attributes": "external onlyAdmin",
+      "classification": "configuration",
+      "contract": "LiquidityVault",
+      "name": "setPurpose",
+      "path": "contracts/vaults/TokenReserveVault.sol"
+    },
+    {
+      "attributes": "external whenNotPaused",
+      "classification": "safe_exit_or_settlement",
+      "contract": "LiquidityVault",
+      "name": "release",
+      "path": "contracts/vaults/TokenReserveVault.sol"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "LiquidityVault",
+      "name": "pause",
+      "path": "contracts/vaults/TokenReserveVault.sol"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "LiquidityVault",
+      "name": "unpause",
+      "path": "contracts/vaults/TokenReserveVault.sol"
+    },
+    {
+      "attributes": "public override onlyOwner",
+      "classification": "configuration",
+      "contract": "LiquidityVault",
+      "name": "transferOwnership",
+      "path": "contracts/vaults/TokenReserveVault.sol"
+    },
+    {
+      "attributes": "public onlyOwner",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "LiquidityVault",
+      "name": "cancelOwnershipTransfer",
+      "path": "contracts/vaults/TokenReserveVault.sol"
+    },
+    {
+      "attributes": "public",
+      "classification": "configuration",
+      "contract": "LiquidityVault",
+      "name": "acceptOwnership",
+      "path": "contracts/vaults/TokenReserveVault.sol"
+    },
+    {
+      "attributes": "public override",
+      "classification": "configuration",
+      "contract": "LiquidityVault",
+      "name": "grantRole",
+      "path": "contracts/vaults/TokenReserveVault.sol"
+    },
+    {
+      "attributes": "public override",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "LiquidityVault",
+      "name": "revokeRole",
+      "path": "contracts/vaults/TokenReserveVault.sol"
+    },
+    {
+      "attributes": "public override",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "LiquidityVault",
+      "name": "renounceRole",
+      "path": "contracts/vaults/TokenReserveVault.sol"
+    },
+    {
+      "attributes": "external onlyAdmin",
+      "classification": "configuration",
+      "contract": "SecurityVault",
+      "name": "setPurpose",
+      "path": "contracts/vaults/TokenReserveVault.sol"
+    },
+    {
+      "attributes": "external whenNotPaused",
+      "classification": "safe_exit_or_settlement",
+      "contract": "SecurityVault",
+      "name": "release",
+      "path": "contracts/vaults/TokenReserveVault.sol"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "SecurityVault",
+      "name": "pause",
+      "path": "contracts/vaults/TokenReserveVault.sol"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "SecurityVault",
+      "name": "unpause",
+      "path": "contracts/vaults/TokenReserveVault.sol"
+    },
+    {
+      "attributes": "public override onlyOwner",
+      "classification": "configuration",
+      "contract": "SecurityVault",
+      "name": "transferOwnership",
+      "path": "contracts/vaults/TokenReserveVault.sol"
+    },
+    {
+      "attributes": "public onlyOwner",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "SecurityVault",
+      "name": "cancelOwnershipTransfer",
+      "path": "contracts/vaults/TokenReserveVault.sol"
+    },
+    {
+      "attributes": "public",
+      "classification": "configuration",
+      "contract": "SecurityVault",
+      "name": "acceptOwnership",
+      "path": "contracts/vaults/TokenReserveVault.sol"
+    },
+    {
+      "attributes": "public override",
+      "classification": "configuration",
+      "contract": "SecurityVault",
+      "name": "grantRole",
+      "path": "contracts/vaults/TokenReserveVault.sol"
+    },
+    {
+      "attributes": "public override",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "SecurityVault",
+      "name": "revokeRole",
+      "path": "contracts/vaults/TokenReserveVault.sol"
+    },
+    {
+      "attributes": "public override",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "SecurityVault",
+      "name": "renounceRole",
+      "path": "contracts/vaults/TokenReserveVault.sol"
+    },
+    {
+      "attributes": "external onlyAdmin",
+      "classification": "configuration",
+      "contract": "CommunityVault",
+      "name": "setPurpose",
+      "path": "contracts/vaults/TokenReserveVault.sol"
+    },
+    {
+      "attributes": "external whenNotPaused",
+      "classification": "safe_exit_or_settlement",
+      "contract": "CommunityVault",
+      "name": "release",
+      "path": "contracts/vaults/TokenReserveVault.sol"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "CommunityVault",
+      "name": "pause",
+      "path": "contracts/vaults/TokenReserveVault.sol"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "CommunityVault",
+      "name": "unpause",
+      "path": "contracts/vaults/TokenReserveVault.sol"
+    },
+    {
+      "attributes": "public override onlyOwner",
+      "classification": "configuration",
+      "contract": "CommunityVault",
+      "name": "transferOwnership",
+      "path": "contracts/vaults/TokenReserveVault.sol"
+    },
+    {
+      "attributes": "public onlyOwner",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "CommunityVault",
+      "name": "cancelOwnershipTransfer",
+      "path": "contracts/vaults/TokenReserveVault.sol"
+    },
+    {
+      "attributes": "public",
+      "classification": "configuration",
+      "contract": "CommunityVault",
+      "name": "acceptOwnership",
+      "path": "contracts/vaults/TokenReserveVault.sol"
+    },
+    {
+      "attributes": "public override",
+      "classification": "configuration",
+      "contract": "CommunityVault",
+      "name": "grantRole",
+      "path": "contracts/vaults/TokenReserveVault.sol"
+    },
+    {
+      "attributes": "public override",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "CommunityVault",
+      "name": "revokeRole",
+      "path": "contracts/vaults/TokenReserveVault.sol"
+    },
+    {
+      "attributes": "public override",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "CommunityVault",
       "name": "renounceRole",
       "path": "contracts/vaults/TokenReserveVault.sol"
     }

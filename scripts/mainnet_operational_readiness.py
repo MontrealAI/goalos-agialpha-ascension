@@ -28,6 +28,7 @@ GENERATED_PREFIXES = (
 STATE_HINTS = ("external", "public")
 VIEW_HINTS = ("view", "pure")
 ASSET_WORDS = ("Vault", "Treasury", "Bond", "Reward", "Stake", "Router", "Escrow")
+TOKEN_RESERVE_VAULT_ALIASES = ("ProofRewardsVault", "LiquidityVault", "SecurityVault", "CommunityVault")
 STATE_WORDS = (
     "Job", "Claim", "Submission", "Proof", "Reward", "Bond", "Stake", "Credential",
     "Reputation", "AEP", "Tranche", "Treasury", "Vault", "Agent", "Operator", "Registry",
@@ -124,7 +125,7 @@ def inherited_goalos_surface():
     text = access_path.read_text(errors="ignore")
     for block in contract_blocks(text):
         if block["name"] == "GoalOSAccessControl":
-            return functions_from_body(block["body"]), roles_from_body(block["body"])
+            return functions_from_body(block["body"]), sorted(set(roles_from_body(block["body"]) + ["DEFAULT_ADMIN_ROLE"]))
     return [], []
 
 
@@ -172,16 +173,20 @@ def contracts():
                 funcs = merge_funcs(funcs, goalos_funcs)
                 roles = sorted(set(roles + goalos_roles))
             name = info["name"]
-            out.append({
-                "path": str(path.relative_to(ROOT)),
-                "contract": name,
-                "sha256": sha_file(path),
-                "stateChangingSelectors": funcs,
-                "roles": roles,
-                "assetHolding": detects_asset_holding(name, text),
-                "assetHoldingEvidence": "token/native inbound flow or asset-bearing name" if detects_asset_holding(name, text) else "none detected",
-                "workflow": bool(funcs) or any(word in name for word in STATE_WORDS),
-            })
+            deployment_names = TOKEN_RESERVE_VAULT_ALIASES if name == "TokenReserveVault" else (name,)
+            for deployment_name in deployment_names:
+                out.append({
+                    "path": str(path.relative_to(ROOT)),
+                    "contract": deployment_name,
+                    "sourceContract": name,
+                    "deploymentAlias": deployment_name if deployment_name != name else None,
+                    "sha256": sha_file(path),
+                    "stateChangingSelectors": funcs,
+                    "roles": roles,
+                    "assetHolding": detects_asset_holding(name, text),
+                    "assetHoldingEvidence": "token/native inbound flow or asset-bearing name" if detects_asset_holding(name, text) else "none detected",
+                    "workflow": bool(funcs) or any(word in deployment_name for word in STATE_WORDS),
+                })
     return out
 
 
@@ -196,12 +201,12 @@ def classify(fn):
         return "lifecycle_control_or_migration"
     if any(x in words for x in ["recover", "override", "cancel", "resolve", "slash", "refund", "revoke"]):
         return "owner_recovery_or_safe_exit"
+    if any(x in words for x in ["grant", "set", "configure"]) or name in ["transferownership", "acceptownership"]:
+        return "configuration"
     if any(x in words for x in ["withdraw", "release", "pay", "settle", "return", "unstake"]):
         return "safe_exit_or_settlement"
     if any(x in words for x in ["create", "submit", "claim", "deposit", "stake", "reserve", "fund", "approve", "post", "propose"]):
         return "new_obligation_or_risk_increase"
-    if any(x in words for x in ["grant", "set", "configure"]) or name in ["transferownership", "acceptownership"]:
-        return "configuration"
     return "normal_operation_unclassified_review_required"
 
 

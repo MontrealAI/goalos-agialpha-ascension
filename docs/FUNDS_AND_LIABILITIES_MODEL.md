@@ -46,4 +46,7 @@ Per-token accounting is required; unlike tokens must not be value-aggregated.
 - `ReviewerBondRegistry`: REQUIRES_EXACT_ONCHAIN_STATUS (token/native inbound flow or asset-bearing name)
 - `TreasuryRouter`: REQUIRES_EXACT_ONCHAIN_STATUS (token/native inbound flow or asset-bearing name)
 - `CommercializationPerformanceVault`: REQUIRES_EXACT_ONCHAIN_STATUS (token/native inbound flow or asset-bearing name)
-- `TokenReserveVault`: REQUIRES_EXACT_ONCHAIN_STATUS (token/native inbound flow or asset-bearing name)
+- `ProofRewardsVault`: REQUIRES_EXACT_ONCHAIN_STATUS (token/native inbound flow or asset-bearing name)
+- `LiquidityVault`: REQUIRES_EXACT_ONCHAIN_STATUS (token/native inbound flow or asset-bearing name)
+- `SecurityVault`: REQUIRES_EXACT_ONCHAIN_STATUS (token/native inbound flow or asset-bearing name)
+- `CommunityVault`: REQUIRES_EXACT_ONCHAIN_STATUS (token/native inbound flow or asset-bearing name)

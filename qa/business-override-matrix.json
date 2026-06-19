@@ -397,7 +397,34 @@
       "testCoverage": "BLOCKED until contract-specific tests are complete"
     },
     {
-      "contract": "TokenReserveVault",
+      "contract": "ProofRewardsVault",
+      "evidence": [
+        "source inventory"
+      ],
+      "ownerRecoveryAction": "See classified selectors; add typed owner override before PASS if no recovery selector exists for a nonterminal state.",
+      "path": "contracts/vaults/TokenReserveVault.sol",
+      "testCoverage": "BLOCKED until contract-specific tests are complete"
+    },
+    {
+      "contract": "LiquidityVault",
+      "evidence": [
+        "source inventory"
+      ],
+      "ownerRecoveryAction": "See classified selectors; add typed owner override before PASS if no recovery selector exists for a nonterminal state.",
+      "path": "contracts/vaults/TokenReserveVault.sol",
+      "testCoverage": "BLOCKED until contract-specific tests are complete"
+    },
+    {
+      "contract": "SecurityVault",
+      "evidence": [
+        "source inventory"
+      ],
+      "ownerRecoveryAction": "See classified selectors; add typed owner override before PASS if no recovery selector exists for a nonterminal state.",
+      "path": "contracts/vaults/TokenReserveVault.sol",
+      "testCoverage": "BLOCKED until contract-specific tests are complete"
+    },
+    {
+      "contract": "CommunityVault",
       "evidence": [
         "source inventory"
       ],
