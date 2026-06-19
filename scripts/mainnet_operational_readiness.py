@@ -28,7 +28,6 @@ RELEASE_ROOTS = (
 )
 GENERATED_PREFIXES = (
     "qa/mainnet-operational",
-    "qa/mainnet-readiness/",
     "qa/business-override-matrix.json",
     "qa/funds-and-liabilities-inventory.json",
     "qa/lifecycle-selector-policy.json",

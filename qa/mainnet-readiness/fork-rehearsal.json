@@ -1,9 +1,0 @@
-{
-  "blockers": [
-    "MAINNET_RPC_URL/HARDHAT_FORK_MAINNET rehearsal was not executed by this generator; local chain cannot satisfy authorization-grade fork evidence"
-  ],
-  "forkMainnet": false,
-  "mainnetBroadcastOccurred": false,
-  "releaseIdentity": "7a15dc5facfbaace4fe34bacc63ba71d8f4392ee708d468fba37b0f698158003",
-  "status": "BLOCKED"
-}

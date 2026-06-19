@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -u
+set -euo pipefail
 export PATH="$HOME/.local/bin:$PATH"
 AUDIT_REPORTS_ROOT="${AUDIT_REPORTS_ROOT:-audit/reports}"
 AUDIT_RUN_FILE="${AUDIT_RUN_FILE:-$AUDIT_REPORTS_ROOT/current-run.txt}"

@@ -9,7 +9,7 @@ if ! npm run compile:ci > "$AUDIT_REPORT_DIR/deterministic-compile.log" 2>&1; th
 fi
 CMD="timeout 120 slither . --compile-force-framework hardhat --config-file configs/slither.config.json"
 if ! command -v slither >/dev/null 2>&1; then
-  python -m pip install --user slither-analyzer > "$AUDIT_REPORT_DIR/slither-install.log" 2>&1 || { write_pending "Slither" "$CMD" "slither executable is not installed and pip install slither-analyzer failed" "$JSON" "$TXT"; echo '{"runs":[]}' > "$SARIF"; exit 1; }
+  python -m pip install --user slither-analyzer==0.10.4 > "$AUDIT_REPORT_DIR/slither-install.log" 2>&1 || { write_pending "Slither" "$CMD" "slither executable is not installed and pip install slither-analyzer failed" "$JSON" "$TXT"; echo '{"runs":[]}' > "$SARIF"; exit 1; }
   export PATH="$HOME/.local/bin:$PATH"
 fi
 if ! command -v slither >/dev/null 2>&1; then write_pending "Slither" "$CMD" "slither executable remains unavailable after install" "$JSON" "$TXT"; echo '{"runs":[]}' > "$SARIF"; exit 1; fi

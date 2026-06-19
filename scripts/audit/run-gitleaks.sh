@@ -58,7 +58,7 @@ trap cleanup_scan_source EXIT
 
 if ! command -v gitleaks >/dev/null 2>&1; then
   set +e
-  go install github.com/zricethezav/gitleaks/v8@latest >> "$TXT" 2>&1
+  go install github.com/zricethezav/gitleaks/v8@v8.24.2 >> "$TXT" 2>&1
   INSTALL_STATUS=$?
   set -e
   if [ "$INSTALL_STATUS" -ne 0 ] || ! command -v gitleaks >/dev/null 2>&1; then
