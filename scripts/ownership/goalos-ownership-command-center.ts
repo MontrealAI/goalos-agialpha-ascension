@@ -605,8 +605,10 @@ async function transfer(label: string, options: TransferOptions = {}): Promise<v
     writeJsonAtomic(journal, journalData);
     const receipt = await tx.wait(confirmations);
     if (!receipt || receipt.status !== 1) throw new Error(`Transfer initiation failed ${entry.name}`);
-    if (ethers.getAddress(await c.pendingOwner()) !== finalOwner) throw new Error(`Post-transfer pending owner mismatch ${entry.name}`);
-    journalData.transactions[journalData.transactions.length - 1].status = "PENDING_ACCEPTANCE";
+    const postOwner = ethers.getAddress(await c.owner());
+    const postPending = await pendingOwnerOf(c);
+    if (postOwner !== finalOwner && postPending !== finalOwner) throw new Error(`Post-transfer owner/pending mismatch ${entry.name}`);
+    journalData.transactions[journalData.transactions.length - 1].status = postOwner === finalOwner ? "ACCEPTED" : "PENDING_ACCEPTANCE";
     journalData.transactions[journalData.transactions.length - 1].confirmedAt = new Date().toISOString();
     writeJsonAtomic(journal, journalData);
     transferred += 1;
@@ -659,10 +661,15 @@ async function accept(label: string): Promise<void> {
   const manifestEntries = requireManagedEntries(manifest.data);
   assertPlanCoversManifest(loadedPlan.managedContracts, manifestEntries);
   const pendingEntries: PlannedEntry[] = [];
+  const notReadyEntries: string[] = [];
   for (const entry of loadedPlan.managedContracts as PlannedEntry[]) {
     const c = await contractAt(entry.address);
-    if (ethers.getAddress(await c.owner()) !== finalOwner && ethers.getAddress(await c.pendingOwner()) === finalOwner) pendingEntries.push(entry);
+    const owner = ethers.getAddress(await c.owner());
+    if (owner === finalOwner) continue;
+    const pending = await pendingOwnerOf(c);
+    if (pending === finalOwner) pendingEntries.push(entry); else notReadyEntries.push(`${entry.name}:${owner}:${pending || "NO_PENDING_OWNER"}`);
   }
+  if (notReadyEntries.length) throw new Error(`Ownership acceptance blocked; contracts are not pending to final owner: ${notReadyEntries.join(",")}`);
   const finalOwnerCode = await ethers.provider.getCode(finalOwner);
   if (finalOwnerCode !== "0x" && ethers.getAddress(connectedSigner.address) !== finalOwner) {
     writeSafeAcceptancePlan(label, finalOwner, loadedPlan, pendingEntries);

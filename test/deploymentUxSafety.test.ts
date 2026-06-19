@@ -293,7 +293,10 @@ describe("deployment UX safety layer", function () {
     expect(commandCenter).to.include("encodeFunctionData");
     expect(commandCenter).not.to.include("CALldata_PREPARATION_REQUIRES_PRIVATE_OWNER_CONTEXT");
     expect(commandCenter).to.include('action.includes("prepare-safe")');
+    expect(commandCenter).to.include("function verifySafeConfiguration");
+    expect(commandCenter).to.include("hasRole(bytes32 role,address account)");
     expect(pkg.scripts["configure:mainnet:prepare-safe"]).to.include("mainnet:prepare-safe");
+    expect(pkg.scripts["configure:mainnet:verify"]).to.include("mainnet:configure-verify");
   });
 
   it("requires explicit Mainnet governance-owner kind before runtime address loading", function () {
