@@ -5,7 +5,14 @@
       "assetHoldingEvidence": "none detected",
       "contract": "AEPAgentRegistry",
       "path": "contracts/aep/AEPAgentRegistry.sol",
-      "roles": [],
+      "roles": [
+        "OPERATOR_ROLE",
+        "PAUSER_ROLE",
+        "PROTOCOL_ADMIN_ROLE",
+        "REVIEWER_MANAGER_ROLE",
+        "TREASURY_ROLE",
+        "VAULT_MANAGER_ROLE"
+      ],
       "sha256": "3737a9de121e892864dcc38721aee0230108b6beab540d4b596c3837fe287ba9",
       "stateChangingSelectors": [
         {
@@ -17,6 +24,46 @@
           "attributes": "external onlyOperator",
           "classification": "normal_operation_unclassified_review_required",
           "name": "updateAgent"
+        },
+        {
+          "attributes": "external",
+          "classification": "lifecycle_control_or_migration",
+          "name": "pause"
+        },
+        {
+          "attributes": "external",
+          "classification": "lifecycle_control_or_migration",
+          "name": "unpause"
+        },
+        {
+          "attributes": "public override onlyOwner",
+          "classification": "configuration",
+          "name": "transferOwnership"
+        },
+        {
+          "attributes": "public onlyOwner",
+          "classification": "owner_recovery_or_safe_exit",
+          "name": "cancelOwnershipTransfer"
+        },
+        {
+          "attributes": "public",
+          "classification": "configuration",
+          "name": "acceptOwnership"
+        },
+        {
+          "attributes": "public override",
+          "classification": "configuration",
+          "name": "grantRole"
+        },
+        {
+          "attributes": "public override",
+          "classification": "owner_recovery_or_safe_exit",
+          "name": "revokeRole"
+        },
+        {
+          "attributes": "public override",
+          "classification": "normal_operation_unclassified_review_required",
+          "name": "renounceRole"
         }
       ],
       "workflow": true
@@ -26,7 +73,14 @@
       "assetHoldingEvidence": "none detected",
       "contract": "AEPArtifactRegistry",
       "path": "contracts/aep/AEPArtifactRegistry.sol",
-      "roles": [],
+      "roles": [
+        "OPERATOR_ROLE",
+        "PAUSER_ROLE",
+        "PROTOCOL_ADMIN_ROLE",
+        "REVIEWER_MANAGER_ROLE",
+        "TREASURY_ROLE",
+        "VAULT_MANAGER_ROLE"
+      ],
       "sha256": "a2e68f1471d89718375a26f601451bda0543aadc52341ebaeaa623d7130c34c8",
       "stateChangingSelectors": [
         {
@@ -38,6 +92,46 @@
           "attributes": "external onlyOperator",
           "classification": "configuration",
           "name": "setArtifactStatus"
+        },
+        {
+          "attributes": "external",
+          "classification": "lifecycle_control_or_migration",
+          "name": "pause"
+        },
+        {
+          "attributes": "external",
+          "classification": "lifecycle_control_or_migration",
+          "name": "unpause"
+        },
+        {
+          "attributes": "public override onlyOwner",
+          "classification": "configuration",
+          "name": "transferOwnership"
+        },
+        {
+          "attributes": "public onlyOwner",
+          "classification": "owner_recovery_or_safe_exit",
+          "name": "cancelOwnershipTransfer"
+        },
+        {
+          "attributes": "public",
+          "classification": "configuration",
+          "name": "acceptOwnership"
+        },
+        {
+          "attributes": "public override",
+          "classification": "configuration",
+          "name": "grantRole"
+        },
+        {
+          "attributes": "public override",
+          "classification": "owner_recovery_or_safe_exit",
+          "name": "revokeRole"
+        },
+        {
+          "attributes": "public override",
+          "classification": "normal_operation_unclassified_review_required",
+          "name": "renounceRole"
         }
       ],
       "workflow": true
@@ -47,7 +141,14 @@
       "assetHoldingEvidence": "none detected",
       "contract": "AEPAttestationRegistry",
       "path": "contracts/aep/AEPAttestationRegistry.sol",
-      "roles": [],
+      "roles": [
+        "OPERATOR_ROLE",
+        "PAUSER_ROLE",
+        "PROTOCOL_ADMIN_ROLE",
+        "REVIEWER_MANAGER_ROLE",
+        "TREASURY_ROLE",
+        "VAULT_MANAGER_ROLE"
+      ],
       "sha256": "e627b4ec4c418b2a4f617dc16755e5a28749cccda8048a0cfa5ecdf15b97b7a1",
       "stateChangingSelectors": [
         {
@@ -59,6 +160,46 @@
           "attributes": "external onlyOperator",
           "classification": "owner_recovery_or_safe_exit",
           "name": "revokeAttestation"
+        },
+        {
+          "attributes": "external",
+          "classification": "lifecycle_control_or_migration",
+          "name": "pause"
+        },
+        {
+          "attributes": "external",
+          "classification": "lifecycle_control_or_migration",
+          "name": "unpause"
+        },
+        {
+          "attributes": "public override onlyOwner",
+          "classification": "configuration",
+          "name": "transferOwnership"
+        },
+        {
+          "attributes": "public onlyOwner",
+          "classification": "owner_recovery_or_safe_exit",
+          "name": "cancelOwnershipTransfer"
+        },
+        {
+          "attributes": "public",
+          "classification": "configuration",
+          "name": "acceptOwnership"
+        },
+        {
+          "attributes": "public override",
+          "classification": "configuration",
+          "name": "grantRole"
+        },
+        {
+          "attributes": "public override",
+          "classification": "owner_recovery_or_safe_exit",
+          "name": "revokeRole"
+        },
+        {
+          "attributes": "public override",
+          "classification": "normal_operation_unclassified_review_required",
+          "name": "renounceRole"
         }
       ],
       "workflow": true
@@ -68,13 +209,60 @@
       "assetHoldingEvidence": "none detected",
       "contract": "AEPChronicleRegistry",
       "path": "contracts/aep/AEPChronicleRegistry.sol",
-      "roles": [],
+      "roles": [
+        "OPERATOR_ROLE",
+        "PAUSER_ROLE",
+        "PROTOCOL_ADMIN_ROLE",
+        "REVIEWER_MANAGER_ROLE",
+        "TREASURY_ROLE",
+        "VAULT_MANAGER_ROLE"
+      ],
       "sha256": "70b41b824fc5e345db02eb7f6ccbf3674b01ffd08f0b2398b208c8bc8ca349b0",
       "stateChangingSelectors": [
         {
           "attributes": "external onlyOperator returns (uint256 entryId)",
           "classification": "normal_operation_unclassified_review_required",
           "name": "recordEntry"
+        },
+        {
+          "attributes": "external",
+          "classification": "lifecycle_control_or_migration",
+          "name": "pause"
+        },
+        {
+          "attributes": "external",
+          "classification": "lifecycle_control_or_migration",
+          "name": "unpause"
+        },
+        {
+          "attributes": "public override onlyOwner",
+          "classification": "configuration",
+          "name": "transferOwnership"
+        },
+        {
+          "attributes": "public onlyOwner",
+          "classification": "owner_recovery_or_safe_exit",
+          "name": "cancelOwnershipTransfer"
+        },
+        {
+          "attributes": "public",
+          "classification": "configuration",
+          "name": "acceptOwnership"
+        },
+        {
+          "attributes": "public override",
+          "classification": "configuration",
+          "name": "grantRole"
+        },
+        {
+          "attributes": "public override",
+          "classification": "owner_recovery_or_safe_exit",
+          "name": "revokeRole"
+        },
+        {
+          "attributes": "public override",
+          "classification": "normal_operation_unclassified_review_required",
+          "name": "renounceRole"
         }
       ],
       "workflow": true
@@ -84,7 +272,14 @@
       "assetHoldingEvidence": "none detected",
       "contract": "AEPClaimBoundaryRegistry",
       "path": "contracts/aep/AEPClaimBoundaryRegistry.sol",
-      "roles": [],
+      "roles": [
+        "OPERATOR_ROLE",
+        "PAUSER_ROLE",
+        "PROTOCOL_ADMIN_ROLE",
+        "REVIEWER_MANAGER_ROLE",
+        "TREASURY_ROLE",
+        "VAULT_MANAGER_ROLE"
+      ],
       "sha256": "b8f5901e2ce4fc4c561441d306ed3b12ecf6d3b3f2c4eda5de0bc0cd6c7135a1",
       "stateChangingSelectors": [
         {
@@ -96,6 +291,46 @@
           "attributes": "external onlyOperator",
           "classification": "new_obligation_or_risk_increase",
           "name": "setClaimBoundaryActive"
+        },
+        {
+          "attributes": "external",
+          "classification": "lifecycle_control_or_migration",
+          "name": "pause"
+        },
+        {
+          "attributes": "external",
+          "classification": "lifecycle_control_or_migration",
+          "name": "unpause"
+        },
+        {
+          "attributes": "public override onlyOwner",
+          "classification": "configuration",
+          "name": "transferOwnership"
+        },
+        {
+          "attributes": "public onlyOwner",
+          "classification": "owner_recovery_or_safe_exit",
+          "name": "cancelOwnershipTransfer"
+        },
+        {
+          "attributes": "public",
+          "classification": "configuration",
+          "name": "acceptOwnership"
+        },
+        {
+          "attributes": "public override",
+          "classification": "configuration",
+          "name": "grantRole"
+        },
+        {
+          "attributes": "public override",
+          "classification": "owner_recovery_or_safe_exit",
+          "name": "revokeRole"
+        },
+        {
+          "attributes": "public override",
+          "classification": "normal_operation_unclassified_review_required",
+          "name": "renounceRole"
         }
       ],
       "workflow": true
@@ -105,7 +340,14 @@
       "assetHoldingEvidence": "none detected",
       "contract": "AEPCommitRevealValidationRegistry",
       "path": "contracts/aep/AEPCommitRevealValidationRegistry.sol",
-      "roles": [],
+      "roles": [
+        "OPERATOR_ROLE",
+        "PAUSER_ROLE",
+        "PROTOCOL_ADMIN_ROLE",
+        "REVIEWER_MANAGER_ROLE",
+        "TREASURY_ROLE",
+        "VAULT_MANAGER_ROLE"
+      ],
       "sha256": "4edf627e01f35c29386f5f3490256348372a6f50fc54938d4e899f51a3dbbbc1",
       "stateChangingSelectors": [
         {
@@ -137,6 +379,46 @@
           "attributes": "external onlyOperator",
           "classification": "owner_recovery_or_safe_exit",
           "name": "cancelRound"
+        },
+        {
+          "attributes": "external",
+          "classification": "lifecycle_control_or_migration",
+          "name": "pause"
+        },
+        {
+          "attributes": "external",
+          "classification": "lifecycle_control_or_migration",
+          "name": "unpause"
+        },
+        {
+          "attributes": "public override onlyOwner",
+          "classification": "configuration",
+          "name": "transferOwnership"
+        },
+        {
+          "attributes": "public onlyOwner",
+          "classification": "owner_recovery_or_safe_exit",
+          "name": "cancelOwnershipTransfer"
+        },
+        {
+          "attributes": "public",
+          "classification": "configuration",
+          "name": "acceptOwnership"
+        },
+        {
+          "attributes": "public override",
+          "classification": "configuration",
+          "name": "grantRole"
+        },
+        {
+          "attributes": "public override",
+          "classification": "owner_recovery_or_safe_exit",
+          "name": "revokeRole"
+        },
+        {
+          "attributes": "public override",
+          "classification": "normal_operation_unclassified_review_required",
+          "name": "renounceRole"
         }
       ],
       "workflow": true
@@ -146,7 +428,14 @@
       "assetHoldingEvidence": "none detected",
       "contract": "AEPConformanceRegistry",
       "path": "contracts/aep/AEPConformanceRegistry.sol",
-      "roles": [],
+      "roles": [
+        "OPERATOR_ROLE",
+        "PAUSER_ROLE",
+        "PROTOCOL_ADMIN_ROLE",
+        "REVIEWER_MANAGER_ROLE",
+        "TREASURY_ROLE",
+        "VAULT_MANAGER_ROLE"
+      ],
       "sha256": "9b909b6e6f4abf4455dddcefd3f0d335cac5eb48a07c4e51e236444a63f39eae",
       "stateChangingSelectors": [
         {
@@ -158,6 +447,46 @@
           "attributes": "external onlyOperator",
           "classification": "configuration",
           "name": "setConformanceActive"
+        },
+        {
+          "attributes": "external",
+          "classification": "lifecycle_control_or_migration",
+          "name": "pause"
+        },
+        {
+          "attributes": "external",
+          "classification": "lifecycle_control_or_migration",
+          "name": "unpause"
+        },
+        {
+          "attributes": "public override onlyOwner",
+          "classification": "configuration",
+          "name": "transferOwnership"
+        },
+        {
+          "attributes": "public onlyOwner",
+          "classification": "owner_recovery_or_safe_exit",
+          "name": "cancelOwnershipTransfer"
+        },
+        {
+          "attributes": "public",
+          "classification": "configuration",
+          "name": "acceptOwnership"
+        },
+        {
+          "attributes": "public override",
+          "classification": "configuration",
+          "name": "grantRole"
+        },
+        {
+          "attributes": "public override",
+          "classification": "owner_recovery_or_safe_exit",
+          "name": "revokeRole"
+        },
+        {
+          "attributes": "public override",
+          "classification": "normal_operation_unclassified_review_required",
+          "name": "renounceRole"
         }
       ],
       "workflow": true
@@ -167,7 +496,14 @@
       "assetHoldingEvidence": "none detected",
       "contract": "AEPEvalRegistry",
       "path": "contracts/aep/AEPEvalRegistry.sol",
-      "roles": [],
+      "roles": [
+        "OPERATOR_ROLE",
+        "PAUSER_ROLE",
+        "PROTOCOL_ADMIN_ROLE",
+        "REVIEWER_MANAGER_ROLE",
+        "TREASURY_ROLE",
+        "VAULT_MANAGER_ROLE"
+      ],
       "sha256": "85183bb9b6c29fd28c2fc45a4bb2f74b78ed0dd5d5f9da782cd89a18508976e0",
       "stateChangingSelectors": [
         {
@@ -179,6 +515,46 @@
           "attributes": "external onlyOperator returns (uint256 evalId)",
           "classification": "normal_operation_unclassified_review_required",
           "name": "recordEval"
+        },
+        {
+          "attributes": "external",
+          "classification": "lifecycle_control_or_migration",
+          "name": "pause"
+        },
+        {
+          "attributes": "external",
+          "classification": "lifecycle_control_or_migration",
+          "name": "unpause"
+        },
+        {
+          "attributes": "public override onlyOwner",
+          "classification": "configuration",
+          "name": "transferOwnership"
+        },
+        {
+          "attributes": "public onlyOwner",
+          "classification": "owner_recovery_or_safe_exit",
+          "name": "cancelOwnershipTransfer"
+        },
+        {
+          "attributes": "public",
+          "classification": "configuration",
+          "name": "acceptOwnership"
+        },
+        {
+          "attributes": "public override",
+          "classification": "configuration",
+          "name": "grantRole"
+        },
+        {
+          "attributes": "public override",
+          "classification": "owner_recovery_or_safe_exit",
+          "name": "revokeRole"
+        },
+        {
+          "attributes": "public override",
+          "classification": "normal_operation_unclassified_review_required",
+          "name": "renounceRole"
         }
       ],
       "workflow": true
@@ -188,7 +564,14 @@
       "assetHoldingEvidence": "token/native inbound flow or asset-bearing name",
       "contract": "AEPEvaluatorStakingRegistry",
       "path": "contracts/aep/AEPEvaluatorStakingRegistry.sol",
-      "roles": [],
+      "roles": [
+        "OPERATOR_ROLE",
+        "PAUSER_ROLE",
+        "PROTOCOL_ADMIN_ROLE",
+        "REVIEWER_MANAGER_ROLE",
+        "TREASURY_ROLE",
+        "VAULT_MANAGER_ROLE"
+      ],
       "sha256": "72231a60ba05d1c8987e4097564473da991090befe7e0fb101926756f6295952",
       "stateChangingSelectors": [
         {
@@ -225,6 +608,46 @@
           "attributes": "external onlyOperator nonReentrant",
           "classification": "owner_recovery_or_safe_exit",
           "name": "slashEvaluator"
+        },
+        {
+          "attributes": "external",
+          "classification": "lifecycle_control_or_migration",
+          "name": "pause"
+        },
+        {
+          "attributes": "external",
+          "classification": "lifecycle_control_or_migration",
+          "name": "unpause"
+        },
+        {
+          "attributes": "public override onlyOwner",
+          "classification": "configuration",
+          "name": "transferOwnership"
+        },
+        {
+          "attributes": "public onlyOwner",
+          "classification": "owner_recovery_or_safe_exit",
+          "name": "cancelOwnershipTransfer"
+        },
+        {
+          "attributes": "public",
+          "classification": "configuration",
+          "name": "acceptOwnership"
+        },
+        {
+          "attributes": "public override",
+          "classification": "configuration",
+          "name": "grantRole"
+        },
+        {
+          "attributes": "public override",
+          "classification": "owner_recovery_or_safe_exit",
+          "name": "revokeRole"
+        },
+        {
+          "attributes": "public override",
+          "classification": "normal_operation_unclassified_review_required",
+          "name": "renounceRole"
         }
       ],
       "workflow": true
@@ -234,7 +657,14 @@
       "assetHoldingEvidence": "none detected",
       "contract": "AEPEvidenceDocketRegistry",
       "path": "contracts/aep/AEPEvidenceDocketRegistry.sol",
-      "roles": [],
+      "roles": [
+        "OPERATOR_ROLE",
+        "PAUSER_ROLE",
+        "PROTOCOL_ADMIN_ROLE",
+        "REVIEWER_MANAGER_ROLE",
+        "TREASURY_ROLE",
+        "VAULT_MANAGER_ROLE"
+      ],
       "sha256": "41a2a75173c71037228f98f410a4daaa4fb2f729132ebfa2be5979c45929583f",
       "stateChangingSelectors": [
         {
@@ -246,6 +676,46 @@
           "attributes": "external onlyOperator",
           "classification": "configuration",
           "name": "setDocketActive"
+        },
+        {
+          "attributes": "external",
+          "classification": "lifecycle_control_or_migration",
+          "name": "pause"
+        },
+        {
+          "attributes": "external",
+          "classification": "lifecycle_control_or_migration",
+          "name": "unpause"
+        },
+        {
+          "attributes": "public override onlyOwner",
+          "classification": "configuration",
+          "name": "transferOwnership"
+        },
+        {
+          "attributes": "public onlyOwner",
+          "classification": "owner_recovery_or_safe_exit",
+          "name": "cancelOwnershipTransfer"
+        },
+        {
+          "attributes": "public",
+          "classification": "configuration",
+          "name": "acceptOwnership"
+        },
+        {
+          "attributes": "public override",
+          "classification": "configuration",
+          "name": "grantRole"
+        },
+        {
+          "attributes": "public override",
+          "classification": "owner_recovery_or_safe_exit",
+          "name": "revokeRole"
+        },
+        {
+          "attributes": "public override",
+          "classification": "normal_operation_unclassified_review_required",
+          "name": "renounceRole"
         }
       ],
       "workflow": true
@@ -255,7 +725,14 @@
       "assetHoldingEvidence": "none detected",
       "contract": "AEPFalsificationRegistry",
       "path": "contracts/aep/AEPFalsificationRegistry.sol",
-      "roles": [],
+      "roles": [
+        "OPERATOR_ROLE",
+        "PAUSER_ROLE",
+        "PROTOCOL_ADMIN_ROLE",
+        "REVIEWER_MANAGER_ROLE",
+        "TREASURY_ROLE",
+        "VAULT_MANAGER_ROLE"
+      ],
       "sha256": "aa6a42114de4029a958e5bb888b24fde3d19d2a4b5fe36d72d3f9a9e1872509b",
       "stateChangingSelectors": [
         {
@@ -267,6 +744,46 @@
           "attributes": "external onlyOperator",
           "classification": "configuration",
           "name": "setFalsificationStatus"
+        },
+        {
+          "attributes": "external",
+          "classification": "lifecycle_control_or_migration",
+          "name": "pause"
+        },
+        {
+          "attributes": "external",
+          "classification": "lifecycle_control_or_migration",
+          "name": "unpause"
+        },
+        {
+          "attributes": "public override onlyOwner",
+          "classification": "configuration",
+          "name": "transferOwnership"
+        },
+        {
+          "attributes": "public onlyOwner",
+          "classification": "owner_recovery_or_safe_exit",
+          "name": "cancelOwnershipTransfer"
+        },
+        {
+          "attributes": "public",
+          "classification": "configuration",
+          "name": "acceptOwnership"
+        },
+        {
+          "attributes": "public override",
+          "classification": "configuration",
+          "name": "grantRole"
+        },
+        {
+          "attributes": "public override",
+          "classification": "owner_recovery_or_safe_exit",
+          "name": "revokeRole"
+        },
+        {
+          "attributes": "public override",
+          "classification": "normal_operation_unclassified_review_required",
+          "name": "renounceRole"
         }
       ],
       "workflow": true
@@ -276,7 +793,14 @@
       "assetHoldingEvidence": "none detected",
       "contract": "AEPGoalOSCommitRegistry",
       "path": "contracts/aep/AEPGoalOSCommitRegistry.sol",
-      "roles": [],
+      "roles": [
+        "OPERATOR_ROLE",
+        "PAUSER_ROLE",
+        "PROTOCOL_ADMIN_ROLE",
+        "REVIEWER_MANAGER_ROLE",
+        "TREASURY_ROLE",
+        "VAULT_MANAGER_ROLE"
+      ],
       "sha256": "f92f004af2d836ab5a56a08d2a857b469d34ebf716b22c8d3b36ef0e2257c9d4",
       "stateChangingSelectors": [
         {
@@ -293,6 +817,46 @@
           "attributes": "external onlyOperator",
           "classification": "configuration",
           "name": "setCommitActive"
+        },
+        {
+          "attributes": "external",
+          "classification": "lifecycle_control_or_migration",
+          "name": "pause"
+        },
+        {
+          "attributes": "external",
+          "classification": "lifecycle_control_or_migration",
+          "name": "unpause"
+        },
+        {
+          "attributes": "public override onlyOwner",
+          "classification": "configuration",
+          "name": "transferOwnership"
+        },
+        {
+          "attributes": "public onlyOwner",
+          "classification": "owner_recovery_or_safe_exit",
+          "name": "cancelOwnershipTransfer"
+        },
+        {
+          "attributes": "public",
+          "classification": "configuration",
+          "name": "acceptOwnership"
+        },
+        {
+          "attributes": "public override",
+          "classification": "configuration",
+          "name": "grantRole"
+        },
+        {
+          "attributes": "public override",
+          "classification": "owner_recovery_or_safe_exit",
+          "name": "revokeRole"
+        },
+        {
+          "attributes": "public override",
+          "classification": "normal_operation_unclassified_review_required",
+          "name": "renounceRole"
         }
       ],
       "workflow": true
@@ -302,13 +866,60 @@
       "assetHoldingEvidence": "none detected",
       "contract": "AEPProofBundleRegistry",
       "path": "contracts/aep/AEPProofBundleRegistry.sol",
-      "roles": [],
+      "roles": [
+        "OPERATOR_ROLE",
+        "PAUSER_ROLE",
+        "PROTOCOL_ADMIN_ROLE",
+        "REVIEWER_MANAGER_ROLE",
+        "TREASURY_ROLE",
+        "VAULT_MANAGER_ROLE"
+      ],
       "sha256": "d1a896da947c9ee020161f2b297e50fecaf823173a3813b0433b12d5776c7882",
       "stateChangingSelectors": [
         {
           "attributes": "external onlyOperator returns (uint256 bundleId)",
           "classification": "normal_operation_unclassified_review_required",
           "name": "registerProofBundle"
+        },
+        {
+          "attributes": "external",
+          "classification": "lifecycle_control_or_migration",
+          "name": "pause"
+        },
+        {
+          "attributes": "external",
+          "classification": "lifecycle_control_or_migration",
+          "name": "unpause"
+        },
+        {
+          "attributes": "public override onlyOwner",
+          "classification": "configuration",
+          "name": "transferOwnership"
+        },
+        {
+          "attributes": "public onlyOwner",
+          "classification": "owner_recovery_or_safe_exit",
+          "name": "cancelOwnershipTransfer"
+        },
+        {
+          "attributes": "public",
+          "classification": "configuration",
+          "name": "acceptOwnership"
+        },
+        {
+          "attributes": "public override",
+          "classification": "configuration",
+          "name": "grantRole"
+        },
+        {
+          "attributes": "public override",
+          "classification": "owner_recovery_or_safe_exit",
+          "name": "revokeRole"
+        },
+        {
+          "attributes": "public override",
+          "classification": "normal_operation_unclassified_review_required",
+          "name": "renounceRole"
         }
       ],
       "workflow": true
@@ -318,13 +929,60 @@
       "assetHoldingEvidence": "none detected",
       "contract": "AEPProofLedger",
       "path": "contracts/aep/AEPProofLedger.sol",
-      "roles": [],
+      "roles": [
+        "OPERATOR_ROLE",
+        "PAUSER_ROLE",
+        "PROTOCOL_ADMIN_ROLE",
+        "REVIEWER_MANAGER_ROLE",
+        "TREASURY_ROLE",
+        "VAULT_MANAGER_ROLE"
+      ],
       "sha256": "3f213ef2e32864c3d6b37a7485f3d83a8fd65b710eac7f6157566f097e4fe003",
       "stateChangingSelectors": [
         {
           "attributes": "external onlyOperator returns (uint256 proofId)",
           "classification": "normal_operation_unclassified_review_required",
           "name": "appendProofRoot"
+        },
+        {
+          "attributes": "external",
+          "classification": "lifecycle_control_or_migration",
+          "name": "pause"
+        },
+        {
+          "attributes": "external",
+          "classification": "lifecycle_control_or_migration",
+          "name": "unpause"
+        },
+        {
+          "attributes": "public override onlyOwner",
+          "classification": "configuration",
+          "name": "transferOwnership"
+        },
+        {
+          "attributes": "public onlyOwner",
+          "classification": "owner_recovery_or_safe_exit",
+          "name": "cancelOwnershipTransfer"
+        },
+        {
+          "attributes": "public",
+          "classification": "configuration",
+          "name": "acceptOwnership"
+        },
+        {
+          "attributes": "public override",
+          "classification": "configuration",
+          "name": "grantRole"
+        },
+        {
+          "attributes": "public override",
+          "classification": "owner_recovery_or_safe_exit",
+          "name": "revokeRole"
+        },
+        {
+          "attributes": "public override",
+          "classification": "normal_operation_unclassified_review_required",
+          "name": "renounceRole"
         }
       ],
       "workflow": true
@@ -334,13 +992,60 @@
       "assetHoldingEvidence": "none detected",
       "contract": "AEPReplayRegistry",
       "path": "contracts/aep/AEPReplayRegistry.sol",
-      "roles": [],
+      "roles": [
+        "OPERATOR_ROLE",
+        "PAUSER_ROLE",
+        "PROTOCOL_ADMIN_ROLE",
+        "REVIEWER_MANAGER_ROLE",
+        "TREASURY_ROLE",
+        "VAULT_MANAGER_ROLE"
+      ],
       "sha256": "08020673fd36dd357b514d659a003c41c9733b83128234c1a3cfd4f1a44acc34",
       "stateChangingSelectors": [
         {
           "attributes": "external onlyOperator returns (uint256 replayId)",
           "classification": "normal_operation_unclassified_review_required",
           "name": "recordReplay"
+        },
+        {
+          "attributes": "external",
+          "classification": "lifecycle_control_or_migration",
+          "name": "pause"
+        },
+        {
+          "attributes": "external",
+          "classification": "lifecycle_control_or_migration",
+          "name": "unpause"
+        },
+        {
+          "attributes": "public override onlyOwner",
+          "classification": "configuration",
+          "name": "transferOwnership"
+        },
+        {
+          "attributes": "public onlyOwner",
+          "classification": "owner_recovery_or_safe_exit",
+          "name": "cancelOwnershipTransfer"
+        },
+        {
+          "attributes": "public",
+          "classification": "configuration",
+          "name": "acceptOwnership"
+        },
+        {
+          "attributes": "public override",
+          "classification": "configuration",
+          "name": "grantRole"
+        },
+        {
+          "attributes": "public override",
+          "classification": "owner_recovery_or_safe_exit",
+          "name": "revokeRole"
+        },
+        {
+          "attributes": "public override",
+          "classification": "normal_operation_unclassified_review_required",
+          "name": "renounceRole"
         }
       ],
       "workflow": true
@@ -350,7 +1055,14 @@
       "assetHoldingEvidence": "token/native inbound flow or asset-bearing name",
       "contract": "AEPRewardVault",
       "path": "contracts/aep/AEPRewardVault.sol",
-      "roles": [],
+      "roles": [
+        "OPERATOR_ROLE",
+        "PAUSER_ROLE",
+        "PROTOCOL_ADMIN_ROLE",
+        "REVIEWER_MANAGER_ROLE",
+        "TREASURY_ROLE",
+        "VAULT_MANAGER_ROLE"
+      ],
       "sha256": "6960558154389dbf4159b382fab422020c16c5dc4a020c13727ee789bb5e80a9",
       "stateChangingSelectors": [
         {
@@ -362,6 +1074,46 @@
           "attributes": "external onlyOperator nonReentrant returns (uint256 rewardId)",
           "classification": "safe_exit_or_settlement",
           "name": "payReward"
+        },
+        {
+          "attributes": "external",
+          "classification": "lifecycle_control_or_migration",
+          "name": "pause"
+        },
+        {
+          "attributes": "external",
+          "classification": "lifecycle_control_or_migration",
+          "name": "unpause"
+        },
+        {
+          "attributes": "public override onlyOwner",
+          "classification": "configuration",
+          "name": "transferOwnership"
+        },
+        {
+          "attributes": "public onlyOwner",
+          "classification": "owner_recovery_or_safe_exit",
+          "name": "cancelOwnershipTransfer"
+        },
+        {
+          "attributes": "public",
+          "classification": "configuration",
+          "name": "acceptOwnership"
+        },
+        {
+          "attributes": "public override",
+          "classification": "configuration",
+          "name": "grantRole"
+        },
+        {
+          "attributes": "public override",
+          "classification": "owner_recovery_or_safe_exit",
+          "name": "revokeRole"
+        },
+        {
+          "attributes": "public override",
+          "classification": "normal_operation_unclassified_review_required",
+          "name": "renounceRole"
         }
       ],
       "workflow": true
@@ -371,13 +1123,60 @@
       "assetHoldingEvidence": "none detected",
       "contract": "AEPRollbackRegistry",
       "path": "contracts/aep/AEPRollbackRegistry.sol",
-      "roles": [],
+      "roles": [
+        "OPERATOR_ROLE",
+        "PAUSER_ROLE",
+        "PROTOCOL_ADMIN_ROLE",
+        "REVIEWER_MANAGER_ROLE",
+        "TREASURY_ROLE",
+        "VAULT_MANAGER_ROLE"
+      ],
       "sha256": "fd824c789e538ac1870a8104d54741f30ccbd4fbe3c87e582f771d9bf0499c66",
       "stateChangingSelectors": [
         {
           "attributes": "external onlyOperator returns (uint256 rollbackId)",
           "classification": "normal_operation_unclassified_review_required",
           "name": "recordRollback"
+        },
+        {
+          "attributes": "external",
+          "classification": "lifecycle_control_or_migration",
+          "name": "pause"
+        },
+        {
+          "attributes": "external",
+          "classification": "lifecycle_control_or_migration",
+          "name": "unpause"
+        },
+        {
+          "attributes": "public override onlyOwner",
+          "classification": "configuration",
+          "name": "transferOwnership"
+        },
+        {
+          "attributes": "public onlyOwner",
+          "classification": "owner_recovery_or_safe_exit",
+          "name": "cancelOwnershipTransfer"
+        },
+        {
+          "attributes": "public",
+          "classification": "configuration",
+          "name": "acceptOwnership"
+        },
+        {
+          "attributes": "public override",
+          "classification": "configuration",
+          "name": "grantRole"
+        },
+        {
+          "attributes": "public override",
+          "classification": "owner_recovery_or_safe_exit",
+          "name": "revokeRole"
+        },
+        {
+          "attributes": "public override",
+          "classification": "normal_operation_unclassified_review_required",
+          "name": "renounceRole"
         }
       ],
       "workflow": true
@@ -387,7 +1186,14 @@
       "assetHoldingEvidence": "token/native inbound flow or asset-bearing name",
       "contract": "AEPRolloutRouter",
       "path": "contracts/aep/AEPRolloutRouter.sol",
-      "roles": [],
+      "roles": [
+        "OPERATOR_ROLE",
+        "PAUSER_ROLE",
+        "PROTOCOL_ADMIN_ROLE",
+        "REVIEWER_MANAGER_ROLE",
+        "TREASURY_ROLE",
+        "VAULT_MANAGER_ROLE"
+      ],
       "sha256": "6662e41b6699ed4c45f8a8b009674c00e8314c3993bef45701e8052889476515",
       "stateChangingSelectors": [
         {
@@ -399,6 +1205,46 @@
           "attributes": "external onlyOperator",
           "classification": "configuration",
           "name": "setRolloutActive"
+        },
+        {
+          "attributes": "external",
+          "classification": "lifecycle_control_or_migration",
+          "name": "pause"
+        },
+        {
+          "attributes": "external",
+          "classification": "lifecycle_control_or_migration",
+          "name": "unpause"
+        },
+        {
+          "attributes": "public override onlyOwner",
+          "classification": "configuration",
+          "name": "transferOwnership"
+        },
+        {
+          "attributes": "public onlyOwner",
+          "classification": "owner_recovery_or_safe_exit",
+          "name": "cancelOwnershipTransfer"
+        },
+        {
+          "attributes": "public",
+          "classification": "configuration",
+          "name": "acceptOwnership"
+        },
+        {
+          "attributes": "public override",
+          "classification": "configuration",
+          "name": "grantRole"
+        },
+        {
+          "attributes": "public override",
+          "classification": "owner_recovery_or_safe_exit",
+          "name": "revokeRole"
+        },
+        {
+          "attributes": "public override",
+          "classification": "normal_operation_unclassified_review_required",
+          "name": "renounceRole"
         }
       ],
       "workflow": true
@@ -408,7 +1254,14 @@
       "assetHoldingEvidence": "none detected",
       "contract": "AEPRunCommitmentRegistry",
       "path": "contracts/aep/AEPRunCommitmentRegistry.sol",
-      "roles": [],
+      "roles": [
+        "OPERATOR_ROLE",
+        "PAUSER_ROLE",
+        "PROTOCOL_ADMIN_ROLE",
+        "REVIEWER_MANAGER_ROLE",
+        "TREASURY_ROLE",
+        "VAULT_MANAGER_ROLE"
+      ],
       "sha256": "3b2dcc657b8e695faf16d18898247c530c202e8091b9c6f89ee19e72d808f8bd",
       "stateChangingSelectors": [
         {
@@ -420,6 +1273,46 @@
           "attributes": "external onlyOperator",
           "classification": "configuration",
           "name": "setRunStatus"
+        },
+        {
+          "attributes": "external",
+          "classification": "lifecycle_control_or_migration",
+          "name": "pause"
+        },
+        {
+          "attributes": "external",
+          "classification": "lifecycle_control_or_migration",
+          "name": "unpause"
+        },
+        {
+          "attributes": "public override onlyOwner",
+          "classification": "configuration",
+          "name": "transferOwnership"
+        },
+        {
+          "attributes": "public onlyOwner",
+          "classification": "owner_recovery_or_safe_exit",
+          "name": "cancelOwnershipTransfer"
+        },
+        {
+          "attributes": "public",
+          "classification": "configuration",
+          "name": "acceptOwnership"
+        },
+        {
+          "attributes": "public override",
+          "classification": "configuration",
+          "name": "grantRole"
+        },
+        {
+          "attributes": "public override",
+          "classification": "owner_recovery_or_safe_exit",
+          "name": "revokeRole"
+        },
+        {
+          "attributes": "public override",
+          "classification": "normal_operation_unclassified_review_required",
+          "name": "renounceRole"
         }
       ],
       "workflow": true
@@ -429,13 +1322,60 @@
       "assetHoldingEvidence": "none detected",
       "contract": "AEPSelectionGate",
       "path": "contracts/aep/AEPSelectionGate.sol",
-      "roles": [],
+      "roles": [
+        "OPERATOR_ROLE",
+        "PAUSER_ROLE",
+        "PROTOCOL_ADMIN_ROLE",
+        "REVIEWER_MANAGER_ROLE",
+        "TREASURY_ROLE",
+        "VAULT_MANAGER_ROLE"
+      ],
       "sha256": "19ea55d3227a831e0a9fb7274947197a667884c565009dfb5c4a5ecacaee4e8f",
       "stateChangingSelectors": [
         {
           "attributes": "external onlyOperator returns (uint256 selectionId)",
           "classification": "normal_operation_unclassified_review_required",
           "name": "issueSelectionCertificate"
+        },
+        {
+          "attributes": "external",
+          "classification": "lifecycle_control_or_migration",
+          "name": "pause"
+        },
+        {
+          "attributes": "external",
+          "classification": "lifecycle_control_or_migration",
+          "name": "unpause"
+        },
+        {
+          "attributes": "public override onlyOwner",
+          "classification": "configuration",
+          "name": "transferOwnership"
+        },
+        {
+          "attributes": "public onlyOwner",
+          "classification": "owner_recovery_or_safe_exit",
+          "name": "cancelOwnershipTransfer"
+        },
+        {
+          "attributes": "public",
+          "classification": "configuration",
+          "name": "acceptOwnership"
+        },
+        {
+          "attributes": "public override",
+          "classification": "configuration",
+          "name": "grantRole"
+        },
+        {
+          "attributes": "public override",
+          "classification": "owner_recovery_or_safe_exit",
+          "name": "revokeRole"
+        },
+        {
+          "attributes": "public override",
+          "classification": "normal_operation_unclassified_review_required",
+          "name": "renounceRole"
         }
       ],
       "workflow": true
@@ -445,14 +1385,16 @@
       "assetHoldingEvidence": "none detected",
       "contract": "AEPSlashingCourt",
       "path": "contracts/aep/AEPSlashingCourt.sol",
-      "roles": [],
+      "roles": [
+        "OPERATOR_ROLE",
+        "PAUSER_ROLE",
+        "PROTOCOL_ADMIN_ROLE",
+        "REVIEWER_MANAGER_ROLE",
+        "TREASURY_ROLE",
+        "VAULT_MANAGER_ROLE"
+      ],
       "sha256": "c490276fded553e4dbcdc5a0ca0ffeab1a70800c5cb9e2f3816a3cdde5cd86e4",
       "stateChangingSelectors": [
-        {
-          "attributes": "external",
-          "classification": "owner_recovery_or_safe_exit",
-          "name": "slashEvaluator"
-        },
         {
           "attributes": "external onlyOperator returns (uint256 caseId)",
           "classification": "normal_operation_unclassified_review_required",
@@ -467,6 +1409,46 @@
           "attributes": "external onlyOperator",
           "classification": "owner_recovery_or_safe_exit",
           "name": "cancelCase"
+        },
+        {
+          "attributes": "external",
+          "classification": "lifecycle_control_or_migration",
+          "name": "pause"
+        },
+        {
+          "attributes": "external",
+          "classification": "lifecycle_control_or_migration",
+          "name": "unpause"
+        },
+        {
+          "attributes": "public override onlyOwner",
+          "classification": "configuration",
+          "name": "transferOwnership"
+        },
+        {
+          "attributes": "public onlyOwner",
+          "classification": "owner_recovery_or_safe_exit",
+          "name": "cancelOwnershipTransfer"
+        },
+        {
+          "attributes": "public",
+          "classification": "configuration",
+          "name": "acceptOwnership"
+        },
+        {
+          "attributes": "public override",
+          "classification": "configuration",
+          "name": "grantRole"
+        },
+        {
+          "attributes": "public override",
+          "classification": "owner_recovery_or_safe_exit",
+          "name": "revokeRole"
+        },
+        {
+          "attributes": "public override",
+          "classification": "normal_operation_unclassified_review_required",
+          "name": "renounceRole"
         }
       ],
       "workflow": true
@@ -476,7 +1458,14 @@
       "assetHoldingEvidence": "none detected",
       "contract": "AGIEthNamespaceRegistry",
       "path": "contracts/aep/AGIEthNamespaceRegistry.sol",
-      "roles": [],
+      "roles": [
+        "OPERATOR_ROLE",
+        "PAUSER_ROLE",
+        "PROTOCOL_ADMIN_ROLE",
+        "REVIEWER_MANAGER_ROLE",
+        "TREASURY_ROLE",
+        "VAULT_MANAGER_ROLE"
+      ],
       "sha256": "ee161300dc8155a359fe91249aa71ee65c8cb9a6edc407fffb30c173dcfbe0b6",
       "stateChangingSelectors": [
         {
@@ -488,6 +1477,46 @@
           "attributes": "external onlyOperator",
           "classification": "configuration",
           "name": "setEnvironmentStatus"
+        },
+        {
+          "attributes": "external",
+          "classification": "lifecycle_control_or_migration",
+          "name": "pause"
+        },
+        {
+          "attributes": "external",
+          "classification": "lifecycle_control_or_migration",
+          "name": "unpause"
+        },
+        {
+          "attributes": "public override onlyOwner",
+          "classification": "configuration",
+          "name": "transferOwnership"
+        },
+        {
+          "attributes": "public onlyOwner",
+          "classification": "owner_recovery_or_safe_exit",
+          "name": "cancelOwnershipTransfer"
+        },
+        {
+          "attributes": "public",
+          "classification": "configuration",
+          "name": "acceptOwnership"
+        },
+        {
+          "attributes": "public override",
+          "classification": "configuration",
+          "name": "grantRole"
+        },
+        {
+          "attributes": "public override",
+          "classification": "owner_recovery_or_safe_exit",
+          "name": "revokeRole"
+        },
+        {
+          "attributes": "public override",
+          "classification": "normal_operation_unclassified_review_required",
+          "name": "renounceRole"
         }
       ],
       "workflow": true
@@ -497,13 +1526,60 @@
       "assetHoldingEvidence": "none detected",
       "contract": "AlphaWorkUnitLedger",
       "path": "contracts/aep/AlphaWorkUnitLedger.sol",
-      "roles": [],
+      "roles": [
+        "OPERATOR_ROLE",
+        "PAUSER_ROLE",
+        "PROTOCOL_ADMIN_ROLE",
+        "REVIEWER_MANAGER_ROLE",
+        "TREASURY_ROLE",
+        "VAULT_MANAGER_ROLE"
+      ],
       "sha256": "449052a1a4f969cecd9eb8fa00c05e82725c4faf6de1738885ff6b8a778db8cf",
       "stateChangingSelectors": [
         {
           "attributes": "external onlyOperator returns (uint256 recordId)",
           "classification": "normal_operation_unclassified_review_required",
           "name": "recordAlphaWorkUnits"
+        },
+        {
+          "attributes": "external",
+          "classification": "lifecycle_control_or_migration",
+          "name": "pause"
+        },
+        {
+          "attributes": "external",
+          "classification": "lifecycle_control_or_migration",
+          "name": "unpause"
+        },
+        {
+          "attributes": "public override onlyOwner",
+          "classification": "configuration",
+          "name": "transferOwnership"
+        },
+        {
+          "attributes": "public onlyOwner",
+          "classification": "owner_recovery_or_safe_exit",
+          "name": "cancelOwnershipTransfer"
+        },
+        {
+          "attributes": "public",
+          "classification": "configuration",
+          "name": "acceptOwnership"
+        },
+        {
+          "attributes": "public override",
+          "classification": "configuration",
+          "name": "grantRole"
+        },
+        {
+          "attributes": "public override",
+          "classification": "owner_recovery_or_safe_exit",
+          "name": "revokeRole"
+        },
+        {
+          "attributes": "public override",
+          "classification": "normal_operation_unclassified_review_required",
+          "name": "renounceRole"
         }
       ],
       "workflow": true
@@ -513,7 +1589,14 @@
       "assetHoldingEvidence": "none detected",
       "contract": "MandateEpochRegistry",
       "path": "contracts/aep/MandateEpochRegistry.sol",
-      "roles": [],
+      "roles": [
+        "OPERATOR_ROLE",
+        "PAUSER_ROLE",
+        "PROTOCOL_ADMIN_ROLE",
+        "REVIEWER_MANAGER_ROLE",
+        "TREASURY_ROLE",
+        "VAULT_MANAGER_ROLE"
+      ],
       "sha256": "5699586573f8adefb68df1b00cd8c640ec0e9501a750abf92b67ab560da9a9f1",
       "stateChangingSelectors": [
         {
@@ -535,6 +1618,46 @@
           "attributes": "external onlyOperator",
           "classification": "configuration",
           "name": "setEpochStatus"
+        },
+        {
+          "attributes": "external",
+          "classification": "lifecycle_control_or_migration",
+          "name": "pause"
+        },
+        {
+          "attributes": "external",
+          "classification": "lifecycle_control_or_migration",
+          "name": "unpause"
+        },
+        {
+          "attributes": "public override onlyOwner",
+          "classification": "configuration",
+          "name": "transferOwnership"
+        },
+        {
+          "attributes": "public onlyOwner",
+          "classification": "owner_recovery_or_safe_exit",
+          "name": "cancelOwnershipTransfer"
+        },
+        {
+          "attributes": "public",
+          "classification": "configuration",
+          "name": "acceptOwnership"
+        },
+        {
+          "attributes": "public override",
+          "classification": "configuration",
+          "name": "grantRole"
+        },
+        {
+          "attributes": "public override",
+          "classification": "owner_recovery_or_safe_exit",
+          "name": "revokeRole"
+        },
+        {
+          "attributes": "public override",
+          "classification": "normal_operation_unclassified_review_required",
+          "name": "renounceRole"
         }
       ],
       "workflow": true
@@ -544,7 +1667,14 @@
       "assetHoldingEvidence": "none detected",
       "contract": "AppealRegistry",
       "path": "contracts/optional/AppealRegistry.sol",
-      "roles": [],
+      "roles": [
+        "OPERATOR_ROLE",
+        "PAUSER_ROLE",
+        "PROTOCOL_ADMIN_ROLE",
+        "REVIEWER_MANAGER_ROLE",
+        "TREASURY_ROLE",
+        "VAULT_MANAGER_ROLE"
+      ],
       "sha256": "4aae2d6e324a7cbd763b74b0873c2db88291888807a482a2d3148b73d24d7412",
       "stateChangingSelectors": [
         {
@@ -556,6 +1686,46 @@
           "attributes": "external onlyOperator",
           "classification": "normal_operation_unclassified_review_required",
           "name": "decideAppeal"
+        },
+        {
+          "attributes": "external",
+          "classification": "lifecycle_control_or_migration",
+          "name": "pause"
+        },
+        {
+          "attributes": "external",
+          "classification": "lifecycle_control_or_migration",
+          "name": "unpause"
+        },
+        {
+          "attributes": "public override onlyOwner",
+          "classification": "configuration",
+          "name": "transferOwnership"
+        },
+        {
+          "attributes": "public onlyOwner",
+          "classification": "owner_recovery_or_safe_exit",
+          "name": "cancelOwnershipTransfer"
+        },
+        {
+          "attributes": "public",
+          "classification": "configuration",
+          "name": "acceptOwnership"
+        },
+        {
+          "attributes": "public override",
+          "classification": "configuration",
+          "name": "grantRole"
+        },
+        {
+          "attributes": "public override",
+          "classification": "owner_recovery_or_safe_exit",
+          "name": "revokeRole"
+        },
+        {
+          "attributes": "public override",
+          "classification": "normal_operation_unclassified_review_required",
+          "name": "renounceRole"
         }
       ],
       "workflow": true
@@ -565,7 +1735,14 @@
       "assetHoldingEvidence": "none detected",
       "contract": "BuilderProfileRegistry",
       "path": "contracts/optional/BuilderProfileRegistry.sol",
-      "roles": [],
+      "roles": [
+        "OPERATOR_ROLE",
+        "PAUSER_ROLE",
+        "PROTOCOL_ADMIN_ROLE",
+        "REVIEWER_MANAGER_ROLE",
+        "TREASURY_ROLE",
+        "VAULT_MANAGER_ROLE"
+      ],
       "sha256": "d63bc8e5f6709d7ae1c271eb8bb7bc0e805c4b7983ca65a970e140cdcb29900d",
       "stateChangingSelectors": [
         {
@@ -577,6 +1754,46 @@
           "attributes": "external onlyOperator",
           "classification": "configuration",
           "name": "setBuilderStatus"
+        },
+        {
+          "attributes": "external",
+          "classification": "lifecycle_control_or_migration",
+          "name": "pause"
+        },
+        {
+          "attributes": "external",
+          "classification": "lifecycle_control_or_migration",
+          "name": "unpause"
+        },
+        {
+          "attributes": "public override onlyOwner",
+          "classification": "configuration",
+          "name": "transferOwnership"
+        },
+        {
+          "attributes": "public onlyOwner",
+          "classification": "owner_recovery_or_safe_exit",
+          "name": "cancelOwnershipTransfer"
+        },
+        {
+          "attributes": "public",
+          "classification": "configuration",
+          "name": "acceptOwnership"
+        },
+        {
+          "attributes": "public override",
+          "classification": "configuration",
+          "name": "grantRole"
+        },
+        {
+          "attributes": "public override",
+          "classification": "owner_recovery_or_safe_exit",
+          "name": "revokeRole"
+        },
+        {
+          "attributes": "public override",
+          "classification": "normal_operation_unclassified_review_required",
+          "name": "renounceRole"
         }
       ],
       "workflow": true
@@ -586,7 +1803,14 @@
       "assetHoldingEvidence": "none detected",
       "contract": "CredentialRevocationRegistry",
       "path": "contracts/optional/CredentialRevocationRegistry.sol",
-      "roles": [],
+      "roles": [
+        "OPERATOR_ROLE",
+        "PAUSER_ROLE",
+        "PROTOCOL_ADMIN_ROLE",
+        "REVIEWER_MANAGER_ROLE",
+        "TREASURY_ROLE",
+        "VAULT_MANAGER_ROLE"
+      ],
       "sha256": "7693a385eae209a3c8f01fd3587c8da88ad740dd48a289346f6ca967cdfbb0eb",
       "stateChangingSelectors": [
         {
@@ -598,6 +1822,46 @@
           "attributes": "external onlyOperator",
           "classification": "normal_operation_unclassified_review_required",
           "name": "executeRevocation"
+        },
+        {
+          "attributes": "external",
+          "classification": "lifecycle_control_or_migration",
+          "name": "pause"
+        },
+        {
+          "attributes": "external",
+          "classification": "lifecycle_control_or_migration",
+          "name": "unpause"
+        },
+        {
+          "attributes": "public override onlyOwner",
+          "classification": "configuration",
+          "name": "transferOwnership"
+        },
+        {
+          "attributes": "public onlyOwner",
+          "classification": "owner_recovery_or_safe_exit",
+          "name": "cancelOwnershipTransfer"
+        },
+        {
+          "attributes": "public",
+          "classification": "configuration",
+          "name": "acceptOwnership"
+        },
+        {
+          "attributes": "public override",
+          "classification": "configuration",
+          "name": "grantRole"
+        },
+        {
+          "attributes": "public override",
+          "classification": "owner_recovery_or_safe_exit",
+          "name": "revokeRole"
+        },
+        {
+          "attributes": "public override",
+          "classification": "normal_operation_unclassified_review_required",
+          "name": "renounceRole"
         }
       ],
       "workflow": true
@@ -607,7 +1871,14 @@
       "assetHoldingEvidence": "none detected",
       "contract": "DisputeRegistry",
       "path": "contracts/optional/DisputeRegistry.sol",
-      "roles": [],
+      "roles": [
+        "OPERATOR_ROLE",
+        "PAUSER_ROLE",
+        "PROTOCOL_ADMIN_ROLE",
+        "REVIEWER_MANAGER_ROLE",
+        "TREASURY_ROLE",
+        "VAULT_MANAGER_ROLE"
+      ],
       "sha256": "37ce52e98b973577fe14025bb6968c46fa1fce1b063c0261cb82e00fa43b1f05",
       "stateChangingSelectors": [
         {
@@ -619,6 +1890,46 @@
           "attributes": "external onlyOperator",
           "classification": "owner_recovery_or_safe_exit",
           "name": "resolveDispute"
+        },
+        {
+          "attributes": "external",
+          "classification": "lifecycle_control_or_migration",
+          "name": "pause"
+        },
+        {
+          "attributes": "external",
+          "classification": "lifecycle_control_or_migration",
+          "name": "unpause"
+        },
+        {
+          "attributes": "public override onlyOwner",
+          "classification": "configuration",
+          "name": "transferOwnership"
+        },
+        {
+          "attributes": "public onlyOwner",
+          "classification": "owner_recovery_or_safe_exit",
+          "name": "cancelOwnershipTransfer"
+        },
+        {
+          "attributes": "public",
+          "classification": "configuration",
+          "name": "acceptOwnership"
+        },
+        {
+          "attributes": "public override",
+          "classification": "configuration",
+          "name": "grantRole"
+        },
+        {
+          "attributes": "public override",
+          "classification": "owner_recovery_or_safe_exit",
+          "name": "revokeRole"
+        },
+        {
+          "attributes": "public override",
+          "classification": "normal_operation_unclassified_review_required",
+          "name": "renounceRole"
         }
       ],
       "workflow": true
@@ -628,7 +1939,14 @@
       "assetHoldingEvidence": "none detected",
       "contract": "SponsorRegistry",
       "path": "contracts/optional/SponsorRegistry.sol",
-      "roles": [],
+      "roles": [
+        "OPERATOR_ROLE",
+        "PAUSER_ROLE",
+        "PROTOCOL_ADMIN_ROLE",
+        "REVIEWER_MANAGER_ROLE",
+        "TREASURY_ROLE",
+        "VAULT_MANAGER_ROLE"
+      ],
       "sha256": "299662e4cb52b4002b829c0aa9a35604fc7bcfd1f992f52352b1433535766dbe",
       "stateChangingSelectors": [
         {
@@ -640,6 +1958,46 @@
           "attributes": "external onlyOperator",
           "classification": "configuration",
           "name": "setSponsorStatus"
+        },
+        {
+          "attributes": "external",
+          "classification": "lifecycle_control_or_migration",
+          "name": "pause"
+        },
+        {
+          "attributes": "external",
+          "classification": "lifecycle_control_or_migration",
+          "name": "unpause"
+        },
+        {
+          "attributes": "public override onlyOwner",
+          "classification": "configuration",
+          "name": "transferOwnership"
+        },
+        {
+          "attributes": "public onlyOwner",
+          "classification": "owner_recovery_or_safe_exit",
+          "name": "cancelOwnershipTransfer"
+        },
+        {
+          "attributes": "public",
+          "classification": "configuration",
+          "name": "acceptOwnership"
+        },
+        {
+          "attributes": "public override",
+          "classification": "configuration",
+          "name": "grantRole"
+        },
+        {
+          "attributes": "public override",
+          "classification": "owner_recovery_or_safe_exit",
+          "name": "revokeRole"
+        },
+        {
+          "attributes": "public override",
+          "classification": "normal_operation_unclassified_review_required",
+          "name": "renounceRole"
         }
       ],
       "workflow": true
@@ -649,7 +2007,14 @@
       "assetHoldingEvidence": "token/native inbound flow or asset-bearing name",
       "contract": "JobClaimBondManager",
       "path": "contracts/registry/JobClaimBondManager.sol",
-      "roles": [],
+      "roles": [
+        "OPERATOR_ROLE",
+        "PAUSER_ROLE",
+        "PROTOCOL_ADMIN_ROLE",
+        "REVIEWER_MANAGER_ROLE",
+        "TREASURY_ROLE",
+        "VAULT_MANAGER_ROLE"
+      ],
       "sha256": "c9f8e9329010d8f355462fc4c23538947f2bf8d6b0cc5808d6aff218fba5c56b",
       "stateChangingSelectors": [
         {
@@ -681,6 +2046,46 @@
           "attributes": "external onlyOperator nonReentrant",
           "classification": "owner_recovery_or_safe_exit",
           "name": "slashClaimBond"
+        },
+        {
+          "attributes": "external",
+          "classification": "lifecycle_control_or_migration",
+          "name": "pause"
+        },
+        {
+          "attributes": "external",
+          "classification": "lifecycle_control_or_migration",
+          "name": "unpause"
+        },
+        {
+          "attributes": "public override onlyOwner",
+          "classification": "configuration",
+          "name": "transferOwnership"
+        },
+        {
+          "attributes": "public onlyOwner",
+          "classification": "owner_recovery_or_safe_exit",
+          "name": "cancelOwnershipTransfer"
+        },
+        {
+          "attributes": "public",
+          "classification": "configuration",
+          "name": "acceptOwnership"
+        },
+        {
+          "attributes": "public override",
+          "classification": "configuration",
+          "name": "grantRole"
+        },
+        {
+          "attributes": "public override",
+          "classification": "owner_recovery_or_safe_exit",
+          "name": "revokeRole"
+        },
+        {
+          "attributes": "public override",
+          "classification": "normal_operation_unclassified_review_required",
+          "name": "renounceRole"
         }
       ],
       "workflow": true
@@ -690,7 +2095,14 @@
       "assetHoldingEvidence": "token/native inbound flow or asset-bearing name",
       "contract": "JobRegistry",
       "path": "contracts/registry/JobRegistry.sol",
-      "roles": [],
+      "roles": [
+        "OPERATOR_ROLE",
+        "PAUSER_ROLE",
+        "PROTOCOL_ADMIN_ROLE",
+        "REVIEWER_MANAGER_ROLE",
+        "TREASURY_ROLE",
+        "VAULT_MANAGER_ROLE"
+      ],
       "sha256": "80e2c0c1d7ea4a892a8a0e4a85d47e8a770d7cfdcb30f0135345f754d6cf3ba6",
       "stateChangingSelectors": [
         {
@@ -762,6 +2174,46 @@
           "attributes": "external nonReentrant",
           "classification": "normal_operation_unclassified_review_required",
           "name": "expireOpenJob"
+        },
+        {
+          "attributes": "external",
+          "classification": "lifecycle_control_or_migration",
+          "name": "pause"
+        },
+        {
+          "attributes": "external",
+          "classification": "lifecycle_control_or_migration",
+          "name": "unpause"
+        },
+        {
+          "attributes": "public override onlyOwner",
+          "classification": "configuration",
+          "name": "transferOwnership"
+        },
+        {
+          "attributes": "public onlyOwner",
+          "classification": "owner_recovery_or_safe_exit",
+          "name": "cancelOwnershipTransfer"
+        },
+        {
+          "attributes": "public",
+          "classification": "configuration",
+          "name": "acceptOwnership"
+        },
+        {
+          "attributes": "public override",
+          "classification": "configuration",
+          "name": "grantRole"
+        },
+        {
+          "attributes": "public override",
+          "classification": "owner_recovery_or_safe_exit",
+          "name": "revokeRole"
+        },
+        {
+          "attributes": "public override",
+          "classification": "normal_operation_unclassified_review_required",
+          "name": "renounceRole"
         }
       ],
       "workflow": true
@@ -771,13 +2223,60 @@
       "assetHoldingEvidence": "none detected",
       "contract": "LaunchGateRegistry",
       "path": "contracts/registry/LaunchGateRegistry.sol",
-      "roles": [],
+      "roles": [
+        "OPERATOR_ROLE",
+        "PAUSER_ROLE",
+        "PROTOCOL_ADMIN_ROLE",
+        "REVIEWER_MANAGER_ROLE",
+        "TREASURY_ROLE",
+        "VAULT_MANAGER_ROLE"
+      ],
       "sha256": "9d80692f60731595ab0782e284f473de55793a84e4766e3511404ead1e959753",
       "stateChangingSelectors": [
         {
           "attributes": "external onlyOperator",
           "classification": "configuration",
           "name": "setGate"
+        },
+        {
+          "attributes": "external",
+          "classification": "lifecycle_control_or_migration",
+          "name": "pause"
+        },
+        {
+          "attributes": "external",
+          "classification": "lifecycle_control_or_migration",
+          "name": "unpause"
+        },
+        {
+          "attributes": "public override onlyOwner",
+          "classification": "configuration",
+          "name": "transferOwnership"
+        },
+        {
+          "attributes": "public onlyOwner",
+          "classification": "owner_recovery_or_safe_exit",
+          "name": "cancelOwnershipTransfer"
+        },
+        {
+          "attributes": "public",
+          "classification": "configuration",
+          "name": "acceptOwnership"
+        },
+        {
+          "attributes": "public override",
+          "classification": "configuration",
+          "name": "grantRole"
+        },
+        {
+          "attributes": "public override",
+          "classification": "owner_recovery_or_safe_exit",
+          "name": "revokeRole"
+        },
+        {
+          "attributes": "public override",
+          "classification": "normal_operation_unclassified_review_required",
+          "name": "renounceRole"
         }
       ],
       "workflow": true
@@ -787,7 +2286,14 @@
       "assetHoldingEvidence": "none detected",
       "contract": "LegacyAGIJobManagerRegistry",
       "path": "contracts/registry/LegacyAGIJobManagerRegistry.sol",
-      "roles": [],
+      "roles": [
+        "OPERATOR_ROLE",
+        "PAUSER_ROLE",
+        "PROTOCOL_ADMIN_ROLE",
+        "REVIEWER_MANAGER_ROLE",
+        "TREASURY_ROLE",
+        "VAULT_MANAGER_ROLE"
+      ],
       "sha256": "33f0cde7f0a56e3cb769811554894ff4997fdd38b663d0f082e3b77076d49028",
       "stateChangingSelectors": [
         {
@@ -799,6 +2305,46 @@
           "attributes": "external onlyOperator",
           "classification": "configuration",
           "name": "setLegacyRecordAccepted"
+        },
+        {
+          "attributes": "external",
+          "classification": "lifecycle_control_or_migration",
+          "name": "pause"
+        },
+        {
+          "attributes": "external",
+          "classification": "lifecycle_control_or_migration",
+          "name": "unpause"
+        },
+        {
+          "attributes": "public override onlyOwner",
+          "classification": "configuration",
+          "name": "transferOwnership"
+        },
+        {
+          "attributes": "public onlyOwner",
+          "classification": "owner_recovery_or_safe_exit",
+          "name": "cancelOwnershipTransfer"
+        },
+        {
+          "attributes": "public",
+          "classification": "configuration",
+          "name": "acceptOwnership"
+        },
+        {
+          "attributes": "public override",
+          "classification": "configuration",
+          "name": "grantRole"
+        },
+        {
+          "attributes": "public override",
+          "classification": "owner_recovery_or_safe_exit",
+          "name": "revokeRole"
+        },
+        {
+          "attributes": "public override",
+          "classification": "normal_operation_unclassified_review_required",
+          "name": "renounceRole"
         }
       ],
       "workflow": true
@@ -808,13 +2354,60 @@
       "assetHoldingEvidence": "none detected",
       "contract": "PremiumAccessRegistry",
       "path": "contracts/registry/PremiumAccessRegistry.sol",
-      "roles": [],
+      "roles": [
+        "OPERATOR_ROLE",
+        "PAUSER_ROLE",
+        "PROTOCOL_ADMIN_ROLE",
+        "REVIEWER_MANAGER_ROLE",
+        "TREASURY_ROLE",
+        "VAULT_MANAGER_ROLE"
+      ],
       "sha256": "77f8c99f411429c3bb768fc3fbbf088255bffce8eb993ee259d34bbeede3aebd",
       "stateChangingSelectors": [
         {
           "attributes": "external onlyOperator",
           "classification": "configuration",
           "name": "setAccessTier"
+        },
+        {
+          "attributes": "external",
+          "classification": "lifecycle_control_or_migration",
+          "name": "pause"
+        },
+        {
+          "attributes": "external",
+          "classification": "lifecycle_control_or_migration",
+          "name": "unpause"
+        },
+        {
+          "attributes": "public override onlyOwner",
+          "classification": "configuration",
+          "name": "transferOwnership"
+        },
+        {
+          "attributes": "public onlyOwner",
+          "classification": "owner_recovery_or_safe_exit",
+          "name": "cancelOwnershipTransfer"
+        },
+        {
+          "attributes": "public",
+          "classification": "configuration",
+          "name": "acceptOwnership"
+        },
+        {
+          "attributes": "public override",
+          "classification": "configuration",
+          "name": "grantRole"
+        },
+        {
+          "attributes": "public override",
+          "classification": "owner_recovery_or_safe_exit",
+          "name": "revokeRole"
+        },
+        {
+          "attributes": "public override",
+          "classification": "normal_operation_unclassified_review_required",
+          "name": "renounceRole"
         }
       ],
       "workflow": true
@@ -824,7 +2417,14 @@
       "assetHoldingEvidence": "none detected",
       "contract": "ProofCardRegistry",
       "path": "contracts/registry/ProofCardRegistry.sol",
-      "roles": [],
+      "roles": [
+        "OPERATOR_ROLE",
+        "PAUSER_ROLE",
+        "PROTOCOL_ADMIN_ROLE",
+        "REVIEWER_MANAGER_ROLE",
+        "TREASURY_ROLE",
+        "VAULT_MANAGER_ROLE"
+      ],
       "sha256": "fe5f342ac20065230f14b4e63888e406699a3aaee8e51cc9429dcd8482759f25",
       "stateChangingSelectors": [
         {
@@ -836,6 +2436,46 @@
           "attributes": "external onlyOperator",
           "classification": "owner_recovery_or_safe_exit",
           "name": "revokeProofCard"
+        },
+        {
+          "attributes": "external",
+          "classification": "lifecycle_control_or_migration",
+          "name": "pause"
+        },
+        {
+          "attributes": "external",
+          "classification": "lifecycle_control_or_migration",
+          "name": "unpause"
+        },
+        {
+          "attributes": "public override onlyOwner",
+          "classification": "configuration",
+          "name": "transferOwnership"
+        },
+        {
+          "attributes": "public onlyOwner",
+          "classification": "owner_recovery_or_safe_exit",
+          "name": "cancelOwnershipTransfer"
+        },
+        {
+          "attributes": "public",
+          "classification": "configuration",
+          "name": "acceptOwnership"
+        },
+        {
+          "attributes": "public override",
+          "classification": "configuration",
+          "name": "grantRole"
+        },
+        {
+          "attributes": "public override",
+          "classification": "owner_recovery_or_safe_exit",
+          "name": "revokeRole"
+        },
+        {
+          "attributes": "public override",
+          "classification": "normal_operation_unclassified_review_required",
+          "name": "renounceRole"
         }
       ],
       "workflow": true
@@ -845,7 +2485,14 @@
       "assetHoldingEvidence": "none detected",
       "contract": "ProofCredentialRegistry",
       "path": "contracts/registry/ProofCredentialRegistry.sol",
-      "roles": [],
+      "roles": [
+        "OPERATOR_ROLE",
+        "PAUSER_ROLE",
+        "PROTOCOL_ADMIN_ROLE",
+        "REVIEWER_MANAGER_ROLE",
+        "TREASURY_ROLE",
+        "VAULT_MANAGER_ROLE"
+      ],
       "sha256": "fa28f69cd47e906587fe4991bb80d1e1338dcf482e802f740815e340467d9ed3",
       "stateChangingSelectors": [
         {
@@ -857,6 +2504,46 @@
           "attributes": "external onlyOperator",
           "classification": "owner_recovery_or_safe_exit",
           "name": "revokeCredential"
+        },
+        {
+          "attributes": "external",
+          "classification": "lifecycle_control_or_migration",
+          "name": "pause"
+        },
+        {
+          "attributes": "external",
+          "classification": "lifecycle_control_or_migration",
+          "name": "unpause"
+        },
+        {
+          "attributes": "public override onlyOwner",
+          "classification": "configuration",
+          "name": "transferOwnership"
+        },
+        {
+          "attributes": "public onlyOwner",
+          "classification": "owner_recovery_or_safe_exit",
+          "name": "cancelOwnershipTransfer"
+        },
+        {
+          "attributes": "public",
+          "classification": "configuration",
+          "name": "acceptOwnership"
+        },
+        {
+          "attributes": "public override",
+          "classification": "configuration",
+          "name": "grantRole"
+        },
+        {
+          "attributes": "public override",
+          "classification": "owner_recovery_or_safe_exit",
+          "name": "revokeRole"
+        },
+        {
+          "attributes": "public override",
+          "classification": "normal_operation_unclassified_review_required",
+          "name": "renounceRole"
         }
       ],
       "workflow": true
@@ -866,7 +2553,14 @@
       "assetHoldingEvidence": "none detected",
       "contract": "ProofSeedRegistry",
       "path": "contracts/registry/ProofSeedRegistry.sol",
-      "roles": [],
+      "roles": [
+        "OPERATOR_ROLE",
+        "PAUSER_ROLE",
+        "PROTOCOL_ADMIN_ROLE",
+        "REVIEWER_MANAGER_ROLE",
+        "TREASURY_ROLE",
+        "VAULT_MANAGER_ROLE"
+      ],
       "sha256": "01ff1144d03116f917647e22b02664de3103713a4c8992880ffd09f3fffd6a9e",
       "stateChangingSelectors": [
         {
@@ -898,6 +2592,46 @@
           "attributes": "external onlyOperator",
           "classification": "normal_operation_unclassified_review_required",
           "name": "archiveSeed"
+        },
+        {
+          "attributes": "external",
+          "classification": "lifecycle_control_or_migration",
+          "name": "pause"
+        },
+        {
+          "attributes": "external",
+          "classification": "lifecycle_control_or_migration",
+          "name": "unpause"
+        },
+        {
+          "attributes": "public override onlyOwner",
+          "classification": "configuration",
+          "name": "transferOwnership"
+        },
+        {
+          "attributes": "public onlyOwner",
+          "classification": "owner_recovery_or_safe_exit",
+          "name": "cancelOwnershipTransfer"
+        },
+        {
+          "attributes": "public",
+          "classification": "configuration",
+          "name": "acceptOwnership"
+        },
+        {
+          "attributes": "public override",
+          "classification": "configuration",
+          "name": "grantRole"
+        },
+        {
+          "attributes": "public override",
+          "classification": "owner_recovery_or_safe_exit",
+          "name": "revokeRole"
+        },
+        {
+          "attributes": "public override",
+          "classification": "normal_operation_unclassified_review_required",
+          "name": "renounceRole"
         }
       ],
       "workflow": true
@@ -907,7 +2641,14 @@
       "assetHoldingEvidence": "token/native inbound flow or asset-bearing name",
       "contract": "ProofSubmissionRegistry",
       "path": "contracts/registry/ProofSubmissionRegistry.sol",
-      "roles": [],
+      "roles": [
+        "OPERATOR_ROLE",
+        "PAUSER_ROLE",
+        "PROTOCOL_ADMIN_ROLE",
+        "REVIEWER_MANAGER_ROLE",
+        "TREASURY_ROLE",
+        "VAULT_MANAGER_ROLE"
+      ],
       "sha256": "04513fd5c3af07cf2aa7461b9ee23181b8a961a8551116a784bf0ce8b710a81b",
       "stateChangingSelectors": [
         {
@@ -939,6 +2680,46 @@
           "attributes": "external onlyOperator nonReentrant",
           "classification": "normal_operation_unclassified_review_required",
           "name": "rejectSubmission"
+        },
+        {
+          "attributes": "external",
+          "classification": "lifecycle_control_or_migration",
+          "name": "pause"
+        },
+        {
+          "attributes": "external",
+          "classification": "lifecycle_control_or_migration",
+          "name": "unpause"
+        },
+        {
+          "attributes": "public override onlyOwner",
+          "classification": "configuration",
+          "name": "transferOwnership"
+        },
+        {
+          "attributes": "public onlyOwner",
+          "classification": "owner_recovery_or_safe_exit",
+          "name": "cancelOwnershipTransfer"
+        },
+        {
+          "attributes": "public",
+          "classification": "configuration",
+          "name": "acceptOwnership"
+        },
+        {
+          "attributes": "public override",
+          "classification": "configuration",
+          "name": "grantRole"
+        },
+        {
+          "attributes": "public override",
+          "classification": "owner_recovery_or_safe_exit",
+          "name": "revokeRole"
+        },
+        {
+          "attributes": "public override",
+          "classification": "normal_operation_unclassified_review_required",
+          "name": "renounceRole"
         }
       ],
       "workflow": true
@@ -948,13 +2729,60 @@
       "assetHoldingEvidence": "none detected",
       "contract": "ProtocolConfigRegistry",
       "path": "contracts/registry/ProtocolConfigRegistry.sol",
-      "roles": [],
+      "roles": [
+        "OPERATOR_ROLE",
+        "PAUSER_ROLE",
+        "PROTOCOL_ADMIN_ROLE",
+        "REVIEWER_MANAGER_ROLE",
+        "TREASURY_ROLE",
+        "VAULT_MANAGER_ROLE"
+      ],
       "sha256": "95f4dd2f16990a9533d84cc2a610db007f5bb4988e5348e0aabe811d1721f765",
       "stateChangingSelectors": [
         {
           "attributes": "external onlyOperator",
           "classification": "configuration",
           "name": "setConfig"
+        },
+        {
+          "attributes": "external",
+          "classification": "lifecycle_control_or_migration",
+          "name": "pause"
+        },
+        {
+          "attributes": "external",
+          "classification": "lifecycle_control_or_migration",
+          "name": "unpause"
+        },
+        {
+          "attributes": "public override onlyOwner",
+          "classification": "configuration",
+          "name": "transferOwnership"
+        },
+        {
+          "attributes": "public onlyOwner",
+          "classification": "owner_recovery_or_safe_exit",
+          "name": "cancelOwnershipTransfer"
+        },
+        {
+          "attributes": "public",
+          "classification": "configuration",
+          "name": "acceptOwnership"
+        },
+        {
+          "attributes": "public override",
+          "classification": "configuration",
+          "name": "grantRole"
+        },
+        {
+          "attributes": "public override",
+          "classification": "owner_recovery_or_safe_exit",
+          "name": "revokeRole"
+        },
+        {
+          "attributes": "public override",
+          "classification": "normal_operation_unclassified_review_required",
+          "name": "renounceRole"
         }
       ],
       "workflow": true
@@ -964,7 +2792,14 @@
       "assetHoldingEvidence": "none detected",
       "contract": "ReferralRegistry",
       "path": "contracts/registry/ReferralRegistry.sol",
-      "roles": [],
+      "roles": [
+        "OPERATOR_ROLE",
+        "PAUSER_ROLE",
+        "PROTOCOL_ADMIN_ROLE",
+        "REVIEWER_MANAGER_ROLE",
+        "TREASURY_ROLE",
+        "VAULT_MANAGER_ROLE"
+      ],
       "sha256": "c945ff2a38380b4ee39a3dad3e78f91245dda29c8991182db0d467e13e1ac849",
       "stateChangingSelectors": [
         {
@@ -981,6 +2816,46 @@
           "attributes": "external onlyOperator",
           "classification": "normal_operation_unclassified_review_required",
           "name": "recordConversion"
+        },
+        {
+          "attributes": "external",
+          "classification": "lifecycle_control_or_migration",
+          "name": "pause"
+        },
+        {
+          "attributes": "external",
+          "classification": "lifecycle_control_or_migration",
+          "name": "unpause"
+        },
+        {
+          "attributes": "public override onlyOwner",
+          "classification": "configuration",
+          "name": "transferOwnership"
+        },
+        {
+          "attributes": "public onlyOwner",
+          "classification": "owner_recovery_or_safe_exit",
+          "name": "cancelOwnershipTransfer"
+        },
+        {
+          "attributes": "public",
+          "classification": "configuration",
+          "name": "acceptOwnership"
+        },
+        {
+          "attributes": "public override",
+          "classification": "configuration",
+          "name": "grantRole"
+        },
+        {
+          "attributes": "public override",
+          "classification": "owner_recovery_or_safe_exit",
+          "name": "revokeRole"
+        },
+        {
+          "attributes": "public override",
+          "classification": "normal_operation_unclassified_review_required",
+          "name": "renounceRole"
         }
       ],
       "workflow": true
@@ -990,7 +2865,14 @@
       "assetHoldingEvidence": "none detected",
       "contract": "ReputationRegistry",
       "path": "contracts/registry/ReputationRegistry.sol",
-      "roles": [],
+      "roles": [
+        "OPERATOR_ROLE",
+        "PAUSER_ROLE",
+        "PROTOCOL_ADMIN_ROLE",
+        "REVIEWER_MANAGER_ROLE",
+        "TREASURY_ROLE",
+        "VAULT_MANAGER_ROLE"
+      ],
       "sha256": "dea903faaee65b19faabfede666fb931c1f7f56d58b7e2f876ecfec0caceb333",
       "stateChangingSelectors": [
         {
@@ -1017,6 +2899,46 @@
           "attributes": "external onlyOperator",
           "classification": "normal_operation_unclassified_review_required",
           "name": "adjustScore"
+        },
+        {
+          "attributes": "external",
+          "classification": "lifecycle_control_or_migration",
+          "name": "pause"
+        },
+        {
+          "attributes": "external",
+          "classification": "lifecycle_control_or_migration",
+          "name": "unpause"
+        },
+        {
+          "attributes": "public override onlyOwner",
+          "classification": "configuration",
+          "name": "transferOwnership"
+        },
+        {
+          "attributes": "public onlyOwner",
+          "classification": "owner_recovery_or_safe_exit",
+          "name": "cancelOwnershipTransfer"
+        },
+        {
+          "attributes": "public",
+          "classification": "configuration",
+          "name": "acceptOwnership"
+        },
+        {
+          "attributes": "public override",
+          "classification": "configuration",
+          "name": "grantRole"
+        },
+        {
+          "attributes": "public override",
+          "classification": "owner_recovery_or_safe_exit",
+          "name": "revokeRole"
+        },
+        {
+          "attributes": "public override",
+          "classification": "normal_operation_unclassified_review_required",
+          "name": "renounceRole"
         }
       ],
       "workflow": true
@@ -1026,7 +2948,14 @@
       "assetHoldingEvidence": "token/native inbound flow or asset-bearing name",
       "contract": "ReviewerBondRegistry",
       "path": "contracts/registry/ReviewerBondRegistry.sol",
-      "roles": [],
+      "roles": [
+        "OPERATOR_ROLE",
+        "PAUSER_ROLE",
+        "PROTOCOL_ADMIN_ROLE",
+        "REVIEWER_MANAGER_ROLE",
+        "TREASURY_ROLE",
+        "VAULT_MANAGER_ROLE"
+      ],
       "sha256": "6560070c176f983cb675c3e048bd6d9f30ab658c9567d88465a30484be4cdefe",
       "stateChangingSelectors": [
         {
@@ -1068,6 +2997,46 @@
           "attributes": "external onlyOperator nonReentrant",
           "classification": "owner_recovery_or_safe_exit",
           "name": "slashReviewer"
+        },
+        {
+          "attributes": "external",
+          "classification": "lifecycle_control_or_migration",
+          "name": "pause"
+        },
+        {
+          "attributes": "external",
+          "classification": "lifecycle_control_or_migration",
+          "name": "unpause"
+        },
+        {
+          "attributes": "public override onlyOwner",
+          "classification": "configuration",
+          "name": "transferOwnership"
+        },
+        {
+          "attributes": "public onlyOwner",
+          "classification": "owner_recovery_or_safe_exit",
+          "name": "cancelOwnershipTransfer"
+        },
+        {
+          "attributes": "public",
+          "classification": "configuration",
+          "name": "acceptOwnership"
+        },
+        {
+          "attributes": "public override",
+          "classification": "configuration",
+          "name": "grantRole"
+        },
+        {
+          "attributes": "public override",
+          "classification": "owner_recovery_or_safe_exit",
+          "name": "revokeRole"
+        },
+        {
+          "attributes": "public override",
+          "classification": "normal_operation_unclassified_review_required",
+          "name": "renounceRole"
         }
       ],
       "workflow": true
@@ -1077,7 +3046,14 @@
       "assetHoldingEvidence": "token/native inbound flow or asset-bearing name",
       "contract": "TreasuryRouter",
       "path": "contracts/registry/TreasuryRouter.sol",
-      "roles": [],
+      "roles": [
+        "OPERATOR_ROLE",
+        "PAUSER_ROLE",
+        "PROTOCOL_ADMIN_ROLE",
+        "REVIEWER_MANAGER_ROLE",
+        "TREASURY_ROLE",
+        "VAULT_MANAGER_ROLE"
+      ],
       "sha256": "63a20c0598683ddae4aed83ebfad6f04c87a6c8d09409748feb28ba22b51e2aa",
       "stateChangingSelectors": [
         {
@@ -1094,6 +3070,46 @@
           "attributes": "external onlyOperator",
           "classification": "normal_operation_unclassified_review_required",
           "name": "routeHeld"
+        },
+        {
+          "attributes": "external",
+          "classification": "lifecycle_control_or_migration",
+          "name": "pause"
+        },
+        {
+          "attributes": "external",
+          "classification": "lifecycle_control_or_migration",
+          "name": "unpause"
+        },
+        {
+          "attributes": "public override onlyOwner",
+          "classification": "configuration",
+          "name": "transferOwnership"
+        },
+        {
+          "attributes": "public onlyOwner",
+          "classification": "owner_recovery_or_safe_exit",
+          "name": "cancelOwnershipTransfer"
+        },
+        {
+          "attributes": "public",
+          "classification": "configuration",
+          "name": "acceptOwnership"
+        },
+        {
+          "attributes": "public override",
+          "classification": "configuration",
+          "name": "grantRole"
+        },
+        {
+          "attributes": "public override",
+          "classification": "owner_recovery_or_safe_exit",
+          "name": "revokeRole"
+        },
+        {
+          "attributes": "public override",
+          "classification": "normal_operation_unclassified_review_required",
+          "name": "renounceRole"
         }
       ],
       "workflow": true
@@ -1103,7 +3119,14 @@
       "assetHoldingEvidence": "token/native inbound flow or asset-bearing name",
       "contract": "CommercializationPerformanceVault",
       "path": "contracts/vaults/CommercializationPerformanceVault.sol",
-      "roles": [],
+      "roles": [
+        "OPERATOR_ROLE",
+        "PAUSER_ROLE",
+        "PROTOCOL_ADMIN_ROLE",
+        "REVIEWER_MANAGER_ROLE",
+        "TREASURY_ROLE",
+        "VAULT_MANAGER_ROLE"
+      ],
       "sha256": "9187688c54699200b9f3130919cfca8931bd652dada66d2dd000900b946d20ec",
       "stateChangingSelectors": [
         {
@@ -1130,6 +3153,46 @@
           "attributes": "external onlyAdmin",
           "classification": "owner_recovery_or_safe_exit",
           "name": "cancelTranche"
+        },
+        {
+          "attributes": "external",
+          "classification": "lifecycle_control_or_migration",
+          "name": "pause"
+        },
+        {
+          "attributes": "external",
+          "classification": "lifecycle_control_or_migration",
+          "name": "unpause"
+        },
+        {
+          "attributes": "public override onlyOwner",
+          "classification": "configuration",
+          "name": "transferOwnership"
+        },
+        {
+          "attributes": "public onlyOwner",
+          "classification": "owner_recovery_or_safe_exit",
+          "name": "cancelOwnershipTransfer"
+        },
+        {
+          "attributes": "public",
+          "classification": "configuration",
+          "name": "acceptOwnership"
+        },
+        {
+          "attributes": "public override",
+          "classification": "configuration",
+          "name": "grantRole"
+        },
+        {
+          "attributes": "public override",
+          "classification": "owner_recovery_or_safe_exit",
+          "name": "revokeRole"
+        },
+        {
+          "attributes": "public override",
+          "classification": "normal_operation_unclassified_review_required",
+          "name": "renounceRole"
         }
       ],
       "workflow": true
@@ -1139,7 +3202,14 @@
       "assetHoldingEvidence": "token/native inbound flow or asset-bearing name",
       "contract": "TokenReserveVault",
       "path": "contracts/vaults/TokenReserveVault.sol",
-      "roles": [],
+      "roles": [
+        "OPERATOR_ROLE",
+        "PAUSER_ROLE",
+        "PROTOCOL_ADMIN_ROLE",
+        "REVIEWER_MANAGER_ROLE",
+        "TREASURY_ROLE",
+        "VAULT_MANAGER_ROLE"
+      ],
       "sha256": "557e6082fc48b48c1506a6885bf3b716a878d948384f240b086f6939d3413872",
       "stateChangingSelectors": [
         {
@@ -1151,12 +3221,52 @@
           "attributes": "external whenNotPaused",
           "classification": "safe_exit_or_settlement",
           "name": "release"
+        },
+        {
+          "attributes": "external",
+          "classification": "lifecycle_control_or_migration",
+          "name": "pause"
+        },
+        {
+          "attributes": "external",
+          "classification": "lifecycle_control_or_migration",
+          "name": "unpause"
+        },
+        {
+          "attributes": "public override onlyOwner",
+          "classification": "configuration",
+          "name": "transferOwnership"
+        },
+        {
+          "attributes": "public onlyOwner",
+          "classification": "owner_recovery_or_safe_exit",
+          "name": "cancelOwnershipTransfer"
+        },
+        {
+          "attributes": "public",
+          "classification": "configuration",
+          "name": "acceptOwnership"
+        },
+        {
+          "attributes": "public override",
+          "classification": "configuration",
+          "name": "grantRole"
+        },
+        {
+          "attributes": "public override",
+          "classification": "owner_recovery_or_safe_exit",
+          "name": "revokeRole"
+        },
+        {
+          "attributes": "public override",
+          "classification": "normal_operation_unclassified_review_required",
+          "name": "renounceRole"
         }
       ],
       "workflow": true
     }
   ],
   "generatedBy": "scripts/mainnet_operational_readiness.py",
-  "sourceTreeHash": "846d64342687dd16efca396eb0a3b6db10e4e0dcf1075ae9f90dc88694f0ec32",
+  "sourceTreeHash": "bc26887031988188d29c1ba56752c0b557db176ce26493c309140fe88b9bee53",
   "sourceTreeHashScope": "tracked HEAD content excluding generated readiness artifacts"
 }

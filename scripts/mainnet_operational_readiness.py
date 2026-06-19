@@ -75,14 +75,57 @@ def tracked_source_tree_hash():
     return h.hexdigest()
 
 
-def concrete_contract_names(text):
+def contract_blocks(text):
     cleaned = strip_comments(text)
-    found = []
-    for match in re.finditer(r"\b(abstract\s+contract|contract|interface)\s+(\w+)", cleaned):
-        kind, name = match.groups()
-        if kind == "contract":
-            found.append(name)
-    return found
+    blocks = []
+    pattern = re.compile(r"\b(abstract\s+contract|contract|interface)\s+(\w+)(?:\s+is\s+([^\{]+))?\s*\{")
+    for match in pattern.finditer(cleaned):
+        depth = 1
+        pos = match.end()
+        while pos < len(cleaned) and depth:
+            if cleaned[pos] == "{":
+                depth += 1
+            elif cleaned[pos] == "}":
+                depth -= 1
+            pos += 1
+        kind, name, bases = match.groups()
+        blocks.append({
+            "kind": kind,
+            "name": name,
+            "bases": [b.strip().split()[0] for b in (bases or "").split(",") if b.strip()],
+            "body": cleaned[match.end():pos - 1],
+        })
+    return blocks
+
+
+def concrete_contract_infos(text):
+    return [block for block in contract_blocks(text) if block["kind"] == "contract"]
+
+
+def functions_from_body(body):
+    funcs = []
+    for match in re.finditer(r"function\s+(\w+)\s*\([^)]*\)\s*([^;{]*)", body):
+        attrs = match.group(2)
+        if any(x in attrs for x in STATE_HINTS) and not any(x in attrs for x in VIEW_HINTS):
+            funcs.append({
+                "name": match.group(1),
+                "attributes": " ".join(attrs.split()),
+                "classification": classify(match.group(1)),
+            })
+    return funcs
+
+
+def roles_from_body(body):
+    return sorted(set(re.findall(r"bytes32\s+(?:public\s+)?(?:constant\s+)?([A-Z0-9_]+_ROLE)", body)))
+
+
+def inherited_goalos_surface():
+    access_path = CONTRACTS / "access" / "GoalOSAccessControl.sol"
+    text = access_path.read_text(errors="ignore")
+    for block in contract_blocks(text):
+        if block["name"] == "GoalOSAccessControl":
+            return functions_from_body(block["body"]), roles_from_body(block["body"])
+    return [], []
 
 
 def detects_asset_holding(contract_name, text):
@@ -107,27 +150,28 @@ def excluded_mainnet_inventory_path(path):
     )
 
 
+def merge_funcs(primary, inherited):
+    seen = {item["name"] for item in primary}
+    return primary + [item for item in inherited if item["name"] not in seen]
+
+
 def contracts():
     out = []
+    goalos_funcs, goalos_roles = inherited_goalos_surface()
     for path in sorted(CONTRACTS.rglob("*.sol")):
         if excluded_mainnet_inventory_path(path):
             continue
         text = path.read_text(errors="ignore")
-        cleaned = strip_comments(text)
-        names = concrete_contract_names(text)
-        if not names:
+        infos = concrete_contract_infos(text)
+        if not infos:
             continue
-        funcs = []
-        for match in re.finditer(r"function\s+(\w+)\s*\([^)]*\)\s*([^;{]*)", cleaned):
-            attrs = match.group(2)
-            if any(x in attrs for x in STATE_HINTS) and not any(x in attrs for x in VIEW_HINTS):
-                funcs.append({
-                    "name": match.group(1),
-                    "attributes": " ".join(attrs.split()),
-                    "classification": classify(match.group(1)),
-                })
-        roles = sorted(set(re.findall(r"bytes32\s+(?:public\s+)?(?:constant\s+)?([A-Z0-9_]+_ROLE)", cleaned)))
-        for name in names:
+        for info in infos:
+            funcs = functions_from_body(info["body"])
+            roles = roles_from_body(info["body"])
+            if "GoalOSAccessControl" in info["bases"]:
+                funcs = merge_funcs(funcs, goalos_funcs)
+                roles = sorted(set(roles + goalos_roles))
+            name = info["name"]
             out.append({
                 "path": str(path.relative_to(ROOT)),
                 "contract": name,
