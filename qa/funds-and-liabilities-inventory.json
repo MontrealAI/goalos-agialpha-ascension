@@ -1,0 +1,323 @@
+{
+  "entries": [
+    {
+      "accountingStatus": "NOT_ASSET_HOLDING",
+      "assetHolding": false,
+      "contract": "GoalOSAccessControl",
+      "path": "contracts/access/GoalOSAccessControl.sol"
+    },
+    {
+      "accountingStatus": "NOT_ASSET_HOLDING",
+      "assetHolding": false,
+      "contract": "AEPAgentRegistry",
+      "path": "contracts/aep/AEPAgentRegistry.sol"
+    },
+    {
+      "accountingStatus": "NOT_ASSET_HOLDING",
+      "assetHolding": false,
+      "contract": "AEPArtifactRegistry",
+      "path": "contracts/aep/AEPArtifactRegistry.sol"
+    },
+    {
+      "accountingStatus": "NOT_ASSET_HOLDING",
+      "assetHolding": false,
+      "contract": "AEPAttestationRegistry",
+      "path": "contracts/aep/AEPAttestationRegistry.sol"
+    },
+    {
+      "accountingStatus": "NOT_ASSET_HOLDING",
+      "assetHolding": false,
+      "contract": "AEPChronicleRegistry",
+      "path": "contracts/aep/AEPChronicleRegistry.sol"
+    },
+    {
+      "accountingStatus": "NOT_ASSET_HOLDING",
+      "assetHolding": false,
+      "contract": "AEPClaimBoundaryRegistry",
+      "path": "contracts/aep/AEPClaimBoundaryRegistry.sol"
+    },
+    {
+      "accountingStatus": "NOT_ASSET_HOLDING",
+      "assetHolding": false,
+      "contract": "AEPCommitRevealValidationRegistry",
+      "path": "contracts/aep/AEPCommitRevealValidationRegistry.sol"
+    },
+    {
+      "accountingStatus": "NOT_ASSET_HOLDING",
+      "assetHolding": false,
+      "contract": "AEPConformanceRegistry",
+      "path": "contracts/aep/AEPConformanceRegistry.sol"
+    },
+    {
+      "accountingStatus": "NOT_ASSET_HOLDING",
+      "assetHolding": false,
+      "contract": "AEPEvalRegistry",
+      "path": "contracts/aep/AEPEvalRegistry.sol"
+    },
+    {
+      "accountingStatus": "NOT_ASSET_HOLDING",
+      "assetHolding": false,
+      "contract": "AEPEvaluatorStakingRegistry",
+      "path": "contracts/aep/AEPEvaluatorStakingRegistry.sol"
+    },
+    {
+      "accountingStatus": "NOT_ASSET_HOLDING",
+      "assetHolding": false,
+      "contract": "AEPEvidenceDocketRegistry",
+      "path": "contracts/aep/AEPEvidenceDocketRegistry.sol"
+    },
+    {
+      "accountingStatus": "NOT_ASSET_HOLDING",
+      "assetHolding": false,
+      "contract": "AEPFalsificationRegistry",
+      "path": "contracts/aep/AEPFalsificationRegistry.sol"
+    },
+    {
+      "accountingStatus": "NOT_ASSET_HOLDING",
+      "assetHolding": false,
+      "contract": "AEPGoalOSCommitRegistry",
+      "path": "contracts/aep/AEPGoalOSCommitRegistry.sol"
+    },
+    {
+      "accountingStatus": "NOT_ASSET_HOLDING",
+      "assetHolding": false,
+      "contract": "AEPProofBundleRegistry",
+      "path": "contracts/aep/AEPProofBundleRegistry.sol"
+    },
+    {
+      "accountingStatus": "NOT_ASSET_HOLDING",
+      "assetHolding": false,
+      "contract": "AEPProofLedger",
+      "path": "contracts/aep/AEPProofLedger.sol"
+    },
+    {
+      "accountingStatus": "NOT_ASSET_HOLDING",
+      "assetHolding": false,
+      "contract": "AEPReplayRegistry",
+      "path": "contracts/aep/AEPReplayRegistry.sol"
+    },
+    {
+      "accountingStatus": "REQUIRES_EXACT_ONCHAIN_STATUS",
+      "assetHolding": true,
+      "contract": "AEPRewardVault",
+      "path": "contracts/aep/AEPRewardVault.sol"
+    },
+    {
+      "accountingStatus": "NOT_ASSET_HOLDING",
+      "assetHolding": false,
+      "contract": "AEPRollbackRegistry",
+      "path": "contracts/aep/AEPRollbackRegistry.sol"
+    },
+    {
+      "accountingStatus": "REQUIRES_EXACT_ONCHAIN_STATUS",
+      "assetHolding": true,
+      "contract": "AEPRolloutRouter",
+      "path": "contracts/aep/AEPRolloutRouter.sol"
+    },
+    {
+      "accountingStatus": "NOT_ASSET_HOLDING",
+      "assetHolding": false,
+      "contract": "AEPRunCommitmentRegistry",
+      "path": "contracts/aep/AEPRunCommitmentRegistry.sol"
+    },
+    {
+      "accountingStatus": "NOT_ASSET_HOLDING",
+      "assetHolding": false,
+      "contract": "AEPSelectionGate",
+      "path": "contracts/aep/AEPSelectionGate.sol"
+    },
+    {
+      "accountingStatus": "NOT_ASSET_HOLDING",
+      "assetHolding": false,
+      "contract": "IAEPEvaluatorStakingRegistry",
+      "path": "contracts/aep/AEPSlashingCourt.sol"
+    },
+    {
+      "accountingStatus": "NOT_ASSET_HOLDING",
+      "assetHolding": false,
+      "contract": "AGIEthNamespaceRegistry",
+      "path": "contracts/aep/AGIEthNamespaceRegistry.sol"
+    },
+    {
+      "accountingStatus": "NOT_ASSET_HOLDING",
+      "assetHolding": false,
+      "contract": "AlphaWorkUnitLedger",
+      "path": "contracts/aep/AlphaWorkUnitLedger.sol"
+    },
+    {
+      "accountingStatus": "NOT_ASSET_HOLDING",
+      "assetHolding": false,
+      "contract": "MandateEpochRegistry",
+      "path": "contracts/aep/MandateEpochRegistry.sol"
+    },
+    {
+      "accountingStatus": "REQUIRES_EXACT_ONCHAIN_STATUS",
+      "assetHolding": true,
+      "contract": "IJobClaimBondManager",
+      "path": "contracts/interfaces/IJobClaimBondManager.sol"
+    },
+    {
+      "accountingStatus": "NOT_ASSET_HOLDING",
+      "assetHolding": false,
+      "contract": "IJobRegistry",
+      "path": "contracts/interfaces/IJobRegistry.sol"
+    },
+    {
+      "accountingStatus": "NOT_ASSET_HOLDING",
+      "assetHolding": false,
+      "contract": "IProofSubmissionRegistry",
+      "path": "contracts/interfaces/IProofSubmissionRegistry.sol"
+    },
+    {
+      "accountingStatus": "NOT_ASSET_HOLDING",
+      "assetHolding": false,
+      "contract": "IReputationRegistry",
+      "path": "contracts/interfaces/IReputationRegistry.sol"
+    },
+    {
+      "accountingStatus": "NOT_ASSET_HOLDING",
+      "assetHolding": false,
+      "contract": "AppealRegistry",
+      "path": "contracts/optional/AppealRegistry.sol"
+    },
+    {
+      "accountingStatus": "NOT_ASSET_HOLDING",
+      "assetHolding": false,
+      "contract": "BuilderProfileRegistry",
+      "path": "contracts/optional/BuilderProfileRegistry.sol"
+    },
+    {
+      "accountingStatus": "NOT_ASSET_HOLDING",
+      "assetHolding": false,
+      "contract": "CredentialRevocationRegistry",
+      "path": "contracts/optional/CredentialRevocationRegistry.sol"
+    },
+    {
+      "accountingStatus": "NOT_ASSET_HOLDING",
+      "assetHolding": false,
+      "contract": "DisputeRegistry",
+      "path": "contracts/optional/DisputeRegistry.sol"
+    },
+    {
+      "accountingStatus": "NOT_ASSET_HOLDING",
+      "assetHolding": false,
+      "contract": "SponsorRegistry",
+      "path": "contracts/optional/SponsorRegistry.sol"
+    },
+    {
+      "accountingStatus": "REQUIRES_EXACT_ONCHAIN_STATUS",
+      "assetHolding": true,
+      "contract": "JobClaimBondManager",
+      "path": "contracts/registry/JobClaimBondManager.sol"
+    },
+    {
+      "accountingStatus": "NOT_ASSET_HOLDING",
+      "assetHolding": false,
+      "contract": "JobRegistry",
+      "path": "contracts/registry/JobRegistry.sol"
+    },
+    {
+      "accountingStatus": "NOT_ASSET_HOLDING",
+      "assetHolding": false,
+      "contract": "LaunchGateRegistry",
+      "path": "contracts/registry/LaunchGateRegistry.sol"
+    },
+    {
+      "accountingStatus": "NOT_ASSET_HOLDING",
+      "assetHolding": false,
+      "contract": "LegacyAGIJobManagerRegistry",
+      "path": "contracts/registry/LegacyAGIJobManagerRegistry.sol"
+    },
+    {
+      "accountingStatus": "NOT_ASSET_HOLDING",
+      "assetHolding": false,
+      "contract": "PremiumAccessRegistry",
+      "path": "contracts/registry/PremiumAccessRegistry.sol"
+    },
+    {
+      "accountingStatus": "NOT_ASSET_HOLDING",
+      "assetHolding": false,
+      "contract": "ProofCardRegistry",
+      "path": "contracts/registry/ProofCardRegistry.sol"
+    },
+    {
+      "accountingStatus": "NOT_ASSET_HOLDING",
+      "assetHolding": false,
+      "contract": "IERC5192",
+      "path": "contracts/registry/ProofCredentialRegistry.sol"
+    },
+    {
+      "accountingStatus": "NOT_ASSET_HOLDING",
+      "assetHolding": false,
+      "contract": "ProofSeedRegistry",
+      "path": "contracts/registry/ProofSeedRegistry.sol"
+    },
+    {
+      "accountingStatus": "NOT_ASSET_HOLDING",
+      "assetHolding": false,
+      "contract": "ProofSubmissionRegistry",
+      "path": "contracts/registry/ProofSubmissionRegistry.sol"
+    },
+    {
+      "accountingStatus": "NOT_ASSET_HOLDING",
+      "assetHolding": false,
+      "contract": "ProtocolConfigRegistry",
+      "path": "contracts/registry/ProtocolConfigRegistry.sol"
+    },
+    {
+      "accountingStatus": "NOT_ASSET_HOLDING",
+      "assetHolding": false,
+      "contract": "ReferralRegistry",
+      "path": "contracts/registry/ReferralRegistry.sol"
+    },
+    {
+      "accountingStatus": "NOT_ASSET_HOLDING",
+      "assetHolding": false,
+      "contract": "ReputationRegistry",
+      "path": "contracts/registry/ReputationRegistry.sol"
+    },
+    {
+      "accountingStatus": "REQUIRES_EXACT_ONCHAIN_STATUS",
+      "assetHolding": true,
+      "contract": "ReviewerBondRegistry",
+      "path": "contracts/registry/ReviewerBondRegistry.sol"
+    },
+    {
+      "accountingStatus": "REQUIRES_EXACT_ONCHAIN_STATUS",
+      "assetHolding": true,
+      "contract": "TreasuryRouter",
+      "path": "contracts/registry/TreasuryRouter.sol"
+    },
+    {
+      "accountingStatus": "NOT_ASSET_HOLDING",
+      "assetHolding": false,
+      "contract": "LocalSafeFixture",
+      "path": "contracts/test/LocalSafeFixture.sol"
+    },
+    {
+      "accountingStatus": "NOT_ASSET_HOLDING",
+      "assetHolding": false,
+      "contract": "is",
+      "path": "contracts/test-harnesses/LaunchGateInvariantHarness.sol"
+    },
+    {
+      "accountingStatus": "NOT_ASSET_HOLDING",
+      "assetHolding": false,
+      "contract": "MockAGIALPHA",
+      "path": "contracts/token/MockAGIALPHA.sol"
+    },
+    {
+      "accountingStatus": "REQUIRES_EXACT_ONCHAIN_STATUS",
+      "assetHolding": true,
+      "contract": "CommercializationPerformanceVault",
+      "path": "contracts/vaults/CommercializationPerformanceVault.sol"
+    },
+    {
+      "accountingStatus": "REQUIRES_EXACT_ONCHAIN_STATUS",
+      "assetHolding": true,
+      "contract": "TokenReserveVault",
+      "path": "contracts/vaults/TokenReserveVault.sol"
+    }
+  ],
+  "invariant": "actualBalance >= protectedLiability + requiredReservations + pendingWithdrawals"
+}

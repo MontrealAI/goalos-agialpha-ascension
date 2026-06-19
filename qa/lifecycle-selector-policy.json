@@ -1,0 +1,1082 @@
+{
+  "selectors": [
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "GoalOSAccessControl",
+      "name": "pause",
+      "path": "contracts/access/GoalOSAccessControl.sol"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "GoalOSAccessControl",
+      "name": "unpause",
+      "path": "contracts/access/GoalOSAccessControl.sol"
+    },
+    {
+      "attributes": "public override onlyOwner",
+      "classification": "configuration",
+      "contract": "GoalOSAccessControl",
+      "name": "transferOwnership",
+      "path": "contracts/access/GoalOSAccessControl.sol"
+    },
+    {
+      "attributes": "public onlyOwner",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "GoalOSAccessControl",
+      "name": "cancelOwnershipTransfer",
+      "path": "contracts/access/GoalOSAccessControl.sol"
+    },
+    {
+      "attributes": "public",
+      "classification": "configuration",
+      "contract": "GoalOSAccessControl",
+      "name": "acceptOwnership",
+      "path": "contracts/access/GoalOSAccessControl.sol"
+    },
+    {
+      "attributes": "public override",
+      "classification": "configuration",
+      "contract": "GoalOSAccessControl",
+      "name": "grantRole",
+      "path": "contracts/access/GoalOSAccessControl.sol"
+    },
+    {
+      "attributes": "public override",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "GoalOSAccessControl",
+      "name": "revokeRole",
+      "path": "contracts/access/GoalOSAccessControl.sol"
+    },
+    {
+      "attributes": "public override",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "GoalOSAccessControl",
+      "name": "renounceRole",
+      "path": "contracts/access/GoalOSAccessControl.sol"
+    },
+    {
+      "attributes": "external onlyOperator returns (uint256 agentId)",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "AEPAgentRegistry",
+      "name": "registerAgent",
+      "path": "contracts/aep/AEPAgentRegistry.sol"
+    },
+    {
+      "attributes": "external onlyOperator",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "AEPAgentRegistry",
+      "name": "updateAgent",
+      "path": "contracts/aep/AEPAgentRegistry.sol"
+    },
+    {
+      "attributes": "external onlyOperator returns (uint256 versionId)",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "AEPArtifactRegistry",
+      "name": "registerArtifactVersion",
+      "path": "contracts/aep/AEPArtifactRegistry.sol"
+    },
+    {
+      "attributes": "external onlyOperator",
+      "classification": "configuration",
+      "contract": "AEPArtifactRegistry",
+      "name": "setArtifactStatus",
+      "path": "contracts/aep/AEPArtifactRegistry.sol"
+    },
+    {
+      "attributes": "external onlyOperator returns (uint256 attestationId)",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "AEPAttestationRegistry",
+      "name": "attest",
+      "path": "contracts/aep/AEPAttestationRegistry.sol"
+    },
+    {
+      "attributes": "external onlyOperator",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "AEPAttestationRegistry",
+      "name": "revokeAttestation",
+      "path": "contracts/aep/AEPAttestationRegistry.sol"
+    },
+    {
+      "attributes": "external onlyOperator returns (uint256 entryId)",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "AEPChronicleRegistry",
+      "name": "recordEntry",
+      "path": "contracts/aep/AEPChronicleRegistry.sol"
+    },
+    {
+      "attributes": "external onlyOperator returns (uint256 boundaryId)",
+      "classification": "new_obligation_or_risk_increase",
+      "contract": "AEPClaimBoundaryRegistry",
+      "name": "registerClaimBoundary",
+      "path": "contracts/aep/AEPClaimBoundaryRegistry.sol"
+    },
+    {
+      "attributes": "external onlyOperator",
+      "classification": "configuration",
+      "contract": "AEPClaimBoundaryRegistry",
+      "name": "setClaimBoundaryActive",
+      "path": "contracts/aep/AEPClaimBoundaryRegistry.sol"
+    },
+    {
+      "attributes": "external onlyOperator",
+      "classification": "configuration",
+      "contract": "AEPCommitRevealValidationRegistry",
+      "name": "setValidatorAllowed",
+      "path": "contracts/aep/AEPCommitRevealValidationRegistry.sol"
+    },
+    {
+      "attributes": "external onlyOperator returns (uint256 roundId)",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "AEPCommitRevealValidationRegistry",
+      "name": "openValidationRound",
+      "path": "contracts/aep/AEPCommitRevealValidationRegistry.sol"
+    },
+    {
+      "attributes": "external onlyAllowedValidator",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "AEPCommitRevealValidationRegistry",
+      "name": "commitVerdict",
+      "path": "contracts/aep/AEPCommitRevealValidationRegistry.sol"
+    },
+    {
+      "attributes": "external onlyAllowedValidator",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "AEPCommitRevealValidationRegistry",
+      "name": "revealVerdict",
+      "path": "contracts/aep/AEPCommitRevealValidationRegistry.sol"
+    },
+    {
+      "attributes": "external onlyOperator",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "AEPCommitRevealValidationRegistry",
+      "name": "finalizeRound",
+      "path": "contracts/aep/AEPCommitRevealValidationRegistry.sol"
+    },
+    {
+      "attributes": "external onlyOperator",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "AEPCommitRevealValidationRegistry",
+      "name": "cancelRound",
+      "path": "contracts/aep/AEPCommitRevealValidationRegistry.sol"
+    },
+    {
+      "attributes": "external onlyOperator returns (uint256 recordId)",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "AEPConformanceRegistry",
+      "name": "recordConformance",
+      "path": "contracts/aep/AEPConformanceRegistry.sol"
+    },
+    {
+      "attributes": "external onlyOperator",
+      "classification": "configuration",
+      "contract": "AEPConformanceRegistry",
+      "name": "setConformanceActive",
+      "path": "contracts/aep/AEPConformanceRegistry.sol"
+    },
+    {
+      "attributes": "external onlyOperator returns (uint256 schemaId)",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "AEPEvalRegistry",
+      "name": "registerEvalSchema",
+      "path": "contracts/aep/AEPEvalRegistry.sol"
+    },
+    {
+      "attributes": "external onlyOperator returns (uint256 evalId)",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "AEPEvalRegistry",
+      "name": "recordEval",
+      "path": "contracts/aep/AEPEvalRegistry.sol"
+    },
+    {
+      "attributes": "external onlyAdmin",
+      "classification": "configuration",
+      "contract": "AEPEvaluatorStakingRegistry",
+      "name": "setMinEvaluatorStake",
+      "path": "contracts/aep/AEPEvaluatorStakingRegistry.sol"
+    },
+    {
+      "attributes": "external onlyAdmin",
+      "classification": "configuration",
+      "contract": "AEPEvaluatorStakingRegistry",
+      "name": "setUnstakeDelay",
+      "path": "contracts/aep/AEPEvaluatorStakingRegistry.sol"
+    },
+    {
+      "attributes": "external onlyAdmin",
+      "classification": "configuration",
+      "contract": "AEPEvaluatorStakingRegistry",
+      "name": "setTreasury",
+      "path": "contracts/aep/AEPEvaluatorStakingRegistry.sol"
+    },
+    {
+      "attributes": "external nonReentrant whenNotPaused",
+      "classification": "new_obligation_or_risk_increase",
+      "contract": "AEPEvaluatorStakingRegistry",
+      "name": "stake",
+      "path": "contracts/aep/AEPEvaluatorStakingRegistry.sol"
+    },
+    {
+      "attributes": "external nonReentrant",
+      "classification": "new_obligation_or_risk_increase",
+      "contract": "AEPEvaluatorStakingRegistry",
+      "name": "requestUnstake",
+      "path": "contracts/aep/AEPEvaluatorStakingRegistry.sol"
+    },
+    {
+      "attributes": "external nonReentrant",
+      "classification": "new_obligation_or_risk_increase",
+      "contract": "AEPEvaluatorStakingRegistry",
+      "name": "unstake",
+      "path": "contracts/aep/AEPEvaluatorStakingRegistry.sol"
+    },
+    {
+      "attributes": "external onlyOperator nonReentrant",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "AEPEvaluatorStakingRegistry",
+      "name": "slashEvaluator",
+      "path": "contracts/aep/AEPEvaluatorStakingRegistry.sol"
+    },
+    {
+      "attributes": "external onlyOperator returns (uint256 docketId)",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "AEPEvidenceDocketRegistry",
+      "name": "registerEvidenceDocket",
+      "path": "contracts/aep/AEPEvidenceDocketRegistry.sol"
+    },
+    {
+      "attributes": "external onlyOperator",
+      "classification": "configuration",
+      "contract": "AEPEvidenceDocketRegistry",
+      "name": "setDocketActive",
+      "path": "contracts/aep/AEPEvidenceDocketRegistry.sol"
+    },
+    {
+      "attributes": "external returns (uint256 falsificationId)",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "AEPFalsificationRegistry",
+      "name": "reportFalsification",
+      "path": "contracts/aep/AEPFalsificationRegistry.sol"
+    },
+    {
+      "attributes": "external onlyOperator",
+      "classification": "configuration",
+      "contract": "AEPFalsificationRegistry",
+      "name": "setFalsificationStatus",
+      "path": "contracts/aep/AEPFalsificationRegistry.sol"
+    },
+    {
+      "attributes": "external onlyAdmin",
+      "classification": "configuration",
+      "contract": "AEPGoalOSCommitRegistry",
+      "name": "setCommitFee",
+      "path": "contracts/aep/AEPGoalOSCommitRegistry.sol"
+    },
+    {
+      "attributes": "external nonReentrant whenNotPaused returns (uint256 commitId)",
+      "classification": "new_obligation_or_risk_increase",
+      "contract": "AEPGoalOSCommitRegistry",
+      "name": "createCommit",
+      "path": "contracts/aep/AEPGoalOSCommitRegistry.sol"
+    },
+    {
+      "attributes": "external onlyOperator",
+      "classification": "configuration",
+      "contract": "AEPGoalOSCommitRegistry",
+      "name": "setCommitActive",
+      "path": "contracts/aep/AEPGoalOSCommitRegistry.sol"
+    },
+    {
+      "attributes": "external onlyOperator returns (uint256 bundleId)",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "AEPProofBundleRegistry",
+      "name": "registerProofBundle",
+      "path": "contracts/aep/AEPProofBundleRegistry.sol"
+    },
+    {
+      "attributes": "external onlyOperator returns (uint256 proofId)",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "AEPProofLedger",
+      "name": "appendProofRoot",
+      "path": "contracts/aep/AEPProofLedger.sol"
+    },
+    {
+      "attributes": "external onlyOperator returns (uint256 replayId)",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "AEPReplayRegistry",
+      "name": "recordReplay",
+      "path": "contracts/aep/AEPReplayRegistry.sol"
+    },
+    {
+      "attributes": "external nonReentrant",
+      "classification": "new_obligation_or_risk_increase",
+      "contract": "AEPRewardVault",
+      "name": "fund",
+      "path": "contracts/aep/AEPRewardVault.sol"
+    },
+    {
+      "attributes": "external onlyOperator nonReentrant returns (uint256 rewardId)",
+      "classification": "safe_exit_or_settlement",
+      "contract": "AEPRewardVault",
+      "name": "payReward",
+      "path": "contracts/aep/AEPRewardVault.sol"
+    },
+    {
+      "attributes": "external onlyOperator returns (uint256 rollbackId)",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "AEPRollbackRegistry",
+      "name": "recordRollback",
+      "path": "contracts/aep/AEPRollbackRegistry.sol"
+    },
+    {
+      "attributes": "external onlyOperator returns (uint256 rolloutId)",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "AEPRolloutRouter",
+      "name": "recordRollout",
+      "path": "contracts/aep/AEPRolloutRouter.sol"
+    },
+    {
+      "attributes": "external onlyOperator",
+      "classification": "configuration",
+      "contract": "AEPRolloutRouter",
+      "name": "setRolloutActive",
+      "path": "contracts/aep/AEPRolloutRouter.sol"
+    },
+    {
+      "attributes": "external onlyOperator returns (uint256 runId)",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "AEPRunCommitmentRegistry",
+      "name": "commitRun",
+      "path": "contracts/aep/AEPRunCommitmentRegistry.sol"
+    },
+    {
+      "attributes": "external onlyOperator",
+      "classification": "configuration",
+      "contract": "AEPRunCommitmentRegistry",
+      "name": "setRunStatus",
+      "path": "contracts/aep/AEPRunCommitmentRegistry.sol"
+    },
+    {
+      "attributes": "external onlyOperator returns (uint256 selectionId)",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "AEPSelectionGate",
+      "name": "issueSelectionCertificate",
+      "path": "contracts/aep/AEPSelectionGate.sol"
+    },
+    {
+      "attributes": "external",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "IAEPEvaluatorStakingRegistry",
+      "name": "slashEvaluator",
+      "path": "contracts/aep/AEPSlashingCourt.sol"
+    },
+    {
+      "attributes": "external onlyOperator returns (uint256 caseId)",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "IAEPEvaluatorStakingRegistry",
+      "name": "openCase",
+      "path": "contracts/aep/AEPSlashingCourt.sol"
+    },
+    {
+      "attributes": "external onlyOperator",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "IAEPEvaluatorStakingRegistry",
+      "name": "resolveCase",
+      "path": "contracts/aep/AEPSlashingCourt.sol"
+    },
+    {
+      "attributes": "external onlyOperator",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "IAEPEvaluatorStakingRegistry",
+      "name": "cancelCase",
+      "path": "contracts/aep/AEPSlashingCourt.sol"
+    },
+    {
+      "attributes": "external onlyOperator",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "AGIEthNamespaceRegistry",
+      "name": "registerEnvironment",
+      "path": "contracts/aep/AGIEthNamespaceRegistry.sol"
+    },
+    {
+      "attributes": "external onlyOperator",
+      "classification": "configuration",
+      "contract": "AGIEthNamespaceRegistry",
+      "name": "setEnvironmentStatus",
+      "path": "contracts/aep/AGIEthNamespaceRegistry.sol"
+    },
+    {
+      "attributes": "external onlyOperator returns (uint256 recordId)",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "AlphaWorkUnitLedger",
+      "name": "recordAlphaWorkUnits",
+      "path": "contracts/aep/AlphaWorkUnitLedger.sol"
+    },
+    {
+      "attributes": "external nonReentrant whenNotPaused returns (uint256 mandateId)",
+      "classification": "new_obligation_or_risk_increase",
+      "contract": "MandateEpochRegistry",
+      "name": "createMandate",
+      "path": "contracts/aep/MandateEpochRegistry.sol"
+    },
+    {
+      "attributes": "external onlyOperator returns (uint256 epochId)",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "MandateEpochRegistry",
+      "name": "openEpoch",
+      "path": "contracts/aep/MandateEpochRegistry.sol"
+    },
+    {
+      "attributes": "external onlyOperator",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "MandateEpochRegistry",
+      "name": "commitEpochRoots",
+      "path": "contracts/aep/MandateEpochRegistry.sol"
+    },
+    {
+      "attributes": "external onlyOperator",
+      "classification": "configuration",
+      "contract": "MandateEpochRegistry",
+      "name": "setEpochStatus",
+      "path": "contracts/aep/MandateEpochRegistry.sol"
+    },
+    {
+      "attributes": "external",
+      "classification": "new_obligation_or_risk_increase",
+      "contract": "IJobClaimBondManager",
+      "name": "releaseClaimBond",
+      "path": "contracts/interfaces/IJobClaimBondManager.sol"
+    },
+    {
+      "attributes": "external",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "IJobClaimBondManager",
+      "name": "slashClaimBond",
+      "path": "contracts/interfaces/IJobClaimBondManager.sol"
+    },
+    {
+      "attributes": "external",
+      "classification": "new_obligation_or_risk_increase",
+      "contract": "IJobRegistry",
+      "name": "markClaimed",
+      "path": "contracts/interfaces/IJobRegistry.sol"
+    },
+    {
+      "attributes": "external",
+      "classification": "new_obligation_or_risk_increase",
+      "contract": "IJobRegistry",
+      "name": "markSubmitted",
+      "path": "contracts/interfaces/IJobRegistry.sol"
+    },
+    {
+      "attributes": "external",
+      "classification": "new_obligation_or_risk_increase",
+      "contract": "IJobRegistry",
+      "name": "markApproved",
+      "path": "contracts/interfaces/IJobRegistry.sol"
+    },
+    {
+      "attributes": "external",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "IJobRegistry",
+      "name": "markRejected",
+      "path": "contracts/interfaces/IJobRegistry.sol"
+    },
+    {
+      "attributes": "external",
+      "classification": "safe_exit_or_settlement",
+      "contract": "IJobRegistry",
+      "name": "releaseReward",
+      "path": "contracts/interfaces/IJobRegistry.sol"
+    },
+    {
+      "attributes": "external",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "IJobRegistry",
+      "name": "refundRejectedReward",
+      "path": "contracts/interfaces/IJobRegistry.sol"
+    },
+    {
+      "attributes": "external",
+      "classification": "new_obligation_or_risk_increase",
+      "contract": "IJobRegistry",
+      "name": "expireClaimedJob",
+      "path": "contracts/interfaces/IJobRegistry.sol"
+    },
+    {
+      "attributes": "external",
+      "classification": "new_obligation_or_risk_increase",
+      "contract": "IProofSubmissionRegistry",
+      "name": "approveSubmission",
+      "path": "contracts/interfaces/IProofSubmissionRegistry.sol"
+    },
+    {
+      "attributes": "external",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "IProofSubmissionRegistry",
+      "name": "rejectSubmission",
+      "path": "contracts/interfaces/IProofSubmissionRegistry.sol"
+    },
+    {
+      "attributes": "external",
+      "classification": "new_obligation_or_risk_increase",
+      "contract": "IReputationRegistry",
+      "name": "recordApprovedProof",
+      "path": "contracts/interfaces/IReputationRegistry.sol"
+    },
+    {
+      "attributes": "external",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "IReputationRegistry",
+      "name": "recordRejectedProof",
+      "path": "contracts/interfaces/IReputationRegistry.sol"
+    },
+    {
+      "attributes": "external",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "IReputationRegistry",
+      "name": "recordCredential",
+      "path": "contracts/interfaces/IReputationRegistry.sol"
+    },
+    {
+      "attributes": "external returns (uint256 appealId)",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "AppealRegistry",
+      "name": "openAppeal",
+      "path": "contracts/optional/AppealRegistry.sol"
+    },
+    {
+      "attributes": "external onlyOperator",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "AppealRegistry",
+      "name": "decideAppeal",
+      "path": "contracts/optional/AppealRegistry.sol"
+    },
+    {
+      "attributes": "external",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "BuilderProfileRegistry",
+      "name": "registerBuilder",
+      "path": "contracts/optional/BuilderProfileRegistry.sol"
+    },
+    {
+      "attributes": "external onlyOperator",
+      "classification": "configuration",
+      "contract": "BuilderProfileRegistry",
+      "name": "setBuilderStatus",
+      "path": "contracts/optional/BuilderProfileRegistry.sol"
+    },
+    {
+      "attributes": "external returns (uint256 revocationId)",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "CredentialRevocationRegistry",
+      "name": "requestRevocation",
+      "path": "contracts/optional/CredentialRevocationRegistry.sol"
+    },
+    {
+      "attributes": "external onlyOperator",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "CredentialRevocationRegistry",
+      "name": "executeRevocation",
+      "path": "contracts/optional/CredentialRevocationRegistry.sol"
+    },
+    {
+      "attributes": "external returns (uint256 disputeId)",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "DisputeRegistry",
+      "name": "openDispute",
+      "path": "contracts/optional/DisputeRegistry.sol"
+    },
+    {
+      "attributes": "external onlyOperator",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "DisputeRegistry",
+      "name": "resolveDispute",
+      "path": "contracts/optional/DisputeRegistry.sol"
+    },
+    {
+      "attributes": "external",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "SponsorRegistry",
+      "name": "registerSponsor",
+      "path": "contracts/optional/SponsorRegistry.sol"
+    },
+    {
+      "attributes": "external onlyOperator",
+      "classification": "configuration",
+      "contract": "SponsorRegistry",
+      "name": "setSponsorStatus",
+      "path": "contracts/optional/SponsorRegistry.sol"
+    },
+    {
+      "attributes": "external onlyAdmin",
+      "classification": "configuration",
+      "contract": "JobClaimBondManager",
+      "name": "setClaimBond",
+      "path": "contracts/registry/JobClaimBondManager.sol"
+    },
+    {
+      "attributes": "external onlyAdmin",
+      "classification": "configuration",
+      "contract": "JobClaimBondManager",
+      "name": "setTreasury",
+      "path": "contracts/registry/JobClaimBondManager.sol"
+    },
+    {
+      "attributes": "external nonReentrant whenNotPaused",
+      "classification": "new_obligation_or_risk_increase",
+      "contract": "JobClaimBondManager",
+      "name": "claimJob",
+      "path": "contracts/registry/JobClaimBondManager.sol"
+    },
+    {
+      "attributes": "external nonReentrant",
+      "classification": "new_obligation_or_risk_increase",
+      "contract": "JobClaimBondManager",
+      "name": "reclaimExpiredClaimedJob",
+      "path": "contracts/registry/JobClaimBondManager.sol"
+    },
+    {
+      "attributes": "external onlyOperator nonReentrant",
+      "classification": "new_obligation_or_risk_increase",
+      "contract": "JobClaimBondManager",
+      "name": "releaseClaimBond",
+      "path": "contracts/registry/JobClaimBondManager.sol"
+    },
+    {
+      "attributes": "external onlyOperator nonReentrant",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "JobClaimBondManager",
+      "name": "slashClaimBond",
+      "path": "contracts/registry/JobClaimBondManager.sol"
+    },
+    {
+      "attributes": "external onlyAdmin",
+      "classification": "configuration",
+      "contract": "JobRegistry",
+      "name": "setPostingFee",
+      "path": "contracts/registry/JobRegistry.sol"
+    },
+    {
+      "attributes": "external onlyAdmin",
+      "classification": "configuration",
+      "contract": "JobRegistry",
+      "name": "setTreasury",
+      "path": "contracts/registry/JobRegistry.sol"
+    },
+    {
+      "attributes": "external onlyAdmin",
+      "classification": "configuration",
+      "contract": "JobRegistry",
+      "name": "setRewardTokenAllowed",
+      "path": "contracts/registry/JobRegistry.sol"
+    },
+    {
+      "attributes": "external onlyAdmin",
+      "classification": "configuration",
+      "contract": "JobRegistry",
+      "name": "setRewardTokenAllowlistEnabled",
+      "path": "contracts/registry/JobRegistry.sol"
+    },
+    {
+      "attributes": "external nonReentrant whenNotPaused returns (uint256 jobId)",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "JobRegistry",
+      "name": "postJob",
+      "path": "contracts/registry/JobRegistry.sol"
+    },
+    {
+      "attributes": "external onlyOperator",
+      "classification": "new_obligation_or_risk_increase",
+      "contract": "JobRegistry",
+      "name": "markClaimed",
+      "path": "contracts/registry/JobRegistry.sol"
+    },
+    {
+      "attributes": "external onlyOperator",
+      "classification": "new_obligation_or_risk_increase",
+      "contract": "JobRegistry",
+      "name": "markSubmitted",
+      "path": "contracts/registry/JobRegistry.sol"
+    },
+    {
+      "attributes": "external onlyOperator",
+      "classification": "new_obligation_or_risk_increase",
+      "contract": "JobRegistry",
+      "name": "markApproved",
+      "path": "contracts/registry/JobRegistry.sol"
+    },
+    {
+      "attributes": "external onlyOperator",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "JobRegistry",
+      "name": "markRejected",
+      "path": "contracts/registry/JobRegistry.sol"
+    },
+    {
+      "attributes": "external onlyOperator nonReentrant",
+      "classification": "safe_exit_or_settlement",
+      "contract": "JobRegistry",
+      "name": "releaseReward",
+      "path": "contracts/registry/JobRegistry.sol"
+    },
+    {
+      "attributes": "external onlyOperator nonReentrant",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "JobRegistry",
+      "name": "refundRejectedReward",
+      "path": "contracts/registry/JobRegistry.sol"
+    },
+    {
+      "attributes": "external onlyOperator nonReentrant",
+      "classification": "new_obligation_or_risk_increase",
+      "contract": "JobRegistry",
+      "name": "expireClaimedJob",
+      "path": "contracts/registry/JobRegistry.sol"
+    },
+    {
+      "attributes": "external nonReentrant",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "JobRegistry",
+      "name": "cancelOpenJob",
+      "path": "contracts/registry/JobRegistry.sol"
+    },
+    {
+      "attributes": "external nonReentrant",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "JobRegistry",
+      "name": "expireOpenJob",
+      "path": "contracts/registry/JobRegistry.sol"
+    },
+    {
+      "attributes": "external onlyOperator",
+      "classification": "configuration",
+      "contract": "LaunchGateRegistry",
+      "name": "setGate",
+      "path": "contracts/registry/LaunchGateRegistry.sol"
+    },
+    {
+      "attributes": "external onlyOperator returns (uint256 recordId)",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "LegacyAGIJobManagerRegistry",
+      "name": "addLegacyRecord",
+      "path": "contracts/registry/LegacyAGIJobManagerRegistry.sol"
+    },
+    {
+      "attributes": "external onlyOperator",
+      "classification": "configuration",
+      "contract": "LegacyAGIJobManagerRegistry",
+      "name": "setLegacyRecordAccepted",
+      "path": "contracts/registry/LegacyAGIJobManagerRegistry.sol"
+    },
+    {
+      "attributes": "external onlyOperator",
+      "classification": "configuration",
+      "contract": "PremiumAccessRegistry",
+      "name": "setAccessTier",
+      "path": "contracts/registry/PremiumAccessRegistry.sol"
+    },
+    {
+      "attributes": "external onlyOperator returns (uint256 proofCardId)",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "ProofCardRegistry",
+      "name": "registerProofCard",
+      "path": "contracts/registry/ProofCardRegistry.sol"
+    },
+    {
+      "attributes": "external onlyOperator",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "ProofCardRegistry",
+      "name": "revokeProofCard",
+      "path": "contracts/registry/ProofCardRegistry.sol"
+    },
+    {
+      "attributes": "external onlyOperator returns (uint256 tokenId)",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "IERC5192",
+      "name": "issueCredential",
+      "path": "contracts/registry/ProofCredentialRegistry.sol"
+    },
+    {
+      "attributes": "external onlyOperator",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "IERC5192",
+      "name": "revokeCredential",
+      "path": "contracts/registry/ProofCredentialRegistry.sol"
+    },
+    {
+      "attributes": "external onlyAdmin",
+      "classification": "configuration",
+      "contract": "ProofSeedRegistry",
+      "name": "setProofSeedFee",
+      "path": "contracts/registry/ProofSeedRegistry.sol"
+    },
+    {
+      "attributes": "external onlyAdmin",
+      "classification": "configuration",
+      "contract": "ProofSeedRegistry",
+      "name": "setTreasury",
+      "path": "contracts/registry/ProofSeedRegistry.sol"
+    },
+    {
+      "attributes": "external nonReentrant whenNotPaused returns (uint256 seedId)",
+      "classification": "new_obligation_or_risk_increase",
+      "contract": "ProofSeedRegistry",
+      "name": "createProofSeed",
+      "path": "contracts/registry/ProofSeedRegistry.sol"
+    },
+    {
+      "attributes": "external onlyOperator",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "ProofSeedRegistry",
+      "name": "markReviewed",
+      "path": "contracts/registry/ProofSeedRegistry.sol"
+    },
+    {
+      "attributes": "external onlyOperator",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "ProofSeedRegistry",
+      "name": "markSpawned",
+      "path": "contracts/registry/ProofSeedRegistry.sol"
+    },
+    {
+      "attributes": "external onlyOperator",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "ProofSeedRegistry",
+      "name": "archiveSeed",
+      "path": "contracts/registry/ProofSeedRegistry.sol"
+    },
+    {
+      "attributes": "external onlyAdmin",
+      "classification": "configuration",
+      "contract": "ProofSubmissionRegistry",
+      "name": "setProofBond",
+      "path": "contracts/registry/ProofSubmissionRegistry.sol"
+    },
+    {
+      "attributes": "external onlyAdmin",
+      "classification": "configuration",
+      "contract": "ProofSubmissionRegistry",
+      "name": "setProofActionFees",
+      "path": "contracts/registry/ProofSubmissionRegistry.sol"
+    },
+    {
+      "attributes": "external onlyAdmin",
+      "classification": "configuration",
+      "contract": "ProofSubmissionRegistry",
+      "name": "setTreasury",
+      "path": "contracts/registry/ProofSubmissionRegistry.sol"
+    },
+    {
+      "attributes": "external nonReentrant whenNotPaused returns (uint256 submissionId)",
+      "classification": "new_obligation_or_risk_increase",
+      "contract": "ProofSubmissionRegistry",
+      "name": "submitProof",
+      "path": "contracts/registry/ProofSubmissionRegistry.sol"
+    },
+    {
+      "attributes": "external onlyOperator nonReentrant",
+      "classification": "new_obligation_or_risk_increase",
+      "contract": "ProofSubmissionRegistry",
+      "name": "approveSubmission",
+      "path": "contracts/registry/ProofSubmissionRegistry.sol"
+    },
+    {
+      "attributes": "external onlyOperator nonReentrant",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "ProofSubmissionRegistry",
+      "name": "rejectSubmission",
+      "path": "contracts/registry/ProofSubmissionRegistry.sol"
+    },
+    {
+      "attributes": "external onlyOperator",
+      "classification": "configuration",
+      "contract": "ProtocolConfigRegistry",
+      "name": "setConfig",
+      "path": "contracts/registry/ProtocolConfigRegistry.sol"
+    },
+    {
+      "attributes": "external whenNotPaused",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "ReferralRegistry",
+      "name": "assignReferral",
+      "path": "contracts/registry/ReferralRegistry.sol"
+    },
+    {
+      "attributes": "external onlyOperator",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "ReferralRegistry",
+      "name": "assignReferralFor",
+      "path": "contracts/registry/ReferralRegistry.sol"
+    },
+    {
+      "attributes": "external onlyOperator",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "ReferralRegistry",
+      "name": "recordConversion",
+      "path": "contracts/registry/ReferralRegistry.sol"
+    },
+    {
+      "attributes": "external onlyOperator",
+      "classification": "new_obligation_or_risk_increase",
+      "contract": "ReputationRegistry",
+      "name": "recordApprovedProof",
+      "path": "contracts/registry/ReputationRegistry.sol"
+    },
+    {
+      "attributes": "external onlyOperator",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "ReputationRegistry",
+      "name": "recordRejectedProof",
+      "path": "contracts/registry/ReputationRegistry.sol"
+    },
+    {
+      "attributes": "external onlyOperator",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "ReputationRegistry",
+      "name": "recordCredential",
+      "path": "contracts/registry/ReputationRegistry.sol"
+    },
+    {
+      "attributes": "external onlyOperator",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "ReputationRegistry",
+      "name": "recordDispute",
+      "path": "contracts/registry/ReputationRegistry.sol"
+    },
+    {
+      "attributes": "external onlyOperator",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "ReputationRegistry",
+      "name": "adjustScore",
+      "path": "contracts/registry/ReputationRegistry.sol"
+    },
+    {
+      "attributes": "external onlyAdmin",
+      "classification": "configuration",
+      "contract": "ReviewerBondRegistry",
+      "name": "setReviewerBond",
+      "path": "contracts/registry/ReviewerBondRegistry.sol"
+    },
+    {
+      "attributes": "external onlyAdmin",
+      "classification": "configuration",
+      "contract": "ReviewerBondRegistry",
+      "name": "setReviewChallengePeriod",
+      "path": "contracts/registry/ReviewerBondRegistry.sol"
+    },
+    {
+      "attributes": "external onlyAdmin",
+      "classification": "configuration",
+      "contract": "ReviewerBondRegistry",
+      "name": "setAllowlistRequired",
+      "path": "contracts/registry/ReviewerBondRegistry.sol"
+    },
+    {
+      "attributes": "external",
+      "classification": "configuration",
+      "contract": "ReviewerBondRegistry",
+      "name": "setReviewerApproved",
+      "path": "contracts/registry/ReviewerBondRegistry.sol"
+    },
+    {
+      "attributes": "external nonReentrant whenNotPaused",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "ReviewerBondRegistry",
+      "name": "bondAsReviewer",
+      "path": "contracts/registry/ReviewerBondRegistry.sol"
+    },
+    {
+      "attributes": "external nonReentrant",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "ReviewerBondRegistry",
+      "name": "unbondReviewer",
+      "path": "contracts/registry/ReviewerBondRegistry.sol"
+    },
+    {
+      "attributes": "external nonReentrant whenNotPaused",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "ReviewerBondRegistry",
+      "name": "reviewSubmission",
+      "path": "contracts/registry/ReviewerBondRegistry.sol"
+    },
+    {
+      "attributes": "external onlyOperator nonReentrant",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "ReviewerBondRegistry",
+      "name": "slashReviewer",
+      "path": "contracts/registry/ReviewerBondRegistry.sol"
+    },
+    {
+      "attributes": "external onlyAdmin",
+      "classification": "configuration",
+      "contract": "TreasuryRouter",
+      "name": "setTreasury",
+      "path": "contracts/registry/TreasuryRouter.sol"
+    },
+    {
+      "attributes": "external onlyOperator",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "TreasuryRouter",
+      "name": "routeFrom",
+      "path": "contracts/registry/TreasuryRouter.sol"
+    },
+    {
+      "attributes": "external onlyOperator",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "TreasuryRouter",
+      "name": "routeHeld",
+      "path": "contracts/registry/TreasuryRouter.sol"
+    },
+    {
+      "attributes": "external onlyAdmin",
+      "classification": "configuration",
+      "contract": "CommercializationPerformanceVault",
+      "name": "setMinApprovalDelay",
+      "path": "contracts/vaults/CommercializationPerformanceVault.sol"
+    },
+    {
+      "attributes": "external onlyOperator returns (uint256 trancheId)",
+      "classification": "configuration",
+      "contract": "CommercializationPerformanceVault",
+      "name": "proposeTranche",
+      "path": "contracts/vaults/CommercializationPerformanceVault.sol"
+    },
+    {
+      "attributes": "external onlyAdmin",
+      "classification": "new_obligation_or_risk_increase",
+      "contract": "CommercializationPerformanceVault",
+      "name": "approveTranche",
+      "path": "contracts/vaults/CommercializationPerformanceVault.sol"
+    },
+    {
+      "attributes": "external whenNotPaused",
+      "classification": "configuration",
+      "contract": "CommercializationPerformanceVault",
+      "name": "releaseTranche",
+      "path": "contracts/vaults/CommercializationPerformanceVault.sol"
+    },
+    {
+      "attributes": "external onlyAdmin",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "CommercializationPerformanceVault",
+      "name": "cancelTranche",
+      "path": "contracts/vaults/CommercializationPerformanceVault.sol"
+    },
+    {
+      "attributes": "external onlyAdmin",
+      "classification": "configuration",
+      "contract": "TokenReserveVault",
+      "name": "setPurpose",
+      "path": "contracts/vaults/TokenReserveVault.sol"
+    },
+    {
+      "attributes": "external whenNotPaused",
+      "classification": "safe_exit_or_settlement",
+      "contract": "TokenReserveVault",
+      "name": "release",
+      "path": "contracts/vaults/TokenReserveVault.sol"
+    }
+  ]
+}

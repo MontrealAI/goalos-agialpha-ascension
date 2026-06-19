@@ -1,0 +1,57 @@
+# Funds and Liabilities Model
+
+Per-token accounting is required; unlike tokens must not be value-aggregated.
+
+- `GoalOSAccessControl`: NOT_ASSET_HOLDING
+- `AEPAgentRegistry`: NOT_ASSET_HOLDING
+- `AEPArtifactRegistry`: NOT_ASSET_HOLDING
+- `AEPAttestationRegistry`: NOT_ASSET_HOLDING
+- `AEPChronicleRegistry`: NOT_ASSET_HOLDING
+- `AEPClaimBoundaryRegistry`: NOT_ASSET_HOLDING
+- `AEPCommitRevealValidationRegistry`: NOT_ASSET_HOLDING
+- `AEPConformanceRegistry`: NOT_ASSET_HOLDING
+- `AEPEvalRegistry`: NOT_ASSET_HOLDING
+- `AEPEvaluatorStakingRegistry`: NOT_ASSET_HOLDING
+- `AEPEvidenceDocketRegistry`: NOT_ASSET_HOLDING
+- `AEPFalsificationRegistry`: NOT_ASSET_HOLDING
+- `AEPGoalOSCommitRegistry`: NOT_ASSET_HOLDING
+- `AEPProofBundleRegistry`: NOT_ASSET_HOLDING
+- `AEPProofLedger`: NOT_ASSET_HOLDING
+- `AEPReplayRegistry`: NOT_ASSET_HOLDING
+- `AEPRewardVault`: REQUIRES_EXACT_ONCHAIN_STATUS
+- `AEPRollbackRegistry`: NOT_ASSET_HOLDING
+- `AEPRolloutRouter`: REQUIRES_EXACT_ONCHAIN_STATUS
+- `AEPRunCommitmentRegistry`: NOT_ASSET_HOLDING
+- `AEPSelectionGate`: NOT_ASSET_HOLDING
+- `IAEPEvaluatorStakingRegistry`: NOT_ASSET_HOLDING
+- `AGIEthNamespaceRegistry`: NOT_ASSET_HOLDING
+- `AlphaWorkUnitLedger`: NOT_ASSET_HOLDING
+- `MandateEpochRegistry`: NOT_ASSET_HOLDING
+- `IJobClaimBondManager`: REQUIRES_EXACT_ONCHAIN_STATUS
+- `IJobRegistry`: NOT_ASSET_HOLDING
+- `IProofSubmissionRegistry`: NOT_ASSET_HOLDING
+- `IReputationRegistry`: NOT_ASSET_HOLDING
+- `AppealRegistry`: NOT_ASSET_HOLDING
+- `BuilderProfileRegistry`: NOT_ASSET_HOLDING
+- `CredentialRevocationRegistry`: NOT_ASSET_HOLDING
+- `DisputeRegistry`: NOT_ASSET_HOLDING
+- `SponsorRegistry`: NOT_ASSET_HOLDING
+- `JobClaimBondManager`: REQUIRES_EXACT_ONCHAIN_STATUS
+- `JobRegistry`: NOT_ASSET_HOLDING
+- `LaunchGateRegistry`: NOT_ASSET_HOLDING
+- `LegacyAGIJobManagerRegistry`: NOT_ASSET_HOLDING
+- `PremiumAccessRegistry`: NOT_ASSET_HOLDING
+- `ProofCardRegistry`: NOT_ASSET_HOLDING
+- `IERC5192`: NOT_ASSET_HOLDING
+- `ProofSeedRegistry`: NOT_ASSET_HOLDING
+- `ProofSubmissionRegistry`: NOT_ASSET_HOLDING
+- `ProtocolConfigRegistry`: NOT_ASSET_HOLDING
+- `ReferralRegistry`: NOT_ASSET_HOLDING
+- `ReputationRegistry`: NOT_ASSET_HOLDING
+- `ReviewerBondRegistry`: REQUIRES_EXACT_ONCHAIN_STATUS
+- `TreasuryRouter`: REQUIRES_EXACT_ONCHAIN_STATUS
+- `LocalSafeFixture`: NOT_ASSET_HOLDING
+- `is`: NOT_ASSET_HOLDING
+- `MockAGIALPHA`: NOT_ASSET_HOLDING
+- `CommercializationPerformanceVault`: REQUIRES_EXACT_ONCHAIN_STATUS
+- `TokenReserveVault`: REQUIRES_EXACT_ONCHAIN_STATUS

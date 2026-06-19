@@ -1,0 +1,39 @@
+{
+  "baselineSha": "ef6b47108d928b22b24d5a0c127e76991c3ea425",
+  "evidence": [
+    "qa/mainnet-operational-inventory.json"
+  ],
+  "requirements": [
+    {
+      "claim": "Repository evidence inventory exists; final PASS requires live/private configuration, fork RPC, and complete adversarial runs. This artifact is claim-bounded and does not assert Mainnet deployment.",
+      "gate": 1,
+      "name": "Ownership continuity",
+      "status": "PARTIAL"
+    },
+    {
+      "claim": "Repository evidence inventory exists; final PASS requires live/private configuration, fork RPC, and complete adversarial runs. This artifact is claim-bounded and does not assert Mainnet deployment.",
+      "gate": 2,
+      "name": "Explicit Business Owner override capability",
+      "status": "PARTIAL"
+    },
+    {
+      "claim": "Repository evidence inventory exists; final PASS requires live/private configuration, fork RPC, and complete adversarial runs. This artifact is claim-bounded and does not assert Mainnet deployment.",
+      "gate": 3,
+      "name": "Company-wide accounting and solvency observability",
+      "status": "PARTIAL"
+    },
+    {
+      "claim": "Repository evidence inventory exists; final PASS requires live/private configuration, fork RPC, and complete adversarial runs. This artifact is claim-bounded and does not assert Mainnet deployment.",
+      "gate": 4,
+      "name": "Recovery, migration, wind-down, and shutdown",
+      "status": "PARTIAL"
+    },
+    {
+      "claim": "Repository evidence inventory exists; final PASS requires live/private configuration, fork RPC, and complete adversarial runs. This artifact is claim-bounded and does not assert Mainnet deployment.",
+      "gate": 5,
+      "name": "Autonomous stateful verification and exact-bytecode assurance",
+      "status": "PARTIAL"
+    }
+  ],
+  "sourceTreeHash": "6337247302d1b200e2e64776cf36bb1890b134d7ef9abccf3af0be8c779519e5"
+}

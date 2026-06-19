@@ -1,0 +1,11 @@
+{
+  "claimBoundary": "template only; not authorized and not broadcast",
+  "limits": {
+    "aggregateLiability": "1000000000000000000",
+    "concurrentObligations": 10,
+    "perBond": "10000000000000000",
+    "perJobReward": "100000000000000000",
+    "vaultOutflowPerDay": "100000000000000000"
+  },
+  "zeroMeansUnlimited": false
+}

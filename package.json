@@ -173,7 +173,11 @@
     "ownership:sepolia:legacy-verify": "npm run ownership:sepolia:verify",
     "ownership:sepolia:legacy-evidence": "npm run ownership:sepolia:evidence",
     "ownership:sepolia:accept": "OWNERSHIP_COMMAND=sepolia:accept hardhat run --network ethereumSepolia scripts/ownership/goalos-ownership-command-center.ts",
-    "ownership:mainnet:accept-local-gated": "OWNERSHIP_COMMAND=mainnet:accept-local-gated hardhat run --network ethereumMainnet scripts/ownership/goalos-ownership-command-center.ts"
+    "ownership:mainnet:accept-local-gated": "OWNERSHIP_COMMAND=mainnet:accept-local-gated hardhat run --network ethereumMainnet scripts/ownership/goalos-ownership-command-center.ts",
+    "operational:inventory": "python scripts/mainnet_operational_readiness.py",
+    "accounting:status": "python scripts/mainnet_operational_readiness.py --validate",
+    "lifecycle:policy:check": "python scripts/mainnet_operational_readiness.py --validate",
+    "mainnet:production-readiness": "python scripts/mainnet_operational_readiness.py --validate"
   },
   "dependencies": {
     "@openzeppelin/contracts": "4.9.6",
