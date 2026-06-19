@@ -88,6 +88,39 @@ describe("ownership command-center safety gates", function () {
     delete process.env.OWNERSHIP_DISPOSABLE_OWNER_ADDRESS;
   });
 
+
+  it("classifies two-step transfers pending final-owner acceptance and rejects unsafe latent pending owners", async function () {
+    const contract = { pendingOwner: async () => addrB };
+    expect(await hooks.actionForContract(contract, addrA, addrA, addrB, new Set())).to.equal("PENDING_ACCEPTANCE");
+    const unsafe = { pendingOwner: async () => addrA };
+    expect(await hooks.actionForContract(unsafe, addrB, addrA, addrB, new Set())).to.equal("FAIL_PENDING_OWNER");
+    expect(hooks.pendingOwnerAllowed(addrA, addrB, new Set())).to.equal(false);
+  });
+
+  it("keeps legacy one-step transfer compatibility and fails incomplete Safe acceptance plans", function () {
+    const source = require("fs").readFileSync("scripts/ownership/goalos-ownership-command-center.ts", "utf8");
+    expect(source).to.include("postOwner !== finalOwner && postPending !== finalOwner");
+    expect(source).to.include("Ownership acceptance blocked; contracts are not pending to final owner");
+    expect(source).to.include('action === "FAIL" || action === "FAIL_PENDING_OWNER"');
+    expect(source).to.include("owner === finalOwner || permanentOwners.has(owner)");
+    expect(source).to.include("allowExpired: true");
+    expect(source).to.include('hre.network.name !== "hardhat"');
+  });
+
+  it("hashes nested Safe acceptance calldata deterministically", function () {
+    const source = require("fs").readFileSync("scripts/ownership/goalos-ownership-command-center.ts", "utf8");
+    expect(source).to.include("function sortForJson");
+    expect(source).to.include("Array.isArray(value)");
+    expect(source).to.include("sortForJson(v)");
+  });
+
+  it("allows acceptance validation to use the original expired initiation plan", function () {
+    const plan = { planHash: "", network: "ethereum-sepolia", chainId: 11155111, deploymentManifestSha256: "0x" + "11".repeat(32), disposableOwner: addrA, finalOwner: addrB, expiresAt: new Date(Date.now() - 1000).toISOString() };
+    plan.planHash = hooks.planHash(plan);
+    expect(() => hooks.validateLoadedPlan(plan, "ethereum-sepolia", 11155111n, plan.deploymentManifestSha256, addrA, addrB)).to.throw("Plan expired");
+    expect(() => hooks.validateLoadedPlan(plan, "ethereum-sepolia", 11155111n, plan.deploymentManifestSha256, addrA, addrB, { allowExpired: true })).not.to.throw();
+  });
+
   it("finds a matching journaled transfer before a replacement can be submitted", function () {
     const entry = { name: "A", address: addrA, currentOwner: addrA, action: "TRANSFER", gasEstimate: "1" };
     const journal = {

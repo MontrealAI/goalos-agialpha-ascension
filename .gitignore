@@ -42,3 +42,4 @@ __pycache__/
 audit/reports/current-run.txt
 # Local direct solc compiler output
 direct-solc-output/
+.private/

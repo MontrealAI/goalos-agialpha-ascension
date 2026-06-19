@@ -1,11 +1,13 @@
 import { ethers } from "ethers";
 
 export type RuntimeAddressMode =
-  | "SINGLE_DEPLOYER_INITIAL_ADMIN_MODE"
   | "RUNTIME_ADDRESS_PROMPT_MODE"
-  | "MULTISIG_RUNTIME_MODE";
+  | "SAFE_GOVERNANCE"
+  | "LEDGER_EOA";
 
 export type RuntimeAddresses = {
+  governanceOwner: string;
+  operationsAddress: string;
   founder: string;
   treasury: string;
   commercializationAdmin: string;
@@ -16,6 +18,8 @@ export type RuntimeAddresses = {
 };
 
 const ENV_MAP: Record<keyof RuntimeAddresses, string> = {
+  governanceOwner: "GOVERNANCE_OWNER_ADDRESS",
+  operationsAddress: "OPERATIONS_ADDRESS",
   founder: "FOUNDER_ADDRESS",
   treasury: "TREASURY_ADDRESS",
   commercializationAdmin: "COMMERCIALIZATION_PERFORMANCE_ADMIN",
@@ -33,25 +37,34 @@ function requireValidAddress(label: string, value: string | undefined): string {
 }
 
 export function runtimeAddressMode(): RuntimeAddressMode {
-  if (process.env.SINGLE_DEPLOYER_INITIAL_ADMIN_MODE === "true") return "SINGLE_DEPLOYER_INITIAL_ADMIN_MODE";
-  if (process.env.MULTISIG_RUNTIME_MODE === "true") return "MULTISIG_RUNTIME_MODE";
+  if (process.env.SINGLE_DEPLOYER_INITIAL_ADMIN_MODE === "true") {
+    throw new Error("Mainnet deployment blocked: SINGLE_DEPLOYER_INITIAL_ADMIN_MODE=true is retired. Use GOVERNANCE_OWNER_ADDRESS, GOVERNANCE_OWNER_KIND, OPERATIONS_ADDRESS, and vault owner addresses from a private authority policy.");
+  }
+  if (process.env.GOVERNANCE_OWNER_KIND === "SAFE") return "SAFE_GOVERNANCE";
+  if (process.env.GOVERNANCE_OWNER_KIND === "LEDGER_EOA") {
+    if (process.env.ALLOW_SINGLE_LEDGER_EOA_GOVERNANCE !== "I_ACCEPT_SINGLE_KEY_AND_RECOVERY_RISK") {
+      throw new Error("LEDGER_EOA governance requires ALLOW_SINGLE_LEDGER_EOA_GOVERNANCE=I_ACCEPT_SINGLE_KEY_AND_RECOVERY_RISK.");
+    }
+    return "LEDGER_EOA";
+  }
+  if (process.env.GOVERNANCE_OWNER_KIND) {
+    throw new Error("Mainnet deployment blocked: GOVERNANCE_OWNER_KIND must be exactly SAFE or LEDGER_EOA.");
+  }
   return "RUNTIME_ADDRESS_PROMPT_MODE";
 }
 
 export function loadRuntimeAddresses(deployerAddress: string): { mode: RuntimeAddressMode; addresses: RuntimeAddresses } {
   const deployer = requireValidAddress("deployer", deployerAddress);
-  const mode = runtimeAddressMode();
-  if (mode === "SINGLE_DEPLOYER_INITIAL_ADMIN_MODE") {
-    requireValidAddress("single deployer", deployerAddress);
-    throw new Error("Mainnet deployment blocked: SINGLE_DEPLOYER_INITIAL_ADMIN_MODE=true would pin disposable deployer as permanent founder/treasury/vault controller. Use FINAL_OWNER_ADDRESS plus explicit permanent runtime addresses and docs/OWNERSHIP_HANDOFF_RUNBOOK.md.");
+  if (!process.env.GOVERNANCE_OWNER_KIND) {
+    throw new Error("Mainnet deployment blocked: GOVERNANCE_OWNER_KIND must be SAFE or LEDGER_EOA.");
   }
-
+  const mode = runtimeAddressMode();
   const addresses = Object.fromEntries(
     Object.entries(ENV_MAP).map(([key, envName]) => [key, requireValidAddress(envName, process.env[envName])])
   ) as RuntimeAddresses;
   for (const [key, value] of Object.entries(addresses) as [keyof RuntimeAddresses, string][]) {
     if (value === deployer) {
-      throw new Error(`Mainnet deployment blocked: ${ENV_MAP[key]} must not equal the disposable deployer. Use FINAL_OWNER_ADDRESS or an approved permanent multisig/controller address.`);
+      throw new Error(`Mainnet deployment blocked: ${ENV_MAP[key]} must not equal the disposable deployer. Use GOVERNANCE_OWNER_ADDRESS, OPERATIONS_ADDRESS, and policy-declared vault owners.`);
     }
   }
   return { mode, addresses };

@@ -31,6 +31,7 @@ ALLOWLIST_FILES = {
     "scripts/deployment/lib/redact.ts",
     # Public Sepolia verification fallback commands contain public contract addresses, not private operator addresses.
     "qa/manual-verification-commands.sepolia.md",
+    ".private.example/authority-policy.mainnet.example.json",
 }
 SECRET_SCAN_ALLOWLIST_FILES = ALLOWLIST_FILES - ENV_EXAMPLE_FILES
 

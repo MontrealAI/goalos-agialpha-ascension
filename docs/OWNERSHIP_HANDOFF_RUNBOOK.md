@@ -1,6 +1,6 @@
 # GoalOS Ownership Handoff Runbook
 
-This runbook is for a careful Ubuntu operator. Ownership is the ERC-173 `owner()` address. Roles are the GoalOS operational permissions. GoalOS couples the owner to the seven owner-managed roles so a successful `transferOwnership(finalOwner)` also grants the final owner all managed roles and removes them from the disposable deployer.
+This runbook is for a careful Ubuntu operator. Ownership is the ERC-173 `owner()` address. Roles are the GoalOS operational permissions. GoalOS couples the owner to the seven owner-managed roles. `transferOwnership(finalOwner)` only queues a pending owner; after the fixed delay, `acceptOwnership()` by the final owner grants the final owner all managed roles and removes them from the disposable deployer.
 
 Never type a Ledger seed phrase, Ledger private key, MetaMask seed phrase, or wallet private key into this repository. Ledger proof uses MetaMask/Ledger signing only.
 
@@ -23,6 +23,8 @@ npm run ownership:sepolia:doctor
 npm run ownership:sepolia:plan
 npm run ownership:sepolia:dry-run
 npm run ownership:sepolia:transfer
+# Wait until pendingOwnerAcceptAfter / OWNERSHIP_TRANSFER_DELAY has elapsed.
+npm run ownership:sepolia:accept
 npm run ownership:sepolia:verify
 npm run ownership:sepolia:evidence
 ```
@@ -45,6 +47,8 @@ npm run ownership:mainnet:fork-rehearsal
 ```bash
 export OWNERSHIP_MAINNET_CONFIRMATION="ETHEREUM_MAINNET-1-${FINAL_OWNER_ADDRESS}-${PLAN_HASH}"
 npm run ownership:mainnet:transfer-local-gated
+# Wait until pendingOwnerAcceptAfter / OWNERSHIP_TRANSFER_DELAY has elapsed, then have the final owner accept.
+npm run ownership:mainnet:accept-local-gated
 npm run ownership:mainnet:verify
 npm run ownership:mainnet:evidence
 ```
@@ -55,7 +59,7 @@ Stop immediately on wrong chain, wrong final owner, no bytecode, insufficient fu
 
 ## Resume
 
-Rerun `npm run ownership:mainnet:transfer-local-gated`. The journal under `.private/` and on-chain `owner()` state make the command idempotent.
+Rerun `npm run ownership:mainnet:transfer-local-gated` until every transfer is pending or already final, then after the delay rerun `npm run ownership:mainnet:accept-local-gated`. Journals under `.private/`, `owner()`, and `pendingOwner()` make both commands idempotent.
 
 ## Optional ETH sweep
 

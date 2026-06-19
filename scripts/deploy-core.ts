@@ -16,11 +16,15 @@ function jsonReplacer(_key: string, value: any) {
   return typeof value === "bigint" ? value.toString() : value;
 }
 
+function redactAddress(value: string): any {
+  if (value.toLowerCase() === AGIALPHA_MAINNET.toLowerCase()) return value;
+  return { redactedAddress: true, commitmentHash: sha256Hex(value.toLowerCase()) };
+}
+
 function redactConstructorArg(value: any): any {
   if (typeof value === "bigint") return value.toString();
   if (typeof value === "string" && ethers.isAddress(value)) {
-    if (value.toLowerCase() === AGIALPHA_MAINNET.toLowerCase()) return value;
-    return { redactedAddress: true, commitmentHash: sha256Hex(value.toLowerCase()) };
+    return redactAddress(value);
   }
   if (Array.isArray(value)) return value.map(redactConstructorArg);
   if (value && typeof value === "object") {
@@ -78,6 +82,62 @@ function certificateEvidencePaths(): Record<string, string> {
   return certificate.evidence || {};
 }
 
+function readAuthorityPolicy(): any | undefined {
+  const policyPath = process.env.AUTHORITY_POLICY_PATH || ".private/authority-policy.mainnet.json";
+  const absolutePath = path.join(__dirname, "..", policyPath);
+  if (!fs.existsSync(absolutePath)) return undefined;
+  return JSON.parse(fs.readFileSync(absolutePath, "utf8"));
+}
+
+async function validateSafeGovernanceOwner(governanceOwner: string, deployerAddress: string) {
+  const policy = readAuthorityPolicy();
+  const allowed = policy?.allowedSafeConfiguration || {};
+  const policyMinimumOwners = Number(allowed.minimumOwners || 3);
+  const policyMinimumThreshold = Number(allowed.minimumThreshold || 2);
+  const envMinimumOwners = process.env.GOVERNANCE_SAFE_MINIMUM_OWNERS ? Number(process.env.GOVERNANCE_SAFE_MINIMUM_OWNERS) : undefined;
+  const envMinimumThreshold = process.env.GOVERNANCE_SAFE_MINIMUM_THRESHOLD ? Number(process.env.GOVERNANCE_SAFE_MINIMUM_THRESHOLD) : undefined;
+  if (envMinimumOwners !== undefined && envMinimumOwners < policyMinimumOwners) throw new Error("Ethereum mainnet deployment blocked: GOVERNANCE_SAFE_MINIMUM_OWNERS cannot lower authority-policy minimumOwners.");
+  if (envMinimumThreshold !== undefined && envMinimumThreshold < policyMinimumThreshold) throw new Error("Ethereum mainnet deployment blocked: GOVERNANCE_SAFE_MINIMUM_THRESHOLD cannot lower authority-policy minimumThreshold.");
+  const minimumOwners = Math.max(policyMinimumOwners, envMinimumOwners || policyMinimumOwners);
+  const minimumThreshold = Math.max(policyMinimumThreshold, envMinimumThreshold || policyMinimumThreshold);
+  const safe = new ethers.Contract(governanceOwner, [
+    "function getOwners() view returns (address[])",
+    "function getThreshold() view returns (uint256)",
+    "function isOwner(address) view returns (bool)",
+    "function getModulesPaginated(address start,uint256 pageSize) view returns (address[] modules,address next)"
+  ], ethers.provider);
+  let owners: string[];
+  let threshold: bigint;
+  try {
+    owners = (await safe.getOwners()).map((owner: string) => ethers.getAddress(owner));
+    threshold = BigInt(await safe.getThreshold());
+  } catch {
+    throw new Error("Ethereum mainnet deployment blocked: GOVERNANCE_OWNER_KIND=SAFE requires Safe-compatible getOwners/getThreshold proof, not just bytecode.");
+  }
+  if (owners.length < minimumOwners) throw new Error(`Ethereum mainnet deployment blocked: Safe owner count ${owners.length} below required minimum ${minimumOwners}.`);
+  if (threshold < BigInt(minimumThreshold)) throw new Error(`Ethereum mainnet deployment blocked: Safe threshold ${threshold} below required minimum ${minimumThreshold}.`);
+  if (owners.some((owner) => owner.toLowerCase() === deployerAddress.toLowerCase())) throw new Error("Ethereum mainnet deployment blocked: disposable deployer must not be a Safe owner.");
+  if (!(await safe.isOwner(owners[0]))) throw new Error("Ethereum mainnet deployment blocked: Safe isOwner/getOwners consistency check failed.");
+  const sentinel = "0x0000000000000000000000000000000000000001";
+  const modules: string[] = [];
+  let cursor = sentinel;
+  for (let page = 0; page < 100; page++) {
+    const modulesResult = await safe.getModulesPaginated(cursor, 10);
+    modules.push(...(modulesResult[0] || []).map((moduleAddress: string) => ethers.getAddress(moduleAddress)));
+    cursor = ethers.getAddress(modulesResult[1]);
+    if (cursor === sentinel) break;
+    if (page === 99) throw new Error("Ethereum mainnet deployment blocked: Safe module pagination did not terminate.");
+  }
+  const allowedModules = new Set((allowed.allowModules || []).map((moduleAddress: string) => ethers.getAddress(moduleAddress)));
+  const unexpectedModules = modules.filter((moduleAddress: string) => !allowedModules.has(moduleAddress));
+  if (unexpectedModules.length) throw new Error(`Ethereum mainnet deployment blocked: Safe has unexpected enabled modules: ${unexpectedModules.join(",")}.`);
+  const guardStorageSlot = "0x4a204f620c8c5ccdca3fd54d003badd85ba500436a431f0cbda4f558c93c34c8";
+  const guardWord = await ethers.provider.getStorage(governanceOwner, guardStorageSlot);
+  const actualGuard = ethers.getAddress(`0x${guardWord.slice(-40)}`);
+  const expectedGuard = allowed.allowGuard ? ethers.getAddress(allowed.allowGuard) : ethers.ZeroAddress;
+  if (actualGuard !== expectedGuard) throw new Error(`Ethereum mainnet deployment blocked: Safe guard ${actualGuard} does not match policy ${expectedGuard}.`);
+}
+
 function enforceEthereumMainnetGates(info: ChainInfo) {
   if (!info.isMainnet) return;
   if (process.env.MAINNET_TARGET !== "ethereum") throw new Error("MAINNET_TARGET must be ethereum.");
@@ -86,6 +146,8 @@ function enforceEthereumMainnetGates(info: ChainInfo) {
   if (token.toLowerCase() !== AGIALPHA_MAINNET.toLowerCase()) throw new Error(`Ethereum mainnet deployment blocked. AGIALPHA_TOKEN_ADDRESS must equal ${AGIALPHA_MAINNET}.`);
   if (process.env.MOCK_AGIALPHA_ADDRESS) throw new Error("Ethereum mainnet deployment blocked. MOCK_AGIALPHA_ADDRESS must not be set.");
   if (process.env.DEPLOY_NEW_AGIALPHA_TOKEN === "true") throw new Error("Ethereum mainnet deployment blocked. Deploying a new AGIALPHA token is forbidden.");
+  requireEnvAddress("GOVERNANCE_OWNER_ADDRESS");
+  requireEnvAddress("OPERATIONS_ADDRESS");
   requireEnvAddress("FOUNDER_ADDRESS");
   requireEnvAddress("TREASURY_ADDRESS");
   requireEnvAddress("COMMERCIALIZATION_PERFORMANCE_ADMIN");
@@ -126,7 +188,20 @@ export async function deployGoalOSAGIALPHAAscension() {
   if (info.isMainnet) applyRuntimeAddressesToEnv(deployer.address);
   enforceEthereumMainnetGates(info);
 
-  const admin = deployer.address;
+  const governanceOwner = info.isMainnet ? requireEnvAddress("GOVERNANCE_OWNER_ADDRESS") : (optionalEnvAddress("GOVERNANCE_OWNER_ADDRESS") ?? deployer.address);
+  const operationsAddress = info.isMainnet ? requireEnvAddress("OPERATIONS_ADDRESS") : (optionalEnvAddress("OPERATIONS_ADDRESS") ?? deployer.address);
+  if (info.isMainnet && governanceOwner.toLowerCase() === deployer.address.toLowerCase()) throw new Error("Ethereum mainnet deployment blocked: GOVERNANCE_OWNER_ADDRESS must not equal disposable deployer.");
+  if (info.isMainnet && operationsAddress.toLowerCase() === deployer.address.toLowerCase()) throw new Error("Ethereum mainnet deployment blocked: OPERATIONS_ADDRESS must not equal disposable deployer.");
+  if (info.isMainnet) {
+    const governanceOwnerKind = process.env.GOVERNANCE_OWNER_KIND;
+    const governanceOwnerCode = await ethers.provider.getCode(governanceOwner);
+    if (governanceOwnerKind === "SAFE") {
+      if (governanceOwnerCode === "0x") throw new Error("Ethereum mainnet deployment blocked: GOVERNANCE_OWNER_KIND=SAFE requires governance owner contract bytecode.");
+      await validateSafeGovernanceOwner(governanceOwner, deployer.address);
+    }
+    if (governanceOwnerKind === "LEDGER_EOA" && governanceOwnerCode !== "0x") throw new Error("Ethereum mainnet deployment blocked: GOVERNANCE_OWNER_KIND=LEDGER_EOA requires an EOA with no contract bytecode.");
+  }
+  const admin = governanceOwner;
   const founder = requireEnvAddress("FOUNDER_ADDRESS");
   const treasury = requireEnvAddress("TREASURY_ADDRESS");
   const commercializationAdmin = requireEnvAddress("COMMERCIALIZATION_PERFORMANCE_ADMIN");
@@ -161,9 +236,9 @@ export async function deployGoalOSAGIALPHAAscension() {
 
   console.log(`Deploying GoalOS AGIALPHA Ascension v4.3 to ${info.label}`);
   if (info.isMainnet) {
-    console.log({ deployerCommitmentHash: sha256Hex(deployer.address), adminCommitmentHash: sha256Hex(admin), founderCommitmentHash: sha256Hex(founder), treasuryCommitmentHash: sha256Hex(treasury), agialphaToken, legacyAGIJobManager });
+    console.log({ deployerCommitmentHash: sha256Hex(deployer.address), governanceOwnerCommitmentHash: sha256Hex(governanceOwner), founderCommitmentHash: sha256Hex(founder), treasuryCommitmentHash: sha256Hex(treasury), agialphaToken, legacyAGIJobManager });
   } else {
-    console.log({ deployer: deployer.address, admin, founder, treasury, agialphaToken, legacyAGIJobManager });
+    console.log({ deployer: deployer.address, governanceOwner, operationsAddress, admin, founder, treasury, agialphaToken, legacyAGIJobManager });
   }
 
   const performanceVaultArgs = [commercializationAdmin, agialphaToken];
@@ -228,20 +303,35 @@ export async function deployGoalOSAGIALPHAAscension() {
   const aepFalsification = await deploy("AEPFalsificationRegistry", [admin]);
 
   const OPERATOR_ROLE = await jobRegistry.OPERATOR_ROLE();
-  await grant(jobRegistry, OPERATOR_ROLE, await claimBond.getAddress(), "JobRegistry <- ClaimBond");
-  await grant(jobRegistry, OPERATOR_ROLE, await proofSubmissions.getAddress(), "JobRegistry <- ProofSubmissions");
-  await grant(claimBond, OPERATOR_ROLE, await proofSubmissions.getAddress(), "ClaimBond <- ProofSubmissions");
-  await grant(proofSubmissions, OPERATOR_ROLE, await reviewerBonds.getAddress(), "ProofSubmissions <- ReviewerBonds");
-  await grant(proofCards, OPERATOR_ROLE, await proofSubmissions.getAddress(), "ProofCards <- ProofSubmissions");
-  await grant(credentials, OPERATOR_ROLE, await proofSubmissions.getAddress(), "Credentials <- ProofSubmissions");
-  await grant(credentials, OPERATOR_ROLE, await revocations.getAddress(), "Credentials <- Revocations");
-  await grant(reputation, OPERATOR_ROLE, await proofSubmissions.getAddress(), "Reputation <- ProofSubmissions");
-  await grant(referrals, OPERATOR_ROLE, await proofSubmissions.getAddress(), "Referrals <- ProofSubmissions");
-  await grant(proofSeeds, OPERATOR_ROLE, deployer.address, "ProofSeeds <- deployer");
-  await grant(legacyRegistry, OPERATOR_ROLE, deployer.address, "LegacyRegistry <- deployer");
-  await grant(protocolConfig, OPERATOR_ROLE, deployer.address, "ProtocolConfig <- deployer");
-  await grant(launchGates, OPERATOR_ROLE, deployer.address, "LaunchGates <- deployer");
-  await grant(aepEvaluatorStaking, OPERATOR_ROLE, await aepSlashingCourt.getAddress(), "EvaluatorStaking <- SlashingCourt");
+  const phaseBGrants: any[] = [];
+  const queueGrant = async (contract: any, role: string, account: string, label: string) => {
+    if (info.isMainnet) {
+      phaseBGrants.push({
+        target: await contract.getAddress(),
+        role,
+        account: account.toLowerCase() === operationsAddress.toLowerCase() ? redactAddress(account) : account,
+        accountRedacted: account.toLowerCase() === operationsAddress.toLowerCase(),
+        label,
+        method: "grantRole(bytes32,address)",
+      });
+      return;
+    }
+    await grant(contract, role, account, label);
+  };
+  await queueGrant(jobRegistry, OPERATOR_ROLE, await claimBond.getAddress(), "JobRegistry <- ClaimBond");
+  await queueGrant(jobRegistry, OPERATOR_ROLE, await proofSubmissions.getAddress(), "JobRegistry <- ProofSubmissions");
+  await queueGrant(claimBond, OPERATOR_ROLE, await proofSubmissions.getAddress(), "ClaimBond <- ProofSubmissions");
+  await queueGrant(proofSubmissions, OPERATOR_ROLE, await reviewerBonds.getAddress(), "ProofSubmissions <- ReviewerBonds");
+  await queueGrant(proofCards, OPERATOR_ROLE, await proofSubmissions.getAddress(), "ProofCards <- ProofSubmissions");
+  await queueGrant(credentials, OPERATOR_ROLE, await proofSubmissions.getAddress(), "Credentials <- ProofSubmissions");
+  await queueGrant(credentials, OPERATOR_ROLE, await revocations.getAddress(), "Credentials <- Revocations");
+  await queueGrant(reputation, OPERATOR_ROLE, await proofSubmissions.getAddress(), "Reputation <- ProofSubmissions");
+  await queueGrant(referrals, OPERATOR_ROLE, await proofSubmissions.getAddress(), "Referrals <- ProofSubmissions");
+  await queueGrant(proofSeeds, OPERATOR_ROLE, operationsAddress, "ProofSeeds <- operationsAddress");
+  await queueGrant(legacyRegistry, OPERATOR_ROLE, operationsAddress, "LegacyRegistry <- operationsAddress");
+  await queueGrant(protocolConfig, OPERATOR_ROLE, operationsAddress, "ProtocolConfig <- operationsAddress");
+  await queueGrant(launchGates, OPERATOR_ROLE, operationsAddress, "LaunchGates <- operationsAddress");
+  await queueGrant(aepEvaluatorStaking, OPERATOR_ROLE, await aepSlashingCourt.getAddress(), "EvaluatorStaking <- SlashingCourt");
 
   const evidencePaths = info.isMainnet ? certificateEvidencePaths() : {};
   const deployment = {
@@ -253,7 +343,10 @@ export async function deployGoalOSAGIALPHAAscension() {
     commit: process.env.GITHUB_SHA || "LOCAL_PRIVATE_OPERATOR",
     deployer: info.isMainnet ? undefined : deployer.address,
     deployerCommitmentHash: sha256Hex(deployer.address),
-    admin: info.isMainnet ? undefined : admin,
+    governanceOwner: info.isMainnet ? undefined : governanceOwner,
+    governanceOwnerCommitmentHash: sha256Hex(governanceOwner),
+    operationsAddress: info.isMainnet ? undefined : operationsAddress,
+    operationsAddressCommitmentHash: sha256Hex(operationsAddress),
     founder: info.isMainnet ? undefined : founder,
     treasury: info.isMainnet ? undefined : treasury,
     agialphaToken,
@@ -261,6 +354,8 @@ export async function deployGoalOSAGIALPHAAscension() {
     newAgialphaTokenDeployed: false,
     legacyAGIJobManager,
     transactions,
+    phaseBGrants,
+    deploymentStatus: info.isMainnet ? "DEPLOYED_UNCONFIGURED" : "CONFIGURED",
     constructorArgs: publicConstructorArgs(info),
     constructorArgsRedacted: info.isMainnet,
     constructorArgsCommitmentHash: constructorArgsCommitmentHash(),
@@ -273,7 +368,7 @@ export async function deployGoalOSAGIALPHAAscension() {
     mainnetGates: info.isMainnet ? {
       sourceOfTruth: "qa/mainnet-authorization-certificate.json",
       privateOperatorAuthorizationPackageRequired: false,
-      externalAuditRequired: false,
+      externalAuditRequired: true,
       ciCanDeployMainnet: false,
       runtimeSecretsStoredInGitHub: false
     } : null,

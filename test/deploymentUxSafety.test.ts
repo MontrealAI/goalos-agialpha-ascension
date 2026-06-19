@@ -283,6 +283,77 @@ describe("deployment UX safety layer", function () {
   });
 
 
+  it("redacts private Phase-B operations grantees and exposes implemented Safe preparation", function () {
+    const deployCore = fs.readFileSync("scripts/deploy-core.ts", "utf8");
+    const commandCenter = fs.readFileSync("scripts/deployment/goalos-deploy-command-center.ts", "utf8");
+    const pkg = JSON.parse(fs.readFileSync("package.json", "utf8"));
+    expect(deployCore).to.include("accountRedacted");
+    expect(deployCore).to.include("redactAddress(account)");
+    expect(commandCenter).to.include("function prepareSafeConfiguration");
+    expect(commandCenter).to.include("encodeFunctionData");
+    expect(commandCenter).not.to.include("CALldata_PREPARATION_REQUIRES_PRIVATE_OWNER_CONTEXT");
+    expect(commandCenter).to.include('action.includes("prepare-safe")');
+    expect(commandCenter).to.include("function verifySafeConfiguration");
+    expect(commandCenter).to.include("hasRole(bytes32 role,address account)");
+    expect(commandCenter).to.include("detectedChainId!==expectedChainId");
+    expect(commandCenter).to.include("grantee:redacted?\"redacted\":grantee");
+    expect(commandCenter).to.include("redacted grantees remain commitment-only");
+    expect(pkg.scripts["configure:mainnet:prepare-safe"]).to.include("mainnet:prepare-safe");
+    expect(pkg.scripts["configure:mainnet:verify"]).to.include("mainnet:configure-verify");
+    expect(pkg.scripts["configure:sepolia:verify"]).to.equal("npm run ownership:sepolia:verify");
+  });
+
+  it("keeps authority baseline reproducible instead of stamping a provisional HEAD", function () {
+    const source = fs.readFileSync("scripts/authority-inventory.ts", "utf8");
+    expect(source).to.include("TRACKED_BASELINE_SOURCE_HASH_BOUND");
+    expect(source).not.to.include("git rev-parse HEAD");
+  });
+
+  it("documents new Mainnet authority env and delayed ownership acceptance", function () {
+    const env = fs.readFileSync(".env.mainnet.example", "utf8");
+    const runbook = fs.readFileSync("docs/OWNERSHIP_HANDOFF_RUNBOOK.md", "utf8");
+    expect(env).to.include("GOVERNANCE_OWNER_KIND=SAFE");
+    expect(env).to.include("GOVERNANCE_OWNER_ADDRESS=");
+    expect(env).to.include("OPERATIONS_ADDRESS=");
+    expect(runbook).to.include("ownership:mainnet:accept-local-gated");
+    expect(runbook).to.include("Wait until pendingOwnerAcceptAfter");
+  });
+
+  it("requires explicit Mainnet governance-owner kind before runtime address loading", function () {
+    const source = fs.readFileSync("scripts/validate-runtime-addresses.ts", "utf8");
+    expect(source).to.include("GOVERNANCE_OWNER_KIND must be SAFE or LEDGER_EOA");
+    expect(source).to.include("ALLOW_SINGLE_LEDGER_EOA_GOVERNANCE");
+    expect(source).to.include("GOVERNANCE_OWNER_KIND must be exactly SAFE or LEDGER_EOA");
+  });
+
+  it("requires Safe governance owners to have bytecode and Ledger EOA owners to have none", function () {
+    const source = fs.readFileSync("scripts/deploy-core.ts", "utf8");
+    expect(source).to.include("GOVERNANCE_OWNER_KIND=SAFE requires governance owner contract bytecode");
+    expect(source).to.include("Safe-compatible getOwners/getThreshold proof");
+    expect(source).to.include("getModulesPaginated");
+    expect(source).to.include("Safe module pagination did not terminate");
+    expect(source).to.include("guardStorageSlot");
+    expect(source).to.include("does not match policy");
+    expect(source).to.include("GOVERNANCE_SAFE_MINIMUM_OWNERS cannot lower authority-policy minimumOwners");
+    expect(source).to.include("GOVERNANCE_SAFE_MINIMUM_THRESHOLD cannot lower authority-policy minimumThreshold");
+    expect(source).to.include("disposable deployer must not be a Safe owner");
+    expect(source).to.include("GOVERNANCE_OWNER_KIND=LEDGER_EOA requires an EOA with no contract bytecode");
+    const rehearsal = fs.readFileSync("scripts/local-mainnet-fork-simulation.ts", "utf8");
+    expect(rehearsal).to.include("LocalSafeFixture");
+    expect(rehearsal).to.include("GOVERNANCE_OWNER_KIND");
+    expect(rehearsal).to.include("GOVERNANCE_OWNER_ADDRESS");
+    expect(rehearsal).to.include("OPERATIONS_ADDRESS");
+    expect(source).to.include("ethers.provider.getCode(governanceOwner)");
+  });
+
+  it("prepares Safe ownership acceptance instead of requiring a Safe to be an EOA signer", function () {
+    const source = fs.readFileSync("scripts/ownership/goalos-ownership-command-center.ts", "utf8");
+    expect(source).to.include("writeSafeAcceptancePlan");
+    expect(source).to.include("Safe ownership acceptance plan");
+    expect(source).to.include("acceptOwnership");
+  });
+
+
   it("keeps env examples filename-allowed but still secret-scanned", function () {
     const source = fs.readFileSync("scripts/no_private_operator_data_check.py", "utf8");
     expect(source).to.include("ENV_EXAMPLE_FILES");
