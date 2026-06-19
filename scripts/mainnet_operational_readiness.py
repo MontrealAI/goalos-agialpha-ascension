@@ -118,11 +118,12 @@ def concrete_contract_infos(text):
 
 def functions_from_body(body):
     funcs = []
-    for match in re.finditer(r"function\s+(\w+)\s*\([^)]*\)\s*([^;{]*)", body):
-        attrs = match.group(2)
+    for match in re.finditer(r"function\s+(\w+)\s*\(([^)]*)\)\s*([^;{]*)", body):
+        attrs = match.group(3)
         if any(x in attrs for x in STATE_HINTS) and not any(x in attrs for x in VIEW_HINTS):
             funcs.append({
                 "name": match.group(1),
+                "signature": f"{match.group(1)}({', '.join(part.strip() for part in match.group(2).split(',') if part.strip())})",
                 "attributes": " ".join(attrs.split()),
                 "classification": classify(match.group(1)),
             })
@@ -143,10 +144,11 @@ def inherited_goalos_surface():
 
 def inherited_erc721_surface():
     return [
-        {"name": "approve", "attributes": "public inherited ERC721", "classification": classify("approve")},
-        {"name": "setApprovalForAll", "attributes": "public inherited ERC721", "classification": classify("setApprovalForAll")},
-        {"name": "transferFrom", "attributes": "public inherited ERC721", "classification": classify("transferFrom")},
-        {"name": "safeTransferFrom", "attributes": "public inherited ERC721", "classification": classify("safeTransferFrom")},
+        {"name": "approve", "signature": "approve(address,uint256)", "attributes": "public inherited ERC721", "classification": classify("approve")},
+        {"name": "setApprovalForAll", "signature": "setApprovalForAll(address,bool)", "attributes": "public inherited ERC721", "classification": classify("setApprovalForAll")},
+        {"name": "transferFrom", "signature": "transferFrom(address,address,uint256)", "attributes": "public inherited ERC721", "classification": classify("transferFrom")},
+        {"name": "safeTransferFrom", "signature": "safeTransferFrom(address,address,uint256)", "attributes": "public inherited ERC721", "classification": classify("safeTransferFrom")},
+        {"name": "safeTransferFrom", "signature": "safeTransferFrom(address,address,uint256,bytes)", "attributes": "public inherited ERC721", "classification": classify("safeTransferFrom")},
     ]
 
 
@@ -171,9 +173,13 @@ def excluded_mainnet_inventory_path(rel):
     )
 
 
+def selector_key(item):
+    return item.get("signature") or item["name"]
+
+
 def merge_funcs(primary, inherited):
-    seen = {item["name"] for item in primary}
-    return primary + [item for item in inherited if item["name"] not in seen]
+    seen = {selector_key(item) for item in primary}
+    return primary + [item for item in inherited if selector_key(item) not in seen]
 
 
 def contracts():

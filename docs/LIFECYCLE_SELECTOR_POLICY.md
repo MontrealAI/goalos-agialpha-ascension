@@ -384,6 +384,7 @@
 - `ProofCredentialRegistry.setApprovalForAll`: `configuration`
 - `ProofCredentialRegistry.transferFrom`: `safe_exit_or_settlement`
 - `ProofCredentialRegistry.safeTransferFrom`: `safe_exit_or_settlement`
+- `ProofCredentialRegistry.safeTransferFrom`: `safe_exit_or_settlement`
 - `ProofSeedRegistry.setProofSeedFee`: `configuration`
 - `ProofSeedRegistry.setTreasury`: `configuration`
 - `ProofSeedRegistry.createProofSeed`: `new_obligation_or_risk_increase`

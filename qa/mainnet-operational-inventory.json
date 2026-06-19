@@ -21,52 +21,62 @@
         {
           "attributes": "external onlyOperator returns (uint256 agentId)",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "registerAgent"
+          "name": "registerAgent",
+          "signature": "registerAgent(address account, bytes32 ensNodeHash, AgentRole role, bytes32 credentialRoot, bytes32 reputationRoot, string calldata metadataURI)"
         },
         {
           "attributes": "external onlyOperator",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "updateAgent"
+          "name": "updateAgent",
+          "signature": "updateAgent(uint256 agentId, bytes32 credentialRoot, bytes32 reputationRoot, bool active, string calldata metadataURI)"
         },
         {
           "attributes": "external",
           "classification": "lifecycle_control_or_migration",
-          "name": "pause"
+          "name": "pause",
+          "signature": "pause()"
         },
         {
           "attributes": "external",
           "classification": "lifecycle_control_or_migration",
-          "name": "unpause"
+          "name": "unpause",
+          "signature": "unpause()"
         },
         {
           "attributes": "public override onlyOwner",
           "classification": "configuration",
-          "name": "transferOwnership"
+          "name": "transferOwnership",
+          "signature": "transferOwnership(address newOwner)"
         },
         {
           "attributes": "public onlyOwner",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "cancelOwnershipTransfer"
+          "name": "cancelOwnershipTransfer",
+          "signature": "cancelOwnershipTransfer()"
         },
         {
           "attributes": "public",
           "classification": "configuration",
-          "name": "acceptOwnership"
+          "name": "acceptOwnership",
+          "signature": "acceptOwnership()"
         },
         {
           "attributes": "public override",
           "classification": "configuration",
-          "name": "grantRole"
+          "name": "grantRole",
+          "signature": "grantRole(bytes32 role, address account)"
         },
         {
           "attributes": "public override",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "revokeRole"
+          "name": "revokeRole",
+          "signature": "revokeRole(bytes32 role, address account)"
         },
         {
           "attributes": "public override",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "renounceRole"
+          "name": "renounceRole",
+          "signature": "renounceRole(bytes32 role, address account)"
         }
       ],
       "workflow": true
@@ -92,52 +102,62 @@
         {
           "attributes": "external onlyOperator returns (uint256 versionId)",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "registerArtifactVersion"
+          "name": "registerArtifactVersion",
+          "signature": "registerArtifactVersion(bytes32 artifactId, bytes32 versionHash, bytes32 artifactClass, bytes32 scopeHash, bytes32 rollbackTargetHash, string calldata metadataURI)"
         },
         {
           "attributes": "external onlyOperator",
           "classification": "configuration",
-          "name": "setArtifactStatus"
+          "name": "setArtifactStatus",
+          "signature": "setArtifactStatus(uint256 versionId, ArtifactStatus status, bytes32 reasonHash)"
         },
         {
           "attributes": "external",
           "classification": "lifecycle_control_or_migration",
-          "name": "pause"
+          "name": "pause",
+          "signature": "pause()"
         },
         {
           "attributes": "external",
           "classification": "lifecycle_control_or_migration",
-          "name": "unpause"
+          "name": "unpause",
+          "signature": "unpause()"
         },
         {
           "attributes": "public override onlyOwner",
           "classification": "configuration",
-          "name": "transferOwnership"
+          "name": "transferOwnership",
+          "signature": "transferOwnership(address newOwner)"
         },
         {
           "attributes": "public onlyOwner",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "cancelOwnershipTransfer"
+          "name": "cancelOwnershipTransfer",
+          "signature": "cancelOwnershipTransfer()"
         },
         {
           "attributes": "public",
           "classification": "configuration",
-          "name": "acceptOwnership"
+          "name": "acceptOwnership",
+          "signature": "acceptOwnership()"
         },
         {
           "attributes": "public override",
           "classification": "configuration",
-          "name": "grantRole"
+          "name": "grantRole",
+          "signature": "grantRole(bytes32 role, address account)"
         },
         {
           "attributes": "public override",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "revokeRole"
+          "name": "revokeRole",
+          "signature": "revokeRole(bytes32 role, address account)"
         },
         {
           "attributes": "public override",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "renounceRole"
+          "name": "renounceRole",
+          "signature": "renounceRole(bytes32 role, address account)"
         }
       ],
       "workflow": true
@@ -163,52 +183,62 @@
         {
           "attributes": "external onlyOperator returns (uint256 attestationId)",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "attest"
+          "name": "attest",
+          "signature": "attest(bytes32 subjectType, uint256 subjectId, bytes32 attestationHash, bytes32 schemaHash, string calldata metadataURI)"
         },
         {
           "attributes": "external onlyOperator",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "revokeAttestation"
+          "name": "revokeAttestation",
+          "signature": "revokeAttestation(uint256 attestationId, bytes32 reasonHash)"
         },
         {
           "attributes": "external",
           "classification": "lifecycle_control_or_migration",
-          "name": "pause"
+          "name": "pause",
+          "signature": "pause()"
         },
         {
           "attributes": "external",
           "classification": "lifecycle_control_or_migration",
-          "name": "unpause"
+          "name": "unpause",
+          "signature": "unpause()"
         },
         {
           "attributes": "public override onlyOwner",
           "classification": "configuration",
-          "name": "transferOwnership"
+          "name": "transferOwnership",
+          "signature": "transferOwnership(address newOwner)"
         },
         {
           "attributes": "public onlyOwner",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "cancelOwnershipTransfer"
+          "name": "cancelOwnershipTransfer",
+          "signature": "cancelOwnershipTransfer()"
         },
         {
           "attributes": "public",
           "classification": "configuration",
-          "name": "acceptOwnership"
+          "name": "acceptOwnership",
+          "signature": "acceptOwnership()"
         },
         {
           "attributes": "public override",
           "classification": "configuration",
-          "name": "grantRole"
+          "name": "grantRole",
+          "signature": "grantRole(bytes32 role, address account)"
         },
         {
           "attributes": "public override",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "revokeRole"
+          "name": "revokeRole",
+          "signature": "revokeRole(bytes32 role, address account)"
         },
         {
           "attributes": "public override",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "renounceRole"
+          "name": "renounceRole",
+          "signature": "renounceRole(bytes32 role, address account)"
         }
       ],
       "workflow": true
@@ -234,47 +264,56 @@
         {
           "attributes": "external onlyOperator returns (uint256 entryId)",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "recordEntry"
+          "name": "recordEntry",
+          "signature": "recordEntry(bytes32 entryType, bytes32 entryHash, bytes32 subjectHash, string calldata metadataURI)"
         },
         {
           "attributes": "external",
           "classification": "lifecycle_control_or_migration",
-          "name": "pause"
+          "name": "pause",
+          "signature": "pause()"
         },
         {
           "attributes": "external",
           "classification": "lifecycle_control_or_migration",
-          "name": "unpause"
+          "name": "unpause",
+          "signature": "unpause()"
         },
         {
           "attributes": "public override onlyOwner",
           "classification": "configuration",
-          "name": "transferOwnership"
+          "name": "transferOwnership",
+          "signature": "transferOwnership(address newOwner)"
         },
         {
           "attributes": "public onlyOwner",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "cancelOwnershipTransfer"
+          "name": "cancelOwnershipTransfer",
+          "signature": "cancelOwnershipTransfer()"
         },
         {
           "attributes": "public",
           "classification": "configuration",
-          "name": "acceptOwnership"
+          "name": "acceptOwnership",
+          "signature": "acceptOwnership()"
         },
         {
           "attributes": "public override",
           "classification": "configuration",
-          "name": "grantRole"
+          "name": "grantRole",
+          "signature": "grantRole(bytes32 role, address account)"
         },
         {
           "attributes": "public override",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "revokeRole"
+          "name": "revokeRole",
+          "signature": "revokeRole(bytes32 role, address account)"
         },
         {
           "attributes": "public override",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "renounceRole"
+          "name": "renounceRole",
+          "signature": "renounceRole(bytes32 role, address account)"
         }
       ],
       "workflow": true
@@ -300,52 +339,62 @@
         {
           "attributes": "external onlyOperator returns (uint256 boundaryId)",
           "classification": "new_obligation_or_risk_increase",
-          "name": "registerClaimBoundary"
+          "name": "registerClaimBoundary",
+          "signature": "registerClaimBoundary(bytes32 claimHash, bytes32 notClaimedHash, bytes32 requiredEvidenceHash, bytes32 legalReviewHash, bytes32 publicCopyHash, string calldata metadataURI)"
         },
         {
           "attributes": "external onlyOperator",
           "classification": "configuration",
-          "name": "setClaimBoundaryActive"
+          "name": "setClaimBoundaryActive",
+          "signature": "setClaimBoundaryActive(uint256 boundaryId, bool active, bytes32 reasonHash)"
         },
         {
           "attributes": "external",
           "classification": "lifecycle_control_or_migration",
-          "name": "pause"
+          "name": "pause",
+          "signature": "pause()"
         },
         {
           "attributes": "external",
           "classification": "lifecycle_control_or_migration",
-          "name": "unpause"
+          "name": "unpause",
+          "signature": "unpause()"
         },
         {
           "attributes": "public override onlyOwner",
           "classification": "configuration",
-          "name": "transferOwnership"
+          "name": "transferOwnership",
+          "signature": "transferOwnership(address newOwner)"
         },
         {
           "attributes": "public onlyOwner",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "cancelOwnershipTransfer"
+          "name": "cancelOwnershipTransfer",
+          "signature": "cancelOwnershipTransfer()"
         },
         {
           "attributes": "public",
           "classification": "configuration",
-          "name": "acceptOwnership"
+          "name": "acceptOwnership",
+          "signature": "acceptOwnership()"
         },
         {
           "attributes": "public override",
           "classification": "configuration",
-          "name": "grantRole"
+          "name": "grantRole",
+          "signature": "grantRole(bytes32 role, address account)"
         },
         {
           "attributes": "public override",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "revokeRole"
+          "name": "revokeRole",
+          "signature": "revokeRole(bytes32 role, address account)"
         },
         {
           "attributes": "public override",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "renounceRole"
+          "name": "renounceRole",
+          "signature": "renounceRole(bytes32 role, address account)"
         }
       ],
       "workflow": true
@@ -371,72 +420,86 @@
         {
           "attributes": "external onlyOperator",
           "classification": "configuration",
-          "name": "setValidatorAllowed"
+          "name": "setValidatorAllowed",
+          "signature": "setValidatorAllowed(address validator, bool allowed)"
         },
         {
           "attributes": "external onlyOperator returns (uint256 roundId)",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "openValidationRound"
+          "name": "openValidationRound",
+          "signature": "openValidationRound(bytes32 subjectType, uint256 subjectId, uint256 commitDuration, uint256 revealDuration, uint256 minReveals, string calldata metadataURI)"
         },
         {
           "attributes": "external onlyAllowedValidator",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "commitVerdict"
+          "name": "commitVerdict",
+          "signature": "commitVerdict(uint256 roundId, bytes32 commitment)"
         },
         {
           "attributes": "external onlyAllowedValidator",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "revealVerdict"
+          "name": "revealVerdict",
+          "signature": "revealVerdict(uint256 roundId, bytes32 verdictHash, uint16 scoreBps, bytes32 evidenceHash, bytes32 salt)"
         },
         {
           "attributes": "external onlyOperator",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "finalizeRound"
+          "name": "finalizeRound",
+          "signature": "finalizeRound(uint256 roundId, bytes32 finalResultHash)"
         },
         {
           "attributes": "external onlyOperator",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "cancelRound"
+          "name": "cancelRound",
+          "signature": "cancelRound(uint256 roundId, bytes32 reasonHash)"
         },
         {
           "attributes": "external",
           "classification": "lifecycle_control_or_migration",
-          "name": "pause"
+          "name": "pause",
+          "signature": "pause()"
         },
         {
           "attributes": "external",
           "classification": "lifecycle_control_or_migration",
-          "name": "unpause"
+          "name": "unpause",
+          "signature": "unpause()"
         },
         {
           "attributes": "public override onlyOwner",
           "classification": "configuration",
-          "name": "transferOwnership"
+          "name": "transferOwnership",
+          "signature": "transferOwnership(address newOwner)"
         },
         {
           "attributes": "public onlyOwner",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "cancelOwnershipTransfer"
+          "name": "cancelOwnershipTransfer",
+          "signature": "cancelOwnershipTransfer()"
         },
         {
           "attributes": "public",
           "classification": "configuration",
-          "name": "acceptOwnership"
+          "name": "acceptOwnership",
+          "signature": "acceptOwnership()"
         },
         {
           "attributes": "public override",
           "classification": "configuration",
-          "name": "grantRole"
+          "name": "grantRole",
+          "signature": "grantRole(bytes32 role, address account)"
         },
         {
           "attributes": "public override",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "revokeRole"
+          "name": "revokeRole",
+          "signature": "revokeRole(bytes32 role, address account)"
         },
         {
           "attributes": "public override",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "renounceRole"
+          "name": "renounceRole",
+          "signature": "renounceRole(bytes32 role, address account)"
         }
       ],
       "workflow": true
@@ -462,52 +525,62 @@
         {
           "attributes": "external onlyOperator returns (uint256 recordId)",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "recordConformance"
+          "name": "recordConformance",
+          "signature": "recordConformance(bytes32 systemHash, ConformanceLevel level, bytes32 evidenceDocketHash, bytes32 auditorHash, bytes32 claimBoundaryHash, string calldata metadataURI)"
         },
         {
           "attributes": "external onlyOperator",
           "classification": "configuration",
-          "name": "setConformanceActive"
+          "name": "setConformanceActive",
+          "signature": "setConformanceActive(uint256 recordId, bool active, bytes32 reasonHash)"
         },
         {
           "attributes": "external",
           "classification": "lifecycle_control_or_migration",
-          "name": "pause"
+          "name": "pause",
+          "signature": "pause()"
         },
         {
           "attributes": "external",
           "classification": "lifecycle_control_or_migration",
-          "name": "unpause"
+          "name": "unpause",
+          "signature": "unpause()"
         },
         {
           "attributes": "public override onlyOwner",
           "classification": "configuration",
-          "name": "transferOwnership"
+          "name": "transferOwnership",
+          "signature": "transferOwnership(address newOwner)"
         },
         {
           "attributes": "public onlyOwner",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "cancelOwnershipTransfer"
+          "name": "cancelOwnershipTransfer",
+          "signature": "cancelOwnershipTransfer()"
         },
         {
           "attributes": "public",
           "classification": "configuration",
-          "name": "acceptOwnership"
+          "name": "acceptOwnership",
+          "signature": "acceptOwnership()"
         },
         {
           "attributes": "public override",
           "classification": "configuration",
-          "name": "grantRole"
+          "name": "grantRole",
+          "signature": "grantRole(bytes32 role, address account)"
         },
         {
           "attributes": "public override",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "revokeRole"
+          "name": "revokeRole",
+          "signature": "revokeRole(bytes32 role, address account)"
         },
         {
           "attributes": "public override",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "renounceRole"
+          "name": "renounceRole",
+          "signature": "renounceRole(bytes32 role, address account)"
         }
       ],
       "workflow": true
@@ -533,52 +606,62 @@
         {
           "attributes": "external onlyOperator returns (uint256 schemaId)",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "registerEvalSchema"
+          "name": "registerEvalSchema",
+          "signature": "registerEvalSchema(bytes32 schemaHash, string calldata metadataURI, uint256 challengeWindow)"
         },
         {
           "attributes": "external onlyOperator returns (uint256 evalId)",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "recordEval"
+          "name": "recordEval",
+          "signature": "recordEval(uint256 proofId, uint256 schemaId, bytes32 baselineHash, bytes32 candidateHash, EvalVerdict verdict, bytes32 resultHash)"
         },
         {
           "attributes": "external",
           "classification": "lifecycle_control_or_migration",
-          "name": "pause"
+          "name": "pause",
+          "signature": "pause()"
         },
         {
           "attributes": "external",
           "classification": "lifecycle_control_or_migration",
-          "name": "unpause"
+          "name": "unpause",
+          "signature": "unpause()"
         },
         {
           "attributes": "public override onlyOwner",
           "classification": "configuration",
-          "name": "transferOwnership"
+          "name": "transferOwnership",
+          "signature": "transferOwnership(address newOwner)"
         },
         {
           "attributes": "public onlyOwner",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "cancelOwnershipTransfer"
+          "name": "cancelOwnershipTransfer",
+          "signature": "cancelOwnershipTransfer()"
         },
         {
           "attributes": "public",
           "classification": "configuration",
-          "name": "acceptOwnership"
+          "name": "acceptOwnership",
+          "signature": "acceptOwnership()"
         },
         {
           "attributes": "public override",
           "classification": "configuration",
-          "name": "grantRole"
+          "name": "grantRole",
+          "signature": "grantRole(bytes32 role, address account)"
         },
         {
           "attributes": "public override",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "revokeRole"
+          "name": "revokeRole",
+          "signature": "revokeRole(bytes32 role, address account)"
         },
         {
           "attributes": "public override",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "renounceRole"
+          "name": "renounceRole",
+          "signature": "renounceRole(bytes32 role, address account)"
         }
       ],
       "workflow": true
@@ -604,77 +687,92 @@
         {
           "attributes": "external onlyAdmin",
           "classification": "configuration",
-          "name": "setMinEvaluatorStake"
+          "name": "setMinEvaluatorStake",
+          "signature": "setMinEvaluatorStake(uint256 minEvaluatorStakeAGIALPHA_)"
         },
         {
           "attributes": "external onlyAdmin",
           "classification": "configuration",
-          "name": "setUnstakeDelay"
+          "name": "setUnstakeDelay",
+          "signature": "setUnstakeDelay(uint256 unstakeDelay_)"
         },
         {
           "attributes": "external onlyAdmin",
           "classification": "configuration",
-          "name": "setTreasury"
+          "name": "setTreasury",
+          "signature": "setTreasury(address treasury_)"
         },
         {
           "attributes": "external nonReentrant whenNotPaused",
           "classification": "new_obligation_or_risk_increase",
-          "name": "stake"
+          "name": "stake",
+          "signature": "stake(uint256 amount, string calldata metadataURI)"
         },
         {
           "attributes": "external nonReentrant",
           "classification": "safe_exit_or_settlement",
-          "name": "requestUnstake"
+          "name": "requestUnstake",
+          "signature": "requestUnstake()"
         },
         {
           "attributes": "external nonReentrant",
           "classification": "safe_exit_or_settlement",
-          "name": "unstake"
+          "name": "unstake",
+          "signature": "unstake()"
         },
         {
           "attributes": "external onlyOperator nonReentrant",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "slashEvaluator"
+          "name": "slashEvaluator",
+          "signature": "slashEvaluator(address evaluator, uint256 amount, bytes32 reasonHash)"
         },
         {
           "attributes": "external",
           "classification": "lifecycle_control_or_migration",
-          "name": "pause"
+          "name": "pause",
+          "signature": "pause()"
         },
         {
           "attributes": "external",
           "classification": "lifecycle_control_or_migration",
-          "name": "unpause"
+          "name": "unpause",
+          "signature": "unpause()"
         },
         {
           "attributes": "public override onlyOwner",
           "classification": "configuration",
-          "name": "transferOwnership"
+          "name": "transferOwnership",
+          "signature": "transferOwnership(address newOwner)"
         },
         {
           "attributes": "public onlyOwner",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "cancelOwnershipTransfer"
+          "name": "cancelOwnershipTransfer",
+          "signature": "cancelOwnershipTransfer()"
         },
         {
           "attributes": "public",
           "classification": "configuration",
-          "name": "acceptOwnership"
+          "name": "acceptOwnership",
+          "signature": "acceptOwnership()"
         },
         {
           "attributes": "public override",
           "classification": "configuration",
-          "name": "grantRole"
+          "name": "grantRole",
+          "signature": "grantRole(bytes32 role, address account)"
         },
         {
           "attributes": "public override",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "revokeRole"
+          "name": "revokeRole",
+          "signature": "revokeRole(bytes32 role, address account)"
         },
         {
           "attributes": "public override",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "renounceRole"
+          "name": "renounceRole",
+          "signature": "renounceRole(bytes32 role, address account)"
         }
       ],
       "workflow": true
@@ -700,52 +798,62 @@
         {
           "attributes": "external onlyOperator returns (uint256 docketId)",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "registerEvidenceDocket"
+          "name": "registerEvidenceDocket",
+          "signature": "registerEvidenceDocket(bytes32 docketHash, bytes32 claimsMatrixHash, bytes32 publicBoundaryHash, bytes32 privateAppendixHash, bytes32 costLedgerHash, bytes32 riskLedgerHash, string calldata publicURI)"
         },
         {
           "attributes": "external onlyOperator",
           "classification": "configuration",
-          "name": "setDocketActive"
+          "name": "setDocketActive",
+          "signature": "setDocketActive(uint256 docketId, bool active, bytes32 reasonHash)"
         },
         {
           "attributes": "external",
           "classification": "lifecycle_control_or_migration",
-          "name": "pause"
+          "name": "pause",
+          "signature": "pause()"
         },
         {
           "attributes": "external",
           "classification": "lifecycle_control_or_migration",
-          "name": "unpause"
+          "name": "unpause",
+          "signature": "unpause()"
         },
         {
           "attributes": "public override onlyOwner",
           "classification": "configuration",
-          "name": "transferOwnership"
+          "name": "transferOwnership",
+          "signature": "transferOwnership(address newOwner)"
         },
         {
           "attributes": "public onlyOwner",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "cancelOwnershipTransfer"
+          "name": "cancelOwnershipTransfer",
+          "signature": "cancelOwnershipTransfer()"
         },
         {
           "attributes": "public",
           "classification": "configuration",
-          "name": "acceptOwnership"
+          "name": "acceptOwnership",
+          "signature": "acceptOwnership()"
         },
         {
           "attributes": "public override",
           "classification": "configuration",
-          "name": "grantRole"
+          "name": "grantRole",
+          "signature": "grantRole(bytes32 role, address account)"
         },
         {
           "attributes": "public override",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "revokeRole"
+          "name": "revokeRole",
+          "signature": "revokeRole(bytes32 role, address account)"
         },
         {
           "attributes": "public override",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "renounceRole"
+          "name": "renounceRole",
+          "signature": "renounceRole(bytes32 role, address account)"
         }
       ],
       "workflow": true
@@ -771,52 +879,62 @@
         {
           "attributes": "external returns (uint256 falsificationId)",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "reportFalsification"
+          "name": "reportFalsification",
+          "signature": "reportFalsification(bytes32 conditionHash, bytes32 evidenceHash, bytes32 affectedClaimHash, string calldata metadataURI)"
         },
         {
           "attributes": "external onlyOperator",
           "classification": "configuration",
-          "name": "setFalsificationStatus"
+          "name": "setFalsificationStatus",
+          "signature": "setFalsificationStatus(uint256 falsificationId, FalsificationStatus status, bytes32 reasonHash)"
         },
         {
           "attributes": "external",
           "classification": "lifecycle_control_or_migration",
-          "name": "pause"
+          "name": "pause",
+          "signature": "pause()"
         },
         {
           "attributes": "external",
           "classification": "lifecycle_control_or_migration",
-          "name": "unpause"
+          "name": "unpause",
+          "signature": "unpause()"
         },
         {
           "attributes": "public override onlyOwner",
           "classification": "configuration",
-          "name": "transferOwnership"
+          "name": "transferOwnership",
+          "signature": "transferOwnership(address newOwner)"
         },
         {
           "attributes": "public onlyOwner",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "cancelOwnershipTransfer"
+          "name": "cancelOwnershipTransfer",
+          "signature": "cancelOwnershipTransfer()"
         },
         {
           "attributes": "public",
           "classification": "configuration",
-          "name": "acceptOwnership"
+          "name": "acceptOwnership",
+          "signature": "acceptOwnership()"
         },
         {
           "attributes": "public override",
           "classification": "configuration",
-          "name": "grantRole"
+          "name": "grantRole",
+          "signature": "grantRole(bytes32 role, address account)"
         },
         {
           "attributes": "public override",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "revokeRole"
+          "name": "revokeRole",
+          "signature": "revokeRole(bytes32 role, address account)"
         },
         {
           "attributes": "public override",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "renounceRole"
+          "name": "renounceRole",
+          "signature": "renounceRole(bytes32 role, address account)"
         }
       ],
       "workflow": true
@@ -842,57 +960,68 @@
         {
           "attributes": "external onlyAdmin",
           "classification": "configuration",
-          "name": "setCommitFee"
+          "name": "setCommitFee",
+          "signature": "setCommitFee(uint256 commitFeeAGIALPHA_)"
         },
         {
           "attributes": "external nonReentrant whenNotPaused returns (uint256 commitId)",
           "classification": "new_obligation_or_risk_increase",
-          "name": "createCommit"
+          "name": "createCommit",
+          "signature": "createCommit(bytes32 commitHash, bytes32 successCriteriaHash, bytes32 constraintsHash, bytes32 authorityHash, bytes32 dataBoundaryHash, bytes32 rollbackObligationHash, bytes32 claimBoundaryHash, uint8 riskClass, string calldata metadataURI)"
         },
         {
           "attributes": "external onlyOperator",
           "classification": "configuration",
-          "name": "setCommitActive"
+          "name": "setCommitActive",
+          "signature": "setCommitActive(uint256 commitId, bool active, bytes32 reasonHash)"
         },
         {
           "attributes": "external",
           "classification": "lifecycle_control_or_migration",
-          "name": "pause"
+          "name": "pause",
+          "signature": "pause()"
         },
         {
           "attributes": "external",
           "classification": "lifecycle_control_or_migration",
-          "name": "unpause"
+          "name": "unpause",
+          "signature": "unpause()"
         },
         {
           "attributes": "public override onlyOwner",
           "classification": "configuration",
-          "name": "transferOwnership"
+          "name": "transferOwnership",
+          "signature": "transferOwnership(address newOwner)"
         },
         {
           "attributes": "public onlyOwner",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "cancelOwnershipTransfer"
+          "name": "cancelOwnershipTransfer",
+          "signature": "cancelOwnershipTransfer()"
         },
         {
           "attributes": "public",
           "classification": "configuration",
-          "name": "acceptOwnership"
+          "name": "acceptOwnership",
+          "signature": "acceptOwnership()"
         },
         {
           "attributes": "public override",
           "classification": "configuration",
-          "name": "grantRole"
+          "name": "grantRole",
+          "signature": "grantRole(bytes32 role, address account)"
         },
         {
           "attributes": "public override",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "revokeRole"
+          "name": "revokeRole",
+          "signature": "revokeRole(bytes32 role, address account)"
         },
         {
           "attributes": "public override",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "renounceRole"
+          "name": "renounceRole",
+          "signature": "renounceRole(bytes32 role, address account)"
         }
       ],
       "workflow": true
@@ -918,47 +1047,56 @@
         {
           "attributes": "external onlyOperator returns (uint256 bundleId)",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "registerProofBundle"
+          "name": "registerProofBundle",
+          "signature": "registerProofBundle(uint256 jobId, uint256 runId, bytes32 proofBundleHash, bytes32 replayResultHash, bytes32 validatorCommitmentRoot, bytes32 validatorRevealRoot, bytes32 settlementReceiptHash, uint256 alphaWorkUnits, string calldata metadataURI)"
         },
         {
           "attributes": "external",
           "classification": "lifecycle_control_or_migration",
-          "name": "pause"
+          "name": "pause",
+          "signature": "pause()"
         },
         {
           "attributes": "external",
           "classification": "lifecycle_control_or_migration",
-          "name": "unpause"
+          "name": "unpause",
+          "signature": "unpause()"
         },
         {
           "attributes": "public override onlyOwner",
           "classification": "configuration",
-          "name": "transferOwnership"
+          "name": "transferOwnership",
+          "signature": "transferOwnership(address newOwner)"
         },
         {
           "attributes": "public onlyOwner",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "cancelOwnershipTransfer"
+          "name": "cancelOwnershipTransfer",
+          "signature": "cancelOwnershipTransfer()"
         },
         {
           "attributes": "public",
           "classification": "configuration",
-          "name": "acceptOwnership"
+          "name": "acceptOwnership",
+          "signature": "acceptOwnership()"
         },
         {
           "attributes": "public override",
           "classification": "configuration",
-          "name": "grantRole"
+          "name": "grantRole",
+          "signature": "grantRole(bytes32 role, address account)"
         },
         {
           "attributes": "public override",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "revokeRole"
+          "name": "revokeRole",
+          "signature": "revokeRole(bytes32 role, address account)"
         },
         {
           "attributes": "public override",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "renounceRole"
+          "name": "renounceRole",
+          "signature": "renounceRole(bytes32 role, address account)"
         }
       ],
       "workflow": true
@@ -984,47 +1122,56 @@
         {
           "attributes": "external onlyOperator returns (uint256 proofId)",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "appendProofRoot"
+          "name": "appendProofRoot",
+          "signature": "appendProofRoot(uint256 runId, bytes32 proofHash, bytes32 evidenceRoot, bytes32 evalRoot, uint256 cost, uint256 latency, bytes32 signatureBundleHash, string calldata evidenceURI)"
         },
         {
           "attributes": "external",
           "classification": "lifecycle_control_or_migration",
-          "name": "pause"
+          "name": "pause",
+          "signature": "pause()"
         },
         {
           "attributes": "external",
           "classification": "lifecycle_control_or_migration",
-          "name": "unpause"
+          "name": "unpause",
+          "signature": "unpause()"
         },
         {
           "attributes": "public override onlyOwner",
           "classification": "configuration",
-          "name": "transferOwnership"
+          "name": "transferOwnership",
+          "signature": "transferOwnership(address newOwner)"
         },
         {
           "attributes": "public onlyOwner",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "cancelOwnershipTransfer"
+          "name": "cancelOwnershipTransfer",
+          "signature": "cancelOwnershipTransfer()"
         },
         {
           "attributes": "public",
           "classification": "configuration",
-          "name": "acceptOwnership"
+          "name": "acceptOwnership",
+          "signature": "acceptOwnership()"
         },
         {
           "attributes": "public override",
           "classification": "configuration",
-          "name": "grantRole"
+          "name": "grantRole",
+          "signature": "grantRole(bytes32 role, address account)"
         },
         {
           "attributes": "public override",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "revokeRole"
+          "name": "revokeRole",
+          "signature": "revokeRole(bytes32 role, address account)"
         },
         {
           "attributes": "public override",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "renounceRole"
+          "name": "renounceRole",
+          "signature": "renounceRole(bytes32 role, address account)"
         }
       ],
       "workflow": true
@@ -1050,47 +1197,56 @@
         {
           "attributes": "external onlyOperator returns (uint256 replayId)",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "recordReplay"
+          "name": "recordReplay",
+          "signature": "recordReplay(uint256 proofBundleId, bytes32 replayHash, bytes32 containerDigestHash, bytes32 dependencyPinsHash, bytes32 replayResultHash, ReplayVerdict verdict, string calldata metadataURI)"
         },
         {
           "attributes": "external",
           "classification": "lifecycle_control_or_migration",
-          "name": "pause"
+          "name": "pause",
+          "signature": "pause()"
         },
         {
           "attributes": "external",
           "classification": "lifecycle_control_or_migration",
-          "name": "unpause"
+          "name": "unpause",
+          "signature": "unpause()"
         },
         {
           "attributes": "public override onlyOwner",
           "classification": "configuration",
-          "name": "transferOwnership"
+          "name": "transferOwnership",
+          "signature": "transferOwnership(address newOwner)"
         },
         {
           "attributes": "public onlyOwner",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "cancelOwnershipTransfer"
+          "name": "cancelOwnershipTransfer",
+          "signature": "cancelOwnershipTransfer()"
         },
         {
           "attributes": "public",
           "classification": "configuration",
-          "name": "acceptOwnership"
+          "name": "acceptOwnership",
+          "signature": "acceptOwnership()"
         },
         {
           "attributes": "public override",
           "classification": "configuration",
-          "name": "grantRole"
+          "name": "grantRole",
+          "signature": "grantRole(bytes32 role, address account)"
         },
         {
           "attributes": "public override",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "revokeRole"
+          "name": "revokeRole",
+          "signature": "revokeRole(bytes32 role, address account)"
         },
         {
           "attributes": "public override",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "renounceRole"
+          "name": "renounceRole",
+          "signature": "renounceRole(bytes32 role, address account)"
         }
       ],
       "workflow": true
@@ -1116,52 +1272,62 @@
         {
           "attributes": "external nonReentrant",
           "classification": "new_obligation_or_risk_increase",
-          "name": "fund"
+          "name": "fund",
+          "signature": "fund(uint256 amount)"
         },
         {
           "attributes": "external onlyOperator nonReentrant returns (uint256 rewardId)",
           "classification": "safe_exit_or_settlement",
-          "name": "payReward"
+          "name": "payReward",
+          "signature": "payReward(address recipient, uint256 amount, uint256 proofBundleId, uint256 alphaWorkUnits, bytes32 rewardHash, string calldata metadataURI)"
         },
         {
           "attributes": "external",
           "classification": "lifecycle_control_or_migration",
-          "name": "pause"
+          "name": "pause",
+          "signature": "pause()"
         },
         {
           "attributes": "external",
           "classification": "lifecycle_control_or_migration",
-          "name": "unpause"
+          "name": "unpause",
+          "signature": "unpause()"
         },
         {
           "attributes": "public override onlyOwner",
           "classification": "configuration",
-          "name": "transferOwnership"
+          "name": "transferOwnership",
+          "signature": "transferOwnership(address newOwner)"
         },
         {
           "attributes": "public onlyOwner",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "cancelOwnershipTransfer"
+          "name": "cancelOwnershipTransfer",
+          "signature": "cancelOwnershipTransfer()"
         },
         {
           "attributes": "public",
           "classification": "configuration",
-          "name": "acceptOwnership"
+          "name": "acceptOwnership",
+          "signature": "acceptOwnership()"
         },
         {
           "attributes": "public override",
           "classification": "configuration",
-          "name": "grantRole"
+          "name": "grantRole",
+          "signature": "grantRole(bytes32 role, address account)"
         },
         {
           "attributes": "public override",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "revokeRole"
+          "name": "revokeRole",
+          "signature": "revokeRole(bytes32 role, address account)"
         },
         {
           "attributes": "public override",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "renounceRole"
+          "name": "renounceRole",
+          "signature": "renounceRole(bytes32 role, address account)"
         }
       ],
       "workflow": true
@@ -1187,47 +1353,56 @@
         {
           "attributes": "external onlyOperator returns (uint256 rollbackId)",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "recordRollback"
+          "name": "recordRollback",
+          "signature": "recordRollback(uint256 selectionId, uint256 rolloutId, bytes32 rollbackTargetHash, bytes32 triggerHash, bytes32 incidentRoot, string calldata metadataURI)"
         },
         {
           "attributes": "external",
           "classification": "lifecycle_control_or_migration",
-          "name": "pause"
+          "name": "pause",
+          "signature": "pause()"
         },
         {
           "attributes": "external",
           "classification": "lifecycle_control_or_migration",
-          "name": "unpause"
+          "name": "unpause",
+          "signature": "unpause()"
         },
         {
           "attributes": "public override onlyOwner",
           "classification": "configuration",
-          "name": "transferOwnership"
+          "name": "transferOwnership",
+          "signature": "transferOwnership(address newOwner)"
         },
         {
           "attributes": "public onlyOwner",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "cancelOwnershipTransfer"
+          "name": "cancelOwnershipTransfer",
+          "signature": "cancelOwnershipTransfer()"
         },
         {
           "attributes": "public",
           "classification": "configuration",
-          "name": "acceptOwnership"
+          "name": "acceptOwnership",
+          "signature": "acceptOwnership()"
         },
         {
           "attributes": "public override",
           "classification": "configuration",
-          "name": "grantRole"
+          "name": "grantRole",
+          "signature": "grantRole(bytes32 role, address account)"
         },
         {
           "attributes": "public override",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "revokeRole"
+          "name": "revokeRole",
+          "signature": "revokeRole(bytes32 role, address account)"
         },
         {
           "attributes": "public override",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "renounceRole"
+          "name": "renounceRole",
+          "signature": "renounceRole(bytes32 role, address account)"
         }
       ],
       "workflow": true
@@ -1253,52 +1428,62 @@
         {
           "attributes": "external onlyOperator returns (uint256 rolloutId)",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "recordRollout"
+          "name": "recordRollout",
+          "signature": "recordRollout(uint256 selectionId, uint16 percentageBps, bytes32 tenantScopeHash, bytes32 monitoringRoot, bytes32 safetyThresholdHash, string calldata metadataURI)"
         },
         {
           "attributes": "external onlyOperator",
           "classification": "configuration",
-          "name": "setRolloutActive"
+          "name": "setRolloutActive",
+          "signature": "setRolloutActive(uint256 rolloutId, bool active, bytes32 reasonHash)"
         },
         {
           "attributes": "external",
           "classification": "lifecycle_control_or_migration",
-          "name": "pause"
+          "name": "pause",
+          "signature": "pause()"
         },
         {
           "attributes": "external",
           "classification": "lifecycle_control_or_migration",
-          "name": "unpause"
+          "name": "unpause",
+          "signature": "unpause()"
         },
         {
           "attributes": "public override onlyOwner",
           "classification": "configuration",
-          "name": "transferOwnership"
+          "name": "transferOwnership",
+          "signature": "transferOwnership(address newOwner)"
         },
         {
           "attributes": "public onlyOwner",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "cancelOwnershipTransfer"
+          "name": "cancelOwnershipTransfer",
+          "signature": "cancelOwnershipTransfer()"
         },
         {
           "attributes": "public",
           "classification": "configuration",
-          "name": "acceptOwnership"
+          "name": "acceptOwnership",
+          "signature": "acceptOwnership()"
         },
         {
           "attributes": "public override",
           "classification": "configuration",
-          "name": "grantRole"
+          "name": "grantRole",
+          "signature": "grantRole(bytes32 role, address account)"
         },
         {
           "attributes": "public override",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "revokeRole"
+          "name": "revokeRole",
+          "signature": "revokeRole(bytes32 role, address account)"
         },
         {
           "attributes": "public override",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "renounceRole"
+          "name": "renounceRole",
+          "signature": "renounceRole(bytes32 role, address account)"
         }
       ],
       "workflow": true
@@ -1324,52 +1509,62 @@
         {
           "attributes": "external onlyOperator returns (uint256 runId)",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "commitRun"
+          "name": "commitRun",
+          "signature": "commitRun(uint256 goalOSCommitId, bytes32 runCommitmentHash, bytes32 planGraphHash, bytes32 artifactVersionRoot, bytes32 toolPermissionRoot, bytes32 contextRoot, bytes32 policyRoot, bytes32 runtimeEnvironmentHash, uint256 budgetLimit, uint256 latencyLimit, string calldata metadataURI)"
         },
         {
           "attributes": "external onlyOperator",
           "classification": "configuration",
-          "name": "setRunStatus"
+          "name": "setRunStatus",
+          "signature": "setRunStatus(uint256 runId, RunStatus status, bytes32 reasonHash)"
         },
         {
           "attributes": "external",
           "classification": "lifecycle_control_or_migration",
-          "name": "pause"
+          "name": "pause",
+          "signature": "pause()"
         },
         {
           "attributes": "external",
           "classification": "lifecycle_control_or_migration",
-          "name": "unpause"
+          "name": "unpause",
+          "signature": "unpause()"
         },
         {
           "attributes": "public override onlyOwner",
           "classification": "configuration",
-          "name": "transferOwnership"
+          "name": "transferOwnership",
+          "signature": "transferOwnership(address newOwner)"
         },
         {
           "attributes": "public onlyOwner",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "cancelOwnershipTransfer"
+          "name": "cancelOwnershipTransfer",
+          "signature": "cancelOwnershipTransfer()"
         },
         {
           "attributes": "public",
           "classification": "configuration",
-          "name": "acceptOwnership"
+          "name": "acceptOwnership",
+          "signature": "acceptOwnership()"
         },
         {
           "attributes": "public override",
           "classification": "configuration",
-          "name": "grantRole"
+          "name": "grantRole",
+          "signature": "grantRole(bytes32 role, address account)"
         },
         {
           "attributes": "public override",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "revokeRole"
+          "name": "revokeRole",
+          "signature": "revokeRole(bytes32 role, address account)"
         },
         {
           "attributes": "public override",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "renounceRole"
+          "name": "renounceRole",
+          "signature": "renounceRole(bytes32 role, address account)"
         }
       ],
       "workflow": true
@@ -1395,47 +1590,56 @@
         {
           "attributes": "external onlyOperator returns (uint256 selectionId)",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "issueSelectionCertificate"
+          "name": "issueSelectionCertificate",
+          "signature": "issueSelectionCertificate(uint256 proofId, bytes32 artifactId, bytes32 candidateVersionHash, SelectionDecision decision, bytes32 scopeHash, bytes32 canaryHash, bytes32 rollbackTargetHash, uint256 challengeWindowEnd, uint256 gateBitmap, string calldata metadataURI)"
         },
         {
           "attributes": "external",
           "classification": "lifecycle_control_or_migration",
-          "name": "pause"
+          "name": "pause",
+          "signature": "pause()"
         },
         {
           "attributes": "external",
           "classification": "lifecycle_control_or_migration",
-          "name": "unpause"
+          "name": "unpause",
+          "signature": "unpause()"
         },
         {
           "attributes": "public override onlyOwner",
           "classification": "configuration",
-          "name": "transferOwnership"
+          "name": "transferOwnership",
+          "signature": "transferOwnership(address newOwner)"
         },
         {
           "attributes": "public onlyOwner",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "cancelOwnershipTransfer"
+          "name": "cancelOwnershipTransfer",
+          "signature": "cancelOwnershipTransfer()"
         },
         {
           "attributes": "public",
           "classification": "configuration",
-          "name": "acceptOwnership"
+          "name": "acceptOwnership",
+          "signature": "acceptOwnership()"
         },
         {
           "attributes": "public override",
           "classification": "configuration",
-          "name": "grantRole"
+          "name": "grantRole",
+          "signature": "grantRole(bytes32 role, address account)"
         },
         {
           "attributes": "public override",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "revokeRole"
+          "name": "revokeRole",
+          "signature": "revokeRole(bytes32 role, address account)"
         },
         {
           "attributes": "public override",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "renounceRole"
+          "name": "renounceRole",
+          "signature": "renounceRole(bytes32 role, address account)"
         }
       ],
       "workflow": true
@@ -1461,57 +1665,68 @@
         {
           "attributes": "external onlyOperator returns (uint256 caseId)",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "openCase"
+          "name": "openCase",
+          "signature": "openCase(address respondent, uint256 requestedSlashAmount, bytes32 evidenceHash, bytes32 allegationHash, string calldata metadataURI)"
         },
         {
           "attributes": "external onlyOperator",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "resolveCase"
+          "name": "resolveCase",
+          "signature": "resolveCase(uint256 caseId, Resolution resolution, uint256 slashAmount, bytes32 reasonHash)"
         },
         {
           "attributes": "external onlyOperator",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "cancelCase"
+          "name": "cancelCase",
+          "signature": "cancelCase(uint256 caseId, bytes32 reasonHash)"
         },
         {
           "attributes": "external",
           "classification": "lifecycle_control_or_migration",
-          "name": "pause"
+          "name": "pause",
+          "signature": "pause()"
         },
         {
           "attributes": "external",
           "classification": "lifecycle_control_or_migration",
-          "name": "unpause"
+          "name": "unpause",
+          "signature": "unpause()"
         },
         {
           "attributes": "public override onlyOwner",
           "classification": "configuration",
-          "name": "transferOwnership"
+          "name": "transferOwnership",
+          "signature": "transferOwnership(address newOwner)"
         },
         {
           "attributes": "public onlyOwner",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "cancelOwnershipTransfer"
+          "name": "cancelOwnershipTransfer",
+          "signature": "cancelOwnershipTransfer()"
         },
         {
           "attributes": "public",
           "classification": "configuration",
-          "name": "acceptOwnership"
+          "name": "acceptOwnership",
+          "signature": "acceptOwnership()"
         },
         {
           "attributes": "public override",
           "classification": "configuration",
-          "name": "grantRole"
+          "name": "grantRole",
+          "signature": "grantRole(bytes32 role, address account)"
         },
         {
           "attributes": "public override",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "revokeRole"
+          "name": "revokeRole",
+          "signature": "revokeRole(bytes32 role, address account)"
         },
         {
           "attributes": "public override",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "renounceRole"
+          "name": "renounceRole",
+          "signature": "renounceRole(bytes32 role, address account)"
         }
       ],
       "workflow": true
@@ -1537,52 +1752,62 @@
         {
           "attributes": "external onlyOperator",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "registerEnvironment"
+          "name": "registerEnvironment",
+          "signature": "registerEnvironment(bytes32 envHash, bytes32 rootNameHash, bytes32 agentMountHash, bytes32 nodeMountHash, bytes32 clubMountHash, bytes32 policyVersionHash, bytes32 resolverPolicyHash, NamespaceStatus status, string calldata metadataURI)"
         },
         {
           "attributes": "external onlyOperator",
           "classification": "configuration",
-          "name": "setEnvironmentStatus"
+          "name": "setEnvironmentStatus",
+          "signature": "setEnvironmentStatus(bytes32 envHash, NamespaceStatus status, bytes32 reasonHash)"
         },
         {
           "attributes": "external",
           "classification": "lifecycle_control_or_migration",
-          "name": "pause"
+          "name": "pause",
+          "signature": "pause()"
         },
         {
           "attributes": "external",
           "classification": "lifecycle_control_or_migration",
-          "name": "unpause"
+          "name": "unpause",
+          "signature": "unpause()"
         },
         {
           "attributes": "public override onlyOwner",
           "classification": "configuration",
-          "name": "transferOwnership"
+          "name": "transferOwnership",
+          "signature": "transferOwnership(address newOwner)"
         },
         {
           "attributes": "public onlyOwner",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "cancelOwnershipTransfer"
+          "name": "cancelOwnershipTransfer",
+          "signature": "cancelOwnershipTransfer()"
         },
         {
           "attributes": "public",
           "classification": "configuration",
-          "name": "acceptOwnership"
+          "name": "acceptOwnership",
+          "signature": "acceptOwnership()"
         },
         {
           "attributes": "public override",
           "classification": "configuration",
-          "name": "grantRole"
+          "name": "grantRole",
+          "signature": "grantRole(bytes32 role, address account)"
         },
         {
           "attributes": "public override",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "revokeRole"
+          "name": "revokeRole",
+          "signature": "revokeRole(bytes32 role, address account)"
         },
         {
           "attributes": "public override",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "renounceRole"
+          "name": "renounceRole",
+          "signature": "renounceRole(bytes32 role, address account)"
         }
       ],
       "workflow": true
@@ -1608,47 +1833,56 @@
         {
           "attributes": "external onlyOperator returns (uint256 recordId)",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "recordAlphaWorkUnits"
+          "name": "recordAlphaWorkUnits",
+          "signature": "recordAlphaWorkUnits(address worker, uint256 proofBundleId, uint256 alphaWorkUnits, bytes32 metrologyHash, uint16 qualityBps, uint16 sloBps, uint16 confidenceBps, bytes32 policyHash)"
         },
         {
           "attributes": "external",
           "classification": "lifecycle_control_or_migration",
-          "name": "pause"
+          "name": "pause",
+          "signature": "pause()"
         },
         {
           "attributes": "external",
           "classification": "lifecycle_control_or_migration",
-          "name": "unpause"
+          "name": "unpause",
+          "signature": "unpause()"
         },
         {
           "attributes": "public override onlyOwner",
           "classification": "configuration",
-          "name": "transferOwnership"
+          "name": "transferOwnership",
+          "signature": "transferOwnership(address newOwner)"
         },
         {
           "attributes": "public onlyOwner",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "cancelOwnershipTransfer"
+          "name": "cancelOwnershipTransfer",
+          "signature": "cancelOwnershipTransfer()"
         },
         {
           "attributes": "public",
           "classification": "configuration",
-          "name": "acceptOwnership"
+          "name": "acceptOwnership",
+          "signature": "acceptOwnership()"
         },
         {
           "attributes": "public override",
           "classification": "configuration",
-          "name": "grantRole"
+          "name": "grantRole",
+          "signature": "grantRole(bytes32 role, address account)"
         },
         {
           "attributes": "public override",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "revokeRole"
+          "name": "revokeRole",
+          "signature": "revokeRole(bytes32 role, address account)"
         },
         {
           "attributes": "public override",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "renounceRole"
+          "name": "renounceRole",
+          "signature": "renounceRole(bytes32 role, address account)"
         }
       ],
       "workflow": true
@@ -1674,62 +1908,74 @@
         {
           "attributes": "external nonReentrant whenNotPaused returns (uint256 mandateId)",
           "classification": "new_obligation_or_risk_increase",
-          "name": "createMandate"
+          "name": "createMandate",
+          "signature": "createMandate(bytes32 mandateHash, bytes32 policyHash, bytes32 scoringRubricHash, bytes32 safetyPolicyHash, string calldata metadataURI)"
         },
         {
           "attributes": "external onlyOperator returns (uint256 epochId)",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "openEpoch"
+          "name": "openEpoch",
+          "signature": "openEpoch(uint256 mandateId, uint256 epochNumber, uint256 payoutBudget, string calldata metadataURI)"
         },
         {
           "attributes": "external onlyOperator",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "commitEpochRoots"
+          "name": "commitEpochRoots",
+          "signature": "commitEpochRoots(uint256 epochId, bytes32 receiptRoot, bytes32 payoutRoot, bytes32 archiveDeltaRoot, bytes32 quarantineRoot, bytes32 validatorAttestationBundleHash, uint256 challengeWindowEnd)"
         },
         {
           "attributes": "external onlyOperator",
           "classification": "configuration",
-          "name": "setEpochStatus"
+          "name": "setEpochStatus",
+          "signature": "setEpochStatus(uint256 epochId, EpochStatus status, bytes32 reasonHash)"
         },
         {
           "attributes": "external",
           "classification": "lifecycle_control_or_migration",
-          "name": "pause"
+          "name": "pause",
+          "signature": "pause()"
         },
         {
           "attributes": "external",
           "classification": "lifecycle_control_or_migration",
-          "name": "unpause"
+          "name": "unpause",
+          "signature": "unpause()"
         },
         {
           "attributes": "public override onlyOwner",
           "classification": "configuration",
-          "name": "transferOwnership"
+          "name": "transferOwnership",
+          "signature": "transferOwnership(address newOwner)"
         },
         {
           "attributes": "public onlyOwner",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "cancelOwnershipTransfer"
+          "name": "cancelOwnershipTransfer",
+          "signature": "cancelOwnershipTransfer()"
         },
         {
           "attributes": "public",
           "classification": "configuration",
-          "name": "acceptOwnership"
+          "name": "acceptOwnership",
+          "signature": "acceptOwnership()"
         },
         {
           "attributes": "public override",
           "classification": "configuration",
-          "name": "grantRole"
+          "name": "grantRole",
+          "signature": "grantRole(bytes32 role, address account)"
         },
         {
           "attributes": "public override",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "revokeRole"
+          "name": "revokeRole",
+          "signature": "revokeRole(bytes32 role, address account)"
         },
         {
           "attributes": "public override",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "renounceRole"
+          "name": "renounceRole",
+          "signature": "renounceRole(bytes32 role, address account)"
         }
       ],
       "workflow": true
@@ -1755,52 +2001,62 @@
         {
           "attributes": "external returns (uint256 appealId)",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "openAppeal"
+          "name": "openAppeal",
+          "signature": "openAppeal(uint256 disputeId, bytes32 appealHash)"
         },
         {
           "attributes": "external onlyOperator",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "decideAppeal"
+          "name": "decideAppeal",
+          "signature": "decideAppeal(uint256 appealId, bool accepted, bytes32 decisionHash)"
         },
         {
           "attributes": "external",
           "classification": "lifecycle_control_or_migration",
-          "name": "pause"
+          "name": "pause",
+          "signature": "pause()"
         },
         {
           "attributes": "external",
           "classification": "lifecycle_control_or_migration",
-          "name": "unpause"
+          "name": "unpause",
+          "signature": "unpause()"
         },
         {
           "attributes": "public override onlyOwner",
           "classification": "configuration",
-          "name": "transferOwnership"
+          "name": "transferOwnership",
+          "signature": "transferOwnership(address newOwner)"
         },
         {
           "attributes": "public onlyOwner",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "cancelOwnershipTransfer"
+          "name": "cancelOwnershipTransfer",
+          "signature": "cancelOwnershipTransfer()"
         },
         {
           "attributes": "public",
           "classification": "configuration",
-          "name": "acceptOwnership"
+          "name": "acceptOwnership",
+          "signature": "acceptOwnership()"
         },
         {
           "attributes": "public override",
           "classification": "configuration",
-          "name": "grantRole"
+          "name": "grantRole",
+          "signature": "grantRole(bytes32 role, address account)"
         },
         {
           "attributes": "public override",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "revokeRole"
+          "name": "revokeRole",
+          "signature": "revokeRole(bytes32 role, address account)"
         },
         {
           "attributes": "public override",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "renounceRole"
+          "name": "renounceRole",
+          "signature": "renounceRole(bytes32 role, address account)"
         }
       ],
       "workflow": true
@@ -1826,52 +2082,62 @@
         {
           "attributes": "external",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "registerBuilder"
+          "name": "registerBuilder",
+          "signature": "registerBuilder(string calldata metadataURI, bytes32 metadataHash)"
         },
         {
           "attributes": "external onlyOperator",
           "classification": "configuration",
-          "name": "setBuilderStatus"
+          "name": "setBuilderStatus",
+          "signature": "setBuilderStatus(address builder, bool active)"
         },
         {
           "attributes": "external",
           "classification": "lifecycle_control_or_migration",
-          "name": "pause"
+          "name": "pause",
+          "signature": "pause()"
         },
         {
           "attributes": "external",
           "classification": "lifecycle_control_or_migration",
-          "name": "unpause"
+          "name": "unpause",
+          "signature": "unpause()"
         },
         {
           "attributes": "public override onlyOwner",
           "classification": "configuration",
-          "name": "transferOwnership"
+          "name": "transferOwnership",
+          "signature": "transferOwnership(address newOwner)"
         },
         {
           "attributes": "public onlyOwner",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "cancelOwnershipTransfer"
+          "name": "cancelOwnershipTransfer",
+          "signature": "cancelOwnershipTransfer()"
         },
         {
           "attributes": "public",
           "classification": "configuration",
-          "name": "acceptOwnership"
+          "name": "acceptOwnership",
+          "signature": "acceptOwnership()"
         },
         {
           "attributes": "public override",
           "classification": "configuration",
-          "name": "grantRole"
+          "name": "grantRole",
+          "signature": "grantRole(bytes32 role, address account)"
         },
         {
           "attributes": "public override",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "revokeRole"
+          "name": "revokeRole",
+          "signature": "revokeRole(bytes32 role, address account)"
         },
         {
           "attributes": "public override",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "renounceRole"
+          "name": "renounceRole",
+          "signature": "renounceRole(bytes32 role, address account)"
         }
       ],
       "workflow": true
@@ -1897,52 +2163,62 @@
         {
           "attributes": "external returns (uint256 revocationId)",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "requestRevocation"
+          "name": "requestRevocation",
+          "signature": "requestRevocation(uint256 tokenId, bytes32 reasonHash)"
         },
         {
           "attributes": "external onlyOperator",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "executeRevocation"
+          "name": "executeRevocation",
+          "signature": "executeRevocation(uint256 revocationId)"
         },
         {
           "attributes": "external",
           "classification": "lifecycle_control_or_migration",
-          "name": "pause"
+          "name": "pause",
+          "signature": "pause()"
         },
         {
           "attributes": "external",
           "classification": "lifecycle_control_or_migration",
-          "name": "unpause"
+          "name": "unpause",
+          "signature": "unpause()"
         },
         {
           "attributes": "public override onlyOwner",
           "classification": "configuration",
-          "name": "transferOwnership"
+          "name": "transferOwnership",
+          "signature": "transferOwnership(address newOwner)"
         },
         {
           "attributes": "public onlyOwner",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "cancelOwnershipTransfer"
+          "name": "cancelOwnershipTransfer",
+          "signature": "cancelOwnershipTransfer()"
         },
         {
           "attributes": "public",
           "classification": "configuration",
-          "name": "acceptOwnership"
+          "name": "acceptOwnership",
+          "signature": "acceptOwnership()"
         },
         {
           "attributes": "public override",
           "classification": "configuration",
-          "name": "grantRole"
+          "name": "grantRole",
+          "signature": "grantRole(bytes32 role, address account)"
         },
         {
           "attributes": "public override",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "revokeRole"
+          "name": "revokeRole",
+          "signature": "revokeRole(bytes32 role, address account)"
         },
         {
           "attributes": "public override",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "renounceRole"
+          "name": "renounceRole",
+          "signature": "renounceRole(bytes32 role, address account)"
         }
       ],
       "workflow": true
@@ -1968,52 +2244,62 @@
         {
           "attributes": "external returns (uint256 disputeId)",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "openDispute"
+          "name": "openDispute",
+          "signature": "openDispute(uint256 jobId, uint256 submissionId, bytes32 reasonHash)"
         },
         {
           "attributes": "external onlyOperator",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "resolveDispute"
+          "name": "resolveDispute",
+          "signature": "resolveDispute(uint256 disputeId, bool accepted, bytes32 resolutionHash)"
         },
         {
           "attributes": "external",
           "classification": "lifecycle_control_or_migration",
-          "name": "pause"
+          "name": "pause",
+          "signature": "pause()"
         },
         {
           "attributes": "external",
           "classification": "lifecycle_control_or_migration",
-          "name": "unpause"
+          "name": "unpause",
+          "signature": "unpause()"
         },
         {
           "attributes": "public override onlyOwner",
           "classification": "configuration",
-          "name": "transferOwnership"
+          "name": "transferOwnership",
+          "signature": "transferOwnership(address newOwner)"
         },
         {
           "attributes": "public onlyOwner",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "cancelOwnershipTransfer"
+          "name": "cancelOwnershipTransfer",
+          "signature": "cancelOwnershipTransfer()"
         },
         {
           "attributes": "public",
           "classification": "configuration",
-          "name": "acceptOwnership"
+          "name": "acceptOwnership",
+          "signature": "acceptOwnership()"
         },
         {
           "attributes": "public override",
           "classification": "configuration",
-          "name": "grantRole"
+          "name": "grantRole",
+          "signature": "grantRole(bytes32 role, address account)"
         },
         {
           "attributes": "public override",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "revokeRole"
+          "name": "revokeRole",
+          "signature": "revokeRole(bytes32 role, address account)"
         },
         {
           "attributes": "public override",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "renounceRole"
+          "name": "renounceRole",
+          "signature": "renounceRole(bytes32 role, address account)"
         }
       ],
       "workflow": true
@@ -2039,52 +2325,62 @@
         {
           "attributes": "external",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "registerSponsor"
+          "name": "registerSponsor",
+          "signature": "registerSponsor(string calldata metadataURI, bytes32 metadataHash)"
         },
         {
           "attributes": "external onlyOperator",
           "classification": "configuration",
-          "name": "setSponsorStatus"
+          "name": "setSponsorStatus",
+          "signature": "setSponsorStatus(address sponsor, bool active)"
         },
         {
           "attributes": "external",
           "classification": "lifecycle_control_or_migration",
-          "name": "pause"
+          "name": "pause",
+          "signature": "pause()"
         },
         {
           "attributes": "external",
           "classification": "lifecycle_control_or_migration",
-          "name": "unpause"
+          "name": "unpause",
+          "signature": "unpause()"
         },
         {
           "attributes": "public override onlyOwner",
           "classification": "configuration",
-          "name": "transferOwnership"
+          "name": "transferOwnership",
+          "signature": "transferOwnership(address newOwner)"
         },
         {
           "attributes": "public onlyOwner",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "cancelOwnershipTransfer"
+          "name": "cancelOwnershipTransfer",
+          "signature": "cancelOwnershipTransfer()"
         },
         {
           "attributes": "public",
           "classification": "configuration",
-          "name": "acceptOwnership"
+          "name": "acceptOwnership",
+          "signature": "acceptOwnership()"
         },
         {
           "attributes": "public override",
           "classification": "configuration",
-          "name": "grantRole"
+          "name": "grantRole",
+          "signature": "grantRole(bytes32 role, address account)"
         },
         {
           "attributes": "public override",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "revokeRole"
+          "name": "revokeRole",
+          "signature": "revokeRole(bytes32 role, address account)"
         },
         {
           "attributes": "public override",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "renounceRole"
+          "name": "renounceRole",
+          "signature": "renounceRole(bytes32 role, address account)"
         }
       ],
       "workflow": true
@@ -2110,72 +2406,86 @@
         {
           "attributes": "external onlyAdmin",
           "classification": "configuration",
-          "name": "setClaimBond"
+          "name": "setClaimBond",
+          "signature": "setClaimBond(uint256 claimBondAGIALPHA_)"
         },
         {
           "attributes": "external onlyAdmin",
           "classification": "configuration",
-          "name": "setTreasury"
+          "name": "setTreasury",
+          "signature": "setTreasury(address treasury_)"
         },
         {
           "attributes": "external nonReentrant whenNotPaused",
           "classification": "new_obligation_or_risk_increase",
-          "name": "claimJob"
+          "name": "claimJob",
+          "signature": "claimJob(uint256 jobId)"
         },
         {
           "attributes": "external nonReentrant",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "reclaimExpiredClaimedJob"
+          "name": "reclaimExpiredClaimedJob",
+          "signature": "reclaimExpiredClaimedJob(uint256 jobId, bytes32 reasonHash)"
         },
         {
           "attributes": "external onlyOperator nonReentrant",
           "classification": "safe_exit_or_settlement",
-          "name": "releaseClaimBond"
+          "name": "releaseClaimBond",
+          "signature": "releaseClaimBond(uint256 jobId)"
         },
         {
           "attributes": "external onlyOperator nonReentrant",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "slashClaimBond"
+          "name": "slashClaimBond",
+          "signature": "slashClaimBond(uint256 jobId, bytes32 reasonHash)"
         },
         {
           "attributes": "external",
           "classification": "lifecycle_control_or_migration",
-          "name": "pause"
+          "name": "pause",
+          "signature": "pause()"
         },
         {
           "attributes": "external",
           "classification": "lifecycle_control_or_migration",
-          "name": "unpause"
+          "name": "unpause",
+          "signature": "unpause()"
         },
         {
           "attributes": "public override onlyOwner",
           "classification": "configuration",
-          "name": "transferOwnership"
+          "name": "transferOwnership",
+          "signature": "transferOwnership(address newOwner)"
         },
         {
           "attributes": "public onlyOwner",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "cancelOwnershipTransfer"
+          "name": "cancelOwnershipTransfer",
+          "signature": "cancelOwnershipTransfer()"
         },
         {
           "attributes": "public",
           "classification": "configuration",
-          "name": "acceptOwnership"
+          "name": "acceptOwnership",
+          "signature": "acceptOwnership()"
         },
         {
           "attributes": "public override",
           "classification": "configuration",
-          "name": "grantRole"
+          "name": "grantRole",
+          "signature": "grantRole(bytes32 role, address account)"
         },
         {
           "attributes": "public override",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "revokeRole"
+          "name": "revokeRole",
+          "signature": "revokeRole(bytes32 role, address account)"
         },
         {
           "attributes": "public override",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "renounceRole"
+          "name": "renounceRole",
+          "signature": "renounceRole(bytes32 role, address account)"
         }
       ],
       "workflow": true
@@ -2201,112 +2511,134 @@
         {
           "attributes": "external onlyAdmin",
           "classification": "configuration",
-          "name": "setPostingFee"
+          "name": "setPostingFee",
+          "signature": "setPostingFee(uint256 postingFeeAGIALPHA_)"
         },
         {
           "attributes": "external onlyAdmin",
           "classification": "configuration",
-          "name": "setTreasury"
+          "name": "setTreasury",
+          "signature": "setTreasury(address treasury_)"
         },
         {
           "attributes": "external onlyAdmin",
           "classification": "configuration",
-          "name": "setRewardTokenAllowed"
+          "name": "setRewardTokenAllowed",
+          "signature": "setRewardTokenAllowed(address token, bool allowed)"
         },
         {
           "attributes": "external onlyAdmin",
           "classification": "configuration",
-          "name": "setRewardTokenAllowlistEnabled"
+          "name": "setRewardTokenAllowlistEnabled",
+          "signature": "setRewardTokenAllowlistEnabled(bool enabled)"
         },
         {
           "attributes": "external nonReentrant whenNotPaused returns (uint256 jobId)",
           "classification": "new_obligation_or_risk_increase",
-          "name": "postJob"
+          "name": "postJob",
+          "signature": "postJob(string calldata metadataURI, bytes32 metadataHash, address rewardToken, uint256 rewardAmount, uint256 deadline)"
         },
         {
           "attributes": "external onlyOperator",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "markClaimed"
+          "name": "markClaimed",
+          "signature": "markClaimed(uint256 jobId, address builder)"
         },
         {
           "attributes": "external onlyOperator",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "markSubmitted"
+          "name": "markSubmitted",
+          "signature": "markSubmitted(uint256 jobId, uint256 submissionId)"
         },
         {
           "attributes": "external onlyOperator",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "markApproved"
+          "name": "markApproved",
+          "signature": "markApproved(uint256 jobId)"
         },
         {
           "attributes": "external onlyOperator",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "markRejected"
+          "name": "markRejected",
+          "signature": "markRejected(uint256 jobId, bytes32 reasonHash)"
         },
         {
           "attributes": "external onlyOperator nonReentrant",
           "classification": "safe_exit_or_settlement",
-          "name": "releaseReward"
+          "name": "releaseReward",
+          "signature": "releaseReward(uint256 jobId, address builder)"
         },
         {
           "attributes": "external onlyOperator nonReentrant",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "refundRejectedReward"
+          "name": "refundRejectedReward",
+          "signature": "refundRejectedReward(uint256 jobId, bytes32 reasonHash)"
         },
         {
           "attributes": "external onlyOperator nonReentrant",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "expireClaimedJob"
+          "name": "expireClaimedJob",
+          "signature": "expireClaimedJob(uint256 jobId, bytes32 reasonHash)"
         },
         {
           "attributes": "external nonReentrant",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "cancelOpenJob"
+          "name": "cancelOpenJob",
+          "signature": "cancelOpenJob(uint256 jobId, bytes32 reasonHash)"
         },
         {
           "attributes": "external nonReentrant",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "expireOpenJob"
+          "name": "expireOpenJob",
+          "signature": "expireOpenJob(uint256 jobId, bytes32 reasonHash)"
         },
         {
           "attributes": "external",
           "classification": "lifecycle_control_or_migration",
-          "name": "pause"
+          "name": "pause",
+          "signature": "pause()"
         },
         {
           "attributes": "external",
           "classification": "lifecycle_control_or_migration",
-          "name": "unpause"
+          "name": "unpause",
+          "signature": "unpause()"
         },
         {
           "attributes": "public override onlyOwner",
           "classification": "configuration",
-          "name": "transferOwnership"
+          "name": "transferOwnership",
+          "signature": "transferOwnership(address newOwner)"
         },
         {
           "attributes": "public onlyOwner",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "cancelOwnershipTransfer"
+          "name": "cancelOwnershipTransfer",
+          "signature": "cancelOwnershipTransfer()"
         },
         {
           "attributes": "public",
           "classification": "configuration",
-          "name": "acceptOwnership"
+          "name": "acceptOwnership",
+          "signature": "acceptOwnership()"
         },
         {
           "attributes": "public override",
           "classification": "configuration",
-          "name": "grantRole"
+          "name": "grantRole",
+          "signature": "grantRole(bytes32 role, address account)"
         },
         {
           "attributes": "public override",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "revokeRole"
+          "name": "revokeRole",
+          "signature": "revokeRole(bytes32 role, address account)"
         },
         {
           "attributes": "public override",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "renounceRole"
+          "name": "renounceRole",
+          "signature": "renounceRole(bytes32 role, address account)"
         }
       ],
       "workflow": true
@@ -2332,47 +2664,56 @@
         {
           "attributes": "external onlyOperator",
           "classification": "configuration",
-          "name": "setGate"
+          "name": "setGate",
+          "signature": "setGate(bytes32 gateId, bool passed, bytes32 evidenceHash, string calldata evidenceURI)"
         },
         {
           "attributes": "external",
           "classification": "lifecycle_control_or_migration",
-          "name": "pause"
+          "name": "pause",
+          "signature": "pause()"
         },
         {
           "attributes": "external",
           "classification": "lifecycle_control_or_migration",
-          "name": "unpause"
+          "name": "unpause",
+          "signature": "unpause()"
         },
         {
           "attributes": "public override onlyOwner",
           "classification": "configuration",
-          "name": "transferOwnership"
+          "name": "transferOwnership",
+          "signature": "transferOwnership(address newOwner)"
         },
         {
           "attributes": "public onlyOwner",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "cancelOwnershipTransfer"
+          "name": "cancelOwnershipTransfer",
+          "signature": "cancelOwnershipTransfer()"
         },
         {
           "attributes": "public",
           "classification": "configuration",
-          "name": "acceptOwnership"
+          "name": "acceptOwnership",
+          "signature": "acceptOwnership()"
         },
         {
           "attributes": "public override",
           "classification": "configuration",
-          "name": "grantRole"
+          "name": "grantRole",
+          "signature": "grantRole(bytes32 role, address account)"
         },
         {
           "attributes": "public override",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "revokeRole"
+          "name": "revokeRole",
+          "signature": "revokeRole(bytes32 role, address account)"
         },
         {
           "attributes": "public override",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "renounceRole"
+          "name": "renounceRole",
+          "signature": "renounceRole(bytes32 role, address account)"
         }
       ],
       "workflow": true
@@ -2398,52 +2739,62 @@
         {
           "attributes": "external onlyOperator returns (uint256 recordId)",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "addLegacyRecord"
+          "name": "addLegacyRecord",
+          "signature": "addLegacyRecord(uint256 legacyJobId, bytes32 legacyEventHash, bytes32 proofCardHash, string calldata metadataURI, bool accepted)"
         },
         {
           "attributes": "external onlyOperator",
           "classification": "configuration",
-          "name": "setLegacyRecordAccepted"
+          "name": "setLegacyRecordAccepted",
+          "signature": "setLegacyRecordAccepted(uint256 recordId, bool accepted, bytes32 reasonHash)"
         },
         {
           "attributes": "external",
           "classification": "lifecycle_control_or_migration",
-          "name": "pause"
+          "name": "pause",
+          "signature": "pause()"
         },
         {
           "attributes": "external",
           "classification": "lifecycle_control_or_migration",
-          "name": "unpause"
+          "name": "unpause",
+          "signature": "unpause()"
         },
         {
           "attributes": "public override onlyOwner",
           "classification": "configuration",
-          "name": "transferOwnership"
+          "name": "transferOwnership",
+          "signature": "transferOwnership(address newOwner)"
         },
         {
           "attributes": "public onlyOwner",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "cancelOwnershipTransfer"
+          "name": "cancelOwnershipTransfer",
+          "signature": "cancelOwnershipTransfer()"
         },
         {
           "attributes": "public",
           "classification": "configuration",
-          "name": "acceptOwnership"
+          "name": "acceptOwnership",
+          "signature": "acceptOwnership()"
         },
         {
           "attributes": "public override",
           "classification": "configuration",
-          "name": "grantRole"
+          "name": "grantRole",
+          "signature": "grantRole(bytes32 role, address account)"
         },
         {
           "attributes": "public override",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "revokeRole"
+          "name": "revokeRole",
+          "signature": "revokeRole(bytes32 role, address account)"
         },
         {
           "attributes": "public override",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "renounceRole"
+          "name": "renounceRole",
+          "signature": "renounceRole(bytes32 role, address account)"
         }
       ],
       "workflow": true
@@ -2469,47 +2820,56 @@
         {
           "attributes": "external onlyOperator",
           "classification": "configuration",
-          "name": "setAccessTier"
+          "name": "setAccessTier",
+          "signature": "setAccessTier(bytes32 tierId, uint256 minReputation, uint256 minAGIALPHABalance, bool active)"
         },
         {
           "attributes": "external",
           "classification": "lifecycle_control_or_migration",
-          "name": "pause"
+          "name": "pause",
+          "signature": "pause()"
         },
         {
           "attributes": "external",
           "classification": "lifecycle_control_or_migration",
-          "name": "unpause"
+          "name": "unpause",
+          "signature": "unpause()"
         },
         {
           "attributes": "public override onlyOwner",
           "classification": "configuration",
-          "name": "transferOwnership"
+          "name": "transferOwnership",
+          "signature": "transferOwnership(address newOwner)"
         },
         {
           "attributes": "public onlyOwner",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "cancelOwnershipTransfer"
+          "name": "cancelOwnershipTransfer",
+          "signature": "cancelOwnershipTransfer()"
         },
         {
           "attributes": "public",
           "classification": "configuration",
-          "name": "acceptOwnership"
+          "name": "acceptOwnership",
+          "signature": "acceptOwnership()"
         },
         {
           "attributes": "public override",
           "classification": "configuration",
-          "name": "grantRole"
+          "name": "grantRole",
+          "signature": "grantRole(bytes32 role, address account)"
         },
         {
           "attributes": "public override",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "revokeRole"
+          "name": "revokeRole",
+          "signature": "revokeRole(bytes32 role, address account)"
         },
         {
           "attributes": "public override",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "renounceRole"
+          "name": "renounceRole",
+          "signature": "renounceRole(bytes32 role, address account)"
         }
       ],
       "workflow": true
@@ -2535,52 +2895,62 @@
         {
           "attributes": "external onlyOperator returns (uint256 proofCardId)",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "registerProofCard"
+          "name": "registerProofCard",
+          "signature": "registerProofCard(uint256 jobId, uint256 submissionId, address builder, address reviewer, bytes32 proofHash, bytes32 proofCardHash, string calldata metadataURI)"
         },
         {
           "attributes": "external onlyOperator",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "revokeProofCard"
+          "name": "revokeProofCard",
+          "signature": "revokeProofCard(uint256 proofCardId, bytes32 reasonHash)"
         },
         {
           "attributes": "external",
           "classification": "lifecycle_control_or_migration",
-          "name": "pause"
+          "name": "pause",
+          "signature": "pause()"
         },
         {
           "attributes": "external",
           "classification": "lifecycle_control_or_migration",
-          "name": "unpause"
+          "name": "unpause",
+          "signature": "unpause()"
         },
         {
           "attributes": "public override onlyOwner",
           "classification": "configuration",
-          "name": "transferOwnership"
+          "name": "transferOwnership",
+          "signature": "transferOwnership(address newOwner)"
         },
         {
           "attributes": "public onlyOwner",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "cancelOwnershipTransfer"
+          "name": "cancelOwnershipTransfer",
+          "signature": "cancelOwnershipTransfer()"
         },
         {
           "attributes": "public",
           "classification": "configuration",
-          "name": "acceptOwnership"
+          "name": "acceptOwnership",
+          "signature": "acceptOwnership()"
         },
         {
           "attributes": "public override",
           "classification": "configuration",
-          "name": "grantRole"
+          "name": "grantRole",
+          "signature": "grantRole(bytes32 role, address account)"
         },
         {
           "attributes": "public override",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "revokeRole"
+          "name": "revokeRole",
+          "signature": "revokeRole(bytes32 role, address account)"
         },
         {
           "attributes": "public override",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "renounceRole"
+          "name": "renounceRole",
+          "signature": "renounceRole(bytes32 role, address account)"
         }
       ],
       "workflow": true
@@ -2606,72 +2976,92 @@
         {
           "attributes": "external onlyOperator returns (uint256 tokenId)",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "issueCredential"
+          "name": "issueCredential",
+          "signature": "issueCredential(address to, uint256 proofCardId, bytes32 proofCardHash, bytes32 credentialType, string calldata metadataURI)"
         },
         {
           "attributes": "external onlyOperator",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "revokeCredential"
+          "name": "revokeCredential",
+          "signature": "revokeCredential(uint256 tokenId, bytes32 reasonHash)"
         },
         {
           "attributes": "external",
           "classification": "lifecycle_control_or_migration",
-          "name": "pause"
+          "name": "pause",
+          "signature": "pause()"
         },
         {
           "attributes": "external",
           "classification": "lifecycle_control_or_migration",
-          "name": "unpause"
+          "name": "unpause",
+          "signature": "unpause()"
         },
         {
           "attributes": "public override onlyOwner",
           "classification": "configuration",
-          "name": "transferOwnership"
+          "name": "transferOwnership",
+          "signature": "transferOwnership(address newOwner)"
         },
         {
           "attributes": "public onlyOwner",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "cancelOwnershipTransfer"
+          "name": "cancelOwnershipTransfer",
+          "signature": "cancelOwnershipTransfer()"
         },
         {
           "attributes": "public",
           "classification": "configuration",
-          "name": "acceptOwnership"
+          "name": "acceptOwnership",
+          "signature": "acceptOwnership()"
         },
         {
           "attributes": "public override",
           "classification": "configuration",
-          "name": "grantRole"
+          "name": "grantRole",
+          "signature": "grantRole(bytes32 role, address account)"
         },
         {
           "attributes": "public override",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "revokeRole"
+          "name": "revokeRole",
+          "signature": "revokeRole(bytes32 role, address account)"
         },
         {
           "attributes": "public override",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "renounceRole"
+          "name": "renounceRole",
+          "signature": "renounceRole(bytes32 role, address account)"
         },
         {
           "attributes": "public inherited ERC721",
           "classification": "new_obligation_or_risk_increase",
-          "name": "approve"
+          "name": "approve",
+          "signature": "approve(address,uint256)"
         },
         {
           "attributes": "public inherited ERC721",
           "classification": "configuration",
-          "name": "setApprovalForAll"
+          "name": "setApprovalForAll",
+          "signature": "setApprovalForAll(address,bool)"
         },
         {
           "attributes": "public inherited ERC721",
           "classification": "safe_exit_or_settlement",
-          "name": "transferFrom"
+          "name": "transferFrom",
+          "signature": "transferFrom(address,address,uint256)"
         },
         {
           "attributes": "public inherited ERC721",
           "classification": "safe_exit_or_settlement",
-          "name": "safeTransferFrom"
+          "name": "safeTransferFrom",
+          "signature": "safeTransferFrom(address,address,uint256)"
+        },
+        {
+          "attributes": "public inherited ERC721",
+          "classification": "safe_exit_or_settlement",
+          "name": "safeTransferFrom",
+          "signature": "safeTransferFrom(address,address,uint256,bytes)"
         }
       ],
       "workflow": true
@@ -2697,72 +3087,86 @@
         {
           "attributes": "external onlyAdmin",
           "classification": "configuration",
-          "name": "setProofSeedFee"
+          "name": "setProofSeedFee",
+          "signature": "setProofSeedFee(uint256 proofSeedFeeAGIALPHA_)"
         },
         {
           "attributes": "external onlyAdmin",
           "classification": "configuration",
-          "name": "setTreasury"
+          "name": "setTreasury",
+          "signature": "setTreasury(address treasury_)"
         },
         {
           "attributes": "external nonReentrant whenNotPaused returns (uint256 seedId)",
           "classification": "new_obligation_or_risk_increase",
-          "name": "createProofSeed"
+          "name": "createProofSeed",
+          "signature": "createProofSeed(bytes32 seedHash, string calldata metadataURI, bytes32 category)"
         },
         {
           "attributes": "external onlyOperator",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "markReviewed"
+          "name": "markReviewed",
+          "signature": "markReviewed(uint256 seedId, bytes32 reasonHash)"
         },
         {
           "attributes": "external onlyOperator",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "markSpawned"
+          "name": "markSpawned",
+          "signature": "markSpawned(uint256 seedId, uint256 jobId)"
         },
         {
           "attributes": "external onlyOperator",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "archiveSeed"
+          "name": "archiveSeed",
+          "signature": "archiveSeed(uint256 seedId, bytes32 reasonHash)"
         },
         {
           "attributes": "external",
           "classification": "lifecycle_control_or_migration",
-          "name": "pause"
+          "name": "pause",
+          "signature": "pause()"
         },
         {
           "attributes": "external",
           "classification": "lifecycle_control_or_migration",
-          "name": "unpause"
+          "name": "unpause",
+          "signature": "unpause()"
         },
         {
           "attributes": "public override onlyOwner",
           "classification": "configuration",
-          "name": "transferOwnership"
+          "name": "transferOwnership",
+          "signature": "transferOwnership(address newOwner)"
         },
         {
           "attributes": "public onlyOwner",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "cancelOwnershipTransfer"
+          "name": "cancelOwnershipTransfer",
+          "signature": "cancelOwnershipTransfer()"
         },
         {
           "attributes": "public",
           "classification": "configuration",
-          "name": "acceptOwnership"
+          "name": "acceptOwnership",
+          "signature": "acceptOwnership()"
         },
         {
           "attributes": "public override",
           "classification": "configuration",
-          "name": "grantRole"
+          "name": "grantRole",
+          "signature": "grantRole(bytes32 role, address account)"
         },
         {
           "attributes": "public override",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "revokeRole"
+          "name": "revokeRole",
+          "signature": "revokeRole(bytes32 role, address account)"
         },
         {
           "attributes": "public override",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "renounceRole"
+          "name": "renounceRole",
+          "signature": "renounceRole(bytes32 role, address account)"
         }
       ],
       "workflow": true
@@ -2788,72 +3192,86 @@
         {
           "attributes": "external onlyAdmin",
           "classification": "configuration",
-          "name": "setProofBond"
+          "name": "setProofBond",
+          "signature": "setProofBond(uint256 proofBondAGIALPHA_)"
         },
         {
           "attributes": "external onlyAdmin",
           "classification": "configuration",
-          "name": "setProofActionFees"
+          "name": "setProofActionFees",
+          "signature": "setProofActionFees(uint256 proofCardRegistryFeeAGIALPHA_, uint256 credentialMintFeeAGIALPHA_)"
         },
         {
           "attributes": "external onlyAdmin",
           "classification": "configuration",
-          "name": "setTreasury"
+          "name": "setTreasury",
+          "signature": "setTreasury(address treasury_)"
         },
         {
           "attributes": "external nonReentrant whenNotPaused returns (uint256 submissionId)",
           "classification": "new_obligation_or_risk_increase",
-          "name": "submitProof"
+          "name": "submitProof",
+          "signature": "submitProof(uint256 jobId, string calldata metadataURI, bytes32 proofHash, bytes32 proofCardHash)"
         },
         {
           "attributes": "external onlyOperator nonReentrant",
           "classification": "new_obligation_or_risk_increase",
-          "name": "approveSubmission"
+          "name": "approveSubmission",
+          "signature": "approveSubmission(uint256 submissionId, address reviewer, bytes32 rationaleHash, string calldata credentialURI, bytes32 credentialType)"
         },
         {
           "attributes": "external onlyOperator nonReentrant",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "rejectSubmission"
+          "name": "rejectSubmission",
+          "signature": "rejectSubmission(uint256 submissionId, address reviewer, bytes32 reasonHash, bool slashBuilder)"
         },
         {
           "attributes": "external",
           "classification": "lifecycle_control_or_migration",
-          "name": "pause"
+          "name": "pause",
+          "signature": "pause()"
         },
         {
           "attributes": "external",
           "classification": "lifecycle_control_or_migration",
-          "name": "unpause"
+          "name": "unpause",
+          "signature": "unpause()"
         },
         {
           "attributes": "public override onlyOwner",
           "classification": "configuration",
-          "name": "transferOwnership"
+          "name": "transferOwnership",
+          "signature": "transferOwnership(address newOwner)"
         },
         {
           "attributes": "public onlyOwner",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "cancelOwnershipTransfer"
+          "name": "cancelOwnershipTransfer",
+          "signature": "cancelOwnershipTransfer()"
         },
         {
           "attributes": "public",
           "classification": "configuration",
-          "name": "acceptOwnership"
+          "name": "acceptOwnership",
+          "signature": "acceptOwnership()"
         },
         {
           "attributes": "public override",
           "classification": "configuration",
-          "name": "grantRole"
+          "name": "grantRole",
+          "signature": "grantRole(bytes32 role, address account)"
         },
         {
           "attributes": "public override",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "revokeRole"
+          "name": "revokeRole",
+          "signature": "revokeRole(bytes32 role, address account)"
         },
         {
           "attributes": "public override",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "renounceRole"
+          "name": "renounceRole",
+          "signature": "renounceRole(bytes32 role, address account)"
         }
       ],
       "workflow": true
@@ -2879,47 +3297,56 @@
         {
           "attributes": "external onlyOperator",
           "classification": "configuration",
-          "name": "setConfig"
+          "name": "setConfig",
+          "signature": "setConfig(bytes32 key, bytes32 valueHash, string calldata uri)"
         },
         {
           "attributes": "external",
           "classification": "lifecycle_control_or_migration",
-          "name": "pause"
+          "name": "pause",
+          "signature": "pause()"
         },
         {
           "attributes": "external",
           "classification": "lifecycle_control_or_migration",
-          "name": "unpause"
+          "name": "unpause",
+          "signature": "unpause()"
         },
         {
           "attributes": "public override onlyOwner",
           "classification": "configuration",
-          "name": "transferOwnership"
+          "name": "transferOwnership",
+          "signature": "transferOwnership(address newOwner)"
         },
         {
           "attributes": "public onlyOwner",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "cancelOwnershipTransfer"
+          "name": "cancelOwnershipTransfer",
+          "signature": "cancelOwnershipTransfer()"
         },
         {
           "attributes": "public",
           "classification": "configuration",
-          "name": "acceptOwnership"
+          "name": "acceptOwnership",
+          "signature": "acceptOwnership()"
         },
         {
           "attributes": "public override",
           "classification": "configuration",
-          "name": "grantRole"
+          "name": "grantRole",
+          "signature": "grantRole(bytes32 role, address account)"
         },
         {
           "attributes": "public override",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "revokeRole"
+          "name": "revokeRole",
+          "signature": "revokeRole(bytes32 role, address account)"
         },
         {
           "attributes": "public override",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "renounceRole"
+          "name": "renounceRole",
+          "signature": "renounceRole(bytes32 role, address account)"
         }
       ],
       "workflow": true
@@ -2945,57 +3372,68 @@
         {
           "attributes": "external whenNotPaused",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "assignReferral"
+          "name": "assignReferral",
+          "signature": "assignReferral(address referrer)"
         },
         {
           "attributes": "external onlyOperator",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "assignReferralFor"
+          "name": "assignReferralFor",
+          "signature": "assignReferralFor(address user, address referrer)"
         },
         {
           "attributes": "external onlyOperator",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "recordConversion"
+          "name": "recordConversion",
+          "signature": "recordConversion(address user, bytes32 reasonHash)"
         },
         {
           "attributes": "external",
           "classification": "lifecycle_control_or_migration",
-          "name": "pause"
+          "name": "pause",
+          "signature": "pause()"
         },
         {
           "attributes": "external",
           "classification": "lifecycle_control_or_migration",
-          "name": "unpause"
+          "name": "unpause",
+          "signature": "unpause()"
         },
         {
           "attributes": "public override onlyOwner",
           "classification": "configuration",
-          "name": "transferOwnership"
+          "name": "transferOwnership",
+          "signature": "transferOwnership(address newOwner)"
         },
         {
           "attributes": "public onlyOwner",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "cancelOwnershipTransfer"
+          "name": "cancelOwnershipTransfer",
+          "signature": "cancelOwnershipTransfer()"
         },
         {
           "attributes": "public",
           "classification": "configuration",
-          "name": "acceptOwnership"
+          "name": "acceptOwnership",
+          "signature": "acceptOwnership()"
         },
         {
           "attributes": "public override",
           "classification": "configuration",
-          "name": "grantRole"
+          "name": "grantRole",
+          "signature": "grantRole(bytes32 role, address account)"
         },
         {
           "attributes": "public override",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "revokeRole"
+          "name": "revokeRole",
+          "signature": "revokeRole(bytes32 role, address account)"
         },
         {
           "attributes": "public override",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "renounceRole"
+          "name": "renounceRole",
+          "signature": "renounceRole(bytes32 role, address account)"
         }
       ],
       "workflow": true
@@ -3021,67 +3459,80 @@
         {
           "attributes": "external onlyOperator",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "recordApprovedProof"
+          "name": "recordApprovedProof",
+          "signature": "recordApprovedProof(address builder, address reviewer, uint256 proofCardId)"
         },
         {
           "attributes": "external onlyOperator",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "recordRejectedProof"
+          "name": "recordRejectedProof",
+          "signature": "recordRejectedProof(address builder, address reviewer, bytes32 reasonHash)"
         },
         {
           "attributes": "external onlyOperator",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "recordCredential"
+          "name": "recordCredential",
+          "signature": "recordCredential(address account, uint256 tokenId)"
         },
         {
           "attributes": "external onlyOperator",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "recordDispute"
+          "name": "recordDispute",
+          "signature": "recordDispute(address account, bytes32 reasonHash)"
         },
         {
           "attributes": "external onlyOperator",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "adjustScore"
+          "name": "adjustScore",
+          "signature": "adjustScore(address account, int256 delta, bytes32 reasonHash)"
         },
         {
           "attributes": "external",
           "classification": "lifecycle_control_or_migration",
-          "name": "pause"
+          "name": "pause",
+          "signature": "pause()"
         },
         {
           "attributes": "external",
           "classification": "lifecycle_control_or_migration",
-          "name": "unpause"
+          "name": "unpause",
+          "signature": "unpause()"
         },
         {
           "attributes": "public override onlyOwner",
           "classification": "configuration",
-          "name": "transferOwnership"
+          "name": "transferOwnership",
+          "signature": "transferOwnership(address newOwner)"
         },
         {
           "attributes": "public onlyOwner",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "cancelOwnershipTransfer"
+          "name": "cancelOwnershipTransfer",
+          "signature": "cancelOwnershipTransfer()"
         },
         {
           "attributes": "public",
           "classification": "configuration",
-          "name": "acceptOwnership"
+          "name": "acceptOwnership",
+          "signature": "acceptOwnership()"
         },
         {
           "attributes": "public override",
           "classification": "configuration",
-          "name": "grantRole"
+          "name": "grantRole",
+          "signature": "grantRole(bytes32 role, address account)"
         },
         {
           "attributes": "public override",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "revokeRole"
+          "name": "revokeRole",
+          "signature": "revokeRole(bytes32 role, address account)"
         },
         {
           "attributes": "public override",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "renounceRole"
+          "name": "renounceRole",
+          "signature": "renounceRole(bytes32 role, address account)"
         }
       ],
       "workflow": true
@@ -3107,82 +3558,98 @@
         {
           "attributes": "external onlyAdmin",
           "classification": "configuration",
-          "name": "setReviewerBond"
+          "name": "setReviewerBond",
+          "signature": "setReviewerBond(uint256 reviewerBondAGIALPHA_)"
         },
         {
           "attributes": "external onlyAdmin",
           "classification": "configuration",
-          "name": "setReviewChallengePeriod"
+          "name": "setReviewChallengePeriod",
+          "signature": "setReviewChallengePeriod(uint256 reviewChallengePeriod_)"
         },
         {
           "attributes": "external onlyAdmin",
           "classification": "configuration",
-          "name": "setAllowlistRequired"
+          "name": "setAllowlistRequired",
+          "signature": "setAllowlistRequired(bool required_)"
         },
         {
           "attributes": "external",
           "classification": "configuration",
-          "name": "setReviewerApproved"
+          "name": "setReviewerApproved",
+          "signature": "setReviewerApproved(address reviewer, bool approved)"
         },
         {
           "attributes": "external nonReentrant whenNotPaused",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "bondAsReviewer"
+          "name": "bondAsReviewer",
+          "signature": "bondAsReviewer(string calldata metadataURI)"
         },
         {
           "attributes": "external nonReentrant",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "unbondReviewer"
+          "name": "unbondReviewer",
+          "signature": "unbondReviewer()"
         },
         {
           "attributes": "external nonReentrant whenNotPaused",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "reviewSubmission"
+          "name": "reviewSubmission",
+          "signature": "reviewSubmission(uint256 submissionId, bool approve, bytes32 rationaleHash, string calldata credentialURI, bytes32 credentialType, bool slashBuilder)"
         },
         {
           "attributes": "external onlyOperator nonReentrant",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "slashReviewer"
+          "name": "slashReviewer",
+          "signature": "slashReviewer(address reviewer, uint256 amount, bytes32 reasonHash)"
         },
         {
           "attributes": "external",
           "classification": "lifecycle_control_or_migration",
-          "name": "pause"
+          "name": "pause",
+          "signature": "pause()"
         },
         {
           "attributes": "external",
           "classification": "lifecycle_control_or_migration",
-          "name": "unpause"
+          "name": "unpause",
+          "signature": "unpause()"
         },
         {
           "attributes": "public override onlyOwner",
           "classification": "configuration",
-          "name": "transferOwnership"
+          "name": "transferOwnership",
+          "signature": "transferOwnership(address newOwner)"
         },
         {
           "attributes": "public onlyOwner",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "cancelOwnershipTransfer"
+          "name": "cancelOwnershipTransfer",
+          "signature": "cancelOwnershipTransfer()"
         },
         {
           "attributes": "public",
           "classification": "configuration",
-          "name": "acceptOwnership"
+          "name": "acceptOwnership",
+          "signature": "acceptOwnership()"
         },
         {
           "attributes": "public override",
           "classification": "configuration",
-          "name": "grantRole"
+          "name": "grantRole",
+          "signature": "grantRole(bytes32 role, address account)"
         },
         {
           "attributes": "public override",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "revokeRole"
+          "name": "revokeRole",
+          "signature": "revokeRole(bytes32 role, address account)"
         },
         {
           "attributes": "public override",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "renounceRole"
+          "name": "renounceRole",
+          "signature": "renounceRole(bytes32 role, address account)"
         }
       ],
       "workflow": true
@@ -3208,57 +3675,68 @@
         {
           "attributes": "external onlyAdmin",
           "classification": "configuration",
-          "name": "setTreasury"
+          "name": "setTreasury",
+          "signature": "setTreasury(address treasury_)"
         },
         {
           "attributes": "external onlyOperator",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "routeFrom"
+          "name": "routeFrom",
+          "signature": "routeFrom(address token, uint256 amount, bytes32 reasonHash)"
         },
         {
           "attributes": "external onlyOperator",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "routeHeld"
+          "name": "routeHeld",
+          "signature": "routeHeld(address token, uint256 amount, bytes32 reasonHash)"
         },
         {
           "attributes": "external",
           "classification": "lifecycle_control_or_migration",
-          "name": "pause"
+          "name": "pause",
+          "signature": "pause()"
         },
         {
           "attributes": "external",
           "classification": "lifecycle_control_or_migration",
-          "name": "unpause"
+          "name": "unpause",
+          "signature": "unpause()"
         },
         {
           "attributes": "public override onlyOwner",
           "classification": "configuration",
-          "name": "transferOwnership"
+          "name": "transferOwnership",
+          "signature": "transferOwnership(address newOwner)"
         },
         {
           "attributes": "public onlyOwner",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "cancelOwnershipTransfer"
+          "name": "cancelOwnershipTransfer",
+          "signature": "cancelOwnershipTransfer()"
         },
         {
           "attributes": "public",
           "classification": "configuration",
-          "name": "acceptOwnership"
+          "name": "acceptOwnership",
+          "signature": "acceptOwnership()"
         },
         {
           "attributes": "public override",
           "classification": "configuration",
-          "name": "grantRole"
+          "name": "grantRole",
+          "signature": "grantRole(bytes32 role, address account)"
         },
         {
           "attributes": "public override",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "revokeRole"
+          "name": "revokeRole",
+          "signature": "revokeRole(bytes32 role, address account)"
         },
         {
           "attributes": "public override",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "renounceRole"
+          "name": "renounceRole",
+          "signature": "renounceRole(bytes32 role, address account)"
         }
       ],
       "workflow": true
@@ -3284,67 +3762,80 @@
         {
           "attributes": "external onlyAdmin",
           "classification": "configuration",
-          "name": "setMinApprovalDelay"
+          "name": "setMinApprovalDelay",
+          "signature": "setMinApprovalDelay(uint256 minApprovalDelay_)"
         },
         {
           "attributes": "external onlyOperator returns (uint256 trancheId)",
           "classification": "new_obligation_or_risk_increase",
-          "name": "proposeTranche"
+          "name": "proposeTranche",
+          "signature": "proposeTranche(address recipient, uint256 amount, bytes32 milestoneHash, bytes32 evidenceHash, bytes32 valueHash, uint256 releaseAfter, string calldata memoURI)"
         },
         {
           "attributes": "external onlyAdmin",
           "classification": "new_obligation_or_risk_increase",
-          "name": "approveTranche"
+          "name": "approveTranche",
+          "signature": "approveTranche(uint256 trancheId, bytes32 approvalHash)"
         },
         {
           "attributes": "external whenNotPaused",
           "classification": "safe_exit_or_settlement",
-          "name": "releaseTranche"
+          "name": "releaseTranche",
+          "signature": "releaseTranche(uint256 trancheId)"
         },
         {
           "attributes": "external onlyAdmin",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "cancelTranche"
+          "name": "cancelTranche",
+          "signature": "cancelTranche(uint256 trancheId, bytes32 reasonHash)"
         },
         {
           "attributes": "external",
           "classification": "lifecycle_control_or_migration",
-          "name": "pause"
+          "name": "pause",
+          "signature": "pause()"
         },
         {
           "attributes": "external",
           "classification": "lifecycle_control_or_migration",
-          "name": "unpause"
+          "name": "unpause",
+          "signature": "unpause()"
         },
         {
           "attributes": "public override onlyOwner",
           "classification": "configuration",
-          "name": "transferOwnership"
+          "name": "transferOwnership",
+          "signature": "transferOwnership(address newOwner)"
         },
         {
           "attributes": "public onlyOwner",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "cancelOwnershipTransfer"
+          "name": "cancelOwnershipTransfer",
+          "signature": "cancelOwnershipTransfer()"
         },
         {
           "attributes": "public",
           "classification": "configuration",
-          "name": "acceptOwnership"
+          "name": "acceptOwnership",
+          "signature": "acceptOwnership()"
         },
         {
           "attributes": "public override",
           "classification": "configuration",
-          "name": "grantRole"
+          "name": "grantRole",
+          "signature": "grantRole(bytes32 role, address account)"
         },
         {
           "attributes": "public override",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "revokeRole"
+          "name": "revokeRole",
+          "signature": "revokeRole(bytes32 role, address account)"
         },
         {
           "attributes": "public override",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "renounceRole"
+          "name": "renounceRole",
+          "signature": "renounceRole(bytes32 role, address account)"
         }
       ],
       "workflow": true
@@ -3370,52 +3861,62 @@
         {
           "attributes": "external onlyAdmin",
           "classification": "configuration",
-          "name": "setPurpose"
+          "name": "setPurpose",
+          "signature": "setPurpose(string calldata purpose_)"
         },
         {
           "attributes": "external whenNotPaused",
           "classification": "safe_exit_or_settlement",
-          "name": "release"
+          "name": "release",
+          "signature": "release(address recipient, uint256 amount, bytes32 reasonHash, string calldata memo)"
         },
         {
           "attributes": "external",
           "classification": "lifecycle_control_or_migration",
-          "name": "pause"
+          "name": "pause",
+          "signature": "pause()"
         },
         {
           "attributes": "external",
           "classification": "lifecycle_control_or_migration",
-          "name": "unpause"
+          "name": "unpause",
+          "signature": "unpause()"
         },
         {
           "attributes": "public override onlyOwner",
           "classification": "configuration",
-          "name": "transferOwnership"
+          "name": "transferOwnership",
+          "signature": "transferOwnership(address newOwner)"
         },
         {
           "attributes": "public onlyOwner",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "cancelOwnershipTransfer"
+          "name": "cancelOwnershipTransfer",
+          "signature": "cancelOwnershipTransfer()"
         },
         {
           "attributes": "public",
           "classification": "configuration",
-          "name": "acceptOwnership"
+          "name": "acceptOwnership",
+          "signature": "acceptOwnership()"
         },
         {
           "attributes": "public override",
           "classification": "configuration",
-          "name": "grantRole"
+          "name": "grantRole",
+          "signature": "grantRole(bytes32 role, address account)"
         },
         {
           "attributes": "public override",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "revokeRole"
+          "name": "revokeRole",
+          "signature": "revokeRole(bytes32 role, address account)"
         },
         {
           "attributes": "public override",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "renounceRole"
+          "name": "renounceRole",
+          "signature": "renounceRole(bytes32 role, address account)"
         }
       ],
       "workflow": true
@@ -3441,52 +3942,62 @@
         {
           "attributes": "external onlyAdmin",
           "classification": "configuration",
-          "name": "setPurpose"
+          "name": "setPurpose",
+          "signature": "setPurpose(string calldata purpose_)"
         },
         {
           "attributes": "external whenNotPaused",
           "classification": "safe_exit_or_settlement",
-          "name": "release"
+          "name": "release",
+          "signature": "release(address recipient, uint256 amount, bytes32 reasonHash, string calldata memo)"
         },
         {
           "attributes": "external",
           "classification": "lifecycle_control_or_migration",
-          "name": "pause"
+          "name": "pause",
+          "signature": "pause()"
         },
         {
           "attributes": "external",
           "classification": "lifecycle_control_or_migration",
-          "name": "unpause"
+          "name": "unpause",
+          "signature": "unpause()"
         },
         {
           "attributes": "public override onlyOwner",
           "classification": "configuration",
-          "name": "transferOwnership"
+          "name": "transferOwnership",
+          "signature": "transferOwnership(address newOwner)"
         },
         {
           "attributes": "public onlyOwner",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "cancelOwnershipTransfer"
+          "name": "cancelOwnershipTransfer",
+          "signature": "cancelOwnershipTransfer()"
         },
         {
           "attributes": "public",
           "classification": "configuration",
-          "name": "acceptOwnership"
+          "name": "acceptOwnership",
+          "signature": "acceptOwnership()"
         },
         {
           "attributes": "public override",
           "classification": "configuration",
-          "name": "grantRole"
+          "name": "grantRole",
+          "signature": "grantRole(bytes32 role, address account)"
         },
         {
           "attributes": "public override",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "revokeRole"
+          "name": "revokeRole",
+          "signature": "revokeRole(bytes32 role, address account)"
         },
         {
           "attributes": "public override",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "renounceRole"
+          "name": "renounceRole",
+          "signature": "renounceRole(bytes32 role, address account)"
         }
       ],
       "workflow": true
@@ -3512,52 +4023,62 @@
         {
           "attributes": "external onlyAdmin",
           "classification": "configuration",
-          "name": "setPurpose"
+          "name": "setPurpose",
+          "signature": "setPurpose(string calldata purpose_)"
         },
         {
           "attributes": "external whenNotPaused",
           "classification": "safe_exit_or_settlement",
-          "name": "release"
+          "name": "release",
+          "signature": "release(address recipient, uint256 amount, bytes32 reasonHash, string calldata memo)"
         },
         {
           "attributes": "external",
           "classification": "lifecycle_control_or_migration",
-          "name": "pause"
+          "name": "pause",
+          "signature": "pause()"
         },
         {
           "attributes": "external",
           "classification": "lifecycle_control_or_migration",
-          "name": "unpause"
+          "name": "unpause",
+          "signature": "unpause()"
         },
         {
           "attributes": "public override onlyOwner",
           "classification": "configuration",
-          "name": "transferOwnership"
+          "name": "transferOwnership",
+          "signature": "transferOwnership(address newOwner)"
         },
         {
           "attributes": "public onlyOwner",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "cancelOwnershipTransfer"
+          "name": "cancelOwnershipTransfer",
+          "signature": "cancelOwnershipTransfer()"
         },
         {
           "attributes": "public",
           "classification": "configuration",
-          "name": "acceptOwnership"
+          "name": "acceptOwnership",
+          "signature": "acceptOwnership()"
         },
         {
           "attributes": "public override",
           "classification": "configuration",
-          "name": "grantRole"
+          "name": "grantRole",
+          "signature": "grantRole(bytes32 role, address account)"
         },
         {
           "attributes": "public override",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "revokeRole"
+          "name": "revokeRole",
+          "signature": "revokeRole(bytes32 role, address account)"
         },
         {
           "attributes": "public override",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "renounceRole"
+          "name": "renounceRole",
+          "signature": "renounceRole(bytes32 role, address account)"
         }
       ],
       "workflow": true
@@ -3583,58 +4104,68 @@
         {
           "attributes": "external onlyAdmin",
           "classification": "configuration",
-          "name": "setPurpose"
+          "name": "setPurpose",
+          "signature": "setPurpose(string calldata purpose_)"
         },
         {
           "attributes": "external whenNotPaused",
           "classification": "safe_exit_or_settlement",
-          "name": "release"
+          "name": "release",
+          "signature": "release(address recipient, uint256 amount, bytes32 reasonHash, string calldata memo)"
         },
         {
           "attributes": "external",
           "classification": "lifecycle_control_or_migration",
-          "name": "pause"
+          "name": "pause",
+          "signature": "pause()"
         },
         {
           "attributes": "external",
           "classification": "lifecycle_control_or_migration",
-          "name": "unpause"
+          "name": "unpause",
+          "signature": "unpause()"
         },
         {
           "attributes": "public override onlyOwner",
           "classification": "configuration",
-          "name": "transferOwnership"
+          "name": "transferOwnership",
+          "signature": "transferOwnership(address newOwner)"
         },
         {
           "attributes": "public onlyOwner",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "cancelOwnershipTransfer"
+          "name": "cancelOwnershipTransfer",
+          "signature": "cancelOwnershipTransfer()"
         },
         {
           "attributes": "public",
           "classification": "configuration",
-          "name": "acceptOwnership"
+          "name": "acceptOwnership",
+          "signature": "acceptOwnership()"
         },
         {
           "attributes": "public override",
           "classification": "configuration",
-          "name": "grantRole"
+          "name": "grantRole",
+          "signature": "grantRole(bytes32 role, address account)"
         },
         {
           "attributes": "public override",
           "classification": "owner_recovery_or_safe_exit",
-          "name": "revokeRole"
+          "name": "revokeRole",
+          "signature": "revokeRole(bytes32 role, address account)"
         },
         {
           "attributes": "public override",
           "classification": "normal_operation_unclassified_review_required",
-          "name": "renounceRole"
+          "name": "renounceRole",
+          "signature": "renounceRole(bytes32 role, address account)"
         }
       ],
       "workflow": true
     }
   ],
   "generatedBy": "scripts/mainnet_operational_readiness.py",
-  "sourceTreeHash": "4f40410941a2a0f6a91f0c6a38b0a29654cf21e130932b333f4ab85f135d9b31",
+  "sourceTreeHash": "080e71cac4f77b8dca4a898e4b311e2dda6286c74dfe8b1cf65c65fd75b6a595",
   "sourceTreeHashScope": "tracked HEAD content excluding generated readiness artifacts"
 }
