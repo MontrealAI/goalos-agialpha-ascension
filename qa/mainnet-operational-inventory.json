@@ -2652,6 +2652,26 @@
           "attributes": "public override",
           "classification": "normal_operation_unclassified_review_required",
           "name": "renounceRole"
+        },
+        {
+          "attributes": "public inherited ERC721",
+          "classification": "new_obligation_or_risk_increase",
+          "name": "approve"
+        },
+        {
+          "attributes": "public inherited ERC721",
+          "classification": "configuration",
+          "name": "setApprovalForAll"
+        },
+        {
+          "attributes": "public inherited ERC721",
+          "classification": "safe_exit_or_settlement",
+          "name": "transferFrom"
+        },
+        {
+          "attributes": "public inherited ERC721",
+          "classification": "safe_exit_or_settlement",
+          "name": "safeTransferFrom"
         }
       ],
       "workflow": true
@@ -3615,6 +3635,6 @@
     }
   ],
   "generatedBy": "scripts/mainnet_operational_readiness.py",
-  "sourceTreeHash": "4957ec7ed6cea8e9bbb35d113c76f557314d69453695122cadd62dae6ed41c0b",
+  "sourceTreeHash": "4f40410941a2a0f6a91f0c6a38b0a29654cf21e130932b333f4ab85f135d9b31",
   "sourceTreeHashScope": "tracked HEAD content excluding generated readiness artifacts"
 }

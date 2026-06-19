@@ -2661,6 +2661,34 @@
       "path": "contracts/registry/ProofCredentialRegistry.sol"
     },
     {
+      "attributes": "public inherited ERC721",
+      "classification": "new_obligation_or_risk_increase",
+      "contract": "ProofCredentialRegistry",
+      "name": "approve",
+      "path": "contracts/registry/ProofCredentialRegistry.sol"
+    },
+    {
+      "attributes": "public inherited ERC721",
+      "classification": "configuration",
+      "contract": "ProofCredentialRegistry",
+      "name": "setApprovalForAll",
+      "path": "contracts/registry/ProofCredentialRegistry.sol"
+    },
+    {
+      "attributes": "public inherited ERC721",
+      "classification": "safe_exit_or_settlement",
+      "contract": "ProofCredentialRegistry",
+      "name": "transferFrom",
+      "path": "contracts/registry/ProofCredentialRegistry.sol"
+    },
+    {
+      "attributes": "public inherited ERC721",
+      "classification": "safe_exit_or_settlement",
+      "contract": "ProofCredentialRegistry",
+      "name": "safeTransferFrom",
+      "path": "contracts/registry/ProofCredentialRegistry.sol"
+    },
+    {
       "attributes": "external onlyAdmin",
       "classification": "configuration",
       "contract": "ProofSeedRegistry",

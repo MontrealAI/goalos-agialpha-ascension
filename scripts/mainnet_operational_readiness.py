@@ -45,13 +45,26 @@ def sh(cmd):
         return f"UNAVAILABLE: {exc}"
 
 
+def git_index_text(rel):
+    return subprocess.check_output(["git", "show", f":{rel}"], cwd=ROOT).decode("utf-8", errors="ignore")
+
+
+def git_index_bytes(rel):
+    return subprocess.check_output(["git", "show", f":{rel}"], cwd=ROOT)
+
+
+def tracked_contract_paths():
+    listing = sh(["git", "ls-files", "contracts", "*.sol"])
+    return sorted(rel for rel in listing.splitlines() if rel.startswith("contracts/") and rel.endswith(".sol"))
+
+
 def strip_comments(text):
     text = re.sub(r"/\*.*?\*/", "", text, flags=re.S)
     return re.sub(r"//.*", "", text)
 
 
-def sha_file(path):
-    return hashlib.sha256(path.read_bytes()).hexdigest()
+def sha_bytes(data):
+    return hashlib.sha256(data).hexdigest()
 
 
 def tracked_source_tree_hash():
@@ -121,12 +134,20 @@ def roles_from_body(body):
 
 
 def inherited_goalos_surface():
-    access_path = CONTRACTS / "access" / "GoalOSAccessControl.sol"
-    text = access_path.read_text(errors="ignore")
+    text = git_index_text("contracts/access/GoalOSAccessControl.sol")
     for block in contract_blocks(text):
         if block["name"] == "GoalOSAccessControl":
             return functions_from_body(block["body"]), sorted(set(roles_from_body(block["body"]) + ["DEFAULT_ADMIN_ROLE"]))
     return [], []
+
+
+def inherited_erc721_surface():
+    return [
+        {"name": "approve", "attributes": "public inherited ERC721", "classification": classify("approve")},
+        {"name": "setApprovalForAll", "attributes": "public inherited ERC721", "classification": classify("setApprovalForAll")},
+        {"name": "transferFrom", "attributes": "public inherited ERC721", "classification": classify("transferFrom")},
+        {"name": "safeTransferFrom", "attributes": "public inherited ERC721", "classification": classify("safeTransferFrom")},
+    ]
 
 
 def detects_asset_holding(contract_name, text):
@@ -142,8 +163,7 @@ def detects_asset_holding(contract_name, text):
     return False
 
 
-def excluded_mainnet_inventory_path(path):
-    rel = str(path.relative_to(ROOT))
+def excluded_mainnet_inventory_path(rel):
     return (
         rel.startswith("contracts/test/")
         or rel.startswith("contracts/test-harnesses/")
@@ -159,10 +179,11 @@ def merge_funcs(primary, inherited):
 def contracts():
     out = []
     goalos_funcs, goalos_roles = inherited_goalos_surface()
-    for path in sorted(CONTRACTS.rglob("*.sol")):
-        if excluded_mainnet_inventory_path(path):
+    erc721_funcs = inherited_erc721_surface()
+    for rel in tracked_contract_paths():
+        if excluded_mainnet_inventory_path(rel):
             continue
-        text = path.read_text(errors="ignore")
+        text = git_index_text(rel)
         infos = concrete_contract_infos(text)
         if not infos:
             continue
@@ -172,15 +193,17 @@ def contracts():
             if "GoalOSAccessControl" in info["bases"]:
                 funcs = merge_funcs(funcs, goalos_funcs)
                 roles = sorted(set(roles + goalos_roles))
+            if "ERC721" in info["bases"]:
+                funcs = merge_funcs(funcs, erc721_funcs)
             name = info["name"]
             deployment_names = TOKEN_RESERVE_VAULT_ALIASES if name == "TokenReserveVault" else (name,)
             for deployment_name in deployment_names:
                 out.append({
-                    "path": str(path.relative_to(ROOT)),
+                    "path": rel,
                     "contract": deployment_name,
                     "sourceContract": name,
                     "deploymentAlias": deployment_name if deployment_name != name else None,
-                    "sha256": sha_file(path),
+                    "sha256": sha_bytes(git_index_bytes(rel)),
                     "stateChangingSelectors": funcs,
                     "roles": roles,
                     "assetHolding": detects_asset_holding(name, text),
@@ -203,7 +226,7 @@ def classify(fn):
         return "owner_recovery_or_safe_exit"
     if any(x in words for x in ["grant", "set", "configure"]) or name in ["transferownership", "acceptownership"]:
         return "configuration"
-    if any(x in words for x in ["withdraw", "release", "pay", "settle", "return", "unstake"]):
+    if any(x in words for x in ["withdraw", "release", "pay", "settle", "return", "unstake", "transfer"]):
         return "safe_exit_or_settlement"
     if any(x in words for x in ["create", "submit", "claim", "deposit", "stake", "reserve", "fund", "approve", "post", "propose"]):
         return "new_obligation_or_risk_increase"
