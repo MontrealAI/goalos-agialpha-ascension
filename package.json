@@ -79,7 +79,7 @@
     "mainnet:final-check": "npm run mainnet:production-readiness && npm run verify:compiler-alignment && npm run repo:all && npm run repo:no-private-operator-data && npm run repo:no-paid-products && npm run compile:ci && npm run test:ci && npm run test:all && npm run static-check && npm run audit:slither && npm run audit:semgrep && npm run audit:solhint && npm run audit:actions && npm run audit:shell && npm run audit:secrets && npm run audit:npm && npm run audit:osv && npm run audit:summarize && npm run audit:fail-on-critical && npm run audit:clearance-report && npm run verify:agialpha-token:public && npm run mainnet:public-authorize && npm run docs:status && npm run assert:public-status && npm run qa:manifest && npm run qa:manifest:verify",
     "mainnet:public-authorize": "npm run mainnet:certificate && npm run mainnet:certificate:validate && npm run mainnet:readiness-check && npm run mainnet:deployment-authorization-check && npm run mainnet:authorization-check",
     "verify:agialpha-token:public": "python scripts/verify_agialpha_token_public.py",
-    "mainnet:certificate": "python scripts/generate-mainnet-authorization-certificate.py",
+    "mainnet:certificate": "python scripts/mainnet_operational_readiness.py && python scripts/generate-mainnet-authorization-certificate.py",
     "mainnet:certificate:validate": "python scripts/validate-mainnet-authorization-certificate.py",
     "docs:status": "python scripts/generate-public-status-docs.py",
     "compile:hardhat": "hardhat compile",
@@ -192,7 +192,8 @@
     "mutation:critical": "python scripts/mainnet_operational_readiness.py --validate",
     "build:reproducible": "npm run compile:ci && npm run verify:compiler-alignment",
     "security:docket": "python scripts/mainnet_operational_readiness.py --validate",
-    "mainnet:fork-rehearsal": "python scripts/mainnet_operational_readiness.py --validate"
+    "mainnet:fork-rehearsal": "python scripts/mainnet_operational_readiness.py --validate",
+    "authority:verify": "python scripts/mainnet_operational_readiness.py --validate"
   },
   "dependencies": {
     "@openzeppelin/contracts": "4.9.6",

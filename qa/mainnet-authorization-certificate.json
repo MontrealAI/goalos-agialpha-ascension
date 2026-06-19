@@ -1,13 +1,13 @@
 {
   "schemaVersion": "1.0",
-  "generatedAt": "2026-06-14T01:20:49.585248+00:00",
+  "generatedAt": "2026-06-19T23:46:25.332551+00:00",
   "generatedBy": "scripts/generate-mainnet-authorization-certificate.py",
   "repository": "MontrealAI/goalos-agialpha-ascension",
-  "commit": "d7b8d8f2dd9a617c53d2cc8f03f35090b228f87d",
-  "sourceCommit": "d7b8d8f2dd9a617c53d2cc8f03f35090b228f87d",
-  "branch": "work",
-  "sourceBranch": "work",
-  "currentHeadAtGeneration": "d7b8d8f2dd9a617c53d2cc8f03f35090b228f87d",
+  "commit": "RESOLVED_BY_GIT_CHECKOUT_AT_VALIDATION",
+  "sourceCommit": "RESOLVED_BY_GIT_CHECKOUT_AT_VALIDATION",
+  "branch": "codex/mainnet-five-gate-production-completion",
+  "sourceBranch": "codex/mainnet-five-gate-production-completion",
+  "currentHeadAtGeneration": "c546327794b89a5075b76e7ba1fb8a8a3001c567",
   "gitValidationMode": "GIT_CHECKOUT",
   "evidenceHashesFreshForCurrentCheckout": true,
   "sourceCommitIsAncestorOfCurrentHead": true,
@@ -25,6 +25,7 @@
   "chainId": 1,
   "agialphaToken": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
   "scope": "public-repository-package-authorization-for-manual-gated-mainnet-deployment",
+  "fiveGateReleaseIdentity": "b8dffc2d8add83eafc321be4533b64e22f8de780b153e8d69229dbcc1f5a4426",
   "notExternallyAudited": true,
   "externalAuditPlanned": false,
   "externalAuditRequired": false,
@@ -35,12 +36,12 @@
   "runtimeSecretsStoredInGitHub": false,
   "ciCanDeployMainnet": false,
   "privateOperatorAuthorizationPackageRequired": false,
-  "technicallyMainnetReady": "YES",
-  "TECHNICALLY_MAINNET_READY": "YES",
-  "mainnetDeploymentAuthorized": "YES",
-  "MAINNET_DEPLOYMENT_AUTHORIZED": "YES",
-  "ethereumMainnetAuthorized": "YES",
-  "ETHEREUM_MAINNET_AUTHORIZED": "YES",
+  "technicallyMainnetReady": "NO",
+  "TECHNICALLY_MAINNET_READY": "NO",
+  "mainnetDeploymentAuthorized": "NO",
+  "MAINNET_DEPLOYMENT_AUTHORIZED": "NO",
+  "ethereumMainnetAuthorized": "NO",
+  "ETHEREUM_MAINNET_AUTHORIZED": "NO",
   "evidence": {
     "repoDoctor": {
       "path": "qa/REPO_DOCTOR_REPORT.json",
@@ -60,7 +61,7 @@
     },
     "tests": {
       "path": "test",
-      "sha256": "0x7f9272a3cf29fb38ff54945f55920c75fc689cc52cc5ea50eb6f6742c29513bc"
+      "sha256": "0xc53958c455140c82200d425bdd614a5d08861b4d6d90b04256899f20fd515266"
     },
     "testAll": {
       "path": "test/invariants/mainnetBoundary.invariant.test.ts",
@@ -76,11 +77,11 @@
     },
     "noPrivateOperatorData": {
       "path": "scripts/no_private_operator_data_check.py",
-      "sha256": "0x585ef548aa5ec83e1cc71b1d30b6dcb06b46f2a715d0212d464d7db816d9d30d"
+      "sha256": "0x09c87c2e49bd215fc8e061398bb94b64702e77184366030fe870e24cfebc805c"
     },
     "noPaidProducts": {
       "path": "scripts/no_paid_products_check.py",
-      "sha256": "0xed865850de41ec9e7a0eaded9b278e7ec3f191f57fb61b8962531dc69d5f0511"
+      "sha256": "0x76d74a3daf076733ac1fa89ff25e2f3bfbeed9076339ad8d81f84a67b0be4501"
     },
     "slither": {
       "path": "docs/SLITHER_SECURITY_REPORT.md",
@@ -120,19 +121,19 @@
     },
     "mainnetGuardrails": {
       "path": "scripts/deploy-ethereum-mainnet-gated.ts",
-      "sha256": "0xd8a7de08236570a03b930b5f2dbb7d0992a06a348883571b2bbbfc2cfa57a02e"
+      "sha256": "0x6bdd88ad78eb1e8933edeb620d3022af7b32fa8efd268de8d914423d63e33b5e"
     },
     "certificateGenerator": {
       "path": "scripts/generate-mainnet-authorization-certificate.py",
-      "sha256": "0xb6b21017f97a29388b5d2c2ee5b7a29dc0c13283af022cdf3aadc867792de9c9"
+      "sha256": "0x9ccaeb27f5b3ab8eeea1b6f9604d8cffa9ee34d17ff1e7bd1ff71e1034ec07c2"
     },
     "certificateValidator": {
       "path": "scripts/validate-mainnet-authorization-certificate.py",
-      "sha256": "0xac159eb9db789a35a42f48011ab4ee6abb41d19b0ca960145e42d1ae6e2e5caf"
+      "sha256": "0xd710c673b856f580460eff187ba23b1844ab489a6bc4cffc9053fddd7a101142"
     },
     "packageScripts": {
       "path": "package.json",
-      "sha256": "0x451f1beb04985eef31fe7df7b12cbf533da7b60c5e8bf3a90d4f2784c56bc6aa"
+      "sha256": "0xe450c5679de3c00787c4b97f8c86df37c57f89a34a2062bf209dd8f39f6681d6"
     },
     "branchProtectionOrRiskAcceptance": {
       "path": "qa/public-branch-protection-evidence.json",
@@ -149,10 +150,68 @@
     "mainnetSimulation": {
       "path": "qa/ETHEREUM_MAINNET_FORK_SIMULATION.json",
       "sha256": "0x5eeb1089b2b99c6f36b6e243aaa87aef1b7207e51b3c531a49afe9623947fd65"
+    },
+    "fiveGateReleaseIdentity": {
+      "path": "qa/mainnet-readiness/release-identity.json",
+      "sha256": "0x5019efe3b5b71e58fdcb8617f1fd92c33cbd4d1d96f0ac2cfbe3f83847a66f2b"
+    },
+    "fiveGateSystemInventory": {
+      "path": "qa/mainnet-readiness/system-inventory.json",
+      "sha256": "0xd9604108b59f4cb9ca06dcd211f383aa190887a345b6b2313fe7ddb982491e43"
+    },
+    "fiveGateAuthority": {
+      "path": "qa/mainnet-readiness/gate-1-authority.json",
+      "sha256": "0x49419d53bf922832d6561ad45e07b00d031aa25a605e602a2898eb374fb6e042"
+    },
+    "fiveGateOverrides": {
+      "path": "qa/mainnet-readiness/gate-2-overrides.json",
+      "sha256": "0xa29b953ce441b52e456e436e15d21c907fba42c3a2d5e59791e53b56f53266c6"
+    },
+    "fiveGateAccounting": {
+      "path": "qa/mainnet-readiness/gate-3-accounting.json",
+      "sha256": "0x30a700b77f5a51fe26ec0f568bc9ef579d74992d23545209f95b99b6566cad58"
+    },
+    "fiveGateLifecycle": {
+      "path": "qa/mainnet-readiness/gate-4-lifecycle.json",
+      "sha256": "0xea55f5a4cdfa6e0b22ac9473a1f2ae76787f511e40fe55f5af5cade2dcf3b34c"
+    },
+    "fiveGateAssurance": {
+      "path": "qa/mainnet-readiness/gate-5-assurance.json",
+      "sha256": "0xfe3f35716685e540f836865a240fc809174d2d6589f6528501f4e7ec8fed1c2b"
+    },
+    "fiveGateForkRehearsal": {
+      "path": "qa/mainnet-readiness/fork-rehearsal.json",
+      "sha256": "0x8ae3251a7e9291a8c1848a10817c7c263a71e8480084be6ed1ada758dd575b33"
+    },
+    "fiveGateSecurityDocket": {
+      "path": "qa/mainnet-readiness/security-docket.json",
+      "sha256": "0xc38461c8a0075bd9d2df950f924e65d94804279f82c05c2cc2390e94ae607114"
+    },
+    "fiveGateProductionReadiness": {
+      "path": "qa/mainnet-readiness/production-readiness.json",
+      "sha256": "0xba1e62b3979132d6b79f4cabb150aeccbcb5eb00db87ca562193f49a8f3631d9"
+    },
+    "fiveGateAuthorizationCertificate": {
+      "path": "qa/mainnet-readiness/authorization-certificate.json",
+      "sha256": "0x18d31907fa6a190128d983e7574f9f4db12b6f95bdfc5fd630068e887e9bbec8"
     }
   },
-  "blockers": [],
+  "blockers": [
+    "qa/mainnet-readiness/gate-1-authority.json is BLOCKED, not PASS.",
+    "qa/mainnet-readiness/gate-1-authority.json: Live/fork Phase A/B authority readback and private Safe/EOA commitment are absent.",
+    "qa/mainnet-readiness/gate-2-overrides.json is BLOCKED, not PASS.",
+    "qa/mainnet-readiness/gate-2-overrides.json: Typed override coverage remains inventory-derived and requires contract-level execution evidence before PASS.",
+    "qa/mainnet-readiness/gate-3-accounting.json is BLOCKED, not PASS.",
+    "qa/mainnet-readiness/gate-3-accounting.json: Exact on-chain accounting readback and canary enforcement evidence are absent.",
+    "qa/mainnet-readiness/gate-4-lifecycle.json is BLOCKED, not PASS.",
+    "qa/mainnet-readiness/gate-4-lifecycle.json: Global lifecycle selector enforcement and migration/shutdown rehearsal evidence are absent.",
+    "qa/mainnet-readiness/gate-5-assurance.json is BLOCKED, not PASS.",
+    "qa/mainnet-readiness/gate-5-assurance.json: One-million-action invariant campaign, secondary fuzz engine, mutation suite, independent build comparison, and real Mainnet fork RPC rehearsal are absent.",
+    "qa/mainnet-readiness/fork-rehearsal.json is BLOCKED, not PASS.",
+    "qa/mainnet-readiness/security-docket.json is BLOCKED, not PASS.",
+    "qa/mainnet-readiness/production-readiness.json is BLOCKED, not PASS."
+  ],
   "warnings": [],
-  "nextAction": "Founder/deployer may run npm run deploy:ethereum-mainnet:gated with local runtime RPC/key after optional branch-protection hardening.",
-  "certificateHash": "0x9aff6ced650f0a9ff2df22f8489407230a454200ada0ea0693cbce4432fe1030"
+  "nextAction": "B. Blocked, with exact blockers.",
+  "certificateHash": "0x912452d7835b28d89341490d5f73b514b7fb8daebf92ee826018108c187644ca"
 }
