@@ -1,0 +1,101 @@
+{
+  "LIVE_CANARY_COMPLETE": "NO",
+  "LIVE_OWNER_HANDOFF_COMPLETE": "NO",
+  "MAINNET_DEPLOYED": "NO",
+  "MAINNET_VERIFIED": "NO",
+  "forkRehearsal": {
+    "blockers": [
+      "No live Ethereum Mainnet fork RPC/block rehearsal evidence supplied."
+    ],
+    "mainnetBroadcastOccurred": false,
+    "releaseIdentity": "a6fa052fa097d1236503143385e17425acbcc439e08d19acc64751231a782dae",
+    "status": "BLOCKED"
+  },
+  "gates": {
+    "gate-1-authority.json": {
+      "blockers": [
+        "Live/fork Phase A/B authority readback and private Safe/EOA commitment are absent."
+      ],
+      "commands": [],
+      "evidence": [
+        "qa/mainnet-operational-inventory.json"
+      ],
+      "failures": [],
+      "gate": "G1",
+      "name": "Business ownership continuity",
+      "releaseIdentity": "a6fa052fa097d1236503143385e17425acbcc439e08d19acc64751231a782dae",
+      "requirements": [],
+      "status": "BLOCKED"
+    },
+    "gate-2-overrides.json": {
+      "blockers": [
+        "Typed override coverage remains inventory-derived and requires contract-level execution evidence before PASS."
+      ],
+      "commands": [],
+      "evidence": [
+        "qa/mainnet-operational-inventory.json"
+      ],
+      "failures": [],
+      "gate": "G2",
+      "name": "Business-owner override plane",
+      "releaseIdentity": "a6fa052fa097d1236503143385e17425acbcc439e08d19acc64751231a782dae",
+      "requirements": [],
+      "status": "BLOCKED"
+    },
+    "gate-3-accounting.json": {
+      "blockers": [
+        "Exact on-chain accounting readback and canary enforcement evidence are absent."
+      ],
+      "commands": [],
+      "evidence": [
+        "qa/mainnet-operational-inventory.json"
+      ],
+      "failures": [],
+      "gate": "G3",
+      "name": "Accounting solvency and canary limits",
+      "releaseIdentity": "a6fa052fa097d1236503143385e17425acbcc439e08d19acc64751231a782dae",
+      "requirements": [],
+      "status": "BLOCKED"
+    },
+    "gate-4-lifecycle.json": {
+      "blockers": [
+        "Global lifecycle selector enforcement and migration/shutdown rehearsal evidence are absent."
+      ],
+      "commands": [],
+      "evidence": [
+        "qa/mainnet-operational-inventory.json"
+      ],
+      "failures": [],
+      "gate": "G4",
+      "name": "Lifecycle migration wind-down shutdown",
+      "releaseIdentity": "a6fa052fa097d1236503143385e17425acbcc439e08d19acc64751231a782dae",
+      "requirements": [],
+      "status": "BLOCKED"
+    },
+    "gate-5-assurance.json": {
+      "blockers": [
+        "One-million-action invariant campaign, secondary fuzz engine, mutation suite, independent build comparison, and real Mainnet fork RPC rehearsal are absent."
+      ],
+      "commands": [],
+      "evidence": [
+        "qa/mainnet-operational-inventory.json"
+      ],
+      "failures": [],
+      "gate": "G5",
+      "name": "Autonomous assurance",
+      "releaseIdentity": "a6fa052fa097d1236503143385e17425acbcc439e08d19acc64751231a782dae",
+      "requirements": [],
+      "status": "BLOCKED"
+    }
+  },
+  "releaseIdentity": "a6fa052fa097d1236503143385e17425acbcc439e08d19acc64751231a782dae",
+  "securityDocket": {
+    "blockers": [
+      "Mandatory assurance categories are not all represented by fresh passing evidence."
+    ],
+    "commands": [],
+    "releaseIdentity": "a6fa052fa097d1236503143385e17425acbcc439e08d19acc64751231a782dae",
+    "status": "BLOCKED"
+  },
+  "status": "BLOCKED"
+}

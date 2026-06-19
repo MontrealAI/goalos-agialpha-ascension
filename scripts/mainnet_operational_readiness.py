@@ -12,6 +12,9 @@ CONTRACTS = ROOT / "contracts"
 QA = ROOT / "qa"
 DOCS = ROOT / "docs"
 RUNBOOKS = DOCS / "runbooks"
+ARCHITECTURE = DOCS / "architecture"
+OPERATIONS = DOCS / "operations"
+MAINNET_READINESS = QA / "mainnet-readiness"
 RELEASE_ROOTS = (
     "contracts/",
     "scripts/",
@@ -28,12 +31,16 @@ RELEASE_ROOTS = (
 )
 GENERATED_PREFIXES = (
     "qa/mainnet-operational",
+    "qa/mainnet-readiness/",
+    "qa/monitoring-event-catalog.json",
     "qa/business-override-matrix.json",
     "qa/funds-and-liabilities-inventory.json",
     "qa/lifecycle-selector-policy.json",
     "qa/controlled-mainnet-canary-template.json",
     "qa/mainnet-production-readiness-dossier.json",
     "docs/MAINNET_OPERATIONAL_GAP_MATRIX.md",
+    "docs/architecture/",
+    "docs/operations/",
     "docs/BUSINESS_OVERRIDE_MATRIX.md",
     "docs/FUNDS_AND_LIABILITIES_MODEL.md",
     "docs/LIFECYCLE_SELECTOR_POLICY.md",
@@ -308,6 +315,9 @@ def generate():
     QA.mkdir(exist_ok=True)
     DOCS.mkdir(exist_ok=True)
     RUNBOOKS.mkdir(parents=True, exist_ok=True)
+    ARCHITECTURE.mkdir(parents=True, exist_ok=True)
+    OPERATIONS.mkdir(parents=True, exist_ok=True)
+    MAINNET_READINESS.mkdir(parents=True, exist_ok=True)
     inv = contracts()
     source_hash = tracked_source_tree_hash()
     inventory = {
@@ -317,6 +327,7 @@ def generate():
         "contracts": inv,
     }
     write_json(QA / "mainnet-operational-inventory.json", inventory)
+    write_json(MAINNET_READINESS / "system-inventory.json", inventory)
     gates = []
     for i, name in enumerate([
         "Ownership continuity",
@@ -353,6 +364,12 @@ def generate():
     write_md(DOCS / "MAINNET_OPERATIONAL_GAP_MATRIX.md", "Mainnet Operational Gap Matrix", [
         f'- Gate {g["gate"]}: **{g["status"]}** — {g["name"]}. {g["claim"]}' for g in gates
     ])
+    write_md(ARCHITECTURE / "CONTRACT_AUTHORITY_INVENTORY.md", "Contract Authority Inventory", [
+        f'- `{c["contract"]}` (`{c["path"]}`): roles={", ".join(c["roles"]) or "none"}; mutating selectors={len(c["stateChangingSelectors"])}; assetHolding={c["assetHolding"]}.' for c in inv
+    ])
+    write_md(ARCHITECTURE / "STATE_MACHINE_INVENTORY.md", "State Machine Inventory", [
+        f'- `{c["contract"]}` (`{c["path"]}`): workflow={c["workflow"]}; selector classifications={", ".join(sorted(set(f["classification"] for f in c["stateChangingSelectors"]))) or "none"}.' for c in inv
+    ])
     overrides = [{
         "contract": c["contract"],
         "path": c["path"],
@@ -361,9 +378,9 @@ def generate():
         "testCoverage": "BLOCKED until contract-specific tests are complete",
     } for c in inv if c["workflow"]]
     write_json(QA / "business-override-matrix.json", {"entries": overrides})
-    write_md(DOCS / "BUSINESS_OVERRIDE_MATRIX.md", "Business Override Matrix", [
-        f'- `{e["contract"]}` (`{e["path"]}`): {e["ownerRecoveryAction"]}' for e in overrides
-    ])
+    override_lines = [f'- `{e["contract"]}` (`{e["path"]}`): {e["ownerRecoveryAction"]}' for e in overrides]
+    write_md(DOCS / "BUSINESS_OVERRIDE_MATRIX.md", "Business Override Matrix", override_lines)
+    write_md(OPERATIONS / "BUSINESS_OVERRIDE_MATRIX.md", "Business Override Matrix", override_lines)
     funds = [{
         "contract": c["contract"],
         "path": c["path"],
@@ -375,11 +392,13 @@ def generate():
         "entries": funds,
         "invariant": "actualBalance >= protectedLiability + requiredReservations + pendingWithdrawals",
     })
-    write_md(DOCS / "FUNDS_AND_LIABILITIES_MODEL.md", "Funds and Liabilities Model", [
+    funds_lines = [
         "Per-token accounting is required; unlike tokens must not be value-aggregated.",
         "",
         *[f'- `{e["contract"]}`: {e["accountingStatus"]} ({e["assetHoldingEvidence"]})' for e in funds],
-    ])
+    ]
+    write_md(DOCS / "FUNDS_AND_LIABILITIES_MODEL.md", "Funds and Liabilities Model", funds_lines)
+    write_md(ARCHITECTURE / "FUNDS_AND_LIABILITIES_INVENTORY.md", "Funds and Liabilities Inventory", funds_lines)
     selector = {
         "sourceTreeHash": source_hash,
         "coverageStatus": "PASS" if not unclassified else "BLOCKED",
@@ -417,6 +436,56 @@ def generate():
         {"name": "authority policy validation", "command": "npm run authority:policy:validate", "status": "REQUIRED_NOT_RUN_BY_GENERATOR"},
     ]
     release_dirty_paths = release_relevant_dirty_paths()
+    release_identity = {
+        "schemaVersion": "1.0",
+        "commit": "RESOLVED_BY_GIT_CHECKOUT_AT_VALIDATION",
+        "branch": sh(["git", "branch", "--show-current"]),
+        "commitBindingMode": "self-referential committed evidence uses sourceTreeHash; validators resolve the current git commit at runtime",
+        "sourceTreeHash": source_hash,
+        "dependencyLockHash": sha_bytes((ROOT / "package-lock.json").read_bytes()) if (ROOT / "package-lock.json").exists() else None,
+        "mainnetDeployed": "NO",
+        "mainnetVerified": "NO",
+        "liveOwnerHandoffComplete": "NO",
+        "liveCanaryComplete": "NO",
+    }
+    write_json(MAINNET_READINESS / "release-identity.json", release_identity)
+    def gate_report(gate, name, blockers):
+        return {
+            "gate": gate,
+            "name": name,
+            "status": "BLOCKED" if blockers else "PASS",
+            "releaseIdentity": source_hash,
+            "requirements": [],
+            "evidence": ["qa/mainnet-operational-inventory.json"],
+            "commands": [],
+            "failures": [],
+            "blockers": blockers,
+        }
+    gate_reports = {
+        "gate-1-authority.json": gate_report("G1", "Business ownership continuity", ["Live/fork Phase A/B authority readback and private Safe/EOA commitment are absent."]),
+        "gate-2-overrides.json": gate_report("G2", "Business-owner override plane", ["Typed override coverage remains inventory-derived and requires contract-level execution evidence before PASS."]),
+        "gate-3-accounting.json": gate_report("G3", "Accounting solvency and canary limits", ["Exact on-chain accounting readback and canary enforcement evidence are absent."]),
+        "gate-4-lifecycle.json": gate_report("G4", "Lifecycle migration wind-down shutdown", ["Global lifecycle selector enforcement and migration/shutdown rehearsal evidence are absent."]),
+        "gate-5-assurance.json": gate_report("G5", "Autonomous assurance", ["One-million-action invariant campaign, secondary fuzz engine, mutation suite, independent build comparison, and real Mainnet fork RPC rehearsal are absent."]),
+    }
+    for filename, report in gate_reports.items():
+        write_json(MAINNET_READINESS / filename, report)
+    fork_rehearsal = {"status": "BLOCKED", "releaseIdentity": source_hash, "blockers": ["No live Ethereum Mainnet fork RPC/block rehearsal evidence supplied."], "mainnetBroadcastOccurred": False}
+    security_docket = {"status": "BLOCKED", "releaseIdentity": source_hash, "blockers": ["Mandatory assurance categories are not all represented by fresh passing evidence."], "commands": []}
+    production_readiness = {"status": "BLOCKED", "releaseIdentity": source_hash, "gates": gate_reports, "forkRehearsal": fork_rehearsal, "securityDocket": security_docket, "MAINNET_DEPLOYED": "NO", "MAINNET_VERIFIED": "NO", "LIVE_OWNER_HANDOFF_COMPLETE": "NO", "LIVE_CANARY_COMPLETE": "NO"}
+    authorization_certificate = {"status": "BLOCKED", "releaseIdentity": source_hash, "authorization": "NOT_AUTHORIZED", "blockers": [b for r in gate_reports.values() for b in r["blockers"]], "mainnetBroadcastOccurred": False}
+    write_json(MAINNET_READINESS / "fork-rehearsal.json", fork_rehearsal)
+    write_json(MAINNET_READINESS / "security-docket.json", security_docket)
+    write_json(MAINNET_READINESS / "production-readiness.json", production_readiness)
+    write_json(MAINNET_READINESS / "authorization-certificate.json", authorization_certificate)
+    write_md(OPERATIONS / "MONITORING_SPECIFICATION.md", "Monitoring Specification", [
+        "Vendor-neutral alerts must watch ownership events, role changes, overrides, lifecycle transitions, treasury rotation, transfers, liability/free-balance changes, solvency deviations, blocked duplicate settlement attempts, failed transfers, migration, shutdown, pending ownership, code/configuration mismatch, RPC divergence, and invariant/accounting sentinel failure.",
+    ])
+    write_md(OPERATIONS / "INCIDENT_RESPONSE.md", "Incident Response", [
+        "Use Owner-only typed recovery paths; preserve evidence hashes; avoid Mainnet broadcast from CI; never withdraw protected liabilities as free funds; keep MAINNET_DEPLOYED/VERIFIED as NO until chain-1 evidence exists.",
+    ])
+    write_json(QA / "monitoring-event-catalog.json", {"schemaVersion":"1.0","events":["OwnershipTransferStarted","OwnershipTransferAccepted","RoleGranted","RoleRevoked","BusinessOverrideExecuted","LifecycleTransition","SolvencyDeviation","MigrationStarted","MigrationRolledBack","ShutdownRequested","ShutdownFinalized"],"vendor":"neutral"})
+
     dossier = {
         "status": "BLOCKED",
         "reason": "Fail-closed dossier: mandatory live/private fork RPC, independent build comparison, symbolic execution, critical mutation, and exact Mainnet-fork evidence must be supplied before PASS. No Mainnet broadcast evidence is present or claimed.",
@@ -434,6 +503,9 @@ def generate():
             "qa/funds-and-liabilities-inventory.json",
             "qa/lifecycle-selector-policy.json",
             "qa/controlled-mainnet-canary-template.json",
+            "qa/mainnet-readiness/release-identity.json",
+            "qa/mainnet-readiness/production-readiness.json",
+            "qa/mainnet-readiness/authorization-certificate.json",
         ],
     }
     write_json(QA / "mainnet-production-readiness-dossier.json", dossier)
