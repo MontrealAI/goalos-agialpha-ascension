@@ -58,8 +58,16 @@ function sha256(buf: Buffer | string): string {
   return "0x" + crypto.createHash("sha256").update(buf).digest("hex");
 }
 
+function sortForJson(value: unknown): unknown {
+  if (Array.isArray(value)) return value.map(sortForJson);
+  if (value && typeof value === "object") {
+    return Object.fromEntries(Object.entries(value as Record<string, unknown>).sort(([a], [b]) => a.localeCompare(b)).map(([k, v]) => [k, sortForJson(v)]));
+  }
+  return value;
+}
+
 function canonicalJson(data: unknown): string {
-  return JSON.stringify(data, Object.keys(data as Record<string, unknown>).sort());
+  return JSON.stringify(sortForJson(data));
 }
 
 function planHash(plan: Record<string, unknown>): string {
@@ -671,7 +679,7 @@ async function accept(label: string): Promise<void> {
   }
   if (notReadyEntries.length) throw new Error(`Ownership acceptance blocked; contracts are not pending to final owner: ${notReadyEntries.join(",")}`);
   const finalOwnerCode = await ethers.provider.getCode(finalOwner);
-  if (finalOwnerCode !== "0x" && ethers.getAddress(connectedSigner.address) !== finalOwner) {
+  if (finalOwnerCode !== "0x" && ethers.getAddress(connectedSigner.address) !== finalOwner && hre.network.name !== "hardhat") {
     writeSafeAcceptancePlan(label, finalOwner, loadedPlan, pendingEntries);
     console.log(`PASS wrote Safe ownership acceptance plan for ${pendingEntries.length} pending contracts`);
     return;

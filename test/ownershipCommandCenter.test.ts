@@ -101,6 +101,14 @@ describe("ownership command-center safety gates", function () {
     const source = require("fs").readFileSync("scripts/ownership/goalos-ownership-command-center.ts", "utf8");
     expect(source).to.include("postOwner !== finalOwner && postPending !== finalOwner");
     expect(source).to.include("Ownership acceptance blocked; contracts are not pending to final owner");
+    expect(source).to.include('hre.network.name !== "hardhat"');
+  });
+
+  it("hashes nested Safe acceptance calldata deterministically", function () {
+    const source = require("fs").readFileSync("scripts/ownership/goalos-ownership-command-center.ts", "utf8");
+    expect(source).to.include("function sortForJson");
+    expect(source).to.include("Array.isArray(value)");
+    expect(source).to.include("sortForJson(v)");
   });
 
   it("allows acceptance validation to use the original expired initiation plan", function () {

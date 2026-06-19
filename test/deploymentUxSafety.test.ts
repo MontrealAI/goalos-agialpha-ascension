@@ -302,6 +302,12 @@ describe("deployment UX safety layer", function () {
     expect(pkg.scripts["configure:mainnet:verify"]).to.include("mainnet:configure-verify");
   });
 
+  it("keeps authority baseline reproducible instead of stamping a provisional HEAD", function () {
+    const source = fs.readFileSync("scripts/authority-inventory.ts", "utf8");
+    expect(source).to.include("TRACKED_BASELINE_SOURCE_HASH_BOUND");
+    expect(source).not.to.include("git rev-parse HEAD");
+  });
+
   it("requires explicit Mainnet governance-owner kind before runtime address loading", function () {
     const source = fs.readFileSync("scripts/validate-runtime-addresses.ts", "utf8");
     expect(source).to.include("GOVERNANCE_OWNER_KIND must be SAFE or LEDGER_EOA");
