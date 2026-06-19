@@ -121,11 +121,15 @@ def write_normalized(path:pathlib.Path, tool:str, command:str, exit_status:int, 
 
 def write_summary(report_dir:pathlib.Path, normalized:list[dict], triage_errors:list[str]) -> dict:
     by_fp={}; tool_failures=[]; unavailable=[]
+    current_source_sha = source_sha()
     for result in normalized:
         tool=result.get("tool")
         status=result.get("status")
+        result_source_sha = result.get('sourceSha')
         if tool in MANDATORY and status not in {"COMPLETED", "COMPLETED_WITH_FINDINGS"}:
             tool_failures.append({"tool":tool,"status":status})
+        if result.get('schemaVersion') == '2.0' and tool and result_source_sha != current_source_sha:
+            tool_failures.append({"tool":tool,"status":"STALE_SOURCE_SHA","sourceSha":result_source_sha,"currentSourceSha":current_source_sha})
         for f in result.get("findings", []):
             fp=f.get("fingerprint") or stable_fingerprint(tool, f.get("id",""), f.get("packageOrContract",""), f.get("installedVersion",""), f.get("dependencyPath",""), f.get("file",""), f.get("line"))
             if fp in by_fp:
@@ -135,7 +139,7 @@ def write_summary(report_dir:pathlib.Path, normalized:list[dict], triage_errors:
     unresolved=[f for f in by_fp.values() if f.get("severity") in SEVERITIES and f.get("status") == "unresolved"]
     evidence={p.name: sha_file(p) for p in sorted(report_dir.glob("*.json")) if p.name != "audit-summary.json"}
     decision="PASS" if not unresolved and not tool_failures and not triage_errors else "BLOCKED"
-    summary={"schemaVersion":"2.0","sourceSha":source_sha(),"lockfileHash":lock_hash(),"decision":decision,"criticalHighUnresolved":len(unresolved),"unresolvedFindings":unresolved,"toolFailures":tool_failures,"unavailableMandatoryTools":unavailable,"triageErrors":triage_errors,"evidenceHashes":evidence,"runDirectory":str(report_dir),"generatedAt":utc()}
+    summary={"schemaVersion":"2.0","sourceSha":current_source_sha,"lockfileHash":lock_hash(),"decision":decision,"criticalHighUnresolved":len(unresolved),"unresolvedFindings":unresolved,"toolFailures":tool_failures,"unavailableMandatoryTools":unavailable,"triageErrors":triage_errors,"evidenceHashes":evidence,"runDirectory":str(report_dir),"generatedAt":utc()}
     (report_dir/"audit-summary.json").write_text(json.dumps(summary, indent=2, sort_keys=True)+"\n")
     md=["# Audit Summary", "", f"Decision: **{decision}**", f"Critical/high unresolved: **{len(unresolved)}**", "", "## Unresolved findings"]
     md += [f"- {f['id']} | {f['packageOrContract']} | {f['severity']} | {f.get('dependencyPath','')}" for f in unresolved] or ["- None"]

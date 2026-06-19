@@ -5,6 +5,9 @@ SUM=ROOT/'scripts/audit/summarize-audit-results.py'
 
 class AuditPipelineTests(unittest.TestCase):
     def write_summary(self,d,obj):
+        obj=dict(obj)
+        obj.setdefault('sourceSha', subprocess.check_output(['git','rev-parse','HEAD'], cwd=ROOT, text=True).strip())
+        obj.setdefault('runDirectory', str(pathlib.Path(d).resolve()))
         p=pathlib.Path(d)/'audit-summary.json'; p.write_text(json.dumps(obj)); return p
     def run_fail(self,p):
         return subprocess.run(['python',str(FAIL),str(p)],cwd=ROOT,text=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
@@ -81,9 +84,10 @@ class AuditPipelineTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as d:
             rd=pathlib.Path(d)
             finding={'fingerprint':'findings-exit','id':'GHSA-x','tool':'npm-audit','severity':'high','status':'unresolved','packageOrContract':'pkg','installedVersion':'1','dependencyPath':'p'}
-            (rd/'npm-audit.json').write_text(json.dumps({'schemaVersion':'2.0','tool':'npm-audit','status':'COMPLETED_WITH_FINDINGS','exitStatus':1,'findings':[finding],'criticalHighUnresolved':1}))
+            current_sha=subprocess.check_output(['git','rev-parse','HEAD'], cwd=ROOT, text=True).strip()
+            (rd/'npm-audit.json').write_text(json.dumps({'schemaVersion':'2.0','tool':'npm-audit','sourceSha':current_sha,'status':'COMPLETED_WITH_FINDINGS','exitStatus':1,'findings':[finding],'criticalHighUnresolved':1}))
             for tool in ['slither','semgrep','solhint','osv-scanner','actionlint','shellcheck','gitleaks']:
-                (rd/f'{tool}.json').write_text(json.dumps({'schemaVersion':'2.0','tool':tool,'status':'COMPLETED','exitStatus':0,'findings':[],'criticalHighUnresolved':0}))
+                (rd/f'{tool}.json').write_text(json.dumps({'schemaVersion':'2.0','tool':tool,'sourceSha':current_sha,'status':'COMPLETED','exitStatus':0,'findings':[],'criticalHighUnresolved':0}))
             subprocess.run(['python',str(SUM),str(rd)],cwd=ROOT,check=True,stdout=subprocess.PIPE)
             summary=json.loads((rd/'audit-summary.json').read_text())
             self.assertEqual(summary['toolFailures'],[])
@@ -93,6 +97,17 @@ class AuditPipelineTests(unittest.TestCase):
             obj=self.base(); obj['sourceSha']='not-current'
             p=self.write_summary(d,obj)
             r=self.run_fail(p); self.assertEqual(r.returncode,2); self.assertIn('STALE', r.stdout)
+    def test_stale_scanner_evidence_blocks_even_when_summary_sha_is_current(self):
+        with tempfile.TemporaryDirectory() as d:
+            rd=pathlib.Path(d)
+            (rd/'npm-audit.json').write_text(json.dumps({'schemaVersion':'2.0','tool':'npm-audit','sourceSha':'old-sha','status':'COMPLETED','findings':[],'criticalHighUnresolved':0}))
+            p=self.write_summary(d,self.base())
+            r=self.run_fail(p); self.assertEqual(r.returncode,2); self.assertIn('BLOCKED_STALE_SCANNER_EVIDENCE', r.stdout)
+    def test_summary_requires_run_directory(self):
+        with tempfile.TemporaryDirectory() as d:
+            obj=self.base(); obj['sourceSha']=subprocess.check_output(['git','rev-parse','HEAD'], cwd=ROOT, text=True).strip(); obj['runDirectory']=''
+            p=pathlib.Path(d)/'audit-summary.json'; p.write_text(json.dumps(obj))
+            r=self.run_fail(p); self.assertEqual(r.returncode,2); self.assertIn('runDirectory', r.stdout)
     def test_run_directory_mixing_blocks(self):
         with tempfile.TemporaryDirectory() as d:
             obj=self.base(); obj['runDirectory']='different-dir'

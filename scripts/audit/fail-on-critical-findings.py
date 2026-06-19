@@ -17,7 +17,7 @@ def main():
     try: data=json.loads(path.read_text())
     except Exception as exc:
         emit(json.dumps({'status':'BLOCKED_EVIDENCE_MALFORMED','summaryPath':str(path),'error':str(exc)}, indent=2)); return 2
-    required=['schemaVersion','decision','criticalHighUnresolved','unresolvedFindings','toolFailures','unavailableMandatoryTools']
+    required=['schemaVersion','decision','criticalHighUnresolved','unresolvedFindings','toolFailures','unavailableMandatoryTools','runDirectory','sourceSha']
     missing=[k for k in required if k not in data]
     if data.get('schemaVersion') != '2.0' or missing:
         emit(json.dumps({'status':'BLOCKED_EVIDENCE_INVALID','summaryPath':str(path),'missing':missing}, indent=2)); return 2
@@ -29,7 +29,9 @@ def main():
         emit(json.dumps({'status':'BLOCKED_INTERNAL_INCONSISTENCY','summaryPath':str(path),'declared':data.get('criticalHighUnresolved'),'derived':derived}, indent=2)); return 2
     summary_dir = path.parent.resolve()
     run_dir = data.get('runDirectory')
-    if run_dir and (pathlib.Path(run_dir).resolve() != summary_dir and (pathlib.Path.cwd()/run_dir).resolve() != summary_dir):
+    if not run_dir:
+        emit(json.dumps({'status':'BLOCKED_EVIDENCE_INVALID','summaryPath':str(path),'missing':['runDirectory']}, indent=2)); return 2
+    if pathlib.Path(run_dir).resolve() != summary_dir and (pathlib.Path.cwd()/run_dir).resolve() != summary_dir:
         emit(json.dumps({'status':'BLOCKED_RUN_DIRECTORY_MISMATCH','summaryPath':str(path),'runDirectory':run_dir}, indent=2)); return 2
     source_sha = data.get('sourceSha')
     try:
@@ -38,6 +40,24 @@ def main():
         current_sha = None
     if source_sha and current_sha and source_sha != current_sha:
         emit(json.dumps({'status':'BLOCKED_STALE_AUDIT_SUMMARY','summaryPath':str(path),'summarySourceSha':source_sha,'currentSourceSha':current_sha}, indent=2)); return 2
+    stale_evidence = []
+    for evidence_path in sorted(summary_dir.glob('*.json')):
+        if evidence_path.name == 'audit-summary.json' or evidence_path.name.endswith('.raw.json'):
+            continue
+        try:
+            evidence = json.loads(evidence_path.read_text())
+        except Exception as exc:
+            stale_evidence.append({'path': str(evidence_path), 'reason': f'malformed evidence JSON: {exc}'})
+            continue
+        if evidence.get('schemaVersion') != '2.0' or not evidence.get('tool'):
+            continue
+        evidence_sha = evidence.get('sourceSha')
+        if not evidence_sha:
+            stale_evidence.append({'path': str(evidence_path), 'tool': evidence.get('tool'), 'reason': 'missing sourceSha'})
+        elif current_sha and evidence_sha != current_sha:
+            stale_evidence.append({'path': str(evidence_path), 'tool': evidence.get('tool'), 'evidenceSourceSha': evidence_sha, 'currentSourceSha': current_sha})
+    if stale_evidence:
+        emit(json.dumps({'status':'BLOCKED_STALE_SCANNER_EVIDENCE','summaryPath':str(path),'staleEvidence':stale_evidence}, indent=2)); return 2
     if data.get('toolFailures') or data.get('unavailableMandatoryTools') or data.get('triageErrors'):
         emit('BLOCKED: mandatory scanner/triage failure')
         emit(json.dumps({'summaryPath':str(path),'toolFailures':data.get('toolFailures',[]),'unavailableMandatoryTools':data.get('unavailableMandatoryTools',[]),'triageErrors':data.get('triageErrors',[])}, indent=2)); return 2
