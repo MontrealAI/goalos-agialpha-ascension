@@ -15,13 +15,13 @@ for tool in expected:
             if data.get('schemaVersion') == '2.0':
                 normalized.append(data)
             else:
-                # Legacy wrapper output: convert status/count without inventing pass.
-                status=str(data.get('status','COMPLETED'))
+                # Legacy scanner output has no sourceSha/run provenance, so it cannot be restamped as current evidence.
+                status=str(data.get('status','LEGACY_WITHOUT_PROVENANCE'))
                 count=int(data.get('critical_high_unresolved',0) or 0) if isinstance(data,dict) else 0
                 findings=[]
-                for i in range(count):
-                    findings.append({'fingerprint':f'{tool}-legacy-{i}','id':f'{tool.upper()}-LEGACY-{i+1}','tool':tool,'severity':'high','status':'unresolved','title':f'{tool} legacy unresolved critical/high finding','packageOrContract':tool,'installedVersion':'','fixedVersion':'','dependencyPath':'','file':str(path),'line':None,'description':'Legacy wrapper exposed only aggregate count.','evidence':[str(path)],'triageRef':''})
-                normalized.append(write_normalized(path, tool, data.get('command','legacy wrapper'), int(data.get('exitStatus',0) or 0), findings, [str(path)], 'COMPLETED_WITH_FINDINGS' if findings else status))
+                for i in range(max(count, 1)):
+                    findings.append({'fingerprint':f'{tool}-legacy-provenance-{i}','id':f'{tool.upper()}-LEGACY_WITHOUT_PROVENANCE','tool':tool,'severity':'high','status':'unresolved','title':f'{tool} legacy output lacks sourceSha provenance','packageOrContract':tool,'installedVersion':'','fixedVersion':'','dependencyPath':'','file':str(path),'line':None,'description':'Legacy wrapper output cannot prove it was generated for the current source SHA; rerun a schemaVersion 2.0 wrapper.','evidence':[str(path)],'triageRef':''})
+                normalized.append(write_normalized(path, tool, data.get('command','legacy wrapper'), int(data.get('exitStatus',2) or 2), findings, [str(path)], 'LEGACY_WITHOUT_PROVENANCE'))
         except Exception as exc:
             normalized.append(write_normalized(path, tool, 'parse existing scanner output', 2, [{'fingerprint':f'{tool}-malformed','id':'MALFORMED_SCANNER_OUTPUT','tool':tool,'severity':'high','status':'unresolved','title':f'{tool} output malformed','packageOrContract':tool,'installedVersion':'','fixedVersion':'','dependencyPath':'','file':str(path),'line':None,'description':str(exc),'evidence':[str(path)],'triageRef':''}], [str(path)], 'MALFORMED'))
     else:

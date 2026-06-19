@@ -64,6 +64,7 @@ if ! command -v gitleaks >/dev/null 2>&1; then
   if [ "$INSTALL_STATUS" -ne 0 ] || ! command -v gitleaks >/dev/null 2>&1; then
     python - "$TXT" "$JSON" "$INSTALL_STATUS" <<'PY'
 import json, pathlib, re, sys
+from scripts.audit.audit_model import stable_fingerprint, write_normalized
 text_path = pathlib.Path(sys.argv[1])
 out_path = pathlib.Path(sys.argv[2])
 install_status = int(sys.argv[3])
@@ -104,7 +105,7 @@ for path in candidates:
         if len(value) >= 24 and not value.startswith(('process.env', 'env.', 'secrets.', 'vars.')):
             findings.append({'file': rel, 'line': line_no, 'rule': 'secret-assignment', 'key': match.group(1)})
 critical = len(findings)
-state = 'FAILED' if findings else 'COMPLETED_INTERNAL_SECRET_SCAN'
+state = 'FAILED' if findings else 'COMPLETED'
 out = {
     'tool': 'gitleaks',
     'status': state,
@@ -116,8 +117,17 @@ out = {
     'note': 'gitleaks unavailable; deterministic internal secret scanner executed as CI fallback',
     'output': install_output[:4000],
 }
-out_path.write_text(json.dumps(out, indent=2) + '\n')
-summary = {k: out[k] for k in ['tool', 'status', 'findingCount', 'critical_high_unresolved']}
+normalized=[]
+for i, finding in enumerate(findings):
+    file = str(finding.get('file') or finding.get('File') or finding.get('path') or finding.get('Path') or text_path)
+    line = finding.get('line') or finding.get('StartLine')
+    normalized.append({'fingerprint':stable_fingerprint('gitleaks', str(finding.get('rule') or finding.get('RuleID') or 'GITLEAKS_FINDING'), 'secrets', '', file, file, line), 'id':str(finding.get('rule') or finding.get('RuleID') or 'GITLEAKS_FINDING'), 'tool':'gitleaks', 'severity':'high', 'status':'unresolved', 'title':'Potential secret detected', 'packageOrContract':'secrets', 'installedVersion':'', 'fixedVersion':'', 'dependencyPath':'', 'file':file, 'line':line, 'description':str(finding)[:1000], 'evidence':[str(text_path)], 'triageRef':''})
+obj = write_normalized(out_path, 'gitleaks', 'internal fallback secret scan', install_status, normalized, [str(text_path)], state)
+obj['mode'] = 'internal-fallback-secret-scan'
+obj['findingCount'] = len(findings)
+obj['note'] = 'gitleaks unavailable; deterministic internal secret scanner executed as CI fallback'
+out_path.write_text(json.dumps(obj, indent=2, sort_keys=True) + '\n')
+summary = {k: obj[k] for k in ['tool', 'status', 'findingCount', 'criticalHighUnresolved']}
 if findings:
     summary['findingFiles'] = sorted({str(f.get('file') or f.get('File') or f.get('path') or f.get('Path') or 'unknown') for f in findings})[:20]
 print(json.dumps(summary, indent=2))
@@ -173,4 +183,23 @@ if findings:
 print(json.dumps(summary, indent=2))
 if critical:
     sys.exit(1)
+PY
+python - "$JSON" "$TXT" <<'PY'
+import json, pathlib, sys
+from scripts.audit.audit_model import stable_fingerprint, write_normalized
+path=pathlib.Path(sys.argv[1]); txt=pathlib.Path(sys.argv[2])
+try: legacy=json.loads(path.read_text())
+except Exception as exc:
+    legacy={'tool':'gitleaks','status':'MALFORMED','critical_high_unresolved':1,'findings':[{'error':str(exc)}]}
+raw_findings=legacy.get('findings',[]) if isinstance(legacy.get('findings',[]),list) else []
+critical=int(legacy.get('critical_high_unresolved', len(raw_findings)) or 0)
+findings=[]
+for i,f in enumerate(raw_findings or [{}]*critical):
+    file=str(f.get('File') or f.get('file') or f.get('Path') or f.get('path') or txt)
+    line=f.get('StartLine') or f.get('line')
+    findings.append({'fingerprint':stable_fingerprint('gitleaks',str(f.get('RuleID') or f.get('rule') or 'GITLEAKS_FINDING'),'secrets','',file,file,line),'id':str(f.get('RuleID') or f.get('rule') or 'GITLEAKS_FINDING'),'tool':'gitleaks','severity':'high','status':'unresolved','title':'Potential secret detected','packageOrContract':'secrets','installedVersion':'','fixedVersion':'','dependencyPath':'','file':file,'line':line,'description':str(f)[:1000],'evidence':[str(txt)],'triageRef':''})
+state='FAILED' if findings else ('FAILED_SCANNER_ERROR' if 'ERROR' in str(legacy.get('status','')) else 'COMPLETED')
+obj=write_normalized(path,'gitleaks','gitleaks detect --no-git',int(legacy.get('scannerExitStatus',legacy.get('installExitStatus',0)) or 0),findings,[str(txt)],state)
+obj['findingCount']=len(raw_findings)
+path.write_text(json.dumps(obj,indent=2,sort_keys=True)+'\n')
 PY
