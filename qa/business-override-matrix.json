@@ -181,7 +181,7 @@
       "testCoverage": "BLOCKED until contract-specific tests are complete"
     },
     {
-      "contract": "IAEPEvaluatorStakingRegistry",
+      "contract": "AEPSlashingCourt",
       "evidence": [
         "source inventory"
       ],
@@ -340,6 +340,15 @@
       ],
       "ownerRecoveryAction": "See classified selectors; add typed owner override before PASS if no recovery selector exists for a nonterminal state.",
       "path": "contracts/registry/ProofCardRegistry.sol",
+      "testCoverage": "BLOCKED until contract-specific tests are complete"
+    },
+    {
+      "contract": "ProofCredentialRegistry",
+      "evidence": [
+        "source inventory"
+      ],
+      "ownerRecoveryAction": "See classified selectors; add typed owner override before PASS if no recovery selector exists for a nonterminal state.",
+      "path": "contracts/registry/ProofCredentialRegistry.sol",
       "testCoverage": "BLOCKED until contract-specific tests are complete"
     },
     {

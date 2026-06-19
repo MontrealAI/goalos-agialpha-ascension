@@ -1,9 +1,8 @@
 {
-  "baselineSha": "ef6b47108d928b22b24d5a0c127e76991c3ea425",
-  "cleanTree": false,
   "contracts": [
     {
       "assetHolding": false,
+      "assetHoldingEvidence": "none detected",
       "contract": "GoalOSAccessControl",
       "path": "contracts/access/GoalOSAccessControl.sol",
       "roles": [
@@ -61,6 +60,7 @@
     },
     {
       "assetHolding": false,
+      "assetHoldingEvidence": "none detected",
       "contract": "AEPAgentRegistry",
       "path": "contracts/aep/AEPAgentRegistry.sol",
       "roles": [],
@@ -81,6 +81,7 @@
     },
     {
       "assetHolding": false,
+      "assetHoldingEvidence": "none detected",
       "contract": "AEPArtifactRegistry",
       "path": "contracts/aep/AEPArtifactRegistry.sol",
       "roles": [],
@@ -101,6 +102,7 @@
     },
     {
       "assetHolding": false,
+      "assetHoldingEvidence": "none detected",
       "contract": "AEPAttestationRegistry",
       "path": "contracts/aep/AEPAttestationRegistry.sol",
       "roles": [],
@@ -121,6 +123,7 @@
     },
     {
       "assetHolding": false,
+      "assetHoldingEvidence": "none detected",
       "contract": "AEPChronicleRegistry",
       "path": "contracts/aep/AEPChronicleRegistry.sol",
       "roles": [],
@@ -136,6 +139,7 @@
     },
     {
       "assetHolding": false,
+      "assetHoldingEvidence": "none detected",
       "contract": "AEPClaimBoundaryRegistry",
       "path": "contracts/aep/AEPClaimBoundaryRegistry.sol",
       "roles": [],
@@ -156,6 +160,7 @@
     },
     {
       "assetHolding": false,
+      "assetHoldingEvidence": "none detected",
       "contract": "AEPCommitRevealValidationRegistry",
       "path": "contracts/aep/AEPCommitRevealValidationRegistry.sol",
       "roles": [],
@@ -196,6 +201,7 @@
     },
     {
       "assetHolding": false,
+      "assetHoldingEvidence": "none detected",
       "contract": "AEPConformanceRegistry",
       "path": "contracts/aep/AEPConformanceRegistry.sol",
       "roles": [],
@@ -216,6 +222,7 @@
     },
     {
       "assetHolding": false,
+      "assetHoldingEvidence": "none detected",
       "contract": "AEPEvalRegistry",
       "path": "contracts/aep/AEPEvalRegistry.sol",
       "roles": [],
@@ -235,7 +242,8 @@
       "workflow": true
     },
     {
-      "assetHolding": false,
+      "assetHolding": true,
+      "assetHoldingEvidence": "token/native inbound flow or asset-bearing name",
       "contract": "AEPEvaluatorStakingRegistry",
       "path": "contracts/aep/AEPEvaluatorStakingRegistry.sol",
       "roles": [],
@@ -281,6 +289,7 @@
     },
     {
       "assetHolding": false,
+      "assetHoldingEvidence": "none detected",
       "contract": "AEPEvidenceDocketRegistry",
       "path": "contracts/aep/AEPEvidenceDocketRegistry.sol",
       "roles": [],
@@ -301,6 +310,7 @@
     },
     {
       "assetHolding": false,
+      "assetHoldingEvidence": "none detected",
       "contract": "AEPFalsificationRegistry",
       "path": "contracts/aep/AEPFalsificationRegistry.sol",
       "roles": [],
@@ -321,6 +331,7 @@
     },
     {
       "assetHolding": false,
+      "assetHoldingEvidence": "none detected",
       "contract": "AEPGoalOSCommitRegistry",
       "path": "contracts/aep/AEPGoalOSCommitRegistry.sol",
       "roles": [],
@@ -346,6 +357,7 @@
     },
     {
       "assetHolding": false,
+      "assetHoldingEvidence": "none detected",
       "contract": "AEPProofBundleRegistry",
       "path": "contracts/aep/AEPProofBundleRegistry.sol",
       "roles": [],
@@ -361,6 +373,7 @@
     },
     {
       "assetHolding": false,
+      "assetHoldingEvidence": "none detected",
       "contract": "AEPProofLedger",
       "path": "contracts/aep/AEPProofLedger.sol",
       "roles": [],
@@ -376,6 +389,7 @@
     },
     {
       "assetHolding": false,
+      "assetHoldingEvidence": "none detected",
       "contract": "AEPReplayRegistry",
       "path": "contracts/aep/AEPReplayRegistry.sol",
       "roles": [],
@@ -391,6 +405,7 @@
     },
     {
       "assetHolding": true,
+      "assetHoldingEvidence": "token/native inbound flow or asset-bearing name",
       "contract": "AEPRewardVault",
       "path": "contracts/aep/AEPRewardVault.sol",
       "roles": [],
@@ -411,6 +426,7 @@
     },
     {
       "assetHolding": false,
+      "assetHoldingEvidence": "none detected",
       "contract": "AEPRollbackRegistry",
       "path": "contracts/aep/AEPRollbackRegistry.sol",
       "roles": [],
@@ -426,6 +442,7 @@
     },
     {
       "assetHolding": true,
+      "assetHoldingEvidence": "token/native inbound flow or asset-bearing name",
       "contract": "AEPRolloutRouter",
       "path": "contracts/aep/AEPRolloutRouter.sol",
       "roles": [],
@@ -446,6 +463,7 @@
     },
     {
       "assetHolding": false,
+      "assetHoldingEvidence": "none detected",
       "contract": "AEPRunCommitmentRegistry",
       "path": "contracts/aep/AEPRunCommitmentRegistry.sol",
       "roles": [],
@@ -466,6 +484,7 @@
     },
     {
       "assetHolding": false,
+      "assetHoldingEvidence": "none detected",
       "contract": "AEPSelectionGate",
       "path": "contracts/aep/AEPSelectionGate.sol",
       "roles": [],
@@ -481,7 +500,8 @@
     },
     {
       "assetHolding": false,
-      "contract": "IAEPEvaluatorStakingRegistry",
+      "assetHoldingEvidence": "none detected",
+      "contract": "AEPSlashingCourt",
       "path": "contracts/aep/AEPSlashingCourt.sol",
       "roles": [],
       "sha256": "c490276fded553e4dbcdc5a0ca0ffeab1a70800c5cb9e2f3816a3cdde5cd86e4",
@@ -511,6 +531,7 @@
     },
     {
       "assetHolding": false,
+      "assetHoldingEvidence": "none detected",
       "contract": "AGIEthNamespaceRegistry",
       "path": "contracts/aep/AGIEthNamespaceRegistry.sol",
       "roles": [],
@@ -531,6 +552,7 @@
     },
     {
       "assetHolding": false,
+      "assetHoldingEvidence": "none detected",
       "contract": "AlphaWorkUnitLedger",
       "path": "contracts/aep/AlphaWorkUnitLedger.sol",
       "roles": [],
@@ -546,6 +568,7 @@
     },
     {
       "assetHolding": false,
+      "assetHoldingEvidence": "none detected",
       "contract": "MandateEpochRegistry",
       "path": "contracts/aep/MandateEpochRegistry.sol",
       "roles": [],
@@ -576,6 +599,7 @@
     },
     {
       "assetHolding": true,
+      "assetHoldingEvidence": "token/native inbound flow or asset-bearing name",
       "contract": "IJobClaimBondManager",
       "path": "contracts/interfaces/IJobClaimBondManager.sol",
       "roles": [],
@@ -596,6 +620,7 @@
     },
     {
       "assetHolding": false,
+      "assetHoldingEvidence": "none detected",
       "contract": "IJobRegistry",
       "path": "contracts/interfaces/IJobRegistry.sol",
       "roles": [],
@@ -641,6 +666,7 @@
     },
     {
       "assetHolding": false,
+      "assetHoldingEvidence": "none detected",
       "contract": "IProofSubmissionRegistry",
       "path": "contracts/interfaces/IProofSubmissionRegistry.sol",
       "roles": [],
@@ -661,6 +687,7 @@
     },
     {
       "assetHolding": false,
+      "assetHoldingEvidence": "none detected",
       "contract": "IReputationRegistry",
       "path": "contracts/interfaces/IReputationRegistry.sol",
       "roles": [],
@@ -686,6 +713,7 @@
     },
     {
       "assetHolding": false,
+      "assetHoldingEvidence": "none detected",
       "contract": "AppealRegistry",
       "path": "contracts/optional/AppealRegistry.sol",
       "roles": [],
@@ -706,6 +734,7 @@
     },
     {
       "assetHolding": false,
+      "assetHoldingEvidence": "none detected",
       "contract": "BuilderProfileRegistry",
       "path": "contracts/optional/BuilderProfileRegistry.sol",
       "roles": [],
@@ -726,6 +755,7 @@
     },
     {
       "assetHolding": false,
+      "assetHoldingEvidence": "none detected",
       "contract": "CredentialRevocationRegistry",
       "path": "contracts/optional/CredentialRevocationRegistry.sol",
       "roles": [],
@@ -746,6 +776,7 @@
     },
     {
       "assetHolding": false,
+      "assetHoldingEvidence": "none detected",
       "contract": "DisputeRegistry",
       "path": "contracts/optional/DisputeRegistry.sol",
       "roles": [],
@@ -766,6 +797,7 @@
     },
     {
       "assetHolding": false,
+      "assetHoldingEvidence": "none detected",
       "contract": "SponsorRegistry",
       "path": "contracts/optional/SponsorRegistry.sol",
       "roles": [],
@@ -786,6 +818,7 @@
     },
     {
       "assetHolding": true,
+      "assetHoldingEvidence": "token/native inbound flow or asset-bearing name",
       "contract": "JobClaimBondManager",
       "path": "contracts/registry/JobClaimBondManager.sol",
       "roles": [],
@@ -825,7 +858,8 @@
       "workflow": true
     },
     {
-      "assetHolding": false,
+      "assetHolding": true,
+      "assetHoldingEvidence": "token/native inbound flow or asset-bearing name",
       "contract": "JobRegistry",
       "path": "contracts/registry/JobRegistry.sol",
       "roles": [],
@@ -853,7 +887,7 @@
         },
         {
           "attributes": "external nonReentrant whenNotPaused returns (uint256 jobId)",
-          "classification": "normal_operation_unclassified_review_required",
+          "classification": "new_obligation_or_risk_increase",
           "name": "postJob"
         },
         {
@@ -906,6 +940,7 @@
     },
     {
       "assetHolding": false,
+      "assetHoldingEvidence": "none detected",
       "contract": "LaunchGateRegistry",
       "path": "contracts/registry/LaunchGateRegistry.sol",
       "roles": [],
@@ -921,6 +956,7 @@
     },
     {
       "assetHolding": false,
+      "assetHoldingEvidence": "none detected",
       "contract": "LegacyAGIJobManagerRegistry",
       "path": "contracts/registry/LegacyAGIJobManagerRegistry.sol",
       "roles": [],
@@ -941,6 +977,7 @@
     },
     {
       "assetHolding": false,
+      "assetHoldingEvidence": "none detected",
       "contract": "PremiumAccessRegistry",
       "path": "contracts/registry/PremiumAccessRegistry.sol",
       "roles": [],
@@ -956,6 +993,7 @@
     },
     {
       "assetHolding": false,
+      "assetHoldingEvidence": "none detected",
       "contract": "ProofCardRegistry",
       "path": "contracts/registry/ProofCardRegistry.sol",
       "roles": [],
@@ -976,7 +1014,8 @@
     },
     {
       "assetHolding": false,
-      "contract": "IERC5192",
+      "assetHoldingEvidence": "none detected",
+      "contract": "ProofCredentialRegistry",
       "path": "contracts/registry/ProofCredentialRegistry.sol",
       "roles": [],
       "sha256": "fa28f69cd47e906587fe4991bb80d1e1338dcf482e802f740815e340467d9ed3",
@@ -992,10 +1031,11 @@
           "name": "revokeCredential"
         }
       ],
-      "workflow": false
+      "workflow": true
     },
     {
       "assetHolding": false,
+      "assetHoldingEvidence": "none detected",
       "contract": "ProofSeedRegistry",
       "path": "contracts/registry/ProofSeedRegistry.sol",
       "roles": [],
@@ -1035,7 +1075,8 @@
       "workflow": true
     },
     {
-      "assetHolding": false,
+      "assetHolding": true,
+      "assetHoldingEvidence": "token/native inbound flow or asset-bearing name",
       "contract": "ProofSubmissionRegistry",
       "path": "contracts/registry/ProofSubmissionRegistry.sol",
       "roles": [],
@@ -1076,6 +1117,7 @@
     },
     {
       "assetHolding": false,
+      "assetHoldingEvidence": "none detected",
       "contract": "ProtocolConfigRegistry",
       "path": "contracts/registry/ProtocolConfigRegistry.sol",
       "roles": [],
@@ -1091,6 +1133,7 @@
     },
     {
       "assetHolding": false,
+      "assetHoldingEvidence": "none detected",
       "contract": "ReferralRegistry",
       "path": "contracts/registry/ReferralRegistry.sol",
       "roles": [],
@@ -1116,6 +1159,7 @@
     },
     {
       "assetHolding": false,
+      "assetHoldingEvidence": "none detected",
       "contract": "ReputationRegistry",
       "path": "contracts/registry/ReputationRegistry.sol",
       "roles": [],
@@ -1151,6 +1195,7 @@
     },
     {
       "assetHolding": true,
+      "assetHoldingEvidence": "token/native inbound flow or asset-bearing name",
       "contract": "ReviewerBondRegistry",
       "path": "contracts/registry/ReviewerBondRegistry.sol",
       "roles": [],
@@ -1201,6 +1246,7 @@
     },
     {
       "assetHolding": true,
+      "assetHoldingEvidence": "token/native inbound flow or asset-bearing name",
       "contract": "TreasuryRouter",
       "path": "contracts/registry/TreasuryRouter.sol",
       "roles": [],
@@ -1226,6 +1272,7 @@
     },
     {
       "assetHolding": false,
+      "assetHoldingEvidence": "none detected",
       "contract": "LocalSafeFixture",
       "path": "contracts/test/LocalSafeFixture.sol",
       "roles": [],
@@ -1235,7 +1282,8 @@
     },
     {
       "assetHolding": false,
-      "contract": "is",
+      "assetHoldingEvidence": "none detected",
+      "contract": "LaunchGateInvariantHarness",
       "path": "contracts/test-harnesses/LaunchGateInvariantHarness.sol",
       "roles": [],
       "sha256": "b49d0470e933ad956ebfae12012728ad34496c0a591e82ffbde786c47223c485",
@@ -1244,6 +1292,7 @@
     },
     {
       "assetHolding": false,
+      "assetHoldingEvidence": "none detected",
       "contract": "MockAGIALPHA",
       "path": "contracts/token/MockAGIALPHA.sol",
       "roles": [],
@@ -1253,6 +1302,7 @@
     },
     {
       "assetHolding": true,
+      "assetHoldingEvidence": "token/native inbound flow or asset-bearing name",
       "contract": "CommercializationPerformanceVault",
       "path": "contracts/vaults/CommercializationPerformanceVault.sol",
       "roles": [],
@@ -1288,6 +1338,7 @@
     },
     {
       "assetHolding": true,
+      "assetHoldingEvidence": "token/native inbound flow or asset-bearing name",
       "contract": "TokenReserveVault",
       "path": "contracts/vaults/TokenReserveVault.sol",
       "roles": [],
@@ -1308,5 +1359,6 @@
     }
   ],
   "generatedBy": "scripts/mainnet_operational_readiness.py",
-  "treeHash": "6337247302d1b200e2e64776cf36bb1890b134d7ef9abccf3af0be8c779519e5"
+  "sourceTreeHash": "6564dd99987a980843f2189f2d11b09ebf4b5d4a903a4a32bd4007aac1888e7c",
+  "sourceTreeHashScope": "tracked HEAD content excluding generated readiness artifacts"
 }

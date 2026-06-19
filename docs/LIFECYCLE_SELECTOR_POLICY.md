@@ -52,10 +52,10 @@
 - `AEPRunCommitmentRegistry.commitRun`: `normal_operation_unclassified_review_required`
 - `AEPRunCommitmentRegistry.setRunStatus`: `configuration`
 - `AEPSelectionGate.issueSelectionCertificate`: `normal_operation_unclassified_review_required`
-- `IAEPEvaluatorStakingRegistry.slashEvaluator`: `owner_recovery_or_safe_exit`
-- `IAEPEvaluatorStakingRegistry.openCase`: `normal_operation_unclassified_review_required`
-- `IAEPEvaluatorStakingRegistry.resolveCase`: `owner_recovery_or_safe_exit`
-- `IAEPEvaluatorStakingRegistry.cancelCase`: `owner_recovery_or_safe_exit`
+- `AEPSlashingCourt.slashEvaluator`: `owner_recovery_or_safe_exit`
+- `AEPSlashingCourt.openCase`: `normal_operation_unclassified_review_required`
+- `AEPSlashingCourt.resolveCase`: `owner_recovery_or_safe_exit`
+- `AEPSlashingCourt.cancelCase`: `owner_recovery_or_safe_exit`
 - `AGIEthNamespaceRegistry.registerEnvironment`: `normal_operation_unclassified_review_required`
 - `AGIEthNamespaceRegistry.setEnvironmentStatus`: `configuration`
 - `AlphaWorkUnitLedger.recordAlphaWorkUnits`: `normal_operation_unclassified_review_required`
@@ -97,7 +97,7 @@
 - `JobRegistry.setTreasury`: `configuration`
 - `JobRegistry.setRewardTokenAllowed`: `configuration`
 - `JobRegistry.setRewardTokenAllowlistEnabled`: `configuration`
-- `JobRegistry.postJob`: `normal_operation_unclassified_review_required`
+- `JobRegistry.postJob`: `new_obligation_or_risk_increase`
 - `JobRegistry.markClaimed`: `new_obligation_or_risk_increase`
 - `JobRegistry.markSubmitted`: `new_obligation_or_risk_increase`
 - `JobRegistry.markApproved`: `new_obligation_or_risk_increase`
@@ -113,8 +113,8 @@
 - `PremiumAccessRegistry.setAccessTier`: `configuration`
 - `ProofCardRegistry.registerProofCard`: `normal_operation_unclassified_review_required`
 - `ProofCardRegistry.revokeProofCard`: `owner_recovery_or_safe_exit`
-- `IERC5192.issueCredential`: `normal_operation_unclassified_review_required`
-- `IERC5192.revokeCredential`: `owner_recovery_or_safe_exit`
+- `ProofCredentialRegistry.issueCredential`: `normal_operation_unclassified_review_required`
+- `ProofCredentialRegistry.revokeCredential`: `owner_recovery_or_safe_exit`
 - `ProofSeedRegistry.setProofSeedFee`: `configuration`
 - `ProofSeedRegistry.setTreasury`: `configuration`
 - `ProofSeedRegistry.createProofSeed`: `new_obligation_or_risk_increase`

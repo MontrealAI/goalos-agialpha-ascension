@@ -1,5 +1,4 @@
 {
-  "baselineSha": "ef6b47108d928b22b24d5a0c127e76991c3ea425",
   "evidence": [
     "qa/mainnet-operational-inventory.json"
   ],
@@ -35,5 +34,6 @@
       "status": "PARTIAL"
     }
   ],
-  "sourceTreeHash": "6337247302d1b200e2e64776cf36bb1890b134d7ef9abccf3af0be8c779519e5"
+  "sourceTreeHash": "6564dd99987a980843f2189f2d11b09ebf4b5d4a903a4a32bd4007aac1888e7c",
+  "sourceTreeHashScope": "tracked HEAD content excluding generated readiness artifacts"
 }

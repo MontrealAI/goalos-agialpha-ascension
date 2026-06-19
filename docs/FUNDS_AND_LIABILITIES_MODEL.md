@@ -2,56 +2,56 @@
 
 Per-token accounting is required; unlike tokens must not be value-aggregated.
 
-- `GoalOSAccessControl`: NOT_ASSET_HOLDING
-- `AEPAgentRegistry`: NOT_ASSET_HOLDING
-- `AEPArtifactRegistry`: NOT_ASSET_HOLDING
-- `AEPAttestationRegistry`: NOT_ASSET_HOLDING
-- `AEPChronicleRegistry`: NOT_ASSET_HOLDING
-- `AEPClaimBoundaryRegistry`: NOT_ASSET_HOLDING
-- `AEPCommitRevealValidationRegistry`: NOT_ASSET_HOLDING
-- `AEPConformanceRegistry`: NOT_ASSET_HOLDING
-- `AEPEvalRegistry`: NOT_ASSET_HOLDING
-- `AEPEvaluatorStakingRegistry`: NOT_ASSET_HOLDING
-- `AEPEvidenceDocketRegistry`: NOT_ASSET_HOLDING
-- `AEPFalsificationRegistry`: NOT_ASSET_HOLDING
-- `AEPGoalOSCommitRegistry`: NOT_ASSET_HOLDING
-- `AEPProofBundleRegistry`: NOT_ASSET_HOLDING
-- `AEPProofLedger`: NOT_ASSET_HOLDING
-- `AEPReplayRegistry`: NOT_ASSET_HOLDING
-- `AEPRewardVault`: REQUIRES_EXACT_ONCHAIN_STATUS
-- `AEPRollbackRegistry`: NOT_ASSET_HOLDING
-- `AEPRolloutRouter`: REQUIRES_EXACT_ONCHAIN_STATUS
-- `AEPRunCommitmentRegistry`: NOT_ASSET_HOLDING
-- `AEPSelectionGate`: NOT_ASSET_HOLDING
-- `IAEPEvaluatorStakingRegistry`: NOT_ASSET_HOLDING
-- `AGIEthNamespaceRegistry`: NOT_ASSET_HOLDING
-- `AlphaWorkUnitLedger`: NOT_ASSET_HOLDING
-- `MandateEpochRegistry`: NOT_ASSET_HOLDING
-- `IJobClaimBondManager`: REQUIRES_EXACT_ONCHAIN_STATUS
-- `IJobRegistry`: NOT_ASSET_HOLDING
-- `IProofSubmissionRegistry`: NOT_ASSET_HOLDING
-- `IReputationRegistry`: NOT_ASSET_HOLDING
-- `AppealRegistry`: NOT_ASSET_HOLDING
-- `BuilderProfileRegistry`: NOT_ASSET_HOLDING
-- `CredentialRevocationRegistry`: NOT_ASSET_HOLDING
-- `DisputeRegistry`: NOT_ASSET_HOLDING
-- `SponsorRegistry`: NOT_ASSET_HOLDING
-- `JobClaimBondManager`: REQUIRES_EXACT_ONCHAIN_STATUS
-- `JobRegistry`: NOT_ASSET_HOLDING
-- `LaunchGateRegistry`: NOT_ASSET_HOLDING
-- `LegacyAGIJobManagerRegistry`: NOT_ASSET_HOLDING
-- `PremiumAccessRegistry`: NOT_ASSET_HOLDING
-- `ProofCardRegistry`: NOT_ASSET_HOLDING
-- `IERC5192`: NOT_ASSET_HOLDING
-- `ProofSeedRegistry`: NOT_ASSET_HOLDING
-- `ProofSubmissionRegistry`: NOT_ASSET_HOLDING
-- `ProtocolConfigRegistry`: NOT_ASSET_HOLDING
-- `ReferralRegistry`: NOT_ASSET_HOLDING
-- `ReputationRegistry`: NOT_ASSET_HOLDING
-- `ReviewerBondRegistry`: REQUIRES_EXACT_ONCHAIN_STATUS
-- `TreasuryRouter`: REQUIRES_EXACT_ONCHAIN_STATUS
-- `LocalSafeFixture`: NOT_ASSET_HOLDING
-- `is`: NOT_ASSET_HOLDING
-- `MockAGIALPHA`: NOT_ASSET_HOLDING
-- `CommercializationPerformanceVault`: REQUIRES_EXACT_ONCHAIN_STATUS
-- `TokenReserveVault`: REQUIRES_EXACT_ONCHAIN_STATUS
+- `GoalOSAccessControl`: NOT_ASSET_HOLDING (none detected)
+- `AEPAgentRegistry`: NOT_ASSET_HOLDING (none detected)
+- `AEPArtifactRegistry`: NOT_ASSET_HOLDING (none detected)
+- `AEPAttestationRegistry`: NOT_ASSET_HOLDING (none detected)
+- `AEPChronicleRegistry`: NOT_ASSET_HOLDING (none detected)
+- `AEPClaimBoundaryRegistry`: NOT_ASSET_HOLDING (none detected)
+- `AEPCommitRevealValidationRegistry`: NOT_ASSET_HOLDING (none detected)
+- `AEPConformanceRegistry`: NOT_ASSET_HOLDING (none detected)
+- `AEPEvalRegistry`: NOT_ASSET_HOLDING (none detected)
+- `AEPEvaluatorStakingRegistry`: REQUIRES_EXACT_ONCHAIN_STATUS (token/native inbound flow or asset-bearing name)
+- `AEPEvidenceDocketRegistry`: NOT_ASSET_HOLDING (none detected)
+- `AEPFalsificationRegistry`: NOT_ASSET_HOLDING (none detected)
+- `AEPGoalOSCommitRegistry`: NOT_ASSET_HOLDING (none detected)
+- `AEPProofBundleRegistry`: NOT_ASSET_HOLDING (none detected)
+- `AEPProofLedger`: NOT_ASSET_HOLDING (none detected)
+- `AEPReplayRegistry`: NOT_ASSET_HOLDING (none detected)
+- `AEPRewardVault`: REQUIRES_EXACT_ONCHAIN_STATUS (token/native inbound flow or asset-bearing name)
+- `AEPRollbackRegistry`: NOT_ASSET_HOLDING (none detected)
+- `AEPRolloutRouter`: REQUIRES_EXACT_ONCHAIN_STATUS (token/native inbound flow or asset-bearing name)
+- `AEPRunCommitmentRegistry`: NOT_ASSET_HOLDING (none detected)
+- `AEPSelectionGate`: NOT_ASSET_HOLDING (none detected)
+- `AEPSlashingCourt`: NOT_ASSET_HOLDING (none detected)
+- `AGIEthNamespaceRegistry`: NOT_ASSET_HOLDING (none detected)
+- `AlphaWorkUnitLedger`: NOT_ASSET_HOLDING (none detected)
+- `MandateEpochRegistry`: NOT_ASSET_HOLDING (none detected)
+- `IJobClaimBondManager`: REQUIRES_EXACT_ONCHAIN_STATUS (token/native inbound flow or asset-bearing name)
+- `IJobRegistry`: NOT_ASSET_HOLDING (none detected)
+- `IProofSubmissionRegistry`: NOT_ASSET_HOLDING (none detected)
+- `IReputationRegistry`: NOT_ASSET_HOLDING (none detected)
+- `AppealRegistry`: NOT_ASSET_HOLDING (none detected)
+- `BuilderProfileRegistry`: NOT_ASSET_HOLDING (none detected)
+- `CredentialRevocationRegistry`: NOT_ASSET_HOLDING (none detected)
+- `DisputeRegistry`: NOT_ASSET_HOLDING (none detected)
+- `SponsorRegistry`: NOT_ASSET_HOLDING (none detected)
+- `JobClaimBondManager`: REQUIRES_EXACT_ONCHAIN_STATUS (token/native inbound flow or asset-bearing name)
+- `JobRegistry`: REQUIRES_EXACT_ONCHAIN_STATUS (token/native inbound flow or asset-bearing name)
+- `LaunchGateRegistry`: NOT_ASSET_HOLDING (none detected)
+- `LegacyAGIJobManagerRegistry`: NOT_ASSET_HOLDING (none detected)
+- `PremiumAccessRegistry`: NOT_ASSET_HOLDING (none detected)
+- `ProofCardRegistry`: NOT_ASSET_HOLDING (none detected)
+- `ProofCredentialRegistry`: NOT_ASSET_HOLDING (none detected)
+- `ProofSeedRegistry`: NOT_ASSET_HOLDING (none detected)
+- `ProofSubmissionRegistry`: REQUIRES_EXACT_ONCHAIN_STATUS (token/native inbound flow or asset-bearing name)
+- `ProtocolConfigRegistry`: NOT_ASSET_HOLDING (none detected)
+- `ReferralRegistry`: NOT_ASSET_HOLDING (none detected)
+- `ReputationRegistry`: NOT_ASSET_HOLDING (none detected)
+- `ReviewerBondRegistry`: REQUIRES_EXACT_ONCHAIN_STATUS (token/native inbound flow or asset-bearing name)
+- `TreasuryRouter`: REQUIRES_EXACT_ONCHAIN_STATUS (token/native inbound flow or asset-bearing name)
+- `LocalSafeFixture`: NOT_ASSET_HOLDING (none detected)
+- `LaunchGateInvariantHarness`: NOT_ASSET_HOLDING (none detected)
+- `MockAGIALPHA`: NOT_ASSET_HOLDING (none detected)
+- `CommercializationPerformanceVault`: REQUIRES_EXACT_ONCHAIN_STATUS (token/native inbound flow or asset-bearing name)
+- `TokenReserveVault`: REQUIRES_EXACT_ONCHAIN_STATUS (token/native inbound flow or asset-bearing name)

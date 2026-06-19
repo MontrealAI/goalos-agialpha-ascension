@@ -20,7 +20,7 @@
 - `AEPRolloutRouter` (`contracts/aep/AEPRolloutRouter.sol`): See classified selectors; add typed owner override before PASS if no recovery selector exists for a nonterminal state.
 - `AEPRunCommitmentRegistry` (`contracts/aep/AEPRunCommitmentRegistry.sol`): See classified selectors; add typed owner override before PASS if no recovery selector exists for a nonterminal state.
 - `AEPSelectionGate` (`contracts/aep/AEPSelectionGate.sol`): See classified selectors; add typed owner override before PASS if no recovery selector exists for a nonterminal state.
-- `IAEPEvaluatorStakingRegistry` (`contracts/aep/AEPSlashingCourt.sol`): See classified selectors; add typed owner override before PASS if no recovery selector exists for a nonterminal state.
+- `AEPSlashingCourt` (`contracts/aep/AEPSlashingCourt.sol`): See classified selectors; add typed owner override before PASS if no recovery selector exists for a nonterminal state.
 - `AGIEthNamespaceRegistry` (`contracts/aep/AGIEthNamespaceRegistry.sol`): See classified selectors; add typed owner override before PASS if no recovery selector exists for a nonterminal state.
 - `MandateEpochRegistry` (`contracts/aep/MandateEpochRegistry.sol`): See classified selectors; add typed owner override before PASS if no recovery selector exists for a nonterminal state.
 - `IJobClaimBondManager` (`contracts/interfaces/IJobClaimBondManager.sol`): See classified selectors; add typed owner override before PASS if no recovery selector exists for a nonterminal state.
@@ -38,6 +38,7 @@
 - `LegacyAGIJobManagerRegistry` (`contracts/registry/LegacyAGIJobManagerRegistry.sol`): See classified selectors; add typed owner override before PASS if no recovery selector exists for a nonterminal state.
 - `PremiumAccessRegistry` (`contracts/registry/PremiumAccessRegistry.sol`): See classified selectors; add typed owner override before PASS if no recovery selector exists for a nonterminal state.
 - `ProofCardRegistry` (`contracts/registry/ProofCardRegistry.sol`): See classified selectors; add typed owner override before PASS if no recovery selector exists for a nonterminal state.
+- `ProofCredentialRegistry` (`contracts/registry/ProofCredentialRegistry.sol`): See classified selectors; add typed owner override before PASS if no recovery selector exists for a nonterminal state.
 - `ProofSeedRegistry` (`contracts/registry/ProofSeedRegistry.sol`): See classified selectors; add typed owner override before PASS if no recovery selector exists for a nonterminal state.
 - `ProofSubmissionRegistry` (`contracts/registry/ProofSubmissionRegistry.sol`): See classified selectors; add typed owner override before PASS if no recovery selector exists for a nonterminal state.
 - `ProtocolConfigRegistry` (`contracts/registry/ProtocolConfigRegistry.sol`): See classified selectors; add typed owner override before PASS if no recovery selector exists for a nonterminal state.

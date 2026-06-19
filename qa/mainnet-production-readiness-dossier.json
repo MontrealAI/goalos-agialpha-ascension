@@ -6,9 +6,8 @@
     "qa/lifecycle-selector-policy.json",
     "qa/controlled-mainnet-canary-template.json"
   ],
-  "baselineSha": "ef6b47108d928b22b24d5a0c127e76991c3ea425",
-  "cleanTree": false,
   "reason": "Fail-closed dossier: mandatory live/private fork, independent builds, symbolic, mutation, and exact Mainnet-fork evidence must be supplied before PASS. No Mainnet broadcast evidence is present or claimed.",
-  "sourceTreeHash": "6337247302d1b200e2e64776cf36bb1890b134d7ef9abccf3af0be8c779519e5",
+  "sourceTreeHash": "6564dd99987a980843f2189f2d11b09ebf4b5d4a903a4a32bd4007aac1888e7c",
+  "sourceTreeHashScope": "tracked HEAD content excluding generated readiness artifacts",
   "status": "BLOCKED"
 }

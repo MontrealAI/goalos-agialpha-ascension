@@ -367,28 +367,28 @@
     {
       "attributes": "external",
       "classification": "owner_recovery_or_safe_exit",
-      "contract": "IAEPEvaluatorStakingRegistry",
+      "contract": "AEPSlashingCourt",
       "name": "slashEvaluator",
       "path": "contracts/aep/AEPSlashingCourt.sol"
     },
     {
       "attributes": "external onlyOperator returns (uint256 caseId)",
       "classification": "normal_operation_unclassified_review_required",
-      "contract": "IAEPEvaluatorStakingRegistry",
+      "contract": "AEPSlashingCourt",
       "name": "openCase",
       "path": "contracts/aep/AEPSlashingCourt.sol"
     },
     {
       "attributes": "external onlyOperator",
       "classification": "owner_recovery_or_safe_exit",
-      "contract": "IAEPEvaluatorStakingRegistry",
+      "contract": "AEPSlashingCourt",
       "name": "resolveCase",
       "path": "contracts/aep/AEPSlashingCourt.sol"
     },
     {
       "attributes": "external onlyOperator",
       "classification": "owner_recovery_or_safe_exit",
-      "contract": "IAEPEvaluatorStakingRegistry",
+      "contract": "AEPSlashingCourt",
       "name": "cancelCase",
       "path": "contracts/aep/AEPSlashingCourt.sol"
     },
@@ -681,7 +681,7 @@
     },
     {
       "attributes": "external nonReentrant whenNotPaused returns (uint256 jobId)",
-      "classification": "normal_operation_unclassified_review_required",
+      "classification": "new_obligation_or_risk_increase",
       "contract": "JobRegistry",
       "name": "postJob",
       "path": "contracts/registry/JobRegistry.sol"
@@ -794,14 +794,14 @@
     {
       "attributes": "external onlyOperator returns (uint256 tokenId)",
       "classification": "normal_operation_unclassified_review_required",
-      "contract": "IERC5192",
+      "contract": "ProofCredentialRegistry",
       "name": "issueCredential",
       "path": "contracts/registry/ProofCredentialRegistry.sol"
     },
     {
       "attributes": "external onlyOperator",
       "classification": "owner_recovery_or_safe_exit",
-      "contract": "IERC5192",
+      "contract": "ProofCredentialRegistry",
       "name": "revokeCredential",
       "path": "contracts/registry/ProofCredentialRegistry.sol"
     },
