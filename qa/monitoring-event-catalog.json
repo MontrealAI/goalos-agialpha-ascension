@@ -1,0 +1,17 @@
+{
+  "events": [
+    "OwnershipTransferStarted",
+    "OwnershipTransferAccepted",
+    "RoleGranted",
+    "RoleRevoked",
+    "BusinessOverrideExecuted",
+    "LifecycleTransition",
+    "SolvencyDeviation",
+    "MigrationStarted",
+    "MigrationRolledBack",
+    "ShutdownRequested",
+    "ShutdownFinalized"
+  ],
+  "schemaVersion": "1.0",
+  "vendor": "neutral"
+}

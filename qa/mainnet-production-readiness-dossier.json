@@ -4,9 +4,12 @@
     "qa/business-override-matrix.json",
     "qa/funds-and-liabilities-inventory.json",
     "qa/lifecycle-selector-policy.json",
-    "qa/controlled-mainnet-canary-template.json"
+    "qa/controlled-mainnet-canary-template.json",
+    "qa/mainnet-readiness/release-identity.json",
+    "qa/mainnet-readiness/production-readiness.json",
+    "qa/mainnet-readiness/authorization-certificate.json"
   ],
-  "baselineSha": "c7b1eb953034da765dbd7107520a4fbaf43d1f94",
+  "baselineSha": "6d27b2cb7557943da77c8614ce4646d319b75749",
   "localCheckResults": [
     {
       "command": "npm run authority:inventory",
@@ -24,7 +27,7 @@
   "releaseClaimBoundary": "Repository-local operational inventory and fail-closed readiness evidence only; not Mainnet deployed, not Mainnet verified, not Owner-authorized, and not technically ready until blocked evidence is supplied.",
   "releaseRelevantDirtyPaths": [],
   "selectorCoverageStatus": "BLOCKED",
-  "sourceTreeHash": "a17daa1b9d24cce4c1cd3ba4f45506a95c8bc9167e67e39734e323165bef1ab2",
+  "sourceTreeHash": "a6fa052fa097d1236503143385e17425acbcc439e08d19acc64751231a782dae",
   "sourceTreeHashScope": "tracked git index content excluding generated readiness artifacts",
   "status": "BLOCKED"
 }
