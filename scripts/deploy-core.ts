@@ -82,6 +82,44 @@ function certificateEvidencePaths(): Record<string, string> {
   return certificate.evidence || {};
 }
 
+function readAuthorityPolicy(): any | undefined {
+  const policyPath = process.env.AUTHORITY_POLICY_PATH || ".private/authority-policy.mainnet.json";
+  const absolutePath = path.join(__dirname, "..", policyPath);
+  if (!fs.existsSync(absolutePath)) return undefined;
+  return JSON.parse(fs.readFileSync(absolutePath, "utf8"));
+}
+
+async function validateSafeGovernanceOwner(governanceOwner: string, deployerAddress: string) {
+  const policy = readAuthorityPolicy();
+  const allowed = policy?.allowedSafeConfiguration || {};
+  const minimumOwners = Number(process.env.GOVERNANCE_SAFE_MINIMUM_OWNERS || allowed.minimumOwners || 3);
+  const minimumThreshold = Number(process.env.GOVERNANCE_SAFE_MINIMUM_THRESHOLD || allowed.minimumThreshold || 2);
+  const safe = new ethers.Contract(governanceOwner, [
+    "function getOwners() view returns (address[])",
+    "function getThreshold() view returns (uint256)",
+    "function isOwner(address) view returns (bool)",
+    "function getModulesPaginated(address start,uint256 pageSize) view returns (address[] modules,address next)"
+  ], ethers.provider);
+  let owners: string[];
+  let threshold: bigint;
+  try {
+    owners = (await safe.getOwners()).map((owner: string) => ethers.getAddress(owner));
+    threshold = BigInt(await safe.getThreshold());
+  } catch {
+    throw new Error("Ethereum mainnet deployment blocked: GOVERNANCE_OWNER_KIND=SAFE requires Safe-compatible getOwners/getThreshold proof, not just bytecode.");
+  }
+  if (owners.length < minimumOwners) throw new Error(`Ethereum mainnet deployment blocked: Safe owner count ${owners.length} below required minimum ${minimumOwners}.`);
+  if (threshold < BigInt(minimumThreshold)) throw new Error(`Ethereum mainnet deployment blocked: Safe threshold ${threshold} below required minimum ${minimumThreshold}.`);
+  if (owners.some((owner) => owner.toLowerCase() === deployerAddress.toLowerCase())) throw new Error("Ethereum mainnet deployment blocked: disposable deployer must not be a Safe owner.");
+  if (!(await safe.isOwner(owners[0]))) throw new Error("Ethereum mainnet deployment blocked: Safe isOwner/getOwners consistency check failed.");
+  const sentinel = "0x0000000000000000000000000000000000000001";
+  const modulesResult = await safe.getModulesPaginated(sentinel, 10);
+  const modules = (modulesResult[0] || []).map((moduleAddress: string) => ethers.getAddress(moduleAddress));
+  const allowedModules = new Set((allowed.allowModules || []).map((moduleAddress: string) => ethers.getAddress(moduleAddress)));
+  const unexpectedModules = modules.filter((moduleAddress: string) => !allowedModules.has(moduleAddress));
+  if (unexpectedModules.length) throw new Error(`Ethereum mainnet deployment blocked: Safe has unexpected enabled modules: ${unexpectedModules.join(",")}.`);
+}
+
 function enforceEthereumMainnetGates(info: ChainInfo) {
   if (!info.isMainnet) return;
   if (process.env.MAINNET_TARGET !== "ethereum") throw new Error("MAINNET_TARGET must be ethereum.");
@@ -139,7 +177,10 @@ export async function deployGoalOSAGIALPHAAscension() {
   if (info.isMainnet) {
     const governanceOwnerKind = process.env.GOVERNANCE_OWNER_KIND;
     const governanceOwnerCode = await ethers.provider.getCode(governanceOwner);
-    if (governanceOwnerKind === "SAFE" && governanceOwnerCode === "0x") throw new Error("Ethereum mainnet deployment blocked: GOVERNANCE_OWNER_KIND=SAFE requires governance owner contract bytecode.");
+    if (governanceOwnerKind === "SAFE") {
+      if (governanceOwnerCode === "0x") throw new Error("Ethereum mainnet deployment blocked: GOVERNANCE_OWNER_KIND=SAFE requires governance owner contract bytecode.");
+      await validateSafeGovernanceOwner(governanceOwner, deployer.address);
+    }
     if (governanceOwnerKind === "LEDGER_EOA" && governanceOwnerCode !== "0x") throw new Error("Ethereum mainnet deployment blocked: GOVERNANCE_OWNER_KIND=LEDGER_EOA requires an EOA with no contract bytecode.");
   }
   const admin = governanceOwner;

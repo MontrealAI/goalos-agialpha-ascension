@@ -101,6 +101,7 @@ describe("ownership command-center safety gates", function () {
     const source = require("fs").readFileSync("scripts/ownership/goalos-ownership-command-center.ts", "utf8");
     expect(source).to.include("postOwner !== finalOwner && postPending !== finalOwner");
     expect(source).to.include("Ownership acceptance blocked; contracts are not pending to final owner");
+    expect(source).to.include('action === "FAIL" || action === "FAIL_PENDING_OWNER"');
     expect(source).to.include('hre.network.name !== "hardhat"');
   });
 

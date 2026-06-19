@@ -422,7 +422,7 @@ async function doctor(label: string): Promise<void> {
     const c = await contractAt(entry.address);
     const owner = ethers.getAddress(await c.owner());
     const action = await actionForContract(c, owner, deployerAddress, finalOwner, permanentOwners);
-    if (action === "FAIL") throw new Error(`Unexpected owner for ${entry.name}: ${owner}`);
+    if (action === "FAIL" || action === "FAIL_PENDING_OWNER") throw new Error(`Unexpected owner or pending owner for ${entry.name}: ${owner}`);
     try {
       if (!(await c.supportsInterface(ERC173))) throw new Error("false");
     } catch {

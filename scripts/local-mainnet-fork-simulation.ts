@@ -84,8 +84,8 @@ async function main() {
 
   if (blockers.length === 0 && !deterministicLocalMode) {
     const signers = await ethers.getSigners();
-    const SafeFixture = await ethers.getContractFactory("ProofCardRegistry");
-    const governanceSafeFixture = await SafeFixture.deploy(signers[1].address);
+    const SafeFixture = await ethers.getContractFactory("LocalSafeFixture");
+    const governanceSafeFixture = await SafeFixture.deploy([signers[1].address, signers[2].address, signers[3].address], 2);
     await governanceSafeFixture.waitForDeployment();
     setDefaultEnv("MAINNET_TARGET", "ethereum");
     setDefaultEnv("ALLOW_MAINNET_DEPLOYMENT", "YES_PUBLIC_REPOSITORY_AUTHORIZED_MANUAL_DEPLOYMENT");

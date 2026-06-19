@@ -318,8 +318,12 @@ describe("deployment UX safety layer", function () {
   it("requires Safe governance owners to have bytecode and Ledger EOA owners to have none", function () {
     const source = fs.readFileSync("scripts/deploy-core.ts", "utf8");
     expect(source).to.include("GOVERNANCE_OWNER_KIND=SAFE requires governance owner contract bytecode");
+    expect(source).to.include("Safe-compatible getOwners/getThreshold proof");
+    expect(source).to.include("getModulesPaginated");
+    expect(source).to.include("disposable deployer must not be a Safe owner");
     expect(source).to.include("GOVERNANCE_OWNER_KIND=LEDGER_EOA requires an EOA with no contract bytecode");
     const rehearsal = fs.readFileSync("scripts/local-mainnet-fork-simulation.ts", "utf8");
+    expect(rehearsal).to.include("LocalSafeFixture");
     expect(rehearsal).to.include("GOVERNANCE_OWNER_KIND");
     expect(rehearsal).to.include("GOVERNANCE_OWNER_ADDRESS");
     expect(rehearsal).to.include("OPERATIONS_ADDRESS");
