@@ -6,7 +6,7 @@
     "qa/lifecycle-selector-policy.json",
     "qa/controlled-mainnet-canary-template.json"
   ],
-  "baselineSha": "c7b1eb953034da765dbd7107520a4fbaf43d1f94",
+  "baselineSha": "1eb881ad853498a9e163fc7257d4c259641a33ea",
   "localCheckResults": [
     {
       "command": "npm run authority:inventory",
@@ -24,7 +24,7 @@
   "releaseClaimBoundary": "Repository-local operational inventory and fail-closed readiness evidence only; not Mainnet deployed, not Mainnet verified, not Owner-authorized, and not technically ready until blocked evidence is supplied.",
   "releaseRelevantDirtyPaths": [],
   "selectorCoverageStatus": "BLOCKED",
-  "sourceTreeHash": "a17daa1b9d24cce4c1cd3ba4f45506a95c8bc9167e67e39734e323165bef1ab2",
+  "sourceTreeHash": "5d3d9134eb07b6a223aefbf7e854c04615bc8aff0c2d5b1c14f511bcec183515",
   "sourceTreeHashScope": "tracked git index content excluding generated readiness artifacts",
   "status": "BLOCKED"
 }

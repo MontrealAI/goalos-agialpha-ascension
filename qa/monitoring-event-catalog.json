@@ -1,0 +1,8 @@
+{
+  "schema": "goalos.monitoringEventCatalog.v1",
+  "vendorNeutral": true,
+  "events": [
+    "OwnershipTransferStarted", "OwnershipTransferCanceled", "OwnershipTransferred", "RoleGranted", "RoleRevoked", "BusinessOverrideExecuted", "Paused", "Unpaused", "BusinessModeTransition", "TreasuryRotated", "LiabilityChanged", "ReservationChanged", "FreeBalanceChanged", "LimitBreachBlocked", "DuplicateSettlementAttempt", "TransferFailed", "MigrationStarted", "MigrationRolledBack", "MigrationCompleted", "ShutdownRequested", "ShutdownCanceled", "ShutdownFinalized", "UnexpectedPendingOwner", "ConfigurationMismatch", "RpcDivergence", "AccountingInvariantFailed"
+  ],
+  "claimBoundary": "Specification only; live alert delivery requires operator configuration and does not prove Mainnet deployment."
+}

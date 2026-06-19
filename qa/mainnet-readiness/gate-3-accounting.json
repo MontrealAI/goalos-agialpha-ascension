@@ -1,0 +1,27 @@
+{
+  "blockers": [
+    "Canary limits are templated/readiness evidence; full on-chain enforcement and system lens are not proven for every asset holder"
+  ],
+  "commands": [
+    {
+      "command": "/root/.pyenv/versions/3.12.13/bin/python /workspace/goalos-agialpha-ascension/scripts/mainnet_operational_readiness.py",
+      "exitCode": 0,
+      "outputSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "outputTail": ""
+    }
+  ],
+  "evidence": [
+    "qa/funds-and-liabilities-inventory.json",
+    "qa/controlled-mainnet-canary-template.json"
+  ],
+  "failures": [],
+  "gate": "G3",
+  "releaseIdentity": "7a15dc5facfbaace4fe34bacc63ba71d8f4392ee708d468fba37b0f698158003",
+  "requirements": [
+    "Per-token O(1) accounting",
+    "system accounting lens",
+    "finite canary limits enforced on-chain",
+    "malicious-token tests"
+  ],
+  "status": "FAIL"
+}

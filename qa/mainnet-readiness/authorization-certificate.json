@@ -1,0 +1,8 @@
+{
+  "authorizationWordingEmitted": false,
+  "claimBoundary": "No Ethereum Mainnet deployment, verification, live owner handoff, live canary, private signer action, or chain-1 transaction is claimed.",
+  "productionReadiness": "qa/mainnet-readiness/production-readiness.json",
+  "reason": "Five-gate dossier is not all PASS; fail-closed certificate refuses controlled Mainnet authorization.",
+  "releaseIdentity": "7a15dc5facfbaace4fe34bacc63ba71d8f4392ee708d468fba37b0f698158003",
+  "status": "NOT_AUTHORIZED"
+}

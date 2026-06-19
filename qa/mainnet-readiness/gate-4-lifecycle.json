@@ -1,0 +1,27 @@
+{
+  "blockers": [
+    "Global lifecycle and selector enforcement are not proven across every mutating selector"
+  ],
+  "commands": [
+    {
+      "command": "/root/.pyenv/versions/3.12.13/bin/python /workspace/goalos-agialpha-ascension/scripts/mainnet_operational_readiness.py",
+      "exitCode": 0,
+      "outputSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "outputTail": ""
+    }
+  ],
+  "evidence": [
+    "qa/lifecycle-selector-policy.json",
+    "docs/runbooks/MIGRATION_SHUTDOWN_RUNBOOK.md"
+  ],
+  "failures": [],
+  "gate": "G4",
+  "releaseIdentity": "7a15dc5facfbaace4fe34bacc63ba71d8f4392ee708d468fba37b0f698158003",
+  "requirements": [
+    "Global lifecycle controller",
+    "selector policy coverage",
+    "zero-liability migration",
+    "liability-safe terminal shutdown"
+  ],
+  "status": "FAIL"
+}
