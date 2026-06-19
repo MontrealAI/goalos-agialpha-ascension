@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 from __future__ import annotations
-import json, os, pathlib, sys
+import json, os, pathlib, subprocess, sys
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[2]))
 from scripts.audit.audit_model import current_report_dir
 
@@ -27,6 +27,17 @@ def main():
     derived=sum(1 for f in unresolved if str(f.get('severity','')).lower() in {'critical','high'} and f.get('status')=='unresolved')
     if int(data.get('criticalHighUnresolved',-1)) != derived:
         emit(json.dumps({'status':'BLOCKED_INTERNAL_INCONSISTENCY','summaryPath':str(path),'declared':data.get('criticalHighUnresolved'),'derived':derived}, indent=2)); return 2
+    summary_dir = path.parent.resolve()
+    run_dir = data.get('runDirectory')
+    if run_dir and (pathlib.Path(run_dir).resolve() != summary_dir and (pathlib.Path.cwd()/run_dir).resolve() != summary_dir):
+        emit(json.dumps({'status':'BLOCKED_RUN_DIRECTORY_MISMATCH','summaryPath':str(path),'runDirectory':run_dir}, indent=2)); return 2
+    source_sha = data.get('sourceSha')
+    try:
+        current_sha = subprocess.check_output(['git','rev-parse','HEAD'], text=True, stderr=subprocess.STDOUT).strip()
+    except Exception:
+        current_sha = None
+    if source_sha and current_sha and source_sha != current_sha:
+        emit(json.dumps({'status':'BLOCKED_STALE_AUDIT_SUMMARY','summaryPath':str(path),'summarySourceSha':source_sha,'currentSourceSha':current_sha}, indent=2)); return 2
     if data.get('toolFailures') or data.get('unavailableMandatoryTools') or data.get('triageErrors'):
         emit('BLOCKED: mandatory scanner/triage failure')
         emit(json.dumps({'summaryPath':str(path),'toolFailures':data.get('toolFailures',[]),'unavailableMandatoryTools':data.get('unavailableMandatoryTools',[]),'triageErrors':data.get('triageErrors',[])}, indent=2)); return 2

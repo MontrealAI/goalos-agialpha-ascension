@@ -39,6 +39,10 @@ class AuditPipelineTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as d:
             obj=self.base(); obj['toolFailures']=[{'tool':'npm-audit','status':'FAILED'}]
             self.assertEqual(self.run_fail(self.write_summary(d,obj)).returncode,2)
+    def test_mandatory_tool_unavailable_blocks(self):
+        with tempfile.TemporaryDirectory() as d:
+            obj=self.base(); obj['unavailableMandatoryTools']=['osv-scanner']
+            r=self.run_fail(self.write_summary(d,obj)); self.assertEqual(r.returncode,2); self.assertIn('osv-scanner', r.stdout)
     def test_temporary_waiver_error_blocks(self):
         with tempfile.TemporaryDirectory() as d:
             obj=self.base(); obj['triageErrors']=['Expired triage']
@@ -53,5 +57,51 @@ class AuditPipelineTests(unittest.TestCase):
             subprocess.run(['python',str(SUM),str(rd)],cwd=ROOT,check=True,stdout=subprocess.PIPE)
             summary=json.loads((rd/'audit-summary.json').read_text())
             self.assertEqual(summary['criticalHighUnresolved'],1)
+    def test_multiple_advisories_same_package_count_separately(self):
+        with tempfile.TemporaryDirectory() as d:
+            rd=pathlib.Path(d)
+            findings=[{'fingerprint':f'fp-{i}','id':f'GHSA-{i}','tool':'npm-audit','severity':'high','status':'unresolved','packageOrContract':'pkg','installedVersion':'1','dependencyPath':'p'} for i in range(2)]
+            (rd/'npm-audit.json').write_text(json.dumps({'schemaVersion':'2.0','tool':'npm-audit','status':'COMPLETED_WITH_FINDINGS','findings':findings,'criticalHighUnresolved':2}))
+            subprocess.run(['python',str(SUM),str(rd)],cwd=ROOT,check=True,stdout=subprocess.PIPE)
+            summary=json.loads((rd/'audit-summary.json').read_text())
+            self.assertEqual(summary['criticalHighUnresolved'],2)
+    def test_resolved_and_false_positive_are_excluded_only_when_present_in_summary(self):
+        with tempfile.TemporaryDirectory() as d:
+            obj=self.base(); obj['unresolvedFindings']=[{'id':'GHSA-r','severity':'high','status':'resolved'},{'id':'GHSA-f','severity':'critical','status':'false_positive'}]
+            r=self.run_fail(self.write_summary(d,obj)); self.assertEqual(r.returncode,0)
+    def test_temporary_accepted_is_excluded_only_when_present_in_summary(self):
+        with tempfile.TemporaryDirectory() as d:
+            obj=self.base(); obj['unresolvedFindings']=[{'id':'GHSA-t','severity':'high','status':'temporarily_accepted'}]
+            r=self.run_fail(self.write_summary(d,obj)); self.assertEqual(r.returncode,0)
+    def test_scanner_timeout_blocks(self):
+        with tempfile.TemporaryDirectory() as d:
+            obj=self.base(); obj['toolFailures']=[{'tool':'semgrep','status':'TIMEOUT'}]
+            self.assertEqual(self.run_fail(self.write_summary(d,obj)).returncode,2)
+    def test_findings_nonzero_is_not_scanner_crash_when_normalized(self):
+        with tempfile.TemporaryDirectory() as d:
+            rd=pathlib.Path(d)
+            finding={'fingerprint':'findings-exit','id':'GHSA-x','tool':'npm-audit','severity':'high','status':'unresolved','packageOrContract':'pkg','installedVersion':'1','dependencyPath':'p'}
+            (rd/'npm-audit.json').write_text(json.dumps({'schemaVersion':'2.0','tool':'npm-audit','status':'COMPLETED_WITH_FINDINGS','exitStatus':1,'findings':[finding],'criticalHighUnresolved':1}))
+            for tool in ['slither','semgrep','solhint','osv-scanner','actionlint','shellcheck','gitleaks']:
+                (rd/f'{tool}.json').write_text(json.dumps({'schemaVersion':'2.0','tool':tool,'status':'COMPLETED','exitStatus':0,'findings':[],'criticalHighUnresolved':0}))
+            subprocess.run(['python',str(SUM),str(rd)],cwd=ROOT,check=True,stdout=subprocess.PIPE)
+            summary=json.loads((rd/'audit-summary.json').read_text())
+            self.assertEqual(summary['toolFailures'],[])
+            self.assertEqual(summary['criticalHighUnresolved'],1)
+    def test_historical_latest_cannot_satisfy_new_source_sha(self):
+        with tempfile.TemporaryDirectory() as d:
+            obj=self.base(); obj['sourceSha']='not-current'
+            p=self.write_summary(d,obj)
+            r=self.run_fail(p); self.assertEqual(r.returncode,2); self.assertIn('STALE', r.stdout)
+    def test_run_directory_mixing_blocks(self):
+        with tempfile.TemporaryDirectory() as d:
+            obj=self.base(); obj['runDirectory']='different-dir'
+            p=self.write_summary(d,obj)
+            r=self.run_fail(p); self.assertEqual(r.returncode,2); self.assertIn('runDirectory', r.stdout)
+    def test_failing_run_four_finding_fixture_blocks(self):
+        fixture=ROOT/'qa/AUDIT_FAILURE_27840694274.json'
+        data=json.loads(fixture.read_text())
+        self.assertEqual(data['criticalHighUnresolvedReported'],4)
+        self.assertEqual(len(data['exactFindings']),4)
 
 if __name__ == '__main__': unittest.main()
