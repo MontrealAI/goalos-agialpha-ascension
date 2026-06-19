@@ -1,0 +1,751 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-06-19T00:07:10.525Z",
+  "gitCommit": "519a8b1f66486a4a80c1e33c343b485957f5da5f",
+  "package": {
+    "name": "goalos-agialpha-ascension",
+    "version": "4.4.0",
+    "description": "GoalOS-native reimplementation of α-AGI Ascension using existing AGIALPHA for proof-settled AI workflow work.",
+    "license": "UNLICENSED",
+    "scripts": {
+      "compile": "hardhat compile",
+      "test": "hardhat test",
+      "test:agialpha": "hardhat test test/agialphaAscensionFlow.test.ts",
+      "static-check": "python scripts/static_check.py",
+      "direct-solc-compile": "node scripts/direct-solc-compile.js",
+      "generate-artifacts-from-solc": "node scripts/generate-artifacts-from-solc.js",
+      "test:no-compile": "hardhat test --no-compile",
+      "deploy:ethereum-sepolia": "hardhat run scripts/deploy-ethereum-sepolia.ts --network ethereumSepolia",
+      "preflight:ethereum-mainnet": "hardhat run scripts/preflight-ethereum-mainnet.ts --network ethereumMainnet",
+      "deploy:ethereum-mainnet:gated": "hardhat run scripts/deploy-ethereum-mainnet-gated.ts --network ethereumMainnet",
+      "verify:agialpha-token": "hardhat run scripts/verify-agialpha-token.ts --network ethereumMainnet",
+      "verify:deployment": "hardhat run scripts/verify-deployment.ts --network ethereumMainnet",
+      "generate:vault-funding-instructions": "ts-node scripts/generate-vault-funding-instructions.ts ethereum-mainnet",
+      "fund:vaults:gated": "hardhat run scripts/fund-vaults-agialpha-gated.ts --network ethereumMainnet",
+      "test:aep": "hardhat test test/aepAscensionFlow.test.ts",
+      "test:all": "npm run compile:ci && hardhat test --no-compile test/agialphaAscensionFlow.test.ts test/aepAscensionFlow.test.ts test/v4InstitutionalControls.test.ts test/v4_3EthereumGateConsistency.test.ts test/invariants/mainnetBoundary.invariant.test.ts",
+      "test:v4": "hardhat test test/v4InstitutionalControls.test.ts",
+      "evidence:docket:template": "python scripts/generate-evidence-docket-template.py",
+      "mainnet:authorization-check": "python scripts/ethereum-mainnet-authorization-check.py --certificate qa/mainnet-authorization-certificate.json",
+      "ci:advisory": "python scripts/repository_safety_check.py && python scripts/repository_status_check.py && python scripts/repository_production_readiness_check.py && python scripts/no_paid_products_check.py && python scripts/static_check.py && python scripts/verify-readiness-v4-3.py && python scripts/generate-evidence-docket-template.py && python scripts/mainnet-authorization-check.py",
+      "readiness:v4.3": "python scripts/verify-readiness-v4-3.py",
+      "test:v4.3": "hardhat test test/v4_3EthereumGateConsistency.test.ts",
+      "repo:safety": "python scripts/repository_safety_check.py",
+      "repo:status": "python scripts/repository_status_check.py",
+      "repo:production-readiness": "python scripts/repository_production_readiness_check.py",
+      "repo:all": "python scripts/repository_safety_check.py && python scripts/repository_status_check.py && python scripts/repository_production_readiness_check.py && python scripts/no_paid_products_check.py && python scripts/no_private_operator_data_check.py && npm run deployment:claim-boundary:check",
+      "repo:no-paid-products": "python scripts/no_paid_products_check.py",
+      "audit:slither": "bash scripts/audit/run-slither.sh",
+      "audit:echidna": "bash scripts/audit/run-echidna.sh",
+      "audit:mythril": "bash scripts/audit/run-mythril.sh",
+      "audit:medusa": "bash scripts/audit/run-medusa.sh",
+      "audit:foundry": "bash scripts/audit/run-foundry.sh",
+      "audit:all": "bash scripts/audit/run-all-audits.sh",
+      "audit:summarize": "python scripts/audit/summarize-audit-results.py",
+      "audit:fail-on-critical": "python scripts/audit/fail-on-critical-findings.py",
+      "sepolia:rehearsal": "hardhat run scripts/rehearse-ethereum-sepolia.ts --network sepolia",
+      "sepolia:evidence": "python scripts/generate-sepolia-evidence-docket.py",
+      "mainnet:technical-preflight": "npm run preflight:ethereum-mainnet && npm run verify:agialpha-token && npm run mainnet:readiness-check && npm run mainnet:authorization-check",
+      "audit:semgrep": "bash scripts/audit/run-semgrep.sh",
+      "audit:npm": "bash scripts/audit/run-npm-audit.sh",
+      "assert:public-status": "python scripts/assert_public_status.py",
+      "audit:halmos": "bash scripts/audit/run-halmos.sh",
+      "audit:solhint": "bash scripts/audit/run-solhint.sh",
+      "audit:smt": "bash scripts/audit/run-solc-smtchecker.sh",
+      "audit:osv": "bash scripts/audit/run-osv-scanner.sh",
+      "audit:actions": "bash scripts/audit/run-actionlint.sh",
+      "audit:shell": "bash scripts/audit/run-shellcheck.sh",
+      "audit:secrets": "bash scripts/audit/run-gitleaks.sh",
+      "audit:clearance-report": "python scripts/audit/generate-toolchain-clearance-report.py",
+      "mainnet:readiness-check": "python scripts/mainnet-readiness-check.py --certificate qa/mainnet-authorization-certificate.json",
+      "mainnet:deployment-authorization-check": "python scripts/mainnet-deployment-authorization-check.py --certificate qa/mainnet-authorization-certificate.json",
+      "ethereum-mainnet:authorization-check": "python scripts/ethereum-mainnet-authorization-check.py --certificate qa/mainnet-authorization-certificate.json",
+      "mainnet:fork-simulate": "npm run compile:ci && hardhat run --no-compile scripts/local-mainnet-fork-simulation.ts --network hardhat",
+      "repo:no-private-operator-data": "python scripts/no_private_operator_data_check.py",
+      "local:authorization-rehearsal": "npm run rehearse:local && npm run evidence:local",
+      "deploy:ethereum-mainnet:gated:local": "python scripts/private/run-final-local-mainnet-deployment.py --env .private/mainnet-operator.env --input .private/mainnet-operator-input.json",
+      "mainnet:authorization-check:public": "python scripts/ethereum-mainnet-authorization-check.py --certificate qa/mainnet-authorization-certificate.json",
+      "verify:deployment-manifest": "ts-node scripts/verify-deployment-manifest.ts",
+      "generate:deployment-manifest": "ts-node scripts/generate-deployment-manifest.ts",
+      "check:deployment-readiness": "ts-node scripts/check-deployment-readiness.ts",
+      "ignition:deploy:sepolia": "hardhat ignition deploy ignition/modules/GoalOSAGIALPHAAscension.ts --network ethereumSepolia --parameters ignition/parameters/ethereum-sepolia.local.json --deployment-id ethereum-sepolia-agialpha",
+      "ignition:deploy:mainnet:gated": "ts-node scripts/ignition-mainnet-gated-disabled.ts",
+      "rehearse:local": "npm run compile:ci && hardhat run --no-compile scripts/rehearse-local-authorization-chain.ts --network hardhat",
+      "evidence:local": "python scripts/generate-local-evidence-docket.py",
+      "mainnet:status": "python scripts/wizard/mainnet-status.py",
+      "mainnet:next": "python scripts/wizard/mainnet-next-step.py",
+      "mainnet:command-center": "python scripts/wizard/mainnet-command-center.py",
+      "mainnet:prepare-private": "python scripts/private/generate-private-operator-template.py",
+      "mainnet:local-checks": "npm run repo:all && npm run assert:public-status && npm run compile:ci && npm run test:ci && npm run test:all && npm run static-check",
+      "mainnet:security": "npm run audit:slither && npm run audit:all && npm run audit:summarize && npm run audit:fail-on-critical && npm run audit:clearance-report",
+      "mainnet:local-rehearsal": "npm run rehearse:local && npm run evidence:local",
+      "mainnet:private-authorize": "node -e \"console.log(\\\"This command is optional. It is not required for public repository authorization. Use npm run mainnet:private-authorize:optional for local private-operator evidence generation.\\\")\"",
+      "mainnet:final-check": "npm run verify:compiler-alignment && npm run repo:all && npm run repo:no-private-operator-data && npm run repo:no-paid-products && npm run compile:ci && npm run test:ci && npm run test:all && npm run static-check && npm run audit:slither && npm run audit:semgrep && npm run audit:solhint && npm run audit:actions && npm run audit:shell && npm run audit:secrets && npm run audit:npm && npm run audit:osv && npm run audit:summarize && npm run audit:fail-on-critical && npm run audit:clearance-report && npm run verify:agialpha-token:public && npm run mainnet:public-authorize && npm run docs:status && npm run assert:public-status && npm run qa:manifest && npm run qa:manifest:verify",
+      "mainnet:public-authorize": "npm run mainnet:certificate && npm run mainnet:certificate:validate && npm run mainnet:readiness-check && npm run mainnet:deployment-authorization-check && npm run mainnet:authorization-check",
+      "verify:agialpha-token:public": "python scripts/verify_agialpha_token_public.py",
+      "mainnet:certificate": "python scripts/generate-mainnet-authorization-certificate.py",
+      "mainnet:certificate:validate": "python scripts/validate-mainnet-authorization-certificate.py",
+      "docs:status": "python scripts/generate-public-status-docs.py",
+      "compile:hardhat": "hardhat compile",
+      "compile:deterministic": "node scripts/compile-deterministic.js",
+      "compile:ci": "npm run compile:deterministic",
+      "test:ci": "npm run compile:ci && hardhat test --no-compile",
+      "verify:compiler-alignment": "python scripts/verify-compiler-alignment.py",
+      "qa:manifest": "python scripts/refresh-qa-manifests.py",
+      "qa:manifest:verify": "python scripts/refresh-qa-manifests.py --verify",
+      "mainnet:private-authorize:optional": "python scripts/private/generate-redacted-public-evidence.py --env .private/mainnet-operator.env --input .private/mainnet-operator-input.json",
+      "deploy:doctor": "ts-node scripts/deployment/goalos-deploy-command-center.ts doctor",
+      "deploy:sepolia:doctor": "ts-node scripts/deployment/goalos-deploy-command-center.ts sepolia:doctor --network ethereumSepolia",
+      "deploy:sepolia:dry-run": "ts-node scripts/deployment/goalos-deploy-command-center.ts sepolia:dry-run --network ethereumSepolia --dry-run --no-broadcast",
+      "deploy:sepolia:live": "npm run deploy:ethereum-sepolia",
+      "deploy:sepolia:verify": "npm run verify:sepolia",
+      "deploy:sepolia:evidence": "ts-node scripts/deployment/goalos-deploy-command-center.ts sepolia:evidence --network ethereumSepolia",
+      "deploy:mainnet:doctor": "ts-node scripts/deployment/goalos-deploy-command-center.ts mainnet:doctor --network ethereumMainnet",
+      "deploy:mainnet:preflight": "ts-node scripts/deployment/goalos-deploy-command-center.ts mainnet:preflight --network ethereumMainnet --no-broadcast && npm run preflight:ethereum-mainnet",
+      "deploy:mainnet:fork-rehearsal": "npm run mainnet:fork-simulate",
+      "deploy:mainnet:prepare-local": "ts-node scripts/deployment/goalos-deploy-command-center.ts mainnet:prepare-local --network ethereumMainnet --no-broadcast",
+      "deploy:mainnet:live-local-gated": "npm run deploy:ethereum-mainnet:gated",
+      "deploy:mainnet:verify": "npm run verify:mainnet",
+      "deploy:mainnet:evidence": "ts-node scripts/deployment/goalos-deploy-command-center.ts mainnet:evidence --network ethereumMainnet",
+      "deploy:status": "ts-node scripts/deployment/goalos-deploy-command-center.ts status",
+      "deploy:next": "ts-node scripts/deployment/goalos-deploy-command-center.ts next",
+      "verify:sepolia": "ts-node scripts/deployment/verify-deployment-friendly.ts --network ethereumSepolia",
+      "verify:mainnet": "ts-node scripts/deployment/verify-deployment-friendly.ts --network ethereumMainnet",
+      "verify:deployment:sepolia": "npm run verify:sepolia",
+      "verify:deployment:mainnet": "npm run verify:mainnet",
+      "deploy:sepolia:full": "npm run deploy:sepolia:doctor && npm run deploy:sepolia:dry-run && npm run deploy:sepolia:live && npm run verify:sepolia:all && npm run deploy:sepolia:evidence",
+      "deploy:mainnet:full-local-gated": "npm run deploy:mainnet:doctor && npm run deploy:mainnet:preflight && npm run deploy:mainnet:fork-rehearsal && npm run deploy:mainnet:prepare-local && npm run deploy:mainnet:live-local-gated && npm run verify:mainnet:all && npm run deploy:mainnet:evidence",
+      "deployment:evidence:validate": "python scripts/deployment/validate_deployment_evidence.py",
+      "deployment:claim-boundary:check": "python scripts/deployment/claim_boundary_check.py",
+      "verify:sepolia:all": "ts-node scripts/verification/verify-contracts-from-manifest.ts --network ethereumSepolia --chain-id 11155111 --provider both --allow-already-verified",
+      "verify:sepolia:from-manifest": "npm run verify:sepolia:all",
+      "verify:mainnet:all": "ts-node scripts/verification/verify-contracts-from-manifest.ts --network ethereumMainnet --chain-id 1 --provider both --allow-already-verified",
+      "verify:mainnet:from-manifest": "npm run verify:mainnet:all",
+      "verify:deployment:manifest": "ts-node scripts/verify-deployment-manifest.ts",
+      "verify:deployment:evidence": "npm run verification:evidence:validate",
+      "verify:contracts:status": "ts-node scripts/verification/verify-contracts-from-manifest.ts --allow-partial --json",
+      "verify:contracts:autofix-instructions": "node -e \"console.log('Run verify:contracts:retry-failed, then review qa/manual-verification-commands.*.md for fallback commands.')\"",
+      "verify:contracts:claim-boundary": "npm run verification:claim-boundary:check",
+      "verify:contracts:retry-failed": "ts-node scripts/verification/verify-contracts-from-manifest.ts --allow-partial",
+      "verify:contracts:evidence": "npm run verification:evidence:validate",
+      "verify:doctor": "ts-node scripts/verification/verify-contracts-from-manifest.ts --allow-partial --json",
+      "verify:bytecode:sepolia": "ts-node scripts/verification/verify-contracts-from-manifest.ts --network ethereumSepolia --chain-id 11155111 --allow-partial --json",
+      "verify:bytecode:mainnet": "ts-node scripts/verification/verify-contracts-from-manifest.ts --network ethereumMainnet --chain-id 1 --allow-partial --json",
+      "manifest:deployment:validate": "node scripts/deployment/validate-json-files.js schemas/deployment-manifest.schema.json",
+      "verification:evidence:validate": "node scripts/deployment/validate-json-files.js schemas/contract-verification-evidence.schema.json",
+      "verification:claim-boundary:check": "python scripts/deployment/claim_boundary_check.py",
+      "mission-os:test": "python -m unittest discover -s test/mission_os -p '*_test.py'",
+      "mission-os:run": "python scripts/mission-os/mission_os_until_done.py --mission examples/mission-os/ai-product-intelligence.json --out evidence/mission-os/ai-product-intelligence-001 --max-cycles 3",
+      "mission-os:run:enterprise": "python scripts/mission-os/mission_os_until_done.py --mission examples/mission-os/enterprise-ai-adoption.json --out evidence/mission-os/enterprise-ai-adoption-001 --max-cycles 3",
+      "mission-os:run:policy": "python scripts/mission-os/mission_os_until_done.py --mission examples/mission-os/policy-regulation-options.json --out evidence/mission-os/policy-regulation-options-001 --max-cycles 3",
+      "mission-os:run:cyber": "python scripts/mission-os/mission_os_until_done.py --mission examples/mission-os/cyber-defensive-readiness.json --out evidence/mission-os/cyber-defensive-readiness-001 --max-cycles 3",
+      "mission-os:run:sepolia-readiness": "python scripts/mission-os/mission_os_until_done.py --mission examples/mission-os/ethereum-sepolia-deployment-readiness.json --out evidence/mission-os/ethereum-sepolia-deployment-readiness-001 --max-cycles 3",
+      "mission-os:run:mainnet-readiness": "python scripts/mission-os/mission_os_until_done.py --mission examples/mission-os/ethereum-mainnet-operator-readiness.json --out evidence/mission-os/ethereum-mainnet-operator-readiness-001 --max-cycles 3",
+      "mission-os:claim-boundary": "python scripts/mission-os/claim_boundary_check.py",
+      "mission-os:done-check": "python scripts/mission-os/done_check.py",
+      "mission-os:qa": "python scripts/mission-os/qa_check.py --dir evidence/mission-os/ai-product-intelligence-001",
+      "mission-os:settlement-readiness": "python scripts/mission-os/generate_settlement_readiness.py --mission examples/mission-os/ai-product-intelligence.json --out evidence/mission-os/ai-product-intelligence-001 --max-cycles 1",
+      "mission-os:all": "npm run mission-os:run && npm run mission-os:claim-boundary -- --dir evidence/mission-os/ai-product-intelligence-001 && npm run mission-os:done-check -- --dir evidence/mission-os/ai-product-intelligence-001 && npm run mission-os:qa",
+      "test:ownership": "npm run compile:ci && hardhat test --no-compile test/ownershipHandoff.test.ts test/ownershipCommandCenter.test.ts",
+      "ownership:sepolia:doctor": "OWNERSHIP_COMMAND=sepolia:doctor hardhat run --network ethereumSepolia scripts/ownership/goalos-ownership-command-center.ts",
+      "ownership:sepolia:plan": "OWNERSHIP_COMMAND=sepolia:plan hardhat run --network ethereumSepolia scripts/ownership/goalos-ownership-command-center.ts",
+      "ownership:sepolia:dry-run": "OWNERSHIP_COMMAND=sepolia:dry-run hardhat run --network ethereumSepolia scripts/ownership/goalos-ownership-command-center.ts",
+      "ownership:sepolia:transfer": "OWNERSHIP_COMMAND=sepolia:transfer hardhat run --network ethereumSepolia scripts/ownership/goalos-ownership-command-center.ts",
+      "ownership:sepolia:verify": "OWNERSHIP_COMMAND=sepolia:verify hardhat run --network ethereumSepolia scripts/ownership/goalos-ownership-command-center.ts",
+      "ownership:sepolia:evidence": "OWNERSHIP_COMMAND=sepolia:evidence hardhat run --network ethereumSepolia scripts/ownership/goalos-ownership-command-center.ts",
+      "ownership:mainnet:doctor": "OWNERSHIP_COMMAND=mainnet:doctor hardhat run --network ethereumMainnet scripts/ownership/goalos-ownership-command-center.ts",
+      "ownership:mainnet:plan": "OWNERSHIP_COMMAND=mainnet:plan hardhat run --network ethereumMainnet scripts/ownership/goalos-ownership-command-center.ts",
+      "ownership:mainnet:fork-rehearsal": "HARDHAT_FORK_MAINNET=1 OWNERSHIP_COMMAND=mainnet:fork-rehearsal hardhat run --network hardhat scripts/ownership/goalos-ownership-command-center.ts",
+      "ownership:mainnet:transfer-local-gated": "OWNERSHIP_COMMAND=mainnet:transfer-local-gated hardhat run --network ethereumMainnet scripts/ownership/goalos-ownership-command-center.ts",
+      "ownership:mainnet:verify": "OWNERSHIP_COMMAND=mainnet:verify hardhat run --network ethereumMainnet scripts/ownership/goalos-ownership-command-center.ts",
+      "ownership:mainnet:evidence": "OWNERSHIP_COMMAND=mainnet:evidence hardhat run --network ethereumMainnet scripts/ownership/goalos-ownership-command-center.ts",
+      "ownership:mainnet:sweep-deployer-local-gated": "OWNERSHIP_COMMAND=mainnet:sweep-deployer-local-gated hardhat run --network ethereumMainnet scripts/ownership/goalos-ownership-command-center.ts",
+      "authority:inventory": "ts-node scripts/authority-inventory.ts",
+      "authority:policy:validate": "ts-node scripts/authority-policy-validate.ts",
+      "ownership:test": "npm run test:ownership",
+      "configure:mainnet:prepare-safe": "ts-node scripts/deployment/goalos-deploy-command-center.ts mainnet:configure-safe --network ethereumMainnet --no-broadcast",
+      "deployer:mainnet:decommission-check": "OWNERSHIP_COMMAND=mainnet:verify hardhat run --network ethereumMainnet scripts/ownership/goalos-ownership-command-center.ts",
+      "deployer:mainnet:sweep-eth": "OWNERSHIP_COMMAND=mainnet:sweep-deployer-local-gated hardhat run --network ethereumMainnet scripts/ownership/goalos-ownership-command-center.ts",
+      "configure:mainnet:verify": "npm run ownership:mainnet:verify",
+      "ownership:mainnet:verify-genesis": "npm run ownership:mainnet:verify",
+      "configure:sepolia:prepare": "npm run ownership:sepolia:plan",
+      "configure:sepolia:verify": "npm run ownership:sepolia:verify",
+      "ownership:sepolia:verify-genesis": "npm run ownership:sepolia:verify",
+      "ownership:sepolia:legacy-plan": "npm run ownership:sepolia:plan",
+      "ownership:sepolia:legacy-initiate": "npm run ownership:sepolia:transfer",
+      "ownership:sepolia:legacy-accept-prepare": "npm run ownership:sepolia:plan",
+      "ownership:sepolia:legacy-verify": "npm run ownership:sepolia:verify",
+      "ownership:sepolia:legacy-evidence": "npm run ownership:sepolia:evidence"
+    },
+    "dependencies": {
+      "@openzeppelin/contracts": "4.9.6",
+      "solc": "0.8.35"
+    },
+    "devDependencies": {
+      "@nomicfoundation/hardhat-toolbox": "5.0.0",
+      "hardhat": "2.28.6",
+      "typescript": "5.9.3",
+      "ts-node": "10.9.2"
+    },
+    "private": true
+  },
+  "managedContractTypes": [
+    {
+      "name": "AEPAgentRegistry",
+      "path": "contracts/aep/AEPAgentRegistry.sol"
+    },
+    {
+      "name": "AEPArtifactRegistry",
+      "path": "contracts/aep/AEPArtifactRegistry.sol"
+    },
+    {
+      "name": "AEPAttestationRegistry",
+      "path": "contracts/aep/AEPAttestationRegistry.sol"
+    },
+    {
+      "name": "AEPChronicleRegistry",
+      "path": "contracts/aep/AEPChronicleRegistry.sol"
+    },
+    {
+      "name": "AEPClaimBoundaryRegistry",
+      "path": "contracts/aep/AEPClaimBoundaryRegistry.sol"
+    },
+    {
+      "name": "AEPCommitRevealValidationRegistry",
+      "path": "contracts/aep/AEPCommitRevealValidationRegistry.sol"
+    },
+    {
+      "name": "AEPConformanceRegistry",
+      "path": "contracts/aep/AEPConformanceRegistry.sol"
+    },
+    {
+      "name": "AEPEvalRegistry",
+      "path": "contracts/aep/AEPEvalRegistry.sol"
+    },
+    {
+      "name": "AEPEvaluatorStakingRegistry",
+      "path": "contracts/aep/AEPEvaluatorStakingRegistry.sol"
+    },
+    {
+      "name": "AEPEvidenceDocketRegistry",
+      "path": "contracts/aep/AEPEvidenceDocketRegistry.sol"
+    },
+    {
+      "name": "AEPFalsificationRegistry",
+      "path": "contracts/aep/AEPFalsificationRegistry.sol"
+    },
+    {
+      "name": "AEPGoalOSCommitRegistry",
+      "path": "contracts/aep/AEPGoalOSCommitRegistry.sol"
+    },
+    {
+      "name": "AEPProofBundleRegistry",
+      "path": "contracts/aep/AEPProofBundleRegistry.sol"
+    },
+    {
+      "name": "AEPProofLedger",
+      "path": "contracts/aep/AEPProofLedger.sol"
+    },
+    {
+      "name": "AEPReplayRegistry",
+      "path": "contracts/aep/AEPReplayRegistry.sol"
+    },
+    {
+      "name": "AEPRewardVault",
+      "path": "contracts/aep/AEPRewardVault.sol"
+    },
+    {
+      "name": "AEPRollbackRegistry",
+      "path": "contracts/aep/AEPRollbackRegistry.sol"
+    },
+    {
+      "name": "AEPRolloutRouter",
+      "path": "contracts/aep/AEPRolloutRouter.sol"
+    },
+    {
+      "name": "AEPRunCommitmentRegistry",
+      "path": "contracts/aep/AEPRunCommitmentRegistry.sol"
+    },
+    {
+      "name": "AEPSelectionGate",
+      "path": "contracts/aep/AEPSelectionGate.sol"
+    },
+    {
+      "name": "AEPSlashingCourt",
+      "path": "contracts/aep/AEPSlashingCourt.sol"
+    },
+    {
+      "name": "AGIEthNamespaceRegistry",
+      "path": "contracts/aep/AGIEthNamespaceRegistry.sol"
+    },
+    {
+      "name": "AlphaWorkUnitLedger",
+      "path": "contracts/aep/AlphaWorkUnitLedger.sol"
+    },
+    {
+      "name": "AppealRegistry",
+      "path": "contracts/optional/AppealRegistry.sol"
+    },
+    {
+      "name": "BuilderProfileRegistry",
+      "path": "contracts/optional/BuilderProfileRegistry.sol"
+    },
+    {
+      "name": "CommercializationPerformanceVault",
+      "path": "contracts/vaults/CommercializationPerformanceVault.sol"
+    },
+    {
+      "name": "CredentialRevocationRegistry",
+      "path": "contracts/optional/CredentialRevocationRegistry.sol"
+    },
+    {
+      "name": "DisputeRegistry",
+      "path": "contracts/optional/DisputeRegistry.sol"
+    },
+    {
+      "name": "JobClaimBondManager",
+      "path": "contracts/registry/JobClaimBondManager.sol"
+    },
+    {
+      "name": "JobRegistry",
+      "path": "contracts/registry/JobRegistry.sol"
+    },
+    {
+      "name": "LaunchGateRegistry",
+      "path": "contracts/registry/LaunchGateRegistry.sol"
+    },
+    {
+      "name": "LegacyAGIJobManagerRegistry",
+      "path": "contracts/registry/LegacyAGIJobManagerRegistry.sol"
+    },
+    {
+      "name": "MandateEpochRegistry",
+      "path": "contracts/aep/MandateEpochRegistry.sol"
+    },
+    {
+      "name": "PremiumAccessRegistry",
+      "path": "contracts/registry/PremiumAccessRegistry.sol"
+    },
+    {
+      "name": "ProofCardRegistry",
+      "path": "contracts/registry/ProofCardRegistry.sol"
+    },
+    {
+      "name": "ProofCredentialRegistry",
+      "path": "contracts/registry/ProofCredentialRegistry.sol"
+    },
+    {
+      "name": "ProofSeedRegistry",
+      "path": "contracts/registry/ProofSeedRegistry.sol"
+    },
+    {
+      "name": "ProofSubmissionRegistry",
+      "path": "contracts/registry/ProofSubmissionRegistry.sol"
+    },
+    {
+      "name": "ProtocolConfigRegistry",
+      "path": "contracts/registry/ProtocolConfigRegistry.sol"
+    },
+    {
+      "name": "ReferralRegistry",
+      "path": "contracts/registry/ReferralRegistry.sol"
+    },
+    {
+      "name": "ReputationRegistry",
+      "path": "contracts/registry/ReputationRegistry.sol"
+    },
+    {
+      "name": "ReviewerBondRegistry",
+      "path": "contracts/registry/ReviewerBondRegistry.sol"
+    },
+    {
+      "name": "SponsorRegistry",
+      "path": "contracts/optional/SponsorRegistry.sol"
+    },
+    {
+      "name": "TokenReserveVault",
+      "path": "contracts/vaults/TokenReserveVault.sol"
+    },
+    {
+      "name": "TreasuryRouter",
+      "path": "contracts/registry/TreasuryRouter.sol"
+    }
+  ],
+  "counts": {
+    "managedContractTypes": 45,
+    "deployedManagedInstances": 48,
+    "manifestEntriesIncludingAGIALPHA": 49
+  },
+  "deployedInstances": [
+    {
+      "step": 1,
+      "contractType": "MockAGIALPHA",
+      "managed": false
+    },
+    {
+      "step": 2,
+      "contractType": "MockAGIALPHA",
+      "managed": false
+    },
+    {
+      "step": 3,
+      "contractType": "CommercializationPerformanceVault",
+      "managed": true
+    },
+    {
+      "step": 4,
+      "contractType": "TokenReserveVault",
+      "managed": true
+    },
+    {
+      "step": 5,
+      "contractType": "TokenReserveVault",
+      "managed": true
+    },
+    {
+      "step": 6,
+      "contractType": "TokenReserveVault",
+      "managed": true
+    },
+    {
+      "step": 7,
+      "contractType": "TokenReserveVault",
+      "managed": true
+    },
+    {
+      "step": 8,
+      "contractType": "ProofSeedRegistry",
+      "managed": true
+    },
+    {
+      "step": 9,
+      "contractType": "LegacyAGIJobManagerRegistry",
+      "managed": true
+    },
+    {
+      "step": 10,
+      "contractType": "ReputationRegistry",
+      "managed": true
+    },
+    {
+      "step": 11,
+      "contractType": "ReferralRegistry",
+      "managed": true
+    },
+    {
+      "step": 12,
+      "contractType": "ProofCardRegistry",
+      "managed": true
+    },
+    {
+      "step": 13,
+      "contractType": "ProofCredentialRegistry",
+      "managed": true
+    },
+    {
+      "step": 14,
+      "contractType": "JobRegistry",
+      "managed": true
+    },
+    {
+      "step": 15,
+      "contractType": "JobClaimBondManager",
+      "managed": true
+    },
+    {
+      "step": 16,
+      "contractType": "PremiumAccessRegistry",
+      "managed": true
+    },
+    {
+      "step": 17,
+      "contractType": "ProofSubmissionRegistry",
+      "managed": true
+    },
+    {
+      "step": 18,
+      "contractType": "ReviewerBondRegistry",
+      "managed": true
+    },
+    {
+      "step": 19,
+      "contractType": "TreasuryRouter",
+      "managed": true
+    },
+    {
+      "step": 20,
+      "contractType": "ProtocolConfigRegistry",
+      "managed": true
+    },
+    {
+      "step": 21,
+      "contractType": "LaunchGateRegistry",
+      "managed": true
+    },
+    {
+      "step": 22,
+      "contractType": "DisputeRegistry",
+      "managed": true
+    },
+    {
+      "step": 23,
+      "contractType": "AppealRegistry",
+      "managed": true
+    },
+    {
+      "step": 24,
+      "contractType": "SponsorRegistry",
+      "managed": true
+    },
+    {
+      "step": 25,
+      "contractType": "BuilderProfileRegistry",
+      "managed": true
+    },
+    {
+      "step": 26,
+      "contractType": "CredentialRevocationRegistry",
+      "managed": true
+    },
+    {
+      "step": 27,
+      "contractType": "AEPAgentRegistry",
+      "managed": true
+    },
+    {
+      "step": 28,
+      "contractType": "AEPArtifactRegistry",
+      "managed": true
+    },
+    {
+      "step": 29,
+      "contractType": "AEPGoalOSCommitRegistry",
+      "managed": true
+    },
+    {
+      "step": 30,
+      "contractType": "AEPRunCommitmentRegistry",
+      "managed": true
+    },
+    {
+      "step": 31,
+      "contractType": "AEPProofLedger",
+      "managed": true
+    },
+    {
+      "step": 32,
+      "contractType": "AEPEvalRegistry",
+      "managed": true
+    },
+    {
+      "step": 33,
+      "contractType": "AEPAttestationRegistry",
+      "managed": true
+    },
+    {
+      "step": 34,
+      "contractType": "AEPSelectionGate",
+      "managed": true
+    },
+    {
+      "step": 35,
+      "contractType": "AEPRolloutRouter",
+      "managed": true
+    },
+    {
+      "step": 36,
+      "contractType": "AEPRollbackRegistry",
+      "managed": true
+    },
+    {
+      "step": 37,
+      "contractType": "AEPEvidenceDocketRegistry",
+      "managed": true
+    },
+    {
+      "step": 38,
+      "contractType": "AEPProofBundleRegistry",
+      "managed": true
+    },
+    {
+      "step": 39,
+      "contractType": "AlphaWorkUnitLedger",
+      "managed": true
+    },
+    {
+      "step": 40,
+      "contractType": "MandateEpochRegistry",
+      "managed": true
+    },
+    {
+      "step": 41,
+      "contractType": "AGIEthNamespaceRegistry",
+      "managed": true
+    },
+    {
+      "step": 42,
+      "contractType": "AEPConformanceRegistry",
+      "managed": true
+    },
+    {
+      "step": 43,
+      "contractType": "AEPClaimBoundaryRegistry",
+      "managed": true
+    },
+    {
+      "step": 44,
+      "contractType": "AEPReplayRegistry",
+      "managed": true
+    },
+    {
+      "step": 45,
+      "contractType": "AEPCommitRevealValidationRegistry",
+      "managed": true
+    },
+    {
+      "step": 46,
+      "contractType": "AEPEvaluatorStakingRegistry",
+      "managed": true
+    },
+    {
+      "step": 47,
+      "contractType": "AEPSlashingCourt",
+      "managed": true
+    },
+    {
+      "step": 48,
+      "contractType": "AEPRewardVault",
+      "managed": true
+    },
+    {
+      "step": 49,
+      "contractType": "AEPChronicleRegistry",
+      "managed": true
+    },
+    {
+      "step": 50,
+      "contractType": "AEPFalsificationRegistry",
+      "managed": true
+    }
+  ],
+  "privilegedRoles": [
+    "DEFAULT_ADMIN_ROLE",
+    "PROTOCOL_ADMIN_ROLE",
+    "OPERATOR_ROLE",
+    "REVIEWER_MANAGER_ROLE",
+    "TREASURY_ROLE",
+    "PAUSER_ROLE",
+    "VAULT_MANAGER_ROLE"
+  ],
+  "roleGrants": [
+    {
+      "contractExpression": "jobRegistry",
+      "role": "OPERATOR_ROLE",
+      "granteeExpression": "await claimBond.getAddress()",
+      "label": "JobRegistry <- ClaimBond",
+      "phase": "B_OWNER_CONFIGURATION"
+    },
+    {
+      "contractExpression": "jobRegistry",
+      "role": "OPERATOR_ROLE",
+      "granteeExpression": "await proofSubmissions.getAddress()",
+      "label": "JobRegistry <- ProofSubmissions",
+      "phase": "B_OWNER_CONFIGURATION"
+    },
+    {
+      "contractExpression": "claimBond",
+      "role": "OPERATOR_ROLE",
+      "granteeExpression": "await proofSubmissions.getAddress()",
+      "label": "ClaimBond <- ProofSubmissions",
+      "phase": "B_OWNER_CONFIGURATION"
+    },
+    {
+      "contractExpression": "proofSubmissions",
+      "role": "OPERATOR_ROLE",
+      "granteeExpression": "await reviewerBonds.getAddress()",
+      "label": "ProofSubmissions <- ReviewerBonds",
+      "phase": "B_OWNER_CONFIGURATION"
+    },
+    {
+      "contractExpression": "proofCards",
+      "role": "OPERATOR_ROLE",
+      "granteeExpression": "await proofSubmissions.getAddress()",
+      "label": "ProofCards <- ProofSubmissions",
+      "phase": "B_OWNER_CONFIGURATION"
+    },
+    {
+      "contractExpression": "credentials",
+      "role": "OPERATOR_ROLE",
+      "granteeExpression": "await proofSubmissions.getAddress()",
+      "label": "Credentials <- ProofSubmissions",
+      "phase": "B_OWNER_CONFIGURATION"
+    },
+    {
+      "contractExpression": "credentials",
+      "role": "OPERATOR_ROLE",
+      "granteeExpression": "await revocations.getAddress()",
+      "label": "Credentials <- Revocations",
+      "phase": "B_OWNER_CONFIGURATION"
+    },
+    {
+      "contractExpression": "reputation",
+      "role": "OPERATOR_ROLE",
+      "granteeExpression": "await proofSubmissions.getAddress()",
+      "label": "Reputation <- ProofSubmissions",
+      "phase": "B_OWNER_CONFIGURATION"
+    },
+    {
+      "contractExpression": "referrals",
+      "role": "OPERATOR_ROLE",
+      "granteeExpression": "await proofSubmissions.getAddress()",
+      "label": "Referrals <- ProofSubmissions",
+      "phase": "B_OWNER_CONFIGURATION"
+    },
+    {
+      "contractExpression": "proofSeeds",
+      "role": "OPERATOR_ROLE",
+      "granteeExpression": "operationsAddress",
+      "label": "ProofSeeds <- operationsAddress",
+      "phase": "B_OWNER_CONFIGURATION"
+    },
+    {
+      "contractExpression": "legacyRegistry",
+      "role": "OPERATOR_ROLE",
+      "granteeExpression": "operationsAddress",
+      "label": "LegacyRegistry <- operationsAddress",
+      "phase": "B_OWNER_CONFIGURATION"
+    },
+    {
+      "contractExpression": "protocolConfig",
+      "role": "OPERATOR_ROLE",
+      "granteeExpression": "operationsAddress",
+      "label": "ProtocolConfig <- operationsAddress",
+      "phase": "B_OWNER_CONFIGURATION"
+    },
+    {
+      "contractExpression": "launchGates",
+      "role": "OPERATOR_ROLE",
+      "granteeExpression": "operationsAddress",
+      "label": "LaunchGates <- operationsAddress",
+      "phase": "B_OWNER_CONFIGURATION"
+    },
+    {
+      "contractExpression": "aepEvaluatorStaking",
+      "role": "OPERATOR_ROLE",
+      "granteeExpression": "await aepSlashingCourt.getAddress()",
+      "label": "EvaluatorStaking <- SlashingCourt",
+      "phase": "B_OWNER_CONFIGURATION"
+    }
+  ],
+  "economicNoSetterTreasuries": [
+    "AEPGoalOSCommitRegistry",
+    "MandateEpochRegistry",
+    "ReviewerBondRegistry"
+  ],
+  "sourceHashes": {
+    "contracts/access/GoalOSAccessControl.sol": "b9628e44c59fba1b4a18191fcdf567cb7894e5e05f416202407153234e69dab2",
+    "scripts/deploy-core.ts": "29e9327122f9d463e5635fb50cfdad8cdeac6c6f463b0d5db0a83a2cacc9b598",
+    "scripts/validate-runtime-addresses.ts": "63f35f8b68811b5238e30e4f2f50bc00eefc5e1b6f983008b3c525a239070f3e"
+  },
+  "claimBoundary": "LOCAL_SOURCE_INVENTORY_ONLY; not deployment, verification, audit, Safe, Ledger, or chain evidence."
+}

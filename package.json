@@ -1,7 +1,7 @@
 {
   "name": "goalos-agialpha-ascension",
   "version": "4.4.0",
-  "description": "GoalOS-native reimplementation of \u03b1-AGI Ascension using existing AGIALPHA for proof-settled AI workflow work.",
+  "description": "GoalOS-native reimplementation of α-AGI Ascension using existing AGIALPHA for proof-settled AI workflow work.",
   "license": "UNLICENSED",
   "scripts": {
     "compile": "hardhat compile",
@@ -155,7 +155,23 @@
     "ownership:mainnet:transfer-local-gated": "OWNERSHIP_COMMAND=mainnet:transfer-local-gated hardhat run --network ethereumMainnet scripts/ownership/goalos-ownership-command-center.ts",
     "ownership:mainnet:verify": "OWNERSHIP_COMMAND=mainnet:verify hardhat run --network ethereumMainnet scripts/ownership/goalos-ownership-command-center.ts",
     "ownership:mainnet:evidence": "OWNERSHIP_COMMAND=mainnet:evidence hardhat run --network ethereumMainnet scripts/ownership/goalos-ownership-command-center.ts",
-    "ownership:mainnet:sweep-deployer-local-gated": "OWNERSHIP_COMMAND=mainnet:sweep-deployer-local-gated hardhat run --network ethereumMainnet scripts/ownership/goalos-ownership-command-center.ts"
+    "ownership:mainnet:sweep-deployer-local-gated": "OWNERSHIP_COMMAND=mainnet:sweep-deployer-local-gated hardhat run --network ethereumMainnet scripts/ownership/goalos-ownership-command-center.ts",
+    "authority:inventory": "ts-node scripts/authority-inventory.ts",
+    "authority:policy:validate": "ts-node scripts/authority-policy-validate.ts",
+    "ownership:test": "npm run test:ownership",
+    "configure:mainnet:prepare-safe": "ts-node scripts/deployment/goalos-deploy-command-center.ts mainnet:configure-safe --network ethereumMainnet --no-broadcast",
+    "deployer:mainnet:decommission-check": "OWNERSHIP_COMMAND=mainnet:verify hardhat run --network ethereumMainnet scripts/ownership/goalos-ownership-command-center.ts",
+    "deployer:mainnet:sweep-eth": "OWNERSHIP_COMMAND=mainnet:sweep-deployer-local-gated hardhat run --network ethereumMainnet scripts/ownership/goalos-ownership-command-center.ts",
+    "configure:mainnet:verify": "npm run ownership:mainnet:verify",
+    "ownership:mainnet:verify-genesis": "npm run ownership:mainnet:verify",
+    "configure:sepolia:prepare": "npm run ownership:sepolia:plan",
+    "configure:sepolia:verify": "npm run ownership:sepolia:verify",
+    "ownership:sepolia:verify-genesis": "npm run ownership:sepolia:verify",
+    "ownership:sepolia:legacy-plan": "npm run ownership:sepolia:plan",
+    "ownership:sepolia:legacy-initiate": "npm run ownership:sepolia:transfer",
+    "ownership:sepolia:legacy-accept-prepare": "npm run ownership:sepolia:plan",
+    "ownership:sepolia:legacy-verify": "npm run ownership:sepolia:verify",
+    "ownership:sepolia:legacy-evidence": "npm run ownership:sepolia:evidence"
   },
   "dependencies": {
     "@openzeppelin/contracts": "4.9.6",

@@ -47,6 +47,14 @@ describe("GoalOS ownership handoff", function () {
     await expect(registry.renounceRole(await registry.DEFAULT_ADMIN_ROLE(), owner.address)).to.be.revertedWithCustomError(registry, "GoalOSDefaultAdminRoleCoupledToOwner");
 
     await expect(registry.transferOwnership(finalOwner.address))
+      .to.emit(registry, "OwnershipTransferStarted")
+      .withArgs(owner.address, finalOwner.address);
+    expect(await registry.pendingOwner()).to.equal(finalOwner.address);
+    await expect(registry.connect(stranger).acceptOwnership()).to.be.revertedWithCustomError(registry, "GoalOSOwnershipTransferPending");
+    await expect(registry.connect(finalOwner).acceptOwnership()).to.be.revertedWithCustomError(registry, "GoalOSOwnershipTransferDelayNotElapsed");
+    await ethers.provider.send("evm_increaseTime", [24 * 60 * 60]);
+    await ethers.provider.send("evm_mine", []);
+    await expect(registry.connect(finalOwner).acceptOwnership())
       .to.emit(registry, "OwnershipTransferred")
       .withArgs(owner.address, finalOwner.address)
       .and.to.emit(registry, "GoalOSOwnershipRolesMigrated")
@@ -64,6 +72,9 @@ describe("GoalOS ownership handoff", function () {
     expect(await registry.paused()).to.equal(true);
     await registry.connect(finalOwner).unpause();
     await registry.connect(finalOwner).transferOwnership(stranger.address);
+    await ethers.provider.send("evm_increaseTime", [24 * 60 * 60]);
+    await ethers.provider.send("evm_mine", []);
+    await registry.connect(stranger).acceptOwnership();
     expect(await registry.owner()).to.equal(stranger.address);
   });
 

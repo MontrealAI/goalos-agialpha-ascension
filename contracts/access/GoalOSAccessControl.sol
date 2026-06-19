@@ -17,7 +17,17 @@ abstract contract GoalOSAccessControl is AccessControl, Ownable, Pausable {
     error GoalOSDefaultAdminRoleCoupledToOwner();
     error GoalOSOwnershipRenunciationDisabled();
     error GoalOSOwnershipNoOp();
+    error GoalOSOwnershipTransferPending();
+    error GoalOSOwnershipTransferDelayNotElapsed();
+    error GoalOSOwnerCoupledRoleRemovalDisabled();
 
+    uint48 public constant OWNERSHIP_TRANSFER_DELAY = 1 days;
+
+    address private _goalOSPendingOwner;
+    uint48 private _goalOSPendingOwnerAcceptAfter;
+
+    event OwnershipTransferStarted(address indexed previousOwner, address indexed newOwner);
+    event GoalOSOwnershipTransferCancelled(address indexed owner, address indexed pendingOwner);
     event GoalOSOwnershipRolesMigrated(address indexed previousOwner, address indexed newOwner);
 
     constructor(address admin) {
@@ -71,7 +81,35 @@ abstract contract GoalOSAccessControl is AccessControl, Ownable, Pausable {
         require(newOwner != address(0), "Ownable: new owner is the zero address");
         address previousOwner = owner();
         if (newOwner == previousOwner) revert GoalOSOwnershipNoOp();
+        _goalOSPendingOwner = newOwner;
+        _goalOSPendingOwnerAcceptAfter = uint48(block.timestamp) + OWNERSHIP_TRANSFER_DELAY;
+        emit OwnershipTransferStarted(previousOwner, newOwner);
+    }
+
+    function pendingOwner() public view returns (address) {
+        return _goalOSPendingOwner;
+    }
+
+    function pendingOwnerAcceptAfter() public view returns (uint48) {
+        return _goalOSPendingOwnerAcceptAfter;
+    }
+
+    function cancelOwnershipTransfer() public onlyOwner {
+        address pending = _goalOSPendingOwner;
+        if (pending == address(0)) revert GoalOSOwnershipNoOp();
+        delete _goalOSPendingOwner;
+        delete _goalOSPendingOwnerAcceptAfter;
+        emit GoalOSOwnershipTransferCancelled(msg.sender, pending);
+    }
+
+    function acceptOwnership() public {
+        address newOwner = _goalOSPendingOwner;
+        if (msg.sender != newOwner) revert GoalOSOwnershipTransferPending();
+        if (block.timestamp < _goalOSPendingOwnerAcceptAfter) revert GoalOSOwnershipTransferDelayNotElapsed();
+        address previousOwner = owner();
         _grantManagedRoles(newOwner);
+        delete _goalOSPendingOwner;
+        delete _goalOSPendingOwnerAcceptAfter;
         _transferOwnership(newOwner);
         _revokeManagedRoles(previousOwner);
         emit GoalOSOwnershipRolesMigrated(previousOwner, newOwner);
@@ -88,11 +126,13 @@ abstract contract GoalOSAccessControl is AccessControl, Ownable, Pausable {
 
     function revokeRole(bytes32 role, address account) public override {
         if (role == DEFAULT_ADMIN_ROLE) revert GoalOSDefaultAdminRoleCoupledToOwner();
+        if (account == owner() && _isOwnerCoupledRole(role)) revert GoalOSOwnerCoupledRoleRemovalDisabled();
         super.revokeRole(role, account);
     }
 
     function renounceRole(bytes32 role, address account) public override {
         if (role == DEFAULT_ADMIN_ROLE) revert GoalOSDefaultAdminRoleCoupledToOwner();
+        if (account == owner() && _isOwnerCoupledRole(role)) revert GoalOSOwnerCoupledRoleRemovalDisabled();
         super.renounceRole(role, account);
     }
 
@@ -110,5 +150,9 @@ abstract contract GoalOSAccessControl is AccessControl, Ownable, Pausable {
         for (uint256 i = 0; i < managedOwnershipRoleCount(); i++) {
             _revokeRole(managedOwnershipRoleAt(i), account);
         }
+    }
+
+    function _isOwnerCoupledRole(bytes32 role) internal pure returns (bool) {
+        return role == PROTOCOL_ADMIN_ROLE || role == OPERATOR_ROLE || role == REVIEWER_MANAGER_ROLE || role == TREASURY_ROLE || role == PAUSER_ROLE || role == VAULT_MANAGER_ROLE;
     }
 }

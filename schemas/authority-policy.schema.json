@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://goalos.local/schemas/authority-policy.schema.json",
+  "title": "GoalOS authority policy",
+  "type": "object",
+  "required": ["chainId", "profile", "governanceOwner", "governanceOwnerKind", "operationsAddress", "treasuryAddress", "founderAddress", "vaultOwners"],
+  "properties": {
+    "chainId": { "type": "integer", "enum": [1, 11155111, 31337] },
+    "profile": { "type": "string", "enum": ["SAFE_GOVERNANCE", "LEDGER_EOA_GOVERNANCE", "ROLE_SEPARATED"] },
+    "governanceOwner": { "type": "string", "pattern": "^0x[a-fA-F0-9]{40}$" },
+    "governanceOwnerKind": { "type": "string", "enum": ["SAFE", "LEDGER_EOA"] },
+    "allowSingleLedgerEOAGovernance": { "type": "string" },
+    "operationsAddress": { "type": "string", "pattern": "^0x[a-fA-F0-9]{40}$" },
+    "treasuryAddress": { "type": "string", "pattern": "^0x[a-fA-F0-9]{40}$" },
+    "founderAddress": { "type": "string", "pattern": "^0x[a-fA-F0-9]{40}$" },
+    "disposableDeployer": { "type": "string", "pattern": "^0x[a-fA-F0-9]{40}$" },
+    "vaultOwners": {
+      "type": "object",
+      "required": ["commercializationPerformance", "proofRewards", "liquidity", "security", "community"],
+      "properties": {
+        "commercializationPerformance": { "type": "string", "pattern": "^0x[a-fA-F0-9]{40}$" },
+        "proofRewards": { "type": "string", "pattern": "^0x[a-fA-F0-9]{40}$" },
+        "liquidity": { "type": "string", "pattern": "^0x[a-fA-F0-9]{40}$" },
+        "security": { "type": "string", "pattern": "^0x[a-fA-F0-9]{40}$" },
+        "community": { "type": "string", "pattern": "^0x[a-fA-F0-9]{40}$" }
+      },
+      "additionalProperties": false
+    },
+    "allowedSafeConfiguration": {
+      "type": "object",
+      "properties": { "minimumOwners": {"type":"integer","minimum":1}, "minimumThreshold": {"type":"integer","minimum":1}, "allowModules": {"type":"array"}, "allowGuard": {"type":["string","null"]} }
+    }
+  },
+  "additionalProperties": true
+}

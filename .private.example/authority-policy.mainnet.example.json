@@ -1,0 +1,18 @@
+{
+  "chainId": 1,
+  "profile": "SAFE_GOVERNANCE",
+  "governanceOwner": "0x1111111111111111111111111111111111111111",
+  "governanceOwnerKind": "SAFE",
+  "operationsAddress": "0x2222222222222222222222222222222222222222",
+  "treasuryAddress": "0x3333333333333333333333333333333333333333",
+  "founderAddress": "0x4444444444444444444444444444444444444444",
+  "disposableDeployer": "0x5555555555555555555555555555555555555555",
+  "vaultOwners": {
+    "commercializationPerformance": "0x1111111111111111111111111111111111111111",
+    "proofRewards": "0x1111111111111111111111111111111111111111",
+    "liquidity": "0x1111111111111111111111111111111111111111",
+    "security": "0x1111111111111111111111111111111111111111",
+    "community": "0x1111111111111111111111111111111111111111"
+  },
+  "allowedSafeConfiguration": { "minimumOwners": 3, "minimumThreshold": 2, "allowModules": [], "allowGuard": null }
+}
