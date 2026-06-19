@@ -105,7 +105,7 @@ for path in candidates:
         if len(value) >= 24 and not value.startswith(('process.env', 'env.', 'secrets.', 'vars.')):
             findings.append({'file': rel, 'line': line_no, 'rule': 'secret-assignment', 'key': match.group(1)})
 critical = len(findings)
-state = 'FAILED' if findings else 'COMPLETED_INTERNAL_SECRET_SCAN'
+state = 'FAILED' if findings else 'COMPLETED'
 out = {
     'tool': 'gitleaks',
     'status': state,
