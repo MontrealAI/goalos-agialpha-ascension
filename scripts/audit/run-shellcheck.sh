@@ -100,3 +100,19 @@ if status:
     sys.exit(1)
 PY
 fi
+python - "$JSON" "$TXT" <<'PY'
+import json, pathlib, sys
+from scripts.audit.audit_model import stable_fingerprint, write_normalized
+path=pathlib.Path(sys.argv[1]); txt=pathlib.Path(sys.argv[2])
+try: legacy=json.loads(path.read_text())
+except Exception as exc:
+    legacy={'tool':'shellcheck','status':'MALFORMED','critical_high_unresolved':1,'error':str(exc)}
+critical=int(legacy.get('critical_high_unresolved',0) or 0)
+findings=[]
+for i in range(critical):
+    findings.append({'fingerprint':stable_fingerprint('shellcheck','SHELLCHECK_FINDING','scripts','',str(txt),str(txt),i),'id':'SHELLCHECK_FINDING','tool':'shellcheck','severity':'high','status':'unresolved','title':'shellcheck/bash syntax finding','packageOrContract':'scripts','installedVersion':'','fixedVersion':'','dependencyPath':'','file':str(txt),'line':None,'description':legacy.get('output') or legacy.get('stderr') or legacy.get('error',''),'evidence':[str(txt)],'triageRef':''})
+state='FAILED' if critical else 'COMPLETED'
+obj=write_normalized(path,'shellcheck','shellcheck -f json scripts/**/*.sh or bash -n fallback',int(legacy.get('exitStatus',0) or 0),findings,[str(txt)],state)
+obj['mode']=legacy.get('mode'); obj['filesChecked']=legacy.get('filesChecked',[])
+path.write_text(json.dumps(obj,indent=2,sort_keys=True)+'\n')
+PY

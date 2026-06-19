@@ -174,3 +174,22 @@ print(json.dumps(summary, indent=2))
 if critical:
     sys.exit(1)
 PY
+python - "$JSON" "$TXT" <<'PY'
+import json, pathlib, sys
+from scripts.audit.audit_model import stable_fingerprint, write_normalized
+path=pathlib.Path(sys.argv[1]); txt=pathlib.Path(sys.argv[2])
+try: legacy=json.loads(path.read_text())
+except Exception as exc:
+    legacy={'tool':'gitleaks','status':'MALFORMED','critical_high_unresolved':1,'findings':[{'error':str(exc)}]}
+raw_findings=legacy.get('findings',[]) if isinstance(legacy.get('findings',[]),list) else []
+critical=int(legacy.get('critical_high_unresolved', len(raw_findings)) or 0)
+findings=[]
+for i,f in enumerate(raw_findings or [{}]*critical):
+    file=str(f.get('File') or f.get('file') or f.get('Path') or f.get('path') or txt)
+    line=f.get('StartLine') or f.get('line')
+    findings.append({'fingerprint':stable_fingerprint('gitleaks',str(f.get('RuleID') or f.get('rule') or 'GITLEAKS_FINDING'),'secrets','',file,file,line),'id':str(f.get('RuleID') or f.get('rule') or 'GITLEAKS_FINDING'),'tool':'gitleaks','severity':'high','status':'unresolved','title':'Potential secret detected','packageOrContract':'secrets','installedVersion':'','fixedVersion':'','dependencyPath':'','file':file,'line':line,'description':str(f)[:1000],'evidence':[str(txt)],'triageRef':''})
+state='FAILED' if findings else ('FAILED_SCANNER_ERROR' if 'ERROR' in str(legacy.get('status','')) else 'COMPLETED')
+obj=write_normalized(path,'gitleaks','gitleaks detect --no-git',int(legacy.get('scannerExitStatus',legacy.get('installExitStatus',0)) or 0),findings,[str(txt)],state)
+obj['findingCount']=len(raw_findings)
+path.write_text(json.dumps(obj,indent=2,sort_keys=True)+'\n')
+PY

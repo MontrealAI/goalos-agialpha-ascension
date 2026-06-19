@@ -5,7 +5,7 @@ TXT="$AUDIT_REPORT_DIR/osv-scanner.txt"; RAW="$AUDIT_REPORT_DIR/osv-scanner.raw.
 : > "$TXT"
 if ! command -v osv-scanner >/dev/null 2>&1; then
   if command -v go >/dev/null 2>&1; then
-    timeout 180 go install github.com/google/osv-scanner/v2/cmd/osv-scanner@v2.2.3 >> "$TXT" 2>&1 || true
+    timeout 600 go install github.com/google/osv-scanner/v2/cmd/osv-scanner@v2.2.3 >> "$TXT" 2>&1 || true
     export PATH="$(go env GOPATH)/bin:$PATH"
   fi
 fi
@@ -35,7 +35,9 @@ else:
                 for vuln in v['vulnerabilities']:
                     pkg=v.get('package',{}).get('name') or vuln.get('package',{}).get('name') or ''
                     ver=v.get('package',{}).get('version') or vuln.get('package',{}).get('version') or ''
-                    sev='high'
+                    sev=str(vuln.get('database_specific',{}).get('severity') or '').lower()
+                    if sev in {'moderate'}: sev='medium'
+                    if sev not in {'critical','high','medium','low'}: sev='high'
                     adv=vuln.get('id') or vuln.get('aliases',[None])[0] or 'OSV'
                     f={"fingerprint":stable_fingerprint('osv-scanner',adv,pkg,ver,pkg),"id":adv,"tool":"osv-scanner","severity":sev,"status":"unresolved","title":vuln.get('summary') or adv,"packageOrContract":pkg,"installedVersion":ver,"fixedVersion":"","dependencyPath":pkg,"file":"package-lock.json","line":None,"description":vuln.get('details','')[:500],"evidence":vuln.get('aliases',[]),"triageRef":""}
                     findings.append(apply_triage(f,triage))

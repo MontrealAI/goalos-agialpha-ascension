@@ -97,6 +97,15 @@ class AuditPipelineTests(unittest.TestCase):
             obj=self.base(); obj['sourceSha']='not-current'
             p=self.write_summary(d,obj)
             r=self.run_fail(p); self.assertEqual(r.returncode,2); self.assertIn('STALE', r.stdout)
+    def test_legacy_scanner_output_blocks_summarization_without_provenance(self):
+        with tempfile.TemporaryDirectory() as d:
+            rd=pathlib.Path(d)
+            (rd/'semgrep.json').write_text(json.dumps({'tool':'semgrep','status':'COMPLETED','critical_high_unresolved':0}))
+            subprocess.run(['python',str(SUM),str(rd)],cwd=ROOT,check=True,stdout=subprocess.PIPE)
+            summary=json.loads((rd/'audit-summary.json').read_text())
+            self.assertEqual(summary['decision'],'BLOCKED')
+            self.assertTrue(any(f.get('status') == 'LEGACY_WITHOUT_PROVENANCE' for f in summary['toolFailures']))
+            self.assertEqual(summary['criticalHighUnresolved'],1)
     def test_stale_scanner_evidence_blocks_even_when_summary_sha_is_current(self):
         with tempfile.TemporaryDirectory() as d:
             rd=pathlib.Path(d)
