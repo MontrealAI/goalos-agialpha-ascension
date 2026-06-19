@@ -103,6 +103,7 @@ describe("ownership command-center safety gates", function () {
     expect(source).to.include("Ownership acceptance blocked; contracts are not pending to final owner");
     expect(source).to.include('action === "FAIL" || action === "FAIL_PENDING_OWNER"');
     expect(source).to.include("owner === finalOwner || permanentOwners.has(owner)");
+    expect(source).to.include("allowExpired: true");
     expect(source).to.include('hre.network.name !== "hardhat"');
   });
 

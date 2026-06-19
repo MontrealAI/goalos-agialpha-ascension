@@ -125,6 +125,11 @@ async function validateSafeGovernanceOwner(governanceOwner: string, deployerAddr
   const allowedModules = new Set((allowed.allowModules || []).map((moduleAddress: string) => ethers.getAddress(moduleAddress)));
   const unexpectedModules = modules.filter((moduleAddress: string) => !allowedModules.has(moduleAddress));
   if (unexpectedModules.length) throw new Error(`Ethereum mainnet deployment blocked: Safe has unexpected enabled modules: ${unexpectedModules.join(",")}.`);
+  const guardStorageSlot = "0x4a204f620c8c5ccdca3fd54d003badd85ba500436a431f0cbda4f558c93c34c8";
+  const guardWord = await ethers.provider.getStorage(governanceOwner, guardStorageSlot);
+  const actualGuard = ethers.getAddress(`0x${guardWord.slice(-40)}`);
+  const expectedGuard = allowed.allowGuard ? ethers.getAddress(allowed.allowGuard) : ethers.ZeroAddress;
+  if (actualGuard !== expectedGuard) throw new Error(`Ethereum mainnet deployment blocked: Safe guard ${actualGuard} does not match policy ${expectedGuard}.`);
 }
 
 function enforceEthereumMainnetGates(info: ChainInfo) {

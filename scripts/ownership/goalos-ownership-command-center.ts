@@ -694,7 +694,7 @@ async function accept(label: string): Promise<void> {
   for (const entry of loadedPlan.managedContracts as PlannedEntry[]) {
     const c = (await contractAt(entry.address)).connect(finalOwnerSigner);
     const owner = ethers.getAddress(await c.owner());
-    if (owner === finalOwner) continue;
+    if (owner === finalOwner || permanentOwners.has(owner)) continue;
     const pending = ethers.getAddress(await c.pendingOwner());
     if (pending !== finalOwner) throw new Error(`Acceptance blocked for ${entry.name}: pending owner ${pending}`);
     const acceptAfter = BigInt(await c.pendingOwnerAcceptAfter());
@@ -729,7 +729,7 @@ async function verify(label: string, writeEvidence = true): Promise<void> {
   const loadedPlanForOwner = readPlanIfPresent(label);
   requireMainnetEvidencePlan(label, writeEvidence, loadedPlanForOwner);
   if (loadedPlanForOwner) {
-    validateLoadedPlan(loadedPlanForOwner, label, net.chainId, manifest.hash, fallbackOwner, finalOwner);
+    validateLoadedPlan(loadedPlanForOwner, label, net.chainId, manifest.hash, fallbackOwner, finalOwner, { allowExpired: true });
     assertPlanCoversManifest(loadedPlanForOwner.managedContracts, managedEntries);
     const planPermanentOwners = approvedPermanentOwnersFromPlan(loadedPlanForOwner);
     assertPermanentOwnersMatchPlan(permanentOwners, planPermanentOwners);

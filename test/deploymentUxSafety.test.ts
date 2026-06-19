@@ -322,6 +322,8 @@ describe("deployment UX safety layer", function () {
     expect(source).to.include("Safe-compatible getOwners/getThreshold proof");
     expect(source).to.include("getModulesPaginated");
     expect(source).to.include("Safe module pagination did not terminate");
+    expect(source).to.include("guardStorageSlot");
+    expect(source).to.include("does not match policy");
     expect(source).to.include("disposable deployer must not be a Safe owner");
     expect(source).to.include("GOVERNANCE_OWNER_KIND=LEDGER_EOA requires an EOA with no contract bytecode");
     const rehearsal = fs.readFileSync("scripts/local-mainnet-fork-simulation.ts", "utf8");
