@@ -94,7 +94,7 @@
         },
         {
           "attributes": "external onlyOperator",
-          "classification": "configuration",
+          "classification": "new_obligation_or_risk_increase",
           "name": "setClaimBoundaryActive"
         }
       ],
@@ -193,12 +193,12 @@
       "stateChangingSelectors": [
         {
           "attributes": "external onlyAdmin",
-          "classification": "configuration",
+          "classification": "new_obligation_or_risk_increase",
           "name": "setMinEvaluatorStake"
         },
         {
           "attributes": "external onlyAdmin",
-          "classification": "configuration",
+          "classification": "safe_exit_or_settlement",
           "name": "setUnstakeDelay"
         },
         {
@@ -506,7 +506,7 @@
           "name": "recordAlphaWorkUnits"
         }
       ],
-      "workflow": false
+      "workflow": true
     },
     {
       "assetHolding": false,
@@ -654,7 +654,7 @@
       "stateChangingSelectors": [
         {
           "attributes": "external onlyAdmin",
-          "classification": "configuration",
+          "classification": "new_obligation_or_risk_increase",
           "name": "setClaimBond"
         },
         {
@@ -669,7 +669,7 @@
         },
         {
           "attributes": "external nonReentrant",
-          "classification": "new_obligation_or_risk_increase",
+          "classification": "normal_operation_unclassified_review_required",
           "name": "reclaimExpiredClaimedJob"
         },
         {
@@ -720,17 +720,17 @@
         },
         {
           "attributes": "external onlyOperator",
-          "classification": "new_obligation_or_risk_increase",
+          "classification": "normal_operation_unclassified_review_required",
           "name": "markClaimed"
         },
         {
           "attributes": "external onlyOperator",
-          "classification": "new_obligation_or_risk_increase",
+          "classification": "normal_operation_unclassified_review_required",
           "name": "markSubmitted"
         },
         {
           "attributes": "external onlyOperator",
-          "classification": "new_obligation_or_risk_increase",
+          "classification": "normal_operation_unclassified_review_required",
           "name": "markApproved"
         },
         {
@@ -750,7 +750,7 @@
         },
         {
           "attributes": "external onlyOperator nonReentrant",
-          "classification": "new_obligation_or_risk_increase",
+          "classification": "normal_operation_unclassified_review_required",
           "name": "expireClaimedJob"
         },
         {
@@ -995,7 +995,7 @@
       "stateChangingSelectors": [
         {
           "attributes": "external onlyOperator",
-          "classification": "new_obligation_or_risk_increase",
+          "classification": "normal_operation_unclassified_review_required",
           "name": "recordApprovedProof"
         },
         {
@@ -1113,7 +1113,7 @@
         },
         {
           "attributes": "external onlyOperator returns (uint256 trancheId)",
-          "classification": "configuration",
+          "classification": "new_obligation_or_risk_increase",
           "name": "proposeTranche"
         },
         {
@@ -1123,7 +1123,7 @@
         },
         {
           "attributes": "external whenNotPaused",
-          "classification": "configuration",
+          "classification": "safe_exit_or_settlement",
           "name": "releaseTranche"
         },
         {
@@ -1157,6 +1157,6 @@
     }
   ],
   "generatedBy": "scripts/mainnet_operational_readiness.py",
-  "sourceTreeHash": "a94c1c3b686bae10eaad8912c20d73182998d487a193cd4fb078e9bd2d7bcb38",
+  "sourceTreeHash": "846d64342687dd16efca396eb0a3b6db10e4e0dcf1075ae9f90dc88694f0ec32",
   "sourceTreeHashScope": "tracked HEAD content excluding generated readiness artifacts"
 }

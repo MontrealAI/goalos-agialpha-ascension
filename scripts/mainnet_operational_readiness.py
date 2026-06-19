@@ -136,23 +136,28 @@ def contracts():
                 "roles": roles,
                 "assetHolding": detects_asset_holding(name, text),
                 "assetHoldingEvidence": "token/native inbound flow or asset-bearing name" if detects_asset_holding(name, text) else "none detected",
-                "workflow": any(word in name for word in STATE_WORDS),
+                "workflow": bool(funcs) or any(word in name for word in STATE_WORDS),
             })
     return out
 
 
+def selector_words(fn):
+    return [w.lower() for w in re.findall(r"[A-Z]?[a-z]+|[A-Z]+(?=[A-Z]|$)|[0-9]+", fn)]
+
+
 def classify(fn):
     name = fn.lower()
-    if any(x in name for x in ["pause", "unpause", "shutdown", "winddown", "migrat", "lifecycle"]):
+    words = selector_words(fn)
+    if any(x in words for x in ["pause", "unpause", "shutdown", "winddown", "lifecycle"]) or "migrat" in name:
         return "lifecycle_control_or_migration"
-    if any(x in name for x in ["recover", "override", "cancel", "resolve", "slash", "refund", "revoke"]):
+    if any(x in words for x in ["recover", "override", "cancel", "resolve", "slash", "refund", "revoke"]):
         return "owner_recovery_or_safe_exit"
-    if any(x in name for x in ["grant", "revoke", "set", "configure", "transferownership", "acceptownership"]):
-        return "configuration"
-    if any(x in name for x in ["withdraw", "release", "pay", "settle", "return", "unstake"]):
+    if any(x in words for x in ["withdraw", "release", "pay", "settle", "return", "unstake"]):
         return "safe_exit_or_settlement"
-    if any(x in name for x in ["create", "submit", "claim", "deposit", "stake", "reserve", "fund", "approve", "postjob"]):
+    if any(x in words for x in ["create", "submit", "claim", "deposit", "stake", "reserve", "fund", "approve", "post", "propose"]):
         return "new_obligation_or_risk_increase"
+    if any(x in words for x in ["grant", "set", "configure"]) or name in ["transferownership", "acceptownership"]:
+        return "configuration"
     return "normal_operation_unclassified_review_required"
 
 

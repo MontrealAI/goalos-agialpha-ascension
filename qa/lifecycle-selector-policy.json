@@ -58,7 +58,7 @@
     },
     {
       "attributes": "external onlyOperator",
-      "classification": "configuration",
+      "classification": "new_obligation_or_risk_increase",
       "contract": "AEPClaimBoundaryRegistry",
       "name": "setClaimBoundaryActive",
       "path": "contracts/aep/AEPClaimBoundaryRegistry.sol"
@@ -135,14 +135,14 @@
     },
     {
       "attributes": "external onlyAdmin",
-      "classification": "configuration",
+      "classification": "new_obligation_or_risk_increase",
       "contract": "AEPEvaluatorStakingRegistry",
       "name": "setMinEvaluatorStake",
       "path": "contracts/aep/AEPEvaluatorStakingRegistry.sol"
     },
     {
       "attributes": "external onlyAdmin",
-      "classification": "configuration",
+      "classification": "safe_exit_or_settlement",
       "contract": "AEPEvaluatorStakingRegistry",
       "name": "setUnstakeDelay",
       "path": "contracts/aep/AEPEvaluatorStakingRegistry.sol"
@@ -457,7 +457,7 @@
     },
     {
       "attributes": "external onlyAdmin",
-      "classification": "configuration",
+      "classification": "new_obligation_or_risk_increase",
       "contract": "JobClaimBondManager",
       "name": "setClaimBond",
       "path": "contracts/registry/JobClaimBondManager.sol"
@@ -478,7 +478,7 @@
     },
     {
       "attributes": "external nonReentrant",
-      "classification": "new_obligation_or_risk_increase",
+      "classification": "normal_operation_unclassified_review_required",
       "contract": "JobClaimBondManager",
       "name": "reclaimExpiredClaimedJob",
       "path": "contracts/registry/JobClaimBondManager.sol"
@@ -534,21 +534,21 @@
     },
     {
       "attributes": "external onlyOperator",
-      "classification": "new_obligation_or_risk_increase",
+      "classification": "normal_operation_unclassified_review_required",
       "contract": "JobRegistry",
       "name": "markClaimed",
       "path": "contracts/registry/JobRegistry.sol"
     },
     {
       "attributes": "external onlyOperator",
-      "classification": "new_obligation_or_risk_increase",
+      "classification": "normal_operation_unclassified_review_required",
       "contract": "JobRegistry",
       "name": "markSubmitted",
       "path": "contracts/registry/JobRegistry.sol"
     },
     {
       "attributes": "external onlyOperator",
-      "classification": "new_obligation_or_risk_increase",
+      "classification": "normal_operation_unclassified_review_required",
       "contract": "JobRegistry",
       "name": "markApproved",
       "path": "contracts/registry/JobRegistry.sol"
@@ -576,7 +576,7 @@
     },
     {
       "attributes": "external onlyOperator nonReentrant",
-      "classification": "new_obligation_or_risk_increase",
+      "classification": "normal_operation_unclassified_review_required",
       "contract": "JobRegistry",
       "name": "expireClaimedJob",
       "path": "contracts/registry/JobRegistry.sol"
@@ -765,7 +765,7 @@
     },
     {
       "attributes": "external onlyOperator",
-      "classification": "new_obligation_or_risk_increase",
+      "classification": "normal_operation_unclassified_review_required",
       "contract": "ReputationRegistry",
       "name": "recordApprovedProof",
       "path": "contracts/registry/ReputationRegistry.sol"
@@ -884,7 +884,7 @@
     },
     {
       "attributes": "external onlyOperator returns (uint256 trancheId)",
-      "classification": "configuration",
+      "classification": "new_obligation_or_risk_increase",
       "contract": "CommercializationPerformanceVault",
       "name": "proposeTranche",
       "path": "contracts/vaults/CommercializationPerformanceVault.sol"
@@ -898,7 +898,7 @@
     },
     {
       "attributes": "external whenNotPaused",
-      "classification": "configuration",
+      "classification": "safe_exit_or_settlement",
       "contract": "CommercializationPerformanceVault",
       "name": "releaseTranche",
       "path": "contracts/vaults/CommercializationPerformanceVault.sol"

@@ -22,6 +22,7 @@
 - `AEPSelectionGate` (`contracts/aep/AEPSelectionGate.sol`): See classified selectors; add typed owner override before PASS if no recovery selector exists for a nonterminal state.
 - `AEPSlashingCourt` (`contracts/aep/AEPSlashingCourt.sol`): See classified selectors; add typed owner override before PASS if no recovery selector exists for a nonterminal state.
 - `AGIEthNamespaceRegistry` (`contracts/aep/AGIEthNamespaceRegistry.sol`): See classified selectors; add typed owner override before PASS if no recovery selector exists for a nonterminal state.
+- `AlphaWorkUnitLedger` (`contracts/aep/AlphaWorkUnitLedger.sol`): See classified selectors; add typed owner override before PASS if no recovery selector exists for a nonterminal state.
 - `MandateEpochRegistry` (`contracts/aep/MandateEpochRegistry.sol`): See classified selectors; add typed owner override before PASS if no recovery selector exists for a nonterminal state.
 - `AppealRegistry` (`contracts/optional/AppealRegistry.sol`): See classified selectors; add typed owner override before PASS if no recovery selector exists for a nonterminal state.
 - `BuilderProfileRegistry` (`contracts/optional/BuilderProfileRegistry.sol`): See classified selectors; add typed owner override before PASS if no recovery selector exists for a nonterminal state.

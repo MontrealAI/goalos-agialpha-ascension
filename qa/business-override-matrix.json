@@ -199,6 +199,15 @@
       "testCoverage": "BLOCKED until contract-specific tests are complete"
     },
     {
+      "contract": "AlphaWorkUnitLedger",
+      "evidence": [
+        "source inventory"
+      ],
+      "ownerRecoveryAction": "See classified selectors; add typed owner override before PASS if no recovery selector exists for a nonterminal state.",
+      "path": "contracts/aep/AlphaWorkUnitLedger.sol",
+      "testCoverage": "BLOCKED until contract-specific tests are complete"
+    },
+    {
       "contract": "MandateEpochRegistry",
       "evidence": [
         "source inventory"
