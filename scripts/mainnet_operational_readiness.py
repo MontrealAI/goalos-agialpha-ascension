@@ -116,6 +116,30 @@ def concrete_contract_infos(text):
     return [block for block in contract_blocks(text) if block["kind"] == "contract"]
 
 
+def canonical_param(param):
+    words = [w for w in re.split(r"\s+", param.strip()) if w]
+    words = [w for w in words if w not in {"memory", "calldata", "storage", "payable"}]
+    if not words:
+        return ""
+    typ = words[0]
+    suffix = ""
+    while typ.endswith("]") and "[" in typ:
+        idx = typ.rfind("[")
+        suffix = typ[idx:] + suffix
+        typ = typ[:idx]
+    if typ.startswith("uint") or typ.startswith("int") or typ.startswith("bytes") or typ in {"address", "bool", "string"}:
+        return typ + suffix
+    if typ == "byte":
+        return "bytes1" + suffix
+    # Contract/interface values are ABI-encoded as address; enum values in this repo are ABI-encoded as uint8.
+    return ("address" if typ.startswith("I") else "uint8") + suffix
+
+
+def canonical_signature(name, params):
+    canonical = [canonical_param(part) for part in params.split(",") if part.strip()]
+    return f"{name}({','.join(canonical)})"
+
+
 def functions_from_body(body):
     funcs = []
     for match in re.finditer(r"function\s+(\w+)\s*\(([^)]*)\)\s*([^;{]*)", body):
@@ -123,7 +147,7 @@ def functions_from_body(body):
         if any(x in attrs for x in STATE_HINTS) and not any(x in attrs for x in VIEW_HINTS):
             funcs.append({
                 "name": match.group(1),
-                "signature": f"{match.group(1)}({', '.join(part.strip() for part in match.group(2).split(',') if part.strip())})",
+                "signature": canonical_signature(match.group(1), match.group(2)),
                 "attributes": " ".join(attrs.split()),
                 "classification": classify(match.group(1)),
             })

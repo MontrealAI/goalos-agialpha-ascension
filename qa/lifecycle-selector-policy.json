@@ -6,7 +6,7 @@
       "contract": "AEPAgentRegistry",
       "name": "registerAgent",
       "path": "contracts/aep/AEPAgentRegistry.sol",
-      "signature": "registerAgent(address account, bytes32 ensNodeHash, AgentRole role, bytes32 credentialRoot, bytes32 reputationRoot, string calldata metadataURI)"
+      "signature": "registerAgent(address,bytes32,uint8,bytes32,bytes32,string)"
     },
     {
       "attributes": "external onlyOperator",
@@ -14,7 +14,7 @@
       "contract": "AEPAgentRegistry",
       "name": "updateAgent",
       "path": "contracts/aep/AEPAgentRegistry.sol",
-      "signature": "updateAgent(uint256 agentId, bytes32 credentialRoot, bytes32 reputationRoot, bool active, string calldata metadataURI)"
+      "signature": "updateAgent(uint256,bytes32,bytes32,bool,string)"
     },
     {
       "attributes": "external",
@@ -38,7 +38,7 @@
       "contract": "AEPAgentRegistry",
       "name": "transferOwnership",
       "path": "contracts/aep/AEPAgentRegistry.sol",
-      "signature": "transferOwnership(address newOwner)"
+      "signature": "transferOwnership(address)"
     },
     {
       "attributes": "public onlyOwner",
@@ -62,7 +62,7 @@
       "contract": "AEPAgentRegistry",
       "name": "grantRole",
       "path": "contracts/aep/AEPAgentRegistry.sol",
-      "signature": "grantRole(bytes32 role, address account)"
+      "signature": "grantRole(bytes32,address)"
     },
     {
       "attributes": "public override",
@@ -70,7 +70,7 @@
       "contract": "AEPAgentRegistry",
       "name": "revokeRole",
       "path": "contracts/aep/AEPAgentRegistry.sol",
-      "signature": "revokeRole(bytes32 role, address account)"
+      "signature": "revokeRole(bytes32,address)"
     },
     {
       "attributes": "public override",
@@ -78,7 +78,7 @@
       "contract": "AEPAgentRegistry",
       "name": "renounceRole",
       "path": "contracts/aep/AEPAgentRegistry.sol",
-      "signature": "renounceRole(bytes32 role, address account)"
+      "signature": "renounceRole(bytes32,address)"
     },
     {
       "attributes": "external onlyOperator returns (uint256 versionId)",
@@ -86,7 +86,7 @@
       "contract": "AEPArtifactRegistry",
       "name": "registerArtifactVersion",
       "path": "contracts/aep/AEPArtifactRegistry.sol",
-      "signature": "registerArtifactVersion(bytes32 artifactId, bytes32 versionHash, bytes32 artifactClass, bytes32 scopeHash, bytes32 rollbackTargetHash, string calldata metadataURI)"
+      "signature": "registerArtifactVersion(bytes32,bytes32,bytes32,bytes32,bytes32,string)"
     },
     {
       "attributes": "external onlyOperator",
@@ -94,7 +94,7 @@
       "contract": "AEPArtifactRegistry",
       "name": "setArtifactStatus",
       "path": "contracts/aep/AEPArtifactRegistry.sol",
-      "signature": "setArtifactStatus(uint256 versionId, ArtifactStatus status, bytes32 reasonHash)"
+      "signature": "setArtifactStatus(uint256,uint8,bytes32)"
     },
     {
       "attributes": "external",
@@ -118,7 +118,7 @@
       "contract": "AEPArtifactRegistry",
       "name": "transferOwnership",
       "path": "contracts/aep/AEPArtifactRegistry.sol",
-      "signature": "transferOwnership(address newOwner)"
+      "signature": "transferOwnership(address)"
     },
     {
       "attributes": "public onlyOwner",
@@ -142,7 +142,7 @@
       "contract": "AEPArtifactRegistry",
       "name": "grantRole",
       "path": "contracts/aep/AEPArtifactRegistry.sol",
-      "signature": "grantRole(bytes32 role, address account)"
+      "signature": "grantRole(bytes32,address)"
     },
     {
       "attributes": "public override",
@@ -150,7 +150,7 @@
       "contract": "AEPArtifactRegistry",
       "name": "revokeRole",
       "path": "contracts/aep/AEPArtifactRegistry.sol",
-      "signature": "revokeRole(bytes32 role, address account)"
+      "signature": "revokeRole(bytes32,address)"
     },
     {
       "attributes": "public override",
@@ -158,7 +158,7 @@
       "contract": "AEPArtifactRegistry",
       "name": "renounceRole",
       "path": "contracts/aep/AEPArtifactRegistry.sol",
-      "signature": "renounceRole(bytes32 role, address account)"
+      "signature": "renounceRole(bytes32,address)"
     },
     {
       "attributes": "external onlyOperator returns (uint256 attestationId)",
@@ -166,7 +166,7 @@
       "contract": "AEPAttestationRegistry",
       "name": "attest",
       "path": "contracts/aep/AEPAttestationRegistry.sol",
-      "signature": "attest(bytes32 subjectType, uint256 subjectId, bytes32 attestationHash, bytes32 schemaHash, string calldata metadataURI)"
+      "signature": "attest(bytes32,uint256,bytes32,bytes32,string)"
     },
     {
       "attributes": "external onlyOperator",
@@ -174,7 +174,7 @@
       "contract": "AEPAttestationRegistry",
       "name": "revokeAttestation",
       "path": "contracts/aep/AEPAttestationRegistry.sol",
-      "signature": "revokeAttestation(uint256 attestationId, bytes32 reasonHash)"
+      "signature": "revokeAttestation(uint256,bytes32)"
     },
     {
       "attributes": "external",
@@ -198,7 +198,7 @@
       "contract": "AEPAttestationRegistry",
       "name": "transferOwnership",
       "path": "contracts/aep/AEPAttestationRegistry.sol",
-      "signature": "transferOwnership(address newOwner)"
+      "signature": "transferOwnership(address)"
     },
     {
       "attributes": "public onlyOwner",
@@ -222,7 +222,7 @@
       "contract": "AEPAttestationRegistry",
       "name": "grantRole",
       "path": "contracts/aep/AEPAttestationRegistry.sol",
-      "signature": "grantRole(bytes32 role, address account)"
+      "signature": "grantRole(bytes32,address)"
     },
     {
       "attributes": "public override",
@@ -230,7 +230,7 @@
       "contract": "AEPAttestationRegistry",
       "name": "revokeRole",
       "path": "contracts/aep/AEPAttestationRegistry.sol",
-      "signature": "revokeRole(bytes32 role, address account)"
+      "signature": "revokeRole(bytes32,address)"
     },
     {
       "attributes": "public override",
@@ -238,7 +238,7 @@
       "contract": "AEPAttestationRegistry",
       "name": "renounceRole",
       "path": "contracts/aep/AEPAttestationRegistry.sol",
-      "signature": "renounceRole(bytes32 role, address account)"
+      "signature": "renounceRole(bytes32,address)"
     },
     {
       "attributes": "external onlyOperator returns (uint256 entryId)",
@@ -246,7 +246,7 @@
       "contract": "AEPChronicleRegistry",
       "name": "recordEntry",
       "path": "contracts/aep/AEPChronicleRegistry.sol",
-      "signature": "recordEntry(bytes32 entryType, bytes32 entryHash, bytes32 subjectHash, string calldata metadataURI)"
+      "signature": "recordEntry(bytes32,bytes32,bytes32,string)"
     },
     {
       "attributes": "external",
@@ -270,7 +270,7 @@
       "contract": "AEPChronicleRegistry",
       "name": "transferOwnership",
       "path": "contracts/aep/AEPChronicleRegistry.sol",
-      "signature": "transferOwnership(address newOwner)"
+      "signature": "transferOwnership(address)"
     },
     {
       "attributes": "public onlyOwner",
@@ -294,7 +294,7 @@
       "contract": "AEPChronicleRegistry",
       "name": "grantRole",
       "path": "contracts/aep/AEPChronicleRegistry.sol",
-      "signature": "grantRole(bytes32 role, address account)"
+      "signature": "grantRole(bytes32,address)"
     },
     {
       "attributes": "public override",
@@ -302,7 +302,7 @@
       "contract": "AEPChronicleRegistry",
       "name": "revokeRole",
       "path": "contracts/aep/AEPChronicleRegistry.sol",
-      "signature": "revokeRole(bytes32 role, address account)"
+      "signature": "revokeRole(bytes32,address)"
     },
     {
       "attributes": "public override",
@@ -310,7 +310,7 @@
       "contract": "AEPChronicleRegistry",
       "name": "renounceRole",
       "path": "contracts/aep/AEPChronicleRegistry.sol",
-      "signature": "renounceRole(bytes32 role, address account)"
+      "signature": "renounceRole(bytes32,address)"
     },
     {
       "attributes": "external onlyOperator returns (uint256 boundaryId)",
@@ -318,7 +318,7 @@
       "contract": "AEPClaimBoundaryRegistry",
       "name": "registerClaimBoundary",
       "path": "contracts/aep/AEPClaimBoundaryRegistry.sol",
-      "signature": "registerClaimBoundary(bytes32 claimHash, bytes32 notClaimedHash, bytes32 requiredEvidenceHash, bytes32 legalReviewHash, bytes32 publicCopyHash, string calldata metadataURI)"
+      "signature": "registerClaimBoundary(bytes32,bytes32,bytes32,bytes32,bytes32,string)"
     },
     {
       "attributes": "external onlyOperator",
@@ -326,7 +326,7 @@
       "contract": "AEPClaimBoundaryRegistry",
       "name": "setClaimBoundaryActive",
       "path": "contracts/aep/AEPClaimBoundaryRegistry.sol",
-      "signature": "setClaimBoundaryActive(uint256 boundaryId, bool active, bytes32 reasonHash)"
+      "signature": "setClaimBoundaryActive(uint256,bool,bytes32)"
     },
     {
       "attributes": "external",
@@ -350,7 +350,7 @@
       "contract": "AEPClaimBoundaryRegistry",
       "name": "transferOwnership",
       "path": "contracts/aep/AEPClaimBoundaryRegistry.sol",
-      "signature": "transferOwnership(address newOwner)"
+      "signature": "transferOwnership(address)"
     },
     {
       "attributes": "public onlyOwner",
@@ -374,7 +374,7 @@
       "contract": "AEPClaimBoundaryRegistry",
       "name": "grantRole",
       "path": "contracts/aep/AEPClaimBoundaryRegistry.sol",
-      "signature": "grantRole(bytes32 role, address account)"
+      "signature": "grantRole(bytes32,address)"
     },
     {
       "attributes": "public override",
@@ -382,7 +382,7 @@
       "contract": "AEPClaimBoundaryRegistry",
       "name": "revokeRole",
       "path": "contracts/aep/AEPClaimBoundaryRegistry.sol",
-      "signature": "revokeRole(bytes32 role, address account)"
+      "signature": "revokeRole(bytes32,address)"
     },
     {
       "attributes": "public override",
@@ -390,7 +390,7 @@
       "contract": "AEPClaimBoundaryRegistry",
       "name": "renounceRole",
       "path": "contracts/aep/AEPClaimBoundaryRegistry.sol",
-      "signature": "renounceRole(bytes32 role, address account)"
+      "signature": "renounceRole(bytes32,address)"
     },
     {
       "attributes": "external onlyOperator",
@@ -398,7 +398,7 @@
       "contract": "AEPCommitRevealValidationRegistry",
       "name": "setValidatorAllowed",
       "path": "contracts/aep/AEPCommitRevealValidationRegistry.sol",
-      "signature": "setValidatorAllowed(address validator, bool allowed)"
+      "signature": "setValidatorAllowed(address,bool)"
     },
     {
       "attributes": "external onlyOperator returns (uint256 roundId)",
@@ -406,7 +406,7 @@
       "contract": "AEPCommitRevealValidationRegistry",
       "name": "openValidationRound",
       "path": "contracts/aep/AEPCommitRevealValidationRegistry.sol",
-      "signature": "openValidationRound(bytes32 subjectType, uint256 subjectId, uint256 commitDuration, uint256 revealDuration, uint256 minReveals, string calldata metadataURI)"
+      "signature": "openValidationRound(bytes32,uint256,uint256,uint256,uint256,string)"
     },
     {
       "attributes": "external onlyAllowedValidator",
@@ -414,7 +414,7 @@
       "contract": "AEPCommitRevealValidationRegistry",
       "name": "commitVerdict",
       "path": "contracts/aep/AEPCommitRevealValidationRegistry.sol",
-      "signature": "commitVerdict(uint256 roundId, bytes32 commitment)"
+      "signature": "commitVerdict(uint256,bytes32)"
     },
     {
       "attributes": "external onlyAllowedValidator",
@@ -422,7 +422,7 @@
       "contract": "AEPCommitRevealValidationRegistry",
       "name": "revealVerdict",
       "path": "contracts/aep/AEPCommitRevealValidationRegistry.sol",
-      "signature": "revealVerdict(uint256 roundId, bytes32 verdictHash, uint16 scoreBps, bytes32 evidenceHash, bytes32 salt)"
+      "signature": "revealVerdict(uint256,bytes32,uint16,bytes32,bytes32)"
     },
     {
       "attributes": "external onlyOperator",
@@ -430,7 +430,7 @@
       "contract": "AEPCommitRevealValidationRegistry",
       "name": "finalizeRound",
       "path": "contracts/aep/AEPCommitRevealValidationRegistry.sol",
-      "signature": "finalizeRound(uint256 roundId, bytes32 finalResultHash)"
+      "signature": "finalizeRound(uint256,bytes32)"
     },
     {
       "attributes": "external onlyOperator",
@@ -438,7 +438,7 @@
       "contract": "AEPCommitRevealValidationRegistry",
       "name": "cancelRound",
       "path": "contracts/aep/AEPCommitRevealValidationRegistry.sol",
-      "signature": "cancelRound(uint256 roundId, bytes32 reasonHash)"
+      "signature": "cancelRound(uint256,bytes32)"
     },
     {
       "attributes": "external",
@@ -462,7 +462,7 @@
       "contract": "AEPCommitRevealValidationRegistry",
       "name": "transferOwnership",
       "path": "contracts/aep/AEPCommitRevealValidationRegistry.sol",
-      "signature": "transferOwnership(address newOwner)"
+      "signature": "transferOwnership(address)"
     },
     {
       "attributes": "public onlyOwner",
@@ -486,7 +486,7 @@
       "contract": "AEPCommitRevealValidationRegistry",
       "name": "grantRole",
       "path": "contracts/aep/AEPCommitRevealValidationRegistry.sol",
-      "signature": "grantRole(bytes32 role, address account)"
+      "signature": "grantRole(bytes32,address)"
     },
     {
       "attributes": "public override",
@@ -494,7 +494,7 @@
       "contract": "AEPCommitRevealValidationRegistry",
       "name": "revokeRole",
       "path": "contracts/aep/AEPCommitRevealValidationRegistry.sol",
-      "signature": "revokeRole(bytes32 role, address account)"
+      "signature": "revokeRole(bytes32,address)"
     },
     {
       "attributes": "public override",
@@ -502,7 +502,7 @@
       "contract": "AEPCommitRevealValidationRegistry",
       "name": "renounceRole",
       "path": "contracts/aep/AEPCommitRevealValidationRegistry.sol",
-      "signature": "renounceRole(bytes32 role, address account)"
+      "signature": "renounceRole(bytes32,address)"
     },
     {
       "attributes": "external onlyOperator returns (uint256 recordId)",
@@ -510,7 +510,7 @@
       "contract": "AEPConformanceRegistry",
       "name": "recordConformance",
       "path": "contracts/aep/AEPConformanceRegistry.sol",
-      "signature": "recordConformance(bytes32 systemHash, ConformanceLevel level, bytes32 evidenceDocketHash, bytes32 auditorHash, bytes32 claimBoundaryHash, string calldata metadataURI)"
+      "signature": "recordConformance(bytes32,uint8,bytes32,bytes32,bytes32,string)"
     },
     {
       "attributes": "external onlyOperator",
@@ -518,7 +518,7 @@
       "contract": "AEPConformanceRegistry",
       "name": "setConformanceActive",
       "path": "contracts/aep/AEPConformanceRegistry.sol",
-      "signature": "setConformanceActive(uint256 recordId, bool active, bytes32 reasonHash)"
+      "signature": "setConformanceActive(uint256,bool,bytes32)"
     },
     {
       "attributes": "external",
@@ -542,7 +542,7 @@
       "contract": "AEPConformanceRegistry",
       "name": "transferOwnership",
       "path": "contracts/aep/AEPConformanceRegistry.sol",
-      "signature": "transferOwnership(address newOwner)"
+      "signature": "transferOwnership(address)"
     },
     {
       "attributes": "public onlyOwner",
@@ -566,7 +566,7 @@
       "contract": "AEPConformanceRegistry",
       "name": "grantRole",
       "path": "contracts/aep/AEPConformanceRegistry.sol",
-      "signature": "grantRole(bytes32 role, address account)"
+      "signature": "grantRole(bytes32,address)"
     },
     {
       "attributes": "public override",
@@ -574,7 +574,7 @@
       "contract": "AEPConformanceRegistry",
       "name": "revokeRole",
       "path": "contracts/aep/AEPConformanceRegistry.sol",
-      "signature": "revokeRole(bytes32 role, address account)"
+      "signature": "revokeRole(bytes32,address)"
     },
     {
       "attributes": "public override",
@@ -582,7 +582,7 @@
       "contract": "AEPConformanceRegistry",
       "name": "renounceRole",
       "path": "contracts/aep/AEPConformanceRegistry.sol",
-      "signature": "renounceRole(bytes32 role, address account)"
+      "signature": "renounceRole(bytes32,address)"
     },
     {
       "attributes": "external onlyOperator returns (uint256 schemaId)",
@@ -590,7 +590,7 @@
       "contract": "AEPEvalRegistry",
       "name": "registerEvalSchema",
       "path": "contracts/aep/AEPEvalRegistry.sol",
-      "signature": "registerEvalSchema(bytes32 schemaHash, string calldata metadataURI, uint256 challengeWindow)"
+      "signature": "registerEvalSchema(bytes32,string,uint256)"
     },
     {
       "attributes": "external onlyOperator returns (uint256 evalId)",
@@ -598,7 +598,7 @@
       "contract": "AEPEvalRegistry",
       "name": "recordEval",
       "path": "contracts/aep/AEPEvalRegistry.sol",
-      "signature": "recordEval(uint256 proofId, uint256 schemaId, bytes32 baselineHash, bytes32 candidateHash, EvalVerdict verdict, bytes32 resultHash)"
+      "signature": "recordEval(uint256,uint256,bytes32,bytes32,uint8,bytes32)"
     },
     {
       "attributes": "external",
@@ -622,7 +622,7 @@
       "contract": "AEPEvalRegistry",
       "name": "transferOwnership",
       "path": "contracts/aep/AEPEvalRegistry.sol",
-      "signature": "transferOwnership(address newOwner)"
+      "signature": "transferOwnership(address)"
     },
     {
       "attributes": "public onlyOwner",
@@ -646,7 +646,7 @@
       "contract": "AEPEvalRegistry",
       "name": "grantRole",
       "path": "contracts/aep/AEPEvalRegistry.sol",
-      "signature": "grantRole(bytes32 role, address account)"
+      "signature": "grantRole(bytes32,address)"
     },
     {
       "attributes": "public override",
@@ -654,7 +654,7 @@
       "contract": "AEPEvalRegistry",
       "name": "revokeRole",
       "path": "contracts/aep/AEPEvalRegistry.sol",
-      "signature": "revokeRole(bytes32 role, address account)"
+      "signature": "revokeRole(bytes32,address)"
     },
     {
       "attributes": "public override",
@@ -662,7 +662,7 @@
       "contract": "AEPEvalRegistry",
       "name": "renounceRole",
       "path": "contracts/aep/AEPEvalRegistry.sol",
-      "signature": "renounceRole(bytes32 role, address account)"
+      "signature": "renounceRole(bytes32,address)"
     },
     {
       "attributes": "external onlyAdmin",
@@ -670,7 +670,7 @@
       "contract": "AEPEvaluatorStakingRegistry",
       "name": "setMinEvaluatorStake",
       "path": "contracts/aep/AEPEvaluatorStakingRegistry.sol",
-      "signature": "setMinEvaluatorStake(uint256 minEvaluatorStakeAGIALPHA_)"
+      "signature": "setMinEvaluatorStake(uint256)"
     },
     {
       "attributes": "external onlyAdmin",
@@ -678,7 +678,7 @@
       "contract": "AEPEvaluatorStakingRegistry",
       "name": "setUnstakeDelay",
       "path": "contracts/aep/AEPEvaluatorStakingRegistry.sol",
-      "signature": "setUnstakeDelay(uint256 unstakeDelay_)"
+      "signature": "setUnstakeDelay(uint256)"
     },
     {
       "attributes": "external onlyAdmin",
@@ -686,7 +686,7 @@
       "contract": "AEPEvaluatorStakingRegistry",
       "name": "setTreasury",
       "path": "contracts/aep/AEPEvaluatorStakingRegistry.sol",
-      "signature": "setTreasury(address treasury_)"
+      "signature": "setTreasury(address)"
     },
     {
       "attributes": "external nonReentrant whenNotPaused",
@@ -694,7 +694,7 @@
       "contract": "AEPEvaluatorStakingRegistry",
       "name": "stake",
       "path": "contracts/aep/AEPEvaluatorStakingRegistry.sol",
-      "signature": "stake(uint256 amount, string calldata metadataURI)"
+      "signature": "stake(uint256,string)"
     },
     {
       "attributes": "external nonReentrant",
@@ -718,7 +718,7 @@
       "contract": "AEPEvaluatorStakingRegistry",
       "name": "slashEvaluator",
       "path": "contracts/aep/AEPEvaluatorStakingRegistry.sol",
-      "signature": "slashEvaluator(address evaluator, uint256 amount, bytes32 reasonHash)"
+      "signature": "slashEvaluator(address,uint256,bytes32)"
     },
     {
       "attributes": "external",
@@ -742,7 +742,7 @@
       "contract": "AEPEvaluatorStakingRegistry",
       "name": "transferOwnership",
       "path": "contracts/aep/AEPEvaluatorStakingRegistry.sol",
-      "signature": "transferOwnership(address newOwner)"
+      "signature": "transferOwnership(address)"
     },
     {
       "attributes": "public onlyOwner",
@@ -766,7 +766,7 @@
       "contract": "AEPEvaluatorStakingRegistry",
       "name": "grantRole",
       "path": "contracts/aep/AEPEvaluatorStakingRegistry.sol",
-      "signature": "grantRole(bytes32 role, address account)"
+      "signature": "grantRole(bytes32,address)"
     },
     {
       "attributes": "public override",
@@ -774,7 +774,7 @@
       "contract": "AEPEvaluatorStakingRegistry",
       "name": "revokeRole",
       "path": "contracts/aep/AEPEvaluatorStakingRegistry.sol",
-      "signature": "revokeRole(bytes32 role, address account)"
+      "signature": "revokeRole(bytes32,address)"
     },
     {
       "attributes": "public override",
@@ -782,7 +782,7 @@
       "contract": "AEPEvaluatorStakingRegistry",
       "name": "renounceRole",
       "path": "contracts/aep/AEPEvaluatorStakingRegistry.sol",
-      "signature": "renounceRole(bytes32 role, address account)"
+      "signature": "renounceRole(bytes32,address)"
     },
     {
       "attributes": "external onlyOperator returns (uint256 docketId)",
@@ -790,7 +790,7 @@
       "contract": "AEPEvidenceDocketRegistry",
       "name": "registerEvidenceDocket",
       "path": "contracts/aep/AEPEvidenceDocketRegistry.sol",
-      "signature": "registerEvidenceDocket(bytes32 docketHash, bytes32 claimsMatrixHash, bytes32 publicBoundaryHash, bytes32 privateAppendixHash, bytes32 costLedgerHash, bytes32 riskLedgerHash, string calldata publicURI)"
+      "signature": "registerEvidenceDocket(bytes32,bytes32,bytes32,bytes32,bytes32,bytes32,string)"
     },
     {
       "attributes": "external onlyOperator",
@@ -798,7 +798,7 @@
       "contract": "AEPEvidenceDocketRegistry",
       "name": "setDocketActive",
       "path": "contracts/aep/AEPEvidenceDocketRegistry.sol",
-      "signature": "setDocketActive(uint256 docketId, bool active, bytes32 reasonHash)"
+      "signature": "setDocketActive(uint256,bool,bytes32)"
     },
     {
       "attributes": "external",
@@ -822,7 +822,7 @@
       "contract": "AEPEvidenceDocketRegistry",
       "name": "transferOwnership",
       "path": "contracts/aep/AEPEvidenceDocketRegistry.sol",
-      "signature": "transferOwnership(address newOwner)"
+      "signature": "transferOwnership(address)"
     },
     {
       "attributes": "public onlyOwner",
@@ -846,7 +846,7 @@
       "contract": "AEPEvidenceDocketRegistry",
       "name": "grantRole",
       "path": "contracts/aep/AEPEvidenceDocketRegistry.sol",
-      "signature": "grantRole(bytes32 role, address account)"
+      "signature": "grantRole(bytes32,address)"
     },
     {
       "attributes": "public override",
@@ -854,7 +854,7 @@
       "contract": "AEPEvidenceDocketRegistry",
       "name": "revokeRole",
       "path": "contracts/aep/AEPEvidenceDocketRegistry.sol",
-      "signature": "revokeRole(bytes32 role, address account)"
+      "signature": "revokeRole(bytes32,address)"
     },
     {
       "attributes": "public override",
@@ -862,7 +862,7 @@
       "contract": "AEPEvidenceDocketRegistry",
       "name": "renounceRole",
       "path": "contracts/aep/AEPEvidenceDocketRegistry.sol",
-      "signature": "renounceRole(bytes32 role, address account)"
+      "signature": "renounceRole(bytes32,address)"
     },
     {
       "attributes": "external returns (uint256 falsificationId)",
@@ -870,7 +870,7 @@
       "contract": "AEPFalsificationRegistry",
       "name": "reportFalsification",
       "path": "contracts/aep/AEPFalsificationRegistry.sol",
-      "signature": "reportFalsification(bytes32 conditionHash, bytes32 evidenceHash, bytes32 affectedClaimHash, string calldata metadataURI)"
+      "signature": "reportFalsification(bytes32,bytes32,bytes32,string)"
     },
     {
       "attributes": "external onlyOperator",
@@ -878,7 +878,7 @@
       "contract": "AEPFalsificationRegistry",
       "name": "setFalsificationStatus",
       "path": "contracts/aep/AEPFalsificationRegistry.sol",
-      "signature": "setFalsificationStatus(uint256 falsificationId, FalsificationStatus status, bytes32 reasonHash)"
+      "signature": "setFalsificationStatus(uint256,uint8,bytes32)"
     },
     {
       "attributes": "external",
@@ -902,7 +902,7 @@
       "contract": "AEPFalsificationRegistry",
       "name": "transferOwnership",
       "path": "contracts/aep/AEPFalsificationRegistry.sol",
-      "signature": "transferOwnership(address newOwner)"
+      "signature": "transferOwnership(address)"
     },
     {
       "attributes": "public onlyOwner",
@@ -926,7 +926,7 @@
       "contract": "AEPFalsificationRegistry",
       "name": "grantRole",
       "path": "contracts/aep/AEPFalsificationRegistry.sol",
-      "signature": "grantRole(bytes32 role, address account)"
+      "signature": "grantRole(bytes32,address)"
     },
     {
       "attributes": "public override",
@@ -934,7 +934,7 @@
       "contract": "AEPFalsificationRegistry",
       "name": "revokeRole",
       "path": "contracts/aep/AEPFalsificationRegistry.sol",
-      "signature": "revokeRole(bytes32 role, address account)"
+      "signature": "revokeRole(bytes32,address)"
     },
     {
       "attributes": "public override",
@@ -942,7 +942,7 @@
       "contract": "AEPFalsificationRegistry",
       "name": "renounceRole",
       "path": "contracts/aep/AEPFalsificationRegistry.sol",
-      "signature": "renounceRole(bytes32 role, address account)"
+      "signature": "renounceRole(bytes32,address)"
     },
     {
       "attributes": "external onlyAdmin",
@@ -950,7 +950,7 @@
       "contract": "AEPGoalOSCommitRegistry",
       "name": "setCommitFee",
       "path": "contracts/aep/AEPGoalOSCommitRegistry.sol",
-      "signature": "setCommitFee(uint256 commitFeeAGIALPHA_)"
+      "signature": "setCommitFee(uint256)"
     },
     {
       "attributes": "external nonReentrant whenNotPaused returns (uint256 commitId)",
@@ -958,7 +958,7 @@
       "contract": "AEPGoalOSCommitRegistry",
       "name": "createCommit",
       "path": "contracts/aep/AEPGoalOSCommitRegistry.sol",
-      "signature": "createCommit(bytes32 commitHash, bytes32 successCriteriaHash, bytes32 constraintsHash, bytes32 authorityHash, bytes32 dataBoundaryHash, bytes32 rollbackObligationHash, bytes32 claimBoundaryHash, uint8 riskClass, string calldata metadataURI)"
+      "signature": "createCommit(bytes32,bytes32,bytes32,bytes32,bytes32,bytes32,bytes32,uint8,string)"
     },
     {
       "attributes": "external onlyOperator",
@@ -966,7 +966,7 @@
       "contract": "AEPGoalOSCommitRegistry",
       "name": "setCommitActive",
       "path": "contracts/aep/AEPGoalOSCommitRegistry.sol",
-      "signature": "setCommitActive(uint256 commitId, bool active, bytes32 reasonHash)"
+      "signature": "setCommitActive(uint256,bool,bytes32)"
     },
     {
       "attributes": "external",
@@ -990,7 +990,7 @@
       "contract": "AEPGoalOSCommitRegistry",
       "name": "transferOwnership",
       "path": "contracts/aep/AEPGoalOSCommitRegistry.sol",
-      "signature": "transferOwnership(address newOwner)"
+      "signature": "transferOwnership(address)"
     },
     {
       "attributes": "public onlyOwner",
@@ -1014,7 +1014,7 @@
       "contract": "AEPGoalOSCommitRegistry",
       "name": "grantRole",
       "path": "contracts/aep/AEPGoalOSCommitRegistry.sol",
-      "signature": "grantRole(bytes32 role, address account)"
+      "signature": "grantRole(bytes32,address)"
     },
     {
       "attributes": "public override",
@@ -1022,7 +1022,7 @@
       "contract": "AEPGoalOSCommitRegistry",
       "name": "revokeRole",
       "path": "contracts/aep/AEPGoalOSCommitRegistry.sol",
-      "signature": "revokeRole(bytes32 role, address account)"
+      "signature": "revokeRole(bytes32,address)"
     },
     {
       "attributes": "public override",
@@ -1030,7 +1030,7 @@
       "contract": "AEPGoalOSCommitRegistry",
       "name": "renounceRole",
       "path": "contracts/aep/AEPGoalOSCommitRegistry.sol",
-      "signature": "renounceRole(bytes32 role, address account)"
+      "signature": "renounceRole(bytes32,address)"
     },
     {
       "attributes": "external onlyOperator returns (uint256 bundleId)",
@@ -1038,7 +1038,7 @@
       "contract": "AEPProofBundleRegistry",
       "name": "registerProofBundle",
       "path": "contracts/aep/AEPProofBundleRegistry.sol",
-      "signature": "registerProofBundle(uint256 jobId, uint256 runId, bytes32 proofBundleHash, bytes32 replayResultHash, bytes32 validatorCommitmentRoot, bytes32 validatorRevealRoot, bytes32 settlementReceiptHash, uint256 alphaWorkUnits, string calldata metadataURI)"
+      "signature": "registerProofBundle(uint256,uint256,bytes32,bytes32,bytes32,bytes32,bytes32,uint256,string)"
     },
     {
       "attributes": "external",
@@ -1062,7 +1062,7 @@
       "contract": "AEPProofBundleRegistry",
       "name": "transferOwnership",
       "path": "contracts/aep/AEPProofBundleRegistry.sol",
-      "signature": "transferOwnership(address newOwner)"
+      "signature": "transferOwnership(address)"
     },
     {
       "attributes": "public onlyOwner",
@@ -1086,7 +1086,7 @@
       "contract": "AEPProofBundleRegistry",
       "name": "grantRole",
       "path": "contracts/aep/AEPProofBundleRegistry.sol",
-      "signature": "grantRole(bytes32 role, address account)"
+      "signature": "grantRole(bytes32,address)"
     },
     {
       "attributes": "public override",
@@ -1094,7 +1094,7 @@
       "contract": "AEPProofBundleRegistry",
       "name": "revokeRole",
       "path": "contracts/aep/AEPProofBundleRegistry.sol",
-      "signature": "revokeRole(bytes32 role, address account)"
+      "signature": "revokeRole(bytes32,address)"
     },
     {
       "attributes": "public override",
@@ -1102,7 +1102,7 @@
       "contract": "AEPProofBundleRegistry",
       "name": "renounceRole",
       "path": "contracts/aep/AEPProofBundleRegistry.sol",
-      "signature": "renounceRole(bytes32 role, address account)"
+      "signature": "renounceRole(bytes32,address)"
     },
     {
       "attributes": "external onlyOperator returns (uint256 proofId)",
@@ -1110,7 +1110,7 @@
       "contract": "AEPProofLedger",
       "name": "appendProofRoot",
       "path": "contracts/aep/AEPProofLedger.sol",
-      "signature": "appendProofRoot(uint256 runId, bytes32 proofHash, bytes32 evidenceRoot, bytes32 evalRoot, uint256 cost, uint256 latency, bytes32 signatureBundleHash, string calldata evidenceURI)"
+      "signature": "appendProofRoot(uint256,bytes32,bytes32,bytes32,uint256,uint256,bytes32,string)"
     },
     {
       "attributes": "external",
@@ -1134,7 +1134,7 @@
       "contract": "AEPProofLedger",
       "name": "transferOwnership",
       "path": "contracts/aep/AEPProofLedger.sol",
-      "signature": "transferOwnership(address newOwner)"
+      "signature": "transferOwnership(address)"
     },
     {
       "attributes": "public onlyOwner",
@@ -1158,7 +1158,7 @@
       "contract": "AEPProofLedger",
       "name": "grantRole",
       "path": "contracts/aep/AEPProofLedger.sol",
-      "signature": "grantRole(bytes32 role, address account)"
+      "signature": "grantRole(bytes32,address)"
     },
     {
       "attributes": "public override",
@@ -1166,7 +1166,7 @@
       "contract": "AEPProofLedger",
       "name": "revokeRole",
       "path": "contracts/aep/AEPProofLedger.sol",
-      "signature": "revokeRole(bytes32 role, address account)"
+      "signature": "revokeRole(bytes32,address)"
     },
     {
       "attributes": "public override",
@@ -1174,7 +1174,7 @@
       "contract": "AEPProofLedger",
       "name": "renounceRole",
       "path": "contracts/aep/AEPProofLedger.sol",
-      "signature": "renounceRole(bytes32 role, address account)"
+      "signature": "renounceRole(bytes32,address)"
     },
     {
       "attributes": "external onlyOperator returns (uint256 replayId)",
@@ -1182,7 +1182,7 @@
       "contract": "AEPReplayRegistry",
       "name": "recordReplay",
       "path": "contracts/aep/AEPReplayRegistry.sol",
-      "signature": "recordReplay(uint256 proofBundleId, bytes32 replayHash, bytes32 containerDigestHash, bytes32 dependencyPinsHash, bytes32 replayResultHash, ReplayVerdict verdict, string calldata metadataURI)"
+      "signature": "recordReplay(uint256,bytes32,bytes32,bytes32,bytes32,uint8,string)"
     },
     {
       "attributes": "external",
@@ -1206,7 +1206,7 @@
       "contract": "AEPReplayRegistry",
       "name": "transferOwnership",
       "path": "contracts/aep/AEPReplayRegistry.sol",
-      "signature": "transferOwnership(address newOwner)"
+      "signature": "transferOwnership(address)"
     },
     {
       "attributes": "public onlyOwner",
@@ -1230,7 +1230,7 @@
       "contract": "AEPReplayRegistry",
       "name": "grantRole",
       "path": "contracts/aep/AEPReplayRegistry.sol",
-      "signature": "grantRole(bytes32 role, address account)"
+      "signature": "grantRole(bytes32,address)"
     },
     {
       "attributes": "public override",
@@ -1238,7 +1238,7 @@
       "contract": "AEPReplayRegistry",
       "name": "revokeRole",
       "path": "contracts/aep/AEPReplayRegistry.sol",
-      "signature": "revokeRole(bytes32 role, address account)"
+      "signature": "revokeRole(bytes32,address)"
     },
     {
       "attributes": "public override",
@@ -1246,7 +1246,7 @@
       "contract": "AEPReplayRegistry",
       "name": "renounceRole",
       "path": "contracts/aep/AEPReplayRegistry.sol",
-      "signature": "renounceRole(bytes32 role, address account)"
+      "signature": "renounceRole(bytes32,address)"
     },
     {
       "attributes": "external nonReentrant",
@@ -1254,7 +1254,7 @@
       "contract": "AEPRewardVault",
       "name": "fund",
       "path": "contracts/aep/AEPRewardVault.sol",
-      "signature": "fund(uint256 amount)"
+      "signature": "fund(uint256)"
     },
     {
       "attributes": "external onlyOperator nonReentrant returns (uint256 rewardId)",
@@ -1262,7 +1262,7 @@
       "contract": "AEPRewardVault",
       "name": "payReward",
       "path": "contracts/aep/AEPRewardVault.sol",
-      "signature": "payReward(address recipient, uint256 amount, uint256 proofBundleId, uint256 alphaWorkUnits, bytes32 rewardHash, string calldata metadataURI)"
+      "signature": "payReward(address,uint256,uint256,uint256,bytes32,string)"
     },
     {
       "attributes": "external",
@@ -1286,7 +1286,7 @@
       "contract": "AEPRewardVault",
       "name": "transferOwnership",
       "path": "contracts/aep/AEPRewardVault.sol",
-      "signature": "transferOwnership(address newOwner)"
+      "signature": "transferOwnership(address)"
     },
     {
       "attributes": "public onlyOwner",
@@ -1310,7 +1310,7 @@
       "contract": "AEPRewardVault",
       "name": "grantRole",
       "path": "contracts/aep/AEPRewardVault.sol",
-      "signature": "grantRole(bytes32 role, address account)"
+      "signature": "grantRole(bytes32,address)"
     },
     {
       "attributes": "public override",
@@ -1318,7 +1318,7 @@
       "contract": "AEPRewardVault",
       "name": "revokeRole",
       "path": "contracts/aep/AEPRewardVault.sol",
-      "signature": "revokeRole(bytes32 role, address account)"
+      "signature": "revokeRole(bytes32,address)"
     },
     {
       "attributes": "public override",
@@ -1326,7 +1326,7 @@
       "contract": "AEPRewardVault",
       "name": "renounceRole",
       "path": "contracts/aep/AEPRewardVault.sol",
-      "signature": "renounceRole(bytes32 role, address account)"
+      "signature": "renounceRole(bytes32,address)"
     },
     {
       "attributes": "external onlyOperator returns (uint256 rollbackId)",
@@ -1334,7 +1334,7 @@
       "contract": "AEPRollbackRegistry",
       "name": "recordRollback",
       "path": "contracts/aep/AEPRollbackRegistry.sol",
-      "signature": "recordRollback(uint256 selectionId, uint256 rolloutId, bytes32 rollbackTargetHash, bytes32 triggerHash, bytes32 incidentRoot, string calldata metadataURI)"
+      "signature": "recordRollback(uint256,uint256,bytes32,bytes32,bytes32,string)"
     },
     {
       "attributes": "external",
@@ -1358,7 +1358,7 @@
       "contract": "AEPRollbackRegistry",
       "name": "transferOwnership",
       "path": "contracts/aep/AEPRollbackRegistry.sol",
-      "signature": "transferOwnership(address newOwner)"
+      "signature": "transferOwnership(address)"
     },
     {
       "attributes": "public onlyOwner",
@@ -1382,7 +1382,7 @@
       "contract": "AEPRollbackRegistry",
       "name": "grantRole",
       "path": "contracts/aep/AEPRollbackRegistry.sol",
-      "signature": "grantRole(bytes32 role, address account)"
+      "signature": "grantRole(bytes32,address)"
     },
     {
       "attributes": "public override",
@@ -1390,7 +1390,7 @@
       "contract": "AEPRollbackRegistry",
       "name": "revokeRole",
       "path": "contracts/aep/AEPRollbackRegistry.sol",
-      "signature": "revokeRole(bytes32 role, address account)"
+      "signature": "revokeRole(bytes32,address)"
     },
     {
       "attributes": "public override",
@@ -1398,7 +1398,7 @@
       "contract": "AEPRollbackRegistry",
       "name": "renounceRole",
       "path": "contracts/aep/AEPRollbackRegistry.sol",
-      "signature": "renounceRole(bytes32 role, address account)"
+      "signature": "renounceRole(bytes32,address)"
     },
     {
       "attributes": "external onlyOperator returns (uint256 rolloutId)",
@@ -1406,7 +1406,7 @@
       "contract": "AEPRolloutRouter",
       "name": "recordRollout",
       "path": "contracts/aep/AEPRolloutRouter.sol",
-      "signature": "recordRollout(uint256 selectionId, uint16 percentageBps, bytes32 tenantScopeHash, bytes32 monitoringRoot, bytes32 safetyThresholdHash, string calldata metadataURI)"
+      "signature": "recordRollout(uint256,uint16,bytes32,bytes32,bytes32,string)"
     },
     {
       "attributes": "external onlyOperator",
@@ -1414,7 +1414,7 @@
       "contract": "AEPRolloutRouter",
       "name": "setRolloutActive",
       "path": "contracts/aep/AEPRolloutRouter.sol",
-      "signature": "setRolloutActive(uint256 rolloutId, bool active, bytes32 reasonHash)"
+      "signature": "setRolloutActive(uint256,bool,bytes32)"
     },
     {
       "attributes": "external",
@@ -1438,7 +1438,7 @@
       "contract": "AEPRolloutRouter",
       "name": "transferOwnership",
       "path": "contracts/aep/AEPRolloutRouter.sol",
-      "signature": "transferOwnership(address newOwner)"
+      "signature": "transferOwnership(address)"
     },
     {
       "attributes": "public onlyOwner",
@@ -1462,7 +1462,7 @@
       "contract": "AEPRolloutRouter",
       "name": "grantRole",
       "path": "contracts/aep/AEPRolloutRouter.sol",
-      "signature": "grantRole(bytes32 role, address account)"
+      "signature": "grantRole(bytes32,address)"
     },
     {
       "attributes": "public override",
@@ -1470,7 +1470,7 @@
       "contract": "AEPRolloutRouter",
       "name": "revokeRole",
       "path": "contracts/aep/AEPRolloutRouter.sol",
-      "signature": "revokeRole(bytes32 role, address account)"
+      "signature": "revokeRole(bytes32,address)"
     },
     {
       "attributes": "public override",
@@ -1478,7 +1478,7 @@
       "contract": "AEPRolloutRouter",
       "name": "renounceRole",
       "path": "contracts/aep/AEPRolloutRouter.sol",
-      "signature": "renounceRole(bytes32 role, address account)"
+      "signature": "renounceRole(bytes32,address)"
     },
     {
       "attributes": "external onlyOperator returns (uint256 runId)",
@@ -1486,7 +1486,7 @@
       "contract": "AEPRunCommitmentRegistry",
       "name": "commitRun",
       "path": "contracts/aep/AEPRunCommitmentRegistry.sol",
-      "signature": "commitRun(uint256 goalOSCommitId, bytes32 runCommitmentHash, bytes32 planGraphHash, bytes32 artifactVersionRoot, bytes32 toolPermissionRoot, bytes32 contextRoot, bytes32 policyRoot, bytes32 runtimeEnvironmentHash, uint256 budgetLimit, uint256 latencyLimit, string calldata metadataURI)"
+      "signature": "commitRun(uint256,bytes32,bytes32,bytes32,bytes32,bytes32,bytes32,bytes32,uint256,uint256,string)"
     },
     {
       "attributes": "external onlyOperator",
@@ -1494,7 +1494,7 @@
       "contract": "AEPRunCommitmentRegistry",
       "name": "setRunStatus",
       "path": "contracts/aep/AEPRunCommitmentRegistry.sol",
-      "signature": "setRunStatus(uint256 runId, RunStatus status, bytes32 reasonHash)"
+      "signature": "setRunStatus(uint256,uint8,bytes32)"
     },
     {
       "attributes": "external",
@@ -1518,7 +1518,7 @@
       "contract": "AEPRunCommitmentRegistry",
       "name": "transferOwnership",
       "path": "contracts/aep/AEPRunCommitmentRegistry.sol",
-      "signature": "transferOwnership(address newOwner)"
+      "signature": "transferOwnership(address)"
     },
     {
       "attributes": "public onlyOwner",
@@ -1542,7 +1542,7 @@
       "contract": "AEPRunCommitmentRegistry",
       "name": "grantRole",
       "path": "contracts/aep/AEPRunCommitmentRegistry.sol",
-      "signature": "grantRole(bytes32 role, address account)"
+      "signature": "grantRole(bytes32,address)"
     },
     {
       "attributes": "public override",
@@ -1550,7 +1550,7 @@
       "contract": "AEPRunCommitmentRegistry",
       "name": "revokeRole",
       "path": "contracts/aep/AEPRunCommitmentRegistry.sol",
-      "signature": "revokeRole(bytes32 role, address account)"
+      "signature": "revokeRole(bytes32,address)"
     },
     {
       "attributes": "public override",
@@ -1558,7 +1558,7 @@
       "contract": "AEPRunCommitmentRegistry",
       "name": "renounceRole",
       "path": "contracts/aep/AEPRunCommitmentRegistry.sol",
-      "signature": "renounceRole(bytes32 role, address account)"
+      "signature": "renounceRole(bytes32,address)"
     },
     {
       "attributes": "external onlyOperator returns (uint256 selectionId)",
@@ -1566,7 +1566,7 @@
       "contract": "AEPSelectionGate",
       "name": "issueSelectionCertificate",
       "path": "contracts/aep/AEPSelectionGate.sol",
-      "signature": "issueSelectionCertificate(uint256 proofId, bytes32 artifactId, bytes32 candidateVersionHash, SelectionDecision decision, bytes32 scopeHash, bytes32 canaryHash, bytes32 rollbackTargetHash, uint256 challengeWindowEnd, uint256 gateBitmap, string calldata metadataURI)"
+      "signature": "issueSelectionCertificate(uint256,bytes32,bytes32,uint8,bytes32,bytes32,bytes32,uint256,uint256,string)"
     },
     {
       "attributes": "external",
@@ -1590,7 +1590,7 @@
       "contract": "AEPSelectionGate",
       "name": "transferOwnership",
       "path": "contracts/aep/AEPSelectionGate.sol",
-      "signature": "transferOwnership(address newOwner)"
+      "signature": "transferOwnership(address)"
     },
     {
       "attributes": "public onlyOwner",
@@ -1614,7 +1614,7 @@
       "contract": "AEPSelectionGate",
       "name": "grantRole",
       "path": "contracts/aep/AEPSelectionGate.sol",
-      "signature": "grantRole(bytes32 role, address account)"
+      "signature": "grantRole(bytes32,address)"
     },
     {
       "attributes": "public override",
@@ -1622,7 +1622,7 @@
       "contract": "AEPSelectionGate",
       "name": "revokeRole",
       "path": "contracts/aep/AEPSelectionGate.sol",
-      "signature": "revokeRole(bytes32 role, address account)"
+      "signature": "revokeRole(bytes32,address)"
     },
     {
       "attributes": "public override",
@@ -1630,7 +1630,7 @@
       "contract": "AEPSelectionGate",
       "name": "renounceRole",
       "path": "contracts/aep/AEPSelectionGate.sol",
-      "signature": "renounceRole(bytes32 role, address account)"
+      "signature": "renounceRole(bytes32,address)"
     },
     {
       "attributes": "external onlyOperator returns (uint256 caseId)",
@@ -1638,7 +1638,7 @@
       "contract": "AEPSlashingCourt",
       "name": "openCase",
       "path": "contracts/aep/AEPSlashingCourt.sol",
-      "signature": "openCase(address respondent, uint256 requestedSlashAmount, bytes32 evidenceHash, bytes32 allegationHash, string calldata metadataURI)"
+      "signature": "openCase(address,uint256,bytes32,bytes32,string)"
     },
     {
       "attributes": "external onlyOperator",
@@ -1646,7 +1646,7 @@
       "contract": "AEPSlashingCourt",
       "name": "resolveCase",
       "path": "contracts/aep/AEPSlashingCourt.sol",
-      "signature": "resolveCase(uint256 caseId, Resolution resolution, uint256 slashAmount, bytes32 reasonHash)"
+      "signature": "resolveCase(uint256,uint8,uint256,bytes32)"
     },
     {
       "attributes": "external onlyOperator",
@@ -1654,7 +1654,7 @@
       "contract": "AEPSlashingCourt",
       "name": "cancelCase",
       "path": "contracts/aep/AEPSlashingCourt.sol",
-      "signature": "cancelCase(uint256 caseId, bytes32 reasonHash)"
+      "signature": "cancelCase(uint256,bytes32)"
     },
     {
       "attributes": "external",
@@ -1678,7 +1678,7 @@
       "contract": "AEPSlashingCourt",
       "name": "transferOwnership",
       "path": "contracts/aep/AEPSlashingCourt.sol",
-      "signature": "transferOwnership(address newOwner)"
+      "signature": "transferOwnership(address)"
     },
     {
       "attributes": "public onlyOwner",
@@ -1702,7 +1702,7 @@
       "contract": "AEPSlashingCourt",
       "name": "grantRole",
       "path": "contracts/aep/AEPSlashingCourt.sol",
-      "signature": "grantRole(bytes32 role, address account)"
+      "signature": "grantRole(bytes32,address)"
     },
     {
       "attributes": "public override",
@@ -1710,7 +1710,7 @@
       "contract": "AEPSlashingCourt",
       "name": "revokeRole",
       "path": "contracts/aep/AEPSlashingCourt.sol",
-      "signature": "revokeRole(bytes32 role, address account)"
+      "signature": "revokeRole(bytes32,address)"
     },
     {
       "attributes": "public override",
@@ -1718,7 +1718,7 @@
       "contract": "AEPSlashingCourt",
       "name": "renounceRole",
       "path": "contracts/aep/AEPSlashingCourt.sol",
-      "signature": "renounceRole(bytes32 role, address account)"
+      "signature": "renounceRole(bytes32,address)"
     },
     {
       "attributes": "external onlyOperator",
@@ -1726,7 +1726,7 @@
       "contract": "AGIEthNamespaceRegistry",
       "name": "registerEnvironment",
       "path": "contracts/aep/AGIEthNamespaceRegistry.sol",
-      "signature": "registerEnvironment(bytes32 envHash, bytes32 rootNameHash, bytes32 agentMountHash, bytes32 nodeMountHash, bytes32 clubMountHash, bytes32 policyVersionHash, bytes32 resolverPolicyHash, NamespaceStatus status, string calldata metadataURI)"
+      "signature": "registerEnvironment(bytes32,bytes32,bytes32,bytes32,bytes32,bytes32,bytes32,uint8,string)"
     },
     {
       "attributes": "external onlyOperator",
@@ -1734,7 +1734,7 @@
       "contract": "AGIEthNamespaceRegistry",
       "name": "setEnvironmentStatus",
       "path": "contracts/aep/AGIEthNamespaceRegistry.sol",
-      "signature": "setEnvironmentStatus(bytes32 envHash, NamespaceStatus status, bytes32 reasonHash)"
+      "signature": "setEnvironmentStatus(bytes32,uint8,bytes32)"
     },
     {
       "attributes": "external",
@@ -1758,7 +1758,7 @@
       "contract": "AGIEthNamespaceRegistry",
       "name": "transferOwnership",
       "path": "contracts/aep/AGIEthNamespaceRegistry.sol",
-      "signature": "transferOwnership(address newOwner)"
+      "signature": "transferOwnership(address)"
     },
     {
       "attributes": "public onlyOwner",
@@ -1782,7 +1782,7 @@
       "contract": "AGIEthNamespaceRegistry",
       "name": "grantRole",
       "path": "contracts/aep/AGIEthNamespaceRegistry.sol",
-      "signature": "grantRole(bytes32 role, address account)"
+      "signature": "grantRole(bytes32,address)"
     },
     {
       "attributes": "public override",
@@ -1790,7 +1790,7 @@
       "contract": "AGIEthNamespaceRegistry",
       "name": "revokeRole",
       "path": "contracts/aep/AGIEthNamespaceRegistry.sol",
-      "signature": "revokeRole(bytes32 role, address account)"
+      "signature": "revokeRole(bytes32,address)"
     },
     {
       "attributes": "public override",
@@ -1798,7 +1798,7 @@
       "contract": "AGIEthNamespaceRegistry",
       "name": "renounceRole",
       "path": "contracts/aep/AGIEthNamespaceRegistry.sol",
-      "signature": "renounceRole(bytes32 role, address account)"
+      "signature": "renounceRole(bytes32,address)"
     },
     {
       "attributes": "external onlyOperator returns (uint256 recordId)",
@@ -1806,7 +1806,7 @@
       "contract": "AlphaWorkUnitLedger",
       "name": "recordAlphaWorkUnits",
       "path": "contracts/aep/AlphaWorkUnitLedger.sol",
-      "signature": "recordAlphaWorkUnits(address worker, uint256 proofBundleId, uint256 alphaWorkUnits, bytes32 metrologyHash, uint16 qualityBps, uint16 sloBps, uint16 confidenceBps, bytes32 policyHash)"
+      "signature": "recordAlphaWorkUnits(address,uint256,uint256,bytes32,uint16,uint16,uint16,bytes32)"
     },
     {
       "attributes": "external",
@@ -1830,7 +1830,7 @@
       "contract": "AlphaWorkUnitLedger",
       "name": "transferOwnership",
       "path": "contracts/aep/AlphaWorkUnitLedger.sol",
-      "signature": "transferOwnership(address newOwner)"
+      "signature": "transferOwnership(address)"
     },
     {
       "attributes": "public onlyOwner",
@@ -1854,7 +1854,7 @@
       "contract": "AlphaWorkUnitLedger",
       "name": "grantRole",
       "path": "contracts/aep/AlphaWorkUnitLedger.sol",
-      "signature": "grantRole(bytes32 role, address account)"
+      "signature": "grantRole(bytes32,address)"
     },
     {
       "attributes": "public override",
@@ -1862,7 +1862,7 @@
       "contract": "AlphaWorkUnitLedger",
       "name": "revokeRole",
       "path": "contracts/aep/AlphaWorkUnitLedger.sol",
-      "signature": "revokeRole(bytes32 role, address account)"
+      "signature": "revokeRole(bytes32,address)"
     },
     {
       "attributes": "public override",
@@ -1870,7 +1870,7 @@
       "contract": "AlphaWorkUnitLedger",
       "name": "renounceRole",
       "path": "contracts/aep/AlphaWorkUnitLedger.sol",
-      "signature": "renounceRole(bytes32 role, address account)"
+      "signature": "renounceRole(bytes32,address)"
     },
     {
       "attributes": "external nonReentrant whenNotPaused returns (uint256 mandateId)",
@@ -1878,7 +1878,7 @@
       "contract": "MandateEpochRegistry",
       "name": "createMandate",
       "path": "contracts/aep/MandateEpochRegistry.sol",
-      "signature": "createMandate(bytes32 mandateHash, bytes32 policyHash, bytes32 scoringRubricHash, bytes32 safetyPolicyHash, string calldata metadataURI)"
+      "signature": "createMandate(bytes32,bytes32,bytes32,bytes32,string)"
     },
     {
       "attributes": "external onlyOperator returns (uint256 epochId)",
@@ -1886,7 +1886,7 @@
       "contract": "MandateEpochRegistry",
       "name": "openEpoch",
       "path": "contracts/aep/MandateEpochRegistry.sol",
-      "signature": "openEpoch(uint256 mandateId, uint256 epochNumber, uint256 payoutBudget, string calldata metadataURI)"
+      "signature": "openEpoch(uint256,uint256,uint256,string)"
     },
     {
       "attributes": "external onlyOperator",
@@ -1894,7 +1894,7 @@
       "contract": "MandateEpochRegistry",
       "name": "commitEpochRoots",
       "path": "contracts/aep/MandateEpochRegistry.sol",
-      "signature": "commitEpochRoots(uint256 epochId, bytes32 receiptRoot, bytes32 payoutRoot, bytes32 archiveDeltaRoot, bytes32 quarantineRoot, bytes32 validatorAttestationBundleHash, uint256 challengeWindowEnd)"
+      "signature": "commitEpochRoots(uint256,bytes32,bytes32,bytes32,bytes32,bytes32,uint256)"
     },
     {
       "attributes": "external onlyOperator",
@@ -1902,7 +1902,7 @@
       "contract": "MandateEpochRegistry",
       "name": "setEpochStatus",
       "path": "contracts/aep/MandateEpochRegistry.sol",
-      "signature": "setEpochStatus(uint256 epochId, EpochStatus status, bytes32 reasonHash)"
+      "signature": "setEpochStatus(uint256,uint8,bytes32)"
     },
     {
       "attributes": "external",
@@ -1926,7 +1926,7 @@
       "contract": "MandateEpochRegistry",
       "name": "transferOwnership",
       "path": "contracts/aep/MandateEpochRegistry.sol",
-      "signature": "transferOwnership(address newOwner)"
+      "signature": "transferOwnership(address)"
     },
     {
       "attributes": "public onlyOwner",
@@ -1950,7 +1950,7 @@
       "contract": "MandateEpochRegistry",
       "name": "grantRole",
       "path": "contracts/aep/MandateEpochRegistry.sol",
-      "signature": "grantRole(bytes32 role, address account)"
+      "signature": "grantRole(bytes32,address)"
     },
     {
       "attributes": "public override",
@@ -1958,7 +1958,7 @@
       "contract": "MandateEpochRegistry",
       "name": "revokeRole",
       "path": "contracts/aep/MandateEpochRegistry.sol",
-      "signature": "revokeRole(bytes32 role, address account)"
+      "signature": "revokeRole(bytes32,address)"
     },
     {
       "attributes": "public override",
@@ -1966,7 +1966,7 @@
       "contract": "MandateEpochRegistry",
       "name": "renounceRole",
       "path": "contracts/aep/MandateEpochRegistry.sol",
-      "signature": "renounceRole(bytes32 role, address account)"
+      "signature": "renounceRole(bytes32,address)"
     },
     {
       "attributes": "external returns (uint256 appealId)",
@@ -1974,7 +1974,7 @@
       "contract": "AppealRegistry",
       "name": "openAppeal",
       "path": "contracts/optional/AppealRegistry.sol",
-      "signature": "openAppeal(uint256 disputeId, bytes32 appealHash)"
+      "signature": "openAppeal(uint256,bytes32)"
     },
     {
       "attributes": "external onlyOperator",
@@ -1982,7 +1982,7 @@
       "contract": "AppealRegistry",
       "name": "decideAppeal",
       "path": "contracts/optional/AppealRegistry.sol",
-      "signature": "decideAppeal(uint256 appealId, bool accepted, bytes32 decisionHash)"
+      "signature": "decideAppeal(uint256,bool,bytes32)"
     },
     {
       "attributes": "external",
@@ -2006,7 +2006,7 @@
       "contract": "AppealRegistry",
       "name": "transferOwnership",
       "path": "contracts/optional/AppealRegistry.sol",
-      "signature": "transferOwnership(address newOwner)"
+      "signature": "transferOwnership(address)"
     },
     {
       "attributes": "public onlyOwner",
@@ -2030,7 +2030,7 @@
       "contract": "AppealRegistry",
       "name": "grantRole",
       "path": "contracts/optional/AppealRegistry.sol",
-      "signature": "grantRole(bytes32 role, address account)"
+      "signature": "grantRole(bytes32,address)"
     },
     {
       "attributes": "public override",
@@ -2038,7 +2038,7 @@
       "contract": "AppealRegistry",
       "name": "revokeRole",
       "path": "contracts/optional/AppealRegistry.sol",
-      "signature": "revokeRole(bytes32 role, address account)"
+      "signature": "revokeRole(bytes32,address)"
     },
     {
       "attributes": "public override",
@@ -2046,7 +2046,7 @@
       "contract": "AppealRegistry",
       "name": "renounceRole",
       "path": "contracts/optional/AppealRegistry.sol",
-      "signature": "renounceRole(bytes32 role, address account)"
+      "signature": "renounceRole(bytes32,address)"
     },
     {
       "attributes": "external",
@@ -2054,7 +2054,7 @@
       "contract": "BuilderProfileRegistry",
       "name": "registerBuilder",
       "path": "contracts/optional/BuilderProfileRegistry.sol",
-      "signature": "registerBuilder(string calldata metadataURI, bytes32 metadataHash)"
+      "signature": "registerBuilder(string,bytes32)"
     },
     {
       "attributes": "external onlyOperator",
@@ -2062,7 +2062,7 @@
       "contract": "BuilderProfileRegistry",
       "name": "setBuilderStatus",
       "path": "contracts/optional/BuilderProfileRegistry.sol",
-      "signature": "setBuilderStatus(address builder, bool active)"
+      "signature": "setBuilderStatus(address,bool)"
     },
     {
       "attributes": "external",
@@ -2086,7 +2086,7 @@
       "contract": "BuilderProfileRegistry",
       "name": "transferOwnership",
       "path": "contracts/optional/BuilderProfileRegistry.sol",
-      "signature": "transferOwnership(address newOwner)"
+      "signature": "transferOwnership(address)"
     },
     {
       "attributes": "public onlyOwner",
@@ -2110,7 +2110,7 @@
       "contract": "BuilderProfileRegistry",
       "name": "grantRole",
       "path": "contracts/optional/BuilderProfileRegistry.sol",
-      "signature": "grantRole(bytes32 role, address account)"
+      "signature": "grantRole(bytes32,address)"
     },
     {
       "attributes": "public override",
@@ -2118,7 +2118,7 @@
       "contract": "BuilderProfileRegistry",
       "name": "revokeRole",
       "path": "contracts/optional/BuilderProfileRegistry.sol",
-      "signature": "revokeRole(bytes32 role, address account)"
+      "signature": "revokeRole(bytes32,address)"
     },
     {
       "attributes": "public override",
@@ -2126,7 +2126,7 @@
       "contract": "BuilderProfileRegistry",
       "name": "renounceRole",
       "path": "contracts/optional/BuilderProfileRegistry.sol",
-      "signature": "renounceRole(bytes32 role, address account)"
+      "signature": "renounceRole(bytes32,address)"
     },
     {
       "attributes": "external returns (uint256 revocationId)",
@@ -2134,7 +2134,7 @@
       "contract": "CredentialRevocationRegistry",
       "name": "requestRevocation",
       "path": "contracts/optional/CredentialRevocationRegistry.sol",
-      "signature": "requestRevocation(uint256 tokenId, bytes32 reasonHash)"
+      "signature": "requestRevocation(uint256,bytes32)"
     },
     {
       "attributes": "external onlyOperator",
@@ -2142,7 +2142,7 @@
       "contract": "CredentialRevocationRegistry",
       "name": "executeRevocation",
       "path": "contracts/optional/CredentialRevocationRegistry.sol",
-      "signature": "executeRevocation(uint256 revocationId)"
+      "signature": "executeRevocation(uint256)"
     },
     {
       "attributes": "external",
@@ -2166,7 +2166,7 @@
       "contract": "CredentialRevocationRegistry",
       "name": "transferOwnership",
       "path": "contracts/optional/CredentialRevocationRegistry.sol",
-      "signature": "transferOwnership(address newOwner)"
+      "signature": "transferOwnership(address)"
     },
     {
       "attributes": "public onlyOwner",
@@ -2190,7 +2190,7 @@
       "contract": "CredentialRevocationRegistry",
       "name": "grantRole",
       "path": "contracts/optional/CredentialRevocationRegistry.sol",
-      "signature": "grantRole(bytes32 role, address account)"
+      "signature": "grantRole(bytes32,address)"
     },
     {
       "attributes": "public override",
@@ -2198,7 +2198,7 @@
       "contract": "CredentialRevocationRegistry",
       "name": "revokeRole",
       "path": "contracts/optional/CredentialRevocationRegistry.sol",
-      "signature": "revokeRole(bytes32 role, address account)"
+      "signature": "revokeRole(bytes32,address)"
     },
     {
       "attributes": "public override",
@@ -2206,7 +2206,7 @@
       "contract": "CredentialRevocationRegistry",
       "name": "renounceRole",
       "path": "contracts/optional/CredentialRevocationRegistry.sol",
-      "signature": "renounceRole(bytes32 role, address account)"
+      "signature": "renounceRole(bytes32,address)"
     },
     {
       "attributes": "external returns (uint256 disputeId)",
@@ -2214,7 +2214,7 @@
       "contract": "DisputeRegistry",
       "name": "openDispute",
       "path": "contracts/optional/DisputeRegistry.sol",
-      "signature": "openDispute(uint256 jobId, uint256 submissionId, bytes32 reasonHash)"
+      "signature": "openDispute(uint256,uint256,bytes32)"
     },
     {
       "attributes": "external onlyOperator",
@@ -2222,7 +2222,7 @@
       "contract": "DisputeRegistry",
       "name": "resolveDispute",
       "path": "contracts/optional/DisputeRegistry.sol",
-      "signature": "resolveDispute(uint256 disputeId, bool accepted, bytes32 resolutionHash)"
+      "signature": "resolveDispute(uint256,bool,bytes32)"
     },
     {
       "attributes": "external",
@@ -2246,7 +2246,7 @@
       "contract": "DisputeRegistry",
       "name": "transferOwnership",
       "path": "contracts/optional/DisputeRegistry.sol",
-      "signature": "transferOwnership(address newOwner)"
+      "signature": "transferOwnership(address)"
     },
     {
       "attributes": "public onlyOwner",
@@ -2270,7 +2270,7 @@
       "contract": "DisputeRegistry",
       "name": "grantRole",
       "path": "contracts/optional/DisputeRegistry.sol",
-      "signature": "grantRole(bytes32 role, address account)"
+      "signature": "grantRole(bytes32,address)"
     },
     {
       "attributes": "public override",
@@ -2278,7 +2278,7 @@
       "contract": "DisputeRegistry",
       "name": "revokeRole",
       "path": "contracts/optional/DisputeRegistry.sol",
-      "signature": "revokeRole(bytes32 role, address account)"
+      "signature": "revokeRole(bytes32,address)"
     },
     {
       "attributes": "public override",
@@ -2286,7 +2286,7 @@
       "contract": "DisputeRegistry",
       "name": "renounceRole",
       "path": "contracts/optional/DisputeRegistry.sol",
-      "signature": "renounceRole(bytes32 role, address account)"
+      "signature": "renounceRole(bytes32,address)"
     },
     {
       "attributes": "external",
@@ -2294,7 +2294,7 @@
       "contract": "SponsorRegistry",
       "name": "registerSponsor",
       "path": "contracts/optional/SponsorRegistry.sol",
-      "signature": "registerSponsor(string calldata metadataURI, bytes32 metadataHash)"
+      "signature": "registerSponsor(string,bytes32)"
     },
     {
       "attributes": "external onlyOperator",
@@ -2302,7 +2302,7 @@
       "contract": "SponsorRegistry",
       "name": "setSponsorStatus",
       "path": "contracts/optional/SponsorRegistry.sol",
-      "signature": "setSponsorStatus(address sponsor, bool active)"
+      "signature": "setSponsorStatus(address,bool)"
     },
     {
       "attributes": "external",
@@ -2326,7 +2326,7 @@
       "contract": "SponsorRegistry",
       "name": "transferOwnership",
       "path": "contracts/optional/SponsorRegistry.sol",
-      "signature": "transferOwnership(address newOwner)"
+      "signature": "transferOwnership(address)"
     },
     {
       "attributes": "public onlyOwner",
@@ -2350,7 +2350,7 @@
       "contract": "SponsorRegistry",
       "name": "grantRole",
       "path": "contracts/optional/SponsorRegistry.sol",
-      "signature": "grantRole(bytes32 role, address account)"
+      "signature": "grantRole(bytes32,address)"
     },
     {
       "attributes": "public override",
@@ -2358,7 +2358,7 @@
       "contract": "SponsorRegistry",
       "name": "revokeRole",
       "path": "contracts/optional/SponsorRegistry.sol",
-      "signature": "revokeRole(bytes32 role, address account)"
+      "signature": "revokeRole(bytes32,address)"
     },
     {
       "attributes": "public override",
@@ -2366,7 +2366,7 @@
       "contract": "SponsorRegistry",
       "name": "renounceRole",
       "path": "contracts/optional/SponsorRegistry.sol",
-      "signature": "renounceRole(bytes32 role, address account)"
+      "signature": "renounceRole(bytes32,address)"
     },
     {
       "attributes": "external onlyAdmin",
@@ -2374,7 +2374,7 @@
       "contract": "JobClaimBondManager",
       "name": "setClaimBond",
       "path": "contracts/registry/JobClaimBondManager.sol",
-      "signature": "setClaimBond(uint256 claimBondAGIALPHA_)"
+      "signature": "setClaimBond(uint256)"
     },
     {
       "attributes": "external onlyAdmin",
@@ -2382,7 +2382,7 @@
       "contract": "JobClaimBondManager",
       "name": "setTreasury",
       "path": "contracts/registry/JobClaimBondManager.sol",
-      "signature": "setTreasury(address treasury_)"
+      "signature": "setTreasury(address)"
     },
     {
       "attributes": "external nonReentrant whenNotPaused",
@@ -2390,7 +2390,7 @@
       "contract": "JobClaimBondManager",
       "name": "claimJob",
       "path": "contracts/registry/JobClaimBondManager.sol",
-      "signature": "claimJob(uint256 jobId)"
+      "signature": "claimJob(uint256)"
     },
     {
       "attributes": "external nonReentrant",
@@ -2398,7 +2398,7 @@
       "contract": "JobClaimBondManager",
       "name": "reclaimExpiredClaimedJob",
       "path": "contracts/registry/JobClaimBondManager.sol",
-      "signature": "reclaimExpiredClaimedJob(uint256 jobId, bytes32 reasonHash)"
+      "signature": "reclaimExpiredClaimedJob(uint256,bytes32)"
     },
     {
       "attributes": "external onlyOperator nonReentrant",
@@ -2406,7 +2406,7 @@
       "contract": "JobClaimBondManager",
       "name": "releaseClaimBond",
       "path": "contracts/registry/JobClaimBondManager.sol",
-      "signature": "releaseClaimBond(uint256 jobId)"
+      "signature": "releaseClaimBond(uint256)"
     },
     {
       "attributes": "external onlyOperator nonReentrant",
@@ -2414,7 +2414,7 @@
       "contract": "JobClaimBondManager",
       "name": "slashClaimBond",
       "path": "contracts/registry/JobClaimBondManager.sol",
-      "signature": "slashClaimBond(uint256 jobId, bytes32 reasonHash)"
+      "signature": "slashClaimBond(uint256,bytes32)"
     },
     {
       "attributes": "external",
@@ -2438,7 +2438,7 @@
       "contract": "JobClaimBondManager",
       "name": "transferOwnership",
       "path": "contracts/registry/JobClaimBondManager.sol",
-      "signature": "transferOwnership(address newOwner)"
+      "signature": "transferOwnership(address)"
     },
     {
       "attributes": "public onlyOwner",
@@ -2462,7 +2462,7 @@
       "contract": "JobClaimBondManager",
       "name": "grantRole",
       "path": "contracts/registry/JobClaimBondManager.sol",
-      "signature": "grantRole(bytes32 role, address account)"
+      "signature": "grantRole(bytes32,address)"
     },
     {
       "attributes": "public override",
@@ -2470,7 +2470,7 @@
       "contract": "JobClaimBondManager",
       "name": "revokeRole",
       "path": "contracts/registry/JobClaimBondManager.sol",
-      "signature": "revokeRole(bytes32 role, address account)"
+      "signature": "revokeRole(bytes32,address)"
     },
     {
       "attributes": "public override",
@@ -2478,7 +2478,7 @@
       "contract": "JobClaimBondManager",
       "name": "renounceRole",
       "path": "contracts/registry/JobClaimBondManager.sol",
-      "signature": "renounceRole(bytes32 role, address account)"
+      "signature": "renounceRole(bytes32,address)"
     },
     {
       "attributes": "external onlyAdmin",
@@ -2486,7 +2486,7 @@
       "contract": "JobRegistry",
       "name": "setPostingFee",
       "path": "contracts/registry/JobRegistry.sol",
-      "signature": "setPostingFee(uint256 postingFeeAGIALPHA_)"
+      "signature": "setPostingFee(uint256)"
     },
     {
       "attributes": "external onlyAdmin",
@@ -2494,7 +2494,7 @@
       "contract": "JobRegistry",
       "name": "setTreasury",
       "path": "contracts/registry/JobRegistry.sol",
-      "signature": "setTreasury(address treasury_)"
+      "signature": "setTreasury(address)"
     },
     {
       "attributes": "external onlyAdmin",
@@ -2502,7 +2502,7 @@
       "contract": "JobRegistry",
       "name": "setRewardTokenAllowed",
       "path": "contracts/registry/JobRegistry.sol",
-      "signature": "setRewardTokenAllowed(address token, bool allowed)"
+      "signature": "setRewardTokenAllowed(address,bool)"
     },
     {
       "attributes": "external onlyAdmin",
@@ -2510,7 +2510,7 @@
       "contract": "JobRegistry",
       "name": "setRewardTokenAllowlistEnabled",
       "path": "contracts/registry/JobRegistry.sol",
-      "signature": "setRewardTokenAllowlistEnabled(bool enabled)"
+      "signature": "setRewardTokenAllowlistEnabled(bool)"
     },
     {
       "attributes": "external nonReentrant whenNotPaused returns (uint256 jobId)",
@@ -2518,7 +2518,7 @@
       "contract": "JobRegistry",
       "name": "postJob",
       "path": "contracts/registry/JobRegistry.sol",
-      "signature": "postJob(string calldata metadataURI, bytes32 metadataHash, address rewardToken, uint256 rewardAmount, uint256 deadline)"
+      "signature": "postJob(string,bytes32,address,uint256,uint256)"
     },
     {
       "attributes": "external onlyOperator",
@@ -2526,7 +2526,7 @@
       "contract": "JobRegistry",
       "name": "markClaimed",
       "path": "contracts/registry/JobRegistry.sol",
-      "signature": "markClaimed(uint256 jobId, address builder)"
+      "signature": "markClaimed(uint256,address)"
     },
     {
       "attributes": "external onlyOperator",
@@ -2534,7 +2534,7 @@
       "contract": "JobRegistry",
       "name": "markSubmitted",
       "path": "contracts/registry/JobRegistry.sol",
-      "signature": "markSubmitted(uint256 jobId, uint256 submissionId)"
+      "signature": "markSubmitted(uint256,uint256)"
     },
     {
       "attributes": "external onlyOperator",
@@ -2542,7 +2542,7 @@
       "contract": "JobRegistry",
       "name": "markApproved",
       "path": "contracts/registry/JobRegistry.sol",
-      "signature": "markApproved(uint256 jobId)"
+      "signature": "markApproved(uint256)"
     },
     {
       "attributes": "external onlyOperator",
@@ -2550,7 +2550,7 @@
       "contract": "JobRegistry",
       "name": "markRejected",
       "path": "contracts/registry/JobRegistry.sol",
-      "signature": "markRejected(uint256 jobId, bytes32 reasonHash)"
+      "signature": "markRejected(uint256,bytes32)"
     },
     {
       "attributes": "external onlyOperator nonReentrant",
@@ -2558,7 +2558,7 @@
       "contract": "JobRegistry",
       "name": "releaseReward",
       "path": "contracts/registry/JobRegistry.sol",
-      "signature": "releaseReward(uint256 jobId, address builder)"
+      "signature": "releaseReward(uint256,address)"
     },
     {
       "attributes": "external onlyOperator nonReentrant",
@@ -2566,7 +2566,7 @@
       "contract": "JobRegistry",
       "name": "refundRejectedReward",
       "path": "contracts/registry/JobRegistry.sol",
-      "signature": "refundRejectedReward(uint256 jobId, bytes32 reasonHash)"
+      "signature": "refundRejectedReward(uint256,bytes32)"
     },
     {
       "attributes": "external onlyOperator nonReentrant",
@@ -2574,7 +2574,7 @@
       "contract": "JobRegistry",
       "name": "expireClaimedJob",
       "path": "contracts/registry/JobRegistry.sol",
-      "signature": "expireClaimedJob(uint256 jobId, bytes32 reasonHash)"
+      "signature": "expireClaimedJob(uint256,bytes32)"
     },
     {
       "attributes": "external nonReentrant",
@@ -2582,7 +2582,7 @@
       "contract": "JobRegistry",
       "name": "cancelOpenJob",
       "path": "contracts/registry/JobRegistry.sol",
-      "signature": "cancelOpenJob(uint256 jobId, bytes32 reasonHash)"
+      "signature": "cancelOpenJob(uint256,bytes32)"
     },
     {
       "attributes": "external nonReentrant",
@@ -2590,7 +2590,7 @@
       "contract": "JobRegistry",
       "name": "expireOpenJob",
       "path": "contracts/registry/JobRegistry.sol",
-      "signature": "expireOpenJob(uint256 jobId, bytes32 reasonHash)"
+      "signature": "expireOpenJob(uint256,bytes32)"
     },
     {
       "attributes": "external",
@@ -2614,7 +2614,7 @@
       "contract": "JobRegistry",
       "name": "transferOwnership",
       "path": "contracts/registry/JobRegistry.sol",
-      "signature": "transferOwnership(address newOwner)"
+      "signature": "transferOwnership(address)"
     },
     {
       "attributes": "public onlyOwner",
@@ -2638,7 +2638,7 @@
       "contract": "JobRegistry",
       "name": "grantRole",
       "path": "contracts/registry/JobRegistry.sol",
-      "signature": "grantRole(bytes32 role, address account)"
+      "signature": "grantRole(bytes32,address)"
     },
     {
       "attributes": "public override",
@@ -2646,7 +2646,7 @@
       "contract": "JobRegistry",
       "name": "revokeRole",
       "path": "contracts/registry/JobRegistry.sol",
-      "signature": "revokeRole(bytes32 role, address account)"
+      "signature": "revokeRole(bytes32,address)"
     },
     {
       "attributes": "public override",
@@ -2654,7 +2654,7 @@
       "contract": "JobRegistry",
       "name": "renounceRole",
       "path": "contracts/registry/JobRegistry.sol",
-      "signature": "renounceRole(bytes32 role, address account)"
+      "signature": "renounceRole(bytes32,address)"
     },
     {
       "attributes": "external onlyOperator",
@@ -2662,7 +2662,7 @@
       "contract": "LaunchGateRegistry",
       "name": "setGate",
       "path": "contracts/registry/LaunchGateRegistry.sol",
-      "signature": "setGate(bytes32 gateId, bool passed, bytes32 evidenceHash, string calldata evidenceURI)"
+      "signature": "setGate(bytes32,bool,bytes32,string)"
     },
     {
       "attributes": "external",
@@ -2686,7 +2686,7 @@
       "contract": "LaunchGateRegistry",
       "name": "transferOwnership",
       "path": "contracts/registry/LaunchGateRegistry.sol",
-      "signature": "transferOwnership(address newOwner)"
+      "signature": "transferOwnership(address)"
     },
     {
       "attributes": "public onlyOwner",
@@ -2710,7 +2710,7 @@
       "contract": "LaunchGateRegistry",
       "name": "grantRole",
       "path": "contracts/registry/LaunchGateRegistry.sol",
-      "signature": "grantRole(bytes32 role, address account)"
+      "signature": "grantRole(bytes32,address)"
     },
     {
       "attributes": "public override",
@@ -2718,7 +2718,7 @@
       "contract": "LaunchGateRegistry",
       "name": "revokeRole",
       "path": "contracts/registry/LaunchGateRegistry.sol",
-      "signature": "revokeRole(bytes32 role, address account)"
+      "signature": "revokeRole(bytes32,address)"
     },
     {
       "attributes": "public override",
@@ -2726,7 +2726,7 @@
       "contract": "LaunchGateRegistry",
       "name": "renounceRole",
       "path": "contracts/registry/LaunchGateRegistry.sol",
-      "signature": "renounceRole(bytes32 role, address account)"
+      "signature": "renounceRole(bytes32,address)"
     },
     {
       "attributes": "external onlyOperator returns (uint256 recordId)",
@@ -2734,7 +2734,7 @@
       "contract": "LegacyAGIJobManagerRegistry",
       "name": "addLegacyRecord",
       "path": "contracts/registry/LegacyAGIJobManagerRegistry.sol",
-      "signature": "addLegacyRecord(uint256 legacyJobId, bytes32 legacyEventHash, bytes32 proofCardHash, string calldata metadataURI, bool accepted)"
+      "signature": "addLegacyRecord(uint256,bytes32,bytes32,string,bool)"
     },
     {
       "attributes": "external onlyOperator",
@@ -2742,7 +2742,7 @@
       "contract": "LegacyAGIJobManagerRegistry",
       "name": "setLegacyRecordAccepted",
       "path": "contracts/registry/LegacyAGIJobManagerRegistry.sol",
-      "signature": "setLegacyRecordAccepted(uint256 recordId, bool accepted, bytes32 reasonHash)"
+      "signature": "setLegacyRecordAccepted(uint256,bool,bytes32)"
     },
     {
       "attributes": "external",
@@ -2766,7 +2766,7 @@
       "contract": "LegacyAGIJobManagerRegistry",
       "name": "transferOwnership",
       "path": "contracts/registry/LegacyAGIJobManagerRegistry.sol",
-      "signature": "transferOwnership(address newOwner)"
+      "signature": "transferOwnership(address)"
     },
     {
       "attributes": "public onlyOwner",
@@ -2790,7 +2790,7 @@
       "contract": "LegacyAGIJobManagerRegistry",
       "name": "grantRole",
       "path": "contracts/registry/LegacyAGIJobManagerRegistry.sol",
-      "signature": "grantRole(bytes32 role, address account)"
+      "signature": "grantRole(bytes32,address)"
     },
     {
       "attributes": "public override",
@@ -2798,7 +2798,7 @@
       "contract": "LegacyAGIJobManagerRegistry",
       "name": "revokeRole",
       "path": "contracts/registry/LegacyAGIJobManagerRegistry.sol",
-      "signature": "revokeRole(bytes32 role, address account)"
+      "signature": "revokeRole(bytes32,address)"
     },
     {
       "attributes": "public override",
@@ -2806,7 +2806,7 @@
       "contract": "LegacyAGIJobManagerRegistry",
       "name": "renounceRole",
       "path": "contracts/registry/LegacyAGIJobManagerRegistry.sol",
-      "signature": "renounceRole(bytes32 role, address account)"
+      "signature": "renounceRole(bytes32,address)"
     },
     {
       "attributes": "external onlyOperator",
@@ -2814,7 +2814,7 @@
       "contract": "PremiumAccessRegistry",
       "name": "setAccessTier",
       "path": "contracts/registry/PremiumAccessRegistry.sol",
-      "signature": "setAccessTier(bytes32 tierId, uint256 minReputation, uint256 minAGIALPHABalance, bool active)"
+      "signature": "setAccessTier(bytes32,uint256,uint256,bool)"
     },
     {
       "attributes": "external",
@@ -2838,7 +2838,7 @@
       "contract": "PremiumAccessRegistry",
       "name": "transferOwnership",
       "path": "contracts/registry/PremiumAccessRegistry.sol",
-      "signature": "transferOwnership(address newOwner)"
+      "signature": "transferOwnership(address)"
     },
     {
       "attributes": "public onlyOwner",
@@ -2862,7 +2862,7 @@
       "contract": "PremiumAccessRegistry",
       "name": "grantRole",
       "path": "contracts/registry/PremiumAccessRegistry.sol",
-      "signature": "grantRole(bytes32 role, address account)"
+      "signature": "grantRole(bytes32,address)"
     },
     {
       "attributes": "public override",
@@ -2870,7 +2870,7 @@
       "contract": "PremiumAccessRegistry",
       "name": "revokeRole",
       "path": "contracts/registry/PremiumAccessRegistry.sol",
-      "signature": "revokeRole(bytes32 role, address account)"
+      "signature": "revokeRole(bytes32,address)"
     },
     {
       "attributes": "public override",
@@ -2878,7 +2878,7 @@
       "contract": "PremiumAccessRegistry",
       "name": "renounceRole",
       "path": "contracts/registry/PremiumAccessRegistry.sol",
-      "signature": "renounceRole(bytes32 role, address account)"
+      "signature": "renounceRole(bytes32,address)"
     },
     {
       "attributes": "external onlyOperator returns (uint256 proofCardId)",
@@ -2886,7 +2886,7 @@
       "contract": "ProofCardRegistry",
       "name": "registerProofCard",
       "path": "contracts/registry/ProofCardRegistry.sol",
-      "signature": "registerProofCard(uint256 jobId, uint256 submissionId, address builder, address reviewer, bytes32 proofHash, bytes32 proofCardHash, string calldata metadataURI)"
+      "signature": "registerProofCard(uint256,uint256,address,address,bytes32,bytes32,string)"
     },
     {
       "attributes": "external onlyOperator",
@@ -2894,7 +2894,7 @@
       "contract": "ProofCardRegistry",
       "name": "revokeProofCard",
       "path": "contracts/registry/ProofCardRegistry.sol",
-      "signature": "revokeProofCard(uint256 proofCardId, bytes32 reasonHash)"
+      "signature": "revokeProofCard(uint256,bytes32)"
     },
     {
       "attributes": "external",
@@ -2918,7 +2918,7 @@
       "contract": "ProofCardRegistry",
       "name": "transferOwnership",
       "path": "contracts/registry/ProofCardRegistry.sol",
-      "signature": "transferOwnership(address newOwner)"
+      "signature": "transferOwnership(address)"
     },
     {
       "attributes": "public onlyOwner",
@@ -2942,7 +2942,7 @@
       "contract": "ProofCardRegistry",
       "name": "grantRole",
       "path": "contracts/registry/ProofCardRegistry.sol",
-      "signature": "grantRole(bytes32 role, address account)"
+      "signature": "grantRole(bytes32,address)"
     },
     {
       "attributes": "public override",
@@ -2950,7 +2950,7 @@
       "contract": "ProofCardRegistry",
       "name": "revokeRole",
       "path": "contracts/registry/ProofCardRegistry.sol",
-      "signature": "revokeRole(bytes32 role, address account)"
+      "signature": "revokeRole(bytes32,address)"
     },
     {
       "attributes": "public override",
@@ -2958,7 +2958,7 @@
       "contract": "ProofCardRegistry",
       "name": "renounceRole",
       "path": "contracts/registry/ProofCardRegistry.sol",
-      "signature": "renounceRole(bytes32 role, address account)"
+      "signature": "renounceRole(bytes32,address)"
     },
     {
       "attributes": "external onlyOperator returns (uint256 tokenId)",
@@ -2966,7 +2966,7 @@
       "contract": "ProofCredentialRegistry",
       "name": "issueCredential",
       "path": "contracts/registry/ProofCredentialRegistry.sol",
-      "signature": "issueCredential(address to, uint256 proofCardId, bytes32 proofCardHash, bytes32 credentialType, string calldata metadataURI)"
+      "signature": "issueCredential(address,uint256,bytes32,bytes32,string)"
     },
     {
       "attributes": "external onlyOperator",
@@ -2974,7 +2974,7 @@
       "contract": "ProofCredentialRegistry",
       "name": "revokeCredential",
       "path": "contracts/registry/ProofCredentialRegistry.sol",
-      "signature": "revokeCredential(uint256 tokenId, bytes32 reasonHash)"
+      "signature": "revokeCredential(uint256,bytes32)"
     },
     {
       "attributes": "external",
@@ -2998,7 +2998,7 @@
       "contract": "ProofCredentialRegistry",
       "name": "transferOwnership",
       "path": "contracts/registry/ProofCredentialRegistry.sol",
-      "signature": "transferOwnership(address newOwner)"
+      "signature": "transferOwnership(address)"
     },
     {
       "attributes": "public onlyOwner",
@@ -3022,7 +3022,7 @@
       "contract": "ProofCredentialRegistry",
       "name": "grantRole",
       "path": "contracts/registry/ProofCredentialRegistry.sol",
-      "signature": "grantRole(bytes32 role, address account)"
+      "signature": "grantRole(bytes32,address)"
     },
     {
       "attributes": "public override",
@@ -3030,7 +3030,7 @@
       "contract": "ProofCredentialRegistry",
       "name": "revokeRole",
       "path": "contracts/registry/ProofCredentialRegistry.sol",
-      "signature": "revokeRole(bytes32 role, address account)"
+      "signature": "revokeRole(bytes32,address)"
     },
     {
       "attributes": "public override",
@@ -3038,7 +3038,7 @@
       "contract": "ProofCredentialRegistry",
       "name": "renounceRole",
       "path": "contracts/registry/ProofCredentialRegistry.sol",
-      "signature": "renounceRole(bytes32 role, address account)"
+      "signature": "renounceRole(bytes32,address)"
     },
     {
       "attributes": "public inherited ERC721",
@@ -3086,7 +3086,7 @@
       "contract": "ProofSeedRegistry",
       "name": "setProofSeedFee",
       "path": "contracts/registry/ProofSeedRegistry.sol",
-      "signature": "setProofSeedFee(uint256 proofSeedFeeAGIALPHA_)"
+      "signature": "setProofSeedFee(uint256)"
     },
     {
       "attributes": "external onlyAdmin",
@@ -3094,7 +3094,7 @@
       "contract": "ProofSeedRegistry",
       "name": "setTreasury",
       "path": "contracts/registry/ProofSeedRegistry.sol",
-      "signature": "setTreasury(address treasury_)"
+      "signature": "setTreasury(address)"
     },
     {
       "attributes": "external nonReentrant whenNotPaused returns (uint256 seedId)",
@@ -3102,7 +3102,7 @@
       "contract": "ProofSeedRegistry",
       "name": "createProofSeed",
       "path": "contracts/registry/ProofSeedRegistry.sol",
-      "signature": "createProofSeed(bytes32 seedHash, string calldata metadataURI, bytes32 category)"
+      "signature": "createProofSeed(bytes32,string,bytes32)"
     },
     {
       "attributes": "external onlyOperator",
@@ -3110,7 +3110,7 @@
       "contract": "ProofSeedRegistry",
       "name": "markReviewed",
       "path": "contracts/registry/ProofSeedRegistry.sol",
-      "signature": "markReviewed(uint256 seedId, bytes32 reasonHash)"
+      "signature": "markReviewed(uint256,bytes32)"
     },
     {
       "attributes": "external onlyOperator",
@@ -3118,7 +3118,7 @@
       "contract": "ProofSeedRegistry",
       "name": "markSpawned",
       "path": "contracts/registry/ProofSeedRegistry.sol",
-      "signature": "markSpawned(uint256 seedId, uint256 jobId)"
+      "signature": "markSpawned(uint256,uint256)"
     },
     {
       "attributes": "external onlyOperator",
@@ -3126,7 +3126,7 @@
       "contract": "ProofSeedRegistry",
       "name": "archiveSeed",
       "path": "contracts/registry/ProofSeedRegistry.sol",
-      "signature": "archiveSeed(uint256 seedId, bytes32 reasonHash)"
+      "signature": "archiveSeed(uint256,bytes32)"
     },
     {
       "attributes": "external",
@@ -3150,7 +3150,7 @@
       "contract": "ProofSeedRegistry",
       "name": "transferOwnership",
       "path": "contracts/registry/ProofSeedRegistry.sol",
-      "signature": "transferOwnership(address newOwner)"
+      "signature": "transferOwnership(address)"
     },
     {
       "attributes": "public onlyOwner",
@@ -3174,7 +3174,7 @@
       "contract": "ProofSeedRegistry",
       "name": "grantRole",
       "path": "contracts/registry/ProofSeedRegistry.sol",
-      "signature": "grantRole(bytes32 role, address account)"
+      "signature": "grantRole(bytes32,address)"
     },
     {
       "attributes": "public override",
@@ -3182,7 +3182,7 @@
       "contract": "ProofSeedRegistry",
       "name": "revokeRole",
       "path": "contracts/registry/ProofSeedRegistry.sol",
-      "signature": "revokeRole(bytes32 role, address account)"
+      "signature": "revokeRole(bytes32,address)"
     },
     {
       "attributes": "public override",
@@ -3190,7 +3190,7 @@
       "contract": "ProofSeedRegistry",
       "name": "renounceRole",
       "path": "contracts/registry/ProofSeedRegistry.sol",
-      "signature": "renounceRole(bytes32 role, address account)"
+      "signature": "renounceRole(bytes32,address)"
     },
     {
       "attributes": "external onlyAdmin",
@@ -3198,7 +3198,7 @@
       "contract": "ProofSubmissionRegistry",
       "name": "setProofBond",
       "path": "contracts/registry/ProofSubmissionRegistry.sol",
-      "signature": "setProofBond(uint256 proofBondAGIALPHA_)"
+      "signature": "setProofBond(uint256)"
     },
     {
       "attributes": "external onlyAdmin",
@@ -3206,7 +3206,7 @@
       "contract": "ProofSubmissionRegistry",
       "name": "setProofActionFees",
       "path": "contracts/registry/ProofSubmissionRegistry.sol",
-      "signature": "setProofActionFees(uint256 proofCardRegistryFeeAGIALPHA_, uint256 credentialMintFeeAGIALPHA_)"
+      "signature": "setProofActionFees(uint256,uint256)"
     },
     {
       "attributes": "external onlyAdmin",
@@ -3214,7 +3214,7 @@
       "contract": "ProofSubmissionRegistry",
       "name": "setTreasury",
       "path": "contracts/registry/ProofSubmissionRegistry.sol",
-      "signature": "setTreasury(address treasury_)"
+      "signature": "setTreasury(address)"
     },
     {
       "attributes": "external nonReentrant whenNotPaused returns (uint256 submissionId)",
@@ -3222,7 +3222,7 @@
       "contract": "ProofSubmissionRegistry",
       "name": "submitProof",
       "path": "contracts/registry/ProofSubmissionRegistry.sol",
-      "signature": "submitProof(uint256 jobId, string calldata metadataURI, bytes32 proofHash, bytes32 proofCardHash)"
+      "signature": "submitProof(uint256,string,bytes32,bytes32)"
     },
     {
       "attributes": "external onlyOperator nonReentrant",
@@ -3230,7 +3230,7 @@
       "contract": "ProofSubmissionRegistry",
       "name": "approveSubmission",
       "path": "contracts/registry/ProofSubmissionRegistry.sol",
-      "signature": "approveSubmission(uint256 submissionId, address reviewer, bytes32 rationaleHash, string calldata credentialURI, bytes32 credentialType)"
+      "signature": "approveSubmission(uint256,address,bytes32,string,bytes32)"
     },
     {
       "attributes": "external onlyOperator nonReentrant",
@@ -3238,7 +3238,7 @@
       "contract": "ProofSubmissionRegistry",
       "name": "rejectSubmission",
       "path": "contracts/registry/ProofSubmissionRegistry.sol",
-      "signature": "rejectSubmission(uint256 submissionId, address reviewer, bytes32 reasonHash, bool slashBuilder)"
+      "signature": "rejectSubmission(uint256,address,bytes32,bool)"
     },
     {
       "attributes": "external",
@@ -3262,7 +3262,7 @@
       "contract": "ProofSubmissionRegistry",
       "name": "transferOwnership",
       "path": "contracts/registry/ProofSubmissionRegistry.sol",
-      "signature": "transferOwnership(address newOwner)"
+      "signature": "transferOwnership(address)"
     },
     {
       "attributes": "public onlyOwner",
@@ -3286,7 +3286,7 @@
       "contract": "ProofSubmissionRegistry",
       "name": "grantRole",
       "path": "contracts/registry/ProofSubmissionRegistry.sol",
-      "signature": "grantRole(bytes32 role, address account)"
+      "signature": "grantRole(bytes32,address)"
     },
     {
       "attributes": "public override",
@@ -3294,7 +3294,7 @@
       "contract": "ProofSubmissionRegistry",
       "name": "revokeRole",
       "path": "contracts/registry/ProofSubmissionRegistry.sol",
-      "signature": "revokeRole(bytes32 role, address account)"
+      "signature": "revokeRole(bytes32,address)"
     },
     {
       "attributes": "public override",
@@ -3302,7 +3302,7 @@
       "contract": "ProofSubmissionRegistry",
       "name": "renounceRole",
       "path": "contracts/registry/ProofSubmissionRegistry.sol",
-      "signature": "renounceRole(bytes32 role, address account)"
+      "signature": "renounceRole(bytes32,address)"
     },
     {
       "attributes": "external onlyOperator",
@@ -3310,7 +3310,7 @@
       "contract": "ProtocolConfigRegistry",
       "name": "setConfig",
       "path": "contracts/registry/ProtocolConfigRegistry.sol",
-      "signature": "setConfig(bytes32 key, bytes32 valueHash, string calldata uri)"
+      "signature": "setConfig(bytes32,bytes32,string)"
     },
     {
       "attributes": "external",
@@ -3334,7 +3334,7 @@
       "contract": "ProtocolConfigRegistry",
       "name": "transferOwnership",
       "path": "contracts/registry/ProtocolConfigRegistry.sol",
-      "signature": "transferOwnership(address newOwner)"
+      "signature": "transferOwnership(address)"
     },
     {
       "attributes": "public onlyOwner",
@@ -3358,7 +3358,7 @@
       "contract": "ProtocolConfigRegistry",
       "name": "grantRole",
       "path": "contracts/registry/ProtocolConfigRegistry.sol",
-      "signature": "grantRole(bytes32 role, address account)"
+      "signature": "grantRole(bytes32,address)"
     },
     {
       "attributes": "public override",
@@ -3366,7 +3366,7 @@
       "contract": "ProtocolConfigRegistry",
       "name": "revokeRole",
       "path": "contracts/registry/ProtocolConfigRegistry.sol",
-      "signature": "revokeRole(bytes32 role, address account)"
+      "signature": "revokeRole(bytes32,address)"
     },
     {
       "attributes": "public override",
@@ -3374,7 +3374,7 @@
       "contract": "ProtocolConfigRegistry",
       "name": "renounceRole",
       "path": "contracts/registry/ProtocolConfigRegistry.sol",
-      "signature": "renounceRole(bytes32 role, address account)"
+      "signature": "renounceRole(bytes32,address)"
     },
     {
       "attributes": "external whenNotPaused",
@@ -3382,7 +3382,7 @@
       "contract": "ReferralRegistry",
       "name": "assignReferral",
       "path": "contracts/registry/ReferralRegistry.sol",
-      "signature": "assignReferral(address referrer)"
+      "signature": "assignReferral(address)"
     },
     {
       "attributes": "external onlyOperator",
@@ -3390,7 +3390,7 @@
       "contract": "ReferralRegistry",
       "name": "assignReferralFor",
       "path": "contracts/registry/ReferralRegistry.sol",
-      "signature": "assignReferralFor(address user, address referrer)"
+      "signature": "assignReferralFor(address,address)"
     },
     {
       "attributes": "external onlyOperator",
@@ -3398,7 +3398,7 @@
       "contract": "ReferralRegistry",
       "name": "recordConversion",
       "path": "contracts/registry/ReferralRegistry.sol",
-      "signature": "recordConversion(address user, bytes32 reasonHash)"
+      "signature": "recordConversion(address,bytes32)"
     },
     {
       "attributes": "external",
@@ -3422,7 +3422,7 @@
       "contract": "ReferralRegistry",
       "name": "transferOwnership",
       "path": "contracts/registry/ReferralRegistry.sol",
-      "signature": "transferOwnership(address newOwner)"
+      "signature": "transferOwnership(address)"
     },
     {
       "attributes": "public onlyOwner",
@@ -3446,7 +3446,7 @@
       "contract": "ReferralRegistry",
       "name": "grantRole",
       "path": "contracts/registry/ReferralRegistry.sol",
-      "signature": "grantRole(bytes32 role, address account)"
+      "signature": "grantRole(bytes32,address)"
     },
     {
       "attributes": "public override",
@@ -3454,7 +3454,7 @@
       "contract": "ReferralRegistry",
       "name": "revokeRole",
       "path": "contracts/registry/ReferralRegistry.sol",
-      "signature": "revokeRole(bytes32 role, address account)"
+      "signature": "revokeRole(bytes32,address)"
     },
     {
       "attributes": "public override",
@@ -3462,7 +3462,7 @@
       "contract": "ReferralRegistry",
       "name": "renounceRole",
       "path": "contracts/registry/ReferralRegistry.sol",
-      "signature": "renounceRole(bytes32 role, address account)"
+      "signature": "renounceRole(bytes32,address)"
     },
     {
       "attributes": "external onlyOperator",
@@ -3470,7 +3470,7 @@
       "contract": "ReputationRegistry",
       "name": "recordApprovedProof",
       "path": "contracts/registry/ReputationRegistry.sol",
-      "signature": "recordApprovedProof(address builder, address reviewer, uint256 proofCardId)"
+      "signature": "recordApprovedProof(address,address,uint256)"
     },
     {
       "attributes": "external onlyOperator",
@@ -3478,7 +3478,7 @@
       "contract": "ReputationRegistry",
       "name": "recordRejectedProof",
       "path": "contracts/registry/ReputationRegistry.sol",
-      "signature": "recordRejectedProof(address builder, address reviewer, bytes32 reasonHash)"
+      "signature": "recordRejectedProof(address,address,bytes32)"
     },
     {
       "attributes": "external onlyOperator",
@@ -3486,7 +3486,7 @@
       "contract": "ReputationRegistry",
       "name": "recordCredential",
       "path": "contracts/registry/ReputationRegistry.sol",
-      "signature": "recordCredential(address account, uint256 tokenId)"
+      "signature": "recordCredential(address,uint256)"
     },
     {
       "attributes": "external onlyOperator",
@@ -3494,7 +3494,7 @@
       "contract": "ReputationRegistry",
       "name": "recordDispute",
       "path": "contracts/registry/ReputationRegistry.sol",
-      "signature": "recordDispute(address account, bytes32 reasonHash)"
+      "signature": "recordDispute(address,bytes32)"
     },
     {
       "attributes": "external onlyOperator",
@@ -3502,7 +3502,7 @@
       "contract": "ReputationRegistry",
       "name": "adjustScore",
       "path": "contracts/registry/ReputationRegistry.sol",
-      "signature": "adjustScore(address account, int256 delta, bytes32 reasonHash)"
+      "signature": "adjustScore(address,int256,bytes32)"
     },
     {
       "attributes": "external",
@@ -3526,7 +3526,7 @@
       "contract": "ReputationRegistry",
       "name": "transferOwnership",
       "path": "contracts/registry/ReputationRegistry.sol",
-      "signature": "transferOwnership(address newOwner)"
+      "signature": "transferOwnership(address)"
     },
     {
       "attributes": "public onlyOwner",
@@ -3550,7 +3550,7 @@
       "contract": "ReputationRegistry",
       "name": "grantRole",
       "path": "contracts/registry/ReputationRegistry.sol",
-      "signature": "grantRole(bytes32 role, address account)"
+      "signature": "grantRole(bytes32,address)"
     },
     {
       "attributes": "public override",
@@ -3558,7 +3558,7 @@
       "contract": "ReputationRegistry",
       "name": "revokeRole",
       "path": "contracts/registry/ReputationRegistry.sol",
-      "signature": "revokeRole(bytes32 role, address account)"
+      "signature": "revokeRole(bytes32,address)"
     },
     {
       "attributes": "public override",
@@ -3566,7 +3566,7 @@
       "contract": "ReputationRegistry",
       "name": "renounceRole",
       "path": "contracts/registry/ReputationRegistry.sol",
-      "signature": "renounceRole(bytes32 role, address account)"
+      "signature": "renounceRole(bytes32,address)"
     },
     {
       "attributes": "external onlyAdmin",
@@ -3574,7 +3574,7 @@
       "contract": "ReviewerBondRegistry",
       "name": "setReviewerBond",
       "path": "contracts/registry/ReviewerBondRegistry.sol",
-      "signature": "setReviewerBond(uint256 reviewerBondAGIALPHA_)"
+      "signature": "setReviewerBond(uint256)"
     },
     {
       "attributes": "external onlyAdmin",
@@ -3582,7 +3582,7 @@
       "contract": "ReviewerBondRegistry",
       "name": "setReviewChallengePeriod",
       "path": "contracts/registry/ReviewerBondRegistry.sol",
-      "signature": "setReviewChallengePeriod(uint256 reviewChallengePeriod_)"
+      "signature": "setReviewChallengePeriod(uint256)"
     },
     {
       "attributes": "external onlyAdmin",
@@ -3590,7 +3590,7 @@
       "contract": "ReviewerBondRegistry",
       "name": "setAllowlistRequired",
       "path": "contracts/registry/ReviewerBondRegistry.sol",
-      "signature": "setAllowlistRequired(bool required_)"
+      "signature": "setAllowlistRequired(bool)"
     },
     {
       "attributes": "external",
@@ -3598,7 +3598,7 @@
       "contract": "ReviewerBondRegistry",
       "name": "setReviewerApproved",
       "path": "contracts/registry/ReviewerBondRegistry.sol",
-      "signature": "setReviewerApproved(address reviewer, bool approved)"
+      "signature": "setReviewerApproved(address,bool)"
     },
     {
       "attributes": "external nonReentrant whenNotPaused",
@@ -3606,7 +3606,7 @@
       "contract": "ReviewerBondRegistry",
       "name": "bondAsReviewer",
       "path": "contracts/registry/ReviewerBondRegistry.sol",
-      "signature": "bondAsReviewer(string calldata metadataURI)"
+      "signature": "bondAsReviewer(string)"
     },
     {
       "attributes": "external nonReentrant",
@@ -3622,7 +3622,7 @@
       "contract": "ReviewerBondRegistry",
       "name": "reviewSubmission",
       "path": "contracts/registry/ReviewerBondRegistry.sol",
-      "signature": "reviewSubmission(uint256 submissionId, bool approve, bytes32 rationaleHash, string calldata credentialURI, bytes32 credentialType, bool slashBuilder)"
+      "signature": "reviewSubmission(uint256,bool,bytes32,string,bytes32,bool)"
     },
     {
       "attributes": "external onlyOperator nonReentrant",
@@ -3630,7 +3630,7 @@
       "contract": "ReviewerBondRegistry",
       "name": "slashReviewer",
       "path": "contracts/registry/ReviewerBondRegistry.sol",
-      "signature": "slashReviewer(address reviewer, uint256 amount, bytes32 reasonHash)"
+      "signature": "slashReviewer(address,uint256,bytes32)"
     },
     {
       "attributes": "external",
@@ -3654,7 +3654,7 @@
       "contract": "ReviewerBondRegistry",
       "name": "transferOwnership",
       "path": "contracts/registry/ReviewerBondRegistry.sol",
-      "signature": "transferOwnership(address newOwner)"
+      "signature": "transferOwnership(address)"
     },
     {
       "attributes": "public onlyOwner",
@@ -3678,7 +3678,7 @@
       "contract": "ReviewerBondRegistry",
       "name": "grantRole",
       "path": "contracts/registry/ReviewerBondRegistry.sol",
-      "signature": "grantRole(bytes32 role, address account)"
+      "signature": "grantRole(bytes32,address)"
     },
     {
       "attributes": "public override",
@@ -3686,7 +3686,7 @@
       "contract": "ReviewerBondRegistry",
       "name": "revokeRole",
       "path": "contracts/registry/ReviewerBondRegistry.sol",
-      "signature": "revokeRole(bytes32 role, address account)"
+      "signature": "revokeRole(bytes32,address)"
     },
     {
       "attributes": "public override",
@@ -3694,7 +3694,7 @@
       "contract": "ReviewerBondRegistry",
       "name": "renounceRole",
       "path": "contracts/registry/ReviewerBondRegistry.sol",
-      "signature": "renounceRole(bytes32 role, address account)"
+      "signature": "renounceRole(bytes32,address)"
     },
     {
       "attributes": "external onlyAdmin",
@@ -3702,7 +3702,7 @@
       "contract": "TreasuryRouter",
       "name": "setTreasury",
       "path": "contracts/registry/TreasuryRouter.sol",
-      "signature": "setTreasury(address treasury_)"
+      "signature": "setTreasury(address)"
     },
     {
       "attributes": "external onlyOperator",
@@ -3710,7 +3710,7 @@
       "contract": "TreasuryRouter",
       "name": "routeFrom",
       "path": "contracts/registry/TreasuryRouter.sol",
-      "signature": "routeFrom(address token, uint256 amount, bytes32 reasonHash)"
+      "signature": "routeFrom(address,uint256,bytes32)"
     },
     {
       "attributes": "external onlyOperator",
@@ -3718,7 +3718,7 @@
       "contract": "TreasuryRouter",
       "name": "routeHeld",
       "path": "contracts/registry/TreasuryRouter.sol",
-      "signature": "routeHeld(address token, uint256 amount, bytes32 reasonHash)"
+      "signature": "routeHeld(address,uint256,bytes32)"
     },
     {
       "attributes": "external",
@@ -3742,7 +3742,7 @@
       "contract": "TreasuryRouter",
       "name": "transferOwnership",
       "path": "contracts/registry/TreasuryRouter.sol",
-      "signature": "transferOwnership(address newOwner)"
+      "signature": "transferOwnership(address)"
     },
     {
       "attributes": "public onlyOwner",
@@ -3766,7 +3766,7 @@
       "contract": "TreasuryRouter",
       "name": "grantRole",
       "path": "contracts/registry/TreasuryRouter.sol",
-      "signature": "grantRole(bytes32 role, address account)"
+      "signature": "grantRole(bytes32,address)"
     },
     {
       "attributes": "public override",
@@ -3774,7 +3774,7 @@
       "contract": "TreasuryRouter",
       "name": "revokeRole",
       "path": "contracts/registry/TreasuryRouter.sol",
-      "signature": "revokeRole(bytes32 role, address account)"
+      "signature": "revokeRole(bytes32,address)"
     },
     {
       "attributes": "public override",
@@ -3782,7 +3782,7 @@
       "contract": "TreasuryRouter",
       "name": "renounceRole",
       "path": "contracts/registry/TreasuryRouter.sol",
-      "signature": "renounceRole(bytes32 role, address account)"
+      "signature": "renounceRole(bytes32,address)"
     },
     {
       "attributes": "external onlyAdmin",
@@ -3790,7 +3790,7 @@
       "contract": "CommercializationPerformanceVault",
       "name": "setMinApprovalDelay",
       "path": "contracts/vaults/CommercializationPerformanceVault.sol",
-      "signature": "setMinApprovalDelay(uint256 minApprovalDelay_)"
+      "signature": "setMinApprovalDelay(uint256)"
     },
     {
       "attributes": "external onlyOperator returns (uint256 trancheId)",
@@ -3798,7 +3798,7 @@
       "contract": "CommercializationPerformanceVault",
       "name": "proposeTranche",
       "path": "contracts/vaults/CommercializationPerformanceVault.sol",
-      "signature": "proposeTranche(address recipient, uint256 amount, bytes32 milestoneHash, bytes32 evidenceHash, bytes32 valueHash, uint256 releaseAfter, string calldata memoURI)"
+      "signature": "proposeTranche(address,uint256,bytes32,bytes32,bytes32,uint256,string)"
     },
     {
       "attributes": "external onlyAdmin",
@@ -3806,7 +3806,7 @@
       "contract": "CommercializationPerformanceVault",
       "name": "approveTranche",
       "path": "contracts/vaults/CommercializationPerformanceVault.sol",
-      "signature": "approveTranche(uint256 trancheId, bytes32 approvalHash)"
+      "signature": "approveTranche(uint256,bytes32)"
     },
     {
       "attributes": "external whenNotPaused",
@@ -3814,7 +3814,7 @@
       "contract": "CommercializationPerformanceVault",
       "name": "releaseTranche",
       "path": "contracts/vaults/CommercializationPerformanceVault.sol",
-      "signature": "releaseTranche(uint256 trancheId)"
+      "signature": "releaseTranche(uint256)"
     },
     {
       "attributes": "external onlyAdmin",
@@ -3822,7 +3822,7 @@
       "contract": "CommercializationPerformanceVault",
       "name": "cancelTranche",
       "path": "contracts/vaults/CommercializationPerformanceVault.sol",
-      "signature": "cancelTranche(uint256 trancheId, bytes32 reasonHash)"
+      "signature": "cancelTranche(uint256,bytes32)"
     },
     {
       "attributes": "external",
@@ -3846,7 +3846,7 @@
       "contract": "CommercializationPerformanceVault",
       "name": "transferOwnership",
       "path": "contracts/vaults/CommercializationPerformanceVault.sol",
-      "signature": "transferOwnership(address newOwner)"
+      "signature": "transferOwnership(address)"
     },
     {
       "attributes": "public onlyOwner",
@@ -3870,7 +3870,7 @@
       "contract": "CommercializationPerformanceVault",
       "name": "grantRole",
       "path": "contracts/vaults/CommercializationPerformanceVault.sol",
-      "signature": "grantRole(bytes32 role, address account)"
+      "signature": "grantRole(bytes32,address)"
     },
     {
       "attributes": "public override",
@@ -3878,7 +3878,7 @@
       "contract": "CommercializationPerformanceVault",
       "name": "revokeRole",
       "path": "contracts/vaults/CommercializationPerformanceVault.sol",
-      "signature": "revokeRole(bytes32 role, address account)"
+      "signature": "revokeRole(bytes32,address)"
     },
     {
       "attributes": "public override",
@@ -3886,7 +3886,7 @@
       "contract": "CommercializationPerformanceVault",
       "name": "renounceRole",
       "path": "contracts/vaults/CommercializationPerformanceVault.sol",
-      "signature": "renounceRole(bytes32 role, address account)"
+      "signature": "renounceRole(bytes32,address)"
     },
     {
       "attributes": "external onlyAdmin",
@@ -3894,7 +3894,7 @@
       "contract": "ProofRewardsVault",
       "name": "setPurpose",
       "path": "contracts/vaults/TokenReserveVault.sol",
-      "signature": "setPurpose(string calldata purpose_)"
+      "signature": "setPurpose(string)"
     },
     {
       "attributes": "external whenNotPaused",
@@ -3902,7 +3902,7 @@
       "contract": "ProofRewardsVault",
       "name": "release",
       "path": "contracts/vaults/TokenReserveVault.sol",
-      "signature": "release(address recipient, uint256 amount, bytes32 reasonHash, string calldata memo)"
+      "signature": "release(address,uint256,bytes32,string)"
     },
     {
       "attributes": "external",
@@ -3926,7 +3926,7 @@
       "contract": "ProofRewardsVault",
       "name": "transferOwnership",
       "path": "contracts/vaults/TokenReserveVault.sol",
-      "signature": "transferOwnership(address newOwner)"
+      "signature": "transferOwnership(address)"
     },
     {
       "attributes": "public onlyOwner",
@@ -3950,7 +3950,7 @@
       "contract": "ProofRewardsVault",
       "name": "grantRole",
       "path": "contracts/vaults/TokenReserveVault.sol",
-      "signature": "grantRole(bytes32 role, address account)"
+      "signature": "grantRole(bytes32,address)"
     },
     {
       "attributes": "public override",
@@ -3958,7 +3958,7 @@
       "contract": "ProofRewardsVault",
       "name": "revokeRole",
       "path": "contracts/vaults/TokenReserveVault.sol",
-      "signature": "revokeRole(bytes32 role, address account)"
+      "signature": "revokeRole(bytes32,address)"
     },
     {
       "attributes": "public override",
@@ -3966,7 +3966,7 @@
       "contract": "ProofRewardsVault",
       "name": "renounceRole",
       "path": "contracts/vaults/TokenReserveVault.sol",
-      "signature": "renounceRole(bytes32 role, address account)"
+      "signature": "renounceRole(bytes32,address)"
     },
     {
       "attributes": "external onlyAdmin",
@@ -3974,7 +3974,7 @@
       "contract": "LiquidityVault",
       "name": "setPurpose",
       "path": "contracts/vaults/TokenReserveVault.sol",
-      "signature": "setPurpose(string calldata purpose_)"
+      "signature": "setPurpose(string)"
     },
     {
       "attributes": "external whenNotPaused",
@@ -3982,7 +3982,7 @@
       "contract": "LiquidityVault",
       "name": "release",
       "path": "contracts/vaults/TokenReserveVault.sol",
-      "signature": "release(address recipient, uint256 amount, bytes32 reasonHash, string calldata memo)"
+      "signature": "release(address,uint256,bytes32,string)"
     },
     {
       "attributes": "external",
@@ -4006,7 +4006,7 @@
       "contract": "LiquidityVault",
       "name": "transferOwnership",
       "path": "contracts/vaults/TokenReserveVault.sol",
-      "signature": "transferOwnership(address newOwner)"
+      "signature": "transferOwnership(address)"
     },
     {
       "attributes": "public onlyOwner",
@@ -4030,7 +4030,7 @@
       "contract": "LiquidityVault",
       "name": "grantRole",
       "path": "contracts/vaults/TokenReserveVault.sol",
-      "signature": "grantRole(bytes32 role, address account)"
+      "signature": "grantRole(bytes32,address)"
     },
     {
       "attributes": "public override",
@@ -4038,7 +4038,7 @@
       "contract": "LiquidityVault",
       "name": "revokeRole",
       "path": "contracts/vaults/TokenReserveVault.sol",
-      "signature": "revokeRole(bytes32 role, address account)"
+      "signature": "revokeRole(bytes32,address)"
     },
     {
       "attributes": "public override",
@@ -4046,7 +4046,7 @@
       "contract": "LiquidityVault",
       "name": "renounceRole",
       "path": "contracts/vaults/TokenReserveVault.sol",
-      "signature": "renounceRole(bytes32 role, address account)"
+      "signature": "renounceRole(bytes32,address)"
     },
     {
       "attributes": "external onlyAdmin",
@@ -4054,7 +4054,7 @@
       "contract": "SecurityVault",
       "name": "setPurpose",
       "path": "contracts/vaults/TokenReserveVault.sol",
-      "signature": "setPurpose(string calldata purpose_)"
+      "signature": "setPurpose(string)"
     },
     {
       "attributes": "external whenNotPaused",
@@ -4062,7 +4062,7 @@
       "contract": "SecurityVault",
       "name": "release",
       "path": "contracts/vaults/TokenReserveVault.sol",
-      "signature": "release(address recipient, uint256 amount, bytes32 reasonHash, string calldata memo)"
+      "signature": "release(address,uint256,bytes32,string)"
     },
     {
       "attributes": "external",
@@ -4086,7 +4086,7 @@
       "contract": "SecurityVault",
       "name": "transferOwnership",
       "path": "contracts/vaults/TokenReserveVault.sol",
-      "signature": "transferOwnership(address newOwner)"
+      "signature": "transferOwnership(address)"
     },
     {
       "attributes": "public onlyOwner",
@@ -4110,7 +4110,7 @@
       "contract": "SecurityVault",
       "name": "grantRole",
       "path": "contracts/vaults/TokenReserveVault.sol",
-      "signature": "grantRole(bytes32 role, address account)"
+      "signature": "grantRole(bytes32,address)"
     },
     {
       "attributes": "public override",
@@ -4118,7 +4118,7 @@
       "contract": "SecurityVault",
       "name": "revokeRole",
       "path": "contracts/vaults/TokenReserveVault.sol",
-      "signature": "revokeRole(bytes32 role, address account)"
+      "signature": "revokeRole(bytes32,address)"
     },
     {
       "attributes": "public override",
@@ -4126,7 +4126,7 @@
       "contract": "SecurityVault",
       "name": "renounceRole",
       "path": "contracts/vaults/TokenReserveVault.sol",
-      "signature": "renounceRole(bytes32 role, address account)"
+      "signature": "renounceRole(bytes32,address)"
     },
     {
       "attributes": "external onlyAdmin",
@@ -4134,7 +4134,7 @@
       "contract": "CommunityVault",
       "name": "setPurpose",
       "path": "contracts/vaults/TokenReserveVault.sol",
-      "signature": "setPurpose(string calldata purpose_)"
+      "signature": "setPurpose(string)"
     },
     {
       "attributes": "external whenNotPaused",
@@ -4142,7 +4142,7 @@
       "contract": "CommunityVault",
       "name": "release",
       "path": "contracts/vaults/TokenReserveVault.sol",
-      "signature": "release(address recipient, uint256 amount, bytes32 reasonHash, string calldata memo)"
+      "signature": "release(address,uint256,bytes32,string)"
     },
     {
       "attributes": "external",
@@ -4166,7 +4166,7 @@
       "contract": "CommunityVault",
       "name": "transferOwnership",
       "path": "contracts/vaults/TokenReserveVault.sol",
-      "signature": "transferOwnership(address newOwner)"
+      "signature": "transferOwnership(address)"
     },
     {
       "attributes": "public onlyOwner",
@@ -4190,7 +4190,7 @@
       "contract": "CommunityVault",
       "name": "grantRole",
       "path": "contracts/vaults/TokenReserveVault.sol",
-      "signature": "grantRole(bytes32 role, address account)"
+      "signature": "grantRole(bytes32,address)"
     },
     {
       "attributes": "public override",
@@ -4198,7 +4198,7 @@
       "contract": "CommunityVault",
       "name": "revokeRole",
       "path": "contracts/vaults/TokenReserveVault.sol",
-      "signature": "revokeRole(bytes32 role, address account)"
+      "signature": "revokeRole(bytes32,address)"
     },
     {
       "attributes": "public override",
@@ -4206,7 +4206,7 @@
       "contract": "CommunityVault",
       "name": "renounceRole",
       "path": "contracts/vaults/TokenReserveVault.sol",
-      "signature": "renounceRole(bytes32 role, address account)"
+      "signature": "renounceRole(bytes32,address)"
     }
   ]
 }
