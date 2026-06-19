@@ -6,8 +6,25 @@
     "qa/lifecycle-selector-policy.json",
     "qa/controlled-mainnet-canary-template.json"
   ],
-  "reason": "Fail-closed dossier: mandatory live/private fork, independent builds, symbolic, mutation, and exact Mainnet-fork evidence must be supplied before PASS. No Mainnet broadcast evidence is present or claimed.",
-  "sourceTreeHash": "01c4df1d6e8a28e6a4eb2884a57cb09b30f99f106ecb9e1da379c8b4b5b333be",
-  "sourceTreeHashScope": "tracked HEAD content excluding generated readiness artifacts",
+  "baselineSha": "c7b1eb953034da765dbd7107520a4fbaf43d1f94",
+  "localCheckResults": [
+    {
+      "command": "npm run authority:inventory",
+      "name": "authority inventory generation",
+      "status": "REQUIRED_NOT_RUN_BY_GENERATOR"
+    },
+    {
+      "command": "npm run authority:policy:validate",
+      "name": "authority policy validation",
+      "status": "REQUIRED_NOT_RUN_BY_GENERATOR"
+    }
+  ],
+  "mainnetBroadcastOccurred": false,
+  "reason": "Fail-closed dossier: mandatory live/private fork RPC, independent build comparison, symbolic execution, critical mutation, and exact Mainnet-fork evidence must be supplied before PASS. No Mainnet broadcast evidence is present or claimed.",
+  "releaseClaimBoundary": "Repository-local operational inventory and fail-closed readiness evidence only; not Mainnet deployed, not Mainnet verified, not Owner-authorized, and not technically ready until blocked evidence is supplied.",
+  "releaseRelevantDirtyPaths": [],
+  "selectorCoverageStatus": "BLOCKED",
+  "sourceTreeHash": "a17daa1b9d24cce4c1cd3ba4f45506a95c8bc9167e67e39734e323165bef1ab2",
+  "sourceTreeHashScope": "tracked git index content excluding generated readiness artifacts",
   "status": "BLOCKED"
 }

@@ -12,6 +12,20 @@ CONTRACTS = ROOT / "contracts"
 QA = ROOT / "qa"
 DOCS = ROOT / "docs"
 RUNBOOKS = DOCS / "runbooks"
+RELEASE_ROOTS = (
+    "contracts/",
+    "scripts/",
+    "test/",
+    "qa/",
+    "docs/",
+    "schemas/",
+    "ignition/",
+    "package.json",
+    "package-lock.json",
+    "hardhat.config.ts",
+    "foundry.toml",
+    "tsconfig.json",
+)
 GENERATED_PREFIXES = (
     "qa/mainnet-operational",
     "qa/business-override-matrix.json",
@@ -45,6 +59,23 @@ def sh(cmd):
         return f"UNAVAILABLE: {exc}"
 
 
+
+def release_relevant_dirty_paths():
+    # Only unstaged release-relevant dirt is recorded here. Staged content is
+    # already represented by sourceTreeHash, and generated artifacts are excluded
+    # so pre-commit generation does not embed transient self-dirt.
+    status = sh(["git", "diff", "--name-only"])
+    if status.startswith("UNAVAILABLE:"):
+        return [status]
+    dirty = []
+    for rel in status.splitlines():
+        if not rel.startswith(RELEASE_ROOTS):
+            continue
+        if rel.startswith(GENERATED_PREFIXES):
+            continue
+        dirty.append(rel)
+    return sorted(set(dirty))
+
 def git_index_text(rel):
     return subprocess.check_output(["git", "show", f":{rel}"], cwd=ROOT).decode("utf-8", errors="ignore")
 
@@ -71,12 +102,14 @@ def tracked_source_tree_hash():
     """Hash the staged source content, excluding generated readiness outputs.
 
     The index is used so generated artifacts can be regenerated before commit and
-    remain tied to the exact non-generated content that will be committed, while
-    unrelated working-tree dirt is ignored.
+    remain tied to the exact non-generated release-relevant content that will be
+    committed, while unrelated working-tree dirt is ignored.
     """
     listing = sh(["git", "ls-files"])
     h = hashlib.sha256()
     for rel in sorted(x for x in listing.splitlines() if x):
+        if not rel.startswith(RELEASE_ROOTS):
+            continue
         if rel.startswith(GENERATED_PREFIXES):
             continue
         if rel.startswith(("node_modules/", "artifacts/", "cache/")):
@@ -280,7 +313,7 @@ def generate():
     inventory = {
         "generatedBy": "scripts/mainnet_operational_readiness.py",
         "sourceTreeHash": source_hash,
-        "sourceTreeHashScope": "tracked HEAD content excluding generated readiness artifacts",
+        "sourceTreeHashScope": "tracked git index content excluding generated readiness artifacts",
         "contracts": inv,
     }
     write_json(QA / "mainnet-operational-inventory.json", inventory)
@@ -298,10 +331,23 @@ def generate():
             "status": "PARTIAL",
             "claim": "Repository evidence inventory exists; final PASS requires live/private configuration, fork RPC, and complete adversarial runs. This artifact is claim-bounded and does not assert Mainnet deployment.",
         })
+    selector_count = sum(len(c["stateChangingSelectors"]) for c in inv)
+    unclassified = [
+        {"contract": c["contract"], "path": c["path"], **f}
+        for c in inv
+        for f in c["stateChangingSelectors"]
+        if f["classification"] == "normal_operation_unclassified_review_required"
+    ]
     write_json(QA / "mainnet-operational-gap-matrix.json", {
         "sourceTreeHash": source_hash,
         "sourceTreeHashScope": inventory["sourceTreeHashScope"],
         "requirements": gates,
+        "selectorCoverage": {
+            "stateChangingSelectorCount": selector_count,
+            "unclassifiedCount": len(unclassified),
+            "unclassified": unclassified,
+            "status": "PASS" if not unclassified else "BLOCKED",
+        },
         "evidence": ["qa/mainnet-operational-inventory.json"],
     })
     write_md(DOCS / "MAINNET_OPERATIONAL_GAP_MATRIX.md", "Mainnet Operational Gap Matrix", [
@@ -334,7 +380,12 @@ def generate():
         "",
         *[f'- `{e["contract"]}`: {e["accountingStatus"]} ({e["assetHoldingEvidence"]})' for e in funds],
     ])
-    selector = {"selectors": [{"contract": c["contract"], "path": c["path"], **f} for c in inv for f in c["stateChangingSelectors"]]}
+    selector = {
+        "sourceTreeHash": source_hash,
+        "coverageStatus": "PASS" if not unclassified else "BLOCKED",
+        "unclassifiedCount": len(unclassified),
+        "selectors": [{"contract": c["contract"], "path": c["path"], **f} for c in inv for f in c["stateChangingSelectors"]],
+    }
     write_json(QA / "lifecycle-selector-policy.json", selector)
     write_md(DOCS / "LIFECYCLE_SELECTOR_POLICY.md", "Lifecycle Selector Policy", [
         f'- `{s["contract"]}.{s["name"]}`: `{s["classification"]}`' for s in selector["selectors"]
@@ -361,11 +412,22 @@ def generate():
     write_md(RUNBOOKS / "OWNERSHIP_SAFE_EOA_RUNBOOK.md", "Ownership Safe/EOA Runbook", [
         "Generate transactions with ownership tooling; verify live chainId from provider; Safe-labelled owners must have contract code and Safe-compatible interface; pending owners are non-authoritative until acceptance.",
     ])
+    local_checks = [
+        {"name": "authority inventory generation", "command": "npm run authority:inventory", "status": "REQUIRED_NOT_RUN_BY_GENERATOR"},
+        {"name": "authority policy validation", "command": "npm run authority:policy:validate", "status": "REQUIRED_NOT_RUN_BY_GENERATOR"},
+    ]
+    release_dirty_paths = release_relevant_dirty_paths()
     dossier = {
         "status": "BLOCKED",
-        "reason": "Fail-closed dossier: mandatory live/private fork, independent builds, symbolic, mutation, and exact Mainnet-fork evidence must be supplied before PASS. No Mainnet broadcast evidence is present or claimed.",
+        "reason": "Fail-closed dossier: mandatory live/private fork RPC, independent build comparison, symbolic execution, critical mutation, and exact Mainnet-fork evidence must be supplied before PASS. No Mainnet broadcast evidence is present or claimed.",
         "sourceTreeHash": source_hash,
         "sourceTreeHashScope": inventory["sourceTreeHashScope"],
+        "baselineSha": sh(["git", "rev-parse", "HEAD"]),
+        "releaseRelevantDirtyPaths": release_dirty_paths,
+        "selectorCoverageStatus": selector["coverageStatus"],
+        "localCheckResults": local_checks,
+        "mainnetBroadcastOccurred": False,
+        "releaseClaimBoundary": "Repository-local operational inventory and fail-closed readiness evidence only; not Mainnet deployed, not Mainnet verified, not Owner-authorized, and not technically ready until blocked evidence is supplied.",
         "artifacts": [
             "qa/mainnet-operational-gap-matrix.json",
             "qa/business-override-matrix.json",

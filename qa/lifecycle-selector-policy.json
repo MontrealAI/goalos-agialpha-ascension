@@ -1,4 +1,5 @@
 {
+  "coverageStatus": "BLOCKED",
   "selectors": [
     {
       "attributes": "external onlyOperator returns (uint256 agentId)",
@@ -4208,5 +4209,7 @@
       "path": "contracts/vaults/TokenReserveVault.sol",
       "signature": "renounceRole(bytes32,address)"
     }
-  ]
+  ],
+  "sourceTreeHash": "a17daa1b9d24cce4c1cd3ba4f45506a95c8bc9167e67e39734e323165bef1ab2",
+  "unclassifiedCount": 108
 }
