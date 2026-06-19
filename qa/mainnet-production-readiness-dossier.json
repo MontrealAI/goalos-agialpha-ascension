@@ -6,8 +6,25 @@
     "qa/lifecycle-selector-policy.json",
     "qa/controlled-mainnet-canary-template.json"
   ],
-  "reason": "Fail-closed dossier: mandatory live/private fork, independent builds, symbolic, mutation, and exact Mainnet-fork evidence must be supplied before PASS. No Mainnet broadcast evidence is present or claimed.",
-  "sourceTreeHash": "01c4df1d6e8a28e6a4eb2884a57cb09b30f99f106ecb9e1da379c8b4b5b333be",
-  "sourceTreeHashScope": "tracked HEAD content excluding generated readiness artifacts",
-  "status": "BLOCKED"
+  "baselineSha": "3bbd3cf92f1b8d2f830412fb3234c2843aa114be",
+  "localCheckResults": [
+    {
+      "command": "npm run authority:inventory",
+      "name": "authority inventory generation",
+      "status": "REQUIRED_NOT_RUN_BY_GENERATOR"
+    },
+    {
+      "command": "npm run authority:policy:validate",
+      "name": "authority policy validation",
+      "status": "REQUIRED_NOT_RUN_BY_GENERATOR"
+    }
+  ],
+  "mainnetBroadcastOccurred": false,
+  "reason": "Fail-closed dossier: mandatory live/private fork RPC, independent build comparison, symbolic execution, critical mutation, and exact Mainnet-fork evidence must be supplied before PASS. No Mainnet broadcast evidence is present or claimed.",
+  "releaseClaimBoundary": "Repository-local operational inventory and fail-closed readiness evidence only; not Mainnet deployed, not Mainnet verified, not Owner-authorized, and not technically ready until blocked evidence is supplied.",
+  "selectorCoverageStatus": "BLOCKED",
+  "sourceTreeHash": "620086ee7147550b4e1bcc2b204aa6d8cc6387dcf0b515b1c1efe7b60208d7de",
+  "sourceTreeHashScope": "tracked git index content excluding generated readiness artifacts",
+  "status": "BLOCKED",
+  "workingTreeStatus": "M  qa/lifecycle-selector-policy.json\nM  qa/mainnet-operational-gap-matrix.json\nM  qa/mainnet-operational-inventory.json\nM  qa/mainnet-production-readiness-dossier.json\nM  scripts/mainnet_operational_readiness.py\n M website/v86_actual_site/downloads/proof-treasury-simulation-003-source/default_budget.csv\n M website/v86_actual_site/downloads/proof-treasury-simulation-003-source/external_replay_scenarios.csv\n M website/v86_actual_site/downloads/proof-treasury-simulation-003-source/proof_thermostat_policy.csv\n M website/v86_actual_site/downloads/proof-treasury-simulation-003/AGIALPHABudgetLedger.csv\n M website/v86_actual_site/downloads/proof-treasury-simulation-003/AlphaWorkUnitLedger.csv\n M website/v86_actual_site/downloads/proof-treasury-simulation-003/CapacityAuctionAllocations.csv\n M website/v86_actual_site/downloads/proof-treasury-simulation-003/ContractCallTrace.csv\n M website/v86_actual_site/downloads/proof-treasury-simulation-003/ExternalReplayLedger.csv\n M website/v86_actual_site/downloads/proof-treasury-simulation-003/ProofDebtLedger.csv\n M website/v86_actual_site/downloads/proof-treasury-simulation-003/SettlementTable.csv\n M website/v86_actual_site/downloads/proof-treasury-simulation-003/ValidatorMarketLedger.csv\n M website/v86_actual_site/downloads/proof-treasury-simulation-003/ValidatorSlashingLedger.csv\n M website/v86_actual_site/downloads/proof-treasury-simulation-004/AGIALPHABudgetLedger.csv\n M website/v86_actual_site/downloads/proof-treasury-simulation-004/AlphaWorkUnitLedger.csv\n M website/v86_actual_site/downloads/proof-treasury-simulation-004/ContractCallTrace.csv\n M website/v86_actual_site/downloads/proof-treasury-simulation-004/ExternalReplayLedger.csv\n M website/v86_actual_site/downloads/proof-treasury-simulation-004/InstitutionalStressLedger.csv\n M website/v86_actual_site/downloads/proof-treasury-simulation-004/ProofDebtLedger.csv\n M website/v86_actual_site/downloads/proof-treasury-simulation-004/SettlementTable.csv\n M website/v86_actual_site/downloads/proof-treasury-simulation-004/SovereignCapacityReserveAllocations.csv\n M website/v86_actual_site/downloads/proof-treasury-simulation-004/SystemicRiskRegister.csv\n M website/v86_actual_site/downloads/proof-treasury-simulation-004/ValidatorMarketLedger.csv\n M website/v86_actual_site/downloads/proof-treasury-simulation-004/ValidatorSlashingLedger.csv\n M website/v86_actual_site/downloads/proof-treasury-simulation-004/default_budget.csv\n M website/v86_actual_site/downloads/proof-treasury-simulation-004/institutional_capacity_policy.csv\n M website/v86_actual_site/downloads/proof-treasury-simulation-004/institutional_stress_scenarios.csv\n M website/v86_actual_site/downloads/proof-treasury-simulation-004/proof_thermostat_policy.csv\n M website/v86_actual_site/resources/mission-os/example-output/ClaimsMatrix.csv\n M website/v86_actual_site/resources/mission-os/example-output/RiskLedger.csv\n M website/v86_actual_site/resources/mission-os/example-output/SourceProvenance.csv"
 }

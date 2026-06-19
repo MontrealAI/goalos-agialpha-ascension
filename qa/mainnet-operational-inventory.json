@@ -4166,6 +4166,6 @@
     }
   ],
   "generatedBy": "scripts/mainnet_operational_readiness.py",
-  "sourceTreeHash": "01c4df1d6e8a28e6a4eb2884a57cb09b30f99f106ecb9e1da379c8b4b5b333be",
-  "sourceTreeHashScope": "tracked HEAD content excluding generated readiness artifacts"
+  "sourceTreeHash": "620086ee7147550b4e1bcc2b204aa6d8cc6387dcf0b515b1c1efe7b60208d7de",
+  "sourceTreeHashScope": "tracked git index content excluding generated readiness artifacts"
 }

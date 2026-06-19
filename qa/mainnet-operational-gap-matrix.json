@@ -34,6 +34,877 @@
       "status": "PARTIAL"
     }
   ],
-  "sourceTreeHash": "01c4df1d6e8a28e6a4eb2884a57cb09b30f99f106ecb9e1da379c8b4b5b333be",
-  "sourceTreeHashScope": "tracked HEAD content excluding generated readiness artifacts"
+  "selectorCoverage": {
+    "stateChangingSelectorCount": 526,
+    "status": "BLOCKED",
+    "unclassified": [
+      {
+        "attributes": "external onlyOperator returns (uint256 agentId)",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "AEPAgentRegistry",
+        "name": "registerAgent",
+        "path": "contracts/aep/AEPAgentRegistry.sol",
+        "signature": "registerAgent(address,bytes32,uint8,bytes32,bytes32,string)"
+      },
+      {
+        "attributes": "external onlyOperator",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "AEPAgentRegistry",
+        "name": "updateAgent",
+        "path": "contracts/aep/AEPAgentRegistry.sol",
+        "signature": "updateAgent(uint256,bytes32,bytes32,bool,string)"
+      },
+      {
+        "attributes": "public override",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "AEPAgentRegistry",
+        "name": "renounceRole",
+        "path": "contracts/aep/AEPAgentRegistry.sol",
+        "signature": "renounceRole(bytes32,address)"
+      },
+      {
+        "attributes": "external onlyOperator returns (uint256 versionId)",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "AEPArtifactRegistry",
+        "name": "registerArtifactVersion",
+        "path": "contracts/aep/AEPArtifactRegistry.sol",
+        "signature": "registerArtifactVersion(bytes32,bytes32,bytes32,bytes32,bytes32,string)"
+      },
+      {
+        "attributes": "public override",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "AEPArtifactRegistry",
+        "name": "renounceRole",
+        "path": "contracts/aep/AEPArtifactRegistry.sol",
+        "signature": "renounceRole(bytes32,address)"
+      },
+      {
+        "attributes": "external onlyOperator returns (uint256 attestationId)",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "AEPAttestationRegistry",
+        "name": "attest",
+        "path": "contracts/aep/AEPAttestationRegistry.sol",
+        "signature": "attest(bytes32,uint256,bytes32,bytes32,string)"
+      },
+      {
+        "attributes": "public override",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "AEPAttestationRegistry",
+        "name": "renounceRole",
+        "path": "contracts/aep/AEPAttestationRegistry.sol",
+        "signature": "renounceRole(bytes32,address)"
+      },
+      {
+        "attributes": "external onlyOperator returns (uint256 entryId)",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "AEPChronicleRegistry",
+        "name": "recordEntry",
+        "path": "contracts/aep/AEPChronicleRegistry.sol",
+        "signature": "recordEntry(bytes32,bytes32,bytes32,string)"
+      },
+      {
+        "attributes": "public override",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "AEPChronicleRegistry",
+        "name": "renounceRole",
+        "path": "contracts/aep/AEPChronicleRegistry.sol",
+        "signature": "renounceRole(bytes32,address)"
+      },
+      {
+        "attributes": "public override",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "AEPClaimBoundaryRegistry",
+        "name": "renounceRole",
+        "path": "contracts/aep/AEPClaimBoundaryRegistry.sol",
+        "signature": "renounceRole(bytes32,address)"
+      },
+      {
+        "attributes": "external onlyOperator returns (uint256 roundId)",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "AEPCommitRevealValidationRegistry",
+        "name": "openValidationRound",
+        "path": "contracts/aep/AEPCommitRevealValidationRegistry.sol",
+        "signature": "openValidationRound(bytes32,uint256,uint256,uint256,uint256,string)"
+      },
+      {
+        "attributes": "external onlyAllowedValidator",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "AEPCommitRevealValidationRegistry",
+        "name": "commitVerdict",
+        "path": "contracts/aep/AEPCommitRevealValidationRegistry.sol",
+        "signature": "commitVerdict(uint256,bytes32)"
+      },
+      {
+        "attributes": "external onlyAllowedValidator",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "AEPCommitRevealValidationRegistry",
+        "name": "revealVerdict",
+        "path": "contracts/aep/AEPCommitRevealValidationRegistry.sol",
+        "signature": "revealVerdict(uint256,bytes32,uint16,bytes32,bytes32)"
+      },
+      {
+        "attributes": "external onlyOperator",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "AEPCommitRevealValidationRegistry",
+        "name": "finalizeRound",
+        "path": "contracts/aep/AEPCommitRevealValidationRegistry.sol",
+        "signature": "finalizeRound(uint256,bytes32)"
+      },
+      {
+        "attributes": "public override",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "AEPCommitRevealValidationRegistry",
+        "name": "renounceRole",
+        "path": "contracts/aep/AEPCommitRevealValidationRegistry.sol",
+        "signature": "renounceRole(bytes32,address)"
+      },
+      {
+        "attributes": "external onlyOperator returns (uint256 recordId)",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "AEPConformanceRegistry",
+        "name": "recordConformance",
+        "path": "contracts/aep/AEPConformanceRegistry.sol",
+        "signature": "recordConformance(bytes32,uint8,bytes32,bytes32,bytes32,string)"
+      },
+      {
+        "attributes": "public override",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "AEPConformanceRegistry",
+        "name": "renounceRole",
+        "path": "contracts/aep/AEPConformanceRegistry.sol",
+        "signature": "renounceRole(bytes32,address)"
+      },
+      {
+        "attributes": "external onlyOperator returns (uint256 schemaId)",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "AEPEvalRegistry",
+        "name": "registerEvalSchema",
+        "path": "contracts/aep/AEPEvalRegistry.sol",
+        "signature": "registerEvalSchema(bytes32,string,uint256)"
+      },
+      {
+        "attributes": "external onlyOperator returns (uint256 evalId)",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "AEPEvalRegistry",
+        "name": "recordEval",
+        "path": "contracts/aep/AEPEvalRegistry.sol",
+        "signature": "recordEval(uint256,uint256,bytes32,bytes32,uint8,bytes32)"
+      },
+      {
+        "attributes": "public override",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "AEPEvalRegistry",
+        "name": "renounceRole",
+        "path": "contracts/aep/AEPEvalRegistry.sol",
+        "signature": "renounceRole(bytes32,address)"
+      },
+      {
+        "attributes": "public override",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "AEPEvaluatorStakingRegistry",
+        "name": "renounceRole",
+        "path": "contracts/aep/AEPEvaluatorStakingRegistry.sol",
+        "signature": "renounceRole(bytes32,address)"
+      },
+      {
+        "attributes": "external onlyOperator returns (uint256 docketId)",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "AEPEvidenceDocketRegistry",
+        "name": "registerEvidenceDocket",
+        "path": "contracts/aep/AEPEvidenceDocketRegistry.sol",
+        "signature": "registerEvidenceDocket(bytes32,bytes32,bytes32,bytes32,bytes32,bytes32,string)"
+      },
+      {
+        "attributes": "public override",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "AEPEvidenceDocketRegistry",
+        "name": "renounceRole",
+        "path": "contracts/aep/AEPEvidenceDocketRegistry.sol",
+        "signature": "renounceRole(bytes32,address)"
+      },
+      {
+        "attributes": "external returns (uint256 falsificationId)",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "AEPFalsificationRegistry",
+        "name": "reportFalsification",
+        "path": "contracts/aep/AEPFalsificationRegistry.sol",
+        "signature": "reportFalsification(bytes32,bytes32,bytes32,string)"
+      },
+      {
+        "attributes": "public override",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "AEPFalsificationRegistry",
+        "name": "renounceRole",
+        "path": "contracts/aep/AEPFalsificationRegistry.sol",
+        "signature": "renounceRole(bytes32,address)"
+      },
+      {
+        "attributes": "public override",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "AEPGoalOSCommitRegistry",
+        "name": "renounceRole",
+        "path": "contracts/aep/AEPGoalOSCommitRegistry.sol",
+        "signature": "renounceRole(bytes32,address)"
+      },
+      {
+        "attributes": "external onlyOperator returns (uint256 bundleId)",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "AEPProofBundleRegistry",
+        "name": "registerProofBundle",
+        "path": "contracts/aep/AEPProofBundleRegistry.sol",
+        "signature": "registerProofBundle(uint256,uint256,bytes32,bytes32,bytes32,bytes32,bytes32,uint256,string)"
+      },
+      {
+        "attributes": "public override",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "AEPProofBundleRegistry",
+        "name": "renounceRole",
+        "path": "contracts/aep/AEPProofBundleRegistry.sol",
+        "signature": "renounceRole(bytes32,address)"
+      },
+      {
+        "attributes": "external onlyOperator returns (uint256 proofId)",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "AEPProofLedger",
+        "name": "appendProofRoot",
+        "path": "contracts/aep/AEPProofLedger.sol",
+        "signature": "appendProofRoot(uint256,bytes32,bytes32,bytes32,uint256,uint256,bytes32,string)"
+      },
+      {
+        "attributes": "public override",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "AEPProofLedger",
+        "name": "renounceRole",
+        "path": "contracts/aep/AEPProofLedger.sol",
+        "signature": "renounceRole(bytes32,address)"
+      },
+      {
+        "attributes": "external onlyOperator returns (uint256 replayId)",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "AEPReplayRegistry",
+        "name": "recordReplay",
+        "path": "contracts/aep/AEPReplayRegistry.sol",
+        "signature": "recordReplay(uint256,bytes32,bytes32,bytes32,bytes32,uint8,string)"
+      },
+      {
+        "attributes": "public override",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "AEPReplayRegistry",
+        "name": "renounceRole",
+        "path": "contracts/aep/AEPReplayRegistry.sol",
+        "signature": "renounceRole(bytes32,address)"
+      },
+      {
+        "attributes": "public override",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "AEPRewardVault",
+        "name": "renounceRole",
+        "path": "contracts/aep/AEPRewardVault.sol",
+        "signature": "renounceRole(bytes32,address)"
+      },
+      {
+        "attributes": "external onlyOperator returns (uint256 rollbackId)",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "AEPRollbackRegistry",
+        "name": "recordRollback",
+        "path": "contracts/aep/AEPRollbackRegistry.sol",
+        "signature": "recordRollback(uint256,uint256,bytes32,bytes32,bytes32,string)"
+      },
+      {
+        "attributes": "public override",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "AEPRollbackRegistry",
+        "name": "renounceRole",
+        "path": "contracts/aep/AEPRollbackRegistry.sol",
+        "signature": "renounceRole(bytes32,address)"
+      },
+      {
+        "attributes": "external onlyOperator returns (uint256 rolloutId)",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "AEPRolloutRouter",
+        "name": "recordRollout",
+        "path": "contracts/aep/AEPRolloutRouter.sol",
+        "signature": "recordRollout(uint256,uint16,bytes32,bytes32,bytes32,string)"
+      },
+      {
+        "attributes": "public override",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "AEPRolloutRouter",
+        "name": "renounceRole",
+        "path": "contracts/aep/AEPRolloutRouter.sol",
+        "signature": "renounceRole(bytes32,address)"
+      },
+      {
+        "attributes": "external onlyOperator returns (uint256 runId)",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "AEPRunCommitmentRegistry",
+        "name": "commitRun",
+        "path": "contracts/aep/AEPRunCommitmentRegistry.sol",
+        "signature": "commitRun(uint256,bytes32,bytes32,bytes32,bytes32,bytes32,bytes32,bytes32,uint256,uint256,string)"
+      },
+      {
+        "attributes": "public override",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "AEPRunCommitmentRegistry",
+        "name": "renounceRole",
+        "path": "contracts/aep/AEPRunCommitmentRegistry.sol",
+        "signature": "renounceRole(bytes32,address)"
+      },
+      {
+        "attributes": "external onlyOperator returns (uint256 selectionId)",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "AEPSelectionGate",
+        "name": "issueSelectionCertificate",
+        "path": "contracts/aep/AEPSelectionGate.sol",
+        "signature": "issueSelectionCertificate(uint256,bytes32,bytes32,uint8,bytes32,bytes32,bytes32,uint256,uint256,string)"
+      },
+      {
+        "attributes": "public override",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "AEPSelectionGate",
+        "name": "renounceRole",
+        "path": "contracts/aep/AEPSelectionGate.sol",
+        "signature": "renounceRole(bytes32,address)"
+      },
+      {
+        "attributes": "external onlyOperator returns (uint256 caseId)",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "AEPSlashingCourt",
+        "name": "openCase",
+        "path": "contracts/aep/AEPSlashingCourt.sol",
+        "signature": "openCase(address,uint256,bytes32,bytes32,string)"
+      },
+      {
+        "attributes": "public override",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "AEPSlashingCourt",
+        "name": "renounceRole",
+        "path": "contracts/aep/AEPSlashingCourt.sol",
+        "signature": "renounceRole(bytes32,address)"
+      },
+      {
+        "attributes": "external onlyOperator",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "AGIEthNamespaceRegistry",
+        "name": "registerEnvironment",
+        "path": "contracts/aep/AGIEthNamespaceRegistry.sol",
+        "signature": "registerEnvironment(bytes32,bytes32,bytes32,bytes32,bytes32,bytes32,bytes32,uint8,string)"
+      },
+      {
+        "attributes": "public override",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "AGIEthNamespaceRegistry",
+        "name": "renounceRole",
+        "path": "contracts/aep/AGIEthNamespaceRegistry.sol",
+        "signature": "renounceRole(bytes32,address)"
+      },
+      {
+        "attributes": "external onlyOperator returns (uint256 recordId)",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "AlphaWorkUnitLedger",
+        "name": "recordAlphaWorkUnits",
+        "path": "contracts/aep/AlphaWorkUnitLedger.sol",
+        "signature": "recordAlphaWorkUnits(address,uint256,uint256,bytes32,uint16,uint16,uint16,bytes32)"
+      },
+      {
+        "attributes": "public override",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "AlphaWorkUnitLedger",
+        "name": "renounceRole",
+        "path": "contracts/aep/AlphaWorkUnitLedger.sol",
+        "signature": "renounceRole(bytes32,address)"
+      },
+      {
+        "attributes": "external onlyOperator returns (uint256 epochId)",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "MandateEpochRegistry",
+        "name": "openEpoch",
+        "path": "contracts/aep/MandateEpochRegistry.sol",
+        "signature": "openEpoch(uint256,uint256,uint256,string)"
+      },
+      {
+        "attributes": "external onlyOperator",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "MandateEpochRegistry",
+        "name": "commitEpochRoots",
+        "path": "contracts/aep/MandateEpochRegistry.sol",
+        "signature": "commitEpochRoots(uint256,bytes32,bytes32,bytes32,bytes32,bytes32,uint256)"
+      },
+      {
+        "attributes": "public override",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "MandateEpochRegistry",
+        "name": "renounceRole",
+        "path": "contracts/aep/MandateEpochRegistry.sol",
+        "signature": "renounceRole(bytes32,address)"
+      },
+      {
+        "attributes": "external returns (uint256 appealId)",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "AppealRegistry",
+        "name": "openAppeal",
+        "path": "contracts/optional/AppealRegistry.sol",
+        "signature": "openAppeal(uint256,bytes32)"
+      },
+      {
+        "attributes": "external onlyOperator",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "AppealRegistry",
+        "name": "decideAppeal",
+        "path": "contracts/optional/AppealRegistry.sol",
+        "signature": "decideAppeal(uint256,bool,bytes32)"
+      },
+      {
+        "attributes": "public override",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "AppealRegistry",
+        "name": "renounceRole",
+        "path": "contracts/optional/AppealRegistry.sol",
+        "signature": "renounceRole(bytes32,address)"
+      },
+      {
+        "attributes": "external",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "BuilderProfileRegistry",
+        "name": "registerBuilder",
+        "path": "contracts/optional/BuilderProfileRegistry.sol",
+        "signature": "registerBuilder(string,bytes32)"
+      },
+      {
+        "attributes": "public override",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "BuilderProfileRegistry",
+        "name": "renounceRole",
+        "path": "contracts/optional/BuilderProfileRegistry.sol",
+        "signature": "renounceRole(bytes32,address)"
+      },
+      {
+        "attributes": "external returns (uint256 revocationId)",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "CredentialRevocationRegistry",
+        "name": "requestRevocation",
+        "path": "contracts/optional/CredentialRevocationRegistry.sol",
+        "signature": "requestRevocation(uint256,bytes32)"
+      },
+      {
+        "attributes": "external onlyOperator",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "CredentialRevocationRegistry",
+        "name": "executeRevocation",
+        "path": "contracts/optional/CredentialRevocationRegistry.sol",
+        "signature": "executeRevocation(uint256)"
+      },
+      {
+        "attributes": "public override",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "CredentialRevocationRegistry",
+        "name": "renounceRole",
+        "path": "contracts/optional/CredentialRevocationRegistry.sol",
+        "signature": "renounceRole(bytes32,address)"
+      },
+      {
+        "attributes": "external returns (uint256 disputeId)",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "DisputeRegistry",
+        "name": "openDispute",
+        "path": "contracts/optional/DisputeRegistry.sol",
+        "signature": "openDispute(uint256,uint256,bytes32)"
+      },
+      {
+        "attributes": "public override",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "DisputeRegistry",
+        "name": "renounceRole",
+        "path": "contracts/optional/DisputeRegistry.sol",
+        "signature": "renounceRole(bytes32,address)"
+      },
+      {
+        "attributes": "external",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "SponsorRegistry",
+        "name": "registerSponsor",
+        "path": "contracts/optional/SponsorRegistry.sol",
+        "signature": "registerSponsor(string,bytes32)"
+      },
+      {
+        "attributes": "public override",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "SponsorRegistry",
+        "name": "renounceRole",
+        "path": "contracts/optional/SponsorRegistry.sol",
+        "signature": "renounceRole(bytes32,address)"
+      },
+      {
+        "attributes": "external nonReentrant",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "JobClaimBondManager",
+        "name": "reclaimExpiredClaimedJob",
+        "path": "contracts/registry/JobClaimBondManager.sol",
+        "signature": "reclaimExpiredClaimedJob(uint256,bytes32)"
+      },
+      {
+        "attributes": "public override",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "JobClaimBondManager",
+        "name": "renounceRole",
+        "path": "contracts/registry/JobClaimBondManager.sol",
+        "signature": "renounceRole(bytes32,address)"
+      },
+      {
+        "attributes": "external onlyOperator",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "JobRegistry",
+        "name": "markClaimed",
+        "path": "contracts/registry/JobRegistry.sol",
+        "signature": "markClaimed(uint256,address)"
+      },
+      {
+        "attributes": "external onlyOperator",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "JobRegistry",
+        "name": "markSubmitted",
+        "path": "contracts/registry/JobRegistry.sol",
+        "signature": "markSubmitted(uint256,uint256)"
+      },
+      {
+        "attributes": "external onlyOperator",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "JobRegistry",
+        "name": "markApproved",
+        "path": "contracts/registry/JobRegistry.sol",
+        "signature": "markApproved(uint256)"
+      },
+      {
+        "attributes": "external onlyOperator",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "JobRegistry",
+        "name": "markRejected",
+        "path": "contracts/registry/JobRegistry.sol",
+        "signature": "markRejected(uint256,bytes32)"
+      },
+      {
+        "attributes": "external onlyOperator nonReentrant",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "JobRegistry",
+        "name": "expireClaimedJob",
+        "path": "contracts/registry/JobRegistry.sol",
+        "signature": "expireClaimedJob(uint256,bytes32)"
+      },
+      {
+        "attributes": "external nonReentrant",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "JobRegistry",
+        "name": "expireOpenJob",
+        "path": "contracts/registry/JobRegistry.sol",
+        "signature": "expireOpenJob(uint256,bytes32)"
+      },
+      {
+        "attributes": "public override",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "JobRegistry",
+        "name": "renounceRole",
+        "path": "contracts/registry/JobRegistry.sol",
+        "signature": "renounceRole(bytes32,address)"
+      },
+      {
+        "attributes": "public override",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "LaunchGateRegistry",
+        "name": "renounceRole",
+        "path": "contracts/registry/LaunchGateRegistry.sol",
+        "signature": "renounceRole(bytes32,address)"
+      },
+      {
+        "attributes": "external onlyOperator returns (uint256 recordId)",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "LegacyAGIJobManagerRegistry",
+        "name": "addLegacyRecord",
+        "path": "contracts/registry/LegacyAGIJobManagerRegistry.sol",
+        "signature": "addLegacyRecord(uint256,bytes32,bytes32,string,bool)"
+      },
+      {
+        "attributes": "public override",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "LegacyAGIJobManagerRegistry",
+        "name": "renounceRole",
+        "path": "contracts/registry/LegacyAGIJobManagerRegistry.sol",
+        "signature": "renounceRole(bytes32,address)"
+      },
+      {
+        "attributes": "public override",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "PremiumAccessRegistry",
+        "name": "renounceRole",
+        "path": "contracts/registry/PremiumAccessRegistry.sol",
+        "signature": "renounceRole(bytes32,address)"
+      },
+      {
+        "attributes": "external onlyOperator returns (uint256 proofCardId)",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "ProofCardRegistry",
+        "name": "registerProofCard",
+        "path": "contracts/registry/ProofCardRegistry.sol",
+        "signature": "registerProofCard(uint256,uint256,address,address,bytes32,bytes32,string)"
+      },
+      {
+        "attributes": "public override",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "ProofCardRegistry",
+        "name": "renounceRole",
+        "path": "contracts/registry/ProofCardRegistry.sol",
+        "signature": "renounceRole(bytes32,address)"
+      },
+      {
+        "attributes": "external onlyOperator returns (uint256 tokenId)",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "ProofCredentialRegistry",
+        "name": "issueCredential",
+        "path": "contracts/registry/ProofCredentialRegistry.sol",
+        "signature": "issueCredential(address,uint256,bytes32,bytes32,string)"
+      },
+      {
+        "attributes": "public override",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "ProofCredentialRegistry",
+        "name": "renounceRole",
+        "path": "contracts/registry/ProofCredentialRegistry.sol",
+        "signature": "renounceRole(bytes32,address)"
+      },
+      {
+        "attributes": "external onlyOperator",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "ProofSeedRegistry",
+        "name": "markReviewed",
+        "path": "contracts/registry/ProofSeedRegistry.sol",
+        "signature": "markReviewed(uint256,bytes32)"
+      },
+      {
+        "attributes": "external onlyOperator",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "ProofSeedRegistry",
+        "name": "markSpawned",
+        "path": "contracts/registry/ProofSeedRegistry.sol",
+        "signature": "markSpawned(uint256,uint256)"
+      },
+      {
+        "attributes": "external onlyOperator",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "ProofSeedRegistry",
+        "name": "archiveSeed",
+        "path": "contracts/registry/ProofSeedRegistry.sol",
+        "signature": "archiveSeed(uint256,bytes32)"
+      },
+      {
+        "attributes": "public override",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "ProofSeedRegistry",
+        "name": "renounceRole",
+        "path": "contracts/registry/ProofSeedRegistry.sol",
+        "signature": "renounceRole(bytes32,address)"
+      },
+      {
+        "attributes": "external onlyOperator nonReentrant",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "ProofSubmissionRegistry",
+        "name": "rejectSubmission",
+        "path": "contracts/registry/ProofSubmissionRegistry.sol",
+        "signature": "rejectSubmission(uint256,address,bytes32,bool)"
+      },
+      {
+        "attributes": "public override",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "ProofSubmissionRegistry",
+        "name": "renounceRole",
+        "path": "contracts/registry/ProofSubmissionRegistry.sol",
+        "signature": "renounceRole(bytes32,address)"
+      },
+      {
+        "attributes": "public override",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "ProtocolConfigRegistry",
+        "name": "renounceRole",
+        "path": "contracts/registry/ProtocolConfigRegistry.sol",
+        "signature": "renounceRole(bytes32,address)"
+      },
+      {
+        "attributes": "external whenNotPaused",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "ReferralRegistry",
+        "name": "assignReferral",
+        "path": "contracts/registry/ReferralRegistry.sol",
+        "signature": "assignReferral(address)"
+      },
+      {
+        "attributes": "external onlyOperator",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "ReferralRegistry",
+        "name": "assignReferralFor",
+        "path": "contracts/registry/ReferralRegistry.sol",
+        "signature": "assignReferralFor(address,address)"
+      },
+      {
+        "attributes": "external onlyOperator",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "ReferralRegistry",
+        "name": "recordConversion",
+        "path": "contracts/registry/ReferralRegistry.sol",
+        "signature": "recordConversion(address,bytes32)"
+      },
+      {
+        "attributes": "public override",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "ReferralRegistry",
+        "name": "renounceRole",
+        "path": "contracts/registry/ReferralRegistry.sol",
+        "signature": "renounceRole(bytes32,address)"
+      },
+      {
+        "attributes": "external onlyOperator",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "ReputationRegistry",
+        "name": "recordApprovedProof",
+        "path": "contracts/registry/ReputationRegistry.sol",
+        "signature": "recordApprovedProof(address,address,uint256)"
+      },
+      {
+        "attributes": "external onlyOperator",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "ReputationRegistry",
+        "name": "recordRejectedProof",
+        "path": "contracts/registry/ReputationRegistry.sol",
+        "signature": "recordRejectedProof(address,address,bytes32)"
+      },
+      {
+        "attributes": "external onlyOperator",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "ReputationRegistry",
+        "name": "recordCredential",
+        "path": "contracts/registry/ReputationRegistry.sol",
+        "signature": "recordCredential(address,uint256)"
+      },
+      {
+        "attributes": "external onlyOperator",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "ReputationRegistry",
+        "name": "recordDispute",
+        "path": "contracts/registry/ReputationRegistry.sol",
+        "signature": "recordDispute(address,bytes32)"
+      },
+      {
+        "attributes": "external onlyOperator",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "ReputationRegistry",
+        "name": "adjustScore",
+        "path": "contracts/registry/ReputationRegistry.sol",
+        "signature": "adjustScore(address,int256,bytes32)"
+      },
+      {
+        "attributes": "public override",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "ReputationRegistry",
+        "name": "renounceRole",
+        "path": "contracts/registry/ReputationRegistry.sol",
+        "signature": "renounceRole(bytes32,address)"
+      },
+      {
+        "attributes": "external nonReentrant whenNotPaused",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "ReviewerBondRegistry",
+        "name": "bondAsReviewer",
+        "path": "contracts/registry/ReviewerBondRegistry.sol",
+        "signature": "bondAsReviewer(string)"
+      },
+      {
+        "attributes": "external nonReentrant",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "ReviewerBondRegistry",
+        "name": "unbondReviewer",
+        "path": "contracts/registry/ReviewerBondRegistry.sol",
+        "signature": "unbondReviewer()"
+      },
+      {
+        "attributes": "external nonReentrant whenNotPaused",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "ReviewerBondRegistry",
+        "name": "reviewSubmission",
+        "path": "contracts/registry/ReviewerBondRegistry.sol",
+        "signature": "reviewSubmission(uint256,bool,bytes32,string,bytes32,bool)"
+      },
+      {
+        "attributes": "public override",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "ReviewerBondRegistry",
+        "name": "renounceRole",
+        "path": "contracts/registry/ReviewerBondRegistry.sol",
+        "signature": "renounceRole(bytes32,address)"
+      },
+      {
+        "attributes": "external onlyOperator",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "TreasuryRouter",
+        "name": "routeFrom",
+        "path": "contracts/registry/TreasuryRouter.sol",
+        "signature": "routeFrom(address,uint256,bytes32)"
+      },
+      {
+        "attributes": "external onlyOperator",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "TreasuryRouter",
+        "name": "routeHeld",
+        "path": "contracts/registry/TreasuryRouter.sol",
+        "signature": "routeHeld(address,uint256,bytes32)"
+      },
+      {
+        "attributes": "public override",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "TreasuryRouter",
+        "name": "renounceRole",
+        "path": "contracts/registry/TreasuryRouter.sol",
+        "signature": "renounceRole(bytes32,address)"
+      },
+      {
+        "attributes": "public override",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "CommercializationPerformanceVault",
+        "name": "renounceRole",
+        "path": "contracts/vaults/CommercializationPerformanceVault.sol",
+        "signature": "renounceRole(bytes32,address)"
+      },
+      {
+        "attributes": "public override",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "ProofRewardsVault",
+        "name": "renounceRole",
+        "path": "contracts/vaults/TokenReserveVault.sol",
+        "signature": "renounceRole(bytes32,address)"
+      },
+      {
+        "attributes": "public override",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "LiquidityVault",
+        "name": "renounceRole",
+        "path": "contracts/vaults/TokenReserveVault.sol",
+        "signature": "renounceRole(bytes32,address)"
+      },
+      {
+        "attributes": "public override",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "SecurityVault",
+        "name": "renounceRole",
+        "path": "contracts/vaults/TokenReserveVault.sol",
+        "signature": "renounceRole(bytes32,address)"
+      },
+      {
+        "attributes": "public override",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "CommunityVault",
+        "name": "renounceRole",
+        "path": "contracts/vaults/TokenReserveVault.sol",
+        "signature": "renounceRole(bytes32,address)"
+      }
+    ],
+    "unclassifiedCount": 108
+  },
+  "sourceTreeHash": "620086ee7147550b4e1bcc2b204aa6d8cc6387dcf0b515b1c1efe7b60208d7de",
+  "sourceTreeHashScope": "tracked git index content excluding generated readiness artifacts"
 }
