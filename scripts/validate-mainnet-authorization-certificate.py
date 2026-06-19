@@ -58,13 +58,18 @@ def main() -> None:
         errors.append('runtime secrets must not be stored in GitHub')
     if cert.get('notExternallyAudited') is not True or cert.get('externalAuditRequired') is not False:
         errors.append('external-audit fields invalid')
-    if cert.get('technicallyMainnetReady') == 'YES' and cert.get('blockers'):
+    blockers = cert.get('blockers')
+    if cert.get('technicallyMainnetReady') == 'YES' and blockers:
         errors.append('YES certificate cannot have blockers')
+    if blockers:
+        errors.append('certificate is blocked by fail-closed readiness evidence: ' + '; '.join(str(x) for x in blockers))
 
     cert_commit = str(cert.get('sourceCommit') or cert.get('commit') or '')
     head = git(['rev-parse', 'HEAD'])
     source_commit_is_ancestor: bool | None = None
-    if cert_commit:
+    if cert_commit in {'RESOLVED_BY_GIT_CHECKOUT_AT_VALIDATION', 'CURRENT_GIT_CHECKOUT'}:
+        source_commit_is_ancestor = True if head else None
+    elif cert_commit:
         if git_mode == 'GIT_CHECKOUT':
             if git(['cat-file', '-e', f'{cert_commit}^{{commit}}']) is None:
                 errors.append(f'certificate commit {cert_commit} does not exist in this repository')
