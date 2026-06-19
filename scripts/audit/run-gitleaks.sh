@@ -64,6 +64,7 @@ if ! command -v gitleaks >/dev/null 2>&1; then
   if [ "$INSTALL_STATUS" -ne 0 ] || ! command -v gitleaks >/dev/null 2>&1; then
     python - "$TXT" "$JSON" "$INSTALL_STATUS" <<'PY'
 import json, pathlib, re, sys
+from scripts.audit.audit_model import stable_fingerprint, write_normalized
 text_path = pathlib.Path(sys.argv[1])
 out_path = pathlib.Path(sys.argv[2])
 install_status = int(sys.argv[3])
@@ -116,8 +117,17 @@ out = {
     'note': 'gitleaks unavailable; deterministic internal secret scanner executed as CI fallback',
     'output': install_output[:4000],
 }
-out_path.write_text(json.dumps(out, indent=2) + '\n')
-summary = {k: out[k] for k in ['tool', 'status', 'findingCount', 'critical_high_unresolved']}
+normalized=[]
+for i, finding in enumerate(findings):
+    file = str(finding.get('file') or finding.get('File') or finding.get('path') or finding.get('Path') or text_path)
+    line = finding.get('line') or finding.get('StartLine')
+    normalized.append({'fingerprint':stable_fingerprint('gitleaks', str(finding.get('rule') or finding.get('RuleID') or 'GITLEAKS_FINDING'), 'secrets', '', file, file, line), 'id':str(finding.get('rule') or finding.get('RuleID') or 'GITLEAKS_FINDING'), 'tool':'gitleaks', 'severity':'high', 'status':'unresolved', 'title':'Potential secret detected', 'packageOrContract':'secrets', 'installedVersion':'', 'fixedVersion':'', 'dependencyPath':'', 'file':file, 'line':line, 'description':str(finding)[:1000], 'evidence':[str(text_path)], 'triageRef':''})
+obj = write_normalized(out_path, 'gitleaks', 'internal fallback secret scan', install_status, normalized, [str(text_path)], state)
+obj['mode'] = 'internal-fallback-secret-scan'
+obj['findingCount'] = len(findings)
+obj['note'] = 'gitleaks unavailable; deterministic internal secret scanner executed as CI fallback'
+out_path.write_text(json.dumps(obj, indent=2, sort_keys=True) + '\n')
+summary = {k: obj[k] for k in ['tool', 'status', 'findingCount', 'criticalHighUnresolved']}
 if findings:
     summary['findingFiles'] = sorted({str(f.get('file') or f.get('File') or f.get('path') or f.get('Path') or 'unknown') for f in findings})[:20]
 print(json.dumps(summary, indent=2))
