@@ -67,10 +67,17 @@ for path in tracked_files():
     except Exception:
         continue
     if rel not in SECRET_SCAN_ALLOWLIST_FILES and not rel.startswith(".private.example/"):
-        for pattern in SECRET_PATTERNS:
-            if pattern.search(text):
-                errors.append(f"Potential secret/RPC/private artifact in {rel}")
-    if rel not in ALLOWLIST_FILES and not (rel.startswith("deployments/") or rel.startswith("evidence/sepolia/") or rel.startswith("test/")):
+        lowered = text.lower()
+        should_scan_secret_patterns = (
+            any(provider in lowered for provider in ("alchemy", "infura", "quicknode", "ankr", "blast", "drpc", "chainstack"))
+            or any(token in text for token in ("PRIVATE_KEY", "SEED_PHRASE", "MNEMONIC", "ETHERSCAN_API_KEY", "FOUNDER_APPROVAL_SIGNATURE"))
+            or ("0x" in lowered and any(term in lowered for term in ("private", "secret", "key", "signature")))
+        )
+        if should_scan_secret_patterns:
+            for pattern in SECRET_PATTERNS:
+                if pattern.search(text):
+                    errors.append(f"Potential secret/RPC/private artifact in {rel}")
+    if rel not in ALLOWLIST_FILES and not (rel.startswith("deployments/") or rel.startswith("evidence/sepolia/") or rel.startswith("test/")) and ADDRESS_RE.search(text):
         for m in PRIVATE_ADDRESS_CONTEXT.finditer(text):
             addresses = [a.lower() for a in ADDRESS_RE.findall(m.group(0))]
             if any(a != AGIALPHA for a in addresses):

@@ -4,20 +4,34 @@
   "chainId": 1,
   "expectedChainId": 1,
   "agialphaToken": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
-  "temporaryDeployerAddress": "0x1000000000000000000000000000000000000001",
-  "finalLedgerOwnerAddress": "0x2000000000000000000000000000000000000002",
+  "temporaryDeployerAddress": "LOCAL_OPERATOR_SUPPLIED_TEMP_DEPLOYER_ADDRESS",
+  "finalLedgerOwnerAddress": "LOCAL_OPERATOR_SUPPLIED_PUBLIC_LEDGER_ADDRESS",
   "finalOwnerKind": "LEDGER_EOA",
-  "treasuryAddress": "0x2000000000000000000000000000000000000002",
-  "governanceOwnerAddress": "0x2000000000000000000000000000000000000002",
-  "operationsAddress": "0x2000000000000000000000000000000000000002",
-  "founderAddress": "0x2000000000000000000000000000000000000002",
-  "permanentAdminAddress": "0x2000000000000000000000000000000000000002",
-  "vaultAdminAddress": "0x2000000000000000000000000000000000000002",
-  "controllerAddress": "0x2000000000000000000000000000000000000002",
-  "confirmationPolicy": { "deploy": 5, "verify": 5, "handoff": 5 },
-  "canaryLimits": { "maxSingleReward": "1000000000000000000", "maxDailyReward": "10000000000000000000", "maxProtectedLiabilityPerToken": "0" },
-  "feeCeilings": { "maxFeePerGasGwei": "80", "maxPriorityFeePerGasGwei": "3" },
+  "treasuryAddress": "LOCAL_OPERATOR_SUPPLIED_PUBLIC_LEDGER_ADDRESS",
+  "governanceOwnerAddress": "LOCAL_OPERATOR_SUPPLIED_PUBLIC_LEDGER_ADDRESS",
+  "operationsAddress": "LOCAL_OPERATOR_SUPPLIED_PUBLIC_LEDGER_ADDRESS",
+  "founderAddress": "LOCAL_OPERATOR_SUPPLIED_PUBLIC_LEDGER_ADDRESS",
+  "permanentAdminAddress": "LOCAL_OPERATOR_SUPPLIED_PUBLIC_LEDGER_ADDRESS",
+  "vaultAdminAddress": "LOCAL_OPERATOR_SUPPLIED_PUBLIC_LEDGER_ADDRESS",
+  "controllerAddress": "LOCAL_OPERATOR_SUPPLIED_PUBLIC_LEDGER_ADDRESS",
+  "confirmationPolicy": {
+    "deploy": 5,
+    "verify": 5,
+    "handoff": 5
+  },
+  "canaryLimits": {
+    "maxSingleReward": "1000000000000000000",
+    "maxDailyReward": "10000000000000000000",
+    "maxProtectedLiabilityPerToken": "0"
+  },
+  "feeCeilings": {
+    "maxFeePerGasGwei": "80",
+    "maxPriorityFeePerGasGwei": "3"
+  },
   "maximumDeploymentBudgetEth": "1.0",
-  "ledger": { "derivationPath": "m/44'/60'/0'/0/0", "privateKeyStored": false },
-  "claimBoundary": "Public deployment configuration only; no private key, RPC URL, API key, Ledger seed, deployment evidence, or Mainnet transaction claim."
+  "ledger": {
+    "derivationPath": "m/44'/60'/0'/0/0",
+    "privateKeyStored": false
+  },
+  "claimBoundary": "Public deployment configuration template only; operator EOA addresses, private key, RPC URL, API key, Ledger seed, deployment evidence, and Mainnet transaction evidence are not committed."
 }
