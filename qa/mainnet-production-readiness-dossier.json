@@ -9,7 +9,7 @@
     "qa/mainnet-readiness/production-readiness.json",
     "qa/mainnet-readiness/authorization-certificate.json"
   ],
-  "baselineSha": "6d27b2cb7557943da77c8614ce4646d319b75749",
+  "baselineSha": "8d33616817237249c052bb5c910afd25dba71674",
   "localCheckResults": [
     {
       "command": "npm run authority:inventory",
@@ -27,7 +27,7 @@
   "releaseClaimBoundary": "Repository-local operational inventory and fail-closed readiness evidence only; not Mainnet deployed, not Mainnet verified, not Owner-authorized, and not technically ready until blocked evidence is supplied.",
   "releaseRelevantDirtyPaths": [],
   "selectorCoverageStatus": "BLOCKED",
-  "sourceTreeHash": "a6fa052fa097d1236503143385e17425acbcc439e08d19acc64751231a782dae",
+  "sourceTreeHash": "6e535126fd7d0414e3833a09e2360cd6d87d651d5d12b17c637649c27276fe07",
   "sourceTreeHashScope": "tracked git index content excluding generated readiness artifacts",
   "status": "BLOCKED"
 }

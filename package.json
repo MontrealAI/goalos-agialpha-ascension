@@ -157,7 +157,7 @@
     "ownership:mainnet:evidence": "OWNERSHIP_COMMAND=mainnet:evidence hardhat run --network ethereumMainnet scripts/ownership/goalos-ownership-command-center.ts",
     "ownership:mainnet:sweep-deployer-local-gated": "OWNERSHIP_COMMAND=mainnet:sweep-deployer-local-gated hardhat run --network ethereumMainnet scripts/ownership/goalos-ownership-command-center.ts",
     "authority:inventory": "ts-node scripts/authority-inventory.ts",
-    "authority:policy:validate": "ts-node scripts/authority-policy-validate.ts",
+    "authority:policy:validate": "ts-node scripts/authority-policy-validate.ts --policy .private.example/authority-policy.mainnet.example.json",
     "ownership:test": "npm run test:ownership",
     "configure:mainnet:prepare-safe": "ts-node scripts/deployment/goalos-deploy-command-center.ts mainnet:prepare-safe --network ethereumMainnet --no-broadcast",
     "deployer:mainnet:decommission-check": "OWNERSHIP_COMMAND=mainnet:verify hardhat run --network ethereumMainnet scripts/ownership/goalos-ownership-command-center.ts",
@@ -194,7 +194,9 @@
     "security:docket": "python scripts/mainnet_operational_readiness.py --validate",
     "mainnet:fork-rehearsal": "python scripts/mainnet_operational_readiness.py --validate",
     "mainnet:release-inputs": "python scripts/mainnet_release_inputs.py",
-    "mainnet:fork-rehearsal:release": "python scripts/mainnet_fork_rehearsal_release.py"
+    "mainnet:fork-rehearsal:release": "python scripts/mainnet_fork_rehearsal_release.py",
+    "pr:readiness": "python scripts/pr_readiness.py",
+    "authority:verify": "npm run authority:policy:validate && npm run authority:inventory"
   },
   "dependencies": {
     "@openzeppelin/contracts": "4.9.6",

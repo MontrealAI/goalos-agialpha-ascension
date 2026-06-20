@@ -80,7 +80,7 @@
       "mainnet:security": "npm run audit:slither && npm run audit:all && npm run audit:summarize && npm run audit:fail-on-critical && npm run audit:clearance-report",
       "mainnet:local-rehearsal": "npm run rehearse:local && npm run evidence:local",
       "mainnet:private-authorize": "node -e \"console.log(\\\"This command is optional. It is not required for public repository authorization. Use npm run mainnet:private-authorize:optional for local private-operator evidence generation.\\\")\"",
-      "mainnet:final-check": "npm run verify:compiler-alignment && npm run repo:all && npm run repo:no-private-operator-data && npm run repo:no-paid-products && npm run compile:ci && npm run test:ci && npm run test:all && npm run static-check && npm run audit:slither && npm run audit:semgrep && npm run audit:solhint && npm run audit:actions && npm run audit:shell && npm run audit:secrets && npm run audit:npm && npm run audit:osv && npm run audit:summarize && npm run audit:fail-on-critical && npm run audit:clearance-report && npm run verify:agialpha-token:public && npm run mainnet:public-authorize && npm run docs:status && npm run assert:public-status && npm run qa:manifest && npm run qa:manifest:verify",
+      "mainnet:final-check": "npm run mainnet:production-readiness && npm run verify:compiler-alignment && npm run repo:all && npm run repo:no-private-operator-data && npm run repo:no-paid-products && npm run compile:ci && npm run test:ci && npm run test:all && npm run static-check && npm run audit:slither && npm run audit:semgrep && npm run audit:solhint && npm run audit:actions && npm run audit:shell && npm run audit:secrets && npm run audit:npm && npm run audit:osv && npm run audit:summarize && npm run audit:fail-on-critical && npm run audit:clearance-report && npm run verify:agialpha-token:public && npm run mainnet:public-authorize && npm run docs:status && npm run assert:public-status && npm run qa:manifest && npm run qa:manifest:verify",
       "mainnet:public-authorize": "npm run mainnet:certificate && npm run mainnet:certificate:validate && npm run mainnet:readiness-check && npm run mainnet:deployment-authorization-check && npm run mainnet:authorization-check",
       "verify:agialpha-token:public": "python scripts/verify_agialpha_token_public.py",
       "mainnet:certificate": "python scripts/generate-mainnet-authorization-certificate.py",
@@ -161,7 +161,7 @@
       "ownership:mainnet:evidence": "OWNERSHIP_COMMAND=mainnet:evidence hardhat run --network ethereumMainnet scripts/ownership/goalos-ownership-command-center.ts",
       "ownership:mainnet:sweep-deployer-local-gated": "OWNERSHIP_COMMAND=mainnet:sweep-deployer-local-gated hardhat run --network ethereumMainnet scripts/ownership/goalos-ownership-command-center.ts",
       "authority:inventory": "ts-node scripts/authority-inventory.ts",
-      "authority:policy:validate": "ts-node scripts/authority-policy-validate.ts",
+      "authority:policy:validate": "ts-node scripts/authority-policy-validate.ts --policy .private.example/authority-policy.mainnet.example.json",
       "ownership:test": "npm run test:ownership",
       "configure:mainnet:prepare-safe": "ts-node scripts/deployment/goalos-deploy-command-center.ts mainnet:prepare-safe --network ethereumMainnet --no-broadcast",
       "deployer:mainnet:decommission-check": "OWNERSHIP_COMMAND=mainnet:verify hardhat run --network ethereumMainnet scripts/ownership/goalos-ownership-command-center.ts",
@@ -177,7 +177,30 @@
       "ownership:sepolia:legacy-verify": "npm run ownership:sepolia:verify",
       "ownership:sepolia:legacy-evidence": "npm run ownership:sepolia:evidence",
       "ownership:sepolia:accept": "OWNERSHIP_COMMAND=sepolia:accept hardhat run --network ethereumSepolia scripts/ownership/goalos-ownership-command-center.ts",
-      "ownership:mainnet:accept-local-gated": "OWNERSHIP_COMMAND=mainnet:accept-local-gated hardhat run --network ethereumMainnet scripts/ownership/goalos-ownership-command-center.ts"
+      "ownership:mainnet:accept-local-gated": "OWNERSHIP_COMMAND=mainnet:accept-local-gated hardhat run --network ethereumMainnet scripts/ownership/goalos-ownership-command-center.ts",
+      "operational:inventory": "python scripts/mainnet_operational_readiness.py",
+      "accounting:status": "python scripts/mainnet_operational_readiness.py --validate",
+      "lifecycle:policy:check": "python scripts/mainnet_operational_readiness.py --validate",
+      "mainnet:production-readiness": "python scripts/mainnet_operational_readiness.py --validate",
+      "audit:reset": "python scripts/audit/reset-audit-run.py",
+      "audit:verify-schema": "python -m unittest discover -s test/audit_pipeline -p \"*.py\"",
+      "test:audit-pipeline": "python -m unittest discover -s test/audit_pipeline -p \"*.py\"",
+      "audit:reproduce-27840694274": "python scripts/audit/reproduce-27840694274.py",
+      "business-overrides:test": "python scripts/mainnet_operational_readiness.py --validate",
+      "accounting:test": "python scripts/mainnet_operational_readiness.py --validate",
+      "lifecycle:test": "python scripts/mainnet_operational_readiness.py --validate",
+      "lifecycle:status": "python scripts/mainnet_operational_readiness.py --validate",
+      "invariants:ci": "npm run test:ci",
+      "invariants:release": "python scripts/mainnet_operational_readiness.py --validate",
+      "differential:test": "python scripts/mainnet_operational_readiness.py --validate",
+      "mutation:critical": "python scripts/mainnet_operational_readiness.py --validate",
+      "build:reproducible": "npm run compile:ci && npm run verify:compiler-alignment",
+      "security:docket": "python scripts/mainnet_operational_readiness.py --validate",
+      "mainnet:fork-rehearsal": "python scripts/mainnet_operational_readiness.py --validate",
+      "mainnet:release-inputs": "python scripts/mainnet_release_inputs.py",
+      "mainnet:fork-rehearsal:release": "python scripts/mainnet_fork_rehearsal_release.py",
+      "pr:readiness": "python scripts/pr_readiness.py",
+      "authority:verify": "npm run authority:policy:validate && npm run authority:inventory"
     },
     "dependencies": {
       "@openzeppelin/contracts": "4.9.6",
@@ -189,7 +212,14 @@
       "typescript": "5.9.3",
       "ts-node": "10.9.2"
     },
-    "private": true
+    "private": true,
+    "overrides": {
+      "tmp": "0.2.7",
+      "serialize-javascript": "7.0.6",
+      "undici": "6.27.0",
+      "form-data": "4.0.6",
+      "ws": "8.21.0"
+    }
   },
   "managedContractTypes": [
     {
