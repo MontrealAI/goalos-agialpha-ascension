@@ -1,0 +1,137 @@
+{
+  "schemaVersion": "1.0",
+  "commands": {
+    "ordinaryConsistency": [
+      "npm run mainnet:status-consistency",
+      "npm run docs:status:check"
+    ],
+    "positiveEnforcement": [
+      "npm run mainnet:readiness-require-pass",
+      "npm run mainnet:deployment-authorization-require-pass",
+      "npm run mainnet:authorization-require-pass"
+    ],
+    "forbiddenMainnetSecrets": [
+      "MAINNET_PRIVATE_KEY",
+      "ETHEREUM_MAINNET_PRIVATE_KEY",
+      "DEPLOYER_PRIVATE_KEY",
+      "PRIVATE_KEY"
+    ]
+  },
+  "workflows": [
+    {
+      "path": ".github/workflows/agialpha-audit-candidate-ci.yml",
+      "role": "PR_VALIDATION",
+      "requiredCommands": [
+        "npm run mainnet:status-consistency"
+      ],
+      "forbiddenCommands": [
+        "npm run mainnet:readiness-require-pass",
+        "npm run mainnet:deployment-authorization-require-pass",
+        "npm run mainnet:authorization-require-pass",
+        "npm run mainnet:authorization-check"
+      ]
+    },
+    {
+      "path": ".github/workflows/repository-validation.yml",
+      "role": "PR_VALIDATION",
+      "requiredCommands": [
+        "npm run mainnet:status-consistency"
+      ],
+      "forbiddenCommands": [
+        "npm run mainnet:readiness-require-pass",
+        "npm run mainnet:deployment-authorization-require-pass",
+        "npm run mainnet:authorization-require-pass",
+        "npm run mainnet:authorization-check"
+      ]
+    },
+    {
+      "path": ".github/workflows/ethereum-sepolia-rehearsal.yml",
+      "role": "LOCAL_REHEARSAL",
+      "requiredCommands": [
+        "npm run mainnet:status-consistency"
+      ],
+      "forbiddenCommands": [
+        "npm run mainnet:readiness-require-pass",
+        "npm run mainnet:deployment-authorization-require-pass",
+        "npm run mainnet:authorization-require-pass",
+        "npm run mainnet:authorization-check"
+      ]
+    },
+    {
+      "path": ".github/workflows/final-public-mainnet-authorization.yml",
+      "role": "PUBLIC_EVIDENCE",
+      "requiredCommands": [
+        "npm run mainnet:status-consistency"
+      ],
+      "forbiddenCommands": [
+        "npm run mainnet:readiness-require-pass",
+        "npm run mainnet:deployment-authorization-require-pass",
+        "npm run mainnet:authorization-require-pass",
+        "npm run mainnet:authorization-check"
+      ]
+    },
+    {
+      "path": ".github/workflows/mainnet-gate-watch.yml",
+      "role": "PUBLIC_EVIDENCE",
+      "requiredCommands": [
+        "npm run mainnet:status-consistency"
+      ],
+      "forbiddenCommands": [
+        "npm run mainnet:readiness-require-pass",
+        "npm run mainnet:deployment-authorization-require-pass",
+        "npm run mainnet:authorization-require-pass",
+        "npm run mainnet:authorization-check"
+      ]
+    },
+    {
+      "path": ".github/workflows/mainnet-authorization-gate.yml",
+      "role": "PUBLIC_EVIDENCE",
+      "requiredCommands": [
+        "npm run mainnet:status-consistency"
+      ],
+      "forbiddenCommands": [
+        "npm run mainnet:readiness-require-pass",
+        "npm run mainnet:deployment-authorization-require-pass",
+        "npm run mainnet:authorization-require-pass",
+        "npm run mainnet:authorization-check"
+      ]
+    },
+    {
+      "path": ".github/workflows/solidity-audit-toolchain.yml",
+      "role": "PR_VALIDATION",
+      "requiredCommands": [
+        "npm run mainnet:status-consistency"
+      ],
+      "forbiddenCommands": [
+        "npm run mainnet:readiness-require-pass",
+        "npm run mainnet:deployment-authorization-require-pass",
+        "npm run mainnet:authorization-require-pass",
+        "npm run mainnet:authorization-check"
+      ]
+    },
+    {
+      "path": ".github/workflows/mainnet-readiness.yml",
+      "role": "PROTECTED_RELEASE",
+      "requiredCommands": [
+        "npm run mainnet:readiness-require-pass",
+        "npm run mainnet:deployment-authorization-require-pass",
+        "npm run mainnet:authorization-require-pass"
+      ],
+      "requiredEnvironment": "mainnet-readiness",
+      "requiresWorkflowDispatch": true,
+      "mustNotBroadcastMainnet": true
+    },
+    {
+      "path": ".github/workflows/mainnet-production-readiness.yml",
+      "role": "PROTECTED_RELEASE",
+      "requiredCommands": [
+        "npm run mainnet:readiness-require-pass",
+        "npm run mainnet:deployment-authorization-require-pass",
+        "npm run mainnet:authorization-require-pass"
+      ],
+      "requiredEnvironment": "mainnet-readiness",
+      "requiresWorkflowDispatch": true,
+      "mustNotBroadcastMainnet": true
+    }
+  ]
+}

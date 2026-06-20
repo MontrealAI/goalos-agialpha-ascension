@@ -35,7 +35,7 @@
     }
   ],
   "selectorCoverage": {
-    "stateChangingSelectorCount": 526,
+    "stateChangingSelectorCount": 547,
     "status": "BLOCKED",
     "unclassified": [
       {
@@ -535,6 +535,38 @@
         "signature": "renounceRole(bytes32,address)"
       },
       {
+        "attributes": "external onlyOwner",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "GoalOSBusinessLifecycle",
+        "name": "classifySelector",
+        "path": "contracts/registry/GoalOSBusinessLifecycle.sol",
+        "signature": "classifySelector(bytes4,uint8)"
+      },
+      {
+        "attributes": "external onlyOwner validOverrideCommitments(reasonHash, evidenceHash)",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "GoalOSBusinessLifecycle",
+        "name": "transitionTo",
+        "path": "contracts/registry/GoalOSBusinessLifecycle.sol",
+        "signature": "transitionTo(uint8,bytes32,bytes32,bytes32,bool)"
+      },
+      {
+        "attributes": "public override",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "GoalOSBusinessLifecycle",
+        "name": "renounceRole",
+        "path": "contracts/registry/GoalOSBusinessLifecycle.sol",
+        "signature": "renounceRole(bytes32,address)"
+      },
+      {
+        "attributes": "public override",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "GoalOSDeploymentDirectory",
+        "name": "renounceRole",
+        "path": "contracts/registry/GoalOSDeploymentDirectory.sol",
+        "signature": "renounceRole(bytes32,address)"
+      },
+      {
         "attributes": "external nonReentrant",
         "classification": "normal_operation_unclassified_review_required",
         "contract": "JobClaimBondManager",
@@ -903,8 +935,8 @@
         "signature": "renounceRole(bytes32,address)"
       }
     ],
-    "unclassifiedCount": 108
+    "unclassifiedCount": 112
   },
-  "sourceTreeHash": "8e1fb3bf9aa2a73cee4aa64b7ab3ff91fd59762ef710d734fa577c7ccab3764a",
+  "sourceTreeHash": "9fba6de863a5a4868f31f2ab6f72ac34f1845d4aa07711ab5ad17260d345da1c",
   "sourceTreeHashScope": "tracked git index content excluding generated readiness artifacts"
 }

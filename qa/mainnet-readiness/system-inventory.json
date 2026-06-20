@@ -2386,6 +2386,162 @@
       "workflow": true
     },
     {
+      "assetHolding": false,
+      "assetHoldingEvidence": "none detected",
+      "contract": "GoalOSBusinessLifecycle",
+      "deploymentAlias": null,
+      "path": "contracts/registry/GoalOSBusinessLifecycle.sol",
+      "roles": [
+        "DEFAULT_ADMIN_ROLE",
+        "OPERATOR_ROLE",
+        "PAUSER_ROLE",
+        "PROTOCOL_ADMIN_ROLE",
+        "REVIEWER_MANAGER_ROLE",
+        "TREASURY_ROLE",
+        "VAULT_MANAGER_ROLE"
+      ],
+      "sha256": "a4d488951166d58cbcb3932834936cf2c2f1f16e8f2c9f260dd41d5a6546dc40",
+      "sourceContract": "GoalOSBusinessLifecycle",
+      "stateChangingSelectors": [
+        {
+          "attributes": "external onlyOwner",
+          "classification": "normal_operation_unclassified_review_required",
+          "name": "classifySelector",
+          "signature": "classifySelector(bytes4,uint8)"
+        },
+        {
+          "attributes": "external onlyOwner validOverrideCommitments(reasonHash, evidenceHash)",
+          "classification": "normal_operation_unclassified_review_required",
+          "name": "transitionTo",
+          "signature": "transitionTo(uint8,bytes32,bytes32,bytes32,bool)"
+        },
+        {
+          "attributes": "external",
+          "classification": "lifecycle_control_or_migration",
+          "name": "pause",
+          "signature": "pause()"
+        },
+        {
+          "attributes": "external",
+          "classification": "lifecycle_control_or_migration",
+          "name": "unpause",
+          "signature": "unpause()"
+        },
+        {
+          "attributes": "public override onlyOwner",
+          "classification": "configuration",
+          "name": "transferOwnership",
+          "signature": "transferOwnership(address)"
+        },
+        {
+          "attributes": "public onlyOwner",
+          "classification": "owner_recovery_or_safe_exit",
+          "name": "cancelOwnershipTransfer",
+          "signature": "cancelOwnershipTransfer()"
+        },
+        {
+          "attributes": "public",
+          "classification": "configuration",
+          "name": "acceptOwnership",
+          "signature": "acceptOwnership()"
+        },
+        {
+          "attributes": "public override",
+          "classification": "configuration",
+          "name": "grantRole",
+          "signature": "grantRole(bytes32,address)"
+        },
+        {
+          "attributes": "public override",
+          "classification": "owner_recovery_or_safe_exit",
+          "name": "revokeRole",
+          "signature": "revokeRole(bytes32,address)"
+        },
+        {
+          "attributes": "public override",
+          "classification": "normal_operation_unclassified_review_required",
+          "name": "renounceRole",
+          "signature": "renounceRole(bytes32,address)"
+        }
+      ],
+      "workflow": true
+    },
+    {
+      "assetHolding": false,
+      "assetHoldingEvidence": "none detected",
+      "contract": "GoalOSDeploymentDirectory",
+      "deploymentAlias": null,
+      "path": "contracts/registry/GoalOSDeploymentDirectory.sol",
+      "roles": [
+        "DEFAULT_ADMIN_ROLE",
+        "OPERATOR_ROLE",
+        "PAUSER_ROLE",
+        "PROTOCOL_ADMIN_ROLE",
+        "REVIEWER_MANAGER_ROLE",
+        "TREASURY_ROLE",
+        "VAULT_MANAGER_ROLE"
+      ],
+      "sha256": "cdeb3b412188fe495f7adc1e63105632b0733f0cc1fefcd18cdb834ef649701e",
+      "sourceContract": "GoalOSDeploymentDirectory",
+      "stateChangingSelectors": [
+        {
+          "attributes": "external onlyOwner validOverrideCommitments(reasonHash, evidenceHash)",
+          "classification": "safe_exit_or_settlement",
+          "name": "recordRelease",
+          "signature": "recordRelease((bytes32,bytes32,bytes32,bytes32,bytes32,bytes32,bytes32,address,address,uint8,uint256),bytes32,bytes32)"
+        },
+        {
+          "attributes": "external",
+          "classification": "lifecycle_control_or_migration",
+          "name": "pause",
+          "signature": "pause()"
+        },
+        {
+          "attributes": "external",
+          "classification": "lifecycle_control_or_migration",
+          "name": "unpause",
+          "signature": "unpause()"
+        },
+        {
+          "attributes": "public override onlyOwner",
+          "classification": "configuration",
+          "name": "transferOwnership",
+          "signature": "transferOwnership(address)"
+        },
+        {
+          "attributes": "public onlyOwner",
+          "classification": "owner_recovery_or_safe_exit",
+          "name": "cancelOwnershipTransfer",
+          "signature": "cancelOwnershipTransfer()"
+        },
+        {
+          "attributes": "public",
+          "classification": "configuration",
+          "name": "acceptOwnership",
+          "signature": "acceptOwnership()"
+        },
+        {
+          "attributes": "public override",
+          "classification": "configuration",
+          "name": "grantRole",
+          "signature": "grantRole(bytes32,address)"
+        },
+        {
+          "attributes": "public override",
+          "classification": "owner_recovery_or_safe_exit",
+          "name": "revokeRole",
+          "signature": "revokeRole(bytes32,address)"
+        },
+        {
+          "attributes": "public override",
+          "classification": "normal_operation_unclassified_review_required",
+          "name": "renounceRole",
+          "signature": "renounceRole(bytes32,address)"
+        }
+      ],
+      "workflow": true
+    },
+    {
       "assetHolding": true,
       "assetHoldingEvidence": "token/native inbound flow or asset-bearing name",
       "contract": "JobClaimBondManager",
@@ -2400,7 +2556,7 @@
         "TREASURY_ROLE",
         "VAULT_MANAGER_ROLE"
       ],
-      "sha256": "c9f8e9329010d8f355462fc4c23538947f2bf8d6b0cc5808d6aff218fba5c56b",
+      "sha256": "e7b0c9c04f8315cad29fac372b345140212a900a5114b3f3af26fdb8ca8aa3d4",
       "sourceContract": "JobClaimBondManager",
       "stateChangingSelectors": [
         {
@@ -2505,7 +2661,7 @@
         "TREASURY_ROLE",
         "VAULT_MANAGER_ROLE"
       ],
-      "sha256": "80e2c0c1d7ea4a892a8a0e4a85d47e8a770d7cfdcb30f0135345f754d6cf3ba6",
+      "sha256": "c6d8443b48f00d477d9a9ac3a625916f1b1faf4b106692ecce6169b41518c0cb",
       "sourceContract": "JobRegistry",
       "stateChangingSelectors": [
         {
@@ -2531,6 +2687,12 @@
           "classification": "configuration",
           "name": "setRewardTokenAllowlistEnabled",
           "signature": "setRewardTokenAllowlistEnabled(bool)"
+        },
+        {
+          "attributes": "external onlyAdmin",
+          "classification": "configuration",
+          "name": "setRiskLimits",
+          "signature": "setRiskLimits(uint256,uint256)"
         },
         {
           "attributes": "external nonReentrant whenNotPaused returns (uint256 jobId)",
@@ -2591,6 +2753,12 @@
           "classification": "normal_operation_unclassified_review_required",
           "name": "expireOpenJob",
           "signature": "expireOpenJob(uint256,bytes32)"
+        },
+        {
+          "attributes": "external onlyOwner nonReentrant returns (bytes32 overrideId)",
+          "classification": "owner_recovery_or_safe_exit",
+          "name": "ownerResolveJob",
+          "signature": "ownerResolveJob(uint256,uint8,address,bytes32,bytes32)"
         },
         {
           "attributes": "external",
@@ -3552,7 +3720,7 @@
         "TREASURY_ROLE",
         "VAULT_MANAGER_ROLE"
       ],
-      "sha256": "6560070c176f983cb675c3e048bd6d9f30ab658c9567d88465a30484be4cdefe",
+      "sha256": "fa46a44737030752965d651f1df7640fa7df26b96d65221f2b9ce0e720ca8f5e",
       "sourceContract": "ReviewerBondRegistry",
       "stateChangingSelectors": [
         {
@@ -4166,6 +4334,6 @@
     }
   ],
   "generatedBy": "scripts/mainnet_operational_readiness.py",
-  "sourceTreeHash": "8e1fb3bf9aa2a73cee4aa64b7ab3ff91fd59762ef710d734fa577c7ccab3764a",
+  "sourceTreeHash": "9fba6de863a5a4868f31f2ab6f72ac34f1845d4aa07711ab5ad17260d345da1c",
   "sourceTreeHashScope": "tracked git index content excluding generated readiness artifacts"
 }

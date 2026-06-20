@@ -29,6 +29,8 @@ ALLOWLIST_FILES = {
     "scripts/repository_safety_check.py",
     "scripts/verify-readiness-v4-2.py",
     "scripts/deployment/lib/redact.ts",
+    # The guided wizard writes ignored private templates; tracked source contains placeholder variable names only.
+    "scripts/deployment/goalos-deploy-wizard.ts",
     # Public Sepolia verification fallback commands contain public contract addresses, not private operator addresses.
     "qa/manual-verification-commands.sepolia.md",
     ".private.example/authority-policy.mainnet.example.json",

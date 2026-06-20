@@ -167,6 +167,8 @@ def canonical_param(param):
         idx = typ.rfind("[")
         suffix = typ[idx:] + suffix
         typ = typ[:idx]
+    if typ == "ReleaseRecord":
+        return "(bytes32,bytes32,bytes32,bytes32,bytes32,bytes32,bytes32,address,address,uint8,uint256)" + suffix
     if typ.startswith("uint") or typ.startswith("int") or typ.startswith("bytes") or typ in {"address", "bool", "string"}:
         return typ + suffix
     if typ == "byte":
@@ -180,16 +182,55 @@ def canonical_signature(name, params):
     return f"{name}({','.join(canonical)})"
 
 
+def iter_function_headers(body):
+    i = 0
+    marker = "function"
+    while True:
+        start = body.find(marker, i)
+        if start == -1:
+            return
+        before = body[start - 1] if start else " "
+        after = body[start + len(marker)] if start + len(marker) < len(body) else " "
+        if (before.isalnum() or before == "_") or not after.isspace():
+            i = start + len(marker)
+            continue
+        name_match = re.match(r"function\s+(\w+)\s*\(", body[start:])
+        if not name_match:
+            i = start + len(marker)
+            continue
+        name = name_match.group(1)
+        pos = start + name_match.end() - 1
+        depth = 0
+        end = pos
+        while end < len(body):
+            ch = body[end]
+            if ch == "(":
+                depth += 1
+            elif ch == ")":
+                depth -= 1
+                if depth == 0:
+                    break
+            end += 1
+        if end >= len(body):
+            return
+        params = body[pos + 1:end]
+        attr_start = end + 1
+        attr_end_candidates = [x for x in [body.find("{", attr_start), body.find(";", attr_start)] if x != -1]
+        if not attr_end_candidates:
+            return
+        attr_end = min(attr_end_candidates)
+        yield name, params, body[attr_start:attr_end]
+        i = attr_end + 1
+
 def functions_from_body(body):
     funcs = []
-    for match in re.finditer(r"function\s+(\w+)\s*\(([^)]*)\)\s*([^;{]*)", body):
-        attrs = match.group(3)
+    for name, params, attrs in iter_function_headers(body):
         if any(x in attrs for x in STATE_HINTS) and not any(x in attrs for x in VIEW_HINTS):
             funcs.append({
-                "name": match.group(1),
-                "signature": canonical_signature(match.group(1), match.group(2)),
+                "name": name,
+                "signature": canonical_signature(name, params),
                 "attributes": " ".join(attrs.split()),
-                "classification": classify(match.group(1)),
+                "classification": classify(name),
             })
     return funcs
 
@@ -246,8 +287,30 @@ def merge_funcs(primary, inherited):
     return primary + [item for item in inherited if selector_key(item) not in seen]
 
 
+def inheritance_index():
+    blocks_by_name = {}
+    for rel in tracked_contract_paths():
+        if excluded_mainnet_inventory_path(rel):
+            continue
+        for block in contract_blocks(git_index_text(rel)):
+            blocks_by_name[block["name"]] = block
+    memo = {}
+    def inherits(name, base):
+        if name == base:
+            return True
+        key = (name, base)
+        if key in memo:
+            return memo[key]
+        block = blocks_by_name.get(name)
+        result = bool(block) and any(inherits(parent, base) for parent in block.get("bases", []))
+        memo[key] = result
+        return result
+    return inherits
+
+
 def contracts():
     out = []
+    inherits = inheritance_index()
     goalos_funcs, goalos_roles = inherited_goalos_surface()
     erc721_funcs = inherited_erc721_surface()
     for rel in tracked_contract_paths():
@@ -260,10 +323,10 @@ def contracts():
         for info in infos:
             funcs = functions_from_body(info["body"])
             roles = roles_from_body(info["body"])
-            if "GoalOSAccessControl" in info["bases"]:
+            if inherits(info["name"], "GoalOSAccessControl"):
                 funcs = merge_funcs(funcs, goalos_funcs)
                 roles = sorted(set(roles + goalos_roles))
-            if "ERC721" in info["bases"]:
+            if inherits(info["name"], "ERC721"):
                 funcs = merge_funcs(funcs, erc721_funcs)
             name = info["name"]
             deployment_names = TOKEN_RESERVE_VAULT_ALIASES if name == "TokenReserveVault" else (name,)

@@ -1,5 +1,5 @@
 from pathlib import Path
-import json, re, sys
+import json, re, sys, subprocess
 
 ROOT = Path(__file__).resolve().parents[1]
 errors = []
@@ -48,13 +48,17 @@ for rel in required:
     if not (ROOT / rel).exists():
         errors.append(f"Missing required file: {rel}")
 
+policy_check = subprocess.run([sys.executable, "scripts/validate_workflow_policy.py"], cwd=ROOT, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+if policy_check.returncode != 0:
+    errors.append("Workflow policy validation failed: " + policy_check.stdout.strip())
+
 if (ROOT / ".github/workflows/goalos-jobs-production-rc-ci.yml").exists():
     errors.append("Stale JOBS workflow must not exist: .github/workflows/goalos-jobs-production-rc-ci.yml")
 
 readme = (ROOT / "README.md").read_text(encoding="utf-8", errors="ignore") if (ROOT / "README.md").exists() else ""
 cert_path = ROOT / "qa/mainnet-authorization-certificate.json"
 cert = json.loads(cert_path.read_text(encoding="utf-8")) if cert_path.exists() else {}
-expected_eth_auth = cert.get("ethereumMainnetAuthorized", "YES")
+expected_eth_auth = cert.get("ethereumMainnetAuthorized", "NO")
 for phrase in ["GoalOS AGIALPHA Ascension", "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA", "Not externally audited", f"Ethereum Mainnet authorization: {expected_eth_auth}", "Ethereum Mainnet deployed: NO", "Public Sepolia"]:
     if phrase.lower() not in readme.lower():
         errors.append(f"README missing required phrase: {phrase}")
@@ -73,7 +77,7 @@ if "readiness:v4.2" in scripts:
 wf = (ROOT / ".github/workflows/agialpha-audit-candidate-ci.yml")
 if wf.exists():
     txt = wf.read_text(encoding="utf-8", errors="ignore")
-    for must in ["npm run verify:compiler-alignment", "npm run compile:ci", "npm run test:ci", "npm run test:all", "npm run static-check", "npm run readiness:v4.3", "npm run mainnet:authorization-check"]:
+    for must in ["npm run verify:compiler-alignment", "npm run compile:ci", "npm run test:ci", "npm run test:all", "npm run static-check", "npm run readiness:v4.3", "npm run mainnet:status-consistency"]:
         if must not in txt:
             errors.append(f"AGIALPHA CI workflow missing: {must}")
 

@@ -72,14 +72,15 @@ contract ReviewerBondRegistry is GoalOSAccessControl, ReentrancyGuard {
     function bondAsReviewer(string calldata metadataURI) external nonReentrant whenNotPaused {
         ReviewerProfile storage profile = reviewers[msg.sender];
         require(!profile.active, "REV_ACTIVE");
-        if (reviewerBondAGIALPHA > 0) {
-            agialphaToken.safeTransferFrom(msg.sender, address(this), reviewerBondAGIALPHA);
-        }
-        profile.bondedAmount = reviewerBondAGIALPHA;
+        uint256 amount = reviewerBondAGIALPHA;
+        profile.bondedAmount = amount;
         profile.metadataURI = metadataURI;
         profile.active = true;
         profile.createdAt = block.timestamp;
-        emit ReviewerBonded(msg.sender, reviewerBondAGIALPHA, metadataURI);
+        if (amount > 0) {
+            agialphaToken.safeTransferFrom(msg.sender, address(this), amount);
+        }
+        emit ReviewerBonded(msg.sender, amount, metadataURI);
     }
 
     function unbondReviewer() external nonReentrant {

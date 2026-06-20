@@ -42,9 +42,7 @@ jobs:
       - run: npm run mainnet:certificate:validate
       - run: npm run docs:status
       - run: npm run assert:public-status
-      - run: npm run mainnet:readiness-check
-      - run: npm run mainnet:deployment-authorization-check
-      - run: npm run mainnet:authorization-check
+      - run: npm run mainnet:status-consistency
       - run: npm run qa:manifest
       - run: npm run qa:manifest:verify
       - uses: actions/upload-artifact@v5

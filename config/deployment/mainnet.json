@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "1.0",
+  "network": "mainnet",
+  "expectedChainId": 1,
+  "agialphaToken": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
+  "finalOwnerKind": "SAFE",
+  "finalOwnerAddress": "0x0000000000000000000000000000000000000000",
+  "confirmations": 5,
+  "gasBudgetEthCeiling": "1.0",
+  "canaryLimits": {
+    "maxProtectedLiabilityPerToken": "0",
+    "maxSingleReward": "0"
+  },
+  "topologyVersion": "goalos-agialpha-ascension-v4.4.0",
+  "claimBoundary": "Configuration only; no deployment evidence."
+}

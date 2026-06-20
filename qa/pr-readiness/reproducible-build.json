@@ -1,6 +1,9 @@
 {
-  "artifactCount": 55,
-  "artifactDigest": "523aeac6ee0439821297b051a441ff61a16a532193192840a5ce20891937bab3",
+  "artifactCount": 61,
+  "artifactDigest": "0c5b44e4f4934594127fc9a05c34d4378847a1e1e5167edb53dd334cb2a73c27",
+  "blockers": [
+    "Direct compile artifacts are generated, but independent creation/runtime bytecode comparison is not release-complete."
+  ],
   "commands": [
     {
       "command": "npm run compile:ci",
@@ -18,5 +21,5 @@
     "direct solc compile"
   ],
   "schemaVersion": "1.0",
-  "status": "PHASE_A_PASS"
+  "status": "PHASE_A_LOCAL_PASS"
 }

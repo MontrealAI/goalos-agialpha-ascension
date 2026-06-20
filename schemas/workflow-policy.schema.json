@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GoalOS workflow policy",
+  "type": "object",
+  "required": ["schemaVersion", "commands", "workflows"],
+  "properties": {
+    "schemaVersion": {"type": "string"},
+    "commands": {
+      "type": "object",
+      "required": ["ordinaryConsistency", "positiveEnforcement", "forbiddenMainnetSecrets"],
+      "properties": {
+        "ordinaryConsistency": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+        "positiveEnforcement": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+        "forbiddenMainnetSecrets": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "workflows": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["path", "role"],
+        "properties": {
+          "path": {"type": "string"},
+          "role": {"enum": ["PR_VALIDATION", "LOCAL_REHEARSAL", "PUBLIC_EVIDENCE", "PROTECTED_RELEASE", "LIVE_DEPLOYMENT"]},
+          "requiredCommands": {"type": "array", "items": {"type": "string"}},
+          "forbiddenCommands": {"type": "array", "items": {"type": "string"}},
+          "requiredEnvironment": {"type": "string"},
+          "requiresWorkflowDispatch": {"type": "boolean"},
+          "mustNotBroadcastMainnet": {"type": "boolean"}
+        }
+      }
+    }
+  }
+}
