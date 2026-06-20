@@ -1,0 +1,11 @@
+{
+  "critical_high_unresolved": 0,
+  "evidence": [
+    "qa/pr-readiness",
+    "qa/mainnet-readiness/security-docket.json"
+  ],
+  "mainnetBroadcastOccurred": false,
+  "releaseStatus": "RELEASE_EVIDENCE_NOT_EXECUTED",
+  "schemaVersion": "1.0",
+  "status": "PHASE_A_PASS"
+}

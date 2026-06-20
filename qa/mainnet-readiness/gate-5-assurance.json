@@ -2,14 +2,57 @@
   "blockers": [
     "One-million-action invariant campaign, secondary fuzz engine, mutation suite, independent build comparison, and real Mainnet fork RPC rehearsal are absent."
   ],
-  "commands": [],
+  "commands": [
+    "npm run invariants:release",
+    "npm run differential:test",
+    "npm run mutation:critical",
+    "npm run build:reproducible",
+    "npm run security:docket",
+    "npm run mainnet:fork-rehearsal:release"
+  ],
   "evidence": [
     "qa/mainnet-operational-inventory.json"
   ],
   "failures": [],
   "gate": "G5",
   "name": "Autonomous assurance",
-  "releaseIdentity": "6e535126fd7d0414e3833a09e2360cd6d87d651d5d12b17c637649c27276fe07",
-  "requirements": [],
+  "releaseIdentity": "6db5c673e9a2a4459899a9b63833b8f84b5a367e6b57853a49a657ec09c7de0c",
+  "requirements": [
+    {
+      "evidenceRequired": true,
+      "id": "critical_high_unresolved_zero",
+      "status": "BLOCKED"
+    },
+    {
+      "evidenceRequired": true,
+      "id": "unit_integration_pass",
+      "status": "BLOCKED"
+    },
+    {
+      "evidenceRequired": true,
+      "id": "state_machine_actions_at_least_1000000",
+      "status": "BLOCKED"
+    },
+    {
+      "evidenceRequired": true,
+      "id": "recorded_seeds_at_least_32",
+      "status": "BLOCKED"
+    },
+    {
+      "evidenceRequired": true,
+      "id": "critical_mutation_kill_rate_100",
+      "status": "BLOCKED"
+    },
+    {
+      "evidenceRequired": true,
+      "id": "independent_builds_match",
+      "status": "BLOCKED"
+    },
+    {
+      "evidenceRequired": true,
+      "id": "recent_complete_topology_mainnet_fork_passes",
+      "status": "BLOCKED"
+    }
+  ],
   "status": "BLOCKED"
 }

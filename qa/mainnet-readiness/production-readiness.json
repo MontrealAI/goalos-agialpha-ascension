@@ -8,7 +8,7 @@
       "No live Ethereum Mainnet fork RPC/block rehearsal evidence supplied."
     ],
     "mainnetBroadcastOccurred": false,
-    "releaseIdentity": "6e535126fd7d0414e3833a09e2360cd6d87d651d5d12b17c637649c27276fe07",
+    "releaseIdentity": "6db5c673e9a2a4459899a9b63833b8f84b5a367e6b57853a49a657ec09c7de0c",
     "status": "BLOCKED"
   },
   "gates": {
@@ -16,85 +16,243 @@
       "blockers": [
         "Live/fork Phase A/B authority readback and private Safe/EOA commitment are absent."
       ],
-      "commands": [],
+      "commands": [
+        "npm run authority:verify",
+        "npm run ownership:test"
+      ],
       "evidence": [
         "qa/mainnet-operational-inventory.json"
       ],
       "failures": [],
       "gate": "G1",
       "name": "Business ownership continuity",
-      "releaseIdentity": "6e535126fd7d0414e3833a09e2360cd6d87d651d5d12b17c637649c27276fe07",
-      "requirements": [],
+      "releaseIdentity": "6db5c673e9a2a4459899a9b63833b8f84b5a367e6b57853a49a657ec09c7de0c",
+      "requirements": [
+        {
+          "evidenceRequired": true,
+          "id": "production_owner_config_commitment_valid",
+          "status": "BLOCKED"
+        },
+        {
+          "evidenceRequired": true,
+          "id": "complete_topology_fork_deployment_succeeds",
+          "status": "BLOCKED"
+        },
+        {
+          "evidenceRequired": true,
+          "id": "owner_handoff_readback_succeeds",
+          "status": "BLOCKED"
+        },
+        {
+          "evidenceRequired": true,
+          "id": "unexpected_role_holders_zero",
+          "status": "BLOCKED"
+        },
+        {
+          "evidenceRequired": true,
+          "id": "bootstrap_authority_denied",
+          "status": "BLOCKED"
+        }
+      ],
       "status": "BLOCKED"
     },
     "gate-2-overrides.json": {
       "blockers": [
         "Typed override coverage remains inventory-derived and requires contract-level execution evidence before PASS."
       ],
-      "commands": [],
+      "commands": [
+        "npm run business-overrides:test"
+      ],
       "evidence": [
         "qa/mainnet-operational-inventory.json"
       ],
       "failures": [],
       "gate": "G2",
       "name": "Business-owner override plane",
-      "releaseIdentity": "6e535126fd7d0414e3833a09e2360cd6d87d651d5d12b17c637649c27276fe07",
-      "requirements": [],
+      "releaseIdentity": "6db5c673e9a2a4459899a9b63833b8f84b5a367e6b57853a49a657ec09c7de0c",
+      "requirements": [
+        {
+          "evidenceRequired": true,
+          "id": "typed_owner_overrides_present",
+          "status": "BLOCKED"
+        },
+        {
+          "evidenceRequired": true,
+          "id": "generic_arbitrary_executor_absent",
+          "status": "BLOCKED"
+        },
+        {
+          "evidenceRequired": true,
+          "id": "override_replay_rejected",
+          "status": "BLOCKED"
+        },
+        {
+          "evidenceRequired": true,
+          "id": "override_events_and_accounting_proven",
+          "status": "BLOCKED"
+        },
+        {
+          "evidenceRequired": true,
+          "id": "fork_financial_override_evidence_present",
+          "status": "BLOCKED"
+        }
+      ],
       "status": "BLOCKED"
     },
     "gate-3-accounting.json": {
       "blockers": [
         "Exact on-chain accounting readback and canary enforcement evidence are absent."
       ],
-      "commands": [],
+      "commands": [
+        "npm run accounting:test",
+        "npm run accounting:status"
+      ],
       "evidence": [
         "qa/mainnet-operational-inventory.json"
       ],
       "failures": [],
       "gate": "G3",
       "name": "Accounting solvency and canary limits",
-      "releaseIdentity": "6e535126fd7d0414e3833a09e2360cd6d87d651d5d12b17c637649c27276fe07",
-      "requirements": [],
+      "releaseIdentity": "6db5c673e9a2a4459899a9b63833b8f84b5a367e6b57853a49a657ec09c7de0c",
+      "requirements": [
+        {
+          "evidenceRequired": true,
+          "id": "asset_holders_registered",
+          "status": "BLOCKED"
+        },
+        {
+          "evidenceRequired": true,
+          "id": "omitted_accounting_components_zero",
+          "status": "BLOCKED"
+        },
+        {
+          "evidenceRequired": true,
+          "id": "all_components_solvent",
+          "status": "BLOCKED"
+        },
+        {
+          "evidenceRequired": true,
+          "id": "malicious_token_suite_passes",
+          "status": "BLOCKED"
+        },
+        {
+          "evidenceRequired": true,
+          "id": "finite_canary_limits_enforced",
+          "status": "BLOCKED"
+        }
+      ],
       "status": "BLOCKED"
     },
     "gate-4-lifecycle.json": {
       "blockers": [
         "Global lifecycle selector enforcement and migration/shutdown rehearsal evidence are absent."
       ],
-      "commands": [],
+      "commands": [
+        "npm run lifecycle:test",
+        "npm run lifecycle:status"
+      ],
       "evidence": [
         "qa/mainnet-operational-inventory.json"
       ],
       "failures": [],
       "gate": "G4",
       "name": "Lifecycle migration wind-down shutdown",
-      "releaseIdentity": "6e535126fd7d0414e3833a09e2360cd6d87d651d5d12b17c637649c27276fe07",
-      "requirements": [],
+      "releaseIdentity": "6db5c673e9a2a4459899a9b63833b8f84b5a367e6b57853a49a657ec09c7de0c",
+      "requirements": [
+        {
+          "evidenceRequired": true,
+          "id": "single_global_lifecycle",
+          "status": "BLOCKED"
+        },
+        {
+          "evidenceRequired": true,
+          "id": "unclassified_selectors_zero",
+          "status": "BLOCKED"
+        },
+        {
+          "evidenceRequired": true,
+          "id": "no_new_obligations_outside_active",
+          "status": "BLOCKED"
+        },
+        {
+          "evidenceRequired": true,
+          "id": "migration_one_time_reconciled_rollbackable",
+          "status": "BLOCKED"
+        },
+        {
+          "evidenceRequired": true,
+          "id": "shutdown_rejects_unresolved_liabilities",
+          "status": "BLOCKED"
+        }
+      ],
       "status": "BLOCKED"
     },
     "gate-5-assurance.json": {
       "blockers": [
         "One-million-action invariant campaign, secondary fuzz engine, mutation suite, independent build comparison, and real Mainnet fork RPC rehearsal are absent."
       ],
-      "commands": [],
+      "commands": [
+        "npm run invariants:release",
+        "npm run differential:test",
+        "npm run mutation:critical",
+        "npm run build:reproducible",
+        "npm run security:docket",
+        "npm run mainnet:fork-rehearsal:release"
+      ],
       "evidence": [
         "qa/mainnet-operational-inventory.json"
       ],
       "failures": [],
       "gate": "G5",
       "name": "Autonomous assurance",
-      "releaseIdentity": "6e535126fd7d0414e3833a09e2360cd6d87d651d5d12b17c637649c27276fe07",
-      "requirements": [],
+      "releaseIdentity": "6db5c673e9a2a4459899a9b63833b8f84b5a367e6b57853a49a657ec09c7de0c",
+      "requirements": [
+        {
+          "evidenceRequired": true,
+          "id": "critical_high_unresolved_zero",
+          "status": "BLOCKED"
+        },
+        {
+          "evidenceRequired": true,
+          "id": "unit_integration_pass",
+          "status": "BLOCKED"
+        },
+        {
+          "evidenceRequired": true,
+          "id": "state_machine_actions_at_least_1000000",
+          "status": "BLOCKED"
+        },
+        {
+          "evidenceRequired": true,
+          "id": "recorded_seeds_at_least_32",
+          "status": "BLOCKED"
+        },
+        {
+          "evidenceRequired": true,
+          "id": "critical_mutation_kill_rate_100",
+          "status": "BLOCKED"
+        },
+        {
+          "evidenceRequired": true,
+          "id": "independent_builds_match",
+          "status": "BLOCKED"
+        },
+        {
+          "evidenceRequired": true,
+          "id": "recent_complete_topology_mainnet_fork_passes",
+          "status": "BLOCKED"
+        }
+      ],
       "status": "BLOCKED"
     }
   },
-  "releaseIdentity": "6e535126fd7d0414e3833a09e2360cd6d87d651d5d12b17c637649c27276fe07",
+  "releaseIdentity": "6db5c673e9a2a4459899a9b63833b8f84b5a367e6b57853a49a657ec09c7de0c",
   "securityDocket": {
     "blockers": [
       "Mandatory assurance categories are not all represented by fresh passing evidence."
     ],
     "commands": [],
-    "releaseIdentity": "6e535126fd7d0414e3833a09e2360cd6d87d651d5d12b17c637649c27276fe07",
+    "releaseIdentity": "6db5c673e9a2a4459899a9b63833b8f84b5a367e6b57853a49a657ec09c7de0c",
     "status": "BLOCKED"
   },
   "status": "BLOCKED"
