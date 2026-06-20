@@ -37,9 +37,10 @@ def sha(rel):
     return '0x'+digest.hexdigest()
 def evidence_entry(rel): return {'path':rel,'sha256':sha(rel),'present':(ROOT/rel).exists()}
 def release_id(): return git(['rev-parse','HEAD']) or 'UNKNOWN'
+def release_identity_hash(): return hobj({'packageLock':sha('package-lock.json'),'hardhatConfig':sha('hardhat.config.ts'),'deterministicCompiler':sha('scripts/compile-deterministic.js'),'compilerAlignment':sha('qa/compiler-alignment.json')})
 def operator_payload(release=None, temp=TEMP_DEPLOYER, owner=LEDGER, roles=None):
     roles=roles or {'owner':owner,'admin':owner,'treasury':owner,'controller':owner,'operator':owner}
-    return {'domain':DOMAIN,'schemaVersion':'1.0','chainId':1,'releaseId':release or release_id(),'canonicalAgialpha':AGI,'deploymentMode':'DORMANT','officialFunding':0,'activation':False,'temporaryDeployerAddress':temp,'finalLedgerOwnerAddress':owner,'permanentRoleAddresses':roles}
+    return {'domain':DOMAIN,'schemaVersion':'1.0','chainId':1,'releaseId':release or release_identity_hash(),'canonicalAgialpha':AGI,'deploymentMode':'DORMANT','officialFunding':0,'activation':False,'temporaryDeployerAddress':temp,'finalLedgerOwnerAddress':owner,'permanentRoleAddresses':roles}
 def public_commitments(payload):
     roles=payload['permanentRoleAddresses']
     role_root=hobj({'domain':DOMAIN+':ROLES','roles':roles})
@@ -103,15 +104,35 @@ def compute():
     cert={'schemaVersion':'1.0','authorizationClass':'DORMANT_INITIAL_MAINNET_DEPLOYMENT','generatedAt':now(),'repository':'MontrealAI/goalos-agialpha-ascension','sourceCommit':release_id(),'chainId':1,'canonicalAgialpha':AGI,'deploymentMode':'DORMANT','newObligationsAllowed':False,'officialFundingEnabled':False,'settlementEnabled':False,'activationCertificateHash':ZERO,'futureActivationRequiresLedgerSignedTransaction':True,'futureActivationRequiresNonzeroProductionCertificateHash':True,'operatorDataClassification':'PRIVATE_PREDEPLOYMENT_OPERATOR_DATA','operatorConfigCommitment':expected['operatorConfigCommitment'],'temporaryDeployerCommitment':expected['temporaryDeployerCommitment'],'finalOwnerCommitment':expected['finalOwnerCommitment'],'permanentRoleConfigurationRoot':expected['permanentRoleConfigurationRoot'],'temporaryDeployerIsPermanentAuthority':False,'finalOwnerConfigurationValidated':True,'unsolicitedTokenTransfersPolicy':'Unauthorized unsolicited token transfers do not constitute accepted user funds.','blockers':blockers,'warnings':warnings,'evidence':{k:evidence_entry(v) for k,v in {'packageLock':'package-lock.json','hardhatConfig':'hardhat.config.ts','compilerAlignment':'qa/compiler-alignment.json','toolchainClearance':'qa/public-toolchain-clearance-evidence.json','forkRehearsal':'qa/ETHEREUM_MAINNET_FORK_SIMULATION.json','sepoliaDeployment':'qa/sepolia-deployment-evidence.json','sepoliaVerification':'qa/sepolia-contract-verification-evidence.json','deploymentPlanPublic':'qa/dormant-mainnet-readiness/deployment-plan.public.json','certificateScript':'scripts/dormant_mainnet.py'}.items()}}
     for k in DORM_YES: cert[k]=ready
     for k in PROD_NO: cert[k]='NO'
-    cert['planHash']=hobj({'publicPlanHash':sha('qa/dormant-mainnet-readiness/deployment-plan.public.json'),'operatorConfigCommitment':expected['operatorConfigCommitment'],'releaseId':release_id(),'compilerAlignmentHash':sha('qa/compiler-alignment.json'),'canonicalAgialpha':AGI,'configurationRoot':expected['permanentRoleConfigurationRoot'],'dormantLifecycleState':{'deploymentMode':'DORMANT','officialFunding':0,'activation':False}})
-    cert['certificateHash']=hobj({k:v for k,v in cert.items() if k!='certificateHash'})
+    cert['planHash']=hobj({'publicPlanHash':sha('qa/dormant-mainnet-readiness/deployment-plan.public.json'),'operatorConfigCommitment':expected['operatorConfigCommitment'],'releaseIdentityHash':release_identity_hash(),'compilerAlignmentHash':sha('qa/compiler-alignment.json'),'canonicalAgialpha':AGI,'configurationRoot':expected['permanentRoleConfigurationRoot'],'dormantLifecycleState':{'deploymentMode':'DORMANT','officialFunding':0,'activation':False}})
+    cert['certificateHash']=hobj({k:v for k,v in cert.items() if k not in {'certificateHash','sourceCommit'}})
     return cert
+
+def semantic_errors(cert):
+    errors=[]
+    for k in PROD_NO:
+        if cert.get(k)!='NO': errors.append(f'{k} must remain NO')
+    if cert.get('authorizationClass')!='DORMANT_INITIAL_MAINNET_DEPLOYMENT': errors.append('authorizationClass must be DORMANT_INITIAL_MAINNET_DEPLOYMENT')
+    if cert.get('chainId')!=1: errors.append('chain ID must be fixed to 1')
+    if str(cert.get('canonicalAgialpha','')).lower()!=AGI.lower(): errors.append('canonical AGIALPHA token mismatch')
+    if cert.get('mockTokenEnabled') is True or cert.get('newAgialphaTokenDeployed') is True: errors.append('MockAGIALPHA or new AGIALPHA token path cannot be enabled')
+    if cert.get('temporaryDeployerIsPermanentAuthority') is not False or cert.get('temporaryDeployerResidualAuthority',0) not in (0,None): errors.append('temporary deployer must have zero permanent authority')
+    if cert.get('finalOwnerConfigurationValidated') is not True: errors.append('Ledger Owner configuration is absent or not validated')
+    if cert.get('officialFunding',0) not in (0,None) or cert.get('officialFundingEnabled') is not False: errors.append('official protocol/vault funding must be zero and disabled')
+    if cert.get('newObligationsAllowed') is not False: errors.append('risk-increasing entry point newObligationsAllowed must be disabled')
+    if cert.get('settlementEnabled') is not False: errors.append('settlement must be disabled')
+    if cert.get('activation') is True or cert.get('activationCertificateHash')!=ZERO: errors.append('dormant deployment must not activate the system')
+    ev=cert.get('evidence') or {}
+    fork=ev.get('forkRehearsal') or {}
+    if not fork.get('path') or not fork.get('sha256'): errors.append('fork evidence is missing/stale or not hash-bound')
+    plan=ev.get('deploymentPlanPublic') or {}
+    if not plan.get('path') or not plan.get('sha256'): errors.append('verification inputs are incomplete: deployment plan is not hash-bound')
+    return errors
 
 def validate(path=CERT, require_ready=False):
     cert=json.loads(pathlib.Path(path).read_text()); errors=[]
     fresh=compute()
-    for k in PROD_NO:
-        if cert.get(k)!='NO': errors.append(f'{k} must remain NO')
+    errors.extend(semantic_errors(cert))
     for k in ['authorizationClass','chainId','canonicalAgialpha','operatorConfigCommitment','temporaryDeployerCommitment','finalOwnerCommitment','permanentRoleConfigurationRoot','planHash','certificateHash']:
         if cert.get(k)!=fresh.get(k): errors.append(f'certificate field {k} does not match freshly computed value')
     for name,e in (cert.get('evidence') or {}).items():
