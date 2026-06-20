@@ -49,7 +49,7 @@ jobs:
       - name: Release-mode fork rehearsal (no broadcast)
         run: npm run mainnet:fork-rehearsal:release
       - name: Production readiness certificate checks
-        run: npm run mainnet:production-readiness && npm run mainnet:certificate:validate && npm run mainnet:final-check
+        run: npm run mainnet:production-readiness && npm run mainnet:certificate:validate && npm run mainnet:final-check && npm run mainnet:readiness-require-pass && npm run mainnet:deployment-authorization-require-pass && npm run mainnet:authorization-require-pass
       - name: Upload redacted public evidence
         uses: actions/upload-artifact@v4
         if: always()

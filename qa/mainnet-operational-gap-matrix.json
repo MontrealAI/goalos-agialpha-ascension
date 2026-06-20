@@ -35,7 +35,7 @@
     }
   ],
   "selectorCoverage": {
-    "stateChangingSelectorCount": 526,
+    "stateChangingSelectorCount": 523,
     "status": "BLOCKED",
     "unclassified": [
       {
@@ -535,6 +535,22 @@
         "signature": "renounceRole(bytes32,address)"
       },
       {
+        "attributes": "external onlyOwner",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "GoalOSBusinessLifecycle",
+        "name": "classifySelector",
+        "path": "contracts/registry/GoalOSBusinessLifecycle.sol",
+        "signature": "classifySelector(bytes4,uint8)"
+      },
+      {
+        "attributes": "external onlyOwner validOverrideCommitments(reasonHash, evidenceHash)",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "GoalOSBusinessLifecycle",
+        "name": "transitionTo",
+        "path": "contracts/registry/GoalOSBusinessLifecycle.sol",
+        "signature": "transitionTo(uint8,bytes32,bytes32,bytes32,bool)"
+      },
+      {
         "attributes": "external nonReentrant",
         "classification": "normal_operation_unclassified_review_required",
         "contract": "JobClaimBondManager",
@@ -597,14 +613,6 @@
         "name": "expireOpenJob",
         "path": "contracts/registry/JobRegistry.sol",
         "signature": "expireOpenJob(uint256,bytes32)"
-      },
-      {
-        "attributes": "public override",
-        "classification": "normal_operation_unclassified_review_required",
-        "contract": "JobRegistry",
-        "name": "renounceRole",
-        "path": "contracts/registry/JobRegistry.sol",
-        "signature": "renounceRole(bytes32,address)"
       },
       {
         "attributes": "public override",
@@ -903,8 +911,8 @@
         "signature": "renounceRole(bytes32,address)"
       }
     ],
-    "unclassifiedCount": 108
+    "unclassifiedCount": 109
   },
-  "sourceTreeHash": "8e1fb3bf9aa2a73cee4aa64b7ab3ff91fd59762ef710d734fa577c7ccab3764a",
+  "sourceTreeHash": "3acc363757fa88f185d5ba6c538af58c01f609c8136abf561577ca1dec20ab26",
   "sourceTreeHashScope": "tracked git index content excluding generated readiness artifacts"
 }

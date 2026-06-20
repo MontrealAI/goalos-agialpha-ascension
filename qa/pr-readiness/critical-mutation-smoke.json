@@ -1,4 +1,5 @@
 {
+  "claimBoundary": "Curated mutants are a bounded local Phase A smoke set; protected release must execute deterministic mutant evidence.",
   "criticalMutants": [
     "authorization",
     "ownership-transfer",
@@ -20,6 +21,6 @@
   "releaseStatus": "RELEASE_EVIDENCE_NOT_EXECUTED",
   "releaseThresholdNotClaimed": true,
   "schemaVersion": "1.0",
-  "status": "PHASE_A_PASS",
+  "status": "PHASE_A_LOCAL_PASS",
   "survived": 0
 }

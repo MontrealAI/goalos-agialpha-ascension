@@ -1,4 +1,5 @@
 {
+  "claimBoundary": "Bounded local invariant configuration/evidence only; protected release must execute full stateful engine thresholds.",
   "configuredReleaseThresholds": {
     "actions": 1000000,
     "seeds": 32
@@ -13,5 +14,5 @@
   ],
   "releaseStatus": "RELEASE_EVIDENCE_NOT_EXECUTED",
   "schemaVersion": "1.0",
-  "status": "PHASE_A_PASS"
+  "status": "PHASE_A_LOCAL_PASS"
 }

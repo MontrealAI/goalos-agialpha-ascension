@@ -204,6 +204,20 @@
       "path": "contracts/optional/SponsorRegistry.sol"
     },
     {
+      "accountingStatus": "NOT_ASSET_HOLDING",
+      "assetHolding": false,
+      "assetHoldingEvidence": "none detected",
+      "contract": "GoalOSBusinessLifecycle",
+      "path": "contracts/registry/GoalOSBusinessLifecycle.sol"
+    },
+    {
+      "accountingStatus": "NOT_ASSET_HOLDING",
+      "assetHolding": false,
+      "assetHoldingEvidence": "none detected",
+      "contract": "GoalOSDeploymentDirectory",
+      "path": "contracts/registry/GoalOSDeploymentDirectory.sol"
+    },
+    {
       "accountingStatus": "REQUIRES_EXACT_ONCHAIN_STATUS",
       "assetHolding": true,
       "assetHoldingEvidence": "token/native inbound flow or asset-bearing name",

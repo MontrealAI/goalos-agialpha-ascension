@@ -29,6 +29,8 @@
 - `CredentialRevocationRegistry` (`contracts/optional/CredentialRevocationRegistry.sol`): See classified selectors; add typed owner override before PASS if no recovery selector exists for a nonterminal state.
 - `DisputeRegistry` (`contracts/optional/DisputeRegistry.sol`): See classified selectors; add typed owner override before PASS if no recovery selector exists for a nonterminal state.
 - `SponsorRegistry` (`contracts/optional/SponsorRegistry.sol`): See classified selectors; add typed owner override before PASS if no recovery selector exists for a nonterminal state.
+- `GoalOSBusinessLifecycle` (`contracts/registry/GoalOSBusinessLifecycle.sol`): See classified selectors; add typed owner override before PASS if no recovery selector exists for a nonterminal state.
+- `GoalOSDeploymentDirectory` (`contracts/registry/GoalOSDeploymentDirectory.sol`): See classified selectors; add typed owner override before PASS if no recovery selector exists for a nonterminal state.
 - `JobClaimBondManager` (`contracts/registry/JobClaimBondManager.sol`): See classified selectors; add typed owner override before PASS if no recovery selector exists for a nonterminal state.
 - `JobRegistry` (`contracts/registry/JobRegistry.sol`): See classified selectors; add typed owner override before PASS if no recovery selector exists for a nonterminal state.
 - `LaunchGateRegistry` (`contracts/registry/LaunchGateRegistry.sol`): See classified selectors; add typed owner override before PASS if no recovery selector exists for a nonterminal state.

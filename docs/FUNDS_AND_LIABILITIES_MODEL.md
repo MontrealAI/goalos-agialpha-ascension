@@ -31,6 +31,8 @@ Per-token accounting is required; unlike tokens must not be value-aggregated.
 - `CredentialRevocationRegistry`: NOT_ASSET_HOLDING (none detected)
 - `DisputeRegistry`: NOT_ASSET_HOLDING (none detected)
 - `SponsorRegistry`: NOT_ASSET_HOLDING (none detected)
+- `GoalOSBusinessLifecycle`: NOT_ASSET_HOLDING (none detected)
+- `GoalOSDeploymentDirectory`: NOT_ASSET_HOLDING (none detected)
 - `JobClaimBondManager`: REQUIRES_EXACT_ONCHAIN_STATUS (token/native inbound flow or asset-bearing name)
 - `JobRegistry`: REQUIRES_EXACT_ONCHAIN_STATUS (token/native inbound flow or asset-bearing name)
 - `LaunchGateRegistry`: NOT_ASSET_HOLDING (none detected)

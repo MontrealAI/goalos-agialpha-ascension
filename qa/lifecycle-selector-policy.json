@@ -2370,6 +2370,30 @@
       "signature": "renounceRole(bytes32,address)"
     },
     {
+      "attributes": "external onlyOwner",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "GoalOSBusinessLifecycle",
+      "name": "classifySelector",
+      "path": "contracts/registry/GoalOSBusinessLifecycle.sol",
+      "signature": "classifySelector(bytes4,uint8)"
+    },
+    {
+      "attributes": "external onlyOwner validOverrideCommitments(reasonHash, evidenceHash)",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "GoalOSBusinessLifecycle",
+      "name": "transitionTo",
+      "path": "contracts/registry/GoalOSBusinessLifecycle.sol",
+      "signature": "transitionTo(uint8,bytes32,bytes32,bytes32,bool)"
+    },
+    {
+      "attributes": "external onlyOwner validOverrideCommitments(reasonHash, evidenceHash)",
+      "classification": "safe_exit_or_settlement",
+      "contract": "GoalOSDeploymentDirectory",
+      "name": "recordRelease",
+      "path": "contracts/registry/GoalOSDeploymentDirectory.sol",
+      "signature": "recordRelease(uint8,bytes32,bytes32)"
+    },
+    {
       "attributes": "external onlyAdmin",
       "classification": "configuration",
       "contract": "JobClaimBondManager",
@@ -2514,6 +2538,14 @@
       "signature": "setRewardTokenAllowlistEnabled(bool)"
     },
     {
+      "attributes": "external onlyAdmin",
+      "classification": "configuration",
+      "contract": "JobRegistry",
+      "name": "setRiskLimits",
+      "path": "contracts/registry/JobRegistry.sol",
+      "signature": "setRiskLimits(uint256,uint256)"
+    },
+    {
       "attributes": "external nonReentrant whenNotPaused returns (uint256 jobId)",
       "classification": "new_obligation_or_risk_increase",
       "contract": "JobRegistry",
@@ -2594,68 +2626,12 @@
       "signature": "expireOpenJob(uint256,bytes32)"
     },
     {
-      "attributes": "external",
-      "classification": "lifecycle_control_or_migration",
-      "contract": "JobRegistry",
-      "name": "pause",
-      "path": "contracts/registry/JobRegistry.sol",
-      "signature": "pause()"
-    },
-    {
-      "attributes": "external",
-      "classification": "lifecycle_control_or_migration",
-      "contract": "JobRegistry",
-      "name": "unpause",
-      "path": "contracts/registry/JobRegistry.sol",
-      "signature": "unpause()"
-    },
-    {
-      "attributes": "public override onlyOwner",
-      "classification": "configuration",
-      "contract": "JobRegistry",
-      "name": "transferOwnership",
-      "path": "contracts/registry/JobRegistry.sol",
-      "signature": "transferOwnership(address)"
-    },
-    {
-      "attributes": "public onlyOwner",
+      "attributes": "external onlyOwner nonReentrant returns (bytes32 overrideId)",
       "classification": "owner_recovery_or_safe_exit",
       "contract": "JobRegistry",
-      "name": "cancelOwnershipTransfer",
+      "name": "ownerResolveJob",
       "path": "contracts/registry/JobRegistry.sol",
-      "signature": "cancelOwnershipTransfer()"
-    },
-    {
-      "attributes": "public",
-      "classification": "configuration",
-      "contract": "JobRegistry",
-      "name": "acceptOwnership",
-      "path": "contracts/registry/JobRegistry.sol",
-      "signature": "acceptOwnership()"
-    },
-    {
-      "attributes": "public override",
-      "classification": "configuration",
-      "contract": "JobRegistry",
-      "name": "grantRole",
-      "path": "contracts/registry/JobRegistry.sol",
-      "signature": "grantRole(bytes32,address)"
-    },
-    {
-      "attributes": "public override",
-      "classification": "owner_recovery_or_safe_exit",
-      "contract": "JobRegistry",
-      "name": "revokeRole",
-      "path": "contracts/registry/JobRegistry.sol",
-      "signature": "revokeRole(bytes32,address)"
-    },
-    {
-      "attributes": "public override",
-      "classification": "normal_operation_unclassified_review_required",
-      "contract": "JobRegistry",
-      "name": "renounceRole",
-      "path": "contracts/registry/JobRegistry.sol",
-      "signature": "renounceRole(bytes32,address)"
+      "signature": "ownerResolveJob(uint256,uint8,address,bytes32,bytes32)"
     },
     {
       "attributes": "external onlyOperator",
@@ -4210,6 +4186,6 @@
       "signature": "renounceRole(bytes32,address)"
     }
   ],
-  "sourceTreeHash": "8e1fb3bf9aa2a73cee4aa64b7ab3ff91fd59762ef710d734fa577c7ccab3764a",
-  "unclassifiedCount": 108
+  "sourceTreeHash": "3acc363757fa88f185d5ba6c538af58c01f609c8136abf561577ca1dec20ab26",
+  "unclassifiedCount": 109
 }

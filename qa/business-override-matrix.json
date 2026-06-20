@@ -262,6 +262,24 @@
       "testCoverage": "BLOCKED until contract-specific tests are complete"
     },
     {
+      "contract": "GoalOSBusinessLifecycle",
+      "evidence": [
+        "source inventory"
+      ],
+      "ownerRecoveryAction": "See classified selectors; add typed owner override before PASS if no recovery selector exists for a nonterminal state.",
+      "path": "contracts/registry/GoalOSBusinessLifecycle.sol",
+      "testCoverage": "BLOCKED until contract-specific tests are complete"
+    },
+    {
+      "contract": "GoalOSDeploymentDirectory",
+      "evidence": [
+        "source inventory"
+      ],
+      "ownerRecoveryAction": "See classified selectors; add typed owner override before PASS if no recovery selector exists for a nonterminal state.",
+      "path": "contracts/registry/GoalOSDeploymentDirectory.sol",
+      "testCoverage": "BLOCKED until contract-specific tests are complete"
+    },
+    {
       "contract": "JobClaimBondManager",
       "evidence": [
         "source inventory"

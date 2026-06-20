@@ -1,4 +1,5 @@
 {
+  "claimBoundary": "Local security docket reports unresolved Critical/High count only; protected release evidence remains required.",
   "critical_high_unresolved": 0,
   "evidence": [
     "qa/pr-readiness",
@@ -7,5 +8,5 @@
   "mainnetBroadcastOccurred": false,
   "releaseStatus": "RELEASE_EVIDENCE_NOT_EXECUTED",
   "schemaVersion": "1.0",
-  "status": "PHASE_A_PASS"
+  "status": "PHASE_A_LOCAL_PASS"
 }

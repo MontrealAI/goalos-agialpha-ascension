@@ -1,1 +1,18 @@
-{"schemaVersion":"1.0","status":"GENERATED_STATIC","storageImpact":"New contracts add fresh storage. JobRegistry appends risk-limit and accounting mappings after existing fields; no existing field was intentionally reordered.","claimBoundary":"Local storage report only."}
+{
+  "schemaVersion": "1.0",
+  "status": "GENERATED_STATIC_REVIEW_REQUIRED",
+  "storageImpact": "JobRegistry storage is not append-only relative to the pre-change concrete layout: switching the base from GoalOSAccessControl to BusinessOverrideCore introduces businessOverrideNonce and businessOverrideUsed in inherited storage before JobRegistry fields, and maxProtectedLiabilityPerToken/maxSingleReward were inserted before rewardTokenAllowlistEnabled. Treat this as a storage-layout shift that is safe only for fresh deployments or for an explicitly reviewed migration; it must not be used to approve an in-place proxy upgrade.",
+  "changedStorageFields": [
+    "BusinessOverrideCore.businessOverrideNonce",
+    "BusinessOverrideCore.businessOverrideUsed",
+    "JobRegistry.maxProtectedLiabilityPerToken",
+    "JobRegistry.maxSingleReward",
+    "JobRegistry._protectedLiability",
+    "JobRegistry._reservedBalance",
+    "JobRegistry._pendingWithdrawal",
+    "JobRegistry._totalInflow",
+    "JobRegistry._totalOutflow"
+  ],
+  "upgradeSafety": "NOT_APPEND_ONLY_FOR_JOBREGISTRY",
+  "claimBoundary": "Local storage report only; no proxy-upgrade safety approval and no Mainnet deployment evidence."
+}

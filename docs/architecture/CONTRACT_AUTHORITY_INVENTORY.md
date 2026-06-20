@@ -29,8 +29,10 @@
 - `CredentialRevocationRegistry` (`contracts/optional/CredentialRevocationRegistry.sol`): roles=DEFAULT_ADMIN_ROLE, OPERATOR_ROLE, PAUSER_ROLE, PROTOCOL_ADMIN_ROLE, REVIEWER_MANAGER_ROLE, TREASURY_ROLE, VAULT_MANAGER_ROLE; mutating selectors=10; assetHolding=False.
 - `DisputeRegistry` (`contracts/optional/DisputeRegistry.sol`): roles=DEFAULT_ADMIN_ROLE, OPERATOR_ROLE, PAUSER_ROLE, PROTOCOL_ADMIN_ROLE, REVIEWER_MANAGER_ROLE, TREASURY_ROLE, VAULT_MANAGER_ROLE; mutating selectors=10; assetHolding=False.
 - `SponsorRegistry` (`contracts/optional/SponsorRegistry.sol`): roles=DEFAULT_ADMIN_ROLE, OPERATOR_ROLE, PAUSER_ROLE, PROTOCOL_ADMIN_ROLE, REVIEWER_MANAGER_ROLE, TREASURY_ROLE, VAULT_MANAGER_ROLE; mutating selectors=10; assetHolding=False.
+- `GoalOSBusinessLifecycle` (`contracts/registry/GoalOSBusinessLifecycle.sol`): roles=none; mutating selectors=2; assetHolding=False.
+- `GoalOSDeploymentDirectory` (`contracts/registry/GoalOSDeploymentDirectory.sol`): roles=none; mutating selectors=1; assetHolding=False.
 - `JobClaimBondManager` (`contracts/registry/JobClaimBondManager.sol`): roles=DEFAULT_ADMIN_ROLE, OPERATOR_ROLE, PAUSER_ROLE, PROTOCOL_ADMIN_ROLE, REVIEWER_MANAGER_ROLE, TREASURY_ROLE, VAULT_MANAGER_ROLE; mutating selectors=14; assetHolding=True.
-- `JobRegistry` (`contracts/registry/JobRegistry.sol`): roles=DEFAULT_ADMIN_ROLE, OPERATOR_ROLE, PAUSER_ROLE, PROTOCOL_ADMIN_ROLE, REVIEWER_MANAGER_ROLE, TREASURY_ROLE, VAULT_MANAGER_ROLE; mutating selectors=22; assetHolding=True.
+- `JobRegistry` (`contracts/registry/JobRegistry.sol`): roles=none; mutating selectors=16; assetHolding=True.
 - `LaunchGateRegistry` (`contracts/registry/LaunchGateRegistry.sol`): roles=DEFAULT_ADMIN_ROLE, OPERATOR_ROLE, PAUSER_ROLE, PROTOCOL_ADMIN_ROLE, REVIEWER_MANAGER_ROLE, TREASURY_ROLE, VAULT_MANAGER_ROLE; mutating selectors=9; assetHolding=False.
 - `LegacyAGIJobManagerRegistry` (`contracts/registry/LegacyAGIJobManagerRegistry.sol`): roles=DEFAULT_ADMIN_ROLE, OPERATOR_ROLE, PAUSER_ROLE, PROTOCOL_ADMIN_ROLE, REVIEWER_MANAGER_ROLE, TREASURY_ROLE, VAULT_MANAGER_ROLE; mutating selectors=10; assetHolding=False.
 - `PremiumAccessRegistry` (`contracts/registry/PremiumAccessRegistry.sol`): roles=DEFAULT_ADMIN_ROLE, OPERATOR_ROLE, PAUSER_ROLE, PROTOCOL_ADMIN_ROLE, REVIEWER_MANAGER_ROLE, TREASURY_ROLE, VAULT_MANAGER_ROLE; mutating selectors=9; assetHolding=False.

@@ -1,5 +1,5 @@
 {
-  "branch": "codex/mainnet-five-gate-production-completion",
+  "branch": "work",
   "commit": "RESOLVED_BY_GIT_CHECKOUT_AT_VALIDATION",
   "commitBindingMode": "self-referential committed evidence uses sourceTreeHash; validators resolve the current git commit at runtime",
   "dependencyLockHash": "981e04b39af29bc04dae677e1d9a98b9e0dc5f8a5995db99d8debd23eb02a709",
@@ -8,5 +8,5 @@
   "mainnetDeployed": "NO",
   "mainnetVerified": "NO",
   "schemaVersion": "1.0",
-  "sourceTreeHash": "8e1fb3bf9aa2a73cee4aa64b7ab3ff91fd59762ef710d734fa577c7ccab3764a"
+  "sourceTreeHash": "3acc363757fa88f185d5ba6c538af58c01f609c8136abf561577ca1dec20ab26"
 }

@@ -23,3 +23,6 @@ jobs:
       - run: npm run codex:phase-a
       - run: npm run mainnet:fork-rehearsal:release
       - run: npm run mainnet:final-check
+      - run: npm run mainnet:readiness-require-pass
+      - run: npm run mainnet:deployment-authorization-require-pass
+      - run: npm run mainnet:authorization-require-pass

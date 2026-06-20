@@ -296,6 +296,9 @@
 - `SponsorRegistry.grantRole`: `configuration`
 - `SponsorRegistry.revokeRole`: `owner_recovery_or_safe_exit`
 - `SponsorRegistry.renounceRole`: `normal_operation_unclassified_review_required`
+- `GoalOSBusinessLifecycle.classifySelector`: `normal_operation_unclassified_review_required`
+- `GoalOSBusinessLifecycle.transitionTo`: `normal_operation_unclassified_review_required`
+- `GoalOSDeploymentDirectory.recordRelease`: `safe_exit_or_settlement`
 - `JobClaimBondManager.setClaimBond`: `configuration`
 - `JobClaimBondManager.setTreasury`: `configuration`
 - `JobClaimBondManager.claimJob`: `new_obligation_or_risk_increase`
@@ -314,6 +317,7 @@
 - `JobRegistry.setTreasury`: `configuration`
 - `JobRegistry.setRewardTokenAllowed`: `configuration`
 - `JobRegistry.setRewardTokenAllowlistEnabled`: `configuration`
+- `JobRegistry.setRiskLimits`: `configuration`
 - `JobRegistry.postJob`: `new_obligation_or_risk_increase`
 - `JobRegistry.markClaimed`: `normal_operation_unclassified_review_required`
 - `JobRegistry.markSubmitted`: `normal_operation_unclassified_review_required`
@@ -324,14 +328,7 @@
 - `JobRegistry.expireClaimedJob`: `normal_operation_unclassified_review_required`
 - `JobRegistry.cancelOpenJob`: `owner_recovery_or_safe_exit`
 - `JobRegistry.expireOpenJob`: `normal_operation_unclassified_review_required`
-- `JobRegistry.pause`: `lifecycle_control_or_migration`
-- `JobRegistry.unpause`: `lifecycle_control_or_migration`
-- `JobRegistry.transferOwnership`: `configuration`
-- `JobRegistry.cancelOwnershipTransfer`: `owner_recovery_or_safe_exit`
-- `JobRegistry.acceptOwnership`: `configuration`
-- `JobRegistry.grantRole`: `configuration`
-- `JobRegistry.revokeRole`: `owner_recovery_or_safe_exit`
-- `JobRegistry.renounceRole`: `normal_operation_unclassified_review_required`
+- `JobRegistry.ownerResolveJob`: `owner_recovery_or_safe_exit`
 - `LaunchGateRegistry.setGate`: `configuration`
 - `LaunchGateRegistry.pause`: `lifecycle_control_or_migration`
 - `LaunchGateRegistry.unpause`: `lifecycle_control_or_migration`
