@@ -1,0 +1,91 @@
+{
+  "schemaVersion": "1.0",
+  "authorizationClass": "DORMANT_INITIAL_MAINNET_DEPLOYMENT",
+  "generatedAt": "2026-06-20T21:20:36.820502+00:00",
+  "repository": "MontrealAI/goalos-agialpha-ascension",
+  "sourceCommit": "a8967643f3ff293fb2a35aee8ac7090789bb95e7",
+  "chainId": 1,
+  "canonicalAgialpha": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
+  "temporaryDeployer": "0x6c8B8897Fb6b08B4070387233B89b3E9A94eD00E",
+  "ledgerOwner": "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99",
+  "deploymentMode": "DORMANT",
+  "newObligationsAllowed": false,
+  "officialFundingEnabled": false,
+  "settlementEnabled": false,
+  "activationCertificateHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+  "futureActivationRequiresLedgerSignedTransaction": true,
+  "futureActivationRequiresNonzeroProductionCertificateHash": true,
+  "unsolicitedTokenTransfersPolicy": "Unauthorized unsolicited token transfers do not constitute accepted user funds.",
+  "blockers": [
+    "Git working tree is not clean; exact release identity is not fixed.",
+    "Mandatory security toolchain has unresolved Critical/High findings or missing evidence.",
+    "Exact full-topology recent live Mainnet-fork rehearsal evidence is missing or incomplete.",
+    "Deployment plan missing contracts.",
+    "Deployment plan missing transactions.",
+    "Deployment plan missing gasEstimates.",
+    "Deployment plan missing verificationInputs.",
+    "Deployment plan missing constructors.",
+    "Sepolia verification evidence is not 49/49 complete (verified 0/49)."
+  ],
+  "warnings": [],
+  "evidence": {
+    "packageLock": {
+      "path": "package-lock.json",
+      "sha256": "0x9739ecf251762c3828813424f8e7d0d3b291611125cf5eafb31fc32479a3f514",
+      "present": true
+    },
+    "hardhatConfig": {
+      "path": "hardhat.config.ts",
+      "sha256": "0xbf836b8ea10a9012249a5e9be42c80ea66e0ab333c33cb0123269149084eabc1",
+      "present": true
+    },
+    "compilerAlignment": {
+      "path": "qa/compiler-alignment.json",
+      "sha256": "0xc9f87e01b42cba0a9b0fcaf2513e400ee44e8dd3f2182705371500a0b4ce90db",
+      "present": true
+    },
+    "toolchainClearance": {
+      "path": "qa/public-toolchain-clearance-evidence.json",
+      "sha256": "0x8a5958a3d9fe915dbc3a7a81d9c1dcb372802068c7076ec8a661793dcb7b10d3",
+      "present": true
+    },
+    "forkRehearsal": {
+      "path": "qa/ETHEREUM_MAINNET_FORK_SIMULATION.json",
+      "sha256": "0x5eeb1089b2b99c6f36b6e243aaa87aef1b7207e51b3c531a49afe9623947fd65",
+      "present": true
+    },
+    "sepoliaDeployment": {
+      "path": "qa/sepolia-deployment-evidence.json",
+      "sha256": "0xa05e2b07bc1a2f0dceeac43cffa8fead459a4d335c65fb14f7fa7d8a26bf0dc5",
+      "present": true
+    },
+    "sepoliaVerification": {
+      "path": "qa/sepolia-contract-verification-evidence.json",
+      "sha256": "0xe6ac87287fe40096a8c5e5153958481b8667da4bb0efaf7035b746e9c2e9dd09",
+      "present": true
+    },
+    "deploymentPlan": {
+      "path": "qa/dormant-mainnet-readiness/deployment-plan.json",
+      "sha256": "0x6aa0c57fe6c74b2c631798882505d17606b6ca3496d4ad35f32d04517b778ba0",
+      "present": true
+    },
+    "certificateScript": {
+      "path": "scripts/dormant_mainnet.py",
+      "sha256": "0x9a458ee03a40a35f26f80deaf4d0c82d8dafde4a1f824f68e4221f2f735527ad",
+      "present": true
+    }
+  },
+  "DORMANT_TECHNICALLY_MAINNET_READY": "NO",
+  "DORMANT_MAINNET_DEPLOYMENT_AUTHORIZED": "NO",
+  "DORMANT_ETHEREUM_MAINNET_AUTHORIZED": "NO",
+  "PRODUCTION_TECHNICALLY_MAINNET_READY": "NO",
+  "PRODUCTION_MAINNET_DEPLOYMENT_AUTHORIZED": "NO",
+  "PRODUCTION_ETHEREUM_MAINNET_AUTHORIZED": "NO",
+  "USER_FUNDS_AUTHORIZED": "NO",
+  "PROTOCOL_ACTIVATION_AUTHORIZED": "NO",
+  "CUSTOMER_ONBOARDING_AUTHORIZED": "NO",
+  "PUBLIC_RELIANCE_AUTHORIZED": "NO",
+  "SETTLEMENT_AUTHORIZED": "NO",
+  "UNBOUNDED_ECONOMIC_EXPOSURE_AUTHORIZED": "NO",
+  "certificateHash": "0x6fbc86e4fa33121e490d16c673e32747c8d34ee501dfbbf61bf51b4f5fc41531"
+}

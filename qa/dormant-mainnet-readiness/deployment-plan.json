@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "1.0-template",
+  "chainId": 1,
+  "canonicalAgialpha": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
+  "temporaryDeployer": "0x6c8B8897Fb6b08B4070387233B89b3E9A94eD00E",
+  "ledgerOwner": "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99",
+  "mockTokenEnabled": false,
+  "temporaryDeployerPermanentAuthority": 0,
+  "officialFundingTotal": 0,
+  "riskIncreasingEntryPointsDisabled": true,
+  "ledgerPrivateKeyRequested": false,
+  "ciBroadcastPossible": false,
+  "contracts": [],
+  "constructors": [],
+  "transactions": [],
+  "gasEstimates": [],
+  "verificationInputs": []
+}

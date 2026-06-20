@@ -1,7 +1,7 @@
 {
   "name": "goalos-agialpha-ascension",
   "version": "4.4.0",
-  "description": "GoalOS-native reimplementation of α-AGI Ascension using existing AGIALPHA for proof-settled AI workflow work.",
+  "description": "GoalOS-native reimplementation of \u03b1-AGI Ascension using existing AGIALPHA for proof-settled AI workflow work.",
   "license": "UNLICENSED",
   "scripts": {
     "compile": "hardhat compile",
@@ -233,7 +233,16 @@
     "deploy:test": "node scripts/deployment/test-deployment-safety.js",
     "mainnet:plan": "ts-node scripts/deployment/goalos-deploy-wizard.ts plan --network mainnet --json",
     "verify:all": "ts-node scripts/verification/verify-contracts-from-manifest.ts",
-    "test:private-operator-data": "node scripts/test-private-operator-data.js"
+    "test:private-operator-data": "node scripts/test-private-operator-data.js",
+    "dormant-mainnet:build": "npm run compile:ci && npm run verify:compiler-alignment",
+    "dormant-mainnet:fork-rehearsal": "npm run mainnet:fork-simulate",
+    "dormant-mainnet:certificate": "python scripts/dormant_mainnet.py certificate",
+    "dormant-mainnet:certificate:validate": "python scripts/dormant_mainnet.py validate",
+    "dormant-mainnet:status": "python scripts/dormant_mainnet.py status",
+    "deploy:mainnet:dormant:prepare": "python scripts/dormant_mainnet.py prepare",
+    "deploy:mainnet:dormant:live-local-gated": "python scripts/dormant_mainnet.py live-local-gated",
+    "dormant-mainnet:postdeploy-verify": "python scripts/dormant_mainnet.py postdeploy",
+    "dormant-mainnet:final-check": "python scripts/dormant_mainnet.py final-check"
   },
   "dependencies": {
     "@openzeppelin/contracts": "4.9.6",
