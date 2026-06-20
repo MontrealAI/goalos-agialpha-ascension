@@ -232,7 +232,8 @@
     "verify:test": "node scripts/verification/test-verification-v2.js",
     "deploy:test": "node scripts/deployment/test-deployment-safety.js",
     "mainnet:plan": "ts-node scripts/deployment/goalos-deploy-wizard.ts plan --network mainnet --json",
-    "verify:all": "ts-node scripts/verification/verify-contracts-from-manifest.ts"
+    "verify:all": "ts-node scripts/verification/verify-contracts-from-manifest.ts",
+    "test:private-operator-data": "node scripts/test-private-operator-data.js"
   },
   "dependencies": {
     "@openzeppelin/contracts": "4.9.6",
@@ -251,7 +252,8 @@
     "serialize-javascript": "7.0.6",
     "undici": "6.27.0",
     "form-data": "4.0.6",
-    "ws": "8.21.0"
+    "ws": "8.21.0",
+    "axios": "1.17.0"
   },
   "packageManager": "npm@10.9.4",
   "engines": {

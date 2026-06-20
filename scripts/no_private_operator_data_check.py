@@ -40,14 +40,49 @@ SECRET_SCAN_ALLOWLIST_FILES = ALLOWLIST_FILES - ENV_EXAMPLE_FILES
 
 
 def tracked_files() -> list[pathlib.Path]:
+    scoped = __import__("os").environ.get("NO_PRIVATE_OPERATOR_SCAN_PATHS")
+    if scoped:
+        return [ROOT / item for item in scoped.split(":") if item]
     try:
         out = subprocess.check_output(["git", "ls-files"], cwd=ROOT, text=True, stderr=subprocess.DEVNULL)
         return [ROOT / line for line in out.splitlines() if line]
     except Exception:
         return [p for p in ROOT.rglob("*") if p.is_file()]
 
+def content_candidate_rels() -> set[str] | None:
+    try:
+        args = ["git", "grep", "-Il", "-e", "0x", "-e", "PRIVATE_KEY", "-e", "SEED_PHRASE", "-e", "MNEMONIC", "-e", "ETHERSCAN_API_KEY", "-e", "FOUNDER_APPROVAL_SIGNATURE", "-e", "alchemy", "-e", "infura", "-e", "quicknode", "-e", "ankr", "-e", "blast", "-e", "drpc", "-e", "chainstack", "--"]
+        out = subprocess.check_output(args, cwd=ROOT, text=True, stderr=subprocess.DEVNULL)
+        return set(out.splitlines())
+    except subprocess.CalledProcessError as exc:
+        return set() if exc.returncode == 1 else None
+    except Exception:
+        return None
 
-errors: list[str] = []
+
+findings: list[dict] = []
+CONTENT_CANDIDATES = None if __import__("os").environ.get("NO_PRIVATE_OPERATOR_SCAN_PATHS") else content_candidate_rels()
+
+def line_col(text: str, start: int) -> tuple[int, int]:
+    line = text.count("\n", 0, start) + 1
+    last = text.rfind("\n", 0, start)
+    return line, start - last
+
+def redact(value: str) -> str:
+    if len(value) <= 10:
+        return "<redacted>"
+    return value[:6] + "…" + value[-4:]
+
+def add(rule_id: str, rel: str, reason: str, value: str = "", line: int | None = None, column: int | None = None, classification: str = "PRIVATE_PREDEPLOYMENT_OPERATOR_DATA") -> None:
+    findings.append({
+        "ruleId": rule_id,
+        "path": rel,
+        "line": line,
+        "column": column,
+        "redactedValue": redact(value) if value else "",
+        "classification": classification,
+        "reason": reason,
+    })
 for path in tracked_files():
     if not path.is_file():
         continue
@@ -57,15 +92,26 @@ for path in tracked_files():
     if any(part in SKIP_PARTS for part in rel_parts):
         continue
     if path.name in FORBIDDEN_NAMES or (path.name.startswith(".env") and path.name not in {".env.example", ".env.sepolia.example", ".env.mainnet.example", ".env.verification.example"}):
-        errors.append(f"Forbidden private/env file committed: {rel}")
+        add("TRACKED_PRIVATE_FILE", rel, "Forbidden private/env file committed", path.name)
     if (any(part in FORBIDDEN_PARTS for part in rel_parts) and not rel.startswith(".private.example/")) or (rel_parts and rel_parts[0] == "private"):
-        errors.append(f"Forbidden private operator path committed: {rel}")
+        add("TRACKED_PRIVATE_FILE", rel, "Forbidden private operator path committed", rel)
     if path.suffix in {".key", ".pem", ".p12", ".secret"} or rel.endswith((".private.json", ".private.env")):
-        errors.append(f"Forbidden private secret file pattern committed: {rel}")
+        add("TRACKED_PRIVATE_FILE", rel, "Forbidden private secret file pattern committed", rel)
+    if CONTENT_CANDIDATES is not None and rel not in CONTENT_CANDIDATES:
+        continue
     try:
-        text = path.read_text(encoding="utf-8", errors="ignore")
+        raw = path.read_bytes()
     except Exception:
         continue
+    raw_lower = raw.lower()
+    interesting = (
+        b"0x" in raw_lower
+        or any(token.encode() in raw for token in ("PRIVATE_KEY", "SEED_PHRASE", "MNEMONIC", "ETHERSCAN_API_KEY", "FOUNDER_APPROVAL_SIGNATURE"))
+        or any(provider.encode() in raw_lower for provider in ("alchemy", "infura", "quicknode", "ankr", "blast", "drpc", "chainstack"))
+    )
+    if not interesting:
+        continue
+    text = raw.decode("utf-8", errors="ignore")
     if rel not in SECRET_SCAN_ALLOWLIST_FILES and not rel.startswith(".private.example/"):
         lowered = text.lower()
         should_scan_secret_patterns = (
@@ -76,16 +122,23 @@ for path in tracked_files():
         if should_scan_secret_patterns:
             for pattern in SECRET_PATTERNS:
                 if pattern.search(text):
-                    errors.append(f"Potential secret/RPC/private artifact in {rel}")
+                    rule = "CREDENTIALLED_RPC_URL" if pattern.pattern.startswith("https?") else "PRIVATE_KEY_LITERAL" if "PRIVATE_KEY" in pattern.pattern else "API_KEY_LITERAL"
+                    m = pattern.search(text)
+                    ln, col = line_col(text, m.start()) if m else (None, None)
+                    add(rule, rel, "Potential secret/RPC/private artifact", m.group(0) if m else "", ln, col)
     if rel not in ALLOWLIST_FILES and not (rel.startswith("deployments/") or rel.startswith("evidence/sepolia/") or rel.startswith("test/")) and ADDRESS_RE.search(text):
         for m in PRIVATE_ADDRESS_CONTEXT.finditer(text):
             addresses = [a.lower() for a in ADDRESS_RE.findall(m.group(0))]
             if any(a != AGIALPHA for a in addresses):
-                errors.append(f"Potential unredacted private operator address in {rel}")
+                addr = next((a for a in ADDRESS_RE.findall(m.group(0)) if a.lower() != AGIALPHA), "")
+                ln, col = line_col(text, m.start())
+                add("PRIVATE_OPERATOR_ADDRESS", rel, "Potential unredacted private operator address", addr, ln, col)
                 break
-if errors:
+if findings:
     print("Private operator data check failed:")
-    for e in sorted(set(errors)):
-        print(f"- {e}")
+    for f in findings:
+        print(f"- {f['ruleId']} {f['path']}:{f.get('line') or '?'}:{f.get('column') or '?'} {f['redactedValue']} {f['reason']}")
+    import json
+    print(json.dumps({"status":"FAILED", "findings": findings}, indent=2, sort_keys=True))
     sys.exit(1)
 print("Private operator data check passed.")

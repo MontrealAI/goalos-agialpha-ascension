@@ -4,16 +4,16 @@
   "chainId": 1,
   "expectedChainId": 1,
   "agialphaToken": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
-  "temporaryDeployerAddress": "LOCAL_OPERATOR_SUPPLIED_TEMP_DEPLOYER_ADDRESS",
-  "finalLedgerOwnerAddress": "LOCAL_OPERATOR_SUPPLIED_PUBLIC_LEDGER_ADDRESS",
+  "temporaryDeployerAddress": null,
+  "finalLedgerOwnerAddress": null,
   "finalOwnerKind": "LEDGER_EOA",
-  "treasuryAddress": "LOCAL_OPERATOR_SUPPLIED_PUBLIC_LEDGER_ADDRESS",
-  "governanceOwnerAddress": "LOCAL_OPERATOR_SUPPLIED_PUBLIC_LEDGER_ADDRESS",
-  "operationsAddress": "LOCAL_OPERATOR_SUPPLIED_PUBLIC_LEDGER_ADDRESS",
-  "founderAddress": "LOCAL_OPERATOR_SUPPLIED_PUBLIC_LEDGER_ADDRESS",
-  "permanentAdminAddress": "LOCAL_OPERATOR_SUPPLIED_PUBLIC_LEDGER_ADDRESS",
-  "vaultAdminAddress": "LOCAL_OPERATOR_SUPPLIED_PUBLIC_LEDGER_ADDRESS",
-  "controllerAddress": "LOCAL_OPERATOR_SUPPLIED_PUBLIC_LEDGER_ADDRESS",
+  "treasuryAddress": null,
+  "governanceOwnerAddress": null,
+  "operationsAddress": null,
+  "founderAddress": null,
+  "permanentAdminAddress": null,
+  "vaultAdminAddress": null,
+  "controllerAddress": null,
   "confirmationPolicy": {
     "deploy": 5,
     "verify": 5,
@@ -33,5 +33,5 @@
     "derivationPath": "m/44'/60'/0'/0/0",
     "privateKeyStored": false
   },
-  "claimBoundary": "Public deployment configuration template only; operator EOA addresses, private key, RPC URL, API key, Ledger seed, deployment evidence, and Mainnet transaction evidence are not committed."
+  "claimBoundary": "Public deployment template only; operator EOA addresses are null placeholders and must be supplied only in ignored local runtime configuration. No private key, RPC URL, API key, Ledger seed, deployment evidence, or Mainnet transaction evidence is committed."
 }
