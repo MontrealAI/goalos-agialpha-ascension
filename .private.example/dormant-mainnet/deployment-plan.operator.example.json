@@ -1,0 +1,12 @@
+{
+  "schemaVersion": "1.0",
+  "classification": "PRIVATE_OPERATOR_OVERLAY_EXAMPLE_PLACEHOLDERS_ONLY",
+  "mainnetRpcUrl": "DO_NOT_COMMIT_FILL_LOCALLY",
+  "etherscanApiKey": "DO_NOT_COMMIT_FILL_LOCALLY",
+  "feeCeilings": {
+    "MAINNET_MAX_FEE_PER_GAS_GWEI": "EXAMPLE_FILL_LOCALLY",
+    "MAINNET_MAX_PRIORITY_FEE_PER_GAS_GWEI": "EXAMPLE_FILL_LOCALLY",
+    "MIN_DORMANT_MAINNET_DEPLOYER_BALANCE_ETH": "EXAMPLE_FILL_LOCALLY"
+  },
+  "operatorConfigPath": ".private/dormant-mainnet/operator-config.json"
+}

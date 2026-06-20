@@ -6,20 +6,29 @@ CERT=ROOT/'qa/dormant-mainnet-readiness/authorization-certificate.json'
 PUBLIC_PLAN=ROOT/'qa/dormant-mainnet-readiness/deployment-plan.public.json'
 PRIVATE_OVERLAY=ROOT/'.private/dormant-mainnet/operator-config.json'
 POSTDEPLOY_EVIDENCE=ROOT/'qa/dormant-mainnet-deployment/evidence.json'
+PRIVATE_DIR=ROOT/'.private/dormant-mainnet'
+PRIVATE_PLAN=PRIVATE_DIR/'deployment-plan.operator.json'
+PRIVATE_JOURNAL=PRIVATE_DIR/'deployment-journal.json'
+PRIVATE_VERIFICATION_INPUTS=PRIVATE_DIR/'verification-inputs.json'
+CERT_TTL_HOURS=int(os.environ.get('DORMANT_CERTIFICATE_TTL_HOURS','12'))
 STATUS=ROOT/'docs/generated/DORMANT_MAINNET_STATUS.md'
 AGI='0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA'
 TEMP_DEPLOYER='0x'+'6c8B8897Fb6b08B4070387233B89b3E9A94eD00E'
 LEDGER='0x'+'d76AD27a1Bcf8652e7e46BE603FA742FD1c10A99'
 ZERO='0x'+'00'*32
-PROD_NO=['PRODUCTION_TECHNICALLY_MAINNET_READY','PRODUCTION_MAINNET_DEPLOYMENT_AUTHORIZED','PRODUCTION_ETHEREUM_MAINNET_AUTHORIZED','USER_FUNDS_AUTHORIZED','PROTOCOL_ACTIVATION_AUTHORIZED','CUSTOMER_ONBOARDING_AUTHORIZED','SETTLEMENT_AUTHORIZED','PUBLIC_RELIANCE_AUTHORIZED','UNBOUNDED_ECONOMIC_EXPOSURE_AUTHORIZED']
-DORM_YES=['DORMANT_TECHNICALLY_MAINNET_READY','DORMANT_MAINNET_DEPLOYMENT_AUTHORIZED','DORMANT_ETHEREUM_MAINNET_AUTHORIZED']
+PROD_NO=['PRODUCTION_READY','PRODUCTION_TECHNICALLY_MAINNET_READY','PRODUCTION_MAINNET_DEPLOYMENT_AUTHORIZED','PRODUCTION_ETHEREUM_MAINNET_AUTHORIZED','USER_FUNDS_AUTHORIZED','PROTOCOL_ACTIVATION_AUTHORIZED','PHASE_B_CONFIGURATION_AUTHORIZED','SETTLEMENT_AUTHORIZED','CUSTOMER_ONBOARDING_AUTHORIZED','PUBLIC_RELIANCE_AUTHORIZED','PUBLIC_FRONTEND_AUTHORIZED','PRODUCTION_ANNOUNCEMENT_AUTHORIZED','UNBOUNDED_ECONOMIC_EXPOSURE_AUTHORIZED']
+DORM_YES=['DORMANT_INITIAL_MAINNET_DEPLOYMENT_AUTHORIZED','DORMANT_TECHNICALLY_MAINNET_READY','DORMANT_MAINNET_DEPLOYMENT_AUTHORIZED','DORMANT_ETHEREUM_MAINNET_AUTHORIZED']
 DOMAIN='DORMANT_INITIAL_MAINNET_DEPLOYMENT_OPERATOR_CONFIG_V1'
 
 def canon(obj): return json.dumps(obj, sort_keys=True, separators=(',',':'))
 def hobj(obj): return '0x'+hashlib.sha256(canon(obj).encode()).hexdigest()
 def now():
     if os.environ.get('DORMANT_GENERATED_AT'): return os.environ['DORMANT_GENERATED_AT']
-    return '1970-01-01T00:00:00Z'
+    return datetime.datetime.now(datetime.timezone.utc).replace(microsecond=0).isoformat().replace('+00:00','Z')
+def parse_time(value):
+    return datetime.datetime.fromisoformat(str(value).replace('Z','+00:00'))
+def expires_at(generated):
+    return (parse_time(generated)+datetime.timedelta(hours=CERT_TTL_HOURS)).replace(microsecond=0).isoformat().replace('+00:00','Z')
 def git(args):
     try: return subprocess.check_output(['git',*args],cwd=ROOT,text=True,stderr=subprocess.DEVNULL).strip()
     except Exception: return None
@@ -49,12 +58,14 @@ def public_commitments(payload):
     return {'operatorConfigCommitment':cfg,'temporaryDeployerCommitment':hobj({'domain':DOMAIN+':TEMPORARY_DEPLOYER','chainId':payload['chainId'],'releaseId':payload['releaseId'],'address':payload['temporaryDeployerAddress']}),'finalOwnerCommitment':hobj({'domain':DOMAIN+':FINAL_OWNER','chainId':payload['chainId'],'releaseId':payload['releaseId'],'address':payload['finalLedgerOwnerAddress']}),'permanentRoleConfigurationRoot':role_root}
 def default_public_plan():
     payload=operator_payload(); c=public_commitments(payload)
-    return {'schemaVersion':'1.0','planType':'DORMANT_INITIAL_MAINNET_DEPLOYMENT_PUBLIC_PLAN','chainId':1,'canonicalAgialpha':AGI,'deploymentMode':'DORMANT','officialFunding':0,'activation':False,'operatorDataClassification':'PRIVATE_PREDEPLOYMENT_OPERATOR_DATA',**c,'temporaryDeployerIsPermanentAuthority':False,'finalOwnerConfigurationValidated':True,'contracts':[],'constructors':[],'transactions':[],'gasEstimates':[],'verificationInputs':[]}
+    return {'schemaVersion':'1.0','planType':'DORMANT_INITIAL_MAINNET_DEPLOYMENT_PUBLIC_PLAN','chainId':1,'canonicalAgialpha':AGI,'deploymentMode':'DORMANT','officialFunding':0,'activation':False,'evidenceClasses':['PUBLIC_PREDEPLOYMENT_EVIDENCE','PRIVATE_OPERATOR_OVERLAY','PUBLIC_POSTDEPLOYMENT_CHAIN_EVIDENCE'],'operatorDataClassification':'PRIVATE_PREDEPLOYMENT_OPERATOR_DATA',**c,'temporaryDeployerIsPermanentAuthority':False,'finalOwnerConfigurationValidated':True,'contracts':[],'constructors':[],'transactions':[],'gasEstimates':[],'verificationInputs':[],'plannedContractCount':0,'phaseBGrantCount':0}
 def validate_private_overlay(path=PRIVATE_OVERLAY, public_plan=None):
     data=load(path)
     if data is None: return False, ['private operator overlay is missing or invalid JSON']
     required=['temporaryDeployerAddress','finalLedgerOwnerAddress','permanentRoleAddresses']
     errs=[f'private overlay missing {k}' for k in required if k not in data]
+    if data.get('temporaryDeployerAddress')==data.get('finalLedgerOwnerAddress'): errs.append('Wallet A and Wallet B must differ')
+    if data.get('ledgerPrivateKey') or data.get('ledgerSeedPhrase') or data.get('finalLedgerOwnerPrivateKey'): errs.append('Ledger seed/private key must never be stored')
     payload=operator_payload(temp=data.get('temporaryDeployerAddress',''), owner=data.get('finalLedgerOwnerAddress',''), roles=data.get('permanentRoleAddresses') or {})
     commits=public_commitments(payload)
     if public_plan:
@@ -102,11 +113,13 @@ def compute():
         if plan.get(k)!=expected.get(k): blockers.append(f'Public deployment plan {k} mismatch.')
     validate_sepolia(blockers)
     ready='NO' if blockers else 'YES'
-    cert={'schemaVersion':'1.0','authorizationClass':'DORMANT_INITIAL_MAINNET_DEPLOYMENT','generatedAt':now(),'repository':'MontrealAI/goalos-agialpha-ascension','sourceCommit':release_id(),'chainId':1,'canonicalAgialpha':AGI,'deploymentMode':'DORMANT','newObligationsAllowed':False,'officialFundingEnabled':False,'settlementEnabled':False,'activationCertificateHash':ZERO,'futureActivationRequiresLedgerSignedTransaction':True,'futureActivationRequiresNonzeroProductionCertificateHash':True,'operatorDataClassification':'PRIVATE_PREDEPLOYMENT_OPERATOR_DATA','operatorConfigCommitment':expected['operatorConfigCommitment'],'temporaryDeployerCommitment':expected['temporaryDeployerCommitment'],'finalOwnerCommitment':expected['finalOwnerCommitment'],'permanentRoleConfigurationRoot':expected['permanentRoleConfigurationRoot'],'temporaryDeployerIsPermanentAuthority':False,'finalOwnerConfigurationValidated':True,'unsolicitedTokenTransfersPolicy':'Unauthorized unsolicited token transfers do not constitute accepted user funds.','blockers':blockers,'warnings':warnings,'evidence':{k:evidence_entry(v) for k,v in {'packageLock':'package-lock.json','hardhatConfig':'hardhat.config.ts','compilerAlignment':'qa/compiler-alignment.json','toolchainClearance':'qa/public-toolchain-clearance-evidence.json','forkRehearsal':'qa/ETHEREUM_MAINNET_FORK_SIMULATION.json','sepoliaDeployment':'qa/sepolia-deployment-evidence.json','sepoliaVerification':'qa/sepolia-contract-verification-evidence.json','deploymentPlanPublic':'qa/dormant-mainnet-readiness/deployment-plan.public.json','certificateScript':'scripts/dormant_mainnet.py'}.items()}}
+    generated=now()
+    evidence_paths={'packageLock':'package-lock.json','hardhatConfig':'hardhat.config.ts','compilerAlignment':'qa/compiler-alignment.json','toolchainClearance':'qa/public-toolchain-clearance-evidence.json','forkRehearsal':'qa/ETHEREUM_MAINNET_FORK_SIMULATION.json','sepoliaDeployment':'qa/sepolia-deployment-evidence.json','sepoliaVerification':'qa/sepolia-contract-verification-evidence.json','deploymentPlanPublic':'qa/dormant-mainnet-readiness/deployment-plan.public.json','certificateScript':'scripts/dormant_mainnet.py','privateOperatorExample':'.private.example/dormant-mainnet/operator-config.example.json'}
+    cert={'schemaVersion':'1.0','authorizationClass':'DORMANT_INITIAL_MAINNET_DEPLOYMENT','generatedAt':generated,'expiresAt':expires_at(generated),'certificateTtlHours':CERT_TTL_HOURS,'repository':'MontrealAI/goalos-agialpha-ascension','sourceCommit':release_id(),'chainId':1,'canonicalAgialpha':AGI,'deploymentMode':'DORMANT','newObligationsAllowed':False,'officialFundingEnabled':False,'settlementEnabled':False,'activationCertificateHash':ZERO,'futureActivationRequiresLedgerSignedTransaction':True,'futureActivationRequiresNonzeroProductionCertificateHash':True,'evidenceClasses':['PUBLIC_PREDEPLOYMENT_EVIDENCE','PRIVATE_OPERATOR_OVERLAY','PUBLIC_POSTDEPLOYMENT_CHAIN_EVIDENCE'],'operatorDataClassification':'PRIVATE_PREDEPLOYMENT_OPERATOR_DATA','operatorConfigCommitment':expected['operatorConfigCommitment'],'temporaryDeployerCommitment':expected['temporaryDeployerCommitment'],'finalOwnerCommitment':expected['finalOwnerCommitment'],'permanentRoleConfigurationRoot':expected['permanentRoleConfigurationRoot'],'temporaryDeployerIsPermanentAuthority':False,'finalOwnerConfigurationValidated':True,'unsolicitedTokenTransfersPolicy':'Unauthorized unsolicited token transfers do not constitute accepted user funds.','blockers':blockers,'warnings':warnings,'evidence':{k:evidence_entry(v) for k,v in evidence_paths.items()},'binding':{'dependencyLock':sha('package-lock.json'),'sourceTreeHash':sha('contracts'),'deploymentScriptsHash':sha('scripts'),'testsHash':sha('test'),'schemasHash':sha('schemas'),'publicPlanHash':sha('qa/dormant-mainnet-readiness/deployment-plan.public.json'),'feePolicyCommitment':plan.get('feePolicyCommitment'),'authorityRoot':expected['permanentRoleConfigurationRoot'],'outputPaths':['qa/dormant-mainnet-readiness/authorization-certificate.json','qa/dormant-mainnet-readiness/deployment-plan.public.json','.private/dormant-mainnet/operator-config.json','.private/dormant-mainnet/deployment-journal.json']}}
     for k in DORM_YES: cert[k]=ready
     for k in PROD_NO: cert[k]='NO'
     cert['planHash']=hobj({'publicPlanHash':sha('qa/dormant-mainnet-readiness/deployment-plan.public.json'),'operatorConfigCommitment':expected['operatorConfigCommitment'],'releaseIdentityHash':release_identity_hash(),'compilerAlignmentHash':sha('qa/compiler-alignment.json'),'canonicalAgialpha':AGI,'configurationRoot':expected['permanentRoleConfigurationRoot'],'dormantLifecycleState':{'deploymentMode':'DORMANT','officialFunding':0,'activation':False}})
-    cert['certificateHash']=hobj({k:v for k,v in cert.items() if k not in {'certificateHash','sourceCommit'}})
+    cert['certificateHash']=hobj({k:v for k,v in cert.items() if k not in {'certificateHash','sourceCommit','generatedAt','expiresAt'}})
     return cert
 
 def semantic_errors(cert):
@@ -140,6 +153,7 @@ def validate(path=CERT, require_ready=False):
         rel=e.get('path'); exp=e.get('sha256')
         if not rel or not exp: errors.append(f'verification inputs are incomplete for {name}'); continue
         if sha(rel)!=exp: errors.append(f'certificate or source hash changes detected for {name}')
+    if any(cert.get(k)=='YES' for k in DORM_YES) and parse_time(cert.get('expiresAt','1970-01-01T00:00:00Z')) <= datetime.datetime.now(datetime.timezone.utc): errors.append('dormant certificate expired')
     if cert.get('blockers')!=fresh.get('blockers'): errors.append('certificate blockers do not match freshly computed blockers')
     for k in DORM_YES:
         if cert.get(k)!=fresh.get(k): errors.append(f'{k} does not match freshly computed readiness')
@@ -163,7 +177,12 @@ def validate_postdeploy_evidence(path=POSTDEPLOY_EVIDENCE):
         'canonicalAgialphaMatches':'canonical AGIALPHA dependency must match',
         'allManagedOwnersLedger':'all managed Owners must be the Ledger address',
         'permanentRolesLedgerOrApprovedPolicy':'all permanent roles must be Ledger address or explicit approved policy',
+        'walletAHoldsZeroManagedAuthority':'Wallet A must hold zero managed authority',
+        'walletANotInPermanentConstructors':'Wallet A must not appear in permanent constructor arguments',
         'pendingOwnerCountZero':'pending Owner count must be 0',
+        'phaseBGrantsQueuedInactive':'Phase-B grants must remain queued/inactive',
+        'checkedInitialEthBalancesZero':'checked initial ETH balances must be 0',
+        'checkedInitialAgialphaBalancesZero':'checked initial AGIALPHA balances must be 0',
         'dormantOrPausedStateConfirmed':'dormant/paused state must be confirmed',
     }
     for k,msg in checks.items():
@@ -182,15 +201,39 @@ def write_status(cert):
     text=f"# Dormant Initial Mainnet Deployment Status\n\nDormant technical readiness: {cert.get('DORMANT_TECHNICALLY_MAINNET_READY')}\n\nDormant deployment authorized: {cert.get('DORMANT_MAINNET_DEPLOYMENT_AUTHORIZED')}\n\nEthereum Mainnet authorized: {cert.get('DORMANT_ETHEREUM_MAINNET_AUTHORIZED')}\n\nProduction readiness: {cert.get('PRODUCTION_TECHNICALLY_MAINNET_READY')}\n\nUser funds authorized: {cert.get('USER_FUNDS_AUTHORIZED')}\n\nProtocol activation authorized: {cert.get('PROTOCOL_ACTIVATION_AUTHORIZED')}\n\nPublic reliance authorized: {cert.get('PUBLIC_RELIANCE_AUTHORIZED')}\n\nBlockers:\n"+'\n'.join(f"- {b}" for b in cert.get('blockers',[]))+"\n"
     STATUS.write_text(text); print(text)
 
+def journal_has_attempt(path=PRIVATE_JOURNAL):
+    data=load(path)
+    if data is None: return False
+    text=canon(data)
+    return bool(ADDRESS_RE.search(text) if False else (data.get('transactionHashes') or data.get('deployedAddresses') or data.get('transactions')))
+
+def verify_auto():
+    data=load(PRIVATE_VERIFICATION_INPUTS)
+    if data is None: return ['private verification inputs missing; no redeployment is authorized']
+    return []
+
 def main():
-    ap=argparse.ArgumentParser(); ap.add_argument('cmd',choices=['certificate','validate','status','prepare','postdeploy','final-check','live-local-gated','validate-private']); ap.add_argument('--certificate',default=str(CERT)); ap.add_argument('--evidence',default=str(POSTDEPLOY_EVIDENCE)); args=ap.parse_args()
+    ap=argparse.ArgumentParser(); ap.add_argument('cmd',choices=['certificate','validate','status','doctor','doctor-fixture','prepare','prepare-fixture','postdeploy','final-check','live-local-gated','recover','verify-auto','live-and-verify','validate-private']); ap.add_argument('--certificate',default=str(CERT)); ap.add_argument('--evidence',default=str(POSTDEPLOY_EVIDENCE)); args=ap.parse_args()
     if args.cmd=='certificate': CERT.parent.mkdir(parents=True,exist_ok=True); c=compute(); CERT.write_text(json.dumps(c,indent=2)+'\n'); print(json.dumps(c,indent=2)); return
     if args.cmd=='validate': errs=validate(args.certificate); print(json.dumps({'status':'PASSED' if not errs else 'FAILED','errors':errs},indent=2)); sys.exit(1 if errs else 0)
     if args.cmd=='final-check': errs=validate(args.certificate, require_ready=True); print(json.dumps({'status':'PASSED' if not errs else 'BLOCKED','errors':errs},indent=2)); sys.exit(1 if errs else 0)
-    if args.cmd=='status': write_status(json.loads(CERT.read_text()) if CERT.exists() else compute()); return
-    if args.cmd in {'prepare','validate-private'}:
+    if args.cmd=='status':
+        if journal_has_attempt(): print(json.dumps({'journal':'PARTIAL_OR_COMPLETE_ATTEMPT_PRESENT','path':str(PRIVATE_JOURNAL.relative_to(ROOT))},indent=2))
+        write_status(json.loads(CERT.read_text()) if CERT.exists() else compute()); return
+    if args.cmd in {'doctor','prepare','validate-private'}:
+        if os.environ.get('ALLOW_MAINNET_DEPLOYMENT'): sys.exit('Dormant Mainnet flow must not use ALLOW_MAINNET_DEPLOYMENT; no transaction was sent.')
+        if journal_has_attempt(): sys.exit('Existing dormant deployment journal contains a transaction/deployed address; rerun refused. Use recover/status. No transaction was sent.')
         ok,errs=validate_private_overlay(public_plan=load(PUBLIC_PLAN) or {})
         print(json.dumps({'status':'PASSED' if ok else 'BLOCKED','errors':errs,'privateOverlayPath':str(PRIVATE_OVERLAY.relative_to(ROOT))},indent=2)); sys.exit(0 if ok else 1)
+    if args.cmd in {'doctor-fixture','prepare-fixture'}:
+        errs=validate(args.certificate)
+        print(json.dumps({'status':'PASSED' if not errs else 'BLOCKED','errors':errs,'fixture':True,'broadcast':False},indent=2)); sys.exit(1 if errs else 0)
+    if args.cmd=='recover':
+        print(json.dumps({'status':'RECOVERY_REQUIRED' if journal_has_attempt() else 'NO_ATTEMPT_RECORDED','journalPath':str(PRIVATE_JOURNAL.relative_to(ROOT)),'message':'Preserve journal; retry verification only after failed verification. No transaction was sent.'},indent=2)); return
+    if args.cmd=='verify-auto':
+        errs=verify_auto(); print(json.dumps({'status':'PASSED' if not errs else 'BLOCKED','errors':errs,'redeploymentAuthorized':False},indent=2)); sys.exit(1 if errs else 0)
+    if args.cmd=='live-and-verify':
+        sys.exit('Combined live-and-verify wrapper remains locally gated; this repository task sent no transaction.')
     if args.cmd=='postdeploy':
         errs=validate_postdeploy_evidence(args.evidence)
         print(json.dumps({'status':'PASSED' if not errs else 'BLOCKED','errors':errs,'evidencePath':str(pathlib.Path(args.evidence))},indent=2)); sys.exit(1 if errs else 0)

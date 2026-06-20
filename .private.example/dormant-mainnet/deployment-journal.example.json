@@ -1,0 +1,6 @@
+{
+  "schemaVersion": "1.0",
+  "classification": "PRIVATE_OPERATOR_OVERLAY_EXAMPLE_PLACEHOLDERS_ONLY",
+  "transactions": [],
+  "note": "The real journal is written locally with mode 0600 immediately after each transaction submission and before receipt waiting. Never commit it."
+}
