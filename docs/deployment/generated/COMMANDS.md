@@ -2,7 +2,7 @@
 
 Package version: 4.4.0
 
-Last verified commit: f3ac17a6d07e07111f6d73e8e51e178b363f5563
+Last verified commit: current Git HEAD (run git rev-parse HEAD)
 
 | Command | Implementation |
 |---|---|

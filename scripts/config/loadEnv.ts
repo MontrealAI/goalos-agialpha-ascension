@@ -15,7 +15,7 @@ function normalizedNetworkName(networkName?: string): string | undefined {
 export function loadDeploymentEnv(networkName?: string) {
   const resolved = normalizedNetworkName(networkName);
   const files = [".env"];
-  if (resolved === "ethereumSepolia" || resolved === "sepolia") files.push(".env.sepolia.local");
+  if (resolved === "ethereumSepolia" || resolved === "sepolia") files.push(".env.sepolia.local", ".private/sepolia-operator.env");
   if (resolved === "ethereumMainnet" || resolved === "mainnet") files.push(".env.mainnet.local", ".private/mainnet-operator.env");
   for (const file of files) {
     if (!fs.existsSync(file)) continue;
