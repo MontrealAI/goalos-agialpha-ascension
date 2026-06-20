@@ -1,0 +1,21 @@
+{
+  "schemaVersion": "1.0",
+  "planType": "DORMANT_INITIAL_MAINNET_DEPLOYMENT_PUBLIC_PLAN",
+  "chainId": 1,
+  "canonicalAgialpha": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
+  "deploymentMode": "DORMANT",
+  "officialFunding": 0,
+  "activation": false,
+  "operatorDataClassification": "PRIVATE_PREDEPLOYMENT_OPERATOR_DATA",
+  "operatorConfigCommitment": "0x3b25559a328929d8c1672e6c35ff3e66429459c43317edbc1506b93c46a3c851",
+  "temporaryDeployerCommitment": "0x8ed936c86a6a61296e5533b5bfd8bbe26209ca3ee8c1d4c12d533e630035af21",
+  "finalOwnerCommitment": "0xe9e61f62e337249aa6c50803045933c4ad20d540f1b07e3886598ba5baffeb57",
+  "permanentRoleConfigurationRoot": "0x193bbc1352302c90f4ce0455a107c64d5e8bb5f6baed0b5f9b5335ceeb448b6a",
+  "temporaryDeployerIsPermanentAuthority": false,
+  "finalOwnerConfigurationValidated": true,
+  "contracts": [],
+  "constructors": [],
+  "transactions": [],
+  "gasEstimates": [],
+  "verificationInputs": []
+}

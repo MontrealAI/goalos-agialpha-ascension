@@ -1,0 +1,12 @@
+{
+  "schemaVersion": "1.0",
+  "temporaryDeployerAddress": "DO_NOT_COMMIT_FILL_LOCALLY",
+  "finalLedgerOwnerAddress": "DO_NOT_COMMIT_FILL_LOCALLY",
+  "permanentRoleAddresses": {
+    "owner": "DO_NOT_COMMIT_FILL_LOCALLY",
+    "admin": "DO_NOT_COMMIT_FILL_LOCALLY",
+    "treasury": "DO_NOT_COMMIT_FILL_LOCALLY",
+    "controller": "DO_NOT_COMMIT_FILL_LOCALLY",
+    "operator": "DO_NOT_COMMIT_FILL_LOCALLY"
+  }
+}

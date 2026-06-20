@@ -27,4 +27,4 @@ npm run dormant-mainnet:final-check
 
 ## Claim boundary
 
-Generated public status is derived from `qa/dormant-mainnet-readiness/authorization-certificate.json`, not manual README edits. Unsolicited token transfers cannot be universally prevented; they are unauthorized and do not constitute accepted user funds.
+Generated public status is derived from `qa/dormant-mainnet-readiness/authorization-certificate.json`, not manual README edits. Public predeployment artifacts contain commitments only: raw temporary deployer, Ledger Owner, treasury, admin, and operator addresses belong only in `.private/dormant-mainnet/operator-config.json`, which is ignored and must never be uploaded. The public deployment plan is `qa/dormant-mainnet-readiness/deployment-plan.public.json`; it binds the private overlay through domain-separated commitments. Unsolicited token transfers cannot be universally prevented; they are unauthorized and do not constitute accepted user funds.

@@ -16,7 +16,6 @@ Public reliance authorized: NO
 
 Blockers:
 - Git working tree is not clean; exact release identity is not fixed.
-- Mandatory security toolchain has unresolved Critical/High findings or missing evidence.
 - Exact full-topology recent live Mainnet-fork rehearsal evidence is missing or incomplete.
 - Deployment plan missing contracts.
 - Deployment plan missing transactions.

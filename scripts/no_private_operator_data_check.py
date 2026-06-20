@@ -17,6 +17,7 @@ SECRET_PATTERNS = [
 ]
 PRIVATE_ADDRESS_CONTEXT = re.compile(r"(founder|treasury|deployer|admin|vault|security|community|operator|ceremony).{0,80}0x[0-9a-fA-F]{40}", re.I)
 ADDRESS_RE = re.compile(r"0x[0-9a-fA-F]{40}")
+COMMITMENT_RE = re.compile(r"0x[0-9a-fA-F]{64}")
 ENV_EXAMPLE_FILES = {".env.sepolia.example", ".env.mainnet.example", ".env.verification.example"}
 ALLOWLIST_FILES = {
     "README.md",
@@ -73,6 +74,30 @@ def redact(value: str) -> str:
         return "<redacted>"
     return value[:6] + "…" + value[-4:]
 
+def receipt_backed_chain_evidence(rel: str, text: str) -> bool:
+    if not rel.startswith("qa/dormant-mainnet-deployment/"):
+        return False
+    try:
+        import json
+        data = json.loads(text)
+    except Exception:
+        return False
+    txs = data.get("transactionHashes") if isinstance(data.get("transactionHashes"), list) else []
+    receipts = data.get("receipts") if isinstance(data.get("receipts"), list) else []
+    return (
+        data.get("chainId") == 1
+        and data.get("deploymentStatus") == "DEPLOYED_DORMANT"
+        and bool(txs)
+        and bool(receipts)
+        and data.get("allReceiptsSuccessful") is True
+        and data.get("runtimeBytecodeHashesMatch") is True
+        and data.get("canonicalAgialphaMatches") is True
+        and data.get("ownerRoleReadbackSucceeded") is True
+        and data.get("temporaryDeployerResidualAuthority") == 0
+        and data.get("officialFunding") == 0
+        and data.get("activation") is False
+    )
+
 def add(rule_id: str, rel: str, reason: str, value: str = "", line: int | None = None, column: int | None = None, classification: str = "PRIVATE_PREDEPLOYMENT_OPERATOR_DATA") -> None:
     findings.append({
         "ruleId": rule_id,
@@ -126,11 +151,14 @@ for path in tracked_files():
                     m = pattern.search(text)
                     ln, col = line_col(text, m.start()) if m else (None, None)
                     add(rule, rel, "Potential secret/RPC/private artifact", m.group(0) if m else "", ln, col)
-    if rel not in ALLOWLIST_FILES and not (rel.startswith("deployments/") or rel.startswith("evidence/sepolia/") or rel.startswith("test/")) and ADDRESS_RE.search(text):
+    if rel not in ALLOWLIST_FILES and not receipt_backed_chain_evidence(rel, text) and not (rel.startswith("deployments/") or rel.startswith("evidence/sepolia/") or rel.startswith("test/")) and ADDRESS_RE.search(text):
         for m in PRIVATE_ADDRESS_CONTEXT.finditer(text):
-            addresses = [a.lower() for a in ADDRESS_RE.findall(m.group(0))]
+            if re.match(r"[0-9a-fA-F]{24}", text[m.end():m.end()+24]):
+                continue
+            window = COMMITMENT_RE.sub("<PUBLIC_COMMITMENT>", m.group(0))
+            addresses = [a.lower() for a in ADDRESS_RE.findall(window)]
             if any(a != AGIALPHA for a in addresses):
-                addr = next((a for a in ADDRESS_RE.findall(m.group(0)) if a.lower() != AGIALPHA), "")
+                addr = next((a for a in ADDRESS_RE.findall(window) if a.lower() != AGIALPHA), "")
                 ln, col = line_col(text, m.start())
                 add("PRIVATE_OPERATOR_ADDRESS", rel, "Potential unredacted private operator address", addr, ln, col)
                 break
