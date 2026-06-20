@@ -29,6 +29,9 @@ export function getRequiredRpcUrl(networkName: string): string {
   return value;
 }
 export function getOptionalPrivateKey(networkName: string): string | undefined { return firstEnv(normalized(networkName)?.keyEnv || []); }
+export function getOptionalLedgerAddress(networkName: string): string | undefined {
+  return firstEnv(networkName.toLowerCase().includes("mainnet") ? ["PRIVATE_MAINNET_LEDGER_ADDRESS", "MAINNET_LEDGER_ADDRESS", "FINAL_LEDGER_OWNER_ADDRESS"] : ["PRIVATE_SEPOLIA_LEDGER_ADDRESS", "SEPOLIA_LEDGER_ADDRESS", "FINAL_LEDGER_OWNER_ADDRESS"]);
+}
 export function getRequiredPrivateKey(networkName: string): string {
   const value = getOptionalPrivateKey(networkName);
   if (!value) throw new Error(`Missing deployer private key for ${networkName}. Load it locally; never commit it.`);

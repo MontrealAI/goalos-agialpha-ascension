@@ -1,0 +1,64 @@
+{
+  "network": "ethereumSepolia",
+  "chainId": 11155111,
+  "deploymentStatus": "CONFIGURED",
+  "contracts": [
+    {
+      "name": "AGIALPHA",
+      "alias": "AGIALPHA",
+      "artifact": "MockAGIALPHA",
+      "fullyQualifiedName": "contracts/mocks/MockAGIALPHA.sol:MockAGIALPHA",
+      "address": "SEPOLIA_PUBLIC_FIXTURE_ADDRESS_1",
+      "constructorArgs": [
+        "Mock AGIALPHA",
+        "mAGI"
+      ]
+    },
+    {
+      "name": "ProofRewardsVault",
+      "alias": "ProofRewardsVault",
+      "artifact": "TokenReserveVault",
+      "fullyQualifiedName": "contracts/vaults/TokenReserveVault.sol:TokenReserveVault",
+      "address": "SEPOLIA_PUBLIC_FIXTURE_ADDRESS_2",
+      "constructorArgs": [
+        "SEPOLIA_PUBLIC_AGIALPHA_FIXTURE_ADDRESS",
+        "ProofRewardsVault"
+      ]
+    },
+    {
+      "name": "LiquidityVault",
+      "alias": "LiquidityVault",
+      "artifact": "TokenReserveVault",
+      "fullyQualifiedName": "contracts/vaults/TokenReserveVault.sol:TokenReserveVault",
+      "address": "SEPOLIA_PUBLIC_FIXTURE_ADDRESS_3",
+      "constructorArgs": [
+        "SEPOLIA_PUBLIC_AGIALPHA_FIXTURE_ADDRESS",
+        "LiquidityVault"
+      ]
+    },
+    {
+      "name": "SecurityVault",
+      "alias": "SecurityVault",
+      "artifact": "TokenReserveVault",
+      "fullyQualifiedName": "contracts/vaults/TokenReserveVault.sol:TokenReserveVault",
+      "address": "SEPOLIA_PUBLIC_FIXTURE_ADDRESS_4",
+      "constructorArgs": [
+        "SEPOLIA_PUBLIC_AGIALPHA_FIXTURE_ADDRESS",
+        "SecurityVault"
+      ]
+    },
+    {
+      "name": "CommunityVault",
+      "alias": "CommunityVault",
+      "artifact": "TokenReserveVault",
+      "fullyQualifiedName": "contracts/vaults/TokenReserveVault.sol:TokenReserveVault",
+      "address": "SEPOLIA_PUBLIC_FIXTURE_ADDRESS_5",
+      "constructorArgs": [
+        "SEPOLIA_PUBLIC_AGIALPHA_FIXTURE_ADDRESS",
+        "CommunityVault"
+      ]
+    }
+  ],
+  "fixtureOnly": true,
+  "acceptedAsDeploymentManifest": false
+}

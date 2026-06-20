@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://goalos.local/schemas/deployment-mainnet-template.schema.json",
+  "title": "GoalOS Ethereum Mainnet public deployment template",
+  "type": "object",
+  "required": ["schemaVersion", "network", "chainId", "agialphaToken", "temporaryDeployerAddress", "finalLedgerOwnerAddress", "finalOwnerKind", "canaryLimits", "feeCeilings", "confirmationPolicy"],
+  "properties": {
+    "schemaVersion": { "const": "2.0" },
+    "network": { "const": "mainnet" },
+    "hardhatNetwork": { "const": "ethereumMainnet" },
+    "chainId": { "const": 1 },
+    "expectedChainId": { "const": 1 },
+    "agialphaToken": { "const": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA" },
+    "temporaryDeployerAddress": { "type": "null" },
+    "finalLedgerOwnerAddress": { "type": "null" },
+    "finalOwnerKind": { "const": "LEDGER_EOA" },
+    "treasuryAddress": { "type": "null" },
+    "governanceOwnerAddress": { "type": "null" },
+    "operationsAddress": { "type": "null" },
+    "founderAddress": { "type": "null" },
+    "permanentAdminAddress": { "type": "null" },
+    "vaultAdminAddress": { "type": "null" },
+    "controllerAddress": { "type": "null" },
+    "canaryLimits": { "type": "object" },
+    "feeCeilings": { "type": "object" },
+    "confirmationPolicy": { "type": "object" }
+  },
+  "additionalProperties": true
+}

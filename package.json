@@ -1,7 +1,7 @@
 {
   "name": "goalos-agialpha-ascension",
   "version": "4.4.0",
-  "description": "GoalOS-native reimplementation of \u03b1-AGI Ascension using existing AGIALPHA for proof-settled AI workflow work.",
+  "description": "GoalOS-native reimplementation of α-AGI Ascension using existing AGIALPHA for proof-settled AI workflow work.",
   "license": "UNLICENSED",
   "scripts": {
     "compile": "hardhat compile",
@@ -227,17 +227,24 @@
     "docs:deployment:build": "node scripts/deployment/build-deployment-docs.js",
     "docs:deployment:check": "node scripts/deployment/check-deployment-docs.js",
     "docs:deployment:links": "node scripts/deployment/check-deployment-docs.js --links",
-    "docs:deployment:examples": "node scripts/deployment/check-deployment-docs.js --examples"
+    "docs:deployment:examples": "node scripts/deployment/check-deployment-docs.js --examples",
+    "release:compile": "node scripts/release-compile.js",
+    "verify:test": "node scripts/verification/test-verification-v2.js",
+    "deploy:test": "node scripts/deployment/test-deployment-safety.js",
+    "mainnet:plan": "ts-node scripts/deployment/goalos-deploy-wizard.ts plan --network mainnet --json",
+    "verify:all": "ts-node scripts/verification/verify-contracts-from-manifest.ts",
+    "test:private-operator-data": "node scripts/test-private-operator-data.js"
   },
   "dependencies": {
     "@openzeppelin/contracts": "4.9.6",
-    "solc": "0.8.35"
+    "solc": "0.8.28"
   },
   "devDependencies": {
+    "@nomicfoundation/hardhat-ledger": "1.2.2",
     "@nomicfoundation/hardhat-toolbox": "5.0.0",
     "hardhat": "2.28.6",
-    "typescript": "5.9.3",
-    "ts-node": "10.9.2"
+    "ts-node": "10.9.2",
+    "typescript": "5.9.3"
   },
   "private": true,
   "overrides": {
@@ -245,6 +252,12 @@
     "serialize-javascript": "7.0.6",
     "undici": "6.27.0",
     "form-data": "4.0.6",
-    "ws": "8.21.0"
+    "ws": "8.21.0",
+    "axios": "1.17.0"
+  },
+  "packageManager": "npm@10.9.4",
+  "engines": {
+    "node": ">=20.19.0 <21",
+    "npm": ">=10.9.0 <12"
   }
 }
