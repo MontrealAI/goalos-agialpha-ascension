@@ -1,8 +1,8 @@
 # Ethereum Mainnet Technical Readiness Decision
 
-Ethereum Mainnet technical readiness: **YES**.
+Ethereum Mainnet technical readiness: **NO**.
 
-TECHNICALLY_MAINNET_READY: **YES**
+TECHNICALLY_MAINNET_READY: **NO**
 
 MAINNET_DEPLOYED: **NO**
 

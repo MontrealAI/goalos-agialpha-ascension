@@ -8,7 +8,7 @@
       "No live Ethereum Mainnet fork RPC/block rehearsal evidence supplied."
     ],
     "mainnetBroadcastOccurred": false,
-    "releaseIdentity": "7cf3320f6d4a4a0f226a5c22c4ae3b27bbd4948f4421a5fdbdfd479f33627f47",
+    "releaseIdentity": "285fc86efd6adfc0820457f424b5b5801e27d3267108a79779dcafa7ea664783",
     "status": "BLOCKED"
   },
   "gates": {
@@ -26,7 +26,7 @@
       "failures": [],
       "gate": "G1",
       "name": "Business ownership continuity",
-      "releaseIdentity": "7cf3320f6d4a4a0f226a5c22c4ae3b27bbd4948f4421a5fdbdfd479f33627f47",
+      "releaseIdentity": "285fc86efd6adfc0820457f424b5b5801e27d3267108a79779dcafa7ea664783",
       "requirements": [
         {
           "evidenceRequired": true,
@@ -69,7 +69,7 @@
       "failures": [],
       "gate": "G2",
       "name": "Business-owner override plane",
-      "releaseIdentity": "7cf3320f6d4a4a0f226a5c22c4ae3b27bbd4948f4421a5fdbdfd479f33627f47",
+      "releaseIdentity": "285fc86efd6adfc0820457f424b5b5801e27d3267108a79779dcafa7ea664783",
       "requirements": [
         {
           "evidenceRequired": true,
@@ -113,7 +113,7 @@
       "failures": [],
       "gate": "G3",
       "name": "Accounting solvency and canary limits",
-      "releaseIdentity": "7cf3320f6d4a4a0f226a5c22c4ae3b27bbd4948f4421a5fdbdfd479f33627f47",
+      "releaseIdentity": "285fc86efd6adfc0820457f424b5b5801e27d3267108a79779dcafa7ea664783",
       "requirements": [
         {
           "evidenceRequired": true,
@@ -157,7 +157,7 @@
       "failures": [],
       "gate": "G4",
       "name": "Lifecycle migration wind-down shutdown",
-      "releaseIdentity": "7cf3320f6d4a4a0f226a5c22c4ae3b27bbd4948f4421a5fdbdfd479f33627f47",
+      "releaseIdentity": "285fc86efd6adfc0820457f424b5b5801e27d3267108a79779dcafa7ea664783",
       "requirements": [
         {
           "evidenceRequired": true,
@@ -205,7 +205,7 @@
       "failures": [],
       "gate": "G5",
       "name": "Autonomous assurance",
-      "releaseIdentity": "7cf3320f6d4a4a0f226a5c22c4ae3b27bbd4948f4421a5fdbdfd479f33627f47",
+      "releaseIdentity": "285fc86efd6adfc0820457f424b5b5801e27d3267108a79779dcafa7ea664783",
       "requirements": [
         {
           "evidenceRequired": true,
@@ -246,13 +246,13 @@
       "status": "BLOCKED"
     }
   },
-  "releaseIdentity": "7cf3320f6d4a4a0f226a5c22c4ae3b27bbd4948f4421a5fdbdfd479f33627f47",
+  "releaseIdentity": "285fc86efd6adfc0820457f424b5b5801e27d3267108a79779dcafa7ea664783",
   "securityDocket": {
     "blockers": [
       "Mandatory assurance categories are not all represented by fresh passing evidence."
     ],
     "commands": [],
-    "releaseIdentity": "7cf3320f6d4a4a0f226a5c22c4ae3b27bbd4948f4421a5fdbdfd479f33627f47",
+    "releaseIdentity": "285fc86efd6adfc0820457f424b5b5801e27d3267108a79779dcafa7ea664783",
     "status": "BLOCKED"
   },
   "status": "BLOCKED"

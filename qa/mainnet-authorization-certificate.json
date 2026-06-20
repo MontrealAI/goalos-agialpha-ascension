@@ -1,13 +1,13 @@
 {
   "schemaVersion": "1.0",
-  "generatedAt": "2026-06-20T02:50:59.358910+00:00",
+  "generatedAt": "2026-06-20T03:18:29.238475+00:00",
   "generatedBy": "scripts/generate-mainnet-authorization-certificate.py",
   "repository": "MontrealAI/goalos-agialpha-ascension",
-  "commit": "75ee92756a4194b56dcfc185274b0e808ab0c129",
-  "sourceCommit": "75ee92756a4194b56dcfc185274b0e808ab0c129",
+  "commit": "ca17ac4067918c2c39da6efae8759d66d466bf7d",
+  "sourceCommit": "ca17ac4067918c2c39da6efae8759d66d466bf7d",
   "branch": "codex/mainnet-five-gate-production-completion",
   "sourceBranch": "codex/mainnet-five-gate-production-completion",
-  "currentHeadAtGeneration": "75ee92756a4194b56dcfc185274b0e808ab0c129",
+  "currentHeadAtGeneration": "ca17ac4067918c2c39da6efae8759d66d466bf7d",
   "gitValidationMode": "GIT_CHECKOUT",
   "evidenceHashesFreshForCurrentCheckout": true,
   "sourceCommitIsAncestorOfCurrentHead": true,
@@ -152,11 +152,11 @@
     },
     "fiveGateProductionReadiness": {
       "path": "qa/mainnet-readiness/production-readiness.json",
-      "sha256": "0x518aeb2e1b085455cf8d6f7131358d57139c3f13d45f277ff8827ee348456947"
+      "sha256": "0x722c2ee06b85c41851e63d0f6094a1812a0db5a7f3aafb889a7e806517b962dc"
     },
     "fiveGateAuthorizationCertificate": {
       "path": "qa/mainnet-readiness/authorization-certificate.json",
-      "sha256": "0x56672ebd7de3b1b348a7e4eb5d022298fcd77235dd344a56468a15ce63ccd744"
+      "sha256": "0x66a6d370932fa142bb250bf5c53f7e9c654c4d920864648c833857ed05e45b2b"
     }
   },
   "blockers": [
@@ -169,5 +169,5 @@
   ],
   "warnings": [],
   "nextAction": "B. Blocked, with exact blockers.",
-  "certificateHash": "0xb0e5e3c5d5580a28d404d001430d958abb3efbcbdefd375001adb356abf11503"
+  "certificateHash": "0x7c4b74342865c7b71b7c0451956f0ca5b330b4ab8d6ab5190a0acc4aa49843eb"
 }
