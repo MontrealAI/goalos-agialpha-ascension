@@ -1,0 +1,42 @@
+{
+  "LIVE_CANARY_COMPLETE": "NO",
+  "LIVE_OWNER_HANDOFF_COMPLETE": "NO",
+  "MAINNET_DEPLOYED": "NO",
+  "MAINNET_VERIFIED": "NO",
+  "auditFindingCount": {
+    "critical": 0,
+    "criticalHighUnresolved": 0,
+    "high": 0,
+    "source": "audit/AUDIT_FINDINGS_REGISTER.csv"
+  },
+  "baselineSha": "8d33616817237249c052bb5c910afd25dba71674",
+  "branch": "work",
+  "claimBoundary": "No Gate 1-5 PASS is emitted in PR_MODE; RELEASE_MODE evidence remains separate under qa/mainnet-readiness/ and fails closed until protected fork/Owner inputs execute.",
+  "commands": [
+    {
+      "command": "python scripts/mainnet_operational_readiness.py",
+      "exitCode": 0,
+      "outputTail": "",
+      "status": "PASS"
+    }
+  ],
+  "compilerSettingsHash": "6dca807ac55b81b05d2edd69e0df1e91cb07cf673db83f0314025b153484fd1c",
+  "finalShaAtGeneration": "8d33616817237249c052bb5c910afd25dba71674",
+  "generatedAtUnix": 1781918906,
+  "mainnetBroadcastOccurred": false,
+  "mode": "PR_MODE",
+  "packageLockHash": "981e04b39af29bc04dae677e1d9a98b9e0dc5f8a5995db99d8debd23eb02a709",
+  "releaseEvidenceStatus": "RELEASE_EVIDENCE_NOT_EXECUTED",
+  "releaseOnlyEvidenceRemaining": [
+    "protected production Owner config commitment",
+    "recent Ethereum Mainnet fork RPC rehearsal",
+    "million-action invariant run with >=32 recorded deterministic seeds",
+    "secondary fuzzer, symbolic/bounded, independent build, and critical mutation release evidence",
+    "exact bytecode/configuration/fork certificate validation"
+  ],
+  "releaseReadinessStatus": "BLOCKED",
+  "schemaVersion": "1.0",
+  "sourceHash": "6e535126fd7d0414e3833a09e2360cd6d87d651d5d12b17c637649c27276fe07",
+  "status": "PR_CHECKS_PASS",
+  "workingTreeAtStart": "M website/v86_actual_site/resources/mission-os/example-output/ClaimsMatrix.csv\n M website/v86_actual_site/resources/mission-os/example-output/RiskLedger.csv\n M website/v86_actual_site/resources/mission-os/example-output/SourceProvenance.csv"
+}
