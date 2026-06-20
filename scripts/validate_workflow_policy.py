@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 from __future__ import annotations
-import argparse, json, re, sys
+import argparse, json, re, shlex, sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -41,12 +41,54 @@ def run_commands(text: str) -> list[str]:
     return commands
 
 
+def npm_script(required: str) -> str | None:
+    parts = required.strip().split()
+    if len(parts) >= 3 and parts[0] == "npm" and parts[1] == "run":
+        return parts[2]
+    return None
+
+
+def command_segments(command: str) -> list[str]:
+    segments: list[str] = []
+    for line in command.splitlines():
+        stripped = line.strip()
+        if not stripped or stripped.startswith("#"):
+            continue
+        segments.extend(x.strip() for x in re.split(r"(?:&&|;)", stripped) if x.strip())
+    return segments
+
+
+def executes_npm_script(segment: str, script: str) -> bool:
+    try:
+        tokens = shlex.split(segment, comments=True, posix=True)
+    except ValueError:
+        return False
+    if not tokens:
+        return False
+    # Allow safe environment-prefix forms such as `FOO=bar npm run script` or `env FOO=bar npm run script`.
+    if tokens[0] == "env":
+        tokens = tokens[1:]
+    while tokens and re.match(r"^[A-Za-z_][A-Za-z0-9_]*=", tokens[0]):
+        tokens = tokens[1:]
+    return len(tokens) >= 3 and tokens[0] == "npm" and tokens[1] == "run" and tokens[2] == script
+
+
 def has_command(commands: list[str], required: str) -> bool:
-    return any(cmd == required or required in cmd.split("&&") or required in cmd for cmd in commands)
+    script = npm_script(required)
+    if script:
+        return any(executes_npm_script(segment, script) for cmd in commands for segment in command_segments(cmd))
+    return any(segment == required for cmd in commands for segment in command_segments(cmd))
 
 
 def hidden_by_true(commands: list[str], required: str) -> bool:
-    return any(required in cmd and "|| true" in cmd for cmd in commands)
+    script = npm_script(required)
+    for cmd in commands:
+        if "|| true" not in cmd:
+            continue
+        for segment in command_segments(cmd.replace("|| true", "")):
+            if (script and executes_npm_script(segment, script)) or segment == required:
+                return True
+    return False
 
 
 def validate(policy_path: Path, root: Path = ROOT) -> list[str]:
@@ -94,7 +136,9 @@ def validate(policy_path: Path, root: Path = ROOT) -> list[str]:
                 if any(marker in lowered for marker in live_markers):
                     errors.append(f"{rel}: protected readiness workflow must not contain live mainnet broadcast command")
         for secret in forbidden_secret_names:
-            if f"secrets.{secret}" in text:
+            dot_ref = f"secrets.{secret}"
+            bracket_re = re.compile(r"secrets\s*\[\s*['\"]" + re.escape(secret) + r"['\"]\s*\]")
+            if dot_ref in text or bracket_re.search(text):
                 errors.append(f"{rel}: workflow references forbidden Mainnet broadcaster secret {secret}")
     return errors
 

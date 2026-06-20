@@ -9,7 +9,7 @@
     "qa/mainnet-readiness/production-readiness.json",
     "qa/mainnet-readiness/authorization-certificate.json"
   ],
-  "baselineSha": "182b60a82653f69ab2d525d4e006f459b0075194",
+  "baselineSha": "b2ac7994d93cc537fac86ab6837c8a9215167ba1",
   "localCheckResults": [
     {
       "command": "npm run authority:inventory",
@@ -26,21 +26,13 @@
   "reason": "Fail-closed dossier: mandatory live/private fork RPC, independent build comparison, symbolic execution, critical mutation, and exact Mainnet-fork evidence must be supplied before PASS. No Mainnet broadcast evidence is present or claimed.",
   "releaseClaimBoundary": "Repository-local operational inventory and fail-closed readiness evidence only; not Mainnet deployed, not Mainnet verified, not Owner-authorized, and not technically ready until blocked evidence is supplied.",
   "releaseRelevantDirtyPaths": [
-    "contracts/registry/JobClaimBondManager.sol",
-    "contracts/registry/JobRegistry.sol",
-    "contracts/registry/ReviewerBondRegistry.sol",
-    "qa/authority-baseline.json",
-    "qa/authority-baseline.json.sha256",
-    "qa/storage-layout-report.json",
-    "scripts/audit/run-slither.sh",
-    "scripts/authority-inventory.ts",
     "scripts/mainnet_operational_readiness.py",
-    "scripts/phase_a_assurance.py",
+    "scripts/no_private_operator_data_check.py",
     "scripts/validate_workflow_policy.py",
     "test/ci/workflow_policy_test.py"
   ],
   "selectorCoverageStatus": "BLOCKED",
-  "sourceTreeHash": "934fc15efbfe52cfdd1726afa5d5e6a06bb11fd676c3ad2e8efe51df411a7c98",
+  "sourceTreeHash": "9fba6de863a5a4868f31f2ab6f72ac34f1845d4aa07711ab5ad17260d345da1c",
   "sourceTreeHashScope": "tracked git index content excluding generated readiness artifacts",
   "status": "BLOCKED"
 }

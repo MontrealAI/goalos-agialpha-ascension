@@ -35,7 +35,7 @@
     }
   ],
   "selectorCoverage": {
-    "stateChangingSelectorCount": 523,
+    "stateChangingSelectorCount": 547,
     "status": "BLOCKED",
     "unclassified": [
       {
@@ -551,6 +551,22 @@
         "signature": "transitionTo(uint8,bytes32,bytes32,bytes32,bool)"
       },
       {
+        "attributes": "public override",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "GoalOSBusinessLifecycle",
+        "name": "renounceRole",
+        "path": "contracts/registry/GoalOSBusinessLifecycle.sol",
+        "signature": "renounceRole(bytes32,address)"
+      },
+      {
+        "attributes": "public override",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "GoalOSDeploymentDirectory",
+        "name": "renounceRole",
+        "path": "contracts/registry/GoalOSDeploymentDirectory.sol",
+        "signature": "renounceRole(bytes32,address)"
+      },
+      {
         "attributes": "external nonReentrant",
         "classification": "normal_operation_unclassified_review_required",
         "contract": "JobClaimBondManager",
@@ -613,6 +629,14 @@
         "name": "expireOpenJob",
         "path": "contracts/registry/JobRegistry.sol",
         "signature": "expireOpenJob(uint256,bytes32)"
+      },
+      {
+        "attributes": "public override",
+        "classification": "normal_operation_unclassified_review_required",
+        "contract": "JobRegistry",
+        "name": "renounceRole",
+        "path": "contracts/registry/JobRegistry.sol",
+        "signature": "renounceRole(bytes32,address)"
       },
       {
         "attributes": "public override",
@@ -911,8 +935,8 @@
         "signature": "renounceRole(bytes32,address)"
       }
     ],
-    "unclassifiedCount": 109
+    "unclassifiedCount": 112
   },
-  "sourceTreeHash": "934fc15efbfe52cfdd1726afa5d5e6a06bb11fd676c3ad2e8efe51df411a7c98",
+  "sourceTreeHash": "9fba6de863a5a4868f31f2ab6f72ac34f1845d4aa07711ab5ad17260d345da1c",
   "sourceTreeHashScope": "tracked git index content excluding generated readiness artifacts"
 }

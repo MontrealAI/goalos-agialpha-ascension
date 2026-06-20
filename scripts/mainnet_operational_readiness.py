@@ -287,8 +287,30 @@ def merge_funcs(primary, inherited):
     return primary + [item for item in inherited if selector_key(item) not in seen]
 
 
+def inheritance_index():
+    blocks_by_name = {}
+    for rel in tracked_contract_paths():
+        if excluded_mainnet_inventory_path(rel):
+            continue
+        for block in contract_blocks(git_index_text(rel)):
+            blocks_by_name[block["name"]] = block
+    memo = {}
+    def inherits(name, base):
+        if name == base:
+            return True
+        key = (name, base)
+        if key in memo:
+            return memo[key]
+        block = blocks_by_name.get(name)
+        result = bool(block) and any(inherits(parent, base) for parent in block.get("bases", []))
+        memo[key] = result
+        return result
+    return inherits
+
+
 def contracts():
     out = []
+    inherits = inheritance_index()
     goalos_funcs, goalos_roles = inherited_goalos_surface()
     erc721_funcs = inherited_erc721_surface()
     for rel in tracked_contract_paths():
@@ -301,10 +323,10 @@ def contracts():
         for info in infos:
             funcs = functions_from_body(info["body"])
             roles = roles_from_body(info["body"])
-            if "GoalOSAccessControl" in info["bases"]:
+            if inherits(info["name"], "GoalOSAccessControl"):
                 funcs = merge_funcs(funcs, goalos_funcs)
                 roles = sorted(set(roles + goalos_roles))
-            if "ERC721" in info["bases"]:
+            if inherits(info["name"], "ERC721"):
                 funcs = merge_funcs(funcs, erc721_funcs)
             name = info["name"]
             deployment_names = TOKEN_RESERVE_VAULT_ALIASES if name == "TokenReserveVault" else (name,)

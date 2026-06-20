@@ -88,6 +88,25 @@ class WorkflowPolicyTest(unittest.TestCase):
         errors = self.validate(policy, {"wf.yml": "on: {pull_request: {}}\njobs:\n  test:\n    steps:\n      - run: |\n          npm run mainnet:status-consistency\n          npm run mainnet:authorization-require-pass\n"})
         self.assertTrue(any("positive authorization" in e for e in errors))
 
+
+    def test_echoed_required_command_does_not_satisfy_policy(self):
+        req = ["npm run mainnet:authorization-require-pass"]
+        policy = self.base_policy("release.yml", "PROTECTED_RELEASE", req)
+        errors = self.validate(policy, {"release.yml": "on:\n  workflow_dispatch: {}\njobs:\n  release:\n    environment: mainnet-readiness\n    steps:\n      - run: echo npm run mainnet:authorization-require-pass\n"})
+        self.assertTrue(any("missing required command" in e for e in errors))
+
+    def test_env_prefixed_required_command_satisfies_policy(self):
+        req = ["npm run mainnet:authorization-require-pass"]
+        policy = self.base_policy("release.yml", "PROTECTED_RELEASE", req)
+        errors = self.validate(policy, {"release.yml": "on:\n  workflow_dispatch: {}\njobs:\n  release:\n    environment: mainnet-readiness\n    steps:\n      - run: CI=1 npm run mainnet:authorization-require-pass\n"})
+        self.assertEqual(errors, [])
+
+    def test_bracketed_mainnet_secret_reference_fails(self):
+        req = ["npm run mainnet:readiness-require-pass"]
+        policy = self.base_policy("release.yml", "PROTECTED_RELEASE", req)
+        errors = self.validate(policy, {"release.yml": "on:\n  workflow_dispatch: {}\njobs:\n  release:\n    environment: mainnet-readiness\n    env:\n      KEY: ${{ secrets['MAINNET_PRIVATE_KEY'] }}\n    steps:\n      - run: npm run mainnet:readiness-require-pass\n"})
+        self.assertTrue(any("forbidden Mainnet broadcaster secret" in e for e in errors))
+
     def test_forbidden_mainnet_private_key_fails(self):
         req = ["npm run mainnet:readiness-require-pass"]
         policy = self.base_policy("release.yml", "PROTECTED_RELEASE", req)

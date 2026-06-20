@@ -2386,12 +2386,140 @@
       "signature": "transitionTo(uint8,bytes32,bytes32,bytes32,bool)"
     },
     {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "GoalOSBusinessLifecycle",
+      "name": "pause",
+      "path": "contracts/registry/GoalOSBusinessLifecycle.sol",
+      "signature": "pause()"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "GoalOSBusinessLifecycle",
+      "name": "unpause",
+      "path": "contracts/registry/GoalOSBusinessLifecycle.sol",
+      "signature": "unpause()"
+    },
+    {
+      "attributes": "public override onlyOwner",
+      "classification": "configuration",
+      "contract": "GoalOSBusinessLifecycle",
+      "name": "transferOwnership",
+      "path": "contracts/registry/GoalOSBusinessLifecycle.sol",
+      "signature": "transferOwnership(address)"
+    },
+    {
+      "attributes": "public onlyOwner",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "GoalOSBusinessLifecycle",
+      "name": "cancelOwnershipTransfer",
+      "path": "contracts/registry/GoalOSBusinessLifecycle.sol",
+      "signature": "cancelOwnershipTransfer()"
+    },
+    {
+      "attributes": "public",
+      "classification": "configuration",
+      "contract": "GoalOSBusinessLifecycle",
+      "name": "acceptOwnership",
+      "path": "contracts/registry/GoalOSBusinessLifecycle.sol",
+      "signature": "acceptOwnership()"
+    },
+    {
+      "attributes": "public override",
+      "classification": "configuration",
+      "contract": "GoalOSBusinessLifecycle",
+      "name": "grantRole",
+      "path": "contracts/registry/GoalOSBusinessLifecycle.sol",
+      "signature": "grantRole(bytes32,address)"
+    },
+    {
+      "attributes": "public override",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "GoalOSBusinessLifecycle",
+      "name": "revokeRole",
+      "path": "contracts/registry/GoalOSBusinessLifecycle.sol",
+      "signature": "revokeRole(bytes32,address)"
+    },
+    {
+      "attributes": "public override",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "GoalOSBusinessLifecycle",
+      "name": "renounceRole",
+      "path": "contracts/registry/GoalOSBusinessLifecycle.sol",
+      "signature": "renounceRole(bytes32,address)"
+    },
+    {
       "attributes": "external onlyOwner validOverrideCommitments(reasonHash, evidenceHash)",
       "classification": "safe_exit_or_settlement",
       "contract": "GoalOSDeploymentDirectory",
       "name": "recordRelease",
       "path": "contracts/registry/GoalOSDeploymentDirectory.sol",
       "signature": "recordRelease((bytes32,bytes32,bytes32,bytes32,bytes32,bytes32,bytes32,address,address,uint8,uint256),bytes32,bytes32)"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "GoalOSDeploymentDirectory",
+      "name": "pause",
+      "path": "contracts/registry/GoalOSDeploymentDirectory.sol",
+      "signature": "pause()"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "GoalOSDeploymentDirectory",
+      "name": "unpause",
+      "path": "contracts/registry/GoalOSDeploymentDirectory.sol",
+      "signature": "unpause()"
+    },
+    {
+      "attributes": "public override onlyOwner",
+      "classification": "configuration",
+      "contract": "GoalOSDeploymentDirectory",
+      "name": "transferOwnership",
+      "path": "contracts/registry/GoalOSDeploymentDirectory.sol",
+      "signature": "transferOwnership(address)"
+    },
+    {
+      "attributes": "public onlyOwner",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "GoalOSDeploymentDirectory",
+      "name": "cancelOwnershipTransfer",
+      "path": "contracts/registry/GoalOSDeploymentDirectory.sol",
+      "signature": "cancelOwnershipTransfer()"
+    },
+    {
+      "attributes": "public",
+      "classification": "configuration",
+      "contract": "GoalOSDeploymentDirectory",
+      "name": "acceptOwnership",
+      "path": "contracts/registry/GoalOSDeploymentDirectory.sol",
+      "signature": "acceptOwnership()"
+    },
+    {
+      "attributes": "public override",
+      "classification": "configuration",
+      "contract": "GoalOSDeploymentDirectory",
+      "name": "grantRole",
+      "path": "contracts/registry/GoalOSDeploymentDirectory.sol",
+      "signature": "grantRole(bytes32,address)"
+    },
+    {
+      "attributes": "public override",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "GoalOSDeploymentDirectory",
+      "name": "revokeRole",
+      "path": "contracts/registry/GoalOSDeploymentDirectory.sol",
+      "signature": "revokeRole(bytes32,address)"
+    },
+    {
+      "attributes": "public override",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "GoalOSDeploymentDirectory",
+      "name": "renounceRole",
+      "path": "contracts/registry/GoalOSDeploymentDirectory.sol",
+      "signature": "renounceRole(bytes32,address)"
     },
     {
       "attributes": "external onlyAdmin",
@@ -2632,6 +2760,70 @@
       "name": "ownerResolveJob",
       "path": "contracts/registry/JobRegistry.sol",
       "signature": "ownerResolveJob(uint256,uint8,address,bytes32,bytes32)"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "JobRegistry",
+      "name": "pause",
+      "path": "contracts/registry/JobRegistry.sol",
+      "signature": "pause()"
+    },
+    {
+      "attributes": "external",
+      "classification": "lifecycle_control_or_migration",
+      "contract": "JobRegistry",
+      "name": "unpause",
+      "path": "contracts/registry/JobRegistry.sol",
+      "signature": "unpause()"
+    },
+    {
+      "attributes": "public override onlyOwner",
+      "classification": "configuration",
+      "contract": "JobRegistry",
+      "name": "transferOwnership",
+      "path": "contracts/registry/JobRegistry.sol",
+      "signature": "transferOwnership(address)"
+    },
+    {
+      "attributes": "public onlyOwner",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "JobRegistry",
+      "name": "cancelOwnershipTransfer",
+      "path": "contracts/registry/JobRegistry.sol",
+      "signature": "cancelOwnershipTransfer()"
+    },
+    {
+      "attributes": "public",
+      "classification": "configuration",
+      "contract": "JobRegistry",
+      "name": "acceptOwnership",
+      "path": "contracts/registry/JobRegistry.sol",
+      "signature": "acceptOwnership()"
+    },
+    {
+      "attributes": "public override",
+      "classification": "configuration",
+      "contract": "JobRegistry",
+      "name": "grantRole",
+      "path": "contracts/registry/JobRegistry.sol",
+      "signature": "grantRole(bytes32,address)"
+    },
+    {
+      "attributes": "public override",
+      "classification": "owner_recovery_or_safe_exit",
+      "contract": "JobRegistry",
+      "name": "revokeRole",
+      "path": "contracts/registry/JobRegistry.sol",
+      "signature": "revokeRole(bytes32,address)"
+    },
+    {
+      "attributes": "public override",
+      "classification": "normal_operation_unclassified_review_required",
+      "contract": "JobRegistry",
+      "name": "renounceRole",
+      "path": "contracts/registry/JobRegistry.sol",
+      "signature": "renounceRole(bytes32,address)"
     },
     {
       "attributes": "external onlyOperator",
@@ -4186,6 +4378,6 @@
       "signature": "renounceRole(bytes32,address)"
     }
   ],
-  "sourceTreeHash": "934fc15efbfe52cfdd1726afa5d5e6a06bb11fd676c3ad2e8efe51df411a7c98",
-  "unclassifiedCount": 109
+  "sourceTreeHash": "9fba6de863a5a4868f31f2ab6f72ac34f1845d4aa07711ab5ad17260d345da1c",
+  "unclassifiedCount": 112
 }
