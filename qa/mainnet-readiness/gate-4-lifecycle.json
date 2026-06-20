@@ -2,14 +2,43 @@
   "blockers": [
     "Global lifecycle selector enforcement and migration/shutdown rehearsal evidence are absent."
   ],
-  "commands": [],
+  "commands": [
+    "npm run lifecycle:test",
+    "npm run lifecycle:status"
+  ],
   "evidence": [
     "qa/mainnet-operational-inventory.json"
   ],
   "failures": [],
   "gate": "G4",
   "name": "Lifecycle migration wind-down shutdown",
-  "releaseIdentity": "6e535126fd7d0414e3833a09e2360cd6d87d651d5d12b17c637649c27276fe07",
-  "requirements": [],
+  "releaseIdentity": "6db5c673e9a2a4459899a9b63833b8f84b5a367e6b57853a49a657ec09c7de0c",
+  "requirements": [
+    {
+      "evidenceRequired": true,
+      "id": "single_global_lifecycle",
+      "status": "BLOCKED"
+    },
+    {
+      "evidenceRequired": true,
+      "id": "unclassified_selectors_zero",
+      "status": "BLOCKED"
+    },
+    {
+      "evidenceRequired": true,
+      "id": "no_new_obligations_outside_active",
+      "status": "BLOCKED"
+    },
+    {
+      "evidenceRequired": true,
+      "id": "migration_one_time_reconciled_rollbackable",
+      "status": "BLOCKED"
+    },
+    {
+      "evidenceRequired": true,
+      "id": "shutdown_rejects_unresolved_liabilities",
+      "status": "BLOCKED"
+    }
+  ],
   "status": "BLOCKED"
 }

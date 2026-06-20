@@ -1,0 +1,25 @@
+name: Mainnet readiness (non-broadcast)
+on:
+  workflow_dispatch: {}
+permissions:
+  contents: read
+jobs:
+  readiness:
+    runs-on: ubuntu-latest
+    environment: mainnet-readiness
+    env:
+      MAINNET_FORK_RPC_URL: ${{ secrets.MAINNET_FORK_RPC_URL }}
+      GOALOS_PRODUCTION_OWNER_KIND: ${{ vars.GOALOS_PRODUCTION_OWNER_KIND }}
+      GOALOS_PRODUCTION_OWNER_ADDRESS: ${{ vars.GOALOS_PRODUCTION_OWNER_ADDRESS }}
+      GOALOS_PRODUCTION_OWNER_CONFIG_B64: ${{ secrets.GOALOS_PRODUCTION_OWNER_CONFIG_B64 }}
+      FORK_AGIALPHA_FUNDER: ${{ secrets.FORK_AGIALPHA_FUNDER }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - run: npm run codex:phase-a
+      - run: npm run mainnet:fork-rehearsal:release
+      - run: npm run mainnet:final-check

@@ -2,14 +2,42 @@
   "blockers": [
     "Typed override coverage remains inventory-derived and requires contract-level execution evidence before PASS."
   ],
-  "commands": [],
+  "commands": [
+    "npm run business-overrides:test"
+  ],
   "evidence": [
     "qa/mainnet-operational-inventory.json"
   ],
   "failures": [],
   "gate": "G2",
   "name": "Business-owner override plane",
-  "releaseIdentity": "6e535126fd7d0414e3833a09e2360cd6d87d651d5d12b17c637649c27276fe07",
-  "requirements": [],
+  "releaseIdentity": "6db5c673e9a2a4459899a9b63833b8f84b5a367e6b57853a49a657ec09c7de0c",
+  "requirements": [
+    {
+      "evidenceRequired": true,
+      "id": "typed_owner_overrides_present",
+      "status": "BLOCKED"
+    },
+    {
+      "evidenceRequired": true,
+      "id": "generic_arbitrary_executor_absent",
+      "status": "BLOCKED"
+    },
+    {
+      "evidenceRequired": true,
+      "id": "override_replay_rejected",
+      "status": "BLOCKED"
+    },
+    {
+      "evidenceRequired": true,
+      "id": "override_events_and_accounting_proven",
+      "status": "BLOCKED"
+    },
+    {
+      "evidenceRequired": true,
+      "id": "fork_financial_override_evidence_present",
+      "status": "BLOCKED"
+    }
+  ],
   "status": "BLOCKED"
 }

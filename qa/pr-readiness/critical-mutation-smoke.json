@@ -1,0 +1,25 @@
+{
+  "criticalMutants": [
+    "authorization",
+    "ownership-transfer",
+    "accounting-increment",
+    "accounting-decrement",
+    "double-settlement",
+    "reservation-canary-bypass",
+    "protected-fund-withdrawal",
+    "lifecycle-bypass",
+    "wrong-chain-token",
+    "incomplete-safe-hashing",
+    "hard-coded-pass",
+    "certificate-binding",
+    "fail-open-audit-parsing"
+  ],
+  "killRate": "100%",
+  "killed": 13,
+  "profile": "smoke",
+  "releaseStatus": "RELEASE_EVIDENCE_NOT_EXECUTED",
+  "releaseThresholdNotClaimed": true,
+  "schemaVersion": "1.0",
+  "status": "PHASE_A_PASS",
+  "survived": 0
+}

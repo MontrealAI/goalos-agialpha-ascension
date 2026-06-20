@@ -1,0 +1,17 @@
+{
+  "configuredReleaseThresholds": {
+    "actions": 1000000,
+    "seeds": 32
+  },
+  "executedActions": 4096,
+  "profile": "ci-smoke",
+  "recordedSeeds": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "releaseStatus": "RELEASE_EVIDENCE_NOT_EXECUTED",
+  "schemaVersion": "1.0",
+  "status": "PHASE_A_PASS"
+}

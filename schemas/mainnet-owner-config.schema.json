@@ -1,0 +1,1 @@
+{"$schema":"https://json-schema.org/draft/2020-12/schema","type":"object","required":["ownerKind","ownerAddress","chainId"],"properties":{"ownerKind":{"enum":["SAFE","EOA","SAFE_OR_EOA"]},"ownerAddress":{"type":"string","pattern":"^0x[a-fA-F0-9]{40}$"},"chainId":{"const":1}},"additionalProperties":true}

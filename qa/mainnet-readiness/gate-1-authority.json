@@ -2,14 +2,43 @@
   "blockers": [
     "Live/fork Phase A/B authority readback and private Safe/EOA commitment are absent."
   ],
-  "commands": [],
+  "commands": [
+    "npm run authority:verify",
+    "npm run ownership:test"
+  ],
   "evidence": [
     "qa/mainnet-operational-inventory.json"
   ],
   "failures": [],
   "gate": "G1",
   "name": "Business ownership continuity",
-  "releaseIdentity": "6e535126fd7d0414e3833a09e2360cd6d87d651d5d12b17c637649c27276fe07",
-  "requirements": [],
+  "releaseIdentity": "6db5c673e9a2a4459899a9b63833b8f84b5a367e6b57853a49a657ec09c7de0c",
+  "requirements": [
+    {
+      "evidenceRequired": true,
+      "id": "production_owner_config_commitment_valid",
+      "status": "BLOCKED"
+    },
+    {
+      "evidenceRequired": true,
+      "id": "complete_topology_fork_deployment_succeeds",
+      "status": "BLOCKED"
+    },
+    {
+      "evidenceRequired": true,
+      "id": "owner_handoff_readback_succeeds",
+      "status": "BLOCKED"
+    },
+    {
+      "evidenceRequired": true,
+      "id": "unexpected_role_holders_zero",
+      "status": "BLOCKED"
+    },
+    {
+      "evidenceRequired": true,
+      "id": "bootstrap_authority_denied",
+      "status": "BLOCKED"
+    }
+  ],
   "status": "BLOCKED"
 }

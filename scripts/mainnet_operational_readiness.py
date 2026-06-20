@@ -449,15 +449,29 @@ def generate():
         "liveCanaryComplete": "NO",
     }
     write_json(MAINNET_READINESS / "release-identity.json", release_identity)
+    gate_requirements = {
+        "G1": ["production_owner_config_commitment_valid", "complete_topology_fork_deployment_succeeds", "owner_handoff_readback_succeeds", "unexpected_role_holders_zero", "bootstrap_authority_denied"],
+        "G2": ["typed_owner_overrides_present", "generic_arbitrary_executor_absent", "override_replay_rejected", "override_events_and_accounting_proven", "fork_financial_override_evidence_present"],
+        "G3": ["asset_holders_registered", "omitted_accounting_components_zero", "all_components_solvent", "malicious_token_suite_passes", "finite_canary_limits_enforced"],
+        "G4": ["single_global_lifecycle", "unclassified_selectors_zero", "no_new_obligations_outside_active", "migration_one_time_reconciled_rollbackable", "shutdown_rejects_unresolved_liabilities"],
+        "G5": ["critical_high_unresolved_zero", "unit_integration_pass", "state_machine_actions_at_least_1000000", "recorded_seeds_at_least_32", "critical_mutation_kill_rate_100", "independent_builds_match", "recent_complete_topology_mainnet_fork_passes"],
+    }
+    gate_commands = {
+        "G1": ["npm run authority:verify", "npm run ownership:test"],
+        "G2": ["npm run business-overrides:test"],
+        "G3": ["npm run accounting:test", "npm run accounting:status"],
+        "G4": ["npm run lifecycle:test", "npm run lifecycle:status"],
+        "G5": ["npm run invariants:release", "npm run differential:test", "npm run mutation:critical", "npm run build:reproducible", "npm run security:docket", "npm run mainnet:fork-rehearsal:release"],
+    }
     def gate_report(gate, name, blockers):
         return {
             "gate": gate,
             "name": name,
             "status": "BLOCKED" if blockers else "PASS",
             "releaseIdentity": source_hash,
-            "requirements": [],
+            "requirements": [{"id": r, "status": "BLOCKED", "evidenceRequired": True} for r in gate_requirements[gate]],
             "evidence": ["qa/mainnet-operational-inventory.json"],
-            "commands": [],
+            "commands": gate_commands[gate],
             "failures": [],
             "blockers": blockers,
         }

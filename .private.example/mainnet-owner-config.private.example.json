@@ -1,0 +1,6 @@
+{
+  "ownerKind": "SAFE_OR_EOA",
+  "ownerAddress": "0x0000000000000000000000000000000000000000",
+  "chainId": 1,
+  "notes": "Example only. Base64 encode the real private config into GOALOS_PRODUCTION_OWNER_CONFIG_B64 in the protected mainnet-readiness environment."
+}

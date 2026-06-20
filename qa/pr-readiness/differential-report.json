@@ -1,0 +1,11 @@
+{
+  "checks": [
+    "no duplicate consumption in model",
+    "settlement requires proof state",
+    "owner exception distinct from ordinary result"
+  ],
+  "model": "executable-reference-smoke",
+  "releaseStatus": "RELEASE_EVIDENCE_NOT_EXECUTED",
+  "schemaVersion": "1.0",
+  "status": "PHASE_A_PASS"
+}
