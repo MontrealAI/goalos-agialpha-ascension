@@ -1,0 +1,40 @@
+{
+  "schemaVersion": "1.0",
+  "phase": "A2_PARTIAL",
+  "claimBoundary": "Solidity control-plane implementation added for JobRegistry accounting/override and lifecycle/directory primitives; Phase A release PASS is not claimed.",
+  "modifiedContracts": [
+    "contracts/access/BusinessOverrideCore.sol",
+    "contracts/interfaces/IBusinessOverride.sol",
+    "contracts/interfaces/IGoalOSAccounting.sol",
+    "contracts/interfaces/IGoalOSBusinessLifecycle.sol",
+    "contracts/registry/GoalOSBusinessLifecycle.sol",
+    "contracts/registry/GoalOSDeploymentDirectory.sol",
+    "contracts/registry/JobRegistry.sol"
+  ],
+  "selectors": [
+    "businessOverrideNonce()",
+    "businessOverrideUsed(bytes32)",
+    "setRiskLimits(uint256,uint256)",
+    "ownerResolveJob(uint256,uint8,address,bytes32,bytes32)",
+    "actualBalance(address)",
+    "protectedLiability(address)",
+    "reservedBalance(address)",
+    "pendingWithdrawal(address)",
+    "freeBalance(address)",
+    "totalInflow(address)",
+    "totalOutflow(address)",
+    "isSolvent(address)",
+    "accountingStateHash(address)",
+    "classifySelector(bytes4,uint8)",
+    "transitionTo(uint8,bytes32,bytes32,bytes32,bool)",
+    "canCall(bytes4,address)",
+    "recordRelease((bytes32,bytes32,bytes32,bytes32,bytes32,bytes32,bytes32,address,address,uint8,uint256),bytes32,bytes32)"
+  ],
+  "events": ["BusinessOverrideExecuted", "RiskLimitsUpdated", "BusinessJobResolved", "BusinessModeTransitioned", "SelectorClassified", "AccountingRootUpdated", "ReleaseRecorded"],
+  "errors": ["GoalOSOverrideMissingCommitment", "GoalOSOverrideReplay", "GoalOSLifecycleBadTransition", "GoalOSLifecycleShutdownLiabilities"],
+  "structs": ["GoalOSDeploymentDirectory.ReleaseRecord"],
+  "enums": ["BusinessMode", "SelectorClass", "ReleaseStatus"],
+  "storage": ["businessOverrideNonce", "businessOverrideUsed", "maxProtectedLiabilityPerToken", "maxSingleReward", "_protectedLiability", "_reservedBalance", "_pendingWithdrawal", "_totalInflow", "_totalOutflow", "mode", "latestAccountingRoot", "selectorClass", "releases"],
+  "tests": ["test/businessControls.test.ts"],
+  "gateMapping": {"Gate2": ["BusinessOverrideCore", "JobRegistry.ownerResolveJob"], "Gate3": ["JobRegistry accounting counters and risk limits"], "Gate4": ["GoalOSBusinessLifecycle", "GoalOSDeploymentDirectory"]}
+}
