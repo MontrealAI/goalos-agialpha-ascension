@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GoalOS deployment public configuration",
+  "type": "object",
+  "required": ["schemaVersion", "network", "expectedChainId", "agialphaToken", "deploymentTopologyVersion", "finalOwnerKind", "finalOwnerAddress", "confirmations", "feeCeilings", "maximumDeploymentBudgetEth", "verificationProviders", "canaryLimits", "ownershipTransferPolicy", "claimBoundary"],
+  "properties": {
+    "schemaVersion": { "const": "1.0" },
+    "network": { "enum": ["sepolia", "mainnet"] },
+    "expectedChainId": { "enum": [1, 11155111] },
+    "agialphaToken": { "type": "string" },
+    "deploymentTopologyVersion": { "type": "string" },
+    "finalOwnerKind": { "enum": ["SAFE", "EOA"] },
+    "finalOwnerAddress": { "type": "string" },
+    "confirmations": { "type": "integer", "minimum": 1 },
+    "feeCeilings": { "type": "object" },
+    "maximumDeploymentBudgetEth": { "type": "string" },
+    "verificationProviders": { "type": "array", "items": { "enum": ["etherscan", "sourcify"] } },
+    "canaryLimits": { "type": "object" },
+    "ownershipTransferPolicy": { "type": "string" },
+    "claimBoundary": { "type": "string" }
+  }
+}

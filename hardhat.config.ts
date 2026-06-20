@@ -8,6 +8,14 @@ import { getOptionalPrivateKey, getOptionalRpcUrl } from "./scripts/config/netwo
 const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY || "";
 const MAINNET_FORK_RPC_URL = getOptionalRpcUrl("ethereumMainnet") || process.env.PUBLIC_ETHEREUM_MAINNET_RPC_URL;
 const ENABLE_MAINNET_FORK = process.env.HARDHAT_FORK_MAINNET === "1" && Boolean(MAINNET_FORK_RPC_URL);
+function requireRemoteUrlWhenSelected(networkName: string, envName: string): string {
+  const selected = process.argv.includes("--network") && process.argv[process.argv.indexOf("--network") + 1] === networkName;
+  const url = getOptionalRpcUrl(envName);
+  if (selected && !url) {
+    throw new Error(`Missing RPC URL for ${networkName}. Create .private/${envName === "ethereumMainnet" ? "mainnet" : "sepolia"}-operator.env or set the documented PRIVATE_*_RPC_URL locally. GoalOS refuses localhost fallback for named remote networks.`);
+  }
+  return url || `http://goalos-missing-rpc.invalid/${networkName}`;
+}
 
 function accounts(networkName: string): string[] | "remote" {
   const key = getOptionalPrivateKey(networkName);
@@ -25,10 +33,10 @@ const config: HardhatUserConfig = {
   networks: {
     hardhat: { chainId: ENABLE_MAINNET_FORK ? 1 : 31337, forking: ENABLE_MAINNET_FORK && MAINNET_FORK_RPC_URL ? { url: MAINNET_FORK_RPC_URL } : undefined },
     localhost: { url: getOptionalRpcUrl("localhost") || "http://127.0.0.1:8545", chainId: 31337, accounts: accounts("localhost") },
-    sepolia: { url: getOptionalRpcUrl("ethereumSepolia") || "http://127.0.0.1:8545", accounts: accounts("ethereumSepolia"), chainId: 11155111 },
-    mainnet: { url: getOptionalRpcUrl("ethereumMainnet") || "http://127.0.0.1:8545", accounts: accounts("ethereumMainnet"), chainId: 1 },
-    ethereumSepolia: { url: getOptionalRpcUrl("ethereumSepolia") || "http://127.0.0.1:8545", accounts: accounts("ethereumSepolia"), chainId: 11155111 },
-    ethereumMainnet: { url: getOptionalRpcUrl("ethereumMainnet") || "http://127.0.0.1:8545", accounts: accounts("ethereumMainnet"), chainId: 1 }
+    sepolia: { url: requireRemoteUrlWhenSelected("sepolia", "ethereumSepolia"), accounts: accounts("ethereumSepolia"), chainId: 11155111 },
+    mainnet: { url: requireRemoteUrlWhenSelected("mainnet", "ethereumMainnet"), accounts: accounts("ethereumMainnet"), chainId: 1 },
+    ethereumSepolia: { url: requireRemoteUrlWhenSelected("ethereumSepolia", "ethereumSepolia"), accounts: accounts("ethereumSepolia"), chainId: 11155111 },
+    ethereumMainnet: { url: requireRemoteUrlWhenSelected("ethereumMainnet", "ethereumMainnet"), accounts: accounts("ethereumMainnet"), chainId: 1 }
   },
   etherscan: {
     apiKey: {

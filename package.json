@@ -221,7 +221,13 @@
     "deploy:handoff": "ts-node scripts/deployment/goalos-deploy-wizard.ts handoff",
     "deploy:evidence": "ts-node scripts/deployment/goalos-deploy-wizard.ts evidence",
     "deploy:sepolia": "ts-node scripts/deployment/goalos-deploy-wizard.ts sepolia",
-    "deploy:mainnet": "ts-node scripts/deployment/goalos-deploy-wizard.ts mainnet"
+    "deploy:mainnet": "ts-node scripts/deployment/goalos-deploy-wizard.ts mainnet",
+    "deploy:report": "ts-node scripts/deployment/goalos-deploy-wizard.ts report",
+    "test:deployment": "node scripts/deployment/test-deployment-safety.js",
+    "docs:deployment:build": "node scripts/deployment/build-deployment-docs.js",
+    "docs:deployment:check": "node scripts/deployment/check-deployment-docs.js",
+    "docs:deployment:links": "node scripts/deployment/check-deployment-docs.js --links",
+    "docs:deployment:examples": "node scripts/deployment/check-deployment-docs.js --examples"
   },
   "dependencies": {
     "@openzeppelin/contracts": "4.9.6",
