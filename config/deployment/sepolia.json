@@ -3,14 +3,30 @@
   "network": "sepolia",
   "expectedChainId": 11155111,
   "agialphaToken": "CONFIGURE_EXISTING_OR_SEPOLIA_MOCK",
+  "deploymentTopologyVersion": "goalos-agialpha-ascension-v4.4.0",
+  "treasuryAddress": "CONFIGURE_PUBLIC_ADDRESS_BEFORE_LIVE_USE",
+  "controllerAddress": "CONFIGURE_PUBLIC_ADDRESS_BEFORE_LIVE_USE",
+  "operatorAddress": "CONFIGURE_PUBLIC_ADDRESS_BEFORE_LIVE_USE",
   "finalOwnerKind": "SAFE",
-  "finalOwnerAddress": "0x0000000000000000000000000000000000000000",
+  "finalOwnerAddress": "CONFIGURE_FINAL_OWNER_PUBLIC_ADDRESS_BEFORE_LIVE_USE",
   "confirmations": 2,
-  "gasBudgetEthCeiling": "0.2",
+  "feeCeilings": {
+    "maxFeePerGasGwei": "50",
+    "maxPriorityFeePerGasGwei": "3"
+  },
+  "maximumDeploymentBudgetEth": "0.2",
+  "verificationProviders": [
+    "etherscan",
+    "sourcify"
+  ],
   "canaryLimits": {
     "maxProtectedLiabilityPerToken": "0",
-    "maxSingleReward": "0"
+    "maxSingleReward": "0",
+    "maxCustomerFunds": "0"
   },
-  "topologyVersion": "goalos-agialpha-ascension-v4.4.0",
-  "claimBoundary": "Configuration only; no deployment evidence."
+  "ownershipTransferPolicy": "final owner must accept and deployer roles must be removed before operational completion",
+  "releaseReferences": {
+    "certificate": "qa/mainnet-authorization-certificate.json"
+  },
+  "claimBoundary": "Public configuration only; no deployment evidence."
 }

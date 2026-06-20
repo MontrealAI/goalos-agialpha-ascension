@@ -57,3 +57,7 @@ private key recovery attempts
 ## Safe disclosure rule
 
 If in doubt, disclose privately and redact sensitive details.
+
+## Deployment security
+
+Never commit `.private/` files, private keys, RPC URLs, API tokens, Safe signer lists, signatures, or private operator configuration. Mainnet broadcast is local-only and cannot run from CI.
