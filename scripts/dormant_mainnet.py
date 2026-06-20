@@ -5,6 +5,7 @@ ROOT=pathlib.Path(__file__).resolve().parents[1]
 CERT=ROOT/'qa/dormant-mainnet-readiness/authorization-certificate.json'
 PUBLIC_PLAN=ROOT/'qa/dormant-mainnet-readiness/deployment-plan.public.json'
 PRIVATE_OVERLAY=ROOT/'.private/dormant-mainnet/operator-config.json'
+POSTDEPLOY_EVIDENCE=ROOT/'qa/dormant-mainnet-deployment/evidence.json'
 STATUS=ROOT/'docs/generated/DORMANT_MAINNET_STATUS.md'
 AGI='0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA'
 TEMP_DEPLOYER='0x'+'6c8B8897Fb6b08B4070387233B89b3E9A94eD00E'
@@ -146,13 +147,43 @@ def validate(path=CERT, require_ready=False):
     if require_ready and (cert.get('blockers') or any(cert.get(k)!='YES' for k in DORM_YES)): errors.append('dormant readiness is BLOCKED; final-check requires all dormant YES fields and no blockers')
     return errors
 
+def validate_postdeploy_evidence(path=POSTDEPLOY_EVIDENCE):
+    data=load(path); errors=[]
+    if data is None: return ['post-deployment evidence is missing or invalid JSON']
+    if data.get('chainId')!=1: errors.append('chainId must be 1')
+    txs=data.get('transactionHashes') if isinstance(data.get('transactionHashes'),list) else []
+    receipts=data.get('receipts') if isinstance(data.get('receipts'),list) else []
+    planned=data.get('plannedTransactions') if isinstance(data.get('plannedTransactions'),list) else txs
+    if not txs or not receipts or len(receipts)!=len(txs): errors.append('all planned transactions must have confirmed receipts')
+    if planned and len(txs)!=len(planned): errors.append('all planned transactions must be confirmed')
+    if data.get('allReceiptsSuccessful') is not True or any(r.get('status')!=1 for r in receipts if isinstance(r,dict)): errors.append('all planned transactions must be successful')
+    checks={
+        'runtimeBytecodeHashesMatch':'all runtime bytecode hashes must match',
+        'allNewContractsVerified':'all newly deployed contracts must be Etherscan-verified',
+        'canonicalAgialphaMatches':'canonical AGIALPHA dependency must match',
+        'allManagedOwnersLedger':'all managed Owners must be the Ledger address',
+        'permanentRolesLedgerOrApprovedPolicy':'all permanent roles must be Ledger address or explicit approved policy',
+        'pendingOwnerCountZero':'pending Owner count must be 0',
+        'dormantOrPausedStateConfirmed':'dormant/paused state must be confirmed',
+    }
+    for k,msg in checks.items():
+        if data.get(k) is not True: errors.append(msg)
+    if data.get('temporaryDeployerResidualAuthority')!=0: errors.append('temporary deployer residual authority must be 0')
+    if data.get('officialFunding')!=0: errors.append('official protocol/vault funding must be 0')
+    if data.get('activation') is not False: errors.append('activation must be false')
+    public_status=data.get('publicStatus') if isinstance(data.get('publicStatus'),dict) else {}
+    required_status={'ETHEREUM_MAINNET_DEPLOYED':'YES','ETHEREUM_MAINNET_VERIFIED':'YES','DEPLOYMENT_MODE':'DORMANT','PRODUCTION_READY':'NO','USER_FUNDS_AUTHORIZED':'NO','PROTOCOL_ACTIVATION_AUTHORIZED':'NO','PUBLIC_RELIANCE_AUTHORIZED':'NO'}
+    for k,v in required_status.items():
+        if public_status.get(k)!=v: errors.append(f'public status {k} must be {v}')
+    return errors
+
 def write_status(cert):
     STATUS.parent.mkdir(parents=True,exist_ok=True)
     text=f"# Dormant Initial Mainnet Deployment Status\n\nDormant technical readiness: {cert.get('DORMANT_TECHNICALLY_MAINNET_READY')}\n\nDormant deployment authorized: {cert.get('DORMANT_MAINNET_DEPLOYMENT_AUTHORIZED')}\n\nEthereum Mainnet authorized: {cert.get('DORMANT_ETHEREUM_MAINNET_AUTHORIZED')}\n\nProduction readiness: {cert.get('PRODUCTION_TECHNICALLY_MAINNET_READY')}\n\nUser funds authorized: {cert.get('USER_FUNDS_AUTHORIZED')}\n\nProtocol activation authorized: {cert.get('PROTOCOL_ACTIVATION_AUTHORIZED')}\n\nPublic reliance authorized: {cert.get('PUBLIC_RELIANCE_AUTHORIZED')}\n\nBlockers:\n"+'\n'.join(f"- {b}" for b in cert.get('blockers',[]))+"\n"
     STATUS.write_text(text); print(text)
 
 def main():
-    ap=argparse.ArgumentParser(); ap.add_argument('cmd',choices=['certificate','validate','status','prepare','postdeploy','final-check','live-local-gated','validate-private']); ap.add_argument('--certificate',default=str(CERT)); args=ap.parse_args()
+    ap=argparse.ArgumentParser(); ap.add_argument('cmd',choices=['certificate','validate','status','prepare','postdeploy','final-check','live-local-gated','validate-private']); ap.add_argument('--certificate',default=str(CERT)); ap.add_argument('--evidence',default=str(POSTDEPLOY_EVIDENCE)); args=ap.parse_args()
     if args.cmd=='certificate': CERT.parent.mkdir(parents=True,exist_ok=True); c=compute(); CERT.write_text(json.dumps(c,indent=2)+'\n'); print(json.dumps(c,indent=2)); return
     if args.cmd=='validate': errs=validate(args.certificate); print(json.dumps({'status':'PASSED' if not errs else 'FAILED','errors':errs},indent=2)); sys.exit(1 if errs else 0)
     if args.cmd=='final-check': errs=validate(args.certificate, require_ready=True); print(json.dumps({'status':'PASSED' if not errs else 'BLOCKED','errors':errs},indent=2)); sys.exit(1 if errs else 0)
@@ -160,7 +191,9 @@ def main():
     if args.cmd in {'prepare','validate-private'}:
         ok,errs=validate_private_overlay(public_plan=load(PUBLIC_PLAN) or {})
         print(json.dumps({'status':'PASSED' if ok else 'BLOCKED','errors':errs,'privateOverlayPath':str(PRIVATE_OVERLAY.relative_to(ROOT))},indent=2)); sys.exit(0 if ok else 1)
-    if args.cmd=='postdeploy': print(json.dumps({'status':'BLOCKED','reason':'No local human Ethereum Mainnet broadcast evidence supplied; not deployed and not verified.'},indent=2)); sys.exit(1)
+    if args.cmd=='postdeploy':
+        errs=validate_postdeploy_evidence(args.evidence)
+        print(json.dumps({'status':'PASSED' if not errs else 'BLOCKED','errors':errs,'evidencePath':str(pathlib.Path(args.evidence))},indent=2)); sys.exit(1 if errs else 0)
     if args.cmd=='live-local-gated':
         if os.environ.get('CI','').lower() in {'1','true','yes'}: sys.exit('Refusing dormant Mainnet broadcast in CI.')
         ok,errs=validate_private_overlay(public_plan=load(PUBLIC_PLAN) or {})

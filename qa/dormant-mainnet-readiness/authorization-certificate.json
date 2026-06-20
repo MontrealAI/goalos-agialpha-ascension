@@ -3,7 +3,7 @@
   "authorizationClass": "DORMANT_INITIAL_MAINNET_DEPLOYMENT",
   "generatedAt": "1970-01-01T00:00:00Z",
   "repository": "MontrealAI/goalos-agialpha-ascension",
-  "sourceCommit": "ac2511d67d0a4088d1b3ee2ce06d97f7e2825e21",
+  "sourceCommit": "a0b769a47794a3fe9ec44becfe45977c367fe1c0",
   "chainId": 1,
   "canonicalAgialpha": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
   "deploymentMode": "DORMANT",
@@ -75,7 +75,7 @@
     },
     "certificateScript": {
       "path": "scripts/dormant_mainnet.py",
-      "sha256": "0xfe4bd36b4dc8f75061cbddb71c5819ef70fbf75c615fe6a3761b6c1c670109f5",
+      "sha256": "0xc04fd3d6c880fd484a55f767b68f595064172117564fb7f8beae9fe57f274ce1",
       "present": true
     }
   },
@@ -92,5 +92,5 @@
   "PUBLIC_RELIANCE_AUTHORIZED": "NO",
   "UNBOUNDED_ECONOMIC_EXPOSURE_AUTHORIZED": "NO",
   "planHash": "0x7b102e8bcecc5af4004ef062485b6b2105a34af337fa16196bd1b0a7e8719e87",
-  "certificateHash": "0x34a8722a39f505507dcefc0ff151393e4ddc1c0132eb6c2e3298aa413e30390a"
+  "certificateHash": "0x9e4b10e857db48d3a8a6369383bdc13a499bd92d75a2e289c5ec2a04ab5bbb70"
 }
