@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "status": "BLOCKED_DORMANT_INITIAL_DEPLOYMENT",
+  "chainId": 1,
+  "dormantInitialMainnetDeploymentAuthorized": false,
+  "productionReady": false,
+  "productionDeploymentAuthorized": false,
+  "userFundsAuthorized": false,
+  "userDepositsAuthorized": false,
+  "protocolActivationAuthorized": false,
+  "phaseBConfigurationAuthorized": false,
+  "publicRelianceAuthorized": false,
+  "publicFrontendAuthorized": false,
+  "productionAnnouncementAuthorized": false,
+  "tokenFundingAuthorized": false,
+  "treasuryFundingAuthorized": false,
+  "walletA": "0x6c8B8897Fb6b08B4070387233B89b3E9A94eD00E",
+  "walletB": "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99",
+  "canonicalAgialpha": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
+  "gitCommit": "b16cfc9a144a9dd187e51afa3e10577d699de0a8",
+  "packageLockSha256": "0x9739ecf251762c3828813424f8e7d0d3b291611125cf5eafb31fc32479a3f514",
+  "artifactBundleSha256": "0x296bc2507251d3d82d6edb7d814838d17625cc74824065fb65719c3b9d71bcd4",
+  "deploymentPlanSha256": "0x57fcc756596d98fac642bf42296ba671da41279282fe561013301ee4a3adcc01",
+  "authorityPolicySha256": "0xe7aa1dd7b24146debf57ab2f654d11ccdc79070498c9329970b5b7f0a1c71f14",
+  "forkRehearsalSha256": "0x8cfed798053e9a60da46f8d31c9b73e4f603651e625a614800e1ca0137f7c131",
+  "ledgerApprovalSha256": "0x62060a53a820883a2f47061668c8de48ef5b86fecbcf560d5a0b21dc8d453ce7",
+  "startingNonce": 0,
+  "expiresAt": "2026-06-21T11:45:45Z",
+  "blockers": [
+    "Git working tree is dirty; certificate cannot authorize live deployment.",
+    "Missing fee/funding limit DORMANT_MAINNET_MAX_FEE_GWEI.",
+    "Missing fee/funding limit DORMANT_MAINNET_MAX_PRIORITY_FEE_GWEI.",
+    "Missing fee/funding limit DORMANT_MAINNET_MAX_TOTAL_COST_ETH.",
+    "Missing fee/funding limit DORMANT_MAINNET_MIN_REMAINING_ETH.",
+    "Ledger approval is invalid or does not recover Wallet B."
+  ],
+  "warnings": [
+    "Operational dormancy is not global freeze."
+  ],
+  "banner": "DORMANT INITIAL MAINNET DEPLOYMENT \u2014 NOT PRODUCTION READY \u2014 NO USER FUNDS \u2014 NO ACTIVATION \u2014 NO PUBLIC RELIANCE",
+  "disclaimer": "This deployment is operationally dormant and unfunded. It is not guaranteed to be globally frozen against unsolicited third-party calls or transfers."
+}

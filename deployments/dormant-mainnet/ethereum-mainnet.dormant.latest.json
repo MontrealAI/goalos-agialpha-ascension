@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "banner": "DORMANT INITIAL MAINNET DEPLOYMENT \u2014 NOT PRODUCTION READY \u2014 NO USER FUNDS \u2014 NO ACTIVATION \u2014 NO PUBLIC RELIANCE",
+  "disclaimer": "This deployment is operationally dormant and unfunded. It is not guaranteed to be globally frozen against unsolicited third-party calls or transfers.",
+  "chainId": 1,
+  "walletA": "0x6c8B8897Fb6b08B4070387233B89b3E9A94eD00E",
+  "walletB": "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99",
+  "canonicalAgialpha": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
+  "deploymentStatus": "DORMANT_UNCONFIGURED",
+  "phaseBExecuted": false,
+  "phaseBConfigurationAuthorized": false,
+  "noMainnetTransactionBroadcastByThisCommand": true,
+  "contracts": {},
+  "publicConstructorArgsCommitment": "0x57fcc756596d98fac642bf42296ba671da41279282fe561013301ee4a3adcc01"
+}

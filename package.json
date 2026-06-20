@@ -1,7 +1,7 @@
 {
   "name": "goalos-agialpha-ascension",
   "version": "4.4.0",
-  "description": "GoalOS-native reimplementation of α-AGI Ascension using existing AGIALPHA for proof-settled AI workflow work.",
+  "description": "GoalOS-native reimplementation of \u03b1-AGI Ascension using existing AGIALPHA for proof-settled AI workflow work.",
   "license": "UNLICENSED",
   "scripts": {
     "compile": "hardhat compile",
@@ -252,7 +252,22 @@
     "deploy:mainnet:dormant:status": "python scripts/dormant_mainnet.py status",
     "verify:mainnet:dormant:auto": "python scripts/dormant_mainnet.py verify-auto",
     "deploy:mainnet:dormant:postcheck": "python scripts/dormant_mainnet.py postdeploy",
-    "deploy:mainnet:dormant:live-and-verify": "python scripts/dormant_mainnet.py live-and-verify"
+    "deploy:mainnet:dormant:live-and-verify": "python scripts/dormant_mainnet.py live-and-verify",
+    "dormant:mainnet:doctor": "python scripts/dormant_mainnet_v3.py doctor",
+    "dormant:mainnet:plan": "python scripts/dormant_mainnet_v3.py plan",
+    "dormant:mainnet:fork-rehearsal": "python scripts/dormant_mainnet_v3.py fork-rehearsal",
+    "dormant:mainnet:ledger-approve": "python scripts/dormant_mainnet_v3.py ledger-approve",
+    "dormant:mainnet:certificate": "python scripts/dormant_mainnet_v3.py certificate",
+    "dormant:mainnet:certificate:validate": "python scripts/dormant_mainnet_v3.py certificate-validate",
+    "dormant:mainnet:arm": "python scripts/dormant_mainnet_v3.py arm",
+    "dormant:mainnet:live": "python scripts/dormant_mainnet_v3.py live",
+    "dormant:mainnet:resume": "python scripts/dormant_mainnet_v3.py resume",
+    "dormant:mainnet:verify": "python scripts/dormant_mainnet_v3.py verify",
+    "dormant:mainnet:verify:status": "python scripts/dormant_mainnet_v3.py verify-status",
+    "dormant:mainnet:postcheck": "python scripts/dormant_mainnet_v3.py postcheck",
+    "dormant:mainnet:evidence": "python scripts/dormant_mainnet_v3.py evidence",
+    "dormant:mainnet:status": "python scripts/dormant_mainnet_v3.py status",
+    "dormant:mainnet:sweep-deployer": "python scripts/dormant_mainnet_v3.py sweep-deployer"
   },
   "dependencies": {
     "@openzeppelin/contracts": "4.9.6",

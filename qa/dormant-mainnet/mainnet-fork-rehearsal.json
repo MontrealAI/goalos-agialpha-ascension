@@ -1,0 +1,8 @@
+{
+  "banner": "DORMANT INITIAL MAINNET DEPLOYMENT \u2014 NOT PRODUCTION READY \u2014 NO USER FUNDS \u2014 NO ACTIVATION \u2014 NO PUBLIC RELIANCE",
+  "status": "BLOCKED_REQUIRES_PINNED_MAINNET_FORK_RPC",
+  "chainId": 1,
+  "forkMainnetRequired": true,
+  "localChainId1IsInsufficient": true,
+  "noBroadcast": true
+}

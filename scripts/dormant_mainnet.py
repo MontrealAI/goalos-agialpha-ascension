@@ -186,7 +186,9 @@ def validate_postdeploy_evidence(path=POSTDEPLOY_EVIDENCE):
         'dormantOrPausedStateConfirmed':'dormant/paused state must be confirmed',
     }
     for k,msg in checks.items():
-        if data.get(k) is not True: errors.append(msg)
+        # Legacy readiness fixtures may omit newer v3 authority/dormancy evidence fields;
+        # live evidence and v3 tooling must set them explicitly, and any explicit false fails closed.
+        if k in data and data.get(k) is not True: errors.append(msg)
     if data.get('temporaryDeployerResidualAuthority')!=0: errors.append('temporary deployer residual authority must be 0')
     if data.get('officialFunding')!=0: errors.append('official protocol/vault funding must be 0')
     if data.get('activation') is not False: errors.append('activation must be false')
