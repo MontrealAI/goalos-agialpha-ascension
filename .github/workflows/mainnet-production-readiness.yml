@@ -1,0 +1,67 @@
+name: Mainnet production readiness (no broadcast)
+
+on:
+  workflow_dispatch:
+    inputs:
+      fork_block_number:
+        description: Optional pinned recent Ethereum Mainnet block number
+        required: false
+        type: string
+
+permissions:
+  contents: read
+
+env:
+  NODE_ENV: test
+  GOALOS_RELEASE_MODE: RELEASE_MODE
+  MAINNET_FORK_RPC_URL: ${{ secrets.MAINNET_FORK_RPC_URL }}
+  GOALOS_PRODUCTION_OWNER_KIND: ${{ vars.GOALOS_PRODUCTION_OWNER_KIND }}
+  GOALOS_PRODUCTION_OWNER_ADDRESS: ${{ vars.GOALOS_PRODUCTION_OWNER_ADDRESS }}
+  GOALOS_PRODUCTION_OWNER_CONFIG_B64: ${{ secrets.GOALOS_PRODUCTION_OWNER_CONFIG_B64 }}
+  FORK_AGIALPHA_FUNDER: ${{ vars.FORK_AGIALPHA_FUNDER }}
+  MAINNET_FORK_BLOCK_NUMBER: ${{ inputs.fork_block_number }}
+
+concurrency:
+  group: mainnet-production-readiness-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  release-readiness:
+    name: Protected no-broadcast RELEASE_MODE evidence
+    runs-on: ubuntu-latest
+    environment: mainnet-readiness
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - name: Install dependencies
+        run: npm ci
+      - name: Validate protected release inputs without printing secrets
+        run: npm run mainnet:release-inputs
+      - name: Compile exact release artifacts
+        run: npm run compile:ci
+      - name: Complete audit and critical/high gate
+        run: npm run audit:all && npm run audit:summarize && npm run audit:fail-on-critical
+      - name: Release-mode fork rehearsal (no broadcast)
+        run: npm run mainnet:fork-rehearsal:release
+      - name: Production readiness certificate checks
+        run: npm run mainnet:production-readiness && npm run mainnet:certificate:validate && npm run mainnet:final-check
+      - name: Upload redacted public evidence
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mainnet-readiness-public-evidence
+          path: |
+            qa/mainnet-readiness/**
+            qa/security/**
+            docs/architecture/**
+      - name: Upload protected audit logs
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mainnet-readiness-protected-logs
+          path: audit/reports/**
