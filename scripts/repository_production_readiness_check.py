@@ -73,7 +73,7 @@ if "readiness:v4.2" in scripts:
 wf = (ROOT / ".github/workflows/agialpha-audit-candidate-ci.yml")
 if wf.exists():
     txt = wf.read_text(encoding="utf-8", errors="ignore")
-    for must in ["npm run verify:compiler-alignment", "npm run compile:ci", "npm run test:ci", "npm run test:all", "npm run static-check", "npm run readiness:v4.3", "npm run mainnet:authorization-check"]:
+    for must in ["npm run verify:compiler-alignment", "npm run compile:ci", "npm run test:ci", "npm run test:all", "npm run static-check", "npm run readiness:v4.3", "npm run mainnet:status-consistency"]:
         if must not in txt:
             errors.append(f"AGIALPHA CI workflow missing: {must}")
 
