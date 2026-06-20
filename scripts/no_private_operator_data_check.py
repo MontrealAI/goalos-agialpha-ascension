@@ -51,7 +51,7 @@ def tracked_files() -> list[pathlib.Path]:
 
 def content_candidate_rels() -> set[str] | None:
     try:
-        args = ["git", "grep", "-Il", "-e", "0x", "-e", "PRIVATE_KEY", "-e", "SEED_PHRASE", "-e", "MNEMONIC", "-e", "ETHERSCAN_API_KEY", "-e", "FOUNDER_APPROVAL_SIGNATURE", "-e", "alchemy", "-e", "infura", "-e", "quicknode", "-e", "ankr", "-e", "blast", "-e", "drpc", "-e", "chainstack", "--"]
+        args = ["git", "grep", "-Il", "-e", "0x", "-ie", "private_key", "-ie", "seed_phrase", "-ie", "mnemonic", "-ie", "etherscan_api_key", "-ie", "founder_approval_signature", "-e", "alchemy", "-e", "infura", "-e", "quicknode", "-e", "ankr", "-e", "blast", "-e", "drpc", "-e", "chainstack", "--"]
         out = subprocess.check_output(args, cwd=ROOT, text=True, stderr=subprocess.DEVNULL)
         return set(out.splitlines())
     except subprocess.CalledProcessError as exc:
@@ -106,7 +106,7 @@ for path in tracked_files():
     raw_lower = raw.lower()
     interesting = (
         b"0x" in raw_lower
-        or any(token.encode() in raw for token in ("PRIVATE_KEY", "SEED_PHRASE", "MNEMONIC", "ETHERSCAN_API_KEY", "FOUNDER_APPROVAL_SIGNATURE"))
+        or any(token.encode() in raw_lower for token in ("private_key", "seed_phrase", "mnemonic", "etherscan_api_key", "founder_approval_signature"))
         or any(provider.encode() in raw_lower for provider in ("alchemy", "infura", "quicknode", "ankr", "blast", "drpc", "chainstack"))
     )
     if not interesting:
@@ -116,7 +116,7 @@ for path in tracked_files():
         lowered = text.lower()
         should_scan_secret_patterns = (
             any(provider in lowered for provider in ("alchemy", "infura", "quicknode", "ankr", "blast", "drpc", "chainstack"))
-            or any(token in text for token in ("PRIVATE_KEY", "SEED_PHRASE", "MNEMONIC", "ETHERSCAN_API_KEY", "FOUNDER_APPROVAL_SIGNATURE"))
+            or any(token in lowered for token in ("private_key", "seed_phrase", "mnemonic", "etherscan_api_key", "founder_approval_signature"))
             or ("0x" in lowered and any(term in lowered for term in ("private", "secret", "key", "signature")))
         )
         if should_scan_secret_patterns:

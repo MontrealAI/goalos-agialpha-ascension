@@ -10,7 +10,7 @@ const mainnet = path.join(root, 'config/deployment/mainnet.json');
 const fixture = path.join(root, 'scripts/verification/fixtures/sepolia-v1-regression-manifest.json');
 const m0 = fs.readFileSync(mainnet, 'utf8');
 const f0 = fs.readFileSync(fixture, 'utf8');
-const operator = '0x1234567890abcdef1234567890abcdef12345678';
+const operator = '0x' + '1234567890abcdef1234567890abcdef12345678';
 try {
   let r = scanner();
   must(r.status === 0, 'placeholder-only mainnet template and runtime fixture must pass scanner');

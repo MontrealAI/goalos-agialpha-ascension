@@ -5,8 +5,9 @@
   "type": "object",
   "required": ["schemaVersion", "network", "chainId", "agialphaToken", "temporaryDeployerAddress", "finalLedgerOwnerAddress", "finalOwnerKind", "canaryLimits", "feeCeilings", "confirmationPolicy"],
   "properties": {
-    "schemaVersion": { "const": "1.0" },
-    "network": { "const": "ethereumMainnet" },
+    "schemaVersion": { "const": "2.0" },
+    "network": { "const": "mainnet" },
+    "hardhatNetwork": { "const": "ethereumMainnet" },
     "chainId": { "const": 1 },
     "expectedChainId": { "const": 1 },
     "agialphaToken": { "const": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA" },

@@ -24,9 +24,12 @@
   ],
   "properties": {
     "schemaVersion": {
-      "const": "1.0"
+      "const": "2.0"
     },
     "network": {
+      "const": "mainnet"
+    },
+    "hardhatNetwork": {
       "const": "ethereumMainnet"
     },
     "chainId": {

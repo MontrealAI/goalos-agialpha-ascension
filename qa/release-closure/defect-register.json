@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "1.0",
+  "generatedAt": "2026-06-20T18:50:31.232Z",
+  "baselineSha": "392be018891d256ec640f1d59a9e4e47c4d08a31",
+  "blockers": [
+    {
+      "id": "AXIOS_HIGH_FINDINGS",
+      "sourceScanner": "npm-audit/osv",
+      "package": "axios",
+      "installedVersion": "1.17.0 after remediation",
+      "actuallyVulnerable": false,
+      "rootCause": "Ledger plugin introduced axios dependency copies; audit normalizer reported high advisories before axios override/lockfile refresh.",
+      "remediation": "Pin axios override to 1.17.0 and verify npm-audit criticalHighUnresolved=0."
+    },
+    {
+      "id": "MAINNET_CONFIG_SCHEMA",
+      "remediation": "Move public config to schemaVersion 2.0 with semantic network mainnet and hardhatNetwork ethereumMainnet; operator address fields remain null placeholders."
+    },
+    {
+      "id": "SECRET_PREFILTER_CASE",
+      "remediation": "Normalize secret trigger prefilter to lower case and add private-operator regression harness."
+    },
+    {
+      "id": "LEDGER_ACCOUNTS",
+      "remediation": "Load optional Ledger address from ignored local environment and configure ledgerAccounts on Mainnet Hardhat networks."
+    },
+    {
+      "id": "UNSUPPORTED_COMPILER",
+      "remediation": "Move release compiler profile from solc 0.8.35 to solc 0.8.28."
+    }
+  ],
+  "claimBoundary": "Repository-controlled defect register only; no protected deployment evidence or Mainnet transaction claim."
+}
