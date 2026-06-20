@@ -8,8 +8,6 @@
     "JobRegistry.maxProtectedLiabilityPerToken",
     "JobRegistry.maxSingleReward",
     "JobRegistry._protectedLiability",
-    "JobRegistry._reservedBalance",
-    "JobRegistry._pendingWithdrawal",
     "JobRegistry._totalInflow",
     "JobRegistry._totalOutflow"
   ],

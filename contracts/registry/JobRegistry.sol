@@ -37,8 +37,6 @@ contract JobRegistry is BusinessOverrideCore, ReentrancyGuard, IJobRegistry, IGo
     mapping(uint256 => Job) public jobs;
     mapping(address => bool) public allowedRewardTokens;
     mapping(address => uint256) private _protectedLiability;
-    mapping(address => uint256) private _reservedBalance;
-    mapping(address => uint256) private _pendingWithdrawal;
     mapping(address => uint256) private _totalInflow;
     mapping(address => uint256) private _totalOutflow;
 
@@ -275,13 +273,13 @@ contract JobRegistry is BusinessOverrideCore, ReentrancyGuard, IJobRegistry, IGo
 
     function actualBalance(address token) public view returns (uint256) { return IERC20(token).balanceOf(address(this)); }
     function protectedLiability(address token) public view returns (uint256) { return _protectedLiability[token]; }
-    function reservedBalance(address token) public view returns (uint256) { return _reservedBalance[token]; }
-    function pendingWithdrawal(address token) public view returns (uint256) { return _pendingWithdrawal[token]; }
-    function freeBalance(address token) public view returns (uint256) { uint256 enc = _protectedLiability[token] + _reservedBalance[token] + _pendingWithdrawal[token]; uint256 bal = actualBalance(token); return bal > enc ? bal - enc : 0; }
+    function reservedBalance(address token) public pure returns (uint256) { token; return 0; }
+    function pendingWithdrawal(address token) public pure returns (uint256) { token; return 0; }
+    function freeBalance(address token) public view returns (uint256) { uint256 enc = _protectedLiability[token]; uint256 bal = actualBalance(token); return bal > enc ? bal - enc : 0; }
     function totalInflow(address token) public view returns (uint256) { return _totalInflow[token]; }
     function totalOutflow(address token) public view returns (uint256) { return _totalOutflow[token]; }
-    function isSolvent(address token) public view returns (bool) { return actualBalance(token) >= _protectedLiability[token] + _reservedBalance[token] + _pendingWithdrawal[token]; }
-    function accountingStateHash(address token) public view returns (bytes32) { return keccak256(abi.encode(token, actualBalance(token), _protectedLiability[token], _reservedBalance[token], _pendingWithdrawal[token], _totalInflow[token], _totalOutflow[token])); }
+    function isSolvent(address token) public view returns (bool) { return actualBalance(token) >= _protectedLiability[token]; }
+    function accountingStateHash(address token) public view returns (bytes32) { return keccak256(abi.encode(token, actualBalance(token), _protectedLiability[token], uint256(0), uint256(0), _totalInflow[token], _totalOutflow[token])); }
 
     function statusOf(uint256 jobId) external view returns (JobStatus) {
         return jobs[jobId].status;

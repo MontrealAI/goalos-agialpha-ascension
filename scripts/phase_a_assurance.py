@@ -42,8 +42,8 @@ def differential():
 
 def mutation():
     mutants=['authorization','ownership-transfer','accounting-increment','accounting-decrement','double-settlement','reservation-canary-bypass','protected-fund-withdrawal','lifecycle-bypass','wrong-chain-token','incomplete-safe-hashing','hard-coded-pass','certificate-binding','fail-open-audit-parsing']
-    obj={'schemaVersion':'1.0','status':'PHASE_A_LOCAL_PASS','profile':'smoke','criticalMutants':mutants,'killed':len(mutants),'survived':0,'killRate':'100%','releaseThresholdNotClaimed':True,'releaseStatus':'RELEASE_EVIDENCE_NOT_EXECUTED','claimBoundary':'Curated mutants are a bounded local Phase A smoke set; protected release must execute deterministic mutant evidence.'}
-    write(PR/'critical-mutation-smoke.json',obj); print(json.dumps(obj,indent=2)); return 0
+    obj={'schemaVersion':'1.0','status':'BLOCKED','profile':'smoke','criticalMutants':mutants,'killed':0,'survived':None,'killRate':None,'releaseThresholdNotClaimed':True,'releaseStatus':'RELEASE_EVIDENCE_NOT_EXECUTED','blockers':['Critical mutation entries are not backed by deterministic mutant execution evidence; no kill rate is claimed.']}
+    write(PR/'critical-mutation-smoke.json',obj); print(json.dumps(obj,indent=2)); return 2
 
 def invariants(release=False):
     seeds=list(range(1,33 if release else 5))

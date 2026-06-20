@@ -9,7 +9,7 @@
     "qa/mainnet-readiness/production-readiness.json",
     "qa/mainnet-readiness/authorization-certificate.json"
   ],
-  "baselineSha": "0cd268c8f863af649ff5314ad727f51e70519c9d",
+  "baselineSha": "182b60a82653f69ab2d525d4e006f459b0075194",
   "localCheckResults": [
     {
       "command": "npm run authority:inventory",
@@ -26,27 +26,21 @@
   "reason": "Fail-closed dossier: mandatory live/private fork RPC, independent build comparison, symbolic execution, critical mutation, and exact Mainnet-fork evidence must be supplied before PASS. No Mainnet broadcast evidence is present or claimed.",
   "releaseClaimBoundary": "Repository-local operational inventory and fail-closed readiness evidence only; not Mainnet deployed, not Mainnet verified, not Owner-authorized, and not technically ready until blocked evidence is supplied.",
   "releaseRelevantDirtyPaths": [
-    "package.json",
-    "qa/MANIFEST.json",
-    "qa/QA_REPORT.json",
+    "contracts/registry/JobClaimBondManager.sol",
+    "contracts/registry/JobRegistry.sol",
+    "contracts/registry/ReviewerBondRegistry.sol",
     "qa/authority-baseline.json",
     "qa/authority-baseline.json.sha256",
-    "qa/pr-readiness/accounting-status.json",
-    "qa/pr-readiness/critical-mutation-smoke.json",
-    "qa/pr-readiness/differential-report.json",
-    "qa/pr-readiness/invariants-ci.json",
-    "qa/pr-readiness/lifecycle-status.json",
-    "qa/pr-readiness/overrides-status.json",
-    "qa/pr-readiness/reproducible-build.json",
-    "qa/public-ethereum-mainnet-authorization-evidence.json",
-    "qa/public-mainnet-deployment-authorization-evidence.json",
-    "qa/public-mainnet-technical-readiness-evidence.json",
     "qa/storage-layout-report.json",
+    "scripts/audit/run-slither.sh",
+    "scripts/authority-inventory.ts",
+    "scripts/mainnet_operational_readiness.py",
     "scripts/phase_a_assurance.py",
-    "scripts/repository_production_readiness_check.py"
+    "scripts/validate_workflow_policy.py",
+    "test/ci/workflow_policy_test.py"
   ],
   "selectorCoverageStatus": "BLOCKED",
-  "sourceTreeHash": "3acc363757fa88f185d5ba6c538af58c01f609c8136abf561577ca1dec20ab26",
+  "sourceTreeHash": "934fc15efbfe52cfdd1726afa5d5e6a06bb11fd676c3ad2e8efe51df411a7c98",
   "sourceTreeHashScope": "tracked git index content excluding generated readiness artifacts",
   "status": "BLOCKED"
 }

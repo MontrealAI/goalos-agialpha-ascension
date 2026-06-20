@@ -2424,7 +2424,7 @@
           "attributes": "external onlyOwner validOverrideCommitments(reasonHash, evidenceHash)",
           "classification": "safe_exit_or_settlement",
           "name": "recordRelease",
-          "signature": "recordRelease(uint8,bytes32,bytes32)"
+          "signature": "recordRelease((bytes32,bytes32,bytes32,bytes32,bytes32,bytes32,bytes32,address,address,uint8,uint256),bytes32,bytes32)"
         }
       ],
       "workflow": true
@@ -4166,6 +4166,6 @@
     }
   ],
   "generatedBy": "scripts/mainnet_operational_readiness.py",
-  "sourceTreeHash": "3acc363757fa88f185d5ba6c538af58c01f609c8136abf561577ca1dec20ab26",
+  "sourceTreeHash": "934fc15efbfe52cfdd1726afa5d5e6a06bb11fd676c3ad2e8efe51df411a7c98",
   "sourceTreeHashScope": "tracked git index content excluding generated readiness artifacts"
 }

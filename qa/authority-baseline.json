@@ -210,7 +210,7 @@
       "mainnet:evidence:validate": "npm run mainnet:status-consistency && npm run assert:public-status",
       "mainnet:readiness-require-pass": "npm run mainnet:readiness-check -- --require-yes",
       "mainnet:deployment-authorization-require-pass": "npm run mainnet:deployment-authorization-check -- --require-yes",
-      "mainnet:authorization-require-pass": "npm run mainnet:authorization-check -- --require-yes",
+      "mainnet:authorization-require-pass": "python scripts/ethereum-mainnet-authorization-check.py --certificate qa/mainnet-authorization-certificate.json --require-yes",
       "mainnet:protected-authorize": "npm run mainnet:certificate && npm run mainnet:certificate:validate && npm run mainnet:readiness-require-pass && npm run mainnet:deployment-authorization-require-pass && npm run mainnet:authorization-require-pass",
       "contracts:change-manifest": "python -m json.tool qa/contract-change-manifest.json > /tmp/goalos-contract-change-manifest.check",
       "contracts:abi-diff": "python -m json.tool qa/contract-abi-diff.json > /tmp/goalos-contract-abi-diff.check",
@@ -353,8 +353,24 @@
       "path": "contracts/optional/DisputeRegistry.sol"
     },
     {
+      "name": "GoalOSBusinessLifecycle",
+      "path": "contracts/registry/GoalOSBusinessLifecycle.sol"
+    },
+    {
+      "name": "GoalOSDeploymentDirectory",
+      "path": "contracts/registry/GoalOSDeploymentDirectory.sol"
+    },
+    {
       "name": "JobClaimBondManager",
       "path": "contracts/registry/JobClaimBondManager.sol"
+    },
+    {
+      "name": "JobRegistry",
+      "path": "contracts/registry/JobRegistry.sol"
+    },
+    {
+      "name": "LaunchGateInvariantHarness",
+      "path": "contracts/test-harnesses/LaunchGateInvariantHarness.sol"
     },
     {
       "name": "LaunchGateRegistry",
@@ -418,7 +434,7 @@
     }
   ],
   "counts": {
-    "managedContractTypes": 45,
+    "managedContractTypes": 49,
     "deployedManagedInstances": 48,
     "manifestEntriesIncludingAGIALPHA": 49
   },
@@ -790,6 +806,7 @@
   ],
   "sourceHashes": {
     "contracts/access/GoalOSAccessControl.sol": "b9628e44c59fba1b4a18191fcdf567cb7894e5e05f416202407153234e69dab2",
+    "contracts/access/BusinessOverrideCore.sol": "4fa1e7fcec5c1251fc1f505874165e958b5cdb2ac022368bda61909ad5f514cd",
     "scripts/deploy-core.ts": "4238f41b70b36b5ff6ccf598f0b186a7bdab9c39243489b5dc6007b84ec7f00c",
     "scripts/validate-runtime-addresses.ts": "b52028e0cdd2f48d706e860d272b01543d61ca61e88b31d177f7163912d49bbf"
   },

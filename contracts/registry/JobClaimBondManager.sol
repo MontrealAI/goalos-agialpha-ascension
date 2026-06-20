@@ -54,10 +54,11 @@ contract JobClaimBondManager is GoalOSAccessControl, ReentrancyGuard {
     function claimJob(uint256 jobId) external nonReentrant whenNotPaused {
         require(jobRegistry.statusOf(jobId) == IJobRegistry.JobStatus.Open, "CLAIM_NOT_OPEN");
         require(claimBonds[jobId].builder == address(0), "CLAIM_EXISTS");
-        if (claimBondAGIALPHA > 0) {
-            agialphaToken.safeTransferFrom(msg.sender, address(this), claimBondAGIALPHA);
+        uint256 amount = claimBondAGIALPHA;
+        claimBonds[jobId] = ClaimBond(msg.sender, amount, false, block.timestamp);
+        if (amount > 0) {
+            agialphaToken.safeTransferFrom(msg.sender, address(this), amount);
         }
-        claimBonds[jobId] = ClaimBond(msg.sender, claimBondAGIALPHA, false, block.timestamp);
         jobRegistry.markClaimed(jobId, msg.sender);
         emit JobClaimedWithBond(jobId, msg.sender, claimBondAGIALPHA);
     }

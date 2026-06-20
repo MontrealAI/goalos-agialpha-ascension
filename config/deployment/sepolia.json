@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "1.0",
+  "network": "sepolia",
+  "expectedChainId": 11155111,
+  "agialphaToken": "CONFIGURE_EXISTING_OR_SEPOLIA_MOCK",
+  "finalOwnerKind": "SAFE",
+  "finalOwnerAddress": "0x0000000000000000000000000000000000000000",
+  "confirmations": 2,
+  "gasBudgetEthCeiling": "0.2",
+  "canaryLimits": {
+    "maxProtectedLiabilityPerToken": "0",
+    "maxSingleReward": "0"
+  },
+  "topologyVersion": "goalos-agialpha-ascension-v4.4.0",
+  "claimBoundary": "Configuration only; no deployment evidence."
+}

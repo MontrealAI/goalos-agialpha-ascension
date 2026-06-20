@@ -15,10 +15,29 @@ def load_json(path: Path) -> dict:
 
 def run_commands(text: str) -> list[str]:
     commands: list[str] = []
-    for line in text.splitlines():
-        m = re.match(r"\s*-?\s*run:\s*(.+?)\s*$", line)
-        if m:
-            commands.append(m.group(1).strip().strip('"').strip("'"))
+    lines = text.splitlines()
+    i = 0
+    while i < len(lines):
+        line = lines[i]
+        m = re.match(r"^(\s*)-?\s*run:\s*(.*?)\s*$", line)
+        if not m:
+            i += 1
+            continue
+        base_indent = len(m.group(1))
+        raw = m.group(2).strip().strip('\"').strip("'")
+        if raw in {"|", ">", "|-", ">-", "|+", ">+"}:
+            block: list[str] = []
+            i += 1
+            while i < len(lines):
+                child = lines[i]
+                if child.strip() and len(child) - len(child.lstrip()) <= base_indent:
+                    break
+                block.append(child.strip())
+                i += 1
+            commands.append("\n".join(block).strip())
+            continue
+        commands.append(raw)
+        i += 1
     return commands
 
 

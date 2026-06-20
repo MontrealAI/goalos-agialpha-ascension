@@ -167,6 +167,8 @@ def canonical_param(param):
         idx = typ.rfind("[")
         suffix = typ[idx:] + suffix
         typ = typ[:idx]
+    if typ == "ReleaseRecord":
+        return "(bytes32,bytes32,bytes32,bytes32,bytes32,bytes32,bytes32,address,address,uint8,uint256)" + suffix
     if typ.startswith("uint") or typ.startswith("int") or typ.startswith("bytes") or typ in {"address", "bool", "string"}:
         return typ + suffix
     if typ == "byte":
@@ -180,16 +182,55 @@ def canonical_signature(name, params):
     return f"{name}({','.join(canonical)})"
 
 
+def iter_function_headers(body):
+    i = 0
+    marker = "function"
+    while True:
+        start = body.find(marker, i)
+        if start == -1:
+            return
+        before = body[start - 1] if start else " "
+        after = body[start + len(marker)] if start + len(marker) < len(body) else " "
+        if (before.isalnum() or before == "_") or not after.isspace():
+            i = start + len(marker)
+            continue
+        name_match = re.match(r"function\s+(\w+)\s*\(", body[start:])
+        if not name_match:
+            i = start + len(marker)
+            continue
+        name = name_match.group(1)
+        pos = start + name_match.end() - 1
+        depth = 0
+        end = pos
+        while end < len(body):
+            ch = body[end]
+            if ch == "(":
+                depth += 1
+            elif ch == ")":
+                depth -= 1
+                if depth == 0:
+                    break
+            end += 1
+        if end >= len(body):
+            return
+        params = body[pos + 1:end]
+        attr_start = end + 1
+        attr_end_candidates = [x for x in [body.find("{", attr_start), body.find(";", attr_start)] if x != -1]
+        if not attr_end_candidates:
+            return
+        attr_end = min(attr_end_candidates)
+        yield name, params, body[attr_start:attr_end]
+        i = attr_end + 1
+
 def functions_from_body(body):
     funcs = []
-    for match in re.finditer(r"function\s+(\w+)\s*\(([^)]*)\)\s*([^;{]*)", body):
-        attrs = match.group(3)
+    for name, params, attrs in iter_function_headers(body):
         if any(x in attrs for x in STATE_HINTS) and not any(x in attrs for x in VIEW_HINTS):
             funcs.append({
-                "name": match.group(1),
-                "signature": canonical_signature(match.group(1), match.group(2)),
+                "name": name,
+                "signature": canonical_signature(name, params),
                 "attributes": " ".join(attrs.split()),
-                "classification": classify(match.group(1)),
+                "classification": classify(name),
             })
     return funcs
 

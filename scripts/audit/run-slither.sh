@@ -31,6 +31,7 @@ PY
   echo '{"runs":[]}' > "$SARIF"
   exit 1
 fi
+rm -f "$RAW"
 set +e
 timeout 120 slither . --compile-force-framework hardhat --config-file configs/slither.config.json --json "$RAW" > "$TXT" 2>&1
 SLITHER_STATUS=$?
