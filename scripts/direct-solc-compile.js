@@ -57,11 +57,12 @@ fs.mkdirSync(path.join(root, 'direct-solc-output'), { recursive: true });
 fs.writeFileSync(path.join(root, 'direct-solc-output', 'output.json'), JSON.stringify(output, null, 2));
 
 let errors = output.errors || [];
-for (const e of errors) {
+const fatal = errors.filter(e => e.severity === 'error');
+const projectWarnings = errors.filter(e => e.severity === 'warning' && !String(e.formattedMessage || '').includes('@openzeppelin/contracts/'));
+for (const e of [...fatal, ...projectWarnings]) {
   console.log(`${e.severity.toUpperCase()}: ${e.formattedMessage}`);
 }
-const fatal = errors.filter(e => e.severity === 'error');
 if (fatal.length > 0) {
   process.exit(1);
 }
-console.log(`Direct solc-js compile passed with ${errors.length} warnings/errors total and ${fatal.length} fatal errors.`);
+console.log(`Direct solc-js compile passed with ${projectWarnings.length} project warnings and ${fatal.length} fatal errors. Suppressed upstream dependency warnings: ${errors.length - projectWarnings.length - fatal.length}.`);

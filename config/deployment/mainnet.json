@@ -1,33 +1,23 @@
 {
   "schemaVersion": "1.0",
-  "network": "mainnet",
+  "network": "ethereumMainnet",
+  "chainId": 1,
   "expectedChainId": 1,
   "agialphaToken": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
-  "deploymentTopologyVersion": "goalos-agialpha-ascension-v4.4.0",
-  "treasuryAddress": "CONFIGURE_PUBLIC_ADDRESS_BEFORE_LIVE_USE",
-  "controllerAddress": "CONFIGURE_PUBLIC_ADDRESS_BEFORE_LIVE_USE",
-  "operatorAddress": "CONFIGURE_PUBLIC_ADDRESS_BEFORE_LIVE_USE",
-  "finalOwnerKind": "SAFE",
-  "finalOwnerAddress": "CONFIGURE_FINAL_OWNER_PUBLIC_ADDRESS_BEFORE_LIVE_USE",
-  "confirmations": 5,
-  "feeCeilings": {
-    "maxFeePerGasGwei": "80",
-    "maxPriorityFeePerGasGwei": "3"
-  },
+  "temporaryDeployerAddress": "0x1000000000000000000000000000000000000001",
+  "finalLedgerOwnerAddress": "0x2000000000000000000000000000000000000002",
+  "finalOwnerKind": "LEDGER_EOA",
+  "treasuryAddress": "0x2000000000000000000000000000000000000002",
+  "governanceOwnerAddress": "0x2000000000000000000000000000000000000002",
+  "operationsAddress": "0x2000000000000000000000000000000000000002",
+  "founderAddress": "0x2000000000000000000000000000000000000002",
+  "permanentAdminAddress": "0x2000000000000000000000000000000000000002",
+  "vaultAdminAddress": "0x2000000000000000000000000000000000000002",
+  "controllerAddress": "0x2000000000000000000000000000000000000002",
+  "confirmationPolicy": { "deploy": 5, "verify": 5, "handoff": 5 },
+  "canaryLimits": { "maxSingleReward": "1000000000000000000", "maxDailyReward": "10000000000000000000", "maxProtectedLiabilityPerToken": "0" },
+  "feeCeilings": { "maxFeePerGasGwei": "80", "maxPriorityFeePerGasGwei": "3" },
   "maximumDeploymentBudgetEth": "1.0",
-  "verificationProviders": [
-    "etherscan",
-    "sourcify"
-  ],
-  "canaryLimits": {
-    "maxProtectedLiabilityPerToken": "0",
-    "maxSingleReward": "0",
-    "maxCustomerFunds": "0"
-  },
-  "ownershipTransferPolicy": "Safe owner acceptance and deployer role cleanup are required before operational completion",
-  "releaseReferences": {
-    "certificate": "qa/mainnet-authorization-certificate.json",
-    "sepoliaPrerequisite": "deployments/ethereum-sepolia.agialpha.latest.json"
-  },
-  "claimBoundary": "Public configuration only; Mainnet deployed=YES requires real chainId=1 receipts."
+  "ledger": { "derivationPath": "m/44'/60'/0'/0/0", "privateKeyStored": false },
+  "claimBoundary": "Public deployment configuration only; no private key, RPC URL, API key, Ledger seed, deployment evidence, or Mainnet transaction claim."
 }

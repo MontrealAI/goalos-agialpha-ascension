@@ -1,5 +1,6 @@
 import { HardhatUserConfig } from "hardhat/config";
 import "@nomicfoundation/hardhat-toolbox";
+import "@nomicfoundation/hardhat-ledger";
 import { loadDeploymentEnv } from "./scripts/config/loadEnv";
 loadDeploymentEnv();
 if (process.env.HARDHAT_FORK_MAINNET === "1") loadDeploymentEnv("ethereumMainnet");

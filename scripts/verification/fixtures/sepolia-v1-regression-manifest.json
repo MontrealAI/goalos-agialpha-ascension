@@ -1,0 +1,12 @@
+{
+  "network": "ethereumSepolia",
+  "chainId": 11155111,
+  "deploymentStatus": "CONFIGURED",
+  "contracts": [
+    { "name": "AGIALPHA", "alias": "AGIALPHA", "artifact": "MockAGIALPHA", "fullyQualifiedName": "contracts/mocks/MockAGIALPHA.sol:MockAGIALPHA", "address": "0x1111111111111111111111111111111111111111", "constructorArgs": ["Mock AGIALPHA", "mAGI"] },
+    { "name": "ProofRewardsVault", "alias": "ProofRewardsVault", "artifact": "TokenReserveVault", "fullyQualifiedName": "contracts/vaults/TokenReserveVault.sol:TokenReserveVault", "address": "0x2222222222222222222222222222222222222222", "constructorArgs": ["0x1111111111111111111111111111111111111111", "ProofRewardsVault"] },
+    { "name": "LiquidityVault", "alias": "LiquidityVault", "artifact": "TokenReserveVault", "fullyQualifiedName": "contracts/vaults/TokenReserveVault.sol:TokenReserveVault", "address": "0x3333333333333333333333333333333333333333", "constructorArgs": ["0x1111111111111111111111111111111111111111", "LiquidityVault"] },
+    { "name": "SecurityVault", "alias": "SecurityVault", "artifact": "TokenReserveVault", "fullyQualifiedName": "contracts/vaults/TokenReserveVault.sol:TokenReserveVault", "address": "0x4444444444444444444444444444444444444444", "constructorArgs": ["0x1111111111111111111111111111111111111111", "SecurityVault"] },
+    { "name": "CommunityVault", "alias": "CommunityVault", "artifact": "TokenReserveVault", "fullyQualifiedName": "contracts/vaults/TokenReserveVault.sol:TokenReserveVault", "address": "0x5555555555555555555555555555555555555555", "constructorArgs": ["0x1111111111111111111111111111111111111111", "CommunityVault"] }
+  ]
+}
