@@ -1,9 +1,11 @@
 {
   "schemaVersion": "1.0",
   "authorizationClass": "DORMANT_INITIAL_MAINNET_DEPLOYMENT",
-  "generatedAt": "1970-01-01T00:00:00Z",
+  "generatedAt": "2026-06-20T23:23:28Z",
+  "expiresAt": "2026-06-21T11:23:28Z",
+  "certificateTtlHours": 12,
   "repository": "MontrealAI/goalos-agialpha-ascension",
-  "sourceCommit": "a0b769a47794a3fe9ec44becfe45977c367fe1c0",
+  "sourceCommit": "e76a831c08bb629eaf29561425304a5069a71740",
   "chainId": 1,
   "canonicalAgialpha": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
   "deploymentMode": "DORMANT",
@@ -13,6 +15,11 @@
   "activationCertificateHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
   "futureActivationRequiresLedgerSignedTransaction": true,
   "futureActivationRequiresNonzeroProductionCertificateHash": true,
+  "evidenceClasses": [
+    "PUBLIC_PREDEPLOYMENT_EVIDENCE",
+    "PRIVATE_OPERATOR_OVERLAY",
+    "PUBLIC_POSTDEPLOYMENT_CHAIN_EVIDENCE"
+  ],
   "operatorDataClassification": "PRIVATE_PREDEPLOYMENT_OPERATOR_DATA",
   "operatorConfigCommitment": "0xf3ddb9b3c12acb149c365a1b7dd502de19bff772217272460fa727a6a344a7b7",
   "temporaryDeployerCommitment": "0xb61d2776c5fb4a1e4437abca477135043374757ae02ad6382acb1e756fdca1db",
@@ -75,22 +82,48 @@
     },
     "certificateScript": {
       "path": "scripts/dormant_mainnet.py",
-      "sha256": "0xc04fd3d6c880fd484a55f767b68f595064172117564fb7f8beae9fe57f274ce1",
+      "sha256": "0xbd88c65b47bdeabd89003d57047e46088a1a507149616edbaf7aaa5379e4e2c7",
+      "present": true
+    },
+    "privateOperatorExample": {
+      "path": ".private.example/dormant-mainnet/operator-config.example.json",
+      "sha256": "0x934bca1be8e64d074bdd83e9378117c00110b980f8d7d1be8db67e465ed1a5e5",
       "present": true
     }
   },
+  "binding": {
+    "dependencyLock": "0x9739ecf251762c3828813424f8e7d0d3b291611125cf5eafb31fc32479a3f514",
+    "sourceTreeHash": "0x56df86736a60b53d6304eb6d310df3ba8665f358d0a9df945cde5f85c1eabb50",
+    "deploymentScriptsHash": "0x0dd1efb861f3212bc054c96b0bf27f12ae91d56c3788939b8b9d744a43f96eb9",
+    "testsHash": "0xd2850def75ae68e665e58e77d1097080420f4a86517c82eb1a2a1c153da839a4",
+    "schemasHash": "0xcc700fb854e9db8da5ad30020bad255e05c141c398fbe47525f63ad8cd10d8e2",
+    "publicPlanHash": "0xa1976c07133c3056035b5e6338496127739902a377bfe100a76b2b9c0be8ea8c",
+    "feePolicyCommitment": null,
+    "authorityRoot": "0x193bbc1352302c90f4ce0455a107c64d5e8bb5f6baed0b5f9b5335ceeb448b6a",
+    "outputPaths": [
+      "qa/dormant-mainnet-readiness/authorization-certificate.json",
+      "qa/dormant-mainnet-readiness/deployment-plan.public.json",
+      ".private/dormant-mainnet/operator-config.json",
+      ".private/dormant-mainnet/deployment-journal.json"
+    ]
+  },
+  "DORMANT_INITIAL_MAINNET_DEPLOYMENT_AUTHORIZED": "NO",
   "DORMANT_TECHNICALLY_MAINNET_READY": "NO",
   "DORMANT_MAINNET_DEPLOYMENT_AUTHORIZED": "NO",
   "DORMANT_ETHEREUM_MAINNET_AUTHORIZED": "NO",
+  "PRODUCTION_READY": "NO",
   "PRODUCTION_TECHNICALLY_MAINNET_READY": "NO",
   "PRODUCTION_MAINNET_DEPLOYMENT_AUTHORIZED": "NO",
   "PRODUCTION_ETHEREUM_MAINNET_AUTHORIZED": "NO",
   "USER_FUNDS_AUTHORIZED": "NO",
   "PROTOCOL_ACTIVATION_AUTHORIZED": "NO",
-  "CUSTOMER_ONBOARDING_AUTHORIZED": "NO",
+  "PHASE_B_CONFIGURATION_AUTHORIZED": "NO",
   "SETTLEMENT_AUTHORIZED": "NO",
+  "CUSTOMER_ONBOARDING_AUTHORIZED": "NO",
   "PUBLIC_RELIANCE_AUTHORIZED": "NO",
+  "PUBLIC_FRONTEND_AUTHORIZED": "NO",
+  "PRODUCTION_ANNOUNCEMENT_AUTHORIZED": "NO",
   "UNBOUNDED_ECONOMIC_EXPOSURE_AUTHORIZED": "NO",
   "planHash": "0x7b102e8bcecc5af4004ef062485b6b2105a34af337fa16196bd1b0a7e8719e87",
-  "certificateHash": "0x9e4b10e857db48d3a8a6369383bdc13a499bd92d75a2e289c5ec2a04ab5bbb70"
+  "certificateHash": "0xc9aa3ba1103bd25e77ac503defc127a491ac9f8b5f33f92a44ddcbe926546837"
 }

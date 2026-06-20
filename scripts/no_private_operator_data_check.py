@@ -8,6 +8,7 @@ import sys
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 AGIALPHA = "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA".lower()
 SKIP_PARTS = {".git", "node_modules", "cache", "artifacts", "typechain-types"}
+MAX_TEXT_SCAN_BYTES = 5_000_000
 FORBIDDEN_NAMES = {"mainnet-operator-input.json", "mainnet-operator.env", "sepolia-operator.env", "deployment-private.env"}
 FORBIDDEN_PARTS = {".private", "wallets", "keys"}
 SECRET_PATTERNS = [
@@ -125,6 +126,8 @@ for path in tracked_files():
     if CONTENT_CANDIDATES is not None and rel not in CONTENT_CANDIDATES:
         continue
     try:
+        if path.stat().st_size > MAX_TEXT_SCAN_BYTES:
+            continue
         raw = path.read_bytes()
     except Exception:
         continue

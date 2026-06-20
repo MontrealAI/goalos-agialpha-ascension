@@ -1,0 +1,8 @@
+{
+  "schemaVersion": "1.0",
+  "classification": "PRIVATE_OPERATOR_OVERLAY_EXAMPLE_PLACEHOLDERS_ONLY",
+  "contracts": [],
+  "constructorArguments": [],
+  "runtimeBytecodeHashes": [],
+  "note": "Populate locally only after real chain-1 receipts. Verification may be retried; deployment may not."
+}

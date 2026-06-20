@@ -1,7 +1,7 @@
 {
   "name": "goalos-agialpha-ascension",
   "version": "4.4.0",
-  "description": "GoalOS-native reimplementation of \u03b1-AGI Ascension using existing AGIALPHA for proof-settled AI workflow work.",
+  "description": "GoalOS-native reimplementation of α-AGI Ascension using existing AGIALPHA for proof-settled AI workflow work.",
   "license": "UNLICENSED",
   "scripts": {
     "compile": "hardhat compile",
@@ -242,7 +242,17 @@
     "deploy:mainnet:dormant:prepare": "python scripts/dormant_mainnet.py prepare",
     "deploy:mainnet:dormant:live-local-gated": "python scripts/dormant_mainnet.py live-local-gated",
     "dormant-mainnet:postdeploy-verify": "python scripts/dormant_mainnet.py postdeploy",
-    "dormant-mainnet:final-check": "python scripts/dormant_mainnet.py final-check"
+    "dormant-mainnet:final-check": "python scripts/dormant_mainnet.py final-check",
+    "mainnet:dormant:doctor": "python scripts/dormant_mainnet.py doctor",
+    "mainnet:dormant:doctor:fixture": "python scripts/dormant_mainnet.py doctor-fixture",
+    "mainnet:dormant:prepare": "python scripts/dormant_mainnet.py prepare",
+    "mainnet:dormant:prepare:fixture": "python scripts/dormant_mainnet.py prepare-fixture",
+    "mainnet:dormant:certificate:validate": "python scripts/dormant_mainnet.py validate",
+    "deploy:mainnet:dormant:recover": "python scripts/dormant_mainnet.py recover",
+    "deploy:mainnet:dormant:status": "python scripts/dormant_mainnet.py status",
+    "verify:mainnet:dormant:auto": "python scripts/dormant_mainnet.py verify-auto",
+    "deploy:mainnet:dormant:postcheck": "python scripts/dormant_mainnet.py postdeploy",
+    "deploy:mainnet:dormant:live-and-verify": "python scripts/dormant_mainnet.py live-and-verify"
   },
   "dependencies": {
     "@openzeppelin/contracts": "4.9.6",
