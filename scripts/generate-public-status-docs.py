@@ -1,7 +1,15 @@
 #!/usr/bin/env python3
 from __future__ import annotations
-import json,pathlib
+import argparse,json,pathlib,sys
 ROOT=pathlib.Path(__file__).resolve().parents[1]
+parser=argparse.ArgumentParser(); parser.add_argument('--check', action='store_true'); args=parser.parse_args()
+ACTIVE_OUTPUTS=[
+ 'README.md','START_HERE.md','docs/CURRENT_STATUS.md','docs/MAINNET_AUTHORIZATION_CERTIFICATE.md','docs/START_HERE_MAINNET.md',
+ 'docs/MAINNET_TECHNICAL_READINESS_DECISION.json','docs/MAINNET_TECHNICAL_READINESS_DECISION.md',
+ 'docs/MAINNET_DEPLOYMENT_AUTHORIZATION_DECISION.json','docs/MAINNET_DEPLOYMENT_AUTHORIZATION_DECISION.md',
+ 'docs/ETHEREUM_MAINNET_AUTHORIZATION_DECISION.json','docs/ETHEREUM_MAINNET_AUTHORIZATION_DECISION.md',
+ 'docs/MAINNET_AUTHORIZATION_DECISION.json','docs/MAINNET_AUTHORIZATION_DECISION.md']
+before={rel:(ROOT/rel).read_text() if (ROOT/rel).exists() else None for rel in ACTIVE_OUTPUTS}
 cert=json.loads((ROOT/'qa/mainnet-authorization-certificate.json').read_text())
 tech=cert['technicallyMainnetReady']; dep=cert['mainnetDeploymentAuthorized']; eth=cert['ethereumMainnetAuthorized']; deployed=cert['mainnetDeployed']
 authorization_meaning = 'This means the repository package is authorized for manual gated Ethereum Mainnet deployment. It does not mean Ethereum Mainnet deployment has occurred. Actual deployment still requires a runtime RPC URL and deployer key outside GitHub.' if (tech == 'YES' and dep == 'YES' and eth == 'YES') else 'This means the repository package is not currently authorized for manual gated Ethereum Mainnet deployment. Resolve the certificate blockers, regenerate the certificate, and rerun the public checks before any mainnet deployment attempt. Actual deployment still requires a runtime RPC URL and deployer key outside GitHub.'
@@ -15,6 +23,7 @@ Ethereum Mainnet technical readiness: {tech}.
 Ethereum Mainnet deployment authorization: {dep}.
 Ethereum Mainnet authorization: {eth}.
 Ethereum Mainnet deployed: {deployed}."""
+certificate_meaning = 'This certificate authorizes only manual, local, gated Ethereum Mainnet deployment.' if (tech == 'YES' and dep == 'YES' and eth == 'YES') else 'This certificate does not authorize Ethereum Mainnet deployment while readiness or authorization is NO.'
 status_block=f"""{status_label}
 
 {authorization_meaning}
@@ -199,7 +208,7 @@ Generated from `qa/mainnet-authorization-certificate.json`.
 - Runtime secrets stored in GitHub: **{cert['runtimeSecretsStoredInGitHub']}**
 - CI can deploy mainnet: **{cert['ciCanDeployMainnet']}**
 
-This certificate authorizes only manual, local, gated Ethereum Mainnet deployment. It is not an external audit, legal approval, tax review, proof of deployment, or guarantee of security/token classification.
+{certificate_meaning} It is not an external audit, legal approval, tax review, proof of deployment, or guarantee of security/token classification.
 
 ## Next action
 
@@ -224,4 +233,12 @@ This certificate authorizes only manual, local, gated Ethereum Mainnet deploymen
 11. Run final local gated deployment: `npm run deploy:ethereum-mainnet:gated`
 12. Generate post-deployment report after real transaction evidence exists.
 """)
-print('Generated public status docs from qa/mainnet-authorization-certificate.json')
+
+if args.check:
+    changed=[rel for rel, old in before.items() if ((ROOT/rel).read_text() if (ROOT/rel).exists() else None) != old]
+    if changed:
+        print('Public status docs are stale; rerun npm run docs:status:write. Changed: '+', '.join(changed))
+        sys.exit(1)
+    print('Public status docs check passed.')
+else:
+    print('Generated public status docs from qa/mainnet-authorization-certificate.json')

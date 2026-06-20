@@ -27,9 +27,9 @@
     "readiness:v4.3": "python scripts/verify-readiness-v4-3.py",
     "test:v4.3": "hardhat test test/v4_3EthereumGateConsistency.test.ts",
     "repo:safety": "python scripts/repository_safety_check.py",
-    "repo:status": "python scripts/repository_status_check.py",
+    "repo:status": "python scripts/repository_status_check.py && npm run assert:public-status",
     "repo:production-readiness": "python scripts/repository_production_readiness_check.py",
-    "repo:all": "python scripts/repository_safety_check.py && python scripts/repository_status_check.py && python scripts/repository_production_readiness_check.py && python scripts/no_paid_products_check.py && python scripts/no_private_operator_data_check.py && npm run deployment:claim-boundary:check",
+    "repo:all": "npm run repo:preflight && npm run docs:status:check && npm run repo:status && python scripts/repository_production_readiness_check.py",
     "repo:no-paid-products": "python scripts/no_paid_products_check.py",
     "audit:slither": "bash scripts/audit/run-slither.sh",
     "audit:echidna": "bash scripts/audit/run-echidna.sh",
@@ -81,7 +81,7 @@
     "verify:agialpha-token:public": "python scripts/verify_agialpha_token_public.py",
     "mainnet:certificate": "python scripts/generate-mainnet-authorization-certificate.py",
     "mainnet:certificate:validate": "python scripts/validate-mainnet-authorization-certificate.py",
-    "docs:status": "python scripts/generate-public-status-docs.py",
+    "docs:status": "npm run docs:status:write",
     "compile:hardhat": "hardhat compile",
     "compile:deterministic": "node scripts/compile-deterministic.js",
     "compile:ci": "npm run compile:deterministic",
@@ -197,7 +197,11 @@
     "mainnet:fork-rehearsal:release": "python scripts/mainnet_fork_rehearsal_release.py",
     "pr:readiness": "python scripts/pr_readiness.py",
     "authority:verify": "npm run authority:policy:validate && npm run authority:inventory",
-    "codex:phase-a": "python scripts/phase_a_assurance.py phase-a"
+    "codex:phase-a": "python scripts/phase_a_assurance.py phase-a",
+    "docs:status:write": "python scripts/generate-public-status-docs.py",
+    "docs:status:check": "python scripts/generate-public-status-docs.py --check",
+    "repo:preflight": "python scripts/repository_safety_check.py && python scripts/no_paid_products_check.py && python scripts/no_private_operator_data_check.py && npm run deployment:claim-boundary:check",
+    "ci:repository-validation": "npm run verify:compiler-alignment && npm run repo:preflight && npm run docs:status:check && npm run repo:status && npm run compile:ci && npm run test:ci && npm run test:all && npm run static-check && npm run audit:summarize && npm run audit:fail-on-critical && npm run codex:phase-a"
   },
   "dependencies": {
     "@openzeppelin/contracts": "4.9.6",

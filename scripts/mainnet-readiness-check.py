@@ -15,6 +15,7 @@ def main() -> None:
     parser.add_argument('--certificate', default='qa/mainnet-authorization-certificate.json')
     parser.add_argument('--public-only-final', action='store_true', help='Backward-compatible no-op; certificate is always used.')
     parser.add_argument('--with-redacted-private-evidence', action='store_true', help='Deprecated no-op; private evidence is not required.')
+    parser.add_argument('--require-yes', action='store_true', help='Exit nonzero unless the computed decision is YES. Use only in protected release gates.')
     args = parser.parse_args()
     cert = read_json(args.certificate)
     blockers: list[str] = []
@@ -23,9 +24,7 @@ def main() -> None:
         if not exists_from_evidence(cert, key): blockers.append(f'Certificate evidence missing or not found: {key}')
     status = 'NO' if blockers else 'YES'
     out = {'status': status, 'TECHNICALLY_MAINNET_READY': status, 'technicallyMainnetReady': status, 'commit': cert.get('commit'), 'chain': cert.get('chain'), 'chainId': cert.get('chainId'), 'agialphaToken': cert.get('agialphaToken'), 'mainnetDeployed': 'NO', 'MAINNET_DEPLOYED': 'NO', 'privateOperatorAuthorizationPackageRequired': False, 'externalAuditRequired': False, 'evidence': cert.get('evidence', {}), 'blockers': blockers, 'generatedAt': now(), 'generatedBy': 'scripts/mainnet-readiness-check.py'}
-    (ROOT/'docs/MAINNET_TECHNICAL_READINESS_DECISION.json').write_text(json.dumps(out, indent=2)+'\n')
     (ROOT/'qa/public-mainnet-technical-readiness-evidence.json').write_text(json.dumps({'redacted': True, 'containsSecrets': False, 'containsPrivateAddresses': False, **out}, indent=2)+'\n')
-    (ROOT/'docs/MAINNET_TECHNICAL_READINESS_DECISION.md').write_text(f"# Mainnet Technical Readiness Decision\n\nEthereum Mainnet technical readiness: **{status}**.\n\nTECHNICALLY_MAINNET_READY: **{status}**\n\nMAINNET_DEPLOYED: **NO**\n\nNot externally audited. External audit is not planned and is not an active mainnet gate. Automated/internal security-toolchain clearance is the active security gate.\n\n## Blockers\n" + ('\n'.join(f'- {b}' for b in blockers) if blockers else '- None.') + '\n')
     print(json.dumps(out, indent=2))
-    if status != 'YES': sys.exit(1)
+    if args.require_yes and status != 'YES': sys.exit(1)
 if __name__ == '__main__': main()

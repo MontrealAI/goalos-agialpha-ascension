@@ -2,7 +2,7 @@
   "status": "NO",
   "MAINNET_DEPLOYMENT_AUTHORIZED": "NO",
   "mainnetDeploymentAuthorized": "NO",
-  "commit": "ca17ac4067918c2c39da6efae8759d66d466bf7d",
+  "commit": "4d19e8708f194c3d1ce4b13581a147c284c81776",
   "chain": "ethereum",
   "chainId": 1,
   "agialphaToken": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
@@ -27,7 +27,7 @@
     },
     "tests": {
       "path": "test",
-      "sha256": "0x39bd52ee3166d24a58e2b77a19cbeefe73b7ce99600055a912b886062de2d239"
+      "sha256": "0x4fc11950077e855c74da70088e250f337fd5934061aa7922f60fd37d52407fc0"
     },
     "testAll": {
       "path": "test/invariants/mainnetBoundary.invariant.test.ts",
@@ -91,7 +91,7 @@
     },
     "certificateGenerator": {
       "path": "scripts/generate-mainnet-authorization-certificate.py",
-      "sha256": "0xddc2596ff1002b4469e38c4e3f5449e721610cf3bf6936ce2fe2e6970da46634"
+      "sha256": "0xf642bb1b0639efe93a470dd722b294d064f2b7a4b1e25cf7eca60803aa75ab12"
     },
     "certificateValidator": {
       "path": "scripts/validate-mainnet-authorization-certificate.py",
@@ -99,7 +99,7 @@
     },
     "packageScripts": {
       "path": "package.json",
-      "sha256": "0xc243814852ddc57e8fd6cd22a1902c88ab0b4337f2ca42f92a4e05b928068c61"
+      "sha256": "0x118001158747ff476b499bccf2d8b8977bcbbb8f7e50c2735dac9b257d649f55"
     },
     "branchProtectionOrRiskAcceptance": {
       "path": "qa/public-branch-protection-evidence.json",
@@ -119,11 +119,11 @@
     },
     "fiveGateProductionReadiness": {
       "path": "qa/mainnet-readiness/production-readiness.json",
-      "sha256": "0x6909467c9257523fa6e27f6e0fa54608d6b639ddbc60f068449aa354a2bb0d49"
+      "sha256": "0xbf7647be1c48cb6464953a3df542889587ad001de44c83bb9f55e6ba82ce3159"
     },
     "fiveGateAuthorizationCertificate": {
       "path": "qa/mainnet-readiness/authorization-certificate.json",
-      "sha256": "0xdb5773e0f4b5a18c9b149d681cfa787ea8588771c061d14dcd7629a3a2d35764"
+      "sha256": "0xb6fef97d0afddf3c36a6b85a58a2cb0929134e21f3605d88897294500cad1864"
     }
   },
   "blockers": [
@@ -132,8 +132,10 @@
     "gate-2-overrides.json is BLOCKED in five-gate dossier.",
     "gate-3-accounting.json is BLOCKED in five-gate dossier.",
     "gate-4-lifecycle.json is BLOCKED in five-gate dossier.",
-    "gate-5-assurance.json is BLOCKED in five-gate dossier."
+    "gate-5-assurance.json is BLOCKED in five-gate dossier.",
+    "Five-gate authorization certificate status is not PASS/AUTHORIZED.",
+    "Five-gate authorization certificate is not AUTHORIZED."
   ],
-  "generatedAt": "2026-06-20T03:12:59.847351+00:00",
+  "generatedAt": "2026-06-20T04:01:08.970623+00:00",
   "generatedBy": "scripts/generate-public-status-docs.py"
 }

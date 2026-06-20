@@ -9,7 +9,7 @@
     "qa/mainnet-readiness/production-readiness.json",
     "qa/mainnet-readiness/authorization-certificate.json"
   ],
-  "baselineSha": "ca17ac4067918c2c39da6efae8759d66d466bf7d",
+  "baselineSha": "4d19e8708f194c3d1ce4b13581a147c284c81776",
   "localCheckResults": [
     {
       "command": "npm run authority:inventory",
@@ -26,10 +26,26 @@
   "reason": "Fail-closed dossier: mandatory live/private fork RPC, independent build comparison, symbolic execution, critical mutation, and exact Mainnet-fork evidence must be supplied before PASS. No Mainnet broadcast evidence is present or claimed.",
   "releaseClaimBoundary": "Repository-local operational inventory and fail-closed readiness evidence only; not Mainnet deployed, not Mainnet verified, not Owner-authorized, and not technically ready until blocked evidence is supplied.",
   "releaseRelevantDirtyPaths": [
-    "qa/mainnet-authorization-certificate.json"
+    "docs/CURRENT_STATUS.md",
+    "docs/ETHEREUM_MAINNET_AUTHORIZATION_DECISION.json",
+    "docs/MAINNET_AUTHORIZATION_CERTIFICATE.md",
+    "docs/MAINNET_AUTHORIZATION_DECISION.json",
+    "docs/MAINNET_DEPLOYMENT_AUTHORIZATION_DECISION.json",
+    "docs/MAINNET_TECHNICAL_READINESS_DECISION.json",
+    "package.json",
+    "qa/mainnet-authorization-certificate.json",
+    "qa/public-ethereum-mainnet-authorization-evidence.json",
+    "qa/public-mainnet-deployment-authorization-evidence.json",
+    "qa/public-mainnet-technical-readiness-evidence.json",
+    "scripts/ethereum-mainnet-authorization-check.py",
+    "scripts/generate-mainnet-authorization-certificate.py",
+    "scripts/generate-public-status-docs.py",
+    "scripts/mainnet-deployment-authorization-check.py",
+    "scripts/mainnet-readiness-check.py",
+    "test/mainnet_readiness/test_five_gate_fail_closed.py"
   ],
   "selectorCoverageStatus": "BLOCKED",
-  "sourceTreeHash": "285fc86efd6adfc0820457f424b5b5801e27d3267108a79779dcafa7ea664783",
+  "sourceTreeHash": "8e1fb3bf9aa2a73cee4aa64b7ab3ff91fd59762ef710d734fa577c7ccab3764a",
   "sourceTreeHashScope": "tracked git index content excluding generated readiness artifacts",
   "status": "BLOCKED"
 }

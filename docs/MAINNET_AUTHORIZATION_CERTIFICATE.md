@@ -10,7 +10,7 @@ Generated from `qa/mainnet-authorization-certificate.json`.
 - Runtime secrets stored in GitHub: **False**
 - CI can deploy mainnet: **False**
 
-This certificate authorizes only manual, local, gated Ethereum Mainnet deployment. It is not an external audit, legal approval, tax review, proof of deployment, or guarantee of security/token classification.
+This certificate does not authorize Ethereum Mainnet deployment while readiness or authorization is NO. It is not an external audit, legal approval, tax review, proof of deployment, or guarantee of security/token classification.
 
 ## Next action
 

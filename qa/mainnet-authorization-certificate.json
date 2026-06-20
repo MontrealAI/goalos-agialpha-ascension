@@ -1,13 +1,13 @@
 {
   "schemaVersion": "1.0",
-  "generatedAt": "2026-06-20T03:18:29.238475+00:00",
+  "generatedAt": "2026-06-20T04:01:08.970623+00:00",
   "generatedBy": "scripts/generate-mainnet-authorization-certificate.py",
   "repository": "MontrealAI/goalos-agialpha-ascension",
-  "commit": "ca17ac4067918c2c39da6efae8759d66d466bf7d",
-  "sourceCommit": "ca17ac4067918c2c39da6efae8759d66d466bf7d",
+  "commit": "4d19e8708f194c3d1ce4b13581a147c284c81776",
+  "sourceCommit": "4d19e8708f194c3d1ce4b13581a147c284c81776",
   "branch": "codex/mainnet-five-gate-production-completion",
   "sourceBranch": "codex/mainnet-five-gate-production-completion",
-  "currentHeadAtGeneration": "ca17ac4067918c2c39da6efae8759d66d466bf7d",
+  "currentHeadAtGeneration": "4d19e8708f194c3d1ce4b13581a147c284c81776",
   "gitValidationMode": "GIT_CHECKOUT",
   "evidenceHashesFreshForCurrentCheckout": true,
   "sourceCommitIsAncestorOfCurrentHead": true,
@@ -60,7 +60,7 @@
     },
     "tests": {
       "path": "test",
-      "sha256": "0x39bd52ee3166d24a58e2b77a19cbeefe73b7ce99600055a912b886062de2d239"
+      "sha256": "0x4fc11950077e855c74da70088e250f337fd5934061aa7922f60fd37d52407fc0"
     },
     "testAll": {
       "path": "test/invariants/mainnetBoundary.invariant.test.ts",
@@ -124,7 +124,7 @@
     },
     "certificateGenerator": {
       "path": "scripts/generate-mainnet-authorization-certificate.py",
-      "sha256": "0xddc2596ff1002b4469e38c4e3f5449e721610cf3bf6936ce2fe2e6970da46634"
+      "sha256": "0xf642bb1b0639efe93a470dd722b294d064f2b7a4b1e25cf7eca60803aa75ab12"
     },
     "certificateValidator": {
       "path": "scripts/validate-mainnet-authorization-certificate.py",
@@ -132,7 +132,7 @@
     },
     "packageScripts": {
       "path": "package.json",
-      "sha256": "0xc243814852ddc57e8fd6cd22a1902c88ab0b4337f2ca42f92a4e05b928068c61"
+      "sha256": "0x118001158747ff476b499bccf2d8b8977bcbbb8f7e50c2735dac9b257d649f55"
     },
     "branchProtectionOrRiskAcceptance": {
       "path": "qa/public-branch-protection-evidence.json",
@@ -152,11 +152,11 @@
     },
     "fiveGateProductionReadiness": {
       "path": "qa/mainnet-readiness/production-readiness.json",
-      "sha256": "0x722c2ee06b85c41851e63d0f6094a1812a0db5a7f3aafb889a7e806517b962dc"
+      "sha256": "0xbf7647be1c48cb6464953a3df542889587ad001de44c83bb9f55e6ba82ce3159"
     },
     "fiveGateAuthorizationCertificate": {
       "path": "qa/mainnet-readiness/authorization-certificate.json",
-      "sha256": "0x66a6d370932fa142bb250bf5c53f7e9c654c4d920864648c833857ed05e45b2b"
+      "sha256": "0xb6fef97d0afddf3c36a6b85a58a2cb0929134e21f3605d88897294500cad1864"
     }
   },
   "blockers": [
@@ -165,9 +165,11 @@
     "gate-2-overrides.json is BLOCKED in five-gate dossier.",
     "gate-3-accounting.json is BLOCKED in five-gate dossier.",
     "gate-4-lifecycle.json is BLOCKED in five-gate dossier.",
-    "gate-5-assurance.json is BLOCKED in five-gate dossier."
+    "gate-5-assurance.json is BLOCKED in five-gate dossier.",
+    "Five-gate authorization certificate status is not PASS/AUTHORIZED.",
+    "Five-gate authorization certificate is not AUTHORIZED."
   ],
   "warnings": [],
   "nextAction": "B. Blocked, with exact blockers.",
-  "certificateHash": "0x7c4b74342865c7b71b7c0451956f0ca5b330b4ab8d6ab5190a0acc4aa49843eb"
+  "certificateHash": "0x53792ac926896bc57a07505ae1b9e872c9d035a420fa0fd12bc313cef7169ef8"
 }
