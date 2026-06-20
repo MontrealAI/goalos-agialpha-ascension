@@ -1,5 +1,5 @@
 {
-  "branch": "codex/phase-a-five-gate-readiness",
+  "branch": "codex/phase-a-readiness",
   "commit": "RESOLVED_BY_GIT_CHECKOUT_AT_VALIDATION",
   "commitBindingMode": "self-referential committed evidence uses sourceTreeHash; validators resolve the current git commit at runtime",
   "dependencyLockHash": "981e04b39af29bc04dae677e1d9a98b9e0dc5f8a5995db99d8debd23eb02a709",
@@ -8,5 +8,5 @@
   "mainnetDeployed": "NO",
   "mainnetVerified": "NO",
   "schemaVersion": "1.0",
-  "sourceTreeHash": "6db5c673e9a2a4459899a9b63833b8f84b5a367e6b57853a49a657ec09c7de0c"
+  "sourceTreeHash": "06366ab8f2dabe838fb568264dc1f92ea1a06e82012c6ae5ba3421abefd8f63a"
 }
