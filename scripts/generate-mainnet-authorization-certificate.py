@@ -26,10 +26,37 @@ def safe(rel):
 
 def main():
     evidence_paths={
-      'repoDoctor':'qa/REPO_DOCTOR_REPORT.json','dependencyBaseline':'docs/DEPENDENCY_BASELINE_FOR_MAINNET.md','compilerAlignment':'qa/compiler-alignment.json','compile':'scripts/compile-deterministic.js','tests':'test','testAll':'test/invariants/mainnetBoundary.invariant.test.ts','staticCheck':'scripts/static_check.py','publicStatus':'scripts/assert_public_status.py','noPrivateOperatorData':'scripts/no_private_operator_data_check.py','noPaidProducts':'scripts/no_paid_products_check.py','slither':'docs/SLITHER_SECURITY_REPORT.md','tier1SecurityToolchain':'audit/TOOLCHAIN_CLEARANCE_REPORT.md','tier2SecurityToolchain':'audit/AUTOMATED_SECURITY_TOOLCHAIN.md','toolchainClearance':'qa/public-toolchain-clearance-evidence.json','unresolvedFindings':'audit/AUDIT_FINDINGS_REGISTER.csv','invariants':'security/INVARIANTS.md','localRehearsal':'qa/local-rehearsal-report.json','localEvidenceDocket':'evidence/local/EVIDENCE_DOCKET.json','agialphaTokenVerification':'qa/public-agialpha-token-verification.json','mainnetGuardrails':'scripts/deploy-ethereum-mainnet-gated.ts','certificateGenerator':'scripts/generate-mainnet-authorization-certificate.py','certificateValidator':'scripts/validate-mainnet-authorization-certificate.py','packageScripts':'package.json','branchProtectionOrRiskAcceptance':'qa/public-branch-protection-evidence.json','publicGovernanceApproval':'qa/public-governance-approval-evidence.json','releaseGate':'docs/PUBLIC_MAINNET_AUTHORIZATION_RUNBOOK.md','mainnetSimulation':'qa/ETHEREUM_MAINNET_FORK_SIMULATION.json'}
+      'repoDoctor':'qa/REPO_DOCTOR_REPORT.json','dependencyBaseline':'docs/DEPENDENCY_BASELINE_FOR_MAINNET.md','compilerAlignment':'qa/compiler-alignment.json','compile':'scripts/compile-deterministic.js','tests':'test','testAll':'test/invariants/mainnetBoundary.invariant.test.ts','staticCheck':'scripts/static_check.py','publicStatus':'scripts/assert_public_status.py','noPrivateOperatorData':'scripts/no_private_operator_data_check.py','noPaidProducts':'scripts/no_paid_products_check.py','slither':'docs/SLITHER_SECURITY_REPORT.md','tier1SecurityToolchain':'audit/TOOLCHAIN_CLEARANCE_REPORT.md','tier2SecurityToolchain':'audit/AUTOMATED_SECURITY_TOOLCHAIN.md','toolchainClearance':'qa/public-toolchain-clearance-evidence.json','unresolvedFindings':'audit/AUDIT_FINDINGS_REGISTER.csv','invariants':'security/INVARIANTS.md','localRehearsal':'qa/local-rehearsal-report.json','localEvidenceDocket':'evidence/local/EVIDENCE_DOCKET.json','agialphaTokenVerification':'qa/public-agialpha-token-verification.json','mainnetGuardrails':'scripts/deploy-ethereum-mainnet-gated.ts','certificateGenerator':'scripts/generate-mainnet-authorization-certificate.py','certificateValidator':'scripts/validate-mainnet-authorization-certificate.py','packageScripts':'package.json','branchProtectionOrRiskAcceptance':'qa/public-branch-protection-evidence.json','publicGovernanceApproval':'qa/public-governance-approval-evidence.json','releaseGate':'docs/PUBLIC_MAINNET_AUTHORIZATION_RUNBOOK.md','mainnetSimulation':'qa/ETHEREUM_MAINNET_FORK_SIMULATION.json','fiveGateProductionReadiness':'qa/mainnet-readiness/production-readiness.json','fiveGateAuthorizationCertificate':'qa/mainnet-readiness/authorization-certificate.json'}
     evidence={k:{'path':v,'sha256':sha(v)} for k,v in evidence_paths.items()}
     blockers=[]; warnings=[]
     tool=read('qa/public-toolchain-clearance-evidence.json'); reh=read('qa/local-rehearsal-report.json'); docket=read('evidence/local/EVIDENCE_DOCKET.json'); token=read('qa/public-agialpha-token-verification.json'); sim=read('qa/ETHEREUM_MAINNET_FORK_SIMULATION.json'); gov=read('qa/public-governance-approval-evidence.json'); branch=read('qa/public-branch-protection-evidence.json'); comp=read('qa/compiler-alignment.json')
+    production=read('qa/mainnet-readiness/production-readiness.json'); five_gate_cert=read('qa/mainnet-readiness/authorization-certificate.json')
+    # Five-gate readiness is the authoritative fail-closed source for this mission.
+    # Legacy evidence may contribute context, but it must not authorize a release
+    # when any five-gate dossier item is missing, BLOCKED, FAIL, or stale.
+    if production.get('status') != 'PASS':
+        blockers.append('Five-gate production-readiness dossier is not PASS.')
+    gates = production.get('gates', {}) if isinstance(production.get('gates', {}), dict) else {}
+    for gate_name, gate_report in gates.items():
+        if isinstance(gate_report, dict) and gate_report.get('status') != 'PASS':
+            blockers.append(f'{gate_name} is {gate_report.get("status", "MISSING")} in five-gate dossier.')
+    for rel in [
+        'qa/mainnet-readiness/release-identity.json',
+        'qa/mainnet-readiness/system-inventory.json',
+        'qa/mainnet-readiness/gate-1-authority.json',
+        'qa/mainnet-readiness/gate-2-overrides.json',
+        'qa/mainnet-readiness/gate-3-accounting.json',
+        'qa/mainnet-readiness/gate-4-lifecycle.json',
+        'qa/mainnet-readiness/gate-5-assurance.json',
+        'qa/mainnet-readiness/fork-rehearsal.json',
+        'qa/mainnet-readiness/security-docket.json',
+        'qa/mainnet-readiness/production-readiness.json',
+        'qa/mainnet-readiness/authorization-certificate.json',
+    ]:
+        if not (ROOT/rel).exists():
+            blockers.append(f'Missing five-gate readiness artifact {rel}.')
+    if five_gate_cert.get('authorization') not in {'NOT_AUTHORIZED', 'AUTHORIZED'}:
+        blockers.append('Five-gate authorization certificate has an invalid authorization field.')
     if comp and comp.get('status')!='PASSED': blockers.append('Compiler alignment is not PASSED.')
     if not (tool.get('status')=='PASSED' and tool.get('tier1Status')=='PASSED' and not tool.get('tier1BlockedTools') and int(tool.get('unresolvedCriticalHighFindings',0) or 0)==0): blockers.append('Tier 1 automated/internal security toolchain is not clear or has blocked Tier 1 tools.')
     if int(tool.get('unresolvedMediumFindings',0) or 0)>0: blockers.append('Unresolved/ unaccepted medium findings remain.')
