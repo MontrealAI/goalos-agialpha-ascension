@@ -1,0 +1,96 @@
+{
+  "schemaVersion": "1.0",
+  "authorizationClass": "DORMANT_INITIAL_MAINNET_DEPLOYMENT",
+  "generatedAt": "1970-01-01T00:00:00Z",
+  "repository": "MontrealAI/goalos-agialpha-ascension",
+  "sourceCommit": "63e41d6ae1bec29de643ef7ce79dcc94f16dafa0",
+  "chainId": 1,
+  "canonicalAgialpha": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
+  "deploymentMode": "DORMANT",
+  "newObligationsAllowed": false,
+  "officialFundingEnabled": false,
+  "settlementEnabled": false,
+  "activationCertificateHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+  "futureActivationRequiresLedgerSignedTransaction": true,
+  "futureActivationRequiresNonzeroProductionCertificateHash": true,
+  "operatorDataClassification": "PRIVATE_PREDEPLOYMENT_OPERATOR_DATA",
+  "operatorConfigCommitment": "0x3b25559a328929d8c1672e6c35ff3e66429459c43317edbc1506b93c46a3c851",
+  "temporaryDeployerCommitment": "0x8ed936c86a6a61296e5533b5bfd8bbe26209ca3ee8c1d4c12d533e630035af21",
+  "finalOwnerCommitment": "0xe9e61f62e337249aa6c50803045933c4ad20d540f1b07e3886598ba5baffeb57",
+  "permanentRoleConfigurationRoot": "0x193bbc1352302c90f4ce0455a107c64d5e8bb5f6baed0b5f9b5335ceeb448b6a",
+  "temporaryDeployerIsPermanentAuthority": false,
+  "finalOwnerConfigurationValidated": true,
+  "unsolicitedTokenTransfersPolicy": "Unauthorized unsolicited token transfers do not constitute accepted user funds.",
+  "blockers": [
+    "Git working tree is not clean; exact release identity is not fixed.",
+    "Exact full-topology recent live Mainnet-fork rehearsal evidence is missing or incomplete.",
+    "Deployment plan missing contracts.",
+    "Deployment plan missing transactions.",
+    "Deployment plan missing gasEstimates.",
+    "Deployment plan missing verificationInputs.",
+    "Deployment plan missing constructors.",
+    "Sepolia verification evidence is not 49/49 complete (verified 0/49)."
+  ],
+  "warnings": [],
+  "evidence": {
+    "packageLock": {
+      "path": "package-lock.json",
+      "sha256": "0x9739ecf251762c3828813424f8e7d0d3b291611125cf5eafb31fc32479a3f514",
+      "present": true
+    },
+    "hardhatConfig": {
+      "path": "hardhat.config.ts",
+      "sha256": "0xbf836b8ea10a9012249a5e9be42c80ea66e0ab333c33cb0123269149084eabc1",
+      "present": true
+    },
+    "compilerAlignment": {
+      "path": "qa/compiler-alignment.json",
+      "sha256": "0xc9f87e01b42cba0a9b0fcaf2513e400ee44e8dd3f2182705371500a0b4ce90db",
+      "present": true
+    },
+    "toolchainClearance": {
+      "path": "qa/public-toolchain-clearance-evidence.json",
+      "sha256": "0x8a5958a3d9fe915dbc3a7a81d9c1dcb372802068c7076ec8a661793dcb7b10d3",
+      "present": true
+    },
+    "forkRehearsal": {
+      "path": "qa/ETHEREUM_MAINNET_FORK_SIMULATION.json",
+      "sha256": "0x5eeb1089b2b99c6f36b6e243aaa87aef1b7207e51b3c531a49afe9623947fd65",
+      "present": true
+    },
+    "sepoliaDeployment": {
+      "path": "qa/sepolia-deployment-evidence.json",
+      "sha256": "0xa05e2b07bc1a2f0dceeac43cffa8fead459a4d335c65fb14f7fa7d8a26bf0dc5",
+      "present": true
+    },
+    "sepoliaVerification": {
+      "path": "qa/sepolia-contract-verification-evidence.json",
+      "sha256": "0xe6ac87287fe40096a8c5e5153958481b8667da4bb0efaf7035b746e9c2e9dd09",
+      "present": true
+    },
+    "deploymentPlanPublic": {
+      "path": "qa/dormant-mainnet-readiness/deployment-plan.public.json",
+      "sha256": "0x04c09377b7372d7f5b247475e230c32e4daca3b0968192763e492fd0fcef369c",
+      "present": true
+    },
+    "certificateScript": {
+      "path": "scripts/dormant_mainnet.py",
+      "sha256": "0x8dd6ec804eb49ad32f58d32f9e834f67d3141e81722d2d4d8495347ea450930a",
+      "present": true
+    }
+  },
+  "DORMANT_TECHNICALLY_MAINNET_READY": "NO",
+  "DORMANT_MAINNET_DEPLOYMENT_AUTHORIZED": "NO",
+  "DORMANT_ETHEREUM_MAINNET_AUTHORIZED": "NO",
+  "PRODUCTION_TECHNICALLY_MAINNET_READY": "NO",
+  "PRODUCTION_MAINNET_DEPLOYMENT_AUTHORIZED": "NO",
+  "PRODUCTION_ETHEREUM_MAINNET_AUTHORIZED": "NO",
+  "USER_FUNDS_AUTHORIZED": "NO",
+  "PROTOCOL_ACTIVATION_AUTHORIZED": "NO",
+  "CUSTOMER_ONBOARDING_AUTHORIZED": "NO",
+  "SETTLEMENT_AUTHORIZED": "NO",
+  "PUBLIC_RELIANCE_AUTHORIZED": "NO",
+  "UNBOUNDED_ECONOMIC_EXPOSURE_AUTHORIZED": "NO",
+  "planHash": "0xc692e611d56707b61638909d596e0c6dcae3e30b3dbb186c8fc8d2d62a054e42",
+  "certificateHash": "0x78d82e48759ad58fd4e38b25db6aac1bd3f63ee11c32425b2c951dda5ca970fe"
+}

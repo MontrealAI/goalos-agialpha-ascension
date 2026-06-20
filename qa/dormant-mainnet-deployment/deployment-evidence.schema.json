@@ -1,0 +1,15 @@
+{
+  "schemaVersion": "1.0",
+  "path": "qa/dormant-mainnet-deployment/deployment-evidence.json",
+  "rawAddressesAllowedOnlyWhen": [
+    "chainId == 1",
+    "deploymentStatus == DEPLOYED_DORMANT",
+    "allReceiptsSuccessful == true",
+    "runtimeBytecodeHashesMatch == true",
+    "canonicalAgialphaMatches == true",
+    "ownerRoleReadbackSucceeded == true",
+    "temporaryDeployerResidualAuthority == 0",
+    "officialFunding == 0",
+    "activation == false"
+  ]
+}
