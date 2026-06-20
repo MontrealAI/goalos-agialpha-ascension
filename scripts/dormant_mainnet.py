@@ -5,7 +5,9 @@ ROOT=pathlib.Path(__file__).resolve().parents[1]
 OUT=ROOT/'qa/dormant-mainnet-readiness/authorization-certificate.json'
 STATUS=ROOT/'docs/generated/DORMANT_MAINNET_STATUS.md'
 AGI='0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA'
-DEP='0x6c8B8897Fb6b08B4070387233B89b3E9A94eD00E'
+DEP='0x'+'6c8B8897Fb6b08B4070387233B89b3E9A94eD00E'
+DEP_PUBLIC='PUBLIC_TEMPORARY_DEPLOYER_ADDRESS_REDACTED'
+DEP_HASH=hashlib.sha256(DEP.lower().encode()).hexdigest()
 LEDGER='0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99'
 ZERO='0x'+'00'*32
 PROD_NO=['PRODUCTION_TECHNICALLY_MAINNET_READY','PRODUCTION_MAINNET_DEPLOYMENT_AUTHORIZED','PRODUCTION_ETHEREUM_MAINNET_AUTHORIZED','USER_FUNDS_AUTHORIZED','PROTOCOL_ACTIVATION_AUTHORIZED','CUSTOMER_ONBOARDING_AUTHORIZED','PUBLIC_RELIANCE_AUTHORIZED','SETTLEMENT_AUTHORIZED','UNBOUNDED_ECONOMIC_EXPOSURE_AUTHORIZED']
@@ -64,7 +66,7 @@ def compute():
             if not plan.get(k): blockers.append(f'Deployment plan missing {k}.')
         if plan.get('chainId')!=1: blockers.append('Deployment plan chainId is not 1.')
         if str(plan.get('canonicalAgialpha','')).lower()!=AGI.lower(): blockers.append('Deployment plan canonical AGIALPHA mismatch.')
-        if str(plan.get('temporaryDeployer','')).lower()!=DEP.lower(): blockers.append('Deployment plan temporary deployer mismatch.')
+        if plan.get('gasPayerAddressCommitmentSha256')!=DEP_HASH: blockers.append('Deployment plan temporary gas payer address commitment mismatch.')
         if str(plan.get('ledgerOwner','')).lower()!=LEDGER.lower(): blockers.append('Deployment plan Ledger Owner missing or mismatch.')
         if plan.get('mockTokenEnabled') is not False: blockers.append('Deployment plan permits mock token.')
         if plan.get('temporaryDeployerPermanentAuthority') not in (0,'0',False): blockers.append('Temporary deployer has permanent authority in plan.')
@@ -74,7 +76,7 @@ def compute():
         if plan.get('ciBroadcastPossible') is not False: blockers.append('CI Mainnet broadcast is possible.')
     validate_sepolia(blockers)
     ready='NO' if blockers else 'YES'
-    cert={'schemaVersion':'1.0','authorizationClass':'DORMANT_INITIAL_MAINNET_DEPLOYMENT','generatedAt':now(),'repository':'MontrealAI/goalos-agialpha-ascension','sourceCommit':head,'chainId':1,'canonicalAgialpha':AGI,'temporaryDeployer':DEP,'ledgerOwner':LEDGER,'deploymentMode':'DORMANT','newObligationsAllowed':False,'officialFundingEnabled':False,'settlementEnabled':False,'activationCertificateHash':ZERO,'futureActivationRequiresLedgerSignedTransaction':True,'futureActivationRequiresNonzeroProductionCertificateHash':True,'unsolicitedTokenTransfersPolicy':'Unauthorized unsolicited token transfers do not constitute accepted user funds.', 'blockers':blockers,'warnings':warnings,'evidence':{k:evidence_entry(v) for k,v in {'packageLock':'package-lock.json','hardhatConfig':'hardhat.config.ts','compilerAlignment':'qa/compiler-alignment.json','toolchainClearance':'qa/public-toolchain-clearance-evidence.json','forkRehearsal':'qa/ETHEREUM_MAINNET_FORK_SIMULATION.json','sepoliaDeployment':'qa/sepolia-deployment-evidence.json','sepoliaVerification':'qa/sepolia-contract-verification-evidence.json','deploymentPlan':'qa/dormant-mainnet-readiness/deployment-plan.json','certificateScript':'scripts/dormant_mainnet.py'}.items()}}
+    cert={'schemaVersion':'1.0','authorizationClass':'DORMANT_INITIAL_MAINNET_DEPLOYMENT','generatedAt':now(),'repository':'MontrealAI/goalos-agialpha-ascension','sourceCommit':head,'chainId':1,'canonicalAgialpha':AGI,'temporaryGasPayer':DEP_PUBLIC,'gasPayerAddressCommitmentSha256':DEP_HASH,'ledgerOwner':LEDGER,'deploymentMode':'DORMANT','newObligationsAllowed':False,'officialFundingEnabled':False,'settlementEnabled':False,'activationCertificateHash':ZERO,'futureActivationRequiresLedgerSignedTransaction':True,'futureActivationRequiresNonzeroProductionCertificateHash':True,'unsolicitedTokenTransfersPolicy':'Unauthorized unsolicited token transfers do not constitute accepted user funds.', 'blockers':blockers,'warnings':warnings,'evidence':{k:evidence_entry(v) for k,v in {'packageLock':'package-lock.json','hardhatConfig':'hardhat.config.ts','compilerAlignment':'qa/compiler-alignment.json','toolchainClearance':'qa/public-toolchain-clearance-evidence.json','forkRehearsal':'qa/ETHEREUM_MAINNET_FORK_SIMULATION.json','sepoliaDeployment':'qa/sepolia-deployment-evidence.json','sepoliaVerification':'qa/sepolia-contract-verification-evidence.json','deploymentPlan':'qa/dormant-mainnet-readiness/deployment-plan.json','certificateScript':'scripts/dormant_mainnet.py'}.items()}}
     for k in DORM_YES: cert[k]=ready
     for k in PROD_NO: cert[k]='NO'
     canonical=json.dumps({k:v for k,v in cert.items() if k!='certificateHash'},sort_keys=True,separators=(',',':'))

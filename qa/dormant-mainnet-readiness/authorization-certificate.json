@@ -1,12 +1,13 @@
 {
   "schemaVersion": "1.0",
   "authorizationClass": "DORMANT_INITIAL_MAINNET_DEPLOYMENT",
-  "generatedAt": "2026-06-20T21:20:36.820502+00:00",
+  "generatedAt": "2026-06-20T21:32:41.492541+00:00",
   "repository": "MontrealAI/goalos-agialpha-ascension",
-  "sourceCommit": "a8967643f3ff293fb2a35aee8ac7090789bb95e7",
+  "sourceCommit": "c7e67d1e1a75310256feb43586b8af018f66a17d",
   "chainId": 1,
   "canonicalAgialpha": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
-  "temporaryDeployer": "0x6c8B8897Fb6b08B4070387233B89b3E9A94eD00E",
+  "temporaryGasPayer": "PUBLIC_TEMPORARY_DEPLOYER_ADDRESS_REDACTED",
+  "gasPayerAddressCommitmentSha256": "12564ce414b3c915e099beb37527c120c8e2774c9b6caa7481a777ecf6ea9306",
   "ledgerOwner": "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99",
   "deploymentMode": "DORMANT",
   "newObligationsAllowed": false,
@@ -66,12 +67,12 @@
     },
     "deploymentPlan": {
       "path": "qa/dormant-mainnet-readiness/deployment-plan.json",
-      "sha256": "0x6aa0c57fe6c74b2c631798882505d17606b6ca3496d4ad35f32d04517b778ba0",
+      "sha256": "0xaac3503b53b1c4b86730120a630f27f23d6079dbfa063bb142aacb0b49b860d1",
       "present": true
     },
     "certificateScript": {
       "path": "scripts/dormant_mainnet.py",
-      "sha256": "0x9a458ee03a40a35f26f80deaf4d0c82d8dafde4a1f824f68e4221f2f735527ad",
+      "sha256": "0x0a8d7f06bb95c7537fe221a6bba8bfaee8babfcfc0f4b9876890eb6eb35c4071",
       "present": true
     }
   },
@@ -87,5 +88,5 @@
   "PUBLIC_RELIANCE_AUTHORIZED": "NO",
   "SETTLEMENT_AUTHORIZED": "NO",
   "UNBOUNDED_ECONOMIC_EXPOSURE_AUTHORIZED": "NO",
-  "certificateHash": "0x6fbc86e4fa33121e490d16c673e32747c8d34ee501dfbbf61bf51b4f5fc41531"
+  "certificateHash": "0x7c36d0b105ab47624de3f85ef33d22e161dd545ca7878829b4df281b1a65064c"
 }
