@@ -52,10 +52,25 @@ class DormantCertificateTests(unittest.TestCase):
     def test_final_check_blocks_when_not_ready_and_generation_deterministic(self):
         self.assertTrue(any('final-check requires' in e for e in dormant.validate(require_ready=True)))
         self.assertEqual(dormant.compute()['certificateHash'], dormant.compute()['certificateHash'])
+    def test_certificate_source_hash_change_is_rejected(self):
+        c=json.loads(json.dumps(self.cert))
+        c['evidence']['certificateScript']['sha256']='0x'+'12'*32
+        with tempfile.NamedTemporaryFile('w',delete=False,suffix='.json') as f: json.dump(c,f); name=f.name
+        self.addCleanup(lambda: pathlib.Path(name).unlink(missing_ok=True))
+        self.assertTrue(any('source hash changes' in e for e in dormant.validate(name)))
     def test_ci_broadcast_refused_without_logs_leaking_address(self):
         env=os.environ.copy(); env['CI']='true'
         r=subprocess.run([sys.executable,'scripts/dormant_mainnet.py','live-local-gated'],cwd=ROOT,env=env,text=True,capture_output=True)
         self.assertNotEqual(r.returncode,0); self.assertNotIn(RAW_TEMP, r.stdout+r.stderr)
+    def test_postdeploy_evidence_requires_receipts_verification_ownership_and_dormant_status(self):
+        good={'chainId':1,'plannedTransactions':['deploy-a'],'transactionHashes':['0x'+'11'*32],'receipts':[{'status':1}],'allReceiptsSuccessful':True,'runtimeBytecodeHashesMatch':True,'allNewContractsVerified':True,'canonicalAgialphaMatches':True,'allManagedOwnersLedger':True,'permanentRolesLedgerOrApprovedPolicy':True,'temporaryDeployerResidualAuthority':0,'pendingOwnerCountZero':True,'officialFunding':0,'dormantOrPausedStateConfirmed':True,'activation':False,'publicStatus':{'ETHEREUM_MAINNET_DEPLOYED':'YES','ETHEREUM_MAINNET_VERIFIED':'YES','DEPLOYMENT_MODE':'DORMANT','PRODUCTION_READY':'NO','USER_FUNDS_AUTHORIZED':'NO','PROTOCOL_ACTIVATION_AUTHORIZED':'NO','PUBLIC_RELIANCE_AUTHORIZED':'NO'}}
+        p=self.tmp_repo_file('qa/dormant-mainnet-deployment/postdeploy-good.test.json', good)
+        self.assertEqual(dormant.validate_postdeploy_evidence(p), [])
+        bad=json.loads(json.dumps(good)); bad['allNewContractsVerified']=False; bad['publicStatus']['PRODUCTION_READY']='YES'
+        p2=self.tmp_repo_file('qa/dormant-mainnet-deployment/postdeploy-bad.test.json', bad)
+        errs=dormant.validate_postdeploy_evidence(p2)
+        self.assertTrue(any('Etherscan-verified' in e for e in errs), errs)
+        self.assertTrue(any('PRODUCTION_READY' in e for e in errs), errs)
 
 class DormantNegativeRequirementTests(unittest.TestCase):
     def setUp(self):
