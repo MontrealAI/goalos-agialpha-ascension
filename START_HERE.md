@@ -15,15 +15,15 @@ Local deterministic rehearsal: passed.
 Local Evidence Docket: generated.
 Public AGIALPHA token verification: passed / governance-accepted.
 Not externally audited.
-Ethereum Mainnet technical readiness: YES.
-Ethereum Mainnet deployment authorization: YES.
-Ethereum Mainnet authorization: YES.
+Ethereum Mainnet technical readiness: NO.
+Ethereum Mainnet deployment authorization: NO.
+Ethereum Mainnet authorization: NO.
 Ethereum Mainnet deployed: NO.
 ```
 
 ## What this means
 
-The repository package is authorized for manual gated Ethereum Mainnet deployment. It does not mean Ethereum Mainnet deployment has occurred. Actual deployment still requires a runtime RPC URL and deployer key outside GitHub.
+The repository package is not currently authorized for manual gated Ethereum Mainnet deployment. Resolve the certificate blockers, regenerate the certificate, and rerun the public checks before any mainnet deployment attempt. Actual deployment still requires a runtime RPC URL and deployer key outside GitHub.
 
 The active source of truth is `qa/mainnet-authorization-certificate.json`. README and status documents are generated summaries; they cannot create authorization independently.
 

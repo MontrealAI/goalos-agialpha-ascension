@@ -1,4 +1,7 @@
 {
+  "blockers": [
+    "Executable model is a smoke artifact only; release differential campaign evidence is absent."
+  ],
   "checks": [
     "no duplicate consumption in model",
     "settlement requires proof state",
@@ -7,5 +10,5 @@
   "model": "executable-reference-smoke",
   "releaseStatus": "RELEASE_EVIDENCE_NOT_EXECUTED",
   "schemaVersion": "1.0",
-  "status": "PHASE_A_PASS"
+  "status": "BLOCKED"
 }
