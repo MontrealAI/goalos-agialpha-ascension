@@ -27,9 +27,9 @@ class DormantCertificateTests(unittest.TestCase):
         with tempfile.TemporaryDirectory(dir=ROOT/'.private') as td:
             p=pathlib.Path(td)/'operator-config.json'
             payload=dormant.operator_payload(); p.write_text(json.dumps({'temporaryDeployerAddress':payload['temporaryDeployerAddress'],'finalLedgerOwnerAddress':payload['finalLedgerOwnerAddress'],'permanentRoleAddresses':payload['permanentRoleAddresses']},indent=2)); p.chmod(0o600)
-            ok,errs=dormant.validate_private_overlay(p, json.loads((ROOT/'qa/dormant-mainnet-readiness/deployment-plan.public.json').read_text())); self.assertTrue(ok, errs)
+            ok,errs=dormant.validate_private_overlay(p, dormant.default_public_plan()); self.assertTrue(ok, errs)
             data=json.loads(p.read_text()); data['finalLedgerOwnerAddress']='0x0000000000000000000000000000000000000001'; p.write_text(json.dumps(data)); p.chmod(0o600)
-            ok,errs=dormant.validate_private_overlay(p, json.loads((ROOT/'qa/dormant-mainnet-readiness/deployment-plan.public.json').read_text())); self.assertFalse(ok); self.assertTrue(any('mismatch' in e for e in errs))
+            ok,errs=dormant.validate_private_overlay(p, dormant.default_public_plan()); self.assertFalse(ok); self.assertTrue(any('mismatch' in e for e in errs))
     def test_tracking_private_overlay_fails(self):
         p=self.tmp_repo_file('.private/dormant-mainnet/operator-config.scan-test.json', {'temporaryDeployerAddress':RAW_TEMP})
         self.assertNotEqual(run_scan(p).returncode,0)
@@ -56,5 +56,32 @@ class DormantCertificateTests(unittest.TestCase):
         env=os.environ.copy(); env['CI']='true'
         r=subprocess.run([sys.executable,'scripts/dormant_mainnet.py','live-local-gated'],cwd=ROOT,env=env,text=True,capture_output=True)
         self.assertNotEqual(r.returncode,0); self.assertNotIn(RAW_TEMP, r.stdout+r.stderr)
+
+class DormantNegativeRequirementTests(unittest.TestCase):
+    def setUp(self):
+        self.cert=dormant.compute()
+    def errors_for(self, **changes):
+        c=json.loads(json.dumps(self.cert)); c.update(changes); return dormant.semantic_errors(c)
+    def assertSemanticFails(self, needle, **changes):
+        errs=self.errors_for(**changes); self.assertTrue(any(needle in e for e in errs), errs)
+    def test_negative_required_status_and_public_reliance_fields(self):
+        self.assertSemanticFails('USER_FUNDS_AUTHORIZED', USER_FUNDS_AUTHORIZED='YES')
+        self.assertSemanticFails('PROTOCOL_ACTIVATION_AUTHORIZED', PROTOCOL_ACTIVATION_AUTHORIZED='YES')
+        self.assertSemanticFails('PUBLIC_RELIANCE_AUTHORIZED', PUBLIC_RELIANCE_AUTHORIZED='YES')
+    def test_negative_mock_token_chain_and_token(self):
+        self.assertSemanticFails('MockAGIALPHA', mockTokenEnabled=True)
+        self.assertSemanticFails('chain ID', chainId=11155111)
+        self.assertSemanticFails('canonical AGIALPHA', canonicalAgialpha='0x0000000000000000000000000000000000000000')
+    def test_negative_deployer_ledger_funding_and_lifecycle(self):
+        self.assertSemanticFails('temporary deployer', temporaryDeployerIsPermanentAuthority=True)
+        self.assertSemanticFails('temporary deployer', temporaryDeployerResidualAuthority=1)
+        self.assertSemanticFails('Ledger Owner', finalOwnerConfigurationValidated=False)
+        self.assertSemanticFails('funding', officialFunding=1)
+        self.assertSemanticFails('risk-increasing', newObligationsAllowed=True)
+    def test_negative_missing_fork_and_verification_input_hash_bindings(self):
+        ev=json.loads(json.dumps(self.cert['evidence'])); ev['forkRehearsal'].pop('sha256', None)
+        self.assertSemanticFails('fork evidence', evidence=ev)
+        ev=json.loads(json.dumps(self.cert['evidence'])); ev['deploymentPlanPublic'].pop('sha256', None)
+        self.assertSemanticFails('verification inputs', evidence=ev)
 
 if __name__=='__main__': unittest.main()

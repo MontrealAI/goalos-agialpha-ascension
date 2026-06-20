@@ -3,7 +3,7 @@
   "authorizationClass": "DORMANT_INITIAL_MAINNET_DEPLOYMENT",
   "generatedAt": "1970-01-01T00:00:00Z",
   "repository": "MontrealAI/goalos-agialpha-ascension",
-  "sourceCommit": "63e41d6ae1bec29de643ef7ce79dcc94f16dafa0",
+  "sourceCommit": "ac2511d67d0a4088d1b3ee2ce06d97f7e2825e21",
   "chainId": 1,
   "canonicalAgialpha": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
   "deploymentMode": "DORMANT",
@@ -14,9 +14,9 @@
   "futureActivationRequiresLedgerSignedTransaction": true,
   "futureActivationRequiresNonzeroProductionCertificateHash": true,
   "operatorDataClassification": "PRIVATE_PREDEPLOYMENT_OPERATOR_DATA",
-  "operatorConfigCommitment": "0x3b25559a328929d8c1672e6c35ff3e66429459c43317edbc1506b93c46a3c851",
-  "temporaryDeployerCommitment": "0x8ed936c86a6a61296e5533b5bfd8bbe26209ca3ee8c1d4c12d533e630035af21",
-  "finalOwnerCommitment": "0xe9e61f62e337249aa6c50803045933c4ad20d540f1b07e3886598ba5baffeb57",
+  "operatorConfigCommitment": "0xf3ddb9b3c12acb149c365a1b7dd502de19bff772217272460fa727a6a344a7b7",
+  "temporaryDeployerCommitment": "0xb61d2776c5fb4a1e4437abca477135043374757ae02ad6382acb1e756fdca1db",
+  "finalOwnerCommitment": "0xc6ce888e96c4c99082afca65a27d87bf102f623e4fbff0da16d979eb5199f5c3",
   "permanentRoleConfigurationRoot": "0x193bbc1352302c90f4ce0455a107c64d5e8bb5f6baed0b5f9b5335ceeb448b6a",
   "temporaryDeployerIsPermanentAuthority": false,
   "finalOwnerConfigurationValidated": true,
@@ -70,12 +70,12 @@
     },
     "deploymentPlanPublic": {
       "path": "qa/dormant-mainnet-readiness/deployment-plan.public.json",
-      "sha256": "0x04c09377b7372d7f5b247475e230c32e4daca3b0968192763e492fd0fcef369c",
+      "sha256": "0xa1976c07133c3056035b5e6338496127739902a377bfe100a76b2b9c0be8ea8c",
       "present": true
     },
     "certificateScript": {
       "path": "scripts/dormant_mainnet.py",
-      "sha256": "0x8dd6ec804eb49ad32f58d32f9e834f67d3141e81722d2d4d8495347ea450930a",
+      "sha256": "0xfe4bd36b4dc8f75061cbddb71c5819ef70fbf75c615fe6a3761b6c1c670109f5",
       "present": true
     }
   },
@@ -91,6 +91,6 @@
   "SETTLEMENT_AUTHORIZED": "NO",
   "PUBLIC_RELIANCE_AUTHORIZED": "NO",
   "UNBOUNDED_ECONOMIC_EXPOSURE_AUTHORIZED": "NO",
-  "planHash": "0xc692e611d56707b61638909d596e0c6dcae3e30b3dbb186c8fc8d2d62a054e42",
-  "certificateHash": "0x78d82e48759ad58fd4e38b25db6aac1bd3f63ee11c32425b2c951dda5ca970fe"
+  "planHash": "0x7b102e8bcecc5af4004ef062485b6b2105a34af337fa16196bd1b0a7e8719e87",
+  "certificateHash": "0x34a8722a39f505507dcefc0ff151393e4ddc1c0132eb6c2e3298aa413e30390a"
 }
