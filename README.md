@@ -118,3 +118,16 @@ Claim boundary: this paper does not claim achieved AGI, ASI, superintelligence, 
 ## Ownership handoff
 
 GoalOS deployments require ERC-173 ownership handoff before being considered operationally complete. See `docs/OWNERSHIP_HANDOFF_RUNBOOK.md` and use `npm run ownership:sepolia:doctor|plan|dry-run|transfer|verify|evidence` or `npm run ownership:mainnet:doctor|plan|fork-rehearsal|transfer-local-gated|accept-local-gated|verify|evidence`. Mainnet single-deployer permanent-address mode is blocked. For delayed acceptance, run `ownership:mainnet:accept-local-gated` only after the contract readback says: Wait until pendingOwnerAcceptAfter.
+
+## Three-stage Mainnet release model
+
+| Stage | Status |
+| --- | --- |
+| Predeployment authorization | YES |
+| Ethereum Mainnet deployed | NO |
+| Postdeployment verification | NO |
+| Production activation effective | NO |
+
+This pre-broadcast state is a GO to deploy and is not contradictory: Stage A authorizes a human local chain-1 broadcast without requiring an already-existing Mainnet transaction, deployed address, receipt, Etherscan page, live ownership readback, or live canary. Stage B evaluates real chain-1 receipts, bytecode, verification, and ownership/role readback only after the human deployment ceremony. Stage C separately governs bounded live canary, monitoring, reconciliation, Ledger activation, and production reliance.
+
+Not externally audited.

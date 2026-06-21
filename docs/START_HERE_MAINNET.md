@@ -32,3 +32,16 @@ Public Sepolia deployment is recommended but not mandatory for public authorizat
 10. Show final manual deployment command: `npm run mainnet:next`
 11. Run final local gated deployment: `npm run deploy:ethereum-mainnet:gated`
 12. Generate post-deployment report after real transaction evidence exists.
+
+## Three-stage Mainnet release model
+
+| Stage | Status |
+| --- | --- |
+| Predeployment authorization | YES |
+| Ethereum Mainnet deployed | NO |
+| Postdeployment verification | NO |
+| Production activation effective | NO |
+
+This pre-broadcast state is a GO to deploy and is not contradictory: Stage A authorizes a human local chain-1 broadcast without requiring an already-existing Mainnet transaction, deployed address, receipt, Etherscan page, live ownership readback, or live canary. Stage B evaluates real chain-1 receipts, bytecode, verification, and ownership/role readback only after the human deployment ceremony. Stage C separately governs bounded live canary, monitoring, reconciliation, Ledger activation, and production reliance.
+
+Not externally audited.

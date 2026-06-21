@@ -1,0 +1,47 @@
+{
+  "forbiddenEdges": [
+    {
+      "from": "A_PREDEPLOYMENT_AUTHORIZATION",
+      "to": "B_POSTDEPLOYMENT_VERIFICATION"
+    },
+    {
+      "from": "A_PREDEPLOYMENT_AUTHORIZATION",
+      "to": "C_PRODUCTION_ACTIVATION"
+    }
+  ],
+  "schemaVersion": "1.0",
+  "stages": {
+    "A_PREDEPLOYMENT_AUTHORIZATION": {
+      "dependsOn": [
+        "source",
+        "build",
+        "tests",
+        "verifiedSepolia",
+        "mainnetFork",
+        "deploymentPlan"
+      ],
+      "emits": "PREDEPLOYMENT_CERTIFICATE"
+    },
+    "B_POSTDEPLOYMENT_VERIFICATION": {
+      "dependsOn": [
+        "PREDEPLOYMENT_CERTIFICATE",
+        "humanMainnetBroadcast",
+        "chain1Receipts",
+        "bytecode",
+        "etherscanVerification",
+        "ownerRoleReadback"
+      ],
+      "emits": "POSTDEPLOYMENT_CERTIFICATE"
+    },
+    "C_PRODUCTION_ACTIVATION": {
+      "dependsOn": [
+        "POSTDEPLOYMENT_CERTIFICATE",
+        "monitoring",
+        "boundedLiveCanary",
+        "reconciliation",
+        "ledgerActivation"
+      ],
+      "emits": "ACTIVATION_CERTIFICATE"
+    }
+  }
+}

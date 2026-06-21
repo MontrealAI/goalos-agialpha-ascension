@@ -1,0 +1,16 @@
+{
+  "LIVE_CANARY_COMPLETE": "NO",
+  "LIVE_OWNER_HANDOFF_COMPLETE": "NO",
+  "MAINNET_DEPLOYED": "NO",
+  "MAINNET_VERIFIED": "NO",
+  "PRODUCTION_ACTIVATION_EFFECTIVE": "NO",
+  "requires": [
+    "chainId=1 receipts",
+    "runtime bytecode",
+    "Etherscan V2 verification",
+    "owner and role readback"
+  ],
+  "schemaVersion": "1.0",
+  "stage": "B_POSTDEPLOYMENT_VERIFICATION",
+  "status": "BLOCKED_UNTIL_REAL_CHAIN_1_EVIDENCE"
+}

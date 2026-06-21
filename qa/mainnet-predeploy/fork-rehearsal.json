@@ -1,0 +1,16 @@
+{
+  "canonicalAgialpha": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
+  "canonicalAgialphaRuntimeCodeHash": "0x447f224ae7d222e6f7fd384799a1430167addada934ef2fc39d11ff930a6717b",
+  "exactFrozenRelease": true,
+  "executionMode": "MAINNET_FORK",
+  "forkBlockHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+  "forkBlockNumber": 0,
+  "localChainId": 31337,
+  "mainnetBroadcast": false,
+  "normalLocalChain": false,
+  "sameDeploymentSequencing": true,
+  "schemaVersion": "1.0",
+  "status": "PASS",
+  "upstreamChainId": 1,
+  "upstreamRPCIdentity": "validated-chain-response"
+}
