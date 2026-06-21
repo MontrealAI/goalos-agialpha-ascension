@@ -1,13 +1,13 @@
 {
   "schemaVersion": "1.0",
-  "generatedAt": "2026-06-21T14:20:52.799160+00:00",
+  "generatedAt": "2026-06-21T14:37:34.656566+00:00",
   "generatedBy": "scripts/generate-mainnet-authorization-certificate.py",
   "repository": "MontrealAI/goalos-agialpha-ascension",
-  "commit": "928f5f0427cc1080d4957aa8dd1590216f0b77cd",
-  "sourceCommit": "928f5f0427cc1080d4957aa8dd1590216f0b77cd",
+  "commit": "653520e8517caf23c47d83a1e14e62431f69657d",
+  "sourceCommit": "653520e8517caf23c47d83a1e14e62431f69657d",
   "branch": "work",
   "sourceBranch": "work",
-  "currentHeadAtGeneration": "928f5f0427cc1080d4957aa8dd1590216f0b77cd",
+  "currentHeadAtGeneration": "653520e8517caf23c47d83a1e14e62431f69657d",
   "gitValidationMode": "GIT_CHECKOUT",
   "evidenceHashesFreshForCurrentCheckout": true,
   "sourceCommitIsAncestorOfCurrentHead": true,
@@ -60,7 +60,7 @@
     },
     "tests": {
       "path": "test",
-      "sha256": "0xa548672d085b8b3cf60cc58f07bf96d6a027eaddc4622e124b71825eb5520e12"
+      "sha256": "0x4362b7b4dea225944d2f7a5895c8ec884cffbeadf65c5543c8b58e3454031642"
     },
     "testAll": {
       "path": "test/invariants/mainnetBoundary.invariant.test.ts",
@@ -132,7 +132,7 @@
     },
     "packageScripts": {
       "path": "package.json",
-      "sha256": "0x309ddaf66efe330be0f2b4a005d9e85e18d302d76051ed838779954691a10571"
+      "sha256": "0xedb92a9c42c338581c95c38c7e059e1ebb32a15aa52141f99ddaa8b353d6189e"
     },
     "branchProtectionOrRiskAcceptance": {
       "path": "qa/public-branch-protection-evidence.json",
@@ -152,11 +152,11 @@
     },
     "fiveGateProductionReadiness": {
       "path": "qa/mainnet-readiness/production-readiness.json",
-      "sha256": "0x94de01286bf042ead20130353f4a6a7a900ac2427118d7707d012986d95c173b"
+      "sha256": "0xf852dd755a272f4134f5be688ced842922c203c143f6623f980ac715c88f2e7b"
     },
     "fiveGateAuthorizationCertificate": {
       "path": "qa/mainnet-readiness/authorization-certificate.json",
-      "sha256": "0xa1520d6764af96995a2dd73cea805a17ff374854ef5a3df9c09a3a3161155a62"
+      "sha256": "0x1fc8438b649a00e2ea1a5c4ead3fc2bef38a657fcbc3a01b03b7413b6ae2bd0b"
     }
   },
   "blockers": [
@@ -165,5 +165,5 @@
   ],
   "warnings": [],
   "nextAction": "B. Blocked, with exact blockers.",
-  "certificateHash": "0x7c8a809bf3c44b506d8c2ab071e1edd7bf59171dec2e83fcb881b9ecbabf140f"
+  "certificateHash": "0xc610650a59afdcfb778e9b12f31313d22d55c080adf8dc9255967cd28c56672f"
 }

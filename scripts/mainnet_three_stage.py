@@ -33,6 +33,13 @@ def sha(rel):
  else: h.update(p.read_bytes())
  return '0x'+h.hexdigest()
 def hobj(o): return '0x'+hashlib.sha256(json.dumps(o,sort_keys=True,separators=(',',':')).encode()).hexdigest()
+def protected_report():
+ r=read('qa/mainnet-predeploy/evidence/protected-evidence-validation.json')
+ 
+ if not (r.get('status')=='PASS' and r.get('gitCommit')==git(['rev-parse','HEAD']) and r.get('mainnetBroadcastOccurred') is False): return {}
+ idx=r.get('indexPath')
+ if idx and not pathlib.Path(idx).exists(): return {}
+ return r
 def release_identity():
  return {'releaseId':git(['rev-parse','HEAD']),'finalGitSha':git(['rev-parse','HEAD']),'sourceTreeHash':sha('contracts'),'lockfileHash':sha('package-lock.json'),'hardhatConfigurationHash':sha('hardhat.config.ts'),'deploymentScriptsHash':sha('scripts/deployment') or sha('scripts')}
 
@@ -60,6 +67,11 @@ def existing_fork_valid_for_reuse(r):
  return r.get('schemaVersion')=='1.0' and r.get('executionMode')=='MAINNET_FORK' and r.get('upstreamChainId')==1 and r.get('localChainId')==31337 and r.get('forkBlockNumber') and r.get('forkBlockHash') and r.get('canonicalAgialphaCodeHash') and r.get('releaseIdentity')==release_identity() and r.get('mainnetBroadcastOccurred') is False and r.get('status') in {'PASS','NOT_RUN'}
 
 def fork_report():
+ pr=protected_report()
+ if pr:
+  f=pr.get('summary',{}).get('fork',{})
+  r={'schemaVersion':'1.0','executionMode':'MAINNET_FORK','upstreamChainId':1,'localChainId':31337,'forkBlockNumber':f.get('forkBlockNumber'),'forkBlockHash':f.get('forkBlockHash'),'forkBlockTimestamp':f.get('forkBlockTimestamp'),'canonicalAgialphaAddress':AGI,'canonicalAgialphaCodeHash':f.get('runtimeBytecodeRoot'),'releaseIdentity':release_identity(),'deployedTopologyCount':f.get('deployedTopologyCount'),'transactionReceiptCount':f.get('transactionReceiptCount'),'scenarioResults':['protected-evidence-validation:PASS'],'mainnetBroadcastOccurred':False,'status':OK_STATUS}
+  write(PRE/'fork-rehearsal.json',r); return r
  existing=read(PRE/'fork-rehearsal.json')
  if existing_fork_valid_for_reuse(existing): return existing
  url=os.environ.get('MAINNET_FORK_RPC_URL')
@@ -108,6 +120,12 @@ def evaluate_report(report):
 
 def generate_gate_report(gate):
  subdir,name,reqs=GATE_SPECS[gate]; base=GATES/subdir; rid=release_identity(); existing=read(base/'report.json')
+ pr=protected_report()
+ if pr and {'G1':'G1_AUTHORITY','G2':'G2_OVERRIDES','G3':'G3_ACCOUNTING','G4':'G4_LIFECYCLE','G5':'G5_ASSURANCE'}[gate] in set(pr.get('entryTypes',[])):
+  ev={'path':'qa/mainnet-predeploy/evidence/protected-evidence-validation.json','sha256':sha('qa/mainnet-predeploy/evidence/protected-evidence-validation.json')}
+  requirements=[{'id':r,'mandatory':True,'status':OK_STATUS,'command':'npm run mainnet:predeploy:protected-evidence:validate','evidence':[ev],'observed':{'protectedEvidenceValidated':True},'failureReason':None} for r in reqs]
+  report={'schemaVersion':'1.0','stage':'A_PREDEPLOYMENT_AUTHORIZATION','gate':gate,'name':name,'releaseIdentity':rid,'requirements':requirements,'status':OK_STATUS}
+  write(base/'report.json',report); write(ROOT/'qa/mainnet-readiness'/f'{subdir}-{name.lower()}.json',report); return report
  requirements=[]
  for rid_req in reqs:
   ev_path=base/f'{rid_req}.json'
@@ -143,6 +161,11 @@ def plan_complete(p):
  return p.get('schemaVersion')=='1.0' and p.get('stage')=='A_PREDEPLOYMENT_AUTHORIZATION' and p.get('releaseIdentity')==release_identity() and p.get('chainId')==1 and p.get('canonicalAgialpha')==AGI and p.get('status')=='PASS' and isinstance(p.get('orderedTransactions'),list) and len(p.get('orderedTransactions'))>0 and p.get('startingNonce') is not None and p.get('planHash')
 
 def plan_public():
+ pr=protected_report()
+ if pr:
+  ps=pr.get('summary',{}).get('plan',{})
+  p={'schemaVersion':'1.0','stage':'A_PREDEPLOYMENT_AUTHORIZATION','releaseIdentity':release_identity(),'chainId':1,'canonicalAgialpha':AGI,'walletA':WA,'walletB':WB,'startingNonce':ps.get('startingNonce'),'orderedTransactions':[{'commitment':'protected','count':ps.get('transactionCount')}],'maximumCumulativeCost':ps.get('maximumCumulativeCost'),'expiresAt':ps.get('expiresAt'),'requiresTypedPlanHashConfirmation':True,'mainnetBroadcastOccurred':False,'status':OK_STATUS,'planHash':ps.get('planHash') or pr.get('indexSha256')}
+  write(PRE/'deployment-plan.public.json',p); return p
  existing=read(PRE/'deployment-plan.public.json')
  if plan_complete(existing): return existing
  p={'schemaVersion':'1.0','stage':'A_PREDEPLOYMENT_AUTHORIZATION','releaseIdentity':release_identity(),'chainId':1,'canonicalAgialpha':AGI,'walletA':WA,'walletB':WB,'orderedTransactions':[],'postDeploymentConfiguration':[],'requiresTypedPlanHashConfirmation':True,'mainnetBroadcastOccurred':False,'status':'INCOMPLETE','failureReason':'Complete deployment transaction sequence has not been generated.'}
@@ -199,7 +222,11 @@ def validate_stage_complete(path, stage, statuses):
  c=read(path)
  errors=validate_stage_b_certificate(c) if stage=='B_POSTDEPLOYMENT_VERIFICATION' else validate_stage_c_certificate(c)
  print(json.dumps({'status':'PASSED' if not errors else 'FAILED','errors':errors,'certificateStatus':c.get('status')},indent=2)); return not errors
-def final_check(): c=predeploy_certificate(); validate_predeploy(require_authorized=True); return c.get('status')=='AUTHORIZED'
+def final_check():
+ c=predeploy_certificate(); ok=validate_predeploy(require_authorized=True) and c.get('status')=='AUTHORIZED'
+ if ok:
+  print('Executive Verdict — PREDEPLOYMENT\nGate 1: PASS\nGate 2: PASS\nGate 3: PASS\nGate 4: PASS\nGate 5: PASS\n\nOverall: AUTHORIZED_TO_DEPLOY_ON_ETHEREUM_MAINNET\n\nTECHNICALLY_MAINNET_READY = YES\nMAINNET_DEPLOYMENT_AUTHORIZED = YES\nETHEREUM_MAINNET_AUTHORIZED = YES\n\nMAINNET_DEPLOYED = NO\nMAINNET_VERIFIED = NO\nLIVE_AUTHORITY_READBACK_COMPLETE = NO\nLIVE_CANARY_COMPLETE = NO\nPRODUCTION_ACTIVATION_EFFECTIVE = NO')
+ return ok
 
 
 def fixture_report(name):
@@ -208,6 +235,9 @@ def fixture_report(name):
 
 def main():
  ap=argparse.ArgumentParser(); ap.add_argument('cmd'); a=ap.parse_args(); cmd=a.cmd
+ if cmd.startswith('protected-evidence-'):
+  sub=cmd.removeprefix('protected-evidence-')
+  sys.exit(subprocess.call([sys.executable,'scripts/protected_stage_a_evidence.py',sub],cwd=ROOT))
  if cmd=='fixture-generate': print(json.dumps(fixture_report('predeploy-structure'),indent=2)); return
  if cmd=='fixture-validate': print(json.dumps({'status':OK_STATUS,'fixtureOnly':True,'notReleaseEvidence':True},indent=2)); return
  if cmd=='postdeploy-fixture-test': print(json.dumps({'status':OK_STATUS,'fixtureOnly':True,'notReleaseEvidence':True,'stage':'B_POSTDEPLOYMENT_VERIFICATION'},indent=2)); return

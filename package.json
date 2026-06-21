@@ -326,7 +326,13 @@
     "mainnet:predeploy:fixture:generate": "python scripts/mainnet_three_stage.py fixture-generate",
     "mainnet:predeploy:fixture:validate": "python scripts/mainnet_three_stage.py fixture-validate",
     "mainnet:postdeploy:fixture:test": "python scripts/mainnet_three_stage.py postdeploy-fixture-test",
-    "mainnet:activation:fixture:test": "python scripts/mainnet_three_stage.py activation-fixture-test"
+    "mainnet:activation:fixture:test": "python scripts/mainnet_three_stage.py activation-fixture-test",
+    "mainnet:predeploy:protected-evidence:doctor": "python scripts/mainnet_three_stage.py protected-evidence-doctor",
+    "mainnet:predeploy:protected-evidence:index": "python scripts/mainnet_three_stage.py protected-evidence-index",
+    "mainnet:predeploy:protected-evidence:validate": "python scripts/mainnet_three_stage.py protected-evidence-validate",
+    "mainnet:predeploy:protected-evidence:import": "python scripts/mainnet_three_stage.py protected-evidence-import",
+    "mainnet:predeploy:protected-evidence:status": "python scripts/mainnet_three_stage.py protected-evidence-status",
+    "mainnet:predeploy:status": "python scripts/mainnet_three_stage.py status"
   },
   "dependencies": {
     "@openzeppelin/contracts": "4.9.6",

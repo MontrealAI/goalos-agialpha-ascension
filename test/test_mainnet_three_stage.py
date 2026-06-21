@@ -1,7 +1,17 @@
-import importlib.util, pathlib, os, subprocess, json
+import importlib.util, pathlib, os, subprocess, json, shutil
+import pytest
 ROOT=pathlib.Path(__file__).resolve().parents[1]
 spec=importlib.util.spec_from_file_location('m3', ROOT/'scripts/mainnet_three_stage.py')
 m3=importlib.util.module_from_spec(spec); spec.loader.exec_module(m3)
+
+@pytest.fixture(autouse=True)
+def clear_public_protected_evidence(monkeypatch):
+    shutil.rmtree(ROOT/'qa/mainnet-predeploy/evidence', ignore_errors=True)
+    subprocess.run(['git','checkout','--','qa/mainnet-predeploy/fork-rehearsal.json','qa/mainnet-predeploy/authorization-certificate.json','qa/mainnet-predeploy/deployment-plan.public.json','qa/mainnet-predeploy/gates'], cwd=ROOT, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    yield
+    shutil.rmtree(ROOT/'qa/mainnet-predeploy/evidence', ignore_errors=True)
+    subprocess.run(['git','checkout','--','qa/mainnet-predeploy/fork-rehearsal.json','qa/mainnet-predeploy/authorization-certificate.json','qa/mainnet-predeploy/deployment-plan.public.json','qa/mainnet-predeploy/gates'], cwd=ROOT, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+
 
 def test_stage_a_fails_closed_without_protected_evidence_and_live_receipts_not_required():
     c=m3.predeploy_certificate()
@@ -141,3 +151,43 @@ def test_live_local_gated_invokes_canonical_deployer_when_authorized(monkeypatch
     finally:
         m3.sys.argv=old_argv
     assert calls and calls[0][0]==['npm','run','deploy:ethereum-mainnet:gated']
+
+def _write_valid_protected_package(root):
+    root.mkdir(parents=True, exist_ok=True)
+    rid=m3.git(['rev-parse','HEAD'])
+    def write(name,obj):
+        p=root/name; p.write_text(json.dumps(obj,sort_keys=True)); return p
+    req=[{'id':'r','status':'PASS','evidenceHashes':['0x1']}]
+    base={'schemaVersion':'1.0','releaseId':rid,'mainnetBroadcastOccurred':False,'requirements':req,'generatedBy':'fixture-tool','toolVersions':{},'rawEvidenceCommitments':{'log':'0x1'},'failures':[],'blockers':[]}
+    files={}
+    files['G1_AUTHORITY']=write('g1.json',{**base,'status':'PASS','observed':{'walletAZeroAuthority':True,'walletBPermanentAuthority':True}})
+    files['G2_OVERRIDES']=write('g2.json',{**base,'status':'PASS','observed':{'typedOverrideCoverage':True}})
+    files['G3_ACCOUNTING']=write('g3.json',{**base,'status':'PASS','observed':{'omittedAccountingComponents':0}})
+    files['G4_LIFECYCLE']=write('g4.json',{**base,'status':'PASS','observed':{'unclassifiedSelectors':0}})
+    files['G5_ASSURANCE']=write('g5.json',{**base,'status':'PASS','observed':{'invariantExecutedActions':1000000,'deterministicSeedCount':32,'mutationSurvived':0}})
+    plan={'schemaVersion':'1.0','releaseId':rid,'chainId':1,'canonicalAgialpha':m3.AGI,'walletA':m3.WA,'walletB':m3.WB,'startingNonce':7,'orderedTransactions':[{'nonce':7,'expectedCreateAddress':'0x0000000000000000000000000000000000000001'}],'maximumCumulativeCost':'100','planHash':'0xplan','expiresAt':'2999-01-01T00:00:00Z','mainnetBroadcastOccurred':False}
+    files['DEPLOYMENT_PLAN']=write('plan.json',plan)
+    fork={'schemaVersion':'1.0','releaseId':rid,'executionMode':'MAINNET_FORK','upstreamChainId':1,'localChainId':31337,'forkBlockNumber':123,'forkBlockHash':'0xabc','forkBlockTimestamp':1,'primaryProviderCommitment':'0xp','secondaryProviderCommitment':'0xs','canonicalAgialpha':m3.AGI,'upstreamCanonicalAgialphaCodeHash':'0xcode','localForkCanonicalAgialphaCodeHash':'0xcode','deploymentPlanHash':'0xplan','deployedTopologyCount':49,'transactionReceiptCount':63,'runtimeBytecodeRoot':'0xruntime','mainnetBroadcastOccurred':False}
+    files['MAINNET_FORK']=write('fork.json',fork)
+    import hashlib
+    def shp(p): return '0x'+hashlib.sha256(p.read_bytes()).hexdigest()
+    idx={'schemaVersion':'1.0','releaseId':rid,'gitCommit':rid,'chainId':1,'walletA':m3.WA,'walletB':m3.WB,'canonicalAgialpha':m3.AGI,'entries':[{'type':t,'path':str(p),'sha256':shp(p),'schemaVersion':'1.0','releaseId':rid,'publicDisclosure':'COMMITMENT_ONLY'} for t,p in files.items()]}
+    idx['indexSha256']='0xidx'
+    (root/'protected-evidence-index.json').write_text(json.dumps(idx,sort_keys=True))
+    return root/'protected-evidence-index.json'
+
+def test_valid_protected_package_can_authorize_stage_a(tmp_path, monkeypatch):
+    idx=_write_valid_protected_package(tmp_path/'protected')
+    monkeypatch.setenv('GOALOS_PROTECTED_EVIDENCE_INDEX', str(idx))
+    assert subprocess.run(['python','scripts/protected_stage_a_evidence.py','validate'],cwd=ROOT,stdout=subprocess.PIPE,text=True).returncode==0
+    assert subprocess.run(['python','scripts/protected_stage_a_evidence.py','import'],cwd=ROOT,stdout=subprocess.PIPE,text=True).returncode==0
+    c=m3.predeploy_certificate()
+    assert c['status']=='AUTHORIZED'
+    assert all(v=='PASS' for v in c['gates'].values())
+    assert c['MAINNET_DEPLOYED']=='NO'
+
+def test_missing_protected_evidence_doctor_fails_when_no_inputs(monkeypatch):
+    for k in list(os.environ):
+        if k.startswith('GOALOS_'):
+            monkeypatch.delenv(k, raising=False)
+    assert subprocess.run(['python','scripts/protected_stage_a_evidence.py','doctor'],cwd=ROOT,stdout=subprocess.PIPE,text=True).returncode in {2}
