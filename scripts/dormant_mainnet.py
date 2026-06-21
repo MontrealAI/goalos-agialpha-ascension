@@ -41,7 +41,7 @@ def sha(rel):
     if not p.exists(): return None
     digest=hashlib.sha256()
     if p.is_dir():
-        for f in sorted(x for x in p.rglob('*') if x.is_file() and '.git' not in x.parts):
+        for f in sorted(x for x in p.rglob('*') if x.is_file() and '.git' not in x.parts and '__pycache__' not in x.parts):
             digest.update(str(f.relative_to(ROOT)).encode()); digest.update(b'\0'); digest.update(f.read_bytes())
     else: digest.update(p.read_bytes())
     return '0x'+digest.hexdigest()

@@ -7,9 +7,9 @@
   "officialFunding": 0,
   "activation": false,
   "operatorDataClassification": "PRIVATE_PREDEPLOYMENT_OPERATOR_DATA",
-  "operatorConfigCommitment": "0xf3ddb9b3c12acb149c365a1b7dd502de19bff772217272460fa727a6a344a7b7",
-  "temporaryDeployerCommitment": "0xb61d2776c5fb4a1e4437abca477135043374757ae02ad6382acb1e756fdca1db",
-  "finalOwnerCommitment": "0xc6ce888e96c4c99082afca65a27d87bf102f623e4fbff0da16d979eb5199f5c3",
+  "operatorConfigCommitment": "0x6ba30001564a29b2e343cbe6bcec23fd64646cbc5c06996df434523bf5014e50",
+  "temporaryDeployerCommitment": "0x1b5352d6d98b5b8de911d4d574d52d60f1409de84514e06ae34fd786ee0bf268",
+  "finalOwnerCommitment": "0x8eb7223d7759feac640dfc3e22f9b621ddd1689a430bf5ed93946dcf74cc6e49",
   "permanentRoleConfigurationRoot": "0x193bbc1352302c90f4ce0455a107c64d5e8bb5f6baed0b5f9b5335ceeb448b6a",
   "temporaryDeployerIsPermanentAuthority": false,
   "finalOwnerConfigurationValidated": true,
@@ -17,5 +17,12 @@
   "constructors": [],
   "transactions": [],
   "gasEstimates": [],
-  "verificationInputs": []
+  "verificationInputs": [],
+  "evidenceClasses": [
+    "PUBLIC_PREDEPLOYMENT_EVIDENCE",
+    "PRIVATE_OPERATOR_OVERLAY",
+    "PUBLIC_POSTDEPLOYMENT_CHAIN_EVIDENCE"
+  ],
+  "plannedContractCount": 0,
+  "phaseBGrantCount": 0
 }

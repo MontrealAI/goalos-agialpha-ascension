@@ -1,11 +1,11 @@
 {
   "schemaVersion": "1.0",
   "authorizationClass": "DORMANT_INITIAL_MAINNET_DEPLOYMENT",
-  "generatedAt": "2026-06-20T23:23:28Z",
-  "expiresAt": "2026-06-21T11:23:28Z",
+  "generatedAt": "2026-06-21T00:09:31Z",
+  "expiresAt": "2026-06-21T12:09:31Z",
   "certificateTtlHours": 12,
   "repository": "MontrealAI/goalos-agialpha-ascension",
-  "sourceCommit": "e76a831c08bb629eaf29561425304a5069a71740",
+  "sourceCommit": "4f8f88c149eb4285ed537ddb5f6209da8cb3be8e",
   "chainId": 1,
   "canonicalAgialpha": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
   "deploymentMode": "DORMANT",
@@ -21,9 +21,9 @@
     "PUBLIC_POSTDEPLOYMENT_CHAIN_EVIDENCE"
   ],
   "operatorDataClassification": "PRIVATE_PREDEPLOYMENT_OPERATOR_DATA",
-  "operatorConfigCommitment": "0xf3ddb9b3c12acb149c365a1b7dd502de19bff772217272460fa727a6a344a7b7",
-  "temporaryDeployerCommitment": "0xb61d2776c5fb4a1e4437abca477135043374757ae02ad6382acb1e756fdca1db",
-  "finalOwnerCommitment": "0xc6ce888e96c4c99082afca65a27d87bf102f623e4fbff0da16d979eb5199f5c3",
+  "operatorConfigCommitment": "0x6ba30001564a29b2e343cbe6bcec23fd64646cbc5c06996df434523bf5014e50",
+  "temporaryDeployerCommitment": "0x1b5352d6d98b5b8de911d4d574d52d60f1409de84514e06ae34fd786ee0bf268",
+  "finalOwnerCommitment": "0x8eb7223d7759feac640dfc3e22f9b621ddd1689a430bf5ed93946dcf74cc6e49",
   "permanentRoleConfigurationRoot": "0x193bbc1352302c90f4ce0455a107c64d5e8bb5f6baed0b5f9b5335ceeb448b6a",
   "temporaryDeployerIsPermanentAuthority": false,
   "finalOwnerConfigurationValidated": true,
@@ -47,7 +47,7 @@
     },
     "hardhatConfig": {
       "path": "hardhat.config.ts",
-      "sha256": "0xbf836b8ea10a9012249a5e9be42c80ea66e0ab333c33cb0123269149084eabc1",
+      "sha256": "0x19b9128b253d54264a9c5e8a44096cf17012efa4e98817929e30f4a613d88d2f",
       "present": true
     },
     "compilerAlignment": {
@@ -77,12 +77,12 @@
     },
     "deploymentPlanPublic": {
       "path": "qa/dormant-mainnet-readiness/deployment-plan.public.json",
-      "sha256": "0xa1976c07133c3056035b5e6338496127739902a377bfe100a76b2b9c0be8ea8c",
+      "sha256": "0xb16eeb410a7ea032e3ec1d1aba9dbd1d88cbd1085c6a7aefb7fd7a7e856071ac",
       "present": true
     },
     "certificateScript": {
       "path": "scripts/dormant_mainnet.py",
-      "sha256": "0xbd88c65b47bdeabd89003d57047e46088a1a507149616edbaf7aaa5379e4e2c7",
+      "sha256": "0xa3042e4b359e5aae5c84b7b8307c415de0f289e1385397d4722e601b74f44192",
       "present": true
     },
     "privateOperatorExample": {
@@ -94,10 +94,10 @@
   "binding": {
     "dependencyLock": "0x9739ecf251762c3828813424f8e7d0d3b291611125cf5eafb31fc32479a3f514",
     "sourceTreeHash": "0x56df86736a60b53d6304eb6d310df3ba8665f358d0a9df945cde5f85c1eabb50",
-    "deploymentScriptsHash": "0x0dd1efb861f3212bc054c96b0bf27f12ae91d56c3788939b8b9d744a43f96eb9",
-    "testsHash": "0xd2850def75ae68e665e58e77d1097080420f4a86517c82eb1a2a1c153da839a4",
+    "deploymentScriptsHash": "0x66808e46fa362e3c00645888710f1bb07c0b92886f409cf1d916327cd929d684",
+    "testsHash": "0xb0a38446271fa086dcdf45a400c7a876f467ae72e41c7e6f2c0b8aa1e56b7418",
     "schemasHash": "0xcc700fb854e9db8da5ad30020bad255e05c141c398fbe47525f63ad8cd10d8e2",
-    "publicPlanHash": "0xa1976c07133c3056035b5e6338496127739902a377bfe100a76b2b9c0be8ea8c",
+    "publicPlanHash": "0xb16eeb410a7ea032e3ec1d1aba9dbd1d88cbd1085c6a7aefb7fd7a7e856071ac",
     "feePolicyCommitment": null,
     "authorityRoot": "0x193bbc1352302c90f4ce0455a107c64d5e8bb5f6baed0b5f9b5335ceeb448b6a",
     "outputPaths": [
@@ -124,6 +124,6 @@
   "PUBLIC_FRONTEND_AUTHORIZED": "NO",
   "PRODUCTION_ANNOUNCEMENT_AUTHORIZED": "NO",
   "UNBOUNDED_ECONOMIC_EXPOSURE_AUTHORIZED": "NO",
-  "planHash": "0x7b102e8bcecc5af4004ef062485b6b2105a34af337fa16196bd1b0a7e8719e87",
-  "certificateHash": "0xc9aa3ba1103bd25e77ac503defc127a491ac9f8b5f33f92a44ddcbe926546837"
+  "planHash": "0x32b1aca2b5de566e90e4fe5b9bd30c430d3100e8d278ce6da414e97cde6a4cd8",
+  "certificateHash": "0x68dac02925a4d05713ca7fcaa2fe0137ea5a5b08794ef652ccf1a153965c595b"
 }
