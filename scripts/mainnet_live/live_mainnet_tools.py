@@ -40,7 +40,7 @@ def producer(args):
     out=stub(args.command)
     out['sourceManifest']=str(p); out['sourceManifestSha256']=sha(p); out['contractCount']=len([x for x in contracts(d) if (x.get('classification') or x.get('type'))!='external'])
     if args.command.endswith('certificate'):
-        out.update({'status':'MAINNET_DEPLOYMENT_VERIFIED','MAINNET_DEPLOYED':'YES','MAINNET_VERIFIED':'YES','MAINNET_CONFIGURED':'YES','LIVE_CANARY_COMPLETE':'NO','PRODUCTION_READY':'NO','USER_FUNDS_AUTHORIZED':'NO','deploymentPath':'DIRECT_OPERATOR_NO_CERTIFICATE','predeploymentCertificateUsed':False})
+        raise SystemExit('mainnet:live:certificate is blocked; use mainnet:postdeploy:certificate after receipt/runtime/verification/authority evidence passes')
     write(Path('qa/mainnet-postdeploy')/mp[name],out); print('wrote',mp[name])
 
 def contracts_gen(args):
@@ -48,7 +48,7 @@ def contracts_gen(args):
     for x in contracts(d):
         addr=x.get('address') or x.get('contractAddress')
         if not addr: continue
-        rows.append({'name':x.get('name','UNKNOWN'),'address':addr,'chainId':1,'category':x.get('category','GoalOS'),'fullyQualifiedSourceName':x.get('fullyQualifiedSourceName') or x.get('sourceName') or 'UNKNOWN','etherscanUrl':f'https://etherscan.io/address/{addr}','verified':x.get('verified',True),'classification':x.get('classification','deployed'),'owner':x.get('owner')})
+        rows.append({'name':x.get('name','UNKNOWN'),'address':addr,'chainId':1,'category':x.get('category','GoalOS'),'fullyQualifiedSourceName':x.get('fullyQualifiedSourceName') or x.get('sourceName') or 'UNKNOWN','etherscanUrl':f'https://etherscan.io/address/{addr}','verified':x.get('verified','REQUIRES_INDEPENDENT_CHECK'),'classification':x.get('classification','deployed'),'owner':x.get('owner')})
     data={'chainId':1,'canonicalAgialpha':AGIALPHA,'frontendSafetyDefaults':{'mainnetDeploymentAvailable':True,'readOnlyExplorerEnabled':True,'writeActionsEnabled':False,'userFundingEnabled':False,'productionActivated':False},'contracts':rows}
     for f in ['config/ethereum-mainnet.contracts.json','website/data/ethereum-mainnet.contracts.json']: write(Path(f),data)
     (ROOT/'app/config/ethereum-mainnet.contracts.generated.ts').write_text('export const ethereumMainnetContracts = '+json.dumps(data,indent=2)+' as const;\n')

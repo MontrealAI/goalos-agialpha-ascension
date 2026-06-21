@@ -1,0 +1,13 @@
+{
+  "CompleteGate5": "NOT_YET_PROVEN",
+  "Gate1AuthorityContinuity": "PASS_AFTER_AUTHORITY_READBACK",
+  "Gate2TypedOwnerOverrides": "NOT_YET_PROVEN_BY_DEPLOYMENT",
+  "Gate3AccountingAndLimits": "NOT_YET_PROVEN_BY_DEPLOYMENT",
+  "Gate4LifecycleMigrationShutdown": "NOT_YET_PROVEN_BY_DEPLOYMENT",
+  "Gate5AssuranceContribution": [
+    "48 chain-1 creations",
+    "48/48 source verification seed",
+    "runtime code readback",
+    "authority/configuration readback"
+  ]
+}

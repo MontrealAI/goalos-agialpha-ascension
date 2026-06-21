@@ -17,6 +17,16 @@ def cert_value(*names, default='NO'):
             return cert[name]
     return default
 tech=cert_value('technicallyMainnetReady','TECHNICALLY_MAINNET_READY'); dep=cert_value('mainnetDeploymentAuthorized','MAINNET_DEPLOYMENT_AUTHORIZED'); eth=cert_value('ethereumMainnetAuthorized','ETHEREUM_MAINNET_AUTHORIZED'); deployed=cert_value('mainnetDeployed','MAINNET_DEPLOYED')
+release_state_path = ROOT/'qa/mainnet-release-state.json'
+if release_state_path.exists():
+    try:
+        release_state=json.loads(release_state_path.read_text())
+        deployed=release_state.get('summary',{}).get('ETHEREUM_MAINNET_DEPLOYED', deployed)
+        postdeployment_status=release_state.get('postdeployment',{}).get('status','NO')
+    except Exception:
+        postdeployment_status='NO'
+else:
+    postdeployment_status='NO'
 authorization_meaning = 'This means the repository package is authorized for manual gated Ethereum Mainnet deployment. It does not mean Ethereum Mainnet deployment has occurred. Actual deployment still requires a runtime RPC URL and deployer key outside GitHub.' if (tech == 'YES' and dep == 'YES' and eth == 'YES') else 'This means the repository package is not currently authorized for manual gated Ethereum Mainnet deployment. Resolve the certificate blockers, regenerate the certificate, and rerun the public checks before any mainnet deployment attempt. Actual deployment still requires a runtime RPC URL and deployer key outside GitHub.'
 status_label=f"""GoalOS AGIALPHA Ascension v4.4.0 mainnet authorization candidate.
 Automated/internal security toolchain: passed.
@@ -35,7 +45,7 @@ Three-stage Mainnet release status:
 | --- | --- |
 | Predeployment authorization | {eth} |
 | Ethereum Mainnet deployed | {deployed} |
-| Postdeployment verification | NO |
+| Postdeployment verification | {postdeployment_status} |
 | Production activation effective | NO |
 
 A pre-broadcast state with predeployment authorization YES and Ethereum Mainnet deployed NO is a GO to deploy, not a contradiction. Stage B evaluates chain-1 receipts, bytecode, verification, and ownership/role readback only after human broadcast. Stage C separately governs bounded live canary, monitoring, reconciliation, Ledger activation, and production reliance."""
@@ -52,12 +62,12 @@ badges=f'''[![Repository Validation](https://github.com/MontrealAI/goalos-agialp
 [![Final Public Mainnet Authorization](https://github.com/MontrealAI/goalos-agialpha-ascension/actions/workflows/final-public-mainnet-authorization.yml/badge.svg)](https://github.com/MontrealAI/goalos-agialpha-ascension/actions/workflows/final-public-mainnet-authorization.yml)
 [![Mainnet Authorization Gate](https://github.com/MontrealAI/goalos-agialpha-ascension/actions/workflows/mainnet-authorization-gate.yml/badge.svg)](https://github.com/MontrealAI/goalos-agialpha-ascension/actions/workflows/mainnet-authorization-gate.yml)
 [![Solidity Audit Toolchain](https://github.com/MontrealAI/goalos-agialpha-ascension/actions/workflows/solidity-audit-toolchain.yml/badge.svg)](https://github.com/MontrealAI/goalos-agialpha-ascension/actions/workflows/solidity-audit-toolchain.yml)
-[![License: No license granted](https://img.shields.io/badge/License-No%20license%20granted-lightgrey.svg)](LICENSE_DECISION.md)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Solidity 0.8.35](https://img.shields.io/badge/Solidity-0.8.35-363636?logo=solidity)](package.json)
 [![Hardhat 2.28.6](https://img.shields.io/badge/Hardhat-2.28.6-f5d061?logo=ethereum)](package.json)
 [![TypeScript 5.9.3](https://img.shields.io/badge/TypeScript-5.9.3-3178c6?logo=typescript&logoColor=white)](package.json)
 [![Mainnet Authorized](https://img.shields.io/badge/Ethereum%20Mainnet%20Authorized-{eth}-{'success' if eth == 'YES' else 'critical'})](qa/mainnet-authorization-certificate.json)
-[![Mainnet Deployed](https://img.shields.io/badge/Ethereum%20Mainnet%20Deployed-{deployed}-critical)](qa/mainnet-authorization-certificate.json)
+[![Mainnet Deployed](https://img.shields.io/badge/Ethereum%20Mainnet%20Deployed-{deployed}-{'success' if deployed == 'YES' else 'critical'})](qa/mainnet-release-state.json)
 '''
 readme=f"""Install:\n`npm ci`\n\nStart:\n`npm run mainnet:initial:setup-and-authorize`\n\n# GoalOS AGIALPHA Ascension
 
@@ -68,7 +78,7 @@ readme=f"""Install:\n`npm ci`\n\nStart:\n`npm run mainnet:initial:setup-and-auth
 
 GoalOS AGIALPHA Ascension is the institutional, evidence-first package for proof-settled AI workflow coordination using the existing AGIALPHA token. The repository is designed for reviewers, operators, auditors, and governance stakeholders who need a clear source of truth, reproducible checks, and strict public-claims boundaries.
 
-**Official source of truth:** `qa/mainnet-authorization-certificate.json`. Public README/status documents summarize that certificate; they do not override it.
+**Official source of truth:** Stage-A authorization remains `qa/mainnet-authorization-certificate.json`; Stage-B deployment state is `qa/mainnet-release-state.json`. Public README/status documents summarize those records; they do not override them.
 
 ## Quick start for institutional reviewers
 
@@ -98,7 +108,7 @@ Badges at the top of this README are intentionally limited to official, auditabl
 
 ## Ethereum Mainnet authorization
 
-The source of truth is `qa/mainnet-authorization-certificate.json`. README/status documents are generated from that certificate; manual edits cannot create YES.
+The Stage-A source of truth is `qa/mainnet-authorization-certificate.json`; the Stage-B deployment source of truth is `qa/mainnet-release-state.json`. README/status documents are generated summaries; manual edits cannot create YES.
 
 - TECHNICALLY_MAINNET_READY: **{tech}**
 - MAINNET_DEPLOYMENT_AUTHORIZED: **{dep}**
