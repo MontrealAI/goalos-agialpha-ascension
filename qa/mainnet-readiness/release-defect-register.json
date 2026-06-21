@@ -1,0 +1,70 @@
+{
+  "schemaVersion": "1.0",
+  "generatedAt": "2026-06-21T00:00:00Z",
+  "baselineSha": "fb07123a2c944172cb1f513eefe753409b654da6",
+  "claimBoundary": "This defect register is a planning and fail-closed evidence artifact. It does not authorize Ethereum Mainnet deployment and does not mark any gate PASS.",
+  "mainnetBroadcastOccurred": false,
+  "historicalSepoliaClassification": "HISTORICAL_VERIFIED_SEPOLIA_DEPLOYMENT",
+  "knownProductionParameters": {
+    "ethereumMainnetChainId": 1,
+    "canonicalAGIALPHA": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
+    "walletADeployerGasPayerOnly": "0x6c8B8897Fb6b08B4070387233B89b3E9A94eD00E",
+    "walletBLedgerFinalOwnerPermanentAuthority": "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+  },
+  "openDefects": [
+    {
+      "id": "P0-PROTECTED-SEPOLIA-RC-NOT-EXECUTED",
+      "severity": "P0",
+      "gate": "Gate 5",
+      "status": "OPEN",
+      "summary": "Fresh exact-release Sepolia deployment, Etherscan V2 verification, independent confirmation, and readback evidence are not present for the final SHA.",
+      "requiredClosureEvidence": [
+        "chainId 11155111 release-candidate deployment journal",
+        "complete topology address manifest",
+        "automatic Etherscan V2 verification 100%",
+        "independent Etherscan V2 confirmation 100%",
+        "authority/accounting/lifecycle readback bound to final SHA"
+      ]
+    },
+    {
+      "id": "P0-MAINNET-FORK-RELEASE-NOT-EXECUTED",
+      "severity": "P0",
+      "gate": "Gates 1-5",
+      "status": "OPEN",
+      "summary": "Recent pinned Ethereum Mainnet fork rehearsal evidence for the exact full topology is not present.",
+      "requiredClosureEvidence": [
+        "chainId 1 fork block number and block hash",
+        "canonical AGIALPHA code hash/interface proof",
+        "Wallet A gas-only and Wallet B permanent authority readback",
+        "ordinary settlement lifecycle and typed owner override execution",
+        "accounting/canary/lifecycle/migration/shutdown scenario evidence"
+      ]
+    },
+    {
+      "id": "P0-CRITICAL-MUTATION-CAMPAIGN-MISSING",
+      "severity": "P0",
+      "gate": "Gate 5",
+      "status": "OPEN",
+      "summary": "Critical mutation release campaign artifact with all required mutants executed and killed is missing or not PASS.",
+      "requiredClosureEvidence": [
+        "patch hashes",
+        "commands and exit codes",
+        "killer tests",
+        "survived mutants = 0",
+        "invalid/not-run mutants = 0"
+      ]
+    },
+    {
+      "id": "P1-REMOTE-MAIN-UNAVAILABLE",
+      "severity": "P1",
+      "gate": "Release identity",
+      "status": "OPEN",
+      "summary": "The local repository has no configured origin remote, so latest main could not be fetched or reconciled in this environment.",
+      "requiredClosureEvidence": [
+        "configured origin",
+        "successful fetch of origin/main",
+        "final certification bound to current merged/rebased main SHA"
+      ]
+    }
+  ]
+}
