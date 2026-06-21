@@ -1,0 +1,53 @@
+{
+  "gate": "G4",
+  "name": "Lifecycle",
+  "releaseIdentity": {
+    "deploymentScriptsHash": "0xb7b6474359af65c9b9aebd8c3fc1566e6f57084cb60900ac8930181acafec449",
+    "finalGitSha": "928f5f0427cc1080d4957aa8dd1590216f0b77cd",
+    "hardhatConfigurationHash": "0x19b9128b253d54264a9c5e8a44096cf17012efa4e98817929e30f4a613d88d2f",
+    "lockfileHash": "0x9739ecf251762c3828813424f8e7d0d3b291611125cf5eafb31fc32479a3f514",
+    "releaseId": "928f5f0427cc1080d4957aa8dd1590216f0b77cd",
+    "sourceTreeHash": "0x447f224ae7d222e6f7fd384799a1430167addada934ef2fc39d11ff930a6717b"
+  },
+  "requirements": [
+    {
+      "command": "npm run release:g4",
+      "evidence": [],
+      "failureReason": "mandatory evidence artifact has not executed",
+      "id": "selector_classification_complete",
+      "mandatory": true,
+      "observed": {},
+      "status": "NOT_RUN"
+    },
+    {
+      "command": "npm run release:g4",
+      "evidence": [],
+      "failureReason": "mandatory evidence artifact has not executed",
+      "id": "phase_transitions_exercised",
+      "mandatory": true,
+      "observed": {},
+      "status": "NOT_RUN"
+    },
+    {
+      "command": "npm run release:g4",
+      "evidence": [],
+      "failureReason": "mandatory evidence artifact has not executed",
+      "id": "shutdown_blocks_unresolved_liabilities",
+      "mandatory": true,
+      "observed": {},
+      "status": "NOT_RUN"
+    },
+    {
+      "command": "npm run release:g4",
+      "evidence": [],
+      "failureReason": "mandatory evidence artifact has not executed",
+      "id": "terminal_shutdown_after_discharge",
+      "mandatory": true,
+      "observed": {},
+      "status": "NOT_RUN"
+    }
+  ],
+  "schemaVersion": "1.0",
+  "stage": "A_PREDEPLOYMENT_AUTHORIZATION",
+  "status": "NOT_RUN"
+}

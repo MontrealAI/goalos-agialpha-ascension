@@ -1,8 +1,8 @@
 # Ethereum Mainnet Deployment Authorization Decision
 
-Ethereum Mainnet deployment authorization: **YES**.
+Ethereum Mainnet deployment authorization: **NO**.
 
-MAINNET_DEPLOYMENT_AUTHORIZED: **YES**
+MAINNET_DEPLOYMENT_AUTHORIZED: **NO**
 
 MAINNET_DEPLOYED: **NO**
 

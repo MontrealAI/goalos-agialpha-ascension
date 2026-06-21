@@ -40,10 +40,13 @@ class FiveGateFailClosedTest(unittest.TestCase):
 
     def test_phase_a_helper_does_not_report_release_pass_without_evidence(self):
         result = self.run_cmd('python', 'scripts/phase_a_assurance.py', 'differential')
-        self.assertNotEqual(result.returncode, 0, result.stdout)
+        self.assertEqual(result.returncode, 0, result.stdout)
         report = json.loads((ROOT / 'qa/pr-readiness/differential-report.json').read_text())
-        self.assertEqual(report['status'], 'BLOCKED')
-        self.assertTrue(report['blockers'])
+        self.assertEqual(report['status'], 'PHASE_A_LOCAL_PASS')
+        release = self.run_cmd('python', 'scripts/phase_a_assurance.py', 'differential', '--release')
+        self.assertNotEqual(release.returncode, 0, release.stdout)
+        release_report = json.loads((ROOT / 'qa/pr-readiness/differential-report.json').read_text())
+        self.assertEqual(release_report['status'], 'BLOCKED')
 
     def test_certificate_requires_authorized_five_gate_certificate_even_if_dossier_passes(self):
         self.run_cmd('python', 'scripts/mainnet_operational_readiness.py')

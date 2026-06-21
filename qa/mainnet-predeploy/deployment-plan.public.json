@@ -1,0 +1,23 @@
+{
+  "canonicalAgialpha": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
+  "chainId": 1,
+  "failureReason": "Complete deployment transaction sequence has not been generated.",
+  "mainnetBroadcastOccurred": false,
+  "orderedTransactions": [],
+  "planHash": "0x552fa10f0a906c6f95ea0b1360f97c4bc2774e262b99b22b8cc41587fba35ac0",
+  "postDeploymentConfiguration": [],
+  "releaseIdentity": {
+    "deploymentScriptsHash": "0xb7b6474359af65c9b9aebd8c3fc1566e6f57084cb60900ac8930181acafec449",
+    "finalGitSha": "928f5f0427cc1080d4957aa8dd1590216f0b77cd",
+    "hardhatConfigurationHash": "0x19b9128b253d54264a9c5e8a44096cf17012efa4e98817929e30f4a613d88d2f",
+    "lockfileHash": "0x9739ecf251762c3828813424f8e7d0d3b291611125cf5eafb31fc32479a3f514",
+    "releaseId": "928f5f0427cc1080d4957aa8dd1590216f0b77cd",
+    "sourceTreeHash": "0x447f224ae7d222e6f7fd384799a1430167addada934ef2fc39d11ff930a6717b"
+  },
+  "requiresTypedPlanHashConfirmation": true,
+  "schemaVersion": "1.0",
+  "stage": "A_PREDEPLOYMENT_AUTHORIZATION",
+  "status": "INCOMPLETE",
+  "walletA": "0x6c8B8897Fb6b08B4070387233B89b3E9A94eD00E",
+  "walletB": "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+}

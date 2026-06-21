@@ -50,8 +50,11 @@ def status(name):
     write(PR/f'{name}-status.json',obj)
     print(json.dumps(obj,indent=2)); return 0 if ok else 2
 
-def differential():
-    obj={'schemaVersion':'1.0','status':'PHASE_A_LOCAL_PASS','model':'executable-reference-smoke','checks':['no duplicate consumption in model','settlement requires proof state','owner exception distinct from ordinary result'],'releaseStatus':'RELEASE_EVIDENCE_NOT_EXECUTED','claimBoundary':'Executable model is a bounded local smoke artifact; release differential campaign evidence is still required for protected release.'}
+def differential(release=False):
+    if release:
+        obj={'schemaVersion':'1.0','status':'BLOCKED','model':'release-differential-required','traceCount':0,'releaseStatus':'RELEASE_EVIDENCE_NOT_EXECUTED','blockers':['No executed deterministic model-vs-contract trace artifact is present; prose smoke checks are not release evidence.'],'claimBoundary':'No release PASS is claimed without real differential traces.'}
+        write(PR/'differential-report.json',obj); print(json.dumps(obj,indent=2)); return 2
+    obj={'schemaVersion':'1.0','status':'PHASE_A_LOCAL_PASS','model':'executable-reference-smoke','traceCount':0,'releaseStatus':'RELEASE_EVIDENCE_NOT_EXECUTED','claimBoundary':'Claim-bounded local smoke only; not release differential evidence.'}
     write(PR/'differential-report.json',obj); print(json.dumps(obj,indent=2)); return 0
 
 def mutation():
@@ -70,10 +73,13 @@ def mutation():
     write(PR/'critical-mutation-smoke.json',obj); print(json.dumps(obj,indent=2)); return 0 if ok else 2
 
 def invariants(release=False):
-    seeds=list(range(1,33 if release else 5))
-    actions=1000000 if release else 4096
-    obj={'schemaVersion':'1.0','status':'PHASE_A_LOCAL_PASS','profile':'release-config' if release else 'ci-smoke','configuredReleaseThresholds':{'actions':1000000,'seeds':32},'executedActions':actions if release else actions,'recordedSeeds':seeds,'releaseStatus':'RELEASE_EVIDENCE_NOT_EXECUTED' if not release else 'RELEASE_PROFILE_CONFIGURED_LOCAL_NO_FORK','claimBoundary':'Bounded local invariant configuration/evidence only; protected release must execute full stateful engine thresholds.'}
-    write(PR/('invariants-release-config.json' if release else 'invariants-ci.json'),obj); print(json.dumps(obj,indent=2)); return 0
+    seeds=list(range(1,5))
+    actions=4096
+    if release:
+        obj={'schemaVersion':'1.0','status':'BLOCKED','profile':'release-required','configuredReleaseThresholds':{'actions':1000000,'seeds':32},'executedActions':0,'recordedSeeds':[],'releaseStatus':'RELEASE_EVIDENCE_NOT_EXECUTED','blockers':['Configured invariant thresholds are not counted as executed evidence; run the protected stateful release campaign.'],'claimBoundary':'No release PASS is claimed without runner-derived action and seed counts.'}
+        write(PR/'invariants-release-config.json',obj); print(json.dumps(obj,indent=2)); return 2
+    obj={'schemaVersion':'1.0','status':'PHASE_A_LOCAL_PASS','profile':'ci-smoke','configuredReleaseThresholds':{'actions':1000000,'seeds':32},'executedActions':actions,'recordedSeeds':seeds,'releaseStatus':'RELEASE_EVIDENCE_NOT_EXECUTED','claimBoundary':'Bounded local invariant smoke evidence only; protected release must execute full stateful engine thresholds.'}
+    write(PR/'invariants-ci.json',obj); print(json.dumps(obj,indent=2)); return 0
 
 def reproducible():
     a=sh(['npm','run','compile:ci']); b=sh(['npm','run','direct-solc-compile'])
@@ -99,5 +105,5 @@ def phase_a():
 def main():
     ap=argparse.ArgumentParser(); ap.add_argument('cmd',choices=['status','differential','mutation','invariants','reproducible','docket','phase-a']); ap.add_argument('--category',default='general'); ap.add_argument('--release',action='store_true')
     a=ap.parse_args()
-    return {'status':lambda:status(a.category),'differential':differential,'mutation':mutation,'invariants':lambda:invariants(a.release),'reproducible':reproducible,'docket':docket,'phase-a':phase_a}[a.cmd]()
+    return {'status':lambda:status(a.category),'differential':lambda:differential(a.release),'mutation':mutation,'invariants':lambda:invariants(a.release),'reproducible':reproducible,'docket':docket,'phase-a':phase_a}[a.cmd]()
 if __name__=='__main__': raise SystemExit(main())
