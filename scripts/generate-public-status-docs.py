@@ -63,6 +63,8 @@ status_block=f"""{status_label}
 
 {authorization_meaning}
 
+Runtime RPC URL and deployer key outside GitHub remain mandatory for any local-only operator action; CI must not receive signing keys.
+
 It does not claim external audit completion, legal approval, tax review, guaranteed security, guaranteed token classification, investment return, yield, price target, revenue share, or production deployment.
 
 Public Sepolia deployment is recommended but not mandatory for public authorization; local deterministic rehearsal and mainnet-shaped simulation are the active public gates.

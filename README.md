@@ -50,6 +50,8 @@ A pre-broadcast state with predeployment authorization YES and Ethereum Mainnet 
 
 The historical Stage-A predeployment certificate was not used for this deployment path. The repository now records a direct operator Mainnet deployment and postdeployment evidence separately from Stage-C production activation.
 
+Runtime RPC URL and deployer key outside GitHub remain mandatory for any local-only operator action; CI must not receive signing keys.
+
 It does not claim external audit completion, legal approval, tax review, guaranteed security, guaranteed token classification, investment return, yield, price target, revenue share, or production deployment.
 
 Public Sepolia deployment is recommended but not mandatory for public authorization; local deterministic rehearsal and mainnet-shaped simulation are the active public gates.
