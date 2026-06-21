@@ -1,0 +1,935 @@
+{
+  "banner": "DORMANT INITIAL MAINNET DEPLOYMENT \u2014 NOT PRODUCTION READY \u2014 NO USER FUNDS \u2014 NO ACTIVATION \u2014 NO PUBLIC RELIANCE",
+  "disclaimer": "This deployment is operationally dormant and unfunded. It is not guaranteed to be globally frozen against unsolicited third-party calls or transfers.",
+  "release": {
+    "gitCommit": "b16cfc9a144a9dd187e51afa3e10577d699de0a8",
+    "gitDirty": true,
+    "packageVersion": "4.4.0",
+    "packageEngines": {
+      "node": ">=20.19.0 <21",
+      "npm": ">=10.9.0 <12"
+    },
+    "packageLockSha256": "0x9739ecf251762c3828813424f8e7d0d3b291611125cf5eafb31fc32479a3f514",
+    "nodeVersion": "v20.20.2",
+    "npmVersion": "11.4.2",
+    "hardhatVersion": "2.28.6",
+    "solidityVersion": "0.8.28",
+    "optimizer": {
+      "enabled": true,
+      "runs": 200
+    },
+    "evmTarget": "compiler default (not explicitly set)"
+  },
+  "surfaces": [
+    {
+      "contractName": "CommercializationPerformanceVault",
+      "expectedOwner": "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99",
+      "expectedPendingOwner": null,
+      "managedRoles": {
+        "DEFAULT_ADMIN_ROLE": [
+          "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+        ]
+      },
+      "nonRoleAuthorityValues": [
+        "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA"
+      ],
+      "economicDestinations": [
+        "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA"
+      ],
+      "walletAProhibitedEverywhere": true,
+      "unknownAuthoritySurfaceFailsGate": true
+    },
+    {
+      "contractName": "ProofRewardsVault",
+      "expectedOwner": "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99",
+      "expectedPendingOwner": null,
+      "managedRoles": {
+        "DEFAULT_ADMIN_ROLE": [
+          "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+        ]
+      },
+      "nonRoleAuthorityValues": [
+        "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA"
+      ],
+      "economicDestinations": [
+        "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA"
+      ],
+      "walletAProhibitedEverywhere": true,
+      "unknownAuthoritySurfaceFailsGate": true
+    },
+    {
+      "contractName": "LiquidityVault",
+      "expectedOwner": "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99",
+      "expectedPendingOwner": null,
+      "managedRoles": {
+        "DEFAULT_ADMIN_ROLE": [
+          "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+        ]
+      },
+      "nonRoleAuthorityValues": [
+        "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA"
+      ],
+      "economicDestinations": [
+        "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA"
+      ],
+      "walletAProhibitedEverywhere": true,
+      "unknownAuthoritySurfaceFailsGate": true
+    },
+    {
+      "contractName": "SecurityVault",
+      "expectedOwner": "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99",
+      "expectedPendingOwner": null,
+      "managedRoles": {
+        "DEFAULT_ADMIN_ROLE": [
+          "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+        ]
+      },
+      "nonRoleAuthorityValues": [
+        "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA"
+      ],
+      "economicDestinations": [
+        "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA"
+      ],
+      "walletAProhibitedEverywhere": true,
+      "unknownAuthoritySurfaceFailsGate": true
+    },
+    {
+      "contractName": "CommunityVault",
+      "expectedOwner": "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99",
+      "expectedPendingOwner": null,
+      "managedRoles": {
+        "DEFAULT_ADMIN_ROLE": [
+          "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+        ]
+      },
+      "nonRoleAuthorityValues": [
+        "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA"
+      ],
+      "economicDestinations": [
+        "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA"
+      ],
+      "walletAProhibitedEverywhere": true,
+      "unknownAuthoritySurfaceFailsGate": true
+    },
+    {
+      "contractName": "ProofSeedRegistry",
+      "expectedOwner": "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99",
+      "expectedPendingOwner": null,
+      "managedRoles": {
+        "DEFAULT_ADMIN_ROLE": [
+          "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+        ]
+      },
+      "nonRoleAuthorityValues": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99",
+        "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "economicDestinations": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99",
+        "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "walletAProhibitedEverywhere": true,
+      "unknownAuthoritySurfaceFailsGate": true
+    },
+    {
+      "contractName": "LegacyAGIJobManagerRegistry",
+      "expectedOwner": "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99",
+      "expectedPendingOwner": null,
+      "managedRoles": {
+        "DEFAULT_ADMIN_ROLE": [
+          "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+        ]
+      },
+      "nonRoleAuthorityValues": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99",
+        "0xb3aaeb69b630f0299791679c063d68d6687481d1"
+      ],
+      "economicDestinations": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "walletAProhibitedEverywhere": true,
+      "unknownAuthoritySurfaceFailsGate": true
+    },
+    {
+      "contractName": "ReputationRegistry",
+      "expectedOwner": "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99",
+      "expectedPendingOwner": null,
+      "managedRoles": {
+        "DEFAULT_ADMIN_ROLE": [
+          "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+        ]
+      },
+      "nonRoleAuthorityValues": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "economicDestinations": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "walletAProhibitedEverywhere": true,
+      "unknownAuthoritySurfaceFailsGate": true
+    },
+    {
+      "contractName": "ReferralRegistry",
+      "expectedOwner": "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99",
+      "expectedPendingOwner": null,
+      "managedRoles": {
+        "DEFAULT_ADMIN_ROLE": [
+          "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+        ]
+      },
+      "nonRoleAuthorityValues": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "economicDestinations": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "walletAProhibitedEverywhere": true,
+      "unknownAuthoritySurfaceFailsGate": true
+    },
+    {
+      "contractName": "ProofCardRegistry",
+      "expectedOwner": "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99",
+      "expectedPendingOwner": null,
+      "managedRoles": {
+        "DEFAULT_ADMIN_ROLE": [
+          "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+        ]
+      },
+      "nonRoleAuthorityValues": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "economicDestinations": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "walletAProhibitedEverywhere": true,
+      "unknownAuthoritySurfaceFailsGate": true
+    },
+    {
+      "contractName": "ProofCredentialRegistry",
+      "expectedOwner": "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99",
+      "expectedPendingOwner": null,
+      "managedRoles": {
+        "DEFAULT_ADMIN_ROLE": [
+          "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+        ]
+      },
+      "nonRoleAuthorityValues": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "economicDestinations": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "walletAProhibitedEverywhere": true,
+      "unknownAuthoritySurfaceFailsGate": true
+    },
+    {
+      "contractName": "JobRegistry",
+      "expectedOwner": "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99",
+      "expectedPendingOwner": null,
+      "managedRoles": {
+        "DEFAULT_ADMIN_ROLE": [
+          "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+        ]
+      },
+      "nonRoleAuthorityValues": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99",
+        "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "economicDestinations": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99",
+        "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "walletAProhibitedEverywhere": true,
+      "unknownAuthoritySurfaceFailsGate": true
+    },
+    {
+      "contractName": "JobClaimBondManager",
+      "expectedOwner": "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99",
+      "expectedPendingOwner": null,
+      "managedRoles": {
+        "DEFAULT_ADMIN_ROLE": [
+          "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+        ]
+      },
+      "nonRoleAuthorityValues": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99",
+        "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "economicDestinations": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99",
+        "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "walletAProhibitedEverywhere": true,
+      "unknownAuthoritySurfaceFailsGate": true
+    },
+    {
+      "contractName": "PremiumAccessRegistry",
+      "expectedOwner": "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99",
+      "expectedPendingOwner": null,
+      "managedRoles": {
+        "DEFAULT_ADMIN_ROLE": [
+          "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+        ]
+      },
+      "nonRoleAuthorityValues": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99",
+        "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA"
+      ],
+      "economicDestinations": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99",
+        "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA"
+      ],
+      "walletAProhibitedEverywhere": true,
+      "unknownAuthoritySurfaceFailsGate": true
+    },
+    {
+      "contractName": "ProofSubmissionRegistry",
+      "expectedOwner": "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99",
+      "expectedPendingOwner": null,
+      "managedRoles": {
+        "DEFAULT_ADMIN_ROLE": [
+          "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+        ]
+      },
+      "nonRoleAuthorityValues": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99",
+        "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "economicDestinations": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99",
+        "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "walletAProhibitedEverywhere": true,
+      "unknownAuthoritySurfaceFailsGate": true
+    },
+    {
+      "contractName": "ReviewerBondRegistry",
+      "expectedOwner": "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99",
+      "expectedPendingOwner": null,
+      "managedRoles": {
+        "DEFAULT_ADMIN_ROLE": [
+          "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+        ]
+      },
+      "nonRoleAuthorityValues": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99",
+        "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "economicDestinations": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99",
+        "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "walletAProhibitedEverywhere": true,
+      "unknownAuthoritySurfaceFailsGate": true
+    },
+    {
+      "contractName": "TreasuryRouter",
+      "expectedOwner": "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99",
+      "expectedPendingOwner": null,
+      "managedRoles": {
+        "DEFAULT_ADMIN_ROLE": [
+          "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+        ]
+      },
+      "nonRoleAuthorityValues": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99",
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "economicDestinations": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99",
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "walletAProhibitedEverywhere": true,
+      "unknownAuthoritySurfaceFailsGate": true
+    },
+    {
+      "contractName": "ProtocolConfigRegistry",
+      "expectedOwner": "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99",
+      "expectedPendingOwner": null,
+      "managedRoles": {
+        "DEFAULT_ADMIN_ROLE": [
+          "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+        ]
+      },
+      "nonRoleAuthorityValues": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "economicDestinations": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "walletAProhibitedEverywhere": true,
+      "unknownAuthoritySurfaceFailsGate": true
+    },
+    {
+      "contractName": "LaunchGateRegistry",
+      "expectedOwner": "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99",
+      "expectedPendingOwner": null,
+      "managedRoles": {
+        "DEFAULT_ADMIN_ROLE": [
+          "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+        ]
+      },
+      "nonRoleAuthorityValues": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "economicDestinations": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "walletAProhibitedEverywhere": true,
+      "unknownAuthoritySurfaceFailsGate": true
+    },
+    {
+      "contractName": "DisputeRegistry",
+      "expectedOwner": "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99",
+      "expectedPendingOwner": null,
+      "managedRoles": {
+        "DEFAULT_ADMIN_ROLE": [
+          "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+        ]
+      },
+      "nonRoleAuthorityValues": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "economicDestinations": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "walletAProhibitedEverywhere": true,
+      "unknownAuthoritySurfaceFailsGate": true
+    },
+    {
+      "contractName": "AppealRegistry",
+      "expectedOwner": "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99",
+      "expectedPendingOwner": null,
+      "managedRoles": {
+        "DEFAULT_ADMIN_ROLE": [
+          "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+        ]
+      },
+      "nonRoleAuthorityValues": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "economicDestinations": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "walletAProhibitedEverywhere": true,
+      "unknownAuthoritySurfaceFailsGate": true
+    },
+    {
+      "contractName": "SponsorRegistry",
+      "expectedOwner": "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99",
+      "expectedPendingOwner": null,
+      "managedRoles": {
+        "DEFAULT_ADMIN_ROLE": [
+          "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+        ]
+      },
+      "nonRoleAuthorityValues": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "economicDestinations": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "walletAProhibitedEverywhere": true,
+      "unknownAuthoritySurfaceFailsGate": true
+    },
+    {
+      "contractName": "BuilderProfileRegistry",
+      "expectedOwner": "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99",
+      "expectedPendingOwner": null,
+      "managedRoles": {
+        "DEFAULT_ADMIN_ROLE": [
+          "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+        ]
+      },
+      "nonRoleAuthorityValues": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "economicDestinations": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "walletAProhibitedEverywhere": true,
+      "unknownAuthoritySurfaceFailsGate": true
+    },
+    {
+      "contractName": "CredentialRevocationRegistry",
+      "expectedOwner": "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99",
+      "expectedPendingOwner": null,
+      "managedRoles": {
+        "DEFAULT_ADMIN_ROLE": [
+          "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+        ]
+      },
+      "nonRoleAuthorityValues": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "economicDestinations": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "walletAProhibitedEverywhere": true,
+      "unknownAuthoritySurfaceFailsGate": true
+    },
+    {
+      "contractName": "AEPAgentRegistry",
+      "expectedOwner": "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99",
+      "expectedPendingOwner": null,
+      "managedRoles": {
+        "DEFAULT_ADMIN_ROLE": [
+          "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+        ]
+      },
+      "nonRoleAuthorityValues": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "economicDestinations": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "walletAProhibitedEverywhere": true,
+      "unknownAuthoritySurfaceFailsGate": true
+    },
+    {
+      "contractName": "AEPArtifactRegistry",
+      "expectedOwner": "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99",
+      "expectedPendingOwner": null,
+      "managedRoles": {
+        "DEFAULT_ADMIN_ROLE": [
+          "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+        ]
+      },
+      "nonRoleAuthorityValues": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "economicDestinations": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "walletAProhibitedEverywhere": true,
+      "unknownAuthoritySurfaceFailsGate": true
+    },
+    {
+      "contractName": "AEPGoalOSCommitRegistry",
+      "expectedOwner": "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99",
+      "expectedPendingOwner": null,
+      "managedRoles": {
+        "DEFAULT_ADMIN_ROLE": [
+          "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+        ]
+      },
+      "nonRoleAuthorityValues": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99",
+        "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "economicDestinations": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99",
+        "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "walletAProhibitedEverywhere": true,
+      "unknownAuthoritySurfaceFailsGate": true
+    },
+    {
+      "contractName": "AEPRunCommitmentRegistry",
+      "expectedOwner": "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99",
+      "expectedPendingOwner": null,
+      "managedRoles": {
+        "DEFAULT_ADMIN_ROLE": [
+          "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+        ]
+      },
+      "nonRoleAuthorityValues": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "economicDestinations": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "walletAProhibitedEverywhere": true,
+      "unknownAuthoritySurfaceFailsGate": true
+    },
+    {
+      "contractName": "AEPProofLedger",
+      "expectedOwner": "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99",
+      "expectedPendingOwner": null,
+      "managedRoles": {
+        "DEFAULT_ADMIN_ROLE": [
+          "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+        ]
+      },
+      "nonRoleAuthorityValues": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "economicDestinations": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "walletAProhibitedEverywhere": true,
+      "unknownAuthoritySurfaceFailsGate": true
+    },
+    {
+      "contractName": "AEPEvalRegistry",
+      "expectedOwner": "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99",
+      "expectedPendingOwner": null,
+      "managedRoles": {
+        "DEFAULT_ADMIN_ROLE": [
+          "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+        ]
+      },
+      "nonRoleAuthorityValues": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "economicDestinations": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "walletAProhibitedEverywhere": true,
+      "unknownAuthoritySurfaceFailsGate": true
+    },
+    {
+      "contractName": "AEPAttestationRegistry",
+      "expectedOwner": "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99",
+      "expectedPendingOwner": null,
+      "managedRoles": {
+        "DEFAULT_ADMIN_ROLE": [
+          "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+        ]
+      },
+      "nonRoleAuthorityValues": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "economicDestinations": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "walletAProhibitedEverywhere": true,
+      "unknownAuthoritySurfaceFailsGate": true
+    },
+    {
+      "contractName": "AEPSelectionGate",
+      "expectedOwner": "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99",
+      "expectedPendingOwner": null,
+      "managedRoles": {
+        "DEFAULT_ADMIN_ROLE": [
+          "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+        ]
+      },
+      "nonRoleAuthorityValues": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "economicDestinations": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "walletAProhibitedEverywhere": true,
+      "unknownAuthoritySurfaceFailsGate": true
+    },
+    {
+      "contractName": "AEPRolloutRouter",
+      "expectedOwner": "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99",
+      "expectedPendingOwner": null,
+      "managedRoles": {
+        "DEFAULT_ADMIN_ROLE": [
+          "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+        ]
+      },
+      "nonRoleAuthorityValues": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "economicDestinations": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "walletAProhibitedEverywhere": true,
+      "unknownAuthoritySurfaceFailsGate": true
+    },
+    {
+      "contractName": "AEPRollbackRegistry",
+      "expectedOwner": "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99",
+      "expectedPendingOwner": null,
+      "managedRoles": {
+        "DEFAULT_ADMIN_ROLE": [
+          "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+        ]
+      },
+      "nonRoleAuthorityValues": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "economicDestinations": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "walletAProhibitedEverywhere": true,
+      "unknownAuthoritySurfaceFailsGate": true
+    },
+    {
+      "contractName": "AEPEvidenceDocketRegistry",
+      "expectedOwner": "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99",
+      "expectedPendingOwner": null,
+      "managedRoles": {
+        "DEFAULT_ADMIN_ROLE": [
+          "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+        ]
+      },
+      "nonRoleAuthorityValues": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "economicDestinations": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "walletAProhibitedEverywhere": true,
+      "unknownAuthoritySurfaceFailsGate": true
+    },
+    {
+      "contractName": "AEPProofBundleRegistry",
+      "expectedOwner": "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99",
+      "expectedPendingOwner": null,
+      "managedRoles": {
+        "DEFAULT_ADMIN_ROLE": [
+          "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+        ]
+      },
+      "nonRoleAuthorityValues": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "economicDestinations": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "walletAProhibitedEverywhere": true,
+      "unknownAuthoritySurfaceFailsGate": true
+    },
+    {
+      "contractName": "AlphaWorkUnitLedger",
+      "expectedOwner": "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99",
+      "expectedPendingOwner": null,
+      "managedRoles": {
+        "DEFAULT_ADMIN_ROLE": [
+          "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+        ]
+      },
+      "nonRoleAuthorityValues": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "economicDestinations": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "walletAProhibitedEverywhere": true,
+      "unknownAuthoritySurfaceFailsGate": true
+    },
+    {
+      "contractName": "MandateEpochRegistry",
+      "expectedOwner": "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99",
+      "expectedPendingOwner": null,
+      "managedRoles": {
+        "DEFAULT_ADMIN_ROLE": [
+          "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+        ]
+      },
+      "nonRoleAuthorityValues": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99",
+        "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "economicDestinations": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99",
+        "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "walletAProhibitedEverywhere": true,
+      "unknownAuthoritySurfaceFailsGate": true
+    },
+    {
+      "contractName": "AGIEthNamespaceRegistry",
+      "expectedOwner": "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99",
+      "expectedPendingOwner": null,
+      "managedRoles": {
+        "DEFAULT_ADMIN_ROLE": [
+          "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+        ]
+      },
+      "nonRoleAuthorityValues": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "economicDestinations": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "walletAProhibitedEverywhere": true,
+      "unknownAuthoritySurfaceFailsGate": true
+    },
+    {
+      "contractName": "AEPConformanceRegistry",
+      "expectedOwner": "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99",
+      "expectedPendingOwner": null,
+      "managedRoles": {
+        "DEFAULT_ADMIN_ROLE": [
+          "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+        ]
+      },
+      "nonRoleAuthorityValues": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "economicDestinations": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "walletAProhibitedEverywhere": true,
+      "unknownAuthoritySurfaceFailsGate": true
+    },
+    {
+      "contractName": "AEPClaimBoundaryRegistry",
+      "expectedOwner": "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99",
+      "expectedPendingOwner": null,
+      "managedRoles": {
+        "DEFAULT_ADMIN_ROLE": [
+          "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+        ]
+      },
+      "nonRoleAuthorityValues": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "economicDestinations": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "walletAProhibitedEverywhere": true,
+      "unknownAuthoritySurfaceFailsGate": true
+    },
+    {
+      "contractName": "AEPReplayRegistry",
+      "expectedOwner": "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99",
+      "expectedPendingOwner": null,
+      "managedRoles": {
+        "DEFAULT_ADMIN_ROLE": [
+          "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+        ]
+      },
+      "nonRoleAuthorityValues": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "economicDestinations": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "walletAProhibitedEverywhere": true,
+      "unknownAuthoritySurfaceFailsGate": true
+    },
+    {
+      "contractName": "AEPCommitRevealValidationRegistry",
+      "expectedOwner": "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99",
+      "expectedPendingOwner": null,
+      "managedRoles": {
+        "DEFAULT_ADMIN_ROLE": [
+          "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+        ]
+      },
+      "nonRoleAuthorityValues": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "economicDestinations": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "walletAProhibitedEverywhere": true,
+      "unknownAuthoritySurfaceFailsGate": true
+    },
+    {
+      "contractName": "AEPEvaluatorStakingRegistry",
+      "expectedOwner": "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99",
+      "expectedPendingOwner": null,
+      "managedRoles": {
+        "DEFAULT_ADMIN_ROLE": [
+          "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+        ]
+      },
+      "nonRoleAuthorityValues": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99",
+        "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "economicDestinations": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99",
+        "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "walletAProhibitedEverywhere": true,
+      "unknownAuthoritySurfaceFailsGate": true
+    },
+    {
+      "contractName": "AEPSlashingCourt",
+      "expectedOwner": "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99",
+      "expectedPendingOwner": null,
+      "managedRoles": {
+        "DEFAULT_ADMIN_ROLE": [
+          "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+        ]
+      },
+      "nonRoleAuthorityValues": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "economicDestinations": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "walletAProhibitedEverywhere": true,
+      "unknownAuthoritySurfaceFailsGate": true
+    },
+    {
+      "contractName": "AEPRewardVault",
+      "expectedOwner": "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99",
+      "expectedPendingOwner": null,
+      "managedRoles": {
+        "DEFAULT_ADMIN_ROLE": [
+          "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+        ]
+      },
+      "nonRoleAuthorityValues": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99",
+        "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA"
+      ],
+      "economicDestinations": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99",
+        "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA"
+      ],
+      "walletAProhibitedEverywhere": true,
+      "unknownAuthoritySurfaceFailsGate": true
+    },
+    {
+      "contractName": "AEPChronicleRegistry",
+      "expectedOwner": "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99",
+      "expectedPendingOwner": null,
+      "managedRoles": {
+        "DEFAULT_ADMIN_ROLE": [
+          "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+        ]
+      },
+      "nonRoleAuthorityValues": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "economicDestinations": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "walletAProhibitedEverywhere": true,
+      "unknownAuthoritySurfaceFailsGate": true
+    },
+    {
+      "contractName": "AEPFalsificationRegistry",
+      "expectedOwner": "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99",
+      "expectedPendingOwner": null,
+      "managedRoles": {
+        "DEFAULT_ADMIN_ROLE": [
+          "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+        ]
+      },
+      "nonRoleAuthorityValues": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "economicDestinations": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "walletAProhibitedEverywhere": true,
+      "unknownAuthoritySurfaceFailsGate": true
+    }
+  ],
+  "publicStateChangingFunctionsDocumented": "see docs/DORMANT_MAINNET_AUTHORITY_AND_DORMANCY_MODEL.md",
+  "productionAuthorizationPreserved": [
+    "qa/mainnet-authorization-certificate.json",
+    "npm run mainnet:certificate",
+    "npm run mainnet:certificate:validate",
+    "npm run deploy:ethereum-mainnet:gated"
+  ]
+}

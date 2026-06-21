@@ -1,0 +1,612 @@
+{
+  "banner": "DORMANT INITIAL MAINNET DEPLOYMENT \u2014 NOT PRODUCTION READY \u2014 NO USER FUNDS \u2014 NO ACTIVATION \u2014 NO PUBLIC RELIANCE",
+  "release": {
+    "gitCommit": "b16cfc9a144a9dd187e51afa3e10577d699de0a8",
+    "gitDirty": true,
+    "packageVersion": "4.4.0",
+    "packageEngines": {
+      "node": ">=20.19.0 <21",
+      "npm": ">=10.9.0 <12"
+    },
+    "packageLockSha256": "0x9739ecf251762c3828813424f8e7d0d3b291611125cf5eafb31fc32479a3f514",
+    "nodeVersion": "v20.20.2",
+    "npmVersion": "11.4.2",
+    "hardhatVersion": "2.28.6",
+    "solidityVersion": "0.8.28",
+    "optimizer": {
+      "enabled": true,
+      "runs": 200
+    },
+    "evmTarget": "compiler default (not explicitly set)"
+  },
+  "chainId": 1,
+  "walletA": "0x6c8B8897Fb6b08B4070387233B89b3E9A94eD00E",
+  "walletB": "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99",
+  "canonicalAgialpha": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
+  "instances": [
+    {
+      "index": 0,
+      "contractName": "CommercializationPerformanceVault",
+      "fullyQualifiedName": "contracts/vaults/CommercializationPerformanceVault.sol:CommercializationPerformanceVault",
+      "constructorArgs": [
+        "COMMERCIALIZATION_PERFORMANCE_ADMIN",
+        "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA"
+      ],
+      "walletAAppearsInConstructor": false,
+      "value": "0",
+      "phase": "A_DORMANT_DEPLOYMENT"
+    },
+    {
+      "index": 1,
+      "contractName": "ProofRewardsVault",
+      "fullyQualifiedName": "ProofRewardsVault",
+      "constructorArgs": [
+        "PROOFREWARDSVAULT_ADMIN",
+        "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
+        "purpose string"
+      ],
+      "walletAAppearsInConstructor": false,
+      "value": "0",
+      "phase": "A_DORMANT_DEPLOYMENT"
+    },
+    {
+      "index": 2,
+      "contractName": "LiquidityVault",
+      "fullyQualifiedName": "LiquidityVault",
+      "constructorArgs": [
+        "LIQUIDITYVAULT_ADMIN",
+        "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
+        "purpose string"
+      ],
+      "walletAAppearsInConstructor": false,
+      "value": "0",
+      "phase": "A_DORMANT_DEPLOYMENT"
+    },
+    {
+      "index": 3,
+      "contractName": "SecurityVault",
+      "fullyQualifiedName": "SecurityVault",
+      "constructorArgs": [
+        "SECURITYVAULT_ADMIN",
+        "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
+        "purpose string"
+      ],
+      "walletAAppearsInConstructor": false,
+      "value": "0",
+      "phase": "A_DORMANT_DEPLOYMENT"
+    },
+    {
+      "index": 4,
+      "contractName": "CommunityVault",
+      "fullyQualifiedName": "CommunityVault",
+      "constructorArgs": [
+        "COMMUNITYVAULT_ADMIN",
+        "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
+        "purpose string"
+      ],
+      "walletAAppearsInConstructor": false,
+      "value": "0",
+      "phase": "A_DORMANT_DEPLOYMENT"
+    },
+    {
+      "index": 5,
+      "contractName": "ProofSeedRegistry",
+      "fullyQualifiedName": "contracts/registry/ProofSeedRegistry.sol:ProofSeedRegistry",
+      "constructorArgs": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99",
+        "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "walletAAppearsInConstructor": false,
+      "value": "0",
+      "phase": "A_DORMANT_DEPLOYMENT"
+    },
+    {
+      "index": 6,
+      "contractName": "LegacyAGIJobManagerRegistry",
+      "fullyQualifiedName": "contracts/registry/LegacyAGIJobManagerRegistry.sol:LegacyAGIJobManagerRegistry",
+      "constructorArgs": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99",
+        "0xb3aaeb69b630f0299791679c063d68d6687481d1"
+      ],
+      "walletAAppearsInConstructor": false,
+      "value": "0",
+      "phase": "A_DORMANT_DEPLOYMENT"
+    },
+    {
+      "index": 7,
+      "contractName": "ReputationRegistry",
+      "fullyQualifiedName": "contracts/registry/ReputationRegistry.sol:ReputationRegistry",
+      "constructorArgs": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "walletAAppearsInConstructor": false,
+      "value": "0",
+      "phase": "A_DORMANT_DEPLOYMENT"
+    },
+    {
+      "index": 8,
+      "contractName": "ReferralRegistry",
+      "fullyQualifiedName": "contracts/registry/ReferralRegistry.sol:ReferralRegistry",
+      "constructorArgs": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "walletAAppearsInConstructor": false,
+      "value": "0",
+      "phase": "A_DORMANT_DEPLOYMENT"
+    },
+    {
+      "index": 9,
+      "contractName": "ProofCardRegistry",
+      "fullyQualifiedName": "contracts/registry/ProofCardRegistry.sol:ProofCardRegistry",
+      "constructorArgs": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "walletAAppearsInConstructor": false,
+      "value": "0",
+      "phase": "A_DORMANT_DEPLOYMENT"
+    },
+    {
+      "index": 10,
+      "contractName": "ProofCredentialRegistry",
+      "fullyQualifiedName": "contracts/registry/ProofCredentialRegistry.sol:ProofCredentialRegistry",
+      "constructorArgs": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "walletAAppearsInConstructor": false,
+      "value": "0",
+      "phase": "A_DORMANT_DEPLOYMENT"
+    },
+    {
+      "index": 11,
+      "contractName": "JobRegistry",
+      "fullyQualifiedName": "contracts/registry/JobRegistry.sol:JobRegistry",
+      "constructorArgs": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99",
+        "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "walletAAppearsInConstructor": false,
+      "value": "0",
+      "phase": "A_DORMANT_DEPLOYMENT"
+    },
+    {
+      "index": 12,
+      "contractName": "JobClaimBondManager",
+      "fullyQualifiedName": "contracts/registry/JobClaimBondManager.sol:JobClaimBondManager",
+      "constructorArgs": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99",
+        "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
+        "JobRegistry",
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "walletAAppearsInConstructor": false,
+      "value": "0",
+      "phase": "A_DORMANT_DEPLOYMENT"
+    },
+    {
+      "index": 13,
+      "contractName": "PremiumAccessRegistry",
+      "fullyQualifiedName": "contracts/registry/PremiumAccessRegistry.sol:PremiumAccessRegistry",
+      "constructorArgs": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99",
+        "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
+        "ReputationRegistry"
+      ],
+      "walletAAppearsInConstructor": false,
+      "value": "0",
+      "phase": "A_DORMANT_DEPLOYMENT"
+    },
+    {
+      "index": 14,
+      "contractName": "ProofSubmissionRegistry",
+      "fullyQualifiedName": "contracts/registry/ProofSubmissionRegistry.sol:ProofSubmissionRegistry",
+      "constructorArgs": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99",
+        "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
+        "JobRegistry",
+        "JobClaimBondManager",
+        "ProofCardRegistry",
+        "ProofCredentialRegistry",
+        "ReputationRegistry",
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "walletAAppearsInConstructor": false,
+      "value": "0",
+      "phase": "A_DORMANT_DEPLOYMENT"
+    },
+    {
+      "index": 15,
+      "contractName": "ReviewerBondRegistry",
+      "fullyQualifiedName": "contracts/registry/ReviewerBondRegistry.sol:ReviewerBondRegistry",
+      "constructorArgs": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99",
+        "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
+        "ProofSubmissionRegistry",
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "walletAAppearsInConstructor": false,
+      "value": "0",
+      "phase": "A_DORMANT_DEPLOYMENT"
+    },
+    {
+      "index": 16,
+      "contractName": "TreasuryRouter",
+      "fullyQualifiedName": "contracts/registry/TreasuryRouter.sol:TreasuryRouter",
+      "constructorArgs": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99",
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "walletAAppearsInConstructor": false,
+      "value": "0",
+      "phase": "A_DORMANT_DEPLOYMENT"
+    },
+    {
+      "index": 17,
+      "contractName": "ProtocolConfigRegistry",
+      "fullyQualifiedName": "contracts/registry/ProtocolConfigRegistry.sol:ProtocolConfigRegistry",
+      "constructorArgs": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "walletAAppearsInConstructor": false,
+      "value": "0",
+      "phase": "A_DORMANT_DEPLOYMENT"
+    },
+    {
+      "index": 18,
+      "contractName": "LaunchGateRegistry",
+      "fullyQualifiedName": "contracts/registry/LaunchGateRegistry.sol:LaunchGateRegistry",
+      "constructorArgs": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "walletAAppearsInConstructor": false,
+      "value": "0",
+      "phase": "A_DORMANT_DEPLOYMENT"
+    },
+    {
+      "index": 19,
+      "contractName": "DisputeRegistry",
+      "fullyQualifiedName": "contracts/optional/DisputeRegistry.sol:DisputeRegistry",
+      "constructorArgs": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99",
+        "ReputationRegistry"
+      ],
+      "walletAAppearsInConstructor": false,
+      "value": "0",
+      "phase": "A_DORMANT_DEPLOYMENT"
+    },
+    {
+      "index": 20,
+      "contractName": "AppealRegistry",
+      "fullyQualifiedName": "contracts/optional/AppealRegistry.sol:AppealRegistry",
+      "constructorArgs": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "walletAAppearsInConstructor": false,
+      "value": "0",
+      "phase": "A_DORMANT_DEPLOYMENT"
+    },
+    {
+      "index": 21,
+      "contractName": "SponsorRegistry",
+      "fullyQualifiedName": "contracts/optional/SponsorRegistry.sol:SponsorRegistry",
+      "constructorArgs": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "walletAAppearsInConstructor": false,
+      "value": "0",
+      "phase": "A_DORMANT_DEPLOYMENT"
+    },
+    {
+      "index": 22,
+      "contractName": "BuilderProfileRegistry",
+      "fullyQualifiedName": "contracts/optional/BuilderProfileRegistry.sol:BuilderProfileRegistry",
+      "constructorArgs": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "walletAAppearsInConstructor": false,
+      "value": "0",
+      "phase": "A_DORMANT_DEPLOYMENT"
+    },
+    {
+      "index": 23,
+      "contractName": "CredentialRevocationRegistry",
+      "fullyQualifiedName": "contracts/optional/CredentialRevocationRegistry.sol:CredentialRevocationRegistry",
+      "constructorArgs": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99",
+        "ProofCredentialRegistry"
+      ],
+      "walletAAppearsInConstructor": false,
+      "value": "0",
+      "phase": "A_DORMANT_DEPLOYMENT"
+    },
+    {
+      "index": 24,
+      "contractName": "AEPAgentRegistry",
+      "fullyQualifiedName": "contracts/aep/AEPAgentRegistry.sol:AEPAgentRegistry",
+      "constructorArgs": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "walletAAppearsInConstructor": false,
+      "value": "0",
+      "phase": "A_DORMANT_DEPLOYMENT"
+    },
+    {
+      "index": 25,
+      "contractName": "AEPArtifactRegistry",
+      "fullyQualifiedName": "contracts/aep/AEPArtifactRegistry.sol:AEPArtifactRegistry",
+      "constructorArgs": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "walletAAppearsInConstructor": false,
+      "value": "0",
+      "phase": "A_DORMANT_DEPLOYMENT"
+    },
+    {
+      "index": 26,
+      "contractName": "AEPGoalOSCommitRegistry",
+      "fullyQualifiedName": "contracts/aep/AEPGoalOSCommitRegistry.sol:AEPGoalOSCommitRegistry",
+      "constructorArgs": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99",
+        "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "walletAAppearsInConstructor": false,
+      "value": "0",
+      "phase": "A_DORMANT_DEPLOYMENT"
+    },
+    {
+      "index": 27,
+      "contractName": "AEPRunCommitmentRegistry",
+      "fullyQualifiedName": "contracts/aep/AEPRunCommitmentRegistry.sol:AEPRunCommitmentRegistry",
+      "constructorArgs": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "walletAAppearsInConstructor": false,
+      "value": "0",
+      "phase": "A_DORMANT_DEPLOYMENT"
+    },
+    {
+      "index": 28,
+      "contractName": "AEPProofLedger",
+      "fullyQualifiedName": "contracts/aep/AEPProofLedger.sol:AEPProofLedger",
+      "constructorArgs": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "walletAAppearsInConstructor": false,
+      "value": "0",
+      "phase": "A_DORMANT_DEPLOYMENT"
+    },
+    {
+      "index": 29,
+      "contractName": "AEPEvalRegistry",
+      "fullyQualifiedName": "contracts/aep/AEPEvalRegistry.sol:AEPEvalRegistry",
+      "constructorArgs": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "walletAAppearsInConstructor": false,
+      "value": "0",
+      "phase": "A_DORMANT_DEPLOYMENT"
+    },
+    {
+      "index": 30,
+      "contractName": "AEPAttestationRegistry",
+      "fullyQualifiedName": "contracts/aep/AEPAttestationRegistry.sol:AEPAttestationRegistry",
+      "constructorArgs": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "walletAAppearsInConstructor": false,
+      "value": "0",
+      "phase": "A_DORMANT_DEPLOYMENT"
+    },
+    {
+      "index": 31,
+      "contractName": "AEPSelectionGate",
+      "fullyQualifiedName": "contracts/aep/AEPSelectionGate.sol:AEPSelectionGate",
+      "constructorArgs": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "walletAAppearsInConstructor": false,
+      "value": "0",
+      "phase": "A_DORMANT_DEPLOYMENT"
+    },
+    {
+      "index": 32,
+      "contractName": "AEPRolloutRouter",
+      "fullyQualifiedName": "contracts/aep/AEPRolloutRouter.sol:AEPRolloutRouter",
+      "constructorArgs": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "walletAAppearsInConstructor": false,
+      "value": "0",
+      "phase": "A_DORMANT_DEPLOYMENT"
+    },
+    {
+      "index": 33,
+      "contractName": "AEPRollbackRegistry",
+      "fullyQualifiedName": "contracts/aep/AEPRollbackRegistry.sol:AEPRollbackRegistry",
+      "constructorArgs": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "walletAAppearsInConstructor": false,
+      "value": "0",
+      "phase": "A_DORMANT_DEPLOYMENT"
+    },
+    {
+      "index": 34,
+      "contractName": "AEPEvidenceDocketRegistry",
+      "fullyQualifiedName": "contracts/aep/AEPEvidenceDocketRegistry.sol:AEPEvidenceDocketRegistry",
+      "constructorArgs": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "walletAAppearsInConstructor": false,
+      "value": "0",
+      "phase": "A_DORMANT_DEPLOYMENT"
+    },
+    {
+      "index": 35,
+      "contractName": "AEPProofBundleRegistry",
+      "fullyQualifiedName": "contracts/aep/AEPProofBundleRegistry.sol:AEPProofBundleRegistry",
+      "constructorArgs": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "walletAAppearsInConstructor": false,
+      "value": "0",
+      "phase": "A_DORMANT_DEPLOYMENT"
+    },
+    {
+      "index": 36,
+      "contractName": "AlphaWorkUnitLedger",
+      "fullyQualifiedName": "contracts/aep/AlphaWorkUnitLedger.sol:AlphaWorkUnitLedger",
+      "constructorArgs": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "walletAAppearsInConstructor": false,
+      "value": "0",
+      "phase": "A_DORMANT_DEPLOYMENT"
+    },
+    {
+      "index": 37,
+      "contractName": "MandateEpochRegistry",
+      "fullyQualifiedName": "contracts/aep/MandateEpochRegistry.sol:MandateEpochRegistry",
+      "constructorArgs": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99",
+        "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "walletAAppearsInConstructor": false,
+      "value": "0",
+      "phase": "A_DORMANT_DEPLOYMENT"
+    },
+    {
+      "index": 38,
+      "contractName": "AGIEthNamespaceRegistry",
+      "fullyQualifiedName": "contracts/aep/AGIEthNamespaceRegistry.sol:AGIEthNamespaceRegistry",
+      "constructorArgs": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "walletAAppearsInConstructor": false,
+      "value": "0",
+      "phase": "A_DORMANT_DEPLOYMENT"
+    },
+    {
+      "index": 39,
+      "contractName": "AEPConformanceRegistry",
+      "fullyQualifiedName": "contracts/aep/AEPConformanceRegistry.sol:AEPConformanceRegistry",
+      "constructorArgs": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "walletAAppearsInConstructor": false,
+      "value": "0",
+      "phase": "A_DORMANT_DEPLOYMENT"
+    },
+    {
+      "index": 40,
+      "contractName": "AEPClaimBoundaryRegistry",
+      "fullyQualifiedName": "contracts/aep/AEPClaimBoundaryRegistry.sol:AEPClaimBoundaryRegistry",
+      "constructorArgs": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "walletAAppearsInConstructor": false,
+      "value": "0",
+      "phase": "A_DORMANT_DEPLOYMENT"
+    },
+    {
+      "index": 41,
+      "contractName": "AEPReplayRegistry",
+      "fullyQualifiedName": "contracts/aep/AEPReplayRegistry.sol:AEPReplayRegistry",
+      "constructorArgs": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "walletAAppearsInConstructor": false,
+      "value": "0",
+      "phase": "A_DORMANT_DEPLOYMENT"
+    },
+    {
+      "index": 42,
+      "contractName": "AEPCommitRevealValidationRegistry",
+      "fullyQualifiedName": "contracts/aep/AEPCommitRevealValidationRegistry.sol:AEPCommitRevealValidationRegistry",
+      "constructorArgs": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "walletAAppearsInConstructor": false,
+      "value": "0",
+      "phase": "A_DORMANT_DEPLOYMENT"
+    },
+    {
+      "index": 43,
+      "contractName": "AEPEvaluatorStakingRegistry",
+      "fullyQualifiedName": "contracts/aep/AEPEvaluatorStakingRegistry.sol:AEPEvaluatorStakingRegistry",
+      "constructorArgs": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99",
+        "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "walletAAppearsInConstructor": false,
+      "value": "0",
+      "phase": "A_DORMANT_DEPLOYMENT"
+    },
+    {
+      "index": 44,
+      "contractName": "AEPSlashingCourt",
+      "fullyQualifiedName": "contracts/aep/AEPSlashingCourt.sol:AEPSlashingCourt",
+      "constructorArgs": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99",
+        "AEPEvaluatorStakingRegistry"
+      ],
+      "walletAAppearsInConstructor": false,
+      "value": "0",
+      "phase": "A_DORMANT_DEPLOYMENT"
+    },
+    {
+      "index": 45,
+      "contractName": "AEPRewardVault",
+      "fullyQualifiedName": "contracts/aep/AEPRewardVault.sol:AEPRewardVault",
+      "constructorArgs": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99",
+        "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA"
+      ],
+      "walletAAppearsInConstructor": false,
+      "value": "0",
+      "phase": "A_DORMANT_DEPLOYMENT"
+    },
+    {
+      "index": 46,
+      "contractName": "AEPChronicleRegistry",
+      "fullyQualifiedName": "contracts/aep/AEPChronicleRegistry.sol:AEPChronicleRegistry",
+      "constructorArgs": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "walletAAppearsInConstructor": false,
+      "value": "0",
+      "phase": "A_DORMANT_DEPLOYMENT"
+    },
+    {
+      "index": 47,
+      "contractName": "AEPFalsificationRegistry",
+      "fullyQualifiedName": "contracts/aep/AEPFalsificationRegistry.sol:AEPFalsificationRegistry",
+      "constructorArgs": [
+        "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+      ],
+      "walletAAppearsInConstructor": false,
+      "value": "0",
+      "phase": "A_DORMANT_DEPLOYMENT"
+    }
+  ],
+  "phaseBPlannedForbidden": [
+    "JobRegistry<-ClaimBond",
+    "JobRegistry<-ProofSubmissions",
+    "ClaimBond<-ProofSubmissions",
+    "ProofSubmissions<-ReviewerBonds",
+    "ProofCards<-ProofSubmissions",
+    "Credentials<-ProofSubmissions",
+    "Credentials<-Revocations",
+    "Reputation<-ProofSubmissions",
+    "Referrals<-ProofSubmissions",
+    "ProofSeeds<-operationsAddress",
+    "LegacyRegistry<-operationsAddress",
+    "ProtocolConfig<-operationsAddress",
+    "LaunchGates<-operationsAddress",
+    "EvaluatorStaking<-SlashingCourt"
+  ]
+}

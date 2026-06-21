@@ -1,0 +1,40 @@
+{
+  "banner": "DORMANT INITIAL MAINNET DEPLOYMENT \u2014 NOT PRODUCTION READY \u2014 NO USER FUNDS \u2014 NO ACTIVATION \u2014 NO PUBLIC RELIANCE",
+  "commit": "b16cfc9a144a9dd187e51afa3e10577d699de0a8",
+  "planSha256": "0x57fcc756596d98fac642bf42296ba671da41279282fe561013301ee4a3adcc01",
+  "certificateSha256": "0x05688071db295df10462b18f43af84e76606f674267b8e5341be1a541a56da93",
+  "artifacts": [
+    {
+      "path": "qa/dormant-mainnet/dormant-initial-mainnet-certificate.json",
+      "sha256": "0x05688071db295df10462b18f43af84e76606f674267b8e5341be1a541a56da93"
+    },
+    {
+      "path": "qa/dormant-mainnet/deployment-plan.public.json",
+      "sha256": "0x57fcc756596d98fac642bf42296ba671da41279282fe561013301ee4a3adcc01"
+    },
+    {
+      "path": "qa/dormant-mainnet/verification-report.json",
+      "sha256": "0x438f7f74880206b4a3f1808f7505ffa3d546beed4dd7f4cff41bbf6ac057680c"
+    },
+    {
+      "path": "qa/dormant-mainnet/postdeployment-authority-report.json",
+      "sha256": "0x438f7f74880206b4a3f1808f7505ffa3d546beed4dd7f4cff41bbf6ac057680c"
+    },
+    {
+      "path": "qa/dormant-mainnet/dormancy-report.json",
+      "sha256": "0x438f7f74880206b4a3f1808f7505ffa3d546beed4dd7f4cff41bbf6ac057680c"
+    },
+    {
+      "path": "qa/dormant-mainnet/multi-rpc-report.json",
+      "sha256": "0x438f7f74880206b4a3f1808f7505ffa3d546beed4dd7f4cff41bbf6ac057680c"
+    },
+    {
+      "path": "qa/dormant-mainnet/runtime-bytecode-report.json",
+      "sha256": "0x438f7f74880206b4a3f1808f7505ffa3d546beed4dd7f4cff41bbf6ac057680c"
+    },
+    {
+      "path": "deployments/dormant-mainnet/ethereum-mainnet.dormant.latest.json",
+      "sha256": "0x2fcb926bc2de44ecfc9dee2e1e4589be8e87ddfadf0395500cecc6ce2d2c4d37"
+    }
+  ]
+}

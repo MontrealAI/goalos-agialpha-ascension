@@ -44,10 +44,10 @@ const config: HardhatUserConfig = {
     ethereumMainnet: { url: requireRemoteUrlWhenSelected("ethereumMainnet", "ethereumMainnet"), accounts: accounts("ethereumMainnet"), ledgerAccounts: ledgerAccounts("ethereumMainnet"), chainId: 1 } as any
   },
   etherscan: {
-    apiKey: {
-      mainnet: ETHERSCAN_API_KEY,
-      sepolia: ETHERSCAN_API_KEY
-    }
+    apiKey: ETHERSCAN_API_KEY
+  },
+  sourcify: {
+    enabled: false
   }
 };
 
