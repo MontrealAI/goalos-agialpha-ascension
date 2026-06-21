@@ -339,7 +339,19 @@
     "mainnet:predeploy:g2": "python scripts/mainnet_three_stage.py evaluate-gates",
     "mainnet:predeploy:g3": "python scripts/mainnet_three_stage.py evaluate-gates",
     "mainnet:predeploy:g4": "python scripts/mainnet_three_stage.py evaluate-gates",
-    "mainnet:predeploy:g5": "python scripts/mainnet_three_stage.py evaluate-gates"
+    "mainnet:predeploy:g5": "python scripts/mainnet_three_stage.py evaluate-gates",
+    "sepolia:evidence:import-historical": "python scripts/mainnet_sepolia_backed.py import",
+    "sepolia:evidence:validate-historical": "python scripts/mainnet_sepolia_backed.py validate-historical",
+    "mainnet:predeploy:sepolia-backed:doctor": "python scripts/mainnet_sepolia_backed.py doctor",
+    "mainnet:predeploy:sepolia-backed:import": "python scripts/mainnet_sepolia_backed.py import",
+    "mainnet:predeploy:sepolia-backed:local-rehearsal": "python scripts/mainnet_sepolia_backed.py local-rehearsal",
+    "mainnet:predeploy:sepolia-backed:plan": "python scripts/mainnet_sepolia_backed.py plan",
+    "mainnet:predeploy:sepolia-backed:ledger-approve": "python scripts/mainnet_sepolia_backed.py ledger-approve",
+    "mainnet:predeploy:sepolia-backed:certificate": "python scripts/mainnet_sepolia_backed.py certificate",
+    "mainnet:predeploy:sepolia-backed:certificate:validate": "python scripts/mainnet_sepolia_backed.py certificate-validate",
+    "mainnet:predeploy:sepolia-backed:final-check": "python scripts/mainnet_sepolia_backed.py final-check",
+    "mainnet:predeploy:sepolia-backed:status": "python scripts/mainnet_sepolia_backed.py status",
+    "mainnet:predeploy:sepolia-backed:resolve-and-authorize": "python scripts/mainnet_sepolia_backed.py resolve-and-authorize"
   },
   "dependencies": {
     "@openzeppelin/contracts": "4.9.6",
