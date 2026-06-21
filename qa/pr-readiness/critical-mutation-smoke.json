@@ -1,10 +1,7 @@
 {
-  "claimBoundary": "Local sentinel only; Gate 5 still requires protected release mutation logs, patch hashes, compile/test exit codes, and killer tests.",
-  "command": {
-    "command": "/root/.pyenv/versions/3.12.13/bin/python -c import json, pathlib; assert pathlib.Path(\"scripts/mainnet_operational_readiness.py\").exists(); print(json.dumps({\"mutationSentinel\":\"executed\"}))",
-    "exitCode": 0,
-    "output": "{\"mutationSentinel\": \"executed\"}\n"
-  },
+  "blockers": [
+    "Critical mutation release artifact is missing, malformed, incomplete, or not PASS; no mutants are counted as killed without execution evidence."
+  ],
   "criticalMutants": [
     "authorization",
     "ownership-transfer",
@@ -20,14 +17,15 @@
     "certificate-binding",
     "fail-open-audit-parsing"
   ],
-  "executedMutants": 13,
-  "invalidOrNotRun": 0,
-  "killRate": 1.0,
-  "killed": 13,
-  "profile": "bounded-local-sentinel",
+  "executedMutants": 0,
+  "invalidOrNotRun": 13,
+  "killRate": null,
+  "killed": 0,
+  "profile": "critical-release-required",
+  "releaseEvidence": "qa/pr-readiness/critical-mutation-release.json",
   "releaseStatus": "RELEASE_EVIDENCE_NOT_EXECUTED",
-  "releaseThresholdNotClaimed": true,
+  "requiredMutants": 13,
   "schemaVersion": "1.0",
-  "status": "PHASE_A_LOCAL_PASS",
-  "survived": 0
+  "status": "BLOCKED",
+  "survived": null
 }
