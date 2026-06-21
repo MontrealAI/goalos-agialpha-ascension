@@ -1,0 +1,943 @@
+{
+  "chainId": 11155111,
+  "classification": "HISTORICAL_VERIFIED_SEPOLIA_DEPLOYMENT",
+  "contractCount": 49,
+  "contracts": [
+    {
+      "address": "0x0000000000000000000000000000000000000001",
+      "constructorArgs": "0x",
+      "fqn": "contracts/mocks/MockAGIALPHA.sol:MockAGIALPHA",
+      "name": "AGIALPHA",
+      "runtimeBytecodeHash": "0x294d67f231704f7dbe87d744b05de106ddf6466307f218e01c6b7dc5a937a341",
+      "transactionHash": "0x0000000000000000000000000000000000000000000000000000000000000001"
+    },
+    {
+      "address": "0x0000000000000000000000000000000000000002",
+      "constructorArgs": "0x",
+      "fqn": "contracts/vaults/TokenReserveVault.sol:TokenReserveVault",
+      "name": "ProofRewardsVault",
+      "runtimeBytecodeHash": "0xcad0763c1076d581180adad8503b0b8db06ff7cc5aaac17d8c1e82ae937cc214",
+      "transactionHash": "0x0000000000000000000000000000000000000000000000000000000000000002"
+    },
+    {
+      "address": "0x0000000000000000000000000000000000000003",
+      "constructorArgs": "0x",
+      "fqn": "contracts/vaults/TokenReserveVault.sol:TokenReserveVault",
+      "name": "LiquidityVault",
+      "runtimeBytecodeHash": "0xeeeed2e928c3fe3817d00bf8cf1bb849898954bad31253929341aeab8983a5fd",
+      "transactionHash": "0x0000000000000000000000000000000000000000000000000000000000000003"
+    },
+    {
+      "address": "0x0000000000000000000000000000000000000004",
+      "constructorArgs": "0x",
+      "fqn": "contracts/vaults/TokenReserveVault.sol:TokenReserveVault",
+      "name": "SecurityVault",
+      "runtimeBytecodeHash": "0x39a7daafb3d3e39905e0ba68de5a6b56f172772589d398518ca244258ac6d3e4",
+      "transactionHash": "0x0000000000000000000000000000000000000000000000000000000000000004"
+    },
+    {
+      "address": "0x0000000000000000000000000000000000000005",
+      "constructorArgs": "0x",
+      "fqn": "contracts/vaults/TokenReserveVault.sol:TokenReserveVault",
+      "name": "CommunityVault",
+      "runtimeBytecodeHash": "0x5e70f7397356ba016a16c7a996dd22372417c4993c368c987bdd151644c69580",
+      "transactionHash": "0x0000000000000000000000000000000000000000000000000000000000000005"
+    },
+    {
+      "address": "0x0000000000000000000000000000000000000006",
+      "constructorArgs": "0x",
+      "fqn": "contracts/generated/GoalOSContract01.sol:GoalOSContract01",
+      "name": "GoalOSContract01",
+      "runtimeBytecodeHash": "0xc4df3bb901e95d0d96ed860d04273db6dfae078574ac94357f2d02e9b3b40b7d",
+      "transactionHash": "0x0000000000000000000000000000000000000000000000000000000000000006"
+    },
+    {
+      "address": "0x0000000000000000000000000000000000000007",
+      "constructorArgs": "0x",
+      "fqn": "contracts/generated/GoalOSContract02.sol:GoalOSContract02",
+      "name": "GoalOSContract02",
+      "runtimeBytecodeHash": "0x682b845d9ffccc64c8480edde0c66e4a4b12f48b602e7faa695f2ee37fdd31ff",
+      "transactionHash": "0x0000000000000000000000000000000000000000000000000000000000000007"
+    },
+    {
+      "address": "0x0000000000000000000000000000000000000008",
+      "constructorArgs": "0x",
+      "fqn": "contracts/generated/GoalOSContract03.sol:GoalOSContract03",
+      "name": "GoalOSContract03",
+      "runtimeBytecodeHash": "0x3aa29ba9063428e30ad1aec2d7401e620b446d264699101f9fd811b8a0e65b90",
+      "transactionHash": "0x0000000000000000000000000000000000000000000000000000000000000008"
+    },
+    {
+      "address": "0x0000000000000000000000000000000000000009",
+      "constructorArgs": "0x",
+      "fqn": "contracts/generated/GoalOSContract04.sol:GoalOSContract04",
+      "name": "GoalOSContract04",
+      "runtimeBytecodeHash": "0x05242214a447fbb2c6ee659b4780f0a6cfb85d2d163082f8f4d489035bdfb486",
+      "transactionHash": "0x0000000000000000000000000000000000000000000000000000000000000009"
+    },
+    {
+      "address": "0x000000000000000000000000000000000000000a",
+      "constructorArgs": "0x",
+      "fqn": "contracts/generated/GoalOSContract05.sol:GoalOSContract05",
+      "name": "GoalOSContract05",
+      "runtimeBytecodeHash": "0x3a8081bc56bf1327392897dab0a208718bbfb7eb4d69099a86320e691d7474b1",
+      "transactionHash": "0x000000000000000000000000000000000000000000000000000000000000000a"
+    },
+    {
+      "address": "0x000000000000000000000000000000000000000b",
+      "constructorArgs": "0x",
+      "fqn": "contracts/generated/GoalOSContract06.sol:GoalOSContract06",
+      "name": "GoalOSContract06",
+      "runtimeBytecodeHash": "0xd4144bcd9a085432b979e3614e1b45c5f04d380f0a844b2ee8724f6ffead8c75",
+      "transactionHash": "0x000000000000000000000000000000000000000000000000000000000000000b"
+    },
+    {
+      "address": "0x000000000000000000000000000000000000000c",
+      "constructorArgs": "0x",
+      "fqn": "contracts/generated/GoalOSContract07.sol:GoalOSContract07",
+      "name": "GoalOSContract07",
+      "runtimeBytecodeHash": "0x029c8667b1d0aa5cd65e50d4cfd89ead74c71b2a27d7de11b40016f8606c714b",
+      "transactionHash": "0x000000000000000000000000000000000000000000000000000000000000000c"
+    },
+    {
+      "address": "0x000000000000000000000000000000000000000d",
+      "constructorArgs": "0x",
+      "fqn": "contracts/generated/GoalOSContract08.sol:GoalOSContract08",
+      "name": "GoalOSContract08",
+      "runtimeBytecodeHash": "0x6435083e8504b951d95704c65cafb6e5c43ae831bd516e5c22350b0045a17821",
+      "transactionHash": "0x000000000000000000000000000000000000000000000000000000000000000d"
+    },
+    {
+      "address": "0x000000000000000000000000000000000000000e",
+      "constructorArgs": "0x",
+      "fqn": "contracts/generated/GoalOSContract09.sol:GoalOSContract09",
+      "name": "GoalOSContract09",
+      "runtimeBytecodeHash": "0x85a51b5d79ab91e69d40f927efd9859b89083fbd289db69e66833b99b26dbf7b",
+      "transactionHash": "0x000000000000000000000000000000000000000000000000000000000000000e"
+    },
+    {
+      "address": "0x000000000000000000000000000000000000000f",
+      "constructorArgs": "0x",
+      "fqn": "contracts/generated/GoalOSContract10.sol:GoalOSContract10",
+      "name": "GoalOSContract10",
+      "runtimeBytecodeHash": "0x5b8a24d694bc76259c7109825a3820847e4b51308119bc00d494fb28a15f5ff8",
+      "transactionHash": "0x000000000000000000000000000000000000000000000000000000000000000f"
+    },
+    {
+      "address": "0x0000000000000000000000000000000000000010",
+      "constructorArgs": "0x",
+      "fqn": "contracts/generated/GoalOSContract11.sol:GoalOSContract11",
+      "name": "GoalOSContract11",
+      "runtimeBytecodeHash": "0x95e680ec7f2e5981f82f49cac93e0b4fb70da7900aceb38ae70e8209f7a02dd0",
+      "transactionHash": "0x0000000000000000000000000000000000000000000000000000000000000010"
+    },
+    {
+      "address": "0x0000000000000000000000000000000000000011",
+      "constructorArgs": "0x",
+      "fqn": "contracts/generated/GoalOSContract12.sol:GoalOSContract12",
+      "name": "GoalOSContract12",
+      "runtimeBytecodeHash": "0x65eff554e63a496d9be00315cec482b35e6dc571ca9477e100ab87da1c650a2b",
+      "transactionHash": "0x0000000000000000000000000000000000000000000000000000000000000011"
+    },
+    {
+      "address": "0x0000000000000000000000000000000000000012",
+      "constructorArgs": "0x",
+      "fqn": "contracts/generated/GoalOSContract13.sol:GoalOSContract13",
+      "name": "GoalOSContract13",
+      "runtimeBytecodeHash": "0x7c51236bc6edb4cd7043d0551de5c247bf198047070086910d50933e74f39db3",
+      "transactionHash": "0x0000000000000000000000000000000000000000000000000000000000000012"
+    },
+    {
+      "address": "0x0000000000000000000000000000000000000013",
+      "constructorArgs": "0x",
+      "fqn": "contracts/generated/GoalOSContract14.sol:GoalOSContract14",
+      "name": "GoalOSContract14",
+      "runtimeBytecodeHash": "0x590269eebee411bacb3da446e39fb7466fd13246eab6e9bc571af1d85c13957e",
+      "transactionHash": "0x0000000000000000000000000000000000000000000000000000000000000013"
+    },
+    {
+      "address": "0x0000000000000000000000000000000000000014",
+      "constructorArgs": "0x",
+      "fqn": "contracts/generated/GoalOSContract15.sol:GoalOSContract15",
+      "name": "GoalOSContract15",
+      "runtimeBytecodeHash": "0xaf20f219e7ebfe2bf023eb0eb63776fb9e7dcbc861cdf2364a8ec5e23a03a406",
+      "transactionHash": "0x0000000000000000000000000000000000000000000000000000000000000014"
+    },
+    {
+      "address": "0x0000000000000000000000000000000000000015",
+      "constructorArgs": "0x",
+      "fqn": "contracts/generated/GoalOSContract16.sol:GoalOSContract16",
+      "name": "GoalOSContract16",
+      "runtimeBytecodeHash": "0x9c0d0934b00b081f4fa0148e559253095ded0d5d2bfb0d78d60d44b2534719c0",
+      "transactionHash": "0x0000000000000000000000000000000000000000000000000000000000000015"
+    },
+    {
+      "address": "0x0000000000000000000000000000000000000016",
+      "constructorArgs": "0x",
+      "fqn": "contracts/generated/GoalOSContract17.sol:GoalOSContract17",
+      "name": "GoalOSContract17",
+      "runtimeBytecodeHash": "0x2ee411eae0a00593ea4a5b96aa9134e37d3198a37f43b9f2f581e08c9d256850",
+      "transactionHash": "0x0000000000000000000000000000000000000000000000000000000000000016"
+    },
+    {
+      "address": "0x0000000000000000000000000000000000000017",
+      "constructorArgs": "0x",
+      "fqn": "contracts/generated/GoalOSContract18.sol:GoalOSContract18",
+      "name": "GoalOSContract18",
+      "runtimeBytecodeHash": "0x3868664766955a2b835ec42399ae382eafcef9b63b1e81891a4123a0f5c178ed",
+      "transactionHash": "0x0000000000000000000000000000000000000000000000000000000000000017"
+    },
+    {
+      "address": "0x0000000000000000000000000000000000000018",
+      "constructorArgs": "0x",
+      "fqn": "contracts/generated/GoalOSContract19.sol:GoalOSContract19",
+      "name": "GoalOSContract19",
+      "runtimeBytecodeHash": "0x660a6bb172177782cda9e0fe529ebeeb656de6352ae69d67b8d7a6fd7d25e8dc",
+      "transactionHash": "0x0000000000000000000000000000000000000000000000000000000000000018"
+    },
+    {
+      "address": "0x0000000000000000000000000000000000000019",
+      "constructorArgs": "0x",
+      "fqn": "contracts/generated/GoalOSContract20.sol:GoalOSContract20",
+      "name": "GoalOSContract20",
+      "runtimeBytecodeHash": "0x8ff7209dddcc8d132f718aed7e90fb2bcbaadcbb6d797cb50ae38ba47ca83530",
+      "transactionHash": "0x0000000000000000000000000000000000000000000000000000000000000019"
+    },
+    {
+      "address": "0x000000000000000000000000000000000000001a",
+      "constructorArgs": "0x",
+      "fqn": "contracts/generated/GoalOSContract21.sol:GoalOSContract21",
+      "name": "GoalOSContract21",
+      "runtimeBytecodeHash": "0x7b4a78dc5abf9f5dcd0599e350393089e73190c361e6bc301532944e5d396c09",
+      "transactionHash": "0x000000000000000000000000000000000000000000000000000000000000001a"
+    },
+    {
+      "address": "0x000000000000000000000000000000000000001b",
+      "constructorArgs": "0x",
+      "fqn": "contracts/generated/GoalOSContract22.sol:GoalOSContract22",
+      "name": "GoalOSContract22",
+      "runtimeBytecodeHash": "0x2f94d75e2217cda07ef695b24b55ec83e46eaed9573d6bc26ccd8898c34756b3",
+      "transactionHash": "0x000000000000000000000000000000000000000000000000000000000000001b"
+    },
+    {
+      "address": "0x000000000000000000000000000000000000001c",
+      "constructorArgs": "0x",
+      "fqn": "contracts/generated/GoalOSContract23.sol:GoalOSContract23",
+      "name": "GoalOSContract23",
+      "runtimeBytecodeHash": "0xa1bf77ea14bb1d1e3e2ddf97a3c15ecae49d678c933dc72a6e1fd387ee92ac38",
+      "transactionHash": "0x000000000000000000000000000000000000000000000000000000000000001c"
+    },
+    {
+      "address": "0x000000000000000000000000000000000000001d",
+      "constructorArgs": "0x",
+      "fqn": "contracts/generated/GoalOSContract24.sol:GoalOSContract24",
+      "name": "GoalOSContract24",
+      "runtimeBytecodeHash": "0x6ceda7294467b5c30f4ceccf41c673a6969f5a77f798949002c7d27f58bea7f0",
+      "transactionHash": "0x000000000000000000000000000000000000000000000000000000000000001d"
+    },
+    {
+      "address": "0x000000000000000000000000000000000000001e",
+      "constructorArgs": "0x",
+      "fqn": "contracts/generated/GoalOSContract25.sol:GoalOSContract25",
+      "name": "GoalOSContract25",
+      "runtimeBytecodeHash": "0x7ea7bb3f40586d97d140da9e6adb2b3e5c33ae4574a35fd0e3c2e681dc58e09e",
+      "transactionHash": "0x000000000000000000000000000000000000000000000000000000000000001e"
+    },
+    {
+      "address": "0x000000000000000000000000000000000000001f",
+      "constructorArgs": "0x",
+      "fqn": "contracts/generated/GoalOSContract26.sol:GoalOSContract26",
+      "name": "GoalOSContract26",
+      "runtimeBytecodeHash": "0x57677a8adfcf63448868f6d989878a1892f5eb52d59645180dc3eb951fff176c",
+      "transactionHash": "0x000000000000000000000000000000000000000000000000000000000000001f"
+    },
+    {
+      "address": "0x0000000000000000000000000000000000000020",
+      "constructorArgs": "0x",
+      "fqn": "contracts/generated/GoalOSContract27.sol:GoalOSContract27",
+      "name": "GoalOSContract27",
+      "runtimeBytecodeHash": "0x48a4bbaf52099abf537eafa11a2ac683d5c03c042c3969675523d0ba2b0e11b1",
+      "transactionHash": "0x0000000000000000000000000000000000000000000000000000000000000020"
+    },
+    {
+      "address": "0x0000000000000000000000000000000000000021",
+      "constructorArgs": "0x",
+      "fqn": "contracts/generated/GoalOSContract28.sol:GoalOSContract28",
+      "name": "GoalOSContract28",
+      "runtimeBytecodeHash": "0xbec38e3881a1b99d62dcefaa4e445702ae860b6d9009ae56ee1b6b07a9109ce4",
+      "transactionHash": "0x0000000000000000000000000000000000000000000000000000000000000021"
+    },
+    {
+      "address": "0x0000000000000000000000000000000000000022",
+      "constructorArgs": "0x",
+      "fqn": "contracts/generated/GoalOSContract29.sol:GoalOSContract29",
+      "name": "GoalOSContract29",
+      "runtimeBytecodeHash": "0x1de0b3bf982233350c99402631fc8921fd9516cf8cc71d24d2b8d70cee148001",
+      "transactionHash": "0x0000000000000000000000000000000000000000000000000000000000000022"
+    },
+    {
+      "address": "0x0000000000000000000000000000000000000023",
+      "constructorArgs": "0x",
+      "fqn": "contracts/generated/GoalOSContract30.sol:GoalOSContract30",
+      "name": "GoalOSContract30",
+      "runtimeBytecodeHash": "0xb59152046a34c26bbe2cdacdf65a265463cb8d5eaa3aa0c0f39a435d8d508962",
+      "transactionHash": "0x0000000000000000000000000000000000000000000000000000000000000023"
+    },
+    {
+      "address": "0x0000000000000000000000000000000000000024",
+      "constructorArgs": "0x",
+      "fqn": "contracts/generated/GoalOSContract31.sol:GoalOSContract31",
+      "name": "GoalOSContract31",
+      "runtimeBytecodeHash": "0x38298100b6a4af35c18616e94ee99b230b8d061bd0163cce39a5844786f4ebbc",
+      "transactionHash": "0x0000000000000000000000000000000000000000000000000000000000000024"
+    },
+    {
+      "address": "0x0000000000000000000000000000000000000025",
+      "constructorArgs": "0x",
+      "fqn": "contracts/generated/GoalOSContract32.sol:GoalOSContract32",
+      "name": "GoalOSContract32",
+      "runtimeBytecodeHash": "0x1326f458a07c6c2bad8c9303d89448ffe0a33850cddaacb88a5c21d2254e9017",
+      "transactionHash": "0x0000000000000000000000000000000000000000000000000000000000000025"
+    },
+    {
+      "address": "0x0000000000000000000000000000000000000026",
+      "constructorArgs": "0x",
+      "fqn": "contracts/generated/GoalOSContract33.sol:GoalOSContract33",
+      "name": "GoalOSContract33",
+      "runtimeBytecodeHash": "0x51c49ef247e740685065fcad0285f7c79554eee9a5bf72edf23da339446b3869",
+      "transactionHash": "0x0000000000000000000000000000000000000000000000000000000000000026"
+    },
+    {
+      "address": "0x0000000000000000000000000000000000000027",
+      "constructorArgs": "0x",
+      "fqn": "contracts/generated/GoalOSContract34.sol:GoalOSContract34",
+      "name": "GoalOSContract34",
+      "runtimeBytecodeHash": "0xef6beb515f610e1d023c460e49e0d48f6bff83ba269467248baad85f356c1316",
+      "transactionHash": "0x0000000000000000000000000000000000000000000000000000000000000027"
+    },
+    {
+      "address": "0x0000000000000000000000000000000000000028",
+      "constructorArgs": "0x",
+      "fqn": "contracts/generated/GoalOSContract35.sol:GoalOSContract35",
+      "name": "GoalOSContract35",
+      "runtimeBytecodeHash": "0x281068f75b9468ed33ed5ba9a33695fccf14d5a19f597ed8420d36b31fb95296",
+      "transactionHash": "0x0000000000000000000000000000000000000000000000000000000000000028"
+    },
+    {
+      "address": "0x0000000000000000000000000000000000000029",
+      "constructorArgs": "0x",
+      "fqn": "contracts/generated/GoalOSContract36.sol:GoalOSContract36",
+      "name": "GoalOSContract36",
+      "runtimeBytecodeHash": "0x200004431c143a578376147059569e2a69375a990472f0622e832f2b2eb0db00",
+      "transactionHash": "0x0000000000000000000000000000000000000000000000000000000000000029"
+    },
+    {
+      "address": "0x000000000000000000000000000000000000002a",
+      "constructorArgs": "0x",
+      "fqn": "contracts/generated/GoalOSContract37.sol:GoalOSContract37",
+      "name": "GoalOSContract37",
+      "runtimeBytecodeHash": "0x0d854a85bbe2bc6907265d7e87dee379c982b37a80a8f5010529f96bdf27bcfe",
+      "transactionHash": "0x000000000000000000000000000000000000000000000000000000000000002a"
+    },
+    {
+      "address": "0x000000000000000000000000000000000000002b",
+      "constructorArgs": "0x",
+      "fqn": "contracts/generated/GoalOSContract38.sol:GoalOSContract38",
+      "name": "GoalOSContract38",
+      "runtimeBytecodeHash": "0x0f70b3a08dc8cec9095222eaa3771d90b8b7298d365210d80430440db9f97cf5",
+      "transactionHash": "0x000000000000000000000000000000000000000000000000000000000000002b"
+    },
+    {
+      "address": "0x000000000000000000000000000000000000002c",
+      "constructorArgs": "0x",
+      "fqn": "contracts/generated/GoalOSContract39.sol:GoalOSContract39",
+      "name": "GoalOSContract39",
+      "runtimeBytecodeHash": "0x46761fb6a545732d57a2d38cbd7bb7b0217d74a28ed82f5e8c9c3e1f97a12079",
+      "transactionHash": "0x000000000000000000000000000000000000000000000000000000000000002c"
+    },
+    {
+      "address": "0x000000000000000000000000000000000000002d",
+      "constructorArgs": "0x",
+      "fqn": "contracts/generated/GoalOSContract40.sol:GoalOSContract40",
+      "name": "GoalOSContract40",
+      "runtimeBytecodeHash": "0xba152ddb612006c230002318cdac277caac02df1fc441e325f7c00dc2c5e644f",
+      "transactionHash": "0x000000000000000000000000000000000000000000000000000000000000002d"
+    },
+    {
+      "address": "0x000000000000000000000000000000000000002e",
+      "constructorArgs": "0x",
+      "fqn": "contracts/generated/GoalOSContract41.sol:GoalOSContract41",
+      "name": "GoalOSContract41",
+      "runtimeBytecodeHash": "0xa6e079140156be5730777af94cc2c05a7f3afc6b41a6f550907ee08abfc0131c",
+      "transactionHash": "0x000000000000000000000000000000000000000000000000000000000000002e"
+    },
+    {
+      "address": "0x000000000000000000000000000000000000002f",
+      "constructorArgs": "0x",
+      "fqn": "contracts/generated/GoalOSContract42.sol:GoalOSContract42",
+      "name": "GoalOSContract42",
+      "runtimeBytecodeHash": "0xb5300a729246ff9c021b00312e75dd06c9505dbe44ad1dc6a9dcfdd4f18827d3",
+      "transactionHash": "0x000000000000000000000000000000000000000000000000000000000000002f"
+    },
+    {
+      "address": "0x0000000000000000000000000000000000000030",
+      "constructorArgs": "0x",
+      "fqn": "contracts/generated/GoalOSContract43.sol:GoalOSContract43",
+      "name": "GoalOSContract43",
+      "runtimeBytecodeHash": "0x8174da6e25ac6cefc5a8602621cccefbc7a197dbaa2e73a34ea3e827e7df60d2",
+      "transactionHash": "0x0000000000000000000000000000000000000000000000000000000000000030"
+    },
+    {
+      "address": "0x0000000000000000000000000000000000000031",
+      "constructorArgs": "0x",
+      "fqn": "contracts/generated/GoalOSContract44.sol:GoalOSContract44",
+      "name": "GoalOSContract44",
+      "runtimeBytecodeHash": "0x1354f1ee74e1934f3220ee13a899cde68a8cab7ccd0c46623b5dc4cd1ed38f8c",
+      "transactionHash": "0x0000000000000000000000000000000000000000000000000000000000000031"
+    }
+  ],
+  "deployedAt": "2026-06-20T16:11:25.386Z",
+  "gasUsed": 6302016,
+  "network": "ethereum-sepolia",
+  "postDeploymentChecks": {
+    "mainnetClaimsInferred": false,
+    "mockAGIALPHA": "AGIALPHA -> MockAGIALPHA",
+    "reserveVaultAliases": "four aliases -> TokenReserveVault"
+  },
+  "provenance": {
+    "classification": "HISTORICAL_VERIFIED_SEPOLIA_DEPLOYMENT",
+    "expectedHashes": {
+      "deploymentEvidence": "5398773ff4cf9fb32a4092f282207ef2efd0f21d8d6b376a8c099566475dd808",
+      "independentCheck": "8f630fbb8db1366413bdc9a6a95c0f69ea92e06a03dc722891774e53671e1045",
+      "manifest": "d8895bddefd944062bb040ca35fd962455be3e0b7411df672eac035836bf3ac6",
+      "verificationReport": "baf57d5bdff69fc0d5c572f5bc34d1371989797ee51cbb684b14e9b97190a6a2"
+    },
+    "futureManifestRequirements": [
+      "gitCommit",
+      "sourceTreeHash",
+      "lockfileHash",
+      "compilerBinaryHash",
+      "compilerSettingsHash",
+      "creationBytecodeHashes",
+      "runtimeBytecodeHashes",
+      "FQNs",
+      "constructorEncodings",
+      "deploymentScriptHash",
+      "releaseId"
+    ],
+    "generatedAt": "2026-06-21T00:24:00.920385+00:00",
+    "inputHashes": {
+      "deploymentEvidence": "DETERMINISTIC_FIXTURE_NOT_OPERATOR_ARTIFACT",
+      "independentCheck": "DETERMINISTIC_FIXTURE_NOT_OPERATOR_ARTIFACT",
+      "manifest": "DETERMINISTIC_FIXTURE_NOT_OPERATOR_ARTIFACT",
+      "verificationReport": "DETERMINISTIC_FIXTURE_NOT_OPERATOR_ARTIFACT"
+    },
+    "operatorInputPaths": {},
+    "releaseBindingStatus": "HISTORICAL_UNBOUND"
+  },
+  "receiptStatusSummary": {
+    "failed": 0,
+    "succeeded": 63
+  },
+  "releaseBindingStatus": "HISTORICAL_UNBOUND",
+  "runtimeCodeHashes": {
+    "0x0000000000000000000000000000000000000001": "0x294d67f231704f7dbe87d744b05de106ddf6466307f218e01c6b7dc5a937a341",
+    "0x0000000000000000000000000000000000000002": "0xcad0763c1076d581180adad8503b0b8db06ff7cc5aaac17d8c1e82ae937cc214",
+    "0x0000000000000000000000000000000000000003": "0xeeeed2e928c3fe3817d00bf8cf1bb849898954bad31253929341aeab8983a5fd",
+    "0x0000000000000000000000000000000000000004": "0x39a7daafb3d3e39905e0ba68de5a6b56f172772589d398518ca244258ac6d3e4",
+    "0x0000000000000000000000000000000000000005": "0x5e70f7397356ba016a16c7a996dd22372417c4993c368c987bdd151644c69580",
+    "0x0000000000000000000000000000000000000006": "0xc4df3bb901e95d0d96ed860d04273db6dfae078574ac94357f2d02e9b3b40b7d",
+    "0x0000000000000000000000000000000000000007": "0x682b845d9ffccc64c8480edde0c66e4a4b12f48b602e7faa695f2ee37fdd31ff",
+    "0x0000000000000000000000000000000000000008": "0x3aa29ba9063428e30ad1aec2d7401e620b446d264699101f9fd811b8a0e65b90",
+    "0x0000000000000000000000000000000000000009": "0x05242214a447fbb2c6ee659b4780f0a6cfb85d2d163082f8f4d489035bdfb486",
+    "0x000000000000000000000000000000000000000a": "0x3a8081bc56bf1327392897dab0a208718bbfb7eb4d69099a86320e691d7474b1",
+    "0x000000000000000000000000000000000000000b": "0xd4144bcd9a085432b979e3614e1b45c5f04d380f0a844b2ee8724f6ffead8c75",
+    "0x000000000000000000000000000000000000000c": "0x029c8667b1d0aa5cd65e50d4cfd89ead74c71b2a27d7de11b40016f8606c714b",
+    "0x000000000000000000000000000000000000000d": "0x6435083e8504b951d95704c65cafb6e5c43ae831bd516e5c22350b0045a17821",
+    "0x000000000000000000000000000000000000000e": "0x85a51b5d79ab91e69d40f927efd9859b89083fbd289db69e66833b99b26dbf7b",
+    "0x000000000000000000000000000000000000000f": "0x5b8a24d694bc76259c7109825a3820847e4b51308119bc00d494fb28a15f5ff8",
+    "0x0000000000000000000000000000000000000010": "0x95e680ec7f2e5981f82f49cac93e0b4fb70da7900aceb38ae70e8209f7a02dd0",
+    "0x0000000000000000000000000000000000000011": "0x65eff554e63a496d9be00315cec482b35e6dc571ca9477e100ab87da1c650a2b",
+    "0x0000000000000000000000000000000000000012": "0x7c51236bc6edb4cd7043d0551de5c247bf198047070086910d50933e74f39db3",
+    "0x0000000000000000000000000000000000000013": "0x590269eebee411bacb3da446e39fb7466fd13246eab6e9bc571af1d85c13957e",
+    "0x0000000000000000000000000000000000000014": "0xaf20f219e7ebfe2bf023eb0eb63776fb9e7dcbc861cdf2364a8ec5e23a03a406",
+    "0x0000000000000000000000000000000000000015": "0x9c0d0934b00b081f4fa0148e559253095ded0d5d2bfb0d78d60d44b2534719c0",
+    "0x0000000000000000000000000000000000000016": "0x2ee411eae0a00593ea4a5b96aa9134e37d3198a37f43b9f2f581e08c9d256850",
+    "0x0000000000000000000000000000000000000017": "0x3868664766955a2b835ec42399ae382eafcef9b63b1e81891a4123a0f5c178ed",
+    "0x0000000000000000000000000000000000000018": "0x660a6bb172177782cda9e0fe529ebeeb656de6352ae69d67b8d7a6fd7d25e8dc",
+    "0x0000000000000000000000000000000000000019": "0x8ff7209dddcc8d132f718aed7e90fb2bcbaadcbb6d797cb50ae38ba47ca83530",
+    "0x000000000000000000000000000000000000001a": "0x7b4a78dc5abf9f5dcd0599e350393089e73190c361e6bc301532944e5d396c09",
+    "0x000000000000000000000000000000000000001b": "0x2f94d75e2217cda07ef695b24b55ec83e46eaed9573d6bc26ccd8898c34756b3",
+    "0x000000000000000000000000000000000000001c": "0xa1bf77ea14bb1d1e3e2ddf97a3c15ecae49d678c933dc72a6e1fd387ee92ac38",
+    "0x000000000000000000000000000000000000001d": "0x6ceda7294467b5c30f4ceccf41c673a6969f5a77f798949002c7d27f58bea7f0",
+    "0x000000000000000000000000000000000000001e": "0x7ea7bb3f40586d97d140da9e6adb2b3e5c33ae4574a35fd0e3c2e681dc58e09e",
+    "0x000000000000000000000000000000000000001f": "0x57677a8adfcf63448868f6d989878a1892f5eb52d59645180dc3eb951fff176c",
+    "0x0000000000000000000000000000000000000020": "0x48a4bbaf52099abf537eafa11a2ac683d5c03c042c3969675523d0ba2b0e11b1",
+    "0x0000000000000000000000000000000000000021": "0xbec38e3881a1b99d62dcefaa4e445702ae860b6d9009ae56ee1b6b07a9109ce4",
+    "0x0000000000000000000000000000000000000022": "0x1de0b3bf982233350c99402631fc8921fd9516cf8cc71d24d2b8d70cee148001",
+    "0x0000000000000000000000000000000000000023": "0xb59152046a34c26bbe2cdacdf65a265463cb8d5eaa3aa0c0f39a435d8d508962",
+    "0x0000000000000000000000000000000000000024": "0x38298100b6a4af35c18616e94ee99b230b8d061bd0163cce39a5844786f4ebbc",
+    "0x0000000000000000000000000000000000000025": "0x1326f458a07c6c2bad8c9303d89448ffe0a33850cddaacb88a5c21d2254e9017",
+    "0x0000000000000000000000000000000000000026": "0x51c49ef247e740685065fcad0285f7c79554eee9a5bf72edf23da339446b3869",
+    "0x0000000000000000000000000000000000000027": "0xef6beb515f610e1d023c460e49e0d48f6bff83ba269467248baad85f356c1316",
+    "0x0000000000000000000000000000000000000028": "0x281068f75b9468ed33ed5ba9a33695fccf14d5a19f597ed8420d36b31fb95296",
+    "0x0000000000000000000000000000000000000029": "0x200004431c143a578376147059569e2a69375a990472f0622e832f2b2eb0db00",
+    "0x000000000000000000000000000000000000002a": "0x0d854a85bbe2bc6907265d7e87dee379c982b37a80a8f5010529f96bdf27bcfe",
+    "0x000000000000000000000000000000000000002b": "0x0f70b3a08dc8cec9095222eaa3771d90b8b7298d365210d80430440db9f97cf5",
+    "0x000000000000000000000000000000000000002c": "0x46761fb6a545732d57a2d38cbd7bb7b0217d74a28ed82f5e8c9c3e1f97a12079",
+    "0x000000000000000000000000000000000000002d": "0xba152ddb612006c230002318cdac277caac02df1fc441e325f7c00dc2c5e644f",
+    "0x000000000000000000000000000000000000002e": "0xa6e079140156be5730777af94cc2c05a7f3afc6b41a6f550907ee08abfc0131c",
+    "0x000000000000000000000000000000000000002f": "0xb5300a729246ff9c021b00312e75dd06c9505dbe44ad1dc6a9dcfdd4f18827d3",
+    "0x0000000000000000000000000000000000000030": "0x8174da6e25ac6cefc5a8602621cccefbc7a197dbaa2e73a34ea3e827e7df60d2",
+    "0x0000000000000000000000000000000000000031": "0x1354f1ee74e1934f3220ee13a899cde68a8cab7ccd0c46623b5dc4cd1ed38f8c"
+  },
+  "transactionCount": 63,
+  "transactions": [
+    {
+      "chainId": 11155111,
+      "creates": "0x0000000000000000000000000000000000000001",
+      "gasUsed": 100001,
+      "hash": "0x0000000000000000000000000000000000000000000000000000000000000001",
+      "status": 1
+    },
+    {
+      "chainId": 11155111,
+      "creates": "0x0000000000000000000000000000000000000002",
+      "gasUsed": 100002,
+      "hash": "0x0000000000000000000000000000000000000000000000000000000000000002",
+      "status": 1
+    },
+    {
+      "chainId": 11155111,
+      "creates": "0x0000000000000000000000000000000000000003",
+      "gasUsed": 100003,
+      "hash": "0x0000000000000000000000000000000000000000000000000000000000000003",
+      "status": 1
+    },
+    {
+      "chainId": 11155111,
+      "creates": "0x0000000000000000000000000000000000000004",
+      "gasUsed": 100004,
+      "hash": "0x0000000000000000000000000000000000000000000000000000000000000004",
+      "status": 1
+    },
+    {
+      "chainId": 11155111,
+      "creates": "0x0000000000000000000000000000000000000005",
+      "gasUsed": 100005,
+      "hash": "0x0000000000000000000000000000000000000000000000000000000000000005",
+      "status": 1
+    },
+    {
+      "chainId": 11155111,
+      "creates": "0x0000000000000000000000000000000000000006",
+      "gasUsed": 100006,
+      "hash": "0x0000000000000000000000000000000000000000000000000000000000000006",
+      "status": 1
+    },
+    {
+      "chainId": 11155111,
+      "creates": "0x0000000000000000000000000000000000000007",
+      "gasUsed": 100007,
+      "hash": "0x0000000000000000000000000000000000000000000000000000000000000007",
+      "status": 1
+    },
+    {
+      "chainId": 11155111,
+      "creates": "0x0000000000000000000000000000000000000008",
+      "gasUsed": 100008,
+      "hash": "0x0000000000000000000000000000000000000000000000000000000000000008",
+      "status": 1
+    },
+    {
+      "chainId": 11155111,
+      "creates": "0x0000000000000000000000000000000000000009",
+      "gasUsed": 100009,
+      "hash": "0x0000000000000000000000000000000000000000000000000000000000000009",
+      "status": 1
+    },
+    {
+      "chainId": 11155111,
+      "creates": "0x000000000000000000000000000000000000000a",
+      "gasUsed": 100010,
+      "hash": "0x000000000000000000000000000000000000000000000000000000000000000a",
+      "status": 1
+    },
+    {
+      "chainId": 11155111,
+      "creates": "0x000000000000000000000000000000000000000b",
+      "gasUsed": 100011,
+      "hash": "0x000000000000000000000000000000000000000000000000000000000000000b",
+      "status": 1
+    },
+    {
+      "chainId": 11155111,
+      "creates": "0x000000000000000000000000000000000000000c",
+      "gasUsed": 100012,
+      "hash": "0x000000000000000000000000000000000000000000000000000000000000000c",
+      "status": 1
+    },
+    {
+      "chainId": 11155111,
+      "creates": "0x000000000000000000000000000000000000000d",
+      "gasUsed": 100013,
+      "hash": "0x000000000000000000000000000000000000000000000000000000000000000d",
+      "status": 1
+    },
+    {
+      "chainId": 11155111,
+      "creates": "0x000000000000000000000000000000000000000e",
+      "gasUsed": 100014,
+      "hash": "0x000000000000000000000000000000000000000000000000000000000000000e",
+      "status": 1
+    },
+    {
+      "chainId": 11155111,
+      "creates": "0x000000000000000000000000000000000000000f",
+      "gasUsed": 100015,
+      "hash": "0x000000000000000000000000000000000000000000000000000000000000000f",
+      "status": 1
+    },
+    {
+      "chainId": 11155111,
+      "creates": "0x0000000000000000000000000000000000000010",
+      "gasUsed": 100016,
+      "hash": "0x0000000000000000000000000000000000000000000000000000000000000010",
+      "status": 1
+    },
+    {
+      "chainId": 11155111,
+      "creates": "0x0000000000000000000000000000000000000011",
+      "gasUsed": 100017,
+      "hash": "0x0000000000000000000000000000000000000000000000000000000000000011",
+      "status": 1
+    },
+    {
+      "chainId": 11155111,
+      "creates": "0x0000000000000000000000000000000000000012",
+      "gasUsed": 100018,
+      "hash": "0x0000000000000000000000000000000000000000000000000000000000000012",
+      "status": 1
+    },
+    {
+      "chainId": 11155111,
+      "creates": "0x0000000000000000000000000000000000000013",
+      "gasUsed": 100019,
+      "hash": "0x0000000000000000000000000000000000000000000000000000000000000013",
+      "status": 1
+    },
+    {
+      "chainId": 11155111,
+      "creates": "0x0000000000000000000000000000000000000014",
+      "gasUsed": 100020,
+      "hash": "0x0000000000000000000000000000000000000000000000000000000000000014",
+      "status": 1
+    },
+    {
+      "chainId": 11155111,
+      "creates": "0x0000000000000000000000000000000000000015",
+      "gasUsed": 100021,
+      "hash": "0x0000000000000000000000000000000000000000000000000000000000000015",
+      "status": 1
+    },
+    {
+      "chainId": 11155111,
+      "creates": "0x0000000000000000000000000000000000000016",
+      "gasUsed": 100022,
+      "hash": "0x0000000000000000000000000000000000000000000000000000000000000016",
+      "status": 1
+    },
+    {
+      "chainId": 11155111,
+      "creates": "0x0000000000000000000000000000000000000017",
+      "gasUsed": 100023,
+      "hash": "0x0000000000000000000000000000000000000000000000000000000000000017",
+      "status": 1
+    },
+    {
+      "chainId": 11155111,
+      "creates": "0x0000000000000000000000000000000000000018",
+      "gasUsed": 100024,
+      "hash": "0x0000000000000000000000000000000000000000000000000000000000000018",
+      "status": 1
+    },
+    {
+      "chainId": 11155111,
+      "creates": "0x0000000000000000000000000000000000000019",
+      "gasUsed": 100025,
+      "hash": "0x0000000000000000000000000000000000000000000000000000000000000019",
+      "status": 1
+    },
+    {
+      "chainId": 11155111,
+      "creates": "0x000000000000000000000000000000000000001a",
+      "gasUsed": 100026,
+      "hash": "0x000000000000000000000000000000000000000000000000000000000000001a",
+      "status": 1
+    },
+    {
+      "chainId": 11155111,
+      "creates": "0x000000000000000000000000000000000000001b",
+      "gasUsed": 100027,
+      "hash": "0x000000000000000000000000000000000000000000000000000000000000001b",
+      "status": 1
+    },
+    {
+      "chainId": 11155111,
+      "creates": "0x000000000000000000000000000000000000001c",
+      "gasUsed": 100028,
+      "hash": "0x000000000000000000000000000000000000000000000000000000000000001c",
+      "status": 1
+    },
+    {
+      "chainId": 11155111,
+      "creates": "0x000000000000000000000000000000000000001d",
+      "gasUsed": 100029,
+      "hash": "0x000000000000000000000000000000000000000000000000000000000000001d",
+      "status": 1
+    },
+    {
+      "chainId": 11155111,
+      "creates": "0x000000000000000000000000000000000000001e",
+      "gasUsed": 100030,
+      "hash": "0x000000000000000000000000000000000000000000000000000000000000001e",
+      "status": 1
+    },
+    {
+      "chainId": 11155111,
+      "creates": "0x000000000000000000000000000000000000001f",
+      "gasUsed": 100031,
+      "hash": "0x000000000000000000000000000000000000000000000000000000000000001f",
+      "status": 1
+    },
+    {
+      "chainId": 11155111,
+      "creates": "0x0000000000000000000000000000000000000020",
+      "gasUsed": 100032,
+      "hash": "0x0000000000000000000000000000000000000000000000000000000000000020",
+      "status": 1
+    },
+    {
+      "chainId": 11155111,
+      "creates": "0x0000000000000000000000000000000000000021",
+      "gasUsed": 100033,
+      "hash": "0x0000000000000000000000000000000000000000000000000000000000000021",
+      "status": 1
+    },
+    {
+      "chainId": 11155111,
+      "creates": "0x0000000000000000000000000000000000000022",
+      "gasUsed": 100034,
+      "hash": "0x0000000000000000000000000000000000000000000000000000000000000022",
+      "status": 1
+    },
+    {
+      "chainId": 11155111,
+      "creates": "0x0000000000000000000000000000000000000023",
+      "gasUsed": 100035,
+      "hash": "0x0000000000000000000000000000000000000000000000000000000000000023",
+      "status": 1
+    },
+    {
+      "chainId": 11155111,
+      "creates": "0x0000000000000000000000000000000000000024",
+      "gasUsed": 100036,
+      "hash": "0x0000000000000000000000000000000000000000000000000000000000000024",
+      "status": 1
+    },
+    {
+      "chainId": 11155111,
+      "creates": "0x0000000000000000000000000000000000000025",
+      "gasUsed": 100037,
+      "hash": "0x0000000000000000000000000000000000000000000000000000000000000025",
+      "status": 1
+    },
+    {
+      "chainId": 11155111,
+      "creates": "0x0000000000000000000000000000000000000026",
+      "gasUsed": 100038,
+      "hash": "0x0000000000000000000000000000000000000000000000000000000000000026",
+      "status": 1
+    },
+    {
+      "chainId": 11155111,
+      "creates": "0x0000000000000000000000000000000000000027",
+      "gasUsed": 100039,
+      "hash": "0x0000000000000000000000000000000000000000000000000000000000000027",
+      "status": 1
+    },
+    {
+      "chainId": 11155111,
+      "creates": "0x0000000000000000000000000000000000000028",
+      "gasUsed": 100040,
+      "hash": "0x0000000000000000000000000000000000000000000000000000000000000028",
+      "status": 1
+    },
+    {
+      "chainId": 11155111,
+      "creates": "0x0000000000000000000000000000000000000029",
+      "gasUsed": 100041,
+      "hash": "0x0000000000000000000000000000000000000000000000000000000000000029",
+      "status": 1
+    },
+    {
+      "chainId": 11155111,
+      "creates": "0x000000000000000000000000000000000000002a",
+      "gasUsed": 100042,
+      "hash": "0x000000000000000000000000000000000000000000000000000000000000002a",
+      "status": 1
+    },
+    {
+      "chainId": 11155111,
+      "creates": "0x000000000000000000000000000000000000002b",
+      "gasUsed": 100043,
+      "hash": "0x000000000000000000000000000000000000000000000000000000000000002b",
+      "status": 1
+    },
+    {
+      "chainId": 11155111,
+      "creates": "0x000000000000000000000000000000000000002c",
+      "gasUsed": 100044,
+      "hash": "0x000000000000000000000000000000000000000000000000000000000000002c",
+      "status": 1
+    },
+    {
+      "chainId": 11155111,
+      "creates": "0x000000000000000000000000000000000000002d",
+      "gasUsed": 100045,
+      "hash": "0x000000000000000000000000000000000000000000000000000000000000002d",
+      "status": 1
+    },
+    {
+      "chainId": 11155111,
+      "creates": "0x000000000000000000000000000000000000002e",
+      "gasUsed": 100046,
+      "hash": "0x000000000000000000000000000000000000000000000000000000000000002e",
+      "status": 1
+    },
+    {
+      "chainId": 11155111,
+      "creates": "0x000000000000000000000000000000000000002f",
+      "gasUsed": 100047,
+      "hash": "0x000000000000000000000000000000000000000000000000000000000000002f",
+      "status": 1
+    },
+    {
+      "chainId": 11155111,
+      "creates": "0x0000000000000000000000000000000000000030",
+      "gasUsed": 100048,
+      "hash": "0x0000000000000000000000000000000000000000000000000000000000000030",
+      "status": 1
+    },
+    {
+      "chainId": 11155111,
+      "creates": "0x0000000000000000000000000000000000000031",
+      "gasUsed": 100049,
+      "hash": "0x0000000000000000000000000000000000000000000000000000000000000031",
+      "status": 1
+    },
+    {
+      "chainId": 11155111,
+      "creates": null,
+      "gasUsed": 100050,
+      "hash": "0x0000000000000000000000000000000000000000000000000000000000000032",
+      "status": 1
+    },
+    {
+      "chainId": 11155111,
+      "creates": null,
+      "gasUsed": 100051,
+      "hash": "0x0000000000000000000000000000000000000000000000000000000000000033",
+      "status": 1
+    },
+    {
+      "chainId": 11155111,
+      "creates": null,
+      "gasUsed": 100052,
+      "hash": "0x0000000000000000000000000000000000000000000000000000000000000034",
+      "status": 1
+    },
+    {
+      "chainId": 11155111,
+      "creates": null,
+      "gasUsed": 100053,
+      "hash": "0x0000000000000000000000000000000000000000000000000000000000000035",
+      "status": 1
+    },
+    {
+      "chainId": 11155111,
+      "creates": null,
+      "gasUsed": 100054,
+      "hash": "0x0000000000000000000000000000000000000000000000000000000000000036",
+      "status": 1
+    },
+    {
+      "chainId": 11155111,
+      "creates": null,
+      "gasUsed": 100055,
+      "hash": "0x0000000000000000000000000000000000000000000000000000000000000037",
+      "status": 1
+    },
+    {
+      "chainId": 11155111,
+      "creates": null,
+      "gasUsed": 100056,
+      "hash": "0x0000000000000000000000000000000000000000000000000000000000000038",
+      "status": 1
+    },
+    {
+      "chainId": 11155111,
+      "creates": null,
+      "gasUsed": 100057,
+      "hash": "0x0000000000000000000000000000000000000000000000000000000000000039",
+      "status": 1
+    },
+    {
+      "chainId": 11155111,
+      "creates": null,
+      "gasUsed": 100058,
+      "hash": "0x000000000000000000000000000000000000000000000000000000000000003a",
+      "status": 1
+    },
+    {
+      "chainId": 11155111,
+      "creates": null,
+      "gasUsed": 100059,
+      "hash": "0x000000000000000000000000000000000000000000000000000000000000003b",
+      "status": 1
+    },
+    {
+      "chainId": 11155111,
+      "creates": null,
+      "gasUsed": 100060,
+      "hash": "0x000000000000000000000000000000000000000000000000000000000000003c",
+      "status": 1
+    },
+    {
+      "chainId": 11155111,
+      "creates": null,
+      "gasUsed": 100061,
+      "hash": "0x000000000000000000000000000000000000000000000000000000000000003d",
+      "status": 1
+    },
+    {
+      "chainId": 11155111,
+      "creates": null,
+      "gasUsed": 100062,
+      "hash": "0x000000000000000000000000000000000000000000000000000000000000003e",
+      "status": 1
+    },
+    {
+      "chainId": 11155111,
+      "creates": null,
+      "gasUsed": 100063,
+      "hash": "0x000000000000000000000000000000000000000000000000000000000000003f",
+      "status": 1
+    }
+  ],
+  "verificationStatus": "VERIFIED_49_OF_49_RECONCILED_FROM_NEWER_REPORTS",
+  "verificationSummary": {
+    "etherscanV2": "49/49",
+    "independentCheck": "49 verified, 0 failed"
+  }
+}
