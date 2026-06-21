@@ -75,15 +75,24 @@ def fork_report():
  existing=read(PRE/'fork-rehearsal.json')
  if existing_fork_valid_for_reuse(existing): return existing
  url=os.environ.get('MAINNET_FORK_RPC_URL')
- if not url:
-  r={'schemaVersion':'1.0','executionMode':'NOT_RUN','status':'NOT_RUN','failureReason':'MAINNET_FORK_RPC_URL is required; public RPC reads and fallback block/hash constants are not evidence.','mainnetBroadcastOccurred':False}
+ secondary_url=os.environ.get('MAINNET_FORK_RPC_URL_SECONDARY')
+ if not url or not secondary_url:
+  missing=[name for name,value in [('MAINNET_FORK_RPC_URL',url),('MAINNET_FORK_RPC_URL_SECONDARY',secondary_url)] if not value]
+  r={'schemaVersion':'1.0','executionMode':'NOT_RUN','status':'NOT_RUN','failureReason':', '.join(missing)+' required; public RPC reads and fallback block/hash constants are not evidence.','mainnetBroadcastOccurred':False}
   write(PRE/'fork-rehearsal.json',r); return r
  chain=int(rpc_call(url,'eth_chainId'),16)
+ secondary_chain=int(rpc_call(secondary_url,'eth_chainId'),16)
  if chain!=1: raise SystemExit('MAINNET_FORK_RPC_URL must report chainId 1')
+ if secondary_chain!=1: raise SystemExit('MAINNET_FORK_RPC_URL_SECONDARY must report chainId 1')
  latest=rpc_call(url,'eth_getBlockByNumber',['latest',False]); block=int(latest['number'],16); bh=latest['hash']
+ secondary_block=rpc_call(secondary_url,'eth_getBlockByNumber',[hex(block),False])
+ if not secondary_block or secondary_block.get('hash')!=bh or secondary_block.get('timestamp')!=latest.get('timestamp'):
+  raise SystemExit('MAINNET_FORK_RPC_URL_SECONDARY disagrees with primary pinned block hash/timestamp')
  code=rpc_call(url,'eth_getCode',[AGI,hex(block)])
  if not code or code=='0x': raise SystemExit('canonical AGIALPHA code missing at pinned block')
- r={'schemaVersion':'1.0','executionMode':'MAINNET_FORK','upstreamChainId':1,'localChainId':31337,'forkBlockNumber':block,'forkBlockHash':bh,'rpcIdentityCommitment':hobj({'urlHostRedacted':True,'chainId':1,'block':block,'hash':bh}),'canonicalAgialphaAddress':AGI,'canonicalAgialphaCodeHash':'0x'+hashlib.sha256(bytes.fromhex(code[2:])).hexdigest(),'releaseIdentity':release_identity(),'deployedTopologyCount':0,'scenarioResults':[],'mainnetBroadcastOccurred':False,'status':'NOT_RUN','failureReason':'RPC and block pin succeeded, but fork deployment/campaign execution evidence has not been produced by this wrapper.'}
+ secondary_code=rpc_call(secondary_url,'eth_getCode',[AGI,hex(block)])
+ if secondary_code.lower()!=code.lower(): raise SystemExit('MAINNET_FORK_RPC_URL_SECONDARY disagrees with primary canonical AGIALPHA runtime code')
+ r={'schemaVersion':'1.0','executionMode':'MAINNET_FORK','upstreamChainId':1,'localChainId':31337,'forkBlockNumber':block,'forkBlockHash':bh,'forkBlockTimestamp':int(latest['timestamp'],16),'primaryProviderCommitment':hobj({'urlHostRedacted':True,'chainId':1,'block':block,'hash':bh}),'secondaryProviderCommitment':hobj({'urlHostRedacted':True,'chainId':1,'block':block,'hash':secondary_block.get('hash')}),'providerAgreement':True,'canonicalAgialphaAddress':AGI,'upstreamCanonicalAgialphaCodeHash':'0x'+hashlib.sha256(bytes.fromhex(code[2:])).hexdigest(),'localForkCanonicalAgialphaCodeHash':None,'canonicalAgialphaCodeHash':'0x'+hashlib.sha256(bytes.fromhex(code[2:])).hexdigest(),'releaseIdentity':release_identity(),'deployedTopologyCount':0,'scenarioResults':[],'mainnetBroadcastOccurred':False,'status':'NOT_RUN','failureReason':'Dual-RPC block pin succeeded, but fork deployment/campaign execution evidence has not been produced by this wrapper.'}
  write(PRE/'fork-rehearsal.json',r); return r
 
 def evidence_ref(path): return {'path':str(path.relative_to(ROOT)) if isinstance(path,pathlib.Path) else path,'sha256':sha(path)}
