@@ -1,5 +1,23 @@
 {
   "category": "overrides",
+  "claimBoundary": "Local executable Phase A category evidence only; does not satisfy protected exact-release Mainnet-fork or Sepolia predicates.",
+  "commands": [
+    {
+      "command": "/root/.pyenv/versions/3.12.13/bin/python scripts/mainnet_operational_readiness.py",
+      "exitCode": 0,
+      "output": ""
+    },
+    {
+      "command": "npm run compile:ci",
+      "exitCode": 0,
+      "output": "npm warn Unknown env config \"http-proxy\". This will stop working in the next major version of npm.\n\n> goalos-agialpha-ascension@4.4.0 compile:ci\n> npm run compile:deterministic\n\nnpm warn Unknown env config \"http-proxy\". This will stop working in the next major version of npm.\n\n> goalos-agialpha-ascension@4.4.0 compile:deterministic\n> node scripts/compile-deterministic.js\n\nDeterministic Solidity compile using local solc-js 0.8.28+commit.7893614a.Emscripten.clang (package solc 0.8.28).\nDirect solc-js compile passed with 0 project warnings and 0 fatal errors. Suppressed upstream dependency warnings: 0.\nGenerated Hardhat-compatible artifacts from direct solc output.\ncompile:deterministic completed without Hardhat compiler download.\n"
+    },
+    {
+      "command": "npx hardhat test --no-compile test/businessControls.test.ts",
+      "exitCode": 0,
+      "output": "npm warn Unknown env config \"http-proxy\". This will stop working in the next major version of npm.\n\n\n  GoalOS business override, accounting, and lifecycle controls\n    \u2714 tracks protected job liability and resolves through typed owner override (1356ms)\n    \u2714 rejects zero override evidence commitments (112ms)\n    \u2714 enforces finite lifecycle transitions and shutdown liability proof (45ms)\n\n\n  3 passing (2s)\n\n"
+    }
+  ],
   "evidence": [
     "qa/business-override-matrix.json"
   ],

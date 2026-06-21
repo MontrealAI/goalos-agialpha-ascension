@@ -22,8 +22,20 @@ def verify():
     return sh(['npm','run','authority:verify'])
 
 def status(name):
-    # Phase A status commands are evidence builders only; release PASS remains impossible without Phase B fork evidence.
-    subprocess.run([sys.executable,'scripts/mainnet_operational_readiness.py'],cwd=ROOT,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,text=True)
+    # Phase A status commands are evidence builders only; release PASS remains
+    # impossible without Phase B protected fork/Sepolia evidence.  They must not
+    # be simple aliases to static JSON, so each category executes the relevant
+    # local tests and regenerates the compiler/source-derived inventories before
+    # reporting.
+    inventory_cmd=[sys.executable,'scripts/mainnet_operational_readiness.py']
+    inventory_result=sh(inventory_cmd)
+    category_tests={
+      'accounting': [['npm','run','compile:ci'], ['npx','hardhat','test','--no-compile','test/businessControls.test.ts']],
+      'lifecycle': [['npm','run','compile:ci'], ['npx','hardhat','test','--no-compile','test/businessControls.test.ts']],
+      'overrides': [['npm','run','compile:ci'], ['npx','hardhat','test','--no-compile','test/businessControls.test.ts']],
+      'security': [[sys.executable,'scripts/audit/fail-on-critical-findings.py']],
+    }
+    test_results=[sh(cmd) for cmd in category_tests.get(name,[])]
     mapping={
       'accounting': ['qa/funds-and-liabilities-inventory.json'],
       'lifecycle': ['qa/lifecycle-selector-policy.json'],
@@ -32,9 +44,11 @@ def status(name):
     }
     evidence=mapping.get(name,[])
     missing=[p for p in evidence if not (ROOT/p).exists()]
-    obj={'schemaVersion':'1.0','phase':'PHASE_A','status':'PHASE_A_LOCAL_PASS' if not missing else 'PHASE_A_FAIL','category':name,'evidence':evidence,'missing':missing,'releaseStatus':'RELEASE_EVIDENCE_NOT_EXECUTED','mainnetBroadcastOccurred':False}
+    failed=[r for r in [inventory_result]+test_results if r['exitCode']!=0]
+    ok=not missing and not failed
+    obj={'schemaVersion':'1.0','phase':'PHASE_A','status':'PHASE_A_LOCAL_PASS' if ok else 'PHASE_A_FAIL','category':name,'evidence':evidence,'missing':missing,'commands':[inventory_result]+test_results,'releaseStatus':'RELEASE_EVIDENCE_NOT_EXECUTED','claimBoundary':'Local executable Phase A category evidence only; does not satisfy protected exact-release Mainnet-fork or Sepolia predicates.','mainnetBroadcastOccurred':False}
     write(PR/f'{name}-status.json',obj)
-    print(json.dumps(obj,indent=2)); return 0 if not missing else 2
+    print(json.dumps(obj,indent=2)); return 0 if ok else 2
 
 def differential():
     obj={'schemaVersion':'1.0','status':'PHASE_A_LOCAL_PASS','model':'executable-reference-smoke','checks':['no duplicate consumption in model','settlement requires proof state','owner exception distinct from ordinary result'],'releaseStatus':'RELEASE_EVIDENCE_NOT_EXECUTED','claimBoundary':'Executable model is a bounded local smoke artifact; release differential campaign evidence is still required for protected release.'}
