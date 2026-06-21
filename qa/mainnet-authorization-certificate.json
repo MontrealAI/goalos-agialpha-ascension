@@ -1,13 +1,13 @@
 {
   "schemaVersion": "1.0",
-  "generatedAt": "2026-06-21T02:28:22.730460+00:00",
+  "generatedAt": "2026-06-21T02:38:50.588676+00:00",
   "generatedBy": "scripts/generate-mainnet-authorization-certificate.py",
   "repository": "MontrealAI/goalos-agialpha-ascension",
-  "commit": "02c8129e46610e34b78e8be278504d69770c874c",
-  "sourceCommit": "02c8129e46610e34b78e8be278504d69770c874c",
+  "commit": "e87bfe13a38af2050d4796bc5e59ebd532930e1e",
+  "sourceCommit": "e87bfe13a38af2050d4796bc5e59ebd532930e1e",
   "branch": "work",
   "sourceBranch": "work",
-  "currentHeadAtGeneration": "02c8129e46610e34b78e8be278504d69770c874c",
+  "currentHeadAtGeneration": "e87bfe13a38af2050d4796bc5e59ebd532930e1e",
   "gitValidationMode": "GIT_CHECKOUT",
   "evidenceHashesFreshForCurrentCheckout": true,
   "sourceCommitIsAncestorOfCurrentHead": true,
@@ -171,5 +171,5 @@
   ],
   "warnings": [],
   "nextAction": "B. Blocked, with exact blockers.",
-  "certificateHash": "0x37de0b1a428e52c8f0b8f9addce2375b8840cbaf6f2bb172ee9e8fe7e379dacd"
+  "certificateHash": "0x09569155ea023d39fb815cc09e3b68cdb33a2b973875574fd55f6355a6ea70c0"
 }
