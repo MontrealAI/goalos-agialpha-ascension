@@ -41,9 +41,19 @@ def differential():
     write(PR/'differential-report.json',obj); print(json.dumps(obj,indent=2)); return 0
 
 def mutation():
+    # Fail closed unless a real mutation campaign artifact exists. Do not count
+    # mutants as executed or killed from a probe/sentinel.
     mutants=['authorization','ownership-transfer','accounting-increment','accounting-decrement','double-settlement','reservation-canary-bypass','protected-fund-withdrawal','lifecycle-bypass','wrong-chain-token','incomplete-safe-hashing','hard-coded-pass','certificate-binding','fail-open-audit-parsing']
-    obj={'schemaVersion':'1.0','status':'BLOCKED','profile':'smoke','criticalMutants':mutants,'killed':0,'survived':None,'killRate':None,'releaseThresholdNotClaimed':True,'releaseStatus':'RELEASE_EVIDENCE_NOT_EXECUTED','blockers':['Critical mutation entries are not backed by deterministic mutant execution evidence; no kill rate is claimed.']}
-    write(PR/'critical-mutation-smoke.json',obj); print(json.dumps(obj,indent=2)); return 2
+    artifact=PR/'critical-mutation-release.json'
+    release=None
+    if artifact.exists():
+        try:
+            release=json.loads(artifact.read_text())
+        except Exception as exc:
+            release={'parseError':str(exc)}
+    ok=bool(release and release.get('status')=='PASS' and release.get('executedMutants')==len(mutants) and release.get('survived')==0 and release.get('invalidOrNotRun')==0 and release.get('killRate')==1.0)
+    obj={'schemaVersion':'1.0','status':'PHASE_A_LOCAL_PASS' if ok else 'BLOCKED','profile':'critical-release-required','criticalMutants':mutants,'requiredMutants':len(mutants),'executedMutants':release.get('executedMutants') if isinstance(release,dict) else 0,'killed':release.get('killed') if isinstance(release,dict) else 0,'survived':release.get('survived') if isinstance(release,dict) else None,'invalidOrNotRun':release.get('invalidOrNotRun') if isinstance(release,dict) else len(mutants),'killRate':release.get('killRate') if isinstance(release,dict) else None,'releaseStatus':'RELEASE_EVIDENCE_NOT_EXECUTED' if not artifact.exists() else 'RELEASE_EVIDENCE_EVALUATED','releaseEvidence':str(artifact.relative_to(ROOT)),'blockers':[] if ok else ['Critical mutation release artifact is missing, malformed, incomplete, or not PASS; no mutants are counted as killed without execution evidence.']}
+    write(PR/'critical-mutation-smoke.json',obj); print(json.dumps(obj,indent=2)); return 0 if ok else 2
 
 def invariants(release=False):
     seeds=list(range(1,33 if release else 5))

@@ -2,7 +2,7 @@
   "status": "NO",
   "ETHEREUM_MAINNET_AUTHORIZED": "NO",
   "ethereumMainnetAuthorized": "NO",
-  "commit": "4d19e8708f194c3d1ce4b13581a147c284c81776",
+  "commit": "2655548fb5f5bfcccf7f0ab46fda45eec71549bd",
   "chain": "ethereum",
   "chainId": 1,
   "agialphaToken": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
@@ -19,7 +19,7 @@
     },
     "compilerAlignment": {
       "path": "qa/compiler-alignment.json",
-      "sha256": "0x6e26d461a64eb5f6a79a408d14d58b58ddb426f67d9b03b17c486048794ff865"
+      "sha256": "0xc9f87e01b42cba0a9b0fcaf2513e400ee44e8dd3f2182705371500a0b4ce90db"
     },
     "compile": {
       "path": "scripts/compile-deterministic.js",
@@ -27,7 +27,7 @@
     },
     "tests": {
       "path": "test",
-      "sha256": "0x4fc11950077e855c74da70088e250f337fd5934061aa7922f60fd37d52407fc0"
+      "sha256": "0x89821e26c57e9fcd1e33aad6159df0782d17fb8860bf9f553feaf047d10139db"
     },
     "testAll": {
       "path": "test/invariants/mainnetBoundary.invariant.test.ts",
@@ -43,7 +43,7 @@
     },
     "noPrivateOperatorData": {
       "path": "scripts/no_private_operator_data_check.py",
-      "sha256": "0x09c87c2e49bd215fc8e061398bb94b64702e77184366030fe870e24cfebc805c"
+      "sha256": "0x603e3971f72f450681366f60e85d0d9dbd4b864c059baf3518753d7fb9b733b2"
     },
     "noPaidProducts": {
       "path": "scripts/no_paid_products_check.py",
@@ -99,7 +99,7 @@
     },
     "packageScripts": {
       "path": "package.json",
-      "sha256": "0x118001158747ff476b499bccf2d8b8977bcbbb8f7e50c2735dac9b257d649f55"
+      "sha256": "0x37a197e6a62048d190032689effe407db8aba53a27fbb9bace63a943dd0ec11b"
     },
     "branchProtectionOrRiskAcceptance": {
       "path": "qa/public-branch-protection-evidence.json",
@@ -119,11 +119,11 @@
     },
     "fiveGateProductionReadiness": {
       "path": "qa/mainnet-readiness/production-readiness.json",
-      "sha256": "0xbf7647be1c48cb6464953a3df542889587ad001de44c83bb9f55e6ba82ce3159"
+      "sha256": "0xc8757fb0f2f897e2a597539314741690857c1e56c69ca1b47e4dd6e7383c5510"
     },
     "fiveGateAuthorizationCertificate": {
       "path": "qa/mainnet-readiness/authorization-certificate.json",
-      "sha256": "0xb6fef97d0afddf3c36a6b85a58a2cb0929134e21f3605d88897294500cad1864"
+      "sha256": "0xa61e7725edad33292310bad37d154c827ecc5db7875098f0819bfe10ebc035bd"
     }
   },
   "blockers": [
@@ -136,7 +136,7 @@
     "Five-gate authorization certificate status is not PASS/AUTHORIZED.",
     "Five-gate authorization certificate is not AUTHORIZED."
   ],
-  "generatedAt": "2026-06-20T04:01:08.970623+00:00",
+  "generatedAt": "2026-06-21T00:41:48.282615+00:00",
   "generatedBy": "scripts/generate-public-status-docs.py",
   "finalManualDeploymentCommand": null
 }

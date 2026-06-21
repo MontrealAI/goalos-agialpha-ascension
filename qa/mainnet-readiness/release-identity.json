@@ -2,11 +2,11 @@
   "branch": "work",
   "commit": "RESOLVED_BY_GIT_CHECKOUT_AT_VALIDATION",
   "commitBindingMode": "self-referential committed evidence uses sourceTreeHash; validators resolve the current git commit at runtime",
-  "dependencyLockHash": "981e04b39af29bc04dae677e1d9a98b9e0dc5f8a5995db99d8debd23eb02a709",
+  "dependencyLockHash": "9739ecf251762c3828813424f8e7d0d3b291611125cf5eafb31fc32479a3f514",
   "liveCanaryComplete": "NO",
   "liveOwnerHandoffComplete": "NO",
   "mainnetDeployed": "NO",
   "mainnetVerified": "NO",
   "schemaVersion": "1.0",
-  "sourceTreeHash": "9fba6de863a5a4868f31f2ab6f72ac34f1845d4aa07711ab5ad17260d345da1c"
+  "sourceTreeHash": "120a41ede6e6d7f12548e131eddf26cb7d19bd7e101b77996ec21bcd33e7f048"
 }

@@ -1,5 +1,7 @@
 {
-  "claimBoundary": "Curated mutants are a bounded local Phase A smoke set; protected release must execute deterministic mutant evidence.",
+  "blockers": [
+    "Critical mutation release artifact is missing, malformed, incomplete, or not PASS; no mutants are counted as killed without execution evidence."
+  ],
   "criticalMutants": [
     "authorization",
     "ownership-transfer",
@@ -15,12 +17,15 @@
     "certificate-binding",
     "fail-open-audit-parsing"
   ],
-  "killRate": "100%",
-  "killed": 13,
-  "profile": "smoke",
+  "executedMutants": 0,
+  "invalidOrNotRun": 13,
+  "killRate": null,
+  "killed": 0,
+  "profile": "critical-release-required",
+  "releaseEvidence": "qa/pr-readiness/critical-mutation-release.json",
   "releaseStatus": "RELEASE_EVIDENCE_NOT_EXECUTED",
-  "releaseThresholdNotClaimed": true,
+  "requiredMutants": 13,
   "schemaVersion": "1.0",
-  "status": "PHASE_A_LOCAL_PASS",
-  "survived": 0
+  "status": "BLOCKED",
+  "survived": null
 }
