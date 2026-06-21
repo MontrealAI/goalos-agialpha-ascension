@@ -1,0 +1,15 @@
+{
+  "gate1": "PASS_AFTER_LIVE_AUTHORITY_READBACK",
+  "gate2": "NOT_PROVEN_BY_DEPLOYMENT_ONLY",
+  "gate3": "NOT_PROVEN_BY_DEPLOYMENT_ONLY",
+  "gate4": "NOT_PROVEN_BY_DEPLOYMENT_ONLY",
+  "gate5": {
+    "blanketPass": "NO",
+    "deploymentTopology": "CONTRIBUTES"
+  },
+  "productionActivated": false,
+  "stageA": {
+    "STAGE_A_CERTIFICATE_USED": "NO",
+    "STAGE_A_HISTORICAL_RESULT_PRESERVED": "YES"
+  }
+}

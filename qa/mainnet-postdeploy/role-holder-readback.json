@@ -3,14 +3,11 @@
   "chainId": 1,
   "claimBoundary": "No Mainnet transaction is broadcast by this read-only tool.",
   "contractCount": 48,
-  "deploymentPath": "DIRECT_OPERATOR_NO_CERTIFICATE",
   "generatedAt": "2026-06-21T21:20:00Z",
-  "predeploymentCertificateUsed": false,
-  "productionActivated": false,
   "sourceManifest": "/workspace/goalos-agialpha-ascension/deployments/ethereum-mainnet.agialpha.latest.json",
   "sourceManifestSha256": "c0a70445b9bdc87c438d11a233fb77af30708807310fea9002c97a83e0154c9b",
-  "status": "BLOCKED_UNTIL_READ_ONLY_LIVE_EVIDENCE_PASSES",
-  "tool": "mainnet:live:certificate",
+  "status": "REQUIRES_LIVE_RPC_VALIDATION",
+  "tool": "mainnet:live:roles",
   "walletA": "0x6c8B8897Fb6b08B4070387233B89b3E9A94eD00E",
   "walletB": "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
 }

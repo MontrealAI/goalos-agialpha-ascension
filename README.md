@@ -11,22 +11,31 @@ Start:
 [![Mainnet Authorization Gate](https://github.com/MontrealAI/goalos-agialpha-ascension/actions/workflows/mainnet-authorization-gate.yml/badge.svg)](https://github.com/MontrealAI/goalos-agialpha-ascension/actions/workflows/mainnet-authorization-gate.yml)
 [![Solidity Audit Toolchain](https://github.com/MontrealAI/goalos-agialpha-ascension/actions/workflows/solidity-audit-toolchain.yml/badge.svg)](https://github.com/MontrealAI/goalos-agialpha-ascension/actions/workflows/solidity-audit-toolchain.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![Solidity 0.8.35](https://img.shields.io/badge/Solidity-0.8.35-363636?logo=solidity)](package.json)
+[![Solidity 0.8.28](https://img.shields.io/badge/Solidity-0.8.28-363636?logo=solidity)](package.json)
 [![Hardhat 2.28.6](https://img.shields.io/badge/Hardhat-2.28.6-f5d061?logo=ethereum)](package.json)
 [![TypeScript 5.9.3](https://img.shields.io/badge/TypeScript-5.9.3-3178c6?logo=typescript&logoColor=white)](package.json)
 [![Mainnet Authorized](https://img.shields.io/badge/Ethereum%20Mainnet%20Authorized-NO-critical)](qa/mainnet-authorization-certificate.json)
 [![Mainnet Deployed](https://img.shields.io/badge/Ethereum%20Mainnet%20Deployed-YES-success)](qa/mainnet-release-state.json)
 
-GoalOS AGIALPHA Ascension v4.4.0 mainnet authorization candidate.
+GoalOS AGIALPHA Ascension v4.4.0 Mainnet release-state summary.
 Automated/internal security toolchain: passed.
 Local deterministic rehearsal: passed.
 Local Evidence Docket: generated.
 Public AGIALPHA token verification: passed / governance-accepted.
 Not externally audited.
+Historical predeployment authorization used: NO — DIRECT_OPERATOR_NO_CERTIFICATE.
 Ethereum Mainnet technical readiness: NO.
 Ethereum Mainnet deployment authorization: NO.
 Ethereum Mainnet authorization: NO.
 Ethereum Mainnet deployed: YES.
+GoalOS contracts deployed: 48.
+GoalOS contracts Etherscan-verified: 48/48 after independent read-only validation.
+Canonical external AGIALPHA: confirmed.
+Mainnet configured: YES.
+Permanent authority: Wallet B / Ledger genesis authority assignment.
+Wallet A managed roles: 0.
+Phase-B grants: 14/14.
+Production activated: NO.
 
 Three-stage Mainnet release status:
 
@@ -39,7 +48,7 @@ Three-stage Mainnet release status:
 
 A pre-broadcast state with predeployment authorization YES and Ethereum Mainnet deployed NO is a GO to deploy, not a contradiction. Stage B evaluates chain-1 receipts, bytecode, verification, and ownership/role readback only after human broadcast. Stage C separately governs bounded live canary, monitoring, reconciliation, Ledger activation, and production reliance.
 
-This means the repository package is not currently authorized for manual gated Ethereum Mainnet deployment. Resolve the certificate blockers, regenerate the certificate, and rerun the public checks before any mainnet deployment attempt. Actual deployment still requires a runtime RPC URL and deployer key outside GitHub.
+The historical Stage-A predeployment certificate was not used for this deployment path. The repository now records a direct operator Mainnet deployment and postdeployment evidence separately from Stage-C production activation.
 
 It does not claim external audit completion, legal approval, tax review, guaranteed security, guaranteed token classification, investment return, yield, price target, revenue share, or production deployment.
 
@@ -132,6 +141,6 @@ RSI means proof-backed upgrade rights. An artifact may influence future work onl
 
 Claim boundary: this paper does not claim achieved AGI, ASI, superintelligence, autonomous sovereignty, guaranteed ROI, safety certification, legal approval, tax approval, security approval, energy abundance, or Kardashev Type II achievement.
 
-## Ownership handoff
+## Genesis authority assignment and ownership handoff
 
-GoalOS deployments require ERC-173 ownership handoff before being considered operationally complete. See `docs/OWNERSHIP_HANDOFF_RUNBOOK.md` and use `npm run ownership:sepolia:doctor|plan|dry-run|transfer|verify|evidence` or `npm run ownership:mainnet:doctor|plan|fork-rehearsal|transfer-local-gated|accept-local-gated|verify|evidence`. Mainnet single-deployer permanent-address mode is blocked. For delayed acceptance, run `ownership:mainnet:accept-local-gated` only after the contract readback says: Wait until pendingOwnerAcceptAfter.
+The 2026-06-21 direct Mainnet deployment records Wallet B / Ledger as the permanent authority through genesis authority assignment where applicable. Future GoalOS deployments require ERC-173 ownership handoff before being considered operationally complete. See `docs/OWNERSHIP_HANDOFF_RUNBOOK.md` and use `npm run ownership:sepolia:doctor|plan|dry-run|transfer|verify|evidence` or `npm run ownership:mainnet:doctor|plan|fork-rehearsal|transfer-local-gated|accept-local-gated|verify|evidence`. Mainnet single-deployer permanent-address mode is blocked. For delayed acceptance, run `ownership:mainnet:accept-local-gated` only after the contract readback says: Wait until pendingOwnerAcceptAfter.

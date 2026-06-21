@@ -1,0 +1,7 @@
+{
+  "managedRoleCount": 0,
+  "nonRoleAuthority": "PARTIAL_READBACK_REQUIRED",
+  "status": "PARTIAL_NON_ROLE_AUTHORITY_COVERAGE_EXPLICIT",
+  "walletA": "0x6c8B8897Fb6b08B4070387233B89b3E9A94eD00E",
+  "walletAZeroPermanentAuthority": "NOT_ASSERTED_UNTIL_NON_ROLE_INVENTORY_COMPLETE"
+}

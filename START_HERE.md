@@ -15,16 +15,25 @@ GoalOS AGIALPHA Ascension is a GoalOS-native reimplementation of α‑AGI Ascens
 ## Correct current label
 
 ```text
-GoalOS AGIALPHA Ascension v4.4.0 mainnet authorization candidate.
+GoalOS AGIALPHA Ascension v4.4.0 Mainnet release-state summary.
 Automated/internal security toolchain: passed.
 Local deterministic rehearsal: passed.
 Local Evidence Docket: generated.
 Public AGIALPHA token verification: passed / governance-accepted.
 Not externally audited.
+Historical predeployment authorization used: NO — DIRECT_OPERATOR_NO_CERTIFICATE.
 Ethereum Mainnet technical readiness: NO.
 Ethereum Mainnet deployment authorization: NO.
 Ethereum Mainnet authorization: NO.
 Ethereum Mainnet deployed: YES.
+GoalOS contracts deployed: 48.
+GoalOS contracts Etherscan-verified: 48/48 after independent read-only validation.
+Canonical external AGIALPHA: confirmed.
+Mainnet configured: YES.
+Permanent authority: Wallet B / Ledger genesis authority assignment.
+Wallet A managed roles: 0.
+Phase-B grants: 14/14.
+Production activated: NO.
 
 Three-stage Mainnet release status:
 
@@ -40,7 +49,7 @@ A pre-broadcast state with predeployment authorization YES and Ethereum Mainnet 
 
 ## What this means
 
-The repository package is not currently authorized for manual gated Ethereum Mainnet deployment. Resolve the certificate blockers, regenerate the certificate, and rerun the public checks before any mainnet deployment attempt. Actual deployment still requires a runtime RPC URL and deployer key outside GitHub.
+The historical Stage-A predeployment certificate was not used for this deployment path. The repository now records a direct operator Mainnet deployment and postdeployment evidence separately from Stage-C production activation.
 
 The active source of truth is `qa/mainnet-authorization-certificate.json`. README and status documents are generated summaries; they cannot create authorization independently.
 

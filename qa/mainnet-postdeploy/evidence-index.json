@@ -1,0 +1,43 @@
+{
+  "artifacts": [
+    {
+      "path": "qa/mainnet-postdeploy/deployment-receipts.json",
+      "sha256": "98787fbbdba0996e794ef929004fb1680e0a6455f7d9ee59565e6ca04b068325"
+    },
+    {
+      "path": "qa/mainnet-postdeploy/runtime-bytecode-report.json",
+      "sha256": "e50b66bd536dac24647acae4a7cd9b8c03658981811fdf172d686cf460cb425c"
+    },
+    {
+      "path": "qa/mainnet-postdeploy/etherscan-v2-independent-check.json",
+      "sha256": "a83b62347aa8ba9315feff26acfb19d50429f362d22c7850911dda34581eee23"
+    },
+    {
+      "path": "qa/mainnet-postdeploy/authority-readback.json",
+      "sha256": "3c02dde14307cf7c736d193806837b883a40dbf63fb7d1851b2f087052567570"
+    },
+    {
+      "path": "qa/mainnet-postdeploy/role-holder-readback.json",
+      "sha256": "354183c1ef7958144a8c371fcd9c699c9438908b180f3805e348de9f4671c01d"
+    },
+    {
+      "path": "qa/mainnet-postdeploy/non-role-authority-readback.json",
+      "sha256": "6cbd91ba74cf8153ea71c3258250aacdb35bb99aa5e4ba8ed2e096686e017d5b"
+    },
+    {
+      "path": "qa/mainnet-postdeploy/phase-b-grants-readback.json",
+      "sha256": "253edcdeb5c43a41c207b7c83c3f5c981d16bb16a0577b0094095ef098d6cd40"
+    },
+    {
+      "path": "qa/mainnet-postdeploy/configuration-reconciliation.json",
+      "sha256": "7e6a1f6f1f7ee053181f12c209b39baac09c395ecf872ceee37b3c62fdd9dbab"
+    },
+    {
+      "path": "qa/mainnet-postdeploy/deployment-verification-certificate.json",
+      "sha256": "ae35c073ac814e855e5c7d57e4be730fa86767e639c95b80f41567942f2658f0"
+    }
+  ],
+  "claimBoundary": "Artifacts created by mainnet:live:* are read-only evidence records; favorable claims remain bounded by each artifact status.",
+  "generatedAt": "2026-06-21T21:19:51Z",
+  "status": "INDEXED_READ_ONLY_ARTIFACTS"
+}

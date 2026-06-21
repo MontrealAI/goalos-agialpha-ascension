@@ -396,7 +396,19 @@
     "mainnet:direct:revalidate": "python scripts/mainnet_live/postdeploy_assurance.py mainnet:revalidate",
     "mainnet:direct:reconcile-configuration": "python scripts/mainnet_live/postdeploy_assurance.py mainnet:direct:reconcile-configuration",
     "mainnet:direct:verify": "python scripts/mainnet_live/postdeploy_assurance.py mainnet:verify",
-    "mainnet:direct:postcheck": "python scripts/mainnet_live/postdeploy_assurance.py mainnet:authority-readback"
+    "mainnet:direct:postcheck": "python scripts/mainnet_live/postdeploy_assurance.py mainnet:authority-readback",
+    "mainnet:live:doctor": "python scripts/mainnet_live/live_mainnet_tools.py mainnet:live:doctor",
+    "mainnet:live:import-seed": "python scripts/mainnet_live/live_mainnet_tools.py mainnet:live:import-seed",
+    "mainnet:live:verification": "python scripts/mainnet_live/live_mainnet_tools.py mainnet:live:verification",
+    "mainnet:live:authority": "python scripts/mainnet_live/live_mainnet_tools.py mainnet:live:authority",
+    "mainnet:live:roles": "python scripts/mainnet_live/live_mainnet_tools.py mainnet:live:roles",
+    "mainnet:live:non-role-authority": "python scripts/mainnet_live/live_mainnet_tools.py mainnet:live:non-role-authority",
+    "mainnet:live:phase-b": "python scripts/mainnet_live/live_mainnet_tools.py mainnet:live:phase-b",
+    "mainnet:live:fork": "python scripts/mainnet_live/live_mainnet_tools.py mainnet:live:fork",
+    "mainnet:live:fork:gate2": "python scripts/mainnet_live/live_mainnet_tools.py mainnet:live:fork:gate2",
+    "mainnet:live:fork:gate3": "python scripts/mainnet_live/live_mainnet_tools.py mainnet:live:fork:gate3",
+    "mainnet:live:fork:gate4": "python scripts/mainnet_live/live_mainnet_tools.py mainnet:live:fork:gate4",
+    "mainnet:live:fork:gates": "python scripts/mainnet_live/live_mainnet_tools.py mainnet:live:fork:gates"
   },
   "dependencies": {
     "@openzeppelin/contracts": "4.9.6",

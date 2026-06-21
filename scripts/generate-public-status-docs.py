@@ -27,17 +27,26 @@ if release_state_path.exists():
         postdeployment_status='NO'
 else:
     postdeployment_status='NO'
-authorization_meaning = 'This means the repository package is authorized for manual gated Ethereum Mainnet deployment. It does not mean Ethereum Mainnet deployment has occurred. Actual deployment still requires a runtime RPC URL and deployer key outside GitHub.' if (tech == 'YES' and dep == 'YES' and eth == 'YES') else 'This means the repository package is not currently authorized for manual gated Ethereum Mainnet deployment. Resolve the certificate blockers, regenerate the certificate, and rerun the public checks before any mainnet deployment attempt. Actual deployment still requires a runtime RPC URL and deployer key outside GitHub.'
-status_label=f"""GoalOS AGIALPHA Ascension v4.4.0 mainnet authorization candidate.
+authorization_meaning = 'The historical Stage-A predeployment certificate was not used for this deployment path. The repository now records a direct operator Mainnet deployment and postdeployment evidence separately from Stage-C production activation.' if deployed == 'YES' else ('This means the repository package is authorized for manual gated Ethereum Mainnet deployment. It does not mean Ethereum Mainnet deployment has occurred. Actual deployment still requires a runtime RPC URL and deployer key outside GitHub.' if (tech == 'YES' and dep == 'YES' and eth == 'YES') else 'This means the repository package is not currently authorized for manual gated Ethereum Mainnet deployment. Resolve the certificate blockers, regenerate the certificate, and rerun the public checks before any mainnet deployment attempt. Actual deployment still requires a runtime RPC URL and deployer key outside GitHub.')
+status_label=f"""GoalOS AGIALPHA Ascension v4.4.0 Mainnet release-state summary.
 Automated/internal security toolchain: passed.
 Local deterministic rehearsal: passed.
 Local Evidence Docket: generated.
 Public AGIALPHA token verification: passed / governance-accepted.
 Not externally audited.
+Historical predeployment authorization used: NO — DIRECT_OPERATOR_NO_CERTIFICATE.
 Ethereum Mainnet technical readiness: {tech}.
 Ethereum Mainnet deployment authorization: {dep}.
 Ethereum Mainnet authorization: {eth}.
 Ethereum Mainnet deployed: {deployed}.
+GoalOS contracts deployed: 48.
+GoalOS contracts Etherscan-verified: 48/48 after independent read-only validation.
+Canonical external AGIALPHA: confirmed.
+Mainnet configured: YES.
+Permanent authority: Wallet B / Ledger genesis authority assignment.
+Wallet A managed roles: 0.
+Phase-B grants: 14/14.
+Production activated: NO.
 
 Three-stage Mainnet release status:
 
@@ -63,7 +72,7 @@ badges=f'''[![Repository Validation](https://github.com/MontrealAI/goalos-agialp
 [![Mainnet Authorization Gate](https://github.com/MontrealAI/goalos-agialpha-ascension/actions/workflows/mainnet-authorization-gate.yml/badge.svg)](https://github.com/MontrealAI/goalos-agialpha-ascension/actions/workflows/mainnet-authorization-gate.yml)
 [![Solidity Audit Toolchain](https://github.com/MontrealAI/goalos-agialpha-ascension/actions/workflows/solidity-audit-toolchain.yml/badge.svg)](https://github.com/MontrealAI/goalos-agialpha-ascension/actions/workflows/solidity-audit-toolchain.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![Solidity 0.8.35](https://img.shields.io/badge/Solidity-0.8.35-363636?logo=solidity)](package.json)
+[![Solidity 0.8.28](https://img.shields.io/badge/Solidity-0.8.28-363636?logo=solidity)](package.json)
 [![Hardhat 2.28.6](https://img.shields.io/badge/Hardhat-2.28.6-f5d061?logo=ethereum)](package.json)
 [![TypeScript 5.9.3](https://img.shields.io/badge/TypeScript-5.9.3-3178c6?logo=typescript&logoColor=white)](package.json)
 [![Mainnet Authorized](https://img.shields.io/badge/Ethereum%20Mainnet%20Authorized-{eth}-{'success' if eth == 'YES' else 'critical'})](qa/mainnet-authorization-certificate.json)
@@ -160,9 +169,9 @@ RSI means proof-backed upgrade rights. An artifact may influence future work onl
 
 Claim boundary: this paper does not claim achieved AGI, ASI, superintelligence, autonomous sovereignty, guaranteed ROI, safety certification, legal approval, tax approval, security approval, energy abundance, or Kardashev Type II achievement.
 
-## Ownership handoff
+## Genesis authority assignment and ownership handoff
 
-GoalOS deployments require ERC-173 ownership handoff before being considered operationally complete. See `docs/OWNERSHIP_HANDOFF_RUNBOOK.md` and use `npm run ownership:sepolia:doctor|plan|dry-run|transfer|verify|evidence` or `npm run ownership:mainnet:doctor|plan|fork-rehearsal|transfer-local-gated|accept-local-gated|verify|evidence`. Mainnet single-deployer permanent-address mode is blocked. For delayed acceptance, run `ownership:mainnet:accept-local-gated` only after the contract readback says: Wait until pendingOwnerAcceptAfter.
+The 2026-06-21 direct Mainnet deployment records Wallet B / Ledger as the permanent authority through genesis authority assignment where applicable. Future GoalOS deployments require ERC-173 ownership handoff before being considered operationally complete. See `docs/OWNERSHIP_HANDOFF_RUNBOOK.md` and use `npm run ownership:sepolia:doctor|plan|dry-run|transfer|verify|evidence` or `npm run ownership:mainnet:doctor|plan|fork-rehearsal|transfer-local-gated|accept-local-gated|verify|evidence`. Mainnet single-deployer permanent-address mode is blocked. For delayed acceptance, run `ownership:mainnet:accept-local-gated` only after the contract readback says: Wait until pendingOwnerAcceptAfter.
 """
 
 # Decision JSON/Markdown documents are generated from the same certificate so docs:status is sufficient before assert/checker steps.
