@@ -1,15 +1,24 @@
 # Start Here: Ethereum Mainnet
 
-GoalOS AGIALPHA Ascension v4.4.0 mainnet authorization candidate.
+GoalOS AGIALPHA Ascension v4.4.0 Mainnet release-state summary.
 Automated/internal security toolchain: passed.
 Local deterministic rehearsal: passed.
 Local Evidence Docket: generated.
 Public AGIALPHA token verification: passed / governance-accepted.
 Not externally audited.
+Historical predeployment authorization used: NO — DIRECT_OPERATOR_NO_CERTIFICATE.
 Ethereum Mainnet technical readiness: NO.
 Ethereum Mainnet deployment authorization: NO.
 Ethereum Mainnet authorization: NO.
 Ethereum Mainnet deployed: YES.
+GoalOS contracts deployed: 48.
+GoalOS contracts Etherscan-verified: 48/48 after independent read-only validation.
+Canonical external AGIALPHA: confirmed.
+Mainnet configured: YES.
+Permanent authority: Wallet B / Ledger genesis authority assignment.
+Wallet A managed roles: 0.
+Phase-B grants: 14/14.
+Production activated: NO.
 
 Three-stage Mainnet release status:
 
@@ -22,7 +31,9 @@ Three-stage Mainnet release status:
 
 A pre-broadcast state with predeployment authorization YES and Ethereum Mainnet deployed NO is a GO to deploy, not a contradiction. Stage B evaluates chain-1 receipts, bytecode, verification, and ownership/role readback only after human broadcast. Stage C separately governs bounded live canary, monitoring, reconciliation, Ledger activation, and production reliance.
 
-This means the repository package is not currently authorized for manual gated Ethereum Mainnet deployment. Resolve the certificate blockers, regenerate the certificate, and rerun the public checks before any mainnet deployment attempt. Actual deployment still requires a runtime RPC URL and deployer key outside GitHub.
+The historical Stage-A predeployment certificate was not used for this deployment path. The repository now records a direct operator Mainnet deployment and postdeployment evidence separately from Stage-C production activation.
+
+Runtime RPC URL and deployer key outside GitHub remain mandatory for any local-only operator action; CI must not receive signing keys.
 
 It does not claim external audit completion, legal approval, tax review, guaranteed security, guaranteed token classification, investment return, yield, price target, revenue share, or production deployment.
 

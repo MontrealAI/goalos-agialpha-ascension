@@ -1,7 +1,3 @@
-# Ethereum Mainnet Live Status
+# Mainnet Live Gate Impact
 
-Ethereum Mainnet deployed: YES. Mainnet GoalOS contracts verified: 48/48 after independent Etherscan V2 validation. Mainnet configured: YES after read-only authority reconciliation. Permanent authority: Wallet B / Ledger (`0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99`). Wallet A managed roles: 0 after read-only validation. Phase-B grants: 14/14 after read-only validation.
-
-Production activated: NO. Not externally audited. User funds are not authorized. This document is generated from the postdeployment release-state architecture and preserves the claim boundary that Stage C remains pending.
-
-Use `npm run mainnet:live:all` to regenerate read-only evidence from imported operator artifacts and two Mainnet RPC providers. The tooling refuses to fabricate live evidence from the historical template manifest.
+Stage-A predeployment authorization was **not used**; the historical result is preserved. The direct Mainnet deployment contributes live evidence to Gate 1 and Gate 5, but Gates 2-4 require Mainnet-fork execution against the deployed bytecode before PASS can be claimed. Production activation remains **NO**.

@@ -59,11 +59,19 @@ readme = (ROOT / "README.md").read_text(encoding="utf-8", errors="ignore") if (R
 cert_path = ROOT / "qa/mainnet-authorization-certificate.json"
 cert = json.loads(cert_path.read_text(encoding="utf-8")) if cert_path.exists() else {}
 expected_eth_auth = cert.get("ethereumMainnetAuthorized", "NO")
-for phrase in ["GoalOS AGIALPHA Ascension", "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA", "Not externally audited", f"Ethereum Mainnet authorization: {expected_eth_auth}", "Ethereum Mainnet deployed: NO", "Public Sepolia"]:
+release_state_path = ROOT / "qa/mainnet-release-state.json"
+expected_deployed = cert.get("mainnetDeployed", "NO")
+if release_state_path.exists():
+    try:
+        release_state = json.loads(release_state_path.read_text(encoding="utf-8"))
+        expected_deployed = release_state.get("summary", {}).get("ETHEREUM_MAINNET_DEPLOYED", expected_deployed)
+    except Exception:
+        pass
+for phrase in ["GoalOS AGIALPHA Ascension", "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA", "Not externally audited", f"Ethereum Mainnet authorization: {expected_eth_auth}", f"Ethereum Mainnet deployed: {expected_deployed}", "Public Sepolia"]:
     if phrase.lower() not in readme.lower():
         errors.append(f"README missing required phrase: {phrase}")
-if cert and cert.get("mainnetDeployed") != "NO":
-    errors.append("Mainnet deployment status must remain NO without transaction evidence")
+if cert and cert.get("mainnetDeployed") != "NO" and not release_state_path.exists():
+    errors.append("Mainnet deployment status must remain NO without transaction evidence or release-state evidence")
 
 pkg = json.loads((ROOT / "package.json").read_text(encoding="utf-8")) if (ROOT / "package.json").exists() else {}
 scripts = pkg.get("scripts", {})

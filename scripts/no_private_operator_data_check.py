@@ -158,6 +158,14 @@ ALLOWLIST_FILES = {
     ".private.example/authority-policy.mainnet.example.json",
 }
 SECRET_SCAN_ALLOWLIST_FILES = ALLOWLIST_FILES - ENV_EXAMPLE_FILES
+PUBLIC_CHAIN_ADDRESS_ALLOWLIST_FILES = {
+    # Generated Mainnet registry/readback files contain public chain-1 contract
+    # addresses from the checked-in deployment seed, not private operator
+    # wallet secrets. They remain covered by the broader secret/RPC scans.
+    "docs/ETHEREUM_MAINNET_CONTRACT_ADDRESSES.md",
+    "docs/MAINNET_ADDRESSES.md",
+    "scripts/mainnet_live/postdeploy_assurance.py",
+}
 
 
 def tracked_files() -> list[pathlib.Path]:
@@ -280,7 +288,7 @@ for path in tracked_files():
                         m = pattern.search(text)
                         ln, col = line_col(text, m.start()) if m else (None, None)
                         add(rule, rel, "Potential secret/RPC/private artifact", m.group(0) if m else "", ln, col)
-    if rel not in ALLOWLIST_FILES and not receipt_backed_chain_evidence(rel, text) and not (rel.startswith("deployments/") or rel.startswith("evidence/sepolia/") or rel.startswith("test/")) and ADDRESS_RE.search(text):
+    if rel not in ALLOWLIST_FILES and rel not in PUBLIC_CHAIN_ADDRESS_ALLOWLIST_FILES and not receipt_backed_chain_evidence(rel, text) and not (rel.startswith("deployments/") or rel.startswith("evidence/sepolia/") or rel.startswith("test/")) and ADDRESS_RE.search(text):
         for m in PRIVATE_ADDRESS_CONTEXT.finditer(text):
             if re.match(r"[0-9a-fA-F]{24}", text[m.end():m.end()+24]):
                 continue

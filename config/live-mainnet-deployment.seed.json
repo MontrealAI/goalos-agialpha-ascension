@@ -400,13 +400,15 @@
   "deployedAt": "2026-06-21T18:45:49.137Z",
   "deploymentMode": "DIRECT_OPERATOR_NO_CERTIFICATE",
   "deploymentStatus": "CONFIGURED",
-  "mainnetConfigured": true,
-  "mainnetDeployed": true,
-  "mainnetVerified": true,
+  "deploymentTransactionCount": 48,
+  "goalosContractCount": 48,
+  "manifestEntryCount": 49,
   "mockAgialphaUsed": false,
   "network": "ethereum-mainnet",
   "newAgialphaTokenDeployed": false,
   "package": "GoalOS_AGIALPHA_Ascension_Ethereum_Mainnet_Implementation_v4_3_GATE_CLEAN_EVIDENCE_READY",
+  "packageVersion": "4.4.0",
+  "phaseBGrantCount": 14,
   "phaseBGrants": [
     {
       "account": "0x10b5773a65EC53e585bF7dD8692bC14a35B326B9",
@@ -493,7 +495,8 @@
       "target": "0x912b72fB0829111A66d40FFe275Fa372f7804005"
     }
   ],
-  "productionActivated": false,
+  "predeploymentCertificateUsed": false,
+  "schemaVersion": "1.0",
   "transactions": [
     "0xff3b0e9ea2b772728253198c9eaf546dc5c1c6d6b48ff6caf75cf2793ca294c7",
     "0x1b43c0e43fc7df6878e86d5bdce41f46a080a02af7fb6f6d93fcf29a02dda81a",

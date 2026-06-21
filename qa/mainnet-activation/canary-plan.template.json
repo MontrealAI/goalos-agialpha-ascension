@@ -1,1 +1,7 @@
-{"status":"TEMPLATE_NOT_EXECUTED","LIVE_CANARY_COMPLETE":"NO","PRODUCTION_ACTIVATION_EFFECTIVE":"NO","PRODUCTION_READY":"NO","USER_FUNDS_AUTHORIZED":"NO","requirements":["finite canary limits","minimal real-value amount","monitoring and alerts","pause/recovery drill","accounting reconciliation","expected events","refund/settlement path","authority drift check","Ledger Wallet-B approval","explicit activation transaction"]}
+{
+  "status": "TEMPLATE_ONLY_NOT_EXECUTED",
+  "PRODUCTION_READY": "NO",
+  "USER_FUNDS_AUTHORIZED": "NO",
+  "LIVE_CANARY_COMPLETE": "NO",
+  "PRODUCTION_ACTIVATION_EFFECTIVE": "NO"
+}

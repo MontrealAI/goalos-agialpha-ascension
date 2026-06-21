@@ -5,7 +5,6 @@ ROOT=Path(__file__).resolve().parents[2]
 WALLET_A='0x6c8B8897Fb6b08B4070387233B89b3E9A94eD00E'
 WALLET_B='0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99'
 AGIALPHA='0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA'
-REQ=['GOALOS_LIVE_MAINNET_MANIFEST','PRIMARY_MAINNET_RPC_URL','SECONDARY_MAINNET_RPC_URL']
 
 def sha(p):
     return hashlib.sha256(Path(p).read_bytes()).hexdigest()
@@ -35,12 +34,16 @@ def import_cmd(args):
     print('imported',p)
 
 def producer(args):
-    p,d=load_manifest(); name=args.command.split(':')[-1]
-    mp={'receipts':'deployment-receipts.json','bytecode':'runtime-bytecode-report.json','etherscan-check':'etherscan-v2-independent-check.json','authority-check':'authority-readback.json','reconcile':'configuration-reconciliation.json','certificate':'deployment-verification-certificate.json','status':'latest-live-status.json','monitor':'latest-live-status.json','decommission-check':'wallet-a-decommission-readiness.json'}
+    p,d=load_manifest(); raw=args.command.split('mainnet:live:')[-1] if 'mainnet:live:' in args.command else args.command.split(':')[-1]
+    aliases={'import-seed':'import','doctor':'doctor','verification':'etherscan-check','authority':'authority-check','roles':'roles','non-role-authority':'non-role-authority','phase-b':'phase-b','fork':'fork','fork:gate2':'fork-gate2','fork:gate3':'fork-gate3','fork:gate4':'fork-gate4','fork:gates':'fork-gates'}
+    name=aliases.get(raw,raw)
+    mp={'doctor':'live-doctor.json','receipts':'deployment-receipts.json','bytecode':'runtime-bytecode-report.json','etherscan-check':'etherscan-v2-independent-check.json','authority-check':'authority-readback.json','roles':'role-holder-readback.json','non-role-authority':'non-role-authority-readback.json','phase-b':'phase-b-grants-readback.json','reconcile':'configuration-reconciliation.json','certificate':'deployment-verification-certificate.json','status':'latest-live-status.json','monitor':'latest-live-status.json','decommission-check':'wallet-a-decommission-readiness.json','fork':'live-fork-plan.json','fork-gate2':'live-fork-gate2.json','fork-gate3':'live-fork-gate3.json','fork-gate4':'live-fork-gate4.json','fork-gates':'live-fork-gates.json'}
     out=stub(args.command)
     out['sourceManifest']=str(p); out['sourceManifestSha256']=sha(p); out['contractCount']=len([x for x in contracts(d) if (x.get('classification') or x.get('type'))!='external'])
-    if args.command.endswith('certificate'):
-        raise SystemExit('mainnet:live:certificate is blocked; use mainnet:postdeploy:certificate after receipt/runtime/verification/authority evidence passes')
+    if name == 'certificate':
+        out.update({'status':'BLOCKED_UNTIL_READ_ONLY_LIVE_EVIDENCE_PASSES','deploymentPath':'DIRECT_OPERATOR_NO_CERTIFICATE','predeploymentCertificateUsed':False,'productionActivated':False})
+    if name.startswith('fork'):
+        out.update({'status':'NOT_RUN_REQUIRES_READ_ONLY_MAINNET_FORK','livePublicTransactions':'FORBIDDEN','productionActivated':False})
     write(Path('qa/mainnet-postdeploy')/mp[name],out); print('wrote',mp[name])
 
 def contracts_gen(args):
@@ -62,12 +65,12 @@ def contracts_check(args):
     print('contract registry present')
 
 def all_cmd(args):
-    for c in ['receipts','bytecode','etherscan-check','authority-check','reconcile','certificate','status']:
+    for c in ['doctor','receipts','bytecode','etherscan-check','authority-check','roles','non-role-authority','phase-b','reconcile','certificate','status']:
         args.command='mainnet:live:'+c; producer(args)
 
 def main():
     ap=argparse.ArgumentParser(); ap.add_argument('command'); args=ap.parse_args()
-    if args.command=='mainnet:live:import': import_cmd(args)
+    if args.command in ('mainnet:live:import','mainnet:live:import-seed'): import_cmd(args)
     elif args.command=='mainnet:live:all': all_cmd(args)
     elif args.command=='mainnet:contracts:generate': contracts_gen(args)
     elif args.command=='mainnet:contracts:check': contracts_check(args)

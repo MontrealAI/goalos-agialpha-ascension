@@ -4,10 +4,15 @@ import json, re, sys
 from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 CERT = ROOT / 'qa/mainnet-authorization-certificate.json'
+RELEASE_STATE = ROOT / 'qa/mainnet-release-state.json'
 DOCS = [ROOT / 'START_HERE.md', ROOT / 'README.md', ROOT / 'docs/CURRENT_STATUS.md', ROOT / 'docs/MAINNET_AUTHORIZATION_CERTIFICATE.md', ROOT / 'docs/MAINNET_TECHNICAL_READINESS_DECISION.md', ROOT / 'docs/MAINNET_DEPLOYMENT_AUTHORIZATION_DECISION.md', ROOT / 'docs/ETHEREUM_MAINNET_AUTHORIZATION_DECISION.md', ROOT / 'docs/START_HERE_MAINNET.md']
 texts = {p: p.read_text(encoding='utf-8', errors='ignore') for p in DOCS if p.exists()}
 combined = '\n'.join(texts.values()); low = combined.lower(); errors: list[str] = []
 cert = None
+release_state = None
+if RELEASE_STATE.exists():
+    try: release_state = json.loads(RELEASE_STATE.read_text())
+    except Exception as exc: errors.append(f'Unable to parse release state: {exc}')
 if CERT.exists():
     try: cert = json.loads(CERT.read_text())
     except Exception as exc: errors.append(f'Unable to parse certificate: {exc}')
@@ -15,11 +20,14 @@ claims_yes = all(phrase in low for phrase in ['ethereum mainnet technical readin
 if not cert and claims_yes:
     errors.append('Public docs claim Ethereum Mainnet authorization YES but qa/mainnet-authorization-certificate.json is missing.')
 if cert:
+    deployed_expected = cert.get('mainnetDeployed')
+    if release_state:
+        deployed_expected = release_state.get('summary', {}).get('ETHEREUM_MAINNET_DEPLOYED', deployed_expected)
     expected = {
         'ethereum mainnet technical readiness': cert.get('technicallyMainnetReady'),
         'ethereum mainnet deployment authorization': cert.get('mainnetDeploymentAuthorized'),
         'ethereum mainnet authorization': cert.get('ethereumMainnetAuthorized'),
-        'ethereum mainnet deployed': cert.get('mainnetDeployed'),
+        'ethereum mainnet deployed': deployed_expected,
     }
     full_status_files = {
         'START_HERE.md',
@@ -53,9 +61,9 @@ if cert:
             plain_phrase = f'{label}: {str(value).lower()}'
             if phrase not in text and plain_phrase not in text:
                 errors.append(f'{rel}: missing certificate-backed status phrase: {label}: {value}')
-        deployed_phrase = f"mainnet_deployed: **{str(cert.get('mainnetDeployed')).lower()}**"
+        deployed_phrase = f"mainnet_deployed: **{str(deployed_expected).lower()}**"
         if deployed_phrase not in text:
-            errors.append(f"{rel}: missing certificate-backed status phrase: MAINNET_DEPLOYED: {cert.get('mainnetDeployed')}")
+            errors.append(f"{rel}: missing release-state-backed status phrase: MAINNET_DEPLOYED: {deployed_expected}")
     certificate_doc = texts.get(ROOT / 'docs/MAINNET_AUTHORIZATION_CERTIFICATE.md', '').lower()
     if not certificate_doc:
         errors.append('docs/MAINNET_AUTHORIZATION_CERTIFICATE.md: missing active certificate document')
@@ -64,20 +72,22 @@ if cert:
             'technically_mainnet_ready': cert.get('technicallyMainnetReady'),
             'mainnet_deployment_authorized': cert.get('mainnetDeploymentAuthorized'),
             'ethereum_mainnet_authorized': cert.get('ethereumMainnetAuthorized'),
-            'mainnet_deployed': cert.get('mainnetDeployed'),
+            'mainnet_deployed': deployed_expected,
         }
         for label, value in certificate_requirements.items():
             phrase = f'{label}: **{str(value).lower()}**'
             if phrase not in certificate_doc:
                 errors.append(f'docs/MAINNET_AUTHORIZATION_CERTIFICATE.md: missing certificate-backed status phrase: {label.upper()}: {value}')
-    if cert.get('mainnetDeployed') != 'NO': errors.append('Certificate must keep mainnetDeployed as NO until transaction evidence exists.')
+    if cert.get('mainnetDeployed') != 'NO' and not release_state:
+        errors.append('Certificate must keep mainnetDeployed as NO until transaction evidence exists or release-state evidence exists.')
     if cert.get('runtimeSecretsStoredInGitHub') is not False: errors.append('Certificate must state runtime secrets are not stored in GitHub.')
     if cert.get('ciCanDeployMainnet') is not False: errors.append('Certificate must state CI cannot deploy mainnet.')
 if 'not externally audited' not in low: errors.append('Missing required boundary: Not externally audited.')
 if 'runtime rpc url and deployer key outside github' not in low and 'runtime rpc/key' not in low:
     errors.append('Missing runtime RPC/key outside GitHub boundary.')
-if 'ethereum mainnet deployed: no' not in low and 'mainnet_deployed: **no**' not in low:
-    errors.append('Public docs must state Ethereum Mainnet deployed: NO.')
+deployed_public = str((release_state or {}).get('summary', {}).get('ETHEREUM_MAINNET_DEPLOYED', 'NO')).lower()
+if f'ethereum mainnet deployed: {deployed_public}' not in low and f'mainnet_deployed: **{deployed_public}**' not in low:
+    errors.append(f'Public docs must state Ethereum Mainnet deployed: {deployed_public.upper()}.')
 for forbidden, allowed_context in [
     ('externally audited', 'not externally audited'), ('legal approval', 'does not claim'), ('tax review', 'does not claim'), ('tax approved', 'does not claim'), ('guaranteed secure', 'does not claim'), ('guaranteed security', 'does not claim'), ('guaranteed non-security', 'does not claim'), ('investment opportunity', 'does not claim'), ('yield', 'does not claim'), ('price target', 'does not claim'), ('revenue share', 'does not claim'), ('production deployed', 'does not claim')]:
     for path, text in texts.items():
@@ -99,4 +109,4 @@ if errors:
     print('Public status assertion failed:')
     for e in errors: print(f'- {e}')
     sys.exit(1)
-print('Public status assertion passed: certificate-backed public mainnet authorization is consistent, bounded, not externally audited, and not deployed.')
+print('Public status assertion passed: certificate/release-state public mainnet status is consistent, bounded, and not externally audited.')
