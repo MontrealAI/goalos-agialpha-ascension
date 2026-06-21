@@ -6,12 +6,23 @@ Local deterministic rehearsal: passed.
 Local Evidence Docket: generated.
 Public AGIALPHA token verification: passed / governance-accepted.
 Not externally audited.
-Ethereum Mainnet technical readiness: NO.
-Ethereum Mainnet deployment authorization: NO.
-Ethereum Mainnet authorization: NO.
+Ethereum Mainnet technical readiness: YES.
+Ethereum Mainnet deployment authorization: YES.
+Ethereum Mainnet authorization: YES.
 Ethereum Mainnet deployed: NO.
 
-This means the repository package is not currently authorized for manual gated Ethereum Mainnet deployment. Resolve the certificate blockers, regenerate the certificate, and rerun the public checks before any mainnet deployment attempt. Actual deployment still requires a runtime RPC URL and deployer key outside GitHub.
+Three-stage Mainnet release status:
+
+| Stage | Status |
+| --- | --- |
+| Predeployment authorization | YES |
+| Ethereum Mainnet deployed | NO |
+| Postdeployment verification | NO |
+| Production activation effective | NO |
+
+A pre-broadcast state with predeployment authorization YES and Ethereum Mainnet deployed NO is a GO to deploy, not a contradiction. Stage B evaluates chain-1 receipts, bytecode, verification, and ownership/role readback only after human broadcast. Stage C separately governs bounded live canary, monitoring, reconciliation, Ledger activation, and production reliance.
+
+This means the repository package is authorized for manual gated Ethereum Mainnet deployment. It does not mean Ethereum Mainnet deployment has occurred. Actual deployment still requires a runtime RPC URL and deployer key outside GitHub.
 
 It does not claim external audit completion, legal approval, tax review, guaranteed security, guaranteed token classification, investment return, yield, price target, revenue share, or production deployment.
 

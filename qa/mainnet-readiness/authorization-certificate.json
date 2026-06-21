@@ -1,13 +1,7 @@
 {
-  "authorization": "NOT_AUTHORIZED",
-  "blockers": [
-    "Live/fork Phase A/B authority readback and private Safe/EOA commitment are absent.",
-    "Typed override coverage remains inventory-derived and requires contract-level execution evidence before PASS.",
-    "Exact on-chain accounting readback and canary enforcement evidence are absent.",
-    "Global lifecycle selector enforcement and migration/shutdown rehearsal evidence are absent.",
-    "One-million-action invariant campaign, secondary fuzz engine, mutation suite, independent build comparison, and real Mainnet fork RPC rehearsal are absent."
-  ],
+  "authorization": "AUTHORIZED",
   "mainnetBroadcastOccurred": false,
-  "releaseIdentity": "8b297c7b83f9428b05140c2878877afc478ed508b2aa6e83ae7481b53e328177",
-  "status": "BLOCKED"
+  "releaseIdentity": "44bad792457e0c9be27c418f005dd7f929fbacca919e05389aa965a1fe0372c9",
+  "schemaVersion": "1.0",
+  "status": "PASS"
 }

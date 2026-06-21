@@ -1,0 +1,13 @@
+{
+  "LIVE_CANARY_COMPLETE": "NO",
+  "PRODUCTION_ACTIVATION_EFFECTIVE": "NO",
+  "requires": [
+    "valid Stage-B certificate",
+    "monitoring",
+    "bounded live canary",
+    "Ledger activation"
+  ],
+  "schemaVersion": "1.0",
+  "stage": "C_PRODUCTION_ACTIVATION",
+  "status": "BLOCKED_UNTIL_STAGE_B_VERIFIED"
+}
