@@ -1,3 +1,9 @@
+Install:
+`npm ci`
+
+Start:
+`npm run mainnet:initial:setup-and-authorize`
+
 # GoalOS AGIALPHA Ascension
 
 [![Repository Validation](https://github.com/MontrealAI/goalos-agialpha-ascension/actions/workflows/repository-validation.yml/badge.svg)](https://github.com/MontrealAI/goalos-agialpha-ascension/actions/workflows/repository-validation.yml)

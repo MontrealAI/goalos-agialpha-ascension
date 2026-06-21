@@ -4,7 +4,7 @@ import argparse, datetime as dt, getpass, json, os, pathlib, shutil, stat, subpr
 ROOT=pathlib.Path(__file__).resolve().parents[1]
 RUN_ROOT=ROOT/'.private/operator-runs'
 WA='0x6c8B8897Fb6b08B4070387233B89b3E9A94eD00E'; WB='0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99'; AGI='0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA'
-CHECKS=['Clean release workspace','Historical Sepolia evidence','Build and automated tests','Local Wallet-A/Wallet-B rehearsal','Initial-deployment safety checks','Ethereum Mainnet deployment plan','Ledger Wallet-B approval','Verification and recovery readiness','Scoped Stage-A certificate']
+CHECKS=['Preparing a clean release workspace','Validating the verified Sepolia deployment','Compiling and testing the current release','Checking canonical Mainnet AGIALPHA','Rehearsing Wallet A and Wallet B locally','Running initial-launch safety checks','Building and testing the deployment package','Issuing the Stage-A authorization certificate']
 
 def sh(args,cwd=ROOT,check=False):
  return subprocess.run(args,cwd=cwd,text=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,check=check)
@@ -25,14 +25,14 @@ def log(run,name,result):
  p=run/'logs'/(dt.datetime.now(dt.timezone.utc).strftime('%Y%m%dT%H%M%S')+'-'+name+'.log')
  atomic_write(p,result.stdout if hasattr(result,'stdout') else str(result),0o600); return p
 def print_checklist():
- print('GoalOS Initial Mainnet Deployment Wizard\n')
- for i,c in enumerate(CHECKS,1): print(f'{i}/9  {c}')
+ print('GoalOS Initial Mainnet Launch Assistant\n')
+ for i,c in enumerate(CHECKS,1): print(f'{i}/8 {c}')
  print('')
 def set_step(run,state,num,status,msg):
  state['steps'][str(num)]={'status':status,'message':msg,'updatedAt':dt.datetime.now(dt.timezone.utc).isoformat()}; save_state(run,state); print(f'{status} — {msg}')
 def ensure_clean_workspace(run,state):
  if not dirty(): set_step(run,state,1,'PASS','Release workspace is clean.'); return ROOT
- sha=git(['rev-parse','HEAD']); short=sha[:12]; target=ROOT.parent/f'goalos-mainnet-release-{short}'
+ sha=git(['rev-parse','HEAD']); short=sha[:12]; target=ROOT/'.release-worktrees'/short
  if not target.exists():
   r=sh(['git','worktree','add','--detach',str(target),sha])
   log(run,'git-worktree-add',r)
@@ -53,32 +53,32 @@ def env_setup(run,state,deploy=False):
  for key,prompt in [('MAINNET_FORK_RPC_URL','Primary Ethereum Mainnet RPC URL'),('SECONDARY_MAINNET_RPC_URL','Secondary independent Ethereum Mainnet RPC URL'),('ETHERSCAN_API_KEY','Etherscan API V2 key')]: vals.append(f'{key}={getpass.getpass(prompt+": ")}')
  if deploy: vals.append(f'WALLET_A_PRIVATE_KEY={getpass.getpass("Wallet A private key (deployment mode only): ")}')
  atomic_write(envp,'\n'.join(vals)+'\n',0o600); return True
-def run_cmd(run,state,num,label,args,pass_msg,action_msg,verbose=False):
- print(f'RUNNING — {label}')
- r=sh(args); lp=log(run,label.lower().replace(' ','-'),r)
+def run_cmd(run,state,num,label,args,pass_msg,action_msg,verbose=False,cwd=ROOT):
+ print(f'WORKING — {label}')
+ r=sh(args,cwd=cwd); lp=log(run,label.lower().replace(' ','-'),r)
  if verbose: print(r.stdout)
  if r.returncode==0: set_step(run,state,num,'PASS',pass_msg); return True
  set_step(run,state,num,'ACTION NEEDED',f'{action_msg} Technical log: {lp}'); return False
 def prepare(args):
  run=RUN_ROOT/(os.environ.get('GOALOS_WIZARD_RUN_ID') or run_id()); run.mkdir(parents=True,exist_ok=True); os.chmod(run,0o700)
  state=load_state(run); state.update({'walletA':WA,'walletB':WB,'canonicalAgialpha':AGI,'chainId':1}); save_state(run,state)
- print_checklist(); ensure_clean_workspace(run,state)
+ print_checklist(); workspace=ensure_clean_workspace(run,state)
  ok=True
- ok &= run_cmd(run,state,2,'Historical Sepolia evidence',['npm','run','sepolia:evidence:validate-historical'],'All 49 historical Sepolia contract entries are verified.','Copy the four Sepolia JSON files into .private/historical-sepolia/ and resume.',args.verbose)
- ok &= run_cmd(run,state,3,'Build and automated tests',['npm','run','mainnet:initial:build-and-test'],'Current release build/test producer completed.','Install dependencies or fix failing build/tests, then resume.',args.verbose)
- ok &= run_cmd(run,state,4,'Local Wallet-A/Wallet-B rehearsal',['npm','run','mainnet:initial:local-rehearsal'],'Wallet B owns the locally rehearsed contracts. Wallet A has no permanent authority.','Run the local rehearsal producer and fix any reported contract/tooling issue.',args.verbose)
- ok &= run_cmd(run,state,5,'Initial-deployment safety checks',['npm','run','mainnet:initial:safety-checks'],'Initial-deployment safety checks passed.','Fix the reported safety check and resume.',args.verbose)
- if env_setup(run,state,False): ok &= run_cmd(run,state,6,'Ethereum Mainnet deployment plan',['npm','run','mainnet:initial:plan'],'Mainnet plan created.','Provide read-only RPC/API config or resolve nonce/plan issues.',args.verbose)
+ ok &= run_cmd(run,state,2,'Historical Sepolia evidence',['npm','run','sepolia:evidence:validate-historical'],'All 49 historical Sepolia contract entries are verified.','Copy the four Sepolia JSON files into .private/historical-sepolia/ and resume.',args.verbose,cwd=workspace)
+ ok &= run_cmd(run,state,3,'Build and automated tests',['npm','run','mainnet:initial:build-and-test'],'Current release compile and required tests passed.','Install dependencies or fix failing build/tests, then resume.',args.verbose,cwd=workspace)
+ ok &= run_cmd(run,state,4,'Canonical Mainnet AGIALPHA doctor',['npm','run','mainnet:initial:plan'],'Read-only Mainnet dependency and nonce evidence is available.','Provide read-only RPC configuration or resolve dependency-doctor issues.',args.verbose,cwd=workspace)
+ ok &= run_cmd(run,state,5,'Local Wallet-A/Wallet-B rehearsal',['npm','run','mainnet:initial:local-rehearsal'],'Wallet B owns the locally rehearsed contracts. Wallet A has no permanent authority.','Run the local rehearsal producer and fix any reported contract/tooling issue.',args.verbose,cwd=workspace)
+ ok &= run_cmd(run,state,6,'Initial-launch safety checks',['npm','run','mainnet:initial:safety-checks'],'Initial-launch safety checks passed.','Fix the reported safety check and resume.',args.verbose,cwd=workspace)
+ if env_setup(run,state,False): ok &= run_cmd(run,state,7,'Deployment package',['npm','run','mainnet:initial:plan'],'Mainnet plan and deployment package were created.','Provide read-only RPC config or resolve nonce/plan issues.',args.verbose,cwd=workspace)
  else: ok=False
- ok &= run_cmd(run,state,7,'Ledger Wallet-B approval',['npm','run','mainnet:initial:ledger-approve'],'Ledger Wallet B approved the scoped initial-deployment plan.','Connect your Ledger, open the Ethereum app, then run npm run goalos:mainnet:wizard -- --resume.',args.verbose)
- ok &= run_cmd(run,state,8,'Verification and recovery readiness',['npm','run','mainnet:initial:verification-readiness'],'Automatic Etherscan verification is prepared.','Provide Etherscan input readiness and resume.',args.verbose)
- ok &= run_cmd(run,state,8,'Deployment recovery readiness',['npm','run','mainnet:initial:recovery-rehearsal'],'Deployment can safely resume after interruption.','Fix journal/resume readiness and resume.',args.verbose)
- ok &= run_cmd(run,state,9,'Scoped Stage-A certificate',['npm','run','mainnet:predeploy:sepolia-backed:resolve-and-authorize'],'Scoped Stage-A certificate is ready.','Complete remaining ACTION NEEDED items and resume.',args.verbose)
+ ok &= run_cmd(run,state,7,'Verification readiness',['npm','run','mainnet:initial:verification-readiness'],'Automatic Etherscan verification inputs are prepared.','Fix verification readiness and resume.',args.verbose,cwd=workspace)
+ ok &= run_cmd(run,state,7,'Deployment recovery readiness',['npm','run','mainnet:initial:recovery-rehearsal'],'Deployment can safely resume after interruption.','Fix journal/resume readiness and resume.',args.verbose,cwd=workspace)
+ ok &= run_cmd(run,state,8,'Scoped Stage-A certificate',['npm','run','mainnet:predeploy:sepolia-backed:resolve-and-authorize'],'Scoped Stage-A certificate is ready.','Complete remaining ACTION NEEDED items and resume.',args.verbose,cwd=workspace)
  print(f'\nRun state: {run}')
  return 0 if ok else 2
 def status():
  runs=sorted(RUN_ROOT.glob('*')) if RUN_ROOT.exists() else []
- if not runs: print('ACTION NEEDED — No wizard run exists yet. Run npm run goalos:mainnet:wizard'); return 2
+ if not runs: print('ACTION NEEDED — No wizard run exists yet. Run npm run mainnet:initial:setup-and-authorize'); return 0
  state=load_state(runs[-1]); print(json.dumps({'run':str(runs[-1]),'steps':state.get('steps',{}),'mainnetBroadcastOccurred':False},indent=2)); return 0
 def deploy(args):
  if os.environ.get('CI'):

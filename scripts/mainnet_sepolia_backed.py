@@ -8,7 +8,7 @@ AGI='0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA'; WA='0x6c8B8897Fb6b08B407038723
 PROFILE='SEPOLIA_BACKED_INITIAL_MAINNET_V1'
 STATUS='AUTHORIZED_TO_DEPLOY_ON_ETHEREUM_MAINNET'
 BANNER='INITIAL MAINNET DEPLOYMENT ONLY — NO MAINNET-FORK ASSURANCE — NO USER FUNDS — NO PRODUCTION ACTIVATION — NO PUBLIC RELIANCE'
-STATUSES=['historicalSepolia','currentRelease','localRehearsal','safetyChecks','deploymentPlan','ledgerRiskAcceptance','verificationReadiness','resumeReadiness']
+STATUSES=['historicalSepolia','currentRelease','mainnetDependencyDoctor','localRehearsal','safetyChecks','deploymentPlan','verificationReadiness','resumeReadiness']
 
 def now(): return dt.datetime.now(dt.timezone.utc).isoformat()
 def git(args):
@@ -109,14 +109,14 @@ def mainnet_dependency_doctor():
  write(OUT/'mainnet-dependency-doctor.json',out); return out
 
 def criteria():
- return {'historicalSepolia':validate_historical(True),'currentRelease':current_release(),'mainnetDependencyDoctor':mainnet_dependency_doctor(),'localRehearsal':rehearsal(),'safetyChecks':safety(),'deploymentPlan':plan_validate(True),'ledgerRiskAcceptance':ledger(),'verificationReadiness':readiness('AUTOMATIC_VERIFICATION_READINESS','verification-readiness.json',['etherscanV2','privateConstructorInputsCommitment']),'resumeReadiness':readiness('DEPLOYMENT_RESUME_READINESS','resume-readiness.json',['appendOnlyJournal','nonceLocking','safeResumeTested'])}
+ return {'historicalSepolia':validate_historical(True),'currentRelease':current_release(),'mainnetDependencyDoctor':mainnet_dependency_doctor(),'localRehearsal':rehearsal(),'safetyChecks':safety(),'deploymentPlan':plan_validate(True),'verificationReadiness':readiness('AUTOMATIC_VERIFICATION_READINESS','verification-readiness.json',['etherscanV2','privateConstructorInputsCommitment']),'resumeReadiness':readiness('DEPLOYMENT_RESUME_READINESS','resume-readiness.json',['appendOnlyJournal','nonceLocking','safeResumeTested'])}
 
 def cert():
  cs=criteria(); blockers=[]
  for k,v in cs.items():
   if v.get('status')!='PASS': blockers.append(f'{k}: {v.get("status")}')
  ok=not blockers
- c={'schemaVersion':'1.0','certificateType':'MAINNET_PREDEPLOY_SEPOLIA_BACKED_INITIAL_MAINNET_V1','warningBanner':BANNER,'status':STATUS if ok else 'BLOCKED','authorizationProfile':PROFILE,'AUTHORIZATION_MODE':'SEPOLIA_BACKED_INITIAL_MAINNET_V1','AUTHORIZATION_SCOPE':'INITIAL_MAINNET_INFRASTRUCTURE_DEPLOYMENT_ONLY','INITIAL_MAINNET_INFRASTRUCTURE_DEPLOYMENT_AUTHORIZED':'YES' if ok else 'NO','TECHNICALLY_READY_FOR_INITIAL_DEPLOYMENT':'YES' if ok else 'NO','TECHNICALLY_MAINNET_READY':'YES' if ok else 'NO','MAINNET_DEPLOYMENT_AUTHORIZED':'YES' if ok else 'NO','ETHEREUM_MAINNET_AUTHORIZED':'YES' if ok else 'NO','FULL_MAINNET_FORK_ASSURANCE':'NO','FULL_G1_G5_ASSURANCE':'NO','PRODUCTION_READY':'NO','USER_FUNDS_AUTHORIZED':'NO','CUSTOMER_ONBOARDING_AUTHORIZED':'NO','PUBLIC_RELIANCE_AUTHORIZED':'NO','PUBLIC_FRONTEND_AUTHORIZED':'NO','PRODUCTION_ANNOUNCEMENT_AUTHORIZED':'NO','PROTOCOL_ACTIVATION_AUTHORIZED':'NO','PHASE_B_CONFIGURATION_AUTHORIZED':'NO','SETTLEMENT_AUTHORIZED':'NO','UNBOUNDED_ECONOMIC_EXPOSURE_AUTHORIZED':'NO','TOKEN_FUNDING_AUTHORIZED':'NO','TREASURY_FUNDING_AUTHORIZED':'NO','MAINNET_DEPLOYED':'NO','MAINNET_VERIFIED':'NO','LIVE_OWNER_READBACK_COMPLETE':'NO','LIVE_CANARY_COMPLETE':'NO','PRODUCTION_ACTIVATION_EFFECTIVE':'NO','chainId':1,'canonicalAgialpha':AGI,'walletA':WA,'walletB':WB,'releaseId':git(['rev-parse','HEAD']),'gates':{'Gate 1':'PASS' if cs.get('localRehearsal',{}).get('status')=='PASS' else 'BLOCKED','Gate 2':'PASS' if cs.get('safetyChecks',{}).get('status')=='PASS' else 'BLOCKED','Gate 3':'PASS' if cs.get('safetyChecks',{}).get('status')=='PASS' and cs.get('deploymentPlan',{}).get('status')=='PASS' else 'BLOCKED','Gate 4':'PASS' if cs.get('safetyChecks',{}).get('status')=='PASS' and cs.get('resumeReadiness',{}).get('status')=='PASS' else 'BLOCKED','Gate 5':'PASS' if all(cs.get(x,{}).get('status')=='PASS' for x in ['historicalSepolia','currentRelease','mainnetDependencyDoctor','deploymentPlan','verificationReadiness','resumeReadiness']) else 'BLOCKED'},'criteria':{k:{'status':v.get('status'),'hash':sha(OUT/( {'historicalSepolia':'historical-sepolia-validation.json','currentRelease':'current-release.json','localRehearsal':'local-rehearsal.json','safetyChecks':'initial-safety-checks.json','deploymentPlan':'deployment-plan-validation.json','ledgerRiskAcceptance':'ledger-risk-acceptance.json','verificationReadiness':'verification-readiness.json','resumeReadiness':'resume-readiness.json','mainnetDependencyDoctor':'mainnet-dependency-doctor.json'}[k]))} for k,v in cs.items()},'blockers':blockers,'issuedAt':now(),'expiresAt':(dt.datetime.now(dt.timezone.utc)+dt.timedelta(days=14)).isoformat(),'mainnetBroadcastOccurred':False}
+ c={'schemaVersion':'1.0','certificateType':'MAINNET_PREDEPLOY_SEPOLIA_BACKED_INITIAL_MAINNET_V1','warningBanner':BANNER,'status':STATUS if ok else 'BLOCKED','authorizationProfile':PROFILE,'AUTHORIZATION_MODE':'SEPOLIA_BACKED_INITIAL_MAINNET_V1','AUTHORIZATION_SCOPE':'INITIAL_MAINNET_INFRASTRUCTURE_DEPLOYMENT_ONLY','INITIAL_MAINNET_INFRASTRUCTURE_DEPLOYMENT_AUTHORIZED':'YES' if ok else 'NO','TECHNICALLY_READY_FOR_INITIAL_DEPLOYMENT':'YES' if ok else 'NO','TECHNICALLY_MAINNET_READY':'YES' if ok else 'NO','MAINNET_DEPLOYMENT_AUTHORIZED':'YES' if ok else 'NO','ETHEREUM_MAINNET_AUTHORIZED':'YES' if ok else 'NO','FULL_MAINNET_FORK_ASSURANCE':'NO','FULL_G1_G5_ASSURANCE':'NO','PRODUCTION_READY':'NO','USER_FUNDS_AUTHORIZED':'NO','CUSTOMER_ONBOARDING_AUTHORIZED':'NO','PUBLIC_RELIANCE_AUTHORIZED':'NO','PUBLIC_FRONTEND_AUTHORIZED':'NO','PRODUCTION_ANNOUNCEMENT_AUTHORIZED':'NO','PROTOCOL_ACTIVATION_AUTHORIZED':'NO','PHASE_B_CONFIGURATION_AUTHORIZED':'NO','SETTLEMENT_AUTHORIZED':'NO','UNBOUNDED_ECONOMIC_EXPOSURE_AUTHORIZED':'NO','TOKEN_FUNDING_AUTHORIZED':'NO','TREASURY_FUNDING_AUTHORIZED':'NO','MAINNET_DEPLOYED':'NO','MAINNET_VERIFIED':'NO','LIVE_OWNER_READBACK_COMPLETE':'NO','LIVE_CANARY_COMPLETE':'NO','PRODUCTION_ACTIVATION_EFFECTIVE':'NO','chainId':1,'canonicalAgialpha':AGI,'walletA':WA,'walletB':WB,'releaseId':git(['rev-parse','HEAD']),'gates':{'Gate 1':'PASS' if cs.get('localRehearsal',{}).get('status')=='PASS' else 'BLOCKED','Gate 2':'PASS' if cs.get('safetyChecks',{}).get('status')=='PASS' else 'BLOCKED','Gate 3':'PASS' if cs.get('safetyChecks',{}).get('status')=='PASS' and cs.get('deploymentPlan',{}).get('status')=='PASS' else 'BLOCKED','Gate 4':'PASS' if cs.get('safetyChecks',{}).get('status')=='PASS' and cs.get('resumeReadiness',{}).get('status')=='PASS' else 'BLOCKED','Gate 5':'PASS' if all(cs.get(x,{}).get('status')=='PASS' for x in ['historicalSepolia','currentRelease','mainnetDependencyDoctor','deploymentPlan','verificationReadiness','resumeReadiness']) else 'BLOCKED'},'criteria':{k:{'status':v.get('status'),'hash':sha(OUT/( {'historicalSepolia':'historical-sepolia-validation.json','currentRelease':'current-release.json','localRehearsal':'local-rehearsal.json','safetyChecks':'initial-safety-checks.json','deploymentPlan':'deployment-plan-validation.json','verificationReadiness':'verification-readiness.json','resumeReadiness':'resume-readiness.json','mainnetDependencyDoctor':'mainnet-dependency-doctor.json'}[k]))} for k,v in cs.items()},'blockers':blockers,'issuedAt':now(),'expiresAt':(dt.datetime.now(dt.timezone.utc)+dt.timedelta(days=14)).isoformat(),'mainnetBroadcastOccurred':False}
  c['certificateHash']=hobj({k:v for k,v in c.items() if k!='certificateHash'})
  write(OUT/'initial-deployment-certificate.json',c)
  write(ROOT/'qa/mainnet-predeploy/authorization-certificate.json',c)
@@ -140,6 +140,18 @@ def resolve():
   return True
  print(json.dumps({'status':'BLOCKED','blockers':c.get('blockers'),'mainnetBroadcastOccurred':False},indent=2)); return False
 
+def arm_for_live_deployment():
+ missing=[]
+ env=ROOT/'.private/mainnet-operator.env'
+ text=env.read_text() if env.exists() else ''
+ for key in ['ETHERSCAN_API_KEY','WALLET_A_PRIVATE_KEY']:
+  if key+'=' not in text: missing.append(key)
+ ledger=load('ledger-risk-acceptance.json')
+ if ledger.get('status')!='PASS' or str(ledger.get('recoveredSigner','')).lower()!=WB.lower(): missing.append('Wallet-B Ledger EIP-712 approval')
+ out={'schemaVersion':'1.0','criterion':'PRE_BROADCAST_ARMING','status':'BLOCKED' if missing else 'READY_FOR_OPERATOR_CONFIRMATION','missing':missing,'message':'Physical Ledger approval, Wallet-A key, Etherscan API key, live fee acceptance, funded balance, and typed deployment confirmation are required immediately before broadcast. No public transaction was sent.','mainnetBroadcastOccurred':False}
+ print(json.dumps(out,indent=2))
+ return not missing
+
 def main():
  p=argparse.ArgumentParser(); p.add_argument('cmd'); a=p.parse_args(); cmd=a.cmd
  if cmd in {'doctor','status'}: print(json.dumps({'status':'READY' if cmd=='doctor' else read(OUT/'initial-deployment-certificate.json').get('status','BLOCKED'),'output':str(OUT),'mainnetBroadcastOccurred':False},indent=2)); return
@@ -150,6 +162,7 @@ def main():
  if cmd=='certificate': print(json.dumps(cert(),indent=2)); return
  if cmd=='certificate-validate': sys.exit(0 if validate_cert(False) else 1)
  if cmd=='final-check': sys.exit(0 if validate_cert(True) else 2)
+ if cmd=='arm-for-live-deployment': sys.exit(0 if arm_for_live_deployment() else 2)
  if cmd=='resolve-and-authorize': sys.exit(0 if resolve() else 2)
  raise SystemExit('unknown command '+cmd)
 if __name__=='__main__': main()

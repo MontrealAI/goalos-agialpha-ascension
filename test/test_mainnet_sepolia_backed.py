@@ -43,8 +43,6 @@ def _write_initial_profile_evidence(monkeypatch):
     (OUT/'initial-safety-checks.json').write_text(json.dumps({'schemaVersion':'1.0','status':'PASS','checks':checks,'mainnetBroadcastOccurred':False}))
     tx={'expectedNonce':0,'expectedCreateAddress':'0x0000000000000000000000000000000000000001','fullyQualifiedName':'contracts/registry/GoalOSDeploymentDirectory.sol:GoalOSDeploymentDirectory','artifactHash':'0x'+'11'*32,'constructorCommitment':'0x'+'22'*32,'initcodeHash':'0x'+'33'*32,'expectedRuntimeBytecodeHash':'0x'+'44'*32,'transactionValue':'0','gasEstimate':'1','gasLimit':'1','maxFeePerGas':'1','maxPriorityFeePerGas':'1','maximumTransactionCost':'1'}
     (OUT/'deployment-plan.public.json').write_text(json.dumps({'chainId':1,'canonicalAgialpha':sb.AGI,'walletA':sb.WA,'walletB':sb.WB,'startingNonce':0,'pendingTransactionDisposition':'NONE','orderedTransactions':[tx],'maximumCumulativeCost':'1','minimumWalletARemainingEth':'0','verificationInputCommitment':'0x'+'55'*32,'issuedAt':'2026-06-21T00:00:00Z','expiresAt':'2999-01-01T00:00:00Z','planHash':'0x'+'66'*32}))
-    stmt='I authorize an initial Ethereum Mainnet deployment without a pinned Mainnet-fork rehearsal. I understand the historical Sepolia deployment used different compiler/token/authority settings. This authorization does not permit user funds, public reliance, frontend activation, or production activation.'
-    (OUT/'ledger-risk-acceptance.json').write_text(json.dumps({'schemaVersion':'1.0','status':'PASS','recoveredSigner':sb.WB,'statement':stmt,'chainId':1,'walletA':sb.WA,'walletB':sb.WB,'canonicalAgialpha':sb.AGI,'mainnetBroadcastOccurred':False}))
     (OUT/'verification-readiness.json').write_text(json.dumps({'schemaVersion':'1.0','status':'PASS','etherscanV2':True,'privateConstructorInputsCommitment':'0x'+'77'*32,'mainnetBroadcastOccurred':False}))
     (OUT/'resume-readiness.json').write_text(json.dumps({'schemaVersion':'1.0','status':'PASS','appendOnlyJournal':True,'nonceLocking':True,'safeResumeTested':True,'mainnetBroadcastOccurred':False}))
     (OUT/'mainnet-dependency-doctor.json').write_text(json.dumps({'schemaVersion':'1.0','status':'PASS','chainId':1,'canonicalAgialpha':sb.AGI,'providerAgreement':True,'canonicalAgialphaCodeHash':'0x'+'88'*32,'mainnetBroadcastOccurred':False}))
@@ -67,11 +65,12 @@ def test_certificate_cannot_claim_production_or_user_funds():
     assert c['PROTOCOL_ACTIVATION_AUTHORIZED']=='NO'
 
 
-def test_missing_ledger_and_readiness_block_authorization():
+def test_missing_ledger_does_not_block_stage_a_but_blocks_live_arming():
     c=sb.cert()
-    assert any('ledgerRiskAcceptance' in b for b in c['blockers'])
+    assert not any('ledgerRiskAcceptance' in b for b in c['blockers'])
     assert any('verificationReadiness' in b for b in c['blockers'])
     assert any('resumeReadiness' in b for b in c['blockers'])
+    assert sb.arm_for_live_deployment() is False
 
 def test_empty_or_aggregate_only_plan_blocks():
     OUT.mkdir(parents=True, exist_ok=True)

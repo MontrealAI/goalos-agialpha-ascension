@@ -366,7 +366,10 @@
     "mainnet:initial:plan": "python scripts/mainnet_sepolia_backed.py plan",
     "mainnet:initial:ledger-approve": "python scripts/mainnet_sepolia_backed.py ledger-approve",
     "mainnet:initial:verification-readiness": "python scripts/mainnet_sepolia_backed.py certificate",
-    "mainnet:initial:recovery-rehearsal": "python scripts/mainnet_sepolia_backed.py certificate"
+    "mainnet:initial:recovery-rehearsal": "python scripts/mainnet_sepolia_backed.py certificate",
+    "mainnet:initial:setup-and-authorize": "python scripts/goalos_mainnet_wizard.py --prepare-only",
+    "mainnet:initial:status": "python scripts/goalos_mainnet_wizard.py --status",
+    "mainnet:initial:arm-for-live-deployment": "python scripts/mainnet_sepolia_backed.py arm-for-live-deployment"
   },
   "dependencies": {
     "@openzeppelin/contracts": "4.9.6",

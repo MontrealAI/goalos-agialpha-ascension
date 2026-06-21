@@ -36,6 +36,14 @@ def test_wrapper_invokes_wizard_script():
 def test_checklist_is_plain_language(capsys):
     wiz.print_checklist()
     out=capsys.readouterr().out
-    assert 'GoalOS Initial Mainnet Deployment Wizard' in out
-    assert '1/9  Clean release workspace' in out
-    assert '9/9  Scoped Stage-A certificate' in out
+    assert 'GoalOS Initial Mainnet Launch Assistant' in out
+    assert '1/8 Preparing a clean release workspace' in out
+    assert '8/8 Issuing the Stage-A authorization certificate' in out
+
+
+def test_v39_setup_and_arm_scripts_are_exposed():
+    import json
+    scripts=json.loads((ROOT/'package.json').read_text())['scripts']
+    assert scripts['mainnet:initial:setup-and-authorize']
+    assert scripts['mainnet:initial:status']
+    assert scripts['mainnet:initial:arm-for-live-deployment']

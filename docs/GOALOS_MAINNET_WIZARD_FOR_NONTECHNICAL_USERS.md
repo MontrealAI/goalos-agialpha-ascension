@@ -1,3 +1,9 @@
+Install:
+`npm ci`
+
+Start:
+`npm run mainnet:initial:setup-and-authorize`
+
 # GoalOS Mainnet Wizard for Nontechnical Ubuntu Users
 
 This guide explains the safe one-command wizard for the scoped initial Mainnet infrastructure deployment. It does **not** activate production and does **not** authorize user funds.
