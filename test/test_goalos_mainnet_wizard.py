@@ -47,3 +47,9 @@ def test_v39_setup_and_arm_scripts_are_exposed():
     assert scripts['mainnet:initial:setup-and-authorize']
     assert scripts['mainnet:initial:status']
     assert scripts['mainnet:initial:arm-for-live-deployment']
+
+
+def test_non_interactive_safe_flag_is_accepted():
+    r=subprocess.run(['python','scripts/goalos_mainnet_wizard.py','--status','--non-interactive-safe'],cwd=ROOT,stdout=subprocess.PIPE,text=True)
+    assert r.returncode == 0
+    assert 'mainnetBroadcastOccurred' in r.stdout or 'No wizard run exists' in r.stdout

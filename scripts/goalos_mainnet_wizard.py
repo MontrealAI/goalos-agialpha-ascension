@@ -64,16 +64,16 @@ def prepare(args):
  state=load_state(run); state.update({'walletA':WA,'walletB':WB,'canonicalAgialpha':AGI,'chainId':1}); save_state(run,state)
  print_checklist(); workspace=ensure_clean_workspace(run,state)
  ok=True
- ok &= run_cmd(run,state,2,'Historical Sepolia evidence',['npm','run','sepolia:evidence:validate-historical'],'All 49 historical Sepolia contract entries are verified.','Copy the four Sepolia JSON files into .private/historical-sepolia/ and resume.',args.verbose,cwd=workspace)
- ok &= run_cmd(run,state,3,'Build and automated tests',['npm','run','mainnet:initial:build-and-test'],'Current release compile and required tests passed.','Install dependencies or fix failing build/tests, then resume.',args.verbose,cwd=workspace)
- ok &= run_cmd(run,state,4,'Canonical Mainnet AGIALPHA doctor',['npm','run','mainnet:initial:plan'],'Read-only Mainnet dependency and nonce evidence is available.','Provide read-only RPC configuration or resolve dependency-doctor issues.',args.verbose,cwd=workspace)
- ok &= run_cmd(run,state,5,'Local Wallet-A/Wallet-B rehearsal',['npm','run','mainnet:initial:local-rehearsal'],'Wallet B owns the locally rehearsed contracts. Wallet A has no permanent authority.','Run the local rehearsal producer and fix any reported contract/tooling issue.',args.verbose,cwd=workspace)
- ok &= run_cmd(run,state,6,'Initial-launch safety checks',['npm','run','mainnet:initial:safety-checks'],'Initial-launch safety checks passed.','Fix the reported safety check and resume.',args.verbose,cwd=workspace)
- if env_setup(run,state,False): ok &= run_cmd(run,state,7,'Deployment package',['npm','run','mainnet:initial:plan'],'Mainnet plan and deployment package were created.','Provide read-only RPC config or resolve nonce/plan issues.',args.verbose,cwd=workspace)
+ ok &= run_cmd(run,state,2,'Historical Sepolia evidence',['npm','run','sepolia:evidence:validate-historical'],'All 49 historical Sepolia contract entries are verified.','Copy the four Sepolia JSON files into .private/historical-sepolia/ and resume.',(args.verbose or args.debug),cwd=workspace)
+ ok &= run_cmd(run,state,3,'Build and automated tests',['npm','run','mainnet:initial:build-and-test'],'Current release compile and required tests passed.','Install dependencies or fix failing build/tests, then resume.',(args.verbose or args.debug),cwd=workspace)
+ ok &= run_cmd(run,state,4,'Canonical Mainnet AGIALPHA doctor',['npm','run','mainnet:initial:plan'],'Read-only Mainnet dependency and nonce evidence is available.','Provide read-only RPC configuration or resolve dependency-doctor issues.',(args.verbose or args.debug),cwd=workspace)
+ ok &= run_cmd(run,state,5,'Local Wallet-A/Wallet-B rehearsal',['npm','run','mainnet:initial:local-rehearsal'],'Wallet B owns the locally rehearsed contracts. Wallet A has no permanent authority.','Run the local rehearsal producer and fix any reported contract/tooling issue.',(args.verbose or args.debug),cwd=workspace)
+ ok &= run_cmd(run,state,6,'Initial-launch safety checks',['npm','run','mainnet:initial:safety-checks'],'Initial-launch safety checks passed.','Fix the reported safety check and resume.',(args.verbose or args.debug),cwd=workspace)
+ if env_setup(run,state,False): ok &= run_cmd(run,state,7,'Deployment package',['npm','run','mainnet:initial:plan'],'Mainnet plan and deployment package were created.','Provide read-only RPC config or resolve nonce/plan issues.',(args.verbose or args.debug),cwd=workspace)
  else: ok=False
- ok &= run_cmd(run,state,7,'Verification readiness',['npm','run','mainnet:initial:verification-readiness'],'Automatic Etherscan verification inputs are prepared.','Fix verification readiness and resume.',args.verbose,cwd=workspace)
- ok &= run_cmd(run,state,7,'Deployment recovery readiness',['npm','run','mainnet:initial:recovery-rehearsal'],'Deployment can safely resume after interruption.','Fix journal/resume readiness and resume.',args.verbose,cwd=workspace)
- ok &= run_cmd(run,state,8,'Scoped Stage-A certificate',['npm','run','mainnet:predeploy:sepolia-backed:resolve-and-authorize'],'Scoped Stage-A certificate is ready.','Complete remaining ACTION NEEDED items and resume.',args.verbose,cwd=workspace)
+ ok &= run_cmd(run,state,7,'Verification readiness',['npm','run','mainnet:initial:verification-readiness'],'Automatic Etherscan verification inputs are prepared.','Fix verification readiness and resume.',(args.verbose or args.debug),cwd=workspace)
+ ok &= run_cmd(run,state,7,'Deployment recovery readiness',['npm','run','mainnet:initial:recovery-rehearsal'],'Deployment can safely resume after interruption.','Fix journal/resume readiness and resume.',(args.verbose or args.debug),cwd=workspace)
+ ok &= run_cmd(run,state,8,'Scoped Stage-A certificate',['npm','run','mainnet:predeploy:sepolia-backed:resolve-and-authorize'],'Scoped Stage-A certificate is ready.','Complete remaining ACTION NEEDED items and resume.',(args.verbose or args.debug),cwd=workspace)
  print(f'\nRun state: {run}')
  return 0 if ok else 2
 def status():
@@ -94,7 +94,7 @@ def desktop():
  content=f"[Desktop Entry]\nType=Application\nName=GoalOS Mainnet Wizard\nTerminal=true\nExec=bash -lc 'cd {ROOT} && npm run goalos:mainnet:wizard'\n"
  atomic_write(d,content,0o644); print(f'PASS — Desktop launcher created: {d}'); return 0
 def main():
- p=argparse.ArgumentParser(); p.add_argument('--prepare-only',action='store_true'); p.add_argument('--status',action='store_true'); p.add_argument('--resume',action='store_true'); p.add_argument('--deploy',action='store_true'); p.add_argument('--verify',action='store_true'); p.add_argument('--recover',action='store_true'); p.add_argument('--create-desktop-launcher',action='store_true'); p.add_argument('--verbose',action='store_true')
+ p=argparse.ArgumentParser(); p.add_argument('--prepare-only',action='store_true'); p.add_argument('--status',action='store_true'); p.add_argument('--resume',action='store_true'); p.add_argument('--deploy',action='store_true'); p.add_argument('--verify',action='store_true'); p.add_argument('--recover',action='store_true'); p.add_argument('--create-desktop-launcher',action='store_true'); p.add_argument('--verbose',action='store_true'); p.add_argument('--debug',action='store_true'); p.add_argument('--json',action='store_true'); p.add_argument('--non-interactive-safe',action='store_true')
  a=p.parse_args()
  if a.status: return status()
  if a.deploy: return deploy(a)

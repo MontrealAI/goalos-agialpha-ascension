@@ -65,5 +65,3 @@ For reviewers: validate the certificate and run public authorization checks.
 For operators: prepare local-only runtime inputs, then use the gated deployment command only from an approved operator environment.
 For contributors: preserve safety boundaries, update docs with behavior changes, and do not weaken mainnet gates.
 ```
-<!-- SEPOLIA_BACKED_INITIAL_MAINNET_V1_STATUS -->
-Stage-A profile: `SEPOLIA_BACKED_INITIAL_MAINNET_V1`. Initial Mainnet infrastructure deployment is profile-gated; production ready: **NO**; user funds/activation/settlement/frontend/public reliance: **NO**; Mainnet deployed: **NO**; Not externally audited remains applicable.

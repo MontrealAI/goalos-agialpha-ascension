@@ -15,5 +15,3 @@ This certificate does not authorize Ethereum Mainnet deployment while readiness 
 ## Next action
 
 B. Blocked, with exact blockers.
-<!-- SEPOLIA_BACKED_INITIAL_MAINNET_V1_STATUS -->
-Stage-A profile: `SEPOLIA_BACKED_INITIAL_MAINNET_V1`. Initial Mainnet infrastructure deployment is profile-gated; production ready: **NO**; user funds/activation/settlement/frontend/public reliance: **NO**; Mainnet deployed: **NO**; Not externally audited remains applicable.

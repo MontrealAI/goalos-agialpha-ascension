@@ -1,11 +1,12 @@
 from pathlib import Path
 import re
+import subprocess
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 ERRORS = []
 
-SKIP_PARTS = {"node_modules", ".git", "qa", ".private", "private", "wallets", "keys"}
+SKIP_PARTS = {"node_modules", ".git", "qa", ".private", ".release-worktrees", "private", "wallets", "keys"}
 SKIP_FILES = {
     "repository_safety_check.py",
     "repository_production_readiness_check.py",
@@ -47,6 +48,16 @@ SAFE_NEGATIONS = [
     "mainnet remains blocked",
 ]
 
+def candidate_paths():
+    try:
+        args=["git","grep","-Il","-e","PRIVATE_KEY=","-e","MNEMONIC","-e","SEED_PHRASE","-e","API_KEY","-e","RPC_URL","-ie","is mainnet authorized","-ie","mainnet is authorized","-ie","audited and approved","-ie","guaranteed profit","-ie","guaranteed yield","-ie","will increase in price","--"]
+        out=subprocess.check_output(args,cwd=ROOT,text=True,stderr=subprocess.DEVNULL)
+        return [ROOT / line for line in out.splitlines() if line]
+    except subprocess.CalledProcessError as exc:
+        return [] if exc.returncode == 1 else None
+    except Exception:
+        return None
+
 def safe_context(text, idx):
     ctx = text[max(0, idx - 160): idx + 160].lower()
     return any(x in ctx for x in SAFE_NEGATIONS)
@@ -70,8 +81,18 @@ def is_regex_source_false_positive(line, path):
         return True
     return "\\s" in line or "re.compile" in line or "SECRET_PATTERNS" in line or "BAD_PATTERNS" in line
 
-for path in ROOT.rglob("*"):
-    if not path.is_file() or any(part in SKIP_PARTS for part in path.parts):
+_paths = candidate_paths()
+if _paths is None:
+    try:
+        _tracked = subprocess.check_output(["git", "ls-files"], cwd=ROOT, text=True, stderr=subprocess.DEVNULL).splitlines()
+        _paths = [ROOT / item for item in _tracked]
+    except Exception:
+        _paths = list(ROOT.rglob("*"))
+
+for path in _paths:
+    if not path.is_file() or any(part in SKIP_PARTS for part in path.relative_to(ROOT).parts):
+        continue
+    if path.stat().st_size > 5_000_000:
         continue
     if path.name in SKIP_FILES:
         continue

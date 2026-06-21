@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 from __future__ import annotations
+import ast
 import pathlib
 import re
 import subprocess
@@ -16,6 +17,124 @@ SECRET_PATTERNS = [
     re.compile(r"\b(?:0x)?[0-9a-fA-F]{64}\b.*(?:private|secret|key|signature)", re.I),
     re.compile(r"(?:PRIVATE_KEY|SEED_PHRASE|MNEMONIC|ETHERSCAN_API_KEY|FOUNDER_APPROVAL_SIGNATURE)[ \t]*[:=][ \t]*(?!$|PRIVATE_LOCAL_ONLY|PRIVATE_LOCAL_ONLY_OR_EMPTY|DO_NOT_COMMIT_FILL_LOCALLY|TYPE_CONFIRMATION_LOCALLY_ONLY|<|\$|process\.env)[^\s\"']+", re.I),
 ]
+
+SECRET_NAME_RE = re.compile(r"(private[_-]?key|seed[_-]?phrase|mnemonic|api[_-]?key|rpc[_-]?url|secret|credential)", re.I)
+HEX_PRIVATE_KEY_RE = re.compile(r"\b(?:0x)?[0-9a-fA-F]{64}\b")
+MNEMONIC_RE = re.compile(r"\b(?:[a-z]+\s+){11,23}[a-z]+\b", re.I)
+CREDENTIAL_RPC_RE = re.compile(r"https?://[^\s\"']*(?:alchemy|infura|quicknode|ankr|blast|drpc|chainstack|provider\.example)[^\s\"']*/(?:v2/|[A-Za-z0-9_-]{16,})[^\s\"']*", re.I)
+HIGH_ENTROPY_KEY_RE = re.compile(r"\b[A-Za-z0-9_-]{32,}\b")
+SAFE_SECRET_CALLS = {("getpass", "getpass"), ("os", "getenv")}
+SAFE_SECRET_FUNCTIONS = {"getenv"}
+
+def target_names(node: ast.AST) -> list[str]:
+    names: list[str] = []
+    if isinstance(node, ast.Name):
+        names.append(node.id)
+    elif isinstance(node, (ast.Tuple, ast.List)):
+        for elt in node.elts:
+            names.extend(target_names(elt))
+    elif isinstance(node, ast.Attribute):
+        names.append(node.attr)
+    elif isinstance(node, ast.Subscript):
+        names.extend(target_names(node.value))
+    return names
+
+def secret_like_name(name: str) -> bool:
+    return bool(SECRET_NAME_RE.search(name))
+
+def call_name(node: ast.AST) -> tuple[str | None, str | None]:
+    if isinstance(node, ast.Call):
+        fn = node.func
+        if isinstance(fn, ast.Attribute):
+            base = fn.value.id if isinstance(fn.value, ast.Name) else None
+            return base, fn.attr
+        if isinstance(fn, ast.Name):
+            return None, fn.id
+    return None, None
+
+def safe_secret_source(node: ast.AST) -> bool:
+    base, name = call_name(node)
+    if (base, name) in SAFE_SECRET_CALLS or name in SAFE_SECRET_FUNCTIONS:
+        return True
+    if isinstance(node, ast.Subscript) and isinstance(node.value, ast.Attribute):
+        return isinstance(node.value.value, ast.Name) and node.value.value.id == "os" and node.value.attr == "environ"
+    return False
+
+def literal_string(node: ast.AST) -> tuple[str, bool]:
+    if isinstance(node, ast.Constant) and isinstance(node.value, (str, bytes)):
+        val = node.value.decode("utf-8", "ignore") if isinstance(node.value, bytes) else node.value
+        return val, True
+    if isinstance(node, ast.BinOp) and isinstance(node.op, ast.Add):
+        left, lok = literal_string(node.left)
+        right, rok = literal_string(node.right)
+        return left + right, lok and rok
+    if isinstance(node, ast.JoinedStr):
+        parts=[]; ok=True
+        for value in node.values:
+            if isinstance(value, ast.Constant) and isinstance(value.value, str):
+                parts.append(value.value)
+            elif isinstance(value, ast.FormattedValue):
+                inner, inner_ok = literal_string(value.value)
+                parts.append(inner if inner_ok else "{}")
+                ok = ok and inner_ok
+            else:
+                ok=False
+        return "".join(parts), True
+    if isinstance(node, (ast.List, ast.Tuple, ast.Set)):
+        parts=[]; ok=True
+        for elt in node.elts:
+            text, eok = literal_string(elt); parts.append(text); ok = ok and eok
+        return " ".join(parts), ok and bool(parts)
+    if isinstance(node, ast.Dict):
+        parts=[]; ok=True
+        for key, val in zip(node.keys, node.values):
+            kt, ko = literal_string(key) if key is not None else ("", True)
+            vt, vo = literal_string(val)
+            parts.extend([kt, vt]); ok = ok and ko and vo
+        return " ".join(parts), ok and bool(parts)
+    return "", False
+
+def python_secret_rule(value: str, assigned_to_secret_name: bool) -> str | None:
+    if HEX_PRIVATE_KEY_RE.search(value) and (assigned_to_secret_name or "private" in value.lower() or "secret" in value.lower() or "key" in value.lower()):
+        return "PRIVATE_KEY_LITERAL"
+    if MNEMONIC_RE.search(value) and assigned_to_secret_name:
+        return "MNEMONIC_LITERAL"
+    if CREDENTIAL_RPC_RE.search(value):
+        return "CREDENTIALLED_RPC_URL"
+    if assigned_to_secret_name and HIGH_ENTROPY_KEY_RE.search(value) and not value.isupper():
+        return "API_KEY_LITERAL"
+    return None
+
+def scan_python_ast(rel: str, text: str) -> None:
+    try:
+        tree = ast.parse(text)
+    except SyntaxError:
+        return
+    for node in ast.walk(tree):
+        if isinstance(node, ast.Assign):
+            names=[name for target in node.targets for name in target_names(target)]
+            value=node.value
+        elif isinstance(node, ast.AnnAssign):
+            names=target_names(node.target); value=node.value
+        elif isinstance(node, ast.AugAssign):
+            names=target_names(node.target); value=node.value
+        else:
+            continue
+        assigned_to_secret_name=any(secret_like_name(name) for name in names)
+        if not assigned_to_secret_name and not isinstance(value, (ast.Constant, ast.BinOp, ast.JoinedStr, ast.List, ast.Tuple, ast.Set, ast.Dict)):
+            continue
+        if safe_secret_source(value):
+            continue
+        literal, ok = literal_string(value)
+        if not ok or not literal:
+            continue
+        # Secret-provider environment variable names and human-readable prompts are not credentials.
+        if assigned_to_secret_name and re.fullmatch(r"[A-Z0-9_]*(PRIVATE_KEY|API_KEY|RPC_URL|MNEMONIC|SEED_PHRASE)[A-Z0-9_]*", literal):
+            continue
+        rule = python_secret_rule(literal, assigned_to_secret_name)
+        if rule:
+            add(rule, rel, "Potential secret/RPC/private artifact", literal, getattr(value, "lineno", getattr(node, "lineno", None)), getattr(value, "col_offset", getattr(node, "col_offset", 0)) + 1 if hasattr(value, "col_offset") or hasattr(node, "col_offset") else None)
+
 PRIVATE_ADDRESS_CONTEXT = re.compile(r"(founder|treasury|deployer|admin|vault|security|community|operator|ceremony).{0,80}0x[0-9a-fA-F]{40}", re.I)
 ADDRESS_RE = re.compile(r"0x[0-9a-fA-F]{40}")
 COMMITMENT_RE = re.compile(r"0x[0-9a-fA-F]{64}")
@@ -112,7 +231,11 @@ def add(rule_id: str, rel: str, reason: str, value: str = "", line: int | None =
 for path in tracked_files():
     if not path.is_file():
         continue
-    rel_path = path.relative_to(ROOT)
+    
+    try:
+        rel_path = path.relative_to(ROOT)
+    except ValueError:
+        rel_path = pathlib.Path(path.name)
     rel_parts = rel_path.parts
     rel = rel_path.as_posix()
     if any(part in SKIP_PARTS for part in rel_parts):
@@ -134,8 +257,8 @@ for path in tracked_files():
     raw_lower = raw.lower()
     interesting = (
         b"0x" in raw_lower
-        or any(token.encode() in raw_lower for token in ("private_key", "seed_phrase", "mnemonic", "etherscan_api_key", "founder_approval_signature"))
-        or any(provider.encode() in raw_lower for provider in ("alchemy", "infura", "quicknode", "ankr", "blast", "drpc", "chainstack"))
+        or any(token.encode() in raw_lower for token in ("private_key", "seed_phrase", "mnemonic", "etherscan_api_key", "api_key", "rpc_url", "founder_approval_signature"))
+        or any(provider.encode() in raw_lower for provider in ("alchemy", "infura", "quicknode", "ankr", "blast", "drpc", "chainstack", "provider.example"))
     )
     if not interesting:
         continue
@@ -143,17 +266,20 @@ for path in tracked_files():
     if rel not in SECRET_SCAN_ALLOWLIST_FILES and not rel.startswith(".private.example/"):
         lowered = text.lower()
         should_scan_secret_patterns = (
-            any(provider in lowered for provider in ("alchemy", "infura", "quicknode", "ankr", "blast", "drpc", "chainstack"))
-            or any(token in lowered for token in ("private_key", "seed_phrase", "mnemonic", "etherscan_api_key", "founder_approval_signature"))
+            any(provider in lowered for provider in ("alchemy", "infura", "quicknode", "ankr", "blast", "drpc", "chainstack", "provider.example"))
+            or any(token in lowered for token in ("private_key", "seed_phrase", "mnemonic", "etherscan_api_key", "api_key", "rpc_url", "founder_approval_signature"))
             or ("0x" in lowered and any(term in lowered for term in ("private", "secret", "key", "signature")))
         )
         if should_scan_secret_patterns:
-            for pattern in SECRET_PATTERNS:
-                if pattern.search(text):
-                    rule = "CREDENTIALLED_RPC_URL" if pattern.pattern.startswith("https?") else "PRIVATE_KEY_LITERAL" if "PRIVATE_KEY" in pattern.pattern else "API_KEY_LITERAL"
-                    m = pattern.search(text)
-                    ln, col = line_col(text, m.start()) if m else (None, None)
-                    add(rule, rel, "Potential secret/RPC/private artifact", m.group(0) if m else "", ln, col)
+            if path.suffix == ".py":
+                scan_python_ast(rel, text)
+            else:
+                for pattern in SECRET_PATTERNS:
+                    if pattern.search(text):
+                        rule = "CREDENTIALLED_RPC_URL" if pattern.pattern.startswith("https?") else "PRIVATE_KEY_LITERAL" if "PRIVATE_KEY" in pattern.pattern else "API_KEY_LITERAL"
+                        m = pattern.search(text)
+                        ln, col = line_col(text, m.start()) if m else (None, None)
+                        add(rule, rel, "Potential secret/RPC/private artifact", m.group(0) if m else "", ln, col)
     if rel not in ALLOWLIST_FILES and not receipt_backed_chain_evidence(rel, text) and not (rel.startswith("deployments/") or rel.startswith("evidence/sepolia/") or rel.startswith("test/")) and ADDRESS_RE.search(text):
         for m in PRIVATE_ADDRESS_CONTEXT.finditer(text):
             if re.match(r"[0-9a-fA-F]{24}", text[m.end():m.end()+24]):

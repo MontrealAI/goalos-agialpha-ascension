@@ -43,5 +43,3 @@ Public Sepolia deployment is recommended but not mandatory for public authorizat
 10. Show final manual deployment command: `npm run mainnet:next`
 11. Run final local gated deployment: `npm run deploy:ethereum-mainnet:gated`
 12. Generate post-deployment report after real transaction evidence exists.
-<!-- SEPOLIA_BACKED_INITIAL_MAINNET_V1_STATUS -->
-Stage-A profile: `SEPOLIA_BACKED_INITIAL_MAINNET_V1`. Initial Mainnet infrastructure deployment is profile-gated; production ready: **NO**; user funds/activation/settlement/frontend/public reliance: **NO**; Mainnet deployed: **NO**; Not externally audited remains applicable.
