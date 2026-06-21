@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 from __future__ import annotations
-import argparse, datetime as dt, hashlib, json, os, pathlib, subprocess, sys, urllib.request
+import argparse, datetime as dt, hashlib, json, os, pathlib, subprocess, sys, urllib.parse, urllib.request
 ROOT=pathlib.Path(__file__).resolve().parents[1]
 AGI='0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA'; WA='0x6c8B8897Fb6b08B4070387233B89b3E9A94eD00E'; WB='0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99'
 PRE=ROOT/'qa/mainnet-predeploy'; POST=ROOT/'qa/mainnet-postdeploy'; ACT=ROOT/'qa/mainnet-activation'
@@ -37,10 +37,12 @@ def sha(rel):
 def hobj(o): return '0x'+hashlib.sha256(json.dumps(o,sort_keys=True,separators=(',',':')).encode()).hexdigest()
 def protected_report():
  r=read('qa/mainnet-predeploy/evidence/protected-evidence-validation.json')
- 
  if not (r.get('status')=='PASS' and r.get('gitCommit')==git(['rev-parse','HEAD']) and r.get('mainnetBroadcastOccurred') is False): return {}
  idx=r.get('indexPath')
- if idx and not pathlib.Path(idx).exists(): return {}
+ if idx:
+  idx_path=pathlib.Path(idx)
+  if not idx_path.exists(): return {}
+  if sha(idx_path)!=r.get('indexSha256'): return {}
  return r
 def protected_entry_data(entry_type):
  pr=protected_report()
@@ -78,15 +80,25 @@ def rpc_call(url,method,params=None,timeout=20):
  if 'error' in data: raise RuntimeError(data['error'])
  return data.get('result')
 
+def provider_commitment(url, chain_id, block, block_hash):
+ parsed=urllib.parse.urlparse(url)
+ host=(parsed.hostname or '').lower()
+ provider_id={'scheme':parsed.scheme,'hostHash':hobj({'host':host}) if host else None,'portPresent':parsed.port is not None,'pathPrefixHash':hobj({'pathPrefix':(parsed.path or '/').split('/')[1:2]})}
+ return hobj({'providerIdentity':provider_id,'urlRedacted':True,'chainId':chain_id,'block':block,'hash':block_hash})
+
+def duplicate_rpc_endpoint(a,b):
+ return a.strip()==b.strip()
+
 def existing_fork_valid_for_reuse(r):
- return r.get('schemaVersion')=='1.0' and r.get('executionMode')=='MAINNET_FORK' and r.get('upstreamChainId')==1 and r.get('localChainId')==31337 and r.get('forkBlockNumber') and is_hex_bytes(r.get('forkBlockHash'),32) and is_hex_bytes(r.get('canonicalAgialphaCodeHash'),32) and r.get('providerAgreement') is True and int(r.get('deployedTopologyCount') or 0)>0 and int(r.get('transactionReceiptCount') or r.get('forkReceiptCount') or 0)>0 and r.get('releaseIdentity')==release_identity() and r.get('mainnetBroadcastOccurred') is False and r.get('status')=='PASS'
+ return r.get('schemaVersion')=='1.0' and r.get('executionMode')=='MAINNET_FORK' and r.get('upstreamChainId')==1 and r.get('localChainId')==31337 and r.get('forkBlockNumber') and is_hex_bytes(r.get('forkBlockHash'),32) and is_hex_bytes(r.get('canonicalAgialphaCodeHash'),32) and is_hex_bytes(r.get('primaryProviderCommitment'),32) and is_hex_bytes(r.get('secondaryProviderCommitment'),32) and r.get('providerAgreement') is True and int(r.get('deployedTopologyCount') or 0)>0 and int(r.get('transactionReceiptCount') or r.get('forkReceiptCount') or 0)>0 and r.get('releaseIdentity')==release_identity() and r.get('mainnetBroadcastOccurred') is False and r.get('status')=='PASS'
 
 def fork_report():
  pr=protected_report()
  if pr:
-  f=pr.get('summary',{}).get('fork',{})
-  r={'schemaVersion':'1.0','executionMode':'MAINNET_FORK','upstreamChainId':1,'localChainId':31337,'forkBlockNumber':f.get('forkBlockNumber'),'forkBlockHash':f.get('forkBlockHash'),'forkBlockTimestamp':f.get('forkBlockTimestamp'),'canonicalAgialphaAddress':AGI,'canonicalAgialphaCodeHash':f.get('runtimeBytecodeRoot'),'releaseIdentity':release_identity(),'deployedTopologyCount':f.get('deployedTopologyCount'),'transactionReceiptCount':f.get('transactionReceiptCount'),'scenarioResults':['protected-evidence-validation:PASS'],'mainnetBroadcastOccurred':False,'status':OK_STATUS}
-  write(PRE/'fork-rehearsal.json',r); return r
+  entry_path, f=protected_entry_data('MAINNET_FORK')
+  if f:
+   r={'schemaVersion':'1.0','executionMode':'MAINNET_FORK','upstreamChainId':f.get('upstreamChainId'),'localChainId':f.get('localChainId'),'forkBlockNumber':f.get('forkBlockNumber'),'forkBlockHash':f.get('forkBlockHash'),'forkBlockTimestamp':f.get('forkBlockTimestamp'),'primaryProviderCommitment':f.get('primaryProviderCommitment'),'secondaryProviderCommitment':f.get('secondaryProviderCommitment'),'providerAgreement':f.get('providerAgreement'),'canonicalAgialphaAddress':AGI,'canonicalAgialphaCodeHash':f.get('upstreamCanonicalAgialphaCodeHash') or f.get('canonicalAgialphaCodeHash') or f.get('runtimeBytecodeRoot'),'upstreamCanonicalAgialphaCodeHash':f.get('upstreamCanonicalAgialphaCodeHash'),'localForkCanonicalAgialphaCodeHash':f.get('localForkCanonicalAgialphaCodeHash'),'deploymentPlanHash':f.get('deploymentPlanHash'),'releaseIdentity':release_identity(),'deployedTopologyCount':f.get('deployedTopologyCount'),'transactionReceiptCount':f.get('transactionReceiptCount'),'scenarioResults':['protected-evidence-validation:PASS'],'protectedEvidenceHash':sha(entry_path) if entry_path else None,'mainnetBroadcastOccurred':False,'status':f.get('status')}
+   write(PRE/'fork-rehearsal.json',r); return r
  existing=read(PRE/'fork-rehearsal.json')
  if existing_fork_valid_for_reuse(existing): return existing
  url=os.environ.get('MAINNET_FORK_RPC_URL')
@@ -95,6 +107,7 @@ def fork_report():
   missing=[name for name,value in [('MAINNET_FORK_RPC_URL',url),('SECONDARY_MAINNET_RPC_URL',secondary_url)] if not value]
   r={'schemaVersion':'1.0','executionMode':'NOT_RUN','status':'NOT_RUN','failureReason':', '.join(missing)+' required; public RPC reads and fallback block/hash constants are not evidence.','mainnetBroadcastOccurred':False}
   write(PRE/'fork-rehearsal.json',r); return r
+ if duplicate_rpc_endpoint(url, secondary_url): raise SystemExit('SECONDARY_MAINNET_RPC_URL must be an independent endpoint, not an exact duplicate of MAINNET_FORK_RPC_URL')
  chain=int(rpc_call(url,'eth_chainId'),16)
  secondary_chain=int(rpc_call(secondary_url,'eth_chainId'),16)
  if chain!=1: raise SystemExit('MAINNET_FORK_RPC_URL must report chainId 1')
@@ -107,7 +120,7 @@ def fork_report():
  if not code or code=='0x': raise SystemExit('canonical AGIALPHA code missing at pinned block')
  secondary_code=rpc_call(secondary_url,'eth_getCode',[AGI,hex(block)])
  if secondary_code.lower()!=code.lower(): raise SystemExit('MAINNET_FORK_RPC_URL_SECONDARY disagrees with primary canonical AGIALPHA runtime code')
- r={'schemaVersion':'1.0','executionMode':'MAINNET_FORK','upstreamChainId':1,'localChainId':31337,'forkBlockNumber':block,'forkBlockHash':bh,'forkBlockTimestamp':int(latest['timestamp'],16),'primaryProviderCommitment':hobj({'urlHostRedacted':True,'chainId':1,'block':block,'hash':bh}),'secondaryProviderCommitment':hobj({'urlHostRedacted':True,'chainId':1,'block':block,'hash':secondary_block.get('hash')}),'providerAgreement':True,'canonicalAgialphaAddress':AGI,'upstreamCanonicalAgialphaCodeHash':'0x'+hashlib.sha256(bytes.fromhex(code[2:])).hexdigest(),'localForkCanonicalAgialphaCodeHash':None,'canonicalAgialphaCodeHash':'0x'+hashlib.sha256(bytes.fromhex(code[2:])).hexdigest(),'releaseIdentity':release_identity(),'deployedTopologyCount':0,'scenarioResults':[],'mainnetBroadcastOccurred':False,'status':'NOT_RUN','failureReason':'Dual-RPC block pin succeeded, but fork deployment/campaign execution evidence has not been produced by this wrapper.'}
+ r={'schemaVersion':'1.0','executionMode':'MAINNET_FORK','upstreamChainId':1,'localChainId':31337,'forkBlockNumber':block,'forkBlockHash':bh,'forkBlockTimestamp':int(latest['timestamp'],16),'primaryProviderCommitment':provider_commitment(url,1,block,bh),'secondaryProviderCommitment':provider_commitment(secondary_url,1,block,secondary_block.get('hash')),'providerAgreement':True,'canonicalAgialphaAddress':AGI,'upstreamCanonicalAgialphaCodeHash':'0x'+hashlib.sha256(bytes.fromhex(code[2:])).hexdigest(),'localForkCanonicalAgialphaCodeHash':None,'canonicalAgialphaCodeHash':'0x'+hashlib.sha256(bytes.fromhex(code[2:])).hexdigest(),'releaseIdentity':release_identity(),'deployedTopologyCount':0,'scenarioResults':[],'mainnetBroadcastOccurred':False,'status':'NOT_RUN','failureReason':'Dual-RPC block pin succeeded, but fork deployment/campaign execution evidence has not been produced by this wrapper.'}
  write(PRE/'fork-rehearsal.json',r); return r
 
 def evidence_ref(path): return {'path':str(path.relative_to(ROOT)) if isinstance(path,pathlib.Path) else path,'sha256':sha(path)}
@@ -152,8 +165,9 @@ def generate_gate_report(gate):
   requirements=[]
   for r in reqs:
    raw=raw_reqs.get(r) or {}
-   ok=raw.get('status')=='PASS' and raw.get('evidence') and raw.get('evidenceHashes') and raw.get('rawEvidenceCommitments') and raw.get('generatedBy') not in {None,'','fixture-tool','manual','unknown'}
-   requirements.append({'id':r,'mandatory':True,'status':OK_STATUS if ok else 'BLOCKED','command':raw.get('generatedBy') or f'npm run mainnet:predeploy:{gate.lower()}','evidence':[{'path':'qa/mainnet-predeploy/evidence/protected-evidence-commitments.json','sha256':sha('qa/mainnet-predeploy/evidence/protected-evidence-commitments.json'),'protectedRequirementHash':hobj({'entryType':entry_type,'requirement':r,'evidenceHashes':raw.get('evidenceHashes')})}] if ok else [],'observed':{'protectedRequirementEvidenceValidated':bool(ok),'rawEvidenceHash':sha(entry_path) if entry_path else None},'failureReason':None if ok else 'requirement-specific protected evidence is missing or invalid'})
+   commitments_hash=sha('qa/mainnet-predeploy/evidence/protected-evidence-commitments.json')
+   ok=raw.get('status')=='PASS' and raw.get('evidence') and raw.get('evidenceHashes') and raw.get('rawEvidenceCommitments') and raw.get('generatedBy') not in {None,'','fixture-tool','manual','unknown'} and commitments_hash
+   requirements.append({'id':r,'mandatory':True,'status':OK_STATUS if ok else 'BLOCKED','command':raw.get('generatedBy') or f'npm run mainnet:predeploy:{gate.lower()}','evidence':[{'path':'qa/mainnet-predeploy/evidence/protected-evidence-commitments.json','sha256':commitments_hash,'protectedRequirementHash':hobj({'entryType':entry_type,'requirement':r,'evidenceHashes':raw.get('evidenceHashes')})}] if ok else [],'observed':{'protectedRequirementEvidenceValidated':bool(ok),'rawEvidenceHash':sha(entry_path) if entry_path else None},'failureReason':None if ok else 'requirement-specific protected evidence or public commitment artifact is missing or invalid'})
   report={'schemaVersion':'1.0','stage':'A_PREDEPLOYMENT_AUTHORIZATION','gate':gate,'name':name,'releaseIdentity':rid,'requirements':requirements,'status':'NOT_RUN'}
   report['status']=evaluate_report(report)
   write(base/'report.json',report); write(ROOT/'qa/mainnet-readiness'/f'{subdir}-{name.lower()}.json',report); return report
@@ -179,7 +193,7 @@ def generate_gate_reports(fork=None): return {g:generate_gate_report(g) for g in
 def gate_reports():
  reps=generate_gate_reports(); return {f'Gate {i}':reps[f'G{i}']['status'] for i in range(1,6)}, [f'{g} {r["status"]}' for g,r in reps.items() if r['status']!='PASS']
 def fork_valid(fork):
- return fork.get('executionMode')=='MAINNET_FORK' and fork.get('upstreamChainId')==1 and fork.get('localChainId')==31337 and is_hex_bytes(fork.get('forkBlockHash'),32) and is_hex_bytes(fork.get('canonicalAgialphaCodeHash'),32) and fork.get('providerAgreement') is True and int(fork.get('deployedTopologyCount') or 0)>0 and int(fork.get('transactionReceiptCount') or fork.get('forkReceiptCount') or 0)>0 and fork.get('mainnetBroadcastOccurred') is False and fork.get('status')=='PASS'
+ return fork.get('executionMode')=='MAINNET_FORK' and fork.get('upstreamChainId')==1 and fork.get('localChainId')==31337 and is_hex_bytes(fork.get('forkBlockHash'),32) and is_hex_bytes(fork.get('canonicalAgialphaCodeHash'),32) and is_hex_bytes(fork.get('primaryProviderCommitment'),32) and is_hex_bytes(fork.get('secondaryProviderCommitment'),32) and fork.get('providerAgreement') is True and int(fork.get('deployedTopologyCount') or 0)>0 and int(fork.get('transactionReceiptCount') or fork.get('forkReceiptCount') or 0)>0 and fork.get('mainnetBroadcastOccurred') is False and fork.get('status')=='PASS'
 def semantic_lint_stage_a(cert):
  blob=json.dumps(cert); errs=[]
  for t in FORBIDDEN:
@@ -210,8 +224,10 @@ def validate_plan_public():
 def plan_public():
  pr=protected_report()
  if pr:
+  entry_path, pd=protected_entry_data('DEPLOYMENT_PLAN')
   ps=pr.get('summary',{}).get('plan',{})
-  p={'schemaVersion':'1.0','stage':'A_PREDEPLOYMENT_AUTHORIZATION','releaseIdentity':release_identity(),'chainId':1,'canonicalAgialpha':AGI,'walletA':WA,'walletB':WB,'startingNonce':ps.get('startingNonce'),'orderedTransactions':[{'commitment':'protected','count':ps.get('transactionCount')}],'maximumCumulativeCost':ps.get('maximumCumulativeCost'),'expiresAt':ps.get('expiresAt'),'requiresTypedPlanHashConfirmation':True,'mainnetBroadcastOccurred':False,'status':OK_STATUS,'planHash':ps.get('planHash') or pr.get('indexSha256')}
+  txs=pd.get('publicTransactions') or pd.get('orderedTransactions') or [] if pd else []
+  p={'schemaVersion':'1.0','stage':'A_PREDEPLOYMENT_AUTHORIZATION','releaseIdentity':release_identity(),'chainId':1,'canonicalAgialpha':AGI,'walletA':WA,'walletB':WB,'startingNonce':ps.get('startingNonce') or (pd or {}).get('startingNonce'),'orderedTransactions':txs,'maximumCumulativeCost':ps.get('maximumCumulativeCost') or (pd or {}).get('maximumCumulativeCost'),'expiresAt':ps.get('expiresAt') or (pd or {}).get('expiresAt'),'requiresTypedPlanHashConfirmation':True,'mainnetBroadcastOccurred':False,'status':OK_STATUS if txs else 'INCOMPLETE','planHash':ps.get('planHash') or (pd or {}).get('planHash') or pr.get('indexSha256'),'failureReason':None if txs else 'Protected deployment-plan evidence must include one sanitized public transaction per planned transaction.'}
   write(PRE/'deployment-plan.public.json',p); return p
  existing=read(PRE/'deployment-plan.public.json')
  if plan_complete(existing): return existing
@@ -222,7 +238,9 @@ def predeploy_certificate():
  release_state(); fork=fork_report(); reps=generate_gate_reports(fork); plan=plan_public(); gates={f'Gate {i}':reps[f'G{i}']['status'] for i in range(1,6)}
  blockers=[f'{g} is {r["status"]}' for g,r in reps.items() if r['status']!='PASS']
  if not fork_valid(fork): blockers.append('Pinned Mainnet fork rehearsal with deployed topology and scenario PASS is missing.')
- if plan.get('status')!='PASS': blockers.append('Complete immutable deployment plan is missing or incomplete.')
+ if not plan_complete(plan): blockers.append('Complete immutable deployment plan is missing or incomplete.')
+ if fork_valid(fork) and plan_complete(plan) and fork.get('deploymentPlanHash') and fork.get('deploymentPlanHash')!=plan.get('planHash'):
+  blockers.append('Pinned Mainnet fork rehearsal is not bound to the approved deployment plan hash.')
  status='AUTHORIZED' if not blockers else 'BLOCKED'; yes='YES' if status=='AUTHORIZED' else 'NO'
  validation=protected_report()
  expiry=plan.get('expiresAt')

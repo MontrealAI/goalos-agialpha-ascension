@@ -13,14 +13,26 @@ def clean_outputs():
     shutil.rmtree(OUT, ignore_errors=True)
     subprocess.run(['git','checkout','--','qa/mainnet-predeploy/authorization-certificate.json'],cwd=ROOT,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
 
-def test_valid_historical_sepolia_satisfies_external_network_requirement():
+def accept_historical_operator_provenance(monkeypatch):
+    original_read = sb.read
+    def fake_read(path):
+        data = original_read(path)
+        if str(path).endswith('qa/sepolia-release-evidence/provenance.json'):
+            data = dict(data)
+            data['inputHashes'] = {k: '0x' + '12' * 32 for k in (data.get('inputHashes') or {'manifest': None})}
+        return data
+    monkeypatch.setattr(sb, 'read', fake_read)
+
+def test_valid_historical_sepolia_satisfies_external_network_requirement(monkeypatch):
+    accept_historical_operator_provenance(monkeypatch)
     r=sb.validate_historical(True)
     assert r['status']=='PASS'
     assert r['HISTORICAL_SEPOLIA_CONTRACTS_VERIFIED']==49
     assert r['HISTORICAL_SEPOLIA_VERIFICATION_FAILURES']==0
     assert r['ACCEPTED_FOR_STAGE_A_SEPOLIA_EXTERNAL_NETWORK_EVIDENCE']=='YES'
 
-def test_historical_mismatches_are_disclosed_and_not_parity():
+def test_historical_mismatches_are_disclosed_and_not_parity(monkeypatch):
+    accept_historical_operator_provenance(monkeypatch)
     r=sb.validate_historical(False)
     assert r['CURRENT_RELEASE_BYTECODE_PARITY']=='NO'
     assert r['CURRENT_RELEASE_AUTHORITY_PARITY']=='NO'
@@ -28,7 +40,8 @@ def test_historical_mismatches_are_disclosed_and_not_parity():
     assert 'MockAGIALPHA' in r['mismatches']['token']
     assert 'Wallet A' in r['mismatches']['authority']
 
-def test_sepolia_backed_path_does_not_require_mainnet_fork_but_blocks_without_local_rehearsal():
+def test_sepolia_backed_path_does_not_require_mainnet_fork_but_blocks_without_local_rehearsal(monkeypatch):
+    accept_historical_operator_provenance(monkeypatch)
     c=sb.cert()
     assert c['FULL_MAINNET_FORK_ASSURANCE']=='NO'
     assert c['FULL_G1_G5_ASSURANCE']=='NO'
@@ -37,8 +50,10 @@ def test_sepolia_backed_path_does_not_require_mainnet_fork_but_blocks_without_lo
 
 def _write_initial_profile_evidence(monkeypatch):
     OUT.mkdir(parents=True, exist_ok=True)
+    accept_historical_operator_provenance(monkeypatch)
     monkeypatch.setattr(sb, 'clean_tree', lambda: True)
-    (OUT/'local-rehearsal.json').write_text(json.dumps({'schemaVersion':'1.0','executionMode':'LOCAL_DETERMINISTIC_RELEASE_REHEARSAL','mainnetForkAssurance':False,'walletA':sb.WA,'walletB':sb.WB,'topologyCount':49,'transactionCount':63,'receiptCount':63,'ownerReadback':sb.WB,'walletAZeroAuthority':True,'walletBAuthority':True,'mainnetBroadcastOccurred':False}))
+    (OUT/'build-and-test.json').write_text(json.dumps({'schemaVersion':'1.0','status':'PASS','releaseId':sb.git(['rev-parse','HEAD']),'mainnetBroadcastOccurred':False}))
+    (OUT/'local-rehearsal.json').write_text(json.dumps({'schemaVersion':'1.0','status':'PASS','executionMode':'LOCAL_DETERMINISTIC_RELEASE_REHEARSAL','mainnetForkAssurance':False,'walletA':sb.WA,'walletB':sb.WB,'topologyCount':49,'transactionCount':63,'receiptCount':63,'ownerReadback':sb.WB,'walletAZeroAuthority':True,'walletBAuthority':True,'mainnetBroadcastOccurred':False}))
     checks={k:'PASS' for k in ['ownership_admin_assignment','semantic_override_replay_rejection','stale_state_rejection','no_arbitrary_executor','accounting_consistency','zero_canary_limit_disabled','lifecycle_transition_controls','shutdown_liability_checks','deployment_resume_logic']}
     (OUT/'initial-safety-checks.json').write_text(json.dumps({'schemaVersion':'1.0','status':'PASS','checks':checks,'mainnetBroadcastOccurred':False}))
     tx={'expectedNonce':0,'expectedCreateAddress':'0x0000000000000000000000000000000000000001','fullyQualifiedName':'contracts/registry/GoalOSDeploymentDirectory.sol:GoalOSDeploymentDirectory','artifactHash':'0x'+'11'*32,'constructorCommitment':'0x'+'22'*32,'initcodeHash':'0x'+'33'*32,'expectedRuntimeBytecodeHash':'0x'+'44'*32,'transactionValue':'0','gasEstimate':'1','gasLimit':'1','maxFeePerGas':'1','maxPriorityFeePerGas':'1','maximumTransactionCost':'1'}
@@ -57,7 +72,8 @@ def test_initial_profile_can_pass_without_mainnet_fork_artifact(monkeypatch):
     assert not (OUT/'fork-rehearsal.json').exists()
     assert all(v=='PASS' for v in c['gates'].values())
 
-def test_certificate_cannot_claim_production_or_user_funds():
+def test_certificate_cannot_claim_production_or_user_funds(monkeypatch):
+    accept_historical_operator_provenance(monkeypatch)
     c=sb.cert()
     assert c['PRODUCTION_READY']=='NO'
     assert c['USER_FUNDS_AUTHORIZED']=='NO'
@@ -94,3 +110,31 @@ def test_no_public_network_transaction_is_sent_by_resolver():
     assert result.returncode!=0
     assert 'mainnetBroadcastOccurred' in result.stdout
     assert 'AUTHORIZED_FOR_INITIAL_MAINNET_DEPLOYMENT_FROM_SEPOLIA_EVIDENCE\n\nINITIAL_MAINNET_DEPLOYMENT_AUTHORIZED = YES' not in result.stdout
+
+
+def test_fixture_only_historical_sepolia_blocks_external_network_requirement():
+    r = sb.validate_historical(False)
+    assert r['status'] == 'BLOCKED'
+    assert r['fixtureOnly'] is True
+    assert r['ACCEPTED_FOR_STAGE_A_SEPOLIA_EXTERNAL_NETWORK_EVIDENCE'] == 'NO'
+
+def test_current_release_requires_build_test_evidence(monkeypatch):
+    OUT.mkdir(parents=True, exist_ok=True)
+    monkeypatch.setattr(sb, 'clean_tree', lambda: True)
+    r = sb.current_release()
+    assert r['status'] == 'BLOCKED'
+    assert 'build/test' in r['blockers'][0]
+
+def test_failed_local_rehearsal_is_not_rewritten_to_pass(monkeypatch):
+    OUT.mkdir(parents=True, exist_ok=True)
+    (OUT/'local-rehearsal.json').write_text(json.dumps({'schemaVersion':'1.0','status':'FAIL','executionMode':'LOCAL_DETERMINISTIC_RELEASE_REHEARSAL','mainnetForkAssurance':False,'walletA':sb.WA,'walletB':sb.WB,'topologyCount':1,'transactionCount':1,'receiptCount':1,'ownerReadback':sb.WB,'walletAZeroAuthority':True,'walletBAuthority':True,'mainnetBroadcastOccurred':False}))
+    assert sb.rehearsal()['status'] == 'BLOCKED'
+
+def test_plan_rejects_blocked_or_broadcast_input():
+    OUT.mkdir(parents=True, exist_ok=True)
+    tx={'expectedNonce':0,'expectedCreateAddress':'0x0000000000000000000000000000000000000001','fullyQualifiedName':'x:y','artifactHash':'0x'+'11'*32,'constructorCommitment':'0x'+'22'*32,'initcodeHash':'0x'+'33'*32,'expectedRuntimeBytecodeHash':'0x'+'44'*32,'transactionValue':'0','gasEstimate':'1','gasLimit':'1','maxFeePerGas':'1','maxPriorityFeePerGas':'1','maximumTransactionCost':'1'}
+    (OUT/'deployment-plan.public.json').write_text(json.dumps({'status':'BLOCKED','chainId':1,'canonicalAgialpha':sb.AGI,'walletA':sb.WA,'walletB':sb.WB,'startingNonce':0,'pendingTransactionDisposition':'NONE','orderedTransactions':[tx],'maximumCumulativeCost':'1','minimumWalletARemainingEth':'0','verificationInputCommitment':'0x'+'55'*32,'issuedAt':'2026-06-21T00:00:00Z','expiresAt':'2999-01-01T00:00:00Z','planHash':'0x'+'66'*32,'mainnetBroadcastOccurred':True}))
+    r=sb.plan_validate(False)
+    assert r['status']=='BLOCKED'
+    assert any('status is not PASS' in e for e in r['errors'])
+    assert any('mainnetBroadcastOccurred' in e for e in r['errors'])

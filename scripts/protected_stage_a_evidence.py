@@ -146,6 +146,8 @@ def validate_entry(entry, idx):
    if int(obs.get('deterministicSeedCount',0))<32: errs.append(f'{typ}: fewer than 32 seeds')
    if int(obs.get('mutationSurvived',0))!=0: errs.append(f'{typ}: surviving mutants present')
  if typ=='MAINNET_FORK':
+  if data.get('status')!='PASS': errs.append(f'{typ}: status is not PASS')
+  if data.get('failures') not in ([],None) or data.get('blockers') not in ([],None): errs.append(f'{typ}: failures/blockers must be empty')
   for k in ['executionMode','upstreamChainId','localChainId','forkBlockNumber','forkBlockHash','forkBlockTimestamp','primaryProviderCommitment','secondaryProviderCommitment','canonicalAgialpha','upstreamCanonicalAgialphaCodeHash','localForkCanonicalAgialphaCodeHash','deploymentPlanHash','deployedTopologyCount','transactionReceiptCount','runtimeBytecodeRoot']:
    if data.get(k) in [None,'',[],{}]: errs.append(f'{typ}: missing {k}')
   for k in ['forkBlockHash','upstreamCanonicalAgialphaCodeHash','localForkCanonicalAgialphaCodeHash','runtimeBytecodeRoot']:
@@ -155,6 +157,9 @@ def validate_entry(entry, idx):
   if str(data.get('canonicalAgialpha','')).lower()!=AGI.lower(): errs.append(f'{typ}: wrong canonical AGIALPHA')
   if int(data.get('transactionReceiptCount') or 0)<=0: errs.append(f'{typ}: empty receipt list')
  if typ=='DEPLOYMENT_PLAN':
+  if data.get('status')!='PASS': errs.append(f'{typ}: status is not PASS')
+  if data.get('failures') not in ([],None) or data.get('blockers') not in ([],None): errs.append(f'{typ}: failures/blockers must be empty')
+  if data.get('mainnetBroadcastOccurred') is not False: errs.append(f'{typ}: mainnetBroadcastOccurred must be false')
   for k in ['chainId','canonicalAgialpha','walletA','walletB','startingNonce','orderedTransactions','maximumCumulativeCost','planHash','expiresAt']:
    if data.get(k) in [None,'',[],{}]: errs.append(f'{typ}: missing {k}')
   for i,tx in enumerate(data.get('orderedTransactions') or []):
@@ -192,7 +197,7 @@ def validate(write_report=True):
  summary={}
  fork=data_by_type.get('MAINNET_FORK') or {}; plan=data_by_type.get('DEPLOYMENT_PLAN') or {}; g5=data_by_type.get('G5_ASSURANCE') or {}
  sepolia=data_by_type.get('SEPOLIA') or {}
- if fork: summary['fork']={k:fork.get(k) for k in ['forkBlockNumber','forkBlockHash','forkBlockTimestamp','deployedTopologyCount','transactionReceiptCount','deploymentPlanHash','runtimeBytecodeRoot']}
+ if fork: summary['fork']={k:fork.get(k) for k in ['forkBlockNumber','forkBlockHash','forkBlockTimestamp','primaryProviderCommitment','secondaryProviderCommitment','providerAgreement','deployedTopologyCount','transactionReceiptCount','deploymentPlanHash','runtimeBytecodeRoot','upstreamCanonicalAgialphaCodeHash','localForkCanonicalAgialphaCodeHash']}
  if plan: summary['plan']={k:plan.get(k) for k in ['planHash','startingNonce','expiresAt','maximumCumulativeCost']}; summary['plan']['transactionCount']=len(plan.get('orderedTransactions') or [])
  if g5: summary['assurance']=g5.get('observed',{})
  if sepolia: summary['sepolia']={k:sepolia.get(k) for k in ['chainId','totalContracts','verifiedContracts','failedContracts']}
