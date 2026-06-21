@@ -6,7 +6,7 @@ QA=ROOT/'qa/mainnet-predeploy/evidence'
 AGI='0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA'; WA='0x6c8B8897Fb6b08B4070387233B89b3E9A94eD00E'; WB='0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99'
 REQ_TYPES={'G1_AUTHORITY','G2_OVERRIDES','G3_ACCOUNTING','G4_LIFECYCLE','G5_ASSURANCE','MAINNET_FORK','DEPLOYMENT_PLAN'}
 FALLBACK_DIRS=[ROOT/'.private/mainnet-predeploy',ROOT/'.private/mainnet-deployment',ROOT/'.private/mainnet-readiness',ROOT/'.private/evidence/mainnet-predeploy']
-PATH_VARS={'GOALOS_G1_EVIDENCE_PATH':'G1_AUTHORITY','GOALOS_G2_EVIDENCE_PATH':'G2_OVERRIDES','GOALOS_G3_EVIDENCE_PATH':'G3_ACCOUNTING','GOALOS_G4_EVIDENCE_PATH':'G4_LIFECYCLE','GOALOS_G5_EVIDENCE_PATH':'G5_ASSURANCE','GOALOS_MAINNET_FORK_EVIDENCE_PATH':'MAINNET_FORK','GOALOS_DEPLOYMENT_PLAN_PUBLIC_PATH':'DEPLOYMENT_PLAN','GOALOS_DEPLOYMENT_PLAN_PRIVATE_PATH':'DEPLOYMENT_PLAN'}
+PATH_VARS={'GOALOS_RELEASE_IDENTITY_EVIDENCE':'RELEASE_IDENTITY','GOALOS_G1_EVIDENCE_PATH':'G1_AUTHORITY','GOALOS_G2_EVIDENCE_PATH':'G2_OVERRIDES','GOALOS_G3_EVIDENCE_PATH':'G3_ACCOUNTING','GOALOS_G4_EVIDENCE_PATH':'G4_LIFECYCLE','GOALOS_G5_EVIDENCE_PATH':'G5_ASSURANCE','GOALOS_MAINNET_FORK_EVIDENCE_PATH':'MAINNET_FORK','GOALOS_MAINNET_FORK_RAW_RECEIPTS_PATH':'MAINNET_FORK_LOCAL_RECEIPT','GOALOS_MAINNET_FORK_AUTHORITY_READBACK_PATH':'G1_AUTHORITY','GOALOS_MAINNET_FORK_OVERRIDE_EVIDENCE_PATH':'G2_OVERRIDES','GOALOS_MAINNET_FORK_ACCOUNTING_EVIDENCE_PATH':'G3_ACCOUNTING','GOALOS_MAINNET_FORK_LIFECYCLE_EVIDENCE_PATH':'G4_LIFECYCLE','GOALOS_DEPLOYMENT_PLAN_PRIVATE_PATH':'DEPLOYMENT_PLAN','GOALOS_DEPLOYMENT_PLAN_PUBLIC_PATH':'DEPLOYMENT_PLAN','GOALOS_DEPLOYMENT_PLAN_APPROVAL_PATH':'DEPLOYMENT_PLAN_APPROVAL','GOALOS_AUTHORITY_POLICY_PATH':'AUTHORITY_POLICY','GOALOS_OWNER_PROOF_PATH':'OWNER_PROOF','GOALOS_SEPOLIA_EVIDENCE_INDEX':'SEPOLIA','GOALOS_INVARIANT_EVIDENCE_PATH':'G5_ASSURANCE','GOALOS_MUTATION_EVIDENCE_PATH':'G5_ASSURANCE','GOALOS_REPRODUCIBLE_BUILD_EVIDENCE_PATH':'G5_ASSURANCE','GOALOS_SECURITY_DOCKET_PATH':'G5_ASSURANCE'}
 
 def git(args):
  try: return subprocess.check_output(['git',*args],cwd=ROOT,text=True,stderr=subprocess.DEVNULL).strip()
@@ -26,6 +26,21 @@ def is_tracked(p):
  try: return subprocess.call(['git','ls-files','--error-unmatch',str(p.relative_to(ROOT))],cwd=ROOT,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)==0
  except Exception: return False
 
+def infer_type(data):
+ typ=data.get('type') or data.get('evidenceType') or data.get('protectedType')
+ if typ in REQ_TYPES: return typ
+ gate=data.get('gate')
+ if gate in {'G1','G2','G3','G4','G5'}: return {'G1':'G1_AUTHORITY','G2':'G2_OVERRIDES','G3':'G3_ACCOUNTING','G4':'G4_LIFECYCLE','G5':'G5_ASSURANCE'}[gate]
+ obs=data.get('observed',{}) if isinstance(data.get('observed'),dict) else {}
+ if data.get('executionMode')=='MAINNET_FORK': return 'MAINNET_FORK'
+ if data.get('orderedTransactions') and data.get('startingNonce') is not None: return 'DEPLOYMENT_PLAN'
+ if obs.get('walletAZeroAuthority') is True or obs.get('walletBPermanentAuthority') is True: return 'G1_AUTHORITY'
+ if 'typedOverrideCoverage' in obs: return 'G2_OVERRIDES'
+ if 'omittedAccountingComponents' in obs: return 'G3_ACCOUNTING'
+ if 'unclassifiedSelectors' in obs: return 'G4_LIFECYCLE'
+ if 'invariantExecutedActions' in obs or 'mutationSurvived' in obs: return 'G5_ASSURANCE'
+ return None
+
 def discover():
  items=[]; root_env=os.environ.get('GOALOS_PROTECTED_EVIDENCE_ROOT')
  roots=[]
@@ -39,6 +54,11 @@ def discover():
  for label,r in roots:
   idx=r/'protected-evidence-index.json'
   if idx.exists(): items.append((label+'/protected-evidence-index.json',idx,'INDEX'))
+  if r.is_dir():
+   for p in sorted(r.rglob('*.json')):
+    if p.name=='protected-evidence-index.json': continue
+    typ=infer_type(read(p))
+    if typ in REQ_TYPES: items.append((label+'/'+str(p.relative_to(r)),p,typ))
  return roots,items
 
 def doctor():
@@ -47,7 +67,7 @@ def doctor():
   rows.append({'name':label,'kind':'directory','status':'PRESENT' if path.is_dir() else 'MISSING','trackedByGit':is_tracked(path) if path.exists() else False})
  for label,path,typ in items:
   exists=path.exists(); st=path.stat() if exists else None
-  rows.append({'name':label,'type':typ,'status':'PRESENT' if exists else 'MISSING','fileType':'file' if exists and path.is_file() else None,'bytes':st.st_size if st else None,'permissions':oct(stat.S_IMODE(st.st_mode)) if st else None,'sha256Prefix':sha_path(path)[:18] if exists and path.is_file() else None,'trackedByGit':is_tracked(path) if exists else False})
+  rows.append({'name':label,'type':typ,'status':'PRESENT' if exists else 'MISSING','fileType':'file' if exists and path.is_file() else None,'bytes':st.st_size if st else None,'permissions':oct(stat.S_IMODE(st.st_mode)) if st else None,'sha256Prefix':sha_path(path)[:18] if exists and path.is_file() else None,'trackedByGit':is_tracked(path) if exists else False,'schemaResult':'UNKNOWN' if not exists or not path.is_file() else ('PASS' if not read(path).get('_parseError') else 'FAIL'),'releaseIdResult':'UNKNOWN' if not exists or not path.is_file() else ('PASS' if (read(path).get('releaseId') or read(path).get('gitCommit') or current_release_id())==current_release_id() else 'MISMATCH')})
  ok=any(r.get('type')=='INDEX' and r['status']=='PRESENT' for r in rows) or any(r.get('type') in REQ_TYPES and r['status']=='PRESENT' for r in rows)
  out={'schemaVersion':'1.0','status':'PRESENT' if ok else 'MISSING','releaseId':current_release_id(),'items':rows}
  print(json.dumps(out,indent=2)); return 0 if ok else 2
@@ -61,6 +81,12 @@ def load_or_create_index(write_index=False):
   if typ in REQ_TYPES and path.exists():
    base=base or path.parent
    entries.append({'type':typ,'path':str(path),'sha256':sha_path(path),'schemaVersion':read(path).get('schemaVersion'),'releaseId':read(path).get('releaseId') or read(path).get('gitCommit'),'publicDisclosure':'COMMITMENT_ONLY'})
+ # De-duplicate by required type, preferring explicit environment paths before recursive fallback files.
+ seen=set(); dedup=[]
+ for e in entries:
+  if e['type'] not in seen:
+   dedup.append(e); seen.add(e['type'])
+ entries=dedup
  if not entries: return None,{'_errors':['No protected evidence index or explicit evidence paths found']}
  base=base or next((r for _,r in roots if r.exists()),None)
  idx={'schemaVersion':'1.0','releaseId':current_release_id(),'gitCommit':current_release_id(),'chainId':1,'walletA':WA,'walletB':WB,'canonicalAgialpha':AGI,'entries':entries}
@@ -71,13 +97,13 @@ def load_or_create_index(write_index=False):
 
 def validate_entry(entry, idx):
  errs=[]; typ=entry.get('type'); p=resolve(entry.get('path',''))
- if typ not in REQ_TYPES and typ not in {'SEPOLIA','OWNER_PROOF'}: errs.append(f'unknown entry type {typ}')
+ if typ not in REQ_TYPES and typ not in {'SEPOLIA','OWNER_PROOF','AUTHORITY_POLICY','DEPLOYMENT_PLAN_APPROVAL','RELEASE_IDENTITY','MAINNET_FORK_LOCAL_RECEIPT'}: errs.append(f'unknown entry type {typ}')
  if not p.exists(): return [f'{typ}: missing file {entry.get("path")}'], None
  actual=sha_path(p)
  if entry.get('sha256')!=actual: errs.append(f'{typ}: sha256 mismatch {entry.get("sha256")} != {actual}')
  data=read(p)
  if data.get('fixtureOnly') or data.get('notReleaseEvidence'): errs.append(f'{typ}: fixture evidence rejected')
- if data.get('mainnetBroadcastOccurred') is not False: errs.append(f'{typ}: mainnetBroadcastOccurred must be false')
+ if typ in REQ_TYPES and data.get('mainnetBroadcastOccurred') is not False: errs.append(f'{typ}: mainnetBroadcastOccurred must be false')
  rid=data.get('releaseId') or data.get('gitCommit') or entry.get('releaseId')
  if rid not in {idx.get('releaseId'), idx.get('gitCommit'), current_release_id()}: errs.append(f'{typ}: releaseId mismatch')
  if typ.startswith('G'):
@@ -149,7 +175,7 @@ def import_cmd():
  # Write public sanitized package summaries with commitments only.
  name_map={'G1_AUTHORITY':'gate-1-authority.public.json','G2_OVERRIDES':'gate-2-overrides.public.json','G3_ACCOUNTING':'gate-3-accounting.public.json','G4_LIFECYCLE':'gate-4-lifecycle.public.json','G5_ASSURANCE':'gate-5-assurance.public.json','MAINNET_FORK':'mainnet-fork.public.json'}
  for c in commitments:
-  if c['type'] in name_map: write(QA/name_map[c['type']],{'schemaVersion':'1.0','status':report.get('status'),'protectedType':c['type'],'commitment':c,'mainnetBroadcastOccurred':False})
+  if c['type'] in name_map: write(QA/name_map[c['type']],{'schemaVersion':'1.0','status':report.get('status'),'evidenceType':c['type'],'protectedFileHash':c['sha256'],'releaseId':c.get('releaseId'),'schemaVersionOfEvidence':c.get('schemaVersion'),'producerMetadata':{'source':'validated protected evidence'},'safeSummary':{'rawProtectedEvidence':'not disclosed','disclosure':c.get('publicDisclosure')},'validationResult':report.get('status'),'commitment':c,'mainnetBroadcastOccurred':False})
  print(json.dumps(out,indent=2)); return rc
 
 def status_cmd():

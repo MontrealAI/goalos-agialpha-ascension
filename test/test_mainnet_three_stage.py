@@ -191,3 +191,33 @@ def test_missing_protected_evidence_doctor_fails_when_no_inputs(monkeypatch):
         if k.startswith('GOALOS_'):
             monkeypatch.delenv(k, raising=False)
     assert subprocess.run(['python','scripts/protected_stage_a_evidence.py','doctor'],cwd=ROOT,stdout=subprocess.PIPE,text=True).returncode in {2}
+
+def test_valid_untracked_protected_evidence_authorizes_stage_a(tmp_path, monkeypatch):
+    private_root=ROOT/'.private'/'mainnet-predeploy'/'pytest-untracked-stage-a'
+    if private_root.exists():
+        import shutil; shutil.rmtree(private_root)
+    idx=_write_valid_protected_package(private_root)
+    try:
+        monkeypatch.setenv('GOALOS_PROTECTED_EVIDENCE_INDEX', str(idx))
+        result=subprocess.run(['python','scripts/mainnet_three_stage.py','resolve-and-authorize'],cwd=ROOT,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,text=True)
+        assert result.returncode==0, result.stdout
+        assert 'AUTHORIZED_TO_DEPLOY_ON_ETHEREUM_MAINNET' in result.stdout
+        assert 'committed evidence state remains blocked by missing protected Gate 1–5' not in result.stdout
+        assert (ROOT/'qa/mainnet-predeploy/evidence/protected-evidence-commitments.json').exists()
+        cert=json.loads((ROOT/'qa/mainnet-predeploy/authorization-certificate.json').read_text())
+        assert cert['status']=='AUTHORIZED'
+        assert all(v=='PASS' for v in cert['gates'].values())
+        tracked=subprocess.run(['git','ls-files','--error-unmatch',str(idx.relative_to(ROOT))],cwd=ROOT,stdout=subprocess.PIPE,stderr=subprocess.PIPE,text=True)
+        assert tracked.returncode!=0
+    finally:
+        import shutil; shutil.rmtree(private_root, ignore_errors=True)
+
+def test_missing_or_invalid_protected_evidence_blocks_stage_a(tmp_path, monkeypatch):
+    bad=tmp_path/'bad'; bad.mkdir()
+    p=bad/'g1.json'; p.write_text(json.dumps({'schemaVersion':'1.0','releaseId':m3.git(['rev-parse','HEAD']),'status':'FAIL','mainnetBroadcastOccurred':False}))
+    monkeypatch.setenv('GOALOS_PROTECTED_EVIDENCE_ROOT', str(bad))
+    monkeypatch.delenv('GOALOS_PROTECTED_EVIDENCE_INDEX', raising=False)
+    result=subprocess.run(['python','scripts/mainnet_three_stage.py','resolve-and-authorize'],cwd=ROOT,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,text=True)
+    assert result.returncode!=0
+    assert 'AUTHORIZED_TO_DEPLOY_ON_ETHEREUM_MAINNET' not in result.stdout
+    assert 'specific protected evidence validation failed' in result.stdout or 'BLOCKED' in result.stdout
