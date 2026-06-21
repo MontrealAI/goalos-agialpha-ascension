@@ -1,0 +1,17 @@
+{
+  "etherscanVerification": "49/49",
+  "files": [
+    "provenance.json",
+    "validation.json",
+    "deployment-evidence.reconciled.json",
+    "gate-contribution.json",
+    "authority-readback.json",
+    "accounting-readback.json",
+    "lifecycle-readback.json"
+  ],
+  "independentVerification": "49/49",
+  "onChainReceiptValidation": "BLOCKED",
+  "releaseBinding": "HISTORICAL_UNBOUND",
+  "sepoliaDeploymentImported": true,
+  "status": "GENERATED"
+}

@@ -1,0 +1,7 @@
+{
+  "kind": "authority",
+  "mainnetBroadcast": false,
+  "reason": "Read-only Sepolia RPC not configured or operator artifacts not imported; fail closed without Mainnet broadcast.",
+  "source": "qa/sepolia-release-evidence/deployment-evidence.reconciled.json",
+  "status": "BLOCKED"
+}

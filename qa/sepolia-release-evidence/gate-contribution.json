@@ -1,0 +1,84 @@
+{
+  "classification": "HISTORICAL_VERIFIED_SEPOLIA_DEPLOYMENT",
+  "productionGateStatuses": {
+    "gate1": "BLOCKED",
+    "gate2": "BLOCKED",
+    "gate3": "BLOCKED",
+    "gate4": "BLOCKED",
+    "gate5": "BLOCKED"
+  },
+  "releaseBindingStatus": "HISTORICAL_UNBOUND",
+  "requirements": {
+    "gate1": {
+      "contribution": "Topology and constructor-authority behavior only if readback agrees; no disposable deployer/Ledger/Safe production handoff proof.",
+      "evidence": [
+        {
+          "path": "qa/sepolia-release-evidence/deployment-evidence.reconciled.json",
+          "sha256": "DETERMINISTIC_FIXTURE_NOT_OPERATOR_ARTIFACT"
+        },
+        {
+          "path": "qa/sepolia-release-evidence/provenance.json",
+          "sha256": "DETERMINISTIC_FIXTURE_NOT_OPERATOR_ARTIFACT"
+        }
+      ],
+      "status": "PARTIAL"
+    },
+    "gate2": {
+      "contribution": "Verification proves source publication, not typed Owner override execution.",
+      "evidence": [
+        {
+          "path": "qa/sepolia-release-evidence/deployment-evidence.reconciled.json",
+          "sha256": "DETERMINISTIC_FIXTURE_NOT_OPERATOR_ARTIFACT"
+        },
+        {
+          "path": "qa/sepolia-release-evidence/provenance.json",
+          "sha256": "DETERMINISTIC_FIXTURE_NOT_OPERATOR_ARTIFACT"
+        }
+      ],
+      "status": "NOT_SUPPORTED"
+    },
+    "gate3": {
+      "contribution": "No accounting reconciliation/canary execution; MockAGIALPHA is not canonical Mainnet AGIALPHA.",
+      "evidence": [
+        {
+          "path": "qa/sepolia-release-evidence/deployment-evidence.reconciled.json",
+          "sha256": "DETERMINISTIC_FIXTURE_NOT_OPERATOR_ARTIFACT"
+        },
+        {
+          "path": "qa/sepolia-release-evidence/provenance.json",
+          "sha256": "DETERMINISTIC_FIXTURE_NOT_OPERATOR_ARTIFACT"
+        }
+      ],
+      "status": "NOT_SUPPORTED"
+    },
+    "gate4": {
+      "contribution": "No lifecycle rehearsal for pause/resume/WindDown/migration/shutdown.",
+      "evidence": [
+        {
+          "path": "qa/sepolia-release-evidence/deployment-evidence.reconciled.json",
+          "sha256": "DETERMINISTIC_FIXTURE_NOT_OPERATOR_ARTIFACT"
+        },
+        {
+          "path": "qa/sepolia-release-evidence/provenance.json",
+          "sha256": "DETERMINISTIC_FIXTURE_NOT_OPERATOR_ARTIFACT"
+        }
+      ],
+      "status": "NOT_SUPPORTED"
+    },
+    "gate5": {
+      "contribution": "Supports public Sepolia deployment, topology, 63 receipts if online-confirmed, 49 non-empty code addresses if online-confirmed, and 49/49 verification; not current-release/Mainnet-fork/security docket.",
+      "evidence": [
+        {
+          "path": "qa/sepolia-release-evidence/deployment-evidence.reconciled.json",
+          "sha256": "DETERMINISTIC_FIXTURE_NOT_OPERATOR_ARTIFACT"
+        },
+        {
+          "path": "qa/sepolia-release-evidence/provenance.json",
+          "sha256": "DETERMINISTIC_FIXTURE_NOT_OPERATOR_ARTIFACT"
+        }
+      ],
+      "status": "PARTIAL"
+    }
+  },
+  "schemaVersion": "1.0"
+}

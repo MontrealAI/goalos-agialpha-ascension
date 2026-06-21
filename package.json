@@ -267,7 +267,19 @@
     "dormant:mainnet:postcheck": "python scripts/dormant_mainnet_v3.py postcheck",
     "dormant:mainnet:evidence": "python scripts/dormant_mainnet_v3.py evidence",
     "dormant:mainnet:status": "python scripts/dormant_mainnet_v3.py status",
-    "dormant:mainnet:sweep-deployer": "python scripts/dormant_mainnet_v3.py sweep-deployer"
+    "dormant:mainnet:sweep-deployer": "python scripts/dormant_mainnet_v3.py sweep-deployer",
+    "evidence:sepolia:import": "python scripts/sepolia_evidence.py import",
+    "evidence:sepolia:verify": "python scripts/sepolia_evidence.py verify",
+    "evidence:sepolia:reconcile": "python scripts/sepolia_evidence.py reconcile",
+    "evidence:sepolia:authority-readback": "python scripts/sepolia_evidence.py authority-readback",
+    "evidence:sepolia:accounting-readback": "python scripts/sepolia_evidence.py accounting-readback",
+    "evidence:sepolia:lifecycle-readback": "python scripts/sepolia_evidence.py lifecycle-readback",
+    "evidence:sepolia:docket": "python scripts/sepolia_evidence.py docket",
+    "evidence:sepolia:gate-contribution": "python scripts/sepolia_evidence.py gate-contribution",
+    "sepolia:release-candidate:deploy": "python scripts/sepolia_evidence.py release-candidate-deploy",
+    "sepolia:release-candidate:verify": "python scripts/sepolia_evidence.py release-candidate-verify",
+    "sepolia:release-candidate:readback": "python scripts/sepolia_evidence.py release-candidate-readback",
+    "sepolia:release-candidate:docket": "python scripts/sepolia_evidence.py release-candidate-docket"
   },
   "dependencies": {
     "@openzeppelin/contracts": "4.9.6",

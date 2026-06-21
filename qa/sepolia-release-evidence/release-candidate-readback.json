@@ -1,0 +1,13 @@
+{
+  "command": "release-candidate-readback",
+  "mainnetBroadcast": false,
+  "mockAGIALPHABoundary": "Sepolia may use MockAGIALPHA; Mainnet requires existing canonical AGIALPHA validation.",
+  "requires": [
+    "Wallet A deployer",
+    "Wallet B authority recipient",
+    "SEPOLIA_RPC_URL",
+    "ETHERSCAN_API_KEY",
+    "frozen release hashes"
+  ],
+  "status": "MANUAL_PROTECTED_WORKFLOW_NOT_EXECUTED"
+}

@@ -1,0 +1,31 @@
+{
+  "classification": "HISTORICAL_VERIFIED_SEPOLIA_DEPLOYMENT",
+  "expectedHashes": {
+    "deploymentEvidence": "5398773ff4cf9fb32a4092f282207ef2efd0f21d8d6b376a8c099566475dd808",
+    "independentCheck": "8f630fbb8db1366413bdc9a6a95c0f69ea92e06a03dc722891774e53671e1045",
+    "manifest": "d8895bddefd944062bb040ca35fd962455be3e0b7411df672eac035836bf3ac6",
+    "verificationReport": "baf57d5bdff69fc0d5c572f5bc34d1371989797ee51cbb684b14e9b97190a6a2"
+  },
+  "futureManifestRequirements": [
+    "gitCommit",
+    "sourceTreeHash",
+    "lockfileHash",
+    "compilerBinaryHash",
+    "compilerSettingsHash",
+    "creationBytecodeHashes",
+    "runtimeBytecodeHashes",
+    "FQNs",
+    "constructorEncodings",
+    "deploymentScriptHash",
+    "releaseId"
+  ],
+  "generatedAt": "2026-06-21T00:24:00.919240+00:00",
+  "inputHashes": {
+    "deploymentEvidence": "DETERMINISTIC_FIXTURE_NOT_OPERATOR_ARTIFACT",
+    "independentCheck": "DETERMINISTIC_FIXTURE_NOT_OPERATOR_ARTIFACT",
+    "manifest": "DETERMINISTIC_FIXTURE_NOT_OPERATOR_ARTIFACT",
+    "verificationReport": "DETERMINISTIC_FIXTURE_NOT_OPERATOR_ARTIFACT"
+  },
+  "operatorInputPaths": {},
+  "releaseBindingStatus": "HISTORICAL_UNBOUND"
+}
