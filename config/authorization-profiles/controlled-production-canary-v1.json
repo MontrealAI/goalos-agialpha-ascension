@@ -1,0 +1,42 @@
+{
+  "authorizationProfile": "CONTROLLED_PRODUCTION_CANARY_V1",
+  "profileVersion": "1.0",
+  "chainId": 1,
+  "canonicalAgialpha": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
+  "scope": "Controlled Ethereum Mainnet production canary with finite release-bound limits; effective only after verified chain-1 deployment and Ledger activation.",
+  "wallets": {
+    "walletA": "0x6c8B8897Fb6b08B4070387233B89b3E9A94eD00E",
+    "walletARole": "disposable deployer/gas payer only; permanent authority count must be zero",
+    "walletB": "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99",
+    "walletBRole": "Ledger final Owner and all permanent authorities by public address only"
+  },
+  "authorizationStates": ["AUTHORIZED_PRE_BROADCAST", "ACTIVE_POSTDEPLOYMENT"],
+  "canaryLimits": {
+    "maximumAggregateUserLiabilitiesAgialpha": "1000000000000000000000",
+    "maximumSingleDepositAgialpha": "100000000000000000000",
+    "maximumSingleJobRewardAgialpha": "100000000000000000000",
+    "maximumBondOrStakeAgialpha": "10000000000000000000",
+    "maximumConcurrentObligations": 10,
+    "maximumDelegatedTransferAgialpha": "10000000000000000000",
+    "maximumVaultOutflowPerDayAgialpha": "100000000000000000000",
+    "maximumDailySettlementAgialpha": "250000000000000000000",
+    "maximumTotalCanaryExposureAgialpha": "1000000000000000000000",
+    "zeroMeansUnlimited": false
+  },
+  "activationFirewall": {
+    "requiresRealChainId1Receipts": true,
+    "requiresRuntimeBytecodeHashesMatch": true,
+    "requiresEtherscanV2Verification": true,
+    "requiresWalletBOwnershipReadback": true,
+    "requiresWalletAResidualAuthorityZero": true,
+    "requiresAccountingSolvency": true,
+    "requiresCanaryLimitsMatchCertificate": true,
+    "requiresMonitoringAlertsHealthy": true,
+    "requiresMinimalLiveCanaryReconciled": true,
+    "requiresLedgerSignedActivation": true
+  },
+  "publicRelianceBoundary": "Reliance is limited to verified deployed bytecode, published configuration, documented canary limits, and current on-chain status for the enabled scope; it is not a guarantee of safety, returns, availability, legal compliance, or external audit.",
+  "requiredReviewRoles": ["implementation agent", "adversarial security agent", "formal/invariant agent", "release/evidence agent", "deployment/operations agent", "documentation/claim-boundary agent"],
+  "requiredGateEvidence": ["compiler-grounded inventories", "fresh exact-release Sepolia when parity is not proven", "recent full-topology Mainnet fork", "Gate 1-5 reports", "security docket", "production certificate", "generated docs/status", "local deployment and activation package"],
+  "status": "DEFINED_FAIL_CLOSED_UNTIL_EVIDENCE_PASS"
+}

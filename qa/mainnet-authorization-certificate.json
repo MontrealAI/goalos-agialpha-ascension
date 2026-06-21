@@ -3,14 +3,33 @@
   "authorizationProfile": "INITIAL_MAINNET_LIMITED_RELEASE",
   "profileVersion": "1.0",
   "authorizedPurpose": "Deploy, verify, establish Ledger ownership, and gather real Mainnet operational evidence.",
-  "generatedAt": "2026-06-21T01:55:05.657488+00:00",
+  "generatedAt": "2026-06-21T02:01:35.543500+00:00",
+  "generatedBy": "scripts/initial_mainnet_profile.py",
   "repository": "MontrealAI/goalos-agialpha-ascension",
-  "sourceCommit": "95f728d945a3ad1309506c9219b6cac63a80313e",
+  "commit": "55ca521f3895b4767bd03cfbcd012384f3333442",
+  "sourceCommit": "55ca521f3895b4767bd03cfbcd012384f3333442",
+  "branch": "work",
   "chain": "ethereum",
   "chainId": 1,
   "agialphaToken": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
   "walletA": "0x6c8B8897Fb6b08B4070387233B89b3E9A94eD00E",
   "walletB": "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99",
+  "notExternallyAudited": true,
+  "externalAuditRequired": false,
+  "runtimeSecretsRequiredForBroadcast": true,
+  "runtimeSecretsStoredInGitHub": false,
+  "ciCanDeployMainnet": false,
+  "privateOperatorAuthorizationPackageRequired": false,
+  "mainnetDeployed": "NO",
+  "MAINNET_DEPLOYED": "NO",
+  "technicallyMainnetReady": "NO",
+  "mainnetDeploymentAuthorized": "NO",
+  "ethereumMainnetAuthorized": "NO",
+  "blockers": [
+    "Recent full-topology Mainnet fork evidence with chainId=1 and canonical AGIALPHA is absent."
+  ],
+  "warnings": [],
+  "nextAction": "Resolve certificate blockers; do not broadcast Mainnet.",
   "gates": {
     "Gate 1": "BLOCKED",
     "Gate 2": "BLOCKED",
@@ -51,23 +70,23 @@
   "evidence": {
     "gate1": {
       "path": "qa/mainnet-initial-release/gate-1-authority.json",
-      "sha256": "0x7295e8b1081ea4e1391641ecd2988a387303edbe98cf1085c383ea838e5a93ad"
+      "sha256": "0x2b09f0687a1c4dabe731976ec087e3e9845bd44f340df0b8a0030444759b445f"
     },
     "gate2": {
       "path": "qa/mainnet-initial-release/gate-2-recovery.json",
-      "sha256": "0xe28ccc268b02c90539d3b7ba334afb7c8cfc17bff67cae08fb50bd51661fde2d"
+      "sha256": "0x8ebe7b59b357ed242d9e80031a2f380ec22e8665352ff88893cc3804331dface"
     },
     "gate3": {
       "path": "qa/mainnet-initial-release/gate-3-accounting.json",
-      "sha256": "0xa7d30ade20dcfec2f1a7a94052e5c773cbd25aff99c09a4fc382f45e571f2794"
+      "sha256": "0xb8f9cabb4a3ef13eeb71102553922d954a4d71082d6e7c9ed81c555c4d4f3893"
     },
     "gate4": {
       "path": "qa/mainnet-initial-release/gate-4-dormancy.json",
-      "sha256": "0xe8e5e38ec5f593c038ad7187c4d964cb64593682b0ccd5d1cf69c92d99ffebaf"
+      "sha256": "0xfa579f98b38357dd2365a0a1977222e3c5d6821b3006ec3ed3db8210e3efb7a4"
     },
     "gate5": {
       "path": "qa/mainnet-initial-release/gate-5-assurance.json",
-      "sha256": "0xca4dfe9c4774a11acb9b31136c537f9fb42a84111aa1a5cea7a0aa503068e647"
+      "sha256": "0xd9061039a8d18a6a9b3fcedbbdabf27116e3f56f606b895e8b49a0251d9a61c5"
     },
     "profile": {
       "path": "config/authorization-profiles/initial-mainnet-limited-release.json",
@@ -75,7 +94,7 @@
     },
     "profileSchema": {
       "path": "schemas/authorization-profile.schema.json",
-      "sha256": "0xf67b1ffa5417dcca1b824f5d0c8f9ef0638fbf98bdb9d877294d9b10e036a848"
+      "sha256": "0xa573ea250d8afbb9af56ea753fd4ba3d88010449fb697570502d774f57ba1fde"
     },
     "productionReadiness": {
       "path": "qa/mainnet-readiness/production-readiness.json",
@@ -83,10 +102,10 @@
     },
     "packageScripts": {
       "path": "package.json",
-      "sha256": "0xdefcbd79d035b580185bf001b03ffa79ff8187a583813ee33c0d260e679c7e71"
+      "sha256": "0x241b65082820b3b71ba17e05cedfb9f3fbcf4b97d28927dca3afb9e0b6723667"
     }
   },
-  "expiresAt": "2026-07-05T01:55:05.667177+00:00",
+  "expiresAt": "2026-07-05T02:01:35.567473+00:00",
   "status": "BLOCKED",
   "TECHNICALLY_MAINNET_READY": "NO",
   "MAINNET_DEPLOYMENT_AUTHORIZED": "NO",
@@ -101,7 +120,6 @@
   "PRODUCTION_ANNOUNCEMENT_AUTHORIZED": "NO",
   "PUBLIC_RELIANCE_AUTHORIZED": "NO",
   "UNBOUNDED_ECONOMIC_EXPOSURE_AUTHORIZED": "NO",
-  "MAINNET_DEPLOYED": "NO",
   "MAINNET_VERIFIED": "NO",
-  "certificateHash": "0xa306dc4c5f19902db31716ff02aada532e6c45fdd49e6e2be1dc759d2f3f7642"
+  "certificateHash": "0x54ff18b5b4a1c8a4c975e6f35b6a338594d43f8a4e0af2b1fa6cf0939fb3abec"
 }

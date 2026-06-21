@@ -1,1 +1,71 @@
-{"$schema":"https://json-schema.org/draft/2020-12/schema","type":"object","required":["authorizationProfile","profileVersion","chainId","canonicalAgialpha","scope","wallets","activationFirewall","authorizedActions","prohibitedActions","excludedProductionOnlyRequirements"],"properties":{"authorizationProfile":{"enum":["INITIAL_MAINNET_LIMITED_RELEASE","CONTROLLED_PRODUCTION_RELEASE"]},"profileVersion":{"type":"string"},"chainId":{"const":1},"canonicalAgialpha":{"const":"0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA"},"scope":{"type":"string"},"wallets":{"type":"object"},"activationFirewall":{"type":"object"},"authorizedActions":{"type":"array","items":{"type":"string"}},"prohibitedActions":{"type":"array","items":{"type":"string"}},"excludedProductionOnlyRequirements":{"type":"array","items":{"type":"object","required":["requirement","status"],"properties":{"status":{"const":"DEFERRED_UNTIL_PRODUCTION_ACTIVATION"}}}}},"additionalProperties":true}
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "authorizationProfile",
+    "profileVersion",
+    "chainId",
+    "canonicalAgialpha",
+    "scope",
+    "wallets",
+    "activationFirewall",
+    "authorizedActions",
+    "prohibitedActions",
+    "excludedProductionOnlyRequirements"
+  ],
+  "properties": {
+    "authorizationProfile": {
+      "enum": [
+        "INITIAL_MAINNET_LIMITED_RELEASE",
+        "CONTROLLED_PRODUCTION_RELEASE",
+        "CONTROLLED_PRODUCTION_CANARY_V1"
+      ]
+    },
+    "profileVersion": {
+      "type": "string"
+    },
+    "chainId": {
+      "const": 1
+    },
+    "canonicalAgialpha": {
+      "const": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA"
+    },
+    "scope": {
+      "type": "string"
+    },
+    "wallets": {
+      "type": "object"
+    },
+    "activationFirewall": {
+      "type": "object"
+    },
+    "authorizedActions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "prohibitedActions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "excludedProductionOnlyRequirements": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "requirement",
+          "status"
+        ],
+        "properties": {
+          "status": {
+            "const": "DEFERRED_UNTIL_PRODUCTION_ACTIVATION"
+          }
+        }
+      }
+    }
+  },
+  "additionalProperties": true
+}
