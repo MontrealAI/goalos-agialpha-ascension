@@ -1,14 +1,21 @@
 {
-  "ETHEREUM_MAINNET_AUTHORIZED": "YES",
+  "ETHEREUM_MAINNET_AUTHORIZED": "NO",
   "LIVE_CANARY_COMPLETE": "NO",
   "LIVE_OWNER_HANDOFF_COMPLETE": "NO",
   "MAINNET_DEPLOYED": "NO",
-  "MAINNET_DEPLOYMENT_AUTHORIZED": "YES",
+  "MAINNET_DEPLOYMENT_AUTHORIZED": "NO",
   "MAINNET_VERIFIED": "NO",
   "PRODUCTION_ACTIVATION_EFFECTIVE": "NO",
-  "TECHNICALLY_MAINNET_READY": "YES",
+  "TECHNICALLY_MAINNET_READY": "NO",
+  "blockers": [
+    "Gate 1 (qa/mainnet-readiness/gate-1-authority.json) is BLOCKED",
+    "Gate 2 (qa/mainnet-readiness/gate-2-overrides.json) is BLOCKED",
+    "Gate 3 (qa/mainnet-readiness/gate-3-accounting.json) is BLOCKED",
+    "Gate 4 (qa/mainnet-readiness/gate-4-lifecycle.json) is BLOCKED",
+    "Gate 5 (qa/mainnet-readiness/gate-5-assurance.json) is BLOCKED"
+  ],
   "bytecodeRoot": "0x447f224ae7d222e6f7fd384799a1430167addada934ef2fc39d11ff930a6717b",
-  "certificateHash": "0x611badf86da04a5d38d518dfc0370ceeda105d95f0197eea815937f1e97c2457",
+  "certificateHash": "0x60f02873b7d7d76dc3288d1e0b439ac5b7bd2a1ca598910a27c13f6b9b1850b8",
   "compilerHash": "0xc9f87e01b42cba0a9b0fcaf2513e400ee44e8dd3f2182705371500a0b4ce90db",
   "constructorConfigurationRoot": "0x3599ddd69ac22c5dead70e24bdafaad2f30cb67b0288c126ec6b561901003595",
   "deploymentPlanHash": "0xfcbb2008bc244daae1a2b15acc875d856914247fb2621a38ecb7968cd7674fc2",
@@ -31,7 +38,7 @@
     },
     {
       "path": "test",
-      "sha256": "0xce8463437fda0620438dceb28ee0fc038e465a8542e67989122d7e84f681c331",
+      "sha256": "0x93a63352796053f9a1ebe5548286ad8a4fcce69ddc5fe0f567b1694337cc5ea9",
       "type": "UNIT_INTEGRATION_TEST"
     },
     {
@@ -76,12 +83,12 @@
     },
     {
       "path": "qa",
-      "sha256": "0x003408542d017acd603cdda5c8cb90763f2201e8fcf68722a0061261d3a59344",
+      "sha256": "0x377cdcde50d2d67b295bc92dd9a94b8ca4fe22d907e206dac37f6721390a2b11",
       "type": "GAS_AND_SIZE_REPORT"
     }
   ],
-  "expiresAt": "2026-07-05T03:01:48.036160+00:00",
-  "finalGitSha": "71ccb1fc04a920c8e1db4214f600ba3fca132974",
+  "expiresAt": "2026-07-05T11:26:40.714556+00:00",
+  "finalGitSha": "7d1b1c79f3df6d9f92caca5b2e33dc1d5a2f3e99",
   "forkBlockHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
   "forkBlockNumber": 0,
   "forkEvidenceRoot": "0x8dd116f84fcb0376cd21fde1f6e9c946ae34b8f847dba3007529927a88ec5e2f",
@@ -93,17 +100,18 @@
     "Gate 5": "0xfa4b2bf73df3c09c4ebf2ba114c83f554e76b6e1f8d20299d4c6a0dd4c8975ee"
   },
   "gates": {
-    "Gate 1": "PASS",
-    "Gate 2": "PASS",
-    "Gate 3": "PASS",
-    "Gate 4": "PASS",
-    "Gate 5": "PASS"
+    "Gate 1": "BLOCKED",
+    "Gate 2": "BLOCKED",
+    "Gate 3": "BLOCKED",
+    "Gate 4": "BLOCKED",
+    "Gate 5": "BLOCKED"
   },
   "lockfileHash": "0x9739ecf251762c3828813424f8e7d0d3b291611125cf5eafb31fc32479a3f514",
   "ownerConfigurationCommitment": "0x59b6f0fda860917f0500f52fc75b52933d72be6cd43e3b00d41a0886646a9332",
-  "releaseId": "71ccb1fc04a920c8e1db4214f600ba3fca132974",
+  "releaseId": "7d1b1c79f3df6d9f92caca5b2e33dc1d5a2f3e99",
   "schemaVersion": "1.0",
   "sepoliaEvidenceRoot": "0xb6f6aa03126cb5730a5c2b94aedc72c24f4b0a25f9e078654c11cfb79ff0176c",
   "sourceTreeHash": "0x447f224ae7d222e6f7fd384799a1430167addada934ef2fc39d11ff930a6717b",
-  "stage": "A_PREDEPLOYMENT_AUTHORIZATION"
+  "stage": "A_PREDEPLOYMENT_AUTHORIZATION",
+  "status": "BLOCKED"
 }

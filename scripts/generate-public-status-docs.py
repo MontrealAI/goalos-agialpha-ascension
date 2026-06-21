@@ -22,7 +22,18 @@ Not externally audited.
 Ethereum Mainnet technical readiness: {tech}.
 Ethereum Mainnet deployment authorization: {dep}.
 Ethereum Mainnet authorization: {eth}.
-Ethereum Mainnet deployed: {deployed}."""
+Ethereum Mainnet deployed: {deployed}.
+
+Three-stage Mainnet release status:
+
+| Stage | Status |
+| --- | --- |
+| Predeployment authorization | {eth} |
+| Ethereum Mainnet deployed | {deployed} |
+| Postdeployment verification | NO |
+| Production activation effective | NO |
+
+A pre-broadcast state with predeployment authorization YES and Ethereum Mainnet deployed NO is a GO to deploy, not a contradiction. Stage B evaluates chain-1 receipts, bytecode, verification, and ownership/role readback only after human broadcast. Stage C separately governs bounded live canary, monitoring, reconciliation, Ledger activation, and production reliance."""
 certificate_meaning = 'This certificate authorizes only manual, local, gated Ethereum Mainnet deployment.' if (tech == 'YES' and dep == 'YES' and eth == 'YES') else 'This certificate does not authorize Ethereum Mainnet deployment while readiness or authorization is NO.'
 status_block=f"""{status_label}
 
