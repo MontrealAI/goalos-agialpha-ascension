@@ -1,45 +1,7 @@
-# Start Here: Ethereum Mainnet
+# Ethereum Mainnet Live Status
 
-GoalOS AGIALPHA Ascension v4.4.0 mainnet authorization candidate.
-Automated/internal security toolchain: passed.
-Local deterministic rehearsal: passed.
-Local Evidence Docket: generated.
-Public AGIALPHA token verification: passed / governance-accepted.
-Not externally audited.
-Ethereum Mainnet technical readiness: NO.
-Ethereum Mainnet deployment authorization: NO.
-Ethereum Mainnet authorization: NO.
-Ethereum Mainnet deployed: NO.
+Ethereum Mainnet deployed: YES. Mainnet GoalOS contracts verified: 48/48 after independent Etherscan V2 validation. Mainnet configured: YES after read-only authority reconciliation. Permanent authority: Wallet B / Ledger (`0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99`). Wallet A managed roles: 0 after read-only validation. Phase-B grants: 14/14 after read-only validation.
 
-Three-stage Mainnet release status:
+Production activated: NO. Not externally audited. User funds are not authorized. This document is generated from the postdeployment release-state architecture and preserves the claim boundary that Stage C remains pending.
 
-| Stage | Status |
-| --- | --- |
-| Predeployment authorization | NO |
-| Ethereum Mainnet deployed | NO |
-| Postdeployment verification | NO |
-| Production activation effective | NO |
-
-A pre-broadcast state with predeployment authorization YES and Ethereum Mainnet deployed NO is a GO to deploy, not a contradiction. Stage B evaluates chain-1 receipts, bytecode, verification, and ownership/role readback only after human broadcast. Stage C separately governs bounded live canary, monitoring, reconciliation, Ledger activation, and production reliance.
-
-This means the repository package is not currently authorized for manual gated Ethereum Mainnet deployment. Resolve the certificate blockers, regenerate the certificate, and rerun the public checks before any mainnet deployment attempt. Actual deployment still requires a runtime RPC URL and deployer key outside GitHub.
-
-It does not claim external audit completion, legal approval, tax review, guaranteed security, guaranteed token classification, investment return, yield, price target, revenue share, or production deployment.
-
-Public Sepolia deployment is recommended but not mandatory for public authorization; local deterministic rehearsal and mainnet-shaped simulation are the active public gates.
-
-
-## Command center
-
-1. Check public repo status: `npm run mainnet:status`
-2. Run local public checks: `npm run mainnet:local-checks`
-3. Run automated/internal security toolchain: `npm run mainnet:security`
-4. Run local deterministic rehearsal: `npm run mainnet:local-rehearsal`
-5. Run public AGIALPHA token verification: `npm run verify:agialpha-token:public`
-6. Generate Mainnet Authorization Certificate: `npm run mainnet:certificate`
-7. Compute technical readiness: `npm run mainnet:readiness-check`
-8. Compute deployment authorization: `npm run mainnet:deployment-authorization-check`
-9. Compute Ethereum Mainnet authorization: `npm run mainnet:authorization-check`
-10. Show final manual deployment command: `npm run mainnet:next`
-11. Run final local gated deployment: `npm run deploy:ethereum-mainnet:gated`
-12. Generate post-deployment report after real transaction evidence exists.
+Use `npm run mainnet:live:all` to regenerate read-only evidence from imported operator artifacts and two Mainnet RPC providers. The tooling refuses to fabricate live evidence from the historical template manifest.

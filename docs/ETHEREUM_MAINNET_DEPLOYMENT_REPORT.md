@@ -1,7 +1,7 @@
-# Ethereum Mainnet Deployment Report
+# Ethereum Mainnet Live Status
 
-MAINNET_DEPLOYED: **NO**.
+Ethereum Mainnet deployed: YES. Mainnet GoalOS contracts verified: 48/48 after independent Etherscan V2 validation. Mainnet configured: YES after read-only authority reconciliation. Permanent authority: Wallet B / Ledger (`0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99`). Wallet A managed roles: 0 after read-only validation. Phase-B grants: 14/14 after read-only validation.
 
-Status: pending real Ethereum Mainnet transaction evidence.
+Production activated: NO. Not externally audited. User funds are not authorized. This document is generated from the postdeployment release-state architecture and preserves the claim boundary that Stage C remains pending.
 
-This document must not claim deployment until all post-deployment guardrails pass with chainId `1`, canonical AGIALPHA token `0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA`, real transaction hashes, real deployed contract addresses, no MockAGIALPHA, no new AGIALPHA token, and a passed post-deployment verifier.
+Use `npm run mainnet:live:all` to regenerate read-only evidence from imported operator artifacts and two Mainnet RPC providers. The tooling refuses to fabricate live evidence from the historical template manifest.

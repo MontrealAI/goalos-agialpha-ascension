@@ -1,0 +1,1 @@
+export const ethereumMainnetContracts = {"chainId":1,"canonicalAgialpha":"0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA","frontendSafetyDefaults":{"mainnetDeploymentAvailable":true,"readOnlyExplorerEnabled":true,"writeActionsEnabled":false,"userFundingEnabled":false,"productionActivated":false},"contracts":[]} as const;

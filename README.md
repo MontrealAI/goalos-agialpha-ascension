@@ -1,3 +1,20 @@
+# GoalOS AGIALPHA Ascension
+
+## Ethereum Mainnet live deployment status
+
+- Ethereum Mainnet deployed: **YES**
+- Mainnet GoalOS contracts verified: **48/48**
+- Mainnet configured: **YES**
+- Permanent authority: **Wallet B / Ledger** (`0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99`)
+- Wallet A managed roles: **0** (`0x6c8B8897Fb6b08B4070387233B89b3E9A94eD00E`)
+- Phase-B grants: **14/14**
+- Canonical AGIALPHA: [`0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA`](https://etherscan.io/address/0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA)
+- Production activated: **NO**
+- Not externally audited
+
+The 2026-06-21 Ethereum Mainnet deployment used the direct operator path (`DIRECT_OPERATOR_NO_CERTIFICATE`). The historical Stage-A predeployment authorization certificate is preserved and was not retroactively rewritten. Postdeployment evidence must be regenerated with read-only RPC and Etherscan checks; no repository script added for this status sends a Mainnet transaction.
+
+Read-only explorer and developer configuration may be enabled. Production write flows, user funds, and public activation remain disabled until Stage C passes.
 Install:
 `npm ci`
 
