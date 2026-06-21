@@ -123,8 +123,9 @@ def test_existing_fork_and_complete_plan_are_preserved():
     forkp=m3.PRE/'fork-rehearsal.json'; planp=m3.PRE/'deployment-plan.public.json'
     oldf=forkp.read_text() if forkp.exists() else None; oldp=planp.read_text() if planp.exists() else None
     rid=m3.release_identity()
-    fork={'schemaVersion':'1.0','executionMode':'MAINNET_FORK','upstreamChainId':1,'localChainId':31337,'forkBlockNumber':1,'forkBlockHash':'0xabc','canonicalAgialphaCodeHash':'0xdef','releaseIdentity':rid,'mainnetBroadcastOccurred':False,'status':'PASS'}
-    plan={'schemaVersion':'1.0','stage':'A_PREDEPLOYMENT_AUTHORIZATION','releaseIdentity':rid,'chainId':1,'canonicalAgialpha':m3.AGI,'status':'PASS','orderedTransactions':[{'nonce':0}],'startingNonce':0,'planHash':'0x123'}
+    fork={'schemaVersion':'1.0','executionMode':'MAINNET_FORK','upstreamChainId':1,'localChainId':31337,'forkBlockNumber':1,'forkBlockHash':'0x'+'ab'*32,'canonicalAgialphaCodeHash':'0x'+'de'*32,'primaryProviderCommitment':'0x'+'11'*32,'secondaryProviderCommitment':'0x'+'22'*32,'providerAgreement':True,'deployedTopologyCount':1,'transactionReceiptCount':1,'releaseIdentity':rid,'mainnetBroadcastOccurred':False,'status':'PASS'}
+    tx={'expectedNonce':0,'expectedCreateAddress':'0x0000000000000000000000000000000000000001','fullyQualifiedName':'contracts/registry/GoalOSDeploymentDirectory.sol:GoalOSDeploymentDirectory','artifactHash':'0xartifact','constructorCommitment':'0xconstructor','initcodeHash':'0xinit','expectedRuntimeBytecodeHash':'0xruntime','transactionValue':'0','gasLimit':'1','maxFeePerGas':'1','maxPriorityFeePerGas':'1','maximumTransactionCost':'1'}
+    plan={'schemaVersion':'1.0','stage':'A_PREDEPLOYMENT_AUTHORIZATION','releaseIdentity':rid,'chainId':1,'canonicalAgialpha':m3.AGI,'walletA':m3.WA,'walletB':m3.WB,'status':'PASS','orderedTransactions':[tx],'startingNonce':0,'planHash':'0x123'}
     forkp.parent.mkdir(parents=True, exist_ok=True); forkp.write_text(json.dumps(fork))
     planp.write_text(json.dumps(plan))
     try:
@@ -135,6 +136,17 @@ def test_existing_fork_and_complete_plan_are_preserved():
         else: forkp.write_text(oldf)
         if oldp is None: planp.unlink(missing_ok=True)
         else: planp.write_text(oldp)
+
+def test_aggregate_only_deployment_plan_is_rejected():
+    rid=m3.release_identity()
+    aggregate={'schemaVersion':'1.0','stage':'A_PREDEPLOYMENT_AUTHORIZATION','releaseIdentity':rid,'chainId':1,'canonicalAgialpha':m3.AGI,'walletA':m3.WA,'walletB':m3.WB,'status':'PASS','orderedTransactions':[{'commitment':'protected','count':63}],'startingNonce':0,'planHash':'0xaggregate'}
+    assert m3.plan_complete(aggregate) is False
+
+def test_fake_or_empty_fork_report_is_rejected():
+    rid=m3.release_identity()
+    fake={'schemaVersion':'1.0','executionMode':'MAINNET_FORK','upstreamChainId':1,'localChainId':31337,'forkBlockNumber':1,'forkBlockHash':'0xabc','canonicalAgialphaCodeHash':'0xdef','providerAgreement':True,'deployedTopologyCount':0,'transactionReceiptCount':0,'releaseIdentity':rid,'mainnetBroadcastOccurred':False,'status':'PASS'}
+    assert m3.existing_fork_valid_for_reuse(fake) is False
+    assert m3.fork_valid(fake) is False
 
 def test_live_local_gated_invokes_canonical_deployer_when_authorized(monkeypatch):
     calls=[]
@@ -178,14 +190,14 @@ def _write_valid_protected_package(root):
     (root/'protected-evidence-index.json').write_text(json.dumps(idx,sort_keys=True))
     return root/'protected-evidence-index.json'
 
-def test_valid_protected_package_can_authorize_stage_a(tmp_path, monkeypatch):
+def test_shallow_self_declared_protected_package_is_rejected(tmp_path, monkeypatch):
     idx=_write_valid_protected_package(tmp_path/'protected')
     monkeypatch.setenv('GOALOS_PROTECTED_EVIDENCE_INDEX', str(idx))
-    assert subprocess.run(['python','scripts/protected_stage_a_evidence.py','validate'],cwd=ROOT,stdout=subprocess.PIPE,text=True).returncode==0
-    assert subprocess.run(['python','scripts/protected_stage_a_evidence.py','import'],cwd=ROOT,stdout=subprocess.PIPE,text=True).returncode==0
+    result=subprocess.run(['python','scripts/protected_stage_a_evidence.py','validate'],cwd=ROOT,stdout=subprocess.PIPE,text=True)
+    assert result.returncode!=0
+    assert 'fixture-tool' in result.stdout or 'missing requirement' in result.stdout
     c=m3.predeploy_certificate()
-    assert c['status']=='AUTHORIZED'
-    assert all(v=='PASS' for v in c['gates'].values())
+    assert c['status']!='AUTHORIZED'
     assert c['MAINNET_DEPLOYED']=='NO'
 
 def test_missing_protected_evidence_doctor_fails_when_no_inputs(monkeypatch):
@@ -194,7 +206,7 @@ def test_missing_protected_evidence_doctor_fails_when_no_inputs(monkeypatch):
             monkeypatch.delenv(k, raising=False)
     assert subprocess.run(['python','scripts/protected_stage_a_evidence.py','doctor'],cwd=ROOT,stdout=subprocess.PIPE,text=True).returncode in {2}
 
-def test_valid_untracked_protected_evidence_authorizes_stage_a(tmp_path, monkeypatch):
+def test_untracked_shallow_protected_evidence_does_not_authorize_stage_a(tmp_path, monkeypatch):
     private_root=ROOT/'.private'/'mainnet-predeploy'/'pytest-untracked-stage-a'
     if private_root.exists():
         import shutil; shutil.rmtree(private_root)
@@ -202,13 +214,10 @@ def test_valid_untracked_protected_evidence_authorizes_stage_a(tmp_path, monkeyp
     try:
         monkeypatch.setenv('GOALOS_PROTECTED_EVIDENCE_INDEX', str(idx))
         result=subprocess.run(['python','scripts/mainnet_three_stage.py','resolve-and-authorize'],cwd=ROOT,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,text=True)
-        assert result.returncode==0, result.stdout
-        assert 'AUTHORIZED_TO_DEPLOY_ON_ETHEREUM_MAINNET' in result.stdout
-        assert 'committed evidence state remains blocked by missing protected Gate 1–5' not in result.stdout
-        assert (ROOT/'qa/mainnet-predeploy/evidence/protected-evidence-commitments.json').exists()
+        assert result.returncode!=0
+        assert 'AUTHORIZED_TO_DEPLOY_ON_ETHEREUM_MAINNET' not in result.stdout
         cert=json.loads((ROOT/'qa/mainnet-predeploy/authorization-certificate.json').read_text())
-        assert cert['status']=='AUTHORIZED'
-        assert all(v=='PASS' for v in cert['gates'].values())
+        assert cert['status']!='AUTHORIZED'
         tracked=subprocess.run(['git','ls-files','--error-unmatch',str(idx.relative_to(ROOT))],cwd=ROOT,stdout=subprocess.PIPE,stderr=subprocess.PIPE,text=True)
         assert tracked.returncode!=0
     finally:
@@ -223,3 +232,63 @@ def test_missing_or_invalid_protected_evidence_blocks_stage_a(tmp_path, monkeypa
     assert result.returncode!=0
     assert 'AUTHORIZED_TO_DEPLOY_ON_ETHEREUM_MAINNET' not in result.stdout
     assert 'specific protected evidence validation failed' in result.stdout or 'BLOCKED' in result.stdout
+
+
+def test_existing_fork_requires_dual_provider_commitments():
+    rid=m3.release_identity()
+    fork={'schemaVersion':'1.0','executionMode':'MAINNET_FORK','upstreamChainId':1,'localChainId':31337,'forkBlockNumber':1,'forkBlockHash':'0x'+'ab'*32,'canonicalAgialphaCodeHash':'0x'+'de'*32,'providerAgreement':True,'deployedTopologyCount':1,'transactionReceiptCount':1,'releaseIdentity':rid,'mainnetBroadcastOccurred':False,'status':'PASS'}
+    assert m3.existing_fork_valid_for_reuse(fork) is False
+    fork['primaryProviderCommitment']='0x'+'11'*32; fork['secondaryProviderCommitment']='0x'+'22'*32
+    assert m3.existing_fork_valid_for_reuse(fork) is True
+
+def test_duplicate_rpc_endpoints_are_rejected(monkeypatch):
+    forkp=m3.PRE/'fork-rehearsal.json'; old=forkp.read_text() if forkp.exists() else None
+    if forkp.exists(): forkp.unlink()
+    monkeypatch.setenv('MAINNET_FORK_RPC_URL','https://rpc.example/v2/redacted')
+    monkeypatch.setenv('SECONDARY_MAINNET_RPC_URL','https://rpc.example/v2/redacted')
+    try:
+        with pytest.raises(SystemExit):
+            m3.fork_report()
+    finally:
+        if old is None: forkp.unlink(missing_ok=True)
+        else: forkp.write_text(old)
+
+def test_predeploy_blocks_when_fork_plan_hash_differs(monkeypatch):
+    monkeypatch.setattr(m3, 'generate_gate_reports', lambda fork=None: {g:{'status':'PASS'} for g in m3.GATE_SPECS})
+    fork={'schemaVersion':'1.0','executionMode':'MAINNET_FORK','upstreamChainId':1,'localChainId':31337,'forkBlockNumber':1,'forkBlockHash':'0x'+'ab'*32,'canonicalAgialphaCodeHash':'0x'+'de'*32,'primaryProviderCommitment':'0x'+'11'*32,'secondaryProviderCommitment':'0x'+'22'*32,'providerAgreement':True,'deployedTopologyCount':1,'transactionReceiptCount':1,'deploymentPlanHash':'0x'+'aa'*32,'mainnetBroadcastOccurred':False,'status':'PASS'}
+    tx={'expectedNonce':0,'expectedCreateAddress':'0x0000000000000000000000000000000000000001','fullyQualifiedName':'x:y','artifactHash':'0x'+'11'*32,'constructorCommitment':'0x'+'22'*32,'initcodeHash':'0x'+'33'*32,'expectedRuntimeBytecodeHash':'0x'+'44'*32,'transactionValue':'0','gasLimit':'1','maxFeePerGas':'1','maxPriorityFeePerGas':'1','maximumTransactionCost':'1'}
+    plan={'schemaVersion':'1.0','stage':'A_PREDEPLOYMENT_AUTHORIZATION','releaseIdentity':m3.release_identity(),'chainId':1,'canonicalAgialpha':m3.AGI,'walletA':m3.WA,'walletB':m3.WB,'status':'PASS','orderedTransactions':[tx],'startingNonce':0,'planHash':'0x'+'bb'*32}
+    monkeypatch.setattr(m3, 'fork_report', lambda: fork)
+    monkeypatch.setattr(m3, 'plan_public', lambda: plan)
+    c=m3.predeploy_certificate()
+    assert c['status']=='BLOCKED'
+    assert any('deployment plan hash' in b for b in c['blockers'])
+
+def test_protected_commitments_required_for_gate_pass(tmp_path, monkeypatch):
+    commitments=m3.ROOT/'qa/mainnet-predeploy/evidence/protected-evidence-commitments.json'
+    old=commitments.read_text() if commitments.exists() else None
+    commitments.unlink(missing_ok=True)
+    rid=m3.git(['rev-parse','HEAD'])
+    reqs=[]
+    for r in m3.GATE_SPECS['G1'][2]:
+        reqs.append({'id':r,'status':'PASS','releaseId':rid,'evidence':['p'],'evidenceHashes':['0x'+'11'*32],'rawEvidenceCommitments':{'raw':'0x'+'22'*32},'generatedBy':'real-producer','toolVersions':{'x':'1'},'executedAt':'2026-06-21T00:00:00Z','failures':[],'blockers':[]})
+    data={'schemaVersion':'1.0','releaseId':rid,'mainnetBroadcastOccurred':False,'requirements':reqs}
+    p=tmp_path/'g1.json'; p.write_text(json.dumps(data))
+    idx=tmp_path/'idx.json'; idx.write_text(json.dumps({'entries':[{'type':'G1_AUTHORITY','path':str(p),'sha256':m3.sha(p)}]}))
+    report={'status':'PASS','gitCommit':rid,'mainnetBroadcastOccurred':False,'entryTypes':['G1_AUTHORITY'],'indexPath':str(idx),'indexSha256':m3.sha(idx)}
+    monkeypatch.setattr(m3, 'protected_report', lambda: report)
+    r=m3.generate_gate_report('G1')
+    assert r['status']!='PASS'
+    if old is not None: commitments.write_text(old)
+
+def test_protected_index_hash_mismatch_is_rejected(tmp_path, monkeypatch):
+    idx=tmp_path/'idx.json'; idx.write_text('{"entries":[]}')
+    r={'status':'PASS','gitCommit':m3.git(['rev-parse','HEAD']),'mainnetBroadcastOccurred':False,'indexPath':str(idx),'indexSha256':'0x'+'00'*32}
+    path=m3.ROOT/'qa/mainnet-predeploy/evidence/protected-evidence-validation.json'
+    old=path.read_text() if path.exists() else None
+    path.parent.mkdir(parents=True, exist_ok=True); path.write_text(json.dumps(r))
+    try:
+        assert m3.protected_report()=={}
+    finally:
+        if old is None: path.unlink(missing_ok=True)
+        else: path.write_text(old)

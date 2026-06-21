@@ -5,6 +5,13 @@ ROOT=pathlib.Path(__file__).resolve().parents[1]
 QA=ROOT/'qa/mainnet-predeploy/evidence'
 AGI='0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA'; WA='0x6c8B8897Fb6b08B4070387233B89b3E9A94eD00E'; WB='0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99'
 REQ_TYPES={'G1_AUTHORITY','G2_OVERRIDES','G3_ACCOUNTING','G4_LIFECYCLE','G5_ASSURANCE','MAINNET_FORK','DEPLOYMENT_PLAN','SEPOLIA'}
+GATE_REQUIREMENTS={
+ 'G1_AUTHORITY':{'fork_topology_deployed','wallet_b_final_authority','wallet_a_zero_permanent_authority','negative_authority_paths_revert'},
+ 'G2_OVERRIDES':{'typed_owner_resolvers_exercised','replay_duplicate_rejected','financial_override_events_reconciled','arbitrary_call_backdoors_absent'},
+ 'G3_ACCOUNTING':{'canonical_agialpha_used_on_fork','asset_holder_reconciliation','malicious_token_suite_executed','cap_breaches_revert'},
+ 'G4_LIFECYCLE':{'selector_classification_complete','phase_transitions_exercised','shutdown_blocks_unresolved_liabilities','terminal_shutdown_after_discharge'},
+ 'G5_ASSURANCE':{'invariants_executed_1000000_actions_32_seeds','secondary_stateful_engine_pass','differential_traces_match','critical_mutants_killed','independent_bytecode_builds_match','security_docket_complete'},
+}
 FALLBACK_DIRS=[ROOT/'.private/mainnet-predeploy',ROOT/'.private/mainnet-deployment',ROOT/'.private/mainnet-readiness',ROOT/'.private/evidence/mainnet-predeploy']
 PATH_VARS={'GOALOS_RELEASE_IDENTITY_EVIDENCE':'RELEASE_IDENTITY','GOALOS_G1_EVIDENCE_PATH':'G1_AUTHORITY','GOALOS_G2_EVIDENCE_PATH':'G2_OVERRIDES','GOALOS_G3_EVIDENCE_PATH':'G3_ACCOUNTING','GOALOS_G4_EVIDENCE_PATH':'G4_LIFECYCLE','GOALOS_G5_EVIDENCE_PATH':'G5_ASSURANCE','GOALOS_MAINNET_FORK_EVIDENCE_PATH':'MAINNET_FORK','GOALOS_MAINNET_FORK_RAW_RECEIPTS_PATH':'MAINNET_FORK_LOCAL_RECEIPT','GOALOS_MAINNET_FORK_AUTHORITY_READBACK_PATH':'G1_AUTHORITY','GOALOS_MAINNET_FORK_OVERRIDE_EVIDENCE_PATH':'G2_OVERRIDES','GOALOS_MAINNET_FORK_ACCOUNTING_EVIDENCE_PATH':'G3_ACCOUNTING','GOALOS_MAINNET_FORK_LIFECYCLE_EVIDENCE_PATH':'G4_LIFECYCLE','GOALOS_DEPLOYMENT_PLAN_PRIVATE_PATH':'DEPLOYMENT_PLAN','GOALOS_DEPLOYMENT_PLAN_PUBLIC_PATH':'DEPLOYMENT_PLAN','GOALOS_DEPLOYMENT_PLAN_APPROVAL_PATH':'DEPLOYMENT_PLAN_APPROVAL','GOALOS_AUTHORITY_POLICY_PATH':'AUTHORITY_POLICY','GOALOS_OWNER_PROOF_PATH':'OWNER_PROOF','GOALOS_SEPOLIA_EVIDENCE_INDEX':'SEPOLIA','GOALOS_INVARIANT_EVIDENCE_PATH':'G5_ASSURANCE','GOALOS_MUTATION_EVIDENCE_PATH':'G5_ASSURANCE','GOALOS_REPRODUCIBLE_BUILD_EVIDENCE_PATH':'G5_ASSURANCE','GOALOS_SECURITY_DOCKET_PATH':'G5_ASSURANCE'}
 
@@ -15,6 +22,8 @@ def current_release_id(): return git(['rev-parse','HEAD'])
 def sha_path(p:pathlib.Path):
  h=hashlib.sha256(); h.update(p.read_bytes()); return '0x'+h.hexdigest()
 def hobj(o): return '0x'+hashlib.sha256(json.dumps(o,sort_keys=True,separators=(',',':')).encode()).hexdigest()
+def is_hex_bytes(value, length):
+ return isinstance(value,str) and value.startswith('0x') and len(value)==2+length*2 and all(c in '0123456789abcdefABCDEF' for c in value[2:])
 def read(p):
  try: return json.loads(pathlib.Path(p).read_text())
  except Exception as e: return {'_parseError':str(e)}
@@ -108,12 +117,28 @@ def validate_entry(entry, idx):
  rid=data.get('releaseId') or data.get('gitCommit') or entry.get('releaseId')
  if rid not in {idx.get('releaseId'), idx.get('gitCommit'), current_release_id()}: errs.append(f'{typ}: releaseId mismatch')
  if typ.startswith('G'):
+  if data.get('generatedBy') in {None,'','fixture-tool','manual','unknown'}: errs.append(f'{typ}: generatedBy is not an allowlisted producer')
+  if not isinstance(data.get('toolVersions'),dict) or not data.get('toolVersions'): errs.append(f'{typ}: missing toolVersions')
+  if not data.get('executedAt') and not data.get('finishedAt'): errs.append(f'{typ}: missing execution timestamp')
+  if data.get('releaseId') in {None,'','UNKNOWN'}: errs.append(f'{typ}: invalid releaseId')
   if data.get('status')!='PASS': errs.append(f'{typ}: status is not PASS')
   reqs=data.get('requirements') or data.get('requirementResults') or []
   if not reqs: errs.append(f'{typ}: missing requirements')
+  expected=GATE_REQUIREMENTS.get(typ,set())
+  seen=set()
   for r in reqs:
-   if r.get('status')!='PASS': errs.append(f'{typ}: requirement {r.get("id")} not PASS')
-   if not r.get('evidence') and not r.get('evidenceHashes') and not r.get('rawEvidenceCommitments'): errs.append(f'{typ}: requirement {r.get("id")} lacks evidence commitments')
+   rid=r.get('id')
+   seen.add(rid)
+   if rid not in expected: errs.append(f'{typ}: unknown requirement {rid}')
+   if r.get('releaseId') not in {data.get('releaseId'), idx.get('releaseId'), idx.get('gitCommit')}: errs.append(f'{typ}: requirement {rid} releaseId mismatch')
+   if r.get('status')!='PASS': errs.append(f'{typ}: requirement {rid} not PASS')
+   if not r.get('evidence') or not r.get('evidenceHashes') or not r.get('rawEvidenceCommitments'): errs.append(f'{typ}: requirement {rid} lacks independent evidence, hashes, or raw commitments')
+   if r.get('generatedBy') in {None,'','fixture-tool','manual','unknown'}: errs.append(f'{typ}: requirement {rid} missing real producer')
+   if not isinstance(r.get('toolVersions'),dict) or not r.get('toolVersions'): errs.append(f'{typ}: requirement {rid} missing toolVersions')
+   if not r.get('executedAt') and not r.get('finishedAt'): errs.append(f'{typ}: requirement {rid} missing execution timestamp')
+   if r.get('failures') not in ([],None) or r.get('blockers') not in ([],None): errs.append(f'{typ}: requirement {rid} has failures/blockers')
+  missing=expected-seen
+  for rid in sorted(missing): errs.append(f'{typ}: missing requirement {rid}')
   obs=data.get('observed',{})
   if typ=='G1_AUTHORITY' and (obs.get('walletAZeroAuthority') is not True or obs.get('walletBPermanentAuthority') is not True): errs.append(f'{typ}: authority predicates missing')
   if typ=='G5_ASSURANCE':
@@ -121,14 +146,26 @@ def validate_entry(entry, idx):
    if int(obs.get('deterministicSeedCount',0))<32: errs.append(f'{typ}: fewer than 32 seeds')
    if int(obs.get('mutationSurvived',0))!=0: errs.append(f'{typ}: surviving mutants present')
  if typ=='MAINNET_FORK':
-  for k in ['executionMode','upstreamChainId','localChainId','forkBlockNumber','forkBlockHash','forkBlockTimestamp','canonicalAgialpha','upstreamCanonicalAgialphaCodeHash','localForkCanonicalAgialphaCodeHash','deploymentPlanHash','deployedTopologyCount','transactionReceiptCount','runtimeBytecodeRoot']:
+  if data.get('status')!='PASS': errs.append(f'{typ}: status is not PASS')
+  if data.get('failures') not in ([],None) or data.get('blockers') not in ([],None): errs.append(f'{typ}: failures/blockers must be empty')
+  for k in ['executionMode','upstreamChainId','localChainId','forkBlockNumber','forkBlockHash','forkBlockTimestamp','primaryProviderCommitment','secondaryProviderCommitment','canonicalAgialpha','upstreamCanonicalAgialphaCodeHash','localForkCanonicalAgialphaCodeHash','deploymentPlanHash','deployedTopologyCount','transactionReceiptCount','runtimeBytecodeRoot']:
    if data.get(k) in [None,'',[],{}]: errs.append(f'{typ}: missing {k}')
+  for k in ['forkBlockHash','upstreamCanonicalAgialphaCodeHash','localForkCanonicalAgialphaCodeHash','runtimeBytecodeRoot']:
+   if data.get(k) and not is_hex_bytes(data.get(k),32): errs.append(f'{typ}: {k} must be bytes32')
+  if data.get('providerAgreement') is not True: errs.append(f'{typ}: providerAgreement must be true')
   if data.get('executionMode')!='MAINNET_FORK' or data.get('upstreamChainId')!=1: errs.append(f'{typ}: not a valid Mainnet fork')
   if str(data.get('canonicalAgialpha','')).lower()!=AGI.lower(): errs.append(f'{typ}: wrong canonical AGIALPHA')
   if int(data.get('transactionReceiptCount') or 0)<=0: errs.append(f'{typ}: empty receipt list')
  if typ=='DEPLOYMENT_PLAN':
+  if data.get('status')!='PASS': errs.append(f'{typ}: status is not PASS')
+  if data.get('failures') not in ([],None) or data.get('blockers') not in ([],None): errs.append(f'{typ}: failures/blockers must be empty')
+  if data.get('mainnetBroadcastOccurred') is not False: errs.append(f'{typ}: mainnetBroadcastOccurred must be false')
   for k in ['chainId','canonicalAgialpha','walletA','walletB','startingNonce','orderedTransactions','maximumCumulativeCost','planHash','expiresAt']:
    if data.get(k) in [None,'',[],{}]: errs.append(f'{typ}: missing {k}')
+  for i,tx in enumerate(data.get('orderedTransactions') or []):
+   if tx.get('commitment')=='protected' and 'count' in tx: errs.append(f'{typ}: aggregate-only transaction {i} rejected')
+   for k in ['expectedNonce','expectedCreateAddress','fullyQualifiedName','artifactHash','constructorCommitment','initcodeHash','expectedRuntimeBytecodeHash','transactionValue','gasLimit','maxFeePerGas','maxPriorityFeePerGas','maximumTransactionCost']:
+    if tx.get(k) in [None,'',[],{}]: errs.append(f'{typ}: transaction {i} missing {k}')
   if data.get('chainId')!=1: errs.append(f'{typ}: wrong chainId')
   if str(data.get('walletA','')).lower()!=WA.lower() or str(data.get('walletB','')).lower()!=WB.lower(): errs.append(f'{typ}: wrong wallet')
   if str(data.get('canonicalAgialpha','')).lower()!=AGI.lower(): errs.append(f'{typ}: wrong token')
@@ -160,7 +197,7 @@ def validate(write_report=True):
  summary={}
  fork=data_by_type.get('MAINNET_FORK') or {}; plan=data_by_type.get('DEPLOYMENT_PLAN') or {}; g5=data_by_type.get('G5_ASSURANCE') or {}
  sepolia=data_by_type.get('SEPOLIA') or {}
- if fork: summary['fork']={k:fork.get(k) for k in ['forkBlockNumber','forkBlockHash','forkBlockTimestamp','deployedTopologyCount','transactionReceiptCount','deploymentPlanHash','runtimeBytecodeRoot']}
+ if fork: summary['fork']={k:fork.get(k) for k in ['forkBlockNumber','forkBlockHash','forkBlockTimestamp','primaryProviderCommitment','secondaryProviderCommitment','providerAgreement','deployedTopologyCount','transactionReceiptCount','deploymentPlanHash','runtimeBytecodeRoot','upstreamCanonicalAgialphaCodeHash','localForkCanonicalAgialphaCodeHash']}
  if plan: summary['plan']={k:plan.get(k) for k in ['planHash','startingNonce','expiresAt','maximumCumulativeCost']}; summary['plan']['transactionCount']=len(plan.get('orderedTransactions') or [])
  if g5: summary['assurance']=g5.get('observed',{})
  if sepolia: summary['sepolia']={k:sepolia.get(k) for k in ['chainId','totalContracts','verifiedContracts','failedContracts']}

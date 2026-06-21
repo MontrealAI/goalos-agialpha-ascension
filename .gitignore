@@ -43,3 +43,6 @@ audit/reports/current-run.txt
 # Local direct solc compiler output
 direct-solc-output/
 .private/
+
+# Local release assistant worktrees
+.release-worktrees/

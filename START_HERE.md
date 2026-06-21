@@ -1,3 +1,9 @@
+Install:
+`npm ci`
+
+Start:
+`npm run mainnet:initial:setup-and-authorize`
+
 # Start Here — GoalOS AGIALPHA Ascension Repository
 
 This repository is the institutional source package for **GoalOS AGIALPHA Ascension**.

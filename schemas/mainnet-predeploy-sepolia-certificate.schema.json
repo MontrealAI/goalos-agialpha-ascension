@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GoalOS Sepolia-backed initial Mainnet deployment certificate",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "certificateType",
+    "status",
+    "AUTHORIZATION_MODE",
+    "AUTHORIZATION_SCOPE",
+    "PRODUCTION_READY",
+    "USER_FUNDS_AUTHORIZED",
+    "FULL_MAINNET_FORK_ASSURANCE",
+    "FULL_G1_G5_ASSURANCE",
+    "MAINNET_DEPLOYED",
+    "MAINNET_VERIFIED",
+    "certificateHash",
+    "authorizationProfile"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0"
+    },
+    "certificateType": {
+      "const": "MAINNET_PREDEPLOY_SEPOLIA_BACKED_INITIAL_MAINNET_V1"
+    },
+    "AUTHORIZATION_MODE": {
+      "const": "SEPOLIA_BACKED_INITIAL_MAINNET_V1"
+    },
+    "AUTHORIZATION_SCOPE": {
+      "const": "INITIAL_MAINNET_INFRASTRUCTURE_DEPLOYMENT_ONLY"
+    },
+    "PRODUCTION_READY": {
+      "const": "NO"
+    },
+    "USER_FUNDS_AUTHORIZED": {
+      "const": "NO"
+    },
+    "FULL_MAINNET_FORK_ASSURANCE": {
+      "const": "NO"
+    },
+    "FULL_G1_G5_ASSURANCE": {
+      "const": "NO"
+    },
+    "MAINNET_DEPLOYED": {
+      "const": "NO"
+    },
+    "MAINNET_VERIFIED": {
+      "const": "NO"
+    },
+    "authorizationProfile": {
+      "const": "SEPOLIA_BACKED_INITIAL_MAINNET_V1"
+    }
+  }
+}
