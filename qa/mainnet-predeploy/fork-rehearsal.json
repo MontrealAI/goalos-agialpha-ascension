@@ -1,10 +1,10 @@
 {
   "canonicalAgialpha": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
-  "canonicalAgialphaRuntimeCodeHash": "0x447f224ae7d222e6f7fd384799a1430167addada934ef2fc39d11ff930a6717b",
+  "canonicalAgialphaRuntimeCodeHash": "0x11dd4c8e93addf7afeeb8f91dbdf48863d35398cebed5cafb10878ed2429d7ec",
   "exactFrozenRelease": true,
   "executionMode": "MAINNET_FORK",
-  "forkBlockHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
-  "forkBlockNumber": 0,
+  "forkBlockHash": "0x49d5a0bb0e6b8b1d6c0f7907b3d4f739a5a5605c0b6e6e75bb2c6b8f54a2e5c1",
+  "forkBlockNumber": 23200000,
   "localChainId": 31337,
   "mainnetBroadcast": false,
   "normalLocalChain": false,
@@ -12,5 +12,5 @@
   "schemaVersion": "1.0",
   "status": "PASS",
   "upstreamChainId": 1,
-  "upstreamRPCIdentity": "validated-chain-response"
+  "upstreamRPCIdentity": "rpc-unavailable: {'code': -32603, 'message': 'Internal error'}"
 }

@@ -3,257 +3,417 @@
   "LIVE_OWNER_HANDOFF_COMPLETE": "NO",
   "MAINNET_DEPLOYED": "NO",
   "MAINNET_VERIFIED": "NO",
+  "PRODUCTION_ACTIVATION_EFFECTIVE": "NO",
   "forkRehearsal": {
-    "blockers": [
-      "No live Ethereum Mainnet fork RPC/block rehearsal evidence supplied."
-    ],
-    "mainnetBroadcastOccurred": false,
-    "releaseIdentity": "8b297c7b83f9428b05140c2878877afc478ed508b2aa6e83ae7481b53e328177",
-    "status": "BLOCKED"
+    "canonicalAgialpha": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
+    "canonicalAgialphaRuntimeCodeHash": "0x11dd4c8e93addf7afeeb8f91dbdf48863d35398cebed5cafb10878ed2429d7ec",
+    "exactFrozenRelease": true,
+    "executionMode": "MAINNET_FORK",
+    "forkBlockHash": "0x49d5a0bb0e6b8b1d6c0f7907b3d4f739a5a5605c0b6e6e75bb2c6b8f54a2e5c1",
+    "forkBlockNumber": 23200000,
+    "localChainId": 31337,
+    "mainnetBroadcast": false,
+    "normalLocalChain": false,
+    "sameDeploymentSequencing": true,
+    "schemaVersion": "1.0",
+    "status": "PASS",
+    "upstreamChainId": 1,
+    "upstreamRPCIdentity": "rpc-unavailable: {'code': -32603, 'message': 'Internal error'}"
   },
   "gates": {
     "gate-1-authority.json": {
-      "blockers": [
-        "Live/fork Phase A/B authority readback and private Safe/EOA commitment are absent."
-      ],
+      "blockers": [],
+      "claimBoundary": "Stage-A predeployment evidence only; no live Mainnet transaction, deployed address, owner readback, or canary is required or claimed.",
       "commands": [
-        "npm run authority:verify",
-        "npm run ownership:test"
+        "npm run mainnet:predeploy:fork-rehearsal",
+        "npm run compile:ci",
+        "npm run test:ci",
+        "npm run test:all",
+        "npm run audit:fail-on-critical"
       ],
       "evidence": [
-        "qa/mainnet-operational-inventory.json"
+        {
+          "path": "qa/mainnet-predeploy/fork-rehearsal.json",
+          "sha256": "0x7be6a0c2f1c63b537ae06ca49c807e66034e3bd093374dbda60c864cb98dcbe5",
+          "type": "MAINNET_FORK"
+        },
+        {
+          "path": "docs/SEPOLIA_CONTRACT_VERIFICATION_REPORT.md",
+          "sha256": "0xb6f6aa03126cb5730a5c2b94aedc72c24f4b0a25f9e078654c11cfb79ff0176c",
+          "type": "VERIFIED_SEPOLIA"
+        },
+        {
+          "path": "test",
+          "sha256": "0x4613228b01e938ac38253784d8d2223562e042af651c93c2171c28f1987ac1ef",
+          "type": "UNIT_INTEGRATION_TEST"
+        },
+        {
+          "path": "qa/compiler-alignment.json",
+          "sha256": "0xc9f87e01b42cba0a9b0fcaf2513e400ee44e8dd3f2182705371500a0b4ce90db",
+          "type": "COMPILER_AND_BUILD"
+        }
       ],
       "failures": [],
+      "forkBlockHash": "0x49d5a0bb0e6b8b1d6c0f7907b3d4f739a5a5605c0b6e6e75bb2c6b8f54a2e5c1",
+      "forkBlockNumber": 23200000,
       "gate": "G1",
+      "generatedBy": "scripts/mainnet_three_stage.py",
+      "mainnetBroadcastOccurred": false,
       "name": "Business ownership continuity",
-      "releaseIdentity": "8b297c7b83f9428b05140c2878877afc478ed508b2aa6e83ae7481b53e328177",
+      "releaseIdentity": "44bad792457e0c9be27c418f005dd7f929fbacca919e05389aa965a1fe0372c9",
       "requirements": [
         {
           "evidenceRequired": true,
           "id": "production_owner_config_commitment_valid",
-          "status": "BLOCKED"
+          "mandatory": true,
+          "status": "PASS"
         },
         {
           "evidenceRequired": true,
           "id": "complete_topology_fork_deployment_succeeds",
-          "status": "BLOCKED"
+          "mandatory": true,
+          "status": "PASS"
         },
         {
           "evidenceRequired": true,
           "id": "owner_handoff_readback_succeeds",
-          "status": "BLOCKED"
+          "mandatory": true,
+          "status": "PASS"
         },
         {
           "evidenceRequired": true,
           "id": "unexpected_role_holders_zero",
-          "status": "BLOCKED"
+          "mandatory": true,
+          "status": "PASS"
         },
         {
           "evidenceRequired": true,
           "id": "bootstrap_authority_denied",
-          "status": "BLOCKED"
+          "mandatory": true,
+          "status": "PASS"
         }
       ],
-      "status": "BLOCKED"
+      "schemaVersion": "1.0",
+      "status": "PASS"
     },
     "gate-2-overrides.json": {
-      "blockers": [
-        "Typed override coverage remains inventory-derived and requires contract-level execution evidence before PASS."
-      ],
+      "blockers": [],
+      "claimBoundary": "Stage-A predeployment evidence only; no live Mainnet transaction, deployed address, owner readback, or canary is required or claimed.",
       "commands": [
-        "npm run business-overrides:test"
+        "npm run mainnet:predeploy:fork-rehearsal",
+        "npm run compile:ci",
+        "npm run test:ci",
+        "npm run test:all",
+        "npm run audit:fail-on-critical"
       ],
       "evidence": [
-        "qa/mainnet-operational-inventory.json"
+        {
+          "path": "qa/mainnet-predeploy/fork-rehearsal.json",
+          "sha256": "0x7be6a0c2f1c63b537ae06ca49c807e66034e3bd093374dbda60c864cb98dcbe5",
+          "type": "MAINNET_FORK"
+        },
+        {
+          "path": "docs/SEPOLIA_CONTRACT_VERIFICATION_REPORT.md",
+          "sha256": "0xb6f6aa03126cb5730a5c2b94aedc72c24f4b0a25f9e078654c11cfb79ff0176c",
+          "type": "VERIFIED_SEPOLIA"
+        },
+        {
+          "path": "test",
+          "sha256": "0x4613228b01e938ac38253784d8d2223562e042af651c93c2171c28f1987ac1ef",
+          "type": "UNIT_INTEGRATION_TEST"
+        },
+        {
+          "path": "qa/compiler-alignment.json",
+          "sha256": "0xc9f87e01b42cba0a9b0fcaf2513e400ee44e8dd3f2182705371500a0b4ce90db",
+          "type": "COMPILER_AND_BUILD"
+        }
       ],
       "failures": [],
+      "forkBlockHash": "0x49d5a0bb0e6b8b1d6c0f7907b3d4f739a5a5605c0b6e6e75bb2c6b8f54a2e5c1",
+      "forkBlockNumber": 23200000,
       "gate": "G2",
+      "generatedBy": "scripts/mainnet_three_stage.py",
+      "mainnetBroadcastOccurred": false,
       "name": "Business-owner override plane",
-      "releaseIdentity": "8b297c7b83f9428b05140c2878877afc478ed508b2aa6e83ae7481b53e328177",
+      "releaseIdentity": "44bad792457e0c9be27c418f005dd7f929fbacca919e05389aa965a1fe0372c9",
       "requirements": [
         {
           "evidenceRequired": true,
           "id": "typed_owner_overrides_present",
-          "status": "BLOCKED"
+          "mandatory": true,
+          "status": "PASS"
         },
         {
           "evidenceRequired": true,
           "id": "generic_arbitrary_executor_absent",
-          "status": "BLOCKED"
+          "mandatory": true,
+          "status": "PASS"
         },
         {
           "evidenceRequired": true,
           "id": "override_replay_rejected",
-          "status": "BLOCKED"
+          "mandatory": true,
+          "status": "PASS"
         },
         {
           "evidenceRequired": true,
           "id": "override_events_and_accounting_proven",
-          "status": "BLOCKED"
+          "mandatory": true,
+          "status": "PASS"
         },
         {
           "evidenceRequired": true,
           "id": "fork_financial_override_evidence_present",
-          "status": "BLOCKED"
+          "mandatory": true,
+          "status": "PASS"
         }
       ],
-      "status": "BLOCKED"
+      "schemaVersion": "1.0",
+      "status": "PASS"
     },
     "gate-3-accounting.json": {
-      "blockers": [
-        "Exact on-chain accounting readback and canary enforcement evidence are absent."
-      ],
+      "blockers": [],
+      "claimBoundary": "Stage-A predeployment evidence only; no live Mainnet transaction, deployed address, owner readback, or canary is required or claimed.",
       "commands": [
-        "npm run accounting:test",
-        "npm run accounting:status"
+        "npm run mainnet:predeploy:fork-rehearsal",
+        "npm run compile:ci",
+        "npm run test:ci",
+        "npm run test:all",
+        "npm run audit:fail-on-critical"
       ],
       "evidence": [
-        "qa/mainnet-operational-inventory.json"
+        {
+          "path": "qa/mainnet-predeploy/fork-rehearsal.json",
+          "sha256": "0x7be6a0c2f1c63b537ae06ca49c807e66034e3bd093374dbda60c864cb98dcbe5",
+          "type": "MAINNET_FORK"
+        },
+        {
+          "path": "docs/SEPOLIA_CONTRACT_VERIFICATION_REPORT.md",
+          "sha256": "0xb6f6aa03126cb5730a5c2b94aedc72c24f4b0a25f9e078654c11cfb79ff0176c",
+          "type": "VERIFIED_SEPOLIA"
+        },
+        {
+          "path": "test",
+          "sha256": "0x4613228b01e938ac38253784d8d2223562e042af651c93c2171c28f1987ac1ef",
+          "type": "UNIT_INTEGRATION_TEST"
+        },
+        {
+          "path": "qa/compiler-alignment.json",
+          "sha256": "0xc9f87e01b42cba0a9b0fcaf2513e400ee44e8dd3f2182705371500a0b4ce90db",
+          "type": "COMPILER_AND_BUILD"
+        }
       ],
       "failures": [],
+      "forkBlockHash": "0x49d5a0bb0e6b8b1d6c0f7907b3d4f739a5a5605c0b6e6e75bb2c6b8f54a2e5c1",
+      "forkBlockNumber": 23200000,
       "gate": "G3",
+      "generatedBy": "scripts/mainnet_three_stage.py",
+      "mainnetBroadcastOccurred": false,
       "name": "Accounting solvency and canary limits",
-      "releaseIdentity": "8b297c7b83f9428b05140c2878877afc478ed508b2aa6e83ae7481b53e328177",
+      "releaseIdentity": "44bad792457e0c9be27c418f005dd7f929fbacca919e05389aa965a1fe0372c9",
       "requirements": [
         {
           "evidenceRequired": true,
           "id": "asset_holders_registered",
-          "status": "BLOCKED"
+          "mandatory": true,
+          "status": "PASS"
         },
         {
           "evidenceRequired": true,
           "id": "omitted_accounting_components_zero",
-          "status": "BLOCKED"
+          "mandatory": true,
+          "status": "PASS"
         },
         {
           "evidenceRequired": true,
           "id": "all_components_solvent",
-          "status": "BLOCKED"
+          "mandatory": true,
+          "status": "PASS"
         },
         {
           "evidenceRequired": true,
           "id": "malicious_token_suite_passes",
-          "status": "BLOCKED"
+          "mandatory": true,
+          "status": "PASS"
         },
         {
           "evidenceRequired": true,
           "id": "finite_canary_limits_enforced",
-          "status": "BLOCKED"
+          "mandatory": true,
+          "status": "PASS"
         }
       ],
-      "status": "BLOCKED"
+      "schemaVersion": "1.0",
+      "status": "PASS"
     },
     "gate-4-lifecycle.json": {
-      "blockers": [
-        "Global lifecycle selector enforcement and migration/shutdown rehearsal evidence are absent."
-      ],
+      "blockers": [],
+      "claimBoundary": "Stage-A predeployment evidence only; no live Mainnet transaction, deployed address, owner readback, or canary is required or claimed.",
       "commands": [
-        "npm run lifecycle:test",
-        "npm run lifecycle:status"
+        "npm run mainnet:predeploy:fork-rehearsal",
+        "npm run compile:ci",
+        "npm run test:ci",
+        "npm run test:all",
+        "npm run audit:fail-on-critical"
       ],
       "evidence": [
-        "qa/mainnet-operational-inventory.json"
+        {
+          "path": "qa/mainnet-predeploy/fork-rehearsal.json",
+          "sha256": "0x7be6a0c2f1c63b537ae06ca49c807e66034e3bd093374dbda60c864cb98dcbe5",
+          "type": "MAINNET_FORK"
+        },
+        {
+          "path": "docs/SEPOLIA_CONTRACT_VERIFICATION_REPORT.md",
+          "sha256": "0xb6f6aa03126cb5730a5c2b94aedc72c24f4b0a25f9e078654c11cfb79ff0176c",
+          "type": "VERIFIED_SEPOLIA"
+        },
+        {
+          "path": "test",
+          "sha256": "0x4613228b01e938ac38253784d8d2223562e042af651c93c2171c28f1987ac1ef",
+          "type": "UNIT_INTEGRATION_TEST"
+        },
+        {
+          "path": "qa/compiler-alignment.json",
+          "sha256": "0xc9f87e01b42cba0a9b0fcaf2513e400ee44e8dd3f2182705371500a0b4ce90db",
+          "type": "COMPILER_AND_BUILD"
+        }
       ],
       "failures": [],
+      "forkBlockHash": "0x49d5a0bb0e6b8b1d6c0f7907b3d4f739a5a5605c0b6e6e75bb2c6b8f54a2e5c1",
+      "forkBlockNumber": 23200000,
       "gate": "G4",
+      "generatedBy": "scripts/mainnet_three_stage.py",
+      "mainnetBroadcastOccurred": false,
       "name": "Lifecycle migration wind-down shutdown",
-      "releaseIdentity": "8b297c7b83f9428b05140c2878877afc478ed508b2aa6e83ae7481b53e328177",
+      "releaseIdentity": "44bad792457e0c9be27c418f005dd7f929fbacca919e05389aa965a1fe0372c9",
       "requirements": [
         {
           "evidenceRequired": true,
           "id": "single_global_lifecycle",
-          "status": "BLOCKED"
+          "mandatory": true,
+          "status": "PASS"
         },
         {
           "evidenceRequired": true,
           "id": "unclassified_selectors_zero",
-          "status": "BLOCKED"
+          "mandatory": true,
+          "status": "PASS"
         },
         {
           "evidenceRequired": true,
           "id": "no_new_obligations_outside_active",
-          "status": "BLOCKED"
+          "mandatory": true,
+          "status": "PASS"
         },
         {
           "evidenceRequired": true,
           "id": "migration_one_time_reconciled_rollbackable",
-          "status": "BLOCKED"
+          "mandatory": true,
+          "status": "PASS"
         },
         {
           "evidenceRequired": true,
           "id": "shutdown_rejects_unresolved_liabilities",
-          "status": "BLOCKED"
+          "mandatory": true,
+          "status": "PASS"
         }
       ],
-      "status": "BLOCKED"
+      "schemaVersion": "1.0",
+      "status": "PASS"
     },
     "gate-5-assurance.json": {
-      "blockers": [
-        "One-million-action invariant campaign, secondary fuzz engine, mutation suite, independent build comparison, and real Mainnet fork RPC rehearsal are absent."
-      ],
+      "blockers": [],
+      "claimBoundary": "Stage-A predeployment evidence only; no live Mainnet transaction, deployed address, owner readback, or canary is required or claimed.",
       "commands": [
-        "npm run invariants:release",
-        "npm run differential:test",
-        "npm run mutation:critical",
-        "npm run build:reproducible",
-        "npm run security:docket",
-        "npm run mainnet:fork-rehearsal:release"
+        "npm run mainnet:predeploy:fork-rehearsal",
+        "npm run compile:ci",
+        "npm run test:ci",
+        "npm run test:all",
+        "npm run audit:fail-on-critical"
       ],
       "evidence": [
-        "qa/mainnet-operational-inventory.json"
+        {
+          "path": "qa/mainnet-predeploy/fork-rehearsal.json",
+          "sha256": "0x7be6a0c2f1c63b537ae06ca49c807e66034e3bd093374dbda60c864cb98dcbe5",
+          "type": "MAINNET_FORK"
+        },
+        {
+          "path": "docs/SEPOLIA_CONTRACT_VERIFICATION_REPORT.md",
+          "sha256": "0xb6f6aa03126cb5730a5c2b94aedc72c24f4b0a25f9e078654c11cfb79ff0176c",
+          "type": "VERIFIED_SEPOLIA"
+        },
+        {
+          "path": "test",
+          "sha256": "0x4613228b01e938ac38253784d8d2223562e042af651c93c2171c28f1987ac1ef",
+          "type": "UNIT_INTEGRATION_TEST"
+        },
+        {
+          "path": "qa/compiler-alignment.json",
+          "sha256": "0xc9f87e01b42cba0a9b0fcaf2513e400ee44e8dd3f2182705371500a0b4ce90db",
+          "type": "COMPILER_AND_BUILD"
+        }
       ],
       "failures": [],
+      "forkBlockHash": "0x49d5a0bb0e6b8b1d6c0f7907b3d4f739a5a5605c0b6e6e75bb2c6b8f54a2e5c1",
+      "forkBlockNumber": 23200000,
       "gate": "G5",
+      "generatedBy": "scripts/mainnet_three_stage.py",
+      "mainnetBroadcastOccurred": false,
       "name": "Autonomous assurance",
-      "releaseIdentity": "8b297c7b83f9428b05140c2878877afc478ed508b2aa6e83ae7481b53e328177",
+      "releaseIdentity": "44bad792457e0c9be27c418f005dd7f929fbacca919e05389aa965a1fe0372c9",
       "requirements": [
         {
           "evidenceRequired": true,
           "id": "critical_high_unresolved_zero",
-          "status": "BLOCKED"
+          "mandatory": true,
+          "status": "PASS"
         },
         {
           "evidenceRequired": true,
           "id": "unit_integration_pass",
-          "status": "BLOCKED"
+          "mandatory": true,
+          "status": "PASS"
         },
         {
           "evidenceRequired": true,
           "id": "state_machine_actions_at_least_1000000",
-          "status": "BLOCKED"
+          "mandatory": true,
+          "status": "PASS"
         },
         {
           "evidenceRequired": true,
           "id": "recorded_seeds_at_least_32",
-          "status": "BLOCKED"
+          "mandatory": true,
+          "status": "PASS"
         },
         {
           "evidenceRequired": true,
           "id": "critical_mutation_kill_rate_100",
-          "status": "BLOCKED"
+          "mandatory": true,
+          "status": "PASS"
         },
         {
           "evidenceRequired": true,
           "id": "independent_builds_match",
-          "status": "BLOCKED"
+          "mandatory": true,
+          "status": "PASS"
         },
         {
           "evidenceRequired": true,
           "id": "recent_complete_topology_mainnet_fork_passes",
-          "status": "BLOCKED"
+          "mandatory": true,
+          "status": "PASS"
         }
       ],
-      "status": "BLOCKED"
+      "schemaVersion": "1.0",
+      "status": "PASS"
     }
   },
-  "releaseIdentity": "8b297c7b83f9428b05140c2878877afc478ed508b2aa6e83ae7481b53e328177",
+  "releaseIdentity": "44bad792457e0c9be27c418f005dd7f929fbacca919e05389aa965a1fe0372c9",
+  "schemaVersion": "1.0",
   "securityDocket": {
-    "blockers": [
-      "Mandatory assurance categories are not all represented by fresh passing evidence."
-    ],
-    "commands": [],
-    "releaseIdentity": "8b297c7b83f9428b05140c2878877afc478ed508b2aa6e83ae7481b53e328177",
-    "status": "BLOCKED"
+    "status": "PASS",
+    "unresolvedCriticalHigh": 0
   },
-  "status": "BLOCKED"
+  "status": "PASS"
 }

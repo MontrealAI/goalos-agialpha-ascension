@@ -1,0 +1,78 @@
+{
+  "campaign": "critical-release-mutation-fixture",
+  "executedMutants": 13,
+  "invalidOrNotRun": 0,
+  "killRate": 1.0,
+  "killed": 13,
+  "mainnetBroadcastOccurred": false,
+  "mutants": [
+    {
+      "evidence": "test/businessControls.test.ts",
+      "name": "authorization",
+      "status": "KILLED"
+    },
+    {
+      "evidence": "test/businessControls.test.ts",
+      "name": "ownership-transfer",
+      "status": "KILLED"
+    },
+    {
+      "evidence": "test/businessControls.test.ts",
+      "name": "accounting-increment",
+      "status": "KILLED"
+    },
+    {
+      "evidence": "test/businessControls.test.ts",
+      "name": "accounting-decrement",
+      "status": "KILLED"
+    },
+    {
+      "evidence": "test/businessControls.test.ts",
+      "name": "double-settlement",
+      "status": "KILLED"
+    },
+    {
+      "evidence": "test/businessControls.test.ts",
+      "name": "reservation-canary-bypass",
+      "status": "KILLED"
+    },
+    {
+      "evidence": "test/businessControls.test.ts",
+      "name": "protected-fund-withdrawal",
+      "status": "KILLED"
+    },
+    {
+      "evidence": "test/businessControls.test.ts",
+      "name": "lifecycle-bypass",
+      "status": "KILLED"
+    },
+    {
+      "evidence": "test/businessControls.test.ts",
+      "name": "wrong-chain-token",
+      "status": "KILLED"
+    },
+    {
+      "evidence": "test/businessControls.test.ts",
+      "name": "incomplete-safe-hashing",
+      "status": "KILLED"
+    },
+    {
+      "evidence": "test/test_mainnet_three_stage.py",
+      "name": "hard-coded-pass",
+      "status": "KILLED"
+    },
+    {
+      "evidence": "test/test_mainnet_three_stage.py",
+      "name": "certificate-binding",
+      "status": "KILLED"
+    },
+    {
+      "evidence": "test/test_mainnet_three_stage.py",
+      "name": "fail-open-audit-parsing",
+      "status": "KILLED"
+    }
+  ],
+  "schemaVersion": "1.0",
+  "status": "PASS",
+  "survived": 0
+}

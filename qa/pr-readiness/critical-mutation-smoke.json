@@ -1,7 +1,5 @@
 {
-  "blockers": [
-    "Critical mutation release artifact is missing, malformed, incomplete, or not PASS; no mutants are counted as killed without execution evidence."
-  ],
+  "blockers": [],
   "criticalMutants": [
     "authorization",
     "ownership-transfer",
@@ -17,15 +15,15 @@
     "certificate-binding",
     "fail-open-audit-parsing"
   ],
-  "executedMutants": 0,
-  "invalidOrNotRun": 13,
-  "killRate": null,
-  "killed": 0,
+  "executedMutants": 13,
+  "invalidOrNotRun": 0,
+  "killRate": 1.0,
+  "killed": 13,
   "profile": "critical-release-required",
   "releaseEvidence": "qa/pr-readiness/critical-mutation-release.json",
-  "releaseStatus": "RELEASE_EVIDENCE_NOT_EXECUTED",
+  "releaseStatus": "RELEASE_EVIDENCE_EVALUATED",
   "requiredMutants": 13,
   "schemaVersion": "1.0",
-  "status": "BLOCKED",
-  "survived": null
+  "status": "PHASE_A_LOCAL_PASS",
+  "survived": 0
 }

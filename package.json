@@ -309,7 +309,9 @@
     "mainnet:activation:canary": "python scripts/mainnet_three_stage.py canary",
     "mainnet:activation:certificate": "python scripts/mainnet_three_stage.py activation-certificate",
     "mainnet:activation:certificate:validate": "python scripts/mainnet_three_stage.py activation-validate",
-    "mainnet:activation:final-check": "npm run mainnet:activation:certificate:validate"
+    "mainnet:activation:final-check": "npm run mainnet:activation:certificate:validate",
+    "mainnet:postdeploy:status": "python scripts/mainnet_three_stage.py status",
+    "mainnet:activation:status": "python scripts/mainnet_three_stage.py status"
   },
   "dependencies": {
     "@openzeppelin/contracts": "4.9.6",

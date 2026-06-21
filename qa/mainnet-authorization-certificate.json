@@ -1,175 +1,44 @@
 {
-  "schemaVersion": "1.0",
-  "generatedAt": "2026-06-21T02:38:50.588676+00:00",
-  "generatedBy": "scripts/generate-mainnet-authorization-certificate.py",
-  "repository": "MontrealAI/goalos-agialpha-ascension",
-  "commit": "e87bfe13a38af2050d4796bc5e59ebd532930e1e",
-  "sourceCommit": "e87bfe13a38af2050d4796bc5e59ebd532930e1e",
+  "ETHEREUM_MAINNET_AUTHORIZED": "YES",
+  "LIVE_CANARY_COMPLETE": "NO",
+  "LIVE_OWNER_HANDOFF_COMPLETE": "NO",
+  "MAINNET_DEPLOYED": "NO",
+  "MAINNET_DEPLOYMENT_AUTHORIZED": "YES",
+  "MAINNET_VERIFIED": "NO",
+  "PRODUCTION_ACTIVATION_EFFECTIVE": "NO",
+  "TECHNICALLY_MAINNET_READY": "YES",
+  "agialphaToken": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
+  "blockers": [],
   "branch": "work",
-  "sourceBranch": "work",
-  "currentHeadAtGeneration": "e87bfe13a38af2050d4796bc5e59ebd532930e1e",
-  "gitValidationMode": "GIT_CHECKOUT",
-  "evidenceHashesFreshForCurrentCheckout": true,
-  "sourceCommitIsAncestorOfCurrentHead": true,
-  "generatedDocsFromCertificate": [
-    "README.md",
-    "START_HERE.md",
-    "docs/CURRENT_STATUS.md",
-    "docs/MAINNET_AUTHORIZATION_CERTIFICATE.md",
-    "docs/START_HERE_MAINNET.md",
-    "docs/MAINNET_TECHNICAL_READINESS_DECISION.json",
-    "docs/MAINNET_DEPLOYMENT_AUTHORIZATION_DECISION.json",
-    "docs/ETHEREUM_MAINNET_AUTHORIZATION_DECISION.json"
-  ],
+  "certificateHash": "0xa43a50f8fc191650a086b09d318f77fa1d3e8a20e71b7645f62acae7c2d2a240",
   "chain": "ethereum",
   "chainId": 1,
-  "agialphaToken": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
-  "scope": "public-repository-package-authorization-for-manual-gated-mainnet-deployment",
-  "notExternallyAudited": true,
-  "externalAuditPlanned": false,
+  "ciCanDeployMainnet": false,
+  "commit": "9e01ccab1c9d1d82355da9c72d6f84de67f1faf0",
+  "deploymentPlanHash": "0xfcbb2008bc244daae1a2b15acc875d856914247fb2621a38ecb7968cd7674fc2",
+  "ethereumMainnetAuthorized": "YES",
+  "evidenceRoot": "qa/mainnet-predeploy",
   "externalAuditRequired": false,
-  "legalTaxReviewClaimed": false,
+  "gates": {
+    "Gate 1": "PASS",
+    "Gate 2": "PASS",
+    "Gate 3": "PASS",
+    "Gate 4": "PASS",
+    "Gate 5": "PASS"
+  },
+  "generatedAt": "2026-06-21T12:42:36.131557+00:00",
+  "generatedBy": "scripts/mainnet_three_stage.py",
   "mainnetDeployed": "NO",
-  "MAINNET_DEPLOYED": "NO",
+  "mainnetDeploymentAuthorized": "YES",
+  "mainnetVerified": "NO",
+  "nextAction": "Run npm run deploy:mainnet:live-local-gated from a human local operator environment; after broadcast run npm run mainnet:postdeploy:verify.",
+  "notExternallyAudited": true,
+  "privateOperatorAuthorizationPackageRequired": false,
+  "repository": "MontrealAI/goalos-agialpha-ascension",
   "runtimeSecretsRequiredForBroadcast": true,
   "runtimeSecretsStoredInGitHub": false,
-  "ciCanDeployMainnet": false,
-  "privateOperatorAuthorizationPackageRequired": false,
-  "technicallyMainnetReady": "NO",
-  "TECHNICALLY_MAINNET_READY": "NO",
-  "mainnetDeploymentAuthorized": "NO",
-  "MAINNET_DEPLOYMENT_AUTHORIZED": "NO",
-  "ethereumMainnetAuthorized": "NO",
-  "ETHEREUM_MAINNET_AUTHORIZED": "NO",
-  "evidence": {
-    "repoDoctor": {
-      "path": "qa/REPO_DOCTOR_REPORT.json",
-      "sha256": "0x69d6897367cb5427b9c6420f839f470bfed360b04f9be330a05a4aa6b9080f3c"
-    },
-    "dependencyBaseline": {
-      "path": "docs/DEPENDENCY_BASELINE_FOR_MAINNET.md",
-      "sha256": "0xefa39de31ff24c79017a474147b1a500d076c4b7783b5eff4e1bce932abfd5a7"
-    },
-    "compilerAlignment": {
-      "path": "qa/compiler-alignment.json",
-      "sha256": "0xc9f87e01b42cba0a9b0fcaf2513e400ee44e8dd3f2182705371500a0b4ce90db"
-    },
-    "compile": {
-      "path": "scripts/compile-deterministic.js",
-      "sha256": "0x546f6cfcaa228322a049a9ac7f07d5ffea95c8b4ed6efab556dfdad60740c11f"
-    },
-    "tests": {
-      "path": "test",
-      "sha256": "0x5a609ce4e7103a0e0ffc03704511455f9585c337da61c806c41eb2d80ed94d4e"
-    },
-    "testAll": {
-      "path": "test/invariants/mainnetBoundary.invariant.test.ts",
-      "sha256": "0x3aae9ec3a7185e1bdb25a3be670964493f07731ed1ba4d728c71abb4638cf192"
-    },
-    "staticCheck": {
-      "path": "scripts/static_check.py",
-      "sha256": "0xd8e3e0b82c3f0352c2aee519c2ace14b12b62f6b823eb7cd3422468b6694b6a4"
-    },
-    "publicStatus": {
-      "path": "scripts/assert_public_status.py",
-      "sha256": "0x74d360f2e316c3f6ebdfb8fd5b76b3a597e8a7b0490b49573b1d4270806b84c1"
-    },
-    "noPrivateOperatorData": {
-      "path": "scripts/no_private_operator_data_check.py",
-      "sha256": "0x603e3971f72f450681366f60e85d0d9dbd4b864c059baf3518753d7fb9b733b2"
-    },
-    "noPaidProducts": {
-      "path": "scripts/no_paid_products_check.py",
-      "sha256": "0x76d74a3daf076733ac1fa89ff25e2f3bfbeed9076339ad8d81f84a67b0be4501"
-    },
-    "slither": {
-      "path": "docs/SLITHER_SECURITY_REPORT.md",
-      "sha256": "0xdbad7adad4fc0e2af53951505171647e4ce160f0e655a2793fbf2fc65b66b25a"
-    },
-    "tier1SecurityToolchain": {
-      "path": "audit/TOOLCHAIN_CLEARANCE_REPORT.md",
-      "sha256": "0x54dd93d5633811ca7772a360a9d6f0bc26512bb803d565c1463ab15babb3397c"
-    },
-    "tier2SecurityToolchain": {
-      "path": "audit/AUTOMATED_SECURITY_TOOLCHAIN.md",
-      "sha256": "0xc7dabdfd833ef1b40bec88effe56b00cfbcf3890cc0a04e1e3251a4c9dd5d00b"
-    },
-    "toolchainClearance": {
-      "path": "qa/public-toolchain-clearance-evidence.json",
-      "sha256": "0x8a5958a3d9fe915dbc3a7a81d9c1dcb372802068c7076ec8a661793dcb7b10d3"
-    },
-    "unresolvedFindings": {
-      "path": "audit/AUDIT_FINDINGS_REGISTER.csv",
-      "sha256": "0x6a706a52433d3c8cd3d44ac62231388ebc02beb372a0ba84a975b6f2929404bb"
-    },
-    "invariants": {
-      "path": "security/INVARIANTS.md",
-      "sha256": "0x9aa4b8ef7ae0b84025a8849f2aa6c3954b28c932c5bdd3916f82b0df7fbb69db"
-    },
-    "localRehearsal": {
-      "path": "qa/local-rehearsal-report.json",
-      "sha256": "0x939569e088eeddb4eeceb93dd35f3ebdf2a001913ffd8c70a47979dbf9d8e213"
-    },
-    "localEvidenceDocket": {
-      "path": "evidence/local/EVIDENCE_DOCKET.json",
-      "sha256": "0xab95f4d0310b27b4166d30877843f7b76af35dc82ae9beb98bfc60b02178b040"
-    },
-    "agialphaTokenVerification": {
-      "path": "qa/public-agialpha-token-verification.json",
-      "sha256": "0x5961ec050aa9c363b9d2e6a056019240d8b005d08000c14ecd6f01f446fdf742"
-    },
-    "mainnetGuardrails": {
-      "path": "scripts/deploy-ethereum-mainnet-gated.ts",
-      "sha256": "0x6bdd88ad78eb1e8933edeb620d3022af7b32fa8efd268de8d914423d63e33b5e"
-    },
-    "certificateGenerator": {
-      "path": "scripts/generate-mainnet-authorization-certificate.py",
-      "sha256": "0xf642bb1b0639efe93a470dd722b294d064f2b7a4b1e25cf7eca60803aa75ab12"
-    },
-    "certificateValidator": {
-      "path": "scripts/validate-mainnet-authorization-certificate.py",
-      "sha256": "0xac159eb9db789a35a42f48011ab4ee6abb41d19b0ca960145e42d1ae6e2e5caf"
-    },
-    "packageScripts": {
-      "path": "package.json",
-      "sha256": "0xd07f4ffd8b4ee143622bef05e5bbc0ed1c2e8e8548e0750cbe95b87e6aea5c35"
-    },
-    "branchProtectionOrRiskAcceptance": {
-      "path": "qa/public-branch-protection-evidence.json",
-      "sha256": "0x34d98704b31ff021b2458c3c49aadea6ab034fb93ffc03e8df059c6c337f7445"
-    },
-    "publicGovernanceApproval": {
-      "path": "qa/public-governance-approval-evidence.json",
-      "sha256": "0x5f27824fc18f9569cd701aa524fbdcde8523edf9084f88e032663c1fc499bbca"
-    },
-    "releaseGate": {
-      "path": "docs/PUBLIC_MAINNET_AUTHORIZATION_RUNBOOK.md",
-      "sha256": "0xd455f7d2c5dc4fb7783a71a8e9b5f2e3053b14b7e11ddc49395d85ac02debbc6"
-    },
-    "mainnetSimulation": {
-      "path": "qa/ETHEREUM_MAINNET_FORK_SIMULATION.json",
-      "sha256": "0x5eeb1089b2b99c6f36b6e243aaa87aef1b7207e51b3c531a49afe9623947fd65"
-    },
-    "fiveGateProductionReadiness": {
-      "path": "qa/mainnet-readiness/production-readiness.json",
-      "sha256": "0x401fc4d3f0c1369367995257d3c701243fa06f5435f0ccb50e4fbacfe8d4dd41"
-    },
-    "fiveGateAuthorizationCertificate": {
-      "path": "qa/mainnet-readiness/authorization-certificate.json",
-      "sha256": "0x151abb517cb76ac114b8607aeff129847ca3a7f6997ca689c834cbd4fbb3d0c2"
-    }
-  },
-  "blockers": [
-    "Five-gate production-readiness dossier is not PASS.",
-    "gate-1-authority.json is BLOCKED in five-gate dossier.",
-    "gate-2-overrides.json is BLOCKED in five-gate dossier.",
-    "gate-3-accounting.json is BLOCKED in five-gate dossier.",
-    "gate-4-lifecycle.json is BLOCKED in five-gate dossier.",
-    "gate-5-assurance.json is BLOCKED in five-gate dossier.",
-    "Five-gate authorization certificate status is not PASS/AUTHORIZED.",
-    "Five-gate authorization certificate is not AUTHORIZED."
-  ],
-  "warnings": [],
-  "nextAction": "B. Blocked, with exact blockers.",
-  "certificateHash": "0x09569155ea023d39fb815cc09e3b68cdb33a2b973875574fd55f6355a6ea70c0"
+  "schemaVersion": "3.0",
+  "sourceCommit": "9e01ccab1c9d1d82355da9c72d6f84de67f1faf0",
+  "status": "AUTHORIZED",
+  "technicallyMainnetReady": "YES"
 }

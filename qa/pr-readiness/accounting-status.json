@@ -15,7 +15,7 @@
     {
       "command": "npx hardhat test --no-compile test/businessControls.test.ts",
       "exitCode": 0,
-      "output": "npm warn Unknown env config \"http-proxy\". This will stop working in the next major version of npm.\n\n\n  GoalOS business override, accounting, and lifecycle controls\n    \u2714 tracks protected job liability and resolves through typed owner override (1216ms)\n    \u2714 rejects zero override evidence commitments (76ms)\n    \u2714 enforces finite lifecycle transitions and shutdown liability proof (40ms)\n\n\n  3 passing (1s)\n\n"
+      "output": "npm warn Unknown env config \"http-proxy\". This will stop working in the next major version of npm.\n\n\n  GoalOS business override, accounting, and lifecycle controls\n    \u2714 tracks protected job liability and resolves through typed owner override (1524ms)\n    \u2714 rejects zero override evidence commitments (102ms)\n    \u2714 enforces finite lifecycle transitions and shutdown liability proof (58ms)\n\n\n  3 passing (2s)\n\n"
     }
   ],
   "evidence": [
