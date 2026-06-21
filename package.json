@@ -311,7 +311,16 @@
     "mainnet:activation:certificate:validate": "python scripts/mainnet_three_stage.py activation-validate",
     "mainnet:activation:final-check": "npm run mainnet:activation:certificate:validate",
     "mainnet:postdeploy:status": "python scripts/mainnet_three_stage.py status",
-    "mainnet:activation:status": "python scripts/mainnet_three_stage.py status"
+    "mainnet:activation:status": "python scripts/mainnet_three_stage.py status",
+    "release:inventory": "python scripts/mainnet_operational_readiness.py",
+    "release:gate1": "python scripts/mainnet_three_stage.py evaluate-gates",
+    "release:gate2": "python scripts/mainnet_three_stage.py evaluate-gates",
+    "release:gate3": "python scripts/mainnet_three_stage.py evaluate-gates",
+    "release:gate4": "python scripts/mainnet_three_stage.py evaluate-gates",
+    "stateful:secondary": "python scripts/phase_a_assurance.py status --category security",
+    "differential:release": "python scripts/phase_a_assurance.py differential",
+    "mainnet:predeploy:evaluate-gates": "python scripts/mainnet_three_stage.py evaluate-gates",
+    "mainnet:predeploy:plan": "python scripts/mainnet_three_stage.py plan"
   },
   "dependencies": {
     "@openzeppelin/contracts": "4.9.6",

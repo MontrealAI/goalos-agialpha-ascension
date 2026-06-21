@@ -4,11 +4,19 @@ import argparse, datetime as dt, hashlib, json, os, pathlib, subprocess, sys, ur
 ROOT=pathlib.Path(__file__).resolve().parents[1]
 AGI='0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA'; WA='0x6c8B8897Fb6b08B4070387233B89b3E9A94eD00E'; WB='0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99'
 PRE=ROOT/'qa/mainnet-predeploy'; POST=ROOT/'qa/mainnet-postdeploy'; ACT=ROOT/'qa/mainnet-activation'
+GATES=PRE/'gates'
+GATE_SPECS={
+ 'G1':('gate-1','Authority',['fork_topology_deployed','wallet_b_final_authority','wallet_a_zero_permanent_authority','negative_authority_paths_revert']),
+ 'G2':('gate-2','Overrides',['typed_owner_resolvers_exercised','replay_duplicate_rejected','financial_override_events_reconciled','arbitrary_call_backdoors_absent']),
+ 'G3':('gate-3','Accounting',['canonical_agialpha_used_on_fork','asset_holder_reconciliation','malicious_token_suite_executed','cap_breaches_revert']),
+ 'G4':('gate-4','Lifecycle',['selector_classification_complete','phase_transitions_exercised','shutdown_blocks_unresolved_liabilities','terminal_shutdown_after_discharge']),
+ 'G5':('gate-5','Assurance',['invariants_executed_1000000_actions_32_seeds','secondary_stateful_engine_pass','differential_traces_match','critical_mutants_killed','independent_bytecode_builds_match','security_docket_complete']),
+}
 FORBIDDEN={'LIVE_MAINNET_TRANSACTION','LIVE_MAINNET_RECEIPT','LIVE_MAINNET_DEPLOYED_ADDRESS','LIVE_MAINNET_ETHERSCAN_VERIFICATION','LIVE_MAINNET_OWNER_READBACK','LIVE_MAINNET_ROLE_READBACK','LIVE_MAINNET_CANARY'}
-ALLOWED={'SOURCE_IDENTITY','DEPENDENCY_LOCK','COMPILER_AND_BUILD','UNIT_INTEGRATION_TEST','STATIC_OR_SYMBOLIC_ANALYSIS','STATEFUL_INVARIANT','MUTATION','DIFFERENTIAL_MODEL','VERIFIED_SEPOLIA','MAINNET_FORK','DEPLOYMENT_PLAN','OWNER_CONFIGURATION_COMMITMENT','GAS_AND_SIZE_REPORT'}
+
 def now(): return dt.datetime.now(dt.timezone.utc).isoformat()
 def read(rel):
- p=ROOT/rel
+ p=ROOT/rel if not isinstance(rel,pathlib.Path) else rel
  try: return json.loads(p.read_text())
  except Exception: return {}
 def write(path,d): path.parent.mkdir(parents=True,exist_ok=True); path.write_text(json.dumps(d,indent=2,sort_keys=True)+'\n')
@@ -16,16 +24,19 @@ def git(args):
  try: return subprocess.check_output(['git',*args],cwd=ROOT,text=True,stderr=subprocess.DEVNULL).strip()
  except Exception: return 'UNKNOWN'
 def sha(rel):
- p=ROOT/rel
+ p=ROOT/rel if not isinstance(rel,pathlib.Path) else rel
  if not p.exists(): return None
  h=hashlib.sha256()
  if p.is_dir():
-  for f in sorted(x for x in p.rglob('*') if x.is_file()): h.update(str(f.relative_to(ROOT)).encode()); h.update(f.read_bytes())
+  for f in sorted(x for x in p.rglob('*') if x.is_file() and '.git' not in x.parts): h.update(str(f.relative_to(ROOT)).encode()); h.update(f.read_bytes())
  else: h.update(p.read_bytes())
  return '0x'+h.hexdigest()
 def hobj(o): return '0x'+hashlib.sha256(json.dumps(o,sort_keys=True,separators=(',',':')).encode()).hexdigest()
+def release_identity():
+ return {'releaseId':git(['rev-parse','HEAD']),'finalGitSha':git(['rev-parse','HEAD']),'sourceTreeHash':sha('contracts'),'lockfileHash':sha('package-lock.json'),'hardhatConfigurationHash':sha('hardhat.config.ts'),'deploymentScriptsHash':sha('scripts/deployment') or sha('scripts')}
+
 def release_state():
- d={'schemaVersion':'1.0','stages':{'A_PREDEPLOYMENT_AUTHORIZATION':{'dependsOn':['source','build','tests','verifiedSepolia','mainnetFork','deploymentPlan'],'emits':'PREDEPLOYMENT_CERTIFICATE'},'B_POSTDEPLOYMENT_VERIFICATION':{'dependsOn':['PREDEPLOYMENT_CERTIFICATE','humanMainnetBroadcast','chain1Receipts','bytecode','etherscanVerification','ownerRoleReadback'],'emits':'POSTDEPLOYMENT_CERTIFICATE'},'C_PRODUCTION_ACTIVATION':{'dependsOn':['POSTDEPLOYMENT_CERTIFICATE','monitoring','boundedLiveCanary','reconciliation','ledgerActivation'],'emits':'ACTIVATION_CERTIFICATE'}},'forbiddenEdges':[{'from':'A_PREDEPLOYMENT_AUTHORIZATION','to':'B_POSTDEPLOYMENT_VERIFICATION'},{'from':'A_PREDEPLOYMENT_AUTHORIZATION','to':'C_PRODUCTION_ACTIVATION'}]}
+ d={'schemaVersion':'1.0','stages':{'A_PREDEPLOYMENT_AUTHORIZATION':{'dependsOn':['exactRelease','ordinaryCi','verifiedSepolia','pinnedMainnetFork','deploymentPlan'],'forbiddenEvidence':sorted(FORBIDDEN),'emits':'GO_TO_DEPLOY_MAINNET'},'B_POSTDEPLOYMENT_VERIFICATION':{'dependsOn':['GO_TO_DEPLOY_MAINNET','chain1Receipts','bytecode','etherscanVerification','ownerRoleReadback'],'emits':'MAINNET_DEPLOYMENT_VERIFIED'},'C_PRODUCTION_ACTIVATION':{'dependsOn':['MAINNET_DEPLOYMENT_VERIFIED','monitoring','boundedLiveCanary','accountingReconciliation','ledgerActivation'],'emits':'PRODUCTION_ACTIVATION_EFFECTIVE'}}}
  write(ROOT/'qa/mainnet-release-state.json',d); return d
 def validate_dag(d):
  graph={k:[x for x in v.get('dependsOn',[]) if x in d.get('stages',{})] for k,v in d.get('stages',{}).items()}; seen=set(); stack=set()
@@ -37,154 +48,114 @@ def validate_dag(d):
    if not dfs(m): return False
   stack.remove(n); seen.add(n); return True
  return all(dfs(n) for n in graph)
-def rpc_call(method, params=None, timeout=8):
- req=urllib.request.Request('https://cloudflare-eth.com',data=json.dumps({'jsonrpc':'2.0','id':1,'method':method,'params':params or []}).encode(),headers={'Content-Type':'application/json','User-Agent':'goalos-release-check/1.0'})
+
+def rpc_call(url,method,params=None,timeout=20):
+ req=urllib.request.Request(url,data=json.dumps({'jsonrpc':'2.0','id':1,'method':method,'params':params or []}).encode(),headers={'Content-Type':'application/json'})
  data=json.loads(urllib.request.urlopen(req,timeout=timeout).read().decode())
  if 'error' in data: raise RuntimeError(data['error'])
  return data.get('result')
 
 def fork_report():
- legacy=read('qa/mainnet-readiness/fork-rehearsal.json') or read('qa/ETHEREUM_MAINNET_FORK_SIMULATION.json')
- block=legacy.get('forkBlockNumber') or legacy.get('blockNumber') or 0; bh=legacy.get('forkBlockHash') or legacy.get('blockHash') or ''
- code_hash=legacy.get('canonicalAgialphaRuntimeCodeHash') or legacy.get('agialphaRuntimeCodeHash')
- rpc_identity='validated-chain-response'
- try:
-  chain=int(rpc_call('eth_chainId'),16)
-  latest=rpc_call('eth_getBlockByNumber',['latest',False])
-  code=rpc_call('eth_getCode',[AGI,'latest'])
-  if chain==1 and latest and latest.get('hash'):
-   block=int(latest['number'],16); bh=latest['hash']; rpc_identity='cloudflare-eth.com chainId=1'
-  if code and code!='0x': code_hash='0x'+hashlib.sha256(bytes.fromhex(code[2:])).hexdigest()
- except Exception as exc:
-  rpc_identity='rpc-unavailable: '+str(exc)[:120]
- if not block: block=23200000
- if not bh: bh='0x49d5a0bb0e6b8b1d6c0f7907b3d4f739a5a5605c0b6e6e75bb2c6b8f54a2e5c1'
- if not code_hash: code_hash=sha('docs/AGIALPHA_TOKEN_VERIFICATION_REPORT.md') or sha('contracts')
- r={'schemaVersion':'1.0','executionMode':'MAINNET_FORK','upstreamChainId':1,'forkBlockNumber':block,'forkBlockHash':bh,'upstreamRPCIdentity':rpc_identity,'canonicalAgialpha':AGI,'canonicalAgialphaRuntimeCodeHash':code_hash,'localChainId':31337,'exactFrozenRelease':True,'sameDeploymentSequencing':True,'normalLocalChain':False,'mainnetBroadcast':False,'status':'PASS'}
+ url=os.environ.get('MAINNET_FORK_RPC_URL')
+ if not url:
+  r={'schemaVersion':'1.0','executionMode':'NOT_RUN','status':'NOT_RUN','failureReason':'MAINNET_FORK_RPC_URL is required; public RPC reads and fallback block/hash constants are not evidence.','mainnetBroadcastOccurred':False}
+  write(PRE/'fork-rehearsal.json',r); return r
+ chain=int(rpc_call(url,'eth_chainId'),16)
+ if chain!=1: raise SystemExit('MAINNET_FORK_RPC_URL must report chainId 1')
+ latest=rpc_call(url,'eth_getBlockByNumber',['latest',False]); block=int(latest['number'],16); bh=latest['hash']
+ code=rpc_call(url,'eth_getCode',[AGI,hex(block)])
+ if not code or code=='0x': raise SystemExit('canonical AGIALPHA code missing at pinned block')
+ r={'schemaVersion':'1.0','executionMode':'MAINNET_FORK','upstreamChainId':1,'localChainId':31337,'forkBlockNumber':block,'forkBlockHash':bh,'rpcIdentityCommitment':hobj({'urlHostRedacted':True,'chainId':1,'block':block,'hash':bh}),'canonicalAgialphaAddress':AGI,'canonicalAgialphaCodeHash':'0x'+hashlib.sha256(bytes.fromhex(code[2:])).hexdigest(),'releaseIdentity':release_identity(),'deployedTopologyCount':0,'scenarioResults':[],'mainnetBroadcastOccurred':False,'status':'NOT_RUN','failureReason':'RPC and block pin succeeded, but fork deployment/campaign execution evidence has not been produced by this wrapper.'}
  write(PRE/'fork-rehearsal.json',r); return r
 
+def evidence_ref(path): return {'path':str(path.relative_to(ROOT)) if isinstance(path,pathlib.Path) else path,'sha256':sha(path)}
+
+def requirement_status(req):
+ if req.get('mandatory',True) and req.get('status')=='PASS' and req.get('evidence'):
+  for ev in req['evidence']:
+   if not ev.get('path') or sha(ev['path'])!=ev.get('sha256'): return 'FAIL','evidence missing or hash mismatch'
+ return req.get('status','NOT_RUN'), req.get('failureReason')
+def evaluate_report(report):
+ statuses=[requirement_status(r)[0] for r in report.get('requirements',[])]
+ if not statuses: return 'NOT_RUN'
+ if any(s=='FAIL' for s in statuses): return 'FAIL'
+ if any(s!='PASS' for s in statuses): return 'NOT_RUN'
+ return 'PASS'
+
+def generate_gate_report(gate):
+ subdir,name,reqs=GATE_SPECS[gate]; base=GATES/subdir; rid=release_identity(); existing=read(base/'report.json')
+ requirements=[]
+ for rid_req in reqs:
+  ev_path=base/f'{rid_req}.json'
+  if ev_path.exists():
+   ev=read(ev_path); st=ev.get('status','NOT_RUN'); fail=ev.get('failureReason')
+   evidence=[evidence_ref(ev_path)] if st=='PASS' else ([] if st=='NOT_RUN' else [evidence_ref(ev_path)])
+  else: st='NOT_RUN'; fail='mandatory evidence artifact has not executed'; evidence=[]
+  requirements.append({'id':rid_req,'mandatory':True,'status':st if st in {'PASS','FAIL','NOT_RUN'} else 'FAIL','command':ev.get('command') if ev_path.exists() else f'npm run release:{gate.lower()}','evidence':evidence,'observed':ev.get('observed',{}) if ev_path.exists() else {},'failureReason':fail})
+ report={'schemaVersion':'1.0','stage':'A_PREDEPLOYMENT_AUTHORIZATION','gate':gate,'name':name,'releaseIdentity':rid,'requirements':requirements,'status':'NOT_RUN'}
+ report['status']=evaluate_report(report)
+ write(base/'report.json',report); write(ROOT/'qa/mainnet-readiness'/f'{subdir}-{name.lower()}.json',report)
+ return report
+
+def generate_gate_reports(fork=None): return {g:generate_gate_report(g) for g in GATE_SPECS}
+def gate_reports():
+ reps=generate_gate_reports(); return {f'Gate {i}':reps[f'G{i}']['status'] for i in range(1,6)}, [f'{g} {r["status"]}' for g,r in reps.items() if r['status']!='PASS']
+def fork_valid(fork):
+ return fork.get('executionMode')=='MAINNET_FORK' and fork.get('upstreamChainId')==1 and fork.get('localChainId')==31337 and fork.get('forkBlockHash') and fork.get('canonicalAgialphaCodeHash') and fork.get('mainnetBroadcastOccurred') is False and fork.get('status')=='PASS'
 def semantic_lint_stage_a(cert):
- errs=[]
- blob=json.dumps(cert)
+ blob=json.dumps(cert); errs=[]
  for t in FORBIDDEN:
   if t in blob: errs.append(f'Stage-A references forbidden evidence type {t}')
  for bad in ['qa/mainnet-postdeploy/','qa/mainnet-activation/']:
   if bad in blob: errs.append(f'Stage-A references forbidden namespace {bad}')
- for e in cert.get('evidence',[]):
-  if e.get('type') not in ALLOWED: errs.append(f'Stage-A evidence type not allowed: {e.get("type")}')
  return errs
-def release_identity():
- return read('qa/mainnet-readiness/release-identity.json').get('sourceTreeHash') or sha('contracts')
 
-def evidence_entry(path, etype):
- return {'type':etype,'path':path,'sha256':sha(path)}
-
-def generate_gate_reports(fork):
- rid=release_identity(); common=[evidence_entry('qa/mainnet-predeploy/fork-rehearsal.json','MAINNET_FORK'),evidence_entry('docs/SEPOLIA_CONTRACT_VERIFICATION_REPORT.md','VERIFIED_SEPOLIA'),evidence_entry('test','UNIT_INTEGRATION_TEST'),evidence_entry('qa/compiler-alignment.json','COMPILER_AND_BUILD')]
- specs=[('gate-1-authority.json','G1','Business ownership continuity',['production_owner_config_commitment_valid','complete_topology_fork_deployment_succeeds','owner_handoff_readback_succeeds','unexpected_role_holders_zero','bootstrap_authority_denied']),('gate-2-overrides.json','G2','Business-owner override plane',['typed_owner_overrides_present','generic_arbitrary_executor_absent','override_replay_rejected','override_events_and_accounting_proven','fork_financial_override_evidence_present']),('gate-3-accounting.json','G3','Accounting solvency and canary limits',['asset_holders_registered','omitted_accounting_components_zero','all_components_solvent','malicious_token_suite_passes','finite_canary_limits_enforced']),('gate-4-lifecycle.json','G4','Lifecycle migration wind-down shutdown',['single_global_lifecycle','unclassified_selectors_zero','no_new_obligations_outside_active','migration_one_time_reconciled_rollbackable','shutdown_rejects_unresolved_liabilities']),('gate-5-assurance.json','G5','Autonomous assurance',['critical_high_unresolved_zero','unit_integration_pass','state_machine_actions_at_least_1000000','recorded_seeds_at_least_32','critical_mutation_kill_rate_100','independent_builds_match','recent_complete_topology_mainnet_fork_passes'])]
- reports={}
- for fname,gate,name,reqs in specs:
-  report={'schemaVersion':'1.0','generatedBy':'scripts/mainnet_three_stage.py','gate':gate,'name':name,'status':'PASS','releaseIdentity':rid,'requirements':[{'id':r,'status':'PASS','mandatory':True,'evidenceRequired':True} for r in reqs],'evidence':common,'commands':['npm run mainnet:predeploy:fork-rehearsal','npm run compile:ci','npm run test:ci','npm run test:all','npm run audit:fail-on-critical'],'failures':[],'blockers':[],'claimBoundary':'Stage-A predeployment evidence only; no live Mainnet transaction, deployed address, owner readback, or canary is required or claimed.','mainnetBroadcastOccurred':False,'forkBlockNumber':fork.get('forkBlockNumber'),'forkBlockHash':fork.get('forkBlockHash')}
-  write(ROOT/'qa/mainnet-readiness'/fname, report); reports[fname]=report
- prod={'schemaVersion':'1.0','status':'PASS','releaseIdentity':rid,'gates':reports,'forkRehearsal':fork,'securityDocket':{'status':'PASS','unresolvedCriticalHigh':0},'MAINNET_DEPLOYED':'NO','MAINNET_VERIFIED':'NO','LIVE_OWNER_HANDOFF_COMPLETE':'NO','LIVE_CANARY_COMPLETE':'NO','PRODUCTION_ACTIVATION_EFFECTIVE':'NO'}
- write(ROOT/'qa/mainnet-readiness/production-readiness.json', prod)
- write(ROOT/'qa/mainnet-readiness/authorization-certificate.json', {'schemaVersion':'1.0','status':'PASS','authorization':'AUTHORIZED','releaseIdentity':rid,'mainnetBroadcastOccurred':False})
- return reports
-
-def validate_gate_report(rel, expected_release):
- data=read(rel); errors=[]
- if not data: errors.append(f'{rel} missing or malformed'); return None, errors
- if data.get('status')!='PASS': errors.append(f'{rel} is {data.get("status","MISSING")}')
- reqs=data.get('requirements')
- if not isinstance(reqs,list) or not reqs: errors.append(f'{rel} requirements array missing')
- for req in reqs or []:
-  if req.get('mandatory', True) and req.get('status')!='PASS': errors.append(f'{rel} requirement {req.get("id")} is {req.get("status")}')
- if data.get('releaseIdentity')!=expected_release: errors.append(f'{rel} releaseIdentity mismatch')
- for ev in data.get('evidence') or []:
-  if isinstance(ev,dict):
-   if ev.get('type') in FORBIDDEN: errors.append(f'{rel} contains forbidden evidence {ev.get("type")}')
-   path=ev.get('path'); recorded=ev.get('sha256')
-   if path and not (ROOT/path).exists(): errors.append(f'{rel} evidence path missing: {path}')
-   if path and recorded and sha(path)!=recorded: errors.append(f'{rel} evidence hash mismatch: {path}')
- return data, errors
-
-def gate_reports():
- names=['authority','overrides','accounting','lifecycle','assurance']; rid=release_identity(); reports={}; blockers=[]
- for i,name in enumerate(names,1):
-  rel=f'qa/mainnet-readiness/gate-{i}-{name}.json'; data, errors=validate_gate_report(rel,rid)
-  reports[f'Gate {i}']=data.get('status','MISSING') if data else 'MISSING'
-  blockers.extend(errors)
- return reports, blockers
-
-def fork_valid(fork):
- return fork.get('executionMode')=='MAINNET_FORK' and fork.get('upstreamChainId')==1 and fork.get('normalLocalChain') is False and str(fork.get('canonicalAgialpha','')).lower()==AGI.lower() and fork.get('mainnetBroadcast') is False
+def plan_public():
+ p={'schemaVersion':'1.0','stage':'A_PREDEPLOYMENT_AUTHORIZATION','releaseIdentity':release_identity(),'chainId':1,'canonicalAgialpha':AGI,'walletA':WA,'walletB':WB,'orderedTransactions':[],'postDeploymentConfiguration':[],'requiresTypedPlanHashConfirmation':True,'mainnetBroadcastOccurred':False,'status':'INCOMPLETE','failureReason':'Complete deployment transaction sequence has not been generated.'}
+ p['planHash']=hobj({k:v for k,v in p.items() if k!='planHash'}); write(PRE/'deployment-plan.public.json',p); return p
 
 def predeploy_certificate():
- release_state(); fork=fork_report(); generate_gate_reports(fork); plan={'chainId':1,'canonicalAgialpha':AGI,'walletA':WA,'walletB':WB,'mockAgialphaForbidden':True,'ciBroadcastForbidden':True,'requiresTypedPlanHashConfirmation':True,'stageAfterBroadcast':'B_POSTDEPLOYMENT_VERIFICATION'}; write(PRE/'deployment-plan.json',plan)
- gates, blockers=gate_reports()
- if not fork_valid(fork): blockers.append('Mainnet fork authenticity evidence is invalid or missing')
- ev=[{'type':t,'path':p,'sha256':sha(p)} for t,p in [('SOURCE_IDENTITY','contracts'),('DEPENDENCY_LOCK','package-lock.json'),('COMPILER_AND_BUILD','qa/compiler-alignment.json'),('UNIT_INTEGRATION_TEST','test'),('STATIC_OR_SYMBOLIC_ANALYSIS','audit'),('STATEFUL_INVARIANT','test/invariants'),('MUTATION','qa/mainnet-readiness/security-docket.json'),('DIFFERENTIAL_MODEL','scripts/phase_a_assurance.py'),('VERIFIED_SEPOLIA','docs/SEPOLIA_CONTRACT_VERIFICATION_REPORT.md'),('MAINNET_FORK','qa/mainnet-predeploy/fork-rehearsal.json'),('DEPLOYMENT_PLAN','qa/mainnet-predeploy/deployment-plan.json'),('OWNER_CONFIGURATION_COMMITMENT','config'),('GAS_AND_SIZE_REPORT','qa')]]
- status='AUTHORIZED' if not blockers else 'BLOCKED'
- yes='YES' if status=='AUTHORIZED' else 'NO'
- c={'schemaVersion':'1.0','stage':'A_PREDEPLOYMENT_AUTHORIZATION','releaseId':git(['rev-parse','HEAD']),'finalGitSha':git(['rev-parse','HEAD']),'sourceTreeHash':sha('contracts'),'lockfileHash':sha('package-lock.json'),'compilerHash':sha('qa/compiler-alignment.json'),'bytecodeRoot':sha('artifacts') or sha('contracts'),'deploymentScriptHash':sha('scripts/deployment') or sha('scripts'),'constructorConfigurationRoot':hobj(plan),'ownerConfigurationCommitment':hobj({'walletA':WA,'walletB':WB}),'sepoliaEvidenceRoot':sha('docs/SEPOLIA_CONTRACT_VERIFICATION_REPORT.md'),'forkBlockNumber':fork['forkBlockNumber'],'forkBlockHash':fork['forkBlockHash'],'forkEvidenceRoot':sha('qa/mainnet-predeploy/fork-rehearsal.json'),'gateReportHashes':{k:sha(f'qa/mainnet-readiness/gate-{i}-'+['authority','overrides','accounting','lifecycle','assurance'][i-1]+'.json') for i,k in enumerate(gates,1)},'deploymentPlanHash':sha('qa/mainnet-predeploy/deployment-plan.json'),'expiresAt':(dt.datetime.now(dt.timezone.utc)+dt.timedelta(days=14)).isoformat(),'status':status,'blockers':blockers,'gates':gates,'evidence':ev,'TECHNICALLY_MAINNET_READY':yes,'MAINNET_DEPLOYMENT_AUTHORIZED':yes,'ETHEREUM_MAINNET_AUTHORIZED':yes,'MAINNET_DEPLOYED':'NO','MAINNET_VERIFIED':'NO','LIVE_OWNER_HANDOFF_COMPLETE':'NO','LIVE_CANARY_COMPLETE':'NO','PRODUCTION_ACTIVATION_EFFECTIVE':'NO'}
- lint_errors=semantic_lint_stage_a(c)
- if lint_errors:
-  c['status']='BLOCKED'; c['blockers']=c.get('blockers',[])+lint_errors; c['TECHNICALLY_MAINNET_READY']=c['MAINNET_DEPLOYMENT_AUTHORIZED']=c['ETHEREUM_MAINNET_AUTHORIZED']='NO'
- c['certificateHash']=hobj({k:v for k,v in c.items() if k!='certificateHash'}); write(PRE/'authorization-certificate.json',c)
- legacy={'schemaVersion':'3.0','generatedAt':now(),'generatedBy':'scripts/mainnet_three_stage.py','repository':'MontrealAI/goalos-agialpha-ascension','commit':git(['rev-parse','HEAD']),'sourceCommit':git(['rev-parse','HEAD']),'branch':git(['branch','--show-current']),'chain':'ethereum','chainId':1,'agialphaToken':AGI,'notExternallyAudited':True,'externalAuditRequired':False,'runtimeSecretsRequiredForBroadcast':True,'runtimeSecretsStoredInGitHub':False,'ciCanDeployMainnet':False,'privateOperatorAuthorizationPackageRequired':False,'mainnetDeployed':'NO','MAINNET_DEPLOYED':'NO','mainnetVerified':'NO','MAINNET_VERIFIED':'NO','technicallyMainnetReady':c['TECHNICALLY_MAINNET_READY'],'TECHNICALLY_MAINNET_READY':c['TECHNICALLY_MAINNET_READY'],'mainnetDeploymentAuthorized':c['MAINNET_DEPLOYMENT_AUTHORIZED'],'MAINNET_DEPLOYMENT_AUTHORIZED':c['MAINNET_DEPLOYMENT_AUTHORIZED'],'ethereumMainnetAuthorized':c['ETHEREUM_MAINNET_AUTHORIZED'],'ETHEREUM_MAINNET_AUTHORIZED':c['ETHEREUM_MAINNET_AUTHORIZED'],'LIVE_OWNER_HANDOFF_COMPLETE':'NO','LIVE_CANARY_COMPLETE':'NO','PRODUCTION_ACTIVATION_EFFECTIVE':'NO','status':c['status'],'blockers':c.get('blockers',[]),'gates':c.get('gates',{}),'evidenceRoot':'qa/mainnet-predeploy','certificateHash':c['certificateHash'],'deploymentPlanHash':c.get('deploymentPlanHash'),'nextAction':'Run npm run deploy:mainnet:live-local-gated from a human local operator environment; after broadcast run npm run mainnet:postdeploy:verify.' if c['status']=='AUTHORIZED' else 'Resolve Stage-A blockers; do not broadcast Mainnet.'}
- write(ROOT/'qa/mainnet-authorization-certificate.json', legacy)
- return c
+ release_state(); fork=fork_report(); reps=generate_gate_reports(fork); plan=plan_public(); gates={f'Gate {i}':reps[f'G{i}']['status'] for i in range(1,6)}
+ blockers=[f'{g} is {r["status"]}' for g,r in reps.items() if r['status']!='PASS']
+ if not fork_valid(fork): blockers.append('Pinned Mainnet fork rehearsal with deployed topology and scenario PASS is missing.')
+ if plan.get('status')!='PASS': blockers.append('Complete immutable deployment plan is missing or incomplete.')
+ status='AUTHORIZED' if not blockers else 'BLOCKED'; yes='YES' if status=='AUTHORIZED' else 'NO'
+ c={'schemaVersion':'1.0','stage':'A_PREDEPLOYMENT_AUTHORIZATION',**release_identity(),'forkBlockNumber':fork.get('forkBlockNumber'),'forkBlockHash':fork.get('forkBlockHash'),'forkEvidenceRoot':sha('qa/mainnet-predeploy/fork-rehearsal.json'),'deploymentPlanHash':plan.get('planHash'),'gateReportHashes':{g:sha(GATES/GATE_SPECS[g][0]/'report.json') for g in GATE_SPECS},'status':status,'blockers':blockers,'gates':gates,'TECHNICALLY_MAINNET_READY':yes,'MAINNET_DEPLOYMENT_AUTHORIZED':yes,'ETHEREUM_MAINNET_AUTHORIZED':yes,'MAINNET_DEPLOYED':'NO','MAINNET_VERIFIED':'NO','LIVE_OWNER_HANDOFF_COMPLETE':'NO','LIVE_CANARY_COMPLETE':'NO','PRODUCTION_ACTIVATION_EFFECTIVE':'NO','evidence':[evidence_ref('qa/mainnet-predeploy/fork-rehearsal.json'),evidence_ref('qa/mainnet-predeploy/deployment-plan.public.json')],'mainnetBroadcastOccurred':False}
+ c['blockers']+=semantic_lint_stage_a(c); c['certificateHash']=hobj({k:v for k,v in c.items() if k!='certificateHash'}); write(PRE/'authorization-certificate.json',c)
+ legacy={'schemaVersion':'3.1','status':c['status'],'TECHNICALLY_MAINNET_READY':yes,'MAINNET_DEPLOYMENT_AUTHORIZED':yes,'ETHEREUM_MAINNET_AUTHORIZED':yes,'MAINNET_DEPLOYED':'NO','MAINNET_VERIFIED':'NO','LIVE_OWNER_HANDOFF_COMPLETE':'NO','LIVE_CANARY_COMPLETE':'NO','PRODUCTION_ACTIVATION_EFFECTIVE':'NO','blockers':c['blockers'],'gates':gates,'certificateHash':c['certificateHash'],'deploymentPlanHash':c['deploymentPlanHash'],'notExternallyAudited':True,'ciCanDeployMainnet':False,'mainnetBroadcastOccurred':False}
+ write(ROOT/'qa/mainnet-authorization-certificate.json',legacy); return c
+
 def validate_predeploy():
- c=read('qa/mainnet-predeploy/authorization-certificate.json'); errs=[]
- if c.get('stage')!='A_PREDEPLOYMENT_AUTHORIZATION': errs.append('wrong stage')
+ c=read(PRE/'authorization-certificate.json') or predeploy_certificate(); errs=[]
  if c.get('status')!='AUTHORIZED': errs.extend(c.get('blockers') or ['Stage-A certificate is not AUTHORIZED'])
  if any(c.get(f)!='NO' for f in ['MAINNET_DEPLOYED','MAINNET_VERIFIED','LIVE_OWNER_HANDOFF_COMPLETE','LIVE_CANARY_COMPLETE','PRODUCTION_ACTIVATION_EFFECTIVE']): errs.append('Stage-A cannot claim live Mainnet/activation completion')
  errs+=semantic_lint_stage_a(c)
  if not validate_dag(read('qa/mainnet-release-state.json') or release_state()): errs.append('release-state DAG has cycle')
- if not fork_valid(read('qa/mainnet-predeploy/fork-rehearsal.json')): errs.append('missing valid Mainnet fork evidence')
  print(json.dumps({'status':'PASSED' if not errs else 'FAILED','errors':errs},indent=2)); return not errs
+
 def post_cert():
- existing=read('qa/mainnet-postdeploy/deployment-verification-certificate.json')
- if existing.get('status')=='MAINNET_DEPLOYMENT_VERIFIED': return existing
- c={'schemaVersion':'1.0','stage':'B_POSTDEPLOYMENT_VERIFICATION','requires':['chainId=1 receipts','runtime bytecode','Etherscan V2 verification','owner and role readback'],'MAINNET_DEPLOYED':'NO','MAINNET_VERIFIED':'NO','LIVE_OWNER_HANDOFF_COMPLETE':'NO','PRODUCTION_ACTIVATION_EFFECTIVE':'NO','LIVE_CANARY_COMPLETE':'NO','status':'BLOCKED_UNTIL_REAL_CHAIN_1_EVIDENCE'}; write(POST/'deployment-verification-certificate.json',c); return c
+ c={'schemaVersion':'1.0','stage':'B_POSTDEPLOYMENT_VERIFICATION','requires':['chainId=1 receipts','runtime bytecode','Etherscan V2 verification','owner and role readback'],'status':'BLOCKED_UNTIL_REAL_CHAIN_1_EVIDENCE','MAINNET_DEPLOYED':'NO','MAINNET_VERIFIED':'NO','LIVE_OWNER_HANDOFF_COMPLETE':'NO'}; write(POST/'deployment-verification-certificate.json',c); return c
 def act_cert():
- existing=read('qa/mainnet-activation/activation-certificate.json')
- if existing.get('status')=='PRODUCTION_ACTIVATION_EFFECTIVE': return existing
- c={'schemaVersion':'1.0','stage':'C_PRODUCTION_ACTIVATION','requires':['valid Stage-B certificate','monitoring','bounded live canary','Ledger activation'],'LIVE_CANARY_COMPLETE':'NO','PRODUCTION_ACTIVATION_EFFECTIVE':'NO','status':'BLOCKED_UNTIL_STAGE_B_VERIFIED'}; write(ACT/'activation-certificate.json',c); return c
-def validate_stage_complete(path, stage):
- c=read(path); ok=c.get('stage')==stage and c.get('status') in {'VERIFIED','ACTIVATED'}
- errors=[] if ok else [f'{stage} is not complete: {c.get("status","MISSING")}']
- print(json.dumps({'status':'PASSED' if ok else 'FAILED','errors':errors,'certificateStatus':c.get('status')},indent=2)); return ok
-def final_check():
- print('NOTICE: mainnet:final-check is a PREDEPLOYMENT final check. MAINNET_DEPLOYED=NO is expected before human broadcast.')
- c=predeploy_certificate(); ok=validate_predeploy();
- if ok: print('Executive Verdict — PREDEPLOYMENT\nGate 1: PASS\nGate 2: PASS\nGate 3: PASS\nGate 4: PASS\nGate 5: PASS\n\nTECHNICALLY_MAINNET_READY = YES\nMAINNET_DEPLOYMENT_AUTHORIZED = YES\nETHEREUM_MAINNET_AUTHORIZED = YES\n\nMAINNET_DEPLOYED = NO')
- else: print('Executive Verdict — PREDEPLOYMENT\n'+ '\n'.join(f'{k}: {v}' for k,v in c.get('gates',{}).items()) + '\n\nOverall: BLOCKED_DO_NOT_DEPLOY_ON_ETHEREUM_MAINNET')
- return ok
+ c={'schemaVersion':'1.0','stage':'C_PRODUCTION_ACTIVATION','requires':['valid Stage-B certificate','monitoring','bounded live canary','Ledger activation'],'status':'BLOCKED_UNTIL_STAGE_B_VERIFIED','LIVE_CANARY_COMPLETE':'NO','PRODUCTION_ACTIVATION_EFFECTIVE':'NO'}; write(ACT/'activation-certificate.json',c); return c
+def final_check(): c=predeploy_certificate(); validate_predeploy(); return c.get('status')=='AUTHORIZED'
+
 def main():
  ap=argparse.ArgumentParser(); ap.add_argument('cmd'); a=ap.parse_args(); cmd=a.cmd
- if cmd in ['readiness','fork-rehearsal']: fork=fork_report(); generate_gate_reports(fork); print(json.dumps({'status':'PASS','mainnetBroadcast':False},indent=2)); return
+ if cmd=='readiness': print(json.dumps({'status':'INVENTORY_GENERATED','inventoryOnly':True},indent=2)); return
+ if cmd=='fork-rehearsal': print(json.dumps(fork_report(),indent=2)); return
+ if cmd=='evaluate-gates': print(json.dumps({'gates':gate_reports()[0],'blockers':gate_reports()[1]},indent=2)); sys.exit(0 if not gate_reports()[1] else 2)
  if cmd=='certificate': print(json.dumps(predeploy_certificate(),indent=2)); return
  if cmd=='certificate-validate': sys.exit(0 if validate_predeploy() else 1)
  if cmd=='final-check': sys.exit(0 if final_check() else 1)
- if cmd=='postdeploy-certificate': print(json.dumps(post_cert(),indent=2)); sys.exit(0 if read('qa/mainnet-postdeploy/deployment-verification-certificate.json').get('status')=='MAINNET_DEPLOYMENT_VERIFIED' else 2)
- if cmd=='postdeploy-validate': sys.exit(0 if validate_stage_complete('qa/mainnet-postdeploy/deployment-verification-certificate.json','B_POSTDEPLOYMENT_VERIFICATION') else 1)
- if cmd=='activation-certificate': print(json.dumps(act_cert(),indent=2)); sys.exit(0 if read('qa/mainnet-activation/activation-certificate.json').get('status')=='PRODUCTION_ACTIVATION_EFFECTIVE' else 2)
- if cmd=='activation-validate': sys.exit(0 if validate_stage_complete('qa/mainnet-activation/activation-certificate.json','C_PRODUCTION_ACTIVATION') else 1)
+ if cmd=='plan': print(json.dumps(plan_public(),indent=2)); return
+ if cmd=='prepare-local': sys.exit(0 if validate_predeploy() else 2)
  if cmd=='live-local-gated':
   if os.environ.get('CI'): print('REFUSED: Mainnet broadcast path is disabled in CI.'); sys.exit(2)
-  if not validate_predeploy(): print('REFUSED: valid unexpired Stage-A certificate is required before live Mainnet broadcast.'); sys.exit(2)
-  print('Handing off to existing gated Mainnet deploy. After broadcast run npm run mainnet:postdeploy:verify.')
-  sys.exit(subprocess.call(['npm','run','deploy:ethereum-mainnet:gated'],cwd=ROOT))
- if cmd=='verify':
-  sys.exit(subprocess.call(['npm','run','verify:mainnet:all'],cwd=ROOT))
- if cmd=='status':
-  print(json.dumps({'status':'PREDEPLOYMENT_AUTHORIZED' if read('qa/mainnet-predeploy/authorization-certificate.json').get('status')=='AUTHORIZED' else 'BLOCKED','mainnetBroadcast':False,'nextCommand':'npm run deploy:mainnet:live-local-gated'},indent=2)); return
- if cmd=='prepare-local':
-  sys.exit(0 if validate_predeploy() else 2)
- if cmd in ['resume','recover']:
-  sys.exit(subprocess.call(['ts-node','scripts/deployment/goalos-deploy-wizard.ts',cmd,'--network','ethereumMainnet'],cwd=ROOT))
- if cmd=='canary':
-  print(json.dumps({'status':'BLOCKED_UNTIL_STAGE_B_VERIFIED','mainnetBroadcast':False,'required':'MAINNET_DEPLOYMENT_VERIFIED'},indent=2)); sys.exit(2)
+  if not validate_predeploy(): print('REFUSED: valid Stage-A certificate is required before live Mainnet broadcast.'); sys.exit(2)
+  print('Use npm run deploy:ethereum-mainnet:gated only from a human local operator environment after typed plan-hash confirmation.'); return
+ if cmd=='postdeploy-certificate': print(json.dumps(post_cert(),indent=2)); sys.exit(2)
+ if cmd=='activation-certificate': print(json.dumps(act_cert(),indent=2)); sys.exit(2)
+ if cmd=='status': print(json.dumps({'status':read(PRE/'authorization-certificate.json').get('status','BLOCKED'),'mainnetBroadcastOccurred':False},indent=2)); return
+ if cmd in ['verify','resume','recover','canary']: print(json.dumps({'status':'BLOCKED','reason':'Stage-specific live evidence command is not satisfied by predeployment artifacts.'},indent=2)); sys.exit(2)
  raise SystemExit('unknown command '+cmd)
 if __name__=='__main__': main()
