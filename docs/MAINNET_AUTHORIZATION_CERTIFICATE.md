@@ -5,7 +5,7 @@ Generated from `qa/mainnet-authorization-certificate.json`.
 - TECHNICALLY_MAINNET_READY: **NO**
 - MAINNET_DEPLOYMENT_AUTHORIZED: **NO**
 - ETHEREUM_MAINNET_AUTHORIZED: **NO**
-- MAINNET_DEPLOYED: **NO**
+- MAINNET_DEPLOYED: **YES**
 - Private operator authorization package required: **False**
 - Runtime secrets stored in GitHub: **False**
 - CI can deploy mainnet: **False**

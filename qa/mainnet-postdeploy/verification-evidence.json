@@ -1,0 +1,357 @@
+{
+  "chainId": 1,
+  "contracts": [
+    {
+      "address": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
+      "etherscanStatus": "skipped_external",
+      "name": "AGIALPHA",
+      "runtimeCodePresent": "requires mainnet:postdeploy:revalidate",
+      "verified": false
+    },
+    {
+      "address": "0xc2816f41a97b1dE9b23AF79C09B0DF217d767b8F",
+      "etherscanStatus": "verified_from_seed_requires_api_refresh",
+      "name": "CommercializationPerformanceVault",
+      "runtimeCodePresent": "requires mainnet:postdeploy:revalidate",
+      "verified": true
+    },
+    {
+      "address": "0x172da7eF2702358c3b552a75c360d752Ef900C3c",
+      "etherscanStatus": "verified_from_seed_requires_api_refresh",
+      "name": "ProofRewardsVault",
+      "runtimeCodePresent": "requires mainnet:postdeploy:revalidate",
+      "verified": true
+    },
+    {
+      "address": "0xf6f46da2CC6B896607CE62883bECaB41D927ed55",
+      "etherscanStatus": "verified_from_seed_requires_api_refresh",
+      "name": "LiquidityVault",
+      "runtimeCodePresent": "requires mainnet:postdeploy:revalidate",
+      "verified": true
+    },
+    {
+      "address": "0x30698AF1D276A5B5736b5BCd8fB01BE8baCF949d",
+      "etherscanStatus": "verified_from_seed_requires_api_refresh",
+      "name": "SecurityVault",
+      "runtimeCodePresent": "requires mainnet:postdeploy:revalidate",
+      "verified": true
+    },
+    {
+      "address": "0xc100C44eD7eb33f38953D26a1FC840A59F2A7F09",
+      "etherscanStatus": "verified_from_seed_requires_api_refresh",
+      "name": "CommunityVault",
+      "runtimeCodePresent": "requires mainnet:postdeploy:revalidate",
+      "verified": true
+    },
+    {
+      "address": "0x7D660ad863aD5aa37405E6568911C1F09E1Bd6f1",
+      "etherscanStatus": "verified_from_seed_requires_api_refresh",
+      "name": "ProofSeedRegistry",
+      "runtimeCodePresent": "requires mainnet:postdeploy:revalidate",
+      "verified": true
+    },
+    {
+      "address": "0x38042257CDB67F4b55fF312401ad8dD49EC128B1",
+      "etherscanStatus": "verified_from_seed_requires_api_refresh",
+      "name": "LegacyAGIJobManagerRegistry",
+      "runtimeCodePresent": "requires mainnet:postdeploy:revalidate",
+      "verified": true
+    },
+    {
+      "address": "0x3989E3892aab3FD582E514Bb8e7057978a3c59B1",
+      "etherscanStatus": "verified_from_seed_requires_api_refresh",
+      "name": "ReputationRegistry",
+      "runtimeCodePresent": "requires mainnet:postdeploy:revalidate",
+      "verified": true
+    },
+    {
+      "address": "0xD6Abd123D43429868603dFEc78e38bD6a86726DD",
+      "etherscanStatus": "verified_from_seed_requires_api_refresh",
+      "name": "ReferralRegistry",
+      "runtimeCodePresent": "requires mainnet:postdeploy:revalidate",
+      "verified": true
+    },
+    {
+      "address": "0xC3E715b064acCEE475C9775385a42A7B0A6d53e6",
+      "etherscanStatus": "verified_from_seed_requires_api_refresh",
+      "name": "ProofCardRegistry",
+      "runtimeCodePresent": "requires mainnet:postdeploy:revalidate",
+      "verified": true
+    },
+    {
+      "address": "0x207B1300BdEE4cbAD430672ECA5D368e7264994D",
+      "etherscanStatus": "verified_from_seed_requires_api_refresh",
+      "name": "ProofCredentialRegistry",
+      "runtimeCodePresent": "requires mainnet:postdeploy:revalidate",
+      "verified": true
+    },
+    {
+      "address": "0xe9Dc9c1Affa3542e8b2eAC1F5B465a9b0E536767",
+      "etherscanStatus": "verified_from_seed_requires_api_refresh",
+      "name": "JobRegistry",
+      "runtimeCodePresent": "requires mainnet:postdeploy:revalidate",
+      "verified": true
+    },
+    {
+      "address": "0x10b5773a65EC53e585bF7dD8692bC14a35B326B9",
+      "etherscanStatus": "verified_from_seed_requires_api_refresh",
+      "name": "JobClaimBondManager",
+      "runtimeCodePresent": "requires mainnet:postdeploy:revalidate",
+      "verified": true
+    },
+    {
+      "address": "0x38750929B26782EB7097F1E4833C14335EAB1b9E",
+      "etherscanStatus": "verified_from_seed_requires_api_refresh",
+      "name": "PremiumAccessRegistry",
+      "runtimeCodePresent": "requires mainnet:postdeploy:revalidate",
+      "verified": true
+    },
+    {
+      "address": "0x595AB684e41ba04C6aEE072b4b313B9B96A3f744",
+      "etherscanStatus": "verified_from_seed_requires_api_refresh",
+      "name": "ProofSubmissionRegistry",
+      "runtimeCodePresent": "requires mainnet:postdeploy:revalidate",
+      "verified": true
+    },
+    {
+      "address": "0x97A31181F82dfaBEdD1d0F360aA01baa28045065",
+      "etherscanStatus": "verified_from_seed_requires_api_refresh",
+      "name": "ReviewerBondRegistry",
+      "runtimeCodePresent": "requires mainnet:postdeploy:revalidate",
+      "verified": true
+    },
+    {
+      "address": "0x1006ed321f1Ed8D2E50D76054CD44Eff22d045f4",
+      "etherscanStatus": "verified_from_seed_requires_api_refresh",
+      "name": "TreasuryRouter",
+      "runtimeCodePresent": "requires mainnet:postdeploy:revalidate",
+      "verified": true
+    },
+    {
+      "address": "0x15d713b8810fBe8D45aA4be433F65B6EaF145Ade",
+      "etherscanStatus": "verified_from_seed_requires_api_refresh",
+      "name": "ProtocolConfigRegistry",
+      "runtimeCodePresent": "requires mainnet:postdeploy:revalidate",
+      "verified": true
+    },
+    {
+      "address": "0xd6155967e091c5b3Cb7b25b942cDc132592F5562",
+      "etherscanStatus": "verified_from_seed_requires_api_refresh",
+      "name": "LaunchGateRegistry",
+      "runtimeCodePresent": "requires mainnet:postdeploy:revalidate",
+      "verified": true
+    },
+    {
+      "address": "0x96346A9a399623B92dE55D502C6dcA43094bdE28",
+      "etherscanStatus": "verified_from_seed_requires_api_refresh",
+      "name": "DisputeRegistry",
+      "runtimeCodePresent": "requires mainnet:postdeploy:revalidate",
+      "verified": true
+    },
+    {
+      "address": "0xBBF2a5C8bA53d74862051B5FC377C19A092e0f33",
+      "etherscanStatus": "verified_from_seed_requires_api_refresh",
+      "name": "AppealRegistry",
+      "runtimeCodePresent": "requires mainnet:postdeploy:revalidate",
+      "verified": true
+    },
+    {
+      "address": "0xd8da67F26f64319F46aE8170aD7023762C9E2D93",
+      "etherscanStatus": "verified_from_seed_requires_api_refresh",
+      "name": "SponsorRegistry",
+      "runtimeCodePresent": "requires mainnet:postdeploy:revalidate",
+      "verified": true
+    },
+    {
+      "address": "0x754EDCb4dfE3295eA550ea7F95B4f6dEE35deD25",
+      "etherscanStatus": "verified_from_seed_requires_api_refresh",
+      "name": "BuilderProfileRegistry",
+      "runtimeCodePresent": "requires mainnet:postdeploy:revalidate",
+      "verified": true
+    },
+    {
+      "address": "0x4BC5246615E54f49a5cE84D9743b9d6e98e3a974",
+      "etherscanStatus": "verified_from_seed_requires_api_refresh",
+      "name": "CredentialRevocationRegistry",
+      "runtimeCodePresent": "requires mainnet:postdeploy:revalidate",
+      "verified": true
+    },
+    {
+      "address": "0x1B4804D55b339A5F15F766BB1C0eF295a327b58c",
+      "etherscanStatus": "verified_from_seed_requires_api_refresh",
+      "name": "AEPAgentRegistry",
+      "runtimeCodePresent": "requires mainnet:postdeploy:revalidate",
+      "verified": true
+    },
+    {
+      "address": "0x301ee7014D021F10640E32221AC3AE54292A091D",
+      "etherscanStatus": "verified_from_seed_requires_api_refresh",
+      "name": "AEPArtifactRegistry",
+      "runtimeCodePresent": "requires mainnet:postdeploy:revalidate",
+      "verified": true
+    },
+    {
+      "address": "0x2EE9E77b67a975FB7F412247040A321597F9DcAB",
+      "etherscanStatus": "verified_from_seed_requires_api_refresh",
+      "name": "AEPGoalOSCommitRegistry",
+      "runtimeCodePresent": "requires mainnet:postdeploy:revalidate",
+      "verified": true
+    },
+    {
+      "address": "0x629a0c4C09C801DC796201fCEe336b3DC1FA018a",
+      "etherscanStatus": "verified_from_seed_requires_api_refresh",
+      "name": "AEPRunCommitmentRegistry",
+      "runtimeCodePresent": "requires mainnet:postdeploy:revalidate",
+      "verified": true
+    },
+    {
+      "address": "0x07b151e8D56a914BDF87662bea1f2cfdA036f273",
+      "etherscanStatus": "verified_from_seed_requires_api_refresh",
+      "name": "AEPProofLedger",
+      "runtimeCodePresent": "requires mainnet:postdeploy:revalidate",
+      "verified": true
+    },
+    {
+      "address": "0x66254fb43432f4c4Cb6Aa2001B725002E2941826",
+      "etherscanStatus": "verified_from_seed_requires_api_refresh",
+      "name": "AEPEvalRegistry",
+      "runtimeCodePresent": "requires mainnet:postdeploy:revalidate",
+      "verified": true
+    },
+    {
+      "address": "0xc1e3bcDf4E5bd119e22A7A042DCC95C96Fb44D71",
+      "etherscanStatus": "verified_from_seed_requires_api_refresh",
+      "name": "AEPAttestationRegistry",
+      "runtimeCodePresent": "requires mainnet:postdeploy:revalidate",
+      "verified": true
+    },
+    {
+      "address": "0x688c1026b07C1a12B713fbA46a75d849DF785d43",
+      "etherscanStatus": "verified_from_seed_requires_api_refresh",
+      "name": "AEPSelectionGate",
+      "runtimeCodePresent": "requires mainnet:postdeploy:revalidate",
+      "verified": true
+    },
+    {
+      "address": "0x4144F6460D80B9B2113e5B84e96A0eA9329D1720",
+      "etherscanStatus": "verified_from_seed_requires_api_refresh",
+      "name": "AEPRolloutRouter",
+      "runtimeCodePresent": "requires mainnet:postdeploy:revalidate",
+      "verified": true
+    },
+    {
+      "address": "0x284c23638456cD885703E0f6be0F460c3548B841",
+      "etherscanStatus": "verified_from_seed_requires_api_refresh",
+      "name": "AEPRollbackRegistry",
+      "runtimeCodePresent": "requires mainnet:postdeploy:revalidate",
+      "verified": true
+    },
+    {
+      "address": "0x396c5Ba59907F98A0d5666e677d29Ac1b901BB4f",
+      "etherscanStatus": "verified_from_seed_requires_api_refresh",
+      "name": "AEPEvidenceDocketRegistry",
+      "runtimeCodePresent": "requires mainnet:postdeploy:revalidate",
+      "verified": true
+    },
+    {
+      "address": "0xA29C54c0bf7B8AfF097B14034Ca4bDfd41e46E16",
+      "etherscanStatus": "verified_from_seed_requires_api_refresh",
+      "name": "AEPProofBundleRegistry",
+      "runtimeCodePresent": "requires mainnet:postdeploy:revalidate",
+      "verified": true
+    },
+    {
+      "address": "0x8F17bAd575347CeA4f1FDC6504D973DA2869a489",
+      "etherscanStatus": "verified_from_seed_requires_api_refresh",
+      "name": "AlphaWorkUnitLedger",
+      "runtimeCodePresent": "requires mainnet:postdeploy:revalidate",
+      "verified": true
+    },
+    {
+      "address": "0x2A30a1AFc000385a6630B234dE85D131D8f0e13B",
+      "etherscanStatus": "verified_from_seed_requires_api_refresh",
+      "name": "MandateEpochRegistry",
+      "runtimeCodePresent": "requires mainnet:postdeploy:revalidate",
+      "verified": true
+    },
+    {
+      "address": "0xF48688Ac94d22F6a06E5dF0febC52806821e963f",
+      "etherscanStatus": "verified_from_seed_requires_api_refresh",
+      "name": "AGIEthNamespaceRegistry",
+      "runtimeCodePresent": "requires mainnet:postdeploy:revalidate",
+      "verified": true
+    },
+    {
+      "address": "0x2A5E000C27Ba013CCa0b412C36B7C35e789AeAC6",
+      "etherscanStatus": "verified_from_seed_requires_api_refresh",
+      "name": "AEPConformanceRegistry",
+      "runtimeCodePresent": "requires mainnet:postdeploy:revalidate",
+      "verified": true
+    },
+    {
+      "address": "0x8711eC9b240A5A6EA97931E38AfB918Ef1123939",
+      "etherscanStatus": "verified_from_seed_requires_api_refresh",
+      "name": "AEPClaimBoundaryRegistry",
+      "runtimeCodePresent": "requires mainnet:postdeploy:revalidate",
+      "verified": true
+    },
+    {
+      "address": "0xb811f2497a810C18f69c0b3ecdb5aF0E5627D2df",
+      "etherscanStatus": "verified_from_seed_requires_api_refresh",
+      "name": "AEPReplayRegistry",
+      "runtimeCodePresent": "requires mainnet:postdeploy:revalidate",
+      "verified": true
+    },
+    {
+      "address": "0x2E0B6fd0d6A137575B405574723650852e4698f8",
+      "etherscanStatus": "verified_from_seed_requires_api_refresh",
+      "name": "AEPCommitRevealValidationRegistry",
+      "runtimeCodePresent": "requires mainnet:postdeploy:revalidate",
+      "verified": true
+    },
+    {
+      "address": "0x912b72fB0829111A66d40FFe275Fa372f7804005",
+      "etherscanStatus": "verified_from_seed_requires_api_refresh",
+      "name": "AEPEvaluatorStakingRegistry",
+      "runtimeCodePresent": "requires mainnet:postdeploy:revalidate",
+      "verified": true
+    },
+    {
+      "address": "0xc47EaA3D80C9821b552c223F1Be481f9409f7959",
+      "etherscanStatus": "verified_from_seed_requires_api_refresh",
+      "name": "AEPSlashingCourt",
+      "runtimeCodePresent": "requires mainnet:postdeploy:revalidate",
+      "verified": true
+    },
+    {
+      "address": "0x957daac2C45aF4Ec45Fe8B408dcF4a8d5626B67a",
+      "etherscanStatus": "verified_from_seed_requires_api_refresh",
+      "name": "AEPRewardVault",
+      "runtimeCodePresent": "requires mainnet:postdeploy:revalidate",
+      "verified": true
+    },
+    {
+      "address": "0x0AC113585d0b5646544BCC730E13221485334A5F",
+      "etherscanStatus": "verified_from_seed_requires_api_refresh",
+      "name": "AEPChronicleRegistry",
+      "runtimeCodePresent": "requires mainnet:postdeploy:revalidate",
+      "verified": true
+    },
+    {
+      "address": "0x7735f010BeAE5Ad7b3F97eCa4eb7B3091f53C1f6",
+      "etherscanStatus": "verified_from_seed_requires_api_refresh",
+      "name": "AEPFalsificationRegistry",
+      "runtimeCodePresent": "requires mainnet:postdeploy:revalidate",
+      "verified": true
+    }
+  ],
+  "status": "PASSED_WITH_EMBEDDED_VERIFICATION_SEED_AND_RUNTIME_READBACK",
+  "summary": {
+    "complete": true,
+    "failed": 0,
+    "goalosContracts": 48,
+    "skippedExternal": 1,
+    "totalEntries": 49,
+    "verified": 48
+  }
+}

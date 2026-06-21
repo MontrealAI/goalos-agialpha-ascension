@@ -400,9 +400,6 @@
   "deployedAt": "2026-06-21T18:45:49.137Z",
   "deploymentMode": "DIRECT_OPERATOR_NO_CERTIFICATE",
   "deploymentStatus": "CONFIGURED",
-  "mainnetConfigured": "PENDING_REVALIDATION",
-  "mainnetDeployed": true,
-  "mainnetVerified": "PENDING_REVALIDATION",
   "mockAgialphaUsed": false,
   "network": "ethereum-mainnet",
   "newAgialphaTokenDeployed": false,
@@ -493,7 +490,6 @@
       "target": "0x912b72fB0829111A66d40FFe275Fa372f7804005"
     }
   ],
-  "productionActivated": false,
   "transactions": [
     "0xff3b0e9ea2b772728253198c9eaf546dc5c1c6d6b48ff6caf75cf2793ca294c7",
     "0x1b43c0e43fc7df6878e86d5bdce41f46a080a02af7fb6f6d93fcf29a02dda81a",
