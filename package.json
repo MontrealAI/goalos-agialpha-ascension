@@ -332,7 +332,13 @@
     "mainnet:predeploy:protected-evidence:validate": "python scripts/mainnet_three_stage.py protected-evidence-validate",
     "mainnet:predeploy:protected-evidence:import": "python scripts/mainnet_three_stage.py protected-evidence-import",
     "mainnet:predeploy:protected-evidence:status": "python scripts/mainnet_three_stage.py protected-evidence-status",
-    "mainnet:predeploy:status": "python scripts/mainnet_three_stage.py status"
+    "mainnet:predeploy:status": "python scripts/mainnet_three_stage.py status",
+    "mainnet:predeploy:resolve-and-authorize": "python scripts/mainnet_three_stage.py resolve-and-authorize",
+    "mainnet:predeploy:g1": "python scripts/mainnet_three_stage.py evaluate-gates",
+    "mainnet:predeploy:g2": "python scripts/mainnet_three_stage.py evaluate-gates",
+    "mainnet:predeploy:g3": "python scripts/mainnet_three_stage.py evaluate-gates",
+    "mainnet:predeploy:g4": "python scripts/mainnet_three_stage.py evaluate-gates",
+    "mainnet:predeploy:g5": "python scripts/mainnet_three_stage.py evaluate-gates"
   },
   "dependencies": {
     "@openzeppelin/contracts": "4.9.6",

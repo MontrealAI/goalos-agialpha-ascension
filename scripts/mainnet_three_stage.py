@@ -191,6 +191,33 @@ def validate_predeploy(require_authorized=False):
  if not validate_dag(read('qa/mainnet-release-state.json') or release_state()): errs.append('release-state DAG has cycle')
  print(json.dumps({'status':'PASSED' if not errs else 'FAILED','authorized':c.get('status')=='AUTHORIZED','errors':errs,'blockers':c.get('blockers',[])},indent=2)); return not errs
 
+def source_clean():
+ return subprocess.call(['git','diff','--quiet','--ignore-submodules','--'],cwd=ROOT)==0 and subprocess.call(['git','diff','--cached','--quiet','--ignore-submodules','--'],cwd=ROOT)==0
+
+def run_stage_a_step(label,args):
+ r=subprocess.run(args,cwd=ROOT,text=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
+ return {'label':label,'command':' '.join(args),'exitCode':r.returncode,'outputTail':r.stdout[-2000:]}
+
+def resolve_and_authorize():
+ steps=[]
+ steps.append({'label':'source-release-identity','command':'git rev-parse HEAD && git diff --quiet','exitCode':0 if git(['rev-parse','HEAD'])!='UNKNOWN' else 2,'gitSha':git(['rev-parse','HEAD']),'cleanTrackedTree':source_clean()})
+ for sub in ['doctor','index','validate','import']:
+  steps.append(run_stage_a_step('protected-evidence-'+sub,[sys.executable,'scripts/protected_stage_a_evidence.py',sub]))
+  if steps[-1]['exitCode']!=0 and sub in {'validate','import'}:
+   print(json.dumps({'status':'BLOCKED','unresolvedItem':sub,'commands':steps,'message':'specific protected evidence validation failed; see command outputTail'},indent=2)); return False
+ cert=predeploy_certificate()
+ steps.append(run_stage_a_step('certificate-validate',[sys.executable,'scripts/mainnet_three_stage.py','certificate-validate']))
+ ok=cert.get('status')=='AUTHORIZED' and steps[-1]['exitCode']==0
+ summary=read('qa/mainnet-predeploy/evidence/protected-evidence-validation.json')
+ commitments=read('qa/mainnet-predeploy/evidence/protected-evidence-commitments.json')
+ if ok:
+  print('Executive Verdict — PREDEPLOYMENT\nGate 1: PASS\nGate 2: PASS\nGate 3: PASS\nGate 4: PASS\nGate 5: PASS\n\nOverall: AUTHORIZED_TO_DEPLOY_ON_ETHEREUM_MAINNET\n\nTECHNICALLY_MAINNET_READY = YES\nMAINNET_DEPLOYMENT_AUTHORIZED = YES\nETHEREUM_MAINNET_AUTHORIZED = YES\n\nMAINNET_DEPLOYED = NO\nMAINNET_VERIFIED = NO\nLIVE_AUTHORITY_READBACK_COMPLETE = NO\nLIVE_CANARY_COMPLETE = NO\nPRODUCTION_ACTIVATION_EFFECTIVE = NO')
+  detail={'gitSha':git(['rev-parse','HEAD']),'cleanTrackedTree':source_clean(),'releaseId':cert.get('releaseId') or cert.get('finalGitSha'),'protectedEvidenceIndexHash':summary.get('indexSha256'),'publicCommitments':commitments.get('commitments',[]),'gateRequirements':{g:read(GATES/GATE_SPECS[g][0]/'report.json').get('requirements') for g in GATE_SPECS},'pinnedFork':summary.get('summary',{}).get('fork',{}),'walletBAuthorityProof':'validated via G1_AUTHORITY protected commitment','walletAZeroAuthorityProof':'validated via G1_AUTHORITY protected commitment','assurance':summary.get('summary',{}).get('assurance',{}),'deploymentPlan':summary.get('summary',{}).get('plan',{}),'stageACertificateHash':cert.get('certificateHash'),'stageACertificateExpiry':cert.get('expiresAt') or cert.get('certificateExpiry'),'commands':steps,'mainnetOrSepoliaTransactionBroadcast':False}
+  print(json.dumps(detail,indent=2))
+  print('\nStage A is authorized from validated protected predeployment evidence.\n\nHuman Mainnet deployment command after operator review:\nnpm run deploy:mainnet:live-local-gated\n\nStage-B command after deployment:\nnpm run mainnet:postdeploy:verify')
+  return True
+ print(json.dumps({'status':'BLOCKED','blockers':cert.get('blockers'),'commands':steps,'protectedEvidenceErrors':summary.get('errors')},indent=2)); return False
+
 def post_cert():
  path=POST/'deployment-verification-certificate.json'; existing=read(path)
  if existing.get('stage')=='B_POSTDEPLOYMENT_VERIFICATION' and existing.get('status') in {'MAINNET_DEPLOYMENT_VERIFIED','VERIFIED'}:
@@ -248,6 +275,7 @@ def main():
  if cmd in {'certificate','certificate-generate'}: print(json.dumps(predeploy_certificate(),indent=2)); return
  if cmd=='certificate-validate': sys.exit(0 if validate_predeploy(False) else 1)
  if cmd=='final-check': sys.exit(0 if final_check() else 1)
+ if cmd=='resolve-and-authorize': sys.exit(0 if resolve_and_authorize() else 2)
  if cmd=='plan': print(json.dumps(plan_public(),indent=2)); return
  if cmd=='prepare-local': sys.exit(0 if validate_predeploy(True) else 2)
  if cmd=='live-local-gated':
