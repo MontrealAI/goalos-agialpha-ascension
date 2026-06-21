@@ -197,7 +197,7 @@
     "mainnet:fork-rehearsal:release": "python scripts/mainnet_fork_rehearsal_release.py",
     "pr:readiness": "python scripts/pr_readiness.py",
     "authority:verify": "npm run authority:policy:validate && npm run authority:inventory",
-    "codex:phase-a": "python scripts/phase_a_assurance.py phase-a",
+    "codex:phase-a": "python scripts/phase_a_assurance.py phase-a && npm run authorization-profile:validate",
     "docs:status:write": "python scripts/generate-public-status-docs.py",
     "docs:status:check": "python scripts/generate-public-status-docs.py --check",
     "repo:preflight": "python scripts/repository_safety_check.py && python scripts/no_paid_products_check.py && python scripts/no_private_operator_data_check.py && npm run deployment:claim-boundary:check",
@@ -295,7 +295,8 @@
     "deploy:mainnet:resume": "ts-node scripts/deployment/goalos-deploy-wizard.ts resume --network ethereumMainnet",
     "deploy:mainnet:recover": "ts-node scripts/deployment/goalos-deploy-command-center.ts mainnet:recover --network ethereumMainnet",
     "deploy:mainnet:postcheck": "ts-node scripts/deployment/goalos-deploy-command-center.ts mainnet:postcheck --network ethereumMainnet",
-    "deploy:mainnet:activate-ledger": "ts-node scripts/deployment/goalos-deploy-command-center.ts mainnet:activate-ledger --network ethereumMainnet"
+    "deploy:mainnet:activate-ledger": "ts-node scripts/deployment/goalos-deploy-command-center.ts mainnet:activate-ledger --network ethereumMainnet",
+    "authorization-profile:validate": "python scripts/validate_authorization_profile.py"
   },
   "dependencies": {
     "@openzeppelin/contracts": "4.9.6",
