@@ -169,6 +169,8 @@ def _write_valid_protected_package(root):
     files['DEPLOYMENT_PLAN']=write('plan.json',plan)
     fork={'schemaVersion':'1.0','releaseId':rid,'executionMode':'MAINNET_FORK','upstreamChainId':1,'localChainId':31337,'forkBlockNumber':123,'forkBlockHash':'0xabc','forkBlockTimestamp':1,'primaryProviderCommitment':'0xp','secondaryProviderCommitment':'0xs','canonicalAgialpha':m3.AGI,'upstreamCanonicalAgialphaCodeHash':'0xcode','localForkCanonicalAgialphaCodeHash':'0xcode','deploymentPlanHash':'0xplan','deployedTopologyCount':49,'transactionReceiptCount':63,'runtimeBytecodeRoot':'0xruntime','mainnetBroadcastOccurred':False}
     files['MAINNET_FORK']=write('fork.json',fork)
+    sepolia={'schemaVersion':'1.0','releaseId':rid,'status':'PASS','chainId':11155111,'network':'sepolia','totalContracts':49,'verifiedContracts':49,'failedContracts':0,'mainnetBroadcastOccurred':False}
+    files['SEPOLIA']=write('sepolia.json',sepolia)
     import hashlib
     def shp(p): return '0x'+hashlib.sha256(p.read_bytes()).hexdigest()
     idx={'schemaVersion':'1.0','releaseId':rid,'gitCommit':rid,'chainId':1,'walletA':m3.WA,'walletB':m3.WB,'canonicalAgialpha':m3.AGI,'entries':[{'type':t,'path':str(p),'sha256':shp(p),'schemaVersion':'1.0','releaseId':rid,'publicDisclosure':'COMMITMENT_ONLY'} for t,p in files.items()]}
