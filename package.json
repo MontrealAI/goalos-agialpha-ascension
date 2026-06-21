@@ -279,7 +279,18 @@
     "sepolia:release-candidate:deploy": "python scripts/sepolia_evidence.py release-candidate-deploy",
     "sepolia:release-candidate:verify": "python scripts/sepolia_evidence.py release-candidate-verify",
     "sepolia:release-candidate:readback": "python scripts/sepolia_evidence.py release-candidate-readback",
-    "sepolia:release-candidate:docket": "python scripts/sepolia_evidence.py release-candidate-docket"
+    "sepolia:release-candidate:docket": "python scripts/sepolia_evidence.py release-candidate-docket",
+    "mainnet:initial:doctor": "python scripts/initial_mainnet_profile.py doctor",
+    "mainnet:initial:fork-rehearsal": "python scripts/initial_mainnet_profile.py fork-rehearsal",
+    "mainnet:initial:certificate": "python scripts/initial_mainnet_profile.py certificate",
+    "mainnet:initial:certificate:validate": "python scripts/initial_mainnet_profile.py validate",
+    "mainnet:initial:final-check": "python scripts/initial_mainnet_profile.py final-check",
+    "deploy:mainnet:initial:prepare-local": "python scripts/initial_mainnet_profile.py prepare",
+    "deploy:mainnet:initial:live-local-gated": "python scripts/initial_mainnet_profile.py live-local-gated",
+    "deploy:mainnet:initial:status": "python scripts/initial_mainnet_profile.py status",
+    "deploy:mainnet:initial:recover": "python scripts/initial_mainnet_profile.py recover",
+    "deploy:mainnet:initial:verify": "python scripts/initial_mainnet_profile.py verify",
+    "deploy:mainnet:initial:postcheck": "python scripts/initial_mainnet_profile.py postcheck"
   },
   "dependencies": {
     "@openzeppelin/contracts": "4.9.6",

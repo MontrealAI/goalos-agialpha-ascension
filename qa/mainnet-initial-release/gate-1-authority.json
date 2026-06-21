@@ -1,0 +1,62 @@
+{
+  "profile": "INITIAL_MAINNET_LIMITED_RELEASE",
+  "scope": "Initial limited Ethereum Mainnet deployment for bytecode provenance, verification, Ledger ownership, and operational learning only.",
+  "requirements": [
+    "Wallet B configured as owner/permanent authority; Wallet A permanent authority count is zero."
+  ],
+  "executedEvidence": [
+    {
+      "command": "profile source",
+      "path": "config/authorization-profiles/initial-mainnet-limited-release.json",
+      "sha256": "0x95d3a2c4700fcf8032b7347c124b25d37454ea32c591bcd0f1f08cadd161dd29",
+      "status": "PRESENT"
+    },
+    {
+      "command": "npm run mainnet:release-inputs",
+      "path": "qa/mainnet-readiness/release-identity.json",
+      "sha256": "0xd0d45020b20777ccd857765ca221a6348ea9e7d9d2550c85ff5f4648aac7cae0",
+      "status": "PRESENT"
+    },
+    {
+      "command": "npm run mainnet:initial:fork-rehearsal",
+      "path": "qa/mainnet-readiness/fork-rehearsal.json",
+      "sha256": "0x76267c5281e2cdff87a5967b42cf7dfdc8f29d023ccba717293c85315a21496f",
+      "status": "BLOCKED"
+    },
+    {
+      "command": "npm run audit:fail-on-critical",
+      "path": "qa/public-toolchain-clearance-evidence.json",
+      "sha256": "0x8a5958a3d9fe915dbc3a7a81d9c1dcb372802068c7076ec8a661793dcb7b10d3",
+      "status": "PASSED"
+    }
+  ],
+  "excludedProductionOnlyRequirements": [
+    {
+      "requirement": "one million state-machine actions across 32 seeds",
+      "status": "DEFERRED_UNTIL_PRODUCTION_ACTIVATION"
+    },
+    {
+      "requirement": "mandatory secondary fuzzer",
+      "status": "DEFERRED_UNTIL_PRODUCTION_ACTIVATION"
+    },
+    {
+      "requirement": "active-economic lifecycle campaign",
+      "status": "DEFERRED_UNTIL_PRODUCTION_ACTIVATION"
+    },
+    {
+      "requirement": "production migration/WindDown liability-bearing shutdown",
+      "status": "DEFERRED_UNTIL_PRODUCTION_ACTIVATION"
+    }
+  ],
+  "residualRisks": [
+    "Not externally audited.",
+    "Dormancy may be operational where contracts do not provide a protocol-wide immutable freeze.",
+    "Unsolicited third-party transfers cannot be prevented and are unauthorized."
+  ],
+  "status": "BLOCKED",
+  "blockers": [
+    "Recent full-topology Mainnet fork evidence with chainId=1 and canonical AGIALPHA is absent."
+  ],
+  "releaseIdentity": "8b297c7b83f9428b05140c2878877afc478ed508b2aa6e83ae7481b53e328177",
+  "generatedAt": "2026-06-21T01:55:05.653054+00:00"
+}

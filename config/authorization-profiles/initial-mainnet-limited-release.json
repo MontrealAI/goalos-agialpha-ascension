@@ -1,0 +1,31 @@
+{
+  "authorizationProfile": "INITIAL_MAINNET_LIMITED_RELEASE",
+  "profileVersion": "1.0",
+  "chainId": 1,
+  "canonicalAgialpha": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
+  "scope": "Initial limited Ethereum Mainnet deployment for bytecode provenance, verification, Ledger ownership, and operational learning only.",
+  "wallets": {
+    "walletA": "0x6c8B8897Fb6b08B4070387233B89b3E9A94eD00E",
+    "walletARole": "disposable deployment signer and gas payer only",
+    "walletB": "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99",
+    "walletBRole": "Ledger Owner and every permanent authority by public address only"
+  },
+  "initialAssuranceThresholds": {"stateMachineActions": 100000, "recordedSeeds": 8, "criticalMutationKillRate": "100%"},
+  "activationFirewall": {
+    "requiresAuthorizationProfile": "CONTROLLED_PRODUCTION_RELEASE",
+    "requiresProductionCertificateStatus": "AUTHORIZED",
+    "requiresProductionGates": "Gate 1-5 PASS",
+    "requiresNewCertificateHash": true,
+    "requiresNewConfigurationRoot": true,
+    "requiresLedgerSignedActivationTransactions": true
+  },
+  "authorizedActions": ["local-only Mainnet deployment", "Etherscan V2 verification", "Ledger ownership establishment", "operational evidence collection"],
+  "prohibitedActions": ["user funds", "customer onboarding", "protocol activation", "Phase-B configuration", "settlement", "public frontend", "production announcement", "public reliance", "unbounded economic exposure"],
+  "excludedProductionOnlyRequirements": [
+    {"requirement": "one million state-machine actions across 32 seeds", "status": "DEFERRED_UNTIL_PRODUCTION_ACTIVATION"},
+    {"requirement": "mandatory secondary fuzzer", "status": "DEFERRED_UNTIL_PRODUCTION_ACTIVATION"},
+    {"requirement": "active-economic lifecycle campaign", "status": "DEFERRED_UNTIL_PRODUCTION_ACTIVATION"},
+    {"requirement": "production migration/WindDown liability-bearing shutdown", "status": "DEFERRED_UNTIL_PRODUCTION_ACTIVATION"}
+  ],
+  "residualRisks": ["Not externally audited.", "Dormancy may be operational where contracts do not provide a protocol-wide immutable freeze.", "Unsolicited third-party transfers cannot be prevented and are unauthorized."]
+}
