@@ -10,7 +10,10 @@
     "walletB": "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99",
     "walletBRole": "Ledger final Owner and all permanent authorities by public address only"
   },
-  "authorizationStates": ["AUTHORIZED_PRE_BROADCAST", "ACTIVE_POSTDEPLOYMENT"],
+  "authorizationStates": [
+    "AUTHORIZED_PRE_BROADCAST",
+    "ACTIVE_POSTDEPLOYMENT"
+  ],
   "canaryLimits": {
     "maximumAggregateUserLiabilitiesAgialpha": "1000000000000000000000",
     "maximumSingleDepositAgialpha": "100000000000000000000",
@@ -36,7 +39,62 @@
     "requiresLedgerSignedActivation": true
   },
   "publicRelianceBoundary": "Reliance is limited to verified deployed bytecode, published configuration, documented canary limits, and current on-chain status for the enabled scope; it is not a guarantee of safety, returns, availability, legal compliance, or external audit.",
-  "requiredReviewRoles": ["implementation agent", "adversarial security agent", "formal/invariant agent", "release/evidence agent", "deployment/operations agent", "documentation/claim-boundary agent"],
-  "requiredGateEvidence": ["compiler-grounded inventories", "fresh exact-release Sepolia when parity is not proven", "recent full-topology Mainnet fork", "Gate 1-5 reports", "security docket", "production certificate", "generated docs/status", "local deployment and activation package"],
-  "status": "DEFINED_FAIL_CLOSED_UNTIL_EVIDENCE_PASS"
+  "requiredReviewRoles": [
+    "implementation agent",
+    "adversarial security agent",
+    "formal/invariant agent",
+    "release/evidence agent",
+    "deployment/operations agent",
+    "documentation/claim-boundary agent"
+  ],
+  "requiredGateEvidence": [
+    "compiler-grounded inventories",
+    "fresh exact-release Sepolia when parity is not proven",
+    "recent full-topology Mainnet fork",
+    "Gate 1-5 reports",
+    "security docket",
+    "production certificate",
+    "generated docs/status",
+    "local deployment and activation package"
+  ],
+  "status": "DEFINED_FAIL_CLOSED_UNTIL_EVIDENCE_PASS",
+  "authorizedActions": [
+    "Pre-broadcast technical authorization within CONTROLLED_PRODUCTION_CANARY_V1 scope only",
+    "Local/fork rehearsal and evidence generation without Ethereum Mainnet broadcast",
+    "Manual operator deployment preparation with immutable plan-hash confirmation",
+    "Postdeployment Ledger activation only after chain-1 readback predicates pass",
+    "User funds, settlement, public frontend, announcement, and public reliance only after ACTIVE_POSTDEPLOYMENT and within finite canary limits"
+  ],
+  "prohibitedActions": [
+    "Mainnet broadcast by Codex or CI",
+    "Treating documentation-only evidence as a passing Gate predicate",
+    "Marking MAINNET_DEPLOYED YES without real chainId=1 transaction evidence",
+    "Marking MAINNET_VERIFIED YES without Etherscan V2 or already-verified evidence",
+    "Using Wallet A for permanent authority",
+    "Requesting, storing, exporting, or printing Wallet B private key or recovery phrase",
+    "Enabling unknown or unclassified production surface",
+    "Interpreting zero canary limits as unlimited"
+  ],
+  "excludedProductionOnlyRequirements": [
+    {
+      "requirement": "ACTIVE_POSTDEPLOYMENT operational effectiveness",
+      "status": "DEFERRED_UNTIL_PRODUCTION_ACTIVATION"
+    },
+    {
+      "requirement": "MAINNET_DEPLOYED YES",
+      "status": "DEFERRED_UNTIL_PRODUCTION_ACTIVATION"
+    },
+    {
+      "requirement": "MAINNET_VERIFIED YES",
+      "status": "DEFERRED_UNTIL_PRODUCTION_ACTIVATION"
+    },
+    {
+      "requirement": "LIVE_OWNER_HANDOFF_COMPLETE YES",
+      "status": "DEFERRED_UNTIL_PRODUCTION_ACTIVATION"
+    },
+    {
+      "requirement": "LIVE_CANARY_COMPLETE YES",
+      "status": "DEFERRED_UNTIL_PRODUCTION_ACTIVATION"
+    }
+  ]
 }
