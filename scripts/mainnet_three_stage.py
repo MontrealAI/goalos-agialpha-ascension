@@ -14,6 +14,8 @@ GATE_SPECS={
 }
 OK_STATUS='PASS'
 FORBIDDEN={'LIVE_MAINNET_TRANSACTION','LIVE_MAINNET_RECEIPT','LIVE_MAINNET_DEPLOYED_ADDRESS','LIVE_MAINNET_ETHERSCAN_VERIFICATION','LIVE_MAINNET_OWNER_READBACK','LIVE_MAINNET_ROLE_READBACK','LIVE_MAINNET_CANARY'}
+def is_hex_bytes(value, length):
+ return isinstance(value,str) and value.startswith('0x') and len(value)==2+length*2 and all(c in '0123456789abcdefABCDEF' for c in value[2:])
 
 def now(): return dt.datetime.now(dt.timezone.utc).isoformat()
 def read(rel):
@@ -77,7 +79,7 @@ def rpc_call(url,method,params=None,timeout=20):
  return data.get('result')
 
 def existing_fork_valid_for_reuse(r):
- return r.get('schemaVersion')=='1.0' and r.get('executionMode')=='MAINNET_FORK' and r.get('upstreamChainId')==1 and r.get('localChainId')==31337 and r.get('forkBlockNumber') and r.get('forkBlockHash') and r.get('canonicalAgialphaCodeHash') and r.get('releaseIdentity')==release_identity() and r.get('mainnetBroadcastOccurred') is False and r.get('status') in {'PASS','NOT_RUN'}
+ return r.get('schemaVersion')=='1.0' and r.get('executionMode')=='MAINNET_FORK' and r.get('upstreamChainId')==1 and r.get('localChainId')==31337 and r.get('forkBlockNumber') and is_hex_bytes(r.get('forkBlockHash'),32) and is_hex_bytes(r.get('canonicalAgialphaCodeHash'),32) and r.get('providerAgreement') is True and int(r.get('deployedTopologyCount') or 0)>0 and int(r.get('transactionReceiptCount') or r.get('forkReceiptCount') or 0)>0 and r.get('releaseIdentity')==release_identity() and r.get('mainnetBroadcastOccurred') is False and r.get('status')=='PASS'
 
 def fork_report():
  pr=protected_report()
@@ -177,7 +179,7 @@ def generate_gate_reports(fork=None): return {g:generate_gate_report(g) for g in
 def gate_reports():
  reps=generate_gate_reports(); return {f'Gate {i}':reps[f'G{i}']['status'] for i in range(1,6)}, [f'{g} {r["status"]}' for g,r in reps.items() if r['status']!='PASS']
 def fork_valid(fork):
- return fork.get('executionMode')=='MAINNET_FORK' and fork.get('upstreamChainId')==1 and fork.get('localChainId')==31337 and fork.get('forkBlockHash') and fork.get('canonicalAgialphaCodeHash') and fork.get('mainnetBroadcastOccurred') is False and fork.get('status')=='PASS'
+ return fork.get('executionMode')=='MAINNET_FORK' and fork.get('upstreamChainId')==1 and fork.get('localChainId')==31337 and is_hex_bytes(fork.get('forkBlockHash'),32) and is_hex_bytes(fork.get('canonicalAgialphaCodeHash'),32) and fork.get('providerAgreement') is True and int(fork.get('deployedTopologyCount') or 0)>0 and int(fork.get('transactionReceiptCount') or fork.get('forkReceiptCount') or 0)>0 and fork.get('mainnetBroadcastOccurred') is False and fork.get('status')=='PASS'
 def semantic_lint_stage_a(cert):
  blob=json.dumps(cert); errs=[]
  for t in FORBIDDEN:

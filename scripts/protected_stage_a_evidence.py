@@ -22,6 +22,8 @@ def current_release_id(): return git(['rev-parse','HEAD'])
 def sha_path(p:pathlib.Path):
  h=hashlib.sha256(); h.update(p.read_bytes()); return '0x'+h.hexdigest()
 def hobj(o): return '0x'+hashlib.sha256(json.dumps(o,sort_keys=True,separators=(',',':')).encode()).hexdigest()
+def is_hex_bytes(value, length):
+ return isinstance(value,str) and value.startswith('0x') and len(value)==2+length*2 and all(c in '0123456789abcdefABCDEF' for c in value[2:])
 def read(p):
  try: return json.loads(pathlib.Path(p).read_text())
  except Exception as e: return {'_parseError':str(e)}
@@ -144,14 +146,21 @@ def validate_entry(entry, idx):
    if int(obs.get('deterministicSeedCount',0))<32: errs.append(f'{typ}: fewer than 32 seeds')
    if int(obs.get('mutationSurvived',0))!=0: errs.append(f'{typ}: surviving mutants present')
  if typ=='MAINNET_FORK':
-  for k in ['executionMode','upstreamChainId','localChainId','forkBlockNumber','forkBlockHash','forkBlockTimestamp','canonicalAgialpha','upstreamCanonicalAgialphaCodeHash','localForkCanonicalAgialphaCodeHash','deploymentPlanHash','deployedTopologyCount','transactionReceiptCount','runtimeBytecodeRoot']:
+  for k in ['executionMode','upstreamChainId','localChainId','forkBlockNumber','forkBlockHash','forkBlockTimestamp','primaryProviderCommitment','secondaryProviderCommitment','canonicalAgialpha','upstreamCanonicalAgialphaCodeHash','localForkCanonicalAgialphaCodeHash','deploymentPlanHash','deployedTopologyCount','transactionReceiptCount','runtimeBytecodeRoot']:
    if data.get(k) in [None,'',[],{}]: errs.append(f'{typ}: missing {k}')
+  for k in ['forkBlockHash','upstreamCanonicalAgialphaCodeHash','localForkCanonicalAgialphaCodeHash','runtimeBytecodeRoot']:
+   if data.get(k) and not is_hex_bytes(data.get(k),32): errs.append(f'{typ}: {k} must be bytes32')
+  if data.get('providerAgreement') is not True: errs.append(f'{typ}: providerAgreement must be true')
   if data.get('executionMode')!='MAINNET_FORK' or data.get('upstreamChainId')!=1: errs.append(f'{typ}: not a valid Mainnet fork')
   if str(data.get('canonicalAgialpha','')).lower()!=AGI.lower(): errs.append(f'{typ}: wrong canonical AGIALPHA')
   if int(data.get('transactionReceiptCount') or 0)<=0: errs.append(f'{typ}: empty receipt list')
  if typ=='DEPLOYMENT_PLAN':
   for k in ['chainId','canonicalAgialpha','walletA','walletB','startingNonce','orderedTransactions','maximumCumulativeCost','planHash','expiresAt']:
    if data.get(k) in [None,'',[],{}]: errs.append(f'{typ}: missing {k}')
+  for i,tx in enumerate(data.get('orderedTransactions') or []):
+   if tx.get('commitment')=='protected' and 'count' in tx: errs.append(f'{typ}: aggregate-only transaction {i} rejected')
+   for k in ['expectedNonce','expectedCreateAddress','fullyQualifiedName','artifactHash','constructorCommitment','initcodeHash','expectedRuntimeBytecodeHash','transactionValue','gasLimit','maxFeePerGas','maxPriorityFeePerGas','maximumTransactionCost']:
+    if tx.get(k) in [None,'',[],{}]: errs.append(f'{typ}: transaction {i} missing {k}')
   if data.get('chainId')!=1: errs.append(f'{typ}: wrong chainId')
   if str(data.get('walletA','')).lower()!=WA.lower() or str(data.get('walletB','')).lower()!=WB.lower(): errs.append(f'{typ}: wrong wallet')
   if str(data.get('canonicalAgialpha','')).lower()!=AGI.lower(): errs.append(f'{typ}: wrong token')

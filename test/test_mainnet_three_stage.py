@@ -123,7 +123,7 @@ def test_existing_fork_and_complete_plan_are_preserved():
     forkp=m3.PRE/'fork-rehearsal.json'; planp=m3.PRE/'deployment-plan.public.json'
     oldf=forkp.read_text() if forkp.exists() else None; oldp=planp.read_text() if planp.exists() else None
     rid=m3.release_identity()
-    fork={'schemaVersion':'1.0','executionMode':'MAINNET_FORK','upstreamChainId':1,'localChainId':31337,'forkBlockNumber':1,'forkBlockHash':'0xabc','canonicalAgialphaCodeHash':'0xdef','releaseIdentity':rid,'mainnetBroadcastOccurred':False,'status':'PASS'}
+    fork={'schemaVersion':'1.0','executionMode':'MAINNET_FORK','upstreamChainId':1,'localChainId':31337,'forkBlockNumber':1,'forkBlockHash':'0x'+'ab'*32,'canonicalAgialphaCodeHash':'0x'+'de'*32,'providerAgreement':True,'deployedTopologyCount':1,'transactionReceiptCount':1,'releaseIdentity':rid,'mainnetBroadcastOccurred':False,'status':'PASS'}
     tx={'expectedNonce':0,'expectedCreateAddress':'0x0000000000000000000000000000000000000001','fullyQualifiedName':'contracts/registry/GoalOSDeploymentDirectory.sol:GoalOSDeploymentDirectory','artifactHash':'0xartifact','constructorCommitment':'0xconstructor','initcodeHash':'0xinit','expectedRuntimeBytecodeHash':'0xruntime','transactionValue':'0','gasLimit':'1','maxFeePerGas':'1','maxPriorityFeePerGas':'1','maximumTransactionCost':'1'}
     plan={'schemaVersion':'1.0','stage':'A_PREDEPLOYMENT_AUTHORIZATION','releaseIdentity':rid,'chainId':1,'canonicalAgialpha':m3.AGI,'walletA':m3.WA,'walletB':m3.WB,'status':'PASS','orderedTransactions':[tx],'startingNonce':0,'planHash':'0x123'}
     forkp.parent.mkdir(parents=True, exist_ok=True); forkp.write_text(json.dumps(fork))
@@ -141,6 +141,12 @@ def test_aggregate_only_deployment_plan_is_rejected():
     rid=m3.release_identity()
     aggregate={'schemaVersion':'1.0','stage':'A_PREDEPLOYMENT_AUTHORIZATION','releaseIdentity':rid,'chainId':1,'canonicalAgialpha':m3.AGI,'walletA':m3.WA,'walletB':m3.WB,'status':'PASS','orderedTransactions':[{'commitment':'protected','count':63}],'startingNonce':0,'planHash':'0xaggregate'}
     assert m3.plan_complete(aggregate) is False
+
+def test_fake_or_empty_fork_report_is_rejected():
+    rid=m3.release_identity()
+    fake={'schemaVersion':'1.0','executionMode':'MAINNET_FORK','upstreamChainId':1,'localChainId':31337,'forkBlockNumber':1,'forkBlockHash':'0xabc','canonicalAgialphaCodeHash':'0xdef','providerAgreement':True,'deployedTopologyCount':0,'transactionReceiptCount':0,'releaseIdentity':rid,'mainnetBroadcastOccurred':False,'status':'PASS'}
+    assert m3.existing_fork_valid_for_reuse(fake) is False
+    assert m3.fork_valid(fake) is False
 
 def test_live_local_gated_invokes_canonical_deployer_when_authorized(monkeypatch):
     calls=[]
