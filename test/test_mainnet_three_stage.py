@@ -52,3 +52,48 @@ def test_no_direct_gate_pass_assignment_pattern():
     text=(ROOT/'scripts/mainnet_three_stage.py').read_text()
     forbidden=["'status':'PASS'", '"status":"PASS"', "status = 'PASS'", 'status = "PASS"']
     assert not any(x in text for x in forbidden)
+
+
+def test_validate_predeploy_regenerates_and_structurally_passes_blocked_certificate(monkeypatch):
+    monkeypatch.delenv('MAINNET_FORK_RPC_URL', raising=False)
+    ok=m3.validate_predeploy(False)
+    c=m3.read(m3.PRE/'authorization-certificate.json')
+    assert ok is True
+    assert c['status']=='BLOCKED'
+    assert c['gates']['Gate 1'] in {'NOT_RUN','FAIL'}
+
+def test_handwritten_gate_pass_artifact_is_rejected(tmp_path):
+    base=m3.GATES/'gate-1'
+    base.mkdir(parents=True, exist_ok=True)
+    ev=base/'fork_topology_deployed.json'
+    old=ev.read_text() if ev.exists() else None
+    ev.write_text('{"status":"PASS"}')
+    try:
+        r=m3.generate_gate_report('G1')
+        req=next(x for x in r['requirements'] if x['id']=='fork_topology_deployed')
+        assert req['status']=='FAIL'
+        assert 'schemaVersion' in req['failureReason']
+    finally:
+        if old is None:
+            ev.unlink(missing_ok=True)
+        else:
+            ev.write_text(old)
+
+def test_stage_b_c_complete_certificates_are_preserved():
+    bp=m3.POST/'deployment-verification-certificate.json'; ap=m3.ACT/'activation-certificate.json'
+    bold=bp.read_text() if bp.exists() else None; aold=ap.read_text() if ap.exists() else None
+    bp.parent.mkdir(parents=True, exist_ok=True); ap.parent.mkdir(parents=True, exist_ok=True)
+    bp.write_text('{"schemaVersion":"1.0","stage":"B_POSTDEPLOYMENT_VERIFICATION","status":"MAINNET_DEPLOYMENT_VERIFIED"}')
+    ap.write_text('{"schemaVersion":"1.0","stage":"C_PRODUCTION_ACTIVATION","status":"PRODUCTION_ACTIVATION_EFFECTIVE"}')
+    try:
+        assert m3.post_cert()['status']=='MAINNET_DEPLOYMENT_VERIFIED'
+        assert m3.act_cert()['status']=='PRODUCTION_ACTIVATION_EFFECTIVE'
+    finally:
+        if bold is None: bp.unlink(missing_ok=True)
+        else: bp.write_text(bold)
+        if aold is None: ap.unlink(missing_ok=True)
+        else: ap.write_text(aold)
+
+def test_stage_b_c_validation_dispatch_commands_exist():
+    assert subprocess.run(['python','scripts/mainnet_three_stage.py','postdeploy-validate'],cwd=ROOT,stdout=subprocess.PIPE,text=True).returncode in {0,1}
+    assert subprocess.run(['python','scripts/mainnet_three_stage.py','activation-validate'],cwd=ROOT,stdout=subprocess.PIPE,text=True).returncode in {0,1}
