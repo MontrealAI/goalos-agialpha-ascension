@@ -5,7 +5,8 @@ ROOT=pathlib.Path(__file__).resolve().parents[1]
 OUT=ROOT/'qa/mainnet-predeploy-sepolia'
 PRIVATE=ROOT/'.private/mainnet-deployment'
 AGI='0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA'; WA='0x6c8B8897Fb6b08B4070387233B89b3E9A94eD00E'; WB='0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99'
-STATUS='AUTHORIZED_FOR_INITIAL_MAINNET_DEPLOYMENT_FROM_SEPOLIA_EVIDENCE'
+PROFILE='SEPOLIA_BACKED_INITIAL_MAINNET_V1'
+STATUS='AUTHORIZED_TO_DEPLOY_ON_ETHEREUM_MAINNET'
 BANNER='INITIAL MAINNET DEPLOYMENT ONLY — NO MAINNET-FORK ASSURANCE — NO USER FUNDS — NO PRODUCTION ACTIVATION — NO PUBLIC RELIANCE'
 STATUSES=['historicalSepolia','currentRelease','localRehearsal','safetyChecks','deploymentPlan','ledgerRiskAcceptance','verificationReadiness','resumeReadiness']
 
@@ -56,7 +57,9 @@ def rehearsal():
  existing=load('local-rehearsal.json')
  req=['schemaVersion','executionMode','walletA','walletB','topologyCount','transactionCount','receiptCount','ownerReadback','walletAZeroAuthority','walletBAuthority','mainnetBroadcastOccurred']
  ok=existing and all(k in existing for k in req) and existing.get('executionMode')=='LOCAL_DETERMINISTIC_RELEASE_REHEARSAL' and existing.get('mainnetForkAssurance') is False and existing.get('mainnetBroadcastOccurred') is False and str(existing.get('walletA','')).lower()==WA.lower() and str(existing.get('walletB','')).lower()==WB.lower() and existing.get('ownerReadback')==WB and existing.get('walletAZeroAuthority') is True and int(existing.get('receiptCount') or 0)>0
- if ok: return existing
+ if ok:
+  existing['status']='PASS'
+  return existing
  out={'schemaVersion':'1.0','criterion':'LOCAL_WALLET_A_WALLET_B_REHEARSAL','status':'BLOCKED','executionMode':'NOT_RUN','requiredExecutionMode':'LOCAL_DETERMINISTIC_RELEASE_REHEARSAL','mainnetForkAssurance':False,'mainnetBroadcastOccurred':False,'blockers':['missing qa/mainnet-predeploy-sepolia/local-rehearsal.json with real local receipts/readbacks']}
  write(OUT/'local-rehearsal.json',out); return out
 
@@ -97,21 +100,32 @@ def readiness(kind, filename, required):
  out={'schemaVersion':'1.0','criterion':kind,'status':'BLOCKED','required':required,'mainnetBroadcastOccurred':False,'blockers':[f'missing {filename} readiness evidence']}
  write(OUT/filename,out); return out
 
+
+def mainnet_dependency_doctor():
+ p=load('mainnet-dependency-doctor.json')
+ ok=p.get('status')=='PASS' and p.get('chainId')==1 and str(p.get('canonicalAgialpha','')).lower()==AGI.lower() and p.get('providerAgreement') is True and p.get('canonicalAgialphaCodeHash') and p.get('mainnetBroadcastOccurred') is False
+ if ok: return p
+ out={'schemaVersion':'1.0','criterion':'READ_ONLY_MAINNET_AGIALPHA_DEPENDENCY_DOCTOR','status':'BLOCKED','chainId':1,'canonicalAgialpha':AGI,'mainnetBroadcastOccurred':False,'blockers':['missing read-only dual-RPC canonical Mainnet AGIALPHA dependency doctor evidence; this is not a fork rehearsal']}
+ write(OUT/'mainnet-dependency-doctor.json',out); return out
+
 def criteria():
- return {'historicalSepolia':validate_historical(True),'currentRelease':current_release(),'localRehearsal':rehearsal(),'safetyChecks':safety(),'deploymentPlan':plan_validate(True),'ledgerRiskAcceptance':ledger(),'verificationReadiness':readiness('AUTOMATIC_VERIFICATION_READINESS','verification-readiness.json',['etherscanV2','privateConstructorInputsCommitment']),'resumeReadiness':readiness('DEPLOYMENT_RESUME_READINESS','resume-readiness.json',['appendOnlyJournal','nonceLocking','safeResumeTested'])}
+ return {'historicalSepolia':validate_historical(True),'currentRelease':current_release(),'mainnetDependencyDoctor':mainnet_dependency_doctor(),'localRehearsal':rehearsal(),'safetyChecks':safety(),'deploymentPlan':plan_validate(True),'ledgerRiskAcceptance':ledger(),'verificationReadiness':readiness('AUTOMATIC_VERIFICATION_READINESS','verification-readiness.json',['etherscanV2','privateConstructorInputsCommitment']),'resumeReadiness':readiness('DEPLOYMENT_RESUME_READINESS','resume-readiness.json',['appendOnlyJournal','nonceLocking','safeResumeTested'])}
 
 def cert():
  cs=criteria(); blockers=[]
  for k,v in cs.items():
   if v.get('status')!='PASS': blockers.append(f'{k}: {v.get("status")}')
  ok=not blockers
- c={'schemaVersion':'1.0','certificateType':'MAINNET_PREDEPLOY_SEPOLIA_BACKED_INITIAL_DEPLOYMENT','warningBanner':BANNER,'status':STATUS if ok else 'BLOCKED','AUTHORIZATION_MODE':'SEPOLIA_BACKED_INITIAL_DEPLOYMENT','AUTHORIZATION_SCOPE':'INITIAL_DEPLOYMENT_ONLY','INITIAL_MAINNET_DEPLOYMENT_AUTHORIZED':'YES' if ok else 'NO','TECHNICALLY_READY_FOR_INITIAL_DEPLOYMENT':'YES' if ok else 'NO','TECHNICALLY_MAINNET_READY':'YES' if ok else 'NO','MAINNET_DEPLOYMENT_AUTHORIZED':'YES' if ok else 'NO','ETHEREUM_MAINNET_AUTHORIZED':'YES' if ok else 'NO','FULL_MAINNET_FORK_ASSURANCE':'NO','FULL_G1_G5_ASSURANCE':'NO','PRODUCTION_READY':'NO','USER_FUNDS_AUTHORIZED':'NO','PUBLIC_RELIANCE_AUTHORIZED':'NO','PUBLIC_FRONTEND_AUTHORIZED':'NO','PRODUCTION_ANNOUNCEMENT_AUTHORIZED':'NO','PROTOCOL_ACTIVATION_AUTHORIZED':'NO','TOKEN_FUNDING_AUTHORIZED':'NO','TREASURY_FUNDING_AUTHORIZED':'NO','MAINNET_DEPLOYED':'NO','MAINNET_VERIFIED':'NO','LIVE_AUTHORITY_READBACK_COMPLETE':'NO','LIVE_CANARY_COMPLETE':'NO','PRODUCTION_ACTIVATION_EFFECTIVE':'NO','chainId':1,'canonicalAgialpha':AGI,'walletA':WA,'walletB':WB,'releaseId':git(['rev-parse','HEAD']),'criteria':{k:{'status':v.get('status'),'hash':sha(OUT/( {'historicalSepolia':'historical-sepolia-validation.json','currentRelease':'current-release.json','localRehearsal':'local-rehearsal.json','safetyChecks':'initial-safety-checks.json','deploymentPlan':'deployment-plan-validation.json','ledgerRiskAcceptance':'ledger-risk-acceptance.json','verificationReadiness':'verification-readiness.json','resumeReadiness':'resume-readiness.json'}[k]))} for k,v in cs.items()},'blockers':blockers,'issuedAt':now(),'expiresAt':(dt.datetime.now(dt.timezone.utc)+dt.timedelta(days=14)).isoformat(),'mainnetBroadcastOccurred':False}
- c['certificateHash']=hobj({k:v for k,v in c.items() if k!='certificateHash'}); write(OUT/'initial-deployment-certificate.json',c); return c
+ c={'schemaVersion':'1.0','certificateType':'MAINNET_PREDEPLOY_SEPOLIA_BACKED_INITIAL_MAINNET_V1','warningBanner':BANNER,'status':STATUS if ok else 'BLOCKED','authorizationProfile':PROFILE,'AUTHORIZATION_MODE':'SEPOLIA_BACKED_INITIAL_MAINNET_V1','AUTHORIZATION_SCOPE':'INITIAL_MAINNET_INFRASTRUCTURE_DEPLOYMENT_ONLY','INITIAL_MAINNET_INFRASTRUCTURE_DEPLOYMENT_AUTHORIZED':'YES' if ok else 'NO','TECHNICALLY_READY_FOR_INITIAL_DEPLOYMENT':'YES' if ok else 'NO','TECHNICALLY_MAINNET_READY':'YES' if ok else 'NO','MAINNET_DEPLOYMENT_AUTHORIZED':'YES' if ok else 'NO','ETHEREUM_MAINNET_AUTHORIZED':'YES' if ok else 'NO','FULL_MAINNET_FORK_ASSURANCE':'NO','FULL_G1_G5_ASSURANCE':'NO','PRODUCTION_READY':'NO','USER_FUNDS_AUTHORIZED':'NO','CUSTOMER_ONBOARDING_AUTHORIZED':'NO','PUBLIC_RELIANCE_AUTHORIZED':'NO','PUBLIC_FRONTEND_AUTHORIZED':'NO','PRODUCTION_ANNOUNCEMENT_AUTHORIZED':'NO','PROTOCOL_ACTIVATION_AUTHORIZED':'NO','PHASE_B_CONFIGURATION_AUTHORIZED':'NO','SETTLEMENT_AUTHORIZED':'NO','UNBOUNDED_ECONOMIC_EXPOSURE_AUTHORIZED':'NO','TOKEN_FUNDING_AUTHORIZED':'NO','TREASURY_FUNDING_AUTHORIZED':'NO','MAINNET_DEPLOYED':'NO','MAINNET_VERIFIED':'NO','LIVE_OWNER_READBACK_COMPLETE':'NO','LIVE_CANARY_COMPLETE':'NO','PRODUCTION_ACTIVATION_EFFECTIVE':'NO','chainId':1,'canonicalAgialpha':AGI,'walletA':WA,'walletB':WB,'releaseId':git(['rev-parse','HEAD']),'gates':{'Gate 1':'PASS' if cs.get('localRehearsal',{}).get('status')=='PASS' else 'BLOCKED','Gate 2':'PASS' if cs.get('safetyChecks',{}).get('status')=='PASS' else 'BLOCKED','Gate 3':'PASS' if cs.get('safetyChecks',{}).get('status')=='PASS' and cs.get('deploymentPlan',{}).get('status')=='PASS' else 'BLOCKED','Gate 4':'PASS' if cs.get('safetyChecks',{}).get('status')=='PASS' and cs.get('resumeReadiness',{}).get('status')=='PASS' else 'BLOCKED','Gate 5':'PASS' if all(cs.get(x,{}).get('status')=='PASS' for x in ['historicalSepolia','currentRelease','mainnetDependencyDoctor','deploymentPlan','verificationReadiness','resumeReadiness']) else 'BLOCKED'},'criteria':{k:{'status':v.get('status'),'hash':sha(OUT/( {'historicalSepolia':'historical-sepolia-validation.json','currentRelease':'current-release.json','localRehearsal':'local-rehearsal.json','safetyChecks':'initial-safety-checks.json','deploymentPlan':'deployment-plan-validation.json','ledgerRiskAcceptance':'ledger-risk-acceptance.json','verificationReadiness':'verification-readiness.json','resumeReadiness':'resume-readiness.json','mainnetDependencyDoctor':'mainnet-dependency-doctor.json'}[k]))} for k,v in cs.items()},'blockers':blockers,'issuedAt':now(),'expiresAt':(dt.datetime.now(dt.timezone.utc)+dt.timedelta(days=14)).isoformat(),'mainnetBroadcastOccurred':False}
+ c['certificateHash']=hobj({k:v for k,v in c.items() if k!='certificateHash'})
+ write(OUT/'initial-deployment-certificate.json',c)
+ write(ROOT/'qa/mainnet-predeploy/authorization-certificate.json',c)
+ return c
 
 def validate_cert(require=False):
  c=read(OUT/'initial-deployment-certificate.json') or cert(); errors=[]
- if c.get('certificateType')!='MAINNET_PREDEPLOY_SEPOLIA_BACKED_INITIAL_DEPLOYMENT': errors.append('wrong certificateType')
- if c.get('AUTHORIZATION_MODE')!='SEPOLIA_BACKED_INITIAL_DEPLOYMENT' or c.get('AUTHORIZATION_SCOPE')!='INITIAL_DEPLOYMENT_ONLY': errors.append('wrong authorization scope')
+ if c.get('certificateType')!='MAINNET_PREDEPLOY_SEPOLIA_BACKED_INITIAL_MAINNET_V1': errors.append('wrong certificateType')
+ if c.get('authorizationProfile')!=PROFILE or c.get('AUTHORIZATION_MODE')!='SEPOLIA_BACKED_INITIAL_MAINNET_V1' or c.get('AUTHORIZATION_SCOPE')!='INITIAL_MAINNET_INFRASTRUCTURE_DEPLOYMENT_ONLY': errors.append('wrong authorization scope')
  for f in ['FULL_MAINNET_FORK_ASSURANCE','FULL_G1_G5_ASSURANCE','PRODUCTION_READY','USER_FUNDS_AUTHORIZED','PUBLIC_RELIANCE_AUTHORIZED','PROTOCOL_ACTIVATION_AUTHORIZED','MAINNET_DEPLOYED','MAINNET_VERIFIED']:
   if c.get(f)!='NO': errors.append(f'{f} must be NO')
  expected=hobj({k:v for k,v in c.items() if k!='certificateHash'}) if c else None
@@ -122,7 +136,7 @@ def validate_cert(require=False):
 def resolve():
  c=cert(); validate_cert(False)
  if c.get('status')==STATUS:
-  print('Executive Verdict — SEPOLIA-BACKED PREDEPLOYMENT\n\nHistorical Sepolia deployment: PASS\nHistorical Sepolia verification: 49/49 PASS\nCurrent release build/tests: PASS\nLocal Wallet-A/Wallet-B rehearsal: PASS\nInitial-deployment safety checks: PASS\nImmutable Mainnet deployment plan: PASS\nLedger risk acceptance: PASS\nAutomatic verification readiness: PASS\nDeployment resume readiness: PASS\n\nOverall: AUTHORIZED_FOR_INITIAL_MAINNET_DEPLOYMENT_FROM_SEPOLIA_EVIDENCE')
+  print('Executive Verdict — SEPOLIA_BACKED_INITIAL_MAINNET_V1\nGate 1: PASS\nGate 2: PASS\nGate 3: PASS\nGate 4: PASS\nGate 5: PASS\n\nOverall: AUTHORIZED_TO_DEPLOY_ON_ETHEREUM_MAINNET\n\nHistorical Sepolia deployment: PASS\nHistorical Sepolia verification: 49/49 PASS\nCurrent release build/tests: PASS\nLocal Wallet-A/Wallet-B rehearsal: PASS\nInitial-deployment safety checks: PASS\nImmutable Mainnet deployment plan: PASS\nLedger risk acceptance: PASS\nAutomatic verification readiness: PASS\nDeployment resume readiness: PASS\n\nTECHNICALLY_MAINNET_READY = YES\nMAINNET_DEPLOYMENT_AUTHORIZED = YES\nETHEREUM_MAINNET_AUTHORIZED = YES\n\nAUTHORIZATION_SCOPE = INITIAL_MAINNET_INFRASTRUCTURE_DEPLOYMENT_ONLY\nPRODUCTION_READY = NO\nUSER_FUNDS_AUTHORIZED = NO\nCUSTOMER_ONBOARDING_AUTHORIZED = NO\nPROTOCOL_ACTIVATION_AUTHORIZED = NO\nPHASE_B_CONFIGURATION_AUTHORIZED = NO\nSETTLEMENT_AUTHORIZED = NO\nPUBLIC_FRONTEND_AUTHORIZED = NO\nPRODUCTION_ANNOUNCEMENT_AUTHORIZED = NO\nPUBLIC_RELIANCE_AUTHORIZED = NO\nUNBOUNDED_ECONOMIC_EXPOSURE_AUTHORIZED = NO\n\nMAINNET_DEPLOYED = NO\nMAINNET_VERIFIED = NO\nLIVE_OWNER_READBACK_COMPLETE = NO\nLIVE_CANARY_COMPLETE = NO\nPRODUCTION_ACTIVATION_EFFECTIVE = NO')
   return True
  print(json.dumps({'status':'BLOCKED','blockers':c.get('blockers'),'mainnetBroadcastOccurred':False},indent=2)); return False
 

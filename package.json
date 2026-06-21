@@ -351,7 +351,13 @@
     "mainnet:predeploy:sepolia-backed:certificate:validate": "python scripts/mainnet_sepolia_backed.py certificate-validate",
     "mainnet:predeploy:sepolia-backed:final-check": "python scripts/mainnet_sepolia_backed.py final-check",
     "mainnet:predeploy:sepolia-backed:status": "python scripts/mainnet_sepolia_backed.py status",
-    "mainnet:predeploy:sepolia-backed:resolve-and-authorize": "python scripts/mainnet_sepolia_backed.py resolve-and-authorize"
+    "mainnet:predeploy:sepolia-backed:resolve-and-authorize": "python scripts/mainnet_sepolia_backed.py resolve-and-authorize",
+    "mainnet:sepolia-backed:readiness": "python scripts/mainnet_sepolia_backed.py doctor",
+    "mainnet:sepolia-backed:certificate": "python scripts/mainnet_sepolia_backed.py certificate",
+    "mainnet:sepolia-backed:certificate:validate": "python scripts/mainnet_sepolia_backed.py certificate-validate",
+    "mainnet:sepolia-backed:final-check": "python scripts/mainnet_sepolia_backed.py final-check",
+    "deploy:mainnet:sepolia-backed:prepare-local": "python scripts/mainnet_sepolia_backed.py certificate",
+    "deploy:mainnet:sepolia-backed:live-local-gated": "python scripts/mainnet_three_stage.py live-local-gated"
   },
   "dependencies": {
     "@openzeppelin/contracts": "4.9.6",

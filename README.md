@@ -129,3 +129,5 @@ Claim boundary: this paper does not claim achieved AGI, ASI, superintelligence, 
 ## Ownership handoff
 
 GoalOS deployments require ERC-173 ownership handoff before being considered operationally complete. See `docs/OWNERSHIP_HANDOFF_RUNBOOK.md` and use `npm run ownership:sepolia:doctor|plan|dry-run|transfer|verify|evidence` or `npm run ownership:mainnet:doctor|plan|fork-rehearsal|transfer-local-gated|accept-local-gated|verify|evidence`. Mainnet single-deployer permanent-address mode is blocked. For delayed acceptance, run `ownership:mainnet:accept-local-gated` only after the contract readback says: Wait until pendingOwnerAcceptAfter.
+<!-- SEPOLIA_BACKED_INITIAL_MAINNET_V1_STATUS -->
+Stage-A profile: `SEPOLIA_BACKED_INITIAL_MAINNET_V1`. Initial Mainnet infrastructure deployment is profile-gated; production ready: **NO**; user funds/activation/settlement/frontend/public reliance: **NO**; Mainnet deployed: **NO**; Not externally audited remains applicable.

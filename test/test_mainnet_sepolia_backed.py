@@ -8,8 +8,10 @@ OUT=ROOT/'qa/mainnet-predeploy-sepolia'
 @pytest.fixture(autouse=True)
 def clean_outputs():
     shutil.rmtree(OUT, ignore_errors=True)
+    subprocess.run(['git','checkout','--','qa/mainnet-predeploy/authorization-certificate.json'],cwd=ROOT,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
     yield
     shutil.rmtree(OUT, ignore_errors=True)
+    subprocess.run(['git','checkout','--','qa/mainnet-predeploy/authorization-certificate.json'],cwd=ROOT,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
 
 def test_valid_historical_sepolia_satisfies_external_network_requirement():
     r=sb.validate_historical(True)
@@ -32,6 +34,30 @@ def test_sepolia_backed_path_does_not_require_mainnet_fork_but_blocks_without_lo
     assert c['FULL_G1_G5_ASSURANCE']=='NO'
     assert c['status']!='AUTHORIZED_FOR_INITIAL_MAINNET_DEPLOYMENT_FROM_SEPOLIA_EVIDENCE'
     assert any('localRehearsal' in b for b in c['blockers'])
+
+def _write_initial_profile_evidence(monkeypatch):
+    OUT.mkdir(parents=True, exist_ok=True)
+    monkeypatch.setattr(sb, 'clean_tree', lambda: True)
+    (OUT/'local-rehearsal.json').write_text(json.dumps({'schemaVersion':'1.0','executionMode':'LOCAL_DETERMINISTIC_RELEASE_REHEARSAL','mainnetForkAssurance':False,'walletA':sb.WA,'walletB':sb.WB,'topologyCount':49,'transactionCount':63,'receiptCount':63,'ownerReadback':sb.WB,'walletAZeroAuthority':True,'walletBAuthority':True,'mainnetBroadcastOccurred':False}))
+    checks={k:'PASS' for k in ['ownership_admin_assignment','semantic_override_replay_rejection','stale_state_rejection','no_arbitrary_executor','accounting_consistency','zero_canary_limit_disabled','lifecycle_transition_controls','shutdown_liability_checks','deployment_resume_logic']}
+    (OUT/'initial-safety-checks.json').write_text(json.dumps({'schemaVersion':'1.0','status':'PASS','checks':checks,'mainnetBroadcastOccurred':False}))
+    tx={'expectedNonce':0,'expectedCreateAddress':'0x0000000000000000000000000000000000000001','fullyQualifiedName':'contracts/registry/GoalOSDeploymentDirectory.sol:GoalOSDeploymentDirectory','artifactHash':'0x'+'11'*32,'constructorCommitment':'0x'+'22'*32,'initcodeHash':'0x'+'33'*32,'expectedRuntimeBytecodeHash':'0x'+'44'*32,'transactionValue':'0','gasEstimate':'1','gasLimit':'1','maxFeePerGas':'1','maxPriorityFeePerGas':'1','maximumTransactionCost':'1'}
+    (OUT/'deployment-plan.public.json').write_text(json.dumps({'chainId':1,'canonicalAgialpha':sb.AGI,'walletA':sb.WA,'walletB':sb.WB,'startingNonce':0,'pendingTransactionDisposition':'NONE','orderedTransactions':[tx],'maximumCumulativeCost':'1','minimumWalletARemainingEth':'0','verificationInputCommitment':'0x'+'55'*32,'issuedAt':'2026-06-21T00:00:00Z','expiresAt':'2999-01-01T00:00:00Z','planHash':'0x'+'66'*32}))
+    stmt='I authorize an initial Ethereum Mainnet deployment without a pinned Mainnet-fork rehearsal. I understand the historical Sepolia deployment used different compiler/token/authority settings. This authorization does not permit user funds, public reliance, frontend activation, or production activation.'
+    (OUT/'ledger-risk-acceptance.json').write_text(json.dumps({'schemaVersion':'1.0','status':'PASS','recoveredSigner':sb.WB,'statement':stmt,'chainId':1,'walletA':sb.WA,'walletB':sb.WB,'canonicalAgialpha':sb.AGI,'mainnetBroadcastOccurred':False}))
+    (OUT/'verification-readiness.json').write_text(json.dumps({'schemaVersion':'1.0','status':'PASS','etherscanV2':True,'privateConstructorInputsCommitment':'0x'+'77'*32,'mainnetBroadcastOccurred':False}))
+    (OUT/'resume-readiness.json').write_text(json.dumps({'schemaVersion':'1.0','status':'PASS','appendOnlyJournal':True,'nonceLocking':True,'safeResumeTested':True,'mainnetBroadcastOccurred':False}))
+    (OUT/'mainnet-dependency-doctor.json').write_text(json.dumps({'schemaVersion':'1.0','status':'PASS','chainId':1,'canonicalAgialpha':sb.AGI,'providerAgreement':True,'canonicalAgialphaCodeHash':'0x'+'88'*32,'mainnetBroadcastOccurred':False}))
+
+def test_initial_profile_can_pass_without_mainnet_fork_artifact(monkeypatch):
+    _write_initial_profile_evidence(monkeypatch)
+    c=sb.cert()
+    assert c['status']=='AUTHORIZED_TO_DEPLOY_ON_ETHEREUM_MAINNET'
+    assert c['authorizationProfile']=='SEPOLIA_BACKED_INITIAL_MAINNET_V1'
+    assert c['AUTHORIZATION_SCOPE']=='INITIAL_MAINNET_INFRASTRUCTURE_DEPLOYMENT_ONLY'
+    assert c['FULL_MAINNET_FORK_ASSURANCE']=='NO'
+    assert not (OUT/'fork-rehearsal.json').exists()
+    assert all(v=='PASS' for v in c['gates'].values())
 
 def test_certificate_cannot_claim_production_or_user_funds():
     c=sb.cert()
