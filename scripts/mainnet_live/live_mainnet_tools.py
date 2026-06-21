@@ -24,8 +24,21 @@ def contracts(d):
         return [{'name':k, **(v if isinstance(v,dict) else {'address':v})} for k,v in c.items()]
     return c
 
+def rpc_status():
+    primary=bool(os.environ.get('PRIMARY_MAINNET_RPC_URL'))
+    secondary=bool(os.environ.get('SECONDARY_MAINNET_RPC_URL'))
+    if primary and secondary:
+        comparison='PRIMARY_AND_SECONDARY_CONFIGURED_FOR_OPERATOR_CI'
+    elif primary:
+        comparison='SECONDARY_RPC_COMPARISON_PENDING_ETHERSCAN_OR_SINGLE_PROVIDER_ONLY'
+    else:
+        comparison='NO_PRIVATE_RPC_CONFIGURED_FAIL_CLOSED_UNTIL_OPERATOR_SUPPLIES_READ_ONLY_RPC'
+    return {'primaryMainnetRpcConfigured':primary,'secondaryMainnetRpcConfigured':secondary,'providerComparison':comparison}
+
 def stub(name,status='REQUIRES_LIVE_RPC_VALIDATION'):
-    return {'tool':name,'status':status,'chainId':1,'walletA':WALLET_A,'walletB':WALLET_B,'canonicalAgialpha':AGIALPHA,'generatedAt':time.strftime('%Y-%m-%dT%H:%M:%SZ',time.gmtime()),'claimBoundary':'No Mainnet transaction is broadcast by this read-only tool.'}
+    out={'tool':name,'status':status,'chainId':1,'walletA':WALLET_A,'walletB':WALLET_B,'canonicalAgialpha':AGIALPHA,'generatedAt':time.strftime('%Y-%m-%dT%H:%M:%SZ',time.gmtime()),'claimBoundary':'No Mainnet transaction is broadcast by this read-only tool; RPC URLs and API keys are never printed.'}
+    out.update(rpc_status())
+    return out
 
 def import_cmd(args):
     p,d=load_manifest(); hist=ROOT/'deployments/history/ethereum-mainnet.agialpha.deployed-2026-06-21.json'; hist.parent.mkdir(exist_ok=True,parents=True); hist.write_text(json.dumps(d,indent=2,sort_keys=True)+'\n'); (hist.with_suffix('.sha256')).write_text(sha(hist)+'  '+hist.name+'\n')
