@@ -8,7 +8,7 @@
 [![Solidity 0.8.35](https://img.shields.io/badge/Solidity-0.8.35-363636?logo=solidity)](package.json)
 [![Hardhat 2.28.6](https://img.shields.io/badge/Hardhat-2.28.6-f5d061?logo=ethereum)](package.json)
 [![TypeScript 5.9.3](https://img.shields.io/badge/TypeScript-5.9.3-3178c6?logo=typescript&logoColor=white)](package.json)
-[![Mainnet Authorized](https://img.shields.io/badge/Ethereum%20Mainnet%20Authorized-YES-success)](qa/mainnet-authorization-certificate.json)
+[![Mainnet Authorized](https://img.shields.io/badge/Ethereum%20Mainnet%20Authorized-NO-critical)](qa/mainnet-authorization-certificate.json)
 [![Mainnet Deployed](https://img.shields.io/badge/Ethereum%20Mainnet%20Deployed-NO-critical)](qa/mainnet-authorization-certificate.json)
 
 GoalOS AGIALPHA Ascension v4.4.0 mainnet authorization candidate.
@@ -17,23 +17,23 @@ Local deterministic rehearsal: passed.
 Local Evidence Docket: generated.
 Public AGIALPHA token verification: passed / governance-accepted.
 Not externally audited.
-Ethereum Mainnet technical readiness: YES.
-Ethereum Mainnet deployment authorization: YES.
-Ethereum Mainnet authorization: YES.
+Ethereum Mainnet technical readiness: NO.
+Ethereum Mainnet deployment authorization: NO.
+Ethereum Mainnet authorization: NO.
 Ethereum Mainnet deployed: NO.
 
 Three-stage Mainnet release status:
 
 | Stage | Status |
 | --- | --- |
-| Predeployment authorization | YES |
+| Predeployment authorization | NO |
 | Ethereum Mainnet deployed | NO |
 | Postdeployment verification | NO |
 | Production activation effective | NO |
 
 A pre-broadcast state with predeployment authorization YES and Ethereum Mainnet deployed NO is a GO to deploy, not a contradiction. Stage B evaluates chain-1 receipts, bytecode, verification, and ownership/role readback only after human broadcast. Stage C separately governs bounded live canary, monitoring, reconciliation, Ledger activation, and production reliance.
 
-This means the repository package is authorized for manual gated Ethereum Mainnet deployment. It does not mean Ethereum Mainnet deployment has occurred. Actual deployment still requires a runtime RPC URL and deployer key outside GitHub.
+This means the repository package is not currently authorized for manual gated Ethereum Mainnet deployment. Resolve the certificate blockers, regenerate the certificate, and rerun the public checks before any mainnet deployment attempt. Actual deployment still requires a runtime RPC URL and deployer key outside GitHub.
 
 It does not claim external audit completion, legal approval, tax review, guaranteed security, guaranteed token classification, investment return, yield, price target, revenue share, or production deployment.
 
@@ -76,9 +76,9 @@ Badges at the top of this README are intentionally limited to official, auditabl
 
 The source of truth is `qa/mainnet-authorization-certificate.json`. README/status documents are generated from that certificate; manual edits cannot create YES.
 
-- TECHNICALLY_MAINNET_READY: **YES**
-- MAINNET_DEPLOYMENT_AUTHORIZED: **YES**
-- ETHEREUM_MAINNET_AUTHORIZED: **YES**
+- TECHNICALLY_MAINNET_READY: **NO**
+- MAINNET_DEPLOYMENT_AUTHORIZED: **NO**
+- ETHEREUM_MAINNET_AUTHORIZED: **NO**
 - MAINNET_DEPLOYED: **NO**
 - Canonical AGIALPHA token: `0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA`
 - Chain: Ethereum Mainnet (`chainId=1`)

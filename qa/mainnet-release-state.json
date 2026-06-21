@@ -1,47 +1,44 @@
 {
-  "forbiddenEdges": [
-    {
-      "from": "A_PREDEPLOYMENT_AUTHORIZATION",
-      "to": "B_POSTDEPLOYMENT_VERIFICATION"
-    },
-    {
-      "from": "A_PREDEPLOYMENT_AUTHORIZATION",
-      "to": "C_PRODUCTION_ACTIVATION"
-    }
-  ],
   "schemaVersion": "1.0",
   "stages": {
     "A_PREDEPLOYMENT_AUTHORIZATION": {
       "dependsOn": [
-        "source",
-        "build",
-        "tests",
+        "exactRelease",
+        "ordinaryCi",
         "verifiedSepolia",
-        "mainnetFork",
+        "pinnedMainnetFork",
         "deploymentPlan"
       ],
-      "emits": "PREDEPLOYMENT_CERTIFICATE"
+      "emits": "GO_TO_DEPLOY_MAINNET",
+      "forbiddenEvidence": [
+        "LIVE_MAINNET_CANARY",
+        "LIVE_MAINNET_DEPLOYED_ADDRESS",
+        "LIVE_MAINNET_ETHERSCAN_VERIFICATION",
+        "LIVE_MAINNET_OWNER_READBACK",
+        "LIVE_MAINNET_RECEIPT",
+        "LIVE_MAINNET_ROLE_READBACK",
+        "LIVE_MAINNET_TRANSACTION"
+      ]
     },
     "B_POSTDEPLOYMENT_VERIFICATION": {
       "dependsOn": [
-        "PREDEPLOYMENT_CERTIFICATE",
-        "humanMainnetBroadcast",
+        "GO_TO_DEPLOY_MAINNET",
         "chain1Receipts",
         "bytecode",
         "etherscanVerification",
         "ownerRoleReadback"
       ],
-      "emits": "POSTDEPLOYMENT_CERTIFICATE"
+      "emits": "MAINNET_DEPLOYMENT_VERIFIED"
     },
     "C_PRODUCTION_ACTIVATION": {
       "dependsOn": [
-        "POSTDEPLOYMENT_CERTIFICATE",
+        "MAINNET_DEPLOYMENT_VERIFIED",
         "monitoring",
         "boundedLiveCanary",
-        "reconciliation",
+        "accountingReconciliation",
         "ledgerActivation"
       ],
-      "emits": "ACTIVATION_CERTIFICATE"
+      "emits": "PRODUCTION_ACTIVATION_EFFECTIVE"
     }
   }
 }

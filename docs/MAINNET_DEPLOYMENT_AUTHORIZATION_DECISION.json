@@ -1,14 +1,22 @@
 {
-  "status": "YES",
-  "MAINNET_DEPLOYMENT_AUTHORIZED": "YES",
-  "mainnetDeploymentAuthorized": "YES",
-  "commit": "9e01ccab1c9d1d82355da9c72d6f84de67f1faf0",
+  "status": "NO",
+  "MAINNET_DEPLOYMENT_AUTHORIZED": "NO",
+  "mainnetDeploymentAuthorized": "NO",
+  "commit": null,
   "chain": "ethereum",
   "chainId": 1,
-  "agialphaToken": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
+  "agialphaToken": null,
   "mainnetDeployed": "NO",
   "MAINNET_DEPLOYED": "NO",
   "evidence": {},
-  "blockers": [],
+  "blockers": [
+    "G1 is NOT_RUN",
+    "G2 is NOT_RUN",
+    "G3 is NOT_RUN",
+    "G4 is NOT_RUN",
+    "G5 is NOT_RUN",
+    "Pinned Mainnet fork rehearsal with deployed topology and scenario PASS is missing.",
+    "Complete immutable deployment plan is missing or incomplete."
+  ],
   "generatedBy": "scripts/generate-public-status-docs.py"
 }

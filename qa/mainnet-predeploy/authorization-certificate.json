@@ -1,111 +1,58 @@
 {
-  "ETHEREUM_MAINNET_AUTHORIZED": "YES",
+  "ETHEREUM_MAINNET_AUTHORIZED": "NO",
   "LIVE_CANARY_COMPLETE": "NO",
   "LIVE_OWNER_HANDOFF_COMPLETE": "NO",
   "MAINNET_DEPLOYED": "NO",
-  "MAINNET_DEPLOYMENT_AUTHORIZED": "YES",
+  "MAINNET_DEPLOYMENT_AUTHORIZED": "NO",
   "MAINNET_VERIFIED": "NO",
   "PRODUCTION_ACTIVATION_EFFECTIVE": "NO",
-  "TECHNICALLY_MAINNET_READY": "YES",
-  "blockers": [],
-  "bytecodeRoot": "0x5e5572def2f66d45fd66a4dd5ebcd97931766acc60aa017ac2f775568192e948",
-  "certificateHash": "0xa43a50f8fc191650a086b09d318f77fa1d3e8a20e71b7645f62acae7c2d2a240",
-  "compilerHash": "0xc9f87e01b42cba0a9b0fcaf2513e400ee44e8dd3f2182705371500a0b4ce90db",
-  "constructorConfigurationRoot": "0x3599ddd69ac22c5dead70e24bdafaad2f30cb67b0288c126ec6b561901003595",
-  "deploymentPlanHash": "0xfcbb2008bc244daae1a2b15acc875d856914247fb2621a38ecb7968cd7674fc2",
-  "deploymentScriptHash": "0xb7b6474359af65c9b9aebd8c3fc1566e6f57084cb60900ac8930181acafec449",
+  "TECHNICALLY_MAINNET_READY": "NO",
+  "blockers": [
+    "G1 is NOT_RUN",
+    "G2 is NOT_RUN",
+    "G3 is NOT_RUN",
+    "G4 is NOT_RUN",
+    "G5 is NOT_RUN",
+    "Pinned Mainnet fork rehearsal with deployed topology and scenario PASS is missing.",
+    "Complete immutable deployment plan is missing or incomplete."
+  ],
+  "certificateHash": "0x934e3e270ab66bd8652c3479976fd38dacb662ae11cf0dbec52267543fc625eb",
+  "deploymentPlanHash": "0xa9d5a28785edcebcd57e851ce19a93ff3693ebee8f234c42a0b2769c341e03ca",
+  "deploymentScriptsHash": "0xb7b6474359af65c9b9aebd8c3fc1566e6f57084cb60900ac8930181acafec449",
   "evidence": [
     {
-      "path": "contracts",
-      "sha256": "0x447f224ae7d222e6f7fd384799a1430167addada934ef2fc39d11ff930a6717b",
-      "type": "SOURCE_IDENTITY"
-    },
-    {
-      "path": "package-lock.json",
-      "sha256": "0x9739ecf251762c3828813424f8e7d0d3b291611125cf5eafb31fc32479a3f514",
-      "type": "DEPENDENCY_LOCK"
-    },
-    {
-      "path": "qa/compiler-alignment.json",
-      "sha256": "0xc9f87e01b42cba0a9b0fcaf2513e400ee44e8dd3f2182705371500a0b4ce90db",
-      "type": "COMPILER_AND_BUILD"
-    },
-    {
-      "path": "test",
-      "sha256": "0x4613228b01e938ac38253784d8d2223562e042af651c93c2171c28f1987ac1ef",
-      "type": "UNIT_INTEGRATION_TEST"
-    },
-    {
-      "path": "audit",
-      "sha256": "0x3dfa79a3ab31583bc52621d08bd310a6e8a53ca318fc4ddfb0cff1f9938cb78d",
-      "type": "STATIC_OR_SYMBOLIC_ANALYSIS"
-    },
-    {
-      "path": "test/invariants",
-      "sha256": "0xbda9e08b10bb27dd14d8c88133e83d0ef4df97d30a9f4a078642e5294f17c81d",
-      "type": "STATEFUL_INVARIANT"
-    },
-    {
-      "path": "qa/mainnet-readiness/security-docket.json",
-      "sha256": "0x5151a7139cd15be011e219bbaa7d63a8483d1ca08d7463baee16acabb458d7d9",
-      "type": "MUTATION"
-    },
-    {
-      "path": "scripts/phase_a_assurance.py",
-      "sha256": "0x5f37b61f8dd69bdd84e4b5ef34aa040f8eea25856989099b207d710135f45a67",
-      "type": "DIFFERENTIAL_MODEL"
-    },
-    {
-      "path": "docs/SEPOLIA_CONTRACT_VERIFICATION_REPORT.md",
-      "sha256": "0xb6f6aa03126cb5730a5c2b94aedc72c24f4b0a25f9e078654c11cfb79ff0176c",
-      "type": "VERIFIED_SEPOLIA"
-    },
-    {
       "path": "qa/mainnet-predeploy/fork-rehearsal.json",
-      "sha256": "0x7be6a0c2f1c63b537ae06ca49c807e66034e3bd093374dbda60c864cb98dcbe5",
-      "type": "MAINNET_FORK"
+      "sha256": "0xcf529048c3bcb087980d66c5bd6e3c082a0c3d262481d1f87c2ab62391d48511"
     },
     {
-      "path": "qa/mainnet-predeploy/deployment-plan.json",
-      "sha256": "0xfcbb2008bc244daae1a2b15acc875d856914247fb2621a38ecb7968cd7674fc2",
-      "type": "DEPLOYMENT_PLAN"
-    },
-    {
-      "path": "config",
-      "sha256": "0xf47a7d386afaf905771922a0a43a21bb56a3d0829bc6919b15459feb00b3a7ea",
-      "type": "OWNER_CONFIGURATION_COMMITMENT"
-    },
-    {
-      "path": "qa",
-      "sha256": "0xf0088dabaf2d3c0d2e0e824e45fdea39effe25de38dc456cf615cfab7a529894",
-      "type": "GAS_AND_SIZE_REPORT"
+      "path": "qa/mainnet-predeploy/deployment-plan.public.json",
+      "sha256": "0xfdf317c9b38f499dff695e7814d6ae248ec1540df6c0b8bd1f369a2728a1cf35"
     }
   ],
-  "expiresAt": "2026-07-05T12:42:36.130669+00:00",
-  "finalGitSha": "9e01ccab1c9d1d82355da9c72d6f84de67f1faf0",
-  "forkBlockHash": "0x49d5a0bb0e6b8b1d6c0f7907b3d4f739a5a5605c0b6e6e75bb2c6b8f54a2e5c1",
-  "forkBlockNumber": 23200000,
-  "forkEvidenceRoot": "0x7be6a0c2f1c63b537ae06ca49c807e66034e3bd093374dbda60c864cb98dcbe5",
+  "finalGitSha": "3f8017e04cda9243f2eb5c14149f26ea8a2969ea",
+  "forkBlockHash": null,
+  "forkBlockNumber": null,
+  "forkEvidenceRoot": "0xcf529048c3bcb087980d66c5bd6e3c082a0c3d262481d1f87c2ab62391d48511",
   "gateReportHashes": {
-    "Gate 1": "0x82131e614b2fbd965f6a572860e01ddd8825ee54f4b775f99a4c7ed552f355e4",
-    "Gate 2": "0xad3f132610c31f57ca4a59ae6d2241c938459b94fcef4005af4e80749c2ce788",
-    "Gate 3": "0x0534fb7170b3cb4cb26da06e840b731aa0ffdf541c8614fcb23b7635813db8d7",
-    "Gate 4": "0x01763796a4b9c4af8843b23026402e11ac8de502b1705a48598cf270bdf127b1",
-    "Gate 5": "0xb5170848b60ba04be2824beb2b00281ee540055bda55db23441008868570d36f"
+    "G1": "0x9085000b6d146c71637e10d3bd349832ac0d3d1cb981b9685f020a5bb82ec689",
+    "G2": "0x8e615332463cec6428d3edddd7d4e0f1dc95467bd7f7f1cc2c2d7be9bb1159c5",
+    "G3": "0xae9ddc89eafe3f8bdbdd90d074f51a353fe3b873caf03ea366be6b5eb00c6bc1",
+    "G4": "0x8445b320e47da9df5ca2fed01c69ddd77287da9bdfda3c2380f3692278c9889d",
+    "G5": "0x2ad71372c13cc2911658fedbb0974ddafabdc81d09999265b1a4669ff049f2f0"
   },
   "gates": {
-    "Gate 1": "PASS",
-    "Gate 2": "PASS",
-    "Gate 3": "PASS",
-    "Gate 4": "PASS",
-    "Gate 5": "PASS"
+    "Gate 1": "NOT_RUN",
+    "Gate 2": "NOT_RUN",
+    "Gate 3": "NOT_RUN",
+    "Gate 4": "NOT_RUN",
+    "Gate 5": "NOT_RUN"
   },
+  "hardhatConfigurationHash": "0x19b9128b253d54264a9c5e8a44096cf17012efa4e98817929e30f4a613d88d2f",
   "lockfileHash": "0x9739ecf251762c3828813424f8e7d0d3b291611125cf5eafb31fc32479a3f514",
-  "ownerConfigurationCommitment": "0x59b6f0fda860917f0500f52fc75b52933d72be6cd43e3b00d41a0886646a9332",
-  "releaseId": "9e01ccab1c9d1d82355da9c72d6f84de67f1faf0",
+  "mainnetBroadcastOccurred": false,
+  "releaseId": "3f8017e04cda9243f2eb5c14149f26ea8a2969ea",
   "schemaVersion": "1.0",
-  "sepoliaEvidenceRoot": "0xb6f6aa03126cb5730a5c2b94aedc72c24f4b0a25f9e078654c11cfb79ff0176c",
   "sourceTreeHash": "0x447f224ae7d222e6f7fd384799a1430167addada934ef2fc39d11ff930a6717b",
   "stage": "A_PREDEPLOYMENT_AUTHORIZATION",
-  "status": "AUTHORIZED"
+  "status": "BLOCKED"
 }

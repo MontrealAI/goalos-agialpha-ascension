@@ -97,3 +97,47 @@ def test_stage_b_c_complete_certificates_are_preserved():
 def test_stage_b_c_validation_dispatch_commands_exist():
     assert subprocess.run(['python','scripts/mainnet_three_stage.py','postdeploy-validate'],cwd=ROOT,stdout=subprocess.PIPE,text=True).returncode in {0,1}
     assert subprocess.run(['python','scripts/mainnet_three_stage.py','activation-validate'],cwd=ROOT,stdout=subprocess.PIPE,text=True).returncode in {0,1}
+
+def test_stage_b_minimal_status_string_does_not_validate():
+    bp=m3.POST/'deployment-verification-certificate.json'
+    old=bp.read_text() if bp.exists() else None
+    bp.parent.mkdir(parents=True, exist_ok=True)
+    bp.write_text('{"schemaVersion":"1.0","stage":"B_POSTDEPLOYMENT_VERIFICATION","status":"MAINNET_DEPLOYMENT_VERIFIED"}')
+    try:
+        assert m3.validate_stage_complete('qa/mainnet-postdeploy/deployment-verification-certificate.json','B_POSTDEPLOYMENT_VERIFICATION',{'MAINNET_DEPLOYMENT_VERIFIED','VERIFIED'}) is False
+    finally:
+        if old is None: bp.unlink(missing_ok=True)
+        else: bp.write_text(old)
+
+def test_existing_fork_and_complete_plan_are_preserved():
+    forkp=m3.PRE/'fork-rehearsal.json'; planp=m3.PRE/'deployment-plan.public.json'
+    oldf=forkp.read_text() if forkp.exists() else None; oldp=planp.read_text() if planp.exists() else None
+    rid=m3.release_identity()
+    fork={'schemaVersion':'1.0','executionMode':'MAINNET_FORK','upstreamChainId':1,'localChainId':31337,'forkBlockNumber':1,'forkBlockHash':'0xabc','canonicalAgialphaCodeHash':'0xdef','releaseIdentity':rid,'mainnetBroadcastOccurred':False,'status':'PASS'}
+    plan={'schemaVersion':'1.0','stage':'A_PREDEPLOYMENT_AUTHORIZATION','releaseIdentity':rid,'chainId':1,'canonicalAgialpha':m3.AGI,'status':'PASS','orderedTransactions':[{'nonce':0}],'startingNonce':0,'planHash':'0x123'}
+    forkp.parent.mkdir(parents=True, exist_ok=True); forkp.write_text(json.dumps(fork))
+    planp.write_text(json.dumps(plan))
+    try:
+        assert m3.fork_report()['status']=='PASS'
+        assert m3.plan_public()['status']=='PASS'
+    finally:
+        if oldf is None: forkp.unlink(missing_ok=True)
+        else: forkp.write_text(oldf)
+        if oldp is None: planp.unlink(missing_ok=True)
+        else: planp.write_text(oldp)
+
+def test_live_local_gated_invokes_canonical_deployer_when_authorized(monkeypatch):
+    calls=[]
+    monkeypatch.delenv('CI', raising=False)
+    monkeypatch.setattr(m3, 'validate_predeploy', lambda require_authorized=False: True)
+    monkeypatch.setattr(m3.subprocess, 'call', lambda argv, cwd=None: calls.append((argv,cwd)) or 7)
+    old_argv=m3.sys.argv[:]
+    try:
+        m3.sys.argv=['mainnet_three_stage.py','live-local-gated']
+        try:
+            m3.main()
+        except SystemExit as exc:
+            assert exc.code==7
+    finally:
+        m3.sys.argv=old_argv
+    assert calls and calls[0][0]==['npm','run','deploy:ethereum-mainnet:gated']

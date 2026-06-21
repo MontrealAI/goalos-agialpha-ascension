@@ -318,9 +318,15 @@
     "release:gate3": "python scripts/mainnet_three_stage.py evaluate-gates",
     "release:gate4": "python scripts/mainnet_three_stage.py evaluate-gates",
     "stateful:secondary": "python scripts/phase_a_assurance.py status --category security",
-    "differential:release": "python scripts/phase_a_assurance.py differential",
+    "differential:release": "python scripts/phase_a_assurance.py differential --release",
     "mainnet:predeploy:evaluate-gates": "python scripts/mainnet_three_stage.py evaluate-gates",
-    "mainnet:predeploy:plan": "python scripts/mainnet_three_stage.py plan"
+    "mainnet:predeploy:plan": "python scripts/mainnet_three_stage.py plan",
+    "mainnet:predeploy:certificate:generate": "python scripts/mainnet_three_stage.py certificate-generate",
+    "mainnet:predeploy:structure-check": "python scripts/mainnet_three_stage.py certificate-validate",
+    "mainnet:predeploy:fixture:generate": "python scripts/mainnet_three_stage.py fixture-generate",
+    "mainnet:predeploy:fixture:validate": "python scripts/mainnet_three_stage.py fixture-validate",
+    "mainnet:postdeploy:fixture:test": "python scripts/mainnet_three_stage.py postdeploy-fixture-test",
+    "mainnet:activation:fixture:test": "python scripts/mainnet_three_stage.py activation-fixture-test"
   },
   "dependencies": {
     "@openzeppelin/contracts": "4.9.6",

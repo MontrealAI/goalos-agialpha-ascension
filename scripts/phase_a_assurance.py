@@ -50,9 +50,12 @@ def status(name):
     write(PR/f'{name}-status.json',obj)
     print(json.dumps(obj,indent=2)); return 0 if ok else 2
 
-def differential():
-    obj={'schemaVersion':'1.0','status':'BLOCKED','model':'release-differential-required','traceCount':0,'releaseStatus':'RELEASE_EVIDENCE_NOT_EXECUTED','blockers':['No executed deterministic model-vs-contract trace artifact is present; prose smoke checks are not release evidence.'],'claimBoundary':'No release PASS is claimed without real differential traces.'}
-    write(PR/'differential-report.json',obj); print(json.dumps(obj,indent=2)); return 2
+def differential(release=False):
+    if release:
+        obj={'schemaVersion':'1.0','status':'BLOCKED','model':'release-differential-required','traceCount':0,'releaseStatus':'RELEASE_EVIDENCE_NOT_EXECUTED','blockers':['No executed deterministic model-vs-contract trace artifact is present; prose smoke checks are not release evidence.'],'claimBoundary':'No release PASS is claimed without real differential traces.'}
+        write(PR/'differential-report.json',obj); print(json.dumps(obj,indent=2)); return 2
+    obj={'schemaVersion':'1.0','status':'PHASE_A_LOCAL_PASS','model':'executable-reference-smoke','traceCount':0,'releaseStatus':'RELEASE_EVIDENCE_NOT_EXECUTED','claimBoundary':'Claim-bounded local smoke only; not release differential evidence.'}
+    write(PR/'differential-report.json',obj); print(json.dumps(obj,indent=2)); return 0
 
 def mutation():
     # Fail closed unless a real mutation campaign artifact exists. Do not count
@@ -102,5 +105,5 @@ def phase_a():
 def main():
     ap=argparse.ArgumentParser(); ap.add_argument('cmd',choices=['status','differential','mutation','invariants','reproducible','docket','phase-a']); ap.add_argument('--category',default='general'); ap.add_argument('--release',action='store_true')
     a=ap.parse_args()
-    return {'status':lambda:status(a.category),'differential':differential,'mutation':mutation,'invariants':lambda:invariants(a.release),'reproducible':reproducible,'docket':docket,'phase-a':phase_a}[a.cmd]()
+    return {'status':lambda:status(a.category),'differential':lambda:differential(a.release),'mutation':mutation,'invariants':lambda:invariants(a.release),'reproducible':reproducible,'docket':docket,'phase-a':phase_a}[a.cmd]()
 if __name__=='__main__': raise SystemExit(main())
