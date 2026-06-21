@@ -7,9 +7,9 @@
   "historicalSepoliaClassification": "HISTORICAL_VERIFIED_SEPOLIA_DEPLOYMENT",
   "knownProductionParameters": {
     "ethereumMainnetChainId": 1,
-    "canonicalAGIALPHA": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
-    "walletADeployerGasPayerOnly": "0x6c8B8897Fb6b08B4070387233B89b3E9A94eD00E",
-    "walletBLedgerFinalOwnerPermanentAuthority": "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+    "canonicalAGIALPHAReference": "repository canonical production parameter; exact address intentionally omitted from this public defect register to satisfy private-operator-data scanning",
+    "walletADeployerGasPayerOnly": "configured by protected/local operator input; redacted from public defect register",
+    "walletBLedgerFinalOwnerPermanentAuthority": "configured by protected/local Ledger owner input; redacted from public defect register"
   },
   "openDefects": [
     {
