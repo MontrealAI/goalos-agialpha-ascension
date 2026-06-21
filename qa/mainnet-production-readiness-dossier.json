@@ -9,30 +9,25 @@
     "qa/mainnet-readiness/production-readiness.json",
     "qa/mainnet-readiness/authorization-certificate.json"
   ],
-  "baselineSha": "b2ac7994d93cc537fac86ab6837c8a9215167ba1",
+  "baselineSha": "2655548fb5f5bfcccf7f0ab46fda45eec71549bd",
   "localCheckResults": [
     {
       "command": "npm run authority:inventory",
       "name": "authority inventory generation",
-      "status": "REQUIRED_NOT_RUN_BY_GENERATOR"
+      "status": "PENDING_EXTERNAL_COMMAND"
     },
     {
       "command": "npm run authority:policy:validate",
       "name": "authority policy validation",
-      "status": "REQUIRED_NOT_RUN_BY_GENERATOR"
+      "status": "PENDING_EXTERNAL_COMMAND"
     }
   ],
   "mainnetBroadcastOccurred": false,
   "reason": "Fail-closed dossier: mandatory live/private fork RPC, independent build comparison, symbolic execution, critical mutation, and exact Mainnet-fork evidence must be supplied before PASS. No Mainnet broadcast evidence is present or claimed.",
   "releaseClaimBoundary": "Repository-local operational inventory and fail-closed readiness evidence only; not Mainnet deployed, not Mainnet verified, not Owner-authorized, and not technically ready until blocked evidence is supplied.",
-  "releaseRelevantDirtyPaths": [
-    "scripts/mainnet_operational_readiness.py",
-    "scripts/no_private_operator_data_check.py",
-    "scripts/validate_workflow_policy.py",
-    "test/ci/workflow_policy_test.py"
-  ],
+  "releaseRelevantDirtyPaths": [],
   "selectorCoverageStatus": "BLOCKED",
-  "sourceTreeHash": "9fba6de863a5a4868f31f2ab6f72ac34f1845d4aa07711ab5ad17260d345da1c",
+  "sourceTreeHash": "120a41ede6e6d7f12548e131eddf26cb7d19bd7e101b77996ec21bcd33e7f048",
   "sourceTreeHashScope": "tracked git index content excluding generated readiness artifacts",
   "status": "BLOCKED"
 }

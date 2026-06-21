@@ -1,7 +1,7 @@
 # Mainnet Operational Gap Matrix
 
-- Gate 1: **PARTIAL** — Ownership continuity. Repository evidence inventory exists; final PASS requires live/private configuration, fork RPC, and complete adversarial runs. This artifact is claim-bounded and does not assert Mainnet deployment.
-- Gate 2: **PARTIAL** — Explicit Business Owner override capability. Repository evidence inventory exists; final PASS requires live/private configuration, fork RPC, and complete adversarial runs. This artifact is claim-bounded and does not assert Mainnet deployment.
-- Gate 3: **PARTIAL** — Company-wide accounting and solvency observability. Repository evidence inventory exists; final PASS requires live/private configuration, fork RPC, and complete adversarial runs. This artifact is claim-bounded and does not assert Mainnet deployment.
-- Gate 4: **PARTIAL** — Recovery, migration, wind-down, and shutdown. Repository evidence inventory exists; final PASS requires live/private configuration, fork RPC, and complete adversarial runs. This artifact is claim-bounded and does not assert Mainnet deployment.
-- Gate 5: **PARTIAL** — Autonomous stateful verification and exact-bytecode assurance. Repository evidence inventory exists; final PASS requires live/private configuration, fork RPC, and complete adversarial runs. This artifact is claim-bounded and does not assert Mainnet deployment.
+- Gate 1: **BLOCKED** — Ownership continuity. Executable inventory evidence exists, but mandatory protected release predicates are absent; this artifact is claim-bounded and does not assert Mainnet deployment.
+- Gate 2: **BLOCKED** — Explicit Business Owner override capability. Executable inventory evidence exists, but mandatory protected release predicates are absent; this artifact is claim-bounded and does not assert Mainnet deployment.
+- Gate 3: **BLOCKED** — Company-wide accounting and solvency observability. Executable inventory evidence exists, but mandatory protected release predicates are absent; this artifact is claim-bounded and does not assert Mainnet deployment.
+- Gate 4: **BLOCKED** — Recovery, migration, wind-down, and shutdown. Executable inventory evidence exists, but mandatory protected release predicates are absent; this artifact is claim-bounded and does not assert Mainnet deployment.
+- Gate 5: **BLOCKED** — Autonomous stateful verification and exact-bytecode assurance. Executable inventory evidence exists, but mandatory protected release predicates are absent; this artifact is claim-bounded and does not assert Mainnet deployment.

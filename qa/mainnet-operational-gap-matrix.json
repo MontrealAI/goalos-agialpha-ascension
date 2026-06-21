@@ -4,34 +4,34 @@
   ],
   "requirements": [
     {
-      "claim": "Repository evidence inventory exists; final PASS requires live/private configuration, fork RPC, and complete adversarial runs. This artifact is claim-bounded and does not assert Mainnet deployment.",
+      "claim": "Executable inventory evidence exists, but mandatory protected release predicates are absent; this artifact is claim-bounded and does not assert Mainnet deployment.",
       "gate": 1,
       "name": "Ownership continuity",
-      "status": "PARTIAL"
+      "status": "BLOCKED"
     },
     {
-      "claim": "Repository evidence inventory exists; final PASS requires live/private configuration, fork RPC, and complete adversarial runs. This artifact is claim-bounded and does not assert Mainnet deployment.",
+      "claim": "Executable inventory evidence exists, but mandatory protected release predicates are absent; this artifact is claim-bounded and does not assert Mainnet deployment.",
       "gate": 2,
       "name": "Explicit Business Owner override capability",
-      "status": "PARTIAL"
+      "status": "BLOCKED"
     },
     {
-      "claim": "Repository evidence inventory exists; final PASS requires live/private configuration, fork RPC, and complete adversarial runs. This artifact is claim-bounded and does not assert Mainnet deployment.",
+      "claim": "Executable inventory evidence exists, but mandatory protected release predicates are absent; this artifact is claim-bounded and does not assert Mainnet deployment.",
       "gate": 3,
       "name": "Company-wide accounting and solvency observability",
-      "status": "PARTIAL"
+      "status": "BLOCKED"
     },
     {
-      "claim": "Repository evidence inventory exists; final PASS requires live/private configuration, fork RPC, and complete adversarial runs. This artifact is claim-bounded and does not assert Mainnet deployment.",
+      "claim": "Executable inventory evidence exists, but mandatory protected release predicates are absent; this artifact is claim-bounded and does not assert Mainnet deployment.",
       "gate": 4,
       "name": "Recovery, migration, wind-down, and shutdown",
-      "status": "PARTIAL"
+      "status": "BLOCKED"
     },
     {
-      "claim": "Repository evidence inventory exists; final PASS requires live/private configuration, fork RPC, and complete adversarial runs. This artifact is claim-bounded and does not assert Mainnet deployment.",
+      "claim": "Executable inventory evidence exists, but mandatory protected release predicates are absent; this artifact is claim-bounded and does not assert Mainnet deployment.",
       "gate": 5,
       "name": "Autonomous stateful verification and exact-bytecode assurance",
-      "status": "PARTIAL"
+      "status": "BLOCKED"
     }
   ],
   "selectorCoverage": {
@@ -937,6 +937,6 @@
     ],
     "unclassifiedCount": 112
   },
-  "sourceTreeHash": "9fba6de863a5a4868f31f2ab6f72ac34f1845d4aa07711ab5ad17260d345da1c",
+  "sourceTreeHash": "120a41ede6e6d7f12548e131eddf26cb7d19bd7e101b77996ec21bcd33e7f048",
   "sourceTreeHashScope": "tracked git index content excluding generated readiness artifacts"
 }

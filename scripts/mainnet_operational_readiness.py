@@ -106,26 +106,23 @@ def sha_bytes(data):
 
 
 def tracked_source_tree_hash():
-    """Hash the staged source content, excluding generated readiness outputs.
+    """Hash the staged source identity without materializing every blob.
 
-    The index is used so generated artifacts can be regenerated before commit and
-    remain tied to the exact non-generated release-relevant content that will be
-    committed, while unrelated working-tree dirt is ignored.
+    ``git ls-files -s`` provides the index object id and mode for each tracked
+    path. Hashing those entries keeps the release identity tied to staged source
+    content while avoiding thousands of expensive ``git show`` subprocesses.
     """
-    listing = sh(["git", "ls-files"])
+    listing = sh(["git", "ls-files", "-s"])
     h = hashlib.sha256()
-    for rel in sorted(x for x in listing.splitlines() if x):
+    for line in sorted(x for x in listing.splitlines() if x):
+        meta, rel = line.split("\t", 1)
         if not rel.startswith(RELEASE_ROOTS):
             continue
         if rel.startswith(GENERATED_PREFIXES):
             continue
         if rel.startswith(("node_modules/", "artifacts/", "cache/")):
             continue
-        try:
-            blob = subprocess.check_output(["git", "show", f":{rel}"], cwd=ROOT)
-        except subprocess.CalledProcessError:
-            blob = subprocess.check_output(["git", "show", f"HEAD:{rel}"], cwd=ROOT)
-        h.update(rel.encode() + b"\0" + hashlib.sha256(blob).hexdigest().encode() + b"\n")
+        h.update(rel.encode() + b"\0" + meta.encode() + b"\n")
     return h.hexdigest()
 
 
@@ -402,8 +399,8 @@ def generate():
         gates.append({
             "gate": i,
             "name": name,
-            "status": "PARTIAL",
-            "claim": "Repository evidence inventory exists; final PASS requires live/private configuration, fork RPC, and complete adversarial runs. This artifact is claim-bounded and does not assert Mainnet deployment.",
+            "status": "BLOCKED",
+            "claim": "Executable inventory evidence exists, but mandatory protected release predicates are absent; this artifact is claim-bounded and does not assert Mainnet deployment.",
         })
     selector_count = sum(len(c["stateChangingSelectors"]) for c in inv)
     unclassified = [
@@ -495,8 +492,8 @@ def generate():
         "Generate transactions with ownership tooling; verify live chainId from provider; Safe-labelled owners must have contract code and Safe-compatible interface; pending owners are non-authoritative until acceptance.",
     ])
     local_checks = [
-        {"name": "authority inventory generation", "command": "npm run authority:inventory", "status": "REQUIRED_NOT_RUN_BY_GENERATOR"},
-        {"name": "authority policy validation", "command": "npm run authority:policy:validate", "status": "REQUIRED_NOT_RUN_BY_GENERATOR"},
+        {"name": "authority inventory generation", "command": "npm run authority:inventory", "status": "PENDING_EXTERNAL_COMMAND"},
+        {"name": "authority policy validation", "command": "npm run authority:policy:validate", "status": "PENDING_EXTERNAL_COMMAND"},
     ]
     release_dirty_paths = release_relevant_dirty_paths()
     release_identity = {
