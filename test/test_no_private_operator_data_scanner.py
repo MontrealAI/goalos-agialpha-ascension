@@ -27,6 +27,13 @@ def credential():
     return "".join(["abcd", "EFGH", "1234"] * 3)
 
 
+def mnemonic_phrase():
+    return " ".join([
+        "alpha", "bravo", "charlie", "delta", "echo", "foxtrot",
+        "golf", "hotel", "india", "juliet", "kilo", "lima",
+    ])
+
+
 def test_python_secret_sources_and_prompts_are_not_literals(tmp_path):
     p = write(tmp_path, '''
         import getpass, os
@@ -46,7 +53,7 @@ def test_python_literal_private_keys_and_mnemonics_fail(tmp_path):
     p = write(tmp_path, f'''
         private_key = "{secret_one}"
         other_private_key = "{secret_two}"
-        mnemonic = "alpha bravo charlie delta echo foxtrot golf hotel india juliet kilo lima"
+        mnemonic = "{mnemonic_phrase()}"
     ''')
     r = run_scan(p)
     assert r.returncode != 0
