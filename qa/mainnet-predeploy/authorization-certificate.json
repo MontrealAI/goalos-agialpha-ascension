@@ -16,8 +16,8 @@
     "Pinned Mainnet fork rehearsal with deployed topology and scenario PASS is missing.",
     "Complete immutable deployment plan is missing or incomplete."
   ],
-  "certificateHash": "0x934e3e270ab66bd8652c3479976fd38dacb662ae11cf0dbec52267543fc625eb",
-  "deploymentPlanHash": "0xa9d5a28785edcebcd57e851ce19a93ff3693ebee8f234c42a0b2769c341e03ca",
+  "certificateHash": "0xbcc4c5da433c149136ff81382f5abe1e724edbfa3bfe991e8bb15c8c76368f2c",
+  "deploymentPlanHash": "0x552fa10f0a906c6f95ea0b1360f97c4bc2774e262b99b22b8cc41587fba35ac0",
   "deploymentScriptsHash": "0xb7b6474359af65c9b9aebd8c3fc1566e6f57084cb60900ac8930181acafec449",
   "evidence": [
     {
@@ -26,19 +26,19 @@
     },
     {
       "path": "qa/mainnet-predeploy/deployment-plan.public.json",
-      "sha256": "0xfdf317c9b38f499dff695e7814d6ae248ec1540df6c0b8bd1f369a2728a1cf35"
+      "sha256": "0x786812751656f9518f3140f4370565bd531be5bfc673c29ac69b0808689601d2"
     }
   ],
-  "finalGitSha": "3f8017e04cda9243f2eb5c14149f26ea8a2969ea",
+  "finalGitSha": "928f5f0427cc1080d4957aa8dd1590216f0b77cd",
   "forkBlockHash": null,
   "forkBlockNumber": null,
   "forkEvidenceRoot": "0xcf529048c3bcb087980d66c5bd6e3c082a0c3d262481d1f87c2ab62391d48511",
   "gateReportHashes": {
-    "G1": "0x9085000b6d146c71637e10d3bd349832ac0d3d1cb981b9685f020a5bb82ec689",
-    "G2": "0x8e615332463cec6428d3edddd7d4e0f1dc95467bd7f7f1cc2c2d7be9bb1159c5",
-    "G3": "0xae9ddc89eafe3f8bdbdd90d074f51a353fe3b873caf03ea366be6b5eb00c6bc1",
-    "G4": "0x8445b320e47da9df5ca2fed01c69ddd77287da9bdfda3c2380f3692278c9889d",
-    "G5": "0x2ad71372c13cc2911658fedbb0974ddafabdc81d09999265b1a4669ff049f2f0"
+    "G1": "0xd737e722b411ec951f56e2edd63ac7473dd1aa30f1ceb25f90aebc58b42be795",
+    "G2": "0x4196ed6724c49dc46e0045964d3e438d198060b95c17d12af0a9cf73df794a65",
+    "G3": "0x795712303630ea00c756767e7d0d93ae9bbdbd8fd719332d1116412846f5461a",
+    "G4": "0x7c9458049c24a9ae1854bd0719f98084d7c6e97fe832d1fe424d8f656f181919",
+    "G5": "0x0d2e1472b1fd68d2beb01dd1ae8ff312aaf0228e1113e4fb3fd3e953ad268b5c"
   },
   "gates": {
     "Gate 1": "NOT_RUN",
@@ -50,7 +50,7 @@
   "hardhatConfigurationHash": "0x19b9128b253d54264a9c5e8a44096cf17012efa4e98817929e30f4a613d88d2f",
   "lockfileHash": "0x9739ecf251762c3828813424f8e7d0d3b291611125cf5eafb31fc32479a3f514",
   "mainnetBroadcastOccurred": false,
-  "releaseId": "3f8017e04cda9243f2eb5c14149f26ea8a2969ea",
+  "releaseId": "928f5f0427cc1080d4957aa8dd1590216f0b77cd",
   "schemaVersion": "1.0",
   "sourceTreeHash": "0x447f224ae7d222e6f7fd384799a1430167addada934ef2fc39d11ff930a6717b",
   "stage": "A_PREDEPLOYMENT_AUTHORIZATION",

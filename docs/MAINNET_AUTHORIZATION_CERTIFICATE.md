@@ -14,4 +14,4 @@ This certificate does not authorize Ethereum Mainnet deployment while readiness 
 
 ## Next action
 
-Resolve Stage-A blockers; do not broadcast Mainnet.
+B. Blocked, with exact blockers.
