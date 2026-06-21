@@ -40,6 +40,19 @@ def protected_report():
  idx=r.get('indexPath')
  if idx and not pathlib.Path(idx).exists(): return {}
  return r
+def protected_entry_data(entry_type):
+ pr=protected_report()
+ if not pr: return None, None
+ idx_path=pr.get('indexPath')
+ try: idx=json.loads(pathlib.Path(idx_path).read_text()) if idx_path else {}
+ except Exception: return None, None
+ for e in idx.get('entries') or []:
+  if e.get('type')==entry_type:
+   p=pathlib.Path(e.get('path',''))
+   if not p.is_absolute(): p=ROOT/p
+   if p.exists() and sha(p)==e.get('sha256'):
+    return p, read(p)
+ return None, None
 def release_identity():
  return {'releaseId':git(['rev-parse','HEAD']),'finalGitSha':git(['rev-parse','HEAD']),'sourceTreeHash':sha('contracts'),'lockfileHash':sha('package-lock.json'),'hardhatConfigurationHash':sha('hardhat.config.ts'),'deploymentScriptsHash':sha('scripts/deployment') or sha('scripts')}
 
@@ -75,9 +88,9 @@ def fork_report():
  existing=read(PRE/'fork-rehearsal.json')
  if existing_fork_valid_for_reuse(existing): return existing
  url=os.environ.get('MAINNET_FORK_RPC_URL')
- secondary_url=os.environ.get('MAINNET_FORK_RPC_URL_SECONDARY')
+ secondary_url=os.environ.get('SECONDARY_MAINNET_RPC_URL') or os.environ.get('MAINNET_FORK_RPC_URL_SECONDARY')
  if not url or not secondary_url:
-  missing=[name for name,value in [('MAINNET_FORK_RPC_URL',url),('MAINNET_FORK_RPC_URL_SECONDARY',secondary_url)] if not value]
+  missing=[name for name,value in [('MAINNET_FORK_RPC_URL',url),('SECONDARY_MAINNET_RPC_URL',secondary_url)] if not value]
   r={'schemaVersion':'1.0','executionMode':'NOT_RUN','status':'NOT_RUN','failureReason':', '.join(missing)+' required; public RPC reads and fallback block/hash constants are not evidence.','mainnetBroadcastOccurred':False}
   write(PRE/'fork-rehearsal.json',r); return r
  chain=int(rpc_call(url,'eth_chainId'),16)
@@ -131,9 +144,16 @@ def generate_gate_report(gate):
  subdir,name,reqs=GATE_SPECS[gate]; base=GATES/subdir; rid=release_identity(); existing=read(base/'report.json')
  pr=protected_report()
  if pr and {'G1':'G1_AUTHORITY','G2':'G2_OVERRIDES','G3':'G3_ACCOUNTING','G4':'G4_LIFECYCLE','G5':'G5_ASSURANCE'}[gate] in set(pr.get('entryTypes',[])):
-  ev={'path':'qa/mainnet-predeploy/evidence/protected-evidence-validation.json','sha256':sha('qa/mainnet-predeploy/evidence/protected-evidence-validation.json')}
-  requirements=[{'id':r,'mandatory':True,'status':OK_STATUS,'command':'npm run mainnet:predeploy:protected-evidence:validate','evidence':[ev],'observed':{'protectedEvidenceValidated':True},'failureReason':None} for r in reqs]
-  report={'schemaVersion':'1.0','stage':'A_PREDEPLOYMENT_AUTHORIZATION','gate':gate,'name':name,'releaseIdentity':rid,'requirements':requirements,'status':OK_STATUS}
+  entry_type={'G1':'G1_AUTHORITY','G2':'G2_OVERRIDES','G3':'G3_ACCOUNTING','G4':'G4_LIFECYCLE','G5':'G5_ASSURANCE'}[gate]
+  entry_path, data=protected_entry_data(entry_type)
+  raw_reqs={r.get('id'):r for r in (data or {}).get('requirements',[]) + (data or {}).get('requirementResults',[])}
+  requirements=[]
+  for r in reqs:
+   raw=raw_reqs.get(r) or {}
+   ok=raw.get('status')=='PASS' and raw.get('evidence') and raw.get('evidenceHashes') and raw.get('rawEvidenceCommitments') and raw.get('generatedBy') not in {None,'','fixture-tool','manual','unknown'}
+   requirements.append({'id':r,'mandatory':True,'status':OK_STATUS if ok else 'BLOCKED','command':raw.get('generatedBy') or f'npm run mainnet:predeploy:{gate.lower()}','evidence':[{'path':'qa/mainnet-predeploy/evidence/protected-evidence-commitments.json','sha256':sha('qa/mainnet-predeploy/evidence/protected-evidence-commitments.json'),'protectedRequirementHash':hobj({'entryType':entry_type,'requirement':r,'evidenceHashes':raw.get('evidenceHashes')})}] if ok else [],'observed':{'protectedRequirementEvidenceValidated':bool(ok),'rawEvidenceHash':sha(entry_path) if entry_path else None},'failureReason':None if ok else 'requirement-specific protected evidence is missing or invalid'})
+  report={'schemaVersion':'1.0','stage':'A_PREDEPLOYMENT_AUTHORIZATION','gate':gate,'name':name,'releaseIdentity':rid,'requirements':requirements,'status':'NOT_RUN'}
+  report['status']=evaluate_report(report)
   write(base/'report.json',report); write(ROOT/'qa/mainnet-readiness'/f'{subdir}-{name.lower()}.json',report); return report
  requirements=[]
  for rid_req in reqs:
@@ -167,7 +187,23 @@ def semantic_lint_stage_a(cert):
  return errs
 
 def plan_complete(p):
- return p.get('schemaVersion')=='1.0' and p.get('stage')=='A_PREDEPLOYMENT_AUTHORIZATION' and p.get('releaseIdentity')==release_identity() and p.get('chainId')==1 and p.get('canonicalAgialpha')==AGI and p.get('status')=='PASS' and isinstance(p.get('orderedTransactions'),list) and len(p.get('orderedTransactions'))>0 and p.get('startingNonce') is not None and p.get('planHash')
+ txs=p.get('orderedTransactions')
+ if not (p.get('schemaVersion')=='1.0' and p.get('stage')=='A_PREDEPLOYMENT_AUTHORIZATION' and p.get('releaseIdentity')==release_identity() and p.get('chainId')==1 and p.get('canonicalAgialpha')==AGI and p.get('status')=='PASS' and isinstance(txs,list) and len(txs)>0 and p.get('startingNonce') is not None and p.get('planHash')): return False
+ for tx in txs:
+  if tx.get('commitment')=='protected' and 'count' in tx: return False
+  for k in ['expectedNonce','expectedCreateAddress','fullyQualifiedName','artifactHash','constructorCommitment','initcodeHash','expectedRuntimeBytecodeHash','transactionValue','gasLimit','maxFeePerGas','maxPriorityFeePerGas','maximumTransactionCost']:
+   if tx.get(k) in [None,'',[],{}]: return False
+ return True
+
+def validate_plan_public():
+ p=read(PRE/'deployment-plan.public.json')
+ errors=[]
+ if not plan_complete(p): errors.append('Deployment plan is missing, incomplete, aggregate-only, or release-mismatched.')
+ if str(p.get('walletA','')).lower()==str(p.get('walletB','')).lower(): errors.append('Wallet A and Wallet B must differ.')
+ if str(p.get('walletA','')).lower()!=WA.lower() or str(p.get('walletB','')).lower()!=WB.lower(): errors.append('Deployment plan wallet mismatch.')
+ if str(p.get('canonicalAgialpha','')).lower()!=AGI.lower(): errors.append('Deployment plan canonical AGIALPHA mismatch.')
+ print(json.dumps({'status':'PASSED' if not errors else 'FAILED','errors':errors,'planHash':p.get('planHash')},indent=2))
+ return not errors
 
 def plan_public():
  pr=protected_report()
@@ -288,6 +324,7 @@ def main():
  if cmd=='final-check': sys.exit(0 if final_check() else 1)
  if cmd=='resolve-and-authorize': sys.exit(0 if resolve_and_authorize() else 2)
  if cmd=='plan': print(json.dumps(plan_public(),indent=2)); return
+ if cmd=='plan-validate': sys.exit(0 if validate_plan_public() else 2)
  if cmd=='prepare-local': sys.exit(0 if validate_predeploy(True) else 2)
  if cmd=='live-local-gated':
   if os.environ.get('CI'): print('REFUSED: Mainnet broadcast path is disabled in CI.'); sys.exit(2)

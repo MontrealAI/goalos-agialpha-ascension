@@ -100,6 +100,7 @@
     "deploy:mainnet:preflight": "ts-node scripts/deployment/goalos-deploy-command-center.ts mainnet:preflight --network ethereumMainnet --no-broadcast && npm run preflight:ethereum-mainnet",
     "deploy:mainnet:fork-rehearsal": "npm run mainnet:fork-simulate",
     "deploy:mainnet:prepare-local": "python scripts/mainnet_three_stage.py prepare-local",
+    "deploy:mainnet:plan:validate": "python scripts/mainnet_three_stage.py plan-validate",
     "deploy:mainnet:live-local-gated": "python scripts/mainnet_three_stage.py live-local-gated",
     "deploy:mainnet:verify": "python scripts/mainnet_three_stage.py verify",
     "deploy:mainnet:evidence": "ts-node scripts/deployment/goalos-deploy-command-center.ts mainnet:evidence --network ethereumMainnet",

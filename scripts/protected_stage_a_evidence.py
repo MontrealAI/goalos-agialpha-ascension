@@ -5,6 +5,13 @@ ROOT=pathlib.Path(__file__).resolve().parents[1]
 QA=ROOT/'qa/mainnet-predeploy/evidence'
 AGI='0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA'; WA='0x6c8B8897Fb6b08B4070387233B89b3E9A94eD00E'; WB='0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99'
 REQ_TYPES={'G1_AUTHORITY','G2_OVERRIDES','G3_ACCOUNTING','G4_LIFECYCLE','G5_ASSURANCE','MAINNET_FORK','DEPLOYMENT_PLAN','SEPOLIA'}
+GATE_REQUIREMENTS={
+ 'G1_AUTHORITY':{'fork_topology_deployed','wallet_b_final_authority','wallet_a_zero_permanent_authority','negative_authority_paths_revert'},
+ 'G2_OVERRIDES':{'typed_owner_resolvers_exercised','replay_duplicate_rejected','financial_override_events_reconciled','arbitrary_call_backdoors_absent'},
+ 'G3_ACCOUNTING':{'canonical_agialpha_used_on_fork','asset_holder_reconciliation','malicious_token_suite_executed','cap_breaches_revert'},
+ 'G4_LIFECYCLE':{'selector_classification_complete','phase_transitions_exercised','shutdown_blocks_unresolved_liabilities','terminal_shutdown_after_discharge'},
+ 'G5_ASSURANCE':{'invariants_executed_1000000_actions_32_seeds','secondary_stateful_engine_pass','differential_traces_match','critical_mutants_killed','independent_bytecode_builds_match','security_docket_complete'},
+}
 FALLBACK_DIRS=[ROOT/'.private/mainnet-predeploy',ROOT/'.private/mainnet-deployment',ROOT/'.private/mainnet-readiness',ROOT/'.private/evidence/mainnet-predeploy']
 PATH_VARS={'GOALOS_RELEASE_IDENTITY_EVIDENCE':'RELEASE_IDENTITY','GOALOS_G1_EVIDENCE_PATH':'G1_AUTHORITY','GOALOS_G2_EVIDENCE_PATH':'G2_OVERRIDES','GOALOS_G3_EVIDENCE_PATH':'G3_ACCOUNTING','GOALOS_G4_EVIDENCE_PATH':'G4_LIFECYCLE','GOALOS_G5_EVIDENCE_PATH':'G5_ASSURANCE','GOALOS_MAINNET_FORK_EVIDENCE_PATH':'MAINNET_FORK','GOALOS_MAINNET_FORK_RAW_RECEIPTS_PATH':'MAINNET_FORK_LOCAL_RECEIPT','GOALOS_MAINNET_FORK_AUTHORITY_READBACK_PATH':'G1_AUTHORITY','GOALOS_MAINNET_FORK_OVERRIDE_EVIDENCE_PATH':'G2_OVERRIDES','GOALOS_MAINNET_FORK_ACCOUNTING_EVIDENCE_PATH':'G3_ACCOUNTING','GOALOS_MAINNET_FORK_LIFECYCLE_EVIDENCE_PATH':'G4_LIFECYCLE','GOALOS_DEPLOYMENT_PLAN_PRIVATE_PATH':'DEPLOYMENT_PLAN','GOALOS_DEPLOYMENT_PLAN_PUBLIC_PATH':'DEPLOYMENT_PLAN','GOALOS_DEPLOYMENT_PLAN_APPROVAL_PATH':'DEPLOYMENT_PLAN_APPROVAL','GOALOS_AUTHORITY_POLICY_PATH':'AUTHORITY_POLICY','GOALOS_OWNER_PROOF_PATH':'OWNER_PROOF','GOALOS_SEPOLIA_EVIDENCE_INDEX':'SEPOLIA','GOALOS_INVARIANT_EVIDENCE_PATH':'G5_ASSURANCE','GOALOS_MUTATION_EVIDENCE_PATH':'G5_ASSURANCE','GOALOS_REPRODUCIBLE_BUILD_EVIDENCE_PATH':'G5_ASSURANCE','GOALOS_SECURITY_DOCKET_PATH':'G5_ASSURANCE'}
 
@@ -108,12 +115,28 @@ def validate_entry(entry, idx):
  rid=data.get('releaseId') or data.get('gitCommit') or entry.get('releaseId')
  if rid not in {idx.get('releaseId'), idx.get('gitCommit'), current_release_id()}: errs.append(f'{typ}: releaseId mismatch')
  if typ.startswith('G'):
+  if data.get('generatedBy') in {None,'','fixture-tool','manual','unknown'}: errs.append(f'{typ}: generatedBy is not an allowlisted producer')
+  if not isinstance(data.get('toolVersions'),dict) or not data.get('toolVersions'): errs.append(f'{typ}: missing toolVersions')
+  if not data.get('executedAt') and not data.get('finishedAt'): errs.append(f'{typ}: missing execution timestamp')
+  if data.get('releaseId') in {None,'','UNKNOWN'}: errs.append(f'{typ}: invalid releaseId')
   if data.get('status')!='PASS': errs.append(f'{typ}: status is not PASS')
   reqs=data.get('requirements') or data.get('requirementResults') or []
   if not reqs: errs.append(f'{typ}: missing requirements')
+  expected=GATE_REQUIREMENTS.get(typ,set())
+  seen=set()
   for r in reqs:
-   if r.get('status')!='PASS': errs.append(f'{typ}: requirement {r.get("id")} not PASS')
-   if not r.get('evidence') and not r.get('evidenceHashes') and not r.get('rawEvidenceCommitments'): errs.append(f'{typ}: requirement {r.get("id")} lacks evidence commitments')
+   rid=r.get('id')
+   seen.add(rid)
+   if rid not in expected: errs.append(f'{typ}: unknown requirement {rid}')
+   if r.get('releaseId') not in {data.get('releaseId'), idx.get('releaseId'), idx.get('gitCommit')}: errs.append(f'{typ}: requirement {rid} releaseId mismatch')
+   if r.get('status')!='PASS': errs.append(f'{typ}: requirement {rid} not PASS')
+   if not r.get('evidence') or not r.get('evidenceHashes') or not r.get('rawEvidenceCommitments'): errs.append(f'{typ}: requirement {rid} lacks independent evidence, hashes, or raw commitments')
+   if r.get('generatedBy') in {None,'','fixture-tool','manual','unknown'}: errs.append(f'{typ}: requirement {rid} missing real producer')
+   if not isinstance(r.get('toolVersions'),dict) or not r.get('toolVersions'): errs.append(f'{typ}: requirement {rid} missing toolVersions')
+   if not r.get('executedAt') and not r.get('finishedAt'): errs.append(f'{typ}: requirement {rid} missing execution timestamp')
+   if r.get('failures') not in ([],None) or r.get('blockers') not in ([],None): errs.append(f'{typ}: requirement {rid} has failures/blockers')
+  missing=expected-seen
+  for rid in sorted(missing): errs.append(f'{typ}: missing requirement {rid}')
   obs=data.get('observed',{})
   if typ=='G1_AUTHORITY' and (obs.get('walletAZeroAuthority') is not True or obs.get('walletBPermanentAuthority') is not True): errs.append(f'{typ}: authority predicates missing')
   if typ=='G5_ASSURANCE':

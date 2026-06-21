@@ -1,0 +1,25 @@
+{
+  "artifactBytecodeRoot": null,
+  "branch": "work",
+  "currentDefectsConfirmed": [
+    "protected evidence roots/env were absent during doctor execution",
+    "prior resolver could launder aggregate protected gate packages into per-requirement PASS",
+    "deployment-plan validator command was absent",
+    "RPC normalization did not support SECONDARY_MAINNET_RPC_URL"
+  ],
+  "evmTarget": "hardhat default",
+  "generatedAt": "2026-06-21T16:04:38.025575+00:00",
+  "gitSha": "f5a9d234b8c215d50e3169eb3cdf22db531ee22d",
+  "hardhatVersion": "2.28.6",
+  "nodeVersion": "v20.20.2",
+  "npmVersion": "11.4.2",
+  "openzeppelinVersion": "4.9.6",
+  "optimizerRuns": 200,
+  "packageLockHash": "0x9739ecf251762c3828813424f8e7d0d3b291611125cf5eafb31fc32479a3f514",
+  "packageVersion": "4.4.0",
+  "schemaVersion": "1.0",
+  "solidityCompiler": "0.8.28",
+  "sourceTreeDigest": "0x447f224ae7d222e6f7fd384799a1430167addada934ef2fc39d11ff930a6717b",
+  "trackedTreeClean": false,
+  "viaIR": false
+}

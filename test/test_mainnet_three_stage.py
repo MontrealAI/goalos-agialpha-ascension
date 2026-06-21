@@ -124,7 +124,8 @@ def test_existing_fork_and_complete_plan_are_preserved():
     oldf=forkp.read_text() if forkp.exists() else None; oldp=planp.read_text() if planp.exists() else None
     rid=m3.release_identity()
     fork={'schemaVersion':'1.0','executionMode':'MAINNET_FORK','upstreamChainId':1,'localChainId':31337,'forkBlockNumber':1,'forkBlockHash':'0xabc','canonicalAgialphaCodeHash':'0xdef','releaseIdentity':rid,'mainnetBroadcastOccurred':False,'status':'PASS'}
-    plan={'schemaVersion':'1.0','stage':'A_PREDEPLOYMENT_AUTHORIZATION','releaseIdentity':rid,'chainId':1,'canonicalAgialpha':m3.AGI,'status':'PASS','orderedTransactions':[{'nonce':0}],'startingNonce':0,'planHash':'0x123'}
+    tx={'expectedNonce':0,'expectedCreateAddress':'0x0000000000000000000000000000000000000001','fullyQualifiedName':'contracts/registry/GoalOSDeploymentDirectory.sol:GoalOSDeploymentDirectory','artifactHash':'0xartifact','constructorCommitment':'0xconstructor','initcodeHash':'0xinit','expectedRuntimeBytecodeHash':'0xruntime','transactionValue':'0','gasLimit':'1','maxFeePerGas':'1','maxPriorityFeePerGas':'1','maximumTransactionCost':'1'}
+    plan={'schemaVersion':'1.0','stage':'A_PREDEPLOYMENT_AUTHORIZATION','releaseIdentity':rid,'chainId':1,'canonicalAgialpha':m3.AGI,'walletA':m3.WA,'walletB':m3.WB,'status':'PASS','orderedTransactions':[tx],'startingNonce':0,'planHash':'0x123'}
     forkp.parent.mkdir(parents=True, exist_ok=True); forkp.write_text(json.dumps(fork))
     planp.write_text(json.dumps(plan))
     try:
@@ -135,6 +136,11 @@ def test_existing_fork_and_complete_plan_are_preserved():
         else: forkp.write_text(oldf)
         if oldp is None: planp.unlink(missing_ok=True)
         else: planp.write_text(oldp)
+
+def test_aggregate_only_deployment_plan_is_rejected():
+    rid=m3.release_identity()
+    aggregate={'schemaVersion':'1.0','stage':'A_PREDEPLOYMENT_AUTHORIZATION','releaseIdentity':rid,'chainId':1,'canonicalAgialpha':m3.AGI,'walletA':m3.WA,'walletB':m3.WB,'status':'PASS','orderedTransactions':[{'commitment':'protected','count':63}],'startingNonce':0,'planHash':'0xaggregate'}
+    assert m3.plan_complete(aggregate) is False
 
 def test_live_local_gated_invokes_canonical_deployer_when_authorized(monkeypatch):
     calls=[]
@@ -178,14 +184,14 @@ def _write_valid_protected_package(root):
     (root/'protected-evidence-index.json').write_text(json.dumps(idx,sort_keys=True))
     return root/'protected-evidence-index.json'
 
-def test_valid_protected_package_can_authorize_stage_a(tmp_path, monkeypatch):
+def test_shallow_self_declared_protected_package_is_rejected(tmp_path, monkeypatch):
     idx=_write_valid_protected_package(tmp_path/'protected')
     monkeypatch.setenv('GOALOS_PROTECTED_EVIDENCE_INDEX', str(idx))
-    assert subprocess.run(['python','scripts/protected_stage_a_evidence.py','validate'],cwd=ROOT,stdout=subprocess.PIPE,text=True).returncode==0
-    assert subprocess.run(['python','scripts/protected_stage_a_evidence.py','import'],cwd=ROOT,stdout=subprocess.PIPE,text=True).returncode==0
+    result=subprocess.run(['python','scripts/protected_stage_a_evidence.py','validate'],cwd=ROOT,stdout=subprocess.PIPE,text=True)
+    assert result.returncode!=0
+    assert 'fixture-tool' in result.stdout or 'missing requirement' in result.stdout
     c=m3.predeploy_certificate()
-    assert c['status']=='AUTHORIZED'
-    assert all(v=='PASS' for v in c['gates'].values())
+    assert c['status']!='AUTHORIZED'
     assert c['MAINNET_DEPLOYED']=='NO'
 
 def test_missing_protected_evidence_doctor_fails_when_no_inputs(monkeypatch):
@@ -194,7 +200,7 @@ def test_missing_protected_evidence_doctor_fails_when_no_inputs(monkeypatch):
             monkeypatch.delenv(k, raising=False)
     assert subprocess.run(['python','scripts/protected_stage_a_evidence.py','doctor'],cwd=ROOT,stdout=subprocess.PIPE,text=True).returncode in {2}
 
-def test_valid_untracked_protected_evidence_authorizes_stage_a(tmp_path, monkeypatch):
+def test_untracked_shallow_protected_evidence_does_not_authorize_stage_a(tmp_path, monkeypatch):
     private_root=ROOT/'.private'/'mainnet-predeploy'/'pytest-untracked-stage-a'
     if private_root.exists():
         import shutil; shutil.rmtree(private_root)
@@ -202,13 +208,10 @@ def test_valid_untracked_protected_evidence_authorizes_stage_a(tmp_path, monkeyp
     try:
         monkeypatch.setenv('GOALOS_PROTECTED_EVIDENCE_INDEX', str(idx))
         result=subprocess.run(['python','scripts/mainnet_three_stage.py','resolve-and-authorize'],cwd=ROOT,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,text=True)
-        assert result.returncode==0, result.stdout
-        assert 'AUTHORIZED_TO_DEPLOY_ON_ETHEREUM_MAINNET' in result.stdout
-        assert 'committed evidence state remains blocked by missing protected Gate 1–5' not in result.stdout
-        assert (ROOT/'qa/mainnet-predeploy/evidence/protected-evidence-commitments.json').exists()
+        assert result.returncode!=0
+        assert 'AUTHORIZED_TO_DEPLOY_ON_ETHEREUM_MAINNET' not in result.stdout
         cert=json.loads((ROOT/'qa/mainnet-predeploy/authorization-certificate.json').read_text())
-        assert cert['status']=='AUTHORIZED'
-        assert all(v=='PASS' for v in cert['gates'].values())
+        assert cert['status']!='AUTHORIZED'
         tracked=subprocess.run(['git','ls-files','--error-unmatch',str(idx.relative_to(ROOT))],cwd=ROOT,stdout=subprocess.PIPE,stderr=subprocess.PIPE,text=True)
         assert tracked.returncode!=0
     finally:
