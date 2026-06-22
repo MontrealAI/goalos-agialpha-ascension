@@ -16,6 +16,8 @@ RELEASE_TAG = "v4.4.0-mainnet-2026-06-21"
 CANONICAL_AGIALPHA = "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA"
 HOME_START = "<!-- GOALOS_MAINNET_V87_START -->"
 HOME_END = "<!-- GOALOS_MAINNET_V87_END -->"
+HOME_STYLE_START = "<!-- GOALOS_MAINNET_V87_STYLE_START -->"
+HOME_STYLE_END = "<!-- GOALOS_MAINNET_V87_STYLE_END -->"
 ADDRESS_RE = re.compile(r"^0x[0-9a-fA-F]{40}$")
 
 GROUPS = [
@@ -237,27 +239,34 @@ def contract_link(entry: dict[str, Any]) -> str:
     if "#" not in url:
         url += "#code"
     classification = html.escape(entry["classification"])
+    badge = "External dependency" if classification == "external" else "Verified contract"
     return (
-        f"<li><a data-mainnet-contract='true' data-classification='{classification}' "
+        f"<li class='mn-contract-item'>"
+        f"<a data-mainnet-contract='true' data-classification='{classification}' "
         f"data-address='{address}' href='{url}' target='_blank' rel='noopener noreferrer'>"
-        f"<strong>{name}</strong><span>{address}</span></a></li>"
+        f"<span class='mn-contract-copy'><strong>{name}</strong><code>{address}</code></span>"
+        f"<span class='mn-contract-badge'>{badge}<span aria-hidden='true'>↗</span></span>"
+        f"</a></li>"
     )
-
 
 def make_page(index_html: str, by_name: dict[str, dict[str, Any]], manifest: dict[str, Any], operator_verified: int, independent: str) -> str:
     header = extract_header(index_html)
     group_html: list[str] = []
-    for title, names in GROUPS:
+    for number, (title, names) in enumerate(GROUPS, start=1):
         items = "".join(contract_link(by_name[name]) for name in names)
         group_html.append(
-            "<details class='mainnet-group'>"
-            f"<summary><span>{html.escape(title)}</span><b>{len(names)} contracts</b></summary>"
-            f"<ul class='mainnet-contracts'>{items}</ul>"
+            "<details class='mn-group'>"
+            f"<summary><span class='mn-group-index'>{number:02d}</span>"
+            f"<span class='mn-group-title'>{html.escape(title)}</span>"
+            f"<span class='mn-group-count'>{len(names)} contracts</span>"
+            "<span class='mn-group-chevron' aria-hidden='true'></span></summary>"
+            f"<ul class='mn-contract-grid'>{items}</ul>"
             "</details>"
         )
 
     agialpha = by_name["AGIALPHA"]
-    agialpha_link = contract_link(agialpha)
+    agialpha_address = html.escape(agialpha["address"])
+    agialpha_url = html.escape(str(agialpha.get("etherscanUrl") or f"https://etherscan.io/address/{agialpha['address']}"))
     wallet_b = html.escape(manifest["walletB"])
     wallet_b_url = f"https://etherscan.io/address/{wallet_b}"
     source_identity = html.escape(str(manifest.get("sourceIdentityClassification", "SOURCE_IDENTITY_NOT_PROVEN")))
@@ -271,138 +280,164 @@ def make_page(index_html: str, by_name: dict[str, dict[str, Any]], manifest: dic
 <meta charset='utf-8'>
 <meta name='viewport' content='width=device-width,initial-scale=1'>
 <title>Ethereum Mainnet Deployment Record — GoalOS AGIALPHA Ascension</title>
-<meta name='description' content='Public Ethereum Mainnet deployment record for GoalOS AGIALPHA Ascension: 48 GoalOS contracts, Etherscan verification evidence, configuration status, and release links.'>
+<meta name='description' content='Institutional Ethereum Mainnet deployment record for GoalOS AGIALPHA Ascension: 48 GoalOS contracts, Etherscan verification evidence, governance status, and explicit activation boundaries.'>
 <meta property='og:title' content='GoalOS AGIALPHA Ascension — Ethereum Mainnet Deployment Record'>
-<meta property='og:description' content='48 GoalOS contracts, public Etherscan records, configuration evidence, and strict activation boundaries.'>
-<meta name='theme-color' content='#06152a'>
-<style id='goalos-v86-critical'>html{{scroll-behavior:smooth}}body{{margin:0;overflow-x:clip}}img,svg,canvas,video,iframe{{max-width:100%;height:auto}}main{{min-height:70vh}}@media(max-width:980px){{.wrap,.container{{width:min(100% - 24px,760px)!important}}}}</style>
-<link rel='stylesheet' href='assets/v75-apex.css'>
+<meta property='og:description' content='48 GoalOS contracts, public Etherscan records, configured governance, and explicit production boundaries.'>
+<meta name='theme-color' content='#07111f'>
+<meta name='color-scheme' content='light'>
 <link rel='stylesheet' href='assets/goalos-v86-preserve.css'>
-<style>
-.mainnet-hero{{padding:88px 18px 58px;background:radial-gradient(circle at 15% 10%,rgba(255,220,115,.24),transparent 30rem),radial-gradient(circle at 88% 4%,rgba(88,230,255,.22),transparent 34rem),linear-gradient(135deg,#030712,#071b38 60%,#161036);color:#fff;position:relative;overflow:hidden}}
-.mainnet-hero:after{{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.08) 1px,transparent 1px);background-size:36px 36px;mask-image:linear-gradient(180deg,#000,transparent 90%);pointer-events:none}}
-.mainnet-hero .asi-wrap{{position:relative;z-index:1}}
-.mainnet-hero h1{{font-size:clamp(3rem,8vw,7rem);line-height:.9;letter-spacing:-.075em;margin:.7rem 0 1rem}}
-.mainnet-hero .lead{{font-size:clamp(1.08rem,2vw,1.48rem);max-width:900px;color:#dce8f7;font-weight:700}}
-.mainnet-status-grid{{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem;margin-top:1.6rem}}
-.mainnet-status{{border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.07);border-radius:22px;padding:1rem;backdrop-filter:blur(12px)}}
-.mainnet-status strong{{display:block;color:#ffe39a;font-size:1.55rem;line-height:1.1}}.mainnet-status span{{font-size:.78rem;color:#dce8f7;font-weight:850}}
-.mainnet-panel{{background:rgba(255,255,255,.76);border:1px solid rgba(6,17,31,.13);border-radius:30px;padding:1.3rem;box-shadow:0 30px 90px rgba(6,17,31,.13)}}
-.mainnet-boundary{{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}}
-.mainnet-boundary .ok,.mainnet-boundary .hold{{border-radius:24px;padding:1rem}}
-.mainnet-boundary .ok{{border:1px solid rgba(121,240,164,.35);background:rgba(121,240,164,.1)}}
-.mainnet-boundary .hold{{border:1px solid rgba(255,143,163,.34);background:rgba(255,143,163,.09)}}
-.mainnet-boundary b{{display:block;font-size:1.2rem}}.mainnet-boundary span{{color:#52637e;font-size:.86rem}}
-.mainnet-group{{border:1px solid rgba(6,17,31,.13);background:#fff;border-radius:22px;margin:.8rem 0;overflow:hidden}}
-.mainnet-group summary{{cursor:pointer;display:flex;justify-content:space-between;gap:1rem;padding:1rem 1.1rem;font-weight:900;color:#102141;list-style:none}}
-.mainnet-group summary::-webkit-details-marker{{display:none}}.mainnet-group summary b{{color:#936914;font-size:.82rem}}
-.mainnet-contracts{{list-style:none;margin:0;padding:0 1rem 1rem;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.6rem}}
-.mainnet-contracts a{{display:block;text-decoration:none;border:1px solid rgba(6,17,31,.1);border-radius:16px;padding:.72rem;background:#fbfdff;overflow:hidden}}
-.mainnet-contracts a:hover{{border-color:#7cb7ff;transform:translateY(-1px)}}.mainnet-contracts strong{{display:block;color:#102141}}.mainnet-contracts span{{display:block;color:#596a84;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.73rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}}
-.mainnet-meta{{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}}.mainnet-meta code{{overflow-wrap:anywhere}}
-@media(max-width:900px){{.mainnet-status-grid,.mainnet-boundary,.mainnet-meta,.mainnet-contracts{{grid-template-columns:1fr}}.mainnet-hero{{padding-top:62px}}}}
+<style id='goalos-v86-critical'>html{{scroll-behavior:smooth}}body{{margin:0;overflow-x:clip}}img,svg,canvas,video,iframe{{max-width:100%;height:auto}}main{{min-height:70vh}}</style>
+<style id='goalos-mainnet-v88-design'>
+:root{{
+  --mn-ink:#07111f;--mn-muted:#5c697c;--mn-paper:#f7f4ec;--mn-surface:#fff;
+  --mn-navy:#07111f;--mn-navy-2:#0d213d;--mn-gold:#f0bd4f;--mn-gold-soft:#fff2bd;
+  --mn-cyan:#77e7f4;--mn-green:#62d89a;--mn-rose:#ef7f97;--mn-line:rgba(7,17,31,.13);
+  --mn-shadow:0 28px 90px rgba(7,17,31,.13);--mn-radius:28px;
+}}
+*{{box-sizing:border-box}}html{{background:var(--mn-paper)}}
+body.mn-page{{margin:0;background:radial-gradient(circle at 8% 0%,rgba(240,189,79,.16),transparent 28rem),radial-gradient(circle at 100% 10%,rgba(119,231,244,.13),transparent 34rem),var(--mn-paper);color:var(--mn-ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}}
+body.mn-page a{{color:inherit}}body.mn-page .skip{{position:absolute;left:-9999px;top:auto}}
+body.mn-page .skip:focus{{left:18px;top:18px;z-index:9999;background:#fff;color:var(--mn-ink);padding:11px 16px;border-radius:999px;box-shadow:var(--mn-shadow)}}
+body.mn-page .top{{position:sticky;top:0;z-index:100;background:rgba(247,244,236,.94);border-bottom:1px solid var(--mn-line);backdrop-filter:blur(18px)}}
+body.mn-page .topin{{width:min(1240px,calc(100% - 32px));margin:0 auto;min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:24px}}
+body.mn-page .brand{{display:inline-flex;align-items:center;gap:10px;text-decoration:none;font-size:.82rem;font-weight:950;letter-spacing:.09em;text-transform:uppercase;white-space:nowrap}}
+body.mn-page .mark{{width:34px;height:34px;border-radius:12px;background:conic-gradient(from 160deg,var(--mn-gold),var(--mn-cyan),#8e8bff,var(--mn-gold));box-shadow:0 0 0 5px rgba(240,189,79,.12)}}
+body.mn-page .nav{{display:flex;align-items:center;justify-content:flex-end;gap:3px;overflow-x:auto;scrollbar-width:none}}
+body.mn-page .nav::-webkit-scrollbar{{display:none}}body.mn-page .nav a{{text-decoration:none;color:#34445c;font-size:.78rem;font-weight:850;padding:9px 10px;border-radius:999px;white-space:nowrap}}
+body.mn-page .nav a:hover,body.mn-page .nav a:focus-visible{{background:#fff;color:var(--mn-ink);outline:none}}body.mn-page .nav a[aria-current='page']{{background:var(--mn-ink);color:#fff}}
+.mn-container{{width:min(1180px,calc(100% - 36px));margin-inline:auto;position:relative;z-index:2}}
+.mn-hero{{position:relative;overflow:hidden;background:radial-gradient(circle at 13% 18%,rgba(119,231,244,.22),transparent 26rem),radial-gradient(circle at 85% 8%,rgba(240,189,79,.20),transparent 30rem),linear-gradient(135deg,#050a13 0%,#0a1b32 58%,#171537 100%);color:#fff;padding:clamp(74px,9vw,126px) 0 72px;border-radius:0 0 58px 58px;box-shadow:0 34px 100px rgba(7,17,31,.28)}}
+.mn-hero:before{{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.065) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.065) 1px,transparent 1px);background-size:42px 42px;mask-image:linear-gradient(#000,transparent 93%);opacity:.72}}
+.mn-hero:after{{content:'';position:absolute;inset:auto -20% -45% -20%;height:70%;background:radial-gradient(ellipse at center,rgba(240,189,79,.25),transparent 62%)}}
+.mn-eyebrow{{display:inline-flex;align-items:center;gap:9px;color:var(--mn-gold-soft);font-size:.76rem;font-weight:950;letter-spacing:.17em;text-transform:uppercase}}.mn-eyebrow:before{{content:'';width:32px;height:1px;background:currentColor}}
+.mn-hero h1{{max-width:1000px;margin:18px 0 20px;font-size:clamp(3.2rem,8.4vw,7.8rem);line-height:.88;letter-spacing:-.078em;text-wrap:balance}}.mn-hero h1 span{{color:var(--mn-gold-soft)}}
+.mn-hero-lead{{max-width:850px;margin:0;color:#dfe9f7;font-size:clamp(1.05rem,2vw,1.35rem);font-weight:620;line-height:1.7}}
+.mn-metrics{{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:34px}}
+.mn-metric{{min-height:128px;border:1px solid rgba(255,255,255,.16);background-color:rgba(255,255,255,.085);border-radius:22px;padding:18px;backdrop-filter:blur(14px)}}.mn-metric strong{{display:block;color:var(--mn-gold-soft);font-size:clamp(1.65rem,3vw,2.65rem);line-height:1.05;letter-spacing:-.04em}}.mn-metric span{{display:block;margin-top:8px;color:#e5edf8;font-size:.78rem;font-weight:850;line-height:1.35}}
+.mn-actions{{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}}.mn-btn{{min-height:48px;display:inline-flex;align-items:center;justify-content:center;gap:9px;text-decoration:none;border-radius:999px;padding:12px 19px;font-weight:930;font-size:.92rem;border:1px solid transparent;transition:transform .18s ease,box-shadow .18s ease}}
+.mn-btn:hover{{transform:translateY(-2px)}}.mn-btn:focus-visible{{outline:3px solid var(--mn-cyan);outline-offset:3px}}
+.mn-btn--primary{{background-color:#f5c75e;background-image:linear-gradient(135deg,#f7d878,#efb840);color:#111827;box-shadow:0 18px 50px rgba(240,189,79,.28)}}.mn-btn--secondary{{background-color:#fff;color:#101b2d;border-color:#fff;box-shadow:0 15px 42px rgba(0,0,0,.18)}}.mn-btn--ghost{{background-color:#13243b;color:#fff;border-color:rgba(255,255,255,.24)}}
+.mn-section{{padding:clamp(70px,8vw,112px) 0}}.mn-section--white{{background:rgba(255,255,255,.78)}}.mn-section--dark{{position:relative;background:linear-gradient(135deg,#07111f,#0d213d);color:#fff;overflow:hidden}}
+.mn-section--dark:before{{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.055) 1px,transparent 1px);background-size:44px 44px;opacity:.5}}
+.mn-section-header{{max-width:870px;margin-bottom:34px}}.mn-section-header h2{{margin:8px 0 14px;font-size:clamp(2.15rem,5.2vw,4.9rem);line-height:.97;letter-spacing:-.065em;text-wrap:balance}}.mn-section-header p{{margin:0;color:var(--mn-muted);font-size:1.06rem;line-height:1.75}}.mn-section--dark .mn-section-header p{{color:#cbd9e9}}
+.mn-label{{color:#8b651c;font-size:.75rem;font-weight:950;letter-spacing:.16em;text-transform:uppercase}}.mn-section--dark .mn-label{{color:var(--mn-gold-soft)}}
+.mn-boundaries{{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}}.mn-boundary{{min-height:170px;border-radius:var(--mn-radius);padding:22px;border:1px solid var(--mn-line);background:var(--mn-surface);box-shadow:0 18px 50px rgba(7,17,31,.08)}}.mn-boundary--yes{{border-top:4px solid var(--mn-green)}}.mn-boundary--no{{border-top:4px solid var(--mn-rose)}}.mn-boundary strong{{display:block;font-size:1.15rem;color:var(--mn-ink)}}.mn-boundary p{{margin:10px 0 0;color:var(--mn-muted)}}
+.mn-dependency{{display:grid;grid-template-columns:1.05fr .95fr;gap:18px;align-items:stretch}}.mn-card{{border:1px solid var(--mn-line);background-color:var(--mn-surface);border-radius:var(--mn-radius);padding:clamp(22px,3vw,32px);box-shadow:var(--mn-shadow)}}.mn-card--dark{{background-color:#10233e;color:#fff;border-color:rgba(255,255,255,.15)}}.mn-card h3{{margin:0 0 12px;font-size:1.35rem;letter-spacing:-.03em}}.mn-card p{{margin:0;color:var(--mn-muted)}}.mn-card--dark p{{color:#ccdae9}}
+.mn-address{{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-top:22px;padding:14px 16px;border-radius:18px;background-color:#f2f5f8;border:1px solid var(--mn-line);text-decoration:none}}.mn-card--dark .mn-address{{background-color:#09172a;border-color:rgba(255,255,255,.14)}}.mn-address code{{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.82rem}}.mn-address span{{font-weight:900;color:#7b5915;white-space:nowrap}}.mn-card--dark .mn-address span{{color:var(--mn-gold-soft)}}
+.mn-governance{{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}}.mn-registry-intro{{display:flex;align-items:end;justify-content:space-between;gap:24px;margin-bottom:26px}}.mn-registry-intro .mn-section-header{{margin:0}}.mn-registry-chip{{display:inline-flex;align-items:center;gap:8px;border-radius:999px;background:#e8f8ef;color:#14532d;padding:9px 13px;font-size:.78rem;font-weight:900;white-space:nowrap}}
+.mn-group{{border:1px solid var(--mn-line);background-color:#fff;border-radius:22px;margin:12px 0;overflow:hidden;box-shadow:0 12px 32px rgba(7,17,31,.055)}}.mn-group summary{{min-height:68px;cursor:pointer;display:grid;grid-template-columns:42px 1fr auto 18px;align-items:center;gap:13px;padding:15px 18px;list-style:none;color:var(--mn-ink)}}.mn-group summary::-webkit-details-marker{{display:none}}.mn-group summary:hover{{background:#faf8f1}}.mn-group-index{{display:grid;place-items:center;width:38px;height:38px;border-radius:13px;background:#0d213d;color:#fff;font-size:.75rem;font-weight:950}}.mn-group-title{{font-weight:920}}.mn-group-count{{color:#8b651c;font-size:.78rem;font-weight:900;white-space:nowrap}}.mn-group-chevron{{width:10px;height:10px;border-right:2px solid #5f6c7e;border-bottom:2px solid #5f6c7e;transform:rotate(45deg);transition:transform .2s ease}}.mn-group[open] .mn-group-chevron{{transform:rotate(225deg)}}
+.mn-contract-grid{{list-style:none;margin:0;padding:0 16px 18px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}}.mn-contract-item a{{min-height:88px;display:flex;align-items:center;justify-content:space-between;gap:14px;text-decoration:none;border:1px solid var(--mn-line);border-radius:17px;padding:14px;background-color:#f8fafc;transition:border-color .18s ease,transform .18s ease,box-shadow .18s ease}}.mn-contract-item a:hover{{transform:translateY(-2px);border-color:#79aee8;box-shadow:0 14px 30px rgba(7,17,31,.09)}}.mn-contract-copy{{min-width:0}}.mn-contract-copy strong{{display:block;color:var(--mn-ink);font-size:.88rem}}.mn-contract-copy code{{display:block;margin-top:5px;color:#5d6b7e;font-size:.69rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}}.mn-contract-badge{{display:flex;align-items:center;gap:6px;color:#7b5915;font-size:.7rem;font-weight:900;white-space:nowrap}}
+.mn-provenance{{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}}.mn-claim{{margin-top:18px;border:1px solid rgba(239,127,151,.30);background:#fff1f4;border-radius:22px;padding:18px;color:#5f2432}}.mn-footer{{background:#050b14;color:#dce6f3;padding:36px 0}}.mn-footer-inner{{display:flex;align-items:flex-start;justify-content:space-between;gap:20px}}.mn-footer strong{{color:#fff}}.mn-footer p{{margin:6px 0 0;color:#99a9bd;font-size:.84rem}}.mn-footer a{{color:var(--mn-gold-soft);text-decoration:none;font-weight:850}}
+@media(max-width:980px){{body.mn-page .topin{{align-items:flex-start;padding:12px 0;flex-direction:column;gap:8px}}body.mn-page .nav{{width:100%;justify-content:flex-start;padding-bottom:3px}}.mn-metrics{{grid-template-columns:repeat(2,minmax(0,1fr))}}.mn-dependency,.mn-governance,.mn-provenance{{grid-template-columns:1fr}}}}
+@media(max-width:700px){{.mn-container{{width:min(100% - 24px,1180px)}}.mn-hero{{padding-top:62px;border-radius:0 0 34px 34px}}.mn-hero h1{{font-size:clamp(3rem,16vw,5rem)}}.mn-metrics,.mn-boundaries,.mn-contract-grid{{grid-template-columns:1fr}}.mn-registry-intro{{display:block}}.mn-registry-chip{{margin-top:16px}}.mn-group summary{{grid-template-columns:38px 1fr 16px}}.mn-group-count{{grid-column:2;font-size:.72rem}}.mn-group-chevron{{grid-column:3;grid-row:1 / span 2}}.mn-contract-item a{{align-items:flex-start;flex-direction:column}}.mn-footer-inner{{display:block}}.mn-footer-inner>div+div{{margin-top:14px}}}}
+@media(prefers-reduced-motion:reduce){{*,*:before,*:after{{scroll-behavior:auto!important;transition:none!important;animation:none!important}}}}
 </style>
 </head>
-<body class='platinum asi-dynamic goalos-v86-preserved'>
-<div class='asi-bg'></div>
+<body class='mn-page goalos-v86-preserved' data-design-version='v88-institutional'>
 {header}
 <main id='main'>
-<section class='mainnet-hero'>
-<div class='asi-field'></div>
-<div class='asi-wrap'>
-<div class='asi-kicker'>Ethereum Mainnet · public deployment record</div>
+<section class='mn-hero'><div class='mn-container'>
+<div class='mn-eyebrow'>Ethereum Mainnet · institutional deployment record</div>
 <h1>Proof moved from rehearsal to <span>chain&nbsp;1.</span></h1>
-<p class='lead'>GoalOS AGIALPHA Ascension has a recorded Ethereum Mainnet deployment and completed operator configuration. This page consolidates the canonical contract registry, public Etherscan links, governance status, release evidence, and the boundaries that remain intentionally disabled.</p>
-<div class='mainnet-status-grid' aria-label='Ethereum Mainnet deployment summary'>
-<div class='mainnet-status'><strong>48</strong><span>GoalOS-created contracts</span></div>
-<div class='mainnet-status'><strong>{operator_verified}/48</strong><span>operator Etherscan verification records</span></div>
-<div class='mainnet-status'><strong>14/14</strong><span>configuration grants recorded active</span></div>
-<div class='mainnet-status'><strong>CONFIGURED</strong><span>deployment status</span></div>
+<p class='mn-hero-lead'>GoalOS AGIALPHA Ascension now has a recorded Ethereum Mainnet deployment and completed operator configuration. This page consolidates the canonical registry, public Etherscan records, governance status, release evidence, and the boundaries that remain intentionally disabled.</p>
+<div class='mn-metrics' aria-label='Ethereum Mainnet deployment summary'>
+<div class='mn-metric'><strong>48</strong><span>GoalOS-created contracts</span></div>
+<div class='mn-metric'><strong>{operator_verified}/48</strong><span>operator Etherscan verification records</span></div>
+<div class='mn-metric'><strong>14/14</strong><span>configuration grants recorded active</span></div>
+<div class='mn-metric'><strong>CONFIGURED</strong><span>deployment status</span></div>
 </div>
-<div class='asi-actions'>
-<a class='asi-btn primary' href='{RELEASE_URL}' target='_blank' rel='noopener noreferrer'>Open published pre-release</a>
-<a class='asi-btn' href='#contracts'>Inspect contract registry</a>
-<a class='asi-btn' href='index.html'>Return home</a>
-</div>
-</div>
-</section>
-<section class='asi-section white'>
-<div class='asi-wrap'>
-<div class='asi-kicker'>Current operating boundary</div>
-<h2>Deployment is recorded. Production activation remains separate.</h2>
-<p class='asi-lead'>The public record supports deployment, configuration, and operator verification evidence. It does not authorize user funds, enable production write flows, claim an external security audit, or convert the pre-release into a production-activation certificate.</p>
-<div class='mainnet-boundary'>
-<div class='ok' data-status='deployment' data-value='YES'><b>Deployment record: YES</b><span>Ethereum Mainnet, chain ID 1.</span></div>
-<div class='ok' data-status='configuration' data-value='YES'><b>Configuration: YES</b><span>Phase-B grants: 14/14; Wallet-A managed roles: 0.</span></div>
-<div class='hold' data-status='production-activation' data-value='NO'><b>Production activation: NO</b><span>Live canary, user-fund authorization, and public production reliance remain disabled.</span></div>
-</div>
-</div>
-</section>
-<section class='asi-section dark'>
-<div class='asi-field'></div>
-<div class='asi-wrap'>
-<div class='asi-kicker'>Canonical dependency</div>
-<h2>One external AGIALPHA. No replacement token.</h2>
-<p class='asi-lead'>GoalOS integrates the existing canonical AGIALPHA contract. The GoalOS deployment did not create or mint a substitute token.</p>
-<ul class='mainnet-contracts'>{agialpha_link}</ul>
-</div>
-</section>
-<section class='asi-section white'>
-<div class='asi-wrap'>
-<div class='asi-kicker'>Governance and authority</div>
-<h2>Permanent authority is Ledger-controlled.</h2>
-<div class='mainnet-meta'>
-<div class='mainnet-panel'><h3>Permanent authority</h3><p><a href='{wallet_b_url}' target='_blank' rel='noopener noreferrer'><code>{wallet_b}</code></a></p><p>Wallet B is the recorded permanent authority. The disposable deployment wallet has zero managed roles according to the reconciled release state.</p></div>
-<div class='mainnet-panel'><h3>Verification boundary</h3><p>Operator verification evidence records {operator_verified}/48 GoalOS-created contracts. Independent dual-provider release revalidation is <strong>{independent}</strong> unless a later evidence update explicitly changes that status.</p><p>Source identity classification: <code>{source_identity}</code>.</p></div>
-</div>
-</div>
-</section>
-<section class='asi-section' id='contracts'>
-<div class='asi-wrap'>
-<div class='asi-kicker'>Public registry</div>
-<h2>Every GoalOS Mainnet contract, one click from source.</h2>
-<p class='asi-lead'>The registry below contains 48 GoalOS-created contracts plus the canonical external AGIALPHA dependency. Each entry opens its public Etherscan contract page in a new tab.</p>
+<div class='mn-actions'>
+<a class='mn-btn mn-btn--primary' href='{RELEASE_URL}' target='_blank' rel='noopener noreferrer'>Open published pre-release <span aria-hidden='true'>↗</span></a>
+<a class='mn-btn mn-btn--secondary' href='#contracts'>Inspect contract registry</a>
+<a class='mn-btn mn-btn--ghost' href='index.html'>Return home</a>
+</div></div></section>
+<section class='mn-section mn-section--white'><div class='mn-container'>
+<div class='mn-section-header'><div class='mn-label'>Current operating boundary</div><h2>Deployment is recorded. Production activation remains separate.</h2><p>The public record supports deployment, configuration, and operator verification evidence. It does not authorize user funds, enable production write flows, claim an external audit, or convert the pre-release into a production-activation certificate.</p></div>
+<div class='mn-boundaries'>
+<article class='mn-boundary mn-boundary--yes' data-status='deployment' data-value='YES'><strong>Deployment record: YES</strong><p>Ethereum Mainnet, chain ID 1.</p></article>
+<article class='mn-boundary mn-boundary--yes' data-status='configuration' data-value='YES'><strong>Configuration: YES</strong><p>Phase-B grants: 14/14; Wallet-A managed roles: 0.</p></article>
+<article class='mn-boundary mn-boundary--no' data-status='production-activation' data-value='NO'><strong>Production activation: NO</strong><p>Live canary, user-fund authorization, and public production reliance remain disabled.</p></article>
+</div></div></section>
+<section class='mn-section mn-section--dark'><div class='mn-container'>
+<div class='mn-section-header'><div class='mn-label'>Canonical dependency</div><h2>One external AGIALPHA. No replacement token.</h2><p>GoalOS integrates the existing canonical AGIALPHA contract. The GoalOS deployment did not create or mint a substitute token.</p></div>
+<div class='mn-dependency'>
+<article class='mn-card mn-card--dark'><h3>Canonical AGIALPHA</h3><p>External dependency · not deployed or minted by GoalOS.</p><a class='mn-address' data-mainnet-contract='true' data-classification='external' data-address='{agialpha_address}' href='{agialpha_url}#code' target='_blank' rel='noopener noreferrer'><code>{agialpha_address}</code><span>View source ↗</span></a></article>
+<article class='mn-card mn-card--dark'><h3>Protocol boundary</h3><p>The public record distinguishes GoalOS infrastructure from the existing token dependency and preserves the no-replacement-token boundary.</p></article>
+</div></div></section>
+<section class='mn-section mn-section--white'><div class='mn-container'>
+<div class='mn-section-header'><div class='mn-label'>Governance and authority</div><h2>Permanent authority is Ledger-controlled.</h2><p>Operational control is recorded under Wallet B. The disposable deployment wallet has zero managed roles in the reconciled release state.</p></div>
+<div class='mn-governance'>
+<article class='mn-card'><h3>Permanent authority</h3><p>Wallet B is the recorded permanent authority.</p><a class='mn-address' href='{wallet_b_url}' target='_blank' rel='noopener noreferrer'><code>{wallet_b}</code><span>Etherscan ↗</span></a></article>
+<article class='mn-card'><h3>Verification boundary</h3><p>Operator verification evidence records {operator_verified}/48 GoalOS-created contracts. Independent dual-provider release revalidation is <strong>{independent}</strong> unless a later evidence update explicitly changes that status.</p><p style='margin-top:14px'>Source identity classification: <code>{source_identity}</code>.</p></article>
+</div></div></section>
+<section class='mn-section' id='contracts'><div class='mn-container'>
+<div class='mn-registry-intro'><div class='mn-section-header'><div class='mn-label'>Public registry</div><h2>Every GoalOS Mainnet contract, one click from source.</h2><p>The registry contains 48 GoalOS-created contracts. The canonical external AGIALPHA dependency is documented separately above. Every contract entry opens its public Etherscan source page in a new tab.</p></div><div class='mn-registry-chip'>48 GoalOS contracts · 0 operator-verification failures</div></div>
 {''.join(group_html)}
+</div></section>
+<section class='mn-section mn-section--white'><div class='mn-container'>
+<div class='mn-section-header'><div class='mn-label'>Evidence and provenance</div><h2>Public record, explicit limits.</h2><p>The release packet binds the deployment record, contract registry, configuration evidence, compiler alignment, and checksum material while preserving pending independent-revalidation and source-provenance boundaries.</p></div>
+<div class='mn-provenance'>
+<article class='mn-card'><h3>Published release</h3><p><a href='{RELEASE_URL}' target='_blank' rel='noopener noreferrer'><strong>{RELEASE_TAG}</strong></a></p><p style='margin-top:14px'>Deployment recorded at <code>{deployed_at}</code>; configuration recorded at <code>{configured_at}</code>.</p></article>
+<article class='mn-card'><h3>Tagged source record</h3><p>Release target SHA:</p><p style='margin-top:10px'><code>{target_sha}</code></p><p style='margin-top:14px'>Exact tagged-commit-to-deployed-bytecode reproduction remains a separate provenance exercise unless later evidence records completion.</p></article>
 </div>
-</section>
-<section class='asi-section white'>
-<div class='asi-wrap'>
-<div class='asi-kicker'>Evidence and provenance</div>
-<h2>Public record, explicit limits.</h2>
-<div class='mainnet-meta'>
-<div class='mainnet-panel'><h3>Published release</h3><p><a href='{RELEASE_URL}' target='_blank' rel='noopener noreferrer'>{RELEASE_TAG}</a></p><p>Deployment recorded at <code>{deployed_at}</code>; configuration recorded at <code>{configured_at}</code>.</p></div>
-<div class='mainnet-panel'><h3>Tagged source record</h3><p>Release target SHA: <code>{target_sha}</code></p><p>An exact one-to-one tagged-commit-to-deployed-bytecode reproduction remains a separate provenance exercise unless later evidence records completion.</p></div>
-</div>
-<div class='boundary' style='margin-top:1rem'><strong>Claim boundary.</strong> This page does not claim achieved AGI, achieved ASI, superintelligence achievement, guaranteed ROI, token appreciation, external audit completion, production certification, user-fund authorization, or live production settlement.</div>
-</div>
-</section>
+<div class='mn-claim'><strong>Claim boundary.</strong> This page does not claim achieved AGI, achieved ASI, superintelligence achievement, guaranteed ROI, token appreciation, external audit completion, production certification, user-fund authorization, or live production settlement.</div>
+</div></section>
 </main>
-<footer class='footer'><div class='wrap'><div><strong>GoalOS AGIALPHA Ascension</strong><div class='small'>Evidence-first Ethereum Mainnet deployment record.</div></div><div class='small'><a href='index.html'>Home</a> · <a href='{RELEASE_URL}' target='_blank' rel='noopener noreferrer'>GitHub release</a></div></div></footer>
+<footer class='mn-footer'><div class='mn-container mn-footer-inner'><div><strong>GoalOS AGIALPHA Ascension</strong><p>Evidence-first Ethereum Mainnet deployment record.</p></div><div><a href='index.html'>Home</a> · <a href='{RELEASE_URL}' target='_blank' rel='noopener noreferrer'>GitHub release</a></div></div></footer>
 <script defer src='assets/goalos-v86-dynamic-ai.js'></script>
-</body>
-</html>
+</body></html>
 """
+
+
+def home_styles() -> str:
+    return f"""{HOME_STYLE_START}
+<style id='goalos-mainnet-v88-home-design'>
+#ethereum-mainnet-record{{padding:72px 18px;background:transparent}}#ethereum-mainnet-record *{{box-sizing:border-box}}
+#ethereum-mainnet-record .mn-home-shell{{width:min(1260px,100%);margin:0 auto;position:relative;overflow:hidden;border-radius:42px;padding:clamp(30px,5vw,64px);background:radial-gradient(circle at 12% 18%,rgba(119,231,244,.21),transparent 26rem),radial-gradient(circle at 88% 2%,rgba(240,189,79,.22),transparent 28rem),linear-gradient(135deg,#06111f,#0d213d 62%,#171537);color:#fff;box-shadow:0 32px 100px rgba(7,17,31,.25)}}
+#ethereum-mainnet-record .mn-home-shell:before{{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.06) 1px,transparent 1px);background-size:42px 42px;opacity:.55;pointer-events:none}}
+#ethereum-mainnet-record .mn-home-inner{{position:relative;z-index:1;display:grid;grid-template-columns:1.08fr .92fr;gap:32px;align-items:end}}
+#ethereum-mainnet-record .mn-home-kicker{{color:#fff2bd;font-size:.76rem;font-weight:950;letter-spacing:.17em;text-transform:uppercase}}
+#ethereum-mainnet-record h2{{margin:12px 0 16px;color:#fff;font-size:clamp(2.55rem,5.6vw,5.8rem);line-height:.92;letter-spacing:-.068em;text-wrap:balance}}
+#ethereum-mainnet-record .mn-home-lead{{margin:0;max-width:760px;color:#dce7f4;font-size:1.06rem;line-height:1.72}}
+#ethereum-mainnet-record .mn-home-grid{{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}}
+#ethereum-mainnet-record .mn-home-stat{{min-height:138px;padding:18px;border:1px solid rgba(255,255,255,.16);background-color:rgba(255,255,255,.09);border-radius:22px;backdrop-filter:blur(13px)}}
+#ethereum-mainnet-record .mn-home-stat strong{{display:block;color:#fff2bd;font-size:1.65rem;line-height:1.05}}
+#ethereum-mainnet-record .mn-home-stat span{{display:block;margin-top:8px;color:#e6edf7;font-size:.8rem;font-weight:820;line-height:1.42}}
+#ethereum-mainnet-record .mn-home-actions{{position:relative;z-index:1;display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}}
+#ethereum-mainnet-record .mn-home-btn{{min-height:48px;display:inline-flex;align-items:center;justify-content:center;text-decoration:none;border-radius:999px;padding:12px 18px;font-size:.9rem;font-weight:930;transition:transform .18s ease,box-shadow .18s ease}}
+#ethereum-mainnet-record .mn-home-btn:hover{{transform:translateY(-2px)}}#ethereum-mainnet-record .mn-home-btn:focus-visible{{outline:3px solid #77e7f4;outline-offset:3px}}
+#ethereum-mainnet-record .mn-home-btn--primary{{background-color:#f5c75e;background-image:linear-gradient(135deg,#f7d878,#efb840);color:#111827;box-shadow:0 17px 46px rgba(240,189,79,.28)}}
+#ethereum-mainnet-record .mn-home-btn--secondary{{background-color:#fff;color:#101b2d;border:1px solid #fff;box-shadow:0 15px 42px rgba(0,0,0,.20)}}
+@media(max-width:900px){{#ethereum-mainnet-record .mn-home-inner{{grid-template-columns:1fr}}}}
+@media(max-width:620px){{#ethereum-mainnet-record{{padding:48px 12px}}#ethereum-mainnet-record .mn-home-shell{{border-radius:28px;padding:28px 20px}}#ethereum-mainnet-record .mn-home-grid{{grid-template-columns:1fr}}#ethereum-mainnet-record .mn-home-btn{{width:100%}}}}
+</style>
+{HOME_STYLE_END}"""
 
 
 def make_home_block(operator_verified: int, independent: str) -> str:
     return f"""{HOME_START}
-<section class='asi-section white' id='ethereum-mainnet-record' data-mainnet-home-card='v87'>
-<div class='asi-wrap'>
-<div class='asi-kicker'>Ethereum Mainnet · deployment record</div>
-<h2>48 GoalOS contracts now have a public chain-1 record.</h2>
-<p class='asi-lead'>The canonical deployment is recorded as configured, with {operator_verified}/48 operator Etherscan verification records and 14/14 configuration grants. Independent release revalidation is {independent.lower()}. Production activation, user-fund authorization, and public production reliance remain disabled.</p>
-<div class='asi-cardgrid'>
-<div class='asi-card'><h3>48 contracts</h3><p>GoalOS-created Ethereum Mainnet components, plus one external canonical AGIALPHA dependency.</p></div>
-<div class='asi-card'><h3>{operator_verified}/48 verification</h3><p>Public operator verification records with direct Etherscan links on the dedicated page.</p></div>
-<div class='asi-card'><h3>14/14 grants</h3><p>Postdeployment configuration recorded active under Ledger-controlled permanent authority.</p></div>
-<div class='asi-card'><h3>Activation boundary</h3><p>Production activation and user-fund authorization remain NO.</p></div>
-</div>
-<div class='asi-actions'><a class='asi-btn primary' href='ethereum-mainnet.html'>Open the Ethereum Mainnet record</a><a class='asi-btn' href='{RELEASE_URL}' target='_blank' rel='noopener noreferrer'>View the published pre-release</a></div>
-</div>
-</section>
+<section id='ethereum-mainnet-record' data-mainnet-home-card='v87' aria-labelledby='mainnet-home-title'>
+<div class='mn-home-shell'><div class='mn-home-inner'>
+<div><div class='mn-home-kicker'>Ethereum Mainnet · deployment record</div><h2 id='mainnet-home-title'>48 GoalOS contracts now have a public chain‑1 record.</h2><p class='mn-home-lead'>The canonical deployment is recorded as configured, with {operator_verified}/48 operator Etherscan verification records and 14/14 configuration grants. Independent release revalidation is {independent.lower()}. Production activation, user-fund authorization, and public production reliance remain disabled.</p></div>
+<div class='mn-home-grid' aria-label='Ethereum Mainnet deployment summary'>
+<div class='mn-home-stat'><strong>48 contracts</strong><span>GoalOS-created Mainnet components, plus one external canonical AGIALPHA dependency.</span></div>
+<div class='mn-home-stat'><strong>{operator_verified}/48</strong><span>Public operator verification records with direct Etherscan links.</span></div>
+<div class='mn-home-stat'><strong>14/14 grants</strong><span>Postdeployment configuration recorded active under Ledger-controlled authority.</span></div>
+<div class='mn-home-stat'><strong>Activation: NO</strong><span>Production activation and user-fund authorization remain disabled.</span></div>
+</div></div>
+<div class='mn-home-actions'><a class='mn-home-btn mn-home-btn--primary' href='ethereum-mainnet.html'>Open the Ethereum Mainnet record</a><a class='mn-home-btn mn-home-btn--secondary' href='{RELEASE_URL}' target='_blank' rel='noopener noreferrer'>View the published pre-release ↗</a></div>
+</div></section>
 {HOME_END}"""
 
 
+def inject_home_styles(index_html: str, styles: str) -> str:
+    pattern = re.compile(re.escape(HOME_STYLE_START) + r"[\s\S]*?" + re.escape(HOME_STYLE_END))
+    if pattern.search(index_html):
+        return pattern.sub(styles, index_html, count=1)
+    close_head = index_html.lower().find("</head>")
+    if close_head < 0:
+        die("index.html has no closing head tag")
+    return index_html[:close_head] + "\n" + styles + "\n" + index_html[close_head:]
 def inject_homepage(index_html: str, block: str) -> str:
     pattern = re.compile(re.escape(HOME_START) + r"[\s\S]*?" + re.escape(HOME_END))
     if pattern.search(index_html):
@@ -474,7 +509,8 @@ def main() -> int:
         validate_deployment_evidence(Path(args.deployment_evidence))
         index_before = index_path.read_text(encoding="utf-8")
         page = make_page(index_before, by_name, manifest, operator_verified, independent)
-        home = inject_homepage(index_before, make_home_block(operator_verified, independent))
+        styled_index = inject_home_styles(index_before, home_styles())
+        home = inject_homepage(styled_index, make_home_block(operator_verified, independent))
 
         page_path = site / "ethereum-mainnet.html"
         page_path.write_text(page, encoding="utf-8")

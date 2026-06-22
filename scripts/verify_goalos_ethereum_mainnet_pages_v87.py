@@ -14,6 +14,8 @@ RELEASE_TAG = "v4.4.0-mainnet-2026-06-21"
 RELEASE_URL = "https://github.com/MontrealAI/goalos-agialpha-ascension/releases/tag/v4.4.0-mainnet-2026-06-21"
 HOME_START = "<!-- GOALOS_MAINNET_V87_START -->"
 HOME_END = "<!-- GOALOS_MAINNET_V87_END -->"
+HOME_STYLE_START = "<!-- GOALOS_MAINNET_V87_STYLE_START -->"
+HOME_STYLE_END = "<!-- GOALOS_MAINNET_V87_STYLE_END -->"
 ADDRESS_RE = re.compile(r"^0x[0-9a-fA-F]{40}$")
 
 
@@ -141,24 +143,25 @@ def verify(site: Path, registry_path: Path) -> tuple[list[str], list[str]]:
 
     if index.count(HOME_START) != 1 or index.count(HOME_END) != 1:
         errors.append("homepage must contain exactly one v87 Mainnet marker block")
+    if index.count(HOME_STYLE_START) != 1 or index.count(HOME_STYLE_END) != 1:
+        errors.append("homepage must contain exactly one scoped Mainnet design block")
     if "href='ethereum-mainnet.html'" not in index and 'href="ethereum-mainnet.html"' not in index:
         errors.append("homepage does not link to ethereum-mainnet.html")
     if "Production activation, user-fund authorization, and public production reliance remain disabled" not in index:
-        errors.append("homepage Mainnet card is missing the activation boundary")
+        errors.append("homepage Mainnet feature is missing the activation boundary")
+    for required_home in ("mn-home-shell","mn-home-btn--primary","mn-home-btn--secondary","background-color:#fff","color:#101b2d"):
+        if required_home not in index:
+            errors.append(f"homepage Mainnet design is missing: {required_home}")
 
     for required in (
-        "assets/goalos-v86-preserve.css",
-        "assets/goalos-v86-dynamic-ai.js",
-        "goalos-v86-critical",
-        RELEASE_URL,
-        "Production activation: NO",
-        "user-fund authorization",
-        "external audit",
-        "Independent dual-provider release revalidation",
-        CANONICAL_AGIALPHA,
+        "assets/goalos-v86-preserve.css","assets/goalos-v86-dynamic-ai.js","goalos-v86-critical",
+        "goalos-mainnet-v88-design","data-design-version='v88-institutional'",RELEASE_URL,
+        "Production activation: NO","user-fund authorization","external audit",
+        "Independent dual-provider release revalidation",CANONICAL_AGIALPHA,
+        "mn-btn--primary","mn-btn--secondary","mn-btn--ghost","font-family:Inter",
     ):
         if required.lower() not in page.lower():
-            errors.append(f"Mainnet page is missing required content: {required}")
+            errors.append(f"Mainnet page is missing required content/design: {required}")
 
     parser = MainnetPageParser()
     parser.feed(page)
@@ -170,9 +173,9 @@ def verify(site: Path, registry_path: Path) -> tuple[list[str], list[str]]:
         errors.append("Mainnet page must not contain forms")
     if parser.details != 5:
         errors.append(f"Mainnet page must contain five contract groups, found {parser.details}")
-
     if len(parser.contract_links) != 49:
         errors.append(f"expected 49 contract links, found {len(parser.contract_links)}")
+
     addresses = [entry["address"] for entry in parser.contract_links]
     if len({a.lower() for a in addresses}) != len(addresses):
         errors.append("duplicate contract address on Mainnet page")
@@ -192,36 +195,19 @@ def verify(site: Path, registry_path: Path) -> tuple[list[str], list[str]]:
     external = sum(e["classification"] == "external" for e in parser.contract_links)
     if deployed != 48 or external != 1:
         errors.append(f"expected 48 deployed and 1 external contract links, found {deployed}/{external}")
-    agialpha_entries = [e for e in parser.contract_links if e["address"].lower() == CANONICAL_AGIALPHA.lower()]
-    if len(agialpha_entries) != 1 or agialpha_entries[0]["classification"] != "external":
-        errors.append("canonical AGIALPHA link is missing or not external")
 
     try:
         registry_contracts = normalize_registry(registry_path)
     except (OSError, ValueError, json.JSONDecodeError) as exc:
         errors.append(f"invalid canonical registry: {exc}")
         registry_contracts = []
-
-    expected = {
-        (c["name"], c["address"].lower(), c["classification"])
-        for c in registry_contracts
-    }
     page_addresses = {(e["address"].lower(), e["classification"]) for e in parser.contract_links}
-    expected_addresses = {(addr, classification) for _, addr, classification in expected}
+    expected_addresses = {(c["address"].lower(), c["classification"]) for c in registry_contracts}
     if page_addresses != expected_addresses:
         errors.append("Mainnet page address/classification set does not match canonical registry")
 
-    unsafe_tokens = (
-        "window.ethereum",
-        "eth_sendtransaction",
-        "walletconnect",
-        "connect wallet",
-        "approve token",
-        "send funds",
-        "fund now",
-    )
     low = page.lower()
-    for token in unsafe_tokens:
+    for token in ("window.ethereum","eth_sendtransaction","walletconnect","connect wallet","approve token","send funds","fund now"):
         if token in low:
             errors.append(f"Mainnet page contains a prohibited write/wallet surface: {token}")
 
@@ -230,15 +216,10 @@ def verify(site: Path, registry_path: Path) -> tuple[list[str], list[str]]:
 
     status = load_json(status_path)
     expected_status = {
-        "ethereum_mainnet_page": "ethereum-mainnet.html",
-        "ethereum_mainnet_release": RELEASE_TAG,
-        "ethereum_mainnet_chain_id": 1,
-        "ethereum_mainnet_registry_entries": 49,
-        "goalos_mainnet_contracts": 48,
-        "operator_etherscan_verification": "48/48",
-        "mainnet_configured": True,
-        "production_activated": False,
-        "user_funds_authorized": False,
+        "ethereum_mainnet_page":"ethereum-mainnet.html","ethereum_mainnet_release":RELEASE_TAG,
+        "ethereum_mainnet_chain_id":1,"ethereum_mainnet_registry_entries":49,
+        "goalos_mainnet_contracts":48,"operator_etherscan_verification":"48/48",
+        "mainnet_configured":True,"production_activated":False,"user_funds_authorized":False,
     }
     for key, value in expected_status.items():
         if status.get(key) != value:
@@ -246,10 +227,7 @@ def verify(site: Path, registry_path: Path) -> tuple[list[str], list[str]]:
 
     if len(re.findall(r"\b[\w$αΑ-]+\b", re.sub(r"<[^>]+>", " ", page))) < 250:
         errors.append("Mainnet page is unexpectedly short")
-
     return errors, warnings
-
-
 def main() -> int:
     parser = argparse.ArgumentParser(description="Verify the generated GoalOS Ethereum Mainnet page and homepage card")
     parser.add_argument("--site", default="site")
