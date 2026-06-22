@@ -11,7 +11,7 @@
 - Ethereum Mainnet deployed: YES
 - GoalOS-created contracts: 48
 - Manifest entries: 49
-- Etherscan verification: 48/48 per repository verification evidence; independent live validation remains required before publish-ready status.
+- Etherscan verification: PENDING independent check; repository postdeployment evidence records verified-from-seed statuses, but this release packet does not claim 48/48 live Etherscan verification until API-backed validation passes.
 - Canonical AGIALPHA: external, not deployed or minted by GoalOS (`0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA`).
 - Mainnet configured: YES
 - Permanent authority: Wallet B / Ledger (`0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99`)
@@ -27,7 +27,7 @@ Deployment path: `DIRECT_OPERATOR_NO_CERTIFICATE`. Deployment timestamp: `2026-0
 
 ## Contract verification
 
-See `CONTRACTS_MAINNET.md`, `DEPLOYMENT_EVIDENCE.md`, and `SOURCE_IDENTITY.md`.
+See `CONTRACTS_MAINNET.md`, `DEPLOYMENT_EVIDENCE.md`, and `SOURCE_IDENTITY.md`. Constructor arguments are marked missing from public evidence for GoalOS-created contracts, so creation-bytecode identity remains blocked.
 
 ## Governance and authority
 
