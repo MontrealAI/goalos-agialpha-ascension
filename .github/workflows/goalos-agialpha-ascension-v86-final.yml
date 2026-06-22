@@ -34,6 +34,29 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Snapshot canonical v86 source bytes
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import hashlib
+          import json
+
+          root = Path("website/v86_actual_site")
+          if not root.is_dir():
+              raise SystemExit(f"ERROR: missing canonical source directory: {root}")
+
+          manifest = {
+              path.relative_to(root).as_posix(): hashlib.sha256(path.read_bytes()).hexdigest()
+              for path in sorted(root.rglob("*"))
+              if path.is_file()
+          }
+          Path("/tmp/goalos-v86-source-before.json").write_text(
+              json.dumps(manifest, indent=2, sort_keys=True) + "\n",
+              encoding="utf-8",
+          )
+          print(f"Recorded byte hashes for {len(manifest)} canonical v86 files.")
+          PY
+
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
 
@@ -58,8 +81,47 @@ jobs:
             --site site \
             --registry config/ethereum-mainnet.contracts.json
 
-      - name: Prove canonical v86 source was not modified by the build
-        run: git diff --exit-code -- website/v86_actual_site
+      - name: Prove canonical v86 source bytes were not modified by the build
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import hashlib
+          import json
+
+          root = Path("website/v86_actual_site")
+          before_path = Path("/tmp/goalos-v86-source-before.json")
+          if not before_path.is_file():
+              raise SystemExit("ERROR: missing pre-build canonical-source snapshot")
+
+          before = json.loads(before_path.read_text(encoding="utf-8"))
+          after = {
+              path.relative_to(root).as_posix(): hashlib.sha256(path.read_bytes()).hexdigest()
+              for path in sorted(root.rglob("*"))
+              if path.is_file()
+          }
+
+          if before != after:
+              before_names = set(before)
+              after_names = set(after)
+              report = {
+                  "added": sorted(after_names - before_names),
+                  "removed": sorted(before_names - after_names),
+                  "changed": sorted(
+                      name
+                      for name in before_names & after_names
+                      if before[name] != after[name]
+                  ),
+              }
+              print(json.dumps(report, indent=2))
+              raise SystemExit(
+                  "ERROR: canonical website/v86_actual_site bytes changed during the build"
+              )
+
+          print(
+              f"PASS — canonical website/v86_actual_site remained byte-identical "
+              f"across {len(after)} files."
+          )
+          PY
 
       - name: Install Playwright Chromium
         run: |
