@@ -22,3 +22,16 @@ Stage C remains separate and requires bounded canary, monitoring, reconciliation
 ## Governance terminology
 
 For the 2026-06-21 canonical deployment use genesis authority assignment, permanent authority, and postdeployment role configuration. Legacy/future two-step ownership deployments are not required for the 2026-06-21 canonical deployment. `DEFAULT_ADMIN_ROLE = 0x00...00` is a role identifier, not a wallet.
+
+
+## Release links
+
+- GitHub release: https://github.com/MontrealAI/goalos-agialpha-ascension/releases/tag/v4.4.0-mainnet-2026-06-21
+- Contract registry: `config/ethereum-mainnet.contracts.json` and `docs/ETHEREUM_MAINNET_CONTRACTS.md`
+- Evidence archive: `release/mainnet-2026-06-21/` and `qa/mainnet-postdeploy/`
+- Checksum asset: published release checksum asset when attached; repository checksum material remains under `release/mainnet-2026-06-21/`.
+- Source archives: GitHub release source archives for tag `v4.4.0-mainnet-2026-06-21`.
+- Security policy: `SECURITY.md` when present; otherwise repository security and limitations documentation.
+- Stage-C runbook: `docs/PRODUCTION_ACTIVATION.md`
+
+The contracts are publicly verified on Etherscan. Independent commit-to-bytecode reproducibility remains a distinct provenance result unless separately proven.
