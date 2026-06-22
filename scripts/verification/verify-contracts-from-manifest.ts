@@ -9,7 +9,7 @@ import { verifyWithEtherscan } from "./lib/verifyWithEtherscan";
 import { sourcifyRequested } from "./lib/verifyWithSourcify";
 import { writeVerificationReport } from "./lib/reportVerification";
 
-const CLAIM_BOUNDARY = "This evidence reports deployment and verification mechanics only. It does not claim achieved AGI, ASI, superintelligence, guaranteed ROI, legal approval, tax approval, security approval, external audit completion, production safety, or Ethereum Mainnet deployment.";
+const CLAIM_BOUNDARY = "This evidence reports Ethereum Mainnet deployment, verification, and configuration mechanics only. It does not claim achieved AGI, ASI, superintelligence, guaranteed ROI, legal approval, tax approval, security approval, external audit completion, production safety, user-fund authorization, or production activation.";
 function arg(name:string, fallback?:string){ const i=process.argv.indexOf(name); return i>=0 ? process.argv[i+1] : fallback; }
 function has(name:string){ return process.argv.includes(name); }
 function isMainnet(n:string){ return /mainnet/i.test(n); }

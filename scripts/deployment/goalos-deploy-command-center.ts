@@ -7,7 +7,7 @@ import { AGIALPHA_MAINNET_TOKEN, getExpectedChainId, getOptionalPrivateKey, getO
 import { redactString, REDACTED } from "./lib/redact";
 import { assertMainnetAuthorizationCertificate } from "./lib/mainnetGuards";
 
-export const CLAIM_BOUNDARY = "This evidence reports deployment mechanics only. It does not claim achieved AGI, ASI, superintelligence, guaranteed ROI, legal approval, tax approval, security approval, external audit completion, production safety, or Ethereum Mainnet deployment.";
+export const CLAIM_BOUNDARY = "This evidence reports Ethereum Mainnet deployment, verification, and configuration mechanics only. It does not claim achieved AGI, ASI, superintelligence, guaranteed ROI, legal approval, tax approval, security approval, external audit completion, production safety, user-fund authorization, or production activation.";
 const CONFIRM = "DEPLOY_GOALOS_AGIALPHA_ASCENSION_TO_ETHEREUM_MAINNET";
 type Check = { name: string; status: "PASS"|"WARN"|"FAIL"; value?: string; nextAction?: string };
 function arg(name: string) { const i=process.argv.indexOf(name); return i>=0 ? process.argv[i+1] : undefined; }

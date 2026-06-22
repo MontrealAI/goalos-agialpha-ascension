@@ -1,10 +1,14 @@
 #!/usr/bin/env python3
-import argparse, hashlib, json, os, sys, time
+import argparse, hashlib, json, os, subprocess, sys, time
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[2]
 WALLET_A='0x6c8B8897Fb6b08B4070387233B89b3E9A94eD00E'
 WALLET_B='0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99'
 AGIALPHA='0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA'
+POSTDEPLOY_CLAIM_BOUNDARY='This evidence reports Ethereum Mainnet deployment, verification, and configuration mechanics only. It does not claim achieved AGI, ASI, superintelligence, guaranteed ROI, legal approval, tax approval, security approval, external audit completion, production safety, user-fund authorization, or production activation.'
+
+PRIMARY_RPC_ENV_NAMES=['PRIMARY_MAINNET_RPC_URL','PRIVATE_MAINNET_RPC_URL','MAINNET_RPC_URL','ETHEREUM_MAINNET_RPC_URL']
+SECONDARY_RPC_ENV_NAMES=['SECONDARY_MAINNET_RPC_URL','PRIVATE_SECONDARY_MAINNET_RPC_URL','MAINNET_SECONDARY_RPC_URL','ETHEREUM_MAINNET_SECONDARY_RPC_URL']
 
 def sha(p):
     return hashlib.sha256(Path(p).read_bytes()).hexdigest()
@@ -24,21 +28,74 @@ def contracts(d):
         return [{'name':k, **(v if isinstance(v,dict) else {'address':v})} for k,v in c.items()]
     return c
 
+def first_env(names):
+    for name in names:
+        if os.environ.get(name):
+            return name
+    return None
+
 def rpc_status():
-    primary=bool(os.environ.get('PRIMARY_MAINNET_RPC_URL'))
-    secondary=bool(os.environ.get('SECONDARY_MAINNET_RPC_URL'))
+    primary_name=first_env(PRIMARY_RPC_ENV_NAMES)
+    secondary_name=first_env(SECONDARY_RPC_ENV_NAMES)
+    primary=bool(primary_name)
+    secondary=bool(secondary_name)
     if primary and secondary:
         comparison='PRIMARY_AND_SECONDARY_CONFIGURED_FOR_OPERATOR_CI'
     elif primary:
-        comparison='SECONDARY_RPC_COMPARISON_PENDING_ETHERSCAN_OR_SINGLE_PROVIDER_ONLY'
+        comparison='MISSING_SECONDARY_MAINNET_RPC_URL'
     else:
-        comparison='NO_PRIVATE_RPC_CONFIGURED_FAIL_CLOSED_UNTIL_OPERATOR_SUPPLIES_READ_ONLY_RPC'
-    return {'primaryMainnetRpcConfigured':primary,'secondaryMainnetRpcConfigured':secondary,'providerComparison':comparison}
+        comparison='MISSING_PRIMARY_MAINNET_RPC_URL'
+    return {
+        'primaryMainnetRpcConfigured':primary,
+        'secondaryMainnetRpcConfigured':secondary,
+        'primaryMainnetRpcEnv':primary_name,
+        'secondaryMainnetRpcEnv':secondary_name,
+        'etherscanApiConfigured':bool(os.environ.get('ETHERSCAN_API_KEY')),
+        'providerComparison':comparison,
+        'acceptedPrimaryAliases':PRIMARY_RPC_ENV_NAMES,
+        'acceptedSecondaryAliases':SECONDARY_RPC_ENV_NAMES,
+    }
 
 def stub(name,status='REQUIRES_LIVE_RPC_VALIDATION'):
-    out={'tool':name,'status':status,'chainId':1,'walletA':WALLET_A,'walletB':WALLET_B,'canonicalAgialpha':AGIALPHA,'generatedAt':time.strftime('%Y-%m-%dT%H:%M:%SZ',time.gmtime()),'claimBoundary':'No Mainnet transaction is broadcast by this read-only tool; RPC URLs and API keys are never printed.'}
+    out={'tool':name,'status':status,'chainId':1,'walletA':WALLET_A,'walletB':WALLET_B,'canonicalAgialpha':AGIALPHA,'generatedAt':time.strftime('%Y-%m-%dT%H:%M:%SZ',time.gmtime()),'claimBoundary':POSTDEPLOY_CLAIM_BOUNDARY,'transactionBoundary':'No Mainnet transaction is broadcast by this read-only tool; RPC URLs and API keys are never printed.'}
     out.update(rpc_status())
     return out
+
+def validate_seed(args):
+    p,d=load_manifest()
+    cs=contracts(d)
+    goalos=[x for x in cs if (x.get('classification') or x.get('type'))!='external']
+    txs=d.get('transactions') or []
+    phase=d.get('phaseBGrants') or []
+    failures=[]
+    if d.get('chainId')!=1: failures.append('chainId must be 1')
+    if len(cs)!=49: failures.append(f'manifest entries must be 49, got {len(cs)}')
+    if len(goalos)!=48: failures.append(f'GoalOS contracts must be 48, got {len(goalos)}')
+    addrs=[(x.get('address') or x.get('contractAddress') or '').lower() for x in cs]
+    if len(set(addrs))!=len(addrs): failures.append('duplicate contract address')
+    if len(txs)!=48 or len(set(txs))!=48: failures.append('deployment transaction hashes must be 48 unique values')
+    if len(phase)!=14: failures.append(f'Phase-B grants must be 14, got {len(phase)}')
+    if d.get('agialphaToken','').lower()!=AGIALPHA.lower(): failures.append('canonical AGIALPHA mismatch')
+    out=stub('mainnet:live:validate-seed','PASSED_NO_STAGE_B' if not failures else 'FAILED')
+    out.update({'sourceManifest':str(p),'sourceManifestSha256':sha(p),'manifestEntries':len(cs),'goalosContracts':len(goalos),'deploymentTransactions':len(txs),'phaseBGrants':len(phase),'canEmitStageBPass':False,'failures':failures})
+    write(Path('qa/mainnet-postdeploy/seed-validation.json'),out)
+    print('seed validation',out['status'])
+    if failures: raise SystemExit('; '.join(failures))
+
+def revalidate_live(args):
+    status=rpc_status()
+    if not status['primaryMainnetRpcConfigured']:
+        raise SystemExit('LIVE OPERATOR REVALIDATION PENDING: missing primary Mainnet RPC. Accepted aliases: '+','.join(PRIMARY_RPC_ENV_NAMES))
+    if not status['secondaryMainnetRpcConfigured']:
+        raise SystemExit('LIVE OPERATOR REVALIDATION PENDING: missing secondary Mainnet RPC. Accepted aliases: '+','.join(SECONDARY_RPC_ENV_NAMES))
+    if not status['etherscanApiConfigured']:
+        raise SystemExit('LIVE OPERATOR REVALIDATION PENDING: missing ETHERSCAN_API_KEY')
+    # postdeploy_assurance.py performs read-only receipt/runtime/authority calls and certificate gating.
+    for command in ['mainnet:revalidate','mainnet:verify','mainnet:authority-readback']:
+        result=subprocess.run([sys.executable,str(ROOT/'scripts/mainnet_live/postdeploy_assurance.py'),command],cwd=ROOT)
+        if result.returncode!=0:
+            raise SystemExit(result.returncode)
+    print('LIVE OPERATOR REVALIDATION: read-only evidence generated; run npm run mainnet:postdeploy:certificate after review')
 
 def import_cmd(args):
     p,d=load_manifest(); hist=ROOT/'deployments/history/ethereum-mainnet.agialpha.deployed-2026-06-21.json'; hist.parent.mkdir(exist_ok=True,parents=True); hist.write_text(json.dumps(d,indent=2,sort_keys=True)+'\n'); (hist.with_suffix('.sha256')).write_text(sha(hist)+'  '+hist.name+'\n')
@@ -84,6 +141,8 @@ def all_cmd(args):
 def main():
     ap=argparse.ArgumentParser(); ap.add_argument('command'); args=ap.parse_args()
     if args.command in ('mainnet:live:import','mainnet:live:import-seed'): import_cmd(args)
+    elif args.command=='mainnet:live:validate-seed': validate_seed(args)
+    elif args.command=='mainnet:live:revalidate': revalidate_live(args)
     elif args.command=='mainnet:live:all': all_cmd(args)
     elif args.command=='mainnet:contracts:generate': contracts_gen(args)
     elif args.command=='mainnet:contracts:check': contracts_check(args)

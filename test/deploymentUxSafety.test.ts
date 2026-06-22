@@ -6,7 +6,7 @@ import { assertExpectedChainId } from "../scripts/deployment/lib/networkGuards";
 import { assertMainnetOperatorEnv, assertRealMainnetManifest, MAINNET_ALLOW_VALUE, MAINNET_CONFIRMATION_PHRASE } from "../scripts/deployment/lib/mainnetGuards";
 import { redactObject, redactString } from "../scripts/deployment/lib/redact";
 
-const CLAIM_BOUNDARY = "This evidence reports deployment mechanics only. It does not claim achieved AGI, ASI, superintelligence, guaranteed ROI, legal approval, tax approval, security approval, external audit completion, production safety, or Ethereum Mainnet deployment.";
+const CLAIM_BOUNDARY = "This evidence reports Ethereum Mainnet deployment, verification, and configuration mechanics only. It does not claim achieved AGI, ASI, superintelligence, guaranteed ROI, legal approval, tax approval, security approval, external audit completion, production safety, user-fund authorization, or production activation.";
 const CONFIRM_PHRASE = "DEPLOY_GOALOS_AGIALPHA_ASCENSION_TO_ETHEREUM_MAINNET";
 
 describe("deployment UX safety layer", function () {
@@ -309,14 +309,23 @@ describe("deployment UX safety layer", function () {
     expect(source).not.to.include("git rev-parse HEAD");
   });
 
-  it("documents new Mainnet authority env and delayed ownership acceptance", function () {
+  it("documents genesis authority assignment for the current Mainnet deployment", function () {
     const env = fs.readFileSync(".env.mainnet.example", "utf8");
     const runbook = fs.readFileSync("docs/OWNERSHIP_HANDOFF_RUNBOOK.md", "utf8");
     expect(env).to.include("GOVERNANCE_OWNER_KIND=SAFE");
     expect(env).to.include("GOVERNANCE_OWNER_ADDRESS=");
     expect(env).to.include("OPERATIONS_ADDRESS=");
+    expect(runbook).to.include("genesis authority assignment");
+    expect(runbook).to.include("Wallet B / Ledger");
+    expect(runbook).to.include("Wallet A managed roles: 0");
+    expect(runbook).to.include("No ownership acceptance transaction is required for this deployed instance");
+    expect(runbook).not.to.include("Use `ownership:mainnet:accept-local-gated` only after");
+  });
+
+  it("keeps legacy Mainnet ownership acceptance clearly legacy-only", function () {
+    const runbook = fs.readFileSync("docs/OWNERSHIP_HANDOFF_RUNBOOK.md", "utf8");
     expect(runbook).to.include("ownership:mainnet:accept-local-gated");
-    expect(runbook).to.include("Wait until pendingOwnerAcceptAfter");
+    expect(runbook).to.include("Legacy compatibility only — not required for the 2026-06-21 GoalOS deployment");
   });
 
   it("requires explicit Mainnet governance-owner kind before runtime address loading", function () {
@@ -387,6 +396,63 @@ describe("deployment UX safety layer", function () {
     expect(verifier).to.include("classifyVerificationOutput");
     expect(verifier).to.include("writeVerificationReport");
     expect(verifier).to.include('if (failed && !has("--allow-partial")) process.exitCode = 1');
+  });
+
+  it("keeps ordinary PR CI independent from Mainnet RPC secrets", function () {
+    const pkg = JSON.parse(fs.readFileSync("package.json", "utf8"));
+    expect(pkg.scripts["mainnet:live:validate-seed"]).to.include("mainnet:live:validate-seed");
+    expect(pkg.scripts["mainnet:live:revalidate"]).to.include("mainnet:live:revalidate");
+    expect(pkg.scripts["test:ci"]).not.to.include("mainnet:live:revalidate");
+    expect(pkg.scripts["test:ci"]).not.to.include("ETHERSCAN_API_KEY");
+  });
+
+  it("proves seed validation cannot emit a favorable Stage-B certificate", function () {
+    const source = fs.readFileSync("scripts/mainnet_live/live_mainnet_tools.py", "utf8");
+    expect(source).to.include("def validate_seed");
+    expect(source).to.include("PASSED_NO_STAGE_B");
+    expect(source).to.include("'canEmitStageBPass':False");
+  });
+
+  it("keeps live revalidation fail-closed without provider coverage", function () {
+    const source = fs.readFileSync("scripts/mainnet_live/live_mainnet_tools.py", "utf8");
+    expect(source).to.include("MISSING_PRIMARY_MAINNET_RPC_URL");
+    expect(source).to.include("MISSING_SECONDARY_MAINNET_RPC_URL");
+    expect(source).to.include("missing ETHERSCAN_API_KEY");
+    expect(fs.readFileSync("scripts/mainnet_live/postdeploy_assurance.py", "utf8")).to.include("provider disagreement: selected block hash mismatch");
+  });
+
+  it("defines manual-only read-only Mainnet revalidation workflow", function () {
+    const workflow = fs.readFileSync(".github/workflows/mainnet-live-readonly-revalidate.yml", "utf8");
+    expect(workflow).to.include("workflow_dispatch");
+    expect(workflow).not.to.include("pull_request");
+    expect(workflow).not.to.include("pull_request_target");
+    expect(workflow).not.to.match(/schedule:/);
+    expect(workflow).to.include("environment: mainnet-readonly");
+    expect(workflow).to.include("permissions:");
+    expect(workflow).to.include("contents: read");
+    expect(workflow).to.include("npm run mainnet:live:revalidate");
+    expect(workflow).to.include("upload-artifact");
+    expect(workflow).not.to.include("PRIVATE_KEY");
+    expect(workflow).not.to.include("DEPLOYER_PRIVATE_KEY");
+  });
+
+  it("requires favorable Stage-B evidence to bind all live readbacks", function () {
+    const source = fs.readFileSync("scripts/mainnet_live/postdeploy_assurance.py", "utf8");
+    for (const required of ["receipt-revalidation.json", "runtime-bytecode-readback.json", "authority-readback.json", "phase-b-configuration-readback.json", "verification-evidence.json"]) {
+      expect(source).to.include(required);
+    }
+    expect(source).to.include("MAINNET_DEPLOYMENT_VERIFIED");
+    expect(source).to.include("missing primary Mainnet RPC");
+    expect(source).to.include("missing secondary Mainnet RPC");
+  });
+
+  it("keeps revalidation workflow and scripts transaction-free", function () {
+    const workflow = fs.readFileSync(".github/workflows/mainnet-live-readonly-revalidate.yml", "utf8");
+    const liveTools = fs.readFileSync("scripts/mainnet_live/live_mainnet_tools.py", "utf8");
+    const postdeploy = fs.readFileSync("scripts/mainnet_live/postdeploy_assurance.py", "utf8");
+    expect(workflow).not.to.match(/deploy:ethereum-mainnet|sendTransaction|private[-_]?key/i);
+    expect(liveTools).not.to.include("eth_sendRawTransaction");
+    expect(postdeploy).not.to.include("eth_sendRawTransaction");
   });
 
 });

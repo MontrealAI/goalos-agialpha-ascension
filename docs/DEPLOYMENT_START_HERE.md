@@ -1,10 +1,13 @@
 # Ethereum Mainnet Live Status
 
-Ethereum Mainnet deployed: YES. Mainnet GoalOS contracts verified: 48/48 after independent Etherscan V2 validation. Mainnet configured: YES after read-only authority reconciliation. Permanent authority: Wallet B / Ledger (`0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99`). Wallet A managed roles: 0 after read-only validation. Phase-B grants: 14/14 after read-only validation.
+Ethereum Mainnet deployment recorded: YES.
+Operator verification evidence: 48/48.
+Operator configuration postcheck: PASS.
+Independent dual-RPC revalidation: PENDING.
+Stage B certificate: PENDING.
+Production activation: NO.
+Permanent authority: Wallet B / Ledger via genesis authority assignment. Wallet A managed roles: 0. No ownership acceptance transaction is required for this deployed instance.
 
-Production activated: NO. Not externally audited. User funds are not authorized. This document is generated from the postdeployment release-state architecture and preserves the claim boundary that Stage C remains pending.
+Claim boundary: This evidence reports Ethereum Mainnet deployment, verification, and configuration mechanics only. It does not claim achieved AGI, ASI, superintelligence, guaranteed ROI, legal approval, tax approval, security approval, external audit completion, production safety, user-fund authorization, or production activation.
 
-Use `npm run mainnet:live:all` to regenerate read-only evidence from imported operator artifacts and two Mainnet RPC providers. The tooling refuses to fabricate live evidence from the historical template manifest.
-
-
-Claim boundary: This evidence reports deployment mechanics only. It does not claim achieved AGI, ASI, superintelligence, guaranteed ROI, legal approval, tax approval, security approval, external audit completion, production safety, or Ethereum Mainnet deployment.
+Use `npm run mainnet:live:validate-seed` for deterministic PR-safe checks. Use `npm run mainnet:live:revalidate` only in an operator read-only environment with primary/secondary Mainnet RPC providers and Etherscan API access.

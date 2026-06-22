@@ -38,12 +38,16 @@ Historical predeployment authorization used: NO — DIRECT_OPERATOR_NO_CERTIFICA
 Ethereum Mainnet technical readiness: {tech}.
 Ethereum Mainnet deployment authorization: {dep}.
 Ethereum Mainnet authorization: {eth}.
-Ethereum Mainnet deployed: {deployed}.
+Ethereum Mainnet deployment recorded: {deployed}.
 GoalOS contracts deployed: 48.
-GoalOS contracts Etherscan-verified: 48/48 after independent read-only validation.
+Operator verification evidence: 48/48.
+Operator configuration postcheck: PASS.
+Independent dual-RPC revalidation: PENDING.
+Stage B certificate: PENDING.
 Canonical external AGIALPHA: confirmed.
 Mainnet configured: YES.
 Permanent authority: Wallet B / Ledger genesis authority assignment.
+No ownership acceptance transaction is required for this deployed instance.
 Wallet A managed roles: 0.
 Phase-B grants: 14/14.
 Production activated: NO.
@@ -137,7 +141,7 @@ CI cannot deploy Ethereum Mainnet. Runtime RPC URL, deployer key, and runtime ad
 
 Use `docs/DEPLOYMENT_START_HERE.md` as the operator-facing command path. Shortest safe paths:
 
-This evidence reports deployment mechanics only. It does not claim achieved AGI, ASI, superintelligence, guaranteed ROI, legal approval, tax approval, security approval, external audit completion, production safety, or Ethereum Mainnet deployment.
+This evidence reports Ethereum Mainnet deployment, verification, and configuration mechanics only. It does not claim achieved AGI, ASI, superintelligence, guaranteed ROI, legal approval, tax approval, security approval, external audit completion, production safety, user-fund authorization, or production activation.
 
 **Sepolia**
 ```bash
@@ -173,7 +177,7 @@ Claim boundary: this paper does not claim achieved AGI, ASI, superintelligence, 
 
 ## Genesis authority assignment and ownership handoff
 
-The 2026-06-21 direct Mainnet deployment records Wallet B / Ledger as the permanent authority through genesis authority assignment where applicable. Future GoalOS deployments require ERC-173 ownership handoff before being considered operationally complete. See `docs/OWNERSHIP_HANDOFF_RUNBOOK.md` and use `npm run ownership:sepolia:doctor|plan|dry-run|transfer|verify|evidence` or `npm run ownership:mainnet:doctor|plan|fork-rehearsal|transfer-local-gated|accept-local-gated|verify|evidence`. Mainnet single-deployer permanent-address mode is blocked. For delayed acceptance, run `ownership:mainnet:accept-local-gated` only after the contract readback says: Wait until pendingOwnerAcceptAfter.
+The 2026-06-21 direct Mainnet deployment records Wallet B / Ledger as the permanent authority through genesis authority assignment where applicable. Wallet A managed roles: 0. No ownership acceptance transaction is required for this deployed instance. Future non-genesis or legacy two-step deployments may use the ownership command center, but `ownership:mainnet:accept-local-gated` is legacy compatibility only — not required for the 2026-06-21 GoalOS deployment.
 """
 
 # Decision JSON/Markdown documents are generated from the same certificate so docs:status is sufficient before assert/checker steps.

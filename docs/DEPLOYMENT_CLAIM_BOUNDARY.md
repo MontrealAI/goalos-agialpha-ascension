@@ -30,4 +30,4 @@ Evidence files describe deployment mechanics. They are not marketing claims.
 Remove or correct the unsafe claim, then rerun the check.
 
 ## 10. Claim boundary
-This evidence reports deployment mechanics only. It does not claim achieved AGI, ASI, superintelligence, guaranteed ROI, legal approval, tax approval, security approval, external audit completion, production safety, or Ethereum Mainnet deployment.
+This evidence reports Ethereum Mainnet deployment, verification, and configuration mechanics only. It does not claim achieved AGI, ASI, superintelligence, guaranteed ROI, legal approval, tax approval, security approval, external audit completion, production safety, user-fund authorization, or production activation.

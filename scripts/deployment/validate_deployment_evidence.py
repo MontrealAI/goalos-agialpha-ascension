@@ -3,7 +3,7 @@ from __future__ import annotations
 import json, pathlib, sys
 ROOT = pathlib.Path(__file__).resolve().parents[2]
 REQUIRED = ["networkName","chainId","timestamp","gitCommit","packageVersion","hardhatVersion","solidityCompilerVersion","agialphaTokenAddress","mockTokenUsed","newAgialphaTokenDeployed","deployedContractAddresses","transactionHashes","verificationStatus","manifestHash","claimBoundary","nextRecommendedAction"]
-CLAIM = "This evidence reports deployment mechanics only. It does not claim achieved AGI, ASI, superintelligence, guaranteed ROI, legal approval, tax approval, security approval, external audit completion, production safety, or Ethereum Mainnet deployment."
+CLAIM = "This evidence reports Ethereum Mainnet deployment, verification, and configuration mechanics only. It does not claim achieved AGI, ASI, superintelligence, guaranteed ROI, legal approval, tax approval, security approval, external audit completion, production safety, user-fund authorization, or production activation."
 paths = [ROOT / "qa/sepolia-deployment-evidence.json", ROOT / "qa/mainnet-deployment-evidence.json"]
 errors=[]
 for path in paths:
