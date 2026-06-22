@@ -1,0 +1,16 @@
+changelog:
+  categories:
+    - title: Mainnet deployment and evidence
+      labels: [mainnet, deployment, evidence]
+    - title: Contracts and protocol
+      labels: [contracts, protocol]
+    - title: Security and assurance
+      labels: [security, assurance]
+    - title: Developer experience
+      labels: [developer-experience, tooling]
+    - title: Documentation
+      labels: [documentation]
+    - title: Dependencies
+      labels: [dependencies]
+    - title: Other changes
+      labels: ['*']

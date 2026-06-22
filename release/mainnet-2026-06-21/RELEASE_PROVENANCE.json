@@ -1,0 +1,18 @@
+{
+  "builderEnvironment": {
+    "node": "v20.20.2",
+    "npm": "11.4.2"
+  },
+  "evidenceRoots": {
+    "authorityRoot": "94ac6432f8a6fa53cc98a89ad5bc5e4481b6ff51da94a0a158b481452385e474",
+    "manifestHash": "fc258ded95a1f4cc2df47d3bfc420ae10f577de5ef55c34b62ce32448b4178e9",
+    "receiptRoot": "6e20c003f33dfad0e165c9f1682df460d8dfaf377d3095826609d1e265b33d5d",
+    "runtimeBytecodeRoot": "b7bbb4b04b83ef5f10865a4be3e52934056eb1c25547f565fa7c9d490bb0d9a7",
+    "verificationRoot": "dc89f82484daa165f94a53b9e20e72812316491794b08dfcb10636f7c65d6cba"
+  },
+  "repository": "MontrealAI/goalos-agialpha-ascension",
+  "tag": "v4.4.0-mainnet-2026-06-21",
+  "targetSha": "RELEASE_WORKFLOW_INPUT_REF",
+  "workflow": ".github/workflows/prepare-mainnet-release.yml",
+  "workflowRunId": "LOCAL_NOT_GITHUB_ACTIONS"
+}
