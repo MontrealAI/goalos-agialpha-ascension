@@ -86,100 +86,105 @@ badges=f'''[![Repository Validation](https://github.com/MontrealAI/goalos-agialp
 [![Production Activation NO](https://img.shields.io/badge/Production%20Activation-NO-critical)](qa/mainnet-release-state.json)
 [![Mainnet Deployed](https://img.shields.io/badge/Ethereum%20Mainnet%20Deployed-{deployed}-{'success' if deployed == 'YES' else 'critical'})](qa/mainnet-release-state.json)
 '''
-readme=f"""Install:\n`npm ci`\n\nStart:\n`npm run mainnet:initial:setup-and-authorize`\n\n# GoalOS AGIALPHA Ascension
+readme=f"""# GoalOS AGIALPHA Ascension
 
-{badges}
-{status_block}
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![Solidity 0.8.28](https://img.shields.io/badge/Solidity-0.8.28-363636?logo=solidity)](package.json)
+[![Hardhat 2.28.6](https://img.shields.io/badge/Hardhat-2.28.6-f5d061?logo=ethereum)](package.json)
+[![Ethereum Mainnet Deployed YES](https://img.shields.io/badge/Ethereum%20Mainnet%20Deployed-{deployed}-{'success' if deployed == 'YES' else 'critical'})](qa/mainnet-release-state.json)
+[![Operator Verification Evidence 48/48](https://img.shields.io/badge/Operator%20Verification%20Evidence-48%2F48-informational)](qa/mainnet-postdeploy/verification-evidence.json)
+[![Mainnet Configured YES](https://img.shields.io/badge/Mainnet%20Configured-YES-success)](qa/mainnet-release-state.json)
+[![Production Activation NO](https://img.shields.io/badge/Production%20Activation-NO-critical)](qa/mainnet-release-state.json)
 
-## Executive overview
+## Mission statement
 
-GoalOS AGIALPHA Ascension is the institutional, evidence-first package for proof-settled AI workflow coordination using the existing AGIALPHA token. The repository is designed for reviewers, operators, auditors, and governance stakeholders who need a clear source of truth, reproducible checks, and strict public-claims boundaries.
+GoalOS AGIALPHA Ascension is an evidence-first Ethereum/Hardhat repository for proof-settled AI workflow coordination using the existing canonical AGIALPHA token. The repository is organized for reviewers, operators, developers, and auditors who need clear public status, reproducible checks, and bounded claims.
 
-**Official source of truth:** Mainnet receipts/readbacks, `deployments/ethereum-mainnet.agialpha.latest.json`, `qa/mainnet-postdeploy/` evidence, and `qa/mainnet-release-state.json` now outrank historical Stage-A authorization. Public README/status documents summarize those records; they do not override them.
+## Current Mainnet status
 
-## Quick start for institutional reviewers
+| Item | Current value |
+| --- | --- |
+| Ethereum Mainnet deployment | {deployed} |
+| Mainnet configuration | YES |
+| GoalOS contracts | 48 |
+| Operator verification evidence | 48/48 GoalOS contracts; `verified_from_seed_requires_api_refresh` |
+| Phase-B grants | 14/14 |
+| Stage-B/live postdeployment check | BLOCKED until read-only live evidence passes |
+| Permanent authority | Wallet B / Ledger |
+| Wallet A managed roles | 0 |
+| Production activation | NO |
+| User-fund authorization | NO |
+| External audit completion | NO |
 
-1. Read this README for current status, safety boundaries, and canonical commands.
-2. Use `docs/DOCUMENTATION_INDEX.md` to choose the right reviewer, operator, auditor, or contributor path.
-3. Use `docs/DOCUMENTATION_MAINTENANCE.md` before editing public docs, runbooks, or claim-boundary materials.
-4. Confirm the certificate in `qa/mainnet-authorization-certificate.json`.
-5. Run `npm run mainnet:public-authorize` to validate the public authorization gates.
-6. Run `npm run mainnet:local-checks` before any operator handoff or release review.
-7. Use `npm run deploy:ethereum-mainnet:gated` only from a local operator environment with runtime RPC URL and deployer key supplied outside GitHub.
+Not externally audited.
+Ethereum Mainnet technical readiness: {tech}.
+Ethereum Mainnet deployment authorization: {dep}.
+Ethereum Mainnet authorization: {eth}.
+Ethereum Mainnet deployed: {deployed}.
+Production activated: NO.
 
-## Documentation maintenance
+Lifecycle boundaries remain separate: deployment and configuration are recorded for the pre-release, while operator verification evidence remains qualified by seed/API-refresh status. Independent dual-RPC revalidation, live-RPC bytecode validation, any Stage-B certificate, production activation, user-fund authorization, live canary completion, and external audit completion must retain the status recorded in their evidence files and must not be promoted by prose.
 
-Documentation is evidence-first. Before editing README files, runbooks, public website copy, generated status docs, or claim-boundary materials, use `docs/DOCUMENTATION_MAINTENANCE.md` for the source-of-truth order, update checklist, required validation commands, and PR documentation expectations. Public docs must summarize certificate-backed evidence and must not create deployment, verification, audit, legal, tax, token-classification, investment, yield, or production claims without evidence.
+## Published release
 
-## Official badge policy
+Published pre-release: [`v4.4.0-mainnet-2026-06-21`](https://github.com/MontrealAI/goalos-agialpha-ascension/releases/tag/v4.4.0-mainnet-2026-06-21). Full tag SHA resolved from Git: `51bacf4fe58e4eb425240e74eef7e8461832767f`.
 
-Badges at the top of this README are intentionally limited to official, auditable repository signals: GitHub Actions workflow status, package-declared tool versions, license, authorization state, and deployment state. Workflow badges update automatically from GitHub Actions. Static status badges mirror `qa/mainnet-authorization-certificate.json` and must be updated only when the certificate changes. See `docs/OFFICIAL_BADGES.md` for maintenance rules.
+Release type: Pre-release. Release date: 2026-06-22. Deployment date: 2026-06-21. Package version: 4.4.0.
 
-## Core doctrine
+## Canonical AGIALPHA
 
-- GoalOS decides what may evolve.
-- AGIALPHA coordinates proof-settled work.
-- Evidence Dockets make claims auditable.
-- Do not put intelligence on-chain; put proof of intelligence on-chain.
-- No proof, no evolution. No eval, no propagation. No rollback, no release.
+Canonical AGIALPHA on Ethereum Mainnet is `0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA`. It is external to GoalOS: `external = true`, `deployedByGoalOS = false`, and `mintedByGoalOS = false`.
 
-## Ethereum Mainnet authorization
+## Governance and authority
 
-The Stage-A source of truth is `qa/mainnet-authorization-certificate.json`; the Stage-B deployment source of truth is `qa/mainnet-release-state.json`. README/status documents are generated summaries; manual edits cannot create YES.
+The canonical 2026-06-21 deployment used `DIRECT_OPERATOR_NO_CERTIFICATE`, genesis authority assignment, and postdeployment role configuration. Wallet A deployer is documented in `qa/mainnet-release-state.json`; Wallet B permanent Ledger authority is documented in `qa/mainnet-release-state.json`. Wallet A has zero managed roles. No ERC-173 acceptance transaction is required for this deployed instance.
 
-- TECHNICALLY_MAINNET_READY: **{tech}**
-- MAINNET_DEPLOYMENT_AUTHORIZED: **{dep}**
-- ETHEREUM_MAINNET_AUTHORIZED: **{eth}**
-- MAINNET_DEPLOYED: **{deployed}**
-- Canonical AGIALPHA token: `{cert_value('agialphaToken', default='0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA')}`
-- Chain: Ethereum Mainnet (`chainId=1`)
-- Final manual command: `npm run deploy:ethereum-mainnet:gated`
+Historical predeployment certificate: not used. Deployment path: `DIRECT_OPERATOR_NO_CERTIFICATE`.
 
-## Safety boundary
+## Audience navigation
 
-CI cannot deploy Ethereum Mainnet. Runtime RPC URL, deployer key, and runtime addresses are local broadcast inputs only and are not stored in GitHub. MockAGIALPHA is local/Sepolia-only and is forbidden on Ethereum Mainnet. No new AGIALPHA token is deployed on Ethereum Mainnet.
+- Executive/reviewer: [`docs/CURRENT_STATUS.md`](docs/CURRENT_STATUS.md), [`docs/ETHEREUM_MAINNET.md`](docs/ETHEREUM_MAINNET.md), [`docs/SECURITY_AND_LIMITATIONS.md`](docs/SECURITY_AND_LIMITATIONS.md), [`docs/MAINNET_LIVE_GATE_IMPACT.md`](docs/MAINNET_LIVE_GATE_IMPACT.md).
+- Developer: [`docs/DEVELOPER_QUICKSTART_MAINNET.md`](docs/DEVELOPER_QUICKSTART_MAINNET.md), [`docs/CONTRACT_INTERACTION_REFERENCE.md`](docs/CONTRACT_INTERACTION_REFERENCE.md), [`docs/ETHEREUM_MAINNET_CONTRACTS.md`](docs/ETHEREUM_MAINNET_CONTRACTS.md).
+- Operator: [`docs/OPERATIONS_RUNBOOK_MAINNET.md`](docs/OPERATIONS_RUNBOOK_MAINNET.md), [`docs/MONITORING_AND_ALERTING.md`](docs/MONITORING_AND_ALERTING.md), [`docs/INCIDENT_RESPONSE_MAINNET.md`](docs/INCIDENT_RESPONSE_MAINNET.md), [`docs/WALLET_A_DECOMMISSION_REPORT.md`](docs/WALLET_A_DECOMMISSION_REPORT.md), [`docs/PRODUCTION_ACTIVATION.md`](docs/PRODUCTION_ACTIVATION.md).
+- Contributor: [`START_HERE.md`](START_HERE.md), [`CONTRIBUTING.md`](CONTRIBUTING.md), [`docs/DOCUMENTATION_MAINTENANCE.md`](docs/DOCUMENTATION_MAINTENANCE.md).
 
-## Deployment and verification command center
+Public Sepolia deployment is recommended but not mandatory for public authorization; local deterministic rehearsal and mainnet-shaped simulation are the active public gates.
 
-Use `docs/DEPLOYMENT_START_HERE.md` as the operator-facing command path. Shortest safe paths:
+## Developer quick start
 
-This evidence reports Ethereum Mainnet deployment, verification, and configuration mechanics only. It does not claim achieved AGI, ASI, superintelligence, guaranteed ROI, legal approval, tax approval, security approval, external audit completion, production safety, user-fund authorization, or production activation.
-
-**Sepolia**
 ```bash
-npm run deploy:sepolia:doctor
-npm run deploy:sepolia:dry-run
-npm run deploy:sepolia:live
-npm run deploy:sepolia:verify
-npm run deploy:sepolia:evidence
+npm ci
+npm run mainnet:contracts:check
+npm run docs:mainnet:check
 ```
 
-**Ethereum Mainnet**
+Use the generated registry in [`config/ethereum-mainnet.contracts.json`](config/ethereum-mainnet.contracts.json) or [`app/config/ethereum-mainnet.contracts.generated.ts`](app/config/ethereum-mainnet.contracts.generated.ts). Validate `chainId === 1`, load ABIs from repository artifacts, and use read-only calls until Stage C explicitly enables production writes.
+
+## Read-only operator commands
+
 ```bash
-npm run deploy:mainnet:doctor
-npm run deploy:mainnet:preflight
-npm run deploy:mainnet:fork-rehearsal
-npm run deploy:mainnet:prepare-local
-npm run deploy:mainnet:live-local-gated
-npm run deploy:mainnet:verify
-npm run deploy:mainnet:evidence
+npm run mainnet:contracts:check
+npm run mainnet:postdeploy:status
+npm run docs:all
 ```
 
-> Sepolia may be deployed through protected GitHub Actions. Ethereum Mainnet final broadcast is local-only and must not be deployed by CI. Mainnet contract verification may run from GitHub Actions only after deployment, using a manifest and no deployer key.
+These commands are for status, registry, documentation, and read-only evidence review. Do not redeploy the canonical topology. Canonical redeployment commands must fail closed and must never run from CI with signing material.
 
-## Sovereign RSI v6.3 research paper
+## Security/claim boundary
 
-The Sovereign RSI v6.3 publication folder is `docs/papers/sovereign-rsi/v6.3/`. Paper assets may be pending upload if they are not present in the tree; do not fabricate missing PDF/DOCX/source files.
+This repository does not claim production activation, user-fund authorization, live canary completion, external audit completion, legal or tax approval, token classification, guaranteed security, investment return, AGI/ASI, yield, revenue share, or price appreciation. Do not commit secrets, `.private/` data, raw operator logs, private constructor inputs, private keys, mnemonics, RPC URLs, API keys, Ledger secrets, browser profiles, caches, or coverage artifacts.
 
-Core thesis: GoalOS sets sovereign aims. AGIALPHA coordinates proof-settled work. AEP-001 defines valid evidence. The Proof Gradient decides what may evolve. The intelligence stays private. The proof becomes verifiable.
+## Architecture overview
 
-RSI means proof-backed upgrade rights. An artifact may influence future work only after evidence, evaluation, reviewer validation, scope control, challenge window, canary rollout, monitoring, rollback readiness, and chronicle memory.
+The configured Mainnet topology contains 49 registry entries: 48 GoalOS-created contracts and one external canonical AGIALPHA token. Public contract discovery is centralized in the generated registry and the canonical Mainnet hub rather than duplicated across unrelated documents.
 
-Claim boundary: this paper does not claim achieved AGI, ASI, superintelligence, autonomous sovereignty, guaranteed ROI, safety certification, legal approval, tax approval, security approval, energy abundance, or Kardashev Type II achievement.
+## Documentation index
 
-## Genesis authority assignment and ownership handoff
+Start with [`docs/DOCUMENTATION_INDEX.md`](docs/DOCUMENTATION_INDEX.md). The source-of-truth hierarchy is: Mainnet receipts/readbacks; `deployments/ethereum-mainnet.agialpha.latest.json`; `qa/mainnet-postdeploy/verification-evidence.json`; `qa/mainnet-postdeploy/`; `qa/mainnet-release-state.json`; `release/mainnet-2026-06-21/`; generated public docs.
 
-The 2026-06-21 direct Mainnet deployment records Wallet B / Ledger as the permanent authority through genesis authority assignment where applicable. Wallet A managed roles: 0. No ownership acceptance transaction is required for this deployed instance. Future non-genesis or legacy two-step deployments may use the ownership command center, but `ownership:mainnet:accept-local-gated` is legacy compatibility only — not required for the 2026-06-21 GoalOS deployment.
+## Citation and license
+
+Use [`CITATION.cff`](CITATION.cff) for citation metadata. This repository is licensed under the MIT License; see [`LICENSE`](LICENSE).
 """
 
 # Decision JSON/Markdown documents are generated from the same certificate so docs:status is sufficient before assert/checker steps.
