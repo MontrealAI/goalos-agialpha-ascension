@@ -1,0 +1,420 @@
+{
+  "schemaVersion": "2.0",
+  "pageVersion": "proof-gradient-apex-web-ui-v2",
+  "title": "The Proof Gradient Challenge",
+  "subtitle": "The public institutional test for autonomous discovery: same engine, same objective, same compute—one difference in what earns the right to become infrastructure.",
+  "missionId": "GOALOS-PROOF-RUN-001-PROOF-GRADIENT",
+  "repositoryUrl": "https://github.com/MontrealAI/goalos-agialpha-ascension",
+  "releaseTag": "v4.4.0-mainnet-2026-06-21",
+  "releaseUrl": "https://github.com/MontrealAI/goalos-agialpha-ascension/releases/tag/v4.4.0-mainnet-2026-06-21",
+  "publicThesis": "Same engine. Same objective. Same compute. One difference: proof governance.",
+  "objective": "Reduce wall-clock time to a frozen validation-loss target for a frozen transformer-training benchmark while preserving validation quality, memory limits, reproducibility, and the published workload.",
+  "arms": [
+    {
+      "name": "Hardened autoresearch baseline",
+      "budget": "48 GPU-equivalent hours",
+      "candidates": 80,
+      "description": "A strong research engine with hidden evaluation, reward-hack screening, process isolation, repeated evaluation, and final technical review."
+    },
+    {
+      "name": "GoalOS-governed autoresearch",
+      "budget": "48 GPU-equivalent hours",
+      "candidates": 68,
+      "description": "The same base engine plus Evidence Dockets, independent replay operators, validator quorum, challenge, conditional settlement, and Chronicle packaging."
+    }
+  ],
+  "acceptance": [
+    "At least 7% median reduction in time-to-target",
+    "No statistically significant validation-quality regression",
+    "No memory-budget violation",
+    "Zero hidden correctness failures",
+    "Three fresh training seeds",
+    "Two independent replay operators",
+    "Zero unresolved reward-hack findings",
+    "Unanimous validator approval",
+    "72-hour public challenge window"
+  ],
+  "simulation": {
+    "type": "SYNTHETIC_EQUAL_BUDGET_HARDENED_BASELINE_STRESS_TEST",
+    "empiricalEvidence": false,
+    "campaignsPerScenario": 100000,
+    "budgetGpuEquivalentHoursPerArm": 48,
+    "scenarios": [
+      {
+        "name": "Benign",
+        "baselineValidSuccess": 0.91621,
+        "goalosValidSuccess": 0.88099,
+        "baselineFalseDiscovery": 0.005114,
+        "goalosFalseDiscovery": 0.003642
+      },
+      {
+        "name": "Realistic",
+        "baselineValidSuccess": 0.86821,
+        "goalosValidSuccess": 0.82109,
+        "baselineFalseDiscovery": 0.007102,
+        "goalosFalseDiscovery": 0.005318
+      },
+      {
+        "name": "Adversarial",
+        "baselineValidSuccess": 0.73225,
+        "goalosValidSuccess": 0.67177,
+        "baselineFalseDiscovery": 0.012248,
+        "goalosFalseDiscovery": 0.006551
+      }
+    ],
+    "conclusion": "The hardened engine leads single-mission discovery throughput. GoalOS produces a cleaner acceptance set. The category-defining test is whether independent accountability, settlement, and Chronicle memory repay the proof overhead across missions.",
+    "representative": {
+      "candidate": "C-017",
+      "hypothesis": "graph capture and compilation",
+      "robustImprovementPct": 9.82,
+      "baselineCombinedPct": 10.01,
+      "goalosCombinedPct": 11.13,
+      "validatorDecision": "ACCEPT"
+    },
+    "falseAcceptanceCostBreakEvenInValidDiscoveryUnits": 25.9,
+    "capabilityQualityLiftBreakEvenPctPoints": 0.5
+  },
+  "mission2": {
+    "title": "Mission 002 — Prove Compounding Under Half the Search Budget",
+    "description": "The accepted capability, failed branches, and Chronicle lessons enter a harder task under half the original search budget. The decisive question is whether governed memory improves future search enough to repay governance overhead.",
+    "requirements": [
+      "At least 4% time-to-target improvement",
+      "No quality regression",
+      "Independent replay",
+      "At least 30% fewer experiments than the no-memory control",
+      "No increase in reward-hack incidence",
+      "Correct abstention when assumptions do not hold"
+    ]
+  },
+  "positioning": {
+    "headline": "Recursive discovers. GoalOS decides what discovery is allowed to become infrastructure.",
+    "body": "A hardened research engine may remain faster at producing candidates. GoalOS is the proof-governed institution for environments where accepting the wrong candidate is expensive, independent replay matters, settlement must be auditable, and accepted capability must compound into trustworthy institutional memory."
+  },
+  "evidence": {
+    "verificationSummary": {
+      "manifestEntries": 49,
+      "goalosCreatedContracts": 48,
+      "verifiedGoalosContracts": 48,
+      "externalCanonicalAgialpha": 1,
+      "failed": 0,
+      "evidenceSha256": "67f03d5eeb827c36d4ad7df669aab100a64b710860a8bd8186adf032276213bb"
+    },
+    "postcheckSummary": {
+      "chainId": 1,
+      "checkedContracts": 48,
+      "status": "PASSED",
+      "failures": 0,
+      "evidenceSha256": "d17b93b59c533d4886db5a9ca2f7f056b2a5c172738815d30bf1e63be8d9adfc"
+    },
+    "statement": "The page reports the recorded deployment, verification, and postcheck evidence. It does not claim that the synthetic research comparison has been run empirically."
+  },
+  "proofRoute": [
+    {
+      "sequence": 1,
+      "stage": "objective",
+      "contractName": "AEPGoalOSCommitRegistry",
+      "functionSignature": "createCommit(...)"
+    },
+    {
+      "sequence": 2,
+      "stage": "experiments",
+      "contractName": "AEPRunCommitmentRegistry",
+      "functionSignature": "commitRun(...)"
+    },
+    {
+      "sequence": 3,
+      "stage": "evidence docket",
+      "contractName": "AEPEvidenceDocketRegistry",
+      "functionSignature": "registerEvidenceDocket(...)"
+    },
+    {
+      "sequence": 4,
+      "stage": "proof bundle",
+      "contractName": "AEPProofBundleRegistry",
+      "functionSignature": "registerProofBundle(...)"
+    },
+    {
+      "sequence": 5,
+      "stage": "failed branches",
+      "contractName": "AEPFalsificationRegistry",
+      "functionSignature": "reportFalsification(...)"
+    },
+    {
+      "sequence": 6,
+      "stage": "independent replay",
+      "contractName": "AEPReplayRegistry",
+      "functionSignature": "recordReplay(...)"
+    },
+    {
+      "sequence": 7,
+      "stage": "evaluation",
+      "contractName": "AEPEvalRegistry",
+      "functionSignature": "recordEval(...)"
+    },
+    {
+      "sequence": 8,
+      "stage": "attestation",
+      "contractName": "AEPAttestationRegistry",
+      "functionSignature": "attest(...)"
+    },
+    {
+      "sequence": 9,
+      "stage": "selection",
+      "contractName": "AEPSelectionGate",
+      "functionSignature": "issueSelectionCertificate(...)"
+    },
+    {
+      "sequence": 10,
+      "stage": "accepted capability",
+      "contractName": "AEPArtifactRegistry",
+      "functionSignature": "registerArtifactVersion(...)"
+    },
+    {
+      "sequence": 11,
+      "stage": "work units",
+      "contractName": "AlphaWorkUnitLedger",
+      "functionSignature": "recordAlphaWorkUnits(...)"
+    },
+    {
+      "sequence": 12,
+      "stage": "settlement",
+      "contractName": "AEPRewardVault",
+      "functionSignature": "payReward(...)"
+    },
+    {
+      "sequence": 13,
+      "stage": "Chronicle memory",
+      "contractName": "AEPChronicleRegistry",
+      "functionSignature": "recordEntry(...)"
+    },
+    {
+      "sequence": 14,
+      "stage": "reuse",
+      "contractName": "AEPRolloutRouter",
+      "functionSignature": "recordRollout(...)"
+    },
+    {
+      "sequence": 15,
+      "stage": "rollback",
+      "contractName": "AEPRollbackRegistry",
+      "functionSignature": "recordRollback(...)"
+    }
+  ],
+  "contractMetadata": {
+    "AGIALPHA": {
+      "category": "external",
+      "purpose": "Canonical external AGIALPHA coordination asset"
+    },
+    "CommercializationPerformanceVault": {
+      "category": "vault",
+      "purpose": "Commercialization and performance treasury"
+    },
+    "ProofRewardsVault": {
+      "category": "vault",
+      "purpose": "Proof-work and builder rewards reserve"
+    },
+    "LiquidityVault": {
+      "category": "vault",
+      "purpose": "Liquidity and operations reserve"
+    },
+    "SecurityVault": {
+      "category": "vault",
+      "purpose": "Security, audit, and bug-bounty reserve"
+    },
+    "CommunityVault": {
+      "category": "vault",
+      "purpose": "Community and credential reserve"
+    },
+    "ProofSeedRegistry": {
+      "category": "workflow",
+      "purpose": "Proof-seed registration"
+    },
+    "LegacyAGIJobManagerRegistry": {
+      "category": "workflow",
+      "purpose": "Reviewed legacy AGIJobManager history"
+    },
+    "ReputationRegistry": {
+      "category": "workflow",
+      "purpose": "Proof-linked reputation"
+    },
+    "ReferralRegistry": {
+      "category": "workflow",
+      "purpose": "Referral provenance"
+    },
+    "ProofCardRegistry": {
+      "category": "workflow",
+      "purpose": "Proof-card records"
+    },
+    "ProofCredentialRegistry": {
+      "category": "workflow",
+      "purpose": "Proof credentials"
+    },
+    "JobRegistry": {
+      "category": "workflow",
+      "purpose": "AGIALPHA job and protected-liability registry"
+    },
+    "JobClaimBondManager": {
+      "category": "workflow",
+      "purpose": "Job claim bonds"
+    },
+    "PremiumAccessRegistry": {
+      "category": "workflow",
+      "purpose": "Premium access records"
+    },
+    "ProofSubmissionRegistry": {
+      "category": "workflow",
+      "purpose": "Proof submissions and review flow"
+    },
+    "ReviewerBondRegistry": {
+      "category": "workflow",
+      "purpose": "Reviewer bonds"
+    },
+    "TreasuryRouter": {
+      "category": "governance",
+      "purpose": "Treasury routing"
+    },
+    "ProtocolConfigRegistry": {
+      "category": "governance",
+      "purpose": "Protocol configuration"
+    },
+    "LaunchGateRegistry": {
+      "category": "governance",
+      "purpose": "Launch-gate records"
+    },
+    "DisputeRegistry": {
+      "category": "optional",
+      "purpose": "Disputes"
+    },
+    "AppealRegistry": {
+      "category": "optional",
+      "purpose": "Appeals"
+    },
+    "SponsorRegistry": {
+      "category": "optional",
+      "purpose": "Sponsors"
+    },
+    "BuilderProfileRegistry": {
+      "category": "optional",
+      "purpose": "Builder profiles"
+    },
+    "CredentialRevocationRegistry": {
+      "category": "optional",
+      "purpose": "Credential revocation"
+    },
+    "AEPAgentRegistry": {
+      "category": "aep",
+      "purpose": "Agent identities"
+    },
+    "AEPArtifactRegistry": {
+      "category": "aep",
+      "purpose": "Versioned capability artifacts"
+    },
+    "AEPGoalOSCommitRegistry": {
+      "category": "aep",
+      "purpose": "Mission objective commitments"
+    },
+    "AEPRunCommitmentRegistry": {
+      "category": "aep",
+      "purpose": "Experiment and run commitments"
+    },
+    "AEPProofLedger": {
+      "category": "aep",
+      "purpose": "Proof records"
+    },
+    "AEPEvalRegistry": {
+      "category": "aep",
+      "purpose": "Evaluation schemas and results"
+    },
+    "AEPAttestationRegistry": {
+      "category": "aep",
+      "purpose": "Validator attestations"
+    },
+    "AEPSelectionGate": {
+      "category": "aep",
+      "purpose": "Promotion and rejection decisions"
+    },
+    "AEPRolloutRouter": {
+      "category": "aep",
+      "purpose": "Controlled reuse and rollout"
+    },
+    "AEPRollbackRegistry": {
+      "category": "aep",
+      "purpose": "Rollback receipts"
+    },
+    "AEPEvidenceDocketRegistry": {
+      "category": "aep",
+      "purpose": "Evidence Docket commitments"
+    },
+    "AEPProofBundleRegistry": {
+      "category": "aep",
+      "purpose": "Accepted ProofBundles"
+    },
+    "AlphaWorkUnitLedger": {
+      "category": "aep",
+      "purpose": "Verified work-unit accounting"
+    },
+    "MandateEpochRegistry": {
+      "category": "aep",
+      "purpose": "Mission mandate epochs"
+    },
+    "AGIEthNamespaceRegistry": {
+      "category": "aep",
+      "purpose": "AGI.eth namespace records"
+    },
+    "AEPConformanceRegistry": {
+      "category": "aep",
+      "purpose": "AEP conformance"
+    },
+    "AEPClaimBoundaryRegistry": {
+      "category": "aep",
+      "purpose": "Claim boundaries"
+    },
+    "AEPReplayRegistry": {
+      "category": "aep",
+      "purpose": "Independent replay records"
+    },
+    "AEPCommitRevealValidationRegistry": {
+      "category": "aep",
+      "purpose": "Commit-reveal validation"
+    },
+    "AEPEvaluatorStakingRegistry": {
+      "category": "aep",
+      "purpose": "Evaluator stakes"
+    },
+    "AEPSlashingCourt": {
+      "category": "aep",
+      "purpose": "Evaluator challenge and slashing"
+    },
+    "AEPRewardVault": {
+      "category": "aep",
+      "purpose": "Conditional AGIALPHA rewards"
+    },
+    "AEPChronicleRegistry": {
+      "category": "aep",
+      "purpose": "Institutional memory"
+    },
+    "AEPFalsificationRegistry": {
+      "category": "aep",
+      "purpose": "Failed branches and falsification"
+    }
+  },
+  "claimBoundary": [
+    "The equal-budget comparison is a synthetic design stress test, not an empirical benchmark result.",
+    "The page does not claim that GoalOS has outperformed Recursive or any other real autoresearch system.",
+    "The Mainnet evidence demonstrates deployed and source-verified infrastructure; it does not establish autonomous scientific performance, production safety, or external audit completion.",
+    "No website build, preview, or validation command sends a public-network transaction.",
+    "Only a completed real campaign may support comparative performance claims, capability acceptance, AGIALPHA settlement, or on-chain promotion."
+  ],
+  "categoryStatement": "Recursive-class systems discover. GoalOS decides what discovery is admissible, replayable, settleable, reusable, and allowed to evolve.",
+  "constitutionalLaw": [
+    "No proof, no propagation.",
+    "No replay, no settlement.",
+    "No rollback, no release."
+  ],
+  "launchStatus": {
+    "simulation": "COMPLETE — SYNTHETIC",
+    "empiricalMission": "READY TO LAUNCH",
+    "mainnetInfrastructure": "DEPLOYED AND VERIFIED",
+    "onchainMissionAnchoring": "NOT YET EXECUTED"
+  }
+}
