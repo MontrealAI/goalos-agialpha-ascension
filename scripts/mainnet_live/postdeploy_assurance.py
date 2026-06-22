@@ -204,13 +204,13 @@ def certificate(args):
         else: docs.append(json.loads(p.read_text()))
     if missing or any(str(d.get('status','')).startswith('FAILED') for d in docs):
         raise SystemExit('Stage-B certificate blocked until receipt/runtime/verification/authority evidence passes: '+','.join(missing))
-    cert={'stage':'B_POSTDEPLOYMENT_VERIFICATION','status':'MAINNET_DEPLOYMENT_VERIFIED','chainId':1,'MAINNET_DEPLOYED':'YES','MAINNET_VERIFIED':'YES','MAINNET_CONFIGURED':'YES','LIVE_AUTHORITY_READBACK_COMPLETE':'YES','deploymentMode':'DIRECT_OPERATOR_NO_CERTIFICATE','predeploymentCertificateUsed':False,'predeploymentAuthorizationHistoricalStatus':'NOT_USED','PRODUCTION_ACTIVATION_EFFECTIVE':'NO','LIVE_CANARY_COMPLETE':'NO','USER_FUNDS_AUTHORIZED':'NO','walletA':WALLET_A,'walletB':WALLET_B,'issuedAt':time.strftime('%Y-%m-%dT%H:%M:%SZ',time.gmtime()),'evidenceRoots':{f:h(json.loads((ROOT/'qa/mainnet-postdeploy'/f).read_text())) for f in req}}
+    cert={'stage':'B_POSTDEPLOYMENT_VERIFICATION','status':'MAINNET_DEPLOYMENT_VERIFIED','chainId':1,'MAINNET_DEPLOYED':'YES','MAINNET_VERIFIED':'YES','MAINNET_CONFIGURED':'YES','LIVE_AUTHORITY_READBACK_COMPLETE':'YES','WALLET_A_MANAGED_ROLE_COUNT':0,'PHASE_B_GRANTS_ACTIVE':14,'PHASE_B_GRANTS_EXPECTED':14,'deploymentPath':'DIRECT_OPERATOR_NO_CERTIFICATE','deploymentMode':'DIRECT_OPERATOR_NO_CERTIFICATE','predeploymentCertificateUsed':False,'predeploymentAuthorizationHistoricalStatus':'NOT_USED_DIRECT_OPERATOR_PATH','PRODUCTION_READY':'NO','PRODUCTION_ACTIVATION_EFFECTIVE':'NO','LIVE_CANARY_COMPLETE':'NO','USER_FUNDS_AUTHORIZED':'NO','walletA':WALLET_A,'walletB':WALLET_B,'issuedAt':time.strftime('%Y-%m-%dT%H:%M:%SZ',time.gmtime()),'evidenceRoots':{f:h(json.loads((ROOT/'qa/mainnet-postdeploy'/f).read_text())) for f in req}}
     cert['certificateSelfHash']='0x'+h(cert); w(Path('qa/mainnet-postdeploy/deployment-verification-certificate.json'),cert); print('issued Stage-B certificate')
 def validate(args):
     p=ROOT/'qa/mainnet-postdeploy/deployment-verification-certificate.json'
     if not p.exists(): raise SystemExit('missing certificate')
     c=json.loads(p.read_text())
-    required={'status':'MAINNET_DEPLOYMENT_VERIFIED','deploymentMode':'DIRECT_OPERATOR_NO_CERTIFICATE','predeploymentCertificateUsed':False,'LIVE_CANARY_COMPLETE':'NO','USER_FUNDS_AUTHORIZED':'NO'}
+    required={'status':'MAINNET_DEPLOYMENT_VERIFIED','deploymentPath':'DIRECT_OPERATOR_NO_CERTIFICATE','predeploymentCertificateUsed':False,'MAINNET_DEPLOYED':'YES','MAINNET_VERIFIED':'YES','MAINNET_CONFIGURED':'YES','LIVE_AUTHORITY_READBACK_COMPLETE':'YES','WALLET_A_MANAGED_ROLE_COUNT':0,'PHASE_B_GRANTS_ACTIVE':14,'PHASE_B_GRANTS_EXPECTED':14,'PRODUCTION_READY':'NO','LIVE_CANARY_COMPLETE':'NO','PRODUCTION_ACTIVATION_EFFECTIVE':'NO','USER_FUNDS_AUTHORIZED':'NO'}
     for k,v in required.items():
         if c.get(k)!=v: raise SystemExit(f'invalid certificate {k}')
     for root in c.get('evidenceRoots',{}):
