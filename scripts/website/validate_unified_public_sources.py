@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
-"""Cross-check the public Mainnet and Proof Gradient source snapshots.
+"""Fail-closed cross-check for GoalOS public Mainnet website inputs.
 
-Read-only. This script never contacts an RPC endpoint or sends a transaction.
+Read-only. This command never opens a wallet, contacts an RPC endpoint, or
+sends a blockchain transaction.
 """
 from __future__ import annotations
 
@@ -15,34 +16,56 @@ from typing import Any
 ADDRESS_RE = re.compile(r"^0x[0-9a-fA-F]{40}$")
 CANONICAL_AGIALPHA = "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA"
 RELEASE_TAG = "v4.4.0-mainnet-2026-06-21"
+MISSION_ID = "GOALOS-PUBLIC-PROOF-MISSION-001"
+FORBIDDEN_MARKERS = (
+    "private_mainnet_deployer_private_key",
+    "mainnet_deployer_private_key",
+    "mainnet_rpc_url=",
+    "private_mainnet_rpc_url=",
+    "etherscan_api_key=",
+    "seed_phrase",
+    "mnemonic",
+)
 
 
 def load(path: Path) -> Any:
     if not path.is_file():
         raise ValueError(f"missing required source: {path}")
-    return json.loads(path.read_text(encoding="utf-8"))
+    try:
+        return json.loads(path.read_text(encoding="utf-8"))
+    except Exception as exc:
+        raise ValueError(f"invalid JSON in {path}: {exc}") from exc
 
 
 def sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
-def normalize_registry(data: Any) -> list[dict[str, Any]]:
+def normalized_registry(data: Any) -> list[dict[str, Any]]:
     if not isinstance(data, dict):
         raise ValueError("canonical registry must be an object")
     metadata = data.get("metadata") if isinstance(data.get("metadata"), dict) else {}
-    if data.get("chainId", metadata.get("chainId")) != 1:
+    chain_id = data.get("chainId", metadata.get("chainId"))
+    if chain_id != 1:
         raise ValueError("canonical registry must describe chainId 1")
-    contracts = data.get("contracts")
-    if not isinstance(contracts, list) or len(contracts) != 49:
-        raise ValueError("canonical registry must contain 49 entries")
-    normalized: list[dict[str, Any]] = []
-    for raw in contracts:
+    raw_contracts = data.get("contracts")
+    if not isinstance(raw_contracts, list) or len(raw_contracts) != 49:
+        raise ValueError("canonical registry must contain exactly 49 entries")
+
+    result: list[dict[str, Any]] = []
+    names: set[str] = set()
+    addresses: set[str] = set()
+    for raw in raw_contracts:
         if not isinstance(raw, dict):
             raise ValueError("canonical registry entry must be an object")
         name, address = raw.get("name"), raw.get("address")
-        if not isinstance(name, str) or not isinstance(address, str) or not ADDRESS_RE.fullmatch(address):
-            raise ValueError(f"invalid canonical registry entry: {name!r}")
+        if not isinstance(name, str) or not name:
+            raise ValueError("canonical registry entry has no name")
+        if not isinstance(address, str) or not ADDRESS_RE.fullmatch(address):
+            raise ValueError(f"invalid canonical address for {name}")
+        if raw.get("chainId", chain_id) != 1:
+            raise ValueError(f"wrong chainId for {name}")
+
         classification = raw.get("classification")
         if classification not in {"deployed", "external"}:
             if raw.get("external") is True and raw.get("deployedByGoalOS") is False:
@@ -50,26 +73,46 @@ def normalize_registry(data: Any) -> list[dict[str, Any]]:
             elif raw.get("external") is False and raw.get("deployedByGoalOS") is True:
                 classification = "deployed"
             else:
-                raise ValueError(f"cannot classify canonical registry entry: {name}")
-        normalized.append({"name": name, "address": address, "classification": classification})
-    return normalized
+                raise ValueError(f"cannot classify canonical registry entry {name}")
+
+        key = address.lower()
+        if name in names or key in addresses:
+            raise ValueError(f"duplicate canonical registry entry: {name} / {address}")
+        names.add(name)
+        addresses.add(key)
+        result.append({"name": name, "address": address, "classification": classification})
+
+    deployed = [item for item in result if item["classification"] == "deployed"]
+    external = [item for item in result if item["classification"] == "external"]
+    if len(deployed) != 48 or len(external) != 1:
+        raise ValueError("canonical registry must contain 48 GoalOS entries and 1 external dependency")
+    if external[0]["name"] != "AGIALPHA" or external[0]["address"].lower() != CANONICAL_AGIALPHA.lower():
+        raise ValueError("canonical AGIALPHA dependency is incorrect")
+    return result
 
 
-def normalize_contracts(raw: Any) -> list[dict[str, Any]]:
-    if isinstance(raw, dict):
-        return [{"name": str(name), "address": str(address)} for name, address in raw.items()]
-    if isinstance(raw, list):
-        result = []
-        for item in raw:
-            if not isinstance(item, dict) or not item.get("name") or not item.get("address"):
-                raise ValueError("snapshot contract entry is invalid")
-            result.append(dict(item))
-        return result
-    raise ValueError("snapshot contracts must be a list or object")
+def normalized_pairs(entries: Any) -> set[tuple[str, str]]:
+    if not isinstance(entries, list):
+        raise ValueError("contract collection must be a list")
+    pairs: set[tuple[str, str]] = set()
+    for entry in entries:
+        if not isinstance(entry, dict):
+            raise ValueError("contract collection entry must be an object")
+        name, address = entry.get("name"), entry.get("address")
+        if not isinstance(name, str) or not isinstance(address, str) or not ADDRESS_RE.fullmatch(address):
+            raise ValueError(f"invalid contract collection entry: {name!r}")
+        pair = (name, address.lower())
+        if pair in pairs:
+            raise ValueError(f"duplicate contract collection pair: {name}")
+        pairs.add(pair)
+    return pairs
 
 
-def pair_set(entries: list[dict[str, Any]]) -> set[tuple[str, str]]:
-    return {(str(item["name"]), str(item["address"]).lower()) for item in entries}
+def reject_private_material(value: Any, label: str) -> None:
+    serialized = json.dumps(value, sort_keys=True).lower()
+    for marker in FORBIDDEN_MARKERS:
+        if marker in serialized:
+            raise ValueError(f"{label} contains forbidden private-operator marker: {marker}")
 
 
 def main() -> int:
@@ -77,93 +120,99 @@ def main() -> int:
     parser.add_argument("--registry", default="config/ethereum-mainnet.contracts.json")
     parser.add_argument("--release-contracts", default="release/mainnet-2026-06-21/CONTRACTS_MAINNET.json")
     parser.add_argument("--proof-snapshot", default="data/mainnet/v4.4.0-mainnet-2026-06-21.json")
-    parser.add_argument("--proof-content", default="content/proof-gradient-apex.json")
+    parser.add_argument("--proof-content", default="content/proof-gradient-sovereign.json")
     parser.add_argument("--out", default="site/qa/unified-public-source-validation.json")
     args = parser.parse_args()
 
     registry_path = Path(args.registry)
     release_contracts_path = Path(args.release_contracts)
-    proof_snapshot_path = Path(args.proof_snapshot)
-    proof_content_path = Path(args.proof_content)
+    snapshot_path = Path(args.proof_snapshot)
+    content_path = Path(args.proof_content)
 
-    registry = normalize_registry(load(registry_path))
-    release_contracts_raw = load(release_contracts_path)
-    snapshot = load(proof_snapshot_path)
-    content = load(proof_content_path)
+    registry = normalized_registry(load(registry_path))
+    release_contracts = load(release_contracts_path)
+    snapshot = load(snapshot_path)
+    content = load(content_path)
 
-    if not isinstance(release_contracts_raw, list) or len(release_contracts_raw) != 49:
-        raise ValueError("release contract registry must contain 49 entries")
-    snapshot_contracts = normalize_contracts(snapshot.get("contracts") if isinstance(snapshot, dict) else None)
-    if len(snapshot_contracts) != 49:
-        raise ValueError("Proof Gradient Mainnet snapshot must contain 49 entries")
-
-    # Public website snapshots must not carry disposable signer or secret-bearing fields.
-    authority = snapshot.get("authority", {}) if isinstance(snapshot, dict) else {}
-    if isinstance(authority, dict) and "deployer" in authority:
-        raise ValueError("Proof Gradient public snapshot must omit the disposable deployer address")
-    serialized_snapshot = json.dumps(snapshot, sort_keys=True).lower()
-    for forbidden_marker in (
-        "private_mainnet_deployer_private_key",
-        "mainnet_rpc_url=",
-        "etherscan_api_key=",
-        "seed_phrase",
-        "mnemonic",
-    ):
-        if forbidden_marker in serialized_snapshot:
-            raise ValueError(f"Proof Gradient public snapshot contains forbidden operator material: {forbidden_marker}")
-
-    expected = pair_set(registry)
-    if pair_set(release_contracts_raw) != expected:
+    expected_pairs = {(item["name"], item["address"].lower()) for item in registry}
+    if normalized_pairs(release_contracts) != expected_pairs:
         raise ValueError("release contract registry differs from canonical registry")
-    if pair_set(snapshot_contracts) != expected:
+
+    if not isinstance(snapshot, dict):
+        raise ValueError("Proof Gradient Mainnet snapshot must be an object")
+    reject_private_material(snapshot, "Proof Gradient Mainnet snapshot")
+    if normalized_pairs(snapshot.get("contracts")) != expected_pairs:
         raise ValueError("Proof Gradient Mainnet snapshot differs from canonical registry")
+    expected_snapshot = {
+        "chainId": 1,
+        "releaseTag": RELEASE_TAG,
+        "deploymentStatus": "CONFIGURED",
+        "deploymentMode": "DIRECT_OPERATOR_NO_CERTIFICATE",
+        "canonicalAgialpha": CANONICAL_AGIALPHA,
+        "goalosCreatedContractCount": 48,
+        "manifestEntryCount": 49,
+        "creationTransactionCount": 48,
+        "phaseBGrantCount": 14,
+        "notExternallyAudited": True,
+    }
+    for key, expected in expected_snapshot.items():
+        actual = snapshot.get(key)
+        if isinstance(expected, str) and key == "canonicalAgialpha":
+            if str(actual).lower() != expected.lower():
+                raise ValueError(f"snapshot {key} mismatch")
+        elif actual != expected:
+            raise ValueError(f"snapshot {key} expected {expected!r}, got {actual!r}")
+    verification = snapshot.get("verification")
+    if not isinstance(verification, dict) or verification.get("goalosContracts") != 48 or verification.get("verified") != 48 or verification.get("failed") != 0 or verification.get("complete") is not True:
+        raise ValueError("Proof Gradient verification summary must be 48/48 complete with zero failures")
+    postcheck = snapshot.get("postcheck")
+    if not isinstance(postcheck, dict) or postcheck.get("chainId") != 1 or postcheck.get("checkedContracts") != 48 or postcheck.get("status") != "PASSED" or postcheck.get("failures") not in ([], None):
+        raise ValueError("Proof Gradient postcheck must record 48 contracts and PASSED")
 
-    deployed = [item for item in registry if item["classification"] == "deployed"]
-    external = [item for item in registry if item["classification"] == "external"]
-    if len(deployed) != 48 or len(external) != 1:
-        raise ValueError("canonical registry must contain 48 GoalOS entries and one external dependency")
-    if external[0]["name"] != "AGIALPHA" or external[0]["address"].lower() != CANONICAL_AGIALPHA.lower():
-        raise ValueError("canonical AGIALPHA entry is incorrect")
+    if not isinstance(content, dict):
+        raise ValueError("Proof Gradient content must be an object")
+    reject_private_material(content, "Proof Gradient public content")
+    if content.get("pageVersion") != "sovereign-v3" or content.get("missionId") != MISSION_ID:
+        raise ValueError("Proof Gradient content is not Sovereign v3 / Mission 001")
+    if not str(content.get("releaseUrl", "")).endswith(f"/releases/tag/{RELEASE_TAG}"):
+        raise ValueError("Proof Gradient content release URL mismatch")
+    proof_route = content.get("proofRoute")
+    if not isinstance(proof_route, list) or len(proof_route) != 15:
+        raise ValueError("Proof Gradient proofRoute must contain 15 stages")
+    deployed_names = {item["name"] for item in registry if item["classification"] == "deployed"}
+    route_names = {str(item.get("contractName")) for item in proof_route if isinstance(item, dict)}
+    if not route_names or not route_names.issubset(deployed_names):
+        raise ValueError("Proof Gradient proofRoute contains unknown Mainnet contracts")
+    if not isinstance(content.get("claimBoundary"), list) or len(content["claimBoundary"]) < 4:
+        raise ValueError("Proof Gradient claim boundary is incomplete")
 
-    if not isinstance(snapshot, dict) or snapshot.get("chainId") != 1:
-        raise ValueError("Proof Gradient snapshot must describe chainId 1")
-    if snapshot.get("releaseTag") != RELEASE_TAG:
-        raise ValueError("Proof Gradient snapshot release tag mismatch")
-    if snapshot.get("deploymentStatus") != "CONFIGURED":
-        raise ValueError("Proof Gradient snapshot deployment status must be CONFIGURED")
-    if len(snapshot.get("transactions", [])) != 48:
-        raise ValueError("Proof Gradient snapshot must contain 48 deployment transactions")
-    if len(snapshot.get("phaseBGrants", [])) != 14:
-        raise ValueError("Proof Gradient snapshot must contain 14 Phase-B grants")
-    if snapshot.get("mockAgialphaUsed") is not False or snapshot.get("newAgialphaTokenDeployed") is not False:
-        raise ValueError("Proof Gradient snapshot violates the canonical AGIALPHA boundary")
-
-    if not isinstance(content, dict) or content.get("releaseTag") != RELEASE_TAG:
-        raise ValueError("Proof Gradient content release tag mismatch")
-    evidence = content.get("evidence", {}).get("verificationSummary", {})
-    if evidence.get("manifestEntries") != 49 or evidence.get("goalosCreatedContracts") != 48 or evidence.get("verifiedGoalosContracts") != 48:
-        raise ValueError("Proof Gradient content evidence summary is inconsistent")
-    if evidence.get("failed") != 0:
-        raise ValueError("Proof Gradient content must record zero operator verification failures")
+    public_blob = json.dumps(content, sort_keys=True).lower()
+    for term in ("third-party competitor", "competitor comparison", " versus ", " vs. "):
+        if term in public_blob:
+            raise ValueError(f"prohibited public competitor framing: {term}")
 
     result = {
         "schemaVersion": "1.0",
         "status": "PASS",
         "chainId": 1,
         "releaseTag": RELEASE_TAG,
+        "proofGradientEdition": "SOVEREIGN_V3",
+        "missionId": MISSION_ID,
         "registryEntries": 49,
         "goalosCreatedContracts": 48,
         "externalDependencies": 1,
-        "deploymentTransactions": 48,
-        "phaseBGrants": 14,
+        "operatorVerification": "48/48",
+        "verificationFailures": 0,
+        "phaseBGrants": "14/14",
+        "postdeploymentCheck": "48/48 PASS",
         "productionActivation": "NO",
         "userFundAuthorization": "NO",
         "publicNetworkTransactionSent": False,
         "hashes": {
             "canonicalRegistry": sha256(registry_path),
             "releaseContracts": sha256(release_contracts_path),
-            "proofSnapshot": sha256(proof_snapshot_path),
-            "proofContent": sha256(proof_content_path),
+            "proofSnapshot": sha256(snapshot_path),
+            "proofContent": sha256(content_path),
         },
     }
     out = Path(args.out)

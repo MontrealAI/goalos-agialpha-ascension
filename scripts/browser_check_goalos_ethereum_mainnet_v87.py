@@ -3,45 +3,15 @@ from __future__ import annotations
 
 import argparse
 import asyncio
-import contextlib
-import http.server
+import html as html_module
 import json
+import re
 import shutil
-import socket
-import socketserver
-import threading
 from pathlib import Path
 
 VIEWPORTS = [(375, 812), (1440, 1000)]
 MIN_CONTRAST = 4.5
 MIN_CONTROL_HEIGHT = 44
-
-
-class QuietHandler(http.server.SimpleHTTPRequestHandler):
-    def log_message(self, fmt, *args):
-        pass
-
-
-def pick_port() -> int:
-    sock = socket.socket()
-    sock.bind(("127.0.0.1", 0))
-    port = sock.getsockname()[1]
-    sock.close()
-    return port
-
-
-@contextlib.contextmanager
-def serve_dir(site: Path):
-    port = pick_port()
-    handler = lambda *args, **kwargs: QuietHandler(*args, directory=str(site), **kwargs)
-    server = socketserver.TCPServer(("127.0.0.1", port), handler)
-    thread = threading.Thread(target=server.serve_forever, daemon=True)
-    thread.start()
-    try:
-        yield f"http://127.0.0.1:{port}"
-    finally:
-        server.shutdown()
-        server.server_close()
 
 
 COLOR_AUDIT = r"""
@@ -91,10 +61,12 @@ COLOR_AUDIT = r"""
   const inspect = selector => [...document.querySelectorAll(selector)].map(element => {
     const style = getComputedStyle(element);
     const rect = element.getBoundingClientRect();
-    const background = effectiveBackground(element);
+    const ownBackground = parseColor(style.backgroundColor);
+    const background = ownBackground && ownBackground[3] > 0.98 ? ownBackground : effectiveBackground(element);
     return {
       text: (element.textContent || '').trim().replace(/\s+/g, ' ').slice(0, 100),
       className: element.className,
+      variant: element.dataset.variant || '',
       color: style.color,
       backgroundColor: style.backgroundColor,
       backgroundImage: style.backgroundImage,
@@ -171,9 +143,14 @@ HOME_AUDIT = r"""
   const buttons = [...document.querySelectorAll('#ethereum-mainnet-record .mn-home-btn')].map(element => {
     const style = getComputedStyle(element);
     const box = element.getBoundingClientRect();
+    const ownBackground = parseColor(style.backgroundColor);
+    const background = ownBackground && ownBackground[3] > 0.98 ? ownBackground : effectiveBackground(element);
     return {
       text: (element.textContent || '').trim().replace(/\s+/g, ' '),
-      contrast: contrast(style.color, effectiveBackground(element)),
+      variant: element.dataset.variant || '',
+      color: style.color,
+      backgroundColor: style.backgroundColor,
+      contrast: contrast(style.color, background),
       height: box.height,
       visible: box.width > 1 && box.height > 1,
     };
@@ -186,6 +163,48 @@ HOME_AUDIT = r"""
   };
 }
 """
+
+
+def inline_local_assets(site: Path, filename: str) -> str:
+    """Inline local CSS/JS so browser QA never depends on an HTTP server."""
+    path = site / filename
+    if not path.is_file():
+        raise FileNotFoundError(path)
+    document = path.read_text(encoding="utf-8", errors="ignore")
+
+    link_pattern = re.compile(
+        r"<link\b(?=[^>]*\brel=(?:['\"])?stylesheet(?:['\"])?)(?=[^>]*\bhref=['\"]([^'\"]+)['\"])[^>]*>",
+        re.IGNORECASE,
+    )
+
+    def replace_link(match: re.Match[str]) -> str:
+        href = match.group(1)
+        if href.startswith(("http://", "https://", "//", "data:")):
+            return match.group(0)
+        asset = site / href.split("?", 1)[0].split("#", 1)[0]
+        if not asset.is_file() or asset.suffix.lower() != ".css":
+            return match.group(0)
+        css = asset.read_text(encoding="utf-8", errors="ignore")
+        return f"<style data-inlined-from='{html_module.escape(href, quote=True)}'>\n{css}\n</style>"
+
+    document = link_pattern.sub(replace_link, document)
+
+    script_pattern = re.compile(
+        r"<script\b(?=[^>]*\bsrc=['\"]([^'\"]+)['\"])[^>]*>\s*</script>",
+        re.IGNORECASE,
+    )
+
+    def replace_script(match: re.Match[str]) -> str:
+        src = match.group(1)
+        if src.startswith(("http://", "https://", "//", "data:")):
+            return ""
+        asset = site / src.split("?", 1)[0].split("#", 1)[0]
+        if not asset.is_file() or asset.suffix.lower() != ".js":
+            return ""
+        script = asset.read_text(encoding="utf-8", errors="ignore").replace("</script", "<\\/script")
+        return f"<script data-inlined-from='{html_module.escape(src, quote=True)}'>\n{script}\n</script>"
+
+    return script_pattern.sub(replace_script, document)
 
 
 async def run(site: Path, screenshots: bool) -> tuple[list[str], list[str], int]:
@@ -203,80 +222,95 @@ async def run(site: Path, screenshots: bool) -> tuple[list[str], list[str], int]
     if screenshots:
         shots.mkdir(exist_ok=True)
 
-    with serve_dir(site) as base:
-        async with async_playwright() as playwright:
-            executable = shutil.which("chromium") or shutil.which("google-chrome") or shutil.which("chromium-browser")
-            browser = await playwright.chromium.launch(
-                headless=True,
-                executable_path=executable,
-                args=["--no-sandbox", "--disable-dev-shm-usage", "--disable-gpu"],
-            )
-            for width, height in VIEWPORTS:
-                context = await browser.new_context(viewport={"width": width, "height": height})
-                page = await context.new_page()
-                tests += 2
-                try:
-                    await page.goto(f"{base}/ethereum-mainnet.html", wait_until="load", timeout=45000)
-                    await page.wait_for_timeout(250)
-                    audit = await page.evaluate(COLOR_AUDIT)
-                    prefix = f"mainnet@{width}x{height}"
-                    if audit["version"] != "v88-institutional":
-                        errors.append(f"{prefix}: design marker missing")
-                    if audit["overflow"] > 8:
-                        errors.append(f"{prefix}: horizontal overflow {audit['overflow']}px")
-                    if not audit["h1Visible"] or not audit["centered"]:
-                        errors.append(f"{prefix}: hero visibility/alignment failed")
-                    if "sans-serif" not in audit["font"].lower():
-                        errors.append(f"{prefix}: sans-serif system font missing")
-                    if audit["groups"] != 5 or audit["contracts"] != 49:
-                        errors.append(f"{prefix}: registry count mismatch")
-                    if audit["forms"]:
-                        errors.append(f"{prefix}: form detected")
-                    if audit["headerHeight"] < 54:
-                        errors.append(f"{prefix}: header collapsed")
-                    if not audit["proofGradientLink"]:
-                        errors.append(f"{prefix}: Proof Gradient navigation link missing")
-                    if len(audit["buttons"]) != 3:
-                        errors.append(f"{prefix}: expected three hero buttons, found {len(audit['buttons'])}")
-                    for button in audit["buttons"]:
-                        if not button["visible"] or button["height"] < MIN_CONTROL_HEIGHT:
-                            errors.append(f"{prefix}: button hidden/small: {button['text']}")
-                        if button["contrast"] < MIN_CONTRAST:
-                            errors.append(
-                                f"{prefix}: button contrast {button['contrast']:.2f}: {button['text']} "
-                                f"(color={button['color']}, background={button['backgroundColor']})"
-                            )
-                    if screenshots:
-                        await page.screenshot(path=str(shots / f"ethereum-mainnet-{width}x{height}.png"), full_page=True)
+    try:
+        mainnet_document = inline_local_assets(site, "ethereum-mainnet.html")
+        homepage_document = inline_local_assets(site, "index.html")
+    except OSError as exc:
+        return [f"Could not prepare inline browser document: {exc}"], warnings, tests
 
-                    await page.goto(f"{base}/index.html", wait_until="load", timeout=45000)
-                    await page.wait_for_timeout(180)
-                    home = await page.evaluate(HOME_AUDIT)
-                    home_prefix = f"home@{width}x{height}"
-                    if not home["ok"] or home["width"] < 200 or not home["centered"]:
-                        errors.append(f"{home_prefix}: Mainnet feature missing/misaligned")
-                    if len(home["buttons"]) != 2:
-                        errors.append(f"{home_prefix}: expected two Mainnet feature buttons")
-                    for button in home["buttons"]:
-                        if not button["visible"] or button["height"] < MIN_CONTROL_HEIGHT:
-                            errors.append(f"{home_prefix}: button hidden/small: {button['text']}")
-                        if button["contrast"] < MIN_CONTRAST:
-                            errors.append(f"{home_prefix}: button contrast {button['contrast']:.2f}: {button['text']}")
-                    if screenshots:
-                        await page.locator("#ethereum-mainnet-record").screenshot(
-                            path=str(shots / f"homepage-mainnet-{width}x{height}.png")
+    async with async_playwright() as playwright:
+        executable = shutil.which("chromium") or shutil.which("google-chrome") or shutil.which("chromium-browser")
+        browser = await playwright.chromium.launch(
+            headless=True,
+            executable_path=executable,
+            args=["--no-sandbox", "--disable-dev-shm-usage", "--disable-gpu"],
+        )
+        for width, height in VIEWPORTS:
+            context = await browser.new_context(viewport={"width": width, "height": height})
+            page = await context.new_page()
+            tests += 2
+            try:
+                await page.set_content(mainnet_document, wait_until="load", timeout=45000)
+                await page.wait_for_timeout(250)
+                audit = await page.evaluate(COLOR_AUDIT)
+                prefix = f"mainnet@{width}x{height}"
+                if audit["version"] != "v88-institutional":
+                    errors.append(f"{prefix}: design marker missing")
+                if audit["overflow"] > 8:
+                    errors.append(f"{prefix}: horizontal overflow {audit['overflow']}px")
+                if not audit["h1Visible"] or not audit["centered"]:
+                    errors.append(f"{prefix}: hero visibility/alignment failed")
+                if "sans-serif" not in audit["font"].lower():
+                    errors.append(f"{prefix}: sans-serif system font missing")
+                if audit["groups"] != 5 or audit["contracts"] != 49:
+                    errors.append(f"{prefix}: registry count mismatch")
+                if audit["forms"]:
+                    errors.append(f"{prefix}: form detected")
+                if audit["headerHeight"] < 54:
+                    errors.append(f"{prefix}: header collapsed")
+                if not audit["proofGradientLink"]:
+                    errors.append(f"{prefix}: Proof Gradient navigation link missing")
+                if len(audit["buttons"]) != 3:
+                    errors.append(f"{prefix}: expected three hero buttons, found {len(audit['buttons'])}")
+                variants = {button.get("variant") for button in audit["buttons"]}
+                if variants != {"primary", "secondary", "ghost"}:
+                    errors.append(f"{prefix}: unexpected hero button variants: {sorted(variants)}")
+                for button in audit["buttons"]:
+                    if not button["visible"] or button["height"] < MIN_CONTROL_HEIGHT:
+                        errors.append(f"{prefix}: button hidden/small: {button['text']}")
+                    if button["contrast"] < MIN_CONTRAST:
+                        errors.append(
+                            f"{prefix}: button contrast {button['contrast']:.2f}: {button['text']} "
+                            f"(variant={button.get('variant')}, color={button['color']}, background={button['backgroundColor']})"
                         )
-                except Exception as exc:
-                    errors.append(f"browser QA@{width}x{height}: {type(exc).__name__}: {exc}")
-                finally:
-                    await page.close()
-                    await context.close()
-            await browser.close()
+                if screenshots:
+                    await page.screenshot(path=str(shots / f"ethereum-mainnet-{width}x{height}.png"), full_page=True)
+
+                await page.set_content(homepage_document, wait_until="load", timeout=45000)
+                await page.wait_for_timeout(180)
+                home = await page.evaluate(HOME_AUDIT)
+                home_prefix = f"home@{width}x{height}"
+                if not home["ok"] or home["width"] < 200 or not home["centered"]:
+                    errors.append(f"{home_prefix}: Mainnet feature missing/misaligned")
+                if len(home["buttons"]) != 2:
+                    errors.append(f"{home_prefix}: expected two Mainnet feature buttons")
+                home_variants = {button.get("variant") for button in home["buttons"]}
+                if home_variants != {"primary", "secondary"}:
+                    errors.append(f"{home_prefix}: unexpected button variants: {sorted(home_variants)}")
+                for button in home["buttons"]:
+                    if not button["visible"] or button["height"] < MIN_CONTROL_HEIGHT:
+                        errors.append(f"{home_prefix}: button hidden/small: {button['text']}")
+                    if button["contrast"] < MIN_CONTRAST:
+                        errors.append(
+                            f"{home_prefix}: button contrast {button['contrast']:.2f}: {button['text']} "
+                            f"(variant={button.get('variant')}, color={button.get('color')}, background={button.get('backgroundColor')})"
+                        )
+                if screenshots:
+                    await page.locator("#ethereum-mainnet-record").screenshot(
+                        path=str(shots / f"homepage-mainnet-feature-{width}x{height}.png")
+                    )
+            except Exception as exc:
+                errors.append(f"browser QA@{width}x{height}: {type(exc).__name__}: {exc}")
+            finally:
+                await page.close()
+                await context.close()
+        await browser.close()
     return errors, warnings, tests
 
 
-async def main_async(args) -> int:
-    errors, warnings, tests = await run(Path(args.site), args.screenshots)
+async def main_async(args: argparse.Namespace) -> int:
+    site = Path(args.site)
+    errors, warnings, tests = await run(site, args.screenshots)
     report = {
         "status": "PASS" if not errors else "FAIL",
         "tests": tests,
@@ -286,19 +320,26 @@ async def main_async(args) -> int:
         "design": "v88-institutional",
         "minimumButtonContrast": MIN_CONTRAST,
         "minimumControlHeight": MIN_CONTROL_HEIGHT,
+        "browserMode": "self-contained-inline-assets",
     }
-    qa = Path(args.site) / "qa"
+    qa = site / "qa"
     qa.mkdir(exist_ok=True)
     (qa / "mainnet-page-browser-verify-v87.json").write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
+    md = ["# GoalOS Ethereum Mainnet Browser QA", "", f"Status: **{report['status']}**", "", f"Tests: {tests}", "", "## Errors"]
+    md += [f"- {error}" for error in errors] or ["- None"]
+    md += ["", "## Warnings"]
+    md += [f"- {warning}" for warning in warnings] or ["- None"]
+    (qa / "mainnet-page-browser-verify-v87.md").write_text("\n".join(md) + "\n", encoding="utf-8")
     print(json.dumps(report, indent=2))
     return 0 if not errors else 1
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Browser and contrast QA for the GoalOS Ethereum Mainnet page")
+    parser = argparse.ArgumentParser(description="Self-contained browser QA for the generated GoalOS Ethereum Mainnet experience")
     parser.add_argument("--site", default="site")
     parser.add_argument("--screenshots", action="store_true")
-    return asyncio.run(main_async(parser.parse_args()))
+    args = parser.parse_args()
+    return asyncio.run(main_async(args))
 
 
 if __name__ == "__main__":

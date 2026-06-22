@@ -322,7 +322,7 @@ body.mn-page .nav a:hover,body.mn-page .nav a:focus-visible{{background:#fff;col
 .mn-metric{{min-height:128px;border:1px solid rgba(255,255,255,.16);background-color:rgba(255,255,255,.085);border-radius:22px;padding:18px;backdrop-filter:blur(14px)}}.mn-metric strong{{display:block;color:var(--mn-gold-soft);font-size:clamp(1.65rem,3vw,2.65rem);line-height:1.05;letter-spacing:-.04em}}.mn-metric span{{display:block;margin-top:8px;color:#e5edf8;font-size:.78rem;font-weight:850;line-height:1.35}}
 .mn-actions{{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}}.mn-btn{{min-height:48px;display:inline-flex;align-items:center;justify-content:center;gap:9px;text-decoration:none;border-radius:999px;padding:12px 19px;font-weight:930;font-size:.92rem;border:1px solid transparent;transition:transform .18s ease,box-shadow .18s ease}}
 .mn-btn:hover{{transform:translateY(-2px)}}.mn-btn:focus-visible{{outline:3px solid var(--mn-cyan);outline-offset:3px}}
-body.mn-page .mn-btn--primary,body.mn-page .mn-btn--primary:visited{{background-color:#f6cf68!important;background-image:none!important;color:#07111f!important;border-color:#f6cf68!important;box-shadow:0 18px 50px rgba(240,189,79,.28)}}body.mn-page .mn-btn--secondary,body.mn-page .mn-btn--secondary:visited{{background-color:#ffffff!important;background-image:none!important;color:#07111f!important;border-color:#ffffff!important;box-shadow:0 15px 42px rgba(0,0,0,.18)}}body.mn-page .mn-btn--ghost,body.mn-page .mn-btn--ghost:visited{{background-color:#13243b!important;background-image:none!important;color:#ffffff!important;border-color:rgba(255,255,255,.28)!important}}
+body.mn-page a.mn-btn.mn-btn--primary,body.mn-page a.mn-btn.mn-btn--primary:link,body.mn-page a.mn-btn.mn-btn--primary:visited{{background:#f6cf68!important;background-color:#f6cf68!important;background-image:none!important;color:#07111f!important;-webkit-text-fill-color:#07111f!important;border-color:#f6cf68!important;box-shadow:0 18px 50px rgba(240,189,79,.28)}}body.mn-page a.mn-btn.mn-btn--secondary,body.mn-page a.mn-btn.mn-btn--secondary:link,body.mn-page a.mn-btn.mn-btn--secondary:visited{{background:#ffffff!important;background-color:#ffffff!important;background-image:none!important;color:#07111f!important;-webkit-text-fill-color:#07111f!important;border-color:#ffffff!important;box-shadow:0 15px 42px rgba(0,0,0,.18)}}body.mn-page a.mn-btn.mn-btn--ghost,body.mn-page a.mn-btn.mn-btn--ghost:link,body.mn-page a.mn-btn.mn-btn--ghost:visited{{background:#13243b!important;background-color:#13243b!important;background-image:none!important;color:#ffffff!important;-webkit-text-fill-color:#ffffff!important;border-color:rgba(255,255,255,.28)!important}}
 .mn-section{{padding:clamp(70px,8vw,112px) 0}}.mn-section--white{{background:rgba(255,255,255,.78)}}.mn-section--dark{{position:relative;background:linear-gradient(135deg,#07111f,#0d213d);color:#fff;overflow:hidden}}
 .mn-section--dark:before{{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.055) 1px,transparent 1px);background-size:44px 44px;opacity:.5}}
 .mn-section-header{{max-width:870px;margin-bottom:34px}}.mn-section-header h2{{margin:8px 0 14px;font-size:clamp(2.15rem,5.2vw,4.9rem);line-height:.97;letter-spacing:-.065em;text-wrap:balance}}.mn-section-header p{{margin:0;color:var(--mn-muted);font-size:1.06rem;line-height:1.75}}.mn-section--dark .mn-section-header p{{color:#cbd9e9}}
@@ -353,9 +353,9 @@ body.mn-page .mn-btn--primary,body.mn-page .mn-btn--primary:visited{{background-
 <div class='mn-metric'><strong>CONFIGURED</strong><span>deployment status</span></div>
 </div>
 <div class='mn-actions'>
-<a class='mn-btn mn-btn--primary' href='{RELEASE_URL}' target='_blank' rel='noopener noreferrer'>Open published pre-release <span aria-hidden='true'>↗</span></a>
-<a class='mn-btn mn-btn--secondary' href='#contracts'>Inspect contract registry</a>
-<a class='mn-btn mn-btn--ghost' href='index.html'>Return home</a>
+<a class='mn-btn mn-btn--primary' data-variant='primary' href='{RELEASE_URL}' target='_blank' rel='noopener noreferrer'>Open published pre-release <span aria-hidden='true'>↗</span></a>
+<a class='mn-btn mn-btn--secondary' data-variant='secondary' href='#contracts'>Inspect contract registry</a>
+<a class='mn-btn mn-btn--ghost' data-variant='ghost' href='proof-gradient-challenge.html'>Explore the Proof Gradient</a>
 </div></div></section>
 <section class='mn-section mn-section--white'><div class='mn-container'>
 <div class='mn-section-header'><div class='mn-label'>Current operating boundary</div><h2>Deployment is recorded. Production activation remains separate.</h2><p>The public record supports deployment, configuration, and operator verification evidence. It does not authorize user funds, enable production write flows, claim an external audit, or convert the pre-release into a production-activation certificate.</p></div>
@@ -389,7 +389,7 @@ body.mn-page .mn-btn--primary,body.mn-page .mn-btn--primary:visited{{background-
 <div class='mn-claim'><strong>Claim boundary.</strong> This page does not claim achieved AGI, achieved ASI, superintelligence achievement, guaranteed ROI, token appreciation, external audit completion, production certification, user-fund authorization, or live production settlement.</div>
 </div></section>
 </main>
-<footer class='mn-footer'><div class='mn-container mn-footer-inner'><div><strong>GoalOS AGIALPHA Ascension</strong><p>Evidence-first Ethereum Mainnet deployment record.</p></div><div><a href='index.html'>Home</a> · <a href='{RELEASE_URL}' target='_blank' rel='noopener noreferrer'>GitHub release</a></div></div></footer>
+<footer class='mn-footer'><div class='mn-container mn-footer-inner'><div><strong>GoalOS AGIALPHA Ascension</strong><p>Evidence-first Ethereum Mainnet deployment record.</p></div><div><a href='index.html'>Home</a> · <a href='proof-gradient-challenge.html'>Proof Gradient</a> · <a href='{RELEASE_URL}' target='_blank' rel='noopener noreferrer'>GitHub release</a></div></div></footer>
 <script defer src='assets/goalos-v86-dynamic-ai.js'></script>
 </body></html>
 """
@@ -412,8 +412,8 @@ def home_styles() -> str:
 #ethereum-mainnet-record .mn-home-actions{{position:relative;z-index:1;display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}}
 #ethereum-mainnet-record .mn-home-btn{{min-height:48px;display:inline-flex;align-items:center;justify-content:center;text-decoration:none;border-radius:999px;padding:12px 18px;font-size:.9rem;font-weight:930;transition:transform .18s ease,box-shadow .18s ease}}
 #ethereum-mainnet-record .mn-home-btn:hover{{transform:translateY(-2px)}}#ethereum-mainnet-record .mn-home-btn:focus-visible{{outline:3px solid #77e7f4;outline-offset:3px}}
-#ethereum-mainnet-record .mn-home-btn--primary,#ethereum-mainnet-record .mn-home-btn--primary:visited{{background-color:#f6cf68!important;background-image:none!important;color:#07111f!important;border:1px solid #f6cf68!important;box-shadow:0 17px 46px rgba(240,189,79,.28)}}
-#ethereum-mainnet-record .mn-home-btn--secondary,#ethereum-mainnet-record .mn-home-btn--secondary:visited{{background-color:#ffffff!important;background-image:none!important;color:#07111f!important;border:1px solid #ffffff!important;box-shadow:0 15px 42px rgba(0,0,0,.20)}}
+#ethereum-mainnet-record a.mn-home-btn.mn-home-btn--primary,#ethereum-mainnet-record a.mn-home-btn.mn-home-btn--primary:link,#ethereum-mainnet-record a.mn-home-btn.mn-home-btn--primary:visited{{background:#f6cf68!important;background-color:#f6cf68!important;background-image:none!important;color:#07111f!important;-webkit-text-fill-color:#07111f!important;border:1px solid #f6cf68!important;box-shadow:0 17px 46px rgba(240,189,79,.28)}}
+#ethereum-mainnet-record a.mn-home-btn.mn-home-btn--secondary,#ethereum-mainnet-record a.mn-home-btn.mn-home-btn--secondary:link,#ethereum-mainnet-record a.mn-home-btn.mn-home-btn--secondary:visited{{background:#ffffff!important;background-color:#ffffff!important;background-image:none!important;color:#07111f!important;-webkit-text-fill-color:#07111f!important;border:1px solid #ffffff!important;box-shadow:0 15px 42px rgba(0,0,0,.20)}}
 @media(max-width:900px){{#ethereum-mainnet-record .mn-home-inner{{grid-template-columns:1fr}}}}
 @media(max-width:620px){{#ethereum-mainnet-record{{padding:48px 12px}}#ethereum-mainnet-record .mn-home-shell{{border-radius:28px;padding:28px 20px}}#ethereum-mainnet-record .mn-home-grid{{grid-template-columns:1fr}}#ethereum-mainnet-record .mn-home-btn{{width:100%}}}}
 </style>
@@ -431,7 +431,7 @@ def make_home_block(operator_verified: int, independent: str) -> str:
 <div class='mn-home-stat'><strong>14/14 grants</strong><span>Postdeployment configuration recorded active under Ledger-controlled authority.</span></div>
 <div class='mn-home-stat'><strong>Activation: NO</strong><span>Production activation and user-fund authorization remain disabled.</span></div>
 </div></div>
-<div class='mn-home-actions'><a class='mn-home-btn mn-home-btn--primary' href='ethereum-mainnet.html'>Open the Ethereum Mainnet record</a><a class='mn-home-btn mn-home-btn--secondary' href='{RELEASE_URL}' target='_blank' rel='noopener noreferrer'>View the published pre-release ↗</a></div>
+<div class='mn-home-actions'><a class='mn-home-btn mn-home-btn--primary' data-variant='primary' href='ethereum-mainnet.html'>Open the Ethereum Mainnet record</a><a class='mn-home-btn mn-home-btn--secondary' data-variant='secondary' href='{RELEASE_URL}' target='_blank' rel='noopener noreferrer'>View the published pre-release ↗</a></div>
 </div></section>
 {HOME_END}"""
 
