@@ -398,6 +398,17 @@ describe("deployment UX safety layer", function () {
     expect(verifier).to.include('if (failed && !has("--allow-partial")) process.exitCode = 1');
   });
 
+  it("generates the canonical Mainnet deployed phrase for repository status checks", function () {
+    const release = JSON.parse(fs.readFileSync("qa/mainnet-release-state.json", "utf8"));
+    expect(release.summary.ETHEREUM_MAINNET_DEPLOYED).to.equal("YES");
+    const readme = fs.readFileSync("README.md", "utf8");
+    expect(readme).to.include("Ethereum Mainnet deployed: YES.");
+    expect(readme).not.to.include("Ethereum Mainnet deployment recorded: YES.");
+    const result = spawnSync("python", ["scripts/repository_status_check.py"], { encoding: "utf8" });
+    expect(result.status).to.equal(0);
+    expect(result.stdout).to.include("Repository status check passed.");
+  });
+
   it("keeps ordinary PR CI independent from Mainnet RPC secrets", function () {
     const pkg = JSON.parse(fs.readFileSync("package.json", "utf8"));
     expect(pkg.scripts["mainnet:live:validate-seed"]).to.include("mainnet:live:validate-seed");

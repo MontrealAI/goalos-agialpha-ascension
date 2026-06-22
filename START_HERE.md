@@ -25,7 +25,6 @@ Historical predeployment authorization used: NO — DIRECT_OPERATOR_NO_CERTIFICA
 Ethereum Mainnet technical readiness: NO.
 Ethereum Mainnet deployment authorization: NO.
 Ethereum Mainnet authorization: NO.
-Ethereum Mainnet deployment recorded: YES.
 Ethereum Mainnet deployed: YES.
 GoalOS contracts deployed: 48.
 Operator verification evidence: 48/48.
