@@ -8,6 +8,14 @@ on:
       - 'scripts/build_goalos_agialpha_ascension_website_v86.py'
       - 'scripts/verify_goalos_agialpha_ascension_website_v86.py'
       - 'scripts/visual_layout_check_v86.py'
+      - 'content/proof-gradient-sovereign.json'
+      - 'data/mainnet/v4.4.0-mainnet-2026-06-21.json'
+      - 'scripts/website/build_proof_gradient_sovereign.py'
+      - 'scripts/website/verify_proof_gradient_sovereign.py'
+      - 'scripts/website/visual_check_proof_gradient_sovereign.py'
+      - 'test/test_proof_gradient_sovereign.py'
+      - 'docs/PROOF_GRADIENT_SOVEREIGN_WEBSITE.md'
+      - '.github/workflows/goalos-agialpha-ascension-v86-final.yml'
       - '.github/workflows/goalos-agialpha-ascension-v86-smoke-test.yml'
 
 permissions:
@@ -15,30 +23,65 @@ permissions:
 
 jobs:
   smoke-test:
-    name: Build, verify, and layout-test v86
+    name: Build, preserve, verify, and layout-test v86
     runs-on: ubuntu-latest
+    timeout-minutes: 40
     steps:
       - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
       - name: Build preserved actual website
         run: python3 scripts/build_goalos_agialpha_ascension_website_v86.py --out site
-      - name: Verify content, links, claims, and files
+
+      - name: Add Proof Gradient Sovereign experience additively
+        run: python3 scripts/website/build_proof_gradient_sovereign.py --site site
+
+      - name: Verify canonical content, links, claims, and files
         run: python3 scripts/verify_goalos_agialpha_ascension_website_v86.py --site site
+
+      - name: Verify Proof Gradient evidence, preservation, and public positioning
+        run: python3 scripts/website/verify_proof_gradient_sovereign.py --site site
+
+      - name: Run Proof Gradient regression tests
+        run: python3 -m unittest discover -s test -p 'test_proof_gradient_sovereign.py' -v
+
       - name: Install Playwright Chromium
         run: |
           python3 -m pip install --upgrade pip
           python3 -m pip install playwright
           python3 -m playwright install --with-deps chromium
-      - name: Run browser layout and mobile QA
+
+      - name: Run canonical browser layout and mobile QA
         run: python3 scripts/visual_layout_check_v86.py --site site --screenshots
-      - name: Reject archives in public site
+
+      - name: Run Proof Gradient browser and interaction QA
+        run: python3 scripts/website/visual_check_proof_gradient_sovereign.py --site site --screenshots
+
+      - name: Reject archives and private operator material
+        shell: bash
         run: |
+          set -euo pipefail
           if find site \( -name '*.zip' -o -name '*.7z' -o -name '*.tar' -o -name '*.gz' -o -name '*.rar' \) -print | grep -q .; then
             echo 'Archive file found inside public site.'
             exit 1
           fi
-      - name: Upload QA evidence
+          if grep -RIlE 'PRIVATE_MAINNET_DEPLOYER_PRIVATE_KEY|SEED_PHRASE|MNEMONIC|MAINNET_RPC_URL=|ETHERSCAN_API_KEY=' site; then
+            echo 'Private operator material found inside public site.'
+            exit 1
+          fi
+
+      - name: Upload preview and QA evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: goalos-v86-smoke-qa
-          path: site/qa
+          name: goalos-proof-gradient-sovereign-smoke-preview
+          path: |
+            site/index.html
+            site/proof-gradient-challenge.html
+            site/downloads/proof-gradient/
+            site/qa/
+          if-no-files-found: warn
+          retention-days: 30
