@@ -1,0 +1,347 @@
+{
+  "schemaVersion": "1.0",
+  "pageVersion": "ascension-protocol-v1",
+  "missionId": "GOALOS-PUBLIC-PROOF-MISSION-002",
+  "sequence": 2,
+  "title": "The Ascension Protocol",
+  "subtitle": "Where proven capability learns to travel.",
+  "kicker": "GoalOS Public Proof Mission 002 · Capability Transfer",
+  "manifesto": "Proof is not the end of a mission. It is the beginning of compounding capability.",
+  "heroQuestion": "Can verified intelligence compound without surrendering the proof that made it trustworthy?",
+  "status": "PROTOCOL_PUBLISHED_AWAITING_MISSION_001_ACCEPTED_CAPABILITY",
+  "constitution": [
+    "No transfer without provenance.",
+    "No reuse without replay.",
+    "No compounding without rollback."
+  ],
+  "publicThesis": "A capability is not mature because it won once. It matures when it survives domain shift, exposes its assumptions, abstains when unsupported, reproduces independently, and lowers the cost of a harder mission.",
+  "objective": "Take one capability accepted through Public Proof Mission 001 and test whether it can improve a harder, shifted benchmark under half the original search budget while preserving correctness, claim boundaries, independent replay, and rollback safety.",
+  "controlArms": [
+    {
+      "id": "CONTROL_0",
+      "title": "Frozen baseline",
+      "copy": "Run the harder benchmark with no autonomous adaptation. This establishes the destination-domain floor."
+    },
+    {
+      "id": "CONTROL_1",
+      "title": "Fresh search without memory",
+      "copy": "Run the same autonomous search engine without Mission 001 capability, Chronicle lessons, or failed-branch memory."
+    },
+    {
+      "id": "TREATMENT",
+      "title": "GoalOS transfer",
+      "copy": "Seed the same search engine with the accepted capability, its assumption passport, failed branches, falsification record, and rollback conditions."
+    }
+  ],
+  "missionBudget": {
+    "searchBudgetRatioToMission1": 0.5,
+    "candidatePatchesPerSearchArm": 48,
+    "gpuHoursPerSearchArm": 12,
+    "wallClockHours": 36,
+    "concurrentBranches": 6,
+    "challengeWindowHours": 72
+  },
+  "acceptance": [
+    "At least 4% independently replayed improvement on the harder benchmark",
+    "No statistically significant quality regression or resource-policy violation",
+    "Zero hidden correctness failures and zero unresolved reward-hack findings",
+    "At least 30% fewer experiments or 25% fewer GPU-hours to first valid improvement than the fresh-search control",
+    "A validated capability assumption passport and correct abstention on unsupported cases",
+    "Two independent replay operators, unanimous validator approval, and a 72-hour public challenge window"
+  ],
+  "proofChain": [
+    {
+      "stage": "Inherit",
+      "title": "Receive only accepted capability",
+      "copy": "Mission 002 begins from the exact Mission 001 artifact, ProofBundle, validator decision, challenge history, and claim boundary."
+    },
+    {
+      "stage": "Bound",
+      "title": "Publish the assumption passport",
+      "copy": "State the source domain, required invariants, dependencies, unsupported conditions, fallback, and rollback triggers before transfer."
+    },
+    {
+      "stage": "Shift",
+      "title": "Make the destination harder",
+      "copy": "Change model scale, data distribution, workload, or environment in a way that tests transfer rather than simple replay."
+    },
+    {
+      "stage": "Search",
+      "title": "Adapt under half budget",
+      "copy": "Compare fresh search against capability-seeded search under the same engine, hardware class, hidden evaluation, and budget."
+    },
+    {
+      "stage": "Falsify",
+      "title": "Attack the transfer claim",
+      "copy": "Probe negative transfer, memory contamination, source overfitting, hidden coupling, and unsupported reuse."
+    },
+    {
+      "stage": "Abstain",
+      "title": "Reward knowing when not to reuse",
+      "copy": "A mature capability must route unsupported cases to the baseline instead of forcing a transfer beyond its evidence."
+    },
+    {
+      "stage": "Replay",
+      "title": "Rebuild on independent hosts",
+      "copy": "Separate operators reproduce the adapted capability from published source, unseen seeds, and fresh environments."
+    },
+    {
+      "stage": "Decide",
+      "title": "Validate transfer under quorum",
+      "copy": "Validators judge correctness, transfer efficiency, provenance, abstention, claim boundaries, and rollback readiness."
+    },
+    {
+      "stage": "Mature",
+      "title": "Upgrade only what survived",
+      "copy": "An accepted artifact advances from task-bounded capability to Transfer-Proven capability—never to unbounded truth."
+    },
+    {
+      "stage": "Reinvest",
+      "title": "Fund the next harder mission",
+      "copy": "Conditional settlement rewards the transfer lineage and routes a declared share into Mission 003 capacity."
+    }
+  ],
+  "assumptionPassport": [
+    {
+      "field": "Source claim boundary",
+      "purpose": "The exact domain in which Mission 001 evidence was accepted"
+    },
+    {
+      "field": "Destination shift",
+      "purpose": "The specific changes that make Mission 002 harder"
+    },
+    {
+      "field": "Required invariants",
+      "purpose": "Conditions that must remain true for reuse to be admissible"
+    },
+    {
+      "field": "Unsupported conditions",
+      "purpose": "Cases where the capability must abstain or fall back"
+    },
+    {
+      "field": "Transfer adapter",
+      "purpose": "The bounded changes permitted during adaptation"
+    },
+    {
+      "field": "Falsification triggers",
+      "purpose": "Evidence that invalidates or narrows the transfer claim"
+    },
+    {
+      "field": "Fallback and rollback",
+      "purpose": "The baseline path and exact reversal conditions"
+    },
+    {
+      "field": "Lineage and settlement",
+      "purpose": "How Mission 001 and Mission 002 contributors remain attributable"
+    }
+  ],
+  "failureAtlas": [
+    {
+      "code": "NEGATIVE_TRANSFER",
+      "copy": "The inherited capability makes the harder mission worse."
+    },
+    {
+      "code": "ASSUMPTION_BREACH",
+      "copy": "A required invariant does not hold in the destination domain."
+    },
+    {
+      "code": "SOURCE_OVERFIT",
+      "copy": "The capability succeeds only on Mission 001's narrow workload."
+    },
+    {
+      "code": "MEMORY_CONTAMINATION",
+      "copy": "Hidden evaluation information leaks through retained memory."
+    },
+    {
+      "code": "UNSAFE_FORCED_REUSE",
+      "copy": "The system applies the capability where the passport says it must abstain."
+    },
+    {
+      "code": "TRANSFER_REWARD_HACK",
+      "copy": "The candidate appears faster by changing workload, accounting, or measurement."
+    },
+    {
+      "code": "NONREPRODUCIBLE_TRANSFER",
+      "copy": "Independent operators cannot reproduce the destination-domain result."
+    },
+    {
+      "code": "ROLLBACK_FAILURE",
+      "copy": "The system cannot return safely to the declared fallback."
+    }
+  ],
+  "maturityLadder": [
+    {
+      "level": "M0",
+      "title": "Candidate",
+      "copy": "An unaccepted output with no propagation rights."
+    },
+    {
+      "level": "M1",
+      "title": "Accepted",
+      "copy": "Task-bounded capability accepted through Mission 001 proof and replay."
+    },
+    {
+      "level": "M2",
+      "title": "Transfer-Proven",
+      "copy": "Capability that survives Mission 002 domain shift, independent replay, abstention, and rollback tests."
+    },
+    {
+      "level": "M3",
+      "title": "Composable",
+      "copy": "Future status requiring proof that multiple capabilities interact safely."
+    },
+    {
+      "level": "M4",
+      "title": "Institutional Primitive",
+      "copy": "Future status earned only through repeated, externally reproduced use."
+    }
+  ],
+  "settlement": [
+    {
+      "label": "Transfer executor lineage",
+      "share": 35
+    },
+    {
+      "label": "Mission 001 capability lineage",
+      "share": 15
+    },
+    {
+      "label": "Independent validators",
+      "share": 15
+    },
+    {
+      "label": "Replay operators",
+      "share": 10
+    },
+    {
+      "label": "Falsification and abstention testing",
+      "share": 10
+    },
+    {
+      "label": "Chronicle and maturity packaging",
+      "share": 10
+    },
+    {
+      "label": "Mission 003 capacity reserve",
+      "share": 5
+    }
+  ],
+  "mission3": {
+    "title": "The Capability Constellation",
+    "copy": "A future mission will test whether multiple Transfer-Proven capabilities can compose into one governed system without amplifying hidden assumptions or losing rollback control.",
+    "status": "HORIZON_ONLY_NOT_YET_AUTHORIZED"
+  },
+  "proofRoute": [
+    {
+      "sequence": 1,
+      "stage": "Inherit",
+      "contractName": "AEPArtifactRegistry",
+      "purpose": "Reference the exact accepted Mission 001 capability"
+    },
+    {
+      "sequence": 2,
+      "stage": "Remember",
+      "contractName": "AEPChronicleRegistry",
+      "purpose": "Load accepted lessons and preserved failures"
+    },
+    {
+      "sequence": 3,
+      "stage": "Aim",
+      "contractName": "AEPGoalOSCommitRegistry",
+      "purpose": "Commit the harder destination mission and controls"
+    },
+    {
+      "sequence": 4,
+      "stage": "Mandate",
+      "contractName": "MandateEpochRegistry",
+      "purpose": "Bind the half-budget transfer mandate"
+    },
+    {
+      "sequence": 5,
+      "stage": "Act",
+      "contractName": "AEPRunCommitmentRegistry",
+      "purpose": "Commit fresh-search and capability-seeded branches"
+    },
+    {
+      "sequence": 6,
+      "stage": "Conform",
+      "contractName": "AEPConformanceRegistry",
+      "purpose": "Evaluate the capability assumption passport"
+    },
+    {
+      "sequence": 7,
+      "stage": "Bound",
+      "contractName": "AEPClaimBoundaryRegistry",
+      "purpose": "Constrain the transfer claim to supported conditions"
+    },
+    {
+      "sequence": 8,
+      "stage": "Prove",
+      "contractName": "AEPEvidenceDocketRegistry",
+      "purpose": "Assemble transfer evidence, controls, risks, and costs"
+    },
+    {
+      "sequence": 9,
+      "stage": "Falsify",
+      "contractName": "AEPFalsificationRegistry",
+      "purpose": "Preserve negative transfer and assumption failures"
+    },
+    {
+      "sequence": 10,
+      "stage": "Replay",
+      "contractName": "AEPReplayRegistry",
+      "purpose": "Record independent destination-domain reproduction"
+    },
+    {
+      "sequence": 11,
+      "stage": "Evaluate",
+      "contractName": "AEPEvalRegistry",
+      "purpose": "Apply transfer, efficiency, and correctness standards"
+    },
+    {
+      "sequence": 12,
+      "stage": "Attest",
+      "contractName": "AEPAttestationRegistry",
+      "purpose": "Commit signed validator decisions"
+    },
+    {
+      "sequence": 13,
+      "stage": "Select",
+      "contractName": "AEPSelectionGate",
+      "purpose": "Promote, narrow, abstain, or reject"
+    },
+    {
+      "sequence": 14,
+      "stage": "Roll out",
+      "contractName": "AEPRolloutRouter",
+      "purpose": "Route supported capability into the harder mission"
+    },
+    {
+      "sequence": 15,
+      "stage": "Rollback",
+      "contractName": "AEPRollbackRegistry",
+      "purpose": "Reverse propagation when transfer evidence fails"
+    },
+    {
+      "sequence": 16,
+      "stage": "Account",
+      "contractName": "AlphaWorkUnitLedger",
+      "purpose": "Account for verified transfer work units"
+    },
+    {
+      "sequence": 17,
+      "stage": "Settle",
+      "contractName": "AEPRewardVault",
+      "purpose": "Release conditional rewards and Mission 003 reserve"
+    }
+  ],
+  "claimBoundary": [
+    "Public Proof Mission 002 is a published transfer protocol; no transfer result is predeclared.",
+    "Mission 002 cannot begin scientifically until Mission 001 produces an accepted capability with a valid ProofBundle and closed challenge window.",
+    "The Mainnet evidence demonstrates deployed and source-verified infrastructure; it does not establish successful capability transfer, autonomous scientific performance, production safety, or external audit completion.",
+    "No website build, preview, validation, or GitHub Actions workflow sends a blockchain transaction.",
+    "Only a completed Mission 002 campaign may support Transfer-Proven maturity, AGIALPHA settlement, treasury reinvestment, or Mission 003 propagation."
+  ],
+  "releaseUrl": "https://github.com/MontrealAI/goalos-agialpha-ascension/releases/tag/v4.4.0-mainnet-2026-06-21",
+  "repositoryUrl": "https://github.com/MontrealAI/goalos-agialpha-ascension"
+}
