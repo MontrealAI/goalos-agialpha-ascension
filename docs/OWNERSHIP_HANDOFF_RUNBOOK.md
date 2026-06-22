@@ -1,7 +1,17 @@
-# Ethereum Mainnet Live Status
+# Ownership Handoff Runbook
 
-Ethereum Mainnet deployed: YES. Mainnet GoalOS contracts verified: 48/48 after independent Etherscan V2 validation. Mainnet configured: YES after read-only authority reconciliation. Permanent authority: Wallet B / Ledger (`0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99`). Wallet A managed roles: 0 after read-only validation. Phase-B grants: 14/14 after read-only validation.
+## Current 2026-06-21 Ethereum Mainnet deployment
 
-Production activated: NO. Not externally audited. User funds are not authorized. This document is generated from the postdeployment release-state architecture and preserves the claim boundary that Stage C remains pending.
+The configured GoalOS Ethereum Mainnet deployment uses **genesis authority assignment**: Wallet B / Ledger (`0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99`) is the permanent authority where ownership is exposed from construction. Wallet A managed roles: 0.
 
-Use `npm run mainnet:live:all` to regenerate read-only evidence from imported operator artifacts and two Mainnet RPC providers. The tooling refuses to fabricate live evidence from the historical template manifest.
+No ownership acceptance transaction is required for this deployed instance.
+
+Production activated: NO. User funds are not authorized.
+
+## Legacy compatibility only
+
+`ownership:mainnet:accept-local-gated` remains a legacy compatibility command for future or historical two-step ownership-transfer flows that have a pending owner and an approved acceptance plan.
+
+Legacy compatibility only — not required for the 2026-06-21 GoalOS deployment.
+
+Do not run ownership acceptance from CI. Do not run ownership acceptance unless a separate live readback proves a pending owner and the reviewed plan explicitly requires acceptance.

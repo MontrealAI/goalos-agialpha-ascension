@@ -27,10 +27,14 @@ Ethereum Mainnet deployment authorization: NO.
 Ethereum Mainnet authorization: NO.
 Ethereum Mainnet deployed: YES.
 GoalOS contracts deployed: 48.
-GoalOS contracts Etherscan-verified: 48/48 after independent read-only validation.
+Operator verification evidence: 48/48.
+Operator configuration postcheck: PASS.
+Independent dual-RPC revalidation: PENDING.
+Stage B certificate: PENDING.
 Canonical external AGIALPHA: confirmed.
 Mainnet configured: YES.
 Permanent authority: Wallet B / Ledger genesis authority assignment.
+No ownership acceptance transaction is required for this deployed instance.
 Wallet A managed roles: 0.
 Phase-B grants: 14/14.
 Production activated: NO.

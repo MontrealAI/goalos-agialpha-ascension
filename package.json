@@ -408,7 +408,10 @@
     "mainnet:live:fork:gate2": "python scripts/mainnet_live/live_mainnet_tools.py mainnet:live:fork:gate2",
     "mainnet:live:fork:gate3": "python scripts/mainnet_live/live_mainnet_tools.py mainnet:live:fork:gate3",
     "mainnet:live:fork:gate4": "python scripts/mainnet_live/live_mainnet_tools.py mainnet:live:fork:gate4",
-    "mainnet:live:fork:gates": "python scripts/mainnet_live/live_mainnet_tools.py mainnet:live:fork:gates"
+    "mainnet:live:fork:gates": "python scripts/mainnet_live/live_mainnet_tools.py mainnet:live:fork:gates",
+    "mainnet:live:validate-seed": "python scripts/mainnet_live/live_mainnet_tools.py mainnet:live:validate-seed",
+    "mainnet:live:revalidate": "python scripts/mainnet_live/live_mainnet_tools.py mainnet:live:revalidate",
+    "mainnet:live:import-reviewed-evidence": "python scripts/mainnet_live/import_reviewed_evidence.py"
   },
   "dependencies": {
     "@openzeppelin/contracts": "4.9.6",

@@ -28,7 +28,7 @@ errors=[]
 manifest_path = ROOT / "deployments/ethereum-mainnet.agialpha.latest.json"
 manifest = json.loads(manifest_path.read_text()) if manifest_path.exists() else {}
 real_mainnet = manifest.get("chainId") == 1 and manifest.get("status") != "TEMPLATE_NO_DEPLOYMENT" and manifest.get("contracts") and manifest.get("transactions")
-CLAIM_BOUNDARY = "This evidence reports deployment mechanics only. It does not claim achieved AGI, ASI, superintelligence, guaranteed ROI, legal approval, tax approval, security approval, external audit completion, production safety, or Ethereum Mainnet deployment."
+CLAIM_BOUNDARY = "This evidence reports Ethereum Mainnet deployment, verification, and configuration mechanics only. It does not claim achieved AGI, ASI, superintelligence, guaranteed ROI, legal approval, tax approval, security approval, external audit completion, production safety, user-fund authorization, or production activation."
 def safe_negated_line(line: str, phrase: str) -> bool:
     lower = line.lower()
     escaped_phrase = re.escape(phrase.lower())

@@ -1,0 +1,98 @@
+name: Mainnet live read-only revalidation
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  revalidate:
+    name: Mainnet live read-only revalidation
+    if: github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
+    runs-on: ubuntu-latest
+    environment: mainnet-readonly
+    steps:
+      - name: Checkout exact main SHA
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+
+      - name: Mask read-only provider secrets
+        shell: bash
+        run: |
+          test -n "$PRIMARY_MAINNET_RPC_URL" && echo "::add-mask::$PRIMARY_MAINNET_RPC_URL"
+          test -n "$SECONDARY_MAINNET_RPC_URL" && echo "::add-mask::$SECONDARY_MAINNET_RPC_URL"
+          test -n "$ETHERSCAN_API_KEY" && echo "::add-mask::$ETHERSCAN_API_KEY"
+        env:
+          PRIMARY_MAINNET_RPC_URL: ${{ secrets.PRIMARY_MAINNET_RPC_URL }}
+          SECONDARY_MAINNET_RPC_URL: ${{ secrets.SECONDARY_MAINNET_RPC_URL }}
+          ETHERSCAN_API_KEY: ${{ secrets.ETHERSCAN_API_KEY }}
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Compile deterministically
+        run: npm run compile:deterministic
+
+      - name: Run Mainnet live doctor
+        run: npm run mainnet:live:doctor
+        env:
+          PRIMARY_MAINNET_RPC_URL: ${{ secrets.PRIMARY_MAINNET_RPC_URL }}
+          SECONDARY_MAINNET_RPC_URL: ${{ secrets.SECONDARY_MAINNET_RPC_URL }}
+          ETHERSCAN_API_KEY: ${{ secrets.ETHERSCAN_API_KEY }}
+
+      - name: Run read-only Mainnet revalidation
+        run: npm run mainnet:live:revalidate
+        env:
+          PRIMARY_MAINNET_RPC_URL: ${{ secrets.PRIMARY_MAINNET_RPC_URL }}
+          SECONDARY_MAINNET_RPC_URL: ${{ secrets.SECONDARY_MAINNET_RPC_URL }}
+          ETHERSCAN_API_KEY: ${{ secrets.ETHERSCAN_API_KEY }}
+
+      - name: Issue and validate Stage-B certificate
+        run: |
+          npm run mainnet:postdeploy:certificate
+          npm run mainnet:postdeploy:certificate:validate
+        env:
+          PRIMARY_MAINNET_RPC_URL: ${{ secrets.PRIMARY_MAINNET_RPC_URL }}
+          SECONDARY_MAINNET_RPC_URL: ${{ secrets.SECONDARY_MAINNET_RPC_URL }}
+          ETHERSCAN_API_KEY: ${{ secrets.ETHERSCAN_API_KEY }}
+
+      - name: Wallet-A decommission check
+        run: npm run mainnet:wallet-a:decommission-check
+        env:
+          PRIMARY_MAINNET_RPC_URL: ${{ secrets.PRIMARY_MAINNET_RPC_URL }}
+          SECONDARY_MAINNET_RPC_URL: ${{ secrets.SECONDARY_MAINNET_RPC_URL }}
+          ETHERSCAN_API_KEY: ${{ secrets.ETHERSCAN_API_KEY }}
+
+      - name: Regenerate public status docs
+        run: |
+          npm run docs:status:write
+          npm run docs:status:check
+
+      - name: Write workflow metadata
+        shell: bash
+        run: |
+          cat > workflow-run-metadata.json <<EOF
+          {"event_name":"${GITHUB_EVENT_NAME}","source_sha":"${GITHUB_SHA}","ref":"${GITHUB_REF}","ref_protected":${GITHUB_REF_PROTECTED:-false}}
+          EOF
+
+      - name: Upload reviewed evidence candidate
+        uses: actions/upload-artifact@v4
+        with:
+          name: mainnet-live-readonly-revalidation-${{ github.sha }}
+          if-no-files-found: error
+          path: |
+            workflow-run-metadata.json
+            qa/mainnet-postdeploy/**
+            qa/mainnet-release-state.json
+            docs/DEPLOYMENT_START_HERE.md
+            docs/CURRENT_STATUS.md
+            docs/ETHEREUM_MAINNET_CONTRACT_ADDRESSES.md
