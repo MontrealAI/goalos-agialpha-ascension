@@ -1,0 +1,226 @@
+{
+  "schemaVersion": "1.0",
+  "pageVersion": "sovereign-v3",
+  "missionId": "GOALOS-PUBLIC-PROOF-MISSION-001",
+  "title": "The Proof Gradient",
+  "subtitle": "Where autonomous work earns the right to become capability.",
+  "kicker": "GoalOS Public Proof Mission 001 · Ethereum Mainnet",
+  "manifesto": "A model can answer. An agent can act. An institution must prove.",
+  "constitution": [
+    "No proof, no propagation.",
+    "No replay, no settlement.",
+    "No rollback, no release."
+  ],
+  "publicThesis": "GoalOS turns autonomous work into a public chain of objective, experiment, evidence, falsification, replay, validation, settlement, memory, and controlled reuse.",
+  "objective": "Run an open autonomous-research campaign against a frozen transformer-training benchmark and publish the complete institutional chain—not merely the winning result.",
+  "acceptance": [
+    "At least 7% median reduction in time-to-target against the frozen baseline",
+    "No statistically significant validation-quality regression",
+    "No memory-budget violation and zero hidden correctness failures",
+    "Three fresh training seeds and two independent replay operators",
+    "Zero unresolved reward-hack findings",
+    "Unanimous validator approval and a 72-hour public challenge window"
+  ],
+  "missionBudget": {
+    "candidatePatches": 96,
+    "gpuHours": 24,
+    "wallClockHours": 72,
+    "concurrentBranches": 8
+  },
+  "proofChain": [
+    {
+      "stage": "Objective",
+      "title": "Commit the mission",
+      "copy": "Freeze the benchmark, budget, success metric, validators, claim boundary, and settlement rule before the first experiment."
+    },
+    {
+      "stage": "Experiments",
+      "title": "Publish the search",
+      "copy": "Record every hypothesis, patch, branch, environment, cost, and outcome—not only the winner."
+    },
+    {
+      "stage": "Falsification",
+      "title": "Preserve what failed",
+      "copy": "Compile errors, regressions, reward hacks, unstable branches, and negative lessons remain part of the public record."
+    },
+    {
+      "stage": "Replay",
+      "title": "Rebuild independently",
+      "copy": "Separate operators reproduce the finalist from published source in fresh environments with unseen seeds."
+    },
+    {
+      "stage": "Decision",
+      "title": "Validate under quorum",
+      "copy": "Correctness, performance, provenance, and claim boundaries receive independent signed decisions."
+    },
+    {
+      "stage": "Capability",
+      "title": "Package what survived",
+      "copy": "Accepted work becomes a bounded capability with assumptions, evidence, fallback, and rollback conditions."
+    },
+    {
+      "stage": "Settlement",
+      "title": "Make proof consequential",
+      "copy": "Only accepted work may settle; validator, replay, falsification, and contributor rewards remain traceable."
+    },
+    {
+      "stage": "Chronicle",
+      "title": "Convert proof into memory",
+      "copy": "The institution remembers accepted capability and failed branches without turning either into unbounded truth."
+    },
+    {
+      "stage": "Reuse",
+      "title": "Attempt the harder mission",
+      "copy": "Capability must prove transfer under tighter budget and abstain when its assumptions do not hold."
+    }
+  ],
+  "rewardHackTests": [
+    "cached checkpoints",
+    "validation leakage",
+    "skipped work",
+    "changed target metric",
+    "timing-boundary manipulation",
+    "seed-specific hardcoding",
+    "silent sample dropping",
+    "precision outside policy"
+  ],
+  "settlement": [
+    {
+      "label": "Accepted executor lineage",
+      "share": 45
+    },
+    {
+      "label": "Contributing ancestor branches",
+      "share": 15
+    },
+    {
+      "label": "Independent validators",
+      "share": 15
+    },
+    {
+      "label": "Replay operators",
+      "share": 10
+    },
+    {
+      "label": "Falsification and adversarial testing",
+      "share": 10
+    },
+    {
+      "label": "Capability packaging and Chronicle",
+      "share": 5
+    }
+  ],
+  "mission2": {
+    "title": "Capability Transfer Under Half the Search Budget",
+    "copy": "Mission 002 asks whether accepted capability and failed-branch memory can improve a harder benchmark with 50% of the original search budget.",
+    "requirements": [
+      "At least 4% time-to-target improvement",
+      "No quality regression",
+      "Zero hidden correctness failures",
+      "At least 30% fewer experiments than a no-memory control",
+      "Independent replay",
+      "Correct abstention when assumptions fail"
+    ]
+  },
+  "proofRoute": [
+    {
+      "sequence": 1,
+      "stage": "Aim",
+      "contractName": "AEPGoalOSCommitRegistry",
+      "purpose": "Commit the mission objective before work begins"
+    },
+    {
+      "sequence": 2,
+      "stage": "Act",
+      "contractName": "AEPRunCommitmentRegistry",
+      "purpose": "Bind experiments, branches, tools, and costs"
+    },
+    {
+      "sequence": 3,
+      "stage": "Prove",
+      "contractName": "AEPEvidenceDocketRegistry",
+      "purpose": "Assemble provenance, claims, risks, and evidence"
+    },
+    {
+      "sequence": 4,
+      "stage": "Bundle",
+      "contractName": "AEPProofBundleRegistry",
+      "purpose": "Package the complete proof surface"
+    },
+    {
+      "sequence": 5,
+      "stage": "Falsify",
+      "contractName": "AEPFalsificationRegistry",
+      "purpose": "Preserve failed branches and rejected claims"
+    },
+    {
+      "sequence": 6,
+      "stage": "Replay",
+      "contractName": "AEPReplayRegistry",
+      "purpose": "Record independent reproduction"
+    },
+    {
+      "sequence": 7,
+      "stage": "Evaluate",
+      "contractName": "AEPEvalRegistry",
+      "purpose": "Apply the published evaluation standard"
+    },
+    {
+      "sequence": 8,
+      "stage": "Attest",
+      "contractName": "AEPAttestationRegistry",
+      "purpose": "Commit validator decisions"
+    },
+    {
+      "sequence": 9,
+      "stage": "Select",
+      "contractName": "AEPSelectionGate",
+      "purpose": "Promote or reject under explicit gates"
+    },
+    {
+      "sequence": 10,
+      "stage": "Capability",
+      "contractName": "AEPArtifactRegistry",
+      "purpose": "Register the accepted reusable artifact"
+    },
+    {
+      "sequence": 11,
+      "stage": "Account",
+      "contractName": "AlphaWorkUnitLedger",
+      "purpose": "Account for verified work units"
+    },
+    {
+      "sequence": 12,
+      "stage": "Settle",
+      "contractName": "AEPRewardVault",
+      "purpose": "Release conditional AGIALPHA rewards"
+    },
+    {
+      "sequence": 13,
+      "stage": "Remember",
+      "contractName": "AEPChronicleRegistry",
+      "purpose": "Preserve institutional memory"
+    },
+    {
+      "sequence": 14,
+      "stage": "Reuse",
+      "contractName": "AEPRolloutRouter",
+      "purpose": "Route capability into a harder mission"
+    },
+    {
+      "sequence": 15,
+      "stage": "Rollback",
+      "contractName": "AEPRollbackRegistry",
+      "purpose": "Reverse propagation when evidence fails"
+    }
+  ],
+  "claimBoundary": [
+    "Public Proof Mission 001 is a published mission specification; no result is predeclared.",
+    "Any simulation or design stress test is synthetic and is not empirical scientific evidence.",
+    "The Mainnet evidence demonstrates deployed and source-verified infrastructure; it does not establish autonomous scientific performance, production safety, or external audit completion.",
+    "No website build, preview, validation, or installer workflow sends a blockchain transaction.",
+    "Only a completed campaign may support capability acceptance, AGIALPHA settlement, or on-chain promotion."
+  ],
+  "releaseUrl": "https://github.com/MontrealAI/goalos-agialpha-ascension/releases/tag/v4.4.0-mainnet-2026-06-21",
+  "repositoryUrl": "https://github.com/MontrealAI/goalos-agialpha-ascension"
+}
