@@ -1,4 +1,4 @@
-name: GoalOS AGIALPHA Ascension v86 Preserve Actual Website
+name: GoalOS Unified Website — Mainnet Record + Proof Gradient Apex
 
 on:
   workflow_dispatch:
@@ -6,21 +6,28 @@ on:
     branches: [ main ]
     paths:
       - 'website/v86_actual_site/**'
+      - 'config/ethereum-mainnet.contracts.json'
+      - 'release/mainnet-2026-06-21/CONTRACTS_MAINNET.json'
+      - 'release/mainnet-2026-06-21/RELEASE_MANIFEST.json'
+      - 'release/mainnet-2026-06-21/DEPLOYMENT_EVIDENCE.json'
+      - 'content/proof-gradient-apex.json'
+      - 'data/mainnet/v4.4.0-mainnet-2026-06-21.json'
       - 'scripts/build_goalos_agialpha_ascension_website_v86.py'
       - 'scripts/verify_goalos_agialpha_ascension_website_v86.py'
       - 'scripts/visual_layout_check_v86.py'
-      - 'content/proof-gradient-sovereign.json'
-      - 'data/mainnet/v4.4.0-mainnet-2026-06-21.json'
-      - 'scripts/website/build_proof_gradient_sovereign.py'
-      - 'scripts/website/verify_proof_gradient_sovereign.py'
-      - 'scripts/website/visual_check_proof_gradient_sovereign.py'
-      - 'test/test_proof_gradient_sovereign.py'
-      - 'docs/PROOF_GRADIENT_SOVEREIGN_WEBSITE.md'
+      - 'scripts/add_goalos_ethereum_mainnet_pages_v87.py'
+      - 'scripts/verify_goalos_ethereum_mainnet_pages_v87.py'
+      - 'scripts/browser_check_goalos_ethereum_mainnet_v87.py'
+      - 'scripts/website/build_proof_gradient_apex.py'
+      - 'scripts/website/verify_proof_gradient_apex.py'
+      - 'scripts/website/visual_check_proof_gradient_apex.py'
+      - 'scripts/website/validate_unified_public_sources.py'
+      - 'test/test_proof_gradient_apex.py'
+      - 'docs/PROOF_GRADIENT_APEX_WEBSITE.md'
       - '.github/workflows/goalos-agialpha-ascension-v86-final.yml'
-      - '.github/workflows/goalos-agialpha-ascension-v86-smoke-test.yml'
 
 concurrency:
-  group: goalos-agialpha-ascension-v86
+  group: goalos-agialpha-ascension-unified-pages
   cancel-in-progress: false
 
 permissions: {}
@@ -30,37 +37,124 @@ env:
 
 jobs:
   build-verify-browser-test:
-    name: Build, preserve, verify, and browser-test v86
+    name: Build, integrate, verify, and browser-test the unified public website
     runs-on: ubuntu-latest
-    timeout-minutes: 40
+    timeout-minutes: 45
     permissions:
       contents: read
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
+      - name: Snapshot canonical v86 source bytes
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import hashlib
+          import json
+
+          root = Path('website/v86_actual_site')
+          if not root.is_dir():
+              raise SystemExit(f'ERROR: missing canonical source directory: {root}')
+          manifest = {
+              path.relative_to(root).as_posix(): hashlib.sha256(path.read_bytes()).hexdigest()
+              for path in sorted(root.rglob('*'))
+              if path.is_file()
+          }
+          Path('/tmp/goalos-v86-source-before.json').write_text(
+              json.dumps(manifest, indent=2, sort_keys=True) + '\n',
+              encoding='utf-8',
+          )
+          print(f'Recorded byte hashes for {len(manifest)} canonical v86 files.')
+          PY
+
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
 
-      - name: Build preserved actual website
+      - name: Build preserved canonical website
         run: python3 scripts/build_goalos_agialpha_ascension_website_v86.py --out site
 
-      - name: Add Proof Gradient Sovereign experience additively
-        run: python3 scripts/website/build_proof_gradient_sovereign.py --site site
+      - name: Cross-check Mainnet and Proof Gradient public sources
+        run: |
+          python3 scripts/website/validate_unified_public_sources.py \
+            --registry config/ethereum-mainnet.contracts.json \
+            --release-contracts release/mainnet-2026-06-21/CONTRACTS_MAINNET.json \
+            --proof-snapshot data/mainnet/v4.4.0-mainnet-2026-06-21.json \
+            --proof-content content/proof-gradient-apex.json \
+            --out site/qa/unified-public-source-validation.json
 
-      - name: Verify canonical content, links, claims, and files
+      - name: Add institutional Ethereum Mainnet record
+        run: |
+          python3 scripts/add_goalos_ethereum_mainnet_pages_v87.py \
+            --site site \
+            --registry config/ethereum-mainnet.contracts.json \
+            --release-contracts release/mainnet-2026-06-21/CONTRACTS_MAINNET.json \
+            --release-manifest release/mainnet-2026-06-21/RELEASE_MANIFEST.json \
+            --deployment-evidence release/mainnet-2026-06-21/DEPLOYMENT_EVIDENCE.json
+
+      - name: Add Proof Gradient Apex experience
+        run: |
+          python3 scripts/website/build_proof_gradient_apex.py \
+            --site site \
+            --content content/proof-gradient-apex.json \
+            --manifest data/mainnet/v4.4.0-mainnet-2026-06-21.json
+
+      - name: Verify preserved website content, links, claims, and files
         run: python3 scripts/verify_goalos_agialpha_ascension_website_v86.py --site site
 
-      - name: Verify Proof Gradient evidence, preservation, and public positioning
-        run: python3 scripts/website/verify_proof_gradient_sovereign.py --site site
+      - name: Verify Ethereum Mainnet page and homepage feature
+        run: |
+          python3 scripts/verify_goalos_ethereum_mainnet_pages_v87.py \
+            --site site \
+            --registry config/ethereum-mainnet.contracts.json
 
-      - name: Run Proof Gradient regression tests
-        run: python3 -m unittest discover -s test -p 'test_proof_gradient_sovereign.py' -v
+      - name: Verify Proof Gradient page and additive preservation boundary
+        run: |
+          python3 scripts/website/verify_proof_gradient_apex.py \
+            --site site \
+            --content content/proof-gradient-apex.json \
+            --manifest data/mainnet/v4.4.0-mainnet-2026-06-21.json
+
+      - name: Run Proof Gradient deterministic regression tests
+        run: python3 -m unittest discover -s test -p 'test_proof_gradient_apex.py' -v
+
+      - name: Prove canonical v86 source bytes were not modified
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import hashlib
+          import json
+
+          root = Path('website/v86_actual_site')
+          before_path = Path('/tmp/goalos-v86-source-before.json')
+          if not before_path.is_file():
+              raise SystemExit('ERROR: missing pre-build canonical-source snapshot')
+          before = json.loads(before_path.read_text(encoding='utf-8'))
+          after = {
+              path.relative_to(root).as_posix(): hashlib.sha256(path.read_bytes()).hexdigest()
+              for path in sorted(root.rglob('*'))
+              if path.is_file()
+          }
+          if before != after:
+              before_names = set(before)
+              after_names = set(after)
+              report = {
+                  'added': sorted(after_names - before_names),
+                  'removed': sorted(before_names - after_names),
+                  'changed': sorted(
+                      name for name in before_names & after_names
+                      if before[name] != after[name]
+                  ),
+              }
+              print(json.dumps(report, indent=2))
+              raise SystemExit('ERROR: canonical website/v86_actual_site bytes changed during the build')
+          print(f'PASS — canonical website/v86_actual_site remained byte-identical across {len(after)} files.')
+          PY
 
       - name: Install Playwright Chromium
         run: |
@@ -68,18 +162,22 @@ jobs:
           python3 -m pip install playwright
           python3 -m playwright install --with-deps chromium
 
-      - name: Run canonical browser layout and mobile QA
+      - name: Run preserved website desktop and mobile QA
         run: python3 scripts/visual_layout_check_v86.py --site site --screenshots
 
-      - name: Run Proof Gradient desktop, mobile, search, and overflow QA
-        run: python3 scripts/website/visual_check_proof_gradient_sovereign.py --site site --screenshots
+      - name: Browser-test the Ethereum Mainnet experience
+        run: python3 scripts/browser_check_goalos_ethereum_mainnet_v87.py --site site --screenshots
 
-      - name: Reject archives and private operator material in public site
+      - name: Browser-test the Proof Gradient Apex experience
+        run: python3 scripts/website/visual_check_proof_gradient_apex.py --site site --screenshots
+
+      - name: Reject archives and private operator material in public artifact
         shell: bash
         run: |
           set -euo pipefail
           if find site \( -name '*.zip' -o -name '*.7z' -o -name '*.tar' -o -name '*.gz' -o -name '*.rar' \) -print | grep -q .; then
             echo 'Archive file found inside public site. Refusing to deploy.'
+            find site \( -name '*.zip' -o -name '*.7z' -o -name '*.tar' -o -name '*.gz' -o -name '*.rar' \) -print
             exit 1
           fi
           if grep -RIlE 'PRIVATE_MAINNET_DEPLOYER_PRIVATE_KEY|SEED_PHRASE|MNEMONIC|MAINNET_RPC_URL=|ETHERSCAN_API_KEY=' site; then
@@ -92,24 +190,28 @@ jobs:
         shell: bash
         run: |
           {
-            echo '# GoalOS Proof Gradient Sovereign'
+            echo '# GoalOS Unified GitHub Pages Build'
             echo
-            echo '- Canonical v86 source preserved.'
-            echo '- One marked homepage feature and one flagship page generated.'
-            echo '- 48 GoalOS-created Mainnet contracts represented.'
-            echo '- 48/48 recorded source verification; 0 failures.'
-            echo '- No named third-party company or competitor comparison in new public content.'
-            echo '- Synthetic design material remains explicitly non-empirical.'
-            echo '- No wallet, RPC endpoint, API key, or blockchain transaction used.'
+            echo '## Public pages'
+            echo '- Homepage: https://montrealai.github.io/goalos-agialpha-ascension/'
+            echo '- Ethereum Mainnet: https://montrealai.github.io/goalos-agialpha-ascension/ethereum-mainnet.html'
+            echo '- Proof Gradient: https://montrealai.github.io/goalos-agialpha-ascension/proof-gradient-challenge.html'
+            echo
+            echo '## Safety boundary'
+            echo '- Canonical website/v86_actual_site is byte-preserved.'
+            echo '- No wallet, private key, RPC credential, or blockchain transaction is used.'
+            echo '- Production activation and user-fund authorization remain disabled.'
+            echo '- The Proof Gradient comparison is synthetic, not empirical.'
           } >> "$GITHUB_STEP_SUMMARY"
 
-      - name: Upload human-review preview and QA evidence
+      - name: Upload unified human-review preview and QA evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: goalos-proof-gradient-sovereign-preview
+          name: goalos-unified-mainnet-proof-gradient-preview
           path: |
             site/index.html
+            site/ethereum-mainnet.html
             site/proof-gradient-challenge.html
             site/downloads/proof-gradient/
             site/qa/
@@ -122,7 +224,7 @@ jobs:
           path: site
 
   deploy:
-    name: Deploy v86 to GitHub Pages
+    name: Deploy unified GoalOS website
     runs-on: ubuntu-latest
     needs: build-verify-browser-test
     timeout-minutes: 10
