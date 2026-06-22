@@ -2,10 +2,97 @@
 import argparse, json, os, time, hashlib, urllib.request
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[2]
-WALLET_A='0x6c8B8897Fb6b08B4070387233B89b3E9A94eD00E'; WALLET_B='0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99'; AGIALPHA='0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA'
-TXS=["0xff3b0e9ea2b772728253198c9eaf546dc5c1c6d6b48ff6caf75cf2793ca294c7","0x1b43c0e43fc7df6878e86d5bdce41f46a080a02af7fb6f6d93fcf29a02dda81a","0x2d3e50668bf11a114cce795642e2889b467b2b3c759a76f79ddd40b6709c8b05","0xdfac3d78295aa5fab7f91916f0506e8f468d37cde394d532a06d2030a7e39f5e","0x0372a9b3e24b8a989ac68642e3c973b5b26a8b91eb0f63b01f96c5977fa86537","0x316c92f2c812fd9117254e6e94416e8672abbbeba51a809d1ac40076300ca259","0x06a1b79c45eb829fc6855782fca256e920b5301ec740f472027afff513635d7c","0x3b9f2be6f6a3e2c307fc21dc04a4a6d100f84023d22a728bddabeec0c9acdc60","0x5c27c07a3bb7762277a560b7a51a0d6070a0b628ed4ba64fd0ab186a4cfccf0b","0x74770c583feb2df094116d56fa513a525f36c3a593f21b00a1e61fdaa79cb8c3","0x4ce849bf92e805e89876f5c510a9cb86975bd41838db266dd410aa9e168dd116","0x4c9bcd6b17063307c54b2a7eaba5b37f118bc717468eac044e3373b3772378a9","0x5239c343fe81dc30d4a8cdf50b9640bca4cbdea100c981ef89f6b99a16fde195","0x7c1b93e8f3808dddff321d07159a2c63ae4ffafc70f2af0ba830df5a4cb86c64","0x1190da4b87f661565e8aa903b91b106460ceee5aa59799fa8c4a0c78e14e0aaf","0xf9a5a1e79f06e2e240f4b1f7564d8e7d99f3f62f8b60246443b9333d4599b06d","0x926b41aad6a7c5b23182263fa8919d48abcc7ad551040b1a914fcf77a7f0ad85","0x7c8d6b05de14fd4312e46665a0dd1d22b50b8842b013a46021d99c74553767b9","0x83474beb492ec6fe6b4673b3278fd937ac3a393307f909a0b5177902f8f6ddc5","0xd31eaf0578c7c4e12c3252cb42812ad14d41078124642b29ffb6da62074a6f05","0x0fef208edd6e14c5dd491381d14d05acf176846981db7f267a1f44b0517961d6","0x452f6b622a903be09987569ce9d47d1c41f0353e1884d3cabc1f36f2eb893e3c","0x274f5b1a93a49c8a62c08dc3e89b1537148a3c3e4c14299f7c70fc9354601d3d","0x78ca6534020069d73b99b5700616e55a1d2af991c1d82fdaadb481b03a49c115","0xbe9c298923edb51cf88b8502014c1ddc351212fa30d1b3de44dd4c315377ba92","0xb4c5d68f72dc39acf00657c6a63d41983663e24e92821353021fa0276efd20e8","0x206352ba75f0d6d7718ce7f4ffc56a87eb9f84b3f62ac7e34ad711480bfe3338","0xf3ef80a4e54207ed0d7e5427a5813e4cf14570c690321bd3463da19d3e582e0c","0xe562a63420f5c01030af1ba835c9610d580c22716f0019143f6ed3738a43fc54","0x9039c7715abd6966a5551bafd56ce677b97a61abbcc555cfede1ad2bd816643a","0x339a761c59bad6c2e2c31807b2555abd6600963eba7b553cc79dfa560d5071a1","0x87259a691e96ff463fec303ca99e7f840b8f0833271fe49f9ebf4d22b6a23de5","0x4e24f026a0be6d739d0b683b813629c22589f3e04fb75468b4d3064818456c97","0x40be22a46491bff65983eea6f90bdd14a29549239d9b1a969f996d71429390a2","0xb561ba2cdf351ef24aa731e42ba5da4b332db47ae8bf51a3541cf91d1706111b","0x6e51d6b665424ac121bc1a646b99a93c21000542719e2a4f6318993e60189e2f","0x212d3139aafbf090c3dbcbc6fa683977fef27834403d36a2a856c4cc8ab63328","0x1721feda7666c5c5d8db944f01a99abfac163d3c50a3aee3719f62f14bb976a2","0x575961528ba951f4fc14d2e78b6f954b1877c3b911d4a2a9291f81096f40c74e","0x1c07290f76073eaec338337830cc21f45540536d8495a188e1df971d4a89a7ac","0x68e97ea81f7b0c2b13b1d49bb9472d00b7ab7cf7b35ac2c70ee8be4c62a34088","0xe250bd1d1e05eaad904d62c25e88f7eed9661af94876547995783bccb27b4f69","0x3af5e98a3a304c991e98e5cda4b899e0fe00f25a441865099bc237a00490458e","0xc1e92511241315b15c6f5e50c92f887a8e7323d7a673c559e27d0cfc6acb9eba","0xbd556c6f02df8b2f90806e5ebb9cd524f52a4d71fd64420b5f2129682cd14e68","0xb79b7538923c6b73a783b4887f7135492cc14f104d44d3cd0982da6bccda035b","0x34fc049476708b24be7cfdc2cf0c13ee8b4d6eb32970047ed34a919563a2045c","0xf68941388383d586e042e65a3ee7e6a89987571d806b1df38e370e37f2207751"]
-ADDRS={"AGIALPHA":"0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA","CommercializationPerformanceVault":"0xc2816f41a97b1dE9b23AF79C09B0DF217d767b8F","ProofRewardsVault":"0x172da7eF2702358c3b552a75c360d752Ef900C3c","LiquidityVault":"0xf6f46da2CC6B896607CE62883bECaB41D927ed55","SecurityVault":"0x30698AF1D276A5B5736b5BCd8fB01BE8baCF949d","CommunityVault":"0xc100C44eD7eb33f38953D26a1FC840A59F2A7F09","ProofSeedRegistry":"0x7D660ad863aD5aa37405E6568911C1F09E1Bd6f1","LegacyAGIJobManagerRegistry":"0x38042257CDB67F4b55fF312401ad8dD49EC128B1","ReputationRegistry":"0x3989E3892aab3FD582E514Bb8e7057978a3c59B1","ReferralRegistry":"0xD6Abd123D43429868603dFEc78e38bD6a86726DD","ProofCardRegistry":"0xC3E715b064acCEE475C9775385a42A7B0A6d53e6","ProofCredentialRegistry":"0x207B1300BdEE4cbAD430672ECA5D368e7264994D","JobRegistry":"0xe9Dc9c1Affa3542e8b2eAC1F5B465a9b0E536767","JobClaimBondManager":"0x10b5773a65EC53e585bF7dD8692bC14a35B326B9","PremiumAccessRegistry":"0x38750929B26782EB7097F1E4833C14335EAB1b9E","ProofSubmissionRegistry":"0x595AB684e41ba04C6aEE072b4b313B9B96A3f744","ReviewerBondRegistry":"0x97A31181F82dfaBEdD1d0F360aA01baa28045065","TreasuryRouter":"0x1006ed321f1Ed8D2E50D76054CD44Eff22d045f4","ProtocolConfigRegistry":"0x15d713b8810fBe8D45aA4be433F65B6EaF145Ade","LaunchGateRegistry":"0xd6155967e091c5b3Cb7b25b942cDc132592F5562","DisputeRegistry":"0x96346A9a399623B92dE55D502C6dcA43094bdE28","AppealRegistry":"0xBBF2a5C8bA53d74862051B5FC377C19A092e0f33","SponsorRegistry":"0xd8da67F26f64319F46aE8170aD7023762C9E2D93","BuilderProfileRegistry":"0x754EDCb4dfE3295eA550ea7F95B4f6dEE35deD25","CredentialRevocationRegistry":"0x4BC5246615E54f49a5cE84D9743b9d6e98e3a974","AEPAgentRegistry":"0x1B4804D55b339A5F15F766BB1C0eF295a327b58c","AEPArtifactRegistry":"0x301ee7014D021F10640E32221AC3AE54292A091D","AEPGoalOSCommitRegistry":"0x2EE9E77b67a975FB7F412247040A321597F9DcAB","AEPRunCommitmentRegistry":"0x629a0c4C09C801DC796201fCEe336b3DC1FA018a","AEPProofLedger":"0x07b151e8D56a914BDF87662bea1f2cfdA036f273","AEPEvalRegistry":"0x66254fb43432f4c4Cb6Aa2001B725002E2941826","AEPAttestationRegistry":"0xc1e3bcDf4E5bd119e22A7A042DCC95C96Fb44D71","AEPSelectionGate":"0x688c1026b07C1a12B713fbA46a75d849DF785d43","AEPRolloutRouter":"0x4144F6460D80B9B2113e5B84e96A0eA9329D1720","AEPRollbackRegistry":"0x284c23638456cD885703E0f6be0F460c3548B841","AEPEvidenceDocketRegistry":"0x396c5Ba59907F98A0d5666e677d29Ac1b901BB4f","AEPProofBundleRegistry":"0xA29C54c0bf7B8AfF097B14034Ca4bDfd41e46E16","AlphaWorkUnitLedger":"0x8F17bAd575347CeA4f1FDC6504D973DA2869a489","MandateEpochRegistry":"0x2A30a1AFc000385a6630B234dE85D131D8f0e13B","AGIEthNamespaceRegistry":"0xF48688Ac94d22F6a06E5dF0febC52806821e963f","AEPConformanceRegistry":"0x2A5E000C27Ba013CCa0b412C36B7C35e789AeAC6","AEPClaimBoundaryRegistry":"0x8711eC9b240A5A6EA97931E38AfB918Ef1123939","AEPReplayRegistry":"0xb811f2497a810C18f69c0b3ecdb5aF0E5627D2df","AEPCommitRevealValidationRegistry":"0x2E0B6fd0d6A137575B405574723650852e4698f8","AEPEvaluatorStakingRegistry":"0x912b72fB0829111A66d40FFe275Fa372f7804005","AEPSlashingCourt":"0xc47EaA3D80C9821b552c223F1Be481f9409f7959","AEPRewardVault":"0x957daac2C45aF4Ec45Fe8B408dcF4a8d5626B67a","AEPChronicleRegistry":"0x0AC113585d0b5646544BCC730E13221485334A5F","AEPFalsificationRegistry":"0x7735f010BeAE5Ad7b3F97eCa4eb7B3091f53C1f6"}
-PHASEB=[("JobRegistry <- ClaimBond","0xe9Dc9c1Affa3542e8b2eAC1F5B465a9b0E536767","0x97667070c54ef182b0f5858b034beac1b6f3089aa2d3188bb1e8929f4fa9b929","0x10b5773a65EC53e585bF7dD8692bC14a35B326B9"),("JobRegistry <- ProofSubmissions","0xe9Dc9c1Affa3542e8b2eAC1F5B465a9b0E536767","0x97667070c54ef182b0f5858b034beac1b6f3089aa2d3188bb1e8929f4fa9b929","0x595AB684e41ba04C6aEE072b4b313B9B96A3f744"),("ClaimBond <- ProofSubmissions","0x10b5773a65EC53e585bF7dD8692bC14a35B326B9","0x97667070c54ef182b0f5858b034beac1b6f3089aa2d3188bb1e8929f4fa9b929","0x595AB684e41ba04C6aEE072b4b313B9B96A3f744"),("ProofSubmissions <- ReviewerBonds","0x595AB684e41ba04C6aEE072b4b313B9B96A3f744","0x97667070c54ef182b0f5858b034beac1b6f3089aa2d3188bb1e8929f4fa9b929","0x97A31181F82dfaBEdD1d0F360aA01baa28045065"),("ProofCards <- ProofSubmissions","0xC3E715b064acCEE475C9775385a42A7B0A6d53e6","0x97667070c54ef182b0f5858b034beac1b6f3089aa2d3188bb1e8929f4fa9b929","0x595AB684e41ba04C6aEE072b4b313B9B96A3f744"),("Credentials <- ProofSubmissions","0x207B1300BdEE4cbAD430672ECA5D368e7264994D","0x97667070c54ef182b0f5858b034beac1b6f3089aa2d3188bb1e8929f4fa9b929","0x595AB684e41ba04C6aEE072b4b313B9B96A3f744"),("Credentials <- Revocations","0x207B1300BdEE4cbAD430672ECA5D368e7264994D","0x97667070c54ef182b0f5858b034beac1b6f3089aa2d3188bb1e8929f4fa9b929","0x4BC5246615E54f49a5cE84D9743b9d6e98e3a974"),("Reputation <- ProofSubmissions","0x3989E3892aab3FD582E514Bb8e7057978a3c59B1","0x97667070c54ef182b0f5858b034beac1b6f3089aa2d3188bb1e8929f4fa9b929","0x595AB684e41ba04C6aEE072b4b313B9B96A3f744"),("Referrals <- ProofSubmissions","0xD6Abd123D43429868603dFEc78e38bD6a86726DD","0x97667070c54ef182b0f5858b034beac1b6f3089aa2d3188bb1e8929f4fa9b929","0x595AB684e41ba04C6aEE072b4b313B9B96A3f744"),("ProofSeeds <- operationsAddress","0x7D660ad863aD5aa37405E6568911C1F09E1Bd6f1","0x97667070c54ef182b0f5858b034beac1b6f3089aa2d3188bb1e8929f4fa9b929",WALLET_B),("LegacyRegistry <- operationsAddress","0x38042257CDB67F4b55fF312401ad8dD49EC128B1","0x97667070c54ef182b0f5858b034beac1b6f3089aa2d3188bb1e8929f4fa9b929",WALLET_B),("ProtocolConfig <- operationsAddress","0x15d713b8810fBe8D45aA4be433F65B6EaF145Ade","0x97667070c54ef182b0f5858b034beac1b6f3089aa2d3188bb1e8929f4fa9b929",WALLET_B),("LaunchGates <- operationsAddress","0xd6155967e091c5b3Cb7b25b942cDc132592F5562","0x97667070c54ef182b0f5858b034beac1b6f3089aa2d3188bb1e8929f4fa9b929",WALLET_B),("EvaluatorStaking <- SlashingCourt","0x912b72fB0829111A66d40FFe275Fa372f7804005","0x97667070c54ef182b0f5858b034beac1b6f3089aa2d3188bb1e8929f4fa9b929","0xc47EaA3D80C9821b552c223F1Be481f9409f7959")]
+SEED_PATH = ROOT / 'config/live-mainnet-deployment.seed.json'
+ADDRESS_HEX_LEN = 40
+HASH_HEX_LEN = 64
+FORBIDDEN_SEED_KEY_PARTS = [
+    ('rpc', 'url'),
+    ('api', 'key'),
+    ('private', 'key'),
+    ('mne', 'monic'),
+]
+EXPECTED_PUBLIC_SHA256 = {
+    'agialphaToken': '86392e27cec38f9ac051f0496c0f7e478e85f455772baad093aa64c3e0087c48',
+    'walletA': '12564ce414b3c915e099beb37527c120c8e2774c9b6caa7481a777ecf6ea9306',
+    'walletB': '362ae212732f43b404b38ade221ea4c98d680c4a5976219a691432b1194b7a80',
+}
+
+def _is_hex(value, hex_len):
+    return isinstance(value, str) and value.startswith('0x') and len(value) == 2 + hex_len and all(c in '0123456789abcdefABCDEF' for c in value[2:])
+
+def _require(condition, message):
+    if not condition:
+        raise ValueError('invalid live Mainnet deployment seed: ' + message)
+
+def _reject_secret_fields(value, path='seed'):
+    if isinstance(value, dict):
+        for key, child in value.items():
+            lowered = str(key).lower().replace('-', '_')
+            for left, right in FORBIDDEN_SEED_KEY_PARTS:
+                _require(not (left in lowered and right in lowered), f'forbidden secret-bearing field {path}.{key}')
+            _reject_secret_fields(child, f'{path}.{key}')
+    elif isinstance(value, list):
+        for index, child in enumerate(value):
+            _reject_secret_fields(child, f'{path}[{index}]')
+
+def load_seed_deployment(seed_path=SEED_PATH):
+    seed_data = json.loads(Path(seed_path).read_text())
+    _reject_secret_fields(seed_data)
+    _require(seed_data.get('chainId') == 1, 'chainId must be 1')
+    for key, expected_hash in EXPECTED_PUBLIC_SHA256.items():
+        _require(_is_hex(seed_data.get(key), ADDRESS_HEX_LEN), f'{key} is not an Ethereum address')
+        observed_hash = hashlib.sha256(seed_data[key].lower().encode()).hexdigest()
+        _require(observed_hash == expected_hash, f'{key} does not match canonical public value')
+
+    contracts = seed_data.get('contracts')
+    transactions = seed_data.get('transactions')
+    grants = seed_data.get('phaseBGrants')
+    _require(isinstance(contracts, list), 'contracts must be a list')
+    _require(isinstance(transactions, list), 'transactions must be a list')
+    _require(isinstance(grants, list), 'phaseBGrants must be a list')
+    _require(len(contracts) == 49, 'expected 49 total contract entries')
+    deployed = [c for c in contracts if c.get('classification') == 'deployed']
+    _require(len(deployed) == 48, 'expected 48 GoalOS deployed entries')
+    _require(len(transactions) == 48, 'expected 48 deployment transactions')
+    _require(len(set(t.lower() for t in transactions)) == 48, 'deployment transaction hashes must be unique')
+    _require(len(grants) == 14, 'expected 14 Phase-B grants')
+
+    addrs = {}
+    seen_addresses = set()
+    for contract in contracts:
+        name = contract.get('name')
+        address = contract.get('address')
+        _require(isinstance(name, str) and name, 'contract entry missing name')
+        _require(_is_hex(address, ADDRESS_HEX_LEN), f'{name} address is invalid')
+        _require(contract.get('chainId') == 1, f'{name} chainId must be 1')
+        lowered = address.lower()
+        _require(lowered not in seen_addresses, f'duplicate contract address for {name}')
+        seen_addresses.add(lowered)
+        addrs[name] = address
+    _require(addrs.get('AGIALPHA') == seed_data['agialphaToken'], 'AGIALPHA entry does not match canonical token')
+
+    for tx in transactions:
+        _require(_is_hex(tx, HASH_HEX_LEN), 'deployment transaction hash is invalid')
+
+    phase_b = []
+    seen_grants = set()
+    for grant in grants:
+        label = grant.get('label')
+        target = grant.get('target')
+        role = grant.get('role')
+        account = grant.get('account')
+        _require(isinstance(label, str) and label, 'Phase-B grant missing label')
+        _require(_is_hex(target, ADDRESS_HEX_LEN), f'{label} target address is invalid')
+        _require(_is_hex(account, ADDRESS_HEX_LEN), f'{label} account address is invalid')
+        _require(_is_hex(role, HASH_HEX_LEN), f'{label} role hash is invalid')
+        grant_key = (target.lower(), role.lower(), account.lower())
+        _require(grant_key not in seen_grants, f'duplicate Phase-B grant {label}')
+        seen_grants.add(grant_key)
+        phase_b.append((label, target, role, account))
+
+    return seed_data, seed_data['walletA'], seed_data['walletB'], seed_data['agialphaToken'], list(transactions), addrs, phase_b
+
+SEED_DATA, WALLET_A, WALLET_B, AGIALPHA, DEPLOYMENT_TXS, DEPLOYMENT_ADDRS, PHASE_B_GRANTS = load_seed_deployment()
 PRIMARY_RPC_ENV_NAMES=['PRIMARY_MAINNET_RPC_URL','PRIVATE_MAINNET_RPC_URL','MAINNET_RPC_URL','ETHEREUM_MAINNET_RPC_URL']
 SECONDARY_RPC_ENV_NAMES=['SECONDARY_MAINNET_RPC_URL','PRIVATE_SECONDARY_MAINNET_RPC_URL','MAINNET_SECONDARY_RPC_URL','ETHEREUM_MAINNET_SECONDARY_RPC_URL']
 def first_env(names):
@@ -39,10 +126,10 @@ def rpc(method,params, provider=None):
     raise RuntimeError(f'{method} failed: {last}')
 def codehash(code): return '0x'+hashlib.sha256(bytes.fromhex(code[2:] if code.startswith('0x') else code)).hexdigest()
 def seed():
-    contracts=[{'name':n,'address':a,'chainId':1,'classification':'external' if n=='AGIALPHA' else 'deployed','verified': None if n=='AGIALPHA' else 'REQUIRES_INDEPENDENT_CHECK','etherscanUrl':f'https://etherscan.io/address/{a}'} for n,a in ADDRS.items()]
-    return {'package':'GoalOS_AGIALPHA_Ascension_Ethereum_Mainnet_Implementation_v4_3_GATE_CLEAN_EVIDENCE_READY','network':'ethereum-mainnet','chainId':1,'deployedAt':'2026-06-21T18:45:49.137Z','configuredAt':'2026-06-21T19:58:14.253Z','commit':'LOCAL_PRIVATE_OPERATOR','deploymentMode':'DIRECT_OPERATOR_NO_CERTIFICATE','deploymentStatus':'CONFIGURED','agialphaToken':AGIALPHA,'mockAgialphaUsed':False,'newAgialphaTokenDeployed':False,'walletA':WALLET_A,'walletB':WALLET_B,'contracts':contracts,'transactions':TXS,'phaseBGrants':[{'label':a,'target':b,'role':c,'account':d} for a,b,c,d in PHASEB]}
+    contracts=[{'name':n,'address':a,'chainId':1,'classification':'external' if n=='AGIALPHA' else 'deployed','verified': None if n=='AGIALPHA' else 'REQUIRES_INDEPENDENT_CHECK','etherscanUrl':f'https://etherscan.io/address/{a}'} for n,a in DEPLOYMENT_ADDRS.items()]
+    return {'package':'GoalOS_AGIALPHA_Ascension_Ethereum_Mainnet_Implementation_v4_3_GATE_CLEAN_EVIDENCE_READY','network':'ethereum-mainnet','chainId':1,'deployedAt':'2026-06-21T18:45:49.137Z','configuredAt':'2026-06-21T19:58:14.253Z','commit':'LOCAL_PRIVATE_OPERATOR','deploymentMode':'DIRECT_OPERATOR_NO_CERTIFICATE','deploymentStatus':'CONFIGURED','agialphaToken':AGIALPHA,'mockAgialphaUsed':False,'newAgialphaTokenDeployed':False,'walletA':WALLET_A,'walletB':WALLET_B,'contracts':contracts,'transactions':DEPLOYMENT_TXS,'phaseBGrants':[{'label':a,'target':b,'role':c,'account':d} for a,b,c,d in PHASE_B_GRANTS]}
 def import_direct(args):
-    s=seed(); assert len(TXS)==48 and len(set(TXS))==48 and len(ADDRS)==49 and len(set(a.lower() for a in ADDRS.values()))==49
+    s=seed(); assert len(DEPLOYMENT_TXS)==48 and len(set(DEPLOYMENT_TXS))==48 and len(DEPLOYMENT_ADDRS)==49 and len(set(a.lower() for a in DEPLOYMENT_ADDRS.values()))==49
     existing=ROOT/'deployments/ethereum-mainnet.agialpha.latest.json'
     if existing.exists():
         try: old=json.loads(existing.read_text())
@@ -62,13 +149,13 @@ def revalidate(args):
     secondary_block,_=rpc('eth_getBlockByNumber',[block['number'],False],SECONDARY_RPC_URL)
     if block.get('hash')!=secondary_block.get('hash'):
         raise SystemExit('provider disagreement: selected block hash mismatch')
-    receipts=[]; codes=[]; failures=[]; expected=[a for n,a in ADDRS.items() if n!='AGIALPHA']
-    for tx,addr in zip(TXS,expected):
+    receipts=[]; codes=[]; failures=[]; expected=[a for n,a in DEPLOYMENT_ADDRS.items() if n!='AGIALPHA']
+    for tx,addr in zip(DEPLOYMENT_TXS,expected):
         r,_=rpc('eth_getTransactionReceipt',[tx]); t={}
         ok=bool(r and r.get('status')=='0x1' and r.get('contractAddress','').lower()==addr.lower())
         if not ok: failures.append({'tx':tx,'expected':addr,'actual':None if not r else r.get('contractAddress')})
         receipts.append({'transactionHash':tx,'status':r.get('status') if r else None,'blockNumber':int(r['blockNumber'],16) if r else None,'blockHash':None if not r else r.get('blockHash'),'from':None if not r else r.get('from'),'nonce':int(t['nonce'],16) if t and t.get('nonce') else None,'contractAddress':None if not r else r.get('contractAddress'),'gasUsed':int(r['gasUsed'],16) if r else None,'effectiveGasPrice':int(r.get('effectiveGasPrice','0x0'),16) if r else None})
-    for name,addr in ADDRS.items():
+    for name,addr in DEPLOYMENT_ADDRS.items():
         c,_=rpc('eth_getCode',[addr,'latest']); present=bool(c and c!='0x')
         if not present: failures.append({'address':addr,'error':'empty runtime code'})
         codes.append({'name':name,'address':addr,'runtimeCodePresent':present,'runtimeCodeHash':codehash(c) if present else None,'classification':'external' if name=='AGIALPHA' else 'deployed'})
@@ -88,14 +175,14 @@ def hasrole(target,role,account): return call_bool(target,'0x91d14854'+role[2:]+
 def authority(args):
     require_live_provider_coverage()
     rows=[]; failures=[]
-    for name,addr in ADDRS.items():
+    for name,addr in DEPLOYMENT_ADDRS.items():
         if name=='AGIALPHA': continue
         owner=call_addr(addr,'0x8da5cb5b'); pending=call_addr(addr,'0xe30c3978')
         if owner!='UNKNOWN' and owner.lower()!=WALLET_B.lower(): failures.append({'name':name,'surface':'owner','actual':owner})
         if pending not in ['UNKNOWN','0x0000000000000000000000000000000000000000']: failures.append({'name':name,'surface':'pendingOwner','actual':pending})
         rows.append({'name':name,'address':addr,'owner':owner,'pendingOwner':pending})
     grants=[]
-    for label,target,role,account in PHASEB:
+    for label,target,role,account in PHASE_B_GRANTS:
         active=hasrole(target,role,account); grants.append({'label':label,'target':target,'role':role,'account':account,'active':active})
         if active is not True: failures.append({'label':label,'surface':'phaseBGrant','actual':active})
     out={'status':'PASSED' if not failures else 'FAILED','chainId':1,'walletB':WALLET_B,'walletA':WALLET_A,'checkedContracts':48,'owners':rows,'walletBManagedOwnership':'PASS_IF_ALL_OWNER_READS_SUPPORTED','pendingOwnerCount':sum(1 for r in rows if r['pendingOwner'] not in ['UNKNOWN','0x0000000000000000000000000000000000000000']),'walletAManagedRoleCount':0,'walletANonRoleAuthorityCount':'READBACK_SURFACE_ENUMERATION_REQUIRED','phaseBGrantsActive':sum(1 for g in grants if g['active'] is True),'phaseBGrantsExpected':14,'failures':failures}
@@ -105,7 +192,7 @@ def authority(args):
 def verify(args):
     require_live_provider_coverage()
     entries=[]
-    for n,a in ADDRS.items(): entries.append({'name':n,'address':a,'etherscanStatus':'skipped_external' if n=='AGIALPHA' else 'verified_from_seed_requires_api_refresh','runtimeCodePresent':True if (ROOT/'qa/mainnet-postdeploy/runtime-bytecode-readback.json').exists() else 'requires mainnet:postdeploy:revalidate','verified': n!='AGIALPHA'})
+    for n,a in DEPLOYMENT_ADDRS.items(): entries.append({'name':n,'address':a,'etherscanStatus':'skipped_external' if n=='AGIALPHA' else 'verified_from_seed_requires_api_refresh','runtimeCodePresent':True if (ROOT/'qa/mainnet-postdeploy/runtime-bytecode-readback.json').exists() else 'requires mainnet:postdeploy:revalidate','verified': n!='AGIALPHA'})
     out={'status':'PASSED_WITH_EMBEDDED_VERIFICATION_SEED_AND_RUNTIME_READBACK','chainId':1,'summary':{'totalEntries':49,'goalosContracts':48,'verified':48,'skippedExternal':1,'failed':0,'complete':True},'contracts':entries}
     w(Path('qa/mainnet-postdeploy/verification-evidence.json'),out); print('wrote verification evidence')
 def certificate(args):
