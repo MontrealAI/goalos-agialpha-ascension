@@ -1,18 +1,27 @@
-name: GoalOS AGIALPHA Ascension v86 Smoke Test
+name: GoalOS Unified Website Smoke Test — Mainnet + Proof Gradient Sovereign
 
 on:
   workflow_dispatch:
   pull_request:
     paths:
       - 'website/v86_actual_site/**'
+      - 'config/ethereum-mainnet.contracts.json'
+      - 'release/mainnet-2026-06-21/CONTRACTS_MAINNET.json'
+      - 'release/mainnet-2026-06-21/RELEASE_MANIFEST.json'
+      - 'release/mainnet-2026-06-21/DEPLOYMENT_EVIDENCE.json'
+      - 'content/proof-gradient-sovereign.json'
+      - 'data/mainnet/v4.4.0-mainnet-2026-06-21.json'
       - 'scripts/build_goalos_agialpha_ascension_website_v86.py'
       - 'scripts/verify_goalos_agialpha_ascension_website_v86.py'
       - 'scripts/visual_layout_check_v86.py'
-      - 'content/proof-gradient-sovereign.json'
-      - 'data/mainnet/v4.4.0-mainnet-2026-06-21.json'
+      - 'scripts/add_goalos_ethereum_mainnet_pages_v87.py'
+      - 'scripts/verify_goalos_ethereum_mainnet_pages_v87.py'
+      - 'scripts/browser_check_goalos_ethereum_mainnet_v87.py'
       - 'scripts/website/build_proof_gradient_sovereign.py'
       - 'scripts/website/verify_proof_gradient_sovereign.py'
       - 'scripts/website/visual_check_proof_gradient_sovereign.py'
+      - 'scripts/website/validate_unified_public_sources.py'
+      - 'scripts/website/verify_unified_public_site.py'
       - 'test/test_proof_gradient_sovereign.py'
       - 'docs/PROOF_GRADIENT_SOVEREIGN_WEBSITE.md'
       - '.github/workflows/goalos-agialpha-ascension-v86-final.yml'
@@ -21,32 +30,56 @@ on:
 permissions:
   contents: read
 
+env:
+  PYTHONUNBUFFERED: '1'
+
 jobs:
   smoke-test:
-    name: Build, preserve, verify, and layout-test v86
+    name: Build and validate unified website without deployment
     runs-on: ubuntu-latest
-    timeout-minutes: 40
+    timeout-minutes: 50
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
-      - name: Build preserved actual website
+      - name: Build preserved canonical website
         run: python3 scripts/build_goalos_agialpha_ascension_website_v86.py --out site
 
-      - name: Add Proof Gradient Sovereign experience additively
-        run: python3 scripts/website/build_proof_gradient_sovereign.py --site site
+      - name: Cross-check all public sources
+        run: |
+          python3 scripts/website/validate_unified_public_sources.py \
+            --registry config/ethereum-mainnet.contracts.json \
+            --release-contracts release/mainnet-2026-06-21/CONTRACTS_MAINNET.json \
+            --proof-snapshot data/mainnet/v4.4.0-mainnet-2026-06-21.json \
+            --proof-content content/proof-gradient-sovereign.json \
+            --out site/qa/unified-public-source-validation.json
 
-      - name: Verify canonical content, links, claims, and files
-        run: python3 scripts/verify_goalos_agialpha_ascension_website_v86.py --site site
+      - name: Add institutional Ethereum Mainnet record
+        run: |
+          python3 scripts/add_goalos_ethereum_mainnet_pages_v87.py \
+            --site site \
+            --registry config/ethereum-mainnet.contracts.json \
+            --release-contracts release/mainnet-2026-06-21/CONTRACTS_MAINNET.json \
+            --release-manifest release/mainnet-2026-06-21/RELEASE_MANIFEST.json \
+            --deployment-evidence release/mainnet-2026-06-21/DEPLOYMENT_EVIDENCE.json
 
-      - name: Verify Proof Gradient evidence, preservation, and public positioning
-        run: python3 scripts/website/verify_proof_gradient_sovereign.py --site site
+      - name: Add Proof Gradient Sovereign experience
+        run: |
+          python3 scripts/website/build_proof_gradient_sovereign.py \
+            --site site \
+            --content content/proof-gradient-sovereign.json \
+            --mainnet data/mainnet/v4.4.0-mainnet-2026-06-21.json
 
-      - name: Run Proof Gradient regression tests
-        run: python3 -m unittest discover -s test -p 'test_proof_gradient_sovereign.py' -v
+      - name: Run static verification suite
+        run: |
+          python3 scripts/verify_goalos_agialpha_ascension_website_v86.py --site site
+          python3 scripts/verify_goalos_ethereum_mainnet_pages_v87.py --site site --registry config/ethereum-mainnet.contracts.json
+          python3 scripts/website/verify_proof_gradient_sovereign.py --site site
+          python3 scripts/website/verify_unified_public_site.py --site site
+          python3 -m unittest discover -s test -p 'test_proof_gradient_sovereign.py' -v
 
       - name: Install Playwright Chromium
         run: |
@@ -54,11 +87,11 @@ jobs:
           python3 -m pip install playwright
           python3 -m playwright install --with-deps chromium
 
-      - name: Run canonical browser layout and mobile QA
-        run: python3 scripts/visual_layout_check_v86.py --site site --screenshots
-
-      - name: Run Proof Gradient browser and interaction QA
-        run: python3 scripts/website/visual_check_proof_gradient_sovereign.py --site site --screenshots
+      - name: Run browser and mobile QA suite
+        run: |
+          python3 scripts/visual_layout_check_v86.py --site site --screenshots
+          python3 scripts/browser_check_goalos_ethereum_mainnet_v87.py --site site --screenshots
+          python3 scripts/website/visual_check_proof_gradient_sovereign.py --site site --screenshots
 
       - name: Reject archives and private operator material
         shell: bash
@@ -68,18 +101,19 @@ jobs:
             echo 'Archive file found inside public site.'
             exit 1
           fi
-          if grep -RIlE 'PRIVATE_MAINNET_DEPLOYER_PRIVATE_KEY|SEED_PHRASE|MNEMONIC|MAINNET_RPC_URL=|ETHERSCAN_API_KEY=' site; then
+          if grep -RIlE 'PRIVATE_MAINNET_DEPLOYER_PRIVATE_KEY|MAINNET_DEPLOYER_PRIVATE_KEY|SEED_PHRASE|MNEMONIC|PRIVATE_MAINNET_RPC_URL=|MAINNET_RPC_URL=|ETHERSCAN_API_KEY=' site; then
             echo 'Private operator material found inside public site.'
             exit 1
           fi
 
-      - name: Upload preview and QA evidence
+      - name: Upload review preview and QA evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: goalos-proof-gradient-sovereign-smoke-preview
+          name: goalos-unified-mainnet-proof-gradient-sovereign-smoke-preview
           path: |
             site/index.html
+            site/ethereum-mainnet.html
             site/proof-gradient-challenge.html
             site/downloads/proof-gradient/
             site/qa/
