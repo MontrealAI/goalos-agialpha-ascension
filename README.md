@@ -14,7 +14,9 @@ Start:
 [![Solidity 0.8.28](https://img.shields.io/badge/Solidity-0.8.28-363636?logo=solidity)](package.json)
 [![Hardhat 2.28.6](https://img.shields.io/badge/Hardhat-2.28.6-f5d061?logo=ethereum)](package.json)
 [![TypeScript 5.9.3](https://img.shields.io/badge/TypeScript-5.9.3-3178c6?logo=typescript&logoColor=white)](package.json)
-[![Mainnet Authorized](https://img.shields.io/badge/Ethereum%20Mainnet%20Authorized-NO-critical)](qa/mainnet-authorization-certificate.json)
+[![Contracts Verified 48/48](https://img.shields.io/badge/Contracts%20Verified-48%2F48-success)](qa/mainnet-postdeploy/verification-evidence.json)
+[![Mainnet Configured YES](https://img.shields.io/badge/Mainnet%20Configured-YES-success)](qa/mainnet-release-state.json)
+[![Production Activation NO](https://img.shields.io/badge/Production%20Activation-NO-critical)](qa/mainnet-release-state.json)
 [![Mainnet Deployed](https://img.shields.io/badge/Ethereum%20Mainnet%20Deployed-YES-success)](qa/mainnet-release-state.json)
 
 GoalOS AGIALPHA Ascension v4.4.0 Mainnet release-state summary.
@@ -60,6 +62,27 @@ It does not claim external audit completion, legal approval, tax review, guarant
 
 Public Sepolia deployment is recommended but not mandatory for public authorization; local deterministic rehearsal and mainnet-shaped simulation are the active public gates.
 
+
+
+## Current Mainnet status
+
+| Status item | Value |
+| --- | --- |
+| Ethereum Mainnet deployment | YES |
+| Mainnet configuration | YES |
+| GoalOS contracts | 48 |
+| Etherscan verification | 48/48 |
+| Phase-B grants | 14/14 |
+| Final postdeployment check | PASSED |
+| Permanent authority | Wallet B / Ledger |
+| Wallet A managed roles | 0 |
+| Production activation | NO |
+| User-fund authorization | NO |
+| External audit completion | NO |
+
+Published pre-release: [`v4.4.0-mainnet-2026-06-21`](https://github.com/MontrealAI/goalos-agialpha-ascension/releases/tag/v4.4.0-mainnet-2026-06-21). Resolved tag SHA: `51bacf4fe58e4eb425240e74eef7e8461832767f`.
+
+Canonical AGIALPHA: `0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA` (external, not deployed or minted by GoalOS). Developer and operator entry points are read-only status, registry, verification, monitoring, and evidence commands; canonical redeployment is not normal guidance.
 
 ## Executive overview
 

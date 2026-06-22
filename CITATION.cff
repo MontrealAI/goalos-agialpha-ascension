@@ -1,16 +1,7 @@
 cff-version: 1.2.0
 title: "GoalOS AGIALPHA Ascension"
-message: "If you cite this repository, cite the repository and the associated GoalOS / AGI ALPHA reference materials."
-authors:
-  - family-names: Boucher
-    given-names: Vincent
+version: "4.4.0"
+date-released: "2026-06-22"
+license: MIT
 repository-code: "https://github.com/MontrealAI/goalos-agialpha-ascension"
-keywords:
-  - GoalOS
-  - AGIALPHA
-  - AEP-001
-  - proof-of-evolution
-  - evidence docket
-  - proofbundle
-license: "MIT"
-date-released: "2026-06-11"
+message: "If you use this repository, cite the v4.4.0 Ethereum Mainnet pre-release."

@@ -1,7 +1,7 @@
 {
   "name": "goalos-agialpha-ascension",
   "version": "4.4.0",
-  "description": "GoalOS-native reimplementation of α-AGI Ascension using existing AGIALPHA for proof-settled AI workflow work.",
+  "description": "GoalOS-native reimplementation of \u03b1-AGI Ascension using existing AGIALPHA for proof-settled AI workflow work.",
   "license": "MIT",
   "scripts": {
     "compile": "hardhat compile",
@@ -199,8 +199,8 @@
     "pr:readiness": "python scripts/pr_readiness.py",
     "authority:verify": "npm run authority:policy:validate && npm run authority:inventory",
     "codex:phase-a": "python scripts/phase_a_assurance.py phase-a && npm run authorization-profile:validate",
-    "docs:status:write": "python scripts/generate-public-status-docs.py",
-    "docs:status:check": "python scripts/generate-public-status-docs.py --check",
+    "docs:status:write": "npm run docs:mainnet:write",
+    "docs:status:check": "npm run docs:mainnet:check",
     "repo:preflight": "python scripts/repository_safety_check.py && python scripts/no_paid_products_check.py && python scripts/no_private_operator_data_check.py && npm run deployment:claim-boundary:check",
     "ci:repository-validation": "npm run verify:compiler-alignment && npm run repo:preflight && npm run docs:status:check && npm run repo:status && npm run compile:ci && npm run test:ci && npm run test:all && npm run static-check && npm run audit:summarize && npm run audit:fail-on-critical && npm run codex:phase-a",
     "mainnet:status-consistency": "npm run mainnet:readiness-check && npm run mainnet:deployment-authorization-check && npm run mainnet:authorization-status",
@@ -380,7 +380,7 @@
     "mainnet:live:status": "python scripts/mainnet_live/live_mainnet_tools.py mainnet:live:status",
     "mainnet:live:monitor": "python scripts/mainnet_live/live_mainnet_tools.py mainnet:live:monitor",
     "mainnet:live:all": "python scripts/mainnet_live/live_mainnet_tools.py mainnet:live:all",
-    "mainnet:contracts:generate": "python scripts/mainnet_live/postdeploy_assurance.py mainnet:generate-config",
+    "mainnet:contracts:generate": "python scripts/generate_mainnet_docs.py",
     "mainnet:contracts:check": "python scripts/mainnet_live/live_mainnet_tools.py mainnet:contracts:check",
     "mainnet:wallet-a:decommission-check": "python scripts/mainnet_live/live_mainnet_tools.py mainnet:wallet-a:decommission-check",
     "deploy:mainnet:direct:live": "node scripts/mainnet_live/block_canonical_redeploy.js",
@@ -416,7 +416,12 @@
     "release:mainnet:validate": "python scripts/mainnet_release.py validate",
     "release:mainnet:build": "python scripts/mainnet_release.py build",
     "release:mainnet:check": "python scripts/mainnet_release.py check",
-    "release:mainnet:notes": "python scripts/mainnet_release.py notes"
+    "release:mainnet:notes": "python scripts/mainnet_release.py notes",
+    "docs:mainnet:write": "python scripts/generate_mainnet_docs.py",
+    "docs:mainnet:check": "python scripts/check_mainnet_docs.py",
+    "docs:links:check": "python scripts/check_docs_links.py",
+    "docs:stale-claims:check": "python scripts/check_stale_claims.py",
+    "docs:all": "npm run docs:mainnet:check && npm run docs:links:check && npm run docs:stale-claims:check && npm run mainnet:contracts:check"
   },
   "dependencies": {
     "@openzeppelin/contracts": "4.9.6",

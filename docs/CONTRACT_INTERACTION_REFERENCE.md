@@ -1,4 +1,4 @@
-# MAINNET LIVE GATE IMPACT
+# CONTRACT INTERACTION REFERENCE
 
 Audience: reviewers, developers, or operators as applicable.
 Purpose: current Mainnet documentation for the configured pre-release.
