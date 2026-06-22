@@ -5,3 +5,6 @@ Ethereum Mainnet deployed: YES. Mainnet GoalOS contracts verified: 48/48 after i
 Production activated: NO. Not externally audited. User funds are not authorized. This document is generated from the postdeployment release-state architecture and preserves the claim boundary that Stage C remains pending.
 
 Use `npm run mainnet:live:all` to regenerate read-only evidence from imported operator artifacts and two Mainnet RPC providers. The tooling refuses to fabricate live evidence from the historical template manifest.
+
+
+Claim boundary: This evidence reports deployment mechanics only. It does not claim achieved AGI, ASI, superintelligence, guaranteed ROI, legal approval, tax approval, security approval, external audit completion, production safety, or Ethereum Mainnet deployment.
