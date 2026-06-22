@@ -1,0 +1,18 @@
+{
+  "address": "0x629a0c4C09C801DC796201fCEe336b3DC1FA018a",
+  "completeness": "COMPLETE",
+  "constructorArguments": [],
+  "constructorArgumentsAbiEncoded": "0x",
+  "constructorArgumentsHash": "0xefb89c51c9c2e6ebd95f04984a6e9e165be2902587f9d5f1a3b3556fecce0667",
+  "constructorInputsAbi": [],
+  "deploymentTransactionHash": "0xf3ef80a4e54207ed0d7e5427a5813e4cf14570c690321bd3463da19d3e582e0c",
+  "file": "constructor-arguments/AEPRunCommitmentRegistry.constructor-arguments.json",
+  "fullyQualifiedContractName": "AEPRunCommitmentRegistry",
+  "name": "AEPRunCommitmentRegistry",
+  "reEncodingStatus": "MATCH",
+  "source": [
+    "deployment-transaction-input",
+    "configured-manifest",
+    "verification-args-crosscheck"
+  ]
+}

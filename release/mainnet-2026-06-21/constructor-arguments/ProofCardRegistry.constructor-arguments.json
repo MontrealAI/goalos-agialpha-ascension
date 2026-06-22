@@ -1,0 +1,18 @@
+{
+  "address": "0xC3E715b064acCEE475C9775385a42A7B0A6d53e6",
+  "completeness": "COMPLETE",
+  "constructorArguments": [],
+  "constructorArgumentsAbiEncoded": "0x",
+  "constructorArgumentsHash": "0x2ccbe317865bfb0d7dafc282cf7579d603179bb6fcc636a675e1bb0e5caf8c37",
+  "constructorInputsAbi": [],
+  "deploymentTransactionHash": "0x74770c583feb2df094116d56fa513a525f36c3a593f21b00a1e61fdaa79cb8c3",
+  "file": "constructor-arguments/ProofCardRegistry.constructor-arguments.json",
+  "fullyQualifiedContractName": "ProofCardRegistry",
+  "name": "ProofCardRegistry",
+  "reEncodingStatus": "MATCH",
+  "source": [
+    "deployment-transaction-input",
+    "configured-manifest",
+    "verification-args-crosscheck"
+  ]
+}

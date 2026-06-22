@@ -1,0 +1,18 @@
+{
+  "address": "0x2EE9E77b67a975FB7F412247040A321597F9DcAB",
+  "completeness": "COMPLETE",
+  "constructorArguments": [],
+  "constructorArgumentsAbiEncoded": "0x",
+  "constructorArgumentsHash": "0x255a1a3f041c3713f06039aa518ed68e5256a66bd83465eb156c069b6b5fb29f",
+  "constructorInputsAbi": [],
+  "deploymentTransactionHash": "0x206352ba75f0d6d7718ce7f4ffc56a87eb9f84b3f62ac7e34ad711480bfe3338",
+  "file": "constructor-arguments/AEPGoalOSCommitRegistry.constructor-arguments.json",
+  "fullyQualifiedContractName": "AEPGoalOSCommitRegistry",
+  "name": "AEPGoalOSCommitRegistry",
+  "reEncodingStatus": "MATCH",
+  "source": [
+    "deployment-transaction-input",
+    "configured-manifest",
+    "verification-args-crosscheck"
+  ]
+}

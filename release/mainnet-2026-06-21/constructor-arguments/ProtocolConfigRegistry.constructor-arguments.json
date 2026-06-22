@@ -1,0 +1,18 @@
+{
+  "address": "0x15d713b8810fBe8D45aA4be433F65B6EaF145Ade",
+  "completeness": "COMPLETE",
+  "constructorArguments": [],
+  "constructorArgumentsAbiEncoded": "0x",
+  "constructorArgumentsHash": "0x4fecc142821c25c8fb2a863f607fabfefbedb3f8aa66872207d3f80d3c5f33ff",
+  "constructorInputsAbi": [],
+  "deploymentTransactionHash": "0x7c8d6b05de14fd4312e46665a0dd1d22b50b8842b013a46021d99c74553767b9",
+  "file": "constructor-arguments/ProtocolConfigRegistry.constructor-arguments.json",
+  "fullyQualifiedContractName": "ProtocolConfigRegistry",
+  "name": "ProtocolConfigRegistry",
+  "reEncodingStatus": "MATCH",
+  "source": [
+    "deployment-transaction-input",
+    "configured-manifest",
+    "verification-args-crosscheck"
+  ]
+}

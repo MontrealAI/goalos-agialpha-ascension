@@ -165,6 +165,12 @@ PUBLIC_CHAIN_ADDRESS_ALLOWLIST_FILES = {
     "docs/ETHEREUM_MAINNET_CONTRACT_ADDRESSES.md",
     "docs/MAINNET_ADDRESSES.md",
     "scripts/mainnet_live/postdeploy_assurance.py",
+    "release/mainnet-2026-06-21/CONTRACTS_MAINNET.json",
+    "release/mainnet-2026-06-21/CONTRACTS_MAINNET.md",
+    "release/mainnet-2026-06-21/DEPLOYMENT_EVIDENCE.json",
+    "release/mainnet-2026-06-21/DEPLOYMENT_EVIDENCE.md",
+    "release/mainnet-2026-06-21/RELEASE_MANIFEST.json",
+    "release/mainnet-2026-06-21/RELEASE_NOTES.md",
 }
 
 

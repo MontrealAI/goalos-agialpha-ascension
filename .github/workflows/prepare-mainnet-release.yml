@@ -1,0 +1,94 @@
+name: Prepare Ethereum Mainnet draft pre-release
+
+on:
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: Exact commit SHA or existing tag to prepare
+        required: true
+      create_draft_release:
+        description: Create/update draft pre-release after all gates pass
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+  id-token: write
+  attestations: write
+
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    environment: mainnet-release
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.ref }}
+          fetch-depth: 0
+      - name: Resolve immutable release target
+        id: release-target
+        shell: bash
+        run: |
+          set -euo pipefail
+          sha="$(git rev-parse HEAD)"
+          [[ "$sha" =~ ^[0-9a-f]{40}$ ]]
+          test "$sha" = "$(git rev-parse '${{ inputs.ref }}^{commit}')"
+          echo "sha=$sha" >> "$GITHUB_OUTPUT"
+          echo "RELEASE_TARGET_SHA=$sha" >> "$GITHUB_ENV"
+      - name: Verify exact ref and clean tree
+        run: |
+          git diff --check
+          test -z "$(git status --porcelain --untracked-files=no)"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20.19.0'
+          cache: npm
+      - run: npm ci
+      - name: Required release checks
+        run: |
+          npm run audit:secrets
+          npm run repo:all
+          npm run compile:ci
+          npm run test:ci
+          npm run test:all
+          npm run static-check
+          npm run docs:status:check
+          npm run verify:compiler-alignment
+      - name: Read-only Mainnet validation
+        env:
+          PRIMARY_MAINNET_RPC_URL: ${{ secrets.PRIMARY_MAINNET_RPC_URL }}
+          SECONDARY_MAINNET_RPC_URL: ${{ secrets.SECONDARY_MAINNET_RPC_URL }}
+          ETHERSCAN_API_KEY: ${{ secrets.ETHERSCAN_API_KEY }}
+        run: npm run release:mainnet:validate
+      - name: Build deterministic release packet
+        env:
+          RELEASE_TARGET_SHA: ${{ github.sha }}
+        run: |
+          test "$RELEASE_TARGET_SHA" = "$(git rev-parse HEAD)"
+          npm run release:mainnet:prepare
+          npm run release:mainnet:build
+          npm run release:mainnet:check
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mainnet-2026-06-21-release-packet
+          path: release/mainnet-2026-06-21/
+      - name: Attest release packet files
+        uses: actions/attest-build-provenance@v2
+        with:
+          subject-path: |
+            release/mainnet-2026-06-21/*
+      - name: Create or update draft pre-release only
+        if: ${{ inputs.create_draft_release }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create v4.4.0-mainnet-2026-06-21 \
+            --target "$(git rev-parse HEAD)" \
+            --title "GoalOS AGIALPHA Ascension v4.4.0 — Ethereum Mainnet Deployment" \
+            --notes-file release/mainnet-2026-06-21/RELEASE_NOTES.md \
+            --draft --prerelease \
+            release/mainnet-2026-06-21/* || \
+          gh release edit v4.4.0-mainnet-2026-06-21 \
+            --title "GoalOS AGIALPHA Ascension v4.4.0 — Ethereum Mainnet Deployment" \
+            --notes-file release/mainnet-2026-06-21/RELEASE_NOTES.md \
+            --draft --prerelease --latest=false

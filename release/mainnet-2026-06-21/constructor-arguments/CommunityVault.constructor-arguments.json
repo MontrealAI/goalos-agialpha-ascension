@@ -1,0 +1,18 @@
+{
+  "address": "0xc100C44eD7eb33f38953D26a1FC840A59F2A7F09",
+  "completeness": "COMPLETE",
+  "constructorArguments": [],
+  "constructorArgumentsAbiEncoded": "0x",
+  "constructorArgumentsHash": "0xa1f79a2d7162ed576a5d3bd67e090aef5fe3c03d40a4ee14a6de161bfd193847",
+  "constructorInputsAbi": [],
+  "deploymentTransactionHash": "0x0372a9b3e24b8a989ac68642e3c973b5b26a8b91eb0f63b01f96c5977fa86537",
+  "file": "constructor-arguments/CommunityVault.constructor-arguments.json",
+  "fullyQualifiedContractName": "CommunityVault",
+  "name": "CommunityVault",
+  "reEncodingStatus": "MATCH",
+  "source": [
+    "deployment-transaction-input",
+    "configured-manifest",
+    "verification-args-crosscheck"
+  ]
+}

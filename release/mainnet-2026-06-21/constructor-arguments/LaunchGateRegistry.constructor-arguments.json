@@ -1,0 +1,18 @@
+{
+  "address": "0xd6155967e091c5b3Cb7b25b942cDc132592F5562",
+  "completeness": "COMPLETE",
+  "constructorArguments": [],
+  "constructorArgumentsAbiEncoded": "0x",
+  "constructorArgumentsHash": "0x09a81877b92ea0fde4c698523027258789e112c71ffdeb9d8faee082a66421c1",
+  "constructorInputsAbi": [],
+  "deploymentTransactionHash": "0x83474beb492ec6fe6b4673b3278fd937ac3a393307f909a0b5177902f8f6ddc5",
+  "file": "constructor-arguments/LaunchGateRegistry.constructor-arguments.json",
+  "fullyQualifiedContractName": "LaunchGateRegistry",
+  "name": "LaunchGateRegistry",
+  "reEncodingStatus": "MATCH",
+  "source": [
+    "deployment-transaction-input",
+    "configured-manifest",
+    "verification-args-crosscheck"
+  ]
+}

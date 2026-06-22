@@ -1,0 +1,18 @@
+{
+  "address": "0x38042257CDB67F4b55fF312401ad8dD49EC128B1",
+  "completeness": "COMPLETE",
+  "constructorArguments": [],
+  "constructorArgumentsAbiEncoded": "0x",
+  "constructorArgumentsHash": "0xadafcaf6a14d27f8847f09c9680f9f11adf5a94aefcff6042fb7146f8c06fee5",
+  "constructorInputsAbi": [],
+  "deploymentTransactionHash": "0x06a1b79c45eb829fc6855782fca256e920b5301ec740f472027afff513635d7c",
+  "file": "constructor-arguments/LegacyAGIJobManagerRegistry.constructor-arguments.json",
+  "fullyQualifiedContractName": "LegacyAGIJobManagerRegistry",
+  "name": "LegacyAGIJobManagerRegistry",
+  "reEncodingStatus": "MATCH",
+  "source": [
+    "deployment-transaction-input",
+    "configured-manifest",
+    "verification-args-crosscheck"
+  ]
+}

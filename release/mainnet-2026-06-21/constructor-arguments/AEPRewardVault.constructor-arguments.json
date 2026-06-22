@@ -1,0 +1,18 @@
+{
+  "address": "0x957daac2C45aF4Ec45Fe8B408dcF4a8d5626B67a",
+  "completeness": "COMPLETE",
+  "constructorArguments": [],
+  "constructorArgumentsAbiEncoded": "0x",
+  "constructorArgumentsHash": "0xfeb70de1640d94cd55cda5760d6bb545b26dc8a4f4ce7d2a0f44777c32294f04",
+  "constructorInputsAbi": [],
+  "deploymentTransactionHash": "0xb79b7538923c6b73a783b4887f7135492cc14f104d44d3cd0982da6bccda035b",
+  "file": "constructor-arguments/AEPRewardVault.constructor-arguments.json",
+  "fullyQualifiedContractName": "AEPRewardVault",
+  "name": "AEPRewardVault",
+  "reEncodingStatus": "MATCH",
+  "source": [
+    "deployment-transaction-input",
+    "configured-manifest",
+    "verification-args-crosscheck"
+  ]
+}

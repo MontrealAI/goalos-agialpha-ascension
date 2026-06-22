@@ -1,0 +1,18 @@
+{
+  "address": "0xA29C54c0bf7B8AfF097B14034Ca4bDfd41e46E16",
+  "completeness": "COMPLETE",
+  "constructorArguments": [],
+  "constructorArgumentsAbiEncoded": "0x",
+  "constructorArgumentsHash": "0x4ea0bc7a84f7b0a889c1f54c3e432273a35bca65553627be8dc920def38e1d25",
+  "constructorInputsAbi": [],
+  "deploymentTransactionHash": "0x6e51d6b665424ac121bc1a646b99a93c21000542719e2a4f6318993e60189e2f",
+  "file": "constructor-arguments/AEPProofBundleRegistry.constructor-arguments.json",
+  "fullyQualifiedContractName": "AEPProofBundleRegistry",
+  "name": "AEPProofBundleRegistry",
+  "reEncodingStatus": "MATCH",
+  "source": [
+    "deployment-transaction-input",
+    "configured-manifest",
+    "verification-args-crosscheck"
+  ]
+}

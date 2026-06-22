@@ -1,0 +1,18 @@
+{
+  "address": "0x396c5Ba59907F98A0d5666e677d29Ac1b901BB4f",
+  "completeness": "COMPLETE",
+  "constructorArguments": [],
+  "constructorArgumentsAbiEncoded": "0x",
+  "constructorArgumentsHash": "0x609f44089844fcd7141acd0a2e53b26627ed90f12088d9bb34bde63d2b02fb96",
+  "constructorInputsAbi": [],
+  "deploymentTransactionHash": "0xb561ba2cdf351ef24aa731e42ba5da4b332db47ae8bf51a3541cf91d1706111b",
+  "file": "constructor-arguments/AEPEvidenceDocketRegistry.constructor-arguments.json",
+  "fullyQualifiedContractName": "AEPEvidenceDocketRegistry",
+  "name": "AEPEvidenceDocketRegistry",
+  "reEncodingStatus": "MATCH",
+  "source": [
+    "deployment-transaction-input",
+    "configured-manifest",
+    "verification-args-crosscheck"
+  ]
+}

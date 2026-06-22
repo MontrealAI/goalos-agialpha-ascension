@@ -1,0 +1,18 @@
+{
+  "address": "0x1B4804D55b339A5F15F766BB1C0eF295a327b58c",
+  "completeness": "COMPLETE",
+  "constructorArguments": [],
+  "constructorArgumentsAbiEncoded": "0x",
+  "constructorArgumentsHash": "0x4aafb0adff7eed8faed4d5443a48678ae92f2ce37a751bf082093a15bd7ee4df",
+  "constructorInputsAbi": [],
+  "deploymentTransactionHash": "0xbe9c298923edb51cf88b8502014c1ddc351212fa30d1b3de44dd4c315377ba92",
+  "file": "constructor-arguments/AEPAgentRegistry.constructor-arguments.json",
+  "fullyQualifiedContractName": "AEPAgentRegistry",
+  "name": "AEPAgentRegistry",
+  "reEncodingStatus": "MATCH",
+  "source": [
+    "deployment-transaction-input",
+    "configured-manifest",
+    "verification-args-crosscheck"
+  ]
+}

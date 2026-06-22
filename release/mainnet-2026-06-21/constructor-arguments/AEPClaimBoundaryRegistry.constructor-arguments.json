@@ -1,0 +1,18 @@
+{
+  "address": "0x8711eC9b240A5A6EA97931E38AfB918Ef1123939",
+  "completeness": "COMPLETE",
+  "constructorArguments": [],
+  "constructorArgumentsAbiEncoded": "0x",
+  "constructorArgumentsHash": "0x977213afca240f8d6c5c934b3a3df271a372f1e758d0da87e4d83249250beaba",
+  "constructorInputsAbi": [],
+  "deploymentTransactionHash": "0x68e97ea81f7b0c2b13b1d49bb9472d00b7ab7cf7b35ac2c70ee8be4c62a34088",
+  "file": "constructor-arguments/AEPClaimBoundaryRegistry.constructor-arguments.json",
+  "fullyQualifiedContractName": "AEPClaimBoundaryRegistry",
+  "name": "AEPClaimBoundaryRegistry",
+  "reEncodingStatus": "MATCH",
+  "source": [
+    "deployment-transaction-input",
+    "configured-manifest",
+    "verification-args-crosscheck"
+  ]
+}

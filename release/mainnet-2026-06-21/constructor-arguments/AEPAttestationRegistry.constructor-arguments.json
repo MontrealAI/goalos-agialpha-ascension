@@ -1,0 +1,18 @@
+{
+  "address": "0xc1e3bcDf4E5bd119e22A7A042DCC95C96Fb44D71",
+  "completeness": "COMPLETE",
+  "constructorArguments": [],
+  "constructorArgumentsAbiEncoded": "0x",
+  "constructorArgumentsHash": "0xbd03a01589d2ea9d36c139fd744f82d7d5e43418da14d6bb0d5b1e9b105b5bd7",
+  "constructorInputsAbi": [],
+  "deploymentTransactionHash": "0x339a761c59bad6c2e2c31807b2555abd6600963eba7b553cc79dfa560d5071a1",
+  "file": "constructor-arguments/AEPAttestationRegistry.constructor-arguments.json",
+  "fullyQualifiedContractName": "AEPAttestationRegistry",
+  "name": "AEPAttestationRegistry",
+  "reEncodingStatus": "MATCH",
+  "source": [
+    "deployment-transaction-input",
+    "configured-manifest",
+    "verification-args-crosscheck"
+  ]
+}

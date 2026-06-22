@@ -1,0 +1,18 @@
+{
+  "address": "0x97A31181F82dfaBEdD1d0F360aA01baa28045065",
+  "completeness": "COMPLETE",
+  "constructorArguments": [],
+  "constructorArgumentsAbiEncoded": "0x",
+  "constructorArgumentsHash": "0x907642a6899612f4f82da31b5160636ed6820cfb27cb36203a81ae767e59369a",
+  "constructorInputsAbi": [],
+  "deploymentTransactionHash": "0xf9a5a1e79f06e2e240f4b1f7564d8e7d99f3f62f8b60246443b9333d4599b06d",
+  "file": "constructor-arguments/ReviewerBondRegistry.constructor-arguments.json",
+  "fullyQualifiedContractName": "ReviewerBondRegistry",
+  "name": "ReviewerBondRegistry",
+  "reEncodingStatus": "MATCH",
+  "source": [
+    "deployment-transaction-input",
+    "configured-manifest",
+    "verification-args-crosscheck"
+  ]
+}

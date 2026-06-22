@@ -1,0 +1,18 @@
+{
+  "address": "0x7D660ad863aD5aa37405E6568911C1F09E1Bd6f1",
+  "completeness": "COMPLETE",
+  "constructorArguments": [],
+  "constructorArgumentsAbiEncoded": "0x",
+  "constructorArgumentsHash": "0x4fb5f1f76748484506d3777232e1a654401e28906babca0ed39eaacdc6efd6da",
+  "constructorInputsAbi": [],
+  "deploymentTransactionHash": "0x316c92f2c812fd9117254e6e94416e8672abbbeba51a809d1ac40076300ca259",
+  "file": "constructor-arguments/ProofSeedRegistry.constructor-arguments.json",
+  "fullyQualifiedContractName": "ProofSeedRegistry",
+  "name": "ProofSeedRegistry",
+  "reEncodingStatus": "MATCH",
+  "source": [
+    "deployment-transaction-input",
+    "configured-manifest",
+    "verification-args-crosscheck"
+  ]
+}

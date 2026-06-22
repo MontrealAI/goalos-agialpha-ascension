@@ -1,0 +1,18 @@
+{
+  "address": "0x96346A9a399623B92dE55D502C6dcA43094bdE28",
+  "completeness": "COMPLETE",
+  "constructorArguments": [],
+  "constructorArgumentsAbiEncoded": "0x",
+  "constructorArgumentsHash": "0xe806de202c0b0052826288461548c89fc307de218b09175084da080dfebe75c3",
+  "constructorInputsAbi": [],
+  "deploymentTransactionHash": "0xd31eaf0578c7c4e12c3252cb42812ad14d41078124642b29ffb6da62074a6f05",
+  "file": "constructor-arguments/DisputeRegistry.constructor-arguments.json",
+  "fullyQualifiedContractName": "DisputeRegistry",
+  "name": "DisputeRegistry",
+  "reEncodingStatus": "MATCH",
+  "source": [
+    "deployment-transaction-input",
+    "configured-manifest",
+    "verification-args-crosscheck"
+  ]
+}

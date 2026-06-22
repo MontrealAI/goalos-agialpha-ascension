@@ -1,0 +1,18 @@
+{
+  "address": "0xf6f46da2CC6B896607CE62883bECaB41D927ed55",
+  "completeness": "COMPLETE",
+  "constructorArguments": [],
+  "constructorArgumentsAbiEncoded": "0x",
+  "constructorArgumentsHash": "0x1c70b13cd2884901f2aabb8ee4b9f6a8715c651f2084a838f0c6dcd802d45d96",
+  "constructorInputsAbi": [],
+  "deploymentTransactionHash": "0x2d3e50668bf11a114cce795642e2889b467b2b3c759a76f79ddd40b6709c8b05",
+  "file": "constructor-arguments/LiquidityVault.constructor-arguments.json",
+  "fullyQualifiedContractName": "LiquidityVault",
+  "name": "LiquidityVault",
+  "reEncodingStatus": "MATCH",
+  "source": [
+    "deployment-transaction-input",
+    "configured-manifest",
+    "verification-args-crosscheck"
+  ]
+}

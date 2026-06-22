@@ -1,0 +1,21 @@
+{
+  "SPDXID": "SPDXRef-DOCUMENT",
+  "creationInfo": {
+    "created": "2026-06-22T00:00:00Z",
+    "creators": [
+      "Tool: scripts/mainnet_release.py"
+    ]
+  },
+  "dataLicense": "CC0-1.0",
+  "documentNamespace": "https://github.com/MontrealAI/goalos-agialpha-ascension/releases/v4.4.0-mainnet-2026-06-21/sbom",
+  "name": "goalos-agialpha-ascension-4.4.0",
+  "packages": [
+    {
+      "SPDXID": "SPDXRef-Package",
+      "licenseDeclared": "MIT",
+      "name": "goalos-agialpha-ascension",
+      "versionInfo": "4.4.0"
+    }
+  ],
+  "spdxVersion": "SPDX-2.3"
+}

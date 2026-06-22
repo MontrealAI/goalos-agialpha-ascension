@@ -1,0 +1,18 @@
+{
+  "address": "0x2E0B6fd0d6A137575B405574723650852e4698f8",
+  "completeness": "COMPLETE",
+  "constructorArguments": [],
+  "constructorArgumentsAbiEncoded": "0x",
+  "constructorArgumentsHash": "0x0cbeb09667a3c4ad3ce2f82a2d9e510d5f8e3a6a8ed284d297fb5abc42de073f",
+  "constructorInputsAbi": [],
+  "deploymentTransactionHash": "0x3af5e98a3a304c991e98e5cda4b899e0fe00f25a441865099bc237a00490458e",
+  "file": "constructor-arguments/AEPCommitRevealValidationRegistry.constructor-arguments.json",
+  "fullyQualifiedContractName": "AEPCommitRevealValidationRegistry",
+  "name": "AEPCommitRevealValidationRegistry",
+  "reEncodingStatus": "MATCH",
+  "source": [
+    "deployment-transaction-input",
+    "configured-manifest",
+    "verification-args-crosscheck"
+  ]
+}

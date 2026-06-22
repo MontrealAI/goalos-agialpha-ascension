@@ -1,0 +1,18 @@
+{
+  "address": "0x4144F6460D80B9B2113e5B84e96A0eA9329D1720",
+  "completeness": "COMPLETE",
+  "constructorArguments": [],
+  "constructorArgumentsAbiEncoded": "0x",
+  "constructorArgumentsHash": "0x4ee5f1186494e4a57647cf7afb91516c96277d6182247091548776ab1b24f91d",
+  "constructorInputsAbi": [],
+  "deploymentTransactionHash": "0x4e24f026a0be6d739d0b683b813629c22589f3e04fb75468b4d3064818456c97",
+  "file": "constructor-arguments/AEPRolloutRouter.constructor-arguments.json",
+  "fullyQualifiedContractName": "AEPRolloutRouter",
+  "name": "AEPRolloutRouter",
+  "reEncodingStatus": "MATCH",
+  "source": [
+    "deployment-transaction-input",
+    "configured-manifest",
+    "verification-args-crosscheck"
+  ]
+}

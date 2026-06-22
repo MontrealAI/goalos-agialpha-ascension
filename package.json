@@ -1,7 +1,7 @@
 {
   "name": "goalos-agialpha-ascension",
   "version": "4.4.0",
-  "description": "GoalOS-native reimplementation of \u03b1-AGI Ascension using existing AGIALPHA for proof-settled AI workflow work.",
+  "description": "GoalOS-native reimplementation of α-AGI Ascension using existing AGIALPHA for proof-settled AI workflow work.",
   "license": "MIT",
   "scripts": {
     "compile": "hardhat compile",
@@ -411,7 +411,12 @@
     "mainnet:live:fork:gates": "python scripts/mainnet_live/live_mainnet_tools.py mainnet:live:fork:gates",
     "mainnet:live:validate-seed": "python scripts/mainnet_live/live_mainnet_tools.py mainnet:live:validate-seed",
     "mainnet:live:revalidate": "python scripts/mainnet_live/live_mainnet_tools.py mainnet:live:revalidate",
-    "mainnet:live:import-reviewed-evidence": "python scripts/mainnet_live/import_reviewed_evidence.py"
+    "mainnet:live:import-reviewed-evidence": "python scripts/mainnet_live/import_reviewed_evidence.py",
+    "release:mainnet:prepare": "python scripts/mainnet_release.py prepare",
+    "release:mainnet:validate": "python scripts/mainnet_release.py validate",
+    "release:mainnet:build": "python scripts/mainnet_release.py build",
+    "release:mainnet:check": "python scripts/mainnet_release.py check",
+    "release:mainnet:notes": "python scripts/mainnet_release.py notes"
   },
   "dependencies": {
     "@openzeppelin/contracts": "4.9.6",

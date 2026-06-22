@@ -1,0 +1,18 @@
+{
+  "address": "0x912b72fB0829111A66d40FFe275Fa372f7804005",
+  "completeness": "COMPLETE",
+  "constructorArguments": [],
+  "constructorArgumentsAbiEncoded": "0x",
+  "constructorArgumentsHash": "0xad55095f09b40ee6ca0333e19f53d15586d12babb26ada92fc4948a6eea0af32",
+  "constructorInputsAbi": [],
+  "deploymentTransactionHash": "0xc1e92511241315b15c6f5e50c92f887a8e7323d7a673c559e27d0cfc6acb9eba",
+  "file": "constructor-arguments/AEPEvaluatorStakingRegistry.constructor-arguments.json",
+  "fullyQualifiedContractName": "AEPEvaluatorStakingRegistry",
+  "name": "AEPEvaluatorStakingRegistry",
+  "reEncodingStatus": "MATCH",
+  "source": [
+    "deployment-transaction-input",
+    "configured-manifest",
+    "verification-args-crosscheck"
+  ]
+}

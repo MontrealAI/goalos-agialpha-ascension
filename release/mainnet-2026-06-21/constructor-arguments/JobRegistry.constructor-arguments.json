@@ -1,0 +1,18 @@
+{
+  "address": "0xe9Dc9c1Affa3542e8b2eAC1F5B465a9b0E536767",
+  "completeness": "COMPLETE",
+  "constructorArguments": [],
+  "constructorArgumentsAbiEncoded": "0x",
+  "constructorArgumentsHash": "0x987341694891a6c8dceb3bf686ec532a7d9f6c5c394d2f0b6685bb6aa3f03be7",
+  "constructorInputsAbi": [],
+  "deploymentTransactionHash": "0x4c9bcd6b17063307c54b2a7eaba5b37f118bc717468eac044e3373b3772378a9",
+  "file": "constructor-arguments/JobRegistry.constructor-arguments.json",
+  "fullyQualifiedContractName": "JobRegistry",
+  "name": "JobRegistry",
+  "reEncodingStatus": "MATCH",
+  "source": [
+    "deployment-transaction-input",
+    "configured-manifest",
+    "verification-args-crosscheck"
+  ]
+}
