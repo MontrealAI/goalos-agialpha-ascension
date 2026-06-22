@@ -92,7 +92,7 @@ readme=f"""# GoalOS AGIALPHA Ascension
 [![Solidity 0.8.28](https://img.shields.io/badge/Solidity-0.8.28-363636?logo=solidity)](package.json)
 [![Hardhat 2.28.6](https://img.shields.io/badge/Hardhat-2.28.6-f5d061?logo=ethereum)](package.json)
 [![Ethereum Mainnet Deployed YES](https://img.shields.io/badge/Ethereum%20Mainnet%20Deployed-{deployed}-{'success' if deployed == 'YES' else 'critical'})](qa/mainnet-release-state.json)
-[![Contracts Verified 48/48](https://img.shields.io/badge/Contracts%20Verified-48%2F48-success)](qa/mainnet-postdeploy/verification-evidence.json)
+[![Operator Verification Evidence 48/48](https://img.shields.io/badge/Operator%20Verification%20Evidence-48%2F48-informational)](qa/mainnet-postdeploy/verification-evidence.json)
 [![Mainnet Configured YES](https://img.shields.io/badge/Mainnet%20Configured-YES-success)](qa/mainnet-release-state.json)
 [![Production Activation NO](https://img.shields.io/badge/Production%20Activation-NO-critical)](qa/mainnet-release-state.json)
 
@@ -107,9 +107,9 @@ GoalOS AGIALPHA Ascension is an evidence-first Ethereum/Hardhat repository for p
 | Ethereum Mainnet deployment | {deployed} |
 | Mainnet configuration | YES |
 | GoalOS contracts | 48 |
-| Etherscan verification | 48/48 |
+| Operator verification evidence | 48/48 GoalOS contracts; `verified_from_seed_requires_api_refresh` |
 | Phase-B grants | 14/14 |
-| Final postdeployment check | PASSED |
+| Stage-B/live postdeployment check | BLOCKED until read-only live evidence passes |
 | Permanent authority | Wallet B / Ledger |
 | Wallet A managed roles | 0 |
 | Production activation | NO |
@@ -123,7 +123,7 @@ Ethereum Mainnet authorization: {eth}.
 Ethereum Mainnet deployed: {deployed}.
 Production activated: NO.
 
-Lifecycle boundaries remain separate: deployment and configuration are complete for the pre-release, while independent dual-RPC revalidation, any Stage-B certificate, production activation, user-fund authorization, live canary completion, and external audit completion must retain the status recorded in their evidence files.
+Lifecycle boundaries remain separate: deployment and configuration are recorded for the pre-release, while operator verification evidence remains qualified by seed/API-refresh status. Independent dual-RPC revalidation, live-RPC bytecode validation, any Stage-B certificate, production activation, user-fund authorization, live canary completion, and external audit completion must retain the status recorded in their evidence files and must not be promoted by prose.
 
 ## Published release
 

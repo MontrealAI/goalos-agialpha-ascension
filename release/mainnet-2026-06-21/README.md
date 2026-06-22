@@ -8,7 +8,7 @@ Deployment date: 2026-06-21
 
 GitHub release: https://github.com/MontrealAI/goalos-agialpha-ascension/releases/tag/v4.4.0-mainnet-2026-06-21
 
-The release documents a configured Ethereum Mainnet deployment: 48 GoalOS-created contracts, 49 manifest entries including external canonical AGIALPHA, and 48/48 GoalOS Etherscan verification. Production activation: NO. User-fund authorization: NO. The contracts are publicly verified on Etherscan. Independent commit-to-bytecode reproducibility remains a distinct provenance result unless separately proven.
+The release documents a configured Ethereum Mainnet deployment: 48 GoalOS-created contracts, 49 manifest entries including external canonical AGIALPHA, and 48/48 GoalOS operator verification evidence with `verified_from_seed_requires_api_refresh` qualifiers. Production activation: NO. User-fund authorization: NO. Operator verification evidence is preserved with its current qualifiers. Independent live Etherscan/API revalidation, live-RPC bytecode validation, and commit-to-bytecode reproducibility remain distinct provenance results unless separately proven.
 
 
 ## Release links
@@ -21,4 +21,4 @@ The release documents a configured Ethereum Mainnet deployment: 48 GoalOS-create
 - Security policy: `SECURITY.md` when present; otherwise repository security and limitations documentation.
 - Stage-C runbook: `docs/PRODUCTION_ACTIVATION.md`
 
-The contracts are publicly verified on Etherscan. Independent commit-to-bytecode reproducibility remains a distinct provenance result unless separately proven.
+Operator verification evidence is preserved with its current qualifiers. Independent live Etherscan/API revalidation, live-RPC bytecode validation, and commit-to-bytecode reproducibility remain distinct provenance results unless separately proven.

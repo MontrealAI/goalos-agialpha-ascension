@@ -20,7 +20,7 @@ Production activation: NO
 | Runtime bytecode/live RPC validation | REQUIRES_LIVE_RPC_VALIDATION |
 | Verification failures | 0 |
 | Phase-B grants | 14/14 active |
-| Final postdeployment check | PASSED, 48 checked, 0 failures |
+| Stage-B/live postdeployment check | BLOCKED until read-only live evidence passes |
 | Production activation | NO |
 | User-fund authorization | NO |
 | External audit completion | NO |
@@ -56,7 +56,7 @@ Release evidence is under `release/mainnet-2026-06-21/` and `qa/mainnet-postdepl
 
 ## Provenance boundary
 
-Operator verification evidence records 48/48 GoalOS contracts with the current evidence qualifiers preserved. Independent commit-to-bytecode reproducibility and live-RPC bytecode validation remain distinct provenance results unless separately proven.
+Operator verification evidence records 48/48 GoalOS contracts with the current evidence qualifiers preserved. Independent live Etherscan/API revalidation, commit-to-bytecode reproducibility, and live-RPC bytecode validation remain distinct provenance results unless separately proven.
 
 ## Read-only developer use
 

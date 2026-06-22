@@ -34,4 +34,4 @@ For the 2026-06-21 canonical deployment use genesis authority assignment, perman
 - Security policy: `SECURITY.md` when present; otherwise repository security and limitations documentation.
 - Stage-C runbook: `docs/PRODUCTION_ACTIVATION.md`
 
-The contracts are publicly verified on Etherscan. Independent commit-to-bytecode reproducibility remains a distinct provenance result unless separately proven.
+Operator verification evidence is preserved with its current qualifiers. Independent live Etherscan/API revalidation, live-RPC bytecode validation, and commit-to-bytecode reproducibility remain distinct provenance results unless separately proven.
