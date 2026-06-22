@@ -1,0 +1,175 @@
+name: GoalOS Proof Gradient Apex Website Autopilot
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: Choose preview-only or deploy
+        required: true
+        default: preview
+        type: choice
+        options:
+          - preview
+          - deploy
+  push:
+    branches: [ main ]
+    paths:
+      - 'content/proof-gradient-apex.json'
+      - 'data/mainnet/v4.4.0-mainnet-2026-06-21.json'
+      - 'scripts/website/build_proof_gradient_apex.py'
+      - 'scripts/website/verify_proof_gradient_apex.py'
+      - 'scripts/website/visual_check_proof_gradient_apex.py'
+      - 'test/test_proof_gradient_apex.py'
+      - 'docs/PROOF_GRADIENT_APEX_WEBSITE.md'
+      - '.github/workflows/goalos-proof-gradient-apex.yml'
+  pull_request:
+    paths:
+      - 'content/proof-gradient-apex.json'
+      - 'data/mainnet/v4.4.0-mainnet-2026-06-21.json'
+      - 'scripts/website/build_proof_gradient_apex.py'
+      - 'scripts/website/verify_proof_gradient_apex.py'
+      - 'scripts/website/visual_check_proof_gradient_apex.py'
+      - 'test/test_proof_gradient_apex.py'
+      - 'docs/PROOF_GRADIENT_APEX_WEBSITE.md'
+      - '.github/workflows/goalos-proof-gradient-apex.yml'
+  workflow_run:
+    workflows: [ 'GoalOS AGIALPHA Ascension v86 Preserve Actual Website' ]
+    types: [ completed ]
+    branches: [ main ]
+
+concurrency:
+  group: goalos-agialpha-ascension-v86
+  cancel-in-progress: false
+
+permissions: {}
+
+env:
+  PYTHONUNBUFFERED: '1'
+
+jobs:
+  build-verify-preview:
+    name: Build, preserve, verify, and preview the Apex experience
+    if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout the exact source revision
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.head_sha || github.sha }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Configure GitHub Pages
+        if: ${{ github.event_name != 'pull_request' && (github.event_name != 'workflow_dispatch' || inputs.mode == 'deploy') }}
+        uses: actions/configure-pages@v5
+
+      - name: Build the preserved canonical v86 website
+        run: python3 scripts/build_goalos_agialpha_ascension_website_v86.py --out site
+
+      - name: Add the Proof Gradient Apex experience additively
+        run: >-
+          python3 scripts/website/build_proof_gradient_apex.py
+          --site site
+          --content content/proof-gradient-apex.json
+          --manifest data/mainnet/v4.4.0-mainnet-2026-06-21.json
+
+      - name: Verify the complete canonical v86 website
+        run: python3 scripts/verify_goalos_agialpha_ascension_website_v86.py --site site
+
+      - name: Verify the Proof Gradient Apex experience and preservation boundary
+        run: >-
+          python3 scripts/website/verify_proof_gradient_apex.py
+          --site site
+          --content content/proof-gradient-apex.json
+          --manifest data/mainnet/v4.4.0-mainnet-2026-06-21.json
+
+      - name: Run deterministic Apex regression tests
+        run: python3 -m unittest discover -s test -p 'test_proof_gradient_apex.py' -v
+
+      - name: Install Playwright Chromium
+        run: |
+          python3 -m pip install --upgrade pip
+          python3 -m pip install playwright
+          python3 -m playwright install --with-deps chromium
+
+      - name: Run canonical v86 browser and mobile QA
+        run: python3 scripts/visual_layout_check_v86.py --site site --screenshots
+
+      - name: Run Proof Gradient Apex browser and mobile QA
+        run: python3 scripts/website/visual_check_proof_gradient_apex.py --site site --screenshots
+
+      - name: Reject public archives and private operator material
+        shell: bash
+        run: |
+          set -euo pipefail
+          if find site \( -name '*.zip' -o -name '*.7z' -o -name '*.tar' -o -name '*.gz' -o -name '*.rar' \) -print | grep -q .; then
+            echo 'Archive file found inside the generated public site.'
+            exit 1
+          fi
+          if grep -RIlE 'PRIVATE_MAINNET_DEPLOYER_PRIVATE_KEY|SEED_PHRASE|MNEMONIC|MAINNET_RPC_URL=|ETHERSCAN_API_KEY=' site; then
+            echo 'Private operator material found inside the generated public site.'
+            exit 1
+          fi
+
+      - name: Write executive workflow summary
+        if: always()
+        shell: bash
+        run: |
+          {
+            echo '# GoalOS Proof Gradient Apex'
+            echo
+            echo '## Public experience'
+            echo '- Homepage: https://montrealai.github.io/goalos-agialpha-ascension/index.html'
+            echo '- Proof Gradient: https://montrealai.github.io/goalos-agialpha-ascension/proof-gradient-challenge.html'
+            echo
+            echo '## Preservation law'
+            echo '- Canonical website source is not edited by this workflow.'
+            echo '- The feature is added only to the temporary GitHub Pages artifact.'
+            echo '- No wallet, RPC endpoint, API key, or blockchain transaction is used.'
+            echo
+            echo '## Claim boundary'
+            echo '- The equal-budget comparison is synthetic, not empirical.'
+            echo '- The Mainnet map is infrastructure evidence, not scientific-performance or external-audit evidence.'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload the full human-review preview and QA evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: goalos-proof-gradient-apex-preview
+          path: |
+            site/index.html
+            site/proof-gradient-challenge.html
+            site/downloads/proof-gradient/
+            site/qa/
+          if-no-files-found: warn
+          retention-days: 30
+
+      - name: Upload GitHub Pages artifact
+        if: ${{ github.event_name != 'pull_request' && (github.event_name != 'workflow_dispatch' || inputs.mode == 'deploy') }}
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: site
+
+  deploy:
+    name: Deploy canonical v86 plus Proof Gradient Apex
+    if: ${{ github.event_name != 'pull_request' && (github.event_name != 'workflow_dispatch' || inputs.mode == 'deploy') && (github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success') }}
+    runs-on: ubuntu-latest
+    needs: build-verify-preview
+    timeout-minutes: 10
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
