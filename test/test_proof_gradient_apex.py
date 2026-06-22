@@ -23,7 +23,7 @@ class ProofGradientApexTests(unittest.TestCase):
         (site / "assets/goalos-v86-dynamic-ai.js").write_text("", encoding="utf-8")
         index = """<!doctype html><html><head><link rel='stylesheet' href='assets/goalos-v86-preserve.css'><style id='goalos-v86-critical'>body{margin:0}</style></head><body><main><h1>GoalOS</h1><p>Canonical content remains untouched.</p></main><script defer src='assets/goalos-v86-dynamic-ai.js'></script></body></html>"""
         (site / "index.html").write_text(index, encoding="utf-8")
-        for name in ["mission-os.html", "proof-cards.html", "proof-observatory.html", "untouched.html"]:
+        for name in ["mission-os.html", "proof-cards.html", "proof-observatory.html", "ethereum-mainnet.html", "untouched.html"]:
             (site / name).write_text(f"<html><body>{name}</body></html>", encoding="utf-8")
         (site / "routes.json").write_text(json.dumps({"version": "test", "routes": ["index.html"]}), encoding="utf-8")
         (site / "sitemap.xml").write_text("<?xml version='1.0'?><urlset></urlset>", encoding="utf-8")

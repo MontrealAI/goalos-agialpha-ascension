@@ -223,6 +223,12 @@ def extract_header(index_html: str) -> str:
     if not match:
         die("could not preserve the existing site header from index.html")
     header = match.group(1)
+    if "proof-gradient-challenge.html" not in header:
+        header = header.replace(
+            "</nav>",
+            "<a href='proof-gradient-challenge.html'>Proof Gradient</a></nav>",
+            1,
+        )
     if "ethereum-mainnet.html" not in header:
         header = header.replace(
             "</nav>",
@@ -296,7 +302,7 @@ def make_page(index_html: str, by_name: dict[str, dict[str, Any]], manifest: dic
 }}
 *{{box-sizing:border-box}}html{{background:var(--mn-paper)}}
 body.mn-page{{margin:0;background:radial-gradient(circle at 8% 0%,rgba(240,189,79,.16),transparent 28rem),radial-gradient(circle at 100% 10%,rgba(119,231,244,.13),transparent 34rem),var(--mn-paper);color:var(--mn-ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}}
-body.mn-page a{{color:inherit}}body.mn-page .skip{{position:absolute;left:-9999px;top:auto}}
+body.mn-page a:not(.mn-btn){{color:inherit}}body.mn-page .skip{{position:absolute;left:-9999px;top:auto}}
 body.mn-page .skip:focus{{left:18px;top:18px;z-index:9999;background:#fff;color:var(--mn-ink);padding:11px 16px;border-radius:999px;box-shadow:var(--mn-shadow)}}
 body.mn-page .top{{position:sticky;top:0;z-index:100;background:rgba(247,244,236,.94);border-bottom:1px solid var(--mn-line);backdrop-filter:blur(18px)}}
 body.mn-page .topin{{width:min(1240px,calc(100% - 32px));margin:0 auto;min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:24px}}
@@ -316,7 +322,7 @@ body.mn-page .nav a:hover,body.mn-page .nav a:focus-visible{{background:#fff;col
 .mn-metric{{min-height:128px;border:1px solid rgba(255,255,255,.16);background-color:rgba(255,255,255,.085);border-radius:22px;padding:18px;backdrop-filter:blur(14px)}}.mn-metric strong{{display:block;color:var(--mn-gold-soft);font-size:clamp(1.65rem,3vw,2.65rem);line-height:1.05;letter-spacing:-.04em}}.mn-metric span{{display:block;margin-top:8px;color:#e5edf8;font-size:.78rem;font-weight:850;line-height:1.35}}
 .mn-actions{{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}}.mn-btn{{min-height:48px;display:inline-flex;align-items:center;justify-content:center;gap:9px;text-decoration:none;border-radius:999px;padding:12px 19px;font-weight:930;font-size:.92rem;border:1px solid transparent;transition:transform .18s ease,box-shadow .18s ease}}
 .mn-btn:hover{{transform:translateY(-2px)}}.mn-btn:focus-visible{{outline:3px solid var(--mn-cyan);outline-offset:3px}}
-.mn-btn--primary{{background-color:#f5c75e;background-image:linear-gradient(135deg,#f7d878,#efb840);color:#111827;box-shadow:0 18px 50px rgba(240,189,79,.28)}}.mn-btn--secondary{{background-color:#fff;color:#101b2d;border-color:#fff;box-shadow:0 15px 42px rgba(0,0,0,.18)}}.mn-btn--ghost{{background-color:#13243b;color:#fff;border-color:rgba(255,255,255,.24)}}
+body.mn-page .mn-btn--primary,body.mn-page .mn-btn--primary:visited{{background-color:#f6cf68!important;background-image:none!important;color:#07111f!important;border-color:#f6cf68!important;box-shadow:0 18px 50px rgba(240,189,79,.28)}}body.mn-page .mn-btn--secondary,body.mn-page .mn-btn--secondary:visited{{background-color:#ffffff!important;background-image:none!important;color:#07111f!important;border-color:#ffffff!important;box-shadow:0 15px 42px rgba(0,0,0,.18)}}body.mn-page .mn-btn--ghost,body.mn-page .mn-btn--ghost:visited{{background-color:#13243b!important;background-image:none!important;color:#ffffff!important;border-color:rgba(255,255,255,.28)!important}}
 .mn-section{{padding:clamp(70px,8vw,112px) 0}}.mn-section--white{{background:rgba(255,255,255,.78)}}.mn-section--dark{{position:relative;background:linear-gradient(135deg,#07111f,#0d213d);color:#fff;overflow:hidden}}
 .mn-section--dark:before{{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.055) 1px,transparent 1px);background-size:44px 44px;opacity:.5}}
 .mn-section-header{{max-width:870px;margin-bottom:34px}}.mn-section-header h2{{margin:8px 0 14px;font-size:clamp(2.15rem,5.2vw,4.9rem);line-height:.97;letter-spacing:-.065em;text-wrap:balance}}.mn-section-header p{{margin:0;color:var(--mn-muted);font-size:1.06rem;line-height:1.75}}.mn-section--dark .mn-section-header p{{color:#cbd9e9}}
@@ -406,8 +412,8 @@ def home_styles() -> str:
 #ethereum-mainnet-record .mn-home-actions{{position:relative;z-index:1;display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}}
 #ethereum-mainnet-record .mn-home-btn{{min-height:48px;display:inline-flex;align-items:center;justify-content:center;text-decoration:none;border-radius:999px;padding:12px 18px;font-size:.9rem;font-weight:930;transition:transform .18s ease,box-shadow .18s ease}}
 #ethereum-mainnet-record .mn-home-btn:hover{{transform:translateY(-2px)}}#ethereum-mainnet-record .mn-home-btn:focus-visible{{outline:3px solid #77e7f4;outline-offset:3px}}
-#ethereum-mainnet-record .mn-home-btn--primary{{background-color:#f5c75e;background-image:linear-gradient(135deg,#f7d878,#efb840);color:#111827;box-shadow:0 17px 46px rgba(240,189,79,.28)}}
-#ethereum-mainnet-record .mn-home-btn--secondary{{background-color:#fff;color:#101b2d;border:1px solid #fff;box-shadow:0 15px 42px rgba(0,0,0,.20)}}
+#ethereum-mainnet-record .mn-home-btn--primary,#ethereum-mainnet-record .mn-home-btn--primary:visited{{background-color:#f6cf68!important;background-image:none!important;color:#07111f!important;border:1px solid #f6cf68!important;box-shadow:0 17px 46px rgba(240,189,79,.28)}}
+#ethereum-mainnet-record .mn-home-btn--secondary,#ethereum-mainnet-record .mn-home-btn--secondary:visited{{background-color:#ffffff!important;background-image:none!important;color:#07111f!important;border:1px solid #ffffff!important;box-shadow:0 15px 42px rgba(0,0,0,.20)}}
 @media(max-width:900px){{#ethereum-mainnet-record .mn-home-inner{{grid-template-columns:1fr}}}}
 @media(max-width:620px){{#ethereum-mainnet-record{{padding:48px 12px}}#ethereum-mainnet-record .mn-home-shell{{border-radius:28px;padding:28px 20px}}#ethereum-mainnet-record .mn-home-grid{{grid-template-columns:1fr}}#ethereum-mainnet-record .mn-home-btn{{width:100%}}}}
 </style>

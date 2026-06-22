@@ -149,7 +149,7 @@ def verify(site: Path, registry_path: Path) -> tuple[list[str], list[str]]:
         errors.append("homepage does not link to ethereum-mainnet.html")
     if "Production activation, user-fund authorization, and public production reliance remain disabled" not in index:
         errors.append("homepage Mainnet feature is missing the activation boundary")
-    for required_home in ("mn-home-shell","mn-home-btn--primary","mn-home-btn--secondary","background-color:#fff","color:#101b2d"):
+    for required_home in ("mn-home-shell","mn-home-btn--primary","mn-home-btn--secondary","background-color:#ffffff","color:#07111f"):
         if required_home not in index:
             errors.append(f"homepage Mainnet design is missing: {required_home}")
 
@@ -158,7 +158,7 @@ def verify(site: Path, registry_path: Path) -> tuple[list[str], list[str]]:
         "goalos-mainnet-v88-design","data-design-version='v88-institutional'",RELEASE_URL,
         "Production activation: NO","user-fund authorization","external audit",
         "Independent dual-provider release revalidation",CANONICAL_AGIALPHA,
-        "mn-btn--primary","mn-btn--secondary","mn-btn--ghost","font-family:Inter",
+        "mn-btn--primary","mn-btn--secondary","mn-btn--ghost","font-family:Inter","proof-gradient-challenge.html",
     ):
         if required.lower() not in page.lower():
             errors.append(f"Mainnet page is missing required content/design: {required}")

@@ -62,6 +62,8 @@ def verify(site: Path, content_path: Path, manifest_path: Path) -> tuple[dict, i
         "assets/goalos-v86-dynamic-ai.js",
         "goalos-v86-critical",
         "proof-gradient-mainnet-map.json",
+        "href='ethereum-mainnet.html'",
+        "aria-current='page'",
     ]
     for fragment in required_page_fragments:
         if fragment not in page_raw:
@@ -73,6 +75,11 @@ def verify(site: Path, content_path: Path, manifest_path: Path) -> tuple[dict, i
         errors.append("homepage Proof Gradient style marker is missing or duplicated")
     if "href='proof-gradient-challenge.html'" not in home_raw and 'href="proof-gradient-challenge.html"' not in home_raw:
         errors.append("homepage does not link to proof-gradient-challenge.html")
+    if "href='ethereum-mainnet.html'" not in home_raw and 'href="ethereum-mainnet.html"' not in home_raw:
+        errors.append("homepage Proof Gradient feature does not link to ethereum-mainnet.html")
+    home_button_count = home_raw.count("class='pg-home-button") + home_raw.count('class="pg-home-button')
+    if home_button_count != 3:
+        errors.append(f"homepage Proof Gradient feature must contain three actions, found {home_button_count}")
 
     contracts = manifest_contract_map(manifest)
     if len(contracts) != 49:
