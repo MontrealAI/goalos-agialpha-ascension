@@ -1,0 +1,18 @@
+{
+  "address": "0xc2816f41a97b1dE9b23AF79C09B0DF217d767b8F",
+  "completeness": "COMPLETE",
+  "constructorArguments": [],
+  "constructorArgumentsAbiEncoded": "0x",
+  "constructorArgumentsHash": "0x6a15947c7c88a6c61719b4bbbc17ac61a82c77dea8ada5dbb3da4f9420bf5f89",
+  "constructorInputsAbi": [],
+  "deploymentTransactionHash": "0xff3b0e9ea2b772728253198c9eaf546dc5c1c6d6b48ff6caf75cf2793ca294c7",
+  "file": "constructor-arguments/CommercializationPerformanceVault.constructor-arguments.json",
+  "fullyQualifiedContractName": "CommercializationPerformanceVault",
+  "name": "CommercializationPerformanceVault",
+  "reEncodingStatus": "MATCH",
+  "source": [
+    "deployment-transaction-input",
+    "configured-manifest",
+    "verification-args-crosscheck"
+  ]
+}

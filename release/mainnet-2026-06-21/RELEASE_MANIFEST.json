@@ -7,6 +7,298 @@
     "solidity": "0.8.28"
   },
   "configuredAt": "2026-06-21T19:58:14.253Z",
+  "constructorArgumentRecordCount": 48,
+  "constructorArguments": [
+    {
+      "address": "0xc2816f41a97b1dE9b23AF79C09B0DF217d767b8F",
+      "file": "constructor-arguments/CommercializationPerformanceVault.constructor-arguments.json",
+      "hash": "0x6a15947c7c88a6c61719b4bbbc17ac61a82c77dea8ada5dbb3da4f9420bf5f89",
+      "name": "CommercializationPerformanceVault"
+    },
+    {
+      "address": "0x172da7eF2702358c3b552a75c360d752Ef900C3c",
+      "file": "constructor-arguments/ProofRewardsVault.constructor-arguments.json",
+      "hash": "0x68b99a0199a58e9dcb4ad546c2a9fd523f6a10b0886ee82c628814f2ed80d0ce",
+      "name": "ProofRewardsVault"
+    },
+    {
+      "address": "0xf6f46da2CC6B896607CE62883bECaB41D927ed55",
+      "file": "constructor-arguments/LiquidityVault.constructor-arguments.json",
+      "hash": "0x1c70b13cd2884901f2aabb8ee4b9f6a8715c651f2084a838f0c6dcd802d45d96",
+      "name": "LiquidityVault"
+    },
+    {
+      "address": "0x30698AF1D276A5B5736b5BCd8fB01BE8baCF949d",
+      "file": "constructor-arguments/SecurityVault.constructor-arguments.json",
+      "hash": "0x70b6fe4439ecd70172ea39d71eee7b9136251aaf038bcc5d3d9f80234651fe53",
+      "name": "SecurityVault"
+    },
+    {
+      "address": "0xc100C44eD7eb33f38953D26a1FC840A59F2A7F09",
+      "file": "constructor-arguments/CommunityVault.constructor-arguments.json",
+      "hash": "0xa1f79a2d7162ed576a5d3bd67e090aef5fe3c03d40a4ee14a6de161bfd193847",
+      "name": "CommunityVault"
+    },
+    {
+      "address": "0x7D660ad863aD5aa37405E6568911C1F09E1Bd6f1",
+      "file": "constructor-arguments/ProofSeedRegistry.constructor-arguments.json",
+      "hash": "0x4fb5f1f76748484506d3777232e1a654401e28906babca0ed39eaacdc6efd6da",
+      "name": "ProofSeedRegistry"
+    },
+    {
+      "address": "0x38042257CDB67F4b55fF312401ad8dD49EC128B1",
+      "file": "constructor-arguments/LegacyAGIJobManagerRegistry.constructor-arguments.json",
+      "hash": "0xadafcaf6a14d27f8847f09c9680f9f11adf5a94aefcff6042fb7146f8c06fee5",
+      "name": "LegacyAGIJobManagerRegistry"
+    },
+    {
+      "address": "0x3989E3892aab3FD582E514Bb8e7057978a3c59B1",
+      "file": "constructor-arguments/ReputationRegistry.constructor-arguments.json",
+      "hash": "0x94a5893199af0a04c5f3d3ae2b1d8a165fcedf8b9955571593191bea5ea60e51",
+      "name": "ReputationRegistry"
+    },
+    {
+      "address": "0xD6Abd123D43429868603dFEc78e38bD6a86726DD",
+      "file": "constructor-arguments/ReferralRegistry.constructor-arguments.json",
+      "hash": "0x47789ffa28cde98e881d20686be23e9281e8441b65950d4f44b564c0436a8bc7",
+      "name": "ReferralRegistry"
+    },
+    {
+      "address": "0xC3E715b064acCEE475C9775385a42A7B0A6d53e6",
+      "file": "constructor-arguments/ProofCardRegistry.constructor-arguments.json",
+      "hash": "0x2ccbe317865bfb0d7dafc282cf7579d603179bb6fcc636a675e1bb0e5caf8c37",
+      "name": "ProofCardRegistry"
+    },
+    {
+      "address": "0x207B1300BdEE4cbAD430672ECA5D368e7264994D",
+      "file": "constructor-arguments/ProofCredentialRegistry.constructor-arguments.json",
+      "hash": "0xa33aa29401749dcc85ad4e5ba8b69814d04b8e81547ce5ba9e1247553c2ccd90",
+      "name": "ProofCredentialRegistry"
+    },
+    {
+      "address": "0xe9Dc9c1Affa3542e8b2eAC1F5B465a9b0E536767",
+      "file": "constructor-arguments/JobRegistry.constructor-arguments.json",
+      "hash": "0x987341694891a6c8dceb3bf686ec532a7d9f6c5c394d2f0b6685bb6aa3f03be7",
+      "name": "JobRegistry"
+    },
+    {
+      "address": "0x10b5773a65EC53e585bF7dD8692bC14a35B326B9",
+      "file": "constructor-arguments/JobClaimBondManager.constructor-arguments.json",
+      "hash": "0x340c9fa72a7d1f7c829c34c745b33f3b8be1aa5f55c51388d00098c6bc3e6808",
+      "name": "JobClaimBondManager"
+    },
+    {
+      "address": "0x38750929B26782EB7097F1E4833C14335EAB1b9E",
+      "file": "constructor-arguments/PremiumAccessRegistry.constructor-arguments.json",
+      "hash": "0xfb2bf8752898cf0bac15c2e08db93f4d15586c9d71e7bc60bbd8d59a4709162f",
+      "name": "PremiumAccessRegistry"
+    },
+    {
+      "address": "0x595AB684e41ba04C6aEE072b4b313B9B96A3f744",
+      "file": "constructor-arguments/ProofSubmissionRegistry.constructor-arguments.json",
+      "hash": "0x33c83b87770da28f5570c009f1f404f7db3782183e2fc362133cb10741347c26",
+      "name": "ProofSubmissionRegistry"
+    },
+    {
+      "address": "0x97A31181F82dfaBEdD1d0F360aA01baa28045065",
+      "file": "constructor-arguments/ReviewerBondRegistry.constructor-arguments.json",
+      "hash": "0x907642a6899612f4f82da31b5160636ed6820cfb27cb36203a81ae767e59369a",
+      "name": "ReviewerBondRegistry"
+    },
+    {
+      "address": "0x1006ed321f1Ed8D2E50D76054CD44Eff22d045f4",
+      "file": "constructor-arguments/TreasuryRouter.constructor-arguments.json",
+      "hash": "0xf9854287315b169bd008022825d252648870d45b1982e078c753ee41ffb8b052",
+      "name": "TreasuryRouter"
+    },
+    {
+      "address": "0x15d713b8810fBe8D45aA4be433F65B6EaF145Ade",
+      "file": "constructor-arguments/ProtocolConfigRegistry.constructor-arguments.json",
+      "hash": "0x4fecc142821c25c8fb2a863f607fabfefbedb3f8aa66872207d3f80d3c5f33ff",
+      "name": "ProtocolConfigRegistry"
+    },
+    {
+      "address": "0xd6155967e091c5b3Cb7b25b942cDc132592F5562",
+      "file": "constructor-arguments/LaunchGateRegistry.constructor-arguments.json",
+      "hash": "0x09a81877b92ea0fde4c698523027258789e112c71ffdeb9d8faee082a66421c1",
+      "name": "LaunchGateRegistry"
+    },
+    {
+      "address": "0x96346A9a399623B92dE55D502C6dcA43094bdE28",
+      "file": "constructor-arguments/DisputeRegistry.constructor-arguments.json",
+      "hash": "0xe806de202c0b0052826288461548c89fc307de218b09175084da080dfebe75c3",
+      "name": "DisputeRegistry"
+    },
+    {
+      "address": "0xBBF2a5C8bA53d74862051B5FC377C19A092e0f33",
+      "file": "constructor-arguments/AppealRegistry.constructor-arguments.json",
+      "hash": "0x6a2f204d3ac06578925563b1cdc0289aabd81abb6903a86f6434a52a5d306313",
+      "name": "AppealRegistry"
+    },
+    {
+      "address": "0xd8da67F26f64319F46aE8170aD7023762C9E2D93",
+      "file": "constructor-arguments/SponsorRegistry.constructor-arguments.json",
+      "hash": "0xfb2e8e7b5d5ce749a10c798941385cea5d7342a396ffb739010cfcaa69e969f7",
+      "name": "SponsorRegistry"
+    },
+    {
+      "address": "0x754EDCb4dfE3295eA550ea7F95B4f6dEE35deD25",
+      "file": "constructor-arguments/BuilderProfileRegistry.constructor-arguments.json",
+      "hash": "0x7a9805995807070f51bbc2949123dbb91d1482582a4faeb5795991d927935c53",
+      "name": "BuilderProfileRegistry"
+    },
+    {
+      "address": "0x4BC5246615E54f49a5cE84D9743b9d6e98e3a974",
+      "file": "constructor-arguments/CredentialRevocationRegistry.constructor-arguments.json",
+      "hash": "0x198288e4457e28b7149f25218f7462b3ef35a47756adc8a07f96fbff73c8fec7",
+      "name": "CredentialRevocationRegistry"
+    },
+    {
+      "address": "0x1B4804D55b339A5F15F766BB1C0eF295a327b58c",
+      "file": "constructor-arguments/AEPAgentRegistry.constructor-arguments.json",
+      "hash": "0x4aafb0adff7eed8faed4d5443a48678ae92f2ce37a751bf082093a15bd7ee4df",
+      "name": "AEPAgentRegistry"
+    },
+    {
+      "address": "0x301ee7014D021F10640E32221AC3AE54292A091D",
+      "file": "constructor-arguments/AEPArtifactRegistry.constructor-arguments.json",
+      "hash": "0x588b6553adec572a61a7b578847e6da4589962e04641d2d501e0b4c3d5e7cd06",
+      "name": "AEPArtifactRegistry"
+    },
+    {
+      "address": "0x2EE9E77b67a975FB7F412247040A321597F9DcAB",
+      "file": "constructor-arguments/AEPGoalOSCommitRegistry.constructor-arguments.json",
+      "hash": "0x255a1a3f041c3713f06039aa518ed68e5256a66bd83465eb156c069b6b5fb29f",
+      "name": "AEPGoalOSCommitRegistry"
+    },
+    {
+      "address": "0x629a0c4C09C801DC796201fCEe336b3DC1FA018a",
+      "file": "constructor-arguments/AEPRunCommitmentRegistry.constructor-arguments.json",
+      "hash": "0xefb89c51c9c2e6ebd95f04984a6e9e165be2902587f9d5f1a3b3556fecce0667",
+      "name": "AEPRunCommitmentRegistry"
+    },
+    {
+      "address": "0x07b151e8D56a914BDF87662bea1f2cfdA036f273",
+      "file": "constructor-arguments/AEPProofLedger.constructor-arguments.json",
+      "hash": "0x1998eef3428f6793c516263c2d75818360580b46065c631042dd04579f9d55d3",
+      "name": "AEPProofLedger"
+    },
+    {
+      "address": "0x66254fb43432f4c4Cb6Aa2001B725002E2941826",
+      "file": "constructor-arguments/AEPEvalRegistry.constructor-arguments.json",
+      "hash": "0x7fb63f8d607ff504d47e4bd9f1567c083bc584b4f65cf39b6d0933e43bd28acb",
+      "name": "AEPEvalRegistry"
+    },
+    {
+      "address": "0xc1e3bcDf4E5bd119e22A7A042DCC95C96Fb44D71",
+      "file": "constructor-arguments/AEPAttestationRegistry.constructor-arguments.json",
+      "hash": "0xbd03a01589d2ea9d36c139fd744f82d7d5e43418da14d6bb0d5b1e9b105b5bd7",
+      "name": "AEPAttestationRegistry"
+    },
+    {
+      "address": "0x688c1026b07C1a12B713fbA46a75d849DF785d43",
+      "file": "constructor-arguments/AEPSelectionGate.constructor-arguments.json",
+      "hash": "0x2dfd0ff39a9ad27fd722f1cbea46330b49c9507baa778340e2f773a60c8b88ad",
+      "name": "AEPSelectionGate"
+    },
+    {
+      "address": "0x4144F6460D80B9B2113e5B84e96A0eA9329D1720",
+      "file": "constructor-arguments/AEPRolloutRouter.constructor-arguments.json",
+      "hash": "0x4ee5f1186494e4a57647cf7afb91516c96277d6182247091548776ab1b24f91d",
+      "name": "AEPRolloutRouter"
+    },
+    {
+      "address": "0x284c23638456cD885703E0f6be0F460c3548B841",
+      "file": "constructor-arguments/AEPRollbackRegistry.constructor-arguments.json",
+      "hash": "0xef36bfc6e75dc65735c19c6c25dc9d6ad3f769190c9bb522e0bfef08b489f999",
+      "name": "AEPRollbackRegistry"
+    },
+    {
+      "address": "0x396c5Ba59907F98A0d5666e677d29Ac1b901BB4f",
+      "file": "constructor-arguments/AEPEvidenceDocketRegistry.constructor-arguments.json",
+      "hash": "0x609f44089844fcd7141acd0a2e53b26627ed90f12088d9bb34bde63d2b02fb96",
+      "name": "AEPEvidenceDocketRegistry"
+    },
+    {
+      "address": "0xA29C54c0bf7B8AfF097B14034Ca4bDfd41e46E16",
+      "file": "constructor-arguments/AEPProofBundleRegistry.constructor-arguments.json",
+      "hash": "0x4ea0bc7a84f7b0a889c1f54c3e432273a35bca65553627be8dc920def38e1d25",
+      "name": "AEPProofBundleRegistry"
+    },
+    {
+      "address": "0x8F17bAd575347CeA4f1FDC6504D973DA2869a489",
+      "file": "constructor-arguments/AlphaWorkUnitLedger.constructor-arguments.json",
+      "hash": "0x9665f3d00c707ed21a7d9ff6da3b395327bc092794ef564186cef6ce610568fd",
+      "name": "AlphaWorkUnitLedger"
+    },
+    {
+      "address": "0x2A30a1AFc000385a6630B234dE85D131D8f0e13B",
+      "file": "constructor-arguments/MandateEpochRegistry.constructor-arguments.json",
+      "hash": "0x3d78b927db8f5f07aa529f7c62d612eecc31a84b7767f35afb9f2f7a1695db23",
+      "name": "MandateEpochRegistry"
+    },
+    {
+      "address": "0xF48688Ac94d22F6a06E5dF0febC52806821e963f",
+      "file": "constructor-arguments/AGIEthNamespaceRegistry.constructor-arguments.json",
+      "hash": "0x7aab7965d4bd6d0942abcf04d262ce97e4b4a1d01543016d3d5e375f93aa7dff",
+      "name": "AGIEthNamespaceRegistry"
+    },
+    {
+      "address": "0x2A5E000C27Ba013CCa0b412C36B7C35e789AeAC6",
+      "file": "constructor-arguments/AEPConformanceRegistry.constructor-arguments.json",
+      "hash": "0x6c206fc852b57882366a4a484e27c5705d471a01027ac7975b8b95130453bf0c",
+      "name": "AEPConformanceRegistry"
+    },
+    {
+      "address": "0x8711eC9b240A5A6EA97931E38AfB918Ef1123939",
+      "file": "constructor-arguments/AEPClaimBoundaryRegistry.constructor-arguments.json",
+      "hash": "0x977213afca240f8d6c5c934b3a3df271a372f1e758d0da87e4d83249250beaba",
+      "name": "AEPClaimBoundaryRegistry"
+    },
+    {
+      "address": "0xb811f2497a810C18f69c0b3ecdb5aF0E5627D2df",
+      "file": "constructor-arguments/AEPReplayRegistry.constructor-arguments.json",
+      "hash": "0x2199a43c37dbe2101bfe6a49f0d048ed803ae2fef918ff73f4b9279b2c20f4a4",
+      "name": "AEPReplayRegistry"
+    },
+    {
+      "address": "0x2E0B6fd0d6A137575B405574723650852e4698f8",
+      "file": "constructor-arguments/AEPCommitRevealValidationRegistry.constructor-arguments.json",
+      "hash": "0x0cbeb09667a3c4ad3ce2f82a2d9e510d5f8e3a6a8ed284d297fb5abc42de073f",
+      "name": "AEPCommitRevealValidationRegistry"
+    },
+    {
+      "address": "0x912b72fB0829111A66d40FFe275Fa372f7804005",
+      "file": "constructor-arguments/AEPEvaluatorStakingRegistry.constructor-arguments.json",
+      "hash": "0xad55095f09b40ee6ca0333e19f53d15586d12babb26ada92fc4948a6eea0af32",
+      "name": "AEPEvaluatorStakingRegistry"
+    },
+    {
+      "address": "0xc47EaA3D80C9821b552c223F1Be481f9409f7959",
+      "file": "constructor-arguments/AEPSlashingCourt.constructor-arguments.json",
+      "hash": "0xe21198c4535255b3a59e2fb3cdd322c4c1400ce2f8d1f6cd6184bcef4ef42e62",
+      "name": "AEPSlashingCourt"
+    },
+    {
+      "address": "0x957daac2C45aF4Ec45Fe8B408dcF4a8d5626B67a",
+      "file": "constructor-arguments/AEPRewardVault.constructor-arguments.json",
+      "hash": "0xfeb70de1640d94cd55cda5760d6bb545b26dc8a4f4ce7d2a0f44777c32294f04",
+      "name": "AEPRewardVault"
+    },
+    {
+      "address": "0x0AC113585d0b5646544BCC730E13221485334A5F",
+      "file": "constructor-arguments/AEPChronicleRegistry.constructor-arguments.json",
+      "hash": "0x1b6a6fda9a92e17304d439e75dadac40ab1f188019172196004dfb8c74b28e25",
+      "name": "AEPChronicleRegistry"
+    },
+    {
+      "address": "0x7735f010BeAE5Ad7b3F97eCa4eb7B3091f53C1f6",
+      "file": "constructor-arguments/AEPFalsificationRegistry.constructor-arguments.json",
+      "hash": "0xd44da12978f7781f56cdbf19929a80e62ae30b0d222ccfc7e772272d4ca1c6ea",
+      "name": "AEPFalsificationRegistry"
+    }
+  ],
+  "constructorArgumentsRoot": "bd2c3a841d2ab0b3568ca5d3fbe0c007efc0274cf6d05272d424edbe5a55507a",
   "deployedAt": "2026-06-21T18:45:49.137Z",
   "deploymentTransactionHashes": [
     "0xff3b0e9ea2b772728253198c9eaf546dc5c1c6d6b48ff6caf75cf2793ca294c7",
@@ -201,9 +493,11 @@
   "releaseAssetHashes": {},
   "releaseTag": "v4.4.0-mainnet-2026-06-21",
   "releaseTitle": "GoalOS AGIALPHA Ascension v4.4.0 \u2014 Ethereum Mainnet Deployment",
+  "releaseVerificationReadiness": "DRAFT_BLOCKED_PENDING_INDEPENDENT_REVALIDATION",
+  "requestedRef": "LOCAL_HEAD",
   "runtimeBytecodeRoot": "b7bbb4b04b83ef5f10865a4be3e52934056eb1c25547f565fa7c9d490bb0d9a7",
   "sourceIdentityClassification": "SOURCE_IDENTITY_NOT_PROVEN",
-  "targetGitSha": "f0cdad1b2ea08dba380e3a7113689d98359b81e8",
+  "targetGitSha": "70fd37d64205e5bb21a5c07be22576218e882cf0",
   "userFundsAuthorized": false,
   "verificationRoot": "dc89f82484daa165f94a53b9e20e72812316491794b08dfcb10636f7c65d6cba",
   "walletA": "0x6c8B8897Fb6b08B4070387233B89b3E9A94eD00E",

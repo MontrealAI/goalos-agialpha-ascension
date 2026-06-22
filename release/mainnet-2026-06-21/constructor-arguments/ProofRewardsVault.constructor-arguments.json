@@ -1,0 +1,18 @@
+{
+  "address": "0x172da7eF2702358c3b552a75c360d752Ef900C3c",
+  "completeness": "COMPLETE",
+  "constructorArguments": [],
+  "constructorArgumentsAbiEncoded": "0x",
+  "constructorArgumentsHash": "0x68b99a0199a58e9dcb4ad546c2a9fd523f6a10b0886ee82c628814f2ed80d0ce",
+  "constructorInputsAbi": [],
+  "deploymentTransactionHash": "0x1b43c0e43fc7df6878e86d5bdce41f46a080a02af7fb6f6d93fcf29a02dda81a",
+  "file": "constructor-arguments/ProofRewardsVault.constructor-arguments.json",
+  "fullyQualifiedContractName": "ProofRewardsVault",
+  "name": "ProofRewardsVault",
+  "reEncodingStatus": "MATCH",
+  "source": [
+    "deployment-transaction-input",
+    "configured-manifest",
+    "verification-args-crosscheck"
+  ]
+}

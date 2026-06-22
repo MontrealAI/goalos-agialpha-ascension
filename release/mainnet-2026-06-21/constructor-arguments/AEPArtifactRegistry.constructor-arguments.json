@@ -1,0 +1,18 @@
+{
+  "address": "0x301ee7014D021F10640E32221AC3AE54292A091D",
+  "completeness": "COMPLETE",
+  "constructorArguments": [],
+  "constructorArgumentsAbiEncoded": "0x",
+  "constructorArgumentsHash": "0x588b6553adec572a61a7b578847e6da4589962e04641d2d501e0b4c3d5e7cd06",
+  "constructorInputsAbi": [],
+  "deploymentTransactionHash": "0xb4c5d68f72dc39acf00657c6a63d41983663e24e92821353021fa0276efd20e8",
+  "file": "constructor-arguments/AEPArtifactRegistry.constructor-arguments.json",
+  "fullyQualifiedContractName": "AEPArtifactRegistry",
+  "name": "AEPArtifactRegistry",
+  "reEncodingStatus": "MATCH",
+  "source": [
+    "deployment-transaction-input",
+    "configured-manifest",
+    "verification-args-crosscheck"
+  ]
+}

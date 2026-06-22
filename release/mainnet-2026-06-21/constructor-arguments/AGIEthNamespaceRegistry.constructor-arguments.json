@@ -1,0 +1,18 @@
+{
+  "address": "0xF48688Ac94d22F6a06E5dF0febC52806821e963f",
+  "completeness": "COMPLETE",
+  "constructorArguments": [],
+  "constructorArgumentsAbiEncoded": "0x",
+  "constructorArgumentsHash": "0x7aab7965d4bd6d0942abcf04d262ce97e4b4a1d01543016d3d5e375f93aa7dff",
+  "constructorInputsAbi": [],
+  "deploymentTransactionHash": "0x575961528ba951f4fc14d2e78b6f954b1877c3b911d4a2a9291f81096f40c74e",
+  "file": "constructor-arguments/AGIEthNamespaceRegistry.constructor-arguments.json",
+  "fullyQualifiedContractName": "AGIEthNamespaceRegistry",
+  "name": "AGIEthNamespaceRegistry",
+  "reEncodingStatus": "MATCH",
+  "source": [
+    "deployment-transaction-input",
+    "configured-manifest",
+    "verification-args-crosscheck"
+  ]
+}

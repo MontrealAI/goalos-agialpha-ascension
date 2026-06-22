@@ -1,0 +1,18 @@
+{
+  "address": "0x07b151e8D56a914BDF87662bea1f2cfdA036f273",
+  "completeness": "COMPLETE",
+  "constructorArguments": [],
+  "constructorArgumentsAbiEncoded": "0x",
+  "constructorArgumentsHash": "0x1998eef3428f6793c516263c2d75818360580b46065c631042dd04579f9d55d3",
+  "constructorInputsAbi": [],
+  "deploymentTransactionHash": "0xe562a63420f5c01030af1ba835c9610d580c22716f0019143f6ed3738a43fc54",
+  "file": "constructor-arguments/AEPProofLedger.constructor-arguments.json",
+  "fullyQualifiedContractName": "AEPProofLedger",
+  "name": "AEPProofLedger",
+  "reEncodingStatus": "MATCH",
+  "source": [
+    "deployment-transaction-input",
+    "configured-manifest",
+    "verification-args-crosscheck"
+  ]
+}

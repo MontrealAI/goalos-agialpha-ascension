@@ -10,7 +10,7 @@ This repository commit is a release-preparation candidate, but exact deployed so
 
 - Package version: `4.4.0`.
 - Deployment-script historical label: `GoalOS_AGIALPHA_Ascension_Ethereum_Mainnet_Implementation_v4_3_GATE_CLEAN_EVIDENCE_READY`.
-- Candidate Git SHA: `f0cdad1b2ea08dba380e3a7113689d98359b81e8`.
+- Candidate Git SHA: `70fd37d64205e5bb21a5c07be22576218e882cf0`.
 - Network / chain ID: `ethereum-mainnet` / `1`.
 - Compiler: Solidity `0.8.28`.
 - Hardhat: `2.28.6`.

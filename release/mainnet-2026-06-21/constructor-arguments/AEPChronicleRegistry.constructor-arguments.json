@@ -1,0 +1,18 @@
+{
+  "address": "0x0AC113585d0b5646544BCC730E13221485334A5F",
+  "completeness": "COMPLETE",
+  "constructorArguments": [],
+  "constructorArgumentsAbiEncoded": "0x",
+  "constructorArgumentsHash": "0x1b6a6fda9a92e17304d439e75dadac40ab1f188019172196004dfb8c74b28e25",
+  "constructorInputsAbi": [],
+  "deploymentTransactionHash": "0x34fc049476708b24be7cfdc2cf0c13ee8b4d6eb32970047ed34a919563a2045c",
+  "file": "constructor-arguments/AEPChronicleRegistry.constructor-arguments.json",
+  "fullyQualifiedContractName": "AEPChronicleRegistry",
+  "name": "AEPChronicleRegistry",
+  "reEncodingStatus": "MATCH",
+  "source": [
+    "deployment-transaction-input",
+    "configured-manifest",
+    "verification-args-crosscheck"
+  ]
+}

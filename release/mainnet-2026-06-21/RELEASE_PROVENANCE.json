@@ -12,7 +12,7 @@
   },
   "repository": "MontrealAI/goalos-agialpha-ascension",
   "tag": "v4.4.0-mainnet-2026-06-21",
-  "targetSha": "f0cdad1b2ea08dba380e3a7113689d98359b81e8",
+  "targetSha": "70fd37d64205e5bb21a5c07be22576218e882cf0",
   "workflow": ".github/workflows/prepare-mainnet-release.yml",
   "workflowRunId": "LOCAL_NOT_GITHUB_ACTIONS"
 }

@@ -1,0 +1,18 @@
+{
+  "address": "0x3989E3892aab3FD582E514Bb8e7057978a3c59B1",
+  "completeness": "COMPLETE",
+  "constructorArguments": [],
+  "constructorArgumentsAbiEncoded": "0x",
+  "constructorArgumentsHash": "0x94a5893199af0a04c5f3d3ae2b1d8a165fcedf8b9955571593191bea5ea60e51",
+  "constructorInputsAbi": [],
+  "deploymentTransactionHash": "0x3b9f2be6f6a3e2c307fc21dc04a4a6d100f84023d22a728bddabeec0c9acdc60",
+  "file": "constructor-arguments/ReputationRegistry.constructor-arguments.json",
+  "fullyQualifiedContractName": "ReputationRegistry",
+  "name": "ReputationRegistry",
+  "reEncodingStatus": "MATCH",
+  "source": [
+    "deployment-transaction-input",
+    "configured-manifest",
+    "verification-args-crosscheck"
+  ]
+}

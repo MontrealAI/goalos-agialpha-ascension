@@ -1,0 +1,18 @@
+{
+  "address": "0x8F17bAd575347CeA4f1FDC6504D973DA2869a489",
+  "completeness": "COMPLETE",
+  "constructorArguments": [],
+  "constructorArgumentsAbiEncoded": "0x",
+  "constructorArgumentsHash": "0x9665f3d00c707ed21a7d9ff6da3b395327bc092794ef564186cef6ce610568fd",
+  "constructorInputsAbi": [],
+  "deploymentTransactionHash": "0x212d3139aafbf090c3dbcbc6fa683977fef27834403d36a2a856c4cc8ab63328",
+  "file": "constructor-arguments/AlphaWorkUnitLedger.constructor-arguments.json",
+  "fullyQualifiedContractName": "AlphaWorkUnitLedger",
+  "name": "AlphaWorkUnitLedger",
+  "reEncodingStatus": "MATCH",
+  "source": [
+    "deployment-transaction-input",
+    "configured-manifest",
+    "verification-args-crosscheck"
+  ]
+}

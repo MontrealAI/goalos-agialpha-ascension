@@ -16,21 +16,29 @@ permissions:
   id-token: write
   attestations: write
 
-environment: mainnet-release
-
 jobs:
   prepare:
     runs-on: ubuntu-latest
+    environment: mainnet-release
     steps:
       - uses: actions/checkout@v4
         with:
           ref: ${{ inputs.ref }}
           fetch-depth: 0
+      - name: Resolve immutable release target
+        id: release-target
+        shell: bash
+        run: |
+          set -euo pipefail
+          sha="$(git rev-parse HEAD)"
+          [[ "$sha" =~ ^[0-9a-f]{40}$ ]]
+          test "$sha" = "$(git rev-parse '${{ inputs.ref }}^{commit}')"
+          echo "sha=$sha" >> "$GITHUB_OUTPUT"
+          echo "RELEASE_TARGET_SHA=$sha" >> "$GITHUB_ENV"
       - name: Verify exact ref and clean tree
         run: |
-          test "$(git rev-parse HEAD)" = "$(git rev-parse '${{ inputs.ref }}^{commit}')"
           git diff --check
-          test -z "$(git status --porcelain)"
+          test -z "$(git status --porcelain --untracked-files=no)"
       - uses: actions/setup-node@v4
         with:
           node-version: '20.19.0'

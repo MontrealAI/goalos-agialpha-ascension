@@ -1,0 +1,18 @@
+{
+  "address": "0x595AB684e41ba04C6aEE072b4b313B9B96A3f744",
+  "completeness": "COMPLETE",
+  "constructorArguments": [],
+  "constructorArgumentsAbiEncoded": "0x",
+  "constructorArgumentsHash": "0x33c83b87770da28f5570c009f1f404f7db3782183e2fc362133cb10741347c26",
+  "constructorInputsAbi": [],
+  "deploymentTransactionHash": "0x1190da4b87f661565e8aa903b91b106460ceee5aa59799fa8c4a0c78e14e0aaf",
+  "file": "constructor-arguments/ProofSubmissionRegistry.constructor-arguments.json",
+  "fullyQualifiedContractName": "ProofSubmissionRegistry",
+  "name": "ProofSubmissionRegistry",
+  "reEncodingStatus": "MATCH",
+  "source": [
+    "deployment-transaction-input",
+    "configured-manifest",
+    "verification-args-crosscheck"
+  ]
+}

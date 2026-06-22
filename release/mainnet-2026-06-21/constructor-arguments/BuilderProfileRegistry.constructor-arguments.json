@@ -1,0 +1,18 @@
+{
+  "address": "0x754EDCb4dfE3295eA550ea7F95B4f6dEE35deD25",
+  "completeness": "COMPLETE",
+  "constructorArguments": [],
+  "constructorArgumentsAbiEncoded": "0x",
+  "constructorArgumentsHash": "0x7a9805995807070f51bbc2949123dbb91d1482582a4faeb5795991d927935c53",
+  "constructorInputsAbi": [],
+  "deploymentTransactionHash": "0x274f5b1a93a49c8a62c08dc3e89b1537148a3c3e4c14299f7c70fc9354601d3d",
+  "file": "constructor-arguments/BuilderProfileRegistry.constructor-arguments.json",
+  "fullyQualifiedContractName": "BuilderProfileRegistry",
+  "name": "BuilderProfileRegistry",
+  "reEncodingStatus": "MATCH",
+  "source": [
+    "deployment-transaction-input",
+    "configured-manifest",
+    "verification-args-crosscheck"
+  ]
+}

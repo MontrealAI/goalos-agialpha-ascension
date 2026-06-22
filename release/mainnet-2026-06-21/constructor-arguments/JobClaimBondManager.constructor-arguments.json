@@ -1,0 +1,18 @@
+{
+  "address": "0x10b5773a65EC53e585bF7dD8692bC14a35B326B9",
+  "completeness": "COMPLETE",
+  "constructorArguments": [],
+  "constructorArgumentsAbiEncoded": "0x",
+  "constructorArgumentsHash": "0x340c9fa72a7d1f7c829c34c745b33f3b8be1aa5f55c51388d00098c6bc3e6808",
+  "constructorInputsAbi": [],
+  "deploymentTransactionHash": "0x5239c343fe81dc30d4a8cdf50b9640bca4cbdea100c981ef89f6b99a16fde195",
+  "file": "constructor-arguments/JobClaimBondManager.constructor-arguments.json",
+  "fullyQualifiedContractName": "JobClaimBondManager",
+  "name": "JobClaimBondManager",
+  "reEncodingStatus": "MATCH",
+  "source": [
+    "deployment-transaction-input",
+    "configured-manifest",
+    "verification-args-crosscheck"
+  ]
+}

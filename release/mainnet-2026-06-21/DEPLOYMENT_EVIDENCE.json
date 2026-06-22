@@ -1,5 +1,7 @@
 {
   "claimBoundary": "DEPLOYED AND CONFIGURED ON ETHEREUM MAINNET\n\nThis release records the deployed GoalOS contracts and their verified public\nconfiguration. It does not declare production activation, authorize user\nfunds, or claim external audit completion.",
+  "constructorArgumentRecords": 48,
+  "constructorArgumentsRoot": "bd2c3a841d2ab0b3568ca5d3fbe0c007efc0274cf6d05272d424edbe5a55507a",
   "historicalManifest": {
     "agialphaToken": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
     "chainId": 1,

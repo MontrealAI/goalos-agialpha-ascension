@@ -1,0 +1,18 @@
+{
+  "address": "0xd8da67F26f64319F46aE8170aD7023762C9E2D93",
+  "completeness": "COMPLETE",
+  "constructorArguments": [],
+  "constructorArgumentsAbiEncoded": "0x",
+  "constructorArgumentsHash": "0xfb2e8e7b5d5ce749a10c798941385cea5d7342a396ffb739010cfcaa69e969f7",
+  "constructorInputsAbi": [],
+  "deploymentTransactionHash": "0x452f6b622a903be09987569ce9d47d1c41f0353e1884d3cabc1f36f2eb893e3c",
+  "file": "constructor-arguments/SponsorRegistry.constructor-arguments.json",
+  "fullyQualifiedContractName": "SponsorRegistry",
+  "name": "SponsorRegistry",
+  "reEncodingStatus": "MATCH",
+  "source": [
+    "deployment-transaction-input",
+    "configured-manifest",
+    "verification-args-crosscheck"
+  ]
+}

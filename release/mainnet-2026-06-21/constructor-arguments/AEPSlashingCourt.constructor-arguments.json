@@ -1,0 +1,18 @@
+{
+  "address": "0xc47EaA3D80C9821b552c223F1Be481f9409f7959",
+  "completeness": "COMPLETE",
+  "constructorArguments": [],
+  "constructorArgumentsAbiEncoded": "0x",
+  "constructorArgumentsHash": "0xe21198c4535255b3a59e2fb3cdd322c4c1400ce2f8d1f6cd6184bcef4ef42e62",
+  "constructorInputsAbi": [],
+  "deploymentTransactionHash": "0xbd556c6f02df8b2f90806e5ebb9cd524f52a4d71fd64420b5f2129682cd14e68",
+  "file": "constructor-arguments/AEPSlashingCourt.constructor-arguments.json",
+  "fullyQualifiedContractName": "AEPSlashingCourt",
+  "name": "AEPSlashingCourt",
+  "reEncodingStatus": "MATCH",
+  "source": [
+    "deployment-transaction-input",
+    "configured-manifest",
+    "verification-args-crosscheck"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "address": "0x284c23638456cD885703E0f6be0F460c3548B841",
+  "completeness": "COMPLETE",
+  "constructorArguments": [],
+  "constructorArgumentsAbiEncoded": "0x",
+  "constructorArgumentsHash": "0xef36bfc6e75dc65735c19c6c25dc9d6ad3f769190c9bb522e0bfef08b489f999",
+  "constructorInputsAbi": [],
+  "deploymentTransactionHash": "0x40be22a46491bff65983eea6f90bdd14a29549239d9b1a969f996d71429390a2",
+  "file": "constructor-arguments/AEPRollbackRegistry.constructor-arguments.json",
+  "fullyQualifiedContractName": "AEPRollbackRegistry",
+  "name": "AEPRollbackRegistry",
+  "reEncodingStatus": "MATCH",
+  "source": [
+    "deployment-transaction-input",
+    "configured-manifest",
+    "verification-args-crosscheck"
+  ]
+}

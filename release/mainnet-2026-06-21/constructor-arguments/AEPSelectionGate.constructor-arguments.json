@@ -1,0 +1,18 @@
+{
+  "address": "0x688c1026b07C1a12B713fbA46a75d849DF785d43",
+  "completeness": "COMPLETE",
+  "constructorArguments": [],
+  "constructorArgumentsAbiEncoded": "0x",
+  "constructorArgumentsHash": "0x2dfd0ff39a9ad27fd722f1cbea46330b49c9507baa778340e2f773a60c8b88ad",
+  "constructorInputsAbi": [],
+  "deploymentTransactionHash": "0x87259a691e96ff463fec303ca99e7f840b8f0833271fe49f9ebf4d22b6a23de5",
+  "file": "constructor-arguments/AEPSelectionGate.constructor-arguments.json",
+  "fullyQualifiedContractName": "AEPSelectionGate",
+  "name": "AEPSelectionGate",
+  "reEncodingStatus": "MATCH",
+  "source": [
+    "deployment-transaction-input",
+    "configured-manifest",
+    "verification-args-crosscheck"
+  ]
+}

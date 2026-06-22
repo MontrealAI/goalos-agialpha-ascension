@@ -1,0 +1,18 @@
+{
+  "address": "0xD6Abd123D43429868603dFEc78e38bD6a86726DD",
+  "completeness": "COMPLETE",
+  "constructorArguments": [],
+  "constructorArgumentsAbiEncoded": "0x",
+  "constructorArgumentsHash": "0x47789ffa28cde98e881d20686be23e9281e8441b65950d4f44b564c0436a8bc7",
+  "constructorInputsAbi": [],
+  "deploymentTransactionHash": "0x5c27c07a3bb7762277a560b7a51a0d6070a0b628ed4ba64fd0ab186a4cfccf0b",
+  "file": "constructor-arguments/ReferralRegistry.constructor-arguments.json",
+  "fullyQualifiedContractName": "ReferralRegistry",
+  "name": "ReferralRegistry",
+  "reEncodingStatus": "MATCH",
+  "source": [
+    "deployment-transaction-input",
+    "configured-manifest",
+    "verification-args-crosscheck"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "address": "0x1006ed321f1Ed8D2E50D76054CD44Eff22d045f4",
+  "completeness": "COMPLETE",
+  "constructorArguments": [],
+  "constructorArgumentsAbiEncoded": "0x",
+  "constructorArgumentsHash": "0xf9854287315b169bd008022825d252648870d45b1982e078c753ee41ffb8b052",
+  "constructorInputsAbi": [],
+  "deploymentTransactionHash": "0x926b41aad6a7c5b23182263fa8919d48abcc7ad551040b1a914fcf77a7f0ad85",
+  "file": "constructor-arguments/TreasuryRouter.constructor-arguments.json",
+  "fullyQualifiedContractName": "TreasuryRouter",
+  "name": "TreasuryRouter",
+  "reEncodingStatus": "MATCH",
+  "source": [
+    "deployment-transaction-input",
+    "configured-manifest",
+    "verification-args-crosscheck"
+  ]
+}

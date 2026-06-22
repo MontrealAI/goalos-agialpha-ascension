@@ -1,0 +1,18 @@
+{
+  "address": "0x7735f010BeAE5Ad7b3F97eCa4eb7B3091f53C1f6",
+  "completeness": "COMPLETE",
+  "constructorArguments": [],
+  "constructorArgumentsAbiEncoded": "0x",
+  "constructorArgumentsHash": "0xd44da12978f7781f56cdbf19929a80e62ae30b0d222ccfc7e772272d4ca1c6ea",
+  "constructorInputsAbi": [],
+  "deploymentTransactionHash": "0xf68941388383d586e042e65a3ee7e6a89987571d806b1df38e370e37f2207751",
+  "file": "constructor-arguments/AEPFalsificationRegistry.constructor-arguments.json",
+  "fullyQualifiedContractName": "AEPFalsificationRegistry",
+  "name": "AEPFalsificationRegistry",
+  "reEncodingStatus": "MATCH",
+  "source": [
+    "deployment-transaction-input",
+    "configured-manifest",
+    "verification-args-crosscheck"
+  ]
+}

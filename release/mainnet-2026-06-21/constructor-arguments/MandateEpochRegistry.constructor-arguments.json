@@ -1,0 +1,18 @@
+{
+  "address": "0x2A30a1AFc000385a6630B234dE85D131D8f0e13B",
+  "completeness": "COMPLETE",
+  "constructorArguments": [],
+  "constructorArgumentsAbiEncoded": "0x",
+  "constructorArgumentsHash": "0x3d78b927db8f5f07aa529f7c62d612eecc31a84b7767f35afb9f2f7a1695db23",
+  "constructorInputsAbi": [],
+  "deploymentTransactionHash": "0x1721feda7666c5c5d8db944f01a99abfac163d3c50a3aee3719f62f14bb976a2",
+  "file": "constructor-arguments/MandateEpochRegistry.constructor-arguments.json",
+  "fullyQualifiedContractName": "MandateEpochRegistry",
+  "name": "MandateEpochRegistry",
+  "reEncodingStatus": "MATCH",
+  "source": [
+    "deployment-transaction-input",
+    "configured-manifest",
+    "verification-args-crosscheck"
+  ]
+}

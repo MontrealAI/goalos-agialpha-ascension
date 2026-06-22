@@ -1,0 +1,18 @@
+{
+  "address": "0x66254fb43432f4c4Cb6Aa2001B725002E2941826",
+  "completeness": "COMPLETE",
+  "constructorArguments": [],
+  "constructorArgumentsAbiEncoded": "0x",
+  "constructorArgumentsHash": "0x7fb63f8d607ff504d47e4bd9f1567c083bc584b4f65cf39b6d0933e43bd28acb",
+  "constructorInputsAbi": [],
+  "deploymentTransactionHash": "0x9039c7715abd6966a5551bafd56ce677b97a61abbcc555cfede1ad2bd816643a",
+  "file": "constructor-arguments/AEPEvalRegistry.constructor-arguments.json",
+  "fullyQualifiedContractName": "AEPEvalRegistry",
+  "name": "AEPEvalRegistry",
+  "reEncodingStatus": "MATCH",
+  "source": [
+    "deployment-transaction-input",
+    "configured-manifest",
+    "verification-args-crosscheck"
+  ]
+}

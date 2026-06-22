@@ -1,0 +1,18 @@
+{
+  "address": "0x30698AF1D276A5B5736b5BCd8fB01BE8baCF949d",
+  "completeness": "COMPLETE",
+  "constructorArguments": [],
+  "constructorArgumentsAbiEncoded": "0x",
+  "constructorArgumentsHash": "0x70b6fe4439ecd70172ea39d71eee7b9136251aaf038bcc5d3d9f80234651fe53",
+  "constructorInputsAbi": [],
+  "deploymentTransactionHash": "0xdfac3d78295aa5fab7f91916f0506e8f468d37cde394d532a06d2030a7e39f5e",
+  "file": "constructor-arguments/SecurityVault.constructor-arguments.json",
+  "fullyQualifiedContractName": "SecurityVault",
+  "name": "SecurityVault",
+  "reEncodingStatus": "MATCH",
+  "source": [
+    "deployment-transaction-input",
+    "configured-manifest",
+    "verification-args-crosscheck"
+  ]
+}

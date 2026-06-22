@@ -1,0 +1,18 @@
+{
+  "address": "0x38750929B26782EB7097F1E4833C14335EAB1b9E",
+  "completeness": "COMPLETE",
+  "constructorArguments": [],
+  "constructorArgumentsAbiEncoded": "0x",
+  "constructorArgumentsHash": "0xfb2bf8752898cf0bac15c2e08db93f4d15586c9d71e7bc60bbd8d59a4709162f",
+  "constructorInputsAbi": [],
+  "deploymentTransactionHash": "0x7c1b93e8f3808dddff321d07159a2c63ae4ffafc70f2af0ba830df5a4cb86c64",
+  "file": "constructor-arguments/PremiumAccessRegistry.constructor-arguments.json",
+  "fullyQualifiedContractName": "PremiumAccessRegistry",
+  "name": "PremiumAccessRegistry",
+  "reEncodingStatus": "MATCH",
+  "source": [
+    "deployment-transaction-input",
+    "configured-manifest",
+    "verification-args-crosscheck"
+  ]
+}

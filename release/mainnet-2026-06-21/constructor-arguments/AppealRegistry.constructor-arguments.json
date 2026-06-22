@@ -1,0 +1,18 @@
+{
+  "address": "0xBBF2a5C8bA53d74862051B5FC377C19A092e0f33",
+  "completeness": "COMPLETE",
+  "constructorArguments": [],
+  "constructorArgumentsAbiEncoded": "0x",
+  "constructorArgumentsHash": "0x6a2f204d3ac06578925563b1cdc0289aabd81abb6903a86f6434a52a5d306313",
+  "constructorInputsAbi": [],
+  "deploymentTransactionHash": "0x0fef208edd6e14c5dd491381d14d05acf176846981db7f267a1f44b0517961d6",
+  "file": "constructor-arguments/AppealRegistry.constructor-arguments.json",
+  "fullyQualifiedContractName": "AppealRegistry",
+  "name": "AppealRegistry",
+  "reEncodingStatus": "MATCH",
+  "source": [
+    "deployment-transaction-input",
+    "configured-manifest",
+    "verification-args-crosscheck"
+  ]
+}
