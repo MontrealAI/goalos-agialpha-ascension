@@ -1,13 +1,32 @@
 {
+  "acceptedPrimaryAliases": [
+    "PRIMARY_MAINNET_RPC_URL",
+    "PRIVATE_MAINNET_RPC_URL",
+    "MAINNET_RPC_URL",
+    "ETHEREUM_MAINNET_RPC_URL"
+  ],
+  "acceptedSecondaryAliases": [
+    "SECONDARY_MAINNET_RPC_URL",
+    "PRIVATE_SECONDARY_MAINNET_RPC_URL",
+    "MAINNET_SECONDARY_RPC_URL",
+    "ETHEREUM_MAINNET_SECONDARY_RPC_URL"
+  ],
   "canonicalAgialpha": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
   "chainId": 1,
-  "claimBoundary": "No Mainnet transaction is broadcast by this read-only tool.",
+  "claimBoundary": "This evidence reports Ethereum Mainnet deployment, verification, and configuration mechanics only. It does not claim achieved AGI, ASI, superintelligence, guaranteed ROI, legal approval, tax approval, security approval, external audit completion, production safety, user-fund authorization, or production activation.",
   "contractCount": 48,
-  "generatedAt": "2026-06-21T21:20:00Z",
+  "etherscanApiConfigured": false,
+  "generatedAt": "2026-06-22T00:50:37Z",
+  "primaryMainnetRpcConfigured": false,
+  "primaryMainnetRpcEnv": null,
+  "providerComparison": "MISSING_PRIMARY_MAINNET_RPC_URL",
+  "secondaryMainnetRpcConfigured": false,
+  "secondaryMainnetRpcEnv": null,
   "sourceManifest": "/workspace/goalos-agialpha-ascension/deployments/ethereum-mainnet.agialpha.latest.json",
-  "sourceManifestSha256": "c0a70445b9bdc87c438d11a233fb77af30708807310fea9002c97a83e0154c9b",
+  "sourceManifestSha256": "fc258ded95a1f4cc2df47d3bfc420ae10f577de5ef55c34b62ce32448b4178e9",
   "status": "REQUIRES_LIVE_RPC_VALIDATION",
   "tool": "mainnet:live:phase-b",
+  "transactionBoundary": "No Mainnet transaction is broadcast by this read-only tool; RPC URLs and API keys are never printed.",
   "walletA": "0x6c8B8897Fb6b08B4070387233B89b3E9A94eD00E",
   "walletB": "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
 }

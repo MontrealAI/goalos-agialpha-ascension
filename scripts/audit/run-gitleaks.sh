@@ -73,7 +73,7 @@ exclude_dirs = {".git", "node_modules", "artifacts", "cache", "direct-solc-outpu
 exclude_prefixes = ("audit/reports/", ".private.example/", "artifacts/", "cache/", "coverage/", "direct-solc-output/", "node_modules/", "typechain-types/")
 secret_name = re.compile(r"(?i)(private[_-]?key|deployer[_-]?key|mnemonic|seed[_-]?phrase|etherscan[_-]?api[_-]?key|rpc[_-]?url)")
 assignment = re.compile(r"(?i)([A-Z0-9_]*(?:PRIVATE_KEY|DEPLOYER_KEY|MNEMONIC|SEED_PHRASE|ETHERSCAN_API_KEY|RPC_URL)[A-Z0-9_]*)\s*[:=]\s*['\"]?([^'\"\s#]+)")
-placeholder = re.compile(r"(?i)^(|0x0+|0x?DO_NOT_COMMIT.*|DO_NOT_COMMIT.*|PRIVATE_LOCAL.*|TYPE_CONFIRMATION.*|<.*>|\$\{.*\}|your[-_].*|example|placeholder|redacted|changeme|dummy|localhost|http://127\.0\.0\.1.*|http://localhost.*)$")
+placeholder = re.compile(r"(?i)^(|0x0+|0x?DO_NOT_COMMIT.*|DO_NOT_COMMIT.*|PRIVATE_LOCAL.*|TYPE_CONFIRMATION.*|first_env\(.*\)|<.*>|\$\{.*\}|.*\{token\}.*|your[-_].*|example|placeholder|redacted|changeme|dummy|localhost|http://127\.0\.0\.1.*|http://localhost.*)$")
 findings = []
 try:
     candidates = [pathlib.Path(line) for line in __import__('subprocess').check_output(['git', 'ls-files'], text=True, stderr=__import__('subprocess').DEVNULL).splitlines()]
