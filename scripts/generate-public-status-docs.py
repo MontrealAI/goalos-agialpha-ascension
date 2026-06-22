@@ -81,7 +81,9 @@ badges=f'''[![Repository Validation](https://github.com/MontrealAI/goalos-agialp
 [![Solidity 0.8.28](https://img.shields.io/badge/Solidity-0.8.28-363636?logo=solidity)](package.json)
 [![Hardhat 2.28.6](https://img.shields.io/badge/Hardhat-2.28.6-f5d061?logo=ethereum)](package.json)
 [![TypeScript 5.9.3](https://img.shields.io/badge/TypeScript-5.9.3-3178c6?logo=typescript&logoColor=white)](package.json)
-[![Mainnet Authorized](https://img.shields.io/badge/Ethereum%20Mainnet%20Authorized-{eth}-{'success' if eth == 'YES' else 'critical'})](qa/mainnet-authorization-certificate.json)
+[![Operator Verification Evidence 48/48](https://img.shields.io/badge/Operator%20Verification%20Evidence-48%2F48-informational)](qa/mainnet-postdeploy/verification-evidence.json)
+[![Mainnet Configured YES](https://img.shields.io/badge/Mainnet%20Configured-YES-success)](qa/mainnet-release-state.json)
+[![Production Activation NO](https://img.shields.io/badge/Production%20Activation-NO-critical)](qa/mainnet-release-state.json)
 [![Mainnet Deployed](https://img.shields.io/badge/Ethereum%20Mainnet%20Deployed-{deployed}-{'success' if deployed == 'YES' else 'critical'})](qa/mainnet-release-state.json)
 '''
 readme=f"""Install:\n`npm ci`\n\nStart:\n`npm run mainnet:initial:setup-and-authorize`\n\n# GoalOS AGIALPHA Ascension
@@ -93,7 +95,7 @@ readme=f"""Install:\n`npm ci`\n\nStart:\n`npm run mainnet:initial:setup-and-auth
 
 GoalOS AGIALPHA Ascension is the institutional, evidence-first package for proof-settled AI workflow coordination using the existing AGIALPHA token. The repository is designed for reviewers, operators, auditors, and governance stakeholders who need a clear source of truth, reproducible checks, and strict public-claims boundaries.
 
-**Official source of truth:** Stage-A authorization remains `qa/mainnet-authorization-certificate.json`; Stage-B deployment state is `qa/mainnet-release-state.json`. Public README/status documents summarize those records; they do not override them.
+**Official source of truth:** Mainnet receipts/readbacks, `deployments/ethereum-mainnet.agialpha.latest.json`, `qa/mainnet-postdeploy/` evidence, and `qa/mainnet-release-state.json` now outrank historical Stage-A authorization. Public README/status documents summarize those records; they do not override them.
 
 ## Quick start for institutional reviewers
 

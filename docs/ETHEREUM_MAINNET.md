@@ -16,7 +16,8 @@ Production activation: NO
 | GoalOS-created contracts | 48 |
 | Manifest entries | 49 including external AGIALPHA |
 | Deployment transactions | 48 |
-| Etherscan verification | 48/48 GoalOS contracts |
+| Operator verification evidence | 48/48 GoalOS contracts; current evidence status `verified_from_seed_requires_api_refresh` |
+| Runtime bytecode/live RPC validation | REQUIRES_LIVE_RPC_VALIDATION |
 | Verification failures | 0 |
 | Phase-B grants | 14/14 active |
 | Final postdeployment check | PASSED, 48 checked, 0 failures |
@@ -47,7 +48,7 @@ The deployment used genesis authority assignment and postdeployment role configu
 
 ## Verification methodology
 
-Verification status is backed by deployment receipts, Etherscan verification evidence, runtime bytecode/readback evidence under `qa/mainnet-postdeploy/`, and release state summaries. Independent dual-RPC revalidation and any Stage-B certificate retain the exact status in their evidence files.
+Verification status is backed by deployment receipts, operator Etherscan verification evidence, runtime bytecode/readback evidence under `qa/mainnet-postdeploy/`, and release state summaries. Current registry generation preserves evidence qualifiers such as `verified_from_seed_requires_api_refresh` and `requires mainnet:postdeploy:revalidate`; independent dual-RPC revalidation and any Stage-B certificate retain the exact status in their evidence files.
 
 ## Release evidence and checksums
 
@@ -55,7 +56,7 @@ Release evidence is under `release/mainnet-2026-06-21/` and `qa/mainnet-postdepl
 
 ## Provenance boundary
 
-The contracts are publicly verified on Etherscan. Independent commit-to-bytecode reproducibility remains a distinct provenance result unless separately proven.
+Operator verification evidence records 48/48 GoalOS contracts with the current evidence qualifiers preserved. Independent commit-to-bytecode reproducibility and live-RPC bytecode validation remain distinct provenance results unless separately proven.
 
 ## Read-only developer use
 

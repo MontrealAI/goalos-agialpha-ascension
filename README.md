@@ -14,7 +14,7 @@ Start:
 [![Solidity 0.8.28](https://img.shields.io/badge/Solidity-0.8.28-363636?logo=solidity)](package.json)
 [![Hardhat 2.28.6](https://img.shields.io/badge/Hardhat-2.28.6-f5d061?logo=ethereum)](package.json)
 [![TypeScript 5.9.3](https://img.shields.io/badge/TypeScript-5.9.3-3178c6?logo=typescript&logoColor=white)](package.json)
-[![Contracts Verified 48/48](https://img.shields.io/badge/Contracts%20Verified-48%2F48-success)](qa/mainnet-postdeploy/verification-evidence.json)
+[![Operator Verification Evidence 48/48](https://img.shields.io/badge/Operator%20Verification%20Evidence-48%2F48-informational)](qa/mainnet-postdeploy/verification-evidence.json)
 [![Mainnet Configured YES](https://img.shields.io/badge/Mainnet%20Configured-YES-success)](qa/mainnet-release-state.json)
 [![Production Activation NO](https://img.shields.io/badge/Production%20Activation-NO-critical)](qa/mainnet-release-state.json)
 [![Mainnet Deployed](https://img.shields.io/badge/Ethereum%20Mainnet%20Deployed-YES-success)](qa/mainnet-release-state.json)
@@ -63,32 +63,11 @@ It does not claim external audit completion, legal approval, tax review, guarant
 Public Sepolia deployment is recommended but not mandatory for public authorization; local deterministic rehearsal and mainnet-shaped simulation are the active public gates.
 
 
-
-## Current Mainnet status
-
-| Status item | Value |
-| --- | --- |
-| Ethereum Mainnet deployment | YES |
-| Mainnet configuration | YES |
-| GoalOS contracts | 48 |
-| Etherscan verification | 48/48 |
-| Phase-B grants | 14/14 |
-| Final postdeployment check | PASSED |
-| Permanent authority | Wallet B / Ledger |
-| Wallet A managed roles | 0 |
-| Production activation | NO |
-| User-fund authorization | NO |
-| External audit completion | NO |
-
-Published pre-release: [`v4.4.0-mainnet-2026-06-21`](https://github.com/MontrealAI/goalos-agialpha-ascension/releases/tag/v4.4.0-mainnet-2026-06-21). Resolved tag SHA: `51bacf4fe58e4eb425240e74eef7e8461832767f`.
-
-Canonical AGIALPHA: `0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA` (external, not deployed or minted by GoalOS). Developer and operator entry points are read-only status, registry, verification, monitoring, and evidence commands; canonical redeployment is not normal guidance.
-
 ## Executive overview
 
 GoalOS AGIALPHA Ascension is the institutional, evidence-first package for proof-settled AI workflow coordination using the existing AGIALPHA token. The repository is designed for reviewers, operators, auditors, and governance stakeholders who need a clear source of truth, reproducible checks, and strict public-claims boundaries.
 
-**Official source of truth:** Stage-A authorization remains `qa/mainnet-authorization-certificate.json`; Stage-B deployment state is `qa/mainnet-release-state.json`. Public README/status documents summarize those records; they do not override them.
+**Official source of truth:** Mainnet receipts/readbacks, `deployments/ethereum-mainnet.agialpha.latest.json`, `qa/mainnet-postdeploy/` evidence, and `qa/mainnet-release-state.json` now outrank historical Stage-A authorization. Public README/status documents summarize those records; they do not override them.
 
 ## Quick start for institutional reviewers
 

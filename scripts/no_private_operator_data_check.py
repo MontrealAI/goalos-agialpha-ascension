@@ -163,6 +163,10 @@ PUBLIC_CHAIN_ADDRESS_ALLOWLIST_FILES = {
     # addresses from the checked-in deployment seed, not private operator
     # wallet secrets. They remain covered by the broader secret/RPC scans.
     "docs/ETHEREUM_MAINNET_CONTRACT_ADDRESSES.md",
+    "docs/ETHEREUM_MAINNET_CONTRACTS.md",
+    "config/ethereum-mainnet.contracts.json",
+    "app/config/ethereum-mainnet.contracts.generated.ts",
+    "website/data/ethereum-mainnet.contracts.json",
     "docs/MAINNET_ADDRESSES.md",
     "scripts/mainnet_live/postdeploy_assurance.py",
     "release/mainnet-2026-06-21/CONTRACTS_MAINNET.json",
