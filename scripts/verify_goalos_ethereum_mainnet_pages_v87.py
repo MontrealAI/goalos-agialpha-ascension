@@ -56,6 +56,71 @@ def load_json(path: Path):
     return json.loads(path.read_text(encoding="utf-8"))
 
 
+def normalize_registry(registry_path: Path) -> list[dict[str, str]]:
+    registry = load_json(registry_path)
+    if not isinstance(registry, dict):
+        raise ValueError("contract registry must be a JSON object")
+
+    metadata = registry.get("metadata")
+    if metadata is None:
+        metadata = {}
+    if not isinstance(metadata, dict):
+        raise ValueError("contract registry metadata must be an object")
+
+    chain_id = registry.get("chainId", metadata.get("chainId"))
+    if chain_id != 1:
+        raise ValueError("contract registry must describe Ethereum Mainnet chainId 1")
+
+    raw_contracts = registry.get("contracts")
+    if not isinstance(raw_contracts, list) or len(raw_contracts) != 49:
+        raise ValueError("contract registry must contain exactly 49 entries")
+
+    normalized: list[dict[str, str]] = []
+    seen_addresses: set[str] = set()
+    seen_names: set[str] = set()
+
+    for raw in raw_contracts:
+        if not isinstance(raw, dict):
+            raise ValueError("every registry entry must be an object")
+        name = raw.get("name")
+        address = raw.get("address")
+        entry_chain_id = raw.get("chainId", chain_id)
+        if not isinstance(name, str) or not name:
+            raise ValueError("registry entry has no valid name")
+        if not isinstance(address, str) or not ADDRESS_RE.fullmatch(address):
+            raise ValueError(f"invalid Ethereum address for {name}")
+        if entry_chain_id != 1:
+            raise ValueError(f"wrong chainId for {name}")
+
+        classification = raw.get("classification")
+        if classification not in {"deployed", "external"}:
+            if raw.get("external") is True and raw.get("deployedByGoalOS") is False:
+                classification = "external"
+            elif raw.get("external") is False and raw.get("deployedByGoalOS") is True:
+                classification = "deployed"
+            else:
+                raise ValueError(f"cannot determine classification for {name}")
+
+        key = address.lower()
+        if key in seen_addresses:
+            raise ValueError(f"duplicate contract address: {address}")
+        if name in seen_names:
+            raise ValueError(f"duplicate contract name: {name}")
+        seen_addresses.add(key)
+        seen_names.add(name)
+        normalized.append({"name": name, "address": address, "classification": classification})
+
+    deployed = sum(c["classification"] == "deployed" for c in normalized)
+    external = sum(c["classification"] == "external" for c in normalized)
+    if deployed != 48 or external != 1:
+        raise ValueError(f"expected 48 deployed and 1 external entries, got {deployed}/{external}")
+
+    agialpha = next((c for c in normalized if c["name"] == "AGIALPHA"), None)
+    if agialpha is None or agialpha["address"].lower() != CANONICAL_AGIALPHA.lower() or agialpha["classification"] != "external":
+        raise ValueError("canonical external AGIALPHA entry is missing or incorrect")
+    return normalized
+
+
 def verify(site: Path, registry_path: Path) -> tuple[list[str], list[str]]:
     errors: list[str] = []
     warnings: list[str] = []
@@ -131,10 +196,15 @@ def verify(site: Path, registry_path: Path) -> tuple[list[str], list[str]]:
     if len(agialpha_entries) != 1 or agialpha_entries[0]["classification"] != "external":
         errors.append("canonical AGIALPHA link is missing or not external")
 
-    registry = load_json(registry_path)
+    try:
+        registry_contracts = normalize_registry(registry_path)
+    except (OSError, ValueError, json.JSONDecodeError) as exc:
+        errors.append(f"invalid canonical registry: {exc}")
+        registry_contracts = []
+
     expected = {
         (c["name"], c["address"].lower(), c["classification"])
-        for c in registry.get("contracts", [])
+        for c in registry_contracts
     }
     page_addresses = {(e["address"].lower(), e["classification"]) for e in parser.contract_links}
     expected_addresses = {(addr, classification) for _, addr, classification in expected}

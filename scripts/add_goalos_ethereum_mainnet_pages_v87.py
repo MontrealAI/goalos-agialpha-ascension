@@ -70,57 +70,84 @@ def sha256(path: Path) -> str:
 
 def validate_registry(path: Path) -> tuple[list[dict[str, Any]], dict[str, dict[str, Any]]]:
     data = load_json(path)
-    if not isinstance(data, dict) or data.get("chainId") != 1:
-        die("contract registry must be an object with chainId 1")
+    if not isinstance(data, dict):
+        die("contract registry must be a JSON object")
+
+    metadata = data.get("metadata")
+    if metadata is None:
+        metadata = {}
+    if not isinstance(metadata, dict):
+        die("contract registry metadata must be an object")
+
+    chain_id = data.get("chainId", metadata.get("chainId"))
+    if chain_id != 1:
+        die("contract registry must describe Ethereum Mainnet chainId 1")
+
     contracts = data.get("contracts")
     if not isinstance(contracts, list) or len(contracts) != 49:
         die("contract registry must contain exactly 49 entries")
 
+    normalized: list[dict[str, Any]] = []
     seen_addresses: set[str] = set()
     seen_names: set[str] = set()
     by_name: dict[str, dict[str, Any]] = {}
     deployed = 0
     external = 0
 
-    for entry in contracts:
-        if not isinstance(entry, dict):
+    for raw in contracts:
+        if not isinstance(raw, dict):
             die("every registry entry must be an object")
+        entry = dict(raw)
         name = entry.get("name")
         address = entry.get("address")
-        classification = entry.get("classification")
+        entry_chain_id = entry.get("chainId", chain_id)
+
         if not isinstance(name, str) or not name:
             die("registry entry has no valid name")
         if not isinstance(address, str) or not ADDRESS_RE.fullmatch(address):
             die(f"invalid Ethereum address for {name}")
-        if entry.get("chainId") != 1:
+        if entry_chain_id != 1:
             die(f"wrong chainId for {name}")
+
+        classification = entry.get("classification")
         if classification not in {"deployed", "external"}:
-            die(f"invalid classification for {name}")
+            if entry.get("external") is True and entry.get("deployedByGoalOS") is False:
+                classification = "external"
+            elif entry.get("external") is False and entry.get("deployedByGoalOS") is True:
+                classification = "deployed"
+            else:
+                die(f"cannot determine deployed/external classification for {name}")
+
         key = address.lower()
         if key in seen_addresses:
             die(f"duplicate contract address: {address}")
         if name in seen_names:
             die(f"duplicate contract name: {name}")
+
+        entry["chainId"] = 1
+        entry["classification"] = classification
+        entry["etherscanUrl"] = entry.get("etherscanUrl") or entry.get("etherscanLink") or f"https://etherscan.io/address/{address}"
         seen_addresses.add(key)
         seen_names.add(name)
+        normalized.append(entry)
         by_name[name] = entry
         deployed += classification == "deployed"
         external += classification == "external"
 
     if deployed != 48 or external != 1:
         die(f"expected 48 deployed and 1 external entries, got {deployed} and {external}")
+
     agialpha = by_name.get("AGIALPHA")
     if not agialpha or agialpha["address"].lower() != CANONICAL_AGIALPHA.lower() or agialpha["classification"] != "external":
         die("canonical external AGIALPHA entry is missing or incorrect")
 
     grouped_names = {name for _, names in GROUPS for name in names}
-    deployed_names = {c["name"] for c in contracts if c["classification"] == "deployed"}
+    deployed_names = {c["name"] for c in normalized if c["classification"] == "deployed"}
     if grouped_names != deployed_names:
         missing = sorted(deployed_names - grouped_names)
         stale = sorted(grouped_names - deployed_names)
         die(f"contract grouping mismatch; missing={missing}, stale={stale}")
-    return contracts, by_name
-
+    return normalized, by_name
 
 def validate_release_contracts(path: Path, registry: list[dict[str, Any]]) -> tuple[int, str]:
     data = load_json(path)
