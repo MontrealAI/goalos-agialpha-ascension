@@ -1,9 +1,3 @@
-Install:
-`npm ci`
-
-Start:
-`npm run mainnet:initial:setup-and-authorize`
-
 # Start Here — GoalOS AGIALPHA Ascension Repository
 
 This repository is the institutional source package for **GoalOS AGIALPHA Ascension**.
@@ -55,7 +49,7 @@ A pre-broadcast state with predeployment authorization YES and Ethereum Mainnet 
 
 The historical Stage-A predeployment certificate was not used for this deployment path. The repository now records a direct operator Mainnet deployment and postdeployment evidence separately from Stage-C production activation.
 
-The active source of truth is `qa/mainnet-authorization-certificate.json`. README and status documents are generated summaries; they cannot create authorization independently.
+The active source-of-truth hierarchy starts with Mainnet receipts and on-chain readbacks, then `deployments/ethereum-mainnet.agialpha.latest.json`, `qa/mainnet-postdeploy/verification-evidence.json`, `qa/mainnet-postdeploy/`, `qa/mainnet-release-state.json`, `release/mainnet-2026-06-21/`, and generated public docs. README and status documents summarize evidence; they cannot create deployment, verification, authorization, audit, production activation, or user-fund claims independently.
 
 ## Read in this order
 
@@ -64,17 +58,17 @@ The active source of truth is `qa/mainnet-authorization-certificate.json`. READM
 3. `docs/DOCUMENTATION_MAINTENANCE.md`
 4. `docs/CURRENT_STATUS.md`
 5. `docs/OFFICIAL_BADGES.md`
-6. `docs/MAINNET_AUTHORIZATION_CERTIFICATE.md`
-7. `docs/PUBLIC_MAINNET_AUTHORIZATION_RUNBOOK.md`
-8. `docs/SAFE_CLAIMS_AND_TOKEN_BOUNDARY_v3_0.md` or latest safe-claims document
-9. `docs/EXTERNAL_AUDITOR_HANDOFF.md`
-10. `contracts/registry/LaunchGateRegistry.sol`
-11. `scripts/ethereum-mainnet-authorization-check.py`
+6. `docs/ETHEREUM_MAINNET.md`
+7. `docs/ETHEREUM_MAINNET_CONTRACTS.md`
+8. `docs/SECURITY_AND_LIMITATIONS.md`
+9. `docs/OPERATIONS_RUNBOOK_MAINNET.md`
+10. `docs/SAFE_CLAIMS_AND_TOKEN_BOUNDARY.md`
+11. `docs/EXTERNAL_AUDITOR_HANDOFF.md`
 
 ## Next real step
 
 ```text
-For reviewers: validate the certificate and run public authorization checks.
-For operators: prepare local-only runtime inputs, then use the gated deployment command only from an approved operator environment.
-For contributors: preserve safety boundaries, update docs with behavior changes, and do not weaken mainnet gates.
+For reviewers: run `npm run docs:all`, inspect current evidence files, and keep unresolved Stage-B/Stage-C items bounded.
+For operators: use read-only status and postdeployment checks unless a separate private operator package explicitly authorizes a local-only action.
+For contributors: preserve safety boundaries, update generated docs through their generators, and do not weaken Mainnet gates.
 ```
