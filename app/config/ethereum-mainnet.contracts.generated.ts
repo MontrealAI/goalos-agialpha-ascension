@@ -398,7 +398,7 @@ export const ethereumMainnetDeployment = {
       "verified": "REQUIRES_INDEPENDENT_CHECK"
     }
   ],
-  "manifestHash": "48624ba89f3afd7155a7fb1c436c0234811a26abb2a8c3368525abb8c0cb08ae",
+  "manifestHash": "f880614df4c12a67005dabdd6ffaf0d734f55b9e68654b65edda7cdd7ab577aa",
   "frontendSafetyDefaults": {
     "readOnlyExplorerEnabled": true,
     "writeActionsEnabled": false,

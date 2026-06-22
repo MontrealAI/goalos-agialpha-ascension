@@ -137,6 +137,16 @@ def contracts_check(args):
 def all_cmd(args):
     for c in ['doctor','receipts','bytecode','etherscan-check','authority-check','roles','non-role-authority','phase-b','reconcile','certificate','status']:
         args.command='mainnet:live:'+c; producer(args)
+    status=rpc_status()
+    missing=[]
+    if not status['primaryMainnetRpcConfigured']:
+        missing.append('PRIMARY_MAINNET_RPC_URL')
+    if not status['secondaryMainnetRpcConfigured']:
+        missing.append('SECONDARY_MAINNET_RPC_URL')
+    if not status['etherscanApiConfigured']:
+        missing.append('ETHERSCAN_API_KEY')
+    if missing:
+        raise SystemExit('mainnet:live:all fail-closed: generated PENDING artifacts only; live read-only validation blocked by missing '+', '.join(missing))
 
 def main():
     ap=argparse.ArgumentParser(); ap.add_argument('command'); args=ap.parse_args()
