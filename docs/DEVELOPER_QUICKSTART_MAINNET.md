@@ -1,4 +1,4 @@
-# MAINNET LIVE GATE IMPACT
+# DEVELOPER QUICKSTART MAINNET
 
 Audience: reviewers, developers, or operators as applicable.
 Purpose: current Mainnet documentation for the configured pre-release.
@@ -22,3 +22,16 @@ Stage C remains separate and requires bounded canary, monitoring, reconciliation
 ## Governance terminology
 
 For the 2026-06-21 canonical deployment use genesis authority assignment, permanent authority, and postdeployment role configuration. Legacy/future two-step ownership deployments are not required for the 2026-06-21 canonical deployment. `DEFAULT_ADMIN_ROLE = 0x00...00` is a role identifier, not a wallet.
+
+## Read-only ethers example
+
+```ts
+import { JsonRpcProvider, Contract } from "ethers";
+import { ethereumMainnetContracts } from "../app/config/ethereum-mainnet.contracts.generated";
+
+const provider = new JsonRpcProvider(process.env.ETHEREUM_MAINNET_RPC_URL);
+const network = await provider.getNetwork();
+if (network.chainId !== 1n) throw new Error("Wrong network");
+const agialpha = ethereumMainnetContracts.contracts.find((c) => c.name === "AGIALPHA");
+// Load ABI from repository artifacts, then use read-only calls only.
+```

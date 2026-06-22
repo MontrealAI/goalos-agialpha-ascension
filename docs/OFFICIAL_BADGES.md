@@ -1,13 +1,5 @@
-# Ethereum Mainnet Live Status
+# Official Badges
 
-Ethereum Mainnet deployment recorded: YES.
-Operator verification evidence: 48/48.
-Operator configuration postcheck: PASS.
-Independent dual-RPC revalidation: PENDING.
-Stage B certificate: PENDING.
-Production activation: NO.
-Permanent authority: Wallet B / Ledger via genesis authority assignment. Wallet A managed roles: 0. No ownership acceptance transaction is required for this deployed instance.
+README badges are evidence-backed and limited to: MIT, Solidity 0.8.28, Hardhat 2.28.6, Ethereum Mainnet Deployed YES, Contracts Verified 48/48, Mainnet Configured YES, and Production Activation NO.
 
-Claim boundary: This evidence reports Ethereum Mainnet deployment, verification, and configuration mechanics only. It does not claim achieved AGI, ASI, superintelligence, guaranteed ROI, legal approval, tax approval, security approval, external audit completion, production safety, user-fund authorization, or production activation.
-
-Use `npm run mainnet:live:validate-seed` for deterministic PR-safe checks. Use `npm run mainnet:live:revalidate` only in an operator read-only environment with primary/secondary Mainnet RPC providers and Etherscan API access.
+Do not present `Mainnet Authorized NO` as the current public status badge. The historical predeployment certificate was not used for the canonical deployment path. Generate status artifacts with `npm run docs:mainnet:write` and verify them with `npm run docs:mainnet:check`.

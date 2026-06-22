@@ -1,4 +1,4 @@
-# MAINNET LIVE GATE IMPACT
+# OPERATIONS RUNBOOK MAINNET
 
 Audience: reviewers, developers, or operators as applicable.
 Purpose: current Mainnet documentation for the configured pre-release.

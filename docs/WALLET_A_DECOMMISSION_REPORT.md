@@ -1,13 +1,24 @@
-# Ethereum Mainnet Live Status
+# WALLET A DECOMMISSION REPORT
 
-Ethereum Mainnet deployment recorded: YES.
-Operator verification evidence: 48/48.
-Operator configuration postcheck: PASS.
-Independent dual-RPC revalidation: PENDING.
-Stage B certificate: PENDING.
-Production activation: NO.
-Permanent authority: Wallet B / Ledger via genesis authority assignment. Wallet A managed roles: 0. No ownership acceptance transaction is required for this deployed instance.
+Audience: reviewers, developers, or operators as applicable.
+Purpose: current Mainnet documentation for the configured pre-release.
+Current status: Ethereum Mainnet deployed YES; configured YES; production activation NO; user-fund authorization NO.
+Authoritative source: Mainnet receipts/readbacks, `deployments/ethereum-mainnet.agialpha.latest.json`, `qa/mainnet-postdeploy/`, and `qa/mainnet-release-state.json`.
+Last reviewed: 2026-06-22.
+Next review trigger: new release, authority change, verification change, incident, or Stage-C activation request.
 
-Claim boundary: This evidence reports Ethereum Mainnet deployment, verification, and configuration mechanics only. It does not claim achieved AGI, ASI, superintelligence, guaranteed ROI, legal approval, tax approval, security approval, external audit completion, production safety, user-fund authorization, or production activation.
+## Current boundaries
 
-Use `npm run mainnet:live:validate-seed` for deterministic PR-safe checks. Use `npm run mainnet:live:revalidate` only in an operator read-only environment with primary/secondary Mainnet RPC providers and Etherscan API access.
+Deployment: YES. Configuration: YES. Operator verification evidence: 48/48. Phase-B grants: 14/14. Wallet B / Ledger is permanent authority. Wallet A managed roles: 0. Production activation: NO. User-fund authorization: NO. External audit completion: NO.
+
+## Read-only use
+
+Use the generated registry and Etherscan links for discovery. Validate `chainId = 1`. Do not redeploy the canonical topology. Do not embed private keys, RPC secrets, mnemonics, browser profiles, or private operator logs.
+
+## Stage C
+
+Stage C remains separate and requires bounded canary, monitoring, reconciliation, pause/recovery drill, explicit Ledger approval, production-write enablement, and user-fund authorization.
+
+## Governance terminology
+
+For the 2026-06-21 canonical deployment use genesis authority assignment, permanent authority, and postdeployment role configuration. Legacy/future two-step ownership deployments are not required for the 2026-06-21 canonical deployment. `DEFAULT_ADMIN_ROLE = 0x00...00` is a role identifier, not a wallet.

@@ -1,17 +1,34 @@
-# Ownership Handoff Runbook
+# OWNERSHIP HANDOFF RUNBOOK
 
-## Current 2026-06-21 Ethereum Mainnet deployment
+Audience: reviewers, developers, or operators as applicable.
+Purpose: current Mainnet documentation for the configured pre-release.
+Current status: Ethereum Mainnet deployed YES; configured YES; production activation NO; user-fund authorization NO.
+Authoritative source: Mainnet receipts/readbacks, `deployments/ethereum-mainnet.agialpha.latest.json`, `qa/mainnet-postdeploy/`, and `qa/mainnet-release-state.json`.
+Last reviewed: 2026-06-22.
+Next review trigger: new release, authority change, verification change, incident, or Stage-C activation request.
 
-The configured GoalOS Ethereum Mainnet deployment uses **genesis authority assignment**: Wallet B / Ledger (`0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99`) is the permanent authority where ownership is exposed from construction. Wallet A managed roles: 0.
+## Current boundaries
+
+Deployment: YES. Configuration: YES. Operator verification evidence: 48/48. Phase-B grants: 14/14. Wallet B / Ledger is permanent authority. Wallet A managed roles: 0. Production activation: NO. User-fund authorization: NO. External audit completion: NO.
+
+## Read-only use
+
+Use the generated registry and Etherscan links for discovery. Validate `chainId = 1`. Do not redeploy the canonical topology. Do not embed private keys, RPC secrets, mnemonics, browser profiles, or private operator logs.
+
+## Stage C
+
+Stage C remains separate and requires bounded canary, monitoring, reconciliation, pause/recovery drill, explicit Ledger approval, production-write enablement, and user-fund authorization.
+
+## Governance terminology
+
+For the 2026-06-21 canonical deployment use genesis authority assignment, permanent authority, and postdeployment role configuration. Legacy/future two-step ownership deployments are not required for the 2026-06-21 canonical deployment. `DEFAULT_ADMIN_ROLE = 0x00...00` is a role identifier, not a wallet.
+
+## Canonical 2026-06-21 deployment
 
 No ownership acceptance transaction is required for this deployed instance.
 
-Production activated: NO. User funds are not authorized.
+## Legacy/future two-step ownership deployments — not required for the 2026-06-21 canonical deployment
 
-## Legacy compatibility only
-
-`ownership:mainnet:accept-local-gated` remains a legacy compatibility command for future or historical two-step ownership-transfer flows that have a pending owner and an approved acceptance plan.
+`ownership:mainnet:accept-local-gated` is retained only for legacy/future two-step ownership deployments. It is not current guidance for the canonical deployment.
 
 Legacy compatibility only — not required for the 2026-06-21 GoalOS deployment.
-
-Do not run ownership acceptance from CI. Do not run ownership acceptance unless a separate live readback proves a pending owner and the reviewed plan explicitly requires acceptance.

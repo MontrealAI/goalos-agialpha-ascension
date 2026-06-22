@@ -1,34 +1,5 @@
-# Repository Governance
+# Governance
 
-## Maintainer rule
+The canonical 2026-06-21 Ethereum Mainnet deployment uses genesis authority assignment, permanent authority, and postdeployment role configuration. Wallet B / Ledger is permanent authority. Wallet A has zero managed roles. No ERC-173 acceptance transaction or ownership handoff remains required for this deployment.
 
-The `main` branch should be protected before external contributors are added.
-
-## Mainnet rule
-
-No mainnet deployment from this repository unless all gates are complete and the founder explicitly approves.
-
-## Public claim rule
-
-No public-facing claim should exceed the evidence.
-
-Approved current status:
-
-```text
-Gate-clean evidence-ready audit candidate.
-Not externally audited.
-Automated security/toolchain review pending.
-Ethereum Mainnet not authorized.
-```
-
-## Required review areas
-
-```text
-engineering
-security
-legal/token counsel
-tax/accounting
-public claims
-treasury / admin addresses
-founder approval
-```
+Legacy/future two-step ownership deployments — not required for the 2026-06-21 canonical deployment — may retain delayed-acceptance runbooks for future patterns. `DEFAULT_ADMIN_ROLE = 0x00...00` is a role identifier, not a wallet.

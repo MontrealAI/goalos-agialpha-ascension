@@ -163,6 +163,10 @@ PUBLIC_CHAIN_ADDRESS_ALLOWLIST_FILES = {
     # addresses from the checked-in deployment seed, not private operator
     # wallet secrets. They remain covered by the broader secret/RPC scans.
     "docs/ETHEREUM_MAINNET_CONTRACT_ADDRESSES.md",
+    "docs/ETHEREUM_MAINNET_CONTRACTS.md",
+    "config/ethereum-mainnet.contracts.json",
+    "app/config/ethereum-mainnet.contracts.generated.ts",
+    "website/data/ethereum-mainnet.contracts.json",
     "docs/MAINNET_ADDRESSES.md",
     "scripts/mainnet_live/postdeploy_assurance.py",
     "release/mainnet-2026-06-21/CONTRACTS_MAINNET.json",
@@ -172,6 +176,57 @@ PUBLIC_CHAIN_ADDRESS_ALLOWLIST_FILES = {
     "release/mainnet-2026-06-21/RELEASE_MANIFEST.json",
     "release/mainnet-2026-06-21/RELEASE_NOTES.md",
 }
+
+APPROVED_GENERATED_PUBLIC_CHAIN_FILES = PUBLIC_CHAIN_ADDRESS_ALLOWLIST_FILES
+CANONICAL_MAINNET_REGISTRY_ENV = "CANONICAL_MAINNET_CONTRACTS_REGISTRY"
+CANONICAL_AGIALPHA_ADDRESS = "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA"
+
+
+def valid_eth_address(value: str) -> bool:
+    return bool(re.fullmatch(r"0x[0-9a-fA-F]{40}", value or ""))
+
+
+def load_canonical_public_contract_addresses() -> set[str]:
+    registry_path = pathlib.Path(__import__("os").environ.get(CANONICAL_MAINNET_REGISTRY_ENV, ROOT / "config/ethereum-mainnet.contracts.json"))
+    if not registry_path.is_absolute():
+        registry_path = ROOT / registry_path
+    try:
+        import json
+        data = json.loads(registry_path.read_text())
+    except Exception as exc:
+        raise RuntimeError(f"canonical registry could not be loaded: {registry_path}: {exc}")
+    metadata = data.get("metadata") if isinstance(data, dict) else None
+    contracts = data.get("contracts") if isinstance(data, dict) else None
+    if not isinstance(metadata, dict) or metadata.get("chainId") != 1:
+        raise RuntimeError("canonical registry metadata.chainId must be 1")
+    if not isinstance(contracts, list) or len(contracts) != 49:
+        raise RuntimeError("canonical registry must contain exactly 49 entries")
+    addresses: list[str] = []
+    goalos = 0
+    external_agialpha = 0
+    for item in contracts:
+        if not isinstance(item, dict):
+            raise RuntimeError("canonical registry entries must be objects")
+        address = item.get("address")
+        if not valid_eth_address(address):
+            raise RuntimeError(f"canonical registry contains invalid address: {address!r}")
+        lower = address.lower()
+        addresses.append(lower)
+        if item.get("deployedByGoalOS") is True:
+            goalos += 1
+        if lower == CANONICAL_AGIALPHA_ADDRESS.lower() and item.get("external") is True and item.get("deployedByGoalOS") is False:
+            external_agialpha += 1
+    if len(set(addresses)) != 49:
+        raise RuntimeError("canonical registry must contain 49 unique addresses")
+    if goalos != 48:
+        raise RuntimeError("canonical registry must contain 48 GoalOS-created entries")
+    if external_agialpha != 1:
+        raise RuntimeError("canonical registry must contain one external canonical AGIALPHA entry")
+    return set(addresses)
+
+
+def public_registry_address_allowed(rel: str, address: str) -> bool:
+    return rel in APPROVED_GENERATED_PUBLIC_CHAIN_FILES and address.lower() in CANONICAL_PUBLIC_CONTRACT_ADDRESSES
 
 
 def tracked_files() -> list[pathlib.Path]:
@@ -197,6 +252,11 @@ def content_candidate_rels() -> set[str] | None:
 
 findings: list[dict] = []
 CONTENT_CANDIDATES = None if __import__("os").environ.get("NO_PRIVATE_OPERATOR_SCAN_PATHS") else content_candidate_rels()
+try:
+    CANONICAL_PUBLIC_CONTRACT_ADDRESSES = load_canonical_public_contract_addresses()
+except RuntimeError as exc:
+    print(f"Private operator data check failed: {exc}")
+    sys.exit(1)
 
 def line_col(text: str, start: int) -> tuple[int, int]:
     line = text.count("\n", 0, start) + 1
@@ -246,10 +306,14 @@ for path in tracked_files():
     if not path.is_file():
         continue
     
-    try:
-        rel_path = path.relative_to(ROOT)
-    except ValueError:
-        rel_path = pathlib.Path(path.name)
+    override_rel = __import__("os").environ.get("NO_PRIVATE_OPERATOR_SCAN_REL_PATH")
+    if override_rel:
+        rel_path = pathlib.Path(override_rel)
+    else:
+        try:
+            rel_path = path.relative_to(ROOT)
+        except ValueError:
+            rel_path = pathlib.Path(path.name)
     rel_parts = rel_path.parts
     rel = rel_path.as_posix()
     if any(part in SKIP_PARTS for part in rel_parts):
@@ -294,16 +358,16 @@ for path in tracked_files():
                         m = pattern.search(text)
                         ln, col = line_col(text, m.start()) if m else (None, None)
                         add(rule, rel, "Potential secret/RPC/private artifact", m.group(0) if m else "", ln, col)
-    if rel not in ALLOWLIST_FILES and rel not in PUBLIC_CHAIN_ADDRESS_ALLOWLIST_FILES and not receipt_backed_chain_evidence(rel, text) and not (rel.startswith("deployments/") or rel.startswith("evidence/sepolia/") or rel.startswith("test/")) and ADDRESS_RE.search(text):
+    if rel not in ALLOWLIST_FILES and not receipt_backed_chain_evidence(rel, text) and not (rel.startswith("deployments/") or rel.startswith("evidence/sepolia/") or rel.startswith("test/")) and ADDRESS_RE.search(text):
         for m in PRIVATE_ADDRESS_CONTEXT.finditer(text):
             if re.match(r"[0-9a-fA-F]{24}", text[m.end():m.end()+24]):
                 continue
             window = COMMITMENT_RE.sub("<PUBLIC_COMMITMENT>", m.group(0))
-            addresses = [a.lower() for a in ADDRESS_RE.findall(window)]
-            if any(a != AGIALPHA for a in addresses):
-                addr = next((a for a in ADDRESS_RE.findall(window) if a.lower() != AGIALPHA), "")
+            addresses = [a for a in ADDRESS_RE.findall(window)]
+            offending = next((a for a in addresses if a.lower() != AGIALPHA and not public_registry_address_allowed(rel, a)), "")
+            if offending:
                 ln, col = line_col(text, m.start())
-                add("PRIVATE_OPERATOR_ADDRESS", rel, "Potential unredacted private operator address", addr, ln, col)
+                add("PRIVATE_OPERATOR_ADDRESS", rel, "Potential unredacted private operator address", offending, ln, col)
                 break
 if findings:
     print("Private operator data check failed:")

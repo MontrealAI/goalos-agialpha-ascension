@@ -47,7 +47,7 @@ The wizard validates the existing Sepolia evidence and shows:
 
 ```text
 PASS — Historical Sepolia deployment validated: 49/49 verified.
-Note — This historical deployment used Solidity 0.8.35, a test token, and a different authority arrangement.
+Note — This historical deployment used Solidity 0.8.28, a test token, and a different authority arrangement.
 ```
 
 ## 5. Ledger approval
