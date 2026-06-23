@@ -10,7 +10,7 @@ jobs:
     steps:
       - run: echo "This workflow verifies source code for already-deployed Mainnet contracts. It cannot deploy or broadcast Ethereum Mainnet transactions."
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v6
         with: { node-version: '20' }
       - run: npm ci
       - run: npm run compile:ci
