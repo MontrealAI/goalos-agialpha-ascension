@@ -25,4 +25,4 @@ This repository commit is a release-preparation candidate, but exact deployed so
 
 ## Claim boundary
 
-No software release tag should be created from this candidate unless this classification is upgraded to `EXACT_DEPLOYED_SOURCE_REPRODUCED_BY_COMMIT` using reproducible evidence.
+The published pre-release tag exists as a deployment record. Exact tagged-commit-to-bytecode reproducibility remains `PENDING` and is not claimed unless this classification is upgraded to `EXACT_DEPLOYED_SOURCE_REPRODUCED_BY_COMMIT` using reproducible evidence.

@@ -38,9 +38,9 @@ jobs:
       - run: npm run audit:fail-on-critical
       - run: npm run audit:clearance-report
       - run: npm run verify:agialpha-token:public || true
-      - run: npm run mainnet:certificate
-      - run: npm run mainnet:certificate:validate
-      - run: npm run docs:status
+      - run: npm run mainnet:release-state:check
+      - run: npm run mainnet:postdeploy:operator-evidence:validate
+      - run: npm run docs:status:check
       - run: npm run assert:public-status
       - run: npm run mainnet:status-consistency
       - run: npm run qa:manifest

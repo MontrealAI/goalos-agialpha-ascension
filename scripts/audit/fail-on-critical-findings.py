@@ -13,6 +13,8 @@ def emit(msg):
 def main():
     path=pathlib.Path(sys.argv[1]) if len(sys.argv)>1 else current_report_dir()/'audit-summary.json'
     if not path.exists():
+        if len(sys.argv) > 1:
+            emit(json.dumps({'status':'BLOCKED_EVIDENCE_MISSING','summaryPath':str(path)}, indent=2)); return 2
         candidates=sorted((pathlib.Path.cwd()/'audit/reports').glob('*/audit-summary.json'), key=lambda p: p.stat().st_mtime, reverse=True)
         if candidates:
             path=candidates[0]

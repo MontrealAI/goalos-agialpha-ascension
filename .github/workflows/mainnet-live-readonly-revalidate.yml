@@ -58,8 +58,9 @@ jobs:
 
       - name: Issue and validate Stage-B certificate
         run: |
-          npm run mainnet:postdeploy:certificate
-          npm run mainnet:postdeploy:certificate:validate
+          npm run release:mainnet:validate:strict-live
+          npm run mainnet:live:certificate
+          npm run mainnet:live:certificate:validate
         env:
           PRIMARY_MAINNET_RPC_URL: ${{ secrets.PRIMARY_MAINNET_RPC_URL }}
           SECONDARY_MAINNET_RPC_URL: ${{ secrets.SECONDARY_MAINNET_RPC_URL }}

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["status", "evidenceClass", "independentLiveRevalidation", "chainId", "deploymentPath", "goalosContracts", "registryEntries", "operatorVerification", "phaseBGrants", "walletAManagedRoles", "mainnetConfigured", "sourceEvidenceSha256"],
+  "properties": {
+    "status": {"const": "PASS"},
+    "evidenceClass": {"const": "REVIEWED_OPERATOR_EVIDENCE"},
+    "independentLiveRevalidation": {"const": "NOT_CLAIMED"},
+    "chainId": {"const": 1},
+    "deploymentPath": {"const": "DIRECT_OPERATOR_NO_CERTIFICATE"},
+    "goalosContracts": {"const": 48},
+    "registryEntries": {"const": 49},
+    "operatorVerification": {"const": "48/48"},
+    "phaseBGrants": {"const": "14/14"},
+    "walletAManagedRoles": {"const": 0},
+    "mainnetConfigured": {"const": true},
+    "sourceEvidenceSha256": {"type": "object"}
+  }
+}

@@ -14,9 +14,9 @@ jobs:
           node-version: "20"
           cache: npm
       - run: npm ci
-      - run: npm run mainnet:certificate
-      - run: npm run mainnet:certificate:validate
-      - run: npm run docs:status
+      - run: npm run mainnet:release-state:check
+      - run: npm run mainnet:postdeploy:operator-evidence:validate
+      - run: npm run docs:status:check
       - name: Public-only status assertion
         run: npm run assert:public-status
       - name: No private operator data in public repo
