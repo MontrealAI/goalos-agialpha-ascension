@@ -1,1 +1,25 @@
-{"":"https://json-schema.org/draft/2020-12/schema","title":"mainnet-activation-certificate","type":"object","required":["schemaVersion","stage"],"properties":{"schemaVersion":{"type":"string"},"stage":{"type":"string"}}}
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "mainnet-activation-certificate",
+  "type": "object",
+  "required": ["schemaVersion", "stage", "status", "PRODUCTION_ACTIVATION_EFFECTIVE", "evidence"],
+  "properties": {
+    "schemaVersion": {"const": "1.0"},
+    "stage": {"const": "C_PRODUCTION_ACTIVATION"},
+    "status": {"type": "string"},
+    "PRODUCTION_ACTIVATION_EFFECTIVE": {"enum": ["NO", "YES"]},
+    "stageBReference": {"type": "object"},
+    "monitoring": {"type": "object"},
+    "boundedLiveCanary": {"type": "object"},
+    "accountingReconciliation": {"type": "object"},
+    "ledgerActivation": {"type": "object"},
+    "evidence": {"type": "array", "items": {"type": "object", "required": ["path", "sha256"]}}
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"status": {"enum": ["PRODUCTION_ACTIVATION_EFFECTIVE", "ACTIVATED"]}}},
+      "then": {"required": ["stageBReference", "monitoring", "boundedLiveCanary", "accountingReconciliation", "ledgerActivation"]}
+    }
+  ],
+  "additionalProperties": true
+}

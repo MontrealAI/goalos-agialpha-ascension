@@ -35,7 +35,7 @@ def inventory():
  d={'schemaVersion':'1.0','generatedAt':now(),'activationScope':SCOPE,'walletA':WA,'walletB':WB,'classes':['ON_CHAIN_TRANSACTION','LEDGER_SIGNED_EIP712_ATTESTATION','OFF_CHAIN_OPERATIONAL_CONFIGURATION','NO_ACTION_ALREADY_CORRECT'],'intendedActions':[{'id':'wallet-b-activation-attestation','class':'LEDGER_SIGNED_EIP712_ATTESTATION','signer':WB,'description':'Wallet B signs the hash-bound controlled canary activation statement.'},{'id':'bounded-canary-execution','class':'OFF_CHAIN_OPERATIONAL_CONFIGURATION','description':'Human operator imports sanitized receipts/events after local Ledger ceremony; no CI broadcast.'}], 'status':'INVENTORY_REQUIRES_LIVE_ABI_REVIEW' if not stage_b_pass() else 'INVENTORY_READY'}
  write(ACT/'activation-surface-inventory.json',d); return d
 def monitoring():
- for name in ['monitoring-baseline','alert-routing','accounting-baseline','recovery-drill']:
+ for name in ['monitoring-baseline','alert-routing.public','accounting-baseline','recovery-drill']:
   write(ACT/f'{name}.json',{'schemaVersion':'1.0','generatedAt':now(),'activationScope':SCOPE,'status':'READY_FOR_REVIEW','privateCredentialsCommitted':False,'monitors':['code','owner','roles','pause','balances','liabilities','outflows','provider-divergence']})
 def plan():
  monitoring(); inv=inventory(); blockers=doctor()['blockers']
