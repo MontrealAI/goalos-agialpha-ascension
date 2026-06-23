@@ -58,6 +58,10 @@ def cert_validate(_args=None):
     p,d=load('qa/mainnet-postdeploy/operator-postdeployment-certificate.json')
     required={'status':'PASS','certificateType':'OPERATOR_POSTDEPLOYMENT_EVIDENCE','deploymentPath':'DIRECT_OPERATOR_NO_CERTIFICATE','operatorVerification':'48/48','phaseBGrants':'14/14','walletAManagedRoles':0,'independentLiveRevalidation':'PENDING_EXTERNAL_INPUT'}
     bad=[k for k,v in required.items() if d.get(k)!=v]
+    report_path=ROOT/'qa/mainnet-postdeploy/operator-evidence-validation.json'
+    expected_hash=sha_file(report_path) if report_path.exists() else None
+    if d.get('operatorEvidenceValidationSha256') != expected_hash:
+        bad.append('operatorEvidenceValidationSha256')
     if bad: raise SystemExit('invalid operator certificate: '+', '.join(bad))
     print('operator postdeployment certificate validated')
 

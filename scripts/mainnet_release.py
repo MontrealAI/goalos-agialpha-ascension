@@ -111,7 +111,19 @@ def validate():
  receipts_ok=sum(1 for r in receipt.get('receipts',[]) if r.get('status')=='0x1')
  runtime_ok=sum(1 for c in runtime.get('contracts',[]) if c.get('classification')=='deployed' and c.get('runtimeCodePresent') is True)
  verified=verification.get('summary',{}).get('verified',0)
- live={'status':'PASS','reason':'Independent read-only Mainnet validation completed with protected RPC/Etherscan inputs. Secret values were not printed.','receiptsSuccessful':f'{receipts_ok}/48','runtimeBytecodesNonempty':f'{runtime_ok}/48','etherscanSourceVerifications':f'{verified}/48','walletBOwnershipCoverage':authority.get('walletBManagedOwnership','PASS'),'walletAManagedRoles':authority.get('walletAManagedRoleCount',state['summary']['WALLET_A_RESIDUAL_MANAGED_ROLES']),'phaseBGrants':f"{authority.get('phaseBGrantsActive',0)}/{authority.get('phaseBGrantsExpected',14)}"}
+ phase_active=authority.get('phaseBGrantsActive',0)
+ phase_expected=authority.get('phaseBGrantsExpected',14)
+ wallet_a_roles=authority.get('walletAManagedRoleCount',state['summary']['WALLET_A_RESIDUAL_MANAGED_ROLES'])
+ failures=[]
+ if receipts_ok != 48: failures.append(f'receiptsSuccessful {receipts_ok}/48')
+ if runtime_ok != 48: failures.append(f'runtimeBytecodesNonempty {runtime_ok}/48')
+ if verified != 48: failures.append(f'etherscanSourceVerifications {verified}/48')
+ if phase_active != 14 or phase_expected != 14: failures.append(f'phaseBGrants {phase_active}/{phase_expected}')
+ if wallet_a_roles != 0: failures.append(f'walletAManagedRoles {wallet_a_roles}')
+ if failures:
+  live={'status':'FAIL','reason':'Independent read-only Mainnet validation did not meet complete release predicates.','failures':failures,'receiptsSuccessful':f'{receipts_ok}/48','runtimeBytecodesNonempty':f'{runtime_ok}/48','etherscanSourceVerifications':f'{verified}/48','walletBOwnershipCoverage':authority.get('walletBManagedOwnership','UNKNOWN'),'walletAManagedRoles':wallet_a_roles,'phaseBGrants':f"{phase_active}/{phase_expected}"}
+  dump(REL/'live-validation.json',live); (REL/'live-validation.md').write_text('# Live validation\n\nStatus: FAIL because read-only RPC/Etherscan validation did not meet complete release predicates. No transaction sent.\n',encoding='utf-8'); print(json.dumps(live,indent=2)); raise SystemExit(1)
+ live={'status':'PASS','reason':'Independent read-only Mainnet validation completed with protected RPC/Etherscan inputs and complete release predicates. Secret values were not printed.','receiptsSuccessful':'48/48','runtimeBytecodesNonempty':'48/48','etherscanSourceVerifications':'48/48','walletBOwnershipCoverage':authority.get('walletBManagedOwnership','PASS'),'walletAManagedRoles':wallet_a_roles,'phaseBGrants':'14/14'}
  dump(REL/'live-validation.json',live); (REL/'live-validation.md').write_text('# Live validation\n\nStatus: PASS after read-only RPC/Etherscan validation. No transaction sent.\n',encoding='utf-8'); print(json.dumps(live,indent=2)); return
 
 def check():
