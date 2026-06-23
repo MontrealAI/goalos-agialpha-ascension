@@ -1,3 +1,3 @@
 # Live validation
 
-Status: BLOCKED pending read-only RPC/Etherscan credentials. No transaction sent.
+Status: PENDING_EXTERNAL_INPUT pending read-only RPC/Etherscan credentials. No transaction sent.

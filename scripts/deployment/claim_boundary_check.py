@@ -34,6 +34,7 @@ def safe_negated_line(line: str, phrase: str) -> bool:
     escaped_phrase = re.escape(phrase.lower())
     scoped_denials = [
         rf"\bdoes\s+not\s+claim\b.*\b{escaped_phrase}\b",
+        rf"\bdoes\s+not\s+establish\b.*\b{escaped_phrase}\b",
         rf"\bnot\s+claim\b.*\b{escaped_phrase}\b",
         rf"\bnot\b.{{0,160}}\bproof\s+of\s+{escaped_phrase}\b",
         rf"\bno\s+{escaped_phrase}\b",

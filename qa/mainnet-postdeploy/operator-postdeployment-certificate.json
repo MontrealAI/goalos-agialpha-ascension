@@ -1,0 +1,19 @@
+{
+  "certificateType": "OPERATOR_POSTDEPLOYMENT_EVIDENCE",
+  "chainId": 1,
+  "deploymentPath": "DIRECT_OPERATOR_NO_CERTIFICATE",
+  "independentLiveRevalidation": "PENDING_EXTERNAL_INPUT",
+  "issuedAt": "2026-06-21T00:00:00Z",
+  "mainnetConfigured": "YES",
+  "mainnetDeployed": "YES",
+  "operatorEvidenceValidationSha256": "79927f3ae29eacf54ebb3e292c81e37540099285efe0fb619033313e359bd35b",
+  "operatorVerification": "48/48",
+  "permanentAuthority": "Wallet B / Ledger",
+  "phaseBGrants": "14/14",
+  "postdeploymentStatus": "VERIFIED_AND_CONFIGURED",
+  "productionActivation": "NOT_ACTIVATED",
+  "schemaVersion": "1.0",
+  "status": "PASS",
+  "userFundAuthorization": "NO",
+  "walletAManagedRoles": 0
+}
