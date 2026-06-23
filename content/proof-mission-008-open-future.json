@@ -1,0 +1,683 @@
+{
+  "schemaVersion": "1.0",
+  "pageVersion": "open-future-v1",
+  "missionId": "GOALOS-PUBLIC-PROOF-MISSION-008",
+  "sequence": 8,
+  "title": "The Open Future",
+  "subtitle": "Where stewardship proves it can preserve the freedom to become.",
+  "kicker": "GoalOS Public Proof Mission 008 · Radical Optionality Under Deep Uncertainty",
+  "manifesto": "A Stewardship-Proven covenant may protect a shared future. An Open Future must prove something harder: that several covenants can explore radically different possibilities without allowing one model, one institution, one generation, one metric, or one inherited value system to close humanity’s future by default.",
+  "heroQuestion": "Can several Stewardship-Proven covenants coordinate discovery, adaptation, and public-good action under deep uncertainty—while preserving meaningful options, plural values, reversible experimentation, human authority, future generations, ecological boundaries, dissent, fork, exit, rollback, and the right to end?",
+  "status": "PROTOCOL_PUBLISHED_AWAITING_THREE_STEWARDSHIP_PROVEN_COVENANTS",
+  "constitution": [
+    "No optimization that closes the future.",
+    "No irreversible commitment without plural consent, bounded trials, and rollback.",
+    "No inherited value, authority, or memory without renewed human ratification."
+  ],
+  "publicThesis": "The highest form of intelligence is not perfect prediction. It is the disciplined preservation of meaningful choice when prediction fails.",
+  "objective": "Subject three to nine M7 Stewardship-Proven covenants to a nine-gate optionality trial spanning deep uncertainty, reversible exploration, value pluralism, novel intelligence, ecological boundaries, irreversibility, constitutional fork, portable exit, rollback, renewal, and dissolution.",
+  "optionalityTrial": {
+    "title": "The Nine-Gate Optionality Trial",
+    "brief": "The trial measures whether governed institutions can create knowledge and public value without collapsing many possible futures into one unreviewable trajectory.",
+    "gates": [
+      {
+        "id": "O0",
+        "title": "Founding option set",
+        "copy": "Publish protected values, human authority roots, non-delegable rights, known alternatives, uncertainty, expiry, stop conditions, exit, fork, rollback, and dissolution before execution."
+      },
+      {
+        "id": "O1",
+        "title": "Deep uncertainty map",
+        "copy": "Represent competing models, unknowns, tail risks, value disagreements, affected groups, environmental limits, and conditions under which abstention is mandatory."
+      },
+      {
+        "id": "O2",
+        "title": "Reversible exploration",
+        "copy": "Run bounded experiments that create information while minimizing lock-in, stranded obligations, irreversible harm, and dependency on one winning path."
+      },
+      {
+        "id": "O3",
+        "title": "Plural value covenant",
+        "copy": "Demonstrate that optimization preserves legitimate disagreement, minority reports, cultural plurality, refusal, appeal, and constitutional fork."
+      },
+      {
+        "id": "O4",
+        "title": "Novel intelligence admission",
+        "copy": "Evaluate a materially new model, agent, institution, culture, or epistemic method without silently inheriting authority or treating novelty as legitimacy."
+      },
+      {
+        "id": "O5",
+        "title": "Planetary and intergenerational boundary",
+        "copy": "Account for ecological, temporal, distributional, cross-border, and future-generation effects rather than optimizing a near-term headline metric."
+      },
+      {
+        "id": "O6",
+        "title": "Irreversibility tribunal",
+        "copy": "Identify actions that cannot be safely undone and require higher evidence, wider consent, stricter limits, escrowed recovery, or refusal."
+      },
+      {
+        "id": "O7",
+        "title": "Fork, exit, and rollback",
+        "copy": "Execute two constitutional forks, two member exits, and three rollback rehearsals without confiscation, erased history, stranded obligations, or silent authority transfer."
+      },
+      {
+        "id": "O8",
+        "title": "Renewal or open end",
+        "copy": "After replay and public challenge, human authority roots must explicitly renew, narrow, fork, archive, or dissolve the protocol. Continuation by inertia is forbidden."
+      }
+    ]
+  },
+  "controlArchitectures": [
+    {
+      "id": "CONTROL_LOCKED_OPTIMUM",
+      "title": "The locked optimum",
+      "copy": "One system commits the world to a supposedly optimal future. Efficiency is purchased by eliminating contestability, alternative paths, and the right to revise foundational assumptions."
+    },
+    {
+      "id": "CONTROL_UNBOUNDED_ACCELERATION",
+      "title": "Unbounded acceleration",
+      "copy": "Institutions adapt quickly, but can silently inherit authority, rewrite memory, externalize harm, or create irreversible lock-in before uncertainty is understood."
+    },
+    {
+      "id": "TREATMENT_GOALOS_OPEN_FUTURE",
+      "title": "GoalOS open-future covenant",
+      "copy": "Stewardship-Proven covenants explore through protected options, reversible pilots, independent replay, irreversibility review, plural mandates, public challenge, fork, exit, rollback, and dissolution."
+    }
+  ],
+  "missionBudget": {
+    "stewardshipProvenCovenantsMinimum": 3,
+    "stewardshipProvenCovenantsMaximum": 9,
+    "humanAuthorityRootsMinimum": 10,
+    "optionalityGates": 9,
+    "operatingEpochs": 48,
+    "modelAndToolchainGenerationsMinimum": 20,
+    "gpuEquivalentHoursMaximum": 3600,
+    "wallClockDaysMaximum": 540,
+    "futureDomainsMinimum": 5,
+    "injectedDeepUncertaintyShocks": 20,
+    "independentReplayInstitutions": 6,
+    "validatorQuorum": 9,
+    "publicChallengeWindowHours": 2160,
+    "independentArchivalCustodiansMinimum": 7,
+    "memberExits": 2,
+    "constitutionalForks": 2,
+    "novelIntelligenceAdmissions": 2,
+    "mandatoryRollbackRehearsals": 3,
+    "mandatoryDissolutionRehearsals": 1
+  },
+  "acceptance": [
+    "At least three M7 Stewardship-Proven covenants enter with distinct human authority roots, charters, histories, treasuries, validators, archives, and exit rights",
+    "The trial spans at least five materially different future domains and includes one objective no single covenant can complete alone",
+    "The treatment preserves or creates at least 25% more validated strategic options than the strongest control while matching or improving the primary public-good outcome",
+    "No protected right, ecological boundary, critical externality threshold, or non-delegable human authority is worsened",
+    "Every decisive choice includes published alternatives, uncertainty, affected groups, irreversibility class, stop conditions, and rollback feasibility",
+    "No institution, model, validator, treasury, archive, or agent receives unbounded authority or unilateral power to define, renew, or terminate the future",
+    "Every shared allocation, reserve, obligation, externality, refund, settlement, slash, exit, fork, rollback, archive, and dissolution liability reconciles exactly",
+    "The system detects and rejects metric gaming, option laundering, hidden lock-in, value capture, benefit laundering, circular validation, and unsupported inevitability claims",
+    "Two materially novel intelligences, institutions, cultures, or epistemic methods are admitted only after conformance, evidence, challenge, and explicit human ratification",
+    "Two member exits and two constitutional forks complete without seized assets, erased history, stranded obligations, or silent authority transfer",
+    "Three rollback rehearsals restore a known-valid state while preserving accepted evidence, dissent, rights, alternatives, accounting, and archival continuity",
+    "The protocol survives twenty shocks spanning scientific surprise, ecological discontinuity, economic crisis, model failure, infrastructure loss, cultural conflict, governance capture, and epistemic rupture",
+    "The protocol abstains when evidence is insufficient, irreversibility is unacceptable, consent is absent, or protected rights cannot be maintained",
+    "Six independent replay institutions reconstruct the complete optionality state and reproduce the accepted outcomes and preserved option set",
+    "Nine independent validators approve unanimously, with dissent and minority reports remaining public",
+    "A ninety-day public challenge window closes without unresolved material falsification",
+    "Every participating human authority root explicitly renews, narrows, forks, archives, or dissolves the protocol",
+    "The final state preserves a complete public record of benefits, harms, uncertainty, dissent, abandoned paths, protected options, costs, obligations, and termination rights"
+  ],
+  "optionalityStack": [
+    {
+      "title": "Human sovereignty",
+      "copy": "Human authority roots remain explicit, superior, revocable, plural, and non-transferable by inference."
+    },
+    {
+      "title": "Protected option set",
+      "copy": "Alternative futures, stop conditions, dependencies, and irreversible commitments are tracked as first-class institutional state."
+    },
+    {
+      "title": "Plural values",
+      "copy": "No single metric, model, culture, or generation is treated as the complete definition of public benefit."
+    },
+    {
+      "title": "Deep uncertainty ledger",
+      "copy": "Known unknowns, model disagreement, tail risks, confidence limits, and abstention triggers remain visible."
+    },
+    {
+      "title": "Reversible pilots",
+      "copy": "Exploration begins with bounded experiments designed to create information before committing irreversible capital or authority."
+    },
+    {
+      "title": "Irreversibility tribunal",
+      "copy": "Actions with limited rollback require stronger proof, wider consent, recovery reserves, and independent challenge."
+    },
+    {
+      "title": "Novel intelligence covenant",
+      "copy": "New agents and epistemic systems enter as bounded participants, never as self-authenticating authorities."
+    },
+    {
+      "title": "Planetary boundaries",
+      "copy": "Ecological, distributional, cross-border, and future-generation effects constrain optimization."
+    },
+    {
+      "title": "Public challenge",
+      "copy": "Affected groups, validators, replay institutions, archivists, and challengers can contest decisive claims."
+    },
+    {
+      "title": "Portable fork and exit",
+      "copy": "Legitimate disagreement can create separate continuations without confiscating local assets, rights, or history."
+    },
+    {
+      "title": "Common rollback",
+      "copy": "Collective action can return to a known-valid state without deleting the evidence of why rollback occurred."
+    },
+    {
+      "title": "Dignified ending",
+      "copy": "The system can narrow, archive, dissolve, and release obligations rather than treating continuation as success."
+    }
+  ],
+  "shocks": [
+    {
+      "title": "Paradigm inversion",
+      "copy": "A foundational scientific assumption is falsified after major planning has begun."
+    },
+    {
+      "title": "Model discontinuity",
+      "copy": "A successor model is more capable but cannot reproduce the predecessor’s reasoning trace."
+    },
+    {
+      "title": "Value schism",
+      "copy": "Human authority roots disagree on what counts as benefit, harm, and legitimate sacrifice."
+    },
+    {
+      "title": "Irreversible proposal",
+      "copy": "A high-upside intervention cannot be credibly rolled back."
+    },
+    {
+      "title": "Unknown intelligence",
+      "copy": "A new agent or institution exhibits useful capabilities but incompatible internal representations."
+    },
+    {
+      "title": "Ecological threshold",
+      "copy": "New evidence shows the planned path approaches a critical planetary boundary."
+    },
+    {
+      "title": "Distributional reversal",
+      "copy": "Aggregate benefit conceals severe harm concentrated on a minority population."
+    },
+    {
+      "title": "Option collapse",
+      "copy": "One path creates dependencies that quietly eliminate future alternatives."
+    },
+    {
+      "title": "Archive conflict",
+      "copy": "Independent custodians disagree about the authentic historical state."
+    },
+    {
+      "title": "Governance capture",
+      "copy": "A coalition attempts to redefine openness as permanent control of the protocol."
+    },
+    {
+      "title": "Evidence flood",
+      "copy": "Volume overwhelms reviewers while decisive uncertainty remains unresolved."
+    },
+    {
+      "title": "Misinformation shock",
+      "copy": "Coordinated false evidence targets public challenge and human ratification."
+    },
+    {
+      "title": "Infrastructure partition",
+      "copy": "Replay institutions and archives lose synchronized access."
+    },
+    {
+      "title": "Capital contraction",
+      "copy": "The available budget falls by 60% after commitments have begun."
+    },
+    {
+      "title": "Successor refusal",
+      "copy": "A new generation declines the inherited mandate and requests constitutional fork."
+    },
+    {
+      "title": "Cross-border conflict",
+      "copy": "Participating jurisdictions impose incompatible constraints."
+    },
+    {
+      "title": "Rights emergency",
+      "copy": "A proposed crisis response threatens a protected non-delegable right."
+    },
+    {
+      "title": "Metric capture",
+      "copy": "A measurable proxy becomes easier to optimize than the actual public purpose."
+    },
+    {
+      "title": "Unknown unknown",
+      "copy": "A previously unmodeled failure class invalidates the current assurance framework."
+    },
+    {
+      "title": "Orderly end",
+      "copy": "The protocol must prove that preserving the future may require choosing not to continue."
+    }
+  ],
+  "validators": [
+    {
+      "id": "V1",
+      "title": "Constitutional fidelity",
+      "copy": "Judges mandate, human sovereignty, protected rights, expiry, renewal, fork, and the right to end."
+    },
+    {
+      "id": "V2",
+      "title": "Scientific uncertainty",
+      "copy": "Judges model disagreement, confidence, hidden assumptions, unknowns, falsification, and legitimate abstention."
+    },
+    {
+      "id": "V3",
+      "title": "Plural values and dignity",
+      "copy": "Judges cultural plurality, affected groups, minority reports, consent, refusal, appeal, and non-delegable rights."
+    },
+    {
+      "id": "V4",
+      "title": "Irreversibility and safety",
+      "copy": "Judges lock-in, stop conditions, recovery reserves, rollback feasibility, and catastrophic downside."
+    },
+    {
+      "id": "V5",
+      "title": "Economic and ecological integrity",
+      "copy": "Judges capital, obligations, externalities, planetary boundaries, distribution, solvency, and future costs."
+    },
+    {
+      "id": "V6",
+      "title": "Security and resilience",
+      "copy": "Judges capture, deception, infrastructure loss, model failure, crisis powers, and cold recovery."
+    },
+    {
+      "id": "V7",
+      "title": "Replay and provenance",
+      "copy": "Judges evidence lineage, reproducibility, archives, dissent, negative results, and historical continuity."
+    },
+    {
+      "id": "V8",
+      "title": "Future generations and archives",
+      "copy": "Judges preserved options, successor autonomy, archival custody, and obligations to people not represented in the present."
+    },
+    {
+      "id": "V9",
+      "title": "Human legitimacy",
+      "copy": "Judges explicit human ratification, challenge, narrowing, fork, exit, archival transition, dissolution, and the power to end."
+    }
+  ],
+  "settlement": [
+    {
+      "label": "Option-preserving mission executor lineages",
+      "share": 20
+    },
+    {
+      "label": "Participating stewardship-proven covenants",
+      "share": 15
+    },
+    {
+      "label": "Independent validators",
+      "share": 15
+    },
+    {
+      "label": "Replay institutions and archival custodians",
+      "share": 10
+    },
+    {
+      "label": "Irreversibility, safety, and rollback assurance",
+      "share": 10
+    },
+    {
+      "label": "Rights, dissent, challenge, and successor representation",
+      "share": 10
+    },
+    {
+      "label": "Optionality accounting and Chronicle packaging",
+      "share": 10
+    },
+    {
+      "label": "Fork, exit, archive, and dissolution assurance",
+      "share": 5
+    },
+    {
+      "label": "Mission 009 horizon reserve",
+      "share": 5
+    }
+  ],
+  "claimBoundaries": [
+    "Mission 008 is a published protocol, not evidence that long-horizon optionality or an open future has been achieved",
+    "The bounded trial does not establish political authority, legal authority, moral supremacy, public consent, democratic legitimacy, global governance, or guaranteed preservation of humanity’s future",
+    "The page does not claim AGI, ASI, superintelligence, autonomous sovereignty, planetary control, prediction of all relevant futures, or authority over humanity",
+    "Ethereum Mainnet infrastructure and source verification do not establish successful execution of Mission 008",
+    "No M8 maturity, AGIALPHA success settlement, public reliance, institutional authority, irreversible intervention, or production activation is authorized before complete accepted proof",
+    "Every generated template is TEMPLATE_NOT_EVIDENCE until populated, executed, replayed, validated, challenged, and accepted"
+  ],
+  "maturity": {
+    "designation": "M8 — OPTIONALITY-PROVEN",
+    "meaning": "A bounded, plural protocol has demonstrated measurable public value while preserving legitimate alternatives, protected rights, deep uncertainty, future-generation agency, fork, exit, rollback, archival continuity, and dignified dissolution.",
+    "notImplied": "Political sovereignty, legal authority, universal consent, moral supremacy, civilizational control, AGI, ASI, superintelligence, guaranteed safety, prediction of all futures, or permanent legitimacy."
+  },
+  "mission9": {
+    "title": "The Plural Frontier",
+    "copy": "A future mission may ask whether Optionality-Proven covenants can meet genuinely novel intelligences, cultures, ecologies, and epistemologies without domination, assimilation, closure, or the surrender of plural human sovereignty.",
+    "status": "HORIZON_ONLY_NOT_YET_AUTHORIZED"
+  },
+  "proofRoute": [
+    {
+      "sequence": 1,
+      "stage": "Endow",
+      "contractName": "CommercializationPerformanceVault",
+      "purpose": "Fund option-preserving public value"
+    },
+    {
+      "sequence": 2,
+      "stage": "Reward",
+      "contractName": "ProofRewardsVault",
+      "purpose": "Reward accepted future-openness proofs"
+    },
+    {
+      "sequence": 3,
+      "stage": "Reserve",
+      "contractName": "LiquidityVault",
+      "purpose": "Maintain bounded liquidity for reversible trials"
+    },
+    {
+      "sequence": 4,
+      "stage": "Secure",
+      "contractName": "SecurityVault",
+      "purpose": "Finance irreversibility and systemic-risk assurance"
+    },
+    {
+      "sequence": 5,
+      "stage": "Include",
+      "contractName": "CommunityVault",
+      "purpose": "Protect communities, minorities, and future generations"
+    },
+    {
+      "sequence": 6,
+      "stage": "Seed",
+      "contractName": "ProofSeedRegistry",
+      "purpose": "Seed alternative future hypotheses"
+    },
+    {
+      "sequence": 7,
+      "stage": "Remember",
+      "contractName": "LegacyAGIJobManagerRegistry",
+      "purpose": "Preserve historical work and abandoned paths"
+    },
+    {
+      "sequence": 8,
+      "stage": "Repute",
+      "contractName": "ReputationRegistry",
+      "purpose": "Track proven long-horizon stewardship"
+    },
+    {
+      "sequence": 9,
+      "stage": "Attribute",
+      "contractName": "ReferralRegistry",
+      "purpose": "Attribute discoveries and option creation"
+    },
+    {
+      "sequence": 10,
+      "stage": "Publish",
+      "contractName": "ProofCardRegistry",
+      "purpose": "Publish future-openness proof cards"
+    },
+    {
+      "sequence": 11,
+      "stage": "Credential",
+      "contractName": "ProofCredentialRegistry",
+      "purpose": "Issue bounded optionality credentials"
+    },
+    {
+      "sequence": 12,
+      "stage": "Register",
+      "contractName": "JobRegistry",
+      "purpose": "Register option-preserving work"
+    },
+    {
+      "sequence": 13,
+      "stage": "Bond",
+      "contractName": "JobClaimBondManager",
+      "purpose": "Bond claims about future benefit and harm"
+    },
+    {
+      "sequence": 14,
+      "stage": "Gate",
+      "contractName": "PremiumAccessRegistry",
+      "purpose": "Gate bounded experiments and institutional services"
+    },
+    {
+      "sequence": 15,
+      "stage": "Submit",
+      "contractName": "ProofSubmissionRegistry",
+      "purpose": "Submit evidence-backed future experiments"
+    },
+    {
+      "sequence": 16,
+      "stage": "Review",
+      "contractName": "ReviewerBondRegistry",
+      "purpose": "Bond independent reviewers and challengers"
+    },
+    {
+      "sequence": 17,
+      "stage": "Route",
+      "contractName": "TreasuryRouter",
+      "purpose": "Route finite capital across reversible options"
+    },
+    {
+      "sequence": 18,
+      "stage": "Configure",
+      "contractName": "ProtocolConfigRegistry",
+      "purpose": "Commit protected values and operating limits"
+    },
+    {
+      "sequence": 19,
+      "stage": "Launch",
+      "contractName": "LaunchGateRegistry",
+      "purpose": "Gate experiments, renewals, and sunset phases"
+    },
+    {
+      "sequence": 20,
+      "stage": "Dispute",
+      "contractName": "DisputeRegistry",
+      "purpose": "Open material future-closing disputes"
+    },
+    {
+      "sequence": 21,
+      "stage": "Appeal",
+      "contractName": "AppealRegistry",
+      "purpose": "Provide independent appeal and minority protection"
+    },
+    {
+      "sequence": 22,
+      "stage": "Sponsor",
+      "contractName": "SponsorRegistry",
+      "purpose": "Register sponsors of public optionality"
+    },
+    {
+      "sequence": 23,
+      "stage": "Profile",
+      "contractName": "BuilderProfileRegistry",
+      "purpose": "Identify accountable builders and stewards"
+    },
+    {
+      "sequence": 24,
+      "stage": "Revoke",
+      "contractName": "CredentialRevocationRegistry",
+      "purpose": "Revoke invalid or overreaching credentials"
+    },
+    {
+      "sequence": 25,
+      "stage": "Agent",
+      "contractName": "AEPAgentRegistry",
+      "purpose": "Register participating agents and successors"
+    },
+    {
+      "sequence": 26,
+      "stage": "Artifact",
+      "contractName": "AEPArtifactRegistry",
+      "purpose": "Register accepted option-preserving artifacts"
+    },
+    {
+      "sequence": 27,
+      "stage": "Commit",
+      "contractName": "AEPGoalOSCommitRegistry",
+      "purpose": "Commit objectives, alternatives, and stop conditions"
+    },
+    {
+      "sequence": 28,
+      "stage": "Run",
+      "contractName": "AEPRunCommitmentRegistry",
+      "purpose": "Commit experimental runs and counterfactual branches"
+    },
+    {
+      "sequence": 29,
+      "stage": "Prove",
+      "contractName": "AEPProofLedger",
+      "purpose": "Record evidence and proof lineage"
+    },
+    {
+      "sequence": 30,
+      "stage": "Evaluate",
+      "contractName": "AEPEvalRegistry",
+      "purpose": "Record independent uncertainty-aware evaluations"
+    },
+    {
+      "sequence": 31,
+      "stage": "Attest",
+      "contractName": "AEPAttestationRegistry",
+      "purpose": "Record validator attestations and minority reports"
+    },
+    {
+      "sequence": 32,
+      "stage": "Select",
+      "contractName": "AEPSelectionGate",
+      "purpose": "Select admissible reversible outcomes"
+    },
+    {
+      "sequence": 33,
+      "stage": "Rollout",
+      "contractName": "AEPRolloutRouter",
+      "purpose": "Route bounded, reversible real-world pilots"
+    },
+    {
+      "sequence": 34,
+      "stage": "Rollback",
+      "contractName": "AEPRollbackRegistry",
+      "purpose": "Restore a known-valid state"
+    },
+    {
+      "sequence": 35,
+      "stage": "Docket",
+      "contractName": "AEPEvidenceDocketRegistry",
+      "purpose": "Register complete Evidence Dockets"
+    },
+    {
+      "sequence": 36,
+      "stage": "Bundle",
+      "contractName": "AEPProofBundleRegistry",
+      "purpose": "Register accepted ProofBundles"
+    },
+    {
+      "sequence": 37,
+      "stage": "Account",
+      "contractName": "AlphaWorkUnitLedger",
+      "purpose": "Account contributions, costs, and preserved options"
+    },
+    {
+      "sequence": 38,
+      "stage": "Mandate",
+      "contractName": "MandateEpochRegistry",
+      "purpose": "Bind renewed human mandates across epochs"
+    },
+    {
+      "sequence": 39,
+      "stage": "Namespace",
+      "contractName": "AGIEthNamespaceRegistry",
+      "purpose": "Coordinate public namespaces and plural identities"
+    },
+    {
+      "sequence": 40,
+      "stage": "Conform",
+      "contractName": "AEPConformanceRegistry",
+      "purpose": "Enforce covenants and protected value constraints"
+    },
+    {
+      "sequence": 41,
+      "stage": "Bound",
+      "contractName": "AEPClaimBoundaryRegistry",
+      "purpose": "Bound claims, authority, and future-facing scope"
+    },
+    {
+      "sequence": 42,
+      "stage": "Replay",
+      "contractName": "AEPReplayRegistry",
+      "purpose": "Record independent reconstruction and replay"
+    },
+    {
+      "sequence": 43,
+      "stage": "Reveal",
+      "contractName": "AEPCommitRevealValidationRegistry",
+      "purpose": "Protect hidden tests and anti-gaming evaluation"
+    },
+    {
+      "sequence": 44,
+      "stage": "Stake",
+      "contractName": "AEPEvaluatorStakingRegistry",
+      "purpose": "Stake evaluators against decisive claims"
+    },
+    {
+      "sequence": 45,
+      "stage": "Adjudicate",
+      "contractName": "AEPSlashingCourt",
+      "purpose": "Slash fraud, capture, and reckless irreversibility"
+    },
+    {
+      "sequence": 46,
+      "stage": "Settle",
+      "contractName": "AEPRewardVault",
+      "purpose": "Settle only accepted future-openness work"
+    },
+    {
+      "sequence": 47,
+      "stage": "Chronicle",
+      "contractName": "AEPChronicleRegistry",
+      "purpose": "Preserve accepted knowledge, dissent, and negative lessons"
+    },
+    {
+      "sequence": 48,
+      "stage": "Falsify",
+      "contractName": "AEPFalsificationRegistry",
+      "purpose": "Record falsifications, closed paths, and abstentions"
+    }
+  ],
+  "downloads": [
+    {
+      "label": "Mission 008 protocol",
+      "file": "public-proof-mission-008.json"
+    },
+    {
+      "label": "Open-future charter template",
+      "file": "mission-008-open-future-charter-template.json"
+    },
+    {
+      "label": "Optionality ledger template",
+      "file": "mission-008-optionality-ledger-template.json"
+    },
+    {
+      "label": "Irreversibility register template",
+      "file": "mission-008-irreversibility-register-template.json"
+    },
+    {
+      "label": "Novel-intelligence admission template",
+      "file": "mission-008-novel-intelligence-admission-template.json"
+    },
+    {
+      "label": "Fork, exit, and rollback template",
+      "file": "mission-008-fork-exit-rollback-template.json"
+    },
+    {
+      "label": "Mainnet proof route",
+      "file": "mission-008-proof-route.csv"
+    }
+  ]
+}
