@@ -84,11 +84,13 @@ def normalize() -> dict:
     phase = manifest.get("phaseBGrants") or []
 
     current_state = isinstance(state.get("deployment"), dict) and isinstance(state.get("summary"), dict)
-    summary = state.get("summary", {}) if current_state else {}
-    deployment = state.get("deployment", {}) if current_state else {}
-    postdeployment = state.get("postdeployment", {}) if current_state else {}
-    activation = state.get("activation", {}) if current_state else {}
-    preauth = state.get("predeploymentAuthorization", {}) if current_state else {}
+    if not current_state:
+        raise StateError("qa/mainnet-release-state.json must contain current deployment and summary objects")
+    summary = state.get("summary", {})
+    deployment = state.get("deployment", {})
+    postdeployment = state.get("postdeployment", {})
+    activation = state.get("activation", {})
+    preauth = state.get("predeploymentAuthorization", {})
 
     checks = {
         "chainId": manifest.get("chainId") == 1 and ver.get("chainId") == 1,
@@ -99,16 +101,16 @@ def normalize() -> dict:
         "externalAgialpha": len(external) == 1 and address(external[0].get("address")) == address(AGIALPHA),
         "transactions": isinstance(txs, list) and len(txs) == 48 and len(set(txs)) == 48,
         "operatorVerification": verified == 48 and failed == 0,
-        "phaseBGrants": len(phase) == 14 and summary.get("PHASE_B_GRANTS", "14/14") == "14/14",
-        "walletAZero": int(summary.get("WALLET_A_RESIDUAL_MANAGED_ROLES", 0)) == 0,
+        "phaseBGrants": len(phase) == 14 and summary.get("PHASE_B_GRANTS") == "14/14",
+        "walletAZero": int(summary.get("WALLET_A_RESIDUAL_MANAGED_ROLES", -1)) == 0,
         "walletB": address(manifest.get("walletB") or state.get("wallets", {}).get("walletB")) == address(WALLET_B),
-        "deploymentStatus": (deployment.get("status", "DEPLOYED") == "DEPLOYED") and bool(manifest.get("mainnetDeployed")),
-        "deploymentPath": (deployment.get("deploymentPath") or manifest.get("deploymentMode")) == "DIRECT_OPERATOR_NO_CERTIFICATE",
-        "postdeploymentStatus": postdeployment.get("status", "VERIFIED_AND_CONFIGURED") == "VERIFIED_AND_CONFIGURED",
-        "configuration": summary.get("MAINNET_CONFIGURED", "YES") == "YES" and bool(manifest.get("mainnetConfigured")),
-        "productionActivation": activation.get("status", "NOT_ACTIVATED") == "NOT_ACTIVATED" and summary.get("PRODUCTION_ACTIVATION_EFFECTIVE", "NO") == "NO" and manifest.get("productionActivated") is False,
-        "userFunds": summary.get("USER_FUNDS_AUTHORIZED", "NO") == "NO",
-        "predeployment": preauth.get("status", "NOT_USED_DIRECT_OPERATOR_PATH") == "NOT_USED_DIRECT_OPERATOR_PATH",
+        "deploymentStatus": deployment.get("status") == "DEPLOYED" and deployment.get("chainId") == 1 and deployment.get("mainnetDeployed") is True and bool(manifest.get("mainnetDeployed")),
+        "deploymentPath": deployment.get("deploymentPath") == "DIRECT_OPERATOR_NO_CERTIFICATE" and manifest.get("deploymentMode") == "DIRECT_OPERATOR_NO_CERTIFICATE",
+        "postdeploymentStatus": postdeployment.get("status") == "VERIFIED_AND_CONFIGURED" and postdeployment.get("mainnetVerified") is True,
+        "configuration": summary.get("MAINNET_CONFIGURED") == "YES" and summary.get("MAINNET_VERIFIED") == "YES" and bool(manifest.get("mainnetConfigured")),
+        "productionActivation": activation.get("status") == "NOT_ACTIVATED" and activation.get("productionActivated") is False and summary.get("PRODUCTION_ACTIVATION_EFFECTIVE") == "NO" and manifest.get("productionActivated") is False,
+        "userFunds": summary.get("USER_FUNDS_AUTHORIZED") == "NO",
+        "predeployment": preauth.get("status") == "NOT_USED_DIRECT_OPERATOR_PATH",
     }
     for name, ok in checks.items():
         if not ok:
@@ -155,7 +157,7 @@ def normalize() -> dict:
             "qa/mainnet-postdeploy/verification-evidence.json",
             "config/ethereum-mainnet.contracts.json",
         ]},
-        "warnings": [] if current_state else ["qa/mainnet-release-state.json contains a historical Stage-A DAG shape; current deployed state was validated from manifest/postdeploy sources."],
+        "warnings": [],
         "failures": failures,
     }
     if failures:
