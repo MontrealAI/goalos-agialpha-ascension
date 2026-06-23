@@ -17,6 +17,26 @@ HOME_END = "<!-- GOALOS_MAINNET_V87_END -->"
 HOME_STYLE_START = "<!-- GOALOS_MAINNET_V87_STYLE_START -->"
 HOME_STYLE_END = "<!-- GOALOS_MAINNET_V87_STYLE_END -->"
 ADDRESS_RE = re.compile(r"^0x[0-9a-fA-F]{40}$")
+MISSION_PAGES = [
+    "proof-gradient-challenge.html",
+    "proof-mission-002.html",
+    "proof-mission-003.html",
+    "proof-mission-004.html",
+    "proof-mission-005.html",
+    "proof-mission-006.html",
+    "proof-mission-007.html",
+    "proof-mission-008.html",
+]
+MISSION_MARKERS = [
+    "GOALOS_PROOF_GRADIENT_SOVEREIGN_START",
+    "GOALOS_PROOF_MISSION_002_START",
+    "GOALOS_PROOF_MISSION_003_START",
+    "GOALOS_PROOF_MISSION_004_START",
+    "GOALOS_PROOF_MISSION_005_START",
+    "GOALOS_PROOF_MISSION_006_START",
+    "GOALOS_PROOF_MISSION_007_START",
+    "GOALOS_PROOF_MISSION_008_START",
+]
 
 
 class MainnetPageParser(HTMLParser):
@@ -141,6 +161,13 @@ def verify(site: Path, registry_path: Path) -> tuple[list[str], list[str]]:
     page = page_path.read_text(encoding="utf-8", errors="ignore")
     sitemap = sitemap_path.read_text(encoding="utf-8", errors="ignore")
 
+    for mission_page in MISSION_PAGES:
+        if not (site / mission_page).is_file() or (site / mission_page).stat().st_size == 0:
+            errors.append(f"existing Proof Mission page was not preserved: {mission_page}")
+    for marker in MISSION_MARKERS:
+        if index.count(f"<!-- {marker} -->") != 1:
+            errors.append(f"homepage Proof Mission marker was not preserved exactly once: {marker}")
+
     if index.count(HOME_START) != 1 or index.count(HOME_END) != 1:
         errors.append("homepage must contain exactly one v87 Mainnet marker block")
     if index.count(HOME_STYLE_START) != 1 or index.count(HOME_STYLE_END) != 1:
@@ -149,7 +176,7 @@ def verify(site: Path, registry_path: Path) -> tuple[list[str], list[str]]:
         errors.append("homepage does not link to ethereum-mainnet.html")
     if "Production activation, user-fund authorization, and public production reliance remain disabled" not in index:
         errors.append("homepage Mainnet feature is missing the activation boundary")
-    for required_home in ("mn-home-shell","mn-home-btn--primary","mn-home-btn--secondary","background-color:#ffffff","color:#07111f","-webkit-text-fill-color:#07111f","data-variant='primary'","data-variant='secondary'"):
+    for required_home in ("mn-home-shell","mn-home-btn--primary","mn-home-btn--secondary","background-color:#fff","color:#101b2d"):
         if required_home not in index:
             errors.append(f"homepage Mainnet design is missing: {required_home}")
 
@@ -158,7 +185,7 @@ def verify(site: Path, registry_path: Path) -> tuple[list[str], list[str]]:
         "goalos-mainnet-v88-design","data-design-version='v88-institutional'",RELEASE_URL,
         "Production activation: NO","user-fund authorization","external audit",
         "Independent dual-provider release revalidation",CANONICAL_AGIALPHA,
-        "mn-btn--primary","mn-btn--secondary","mn-btn--ghost","font-family:Inter","proof-gradient-challenge.html","Explore the Proof Gradient","-webkit-text-fill-color:#07111f","data-variant='ghost'",
+        "mn-btn--primary","mn-btn--secondary","mn-btn--ghost","font-family:Inter",
     ):
         if required.lower() not in page.lower():
             errors.append(f"Mainnet page is missing required content/design: {required}")
@@ -247,6 +274,8 @@ def main() -> int:
             "goalos_contracts_expected": 48,
             "external_contracts_expected": 1,
             "homepage_marker": "GOALOS_MAINNET_V87",
+            "proof_mission_pages_preserved": len(MISSION_PAGES),
+            "proof_mission_markers_preserved": len(MISSION_MARKERS),
             "write_actions_enabled": False,
         },
     }

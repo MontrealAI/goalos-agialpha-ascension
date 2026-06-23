@@ -33,8 +33,12 @@ class ProofMission008Tests(unittest.TestCase):
   page=(self.site/'proof-mission-008.html').read_text(); hub=(self.site/'proof-missions.html').read_text(); self.assertIn('THE <span>OPEN FUTURE</span>',page); self.assertEqual(page.count('class="of-route route-item"'),48); self.assertIn('The Open Future',hub); self.assertTrue((self.site/'downloads/proof-missions/public-proof-mission-008.json').exists()); self.assertTrue((self.site/'downloads/proof-missions/mission-008-proof-route.csv').exists())
  def test_builder_records_preservation_and_promotion(self):
   r=load(self.site/'qa/proof-mission-008-build.json'); self.assertTrue(r['mission001To006Preserved']); self.assertTrue(r['mission007HorizonPromoted']); self.assertFalse(r['publicNetworkTransactionSent'])
- def test_homepage_has_one_marked_panel(self):
+ def test_homepage_has_one_marked_full_bleed_series_panel(self):
   h=(self.site/'index.html').read_text(); self.assertEqual(h.count('<!-- GOALOS_PROOF_MISSION_008_START -->'),1); self.assertEqual(h.count('<!-- GOALOS_PROOF_MISSION_008_END -->'),1); self.assertEqual(h.count('PUBLIC PROOF MISSION 008'),1)
+  self.assertIn('data-proof-mission-series="sovereign"',h); self.assertIn('data-proof-mission="008"',h)
+  self.assertEqual(h.count('class="of-home-stat"'),4); self.assertIn('href="proof-mission-008.html#mainnet"',h)
+  self.assertIn('.of-home{margin:0!important;max-width:none!important;width:100%!important',h)
+  self.assertNotIn('.of-home{margin:2rem auto;max-width:1180px',h)
  def test_templates_are_not_evidence(self):
   paths=list((self.site/'downloads/proof-missions').glob('mission-008-*-template.json')); self.assertEqual(len(paths),5)
   for p in paths: self.assertEqual(load(p)['status'],'TEMPLATE_NOT_EVIDENCE')
