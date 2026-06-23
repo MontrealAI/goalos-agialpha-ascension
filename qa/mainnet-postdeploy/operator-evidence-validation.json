@@ -1,0 +1,22 @@
+{
+  "chainId": 1,
+  "deploymentPath": "DIRECT_OPERATOR_NO_CERTIFICATE",
+  "failures": [],
+  "generatedAt": "2026-06-21T00:00:00Z",
+  "goalosContracts": 48,
+  "mainnetConfigured": true,
+  "operatorVerification": "48/48",
+  "phaseBGrants": "14/14",
+  "registryEntries": 49,
+  "sourceEvidenceSha256": {
+    "config/ethereum-mainnet.contracts.json": "1f4e5247c58d5395b96820725249c385eff23d0bf9f83b0353e1a6e2fe631916",
+    "deployments/ethereum-mainnet.agialpha.latest.json": "f1d5a1cd31ae92f9e7ed5846b4aea4636c5e7073d20e4c3a7583061f8e93f64d",
+    "qa/mainnet-postdeploy/authority-readback.json": "62759b82f651c87ac516a0b4cff30ec8820384e67a45f610227d0c8f34749126",
+    "qa/mainnet-postdeploy/phase-b-grants-readback.json": "861242dc0f306ddcca3b261b9c54798d553f86befb1c02e6ba4bd28fb98eabcf",
+    "qa/mainnet-postdeploy/verification-evidence.json": "16aa643ea3b4979fbf0df385f3d219b703dd0733cbeeb4c0dc61b97edc87e0b8",
+    "qa/mainnet-postdeploy/wallet-a-zero-authority.json": "f556b68987eb3c27557ef15f20be373700b24e53f299fc37f48051a0251007a6",
+    "qa/mainnet-release-state.json": "0980ddf18c2ec986c371e00edc6d96eccd173e6979b372790cf492f306db1d8d"
+  },
+  "status": "PASS",
+  "walletAManagedRoles": 0
+}

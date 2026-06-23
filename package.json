@@ -421,7 +421,11 @@
     "docs:mainnet:check": "python scripts/check_mainnet_docs.py",
     "docs:links:check": "python scripts/check_docs_links.py",
     "docs:stale-claims:check": "python scripts/check_stale_claims.py",
-    "docs:all": "npm run docs:mainnet:check && npm run docs:links:check && npm run docs:stale-claims:check && npm run mainnet:contracts:check"
+    "docs:all": "npm run docs:mainnet:check && npm run docs:links:check && npm run docs:stale-claims:check && npm run mainnet:contracts:check",
+    "mainnet:postdeploy:operator-evidence:validate": "python scripts/mainnet_live/operator_evidence.py mainnet:postdeploy:operator-evidence:validate",
+    "mainnet:postdeploy:operator-certificate": "python scripts/mainnet_live/operator_evidence.py mainnet:postdeploy:operator-certificate",
+    "mainnet:postdeploy:operator-certificate:validate": "python scripts/mainnet_live/operator_evidence.py mainnet:postdeploy:operator-certificate:validate",
+    "mainnet:release-state:all": "python scripts/mainnet_release_state_all.py"
   },
   "dependencies": {
     "@openzeppelin/contracts": "4.9.6",

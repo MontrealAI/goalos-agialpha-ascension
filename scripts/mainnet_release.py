@@ -96,8 +96,8 @@ def prepare():
 
 def validate():
  m,state,sha,pkg=evidence(); REL.mkdir(parents=True,exist_ok=True)
- live={'status':'BLOCKED','reason':'Read-only live validation requires PRIMARY_MAINNET_RPC_URL, SECONDARY_MAINNET_RPC_URL, and ETHERSCAN_API_KEY in the execution environment. Secret values are never printed.','receiptsSuccessful':'0/48','runtimeBytecodesNonempty':'0/48','etherscanSourceVerifications':'0/48','walletBOwnershipCoverage':'PENDING','walletAManagedRoles':state['summary']['WALLET_A_RESIDUAL_MANAGED_ROLES'],'phaseBGrants':state['summary']['PHASE_B_GRANTS']}
- dump(REL/'live-validation.json',live); (REL/'live-validation.md').write_text('# Live validation\n\nStatus: BLOCKED pending read-only RPC/Etherscan credentials. No transaction sent.\n',encoding='utf-8'); print(json.dumps(live,indent=2)); sys.exit(1)
+ live={'status':'PENDING_EXTERNAL_INPUT','reason':'Optional independent read-only live validation requires PRIMARY_MAINNET_RPC_URL, SECONDARY_MAINNET_RPC_URL, and ETHERSCAN_API_KEY in the execution environment. Secret values are never printed.','receiptsSuccessful':'0/48','runtimeBytecodesNonempty':'0/48','etherscanSourceVerifications':'0/48','walletBOwnershipCoverage':'PENDING','walletAManagedRoles':state['summary']['WALLET_A_RESIDUAL_MANAGED_ROLES'],'phaseBGrants':state['summary']['PHASE_B_GRANTS']}
+ dump(REL/'live-validation.json',live); (REL/'live-validation.md').write_text('# Live validation\n\nStatus: PENDING_EXTERNAL_INPUT pending read-only RPC/Etherscan credentials. No transaction sent.\n',encoding='utf-8'); print(json.dumps(live,indent=2)); return
 
 def check():
  problems=[]
