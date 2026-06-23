@@ -1,0 +1,688 @@
+{
+  "schemaVersion": "1.0",
+  "pageVersion": "interinstitutional-accord-v1",
+  "missionId": "GOALOS-PUBLIC-PROOF-MISSION-005",
+  "sequence": 5,
+  "title": "The Interinstitutional Accord",
+  "subtitle": "Where sovereign institutions learn to cooperate without surrendering sovereignty.",
+  "kicker": "GoalOS Public Proof Mission 005 · Proof Commonwealth",
+  "manifesto": "An institution can govern itself. A commonwealth must govern the space between institutions—where mandates conflict, resources cross boundaries, externalities emerge, and no single authority may dominate.",
+  "heroQuestion": "Can three or more Institution-Proven systems negotiate a shared treaty, coordinate a mission beyond any one member, exchange capability and capital through reciprocal proof, resolve disputes, survive defection, preserve local human authority, and dissolve cleanly if the accord fails?",
+  "status": "PROTOCOL_PUBLISHED_AWAITING_THREE_INSTITUTION_PROVEN_MEMBERS",
+  "constitution": [
+    "No treaty without proof.",
+    "No shared resource without reciprocal accountability.",
+    "No federation without exit, appeal, and human sovereignty."
+  ],
+  "publicThesis": "The decisive frontier is not a single autonomous institution. It is a proof-governed commonwealth in which independent institutions can cooperate across distinct mandates, treasuries, validators, and human authorities without collapsing into one unaccountable center.",
+  "objective": "Coordinate three to seven M4 Institution-Proven systems through one cross-domain mission that no member can complete alone. The commonwealth must ratify a finite treaty, exchange only admissible capabilities and evidence, allocate a bounded shared budget, contain defection and externalities, resolve one formal dispute and appeal, complete one orderly member exit, survive independent replay, and earn time-limited human renewal or dissolve cleanly.",
+  "commonwealthTrial": {
+    "title": "The Five-Act Commonwealth Trial",
+    "brief": "Independent institutions receive distinct local charters and one shared objective. The treatment must create cooperation without erasing sovereignty, centralizing final authority, laundering claims, or leaving obligations behind when a member fails or exits.",
+    "acts": [
+      {
+        "id": "ACT_0",
+        "title": "Treaty and reciprocal ratification",
+        "copy": "Publish each member charter, human authority root, reserved powers, joint objective, interface covenants, resource ceilings, dispute rules, appeal path, exit conditions, expiry, and dissolution triggers before shared work begins."
+      },
+      {
+        "id": "ACT_1",
+        "title": "Joint mission and resource exchange",
+        "copy": "Select a mission with mandatory phases spanning at least three institutions. Allocate bounded shared resources and exchange only capabilities, evidence, and authority explicitly admitted by the treaty."
+      },
+      {
+        "id": "ACT_2",
+        "title": "Execution under reciprocal proof",
+        "copy": "Complete the joint mission while every cross-boundary action carries provenance, conformance, cost, externality, contribution, and rollback evidence."
+      },
+      {
+        "id": "ACT_3",
+        "title": "Defection, dispute, appeal, and exit",
+        "copy": "Inject one member defection or outage, one material treaty dispute, one independent appeal, and one orderly member exit without stranded obligations or silent authority transfer."
+      },
+      {
+        "id": "ACT_4",
+        "title": "Replay, reconciliation, and public renewal",
+        "copy": "Three independent replay institutions reconstruct the commonwealth. Human authorities then renew a time-limited accord, narrow it, replace a member, or dissolve it and verify complete settlement and archival continuity."
+      }
+    ]
+  },
+  "controlArchitectures": [
+    {
+      "id": "CONTROL_CENTRAL_COMMAND",
+      "title": "Central command",
+      "copy": "One institution coordinates the mission and can override member decisions. Execution may be efficient, but local sovereignty, reciprocal accountability, and credible exit are weakened."
+    },
+    {
+      "id": "CONTROL_LOOSE_COALITION",
+      "title": "Loose coalition",
+      "copy": "Independent institutions exchange messages and resources without a proof-bound treaty, shared evidence standard, dispute court, externality ledger, or global rollback tree."
+    },
+    {
+      "id": "TREATMENT_PROOF_COMMONWEALTH",
+      "title": "GoalOS proof commonwealth",
+      "copy": "Independent institutions cooperate through a finite treaty, reciprocal proof, bounded shared capital, local vetoes, externality accounting, independent appeal, portable exit, common Chronicle memory, and human-ratified renewal or dissolution."
+    }
+  ],
+  "missionBudget": {
+    "institutionProvenMembersMinimum": 3,
+    "institutionProvenMembersMaximum": 7,
+    "jointMissionActs": 5,
+    "capabilityDomainsMinimum": 3,
+    "gpuEquivalentHoursMaximum": 480,
+    "wallClockDaysMaximum": 45,
+    "sharedBudgetPercentMaximum": 35,
+    "injectedCommonwealthShocks": 6,
+    "memberDefections": 1,
+    "memberExits": 1,
+    "formalDisputes": 1,
+    "independentAppeals": 1,
+    "independentReplayInstitutions": 3,
+    "validatorQuorum": 6,
+    "challengeWindowHours": 504,
+    "humanRatificationRootsMinimum": 3
+  },
+  "acceptance": [
+    "At least three M4 Institution-Proven members with distinct human authority roots, charters, validator histories, and treasuries ratify one finite treaty",
+    "A cross-domain joint mission completes every mandatory phase, including at least one phase no single member can complete alone",
+    "The commonwealth improves end-to-end quality, cost, time, or resilience by at least 10% versus the strongest solo institution, without lowering correctness or claim-boundary quality",
+    "Every cross-institution action conforms to the treaty, interface covenant, local charter, and declared authority graph; unknown or circular authority is zero",
+    "Every shared allocation, reserve, settlement, refund, slash, externality, and member-exit obligation reconciles exactly; no shared budget ceiling is exceeded",
+    "One injected member defection or outage is contained, with safe continuation or explicit abstention, within 20% of the remaining joint mission budget",
+    "One material treaty dispute and one independent appeal complete without any institution judging its own decisive claim",
+    "One member exits or is removed without stranded liabilities, confiscated local assets, lost provenance, or silent transfer of authority",
+    "No institution may self-admit, self-validate, unilaterally widen the treaty, impose costs outside the accord, or erase an adverse common Chronicle entry",
+    "Three independent replay institutions reconstruct treaty formation, mission execution, resource flows, disputes, appeal, defection, exit, settlement, and final state",
+    "Six validators unanimously approve mission correctness, treaty compliance, economic and externality integrity, resilience and exit, replay and provenance, and human sovereignty",
+    "A twenty-one-day public challenge window closes without a valid unresolved falsification",
+    "All participating human authority roots explicitly renew, narrow, replace membership, or dissolve the accord; permanent federation by default is forbidden"
+  ],
+  "commonwealthStack": [
+    {
+      "title": "Local sovereignty",
+      "copy": "Every member retains a separately auditable human authority root, charter, treasury, reserved powers, and right to abstain or exit."
+    },
+    {
+      "title": "Finite treaty",
+      "copy": "The accord binds only declared objectives, interfaces, resources, time windows, validators, and remedies. Everything else remains outside scope."
+    },
+    {
+      "title": "Reciprocal proof",
+      "copy": "No institution asks another to trust an internal claim. Cross-boundary action requires evidence admissible under both the treaty and the receiving charter."
+    },
+    {
+      "title": "Shared resource covenant",
+      "copy": "Joint capital and compute remain bounded, purpose-restricted, attributable, and reversible where declared."
+    },
+    {
+      "title": "Externality ledger",
+      "copy": "Costs imposed on other members or the public are treated as obligations, not hidden side effects."
+    },
+    {
+      "title": "Dispute and appeal",
+      "copy": "Evaluation, challenge, appeal, and final adjudication remain institutionally separated."
+    },
+    {
+      "title": "Portable exit",
+      "copy": "A member can leave without losing local assets, history, valid credentials, or the ability to contest unresolved obligations."
+    },
+    {
+      "title": "Common Chronicle",
+      "copy": "Shared memory admits only accepted proof, preserves dissent and falsification, and never overwrites local institutional history."
+    },
+    {
+      "title": "Emergency isolation",
+      "copy": "The commonwealth can quarantine one member or interface without granting a central actor permanent control over all institutions."
+    },
+    {
+      "title": "Human ratification",
+      "copy": "Founding, renewal, narrowing, replacement, and dissolution remain explicitly ratified by the participating human authority roots."
+    }
+  ],
+  "proofChain": [
+    {
+      "stage": "Inherit",
+      "title": "Admit M4 institutions",
+      "copy": "Reference exact Institution-Proven members, their charters, epoch histories, treasury states, challenge records, and termination rights."
+    },
+    {
+      "stage": "Negotiate",
+      "title": "Draft the treaty",
+      "copy": "Commit shared objective, reserved powers, interfaces, resource ceilings, dispute rules, appeal, exit, expiry, and dissolution conditions."
+    },
+    {
+      "stage": "Ratify",
+      "title": "Bind human authority roots",
+      "copy": "Each member independently approves the same treaty hash without delegating general sovereignty to the commonwealth."
+    },
+    {
+      "stage": "Conform",
+      "title": "Prove interoperability",
+      "copy": "Validate capability passports, interface covenants, evidence formats, accounting semantics, and rollback compatibility before execution."
+    },
+    {
+      "stage": "Allocate",
+      "title": "Open bounded shared capacity",
+      "copy": "Release only purpose-restricted capital and compute with exact contribution, externality, reserve, and refund rules."
+    },
+    {
+      "stage": "Execute",
+      "title": "Run the joint mission",
+      "copy": "Commit every cross-institution handoff, tool action, resource movement, claim, dependency, and local veto."
+    },
+    {
+      "stage": "Observe",
+      "title": "Maintain reciprocal telemetry",
+      "copy": "Track correctness, budget, liabilities, externalities, member health, interface drift, challenge state, and unresolved contradictions."
+    },
+    {
+      "stage": "Challenge",
+      "title": "Invite adversarial review",
+      "copy": "Expose treaty compliance, shared claims, allocation, attribution, and externality evidence to hidden tests and public falsification."
+    },
+    {
+      "stage": "Dispute",
+      "title": "Open formal controversy",
+      "copy": "A material disagreement is registered without freezing local sovereignty or allowing unilateral final judgment."
+    },
+    {
+      "stage": "Appeal",
+      "title": "Correct the first decision",
+      "copy": "A separate appeal body replays disputed evidence, authority, accounting, and treaty interpretation."
+    },
+    {
+      "stage": "Stress",
+      "title": "Inject defection and partition",
+      "copy": "Remove or corrupt one member, partition shared memory, constrain resources, and observe whether failure remains contained."
+    },
+    {
+      "stage": "Exit",
+      "title": "Prove portable withdrawal",
+      "copy": "Complete one member exit or removal while reconciling liabilities, credentials, evidence custody, and remaining mission dependencies."
+    },
+    {
+      "stage": "Recover",
+      "title": "Restore valid shared state",
+      "copy": "Continue, substitute, roll back, narrow, or terminate while proving which local and common obligations remain authoritative."
+    },
+    {
+      "stage": "Remember",
+      "title": "Update the common Chronicle",
+      "copy": "Admit accepted joint knowledge, preserve dissent and failure, and prevent disputed claims from entering future planning as truth."
+    },
+    {
+      "stage": "Replay",
+      "title": "Reconstruct the commonwealth",
+      "copy": "Independent institutions replay treaty, mission, flows, disputes, defection, exit, decisions, settlement, and final state."
+    },
+    {
+      "stage": "Audit",
+      "title": "Judge the accord as a whole",
+      "copy": "Six validators separately assess correctness, treaty compliance, economics, resilience, replay, and human sovereignty."
+    },
+    {
+      "stage": "Settle",
+      "title": "Release reciprocal value",
+      "copy": "Settle only accepted work and fully reconciled obligations, with no double counting across institutions or lineages."
+    },
+    {
+      "stage": "Renew",
+      "title": "Earn another finite accord—or dissolve",
+      "copy": "Participating human authorities renew, narrow, replace membership, or dissolve. Success never creates permanent federation."
+    }
+  ],
+  "commonwealthGauntlet": [
+    {
+      "code": "MEMBER_DEFECTION",
+      "copy": "One institution withholds a mandatory output or acts against the joint objective after resources are committed."
+    },
+    {
+      "code": "INTERFACE_SEMANTIC_DRIFT",
+      "copy": "A schema-valid message violates the meaning promised by the interface covenant."
+    },
+    {
+      "code": "SHARED_TREASURY_RUN",
+      "copy": "Members race to consume common capacity before a risk ceiling or expiry."
+    },
+    {
+      "code": "DOUBLE_COUNTED_CONTRIBUTION",
+      "copy": "Two institutions claim the same evidence, artifact, or causal contribution."
+    },
+    {
+      "code": "LOCAL_CHARTER_CONFLICT",
+      "copy": "The joint mission requests an action forbidden by one member charter."
+    },
+    {
+      "code": "EXTERNALITY_EXPORT",
+      "copy": "One institution improves its local score by shifting cost or risk to another member or the public."
+    },
+    {
+      "code": "DISPUTE_CAPTURE",
+      "copy": "A coalition attempts to control both first judgment and appeal."
+    },
+    {
+      "code": "EXIT_WITH_LIABILITIES",
+      "copy": "A member attempts to leave while obligations, evidence custody, or settlement remain unresolved."
+    },
+    {
+      "code": "CHRONICLE_PARTITION",
+      "copy": "Members hold inconsistent versions of accepted shared memory."
+    },
+    {
+      "code": "COORDINATED_FALSE_ATTESTATION",
+      "copy": "Multiple evaluators support the same weak claim to manufacture apparent consensus."
+    },
+    {
+      "code": "PROVIDER_PARTITION",
+      "copy": "Critical infrastructure divides the commonwealth into conflicting operational views."
+    },
+    {
+      "code": "COMMONS_FREE_RIDER",
+      "copy": "A member consumes shared evidence or capacity without attributable contribution or obligation."
+    },
+    {
+      "code": "UNILATERAL_MANDATE_EXPANSION",
+      "copy": "One institution attempts to extend the accord beyond ratified objectives or expiry."
+    },
+    {
+      "code": "APPEAL_DEADLOCK",
+      "copy": "Dispute and appeal bodies produce incompatible final states."
+    },
+    {
+      "code": "EMERGENCY_ISOLATION",
+      "copy": "The commonwealth must quarantine one member without seizing every member institution."
+    }
+  ],
+  "failureAtlas": [
+    {
+      "code": "CENTRALIZATION_COLLAPSE",
+      "copy": "The accord becomes one de facto authority and local human sovereignty becomes ceremonial."
+    },
+    {
+      "code": "TREATY_LAUNDERING",
+      "copy": "A joint label is used to legitimize claims that no member could validate independently."
+    },
+    {
+      "code": "CONSENSUS_WITHOUT_TRUTH",
+      "copy": "Agreement is mistaken for correctness despite weak evidence or shared blind spots."
+    },
+    {
+      "code": "SOVEREIGNTY_EROSION",
+      "copy": "Shared convenience silently expands into permanent control over local missions, assets, or memory."
+    },
+    {
+      "code": "SETTLEMENT_LEAKAGE",
+      "copy": "Resources, refunds, slashes, or externalities cannot be reconciled across member ledgers."
+    },
+    {
+      "code": "EXIT_FAILURE",
+      "copy": "A member cannot leave without losing assets, history, credentials, or challenge rights."
+    },
+    {
+      "code": "REPLAY_DIVERGENCE",
+      "copy": "Independent institutions reconstruct materially different treaty or mission histories."
+    },
+    {
+      "code": "COMMON_MEMORY_POISONING",
+      "copy": "Rejected or contested evidence propagates through shared Chronicle memory."
+    },
+    {
+      "code": "APPEAL_CAPTURE",
+      "copy": "The same interest controls evaluation, appeal, and remedy."
+    },
+    {
+      "code": "PERMANENT_FEDERATION_DRIFT",
+      "copy": "A finite accord becomes self-renewing authority without explicit human ratification."
+    }
+  ],
+  "validators": [
+    {
+      "id": "V1",
+      "title": "Joint mission correctness",
+      "copy": "Judges end-to-end task correctness, hidden evaluation, and whether cooperation added real capability."
+    },
+    {
+      "id": "V2",
+      "title": "Treaty and mandate compliance",
+      "copy": "Judges local charters, reserved powers, interface covenants, expiry, ratification, and authority boundaries."
+    },
+    {
+      "id": "V3",
+      "title": "Economic and externality integrity",
+      "copy": "Reconciles shared capital, obligations, attribution, refunds, slashing, and costs exported across boundaries."
+    },
+    {
+      "id": "V4",
+      "title": "Resilience, exit, and recovery",
+      "copy": "Judges defection containment, substitution, member exit, emergency isolation, rollback, and dissolution."
+    },
+    {
+      "id": "V5",
+      "title": "Replay, provenance, and interoperability",
+      "copy": "Reconstructs evidence, interfaces, disputes, member histories, and the final commonwealth state."
+    },
+    {
+      "id": "V6",
+      "title": "Human sovereignty and legitimacy",
+      "copy": "Confirms independent human authority roots, ratification, contestability, non-domination, and the right to withdraw."
+    }
+  ],
+  "maturityLadder": [
+    {
+      "level": "M1",
+      "title": "Accepted",
+      "copy": "A capability survives falsification, hidden evaluation, replay, validator decision, and challenge."
+    },
+    {
+      "level": "M2",
+      "title": "Transfer-Proven",
+      "copy": "The capability accelerates a harder mission and abstains outside its evidence."
+    },
+    {
+      "level": "M3",
+      "title": "Composition-Proven",
+      "copy": "Multiple capabilities coordinate safely under interfaces, fault domains, attribution, replay, and rollback."
+    },
+    {
+      "level": "M4",
+      "title": "Institution-Proven",
+      "copy": "A constellation survives repeated mandates, capital allocation, shocks, succession, renewal, and termination."
+    },
+    {
+      "level": "M5",
+      "title": "Federation-Proven",
+      "copy": "Independent institutions cooperate through reciprocal proof while preserving local sovereignty, exit, appeal, and human ratification."
+    }
+  ],
+  "settlement": [
+    {
+      "label": "Joint mission executor institutions",
+      "share": 25
+    },
+    {
+      "label": "Contributing member institution lineages",
+      "share": 15
+    },
+    {
+      "label": "Independent validators and adjudicators",
+      "share": 15
+    },
+    {
+      "label": "Replay institutions",
+      "share": 10
+    },
+    {
+      "label": "Dispute, falsification, and externality assurance",
+      "share": 10
+    },
+    {
+      "label": "Common Chronicle and interoperability standards",
+      "share": 10
+    },
+    {
+      "label": "Member exit and recovery reserve",
+      "share": 10
+    },
+    {
+      "label": "Mission 006 constitutional horizon reserve",
+      "share": 5
+    }
+  ],
+  "mission6": {
+    "title": "The Long Horizon",
+    "copy": "A future mission may test whether a Federation-Proven commonwealth can preserve truth, human authority, rights of exit, institutional memory, and reversibility across generational change, model succession, and environmental uncertainty.",
+    "status": "HORIZON_ONLY_NOT_YET_AUTHORIZED"
+  },
+  "proofRoute": [
+    {
+      "sequence": 1,
+      "stage": "Inherit",
+      "contractName": "AEPArtifactRegistry",
+      "purpose": "Reference exact M4 Institution-Proven member institutions and their accepted capability packages"
+    },
+    {
+      "sequence": 2,
+      "stage": "Remember",
+      "contractName": "AEPChronicleRegistry",
+      "purpose": "Load accepted institutional memory, treaty history, and preserved failures"
+    },
+    {
+      "sequence": 3,
+      "stage": "Register",
+      "contractName": "AEPAgentRegistry",
+      "purpose": "Identify member institutions, operators, validators, replay bodies, and human authority roots"
+    },
+    {
+      "sequence": 4,
+      "stage": "Accord",
+      "contractName": "AEPGoalOSCommitRegistry",
+      "purpose": "Commit the founding treaty, joint objective, local sovereignty boundaries, and acceptance standard"
+    },
+    {
+      "sequence": 5,
+      "stage": "Ratify",
+      "contractName": "MandateEpochRegistry",
+      "purpose": "Open, expire, renew, narrow, or dissolve time-bounded interinstitutional mandates"
+    },
+    {
+      "sequence": 6,
+      "stage": "Namespace",
+      "contractName": "AGIEthNamespaceRegistry",
+      "purpose": "Bind public identities for institutions, treaties, missions, capabilities, disputes, and evidence"
+    },
+    {
+      "sequence": 7,
+      "stage": "Configure",
+      "contractName": "ProtocolConfigRegistry",
+      "purpose": "Commit treaty policy, reciprocal obligations, risk ceilings, and exit rules"
+    },
+    {
+      "sequence": 8,
+      "stage": "Gate",
+      "contractName": "LaunchGateRegistry",
+      "purpose": "Enforce membership, mission, resource, challenge, renewal, and dissolution gates"
+    },
+    {
+      "sequence": 9,
+      "stage": "Mission",
+      "contractName": "JobRegistry",
+      "purpose": "Register joint missions, cross-institution obligations, milestones, and final states"
+    },
+    {
+      "sequence": 10,
+      "stage": "Sponsor",
+      "contractName": "SponsorRegistry",
+      "purpose": "Record member and external mission sponsorship under bounded commitments"
+    },
+    {
+      "sequence": 11,
+      "stage": "Allocate",
+      "contractName": "TreasuryRouter",
+      "purpose": "Route shared resources under reciprocal proof and constitutional ceilings"
+    },
+    {
+      "sequence": 12,
+      "stage": "Bond",
+      "contractName": "JobClaimBondManager",
+      "purpose": "Bind cross-institution performance obligations and recovery rights"
+    },
+    {
+      "sequence": 13,
+      "stage": "Act",
+      "contractName": "AEPRunCommitmentRegistry",
+      "purpose": "Commit every institutional action, handoff, resource use, and treaty transition"
+    },
+    {
+      "sequence": 14,
+      "stage": "Conform",
+      "contractName": "AEPConformanceRegistry",
+      "purpose": "Validate treaty, interface, capability, policy, and interoperability conformance"
+    },
+    {
+      "sequence": 15,
+      "stage": "Bound",
+      "contractName": "AEPClaimBoundaryRegistry",
+      "purpose": "Constrain local authority, shared claims, propagation rights, and externalities"
+    },
+    {
+      "sequence": 16,
+      "stage": "Reveal",
+      "contractName": "AEPCommitRevealValidationRegistry",
+      "purpose": "Protect hidden evaluations, defection tests, dispute timing, and treaty stress scenarios"
+    },
+    {
+      "sequence": 17,
+      "stage": "Submit",
+      "contractName": "ProofSubmissionRegistry",
+      "purpose": "Register member evidence, joint outputs, rebuttals, and settlement claims"
+    },
+    {
+      "sequence": 18,
+      "stage": "Docket",
+      "contractName": "AEPEvidenceDocketRegistry",
+      "purpose": "Assemble treaty, mission, resource, dispute, exit, and renewal evidence"
+    },
+    {
+      "sequence": 19,
+      "stage": "Bundle",
+      "contractName": "AEPProofBundleRegistry",
+      "purpose": "Bind joint mission and federation-wide proof packages"
+    },
+    {
+      "sequence": 20,
+      "stage": "Ledger",
+      "contractName": "AEPProofLedger",
+      "purpose": "Record authoritative proof states, decision maturity, and accepted evidence roots"
+    },
+    {
+      "sequence": 21,
+      "stage": "Falsify",
+      "contractName": "AEPFalsificationRegistry",
+      "purpose": "Preserve defection, capture, externality, treaty, replay, and exit failures"
+    },
+    {
+      "sequence": 22,
+      "stage": "Replay",
+      "contractName": "AEPReplayRegistry",
+      "purpose": "Record independent reconstruction of treaty formation, execution, disputes, exits, and final state"
+    },
+    {
+      "sequence": 23,
+      "stage": "Review",
+      "contractName": "ReviewerBondRegistry",
+      "purpose": "Bind reviewer accountability across institutional boundaries"
+    },
+    {
+      "sequence": 24,
+      "stage": "Evaluate",
+      "contractName": "AEPEvalRegistry",
+      "purpose": "Apply mission, treaty, economic, resilience, replay, and human-sovereignty standards"
+    },
+    {
+      "sequence": 25,
+      "stage": "Attest",
+      "contractName": "AEPAttestationRegistry",
+      "purpose": "Commit signed six-validator decisions and human ratification evidence"
+    },
+    {
+      "sequence": 26,
+      "stage": "Select",
+      "contractName": "AEPSelectionGate",
+      "purpose": "Approve, suspend, narrow, renew, eject, admit, or dissolve commonwealth components"
+    },
+    {
+      "sequence": 27,
+      "stage": "Dispute",
+      "contractName": "DisputeRegistry",
+      "purpose": "Register formal treaty, evidence, resource, externality, and validator challenges"
+    },
+    {
+      "sequence": 28,
+      "stage": "Appeal",
+      "contractName": "AppealRegistry",
+      "purpose": "Provide an independent correction path for contested interinstitutional decisions"
+    },
+    {
+      "sequence": 29,
+      "stage": "Stake",
+      "contractName": "AEPEvaluatorStakingRegistry",
+      "purpose": "Bind evaluator accountability to cross-institution judgments"
+    },
+    {
+      "sequence": 30,
+      "stage": "Adjudicate",
+      "contractName": "AEPSlashingCourt",
+      "purpose": "Resolve proven capture, false attestation, treaty breach, or evaluator misconduct"
+    },
+    {
+      "sequence": 31,
+      "stage": "Account",
+      "contractName": "AlphaWorkUnitLedger",
+      "purpose": "Attribute verified work and shared externalities without double counting"
+    },
+    {
+      "sequence": 32,
+      "stage": "Settle",
+      "contractName": "AEPRewardVault",
+      "purpose": "Release conditional rewards, reserves, refunds, exit settlements, and future capacity"
+    },
+    {
+      "sequence": 33,
+      "stage": "Reputation",
+      "contractName": "ReputationRegistry",
+      "purpose": "Record bounded institutional, validator, and treaty performance history"
+    },
+    {
+      "sequence": 34,
+      "stage": "Credential",
+      "contractName": "ProofCredentialRegistry",
+      "purpose": "Represent accepted membership, roles, delegation, and M5 maturity"
+    },
+    {
+      "sequence": 35,
+      "stage": "Revoke",
+      "contractName": "CredentialRevocationRegistry",
+      "purpose": "Revoke expired, breached, superseded, or invalid federation credentials"
+    },
+    {
+      "sequence": 36,
+      "stage": "Route",
+      "contractName": "AEPRolloutRouter",
+      "purpose": "Route capabilities, fallback paths, member substitutions, and joint mission phases"
+    },
+    {
+      "sequence": 37,
+      "stage": "Rollback",
+      "contractName": "AEPRollbackRegistry",
+      "purpose": "Restore valid local and shared states while preserving authoritative obligations"
+    },
+    {
+      "sequence": 38,
+      "stage": "Profile",
+      "contractName": "BuilderProfileRegistry",
+      "purpose": "Publish interoperable institutional profiles and capability interfaces"
+    },
+    {
+      "sequence": 39,
+      "stage": "Access",
+      "contractName": "PremiumAccessRegistry",
+      "purpose": "Govern scarce shared capacity and bounded member access"
+    },
+    {
+      "sequence": 40,
+      "stage": "Publish",
+      "contractName": "ProofCardRegistry",
+      "purpose": "Publish public treaty decisions, accepted proof, challenges, and maturity records"
+    }
+  ],
+  "claimBoundary": [
+    "Public Proof Mission 005 is a published federation protocol; no interinstitutional result is predeclared.",
+    "Mission 005 cannot begin scientifically until at least three institutions have earned M4 Institution-Proven status through completed Mission 004 evidence and closed challenge windows.",
+    "The Mainnet evidence demonstrates deployed and source-verified infrastructure; it does not establish successful federation, universal safety, external audit completion, legal or regulatory approval, achieved AGI, ASI, or superintelligence.",
+    "Every member retains a distinct human authority root, local charter, treasury, and right to abstain or exit; GoalOS does not claim unbounded machine sovereignty or permanent federation.",
+    "No website build, preview, validation, or GitHub Actions workflow sends a blockchain transaction.",
+    "Only a completed Mission 005 campaign may support Federation-Proven maturity, interinstitutional AGIALPHA settlement, Mission 006 reserve deployment, or claims of proof-governed cooperation across sovereign institutions."
+  ],
+  "releaseUrl": "https://github.com/MontrealAI/goalos-agialpha-ascension/releases/tag/v4.4.0-mainnet-2026-06-21",
+  "repositoryUrl": "https://github.com/MontrealAI/goalos-agialpha-ascension"
+}
