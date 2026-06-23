@@ -15,6 +15,7 @@ on:
       - 'content/proof-mission-005-interinstitutional-accord.json'
       - 'content/proof-mission-006-long-horizon.json'
       - 'content/proof-mission-007-civilizational-covenant.json'
+      - 'content/proof-mission-008-open-future.json'
       - 'data/mainnet/v4.4.0-mainnet-2026-06-21.json'
       - 'scripts/website/build_proof_gradient_sovereign.py'
       - 'scripts/website/verify_proof_gradient_sovereign.py'
@@ -37,6 +38,9 @@ on:
       - 'scripts/website/build_proof_mission_007.py'
       - 'scripts/website/verify_proof_mission_007.py'
       - 'scripts/website/visual_check_proof_mission_007.py'
+      - 'scripts/website/build_proof_mission_008.py'
+      - 'scripts/website/verify_proof_mission_008.py'
+      - 'scripts/website/visual_check_proof_mission_008.py'
       - 'test/test_proof_gradient_sovereign.py'
       - 'test/test_proof_mission_002.py'
       - 'test/test_proof_mission_003.py'
@@ -44,6 +48,7 @@ on:
       - 'test/test_proof_mission_005.py'
       - 'test/test_proof_mission_006.py'
       - 'test/test_proof_mission_007.py'
+      - 'test/test_proof_mission_008.py'
       - 'docs/PROOF_GRADIENT_SOVEREIGN_WEBSITE.md'
       - 'docs/PROOF_MISSION_002_ASCENSION_PROTOCOL_WEBSITE.md'
       - 'docs/PROOF_MISSION_003_CAPABILITY_CONSTELLATION_WEBSITE.md'
@@ -51,6 +56,7 @@ on:
       - 'docs/PROOF_MISSION_005_INTERINSTITUTIONAL_ACCORD_WEBSITE.md'
       - 'docs/PROOF_MISSION_006_LONG_HORIZON_WEBSITE.md'
       - 'docs/PROOF_MISSION_007_CIVILIZATIONAL_COVENANT_WEBSITE.md'
+      - 'docs/PROOF_MISSION_008_OPEN_FUTURE_WEBSITE.md'
       - '.github/workflows/goalos-agialpha-ascension-v86-final.yml'
       - '.github/workflows/goalos-agialpha-ascension-v86-smoke-test.yml'
 
@@ -62,9 +68,9 @@ env:
 
 jobs:
   smoke-test:
-    name: Build, preserve, verify, and layout-test Proof Missions 001–007
+    name: Build, preserve, verify, and layout-test Proof Missions 001–008
     runs-on: ubuntu-latest
-    timeout-minutes: 75
+    timeout-minutes: 90
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -160,6 +166,23 @@ jobs:
           python3 -m unittest discover -s test -p 'test_proof_mission_007.py' -v
           python3 scripts/website/visual_check_proof_mission_007.py --site site --output site/qa/proof-mission-007 --screenshots
 
+      - name: Build Public Proof Mission 008 before any Mission 008 verification or browser QA
+        run: python3 scripts/website/build_proof_mission_008.py --site site
+
+      - name: Assert Mission 008 generated outputs exist
+        shell: bash
+        run: |
+          set -euo pipefail
+          for file in site/proof-mission-008.html site/proof-mission-007.html site/proof-missions.html site/index.html site/qa/proof-mission-008-build.json; do
+            test -s "$file" || { echo "Missing generated Mission 008 output: $file"; find site -maxdepth 2 -type f | sort; exit 1; }
+          done
+
+      - name: Verify and browser-test Public Proof Mission 008
+        run: |
+          python3 scripts/website/verify_proof_mission_008.py --site site --repo .
+          python3 -m unittest discover -s test -p 'test_proof_mission_008.py' -v
+          python3 scripts/website/visual_check_proof_mission_008.py --site site --output site/qa/proof-mission-008 --screenshots
+
       - name: Reject archives and private operator material in public site
         shell: bash
         run: |
@@ -188,6 +211,7 @@ jobs:
             site/proof-mission-005.html
             site/proof-mission-006.html
             site/proof-mission-007.html
+            site/proof-mission-008.html
             site/downloads/proof-gradient/
             site/downloads/proof-missions/
             site/qa/
