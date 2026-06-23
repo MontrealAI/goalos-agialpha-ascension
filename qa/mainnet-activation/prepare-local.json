@@ -1,0 +1,10 @@
+{
+  "blockers": [
+    "source-identity certificate is not PASS",
+    "strict Stage-B certificate is not PASS"
+  ],
+  "exactLocalCommand": "./scripts/run-mainnet-activation-ledger.sh --plan qa/mainnet-activation/activation-plan.public.json --expected-plan-hash 0x6f8fa2d1c3b756f5cb9259ae8aebae687d2c3f56c5cc2054d6c94128243c3c2f",
+  "expectedSanitizedEvidenceBundle": ".private/mainnet-activation/sanitized-evidence-bundle.json",
+  "schemaVersion": "1.0",
+  "status": "BLOCKED"
+}

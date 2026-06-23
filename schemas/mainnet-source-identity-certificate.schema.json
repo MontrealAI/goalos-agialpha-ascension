@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["schemaVersion", "stage", "status", "classification", "chainId", "exactReproductionProven", "historicalDeploymentCommitProven", "evidence"],
+  "properties": {
+    "schemaVersion": {"const": "1.0"},
+    "stage": {"const": "SOURCE_IDENTITY_REPRODUCTION"},
+    "chainId": {"const": 1},
+    "status": {"enum": ["PASS", "BLOCKED", "FAIL"]},
+    "classification": {"enum": ["EXACT_DEPLOYED_SOURCE_REPRODUCED_BY_COMMIT", "SOURCE_IDENTITY_NOT_PROVEN"]},
+    "exactReproductionProven": {"type": "boolean"},
+    "historicalDeploymentCommitProven": {"type": "boolean"},
+    "evidence": {"type": "array"}
+  },
+  "allOf": [{"if": {"properties": {"status": {"const": "PASS"}}}, "then": {"properties": {"classification": {"const": "EXACT_DEPLOYED_SOURCE_REPRODUCED_BY_COMMIT"}, "exactReproductionProven": {"const": true}}}}]
+}

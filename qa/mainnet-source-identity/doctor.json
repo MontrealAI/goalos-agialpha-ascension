@@ -1,0 +1,25 @@
+{
+  "command": "doctor",
+  "currentMainSha": "45f066de8a24770ace16631dc14874d7b9382393",
+  "environment": {
+    "missing": [
+      "PRIMARY_MAINNET_RPC_URL",
+      "SECONDARY_MAINNET_RPC_URL",
+      "ETHERSCAN_API_KEY"
+    ],
+    "present": {
+      "ETHERSCAN_API_KEY": false,
+      "PRIMARY_MAINNET_RPC_URL": false,
+      "SECONDARY_MAINNET_RPC_URL": false
+    }
+  },
+  "evidenceCommitSha": "45f066de8a24770ace16631dc14874d7b9382393",
+  "generatedAt": "2026-06-23T12:53:37.837612+00:00",
+  "historicalManifestCommitLabel": "UNKNOWN",
+  "publishedReleaseTag": "v4.4.0-mainnet-2026-06-21",
+  "publishedReleaseTagFuller": "UNKNOWN",
+  "publishedReleaseTagSha": "UNKNOWN",
+  "reproductionSourceCommitSha": "45f066de8a24770ace16631dc14874d7b9382393",
+  "schemaVersion": "1.0",
+  "status": "BLOCKED_MISSING_READ_ONLY_CREDENTIALS"
+}

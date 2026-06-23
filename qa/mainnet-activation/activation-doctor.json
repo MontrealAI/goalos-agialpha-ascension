@@ -1,0 +1,13 @@
+{
+  "activationScope": "CONTROLLED_PRODUCTION_CANARY_V1",
+  "blockers": [
+    "source-identity certificate is not PASS",
+    "strict Stage-B certificate is not PASS"
+  ],
+  "chainId": 1,
+  "generatedAt": "2026-06-23T12:53:38.531191+00:00",
+  "localOnlySigning": true,
+  "schemaVersion": "1.0",
+  "status": "BLOCKED",
+  "walletB": "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+}
