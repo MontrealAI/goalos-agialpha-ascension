@@ -58,6 +58,15 @@ on:
       - 'docs/PROOF_MISSION_006_LONG_HORIZON_WEBSITE.md'
       - 'docs/PROOF_MISSION_007_CIVILIZATIONAL_COVENANT_WEBSITE.md'
       - 'docs/PROOF_MISSION_008_OPEN_FUTURE_WEBSITE.md'
+      - 'config/ethereum-mainnet.contracts.json'
+      - 'release/mainnet-2026-06-21/CONTRACTS_MAINNET.json'
+      - 'release/mainnet-2026-06-21/RELEASE_MANIFEST.json'
+      - 'release/mainnet-2026-06-21/DEPLOYMENT_EVIDENCE.json'
+      - 'scripts/add_goalos_ethereum_mainnet_pages_v87.py'
+      - 'scripts/verify_goalos_ethereum_mainnet_pages_v87.py'
+      - 'scripts/browser_check_goalos_ethereum_mainnet_v87.py'
+      - 'test/test_ethereum_mainnet_website_restore.py'
+      - 'docs/ETHEREUM_MAINNET_WEBSITE_RESTORE.md'
       - '.github/workflows/goalos-agialpha-ascension-v86-final.yml'
       - '.github/workflows/goalos-agialpha-ascension-v86-smoke-test.yml'
 
@@ -192,6 +201,26 @@ jobs:
           python3 -m unittest discover -s test -p 'test_proof_mission_008.py' -v
           python3 scripts/website/visual_check_proof_mission_008.py --site site --output site/qa/proof-mission-008 --screenshots
 
+      - name: Restore the Ethereum Mainnet deployment record additively
+        run: |
+          python3 scripts/add_goalos_ethereum_mainnet_pages_v87.py             --site site             --registry config/ethereum-mainnet.contracts.json             --release-contracts release/mainnet-2026-06-21/CONTRACTS_MAINNET.json             --release-manifest release/mainnet-2026-06-21/RELEASE_MANIFEST.json             --deployment-evidence release/mainnet-2026-06-21/DEPLOYMENT_EVIDENCE.json
+
+      - name: Assert the Mainnet record and all eight Proof Missions exist
+        shell: bash
+        run: |
+          set -euo pipefail
+          for file in             site/ethereum-mainnet.html             site/proof-gradient-challenge.html             site/proof-mission-002.html             site/proof-mission-003.html             site/proof-mission-004.html             site/proof-mission-005.html             site/proof-mission-006.html             site/proof-mission-007.html             site/proof-mission-008.html             site/proof-missions.html             site/index.html             site/sitemap.xml             site/site-status.json             site/qa/mainnet-page-build-v87.json; do
+            test -s "$file" || { echo "Missing generated public-site output: $file"; find site -maxdepth 3 -type f | sort; exit 1; }
+          done
+
+      - name: Verify Mainnet restoration and cross-feature preservation
+        run: |
+          python3 scripts/verify_goalos_ethereum_mainnet_pages_v87.py             --site site             --registry config/ethereum-mainnet.contracts.json
+          python3 -m unittest discover -s test -p 'test_ethereum_mainnet_website_restore.py' -v
+
+      - name: Browser-test the restored Mainnet record
+        run: python3 scripts/browser_check_goalos_ethereum_mainnet_v87.py --site site --screenshots
+
       - name: Reject archives and private operator material in public site
         shell: bash
         run: |
@@ -214,7 +243,9 @@ jobs:
             echo
             echo '- Canonical v86 website source preserved.'
             echo '- Public Proof Missions 001–008 generated in strict dependency order.'
-            echo '- Mission 006, Mission 007, and Mission 008 generated-page preflights passed.'
+            echo '- Mission 008 restored to the full-bleed sovereign series design.'
+            echo '- Ethereum Mainnet deployment record restored at /ethereum-mainnet.html.'
+            echo '- Mission 006, Mission 007, Mission 008, and Mainnet generated-page preflights passed.'
             echo '- 48 GoalOS-created Mainnet contracts represented.'
             echo '- 48/48 recorded source verification; 0 failures.'
             echo '- No mission result or maturity designation is predeclared.'
@@ -237,6 +268,7 @@ jobs:
             site/proof-mission-006.html
             site/proof-mission-007.html
             site/proof-mission-008.html
+            site/ethereum-mainnet.html
             site/downloads/proof-gradient/
             site/downloads/proof-missions/
             site/qa/
