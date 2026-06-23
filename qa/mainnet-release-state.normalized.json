@@ -1,0 +1,43 @@
+{
+  "chainId": 1,
+  "counts": {
+    "externalContracts": 1,
+    "goalosContracts": 48,
+    "operatorVerifiedContracts": 48,
+    "phaseBGrantsActive": 14,
+    "phaseBGrantsExpected": 14,
+    "registryEntries": 49,
+    "walletAManagedRoles": 0
+  },
+  "deploymentPath": "DIRECT_OPERATOR_NO_CERTIFICATE",
+  "facts": {
+    "canonicalAgialpha": "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA",
+    "mainnetConfigured": "YES",
+    "mainnetDeployed": "YES",
+    "phaseBGrants": "14/14",
+    "postdeploymentStatus": "VERIFIED_AND_CONFIGURED",
+    "walletB": "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+  },
+  "failures": [],
+  "network": "ethereum-mainnet",
+  "overallApplicableResult": "PASS",
+  "schemaVersion": "1.0",
+  "sourceEvidenceSha256": {
+    "config/ethereum-mainnet.contracts.json": "1f4e5247c58d5395b96820725249c385eff23d0bf9f83b0353e1a6e2fe631916",
+    "deployments/ethereum-mainnet.agialpha.latest.json": "f1d5a1cd31ae92f9e7ed5846b4aea4636c5e7073d20e4c3a7583061f8e93f64d",
+    "qa/mainnet-postdeploy/verification-evidence.json": "16aa643ea3b4979fbf0df385f3d219b703dd0733cbeeb4c0dc61b97edc87e0b8",
+    "qa/mainnet-release-state.json": "0980ddf18c2ec986c371e00edc6d96eccd173e6979b372790cf492f306db1d8d"
+  },
+  "statuses": {
+    "configuration": "PASS",
+    "deployment": "PASS",
+    "independentLiveRevalidation": "PENDING_EXTERNAL_INPUT",
+    "operatorPostdeploymentEvidence": "PASS",
+    "operatorVerification": "PASS",
+    "predeploymentAuthorization": "NOT_APPLICABLE",
+    "productionActivation": "NOT_ACTIVATED",
+    "sourceIdentityReproducibility": "PENDING",
+    "userFundAuthorization": "NO"
+  },
+  "warnings": []
+}

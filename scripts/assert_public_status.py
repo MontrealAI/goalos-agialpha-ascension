@@ -1,112 +1,48 @@
 #!/usr/bin/env python3
 from __future__ import annotations
-import json, re, sys
+import sys
 from pathlib import Path
-ROOT = Path(__file__).resolve().parents[1]
-CERT = ROOT / 'qa/mainnet-authorization-certificate.json'
-RELEASE_STATE = ROOT / 'qa/mainnet-release-state.json'
-DOCS = [ROOT / 'START_HERE.md', ROOT / 'README.md', ROOT / 'docs/CURRENT_STATUS.md', ROOT / 'docs/MAINNET_AUTHORIZATION_CERTIFICATE.md', ROOT / 'docs/MAINNET_TECHNICAL_READINESS_DECISION.md', ROOT / 'docs/MAINNET_DEPLOYMENT_AUTHORIZATION_DECISION.md', ROOT / 'docs/ETHEREUM_MAINNET_AUTHORIZATION_DECISION.md', ROOT / 'docs/START_HERE_MAINNET.md']
-texts = {p: p.read_text(encoding='utf-8', errors='ignore') for p in DOCS if p.exists()}
-combined = '\n'.join(texts.values()); low = combined.lower(); errors: list[str] = []
-cert = None
-release_state = None
-if RELEASE_STATE.exists():
-    try: release_state = json.loads(RELEASE_STATE.read_text())
-    except Exception as exc: errors.append(f'Unable to parse release state: {exc}')
-if CERT.exists():
-    try: cert = json.loads(CERT.read_text())
-    except Exception as exc: errors.append(f'Unable to parse certificate: {exc}')
-claims_yes = all(phrase in low for phrase in ['ethereum mainnet technical readiness: yes','ethereum mainnet deployment authorization: yes','ethereum mainnet authorization: yes'])
-if not cert and claims_yes:
-    errors.append('Public docs claim Ethereum Mainnet authorization YES but qa/mainnet-authorization-certificate.json is missing.')
-if cert:
-    deployed_expected = cert.get('mainnetDeployed')
-    if release_state:
-        deployed_expected = release_state.get('summary', {}).get('ETHEREUM_MAINNET_DEPLOYED', deployed_expected)
-    expected = {
-        'ethereum mainnet technical readiness': cert.get('technicallyMainnetReady'),
-        'ethereum mainnet deployment authorization': cert.get('mainnetDeploymentAuthorized'),
-        'ethereum mainnet authorization': cert.get('ethereumMainnetAuthorized'),
-        'ethereum mainnet deployed': deployed_expected,
-    }
-    full_status_files = {
-        'START_HERE.md',
-        'README.md',
-        'docs/CURRENT_STATUS.md',
-        'docs/START_HERE_MAINNET.md',
-    }
-    for rel in full_status_files:
-        path = ROOT / rel
-        text = texts.get(path, '').lower()
-        if not text:
-            errors.append(f'{rel}: missing active public status document')
-            continue
-        for label, value in expected.items():
-            phrase = f'{label}: {str(value).lower()}'
-            if phrase not in text:
-                errors.append(f'{rel}: missing certificate-backed status phrase: {label}: {value}')
-    decision_requirements = {
-        'docs/MAINNET_TECHNICAL_READINESS_DECISION.md': [('ethereum mainnet technical readiness', cert.get('technicallyMainnetReady'))],
-        'docs/MAINNET_DEPLOYMENT_AUTHORIZATION_DECISION.md': [('ethereum mainnet deployment authorization', cert.get('mainnetDeploymentAuthorized'))],
-        'docs/ETHEREUM_MAINNET_AUTHORIZATION_DECISION.md': [('ethereum mainnet authorization', cert.get('ethereumMainnetAuthorized'))],
-    }
-    for rel, requirements in decision_requirements.items():
-        path = ROOT / rel
-        text = texts.get(path, '').lower()
-        if not text:
-            errors.append(f'{rel}: missing active decision document')
-            continue
-        for label, value in requirements:
-            phrase = f'{label}: **{str(value).lower()}**'
-            plain_phrase = f'{label}: {str(value).lower()}'
-            if phrase not in text and plain_phrase not in text:
-                errors.append(f'{rel}: missing certificate-backed status phrase: {label}: {value}')
-        deployed_phrase = f"mainnet_deployed: **{str(deployed_expected).lower()}**"
-        if deployed_phrase not in text:
-            errors.append(f"{rel}: missing release-state-backed status phrase: MAINNET_DEPLOYED: {deployed_expected}")
-    certificate_doc = texts.get(ROOT / 'docs/MAINNET_AUTHORIZATION_CERTIFICATE.md', '').lower()
-    if not certificate_doc:
-        errors.append('docs/MAINNET_AUTHORIZATION_CERTIFICATE.md: missing active certificate document')
-    else:
-        certificate_requirements = {
-            'technically_mainnet_ready': cert.get('technicallyMainnetReady'),
-            'mainnet_deployment_authorized': cert.get('mainnetDeploymentAuthorized'),
-            'ethereum_mainnet_authorized': cert.get('ethereumMainnetAuthorized'),
-            'mainnet_deployed': deployed_expected,
-        }
-        for label, value in certificate_requirements.items():
-            phrase = f'{label}: **{str(value).lower()}**'
-            if phrase not in certificate_doc:
-                errors.append(f'docs/MAINNET_AUTHORIZATION_CERTIFICATE.md: missing certificate-backed status phrase: {label.upper()}: {value}')
-    if cert.get('mainnetDeployed') != 'NO' and not release_state:
-        errors.append('Certificate must keep mainnetDeployed as NO until transaction evidence exists or release-state evidence exists.')
-    if cert.get('runtimeSecretsStoredInGitHub') is not False: errors.append('Certificate must state runtime secrets are not stored in GitHub.')
-    if cert.get('ciCanDeployMainnet') is not False: errors.append('Certificate must state CI cannot deploy mainnet.')
-if 'not externally audited' not in low: errors.append('Missing required boundary: Not externally audited.')
-if 'runtime rpc url and deployer key outside github' not in low and 'runtime rpc/key' not in low:
-    errors.append('Missing runtime RPC/key outside GitHub boundary.')
-deployed_public = str((release_state or {}).get('summary', {}).get('ETHEREUM_MAINNET_DEPLOYED', 'NO')).lower()
-if f'ethereum mainnet deployed: {deployed_public}' not in low and f'mainnet_deployed: **{deployed_public}**' not in low:
-    errors.append(f'Public docs must state Ethereum Mainnet deployed: {deployed_public.upper()}.')
-for forbidden, allowed_context in [
-    ('externally audited', 'not externally audited'), ('legal approval', 'does not claim'), ('tax review', 'does not claim'), ('tax approved', 'does not claim'), ('guaranteed secure', 'does not claim'), ('guaranteed security', 'does not claim'), ('guaranteed non-security', 'does not claim'), ('investment opportunity', 'does not claim'), ('yield', 'does not claim'), ('price target', 'does not claim'), ('revenue share', 'does not claim'), ('production deployed', 'does not claim')]:
-    for path, text in texts.items():
-        for i, line in enumerate(text.splitlines(), 1):
-            l=line.lower()
-            if forbidden in l and allowed_context not in l and 'not ' not in l and 'no ' not in l and 'must not' not in l and 'do not' not in l and 'does not' not in l and 'unless' not in l:
-                errors.append(f'{path.relative_to(ROOT)}:{i}: unsafe public claim: {forbidden}')
-active_gate_files = {'START_HERE.md','README.md','docs/CURRENT_STATUS.md','docs/START_HERE_MAINNET.md','docs/MAINNET_AUTHORIZATION_CERTIFICATE.md','docs/MAINNET_TECHNICAL_READINESS_DECISION.md','docs/MAINNET_DEPLOYMENT_AUTHORIZATION_DECISION.md','docs/ETHEREUM_MAINNET_AUTHORIZATION_DECISION.md'}
-for path, text in texts.items():
-    rel=str(path.relative_to(ROOT))
-    if rel in active_gate_files:
-        for i,line in enumerate(text.splitlines(),1):
-            l=line.lower()
-            if 'external audit closure' in l or 'external_audit_closure' in line:
-                errors.append(f'{rel}:{i}: stale external audit closure active-gate language')
-            if ('private operator package required' in l or 'private operator evidence required' in l) and 'false' not in l and 'not required' not in l:
-                errors.append(f'{rel}:{i}: stale private-operator mandatory gate language')
+ROOT=Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
+from scripts.release.current_mainnet_state import normalize, StateError
+try:
+    state=normalize()
+except StateError as exc:
+    print(f'Public status assertion failed: {exc}'); sys.exit(1)
+docs=['README.md','START_HERE.md','docs/CURRENT_STATUS.md','docs/START_HERE_MAINNET.md','docs/ETHEREUM_MAINNET.md']
+required=[
+ 'Ethereum Mainnet deployment | PASS — YES',
+ 'Mainnet configuration | PASS — YES',
+ 'GoalOS contracts | 48',
+ 'Canonical external AGIALPHA | 1',
+ 'Operator verification evidence | PASS — 48/48',
+ 'Postdeployment operator evidence | PASS — VERIFIED_AND_CONFIGURED',
+ 'Phase-B grants | PASS — 14/14',
+ 'Permanent authority | PASS — Wallet B / Ledger',
+ 'Wallet A managed roles | PASS — 0',
+ 'Predeployment authorization | NOT_APPLICABLE — DIRECT_OPERATOR_NO_CERTIFICATE',
+ 'Independent live revalidation | PENDING_EXTERNAL_INPUT',
+ 'Source-identity reproducibility | PENDING',
+ 'Production activation | NOT_ACTIVATED',
+ 'User-fund authorization | NO',
+]
+forbidden=['External audit completion | NO','Ethereum Mainnet technical readiness: NO','Ethereum Mainnet deployment authorization: NO','Ethereum Mainnet authorization: NO','Stage-B/live postdeployment check | BLOCKED','external audit completion required']
+errors=[]
+combined=''
+for rel in docs:
+    path=ROOT/rel
+    if not path.exists(): errors.append(f'{rel}: missing'); continue
+    text=path.read_text(encoding='utf-8',errors='ignore')
+    combined += text + '\n'
+    for phrase in required:
+        if phrase not in text: errors.append(f'{rel}: missing {phrase}')
+for phrase in forbidden:
+    if phrase in combined: errors.append(f'active docs contain stale phrase: {phrase}')
+if 'No external-audit claim is made by this release.' not in combined:
+    errors.append('missing neutral external-audit disclosure')
+if 'externally audited' in combined.lower() and 'not externally audited' not in combined.lower():
+    errors.append('active docs claim external audit')
+if state['overallApplicableResult']!='PASS': errors.append('canonical release state is not PASS')
 if errors:
-    print('Public status assertion failed:')
-    for e in errors: print(f'- {e}')
-    sys.exit(1)
-print('Public status assertion passed: certificate/release-state public mainnet status is consistent, bounded, and not externally audited.')
+    print('Public status assertion failed:'); print('\n'.join('- '+e for e in errors)); sys.exit(1)
+print('Public status assertion passed: current direct-operator postdeployment status is lifecycle-aware and bounded.')

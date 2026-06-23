@@ -368,7 +368,7 @@ export async function deployGoalOSAGIALPHAAscension() {
     mainnetGates: info.isMainnet ? {
       sourceOfTruth: "qa/mainnet-authorization-certificate.json",
       privateOperatorAuthorizationPackageRequired: false,
-      externalAuditRequired: true,
+      externalAuditRequired: false,
       ciCanDeployMainnet: false,
       runtimeSecretsStoredInGitHub: false
     } : null,

@@ -20,7 +20,7 @@ jobs:
       - run: npm run compile:ci
       - name: Deterministic local authorization rehearsal (no secrets)
         run: npm run local:authorization-rehearsal
-      - run: npm run mainnet:certificate
-      - run: npm run mainnet:certificate:validate
+      - run: npm run mainnet:release-state:check
+      - run: npm run mainnet:postdeploy:operator-evidence:validate
       - name: Public certificate authorization check (Sepolia optional)
         run: npm run mainnet:authorization-check:public

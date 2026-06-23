@@ -1,17 +1,8 @@
 # Mainnet Authorization Certificate
 
-Generated from `qa/mainnet-authorization-certificate.json`.
+> **HISTORICAL PREDEPLOYMENT RECORD**
+>
+> This record predates the direct Ethereum Mainnet deployment completed on 2026-06-21 and is not the current release-state source of truth.
 
-- TECHNICALLY_MAINNET_READY: **NO**
-- MAINNET_DEPLOYMENT_AUTHORIZED: **NO**
-- ETHEREUM_MAINNET_AUTHORIZED: **NO**
-- MAINNET_DEPLOYED: **YES**
-- Private operator authorization package required: **False**
-- Runtime secrets stored in GitHub: **False**
-- CI can deploy mainnet: **False**
 
-This certificate does not authorize Ethereum Mainnet deployment while readiness or authorization is NO. It is not an external audit, legal approval, tax review, proof of deployment, or guarantee of security/token classification.
-
-## Next action
-
-B. Blocked, with exact blockers.
+See `qa/mainnet-release-state.json` and `docs/CURRENT_STATUS.md` for the current direct-operator postdeployment state.

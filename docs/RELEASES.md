@@ -9,7 +9,7 @@ Next review trigger: new release, authority change, verification change, inciden
 
 ## Current boundaries
 
-Deployment: YES. Configuration: YES. Operator verification evidence: 48/48. Phase-B grants: 14/14. Wallet B / Ledger is permanent authority. Wallet A managed roles: 0. Production activation: NO. User-fund authorization: NO. External audit completion: NO.
+Deployment: YES. Configuration: YES. Operator verification evidence: 48/48. Phase-B grants: 14/14. Wallet B / Ledger is permanent authority. Wallet A managed roles: 0. Production activation: NO. User-fund authorization: NO. No external-audit claim is made by this release.
 
 ## Read-only use
 

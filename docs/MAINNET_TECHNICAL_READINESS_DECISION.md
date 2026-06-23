@@ -1,9 +1,8 @@
-# Ethereum Mainnet Technical Readiness Decision
+# Mainnet Technical Readiness Decision
 
-Ethereum Mainnet technical readiness: **NO**.
+> **HISTORICAL PREDEPLOYMENT RECORD**
+>
+> This record predates the direct Ethereum Mainnet deployment completed on 2026-06-21 and is not the current release-state source of truth.
 
-TECHNICALLY_MAINNET_READY: **NO**
 
-MAINNET_DEPLOYED: **YES**
-
-Not externally audited. External audit is not planned and is not an active mainnet gate. Automated/internal security-toolchain clearance is the active security gate.
+See `qa/mainnet-release-state.json` and `docs/CURRENT_STATUS.md` for the current direct-operator postdeployment state.

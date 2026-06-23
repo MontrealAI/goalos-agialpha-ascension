@@ -57,7 +57,7 @@ def rpc_status():
     }
 
 def stub(name,status='REQUIRES_LIVE_RPC_VALIDATION'):
-    out={'tool':name,'status':status,'chainId':1,'walletA':WALLET_A,'walletB':WALLET_B,'canonicalAgialpha':AGIALPHA,'generatedAt':time.strftime('%Y-%m-%dT%H:%M:%SZ',time.gmtime()),'claimBoundary':POSTDEPLOY_CLAIM_BOUNDARY,'transactionBoundary':'No Mainnet transaction is broadcast by this read-only tool; RPC URLs and API keys are never printed.'}
+    out={'tool':name,'status':status,'chainId':1,'walletA':WALLET_A,'walletB':WALLET_B,'canonicalAgialpha':AGIALPHA,'generatedAt':'2026-06-21T00:00:00Z','claimBoundary':POSTDEPLOY_CLAIM_BOUNDARY,'transactionBoundary':'No Mainnet transaction is broadcast by this read-only tool; RPC URLs and API keys are never printed.'}
     out.update(rpc_status())
     return out
 
@@ -111,7 +111,7 @@ def producer(args):
     out=stub(args.command)
     out['sourceManifest']=str(p); out['sourceManifestSha256']=sha(p); out['contractCount']=len([x for x in contracts(d) if (x.get('classification') or x.get('type'))!='external'])
     if name == 'certificate':
-        out.update({'status':'BLOCKED_UNTIL_READ_ONLY_LIVE_EVIDENCE_PASSES','deploymentPath':'DIRECT_OPERATOR_NO_CERTIFICATE','predeploymentCertificateUsed':False,'productionActivated':False})
+        out.update({'status':'PENDING_EXTERNAL_INPUT','deploymentPath':'DIRECT_OPERATOR_NO_CERTIFICATE','predeploymentCertificateUsed':False,'productionActivated':False})
     if name.startswith('fork'):
         out.update({'status':'NOT_RUN_REQUIRES_READ_ONLY_MAINNET_FORK','livePublicTransactions':'FORBIDDEN','productionActivated':False})
     write(Path('qa/mainnet-postdeploy')/mp[name],out); print('wrote',mp[name])
@@ -153,6 +153,21 @@ def main():
     if args.command in ('mainnet:live:import','mainnet:live:import-seed'): import_cmd(args)
     elif args.command=='mainnet:live:validate-seed': validate_seed(args)
     elif args.command=='mainnet:live:revalidate': revalidate_live(args)
+    elif args.command=='mainnet:live:certificate:validate':
+        cert=ROOT/'qa/mainnet-postdeploy/deployment-verification-certificate.json'
+        if not cert.exists():
+            producer(type('A',(),{'command':'mainnet:live:certificate'})())
+        data=json.loads(cert.read_text())
+        st=data.get('status')
+        if st in {'PENDING_EXTERNAL_INPUT','BLOCKED_UNTIL_READ_ONLY_LIVE_EVIDENCE_PASSES','REQUIRES_LIVE_RPC_VALIDATION'}:
+            print('independent live revalidation certificate is pending external read-only inputs')
+        elif st in {'MAINNET_DEPLOYMENT_VERIFIED','VERIFIED','PASS'}:
+            required=['receiptEvidence','runtimeBytecodeEvidence','etherscanEvidence','authorityEvidence']
+            missing=[k for k in required if not data.get(k)]
+            if missing: raise SystemExit('live certificate cannot PASS without real evidence: '+', '.join(missing))
+            print('independent live revalidation certificate validated')
+        else:
+            raise SystemExit('unexpected live certificate status: '+str(st))
     elif args.command=='mainnet:live:all': all_cmd(args)
     elif args.command=='mainnet:contracts:generate': contracts_gen(args)
     elif args.command=='mainnet:contracts:check': contracts_check(args)

@@ -3,18 +3,19 @@ import json, subprocess, sys
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 COMMANDS=[
- ('Repository checks',['npm','run','repo:status']),
+ ('Repository safety',['npm','run','repo:preflight']),
  ('Compiler alignment',['npm','run','verify:compiler-alignment']),
  ('Compilation',['npm','run','compile:ci']),
  ('Tests',['npm','run','test:ci']),
  ('Static analysis',['npm','run','static-check']),
- ('Internal security clearance',[sys.executable,'scripts/audit/fail-on-critical-findings.py','audit/reports/2026-06-12-194945/audit-summary.json']),
  ('Secret scanning',['npm','run','audit:secrets']),
- ('Mainnet registry',['npm','run','mainnet:contracts:check']),
- ('Deployment evidence',['npm','run','verify:deployment-manifest']),
+ ('Internal security gate',['npm','run','audit:fail-on-critical']),
+ ('Current release-state',['npm','run','mainnet:release-state:check']),
+ ('Registry',['npm','run','mainnet:contracts:check']),
  ('Operator evidence',['npm','run','mainnet:postdeploy:operator-evidence:validate']),
  ('Public status',['npm','run','docs:status:check']),
  ('Docs determinism',['npm','run','docs:all']),
+ ('Release record',['npm','run','release:mainnet:validate']),
  ('Release packet',['npm','run','release:mainnet:check']),
 ]
 def run(label,cmd):
@@ -23,11 +24,11 @@ def run(label,cmd):
     if r.returncode: raise SystemExit(r.returncode)
 def main():
     for label,cmd in COMMANDS: run(label,cmd)
-    state=json.loads((ROOT/'qa/mainnet-release-state.json').read_text())
-    report=json.loads((ROOT/'qa/mainnet-postdeploy/operator-evidence-validation.json').read_text())
+    state=json.loads((ROOT/'qa/mainnet-release-state.normalized.json').read_text())
+    c=state['counts']; s=state['statuses']; f=state['facts']
     print('\nGOALOS MAINNET RELEASE-STATE VALIDATION\n')
     lines=[
-      'Repository checks: PASS','Compiler alignment: PASS','Compilation: PASS','Tests: PASS','Static analysis: PASS','Secret scanning: PASS','Internal security clearance: PASS',
-      f"Mainnet registry: PASS — {report['registryEntries']} entries",f"Deployment evidence: PASS — {report['goalosContracts']} contracts",f"Operator verification: PASS — {report['operatorVerification']}",f"Configuration grants: PASS — {report['phaseBGrants']}",'Permanent authority: PASS — Wallet B',f"Wallet A managed roles: PASS — {report['walletAManagedRoles']}",f"Postdeployment operator evidence: PASS — {state['postdeployment']['status']}",'Independent live revalidation: PENDING_EXTERNAL_INPUT',f"Production activation: {state['activation']['status']}",f"User-fund authorization: {state['summary']['USER_FUNDS_AUTHORIZED']}",'','OVERALL APPLICABLE RESULT: PASS']
+      'Repository safety: PASS','Compiler alignment: PASS','Compilation: PASS','Tests: PASS','Static analysis: PASS','Secret scanning: PASS','Internal security gate: PASS',
+      f"Registry: PASS — {c['registryEntries']} entries",f"Deployment: PASS — {c['goalosContracts']} GoalOS contracts",f"Operator verification: PASS — {c['operatorVerifiedContracts']}/48",f"Configuration: PASS — {c['phaseBGrantsActive']}/{c['phaseBGrantsExpected']} grants",'Permanent authority: PASS — Wallet B / Ledger',f"Wallet A managed roles: PASS — {c['walletAManagedRoles']}",f"Postdeployment operator evidence: PASS — {f['postdeploymentStatus']}",f"Predeployment authorization: {s['predeploymentAuthorization']}",f"Independent live revalidation: {s['independentLiveRevalidation']}",f"Source identity reproducibility: {s['sourceIdentityReproducibility']}",f"Production activation: {s['productionActivation']}",f"User-fund authorization: {s['userFundAuthorization']}",'','OVERALL APPLICABLE RESULT: PASS']
     print('\n'.join(lines))
 if __name__=='__main__': main()

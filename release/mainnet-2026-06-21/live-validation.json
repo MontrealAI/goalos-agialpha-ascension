@@ -1,15 +1,16 @@
 {
-  "etherscanSourceVerifications": "0/48",
+  "chainId": 1,
+  "independentLiveRevalidation": "PENDING_EXTERNAL_INPUT",
   "missingInputs": [
     "PRIMARY_MAINNET_RPC_URL",
     "SECONDARY_MAINNET_RPC_URL",
     "ETHERSCAN_API_KEY"
   ],
-  "phaseBGrants": "14/14",
-  "reason": "Optional independent read-only live validation requires PRIMARY_MAINNET_RPC_URL, SECONDARY_MAINNET_RPC_URL, and ETHERSCAN_API_KEY in the execution environment. Secret values are never printed.",
-  "receiptsSuccessful": "0/48",
-  "runtimeBytecodesNonempty": "0/48",
-  "status": "PENDING_EXTERNAL_INPUT",
-  "walletAManagedRoles": 0,
-  "walletBOwnershipCoverage": "PENDING"
+  "operatorEvidence": "PASS",
+  "productionActivation": "NOT_ACTIVATED",
+  "recordValidation": "PASS",
+  "releaseTag": "v4.4.0-mainnet-2026-06-21",
+  "sourceIdentityReproducibility": "PENDING",
+  "status": "PASS_WITH_PENDING_EXTERNAL_INPUT",
+  "userFundAuthorization": "NO"
 }
