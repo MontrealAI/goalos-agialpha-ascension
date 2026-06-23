@@ -186,6 +186,10 @@ def verify(site: Path, registry_path: Path) -> tuple[list[str], list[str]]:
         "Production activation: NO","user-fund authorization","external audit",
         "Independent dual-provider release revalidation",CANONICAL_AGIALPHA,
         "mn-btn--primary","mn-btn--secondary","mn-btn--ghost","font-family:Inter",
+        ".mn-provenance code","overflow-wrap:anywhere",
+        ".mn-registry-chip{display:flex;width:100%;max-width:100%",
+        "grid-template-columns:38px minmax(0,1fr) 16px",
+        "max-width:calc(100% - 36px)",
     ):
         if required.lower() not in page.lower():
             errors.append(f"Mainnet page is missing required content/design: {required}")

@@ -7,7 +7,7 @@ import json
 import shutil
 from pathlib import Path
 
-VIEWPORTS = [(375, 812), (1440, 1000)]
+VIEWPORTS = [(320, 800), (360, 800), (375, 812), (390, 844), (1440, 1000)]
 REQUIRED = ["ethereum-mainnet.html", "index.html", "proof-mission-008.html", "proof-missions.html"]
 
 AUDIT = r"""() => {
@@ -20,9 +20,28 @@ AUDIT = r"""() => {
     const s = getComputedStyle(el);
     return {text:(el.textContent||'').trim(), width:r.width, height:r.height, visible:r.width>1&&r.height>1, color:s.color, background:s.backgroundColor, contrast:ratio(s.color,s.backgroundColor)};
   });
+  const overflowElements = [...document.querySelectorAll('body *')].map((el, index) => {
+    const r = el.getBoundingClientRect();
+    const style = getComputedStyle(el);
+    return {
+      index,
+      tag: el.tagName.toLowerCase(),
+      id: el.id || '',
+      className: typeof el.className === 'string' ? el.className : '',
+      text: (el.textContent || '').trim().replace(/\s+/g, ' ').slice(0, 80),
+      left: Math.round(r.left),
+      right: Math.round(r.right),
+      width: Math.round(r.width),
+      overflowX: style.overflowX,
+      whiteSpace: style.whiteSpace
+    };
+  }).filter(item => item.right > window.innerWidth + 1 || item.left < -1)
+    .sort((a, b) => (b.right-window.innerWidth) - (a.right-window.innerWidth))
+    .slice(0, 8);
   return {
     version: document.body.dataset.designVersion || '',
     overflow: document.documentElement.scrollWidth-window.innerWidth,
+    overflowElements,
     title: (document.querySelector('h1')?.textContent||'').trim(),
     centered: !!hero && Math.abs((hero.left+hero.right)/2-window.innerWidth/2)<8,
     groups: document.querySelectorAll('details.mn-group').length,
@@ -42,6 +61,7 @@ HOME = r"""() => {
     ok:!!shell,
     width:r?.width||0,
     centered:!!r&&Math.abs((r.left+r.right)/2-window.innerWidth/2)<8,
+    overflow:document.documentElement.scrollWidth-window.innerWidth,
     buttons,
     mainnetLink:!!document.querySelector('a[href="ethereum-mainnet.html"]'),
     mission008:!!document.querySelector('[data-proof-mission="008"]')
@@ -125,7 +145,14 @@ async def run(site: Path, screenshots: bool):
                 if audit["version"] != "v88-institutional":
                     errors.append(f"mainnet@{width}: design marker missing")
                 if audit["overflow"] > 1:
-                    errors.append(f"mainnet@{width}: horizontal overflow {audit['overflow']}px")
+                    details = "; ".join(
+                        f"{item['tag']}#{item['id']}.{item['className']} right={item['right']} text={item['text']!r}"
+                        for item in audit.get("overflowElements", [])[:4]
+                    )
+                    errors.append(
+                        f"mainnet@{width}: horizontal overflow {audit['overflow']}px"
+                        + (f"; offenders: {details}" if details else "")
+                    )
                 normalized_title = audit["title"].replace("\u00a0", " ").lower()
                 if "chain 1" not in normalized_title or not audit["centered"]:
                     errors.append(f"mainnet@{width}: hero visibility/alignment failed")
