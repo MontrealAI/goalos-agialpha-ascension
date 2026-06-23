@@ -425,7 +425,8 @@
     "mainnet:postdeploy:operator-evidence:validate": "python scripts/mainnet_live/operator_evidence.py mainnet:postdeploy:operator-evidence:validate",
     "mainnet:postdeploy:operator-certificate": "python scripts/mainnet_live/operator_evidence.py mainnet:postdeploy:operator-certificate",
     "mainnet:postdeploy:operator-certificate:validate": "python scripts/mainnet_live/operator_evidence.py mainnet:postdeploy:operator-certificate:validate",
-    "mainnet:release-state:all": "python scripts/mainnet_release_state_all.py"
+    "mainnet:release-state:all": "python scripts/mainnet_release_state_all.py",
+    "mainnet:live:certificate:validate": "python scripts/mainnet_live/live_mainnet_tools.py mainnet:live:certificate:validate"
   },
   "dependencies": {
     "@openzeppelin/contracts": "4.9.6",

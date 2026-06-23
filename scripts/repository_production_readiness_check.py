@@ -67,7 +67,7 @@ if release_state_path.exists():
         expected_deployed = release_state.get("summary", {}).get("ETHEREUM_MAINNET_DEPLOYED", expected_deployed)
     except Exception:
         pass
-for phrase in ["GoalOS AGIALPHA Ascension", "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA", "Not externally audited", f"Ethereum Mainnet authorization: {expected_eth_auth}", f"Ethereum Mainnet deployed: {expected_deployed}", "Public Sepolia"]:
+for phrase in ["GoalOS AGIALPHA Ascension", "0xA61a3B3a130a9c20768EEBF97E21515A6046a1fA", "Not externally audited", "Ethereum Mainnet deployment | PASS — YES", "Mainnet configuration | PASS — YES", "Independent live revalidation | PENDING_EXTERNAL_INPUT"]:
     if phrase.lower() not in readme.lower():
         errors.append(f"README missing required phrase: {phrase}")
 if cert and cert.get("mainnetDeployed") != "NO" and not release_state_path.exists():

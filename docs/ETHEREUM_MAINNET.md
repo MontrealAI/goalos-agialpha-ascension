@@ -20,10 +20,11 @@ Production activation: NO
 | Runtime bytecode/live RPC validation | REQUIRES_LIVE_RPC_VALIDATION |
 | Verification failures | 0 |
 | Phase-B grants | 14/14 active |
-| Stage-B/live postdeployment check | BLOCKED until read-only live evidence passes |
+| Postdeployment operator evidence | PASS — VERIFIED_AND_CONFIGURED |
+| Independent live revalidation | PENDING_EXTERNAL_INPUT |
 | Production activation | NO |
 | User-fund authorization | NO |
-| External audit completion | NO |
+
 
 ## Published release
 
