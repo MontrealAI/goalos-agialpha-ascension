@@ -10,6 +10,7 @@ on:
       - 'scripts/visual_layout_check_v86.py'
       - 'content/proof-gradient-sovereign.json'
       - 'content/proof-mission-002-ascension-protocol.json'
+      - 'content/proof-mission-003-capability-constellation.json'
       - 'data/mainnet/v4.4.0-mainnet-2026-06-21.json'
       - 'scripts/website/build_proof_gradient_sovereign.py'
       - 'scripts/website/verify_proof_gradient_sovereign.py'
@@ -17,10 +18,15 @@ on:
       - 'scripts/website/build_proof_mission_002.py'
       - 'scripts/website/verify_proof_mission_002.py'
       - 'scripts/website/visual_check_proof_mission_002.py'
+      - 'scripts/website/build_proof_mission_003.py'
+      - 'scripts/website/verify_proof_mission_003.py'
+      - 'scripts/website/visual_check_proof_mission_003.py'
       - 'test/test_proof_gradient_sovereign.py'
       - 'test/test_proof_mission_002.py'
+      - 'test/test_proof_mission_003.py'
       - 'docs/PROOF_GRADIENT_SOVEREIGN_WEBSITE.md'
       - 'docs/PROOF_MISSION_002_ASCENSION_PROTOCOL_WEBSITE.md'
+      - 'docs/PROOF_MISSION_003_CAPABILITY_CONSTELLATION_WEBSITE.md'
       - '.github/workflows/goalos-agialpha-ascension-v86-final.yml'
       - '.github/workflows/goalos-agialpha-ascension-v86-smoke-test.yml'
 
@@ -49,8 +55,11 @@ jobs:
       - name: Add Public Proof Mission 001 additively
         run: python3 scripts/website/build_proof_gradient_sovereign.py --site site
 
-      - name: Add Public Proof Mission 002 and Proof Missions hub additively
+      - name: Add Public Proof Mission 002 additively
         run: python3 scripts/website/build_proof_mission_002.py --site site
+
+      - name: Add Public Proof Mission 003 and update the Proof Missions hub additively
+        run: python3 scripts/website/build_proof_mission_003.py --site site
 
       - name: Verify canonical content, links, claims, and files
         run: python3 scripts/verify_goalos_agialpha_ascension_website_v86.py --site site
@@ -61,10 +70,14 @@ jobs:
       - name: Verify Public Proof Mission 002
         run: python3 scripts/website/verify_proof_mission_002.py --site site
 
+      - name: Verify Public Proof Mission 003
+        run: python3 scripts/website/verify_proof_mission_003.py --site site
+
       - name: Run Proof Missions regression tests
         run: |
           python3 -m unittest discover -s test -p 'test_proof_gradient_sovereign.py' -v
           python3 -m unittest discover -s test -p 'test_proof_mission_002.py' -v
+          python3 -m unittest discover -s test -p 'test_proof_mission_003.py' -v
 
       - name: Install Playwright Chromium
         run: |
@@ -80,6 +93,9 @@ jobs:
 
       - name: Run Public Proof Mission 002 browser QA
         run: python3 scripts/website/visual_check_proof_mission_002.py --site site --screenshots
+
+      - name: Run Public Proof Mission 003 and Proof Missions hub browser QA
+        run: python3 scripts/website/visual_check_proof_mission_003.py --site site --screenshots
 
       - name: Reject archives and private operator material in public site
         shell: bash
@@ -104,6 +120,7 @@ jobs:
             site/proof-missions.html
             site/proof-gradient-challenge.html
             site/proof-mission-002.html
+            site/proof-mission-003.html
             site/downloads/proof-gradient/
             site/downloads/proof-missions/
             site/qa/
