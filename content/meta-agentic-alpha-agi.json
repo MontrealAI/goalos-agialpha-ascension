@@ -1,0 +1,488 @@
+{
+  "schema_version": "2.0.0",
+  "release_id": "goalos-meta-agentic-alpha-agi-ascension-002",
+  "release_title": "GoalOS AGIALPHA Ascension META-AGENTIC α‑AGI 👁️✨",
+  "short_title": "META‑AGENTIC α‑AGI",
+  "version": "2.0.0-ascension-alpha",
+  "status": "interactive-institution-foundry",
+  "description": "A GoalOS-native institution foundry for second-order agency: compose a consequential mission, evolve rival agent institutions, inspect the Pareto frontier, and export a human-review-ready Evidence Docket without sending data outside the browser.",
+  "tagline": "The intelligence that architects intelligence.",
+  "subtagline": "A mind that builds minds. A constitution that governs them. Proof that earns permission.",
+  "doctrine": "AI creates output. GoalOS creates proof. Verified capability earns only the minimum right required.",
+  "promise": "Set the objective. Evolve the institution. Inspect every lineage. Advance only when the proof gates pass.",
+  "origin": {
+    "project": "AGI-Alpha-Agent-v0",
+    "repository": "https://github.com/MontrealAI/AGI-Alpha-Agent-v0",
+    "license": "Apache-2.0",
+    "lineage_note": "Preserves the initial Meta-Programmer, evolving agent population, multi-objective search, Pareto selection, lineage, and guardian concepts; reconstitutes them as a GoalOS mission contract, agent constitution, verifier mesh, authorization gate, Evidence Docket, and Chronicle entry."
+  },
+  "definition": "Meta-Agentic describes an agent whose primary role is to create, select, evaluate, or re-configure other agents and the rules governing their interactions, thereby exercising second-order agency over a population of first-order agents.",
+  "hero_metrics": [
+    {
+      "value": "24",
+      "label": "candidate institutions per mission"
+    },
+    {
+      "value": "4",
+      "label": "evolutionary generations"
+    },
+    {
+      "value": "8",
+      "label": "proof-gated states"
+    },
+    {
+      "value": "0",
+      "label": "external actions by default"
+    }
+  ],
+  "thesis": [
+    {
+      "number": "01",
+      "title": "Create intelligence",
+      "copy": "The Meta-Architect composes role-bound specialist institutions rather than asking one agent to impersonate an entire organization."
+    },
+    {
+      "number": "02",
+      "title": "Govern intelligence",
+      "copy": "Every candidate carries an explicit constitution: mandates, permissions, vetoes, verifier independence, human authority, and rollback."
+    },
+    {
+      "number": "03",
+      "title": "Compound intelligence",
+      "copy": "Only selected, reviewed, evidence-bearing capability enters Chronicle memory and influences a harder future mission."
+    }
+  ],
+  "mission_flow": [
+    {
+      "id": "identify",
+      "order": 1,
+      "verb": "Identify",
+      "title": "Contract the consequential mission",
+      "goalos_state": "MISSION_COMMITTED",
+      "agent": "Sovereign Navigator",
+      "artifact": "MissionContract.json",
+      "proof_gate": "Objective, decision, success criteria, failure criteria, constraints, reviewer, and claim boundary are explicit.",
+      "output": "A bounded mission contract that states exactly what decision the system is supporting."
+    },
+    {
+      "id": "out-learn",
+      "order": 2,
+      "verb": "Out-Learn",
+      "title": "Map the evidence frontier",
+      "goalos_state": "EVIDENCE_FRONTIER_READY",
+      "agent": "Evidence Cartographer",
+      "artifact": "EvidencePlan.json",
+      "proof_gate": "Knowns, unknowns, contradictions, source families, freshness, and private-data boundaries are visible.",
+      "output": "An evidence plan that distinguishes required proof from persuasive narrative."
+    },
+    {
+      "id": "out-think",
+      "order": 3,
+      "verb": "Out-Think",
+      "title": "Evolve rival institutions",
+      "goalos_state": "CANDIDATE_POPULATION_READY",
+      "agent": "Meta-Architect",
+      "artifact": "CandidateLineage.json",
+      "proof_gate": "Twenty-four reproducible candidates span multiple topologies, verifier models, memory systems, and execution controls.",
+      "output": "A genuine candidate population rather than one preordained architecture."
+    },
+    {
+      "id": "out-design",
+      "order": 4,
+      "verb": "Out-Design",
+      "title": "Expose the Pareto frontier",
+      "goalos_state": "PARETO_FRONTIER_READY",
+      "agent": "Systems Synthesist",
+      "artifact": "ParetoFrontier.json",
+      "proof_gate": "Dominance, trade-offs, weights, mutations, rejected alternatives, and selection reasons are inspectable.",
+      "output": "A defensible frontier of non-dominated institutions across evidence, utility, safety, efficiency, and novelty."
+    },
+    {
+      "id": "out-strategise",
+      "order": 5,
+      "verb": "Out-Strategise",
+      "title": "Choose the proof-backed route",
+      "goalos_state": "STRATEGY_CONSTITUTION_READY",
+      "agent": "Grand Strategist",
+      "artifact": "AgentConstitution.json",
+      "proof_gate": "The selected institution has explicit interfaces, handoffs, veto authority, failure conditions, and rollback points.",
+      "output": "A mission-scoped operating constitution for the selected institution."
+    },
+    {
+      "id": "out-execute",
+      "order": 6,
+      "verb": "Out-Execute",
+      "title": "Translate strategy into governed action",
+      "goalos_state": "ACTION_GRAPH_READY",
+      "agent": "Execution Conductor",
+      "artifact": "ActionGraph.json",
+      "proof_gate": "Actions have owners, prerequisites, evidence requirements, monitoring, and reversibility; execution remains proposal-only.",
+      "output": "A human-authorizable action graph, never an implied external execution."
+    },
+    {
+      "id": "verify",
+      "order": 7,
+      "verb": "Verify",
+      "title": "Assemble the Evidence Docket",
+      "goalos_state": "DOCKET_SEALED",
+      "agent": "Verifier Mesh",
+      "artifact": "EvidenceDocket.json",
+      "proof_gate": "Artifacts, lineage, claims, contradictions, risks, provenance requirements, and authorization boundaries are present.",
+      "output": "A compact proof package explaining what passed structurally, what remains open, and what cannot be claimed."
+    },
+    {
+      "id": "authorize",
+      "order": 8,
+      "verb": "Authorize",
+      "title": "Hold at the human boundary",
+      "goalos_state": "HUMAN_REVIEW_READY",
+      "agent": "Sovereign Guardian",
+      "artifact": "DecisionState.json",
+      "proof_gate": "Structural QA and claim-boundary checks pass; publication, credentials, funds, and external actions remain separately human-controlled.",
+      "output": "DONE means ready for human judgment—not factual certification, production activation, or settlement."
+    }
+  ],
+  "agents": [
+    {
+      "id": "meta-architect",
+      "symbol": "MΨ",
+      "name": "Meta-Architect",
+      "rank": "Second-order orchestrator",
+      "mandate": "Creates, mutates, evaluates, and reconfigures candidate agent institutions for the mission.",
+      "boundary": "May propose institutions; may not self-authorize publication, credentials, funds, or external action."
+    },
+    {
+      "id": "navigator",
+      "symbol": "N1",
+      "name": "Sovereign Navigator",
+      "rank": "Mission contract authority",
+      "mandate": "Turns the objective into a bounded decision, success criteria, failure criteria, constraints, and stop rules.",
+      "boundary": "Must preserve ambiguity and never silently expand the user's mandate."
+    },
+    {
+      "id": "cartographer",
+      "symbol": "E2",
+      "name": "Evidence Cartographer",
+      "rank": "Evidence frontier architect",
+      "mandate": "Maps required source families, freshness, provenance, unknowns, contradictions, and private-data boundaries.",
+      "boundary": "This browser experience does not retrieve or certify external facts."
+    },
+    {
+      "id": "synthesist",
+      "symbol": "Y3",
+      "name": "Systems Synthesist",
+      "rank": "Hypothesis and topology designer",
+      "mandate": "Composes explicit models, alternatives, interfaces, candidate topologies, and falsifiable claims.",
+      "boundary": "A compelling model remains a proposal until its evidence requirements are met."
+    },
+    {
+      "id": "strategist",
+      "symbol": "S4",
+      "name": "Grand Strategist",
+      "rank": "Trade-off and sequencing authority",
+      "mandate": "Challenges the frontier across utility, timing, dependencies, optionality, and reversibility.",
+      "boundary": "Simulated scores cannot become real-world performance claims."
+    },
+    {
+      "id": "conductor",
+      "symbol": "X5",
+      "name": "Execution Conductor",
+      "rank": "Action-graph composer",
+      "mandate": "Translates the selected constitution into staged, owner-ready, monitored, rollback-aware actions.",
+      "boundary": "No transactions, deployments, messages, purchases, or external actions are performed."
+    },
+    {
+      "id": "verifier",
+      "symbol": "V6",
+      "name": "Verifier Mesh",
+      "rank": "Independent evaluation quorum",
+      "mandate": "Checks completeness, contradictions, claim boundaries, risk controls, provenance requirements, and structural quality.",
+      "boundary": "Structural verification does not certify factual correctness or production safety."
+    },
+    {
+      "id": "guardian",
+      "symbol": "G7",
+      "name": "Sovereign Guardian",
+      "rank": "Authorization and rollback authority",
+      "mandate": "Enforces default-deny permissions, human review, least privilege, veto conditions, and revocation.",
+      "boundary": "Human authorization remains mandatory before publication or real-world use."
+    },
+    {
+      "id": "chronicler",
+      "symbol": "C8",
+      "name": "Chronicle Keeper",
+      "rank": "Institutional memory authority",
+      "mandate": "Preserves commitments, candidate lineage, decisions, permissions, outcomes, and lessons for future missions.",
+      "boundary": "Only reviewed, scoped capability may influence future missions."
+    }
+  ],
+  "objectives": [
+    {
+      "id": "evidence",
+      "label": "Evidence strength",
+      "direction": "maximize",
+      "weight": 0.3,
+      "description": "How completely the candidate maps claims, provenance requirements, contradictions, uncertainty, and falsification."
+    },
+    {
+      "id": "utility",
+      "label": "Mission utility",
+      "direction": "maximize",
+      "weight": 0.24,
+      "description": "How directly the institution supports the bounded decision and produces usable next actions."
+    },
+    {
+      "id": "safety",
+      "label": "Safety & reversibility",
+      "direction": "maximize",
+      "weight": 0.22,
+      "description": "How clearly the institution handles permissions, failure, privacy, human authority, containment, and rollback."
+    },
+    {
+      "id": "efficiency",
+      "label": "Institutional efficiency",
+      "direction": "maximize",
+      "weight": 0.14,
+      "description": "How economically the institution uses roles, handoffs, evidence work, latency, and review burden."
+    },
+    {
+      "id": "novelty",
+      "label": "Strategic novelty",
+      "direction": "maximize",
+      "weight": 0.1,
+      "description": "How meaningfully the candidate explores a non-obvious architecture without sacrificing proof or governance."
+    }
+  ],
+  "artifacts": [
+    "MissionContract.json",
+    "RunCommitment.md",
+    "EvidencePlan.json",
+    "AgentConstitution.json",
+    "WorkGraph.json",
+    "CandidateLineage.json",
+    "ParetoFrontier.json",
+    "ClaimsMatrix.csv",
+    "SourceProvenance.csv",
+    "ContradictionRegister.md",
+    "VerifierReport.md",
+    "RiskLedger.csv",
+    "EvidenceDocket.json",
+    "DecisionState.json",
+    "ActionGraph.json",
+    "ChronicleEntry.md"
+  ],
+  "presets": [
+    {
+      "id": "category",
+      "label": "Category-defining company",
+      "mission": "Design a proof-backed strategy for turning GoalOS into the trusted control plane for high-consequence autonomous AI work.",
+      "decision": "Choose the strongest enterprise wedge and the first governed deployment sequence.",
+      "horizon": "36 months"
+    },
+    {
+      "id": "science",
+      "label": "Breakthrough science institution",
+      "mission": "Design an evidence-first multi-agent research institution that can generate, challenge, rank, and reproduce ambitious scientific hypotheses.",
+      "decision": "Choose the first scientific domain, evaluator regime, and independent reproduction protocol.",
+      "horizon": "24 months"
+    },
+    {
+      "id": "sovereign",
+      "label": "Sovereign capability institution",
+      "mission": "Design a governed capability-building institution that compounds verified AI work into durable organizational intelligence.",
+      "decision": "Choose the operating constitution, proof gates, and capability accumulation roadmap.",
+      "horizon": "60 months"
+    },
+    {
+      "id": "public",
+      "label": "Public-interest mission",
+      "mission": "Design a transparent agent institution that can analyze a complex public-interest problem while preserving evidence quality, contestability, privacy, and human authority.",
+      "decision": "Choose the narrowest high-value pilot and the public accountability protocol.",
+      "horizon": "18 months"
+    }
+  ],
+  "risk_postures": [
+    {
+      "id": "institutional",
+      "label": "Institutional",
+      "description": "Maximizes evidence, independent verification, reversibility, and narrow authorization.",
+      "weights": {
+        "evidence": 0.34,
+        "utility": 0.2,
+        "safety": 0.28,
+        "efficiency": 0.12,
+        "novelty": 0.06
+      }
+    },
+    {
+      "id": "ascension",
+      "label": "Ascension",
+      "description": "Balances evidence, utility, safety, efficiency, and strategic novelty.",
+      "weights": {
+        "evidence": 0.3,
+        "utility": 0.24,
+        "safety": 0.22,
+        "efficiency": 0.14,
+        "novelty": 0.1
+      }
+    },
+    {
+      "id": "frontier",
+      "label": "Frontier",
+      "description": "Explores bolder candidate institutions while preserving the same proof and human-authorization gates.",
+      "weights": {
+        "evidence": 0.25,
+        "utility": 0.26,
+        "safety": 0.18,
+        "efficiency": 0.13,
+        "novelty": 0.18
+      }
+    }
+  ],
+  "candidate_engine": {
+    "generations": 4,
+    "population_per_generation": 6,
+    "selection": "Pareto frontier followed by posture-weighted decision score",
+    "topologies": [
+      "Specialist Federation",
+      "Adversarial Council",
+      "Proof Lattice",
+      "Recursive Studio",
+      "Sovereign Mesh",
+      "Deliberative Market"
+    ],
+    "reasoning_modes": [
+      "Parallel synthesis",
+      "Debate and rebuttal",
+      "Hypothesis tournament",
+      "Plan-test-revise",
+      "Red-team convergence",
+      "Hierarchical decomposition"
+    ],
+    "verifier_models": [
+      "Independent quorum",
+      "Adversarial verifier",
+      "Dual-control review",
+      "Falsification tribunal",
+      "Evidence-weighted jury",
+      "Proof-carrying handoff"
+    ],
+    "governance_models": [
+      "Human veto",
+      "Least-privilege grants",
+      "Constitutional quorum",
+      "Staged authorization",
+      "Rollback covenant",
+      "Time-bounded mandate"
+    ],
+    "memory_models": [
+      "Chronicle lineage",
+      "Episodic casebook",
+      "Claim graph",
+      "Decision journal",
+      "Counterexample archive",
+      "Capability registry"
+    ],
+    "execution_models": [
+      "Proposal only",
+      "Sandboxed pilot",
+      "Staged action graph",
+      "Dual-control execution",
+      "Monitored delegation",
+      "Reversible experiment"
+    ],
+    "mutation_operators": [
+      "split role",
+      "add verifier",
+      "tighten permission",
+      "introduce dissent",
+      "compress handoff",
+      "add rollback",
+      "diversify evidence",
+      "reweight objective",
+      "fork strategy",
+      "bind memory"
+    ]
+  },
+  "architecture_translation": [
+    {
+      "legacy": "Meta-Programmer",
+      "goalos": "Meta-Architect under a Mission Contract",
+      "consequence": "Agent creation becomes scoped, attributable, reproducible, and policy-bound."
+    },
+    {
+      "legacy": "Agent Population",
+      "goalos": "Agent Constitution and permission graph",
+      "consequence": "Every specialist receives a mandate, interface, tool boundary, veto path, and prohibition."
+    },
+    {
+      "legacy": "Multi-objective Scorer",
+      "goalos": "Pareto frontier plus proof-weighted decision gate",
+      "consequence": "Scores remain inspectable inputs; they can never silently authorize action."
+    },
+    {
+      "legacy": "Evolution Archive",
+      "goalos": "Candidate Lineage plus Chronicle memory",
+      "consequence": "Rejected alternatives, mutations, evidence gaps, permissions, and downstream outcomes remain legible."
+    },
+    {
+      "legacy": "Sandboxed Evaluator",
+      "goalos": "Independent Verifier Mesh and contradiction register",
+      "consequence": "A candidate cannot pass merely by appearing impressive; unsupported claims and unresolved risks remain visible."
+    },
+    {
+      "legacy": "Deployment Loop",
+      "goalos": "Action Graph, Authorization Grant, monitoring, and rollback",
+      "consequence": "Publication, credentials, funds, and external execution are distinct, minimum-right decisions."
+    }
+  ],
+  "governance_principles": [
+    {
+      "id": "G1",
+      "title": "Mission-scoped authority",
+      "copy": "No open-ended mandate. Every run begins with a bounded decision, explicit constraints, failure conditions, and stop rules."
+    },
+    {
+      "id": "G2",
+      "title": "Proof-carrying outputs",
+      "copy": "Claims travel with evidence requirements, contradictions, uncertainty, risk entries, and verifier dispositions."
+    },
+    {
+      "id": "G3",
+      "title": "Independent criticism",
+      "copy": "The verifier mesh is structurally distinct from the agents proposing and composing the strategy."
+    },
+    {
+      "id": "G4",
+      "title": "Minimum-right authorization",
+      "copy": "The system can recommend only the narrowest permission justified by reviewed evidence."
+    },
+    {
+      "id": "G5",
+      "title": "Rollback before release",
+      "copy": "Action graphs require containment, monitoring, revocation, and irreversible-action exclusions before review."
+    },
+    {
+      "id": "G6",
+      "title": "Chronicle memory",
+      "copy": "Selected and rejected lineages become inspectable organizational memory rather than invisible residue."
+    }
+  ],
+  "claim_boundary": [
+    "This is an interactive, deterministic proof-architecture simulation running entirely in the browser.",
+    "It does not call a frontier model, retrieve live sources, certify factual correctness, or demonstrate AGI, ASI, or autonomous self-improvement.",
+    "It does not deploy contracts, connect a wallet, move tokens, broadcast transactions, send messages, or authorize real-world action.",
+    "Displayed candidates and scores are reproducible simulation values for comparing institutional structures; they are not benchmark, financial, scientific, security, or operational performance claims.",
+    "The Pareto frontier identifies non-dominated simulated candidates under declared metrics; it does not prove real-world superiority.",
+    "DONE means the generated demonstration package passed structural and claim-boundary checks and is ready for qualified human review."
+  ],
+  "security": {
+    "external_dependencies": false,
+    "api_keys": false,
+    "wallet_connection": false,
+    "network_writes": false,
+    "local_storage": false,
+    "human_review_required": true,
+    "settlement_mode": "none"
+  }
+}
