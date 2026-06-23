@@ -67,6 +67,14 @@ on:
       - 'scripts/browser_check_goalos_ethereum_mainnet_v87.py'
       - 'test/test_ethereum_mainnet_website_restore.py'
       - 'docs/ETHEREUM_MAINNET_WEBSITE_RESTORE.md'
+      - 'content/meta-agentic-alpha-agi.json'
+      - 'website/features/meta-agentic-alpha-agi/**'
+      - 'scripts/website/build_meta_agentic_alpha_agi.py'
+      - 'scripts/website/verify_meta_agentic_alpha_agi.py'
+      - 'scripts/website/visual_check_meta_agentic_alpha_agi.py'
+      - 'test/test_meta_agentic_alpha_agi_website.py'
+      - 'docs/META_AGENTIC_ALPHA_AGI_WEBSITE.md'
+      - 'README_UPLOAD_META_AGENTIC_ALPHA_AGI.md'
       - '.github/workflows/goalos-agialpha-ascension-v86-final.yml'
       - '.github/workflows/goalos-agialpha-ascension-v86-smoke-test.yml'
 
@@ -221,6 +229,31 @@ jobs:
       - name: Browser-test the restored Mainnet record
         run: python3 scripts/browser_check_goalos_ethereum_mainnet_v87.py --site site --screenshots
 
+      - name: Build GoalOS AGIALPHA Ascension META-AGENTIC α-AGI additively
+        run: python3 scripts/website/build_meta_agentic_alpha_agi.py --site site
+
+      - name: Assert META-Agentic α-AGI generated outputs exist
+        shell: bash
+        run: |
+          set -euo pipefail
+          for file in \
+            site/meta-agentic-alpha-agi.html \
+            site/meta-agentic-alpha-agi-architecture.html \
+            site/meta-agentic-alpha-agi-manifest.json \
+            site/assets/meta-agentic-alpha-agi.css \
+            site/assets/meta-agentic-alpha-agi.js \
+            site/data/meta-agentic-alpha-agi.json \
+            site/index.html \
+            site/qa/meta-agentic-alpha-agi-build.json; do
+            test -s "$file" || { echo "Missing generated META-Agentic output: $file"; find site -maxdepth 3 -type f | sort; exit 1; }
+          done
+
+      - name: Verify, regression-test, and browser-test META-Agentic α-AGI
+        run: |
+          python3 scripts/website/verify_meta_agentic_alpha_agi.py --site site
+          python3 -m unittest discover -s test -p 'test_meta_agentic_alpha_agi_website.py' -v
+          python3 scripts/website/visual_check_meta_agentic_alpha_agi.py --site site --output site/qa/meta-agentic-alpha-agi
+
       - name: Reject archives and private operator material in public site
         shell: bash
         run: |
@@ -245,6 +278,9 @@ jobs:
             echo '- Public Proof Missions 001–008 generated in strict dependency order.'
             echo '- Mission 008 restored to the full-bleed sovereign series design.'
             echo '- Ethereum Mainnet deployment record restored at /ethereum-mainnet.html.'
+            echo '- META-Agentic α-AGI experience generated additively at /meta-agentic-alpha-agi.html.'
+            echo '- Architecture dossier generated at /meta-agentic-alpha-agi-architecture.html.'
+            echo '- Deterministic browser-local proof simulation; no model call, wallet, transaction, or external action.'
             echo '- Mission 006, Mission 007, Mission 008, and Mainnet generated-page preflights passed.'
             echo '- 48 GoalOS-created Mainnet contracts represented.'
             echo '- 48/48 recorded source verification; 0 failures.'
@@ -269,6 +305,12 @@ jobs:
             site/proof-mission-007.html
             site/proof-mission-008.html
             site/ethereum-mainnet.html
+            site/meta-agentic-alpha-agi.html
+            site/meta-agentic-alpha-agi-architecture.html
+            site/meta-agentic-alpha-agi-manifest.json
+            site/assets/meta-agentic-alpha-agi.css
+            site/assets/meta-agentic-alpha-agi.js
+            site/data/meta-agentic-alpha-agi.json
             site/downloads/proof-gradient/
             site/downloads/proof-missions/
             site/qa/
