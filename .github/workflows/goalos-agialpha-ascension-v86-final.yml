@@ -35,6 +35,12 @@ on:
       - 'test/test_proof_mission_003.py'
       - 'test/test_proof_mission_004.py'
       - 'test/test_proof_mission_005.py'
+      - 'content/proof-mission-006-long-horizon.json'
+      - 'docs/PROOF_MISSION_006_LONG_HORIZON_WEBSITE.md'
+      - 'scripts/website/build_proof_mission_006.py'
+      - 'scripts/website/verify_proof_mission_006.py'
+      - 'scripts/website/visual_check_proof_mission_006.py'
+      - 'test/test_proof_mission_006.py'
       - 'docs/PROOF_GRADIENT_SOVEREIGN_WEBSITE.md'
       - 'docs/PROOF_MISSION_002_ASCENSION_PROTOCOL_WEBSITE.md'
       - 'docs/PROOF_MISSION_003_CAPABILITY_CONSTELLATION_WEBSITE.md'
@@ -56,7 +62,7 @@ jobs:
   build-verify-browser-test:
     name: Build, preserve, verify, and browser-test v86
     runs-on: ubuntu-latest
-    timeout-minutes: 50
+    timeout-minutes: 55
     permissions:
       contents: read
     steps:
@@ -175,6 +181,10 @@ jobs:
             echo '- No scientific, transfer, composition, institutional, or federation result is predeclared.'
             echo '- No wallet, RPC endpoint, API key, or blockchain transaction used.'
           } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Visual check Mission 006
+        run: |
+          python scripts/website/visual_check_proof_mission_006.py --site site --output site/qa/proof-mission-006
 
       - name: Upload human-review preview and QA evidence
         if: always()

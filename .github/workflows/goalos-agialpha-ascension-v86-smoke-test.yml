@@ -34,6 +34,12 @@ on:
       - 'test/test_proof_mission_003.py'
       - 'test/test_proof_mission_004.py'
       - 'test/test_proof_mission_005.py'
+      - 'content/proof-mission-006-long-horizon.json'
+      - 'docs/PROOF_MISSION_006_LONG_HORIZON_WEBSITE.md'
+      - 'scripts/website/build_proof_mission_006.py'
+      - 'scripts/website/verify_proof_mission_006.py'
+      - 'scripts/website/visual_check_proof_mission_006.py'
+      - 'test/test_proof_mission_006.py'
       - 'docs/PROOF_GRADIENT_SOVEREIGN_WEBSITE.md'
       - 'docs/PROOF_MISSION_002_ASCENSION_PROTOCOL_WEBSITE.md'
       - 'docs/PROOF_MISSION_003_CAPABILITY_CONSTELLATION_WEBSITE.md'
@@ -52,7 +58,7 @@ jobs:
   smoke-test:
     name: Build, preserve, verify, and layout-test Proof Missions
     runs-on: ubuntu-latest
-    timeout-minutes: 50
+    timeout-minutes: 55
     steps:
       - uses: actions/checkout@v4
 
@@ -137,6 +143,10 @@ jobs:
             echo 'Private operator material found inside public site.'
             exit 1
           fi
+
+      - name: Visual check Mission 006
+        run: |
+          python scripts/website/visual_check_proof_mission_006.py --site site --output site/qa/proof-mission-006
 
       - name: Upload QA and preview
         if: always()
