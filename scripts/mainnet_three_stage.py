@@ -294,7 +294,7 @@ def act_cert():
  path=ACT/'activation-certificate.json'; existing=read(path)
  if existing.get('stage')=='C_PRODUCTION_ACTIVATION' and existing.get('status') in {'PRODUCTION_ACTIVATION_EFFECTIVE','ACTIVATED'}:
   return existing
- c={'schemaVersion':'1.0','stage':'C_PRODUCTION_ACTIVATION','requires':['valid Stage-B certificate','monitoring','bounded live canary','Ledger activation'],'status':'BLOCKED_UNTIL_STAGE_B_VERIFIED','LIVE_CANARY_COMPLETE':'NO','PRODUCTION_ACTIVATION_EFFECTIVE':'NO'}; write(path,c); return c
+ c={'schemaVersion':'1.0','stage':'C_PRODUCTION_ACTIVATION','chainId':1,'activationScope':'CONTROLLED_PRODUCTION_CANARY_V1','requires':['valid Stage-B certificate','monitoring','bounded live canary','Ledger activation'],'status':'BLOCKED_UNTIL_STAGE_B_VERIFIED','LIVE_CANARY_COMPLETE':'NO','PRODUCTION_ACTIVATION_EFFECTIVE':'NO','USER_FUNDS_AUTHORIZED':'NO','PUBLIC_UNBOUNDED_RELIANCE':'NO','evidence':[]}; write(path,c); return c
 def validate_stage_b_certificate(c):
  errs=[]
  if c.get('schemaVersion')!='1.0' or c.get('stage')!='B_POSTDEPLOYMENT_VERIFICATION': errs.append('wrong Stage-B schema')
@@ -309,8 +309,45 @@ def validate_stage_c_certificate(c):
  errs=[]
  if c.get('schemaVersion')!='1.0' or c.get('stage')!='C_PRODUCTION_ACTIVATION': errs.append('wrong Stage-C schema')
  if c.get('status') not in {'PRODUCTION_ACTIVATION_EFFECTIVE','ACTIVATED'}: errs.append(f'Stage-C is not complete: {c.get("status","MISSING")}')
- for key in ['stageBReference','monitoring','boundedLiveCanary','accountingReconciliation','ledgerActivation','evidence']:
+ required_flags={
+  'LIVE_CANARY_COMPLETE':'YES',
+  'PRODUCTION_ACTIVATION_EFFECTIVE':'YES',
+  'USER_FUNDS_AUTHORIZED':'NO',
+  'PUBLIC_UNBOUNDED_RELIANCE':'NO',
+ }
+ for key, expected in required_flags.items():
+  if c.get(key)!=expected: errs.append(f'Stage-C requires {key}={expected}')
+ if c.get('chainId')!=1: errs.append('Stage-C requires chainId=1')
+ if c.get('activationScope')!='CONTROLLED_PRODUCTION_CANARY_V1': errs.append('Stage-C requires controlled production canary scope')
+ for key in ['sourceIdentityReference','stageBReference','monitoring','boundedLiveCanary','accountingReconciliation','authorityReadback','pauseRecovery','ledgerActivation','evidence']:
   if not c.get(key): errs.append(f'Missing Stage-C evidence field: {key}')
+ for key in ['monitoring','boundedLiveCanary','accountingReconciliation','authorityReadback','pauseRecovery','ledgerActivation']:
+  section=c.get(key)
+  if isinstance(section,dict) and section.get('status')!='PASS': errs.append(f'Stage-C section is not PASS: {key}')
+ for ref_key in ['sourceIdentityReference','stageBReference']:
+  ref=c.get(ref_key)
+  if isinstance(ref,dict):
+   if not ref.get('path') or not ref.get('sha256'): errs.append(f'{ref_key} requires path and sha256')
+   elif sha(ref['path'])!=ref.get('sha256'): errs.append(f'{ref_key} hash mismatch: {ref.get("path")}')
+ required_paths={
+  'qa/mainnet-activation/canary-receipts.json',
+  'qa/mainnet-activation/canary-events.json',
+  'qa/mainnet-activation/canary-monitoring.json',
+  'qa/mainnet-activation/canary-accounting.json',
+  'qa/mainnet-activation/canary-authority-readback.json',
+  'qa/mainnet-activation/canary-reconciliation.json',
+  'qa/mainnet-activation/ledger-activation-attestation.json',
+ }
+ seen=set()
+ for ev in c.get('evidence') or []:
+  if not isinstance(ev,dict): errs.append('Stage-C evidence entries must be objects'); continue
+  p=ev.get('path'); expected_hash=ev.get('sha256')
+  if not p or not expected_hash: errs.append('Stage-C evidence entry requires path and sha256'); continue
+  seen.add(p)
+  if sha(p)!=expected_hash: errs.append(f'Stage-C evidence hash mismatch: {p}')
+  if p.startswith('qa/mainnet-activation/') and not ev.get('chainId'): errs.append(f'Stage-C chain metadata missing: {p}')
+ missing=sorted(required_paths-seen)
+ if missing: errs.extend([f'Missing required Stage-C evidence reference: {p}' for p in missing])
  return errs
 def validate_stage_complete(path, stage, statuses):
  c=read(path)
