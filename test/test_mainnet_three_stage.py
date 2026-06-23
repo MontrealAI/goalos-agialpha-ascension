@@ -119,6 +119,36 @@ def test_stage_b_minimal_status_string_does_not_validate():
         if old is None: bp.unlink(missing_ok=True)
         else: bp.write_text(old)
 
+def test_stage_c_minimal_or_manual_pass_certificate_does_not_validate():
+    ap=m3.ACT/'activation-certificate.json'
+    old=ap.read_text() if ap.exists() else None
+    ap.parent.mkdir(parents=True, exist_ok=True)
+    ap.write_text(json.dumps({
+        'schemaVersion':'1.0',
+        'stage':'C_PRODUCTION_ACTIVATION',
+        'status':'PRODUCTION_ACTIVATION_EFFECTIVE',
+        'chainId':1,
+        'activationScope':'CONTROLLED_PRODUCTION_CANARY_V1',
+        'LIVE_CANARY_COMPLETE':'YES',
+        'PRODUCTION_ACTIVATION_EFFECTIVE':'YES',
+        'USER_FUNDS_AUTHORIZED':'NO',
+        'PUBLIC_UNBOUNDED_RELIANCE':'NO',
+        'monitoring': {'status':'PASS'},
+        'boundedLiveCanary': {'status':'PASS'},
+        'accountingReconciliation': {'status':'PASS'},
+        'authorityReadback': {'status':'PASS'},
+        'pauseRecovery': {'status':'PASS'},
+        'ledgerActivation': {'status':'PASS'},
+        'sourceIdentityReference': {'path':'qa/mainnet-source-identity/source-identity-certificate.json','sha256':'0x'+'00'*32},
+        'stageBReference': {'path':'qa/mainnet-postdeploy/deployment-verification-certificate.json','sha256':'0x'+'00'*32},
+        'evidence': []
+    }))
+    try:
+        assert m3.validate_stage_complete('qa/mainnet-activation/activation-certificate.json','C_PRODUCTION_ACTIVATION',{'PRODUCTION_ACTIVATION_EFFECTIVE','ACTIVATED'}) is False
+    finally:
+        if old is None: ap.unlink(missing_ok=True)
+        else: ap.write_text(old)
+
 def test_existing_fork_and_complete_plan_are_preserved():
     forkp=m3.PRE/'fork-rehearsal.json'; planp=m3.PRE/'deployment-plan.public.json'
     oldf=forkp.read_text() if forkp.exists() else None; oldp=planp.read_text() if planp.exists() else None

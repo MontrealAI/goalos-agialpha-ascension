@@ -1,6 +1,11 @@
 {
   "LIVE_CANARY_COMPLETE": "NO",
   "PRODUCTION_ACTIVATION_EFFECTIVE": "NO",
+  "PUBLIC_UNBOUNDED_RELIANCE": "NO",
+  "USER_FUNDS_AUTHORIZED": "NO",
+  "activationScope": "CONTROLLED_PRODUCTION_CANARY_V1",
+  "chainId": 1,
+  "evidence": [],
   "requires": [
     "valid Stage-B certificate",
     "monitoring",

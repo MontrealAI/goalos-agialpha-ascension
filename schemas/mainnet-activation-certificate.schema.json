@@ -2,24 +2,58 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "mainnet-activation-certificate",
   "type": "object",
-  "required": ["schemaVersion", "stage", "status", "PRODUCTION_ACTIVATION_EFFECTIVE", "evidence"],
+  "required": ["schemaVersion", "stage", "status", "chainId", "activationScope", "LIVE_CANARY_COMPLETE", "PRODUCTION_ACTIVATION_EFFECTIVE", "USER_FUNDS_AUTHORIZED", "PUBLIC_UNBOUNDED_RELIANCE", "evidence"],
   "properties": {
     "schemaVersion": {"const": "1.0"},
     "stage": {"const": "C_PRODUCTION_ACTIVATION"},
     "status": {"type": "string"},
+    "chainId": {"const": 1},
+    "activationScope": {"const": "CONTROLLED_PRODUCTION_CANARY_V1"},
+    "LIVE_CANARY_COMPLETE": {"enum": ["NO", "YES"]},
     "PRODUCTION_ACTIVATION_EFFECTIVE": {"enum": ["NO", "YES"]},
-    "stageBReference": {"type": "object"},
-    "monitoring": {"type": "object"},
-    "boundedLiveCanary": {"type": "object"},
-    "accountingReconciliation": {"type": "object"},
-    "ledgerActivation": {"type": "object"},
-    "evidence": {"type": "array", "items": {"type": "object", "required": ["path", "sha256"]}}
+    "USER_FUNDS_AUTHORIZED": {"const": "NO"},
+    "PUBLIC_UNBOUNDED_RELIANCE": {"const": "NO"},
+    "sourceIdentityReference": {"$ref": "#/$defs/evidenceReference"},
+    "stageBReference": {"$ref": "#/$defs/evidenceReference"},
+    "monitoring": {"$ref": "#/$defs/passSection"},
+    "boundedLiveCanary": {"$ref": "#/$defs/passSection"},
+    "accountingReconciliation": {"$ref": "#/$defs/passSection"},
+    "authorityReadback": {"$ref": "#/$defs/passSection"},
+    "pauseRecovery": {"$ref": "#/$defs/passSection"},
+    "ledgerActivation": {"$ref": "#/$defs/passSection"},
+    "evidence": {"type": "array", "items": {"$ref": "#/$defs/evidenceReference"}}
   },
   "allOf": [
     {
       "if": {"properties": {"status": {"enum": ["PRODUCTION_ACTIVATION_EFFECTIVE", "ACTIVATED"]}}},
-      "then": {"required": ["stageBReference", "monitoring", "boundedLiveCanary", "accountingReconciliation", "ledgerActivation"]}
+      "then": {
+        "properties": {
+          "LIVE_CANARY_COMPLETE": {"const": "YES"},
+          "PRODUCTION_ACTIVATION_EFFECTIVE": {"const": "YES"}
+        },
+        "required": ["sourceIdentityReference", "stageBReference", "monitoring", "boundedLiveCanary", "accountingReconciliation", "authorityReadback", "pauseRecovery", "ledgerActivation"]
+      }
     }
   ],
+  "$defs": {
+    "evidenceReference": {
+      "type": "object",
+      "required": ["path", "sha256"],
+      "properties": {
+        "path": {"type": "string"},
+        "sha256": {"type": "string", "pattern": "^0x[0-9a-f]{64}$"},
+        "chainId": {"type": "integer"},
+        "blockHash": {"type": "string"},
+        "transactionHash": {"type": "string"}
+      },
+      "additionalProperties": true
+    },
+    "passSection": {
+      "type": "object",
+      "required": ["status"],
+      "properties": {"status": {"const": "PASS"}},
+      "additionalProperties": true
+    }
+  },
   "additionalProperties": true
 }
