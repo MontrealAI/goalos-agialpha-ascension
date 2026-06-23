@@ -1,0 +1,17 @@
+{
+  "activationScope": "CONTROLLED_PRODUCTION_CANARY_V1",
+  "generatedAt": "2026-06-23T12:53:38.529569+00:00",
+  "monitors": [
+    "code",
+    "owner",
+    "roles",
+    "pause",
+    "balances",
+    "liabilities",
+    "outflows",
+    "provider-divergence"
+  ],
+  "privateCredentialsCommitted": false,
+  "schemaVersion": "1.0",
+  "status": "READY_FOR_REVIEW"
+}

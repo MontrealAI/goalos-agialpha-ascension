@@ -1,0 +1,25 @@
+name: Mainnet Activation Prep Readonly
+on:
+  workflow_dispatch:
+jobs:
+  activation-prep:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - run: npm run mainnet:activation:doctor
+      - run: npm run mainnet:activation:inventory
+      - run: npm run mainnet:activation:plan
+      - run: npm run mainnet:activation:fork-rehearsal
+      - name: Assert no local-only signing in CI
+        run: |
+          if npm run mainnet:activation:ledger-sign; then
+            echo "ledger-sign unexpectedly succeeded in CI" >&2
+            exit 1
+          fi

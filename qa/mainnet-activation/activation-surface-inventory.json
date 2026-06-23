@@ -1,0 +1,27 @@
+{
+  "activationScope": "CONTROLLED_PRODUCTION_CANARY_V1",
+  "classes": [
+    "ON_CHAIN_TRANSACTION",
+    "LEDGER_SIGNED_EIP712_ATTESTATION",
+    "OFF_CHAIN_OPERATIONAL_CONFIGURATION",
+    "NO_ACTION_ALREADY_CORRECT"
+  ],
+  "generatedAt": "2026-06-23T12:53:38.530562+00:00",
+  "intendedActions": [
+    {
+      "class": "LEDGER_SIGNED_EIP712_ATTESTATION",
+      "description": "Wallet B signs the hash-bound controlled canary activation statement.",
+      "id": "wallet-b-activation-attestation",
+      "signer": "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+    },
+    {
+      "class": "OFF_CHAIN_OPERATIONAL_CONFIGURATION",
+      "description": "Human operator imports sanitized receipts/events after local Ledger ceremony; no CI broadcast.",
+      "id": "bounded-canary-execution"
+    }
+  ],
+  "schemaVersion": "1.0",
+  "status": "INVENTORY_REQUIRES_LIVE_ABI_REVIEW",
+  "walletA": "0x6c8B8897Fb6b08B4070387233B89b3E9A94eD00E",
+  "walletB": "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"
+}

@@ -1,0 +1,11 @@
+{
+  "contractsSha256": "0x56df86736a60b53d6304eb6d310df3ba8665f358d0a9df945cde5f85c1eabb50",
+  "deploymentScriptsSha256": "0xe103e336b2a8a478c2ab0cbc31e5a3e731223586836654de99a740556401b8d7",
+  "generatedAt": "2026-06-23T12:52:27.878498+00:00",
+  "hardhatConfigSha256": "0x19b9128b253d54264a9c5e8a44096cf17012efa4e98817929e30f4a613d88d2f",
+  "nodeVersion": "v20.20.2",
+  "npmVersion": "npm warn Unknown env config \"http-proxy\". This will stop working in the next major version of npm.\n11.4.2",
+  "packageLockSha256": "0x9739ecf251762c3828813424f8e7d0d3b291611125cf5eafb31fc32479a3f514",
+  "schemaVersion": "1.0",
+  "status": "RECORDED"
+}

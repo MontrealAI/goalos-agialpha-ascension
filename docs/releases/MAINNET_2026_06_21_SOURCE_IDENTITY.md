@@ -1,28 +1,9 @@
-# Ethereum Mainnet source identity — 2026-06-21
+# Mainnet Source Identity
 
-## Result
+Status: `SOURCE_IDENTITY_NOT_PROVEN`
 
-Final identity classification: `SOURCE_IDENTITY_NOT_PROVEN`.
+Exact reproduction proven: `false`
 
-This repository commit is a release-preparation candidate, but exact deployed source identity is not asserted by this document because the historical deployment manifest records `commit = LOCAL_PRIVATE_OPERATOR` and live creation-bytecode/source comparisons have not been completed in this environment. Runtime equivalence may be validated by `npm run release:mainnet:validate` when read-only Mainnet RPC and Etherscan credentials are supplied.
+This document is generated from `qa/mainnet-source-identity/source-identity-certificate.json` and remains fail-closed until 48/48 runtime, creation-input, constructor, Etherscan source/settings, and two-build checks pass.
 
-## Inputs
-
-- Package version: `4.4.0`.
-- Deployment-script historical label: `GoalOS_AGIALPHA_Ascension_Ethereum_Mainnet_Implementation_v4_3_GATE_CLEAN_EVIDENCE_READY`.
-- Candidate Git SHA: `70fd37d64205e5bb21a5c07be22576218e882cf0`.
-- Network / chain ID: `ethereum-mainnet` / `1`.
-- Compiler: Solidity `0.8.28`.
-- Hardhat: `2.28.6`.
-- Deployment timestamp: `2026-06-21T18:45:49.137Z`.
-
-## Comparison coverage
-
-- Runtime-bytecode comparison result: `BLOCKED_PENDING_LIVE_READ_ONLY_VALIDATION` for 48/48 GoalOS-created contracts.
-- Creation-bytecode comparison coverage: `PARTIAL_NOT_PROVEN`; constructor-input and creation-code reconstruction is not asserted here.
-- Etherscan verified-source comparison: repository evidence reports Mainnet verification, but exact source-to-commit identity remains pending independent validation.
-- Metadata-only differences: none asserted; any differences must be documented after bytecode and Etherscan source comparison.
-
-## Claim boundary
-
-The published pre-release tag exists as a deployment record. Exact tagged-commit-to-bytecode reproducibility remains `PENDING` and is not claimed unless this classification is upgraded to `EXACT_DEPLOYED_SOURCE_REPRODUCED_BY_COMMIT` using reproducible evidence.
+Certificate hash: `0x0eee62f251f74b867b7fe0c550e6e5e0ca8ba0ec2ef50689088843a6ab8a1239`
