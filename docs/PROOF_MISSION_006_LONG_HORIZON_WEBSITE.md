@@ -453,3 +453,9 @@ HORIZON_ONLY_NOT_YET_AUTHORIZED
 ```
 
 Mission 007 is a horizon only. It is not active, authorized, executed, accepted, or settled.
+
+## Workflow ordering invariant
+
+`build_proof_mission_006.py` must run before `verify_proof_mission_006.py` and `visual_check_proof_mission_006.py`. The browser checker now performs an immediate generated-page preflight and returns a clear error instead of waiting for a missing selector on a 404 page.
+
+The Mission 006 verifier rebuilds the canonical baseline through `scripts/build_goalos_agialpha_ascension_website_v86.py --out ...`.

@@ -7,8 +7,8 @@ import re
 import shutil
 from pathlib import Path
 
-PAGE = "proof-mission-006.html"
-REQUIRED = [PAGE, "proof-missions.html", "index.html"]
+PAGE = "proof-mission-007.html"
+REQUIRED = [PAGE, "proof-mission-006.html", "proof-missions.html", "index.html"]
 
 
 def norm(value: str) -> str:
@@ -43,7 +43,7 @@ def launch_browser(playwright):
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--site", default="site")
-    parser.add_argument("--output", default="site/qa/proof-mission-006")
+    parser.add_argument("--output", default="site/qa/proof-mission-007")
     parser.add_argument("--screenshots", action="store_true")
     args = parser.parse_args()
 
@@ -67,7 +67,7 @@ def main() -> int:
                 "errors": [
                     "Generated page preflight failed. Missing or empty: "
                     + ", ".join(missing),
-                    "Run scripts/website/build_proof_mission_006.py before browser QA.",
+                    "Run build_proof_mission_006.py and build_proof_mission_007.py before browser QA.",
                 ],
             },
         )
@@ -115,28 +115,28 @@ def main() -> int:
                     "document.documentElement.scrollWidth-document.documentElement.clientWidth"
                 )
                 page.screenshot(
-                    path=str(output / f"proof-mission-006-{label}.png"), full_page=True
+                    path=str(output / f"proof-mission-007-{label}.png"), full_page=True
                 )
                 report[label] = {
                     "title": title,
                     "horizontalOverflowPx": overflow,
-                    "pass": title == "THE LONG HORIZON" and overflow <= 1,
+                    "pass": title == "THE CIVILIZATIONAL COVENANT" and overflow <= 1,
                 }
                 if label == "desktop":
-                    page.wait_for_selector("#lh-route-search", state="visible", timeout=10000)
-                    page.locator("#lh-route-search").fill("Chronicle")
+                    page.wait_for_selector("#cv-route-search", state="visible", timeout=10000)
+                    page.locator("#cv-route-search").fill("Chronicle")
                     page.wait_for_timeout(150)
-                    visible = int(page.locator("#lh-route-visible").inner_text())
+                    visible = int(page.locator("#cv-route-visible").inner_text())
                     report["search"] = {
                         "query": "Chronicle",
                         "visible": visible,
-                        "pass": 1 <= visible < 44,
+                        "pass": 1 <= visible < 48,
                     }
                 page.close()
 
             for relative, key, screenshot_name in (
                 ("proof-missions.html", "hub", "proof-missions-hub"),
-                ("index.html", "homepage", "proof-mission-006-homepage-panel"),
+                ("index.html", "homepage", "proof-mission-007-homepage-panel"),
             ):
                 page = browser.new_page(viewport={"width": 1440, "height": 1000})
                 page.set_content(

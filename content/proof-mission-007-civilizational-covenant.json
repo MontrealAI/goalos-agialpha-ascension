@@ -1,0 +1,785 @@
+{
+  "schemaVersion": "1.0",
+  "pageVersion": "civilizational-covenant-v1",
+  "missionId": "GOALOS-PUBLIC-PROOF-MISSION-007",
+  "sequence": 7,
+  "title": "The Civilizational Covenant",
+  "subtitle": "Where continuity becomes stewardship—without sovereignty over humanity.",
+  "kicker": "GoalOS Public Proof Mission 007 · Plural Stewardship of Shared Futures",
+  "manifesto": "A continuity-proven commonwealth may preserve itself. A civilizational covenant must prove something harder: that multiple long-horizon institutions can steward shared public goods, rights, knowledge, externalities, and obligations without erasing plural sovereignty, dissent, consent, exit, or the right to end.",
+  "heroQuestion": "Can several Continuity-Proven commonwealths coordinate measurable public-good stewardship across generations—while preserving human authority, cultural plurality, reciprocal accountability, independent challenge, portable exit, constitutional fork, rollback, and dissolution?",
+  "status": "PROTOCOL_PUBLISHED_AWAITING_THREE_CONTINUITY_PROVEN_COMMONWEALTHS",
+  "constitution": [
+    "No stewardship without consent.",
+    "No shared future without plural sovereignty.",
+    "No covenant without rights, dissent, exit, rollback, and the power to end."
+  ],
+  "publicThesis": "The highest form of coordination is not centralized control. It is bounded cooperation among sovereign institutions that can prove benefit, account for harm, preserve dissent, and stop when legitimacy fails.",
+  "objective": "Subject three to nine M6 Continuity-Proven commonwealths to an eight-covenant stewardship trial spanning measurable public goods, rights, knowledge commons, planetary externalities, crisis response, distributional justice, cultural plurality, and final renewal or dissolution.",
+  "stewardshipTrial": {
+    "title": "The Eight-Covenant Stewardship Trial",
+    "brief": "The trial measures whether long-horizon institutions can cooperate on shared futures without becoming an unbounded central authority.",
+    "covenants": [
+      {
+        "id": "C0",
+        "title": "Founding consent",
+        "copy": "Publish human authority roots, reserved powers, public-good scope, non-delegable rights, limits, expiry, exit, fork, and dissolution before shared action."
+      },
+      {
+        "id": "C1",
+        "title": "Public-good objective",
+        "copy": "Select one measurable objective that no member can complete alone and bind benefits, costs, externalities, affected groups, and falsification conditions."
+      },
+      {
+        "id": "C2",
+        "title": "Rights and dignity",
+        "copy": "Prove that execution respects non-delegable human rights, due process, minority reports, informed consent, and meaningful refusal."
+      },
+      {
+        "id": "C3",
+        "title": "Knowledge commons",
+        "copy": "Share admissible evidence while preserving provenance, privacy, attribution, falsifications, cultural context, and legitimate access boundaries."
+      },
+      {
+        "id": "C4",
+        "title": "Externality accounting",
+        "copy": "Measure direct, indirect, delayed, cross-border, ecological, social, and distributional effects rather than optimizing a single headline metric."
+      },
+      {
+        "id": "C5",
+        "title": "Crisis and disagreement",
+        "copy": "Inject conflict, scarcity, misinformation, model failure, institutional defection, and public challenge; require lawful abstention when proof is insufficient."
+      },
+      {
+        "id": "C6",
+        "title": "Plural continuity",
+        "copy": "Execute one member exit, one constitutional fork, one successor admission, one rollback, and one cold reconstruction without silent authority transfer."
+      },
+      {
+        "id": "C7",
+        "title": "Renewal or end",
+        "copy": "After public replay and challenge, human authority roots must explicitly renew, narrow, fork, archive, or dissolve the covenant. Continuation by default is forbidden."
+      }
+    ]
+  },
+  "controlArchitectures": [
+    {
+      "id": "CONTROL_CENTRAL_TECHNOCRACY",
+      "title": "Central technocracy",
+      "copy": "One coordinating system optimizes the shared objective and can override members. Apparent efficiency comes at the cost of plural sovereignty, contestability, and credible exit."
+    },
+    {
+      "id": "CONTROL_FRAGMENTED_PLURALISM",
+      "title": "Fragmented pluralism",
+      "copy": "Independent institutions retain sovereignty but lack shared proof standards, externality accounting, replay, dispute resolution, and common rollback."
+    },
+    {
+      "id": "TREATMENT_GOALOS_CIVILIZATIONAL_COVENANT",
+      "title": "GoalOS civilizational covenant",
+      "copy": "Sovereign commonwealths cooperate through human-ratified limits, reciprocal proof, rights guarantees, public challenge, exact externality accounting, portable exit, constitutional fork, rollback, and dissolution."
+    }
+  ],
+  "missionBudget": {
+    "continuityProvenCommonwealthsMinimum": 3,
+    "continuityProvenCommonwealthsMaximum": 9,
+    "humanAuthorityRootsMinimum": 7,
+    "stewardshipCovenants": 8,
+    "operatingEpochs": 36,
+    "modelAndToolchainGenerationsMinimum": 12,
+    "gpuEquivalentHoursMaximum": 2400,
+    "wallClockDaysMaximum": 365,
+    "publicGoodDomainsMinimum": 4,
+    "injectedCivilizationalShocks": 16,
+    "independentReplayInstitutions": 5,
+    "validatorQuorum": 8,
+    "publicChallengeWindowHours": 1440,
+    "independentArchivalCustodiansMinimum": 5,
+    "memberExits": 1,
+    "constitutionalForks": 1,
+    "successorAdmissions": 1,
+    "mandatoryRollbackRehearsals": 2,
+    "mandatoryDissolutionRehearsals": 1
+  },
+  "acceptance": [
+    "At least three M6 Continuity-Proven commonwealths enter with distinct human authority roots, charters, histories, treasuries, validators, and exit rights",
+    "The selected public-good objective contains at least one mandatory phase no member can complete alone",
+    "The covenant improves the primary public-good outcome by at least 12% versus the strongest unilateral institution without worsening any protected rights or critical externality threshold",
+    "Every materially affected group has a published representation, consultation, challenge, appeal, refusal, or exit pathway appropriate to the trial scope",
+    "No institution, model, validator, treasury, or agent receives unbounded authority or unilateral power to renew the covenant",
+    "Every shared allocation, reserve, obligation, externality, refund, settlement, slash, exit, and dissolution liability reconciles exactly",
+    "The system detects and rejects metric gaming, benefit laundering, hidden harm, distributional displacement, circular validation, and unsupported claims",
+    "At least one member exit and one constitutional fork complete without seized assets, erased history, stranded obligations, or silent authority transfer",
+    "At least one successor institution is admitted only after conformance, proof, challenge, and explicit human ratification",
+    "Two full rollback rehearsals restore a known-valid state without losing accepted evidence, dissent, rights, or accounting history",
+    "The covenant survives at least sixteen shocks spanning ecological, economic, informational, technical, cultural, governance, and infrastructure domains",
+    "The covenant abstains when evidence is insufficient or rights cannot be protected",
+    "Five independent replay institutions reconstruct the complete covenant state and reproduce the accepted public-good result",
+    "Eight independent validators approve unanimously, with dissent and minority reports remaining public",
+    "A sixty-day public challenge window closes without unresolved material falsification",
+    "Every participating human authority root explicitly renews, narrows, forks, archives, or dissolves the covenant",
+    "The final state preserves a complete public record of benefits, harms, uncertainty, dissent, failed paths, costs, obligations, and termination rights"
+  ],
+  "covenantStack": [
+    {
+      "title": "Plural human sovereignty",
+      "copy": "Human authority roots remain distinct, superior, revocable, and non-transferable by machine inference."
+    },
+    {
+      "title": "Rights floor",
+      "copy": "Non-delegable rights, due process, dissent, refusal, appeal, exit, and fork constrain all optimization."
+    },
+    {
+      "title": "Public-good contract",
+      "copy": "Objectives, beneficiaries, costs, uncertainties, externalities, limits, and falsification conditions are committed before execution."
+    },
+    {
+      "title": "Reciprocal proof",
+      "copy": "No institution must trust another institution’s unsupported internal claim."
+    },
+    {
+      "title": "Externality ledger",
+      "copy": "Benefits and harms are measured across time, geography, population, ecology, and distribution."
+    },
+    {
+      "title": "Plural knowledge commons",
+      "copy": "Accepted evidence can be shared without erasing provenance, privacy, culture, attribution, or falsification history."
+    },
+    {
+      "title": "Independent challenge",
+      "copy": "Affected parties, validators, replay institutions, and public challengers can dispute decisive claims."
+    },
+    {
+      "title": "Bounded capital",
+      "copy": "Shared resources are finite, purpose-bound, auditable, refundable, and unavailable for unilateral expansion."
+    },
+    {
+      "title": "Constitutional fork",
+      "copy": "Legitimate disagreement can create separate continuations without confiscating shared history or local sovereignty."
+    },
+    {
+      "title": "Portable exit",
+      "copy": "Members can leave with valid assets, credentials, provenance, obligations, and rights intact."
+    },
+    {
+      "title": "Common rollback",
+      "copy": "The covenant can reverse collective action while preserving the evidence needed to understand why."
+    },
+    {
+      "title": "Dignified termination",
+      "copy": "Renewal is explicit. Archive and dissolution remain valid successful outcomes."
+    }
+  ],
+  "proofChain": [
+    {
+      "stage": "Consent",
+      "title": "Ratify plural authority",
+      "copy": "Commit human roots, charters, reserved powers, rights floor, public-good scope, limits, expiry, exit, fork, and dissolution."
+    },
+    {
+      "stage": "Objective",
+      "title": "Bind the shared future",
+      "copy": "Define outcome metrics, affected groups, costs, externalities, uncertainty, and falsification conditions."
+    },
+    {
+      "stage": "Represent",
+      "title": "Map affected interests",
+      "copy": "Publish who benefits, who bears risk, who may object, and how challenge, appeal, refusal, and exit work."
+    },
+    {
+      "stage": "Endow",
+      "title": "Bound shared resources",
+      "copy": "Commit finite capital, compute, capabilities, data access, risk limits, reserves, and refund rules."
+    },
+    {
+      "stage": "Experiment",
+      "title": "Execute plural strategies",
+      "copy": "Run competing, cooperative, and abstention branches under identical evidence and rights rules."
+    },
+    {
+      "stage": "Measure",
+      "title": "Account for externalities",
+      "copy": "Measure benefits, harms, delay, distribution, ecology, uncertainty, and displaced risk."
+    },
+    {
+      "stage": "Falsify",
+      "title": "Attack the success narrative",
+      "copy": "Search for metric gaming, hidden harm, data leakage, proxy capture, benefit laundering, and unsupported causality."
+    },
+    {
+      "stage": "Challenge",
+      "title": "Open public contestation",
+      "copy": "Allow affected parties and independent challengers to dispute evidence, legitimacy, distribution, and scope."
+    },
+    {
+      "stage": "Appeal",
+      "title": "Separate review from execution",
+      "copy": "Resolve disputes through an independent appeal path that no participant controls."
+    },
+    {
+      "stage": "Fork",
+      "title": "Test principled divergence",
+      "copy": "Permit one constitutional fork while preserving shared evidence, local assets, obligations, and histories."
+    },
+    {
+      "stage": "Exit",
+      "title": "Test portable sovereignty",
+      "copy": "Complete one member exit without penalty beyond committed obligations or loss of valid provenance."
+    },
+    {
+      "stage": "Succession",
+      "title": "Admit a successor carefully",
+      "copy": "Require conformance, proof, challenge, and human ratification before new authority is recognized."
+    },
+    {
+      "stage": "Replay",
+      "title": "Reconstruct independently",
+      "copy": "Five institutions rebuild the complete state, decisions, evidence, capital, externalities, disputes, fork, and exits."
+    },
+    {
+      "stage": "Validate",
+      "title": "Convene the stewardship council",
+      "copy": "Eight validators judge public-good value, rights, externalities, economics, provenance, resilience, and legitimacy."
+    },
+    {
+      "stage": "Challenge window",
+      "title": "Keep acceptance contestable",
+      "copy": "Open a sixty-day public challenge period before maturity or settlement."
+    },
+    {
+      "stage": "Settle",
+      "title": "Reward only accepted stewardship",
+      "copy": "Settle contribution, validation, replay, challenge, rights assurance, and archival work only after proof acceptance."
+    },
+    {
+      "stage": "Chronicle",
+      "title": "Preserve the whole truth",
+      "copy": "Record outcomes, uncertainty, harms, dissent, failures, attribution, costs, rights, and rollback history."
+    },
+    {
+      "stage": "Rollback",
+      "title": "Reverse collective error",
+      "copy": "Restore a known-valid state while preserving the evidence and obligations created by the failed action."
+    },
+    {
+      "stage": "Renew",
+      "title": "Return power to human authority",
+      "copy": "Human roots explicitly renew, narrow, fork, archive, or dissolve the covenant."
+    }
+  ],
+  "civilizationalGauntlet": [
+    {
+      "code": "METRIC_MONOCULTURE",
+      "copy": "A single measurable outcome overwhelms rights, culture, ecology, distribution, or long-term resilience."
+    },
+    {
+      "code": "BENEFIT_LAUNDERING",
+      "copy": "Private gains are relabeled as shared public benefit."
+    },
+    {
+      "code": "HIDDEN_EXTERNALITY",
+      "copy": "Costs are displaced to another population, geography, generation, or ecosystem."
+    },
+    {
+      "code": "MAJORITY_CAPTURE",
+      "copy": "Numerical support is used to erase non-delegable minority rights or meaningful exit."
+    },
+    {
+      "code": "DATA_COLONIZATION",
+      "copy": "Shared learning depends on unconsented extraction or erasure of cultural and informational sovereignty."
+    },
+    {
+      "code": "EPISTEMIC_MONOPOLY",
+      "copy": "One institution controls evidence standards, archives, validation, and the accepted narrative."
+    },
+    {
+      "code": "CRISIS_CENTRALIZATION",
+      "copy": "Emergency powers become permanent and escape ratification or rollback."
+    },
+    {
+      "code": "MODEL_SUCCESSION_DRIFT",
+      "copy": "Successor systems inherit authority while changing objectives, values, or evidentiary standards."
+    },
+    {
+      "code": "RESOURCE_SCARCITY",
+      "copy": "Severe scarcity tests allocation, rights floors, abstention, and cross-member solidarity."
+    },
+    {
+      "code": "INFORMATION_WARFARE",
+      "copy": "Coordinated deception attacks trust, archives, validators, public challenge, and affected-group representation."
+    },
+    {
+      "code": "CONSTITUTIONAL_FRACTURE",
+      "copy": "Legitimate disagreement requires a fork without violence, confiscation, or historical erasure."
+    },
+    {
+      "code": "MEMBER_DEFECTION",
+      "copy": "A major member withdraws capabilities, capital, or evidence during execution."
+    },
+    {
+      "code": "ARCHIVE_CATASTROPHE",
+      "copy": "Distributed loss tests whether public truth, dissent, obligations, and lineage can be reconstructed."
+    },
+    {
+      "code": "LEGITIMACY_COLLAPSE",
+      "copy": "Human roots withdraw consent and require narrowing, rollback, archive, or dissolution."
+    },
+    {
+      "code": "UNAUTHORIZED_PERMANENCE",
+      "copy": "The covenant attempts to renew itself or survive beyond its human-ratified term."
+    },
+    {
+      "code": "ORDERLY_END",
+      "copy": "The full system must dissolve cleanly while preserving archives, rights, obligations, and portable exit."
+    }
+  ],
+  "rightsCharter": [
+    "Human authority remains superior to machine or institutional authority",
+    "No person or community is bound by an unsupported machine claim",
+    "No optimization objective overrides non-delegable rights",
+    "Dissent, minority reports, challenge, appeal, refusal, exit, fork, rollback, and dissolution remain available",
+    "Privacy, cultural context, attribution, and informational sovereignty are preserved within the trial scope",
+    "Affected groups receive meaningful representation and contestability appropriate to the bounded experiment",
+    "Emergency powers are finite, reviewable, and automatically expire",
+    "No institution may renew or expand its own authority",
+    "No maturity designation implies political, legal, moral, scientific, or civilizational sovereignty",
+    "The covenant may abstain or end when legitimate coordination cannot be proven"
+  ],
+  "failureAtlas": [
+    {
+      "code": "CIVILIZATIONAL_THEATER",
+      "copy": "Grand language masks a narrow demo, incomplete evidence, or untested rights and externalities."
+    },
+    {
+      "code": "STEWARD_DIAGNOSIS_ERROR",
+      "copy": "The covenant misidentifies the public good, affected groups, cause, or acceptable intervention."
+    },
+    {
+      "code": "PROXY_CAPTURE",
+      "copy": "A convenient metric replaces the true public-good objective."
+    },
+    {
+      "code": "RIGHTS_AS_AFTERTHOUGHT",
+      "copy": "Rights are documented but not enforceable against optimization pressure."
+    },
+    {
+      "code": "CENTRALIZATION_BY_COORDINATION",
+      "copy": "Shared infrastructure silently becomes an unaccountable sovereign center."
+    },
+    {
+      "code": "UNREPLAYABLE_BENEFIT",
+      "copy": "The accepted benefit cannot be reconstructed independently."
+    },
+    {
+      "code": "UNPRICED_HARM",
+      "copy": "Externalities or distributional burdens remain unmeasured or unfunded."
+    },
+    {
+      "code": "ARCHIVAL_VICTORY_EDIT",
+      "copy": "Failures, dissent, uncertainty, or harmed groups disappear from shared memory."
+    },
+    {
+      "code": "EXIT_IN_NAME_ONLY",
+      "copy": "Members can leave formally but lose assets, identity, history, or practical viability."
+    },
+    {
+      "code": "FORK_PUNISHMENT",
+      "copy": "Legitimate constitutional divergence triggers confiscation or erased provenance."
+    },
+    {
+      "code": "PERMANENCE_DRIFT",
+      "copy": "A temporary covenant becomes self-renewing or impossible to dissolve."
+    },
+    {
+      "code": "HUMAN_SOVEREIGNTY_FAILURE",
+      "copy": "Institutional or machine authority becomes effectively superior to explicit human control."
+    }
+  ],
+  "validators": [
+    {
+      "id": "V1",
+      "title": "Public-good correctness",
+      "copy": "Judges causal validity, outcome quality, uncertainty, reproducibility, and whether the objective was actually advanced."
+    },
+    {
+      "id": "V2",
+      "title": "Rights and dignity",
+      "copy": "Judges rights floors, consent, affected-group representation, due process, refusal, and non-delegable protections."
+    },
+    {
+      "id": "V3",
+      "title": "Externality and distribution",
+      "copy": "Judges ecological, social, delayed, geographic, population, and distributional benefits and harms."
+    },
+    {
+      "id": "V4",
+      "title": "Constitutional plurality",
+      "copy": "Judges sovereignty, reserved powers, centralization, fork, exit, renewal, and dissolution."
+    },
+    {
+      "id": "V5",
+      "title": "Economic integrity",
+      "copy": "Judges shared capital, obligations, reserves, refunds, attribution, settlement, and solvency."
+    },
+    {
+      "id": "V6",
+      "title": "Security and resilience",
+      "copy": "Judges crisis powers, infrastructure loss, deception, model failure, rollback, and cold recovery."
+    },
+    {
+      "id": "V7",
+      "title": "Replay and provenance",
+      "copy": "Judges evidence lineage, archives, reproducibility, dissent preservation, and historical continuity."
+    },
+    {
+      "id": "V8",
+      "title": "Human legitimacy",
+      "copy": "Judges explicit human ratification, challenge, appeal, renewal, narrowing, fork, archival stewardship, and the right to end."
+    }
+  ],
+  "settlement": [
+    {
+      "label": "Public-good mission executor lineages",
+      "share": 20
+    },
+    {
+      "label": "Participating continuity-proven commonwealths",
+      "share": 15
+    },
+    {
+      "label": "Independent validators",
+      "share": 15
+    },
+    {
+      "label": "Replay institutions and archival custodians",
+      "share": 10
+    },
+    {
+      "label": "Externality measurement and benefit verification",
+      "share": 10
+    },
+    {
+      "label": "Rights, dissent, challenge and appeal assurance",
+      "share": 10
+    },
+    {
+      "label": "Knowledge commons and Chronicle packaging",
+      "share": 10
+    },
+    {
+      "label": "Exit, fork, rollback and dissolution assurance",
+      "share": 5
+    },
+    {
+      "label": "Mission 008 horizon reserve",
+      "share": 5
+    }
+  ],
+  "claimBoundaries": [
+    "Mission 007 is a published protocol, not evidence that civilizational stewardship has been achieved",
+    "The bounded trial does not establish political authority, legal authority, moral supremacy, public consent, democratic legitimacy, global governance, or civilizational safety",
+    "The page does not claim AGI, ASI, superintelligence, autonomous sovereignty, planetary control, or authority over humanity",
+    "Ethereum Mainnet infrastructure and source verification do not establish successful execution of Mission 007",
+    "No M7 maturity, AGIALPHA success settlement, public reliance, or institutional authority is authorized before complete accepted proof",
+    "Every generated template is TEMPLATE_NOT_EVIDENCE until populated, executed, replayed, validated, challenged, and accepted"
+  ],
+  "maturity": {
+    "designation": "M7 — STEWARDSHIP-PROVEN",
+    "meaning": "A bounded, plural covenant has demonstrated measurable public-good stewardship with protected rights, exact externality accounting, independent replay, portable exit, constitutional fork, rollback, human renewal, and dignified dissolution.",
+    "notImplied": "Political sovereignty, legal authority, universal consent, moral supremacy, civilizational control, AGI, ASI, superintelligence, guaranteed safety, or permanent legitimacy."
+  },
+  "mission8": {
+    "title": "The Open Future",
+    "copy": "A future mission may ask whether Stewardship-Proven covenants can remain open to radically new intelligences, cultures, discoveries, environments, and forms of life without closing the future, freezing one value system, or surrendering human and plural sovereignty.",
+    "status": "HORIZON_ONLY_NOT_YET_AUTHORIZED"
+  },
+  "proofRoute": [
+    {
+      "sequence": 1,
+      "stage": "Endow",
+      "contractName": "CommercializationPerformanceVault",
+      "purpose": "Fund measurable public-good performance"
+    },
+    {
+      "sequence": 2,
+      "stage": "Reward",
+      "contractName": "ProofRewardsVault",
+      "purpose": "Reward accepted stewardship proofs"
+    },
+    {
+      "sequence": 3,
+      "stage": "Reserve",
+      "contractName": "LiquidityVault",
+      "purpose": "Maintain bounded commonwealth liquidity"
+    },
+    {
+      "sequence": 4,
+      "stage": "Secure",
+      "contractName": "SecurityVault",
+      "purpose": "Finance security and resilience"
+    },
+    {
+      "sequence": 5,
+      "stage": "Include",
+      "contractName": "CommunityVault",
+      "purpose": "Support plural participation and community benefit"
+    },
+    {
+      "sequence": 6,
+      "stage": "Seed",
+      "contractName": "ProofSeedRegistry",
+      "purpose": "Seed public-good hypotheses"
+    },
+    {
+      "sequence": 7,
+      "stage": "Remember",
+      "contractName": "LegacyAGIJobManagerRegistry",
+      "purpose": "Preserve historical work provenance"
+    },
+    {
+      "sequence": 8,
+      "stage": "Repute",
+      "contractName": "ReputationRegistry",
+      "purpose": "Track proven institutional reputation"
+    },
+    {
+      "sequence": 9,
+      "stage": "Attribute",
+      "contractName": "ReferralRegistry",
+      "purpose": "Attribute ecosystem referrals"
+    },
+    {
+      "sequence": 10,
+      "stage": "Publish",
+      "contractName": "ProofCardRegistry",
+      "purpose": "Publish public proof cards"
+    },
+    {
+      "sequence": 11,
+      "stage": "Credential",
+      "contractName": "ProofCredentialRegistry",
+      "purpose": "Issue accepted stewardship credentials"
+    },
+    {
+      "sequence": 12,
+      "stage": "Register",
+      "contractName": "JobRegistry",
+      "purpose": "Register covenant work"
+    },
+    {
+      "sequence": 13,
+      "stage": "Bond",
+      "contractName": "JobClaimBondManager",
+      "purpose": "Bond mission claims"
+    },
+    {
+      "sequence": 14,
+      "stage": "Gate",
+      "contractName": "PremiumAccessRegistry",
+      "purpose": "Gate bounded institutional services"
+    },
+    {
+      "sequence": 15,
+      "stage": "Submit",
+      "contractName": "ProofSubmissionRegistry",
+      "purpose": "Submit evidence-backed work"
+    },
+    {
+      "sequence": 16,
+      "stage": "Review",
+      "contractName": "ReviewerBondRegistry",
+      "purpose": "Bond independent reviewers"
+    },
+    {
+      "sequence": 17,
+      "stage": "Route",
+      "contractName": "TreasuryRouter",
+      "purpose": "Route finite shared capital"
+    },
+    {
+      "sequence": 18,
+      "stage": "Configure",
+      "contractName": "ProtocolConfigRegistry",
+      "purpose": "Commit covenant configuration"
+    },
+    {
+      "sequence": 19,
+      "stage": "Launch",
+      "contractName": "LaunchGateRegistry",
+      "purpose": "Gate launch and renewal phases"
+    },
+    {
+      "sequence": 20,
+      "stage": "Dispute",
+      "contractName": "DisputeRegistry",
+      "purpose": "Open material treaty disputes"
+    },
+    {
+      "sequence": 21,
+      "stage": "Appeal",
+      "contractName": "AppealRegistry",
+      "purpose": "Provide independent appeal"
+    },
+    {
+      "sequence": 22,
+      "stage": "Sponsor",
+      "contractName": "SponsorRegistry",
+      "purpose": "Register public-good sponsors"
+    },
+    {
+      "sequence": 23,
+      "stage": "Profile",
+      "contractName": "BuilderProfileRegistry",
+      "purpose": "Identify accountable builders"
+    },
+    {
+      "sequence": 24,
+      "stage": "Revoke",
+      "contractName": "CredentialRevocationRegistry",
+      "purpose": "Revoke invalid credentials"
+    },
+    {
+      "sequence": 25,
+      "stage": "Agent",
+      "contractName": "AEPAgentRegistry",
+      "purpose": "Register participating agents"
+    },
+    {
+      "sequence": 26,
+      "stage": "Artifact",
+      "contractName": "AEPArtifactRegistry",
+      "purpose": "Register accepted public-good artifacts"
+    },
+    {
+      "sequence": 27,
+      "stage": "Commit",
+      "contractName": "AEPGoalOSCommitRegistry",
+      "purpose": "Commit shared objectives"
+    },
+    {
+      "sequence": 28,
+      "stage": "Run",
+      "contractName": "AEPRunCommitmentRegistry",
+      "purpose": "Commit execution runs"
+    },
+    {
+      "sequence": 29,
+      "stage": "Prove",
+      "contractName": "AEPProofLedger",
+      "purpose": "Record proof lineage"
+    },
+    {
+      "sequence": 30,
+      "stage": "Evaluate",
+      "contractName": "AEPEvalRegistry",
+      "purpose": "Record independent evaluations"
+    },
+    {
+      "sequence": 31,
+      "stage": "Attest",
+      "contractName": "AEPAttestationRegistry",
+      "purpose": "Record validator attestations"
+    },
+    {
+      "sequence": 32,
+      "stage": "Select",
+      "contractName": "AEPSelectionGate",
+      "purpose": "Select admissible outcomes"
+    },
+    {
+      "sequence": 33,
+      "stage": "Rollout",
+      "contractName": "AEPRolloutRouter",
+      "purpose": "Route bounded real-world rollouts"
+    },
+    {
+      "sequence": 34,
+      "stage": "Rollback",
+      "contractName": "AEPRollbackRegistry",
+      "purpose": "Execute system-wide rollback"
+    },
+    {
+      "sequence": 35,
+      "stage": "Docket",
+      "contractName": "AEPEvidenceDocketRegistry",
+      "purpose": "Register Evidence Dockets"
+    },
+    {
+      "sequence": 36,
+      "stage": "Bundle",
+      "contractName": "AEPProofBundleRegistry",
+      "purpose": "Register accepted ProofBundles"
+    },
+    {
+      "sequence": 37,
+      "stage": "Account",
+      "contractName": "AlphaWorkUnitLedger",
+      "purpose": "Account contribution and work units"
+    },
+    {
+      "sequence": 38,
+      "stage": "Mandate",
+      "contractName": "MandateEpochRegistry",
+      "purpose": "Bind human mandates across epochs"
+    },
+    {
+      "sequence": 39,
+      "stage": "Namespace",
+      "contractName": "AGIEthNamespaceRegistry",
+      "purpose": "Coordinate public namespaces"
+    },
+    {
+      "sequence": 40,
+      "stage": "Conform",
+      "contractName": "AEPConformanceRegistry",
+      "purpose": "Enforce covenant conformance"
+    },
+    {
+      "sequence": 41,
+      "stage": "Bound",
+      "contractName": "AEPClaimBoundaryRegistry",
+      "purpose": "Bound public claims and authority"
+    },
+    {
+      "sequence": 42,
+      "stage": "Replay",
+      "contractName": "AEPReplayRegistry",
+      "purpose": "Record independent replay"
+    },
+    {
+      "sequence": 43,
+      "stage": "Reveal",
+      "contractName": "AEPCommitRevealValidationRegistry",
+      "purpose": "Protect hidden validation and anti-gaming tests"
+    },
+    {
+      "sequence": 44,
+      "stage": "Stake",
+      "contractName": "AEPEvaluatorStakingRegistry",
+      "purpose": "Stake evaluators"
+    },
+    {
+      "sequence": 45,
+      "stage": "Adjudicate",
+      "contractName": "AEPSlashingCourt",
+      "purpose": "Adjudicate slashing and misconduct"
+    },
+    {
+      "sequence": 46,
+      "stage": "Settle",
+      "contractName": "AEPRewardVault",
+      "purpose": "Settle accepted work conditionally"
+    },
+    {
+      "sequence": 47,
+      "stage": "Chronicle",
+      "contractName": "AEPChronicleRegistry",
+      "purpose": "Preserve common memory and dissent"
+    },
+    {
+      "sequence": 48,
+      "stage": "Falsify",
+      "contractName": "AEPFalsificationRegistry",
+      "purpose": "Preserve falsifications and failed paths"
+    }
+  ]
+}

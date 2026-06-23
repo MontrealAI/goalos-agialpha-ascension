@@ -13,14 +13,14 @@ def load(p): return json.loads(Path(p).read_text())
 def fail(m): raise AssertionError(m)
 def strip(t,s,e):
     if t.count(s)!=1 or t.count(e)!=1: fail(f'marker count mismatch: {s}')
-    return re.sub(re.escape(s)+r'.*?'+re.escape(e),'',t,count=1,flags=re.S)
+    return re.sub(r'(?:\r?\n)?'+re.escape(s)+r'.*?'+re.escape(e)+r'(?:\r?\n)?','\n',t,count=1,flags=re.S)
 def run(cmd,cwd):
     r=subprocess.run(cmd,cwd=cwd,capture_output=True,text=True)
     if r.returncode: raise RuntimeError('command failed: '+' '.join(cmd)+'\n'+r.stdout+'\n'+r.stderr)
 
 def build_baseline(repo):
     td=tempfile.TemporaryDirectory(prefix='goalos-m6-baseline-'); out=Path(td.name)/'site'
-    run([sys.executable,'scripts/generate_goalos_agialpha_ascension_v86_final.py','--source','website/v86_actual_site','--output',str(out)],repo)
+    run([sys.executable,'scripts/build_goalos_agialpha_ascension_website_v86.py','--out',str(out)],repo)
     for s in ['build_proof_gradient_sovereign.py','build_proof_mission_002.py','build_proof_mission_003.py','build_proof_mission_004.py','build_proof_mission_005.py']:
         run([sys.executable,'scripts/website/'+s,'--site',str(out)],repo)
     return td,out
@@ -49,7 +49,7 @@ def verify(site,repo):
     home=(site/'index.html').read_text()
     hub=(site/'proof-missions.html').read_text()
     m5=(site/'proof-mission-005.html').read_text()
-    check('THE LONG <span>HORIZON</span>' in page,'hero missing')
+    check('THE <span>LONG HORIZON</span>' in page,'hero missing')
     check('M6 — CONTINUITY-PROVEN' in json.dumps(c,ensure_ascii=False),'maturity designation missing')
     check(c['status'].replace('_',' ') in page,'mission status missing')
     check('No continuity result predeclared' in page,'claim boundary footer missing')
