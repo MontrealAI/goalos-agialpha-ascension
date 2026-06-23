@@ -12,7 +12,7 @@ def sha_file(p): return hashlib.sha256(p.read_bytes()).hexdigest()
 def write(rel,obj):
     p=ROOT/rel; p.parent.mkdir(parents=True,exist_ok=True); p.write_text(json.dumps(obj,indent=2,sort_keys=True)+'\n')
 def validate(_args=None):
-    sources=['qa/mainnet-release-state.json','deployments/ethereum-mainnet.agialpha.latest.json','qa/mainnet-postdeploy/verification-evidence.json','config/ethereum-mainnet.contracts.json','qa/mainnet-postdeploy/authority-readback.json','qa/mainnet-postdeploy/phase-b-grants-readback.json','qa/mainnet-postdeploy/wallet-a-zero-authority.json']
+    sources=['qa/mainnet-release-state.json','deployments/ethereum-mainnet.agialpha.latest.json','qa/mainnet-postdeploy/verification-evidence.json','config/ethereum-mainnet.contracts.json','qa/mainnet-postdeploy/authority-readback.json','qa/mainnet-postdeploy/phase-b-grants-readback.json','qa/mainnet-postdeploy/seed-validation.json','qa/mainnet-postdeploy/wallet-a-zero-authority.json']
     loaded={}; hashes={}
     failures=[]
     for rel in sources:
@@ -23,7 +23,7 @@ def validate(_args=None):
     if failures:
         status='FAIL'
     else:
-        state=loaded['qa/mainnet-release-state.json']; manifest=loaded['deployments/ethereum-mainnet.agialpha.latest.json']; ver=loaded['qa/mainnet-postdeploy/verification-evidence.json']; registry=loaded['config/ethereum-mainnet.contracts.json']; auth=loaded['qa/mainnet-postdeploy/authority-readback.json']; phase=loaded['qa/mainnet-postdeploy/phase-b-grants-readback.json']; zero=loaded['qa/mainnet-postdeploy/wallet-a-zero-authority.json']
+        state=loaded['qa/mainnet-release-state.json']; manifest=loaded['deployments/ethereum-mainnet.agialpha.latest.json']; ver=loaded['qa/mainnet-postdeploy/verification-evidence.json']; registry=loaded['config/ethereum-mainnet.contracts.json']; auth=loaded['qa/mainnet-postdeploy/authority-readback.json']; phase=loaded['qa/mainnet-postdeploy/phase-b-grants-readback.json']; seed=loaded['qa/mainnet-postdeploy/seed-validation.json']; zero=loaded['qa/mainnet-postdeploy/wallet-a-zero-authority.json']
         contracts=manifest.get('contracts') or []
         goalos=[c for c in contracts if c.get('classification')!='external']
         checks={
@@ -35,13 +35,14 @@ def validate(_args=None):
             'goalosContracts': len(goalos)==48,
             'transactions': len(manifest.get('transactions') or [])==48 and len(set(manifest.get('transactions') or []))==48,
             'operatorVerification': ver.get('summary',{}).get('verified')==48 and ver.get('summary',{}).get('failed')==0,
-            'phaseBGrants': state.get('summary',{}).get('PHASE_B_GRANTS')=='14/14' and len(manifest.get('phaseBGrants') or [])==14,
+            'phaseBGrants': state.get('summary',{}).get('PHASE_B_GRANTS')=='14/14' and len(manifest.get('phaseBGrants') or [])==14 and seed.get('phaseBGrants')==14 and seed.get('status')=='PASSED_NO_STAGE_B',
+            'phaseBReadbackPendingHonest': phase.get('status') in {'REQUIRES_LIVE_RPC_VALIDATION','PENDING_EXTERNAL_INPUT','PASSED'},
             'walletB': manifest.get('walletB','').lower()==WALLET_B.lower() and (auth.get('walletB','').lower()==WALLET_B.lower() or auth.get('permanentAuthority') in ('Wallet B / Ledger','WALLET_B_LEDGER')),
-            'walletAZero': state.get('summary',{}).get('WALLET_A_RESIDUAL_MANAGED_ROLES')==0 and (auth.get('walletAManagedRoleCount',0)==0 or auth.get('walletAManagedRoles',0)==0) and (zero.get('walletAManagedRoles',0)==0 or zero.get('managedRoles',0)==0),
+            'walletAZero': state.get('summary',{}).get('WALLET_A_RESIDUAL_MANAGED_ROLES')==0 and zero.get('managedRoleCount')==0,
         }
         failures=[k for k,v in checks.items() if not v]
         status='PASS' if not failures else 'FAIL'
-    report={'status':status,'chainId':1,'deploymentPath':'DIRECT_OPERATOR_NO_CERTIFICATE','goalosContracts':48,'registryEntries':49,'operatorVerification':'48/48','phaseBGrants':'14/14','walletAManagedRoles':0,'mainnetConfigured':True,'sourceEvidenceSha256':hashes,'failures':failures,'generatedAt':'2026-06-21T00:00:00Z'}
+    report={'status':status,'chainId':1,'deploymentPath':'DIRECT_OPERATOR_NO_CERTIFICATE','goalosContracts':48,'registryEntries':49,'operatorVerification':'48/48','phaseBGrants':'14/14','walletAManagedRoles':0,'mainnetConfigured':True,'phaseBGrantEvidenceSource':'operator_seed_validation_and_manifest','phaseBGrantLiveReadback': 'PENDING_EXTERNAL_INPUT' if loaded.get('qa/mainnet-postdeploy/phase-b-grants-readback.json',{}).get('status')=='REQUIRES_LIVE_RPC_VALIDATION' else loaded.get('qa/mainnet-postdeploy/phase-b-grants-readback.json',{}).get('status'),'sourceEvidenceSha256':hashes,'failures':failures,'generatedAt':'2026-06-21T00:00:00Z'}
     write('qa/mainnet-postdeploy/operator-evidence-validation.json',report)
     print(json.dumps(report,indent=2,sort_keys=True))
     if status!='PASS': raise SystemExit(1)

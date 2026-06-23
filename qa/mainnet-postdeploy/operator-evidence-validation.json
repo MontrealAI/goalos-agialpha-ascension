@@ -6,6 +6,8 @@
   "goalosContracts": 48,
   "mainnetConfigured": true,
   "operatorVerification": "48/48",
+  "phaseBGrantEvidenceSource": "operator_seed_validation_and_manifest",
+  "phaseBGrantLiveReadback": "PENDING_EXTERNAL_INPUT",
   "phaseBGrants": "14/14",
   "registryEntries": 49,
   "sourceEvidenceSha256": {
@@ -13,6 +15,7 @@
     "deployments/ethereum-mainnet.agialpha.latest.json": "f1d5a1cd31ae92f9e7ed5846b4aea4636c5e7073d20e4c3a7583061f8e93f64d",
     "qa/mainnet-postdeploy/authority-readback.json": "62759b82f651c87ac516a0b4cff30ec8820384e67a45f610227d0c8f34749126",
     "qa/mainnet-postdeploy/phase-b-grants-readback.json": "861242dc0f306ddcca3b261b9c54798d553f86befb1c02e6ba4bd28fb98eabcf",
+    "qa/mainnet-postdeploy/seed-validation.json": "ae641be3fbf3d24e1caabaf7532dabde49216dfa20710eddb86e47100d65a51d",
     "qa/mainnet-postdeploy/verification-evidence.json": "16aa643ea3b4979fbf0df385f3d219b703dd0733cbeeb4c0dc61b97edc87e0b8",
     "qa/mainnet-postdeploy/wallet-a-zero-authority.json": "f556b68987eb3c27557ef15f20be373700b24e53f299fc37f48051a0251007a6",
     "qa/mainnet-release-state.json": "0980ddf18c2ec986c371e00edc6d96eccd173e6979b372790cf492f306db1d8d"

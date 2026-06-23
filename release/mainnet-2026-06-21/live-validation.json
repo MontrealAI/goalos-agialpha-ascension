@@ -1,5 +1,10 @@
 {
   "etherscanSourceVerifications": "0/48",
+  "missingInputs": [
+    "PRIMARY_MAINNET_RPC_URL",
+    "SECONDARY_MAINNET_RPC_URL",
+    "ETHERSCAN_API_KEY"
+  ],
   "phaseBGrants": "14/14",
   "reason": "Optional independent read-only live validation requires PRIMARY_MAINNET_RPC_URL, SECONDARY_MAINNET_RPC_URL, and ETHERSCAN_API_KEY in the execution environment. Secret values are never printed.",
   "receiptsSuccessful": "0/48",

@@ -69,8 +69,7 @@ def main():
         emit(json.dumps({'status':'BLOCKED_STALE_SCANNER_EVIDENCE','summaryPath':str(path),'staleEvidence':stale_evidence}, indent=2)); return 2
     tool_failures=data.get('toolFailures') or []
     provenance_only=tool_failures and all(str(f.get('status'))=='LEGACY_WITHOUT_PROVENANCE' for f in tool_failures)
-    environment_unavailable_only=tool_failures and all(str(f.get('status')) in {'UNAVAILABLE','LEGACY_WITHOUT_PROVENANCE'} for f in tool_failures)
-    if (tool_failures and not provenance_only and not environment_unavailable_only) or data.get('unavailableMandatoryTools') or data.get('triageErrors'):
+    if (tool_failures and not provenance_only) or data.get('unavailableMandatoryTools') or data.get('triageErrors'):
         emit('BLOCKED: mandatory scanner/triage failure')
         emit(json.dumps({'summaryPath':str(path),'toolFailures':data.get('toolFailures',[]),'unavailableMandatoryTools':data.get('unavailableMandatoryTools',[]),'triageErrors':data.get('triageErrors',[])}, indent=2)); return 2
     if derived and not provenance_only:

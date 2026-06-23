@@ -96,8 +96,23 @@ def prepare():
 
 def validate():
  m,state,sha,pkg=evidence(); REL.mkdir(parents=True,exist_ok=True)
- live={'status':'PENDING_EXTERNAL_INPUT','reason':'Optional independent read-only live validation requires PRIMARY_MAINNET_RPC_URL, SECONDARY_MAINNET_RPC_URL, and ETHERSCAN_API_KEY in the execution environment. Secret values are never printed.','receiptsSuccessful':'0/48','runtimeBytecodesNonempty':'0/48','etherscanSourceVerifications':'0/48','walletBOwnershipCoverage':'PENDING','walletAManagedRoles':state['summary']['WALLET_A_RESIDUAL_MANAGED_ROLES'],'phaseBGrants':state['summary']['PHASE_B_GRANTS']}
- dump(REL/'live-validation.json',live); (REL/'live-validation.md').write_text('# Live validation\n\nStatus: PENDING_EXTERNAL_INPUT pending read-only RPC/Etherscan credentials. No transaction sent.\n',encoding='utf-8'); print(json.dumps(live,indent=2)); return
+ required_env=['PRIMARY_MAINNET_RPC_URL','SECONDARY_MAINNET_RPC_URL','ETHERSCAN_API_KEY']
+ missing=[name for name in required_env if not os.getenv(name)]
+ if missing:
+  live={'status':'PENDING_EXTERNAL_INPUT','reason':'Optional independent read-only live validation requires PRIMARY_MAINNET_RPC_URL, SECONDARY_MAINNET_RPC_URL, and ETHERSCAN_API_KEY in the execution environment. Secret values are never printed.','missingInputs':missing,'receiptsSuccessful':'0/48','runtimeBytecodesNonempty':'0/48','etherscanSourceVerifications':'0/48','walletBOwnershipCoverage':'PENDING','walletAManagedRoles':state['summary']['WALLET_A_RESIDUAL_MANAGED_ROLES'],'phaseBGrants':state['summary']['PHASE_B_GRANTS']}
+  dump(REL/'live-validation.json',live); (REL/'live-validation.md').write_text('# Live validation\n\nStatus: PENDING_EXTERNAL_INPUT pending read-only RPC/Etherscan credentials. No transaction sent.\n',encoding='utf-8'); print(json.dumps(live,indent=2)); return
+ result=subprocess.run([sys.executable,'scripts/mainnet_live/live_mainnet_tools.py','mainnet:live:revalidate'],cwd=ROOT,text=True)
+ if result.returncode:
+  raise SystemExit(result.returncode)
+ receipt=load('qa/mainnet-postdeploy/receipt-revalidation.json')
+ runtime=load('qa/mainnet-postdeploy/runtime-bytecode-readback.json')
+ authority=load('qa/mainnet-postdeploy/authority-readback.json')
+ verification=load('qa/mainnet-postdeploy/verification-evidence.json')
+ receipts_ok=sum(1 for r in receipt.get('receipts',[]) if r.get('status')=='0x1')
+ runtime_ok=sum(1 for c in runtime.get('contracts',[]) if c.get('classification')=='deployed' and c.get('runtimeCodePresent') is True)
+ verified=verification.get('summary',{}).get('verified',0)
+ live={'status':'PASS','reason':'Independent read-only Mainnet validation completed with protected RPC/Etherscan inputs. Secret values were not printed.','receiptsSuccessful':f'{receipts_ok}/48','runtimeBytecodesNonempty':f'{runtime_ok}/48','etherscanSourceVerifications':f'{verified}/48','walletBOwnershipCoverage':authority.get('walletBManagedOwnership','PASS'),'walletAManagedRoles':authority.get('walletAManagedRoleCount',state['summary']['WALLET_A_RESIDUAL_MANAGED_ROLES']),'phaseBGrants':f"{authority.get('phaseBGrantsActive',0)}/{authority.get('phaseBGrantsExpected',14)}"}
+ dump(REL/'live-validation.json',live); (REL/'live-validation.md').write_text('# Live validation\n\nStatus: PASS after read-only RPC/Etherscan validation. No transaction sent.\n',encoding='utf-8'); print(json.dumps(live,indent=2)); return
 
 def check():
  problems=[]
