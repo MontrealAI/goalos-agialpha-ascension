@@ -13,6 +13,8 @@ on:
       - 'content/proof-mission-003-capability-constellation.json'
       - 'content/proof-mission-004-sovereign-institution.json'
       - 'content/proof-mission-005-interinstitutional-accord.json'
+      - 'content/proof-mission-006-long-horizon.json'
+      - 'content/proof-mission-007-civilizational-covenant.json'
       - 'data/mainnet/v4.4.0-mainnet-2026-06-21.json'
       - 'scripts/website/build_proof_gradient_sovereign.py'
       - 'scripts/website/verify_proof_gradient_sovereign.py'
@@ -29,22 +31,26 @@ on:
       - 'scripts/website/build_proof_mission_005.py'
       - 'scripts/website/verify_proof_mission_005.py'
       - 'scripts/website/visual_check_proof_mission_005.py'
+      - 'scripts/website/build_proof_mission_006.py'
+      - 'scripts/website/verify_proof_mission_006.py'
+      - 'scripts/website/visual_check_proof_mission_006.py'
+      - 'scripts/website/build_proof_mission_007.py'
+      - 'scripts/website/verify_proof_mission_007.py'
+      - 'scripts/website/visual_check_proof_mission_007.py'
       - 'test/test_proof_gradient_sovereign.py'
       - 'test/test_proof_mission_002.py'
       - 'test/test_proof_mission_003.py'
       - 'test/test_proof_mission_004.py'
       - 'test/test_proof_mission_005.py'
-      - 'content/proof-mission-006-long-horizon.json'
-      - 'docs/PROOF_MISSION_006_LONG_HORIZON_WEBSITE.md'
-      - 'scripts/website/build_proof_mission_006.py'
-      - 'scripts/website/verify_proof_mission_006.py'
-      - 'scripts/website/visual_check_proof_mission_006.py'
       - 'test/test_proof_mission_006.py'
+      - 'test/test_proof_mission_007.py'
       - 'docs/PROOF_GRADIENT_SOVEREIGN_WEBSITE.md'
       - 'docs/PROOF_MISSION_002_ASCENSION_PROTOCOL_WEBSITE.md'
       - 'docs/PROOF_MISSION_003_CAPABILITY_CONSTELLATION_WEBSITE.md'
       - 'docs/PROOF_MISSION_004_SOVEREIGN_INSTITUTION_WEBSITE.md'
       - 'docs/PROOF_MISSION_005_INTERINSTITUTIONAL_ACCORD_WEBSITE.md'
+      - 'docs/PROOF_MISSION_006_LONG_HORIZON_WEBSITE.md'
+      - 'docs/PROOF_MISSION_007_CIVILIZATIONAL_COVENANT_WEBSITE.md'
       - '.github/workflows/goalos-agialpha-ascension-v86-final.yml'
       - '.github/workflows/goalos-agialpha-ascension-v86-smoke-test.yml'
 
@@ -56,11 +62,12 @@ env:
 
 jobs:
   smoke-test:
-    name: Build, preserve, verify, and layout-test Proof Missions
+    name: Build, preserve, verify, and layout-test Proof Missions 001–007
     runs-on: ubuntu-latest
-    timeout-minutes: 55
+    timeout-minutes: 75
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -79,11 +86,9 @@ jobs:
       - name: Add Public Proof Mission 003 and generate the three-mission hub
         run: python3 scripts/website/build_proof_mission_003.py --site site
 
-      - name: Verify canonical content before Mission 004 promotion
-        run: python3 scripts/verify_goalos_agialpha_ascension_website_v86.py --site site
-
-      - name: Verify Missions 001–003
+      - name: Verify canonical content and Missions 001–003
         run: |
+          python3 scripts/verify_goalos_agialpha_ascension_website_v86.py --site site
           python3 scripts/website/verify_proof_gradient_sovereign.py --site site
           python3 scripts/website/verify_proof_mission_002.py --site site
           python3 scripts/website/verify_proof_mission_003.py --site site
@@ -107,46 +112,66 @@ jobs:
           python3 scripts/website/visual_check_proof_mission_002.py --site site --screenshots
           python3 scripts/website/visual_check_proof_mission_003.py --site site --screenshots
 
-      - name: Add Public Proof Mission 004 and generate the four-mission hub additively
-        run: python3 scripts/website/build_proof_mission_004.py --site site
+      - name: Add and verify Public Proof Mission 004
+        run: |
+          python3 scripts/website/build_proof_mission_004.py --site site
+          python3 scripts/website/verify_proof_mission_004.py --site site
+          python3 -m unittest discover -s test -p 'test_proof_mission_004.py' -v
+          python3 scripts/website/visual_check_proof_mission_004.py --site site --screenshots
 
-      - name: Verify Public Proof Mission 004, all prior missions, and canonical preservation
-        run: python3 scripts/website/verify_proof_mission_004.py --site site
+      - name: Add and verify Public Proof Mission 005
+        run: |
+          python3 scripts/website/build_proof_mission_005.py --site site
+          python3 scripts/website/verify_proof_mission_005.py --site site
+          python3 -m unittest discover -s test -p 'test_proof_mission_005.py' -v
+          python3 scripts/website/visual_check_proof_mission_005.py --site site --screenshots
 
-      - name: Run Public Proof Mission 004 regression tests
-        run: python3 -m unittest discover -s test -p 'test_proof_mission_004.py' -v
+      - name: Build Public Proof Mission 006 before any Mission 006 verification or browser QA
+        run: python3 scripts/website/build_proof_mission_006.py --site site
 
-      - name: Run Public Proof Mission 004 and four-mission hub browser QA
-        run: python3 scripts/website/visual_check_proof_mission_004.py --site site --screenshots
+      - name: Assert Mission 006 generated outputs exist
+        shell: bash
+        run: |
+          set -euo pipefail
+          for file in site/proof-mission-006.html site/proof-missions.html site/index.html site/qa/proof-mission-006-build.json; do
+            test -s "$file" || { echo "Missing generated Mission 006 output: $file"; find site -maxdepth 2 -type f | sort; exit 1; }
+          done
 
-      - name: Add Public Proof Mission 005 and generate the five-mission hub additively
-        run: python3 scripts/website/build_proof_mission_005.py --site site
+      - name: Verify and browser-test Public Proof Mission 006
+        run: |
+          python3 scripts/website/verify_proof_mission_006.py --site site --repo .
+          python3 -m unittest discover -s test -p 'test_proof_mission_006.py' -v
+          python3 scripts/website/visual_check_proof_mission_006.py --site site --output site/qa/proof-mission-006 --screenshots
 
-      - name: Verify Public Proof Mission 005, all prior missions, and canonical preservation
-        run: python3 scripts/website/verify_proof_mission_005.py --site site
+      - name: Build Public Proof Mission 007 before any Mission 007 verification or browser QA
+        run: python3 scripts/website/build_proof_mission_007.py --site site
 
-      - name: Run Public Proof Mission 005 regression tests
-        run: python3 -m unittest discover -s test -p 'test_proof_mission_005.py' -v
+      - name: Assert Mission 007 generated outputs exist
+        shell: bash
+        run: |
+          set -euo pipefail
+          for file in site/proof-mission-007.html site/proof-mission-006.html site/proof-missions.html site/index.html site/qa/proof-mission-007-build.json; do
+            test -s "$file" || { echo "Missing generated Mission 007 output: $file"; find site -maxdepth 2 -type f | sort; exit 1; }
+          done
 
-      - name: Run Public Proof Mission 005 and five-mission hub browser QA
-        run: python3 scripts/website/visual_check_proof_mission_005.py --site site --screenshots
+      - name: Verify and browser-test Public Proof Mission 007
+        run: |
+          python3 scripts/website/verify_proof_mission_007.py --site site --repo .
+          python3 -m unittest discover -s test -p 'test_proof_mission_007.py' -v
+          python3 scripts/website/visual_check_proof_mission_007.py --site site --output site/qa/proof-mission-007 --screenshots
 
       - name: Reject archives and private operator material in public site
         shell: bash
         run: |
           set -euo pipefail
           if find site \( -name '*.zip' -o -name '*.7z' -o -name '*.tar' -o -name '*.gz' -o -name '*.rar' \) -print | grep -q .; then
-            echo 'Archive file found inside public site.'
+            echo 'Archive file found inside public site. Refusing to publish.'
             exit 1
           fi
           if grep -RIlE 'PRIVATE_MAINNET_DEPLOYER_PRIVATE_KEY|SEED_PHRASE|MNEMONIC|MAINNET_RPC_URL=|ETHERSCAN_API_KEY=' site; then
-            echo 'Private operator material found inside public site.'
+            echo 'Private operator material found inside public site. Refusing to publish.'
             exit 1
           fi
-
-      - name: Visual check Mission 006
-        run: |
-          python scripts/website/visual_check_proof_mission_006.py --site site --output site/qa/proof-mission-006
 
       - name: Upload QA and preview
         if: always()
@@ -161,8 +186,10 @@ jobs:
             site/proof-mission-003.html
             site/proof-mission-004.html
             site/proof-mission-005.html
+            site/proof-mission-006.html
+            site/proof-mission-007.html
             site/downloads/proof-gradient/
             site/downloads/proof-missions/
             site/qa/
-          if-no-files-found: warn
+          if-no-files-found: error
           retention-days: 30
