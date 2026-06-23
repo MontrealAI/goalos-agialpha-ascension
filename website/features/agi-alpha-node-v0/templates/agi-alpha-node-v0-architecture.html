@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Architecture dossier for @@TITLE@@">
+  <meta name="theme-color" content="#060914">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'">
+  <title>Architecture · @@TITLE@@</title>
+  <link rel="stylesheet" href="assets/agi-alpha-node-v0.css">
+</head>
+<body class="aan-page aan-architecture-page">
+  <a class="aan-skip" href="#aan-architecture-main">Skip to architecture</a>
+  <header class="aan-topbar">
+    <a class="aan-brand" href="index.html" aria-label="GoalOS AGIALPHA Ascension home"><span class="aan-brand-mark" aria-hidden="true"><i></i><b>α</b></span><span><strong>GOALOS</strong><small>AGIALPHA ASCENSION</small></span></a>
+    <button class="aan-nav-toggle" id="aan-nav-toggle" type="button" aria-expanded="false" aria-controls="aan-nav">Menu</button>
+    <nav class="aan-nav" id="aan-nav" aria-label="Architecture navigation"><a href="agi-alpha-node-v0.html">Node experience</a><a href="#planes">Operating planes</a><a href="#translation">Traceability</a><a href="#boundaries">Boundaries</a><a href="index.html">Main site</a></nav>
+  </header>
+  <main id="aan-architecture-main">
+    <section class="aan-arch-hero">
+      <p class="aan-eyebrow"><span></span> ARCHITECTURE DOSSIER / NΩ‑01</p>
+      <h1>THE CONSTITUTIONAL<br><em>PROOF NODE</em></h1>
+      <p>From AGI Alpha Node v0’s identity, peer runtime, work units, validators, governance, observability, and treasury concepts to a GoalOS-native system where every consequential machine action is mission-scoped, evidence-bearing, independently evaluated, and held at an explicit authority boundary.</p>
+      <div class="aan-arch-hero-actions"><a class="aan-button aan-button-primary" href="agi-alpha-node-v0.html#command-deck">Enter the command deck</a><a class="aan-button aan-button-secondary" href="@@ORIGIN_URL@@">Inspect original lineage ↗</a></div>
+      <div class="aan-arch-mantra"><span>IDENTITY BEFORE ROUTING</span><i>·</i><span>PROOF BEFORE PERMISSION</span><i>·</i><span>ROLLBACK BEFORE RELEASE</span></div>
+    </section>
+
+    <section class="aan-section aan-arch-map" id="planes" aria-labelledby="aan-planes-title">
+      <div class="aan-section-head"><p class="aan-kicker">SIX OPERATING PLANES / ONE CHRONICLE</p><h2 id="aan-planes-title">The node is a chain of accountable boundaries.</h2></div>
+      <div class="aan-system-map" id="aan-system-map">
+        <article class="identity"><span>01</span><b>IDENTITY PLANE</b><p>Declared node name, role, mission scope, provenance requirement, operator boundary.</p><small>NodeIdentity.json</small></article>
+        <article class="mission"><span>02</span><b>MISSION PLANE</b><p>Objective, decision, success criteria, constraints, stop rules, human reviewer.</p><small>WorkUnitContract.json</small></article>
+        <article class="resource"><span>03</span><b>RESOURCE PLANE</b><p>Capability admission, peer route, energy, latency, concurrency, fallback.</p><small>ResourceEnvelope.json</small></article>
+        <article class="execution"><span>04</span><b>EXECUTION PLANE</b><p>Sandbox plan, normalized work, timing, energy, SLO, receipts, failure telemetry.</p><small>WorkUnitReceipt.json</small></article>
+        <article class="verification"><span>05</span><b>VERIFICATION PLANE</b><p>Independent evaluators, contradiction register, vote rationale, quorum, dissent.</p><small>ValidatorConsensus.json</small></article>
+        <article class="authority"><span>06</span><b>AUTHORITY PLANE</b><p>Default deny, guardian threshold, least privilege, human review, revocation.</p><small>AuthorizationState.json</small></article>
+        <div class="aan-chronicle-spine"><b>CHRONICLE</b><span>commitments · lineage · telemetry · dissent · decisions · outcomes</span></div>
+      </div>
+    </section>
+
+    <section class="aan-section aan-translation-section" id="translation" aria-labelledby="aan-translation-title">
+      <div class="aan-section-head aan-section-head-row"><div><p class="aan-kicker">ORIGINAL → GOALOS / TRACEABLE REIMPLEMENTATION</p><h2 id="aan-translation-title">Preserve the ambition. Replace implied trust with proof.</h2></div><p>Every original subsystem is retained as a design lineage, then narrowed into an inspectable GoalOS responsibility and boundary.</p></div>
+      <div class="aan-translation-grid" id="aan-translation-grid"></div>
+    </section>
+
+    <section class="aan-section aan-pipeline-architecture" aria-labelledby="aan-pipeline-architecture-title">
+      <div class="aan-section-head"><p class="aan-kicker">STATE MACHINE / EIGHT GATES</p><h2 id="aan-pipeline-architecture-title">No leap from “computed” to “authorized.”</h2></div>
+      <ol class="aan-arch-pipeline" id="aan-arch-pipeline"></ol>
+    </section>
+
+    <section class="aan-section aan-authority-matrix" aria-labelledby="aan-authority-title">
+      <div class="aan-section-head"><p class="aan-kicker">SEPARATION OF POWERS</p><h2 id="aan-authority-title">The node can propose, produce, and prove.<br><em>It cannot grant itself rights.</em></h2></div>
+      <div class="aan-authority-table-wrap"><table><thead><tr><th>Authority domain</th><th>May do</th><th>May not do</th><th>Required evidence</th></tr></thead><tbody>
+        <tr><th>Mission Orchestrator</th><td>Contract and sequence proposed work</td><td>Expand scope or authorize deployment</td><td>Mission contract + stop rules</td></tr>
+        <tr><th>Resource Governor</th><td>Admit a bounded simulated route</td><td>Allocate live compute or credentials</td><td>Resource envelope + rejection ledger</td></tr>
+        <tr><th>Execution Core</th><td>Generate deterministic local receipts</td><td>Call models, tools, networks, or wallets</td><td>Sandbox plan + work receipt</td></tr>
+        <tr><th>Verifier Mesh</th><td>Evaluate and record dissent</td><td>Convert consensus into external authority</td><td>Evaluation + vote rationales</td></tr>
+        <tr><th>Guardian Council</th><td>Veto, hold, and recommend minimum rights</td><td>Broadcast a transaction in this experience</td><td>Complete Evidence Docket</td></tr>
+        <tr><th>Human Reviewer</th><td>Judge whether any separate next step is warranted</td><td>Rely on simulation as factual certification</td><td>Independent facts, security, legal, and operational review</td></tr>
+      </tbody></table></div>
+    </section>
+
+    <section class="aan-section aan-boundary-section" id="boundaries" aria-labelledby="aan-boundary-title">
+      <div class="aan-boundary-copy"><p class="aan-kicker">TRUST BOUNDARY / NON-CLAIMS</p><h2 id="aan-boundary-title">What this release proves—and what it refuses to imply.</h2><p>The flagship demonstrates a rigorous interaction and evidence architecture. It does not demonstrate AGI, a live node, ENS ownership, production networking, real compute, factual correctness, security certification, treasury execution, or economic settlement.</p></div>
+      <ul class="aan-boundary-list" id="aan-boundary-list"></ul>
+    </section>
+
+    <section class="aan-section aan-architecture-cta"><div><p class="aan-kicker">RETURN TO THE NODE</p><h2>Compose one work unit.<br>Inspect every proof boundary.</h2><p>The deterministic experience produces a review package with all external permissions explicitly absent.</p><a class="aan-button aan-button-primary" href="agi-alpha-node-v0.html#command-deck">Open the sovereign node <span>⚡</span></a></div><div class="aan-plane-stack" aria-hidden="true"><span>IDENTITY</span><span>MISSION</span><span>RESOURCE</span><span>EXECUTION</span><span>VERIFICATION</span><span>AUTHORIZATION</span><i>CHRONICLE</i></div></section>
+  </main>
+  <footer class="aan-footer"><div><b>GOALOS AGIALPHA ASCENSION</b><span>AGI Alpha Node v0 architecture</span></div><p>@@VERSION@@ · Built @@BUILD_DATE@@ · <a href="agi-alpha-node-v0.html">Interactive experience</a></p></footer>
+  <script type="application/json" id="aan-release-data">@@DATA_JSON@@</script>
+  <script src="assets/agi-alpha-node-v0.js" defer></script>
+</body>
+</html>
