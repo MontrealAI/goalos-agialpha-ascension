@@ -24,12 +24,16 @@ def source_pass():
  c=read('qa/mainnet-source-identity/source-identity-certificate.json')
  return c.get('status')=='PASS' and c.get('classification')=='EXACT_DEPLOYED_SOURCE_REPRODUCED_BY_COMMIT'
 def profile(): return read('config/authorization-profiles/controlled-production-canary-v1.json')
+def forbidden_wallet_b_secret_inputs():
+ return [k for k in os.environ if ('WALLET_B' in k.upper() or 'LEDGER' in k.upper()) and ('PRIVATE_KEY' in k.upper() or 'MNEMONIC' in k.upper() or 'SEED' in k.upper() or 'RECOVERY' in k.upper())]
 def doctor():
  blockers=[]
+ raw_secret_inputs=forbidden_wallet_b_secret_inputs()
+ if raw_secret_inputs: blockers.append('raw Wallet-B secret input refused: '+','.join(sorted(raw_secret_inputs)))
  if os.environ.get('CI'): blockers.append('CI environment may not sign or broadcast activation actions')
  if not source_pass(): blockers.append('source-identity certificate is not PASS')
  if not stage_b_pass(): blockers.append('strict Stage-B certificate is not PASS')
- d={'schemaVersion':'1.0','generatedAt':now(),'chainId':1,'walletB':WB,'activationScope':SCOPE,'localOnlySigning':True,'status':'READY_FOR_LOCAL_PREPARATION' if not blockers else 'BLOCKED','blockers':blockers}
+ d={'schemaVersion':'1.0','generatedAt':now(),'chainId':1,'walletB':WB,'activationScope':SCOPE,'localOnlySigning':True,'rawWalletBSecretInputsRefused':not raw_secret_inputs,'status':'READY_FOR_LOCAL_PREPARATION' if not blockers else 'BLOCKED','blockers':blockers}
  write(ACT/'activation-doctor.json',d); return d
 def inventory():
  d={'schemaVersion':'1.0','generatedAt':now(),'activationScope':SCOPE,'walletA':WA,'walletB':WB,'classes':['ON_CHAIN_TRANSACTION','LEDGER_SIGNED_EIP712_ATTESTATION','OFF_CHAIN_OPERATIONAL_CONFIGURATION','NO_ACTION_ALREADY_CORRECT'],'intendedActions':[{'id':'wallet-b-activation-attestation','class':'LEDGER_SIGNED_EIP712_ATTESTATION','signer':WB,'description':'Wallet B signs the hash-bound controlled canary activation statement.'},{'id':'bounded-canary-execution','class':'OFF_CHAIN_OPERATIONAL_CONFIGURATION','description':'Human operator imports sanitized receipts/events after local Ledger ceremony; no CI broadcast.'}], 'status':'INVENTORY_REQUIRES_LIVE_ABI_REVIEW' if not stage_b_pass() else 'INVENTORY_READY'}
@@ -52,6 +56,10 @@ def prepare_local():
  d={'schemaVersion':'1.0','status':'READY_FOR_HUMAN_LEDGER_CEREMONY' if not p['blockers'] else 'BLOCKED','blockers':p['blockers'],'exactLocalCommand':cmd,'expectedSanitizedEvidenceBundle':'.private/mainnet-activation/sanitized-evidence-bundle.json'}
  write(ACT/'prepare-local.json',d); return d
 def refuse_live(cmd):
+ secrets=forbidden_wallet_b_secret_inputs()
+ if secrets:
+  print('REFUSED: raw Wallet-B private keys, mnemonics, seeds, or recovery phrases are not accepted.')
+  return 2
  if os.environ.get('CI'): print('REFUSED: CI/cloud cannot sign or broadcast Mainnet activation.'); return 2
  print(json.dumps({'status':'LOCAL_ONLY_NOT_EXECUTED_BY_CODEX','command':cmd,'requiredWalletB':WB,'requiredConfirmation':'ACTIVATE_CONTROLLED_PRODUCTION_CANARY_V1','planHash':read('qa/mainnet-activation/activation-plan.public.json').get('planHash')},indent=2)); return 2
 def monitor():

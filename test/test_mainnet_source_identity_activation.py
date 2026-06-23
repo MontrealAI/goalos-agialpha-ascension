@@ -58,3 +58,20 @@ def test_activation_plan_preserves_claim_boundaries():
     assert payload["PUBLIC_UNBOUNDED_RELIANCE"] == "NO"
     assert payload["requiresTypedConfirmation"] == "ACTIVATE_CONTROLLED_PRODUCTION_CANARY_V1"
     assert payload["status"] in {"BLOCKED", "READY_AND_HASH_BOUND"}
+
+
+def test_activation_refuses_raw_wallet_b_private_key_inputs():
+    result = run("python", "scripts/mainnet_activation.py", "doctor", env={"WALLET_B_PRIVATE_KEY": "0x" + "11" * 32})
+    assert result.returncode == 0
+    payload = json.loads(result.stdout)
+    assert payload["status"] == "BLOCKED"
+    assert payload["rawWalletBSecretInputsRefused"] is False
+    assert any("raw Wallet-B secret" in blocker for blocker in payload["blockers"])
+
+
+def test_ledger_wrapper_uses_exact_plan_hash_without_shell_interpolation(tmp_path):
+    plan = tmp_path / "activation plan's public.json"
+    plan.write_text(json.dumps({"planHash": "0xabc", "walletB": "0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99"}))
+    result = run("bash", "scripts/run-mainnet-activation-ledger.sh", "--plan", str(plan), "--expected-plan-hash", "0xabc")
+    assert result.returncode == 0
+    assert "Wallet B Ledger ceremony is local-only" in result.stdout

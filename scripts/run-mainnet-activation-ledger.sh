@@ -13,18 +13,20 @@ while [[ $# -gt 0 ]]; do
     *) echo "Unknown argument: $1" >&2; exit 2 ;;
   esac
 done
-ACTUAL=$(python - <<PY
-import json
-print(json.load(open('$PLAN')).get('planHash',''))
+ACTUAL=$(PLAN_PATH="$PLAN" python - <<'PY'
+import json, os
+with open(os.environ['PLAN_PATH'], encoding='utf-8') as fh:
+    print(json.load(fh).get('planHash', ''))
 PY
 )
 if [[ -z "$EXPECTED" || "$ACTUAL" != "$EXPECTED" ]]; then
   echo "REFUSED: activation plan hash mismatch." >&2
   exit 2
 fi
-WALLET_B_REDACTED=$(python - <<PY
-import json
-w=json.load(open('$PLAN')).get('walletB','')
+WALLET_B_REDACTED=$(PLAN_PATH="$PLAN" python - <<'PY'
+import json, os
+with open(os.environ['PLAN_PATH'], encoding='utf-8') as fh:
+    w = json.load(fh).get('walletB', '')
 print(w[:6] + '…' + w[-4:] if len(w) >= 10 else 'Wallet B from plan')
 PY
 )
