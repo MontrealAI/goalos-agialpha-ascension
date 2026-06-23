@@ -55,3 +55,7 @@ The Mission 002 builder:
 ## Mainnet claim boundary
 
 The public Mainnet data records 48 GoalOS-created contracts, 48 recorded source-verification successes, zero recorded verification failures, 14 configuration grants, and a passing 48-contract postcheck. This proves deployed infrastructure, not a successful Mission 001 or Mission 002 scientific result.
+
+## Mission 003 continuity
+
+Public Proof Mission 003 — **The Capability Constellation** is now published as the next evidence stage. The Mission 002 page links forward to the published protocol, but no Mission 003 experiment may begin until at least three capabilities earn M2 Transfer-Proven status through completed Mission 002 evidence and closed challenge windows.

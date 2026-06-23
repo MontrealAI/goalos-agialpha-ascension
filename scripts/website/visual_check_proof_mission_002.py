@@ -67,8 +67,9 @@ def main() -> int:
             page.set_content(hub_html, wait_until="load")
             if "Proof Missions" not in page.title():
                 errors.append(f"{name}: wrong Proof Missions title")
-            if page.locator(".pm-card").count() != 2:
-                errors.append(f"{name}: expected two mission cards")
+            card_count = page.locator(".pm-card").count()
+            if card_count not in (2, 3):
+                errors.append(f"{name}: expected two or three mission cards, found {card_count}")
             if page.evaluate("document.documentElement.scrollWidth > document.documentElement.clientWidth + 2"):
                 errors.append(f"{name}: Proof Missions horizontal overflow")
             if args.screenshots:

@@ -16,6 +16,10 @@ M2_START = "<!-- GOALOS_PROOF_MISSION_002_START -->"
 M2_END = "<!-- GOALOS_PROOF_MISSION_002_END -->"
 M2_STYLE_START = "<!-- GOALOS_PROOF_MISSION_002_STYLE_START -->"
 M2_STYLE_END = "<!-- GOALOS_PROOF_MISSION_002_STYLE_END -->"
+M3_START = "<!-- GOALOS_PROOF_MISSION_003_START -->"
+M3_END = "<!-- GOALOS_PROOF_MISSION_003_END -->"
+M3_STYLE_START = "<!-- GOALOS_PROOF_MISSION_003_STYLE_START -->"
+M3_STYLE_END = "<!-- GOALOS_PROOF_MISSION_003_STYLE_END -->"
 FORBIDDEN = (
     "recursive.com",
     "recursive org",
@@ -127,6 +131,8 @@ def main() -> int:
             (M1_STYLE_START, M1_STYLE_END),
             (M2_START, M2_END),
             (M2_STYLE_START, M2_STYLE_END),
+            (M3_START, M3_END),
+            (M3_STYLE_START, M3_STYLE_END),
         ]:
             stripped = remove_marked(stripped, start, end)
         stripped = re.sub(r">\s+<", "><", stripped).strip()

@@ -228,8 +228,8 @@
   ],
   "mission3": {
     "title": "The Capability Constellation",
-    "copy": "A future mission will test whether multiple Transfer-Proven capabilities can compose into one governed system without amplifying hidden assumptions or losing rollback control.",
-    "status": "HORIZON_ONLY_NOT_YET_AUTHORIZED"
+    "copy": "Public Proof Mission 003 is now published. It will test whether three to five Transfer-Proven capabilities can compose into one governed system without amplifying hidden assumptions, losing attribution, or surrendering rollback control.",
+    "status": "PROTOCOL_PUBLISHED_AWAITING_THREE_TRANSFER_PROVEN_CAPABILITIES"
   },
   "proofRoute": [
     {
