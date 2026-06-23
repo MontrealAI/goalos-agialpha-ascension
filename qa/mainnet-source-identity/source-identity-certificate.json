@@ -7,7 +7,7 @@
     "constructor-comparison.json is BLOCKED_UNTIL_LIVE_EVIDENCE_FETCH_AND_EXACT_BUILD_MATCH",
     "two independent clean builds have not been proven byte-identical"
   ],
-  "certificateHash": "0x0eee62f251f74b867b7fe0c550e6e5e0ca8ba0ec2ef50689088843a6ab8a1239",
+  "certificateHash": "0xfefd038004194163ce2bd290cc1cfa3f57283ab70e6e2e907e2826d8fe6b7fd3",
   "chainId": 1,
   "checks": {
     "build-a.json": "RECORDED",
@@ -21,7 +21,7 @@
     "source-tree-manifest.json": "RECORDED"
   },
   "classification": "SOURCE_IDENTITY_NOT_PROVEN",
-  "currentMainSha": "45f066de8a24770ace16631dc14874d7b9382393",
+  "currentMainSha": "91b386ee4319cd805bcb0225d64cbfcc0a2b90cd",
   "evidence": [
     {
       "path": "qa/mainnet-source-identity/provider-consensus.json",
@@ -29,7 +29,7 @@
     },
     {
       "path": "qa/mainnet-source-identity/compiler-environment.json",
-      "sha256": "0x75cc0685557a590afe35a989e2074ec0d83d726709c3421929ae4ef11ab23173"
+      "sha256": "0x01d12af094d9d0d6c0de918874de567b196d02245b430734e430df5a8d0b8365"
     },
     {
       "path": "qa/mainnet-source-identity/build-a.json",
@@ -41,33 +41,33 @@
     },
     {
       "path": "qa/mainnet-source-identity/runtime-comparison.json",
-      "sha256": "0x2baba080f3fbe06a4280394673005b90c21a2be3304c47f732cb1e1c89a43140"
+      "sha256": "0x29ca1b16d7d303e3942e64e31bb037677c80c89f29e055abaecc780378f50972"
     },
     {
       "path": "qa/mainnet-source-identity/creation-comparison.json",
-      "sha256": "0x7f6910becb272727dd6eb78164c000afc6e2a9fdf69edb90d935363f8e50e4d3"
+      "sha256": "0xef26b70f7ee30b43db58ce64aeb915f1c423d8db067d6dd685caea946e27171e"
     },
     {
       "path": "qa/mainnet-source-identity/etherscan-source-comparison.json",
-      "sha256": "0x4b9d4e7d2ccee711300aee512e48d0c4ec93894bc7ca99263466fdf51caf3e51"
+      "sha256": "0x9d76c1f0981412d5319f2621defb0518429f37dfb5ee9a6129deb5bf0e27a0b4"
     },
     {
       "path": "qa/mainnet-source-identity/constructor-comparison.json",
-      "sha256": "0xf2318ff1e2985c6a0e842ff4e4e9a92237688bc6fb2f315c65e9d990fee65294"
+      "sha256": "0x1bc120581de73756548b8181cefc9fdbb201abcf22769d9cf12dda820be69e34"
     },
     {
       "path": "qa/mainnet-source-identity/source-tree-manifest.json",
-      "sha256": "0x569fdec26fbb6681757572cbf7092a4b0e9b0b7bf469f210b7423a3d5fdfdcd8"
+      "sha256": "0xe2415aa4656f44409ec82b324e449527faf4c7ee42e326bf3893ed995b2f9c96"
     }
   ],
-  "evidenceCommitSha": "45f066de8a24770ace16631dc14874d7b9382393",
+  "evidenceCommitSha": "91b386ee4319cd805bcb0225d64cbfcc0a2b90cd",
   "exactReproductionProven": false,
   "historicalDeploymentCommitProven": false,
   "historicalManifestCommitLabel": "UNKNOWN",
   "publishedReleaseTag": "v4.4.0-mainnet-2026-06-21",
   "publishedReleaseTagFuller": "UNKNOWN",
   "publishedReleaseTagSha": "UNKNOWN",
-  "reproductionSourceCommitSha": "45f066de8a24770ace16631dc14874d7b9382393",
+  "reproductionSourceCommitSha": "91b386ee4319cd805bcb0225d64cbfcc0a2b90cd",
   "schemaVersion": "1.0",
   "stage": "SOURCE_IDENTITY_REPRODUCTION",
   "status": "BLOCKED"

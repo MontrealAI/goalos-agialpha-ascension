@@ -93,10 +93,10 @@ def validate():
   if sha_path(e['path'])!=e.get('sha256'): errs.append('evidence hash mismatch '+e['path'])
  print(json.dumps({'status':'PASSED' if not errs else 'FAILED','errors':errs,'certificateStatus':c.get('status')},indent=2)); return not errs
 def main():
- p=argparse.ArgumentParser(); p.add_argument('cmd',choices=['doctor','fetch','compile','compare','certificate','certificate-validate','all']); a=p.parse_args()
+ p=argparse.ArgumentParser(); p.add_argument('cmd',choices=['doctor','fetch','build','compile','compare','certificate','certificate-validate','all']); a=p.parse_args()
  if a.cmd=='doctor': print(json.dumps(doctor(),indent=2)); return
  if a.cmd=='fetch': print(json.dumps(fetch(),indent=2)); return
- if a.cmd=='compile': print(json.dumps(compile_cmd(),indent=2)); return
+ if a.cmd in {'build','compile'}: print(json.dumps(compile_cmd(),indent=2)); return
  if a.cmd=='compare': print(json.dumps(compare(),indent=2)); return
  if a.cmd=='certificate': print(json.dumps(certificate(),indent=2)); return
  if a.cmd=='certificate-validate': sys.exit(0 if validate() else 1)

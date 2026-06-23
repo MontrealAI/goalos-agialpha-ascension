@@ -1,12 +1,12 @@
 {
-  "activationPlanHash": "0xa4b3b243e36984fdcde1a77b5d713159572778883a0cb070a7d882400bbc17c3",
+  "activationPlanHash": "0x2c200caa5167cb56134e00252384c51787a8bf527c7ee5924a54c8e18971ecd9",
   "activationScope": "CONTROLLED_PRODUCTION_CANARY_V1",
   "blockers": [
     "source-identity certificate is not PASS",
     "strict Stage-B certificate is not PASS"
   ],
   "executionMode": "MAINNET_FORK",
-  "generatedAt": "2026-06-23T12:52:38.389091+00:00",
+  "generatedAt": "2026-06-23T13:57:30.619006+00:00",
   "mainnetBroadcastOccurred": false,
   "schemaVersion": "1.0",
   "status": "BLOCKED_UNTIL_STAGE_B_AND_SOURCE_IDENTITY_PASS"

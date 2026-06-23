@@ -434,7 +434,6 @@
     "test:release-state": "python -m unittest discover -s test/release -p \"*.py\"",
     "mainnet:source-identity:doctor": "python scripts/mainnet_source_identity.py doctor",
     "mainnet:source-identity:fetch": "python scripts/mainnet_source_identity.py fetch",
-    "mainnet:source-identity:compile": "python scripts/mainnet_source_identity.py compile",
     "mainnet:source-identity:compare": "python scripts/mainnet_source_identity.py compare",
     "mainnet:source-identity:certificate": "python scripts/mainnet_source_identity.py certificate",
     "mainnet:source-identity:certificate:validate": "python scripts/mainnet_source_identity.py certificate-validate",
@@ -449,7 +448,8 @@
     "mainnet:activation:resume": "python scripts/mainnet_activation.py resume",
     "mainnet:activation:abort": "python scripts/mainnet_activation.py abort",
     "mainnet:activation:monitor": "python scripts/mainnet_activation.py monitor",
-    "mainnet:activation:reconcile": "python scripts/mainnet_activation.py reconcile"
+    "mainnet:activation:reconcile": "python scripts/mainnet_activation.py reconcile",
+    "mainnet:source-identity:build": "python scripts/mainnet_source_identity.py build"
   },
   "dependencies": {
     "@openzeppelin/contracts": "4.9.6",

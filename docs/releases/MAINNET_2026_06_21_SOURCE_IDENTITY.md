@@ -6,4 +6,4 @@ Exact reproduction proven: `false`
 
 This document is generated from `qa/mainnet-source-identity/source-identity-certificate.json` and remains fail-closed until 48/48 runtime, creation-input, constructor, Etherscan source/settings, and two-build checks pass.
 
-Certificate hash: `0x0eee62f251f74b867b7fe0c550e6e5e0ca8ba0ec2ef50689088843a6ab8a1239`
+Certificate hash: `0xfefd038004194163ce2bd290cc1cfa3f57283ab70e6e2e907e2826d8fe6b7fd3`

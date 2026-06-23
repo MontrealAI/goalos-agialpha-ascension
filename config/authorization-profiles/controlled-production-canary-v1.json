@@ -57,7 +57,7 @@
     "generated docs/status",
     "local deployment and activation package"
   ],
-  "status": "DEFINED_FAIL_CLOSED_UNTIL_EVIDENCE_PASS",
+  "status": "DEFINED_FAIL_CLOSED_PENDING_STRICT_STAGE_B_AND_LEDGER_ACTIVATION",
   "authorizedActions": [
     "Pre-broadcast technical authorization within CONTROLLED_PRODUCTION_CANARY_V1 scope only",
     "Local/fork rehearsal and evidence generation without Ethereum Mainnet broadcast",
@@ -82,15 +82,15 @@
     },
     {
       "requirement": "MAINNET_DEPLOYED YES",
-      "status": "DEFERRED_UNTIL_PRODUCTION_ACTIVATION"
+      "status": "SATISFIED_BY_STRICT_STAGE_B_LIVE_VALIDATION_BEFORE_ACTIVATION"
     },
     {
       "requirement": "MAINNET_VERIFIED YES",
-      "status": "DEFERRED_UNTIL_PRODUCTION_ACTIVATION"
+      "status": "SATISFIED_BY_STRICT_STAGE_B_LIVE_VALIDATION_BEFORE_ACTIVATION"
     },
     {
       "requirement": "LIVE_OWNER_HANDOFF_COMPLETE YES",
-      "status": "DEFERRED_UNTIL_PRODUCTION_ACTIVATION"
+      "status": "SATISFIED_BY_STRICT_STAGE_B_LIVE_VALIDATION_BEFORE_ACTIVATION"
     },
     {
       "requirement": "LIVE_CANARY_COMPLETE YES",
