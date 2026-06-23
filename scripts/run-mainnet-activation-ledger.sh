@@ -22,4 +22,10 @@ if [[ -z "$EXPECTED" || "$ACTUAL" != "$EXPECTED" ]]; then
   echo "REFUSED: activation plan hash mismatch." >&2
   exit 2
 fi
-printf '%s\n' "Wallet B Ledger ceremony is local-only. Review $PLAN, connect the Ledger for 0xd76AD27a1Bcf8652e7e46BE603FA742FD1c10A99, then run npm run mainnet:activation:ledger-sign when ready. Never enter a recovery phrase."
+WALLET_B_REDACTED=$(python - <<PY
+import json
+w=json.load(open('$PLAN')).get('walletB','')
+print(w[:6] + '…' + w[-4:] if len(w) >= 10 else 'Wallet B from plan')
+PY
+)
+printf '%s\n' "Wallet B Ledger ceremony is local-only. Review $PLAN, connect the Ledger account matching ${WALLET_B_REDACTED}, then run npm run mainnet:activation:ledger-sign when ready. Never enter a recovery phrase."

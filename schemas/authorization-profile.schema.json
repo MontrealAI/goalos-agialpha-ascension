@@ -61,7 +61,10 @@
         ],
         "properties": {
           "status": {
-            "const": "DEFERRED_UNTIL_PRODUCTION_ACTIVATION"
+            "enum": [
+              "DEFERRED_UNTIL_PRODUCTION_ACTIVATION",
+              "SATISFIED_BY_STRICT_STAGE_B_LIVE_VALIDATION_BEFORE_ACTIVATION"
+            ]
           }
         }
       }
