@@ -74,6 +74,14 @@ on:
       - 'test/test_meta_agentic_alpha_agi_website.py'
       - 'docs/META_AGENTIC_ALPHA_AGI_WEBSITE.md'
       - 'README_UPLOAD_META_AGENTIC_ALPHA_AGI.md'
+      - 'content/agi-alpha-node-v0.json'
+      - 'website/features/agi-alpha-node-v0/**'
+      - 'scripts/website/build_agi_alpha_node_v0.py'
+      - 'scripts/website/verify_agi_alpha_node_v0.py'
+      - 'scripts/website/visual_check_agi_alpha_node_v0.py'
+      - 'test/test_agi_alpha_node_v0_website.py'
+      - 'docs/AGI_ALPHA_NODE_V0_WEBSITE.md'
+      - 'README_UPLOAD_AGI_ALPHA_NODE_V0.md'
       - '.github/workflows/goalos-agialpha-ascension-v86-final.yml'
       - '.github/workflows/goalos-agialpha-ascension-v86-smoke-test.yml'
 
@@ -245,6 +253,31 @@ jobs:
           python3 -m unittest discover -s test -p 'test_meta_agentic_alpha_agi_website.py' -v
           python3 scripts/website/visual_check_meta_agentic_alpha_agi.py --site site --output site/qa/meta-agentic-alpha-agi
 
+      - name: Build GoalOS AGIALPHA Ascension AGI Alpha Node v0 additively
+        run: python3 scripts/website/build_agi_alpha_node_v0.py --site site
+
+      - name: Assert AGI Alpha Node v0 generated outputs exist
+        shell: bash
+        run: |
+          set -euo pipefail
+          for file in \
+            site/agi-alpha-node-v0.html \
+            site/agi-alpha-node-v0-architecture.html \
+            site/agi-alpha-node-v0-manifest.json \
+            site/assets/agi-alpha-node-v0.css \
+            site/assets/agi-alpha-node-v0.js \
+            site/data/agi-alpha-node-v0.json \
+            site/index.html \
+            site/qa/agi-alpha-node-v0-build.json; do
+            test -s "$file" || { echo "Missing generated AGI Alpha Node v0 output: $file"; find site -maxdepth 3 -type f | sort; exit 1; }
+          done
+
+      - name: Verify, regression-test, and browser-test AGI Alpha Node v0
+        run: |
+          python3 scripts/website/verify_agi_alpha_node_v0.py --site site
+          python3 -m unittest discover -s test -p 'test_agi_alpha_node_v0_website.py' -v
+          python3 scripts/website/visual_check_agi_alpha_node_v0.py --site site --output site/qa/agi-alpha-node-v0
+
       - name: Reject archives and private operator material in public site
         shell: bash
         run: |
@@ -281,6 +314,12 @@ jobs:
             site/assets/meta-agentic-alpha-agi.css
             site/assets/meta-agentic-alpha-agi.js
             site/data/meta-agentic-alpha-agi.json
+            site/agi-alpha-node-v0.html
+            site/agi-alpha-node-v0-architecture.html
+            site/agi-alpha-node-v0-manifest.json
+            site/assets/agi-alpha-node-v0.css
+            site/assets/agi-alpha-node-v0.js
+            site/data/agi-alpha-node-v0.json
             site/downloads/proof-gradient/
             site/downloads/proof-missions/
             site/qa/
