@@ -5,7 +5,12 @@ from pathlib import Path
 from urllib.parse import unquote
 
 PAGES=['first-real-loop.html','first-real-loop-architecture.html','first-real-loop-docket.html']
-REQUIRED=[*PAGES,'assets/first-real-loop/first-real-loop.css','assets/first-real-loop/first-real-loop.js','downloads/first-real-loop/first-real-loop-evidence-docket.json','downloads/first-real-loop/first-real-loop-artifact-ledger.json','downloads/first-real-loop/first-real-loop-replay-manifest.json','downloads/first-real-loop/first-real-loop-executive-brief.md','qa/first-real-loop-build.json']
+SHARED_INTEGRATION_OUTPUTS=['index.html','routes.json','sitemap.xml','site-status.json']
+COMPANION_MANIFESTS={
+    'meta-agentic-alpha-agi-manifest.json':'goalos.meta_agentic_alpha_agi.website_manifest.v2',
+    'agi-alpha-node-v0-manifest.json':'goalos.agi_alpha_node_v0.website_manifest.v2',
+}
+REQUIRED=[*PAGES,*SHARED_INTEGRATION_OUTPUTS,'assets/first-real-loop/first-real-loop.css','assets/first-real-loop/first-real-loop.js','downloads/first-real-loop/first-real-loop-evidence-docket.json','downloads/first-real-loop/first-real-loop-artifact-ledger.json','downloads/first-real-loop/first-real-loop-replay-manifest.json','downloads/first-real-loop/first-real-loop-executive-brief.md','qa/first-real-loop-build.json']
 HOME_START='<!-- GOALOS_FIRST_REAL_LOOP_START -->'
 HOME_END='<!-- GOALOS_FIRST_REAL_LOOP_END -->'
 HOME_STYLE_START='<!-- GOALOS_FIRST_REAL_LOOP_STYLE_START -->'
@@ -42,6 +47,16 @@ def verify(site: Path, content_path: Path, schema_path: Path):
     sitemap=(site/'sitemap.xml').read_text(encoding='utf-8',errors='ignore')
     for page in PAGES:
         check(sitemap.count(page)==1,f'sitemap entry must appear once: {page}')
+    routes=load(site/'routes.json')
+    route_values=routes.get('routes',[]) if isinstance(routes,dict) else []
+    route_meta=routes.get('first_real_loop',{}) if isinstance(routes,dict) else {}
+    for page in PAGES:
+        check(route_values.count(page)==1,f'routes entry must appear once: {page}')
+    check(route_meta.get('release_id')=='GOALOS-AGIALPHA-FIRST-REAL-LOOP-001','routes release identity mismatch')
+    check(route_meta.get('version')=='1.0.0','routes version mismatch')
+    check(route_meta.get('pages')==PAGES,'routes page metadata mismatch')
+    check(route_meta.get('runtime')=='deterministic-browser-local-proof-cycle','routes runtime metadata mismatch')
+    check(route_meta.get('external_actions')==0,'routes external action boundary mismatch')
     page_words={}
     for page in PAGES:
         raw=(site/page).read_text(encoding='utf-8',errors='ignore');low=raw.lower()
@@ -131,11 +146,38 @@ def verify(site: Path, content_path: Path, schema_path: Path):
     check(build.get('status')=='PASS','build report status mismatch')
     check(build.get('unexpectedExistingChanges')==[],'unexpected existing-site changes recorded')
     check(build.get('removedFiles')==[],'removed files recorded')
-    check(build.get('existingFilesChanged')==['index.html','site-status.json','sitemap.xml'],'declared integration surfaces mismatch')
-    status=load(site/'site-status.json').get('first_real_loop',{})
+    installed_companions=sorted(name for name in COMPANION_MANIFESTS if (site/name).is_file())
+    reconciled=build.get('reconciledCompanionManifests',[])
+    check(reconciled==installed_companions,'reconciled companion manifest list mismatch')
+    expected_changed=sorted(set(SHARED_INTEGRATION_OUTPUTS).union(installed_companions))
+    check(build.get('existingFilesChanged')==expected_changed,'declared integration surfaces mismatch')
+    for filename in installed_companions:
+        manifest=load(site/filename)
+        check(manifest.get('schema')==COMPANION_MANIFESTS[filename],f'companion manifest schema mismatch: {filename}')
+        files=manifest.get('files',{}) if isinstance(manifest,dict) else {}
+        for relative in SHARED_INTEGRATION_OUTPUTS:
+            target=site/relative;entry=files.get(relative,{}) if isinstance(files,dict) else {}
+            check(target.is_file() and entry.get('sha256')==sha_bytes(target.read_bytes()),f'companion manifest hash mismatch: {filename}:{relative}')
+            check(target.is_file() and entry.get('bytes')==target.stat().st_size,f'companion manifest size mismatch: {filename}:{relative}')
+        for companion in installed_companions:
+            target=site/companion
+            if companion in files and companion!=filename:
+                entry=files.get(companion,{})
+                check(entry.get('sha256')==sha_bytes(target.read_bytes()),f'cross-manifest hash mismatch: {filename}:{companion}')
+                check(entry.get('bytes')==target.stat().st_size,f'cross-manifest size mismatch: {filename}:{companion}')
+        history=manifest.get('integration',{}).get('reconciliations',[])
+        matching=[item for item in history if isinstance(item,dict) and item.get('release_id')==content.get('releaseId')]
+        check(len(matching)==1,f'companion manifest reconciliation count mismatch: {filename}')
+        if matching:
+            check(set(matching[0].get('files',[]))==set(SHARED_INTEGRATION_OUTPUTS),f'companion manifest reconciliation surfaces mismatch: {filename}')
+    site_status=load(site/'site-status.json')
+    status=site_status.get('first_real_loop',{})
     check(status.get('run_commitment')==commitment,'site status commitment mismatch')
     check(status.get('terminal_state')=='HUMAN_REVIEW_REQUIRED','site status terminal mismatch')
     check(status.get('authority')=='NONE_GRANTED','site status authority mismatch')
+    check(status.get('pages')==PAGES,'site status page metadata mismatch')
+    check(site_status.get('root_html_pages')==len(list(site.glob('*.html'))),'site status root HTML page count mismatch')
+    check(site_status.get('published_html_pages_including_resources')==len(list(site.rglob('*.html'))),'site status total HTML page count mismatch')
     archives=[str(p.relative_to(site)) for p in site.rglob('*') if p.is_file() and p.suffix.lower() in {'.zip','.7z','.tar','.gz','.rar'}]
     check(not archives,'archive found in public site: '+', '.join(archives[:10]))
     public_blob='\n'.join((site/p).read_text(encoding='utf-8',errors='ignore') for p in PAGES).lower()

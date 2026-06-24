@@ -10,6 +10,11 @@ HOME_STYLE_END='<!-- GOALOS_FIRST_REAL_LOOP_STYLE_END -->'
 MISSION_008_END='<!-- GOALOS_PROOF_MISSION_008_END -->'
 BASE_URL='https://montrealai.github.io/goalos-agialpha-ascension/'
 PAGES=['first-real-loop.html','first-real-loop-architecture.html','first-real-loop-docket.html']
+SHARED_INTEGRATION_OUTPUTS=['index.html','routes.json','sitemap.xml','site-status.json']
+COMPANION_MANIFESTS={
+    'meta-agentic-alpha-agi-manifest.json':'goalos.meta_agentic_alpha_agi.website_manifest.v2',
+    'agi-alpha-node-v0-manifest.json':'goalos.agi_alpha_node_v0.website_manifest.v2',
+}
 
 
 def load(path: Path): return json.loads(path.read_text(encoding='utf-8'))
@@ -258,8 +263,44 @@ def update_sitemap(path: Path):
     path.write_text(raw,encoding='utf-8')
 
 
-def update_status(path: Path, docket):
-    status=load(path) if path.exists() else {}
+def update_routes(path: Path, c):
+    payload=load(path) if path.exists() else {'version':'unknown','routes':[]}
+    routes=payload.get('routes',[])
+    if not isinstance(routes,list): raise RuntimeError('routes.json routes must be an array')
+    payload['routes']=sorted(set(map(str,routes)).union(PAGES))
+    payload['first_real_loop']={'release_id':c['releaseId'],'version':c['schemaVersion'],'pages':PAGES,'integration':'additive-post-build','runtime':'deterministic-browser-local-proof-cycle','external_actions':0}
+    dump(path,payload)
+
+
+def reconcile_companion_manifests(site: Path, c):
+    reconciled=[]
+    for filename,expected_schema in COMPANION_MANIFESTS.items():
+        path=site/filename
+        if not path.is_file(): continue
+        payload=load(path)
+        if payload.get('schema')!=expected_schema: raise RuntimeError(f'refusing to reconcile unrecognized companion manifest: {path}')
+        files=payload.get('files')
+        if not isinstance(files,dict) or not all(name in files for name in SHARED_INTEGRATION_OUTPUTS): raise RuntimeError(f'companion manifest is missing shared integration outputs: {path}')
+        for relative in SHARED_INTEGRATION_OUTPUTS:
+            target=site/relative
+            if not target.is_file(): raise RuntimeError(f'shared integration output is missing: {target}')
+            files[relative]={'sha256':file_digest(target),'bytes':target.stat().st_size}
+        for companion in COMPANION_MANIFESTS:
+            target=site/companion
+            if companion in files and target.is_file(): files[companion]={'sha256':file_digest(target),'bytes':target.stat().st_size}
+        integration=payload.setdefault('integration',{})
+        history=integration.setdefault('reconciliations',[])
+        if not isinstance(history,list): raise RuntimeError(f'companion manifest reconciliations must be an array: {path}')
+        history[:]=[item for item in history if not isinstance(item,dict) or item.get('release_id')!=c['releaseId']]
+        history.append({'release_id':c['releaseId'],'version':c['schemaVersion'],'built_at':f"{c['releaseDate']}T00:00:00Z",'reason':'shared additive website surfaces were extended after the companion release','files':SHARED_INTEGRATION_OUTPUTS})
+        dump(path,payload);reconciled.append(filename)
+    return reconciled
+
+
+def update_status(site: Path, docket):
+    path=site/'site-status.json';status=load(path) if path.exists() else {}
+    status['root_html_pages']=len(list(site.glob('*.html')))
+    status['published_html_pages_including_resources']=len(list(site.rglob('*.html')))
     status['first_real_loop']={'release':'GOALOS-AGIALPHA-FIRST-REAL-LOOP-001','pages':PAGES,'run_commitment':docket['runCommitment'],'terminal_state':'HUMAN_REVIEW_REQUIRED','authority':'NONE_GRANTED'}
     dump(path,status)
 
@@ -282,18 +323,19 @@ def main():
     (site/PAGES[0]).write_text(experience_page(c,docket,ledger),encoding='utf-8')
     (site/PAGES[1]).write_text(architecture_page(c,docket,ledger),encoding='utf-8')
     (site/PAGES[2]).write_text(docket_page(c,docket,ledger),encoding='utf-8')
-    inject_home(site/'index.html',c);update_sitemap(site/'sitemap.xml');update_status(site/'site-status.json',docket)
+    inject_home(site/'index.html',c);update_routes(site/'routes.json',c);update_sitemap(site/'sitemap.xml');update_status(site,docket)
+    reconciled=reconcile_companion_manifests(site,c)
     dl=site/'downloads/first-real-loop';dl.mkdir(parents=True,exist_ok=True)
     dump(dl/'first-real-loop-evidence-docket.json',docket)
     dump(dl/'first-real-loop-artifact-ledger.json',{'schemaVersion':'1.0.0','runCommitment':docket['runCommitment'],'artifacts':ledger})
     dump(dl/'first-real-loop-replay-manifest.json',{'schemaVersion':'1.0.0','releaseId':c['releaseId'],'sourceCommit':c['lineage']['sourceCommit'],'goalosSnapshotCommit':c['lineage']['goalosSnapshotCommit'],'contentSha256':file_digest(cp),'mainnetSha256':file_digest(mp),'runCommitment':docket['runCommitment'],'replay':'Rebuild the canonical site, Proof Missions 001–008, Mainnet record, then run build_goalos_first_real_loop.py and verify_goalos_first_real_loop.py.'})
     (dl/'first-real-loop-executive-brief.md').write_text(brief,encoding='utf-8')
     after={str(p.relative_to(site)):file_digest(p) for p in site.rglob('*') if p.is_file()}
-    allowed_existing={'index.html','sitemap.xml','site-status.json'}
+    allowed_existing=set(SHARED_INTEGRATION_OUTPUTS).union(reconciled)
     unexpected=[p for p,h in before.items() if p not in allowed_existing and after.get(p)!=h]
     removed=[p for p in before if p not in after]
     if unexpected or removed: raise RuntimeError(f'unexpected existing-site changes: {unexpected}; removed: {removed}')
-    qa={'status':'PASS','releaseId':c['releaseId'],'pages':PAGES,'runCommitment':docket['runCommitment'],'artifactCount':len(ledger),'sourceCount':len(c['sources']),'jobsPassed':sum(1 for x in c['jobs'] if x['success']),'reuseLiftPercent':c['comparison']['reuse_lift_percent'],'existingFilesChanged':sorted(allowed_existing),'unexpectedExistingChanges':unexpected,'removedFiles':removed,'externalActions':0,'walletConnections':0,'productionActivation':'NOT_ACTIVATED','authority':'NONE_GRANTED','terminalState':'HUMAN_REVIEW_REQUIRED','contentSha256':file_digest(cp),'mainnetSha256':file_digest(mp)}
+    qa={'status':'PASS','releaseId':c['releaseId'],'pages':PAGES,'runCommitment':docket['runCommitment'],'artifactCount':len(ledger),'sourceCount':len(c['sources']),'jobsPassed':sum(1 for x in c['jobs'] if x['success']),'reuseLiftPercent':c['comparison']['reuse_lift_percent'],'existingFilesChanged':sorted(allowed_existing),'reconciledCompanionManifests':sorted(reconciled),'unexpectedExistingChanges':unexpected,'removedFiles':removed,'externalActions':0,'walletConnections':0,'productionActivation':'NOT_ACTIVATED','authority':'NONE_GRANTED','terminalState':'HUMAN_REVIEW_REQUIRED','contentSha256':file_digest(cp),'mainnetSha256':file_digest(mp)}
     dump(site/'qa/first-real-loop-build.json',qa);print(json.dumps(qa,indent=2));return 0
 
 if __name__=='__main__': raise SystemExit(main())
