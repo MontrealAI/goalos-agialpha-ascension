@@ -114,6 +114,18 @@ on:
       - 'docs/SOVEREIGN_MACHINE_ECONOMY_WEBSITE.md'
       - 'README_UPLOAD_SOVEREIGN_MACHINE_ECONOMY.md'
       - '.github/workflows/goalos-sovereign-machine-economy-smoke-test.yml'
+      - 'content/sme-kernel-v3.json'
+      - 'website/features/sme-kernel-v3/**'
+      - 'scripts/website/build_sme_kernel_v3.py'
+      - 'scripts/website/snapshot_sme_kernel_v3_site.py'
+      - 'scripts/website/verify_sme_kernel_v3.py'
+      - 'scripts/website/visual_check_sme_kernel_v3.py'
+      - 'schemas/sme-kernel-v3-envelope.schema.json'
+      - 'schemas/sme-kernel-v3-mission-bundle.schema.json'
+      - 'test/test_sme_kernel_v3_website.py'
+      - 'docs/SOVEREIGN_MACHINE_ECONOMY_KERNEL_V3.md'
+      - 'README_UPLOAD_SME_KERNEL_V3.md'
+      - '.github/workflows/goalos-sme-kernel-v3-smoke-test.yml'
       - '.github/workflows/goalos-agialpha-ascension-v86-final.yml'
       - '.github/workflows/goalos-agialpha-ascension-v86-smoke-test.yml'
 
@@ -130,7 +142,7 @@ jobs:
   build-verify-browser-test:
     name: Build, preserve, verify, and browser-test v86
     runs-on: ubuntu-latest
-    timeout-minutes: 165
+    timeout-minutes: 185
     permissions:
       contents: read
     steps:
@@ -159,13 +171,22 @@ jobs:
             scripts/website/build_sovereign_machine_economy.py \
             scripts/website/snapshot_sovereign_machine_economy_site.py \
             scripts/website/verify_sovereign_machine_economy.py \
-            scripts/website/visual_check_sovereign_machine_economy.py
+            scripts/website/visual_check_sovereign_machine_economy.py \
+            scripts/website/build_sme_kernel_v3.py \
+            scripts/website/snapshot_sme_kernel_v3_site.py \
+            scripts/website/verify_sme_kernel_v3.py \
+            scripts/website/visual_check_sme_kernel_v3.py \
+            test/test_sme_kernel_v3_website.py
       - name: Parse required constitutional-civilization runtimes under Node.js
         run: |
           node --check website/features/meta-agentic-alpha-agi/assets/meta-agentic-alpha-agi.js
           node --check website/features/agi-alpha-node-v0/assets/agi-alpha-node-v0.js
           node --check website/features/agi-jobs-v0-v2/assets/agi-jobs-v0-v2.js
           node --check website/features/sovereign-machine-economy/assets/sovereign-machine-economy.js
+          node --check website/features/sme-kernel-v3/assets/sme-kernel-v3-core.js
+          node --check website/features/sme-kernel-v3/assets/sme-kernel-v3-adapters.js
+          node --check website/features/sme-kernel-v3/assets/sme-kernel-v3-worker.js
+          node --check website/features/sme-kernel-v3/assets/sme-kernel-v3.js
       - name: Detect, validate, and compile optional First Real Loop
         shell: bash
         run: |
@@ -665,6 +686,105 @@ jobs:
             test -s "$file" || { echo "Missing final Sovereign Machine Economy QA evidence: $file"; exit 1; }
           done
 
+      - name: Snapshot the complete generated institution before Sovereign Machine Economy Kernel v3
+        run: python3 scripts/website/snapshot_sme_kernel_v3_site.py --site site --output "$RUNNER_TEMP/sme-kernel-v3-prebuild.json"
+
+      - name: Build GoalOS Sovereign Machine Economy Kernel v3 additively
+        run: SOURCE_DATE_EPOCH=1782259200 python3 scripts/website/build_sme_kernel_v3.py --site site --root .
+
+      - name: Assert Sovereign Machine Economy Kernel v3 outputs exist
+        shell: bash
+        run: |
+          set -euo pipefail
+          for file in \
+            site/sovereign-machine-economy-kernel-v3.html \
+            site/sovereign-machine-economy-kernel-v3-protocol.html \
+            site/sovereign-machine-economy-kernel-v3-chronicle.html \
+            site/sovereign-machine-economy-kernel-v3-verifier.html \
+            site/sovereign-machine-economy-kernel-v3-sdk.html \
+            site/sme-kernel-v3-manifest.json \
+            site/assets/sme-kernel-v3.css \
+            site/assets/sme-kernel-v3.js \
+            site/assets/sme-kernel-v3-core.js \
+            site/assets/sme-kernel-v3-adapters.js \
+            site/assets/sme-kernel-v3-worker.js \
+            site/data/sme-kernel-v3.json \
+            site/downloads/sme-kernel-v3/sme-kernel-v3-protocol-manifest.json \
+            site/downloads/sme-kernel-v3/sme-kernel-v3-mission-template.json \
+            site/downloads/sme-kernel-v3/sme-kernel-v3-core.js \
+            site/downloads/sme-kernel-v3/sme-kernel-v3-adapters.js \
+            site/downloads/sme-kernel-v3/sme-kernel-v3-executive-brief.md \
+            site/qa/sme-kernel-v3-build.json; do
+            test -s "$file" || { echo "Missing Kernel v3 output: $file"; find site -maxdepth 4 -type f | sort; exit 1; }
+          done
+
+      - name: Verify preservation and regression-test Sovereign Machine Economy Kernel v3
+        run: |
+          python3 scripts/website/verify_sme_kernel_v3.py \
+            --site site \
+            --root . \
+            --content content/sme-kernel-v3.json \
+            --envelope-schema schemas/sme-kernel-v3-envelope.schema.json \
+            --bundle-schema schemas/sme-kernel-v3-mission-bundle.schema.json \
+            --baseline "$RUNNER_TEMP/sme-kernel-v3-prebuild.json" \
+            --output site/qa/sme-kernel-v3-static.json
+          python3 -m unittest discover -s test -p 'test_sme_kernel_v3_website.py' -v
+
+      - name: Browser-test executable Kernel v3, bundle verification, and fail-closed incidents
+        run: python3 scripts/website/visual_check_sme_kernel_v3.py --site site --output site/qa/sme-kernel-v3-browser
+
+      - name: Re-verify every constitutional engine after Kernel v3 reconciliation
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 scripts/website/verify_meta_agentic_alpha_agi.py --site site
+          python3 scripts/website/verify_agi_alpha_node_v0.py \
+            --site site \
+            --root . \
+            --output site/qa/agi-alpha-node-v0-static-post-kernel-v3.json
+          if [[ "${FIRST_REAL_LOOP_STATE:-none}" == 'complete' ]]; then
+            python3 scripts/website/verify_goalos_first_real_loop.py \
+              --site site \
+              --content content/goalos-first-real-loop.json \
+              --schema schemas/goalos-first-real-loop-evidence-docket.schema.json
+          fi
+          python3 scripts/website/verify_agi_jobs_v0_v2.py \
+            --site site \
+            --root . \
+            --schema schemas/agi-jobs-v0-v2-evidence-docket.schema.json \
+            --output site/qa/agi-jobs-v0-v2-static-post-kernel-v3.json
+          python3 scripts/website/verify_sovereign_machine_economy.py \
+            --site site \
+            --root . \
+            --content content/sovereign-machine-economy.json \
+            --schema schemas/sovereign-machine-economy-docket.schema.json \
+            --output site/qa/sovereign-machine-economy-static-post-kernel-v3.json
+          python3 scripts/website/verify_sme_kernel_v3.py \
+            --site site \
+            --root . \
+            --content content/sme-kernel-v3.json \
+            --envelope-schema schemas/sme-kernel-v3-envelope.schema.json \
+            --bundle-schema schemas/sme-kernel-v3-mission-bundle.schema.json \
+            --output site/qa/sme-kernel-v3-static-final.json
+          find website/v86_actual_site -type f -print0 | sort -z | xargs -0 sha256sum | sha256sum > "$RUNNER_TEMP/v86-source.after-kernel-v3"
+          cmp "$RUNNER_TEMP/v86-source.before" "$RUNNER_TEMP/v86-source.after-kernel-v3"
+          test "$(grep -c 'GOALOS_SME_KERNEL_V3_HOME_START' site/index.html)" -eq 1
+          test "$(grep -c 'GOALOS_SME_KERNEL_V3_NAV_START' site/index.html)" -eq 1
+
+      - name: Assert final Sovereign Machine Economy Kernel v3 QA evidence exists
+        shell: bash
+        run: |
+          set -euo pipefail
+          for file in \
+            site/qa/sme-kernel-v3-static.json \
+            site/qa/sme-kernel-v3-browser/browser-report.json \
+            site/qa/sme-kernel-v3-static-final.json \
+            site/qa/agi-alpha-node-v0-static-post-kernel-v3.json \
+            site/qa/agi-jobs-v0-v2-static-post-kernel-v3.json \
+            site/qa/sovereign-machine-economy-static-post-kernel-v3.json; do
+            test -s "$file" || { echo "Missing final Kernel v3 QA evidence: $file"; exit 1; }
+          done
+
       - name: Reject archives and private operator material in public site
         shell: bash
         run: |
@@ -710,6 +830,9 @@ jobs:
             echo '- Three counterfactual governed universes and four local Human Review Chamber dispositions were verified without granting authority.'
             echo '- Nominal completion stops at HUMAN_SETTLEMENT_REVIEW; adversarial scenarios fail closed to HUMAN_REVIEW_REQUIRED, DISPUTE_OPEN, or SAFE_HOLD.'
             echo '- External authority remains NONE_GRANTED; automatic memory promotion, live settlement, wallet activity, network requests, and external actions remain disabled.'
+            echo '- Sovereign Machine Economy Kernel v3 generated at /sovereign-machine-economy-kernel-v3.html with Protocol, Chronicle, Verifier, and SDK companion surfaces.'
+            echo '- Seventeen strict states, ten typed envelopes, five Ed25519 role authorities, three replaceable adapters, append-only mission events, portable bundle verification, and signed human review certificates verified.'
+            echo '- Kernel v3 remains browser-local and fail-closed: external authority NONE_GRANTED; external actions, network calls, wallet activity, token movements, live model calls, and automatic memory promotion remain zero or disabled.'
             echo '- Mission 006, Mission 007, Mission 008, and Mainnet generated-page preflights passed.'
             echo '- 48 GoalOS-created Mainnet contracts represented.'
             echo '- 48/48 recorded source verification; 0 failures.'
@@ -765,6 +888,19 @@ jobs:
             site/assets/sovereign-machine-economy.js
             site/data/sovereign-machine-economy.json
             site/downloads/sovereign-machine-economy/
+            site/sovereign-machine-economy-kernel-v3.html
+            site/sovereign-machine-economy-kernel-v3-protocol.html
+            site/sovereign-machine-economy-kernel-v3-chronicle.html
+            site/sovereign-machine-economy-kernel-v3-verifier.html
+            site/sovereign-machine-economy-kernel-v3-sdk.html
+            site/sme-kernel-v3-manifest.json
+            site/assets/sme-kernel-v3.css
+            site/assets/sme-kernel-v3.js
+            site/assets/sme-kernel-v3-core.js
+            site/assets/sme-kernel-v3-adapters.js
+            site/assets/sme-kernel-v3-worker.js
+            site/data/sme-kernel-v3.json
+            site/downloads/sme-kernel-v3/
             site/assets/first-real-loop/
             site/downloads/first-real-loop/
             site/downloads/agi-alpha-node-v0/

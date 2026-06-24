@@ -1,0 +1,263 @@
+name: GoalOS Sovereign Machine Economy Kernel v3 Smoke Test
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'content/sme-kernel-v3.json'
+      - 'website/features/sme-kernel-v3/**'
+      - 'scripts/website/build_sme_kernel_v3.py'
+      - 'scripts/website/snapshot_sme_kernel_v3_site.py'
+      - 'scripts/website/verify_sme_kernel_v3.py'
+      - 'scripts/website/visual_check_sme_kernel_v3.py'
+      - 'schemas/sme-kernel-v3-envelope.schema.json'
+      - 'schemas/sme-kernel-v3-mission-bundle.schema.json'
+      - 'test/test_sme_kernel_v3_website.py'
+      - 'docs/SOVEREIGN_MACHINE_ECONOMY_KERNEL_V3.md'
+      - 'README_UPLOAD_SME_KERNEL_V3.md'
+      - '.github/workflows/goalos-sme-kernel-v3-smoke-test.yml'
+      - '.github/workflows/goalos-agialpha-ascension-v86-final.yml'
+
+concurrency:
+  group: goalos-sme-kernel-v3-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+env:
+  PYTHONUNBUFFERED: '1'
+
+jobs:
+  build-verify-browser-test:
+    name: Build every engine and verify executable Kernel v3
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Compile constitutional tooling under Python 3.11
+        run: |
+          python3 -m py_compile \
+            scripts/website/build_meta_agentic_alpha_agi.py \
+            scripts/website/verify_meta_agentic_alpha_agi.py \
+            scripts/website/build_agi_alpha_node_v0.py \
+            scripts/website/snapshot_agi_alpha_node_v0_site.py \
+            scripts/website/verify_agi_alpha_node_v0.py \
+            scripts/website/build_agi_jobs_v0_v2.py \
+            scripts/website/snapshot_agi_jobs_v0_v2_site.py \
+            scripts/website/verify_agi_jobs_v0_v2.py \
+            scripts/website/build_sovereign_machine_economy.py \
+            scripts/website/snapshot_sovereign_machine_economy_site.py \
+            scripts/website/verify_sovereign_machine_economy.py \
+            scripts/website/build_sme_kernel_v3.py \
+            scripts/website/snapshot_sme_kernel_v3_site.py \
+            scripts/website/verify_sme_kernel_v3.py \
+            scripts/website/visual_check_sme_kernel_v3.py \
+            test/test_sme_kernel_v3_website.py
+
+      - name: Parse browser runtimes
+        run: |
+          node --check website/features/meta-agentic-alpha-agi/assets/meta-agentic-alpha-agi.js
+          node --check website/features/agi-alpha-node-v0/assets/agi-alpha-node-v0.js
+          node --check website/features/agi-jobs-v0-v2/assets/agi-jobs-v0-v2.js
+          node --check website/features/sovereign-machine-economy/assets/sovereign-machine-economy.js
+          node --check website/features/sme-kernel-v3/assets/sme-kernel-v3-core.js
+          node --check website/features/sme-kernel-v3/assets/sme-kernel-v3-adapters.js
+          node --check website/features/sme-kernel-v3/assets/sme-kernel-v3-worker.js
+          node --check website/features/sme-kernel-v3/assets/sme-kernel-v3.js
+
+      - name: Install verification and browser tooling
+        run: |
+          python3 -m pip install --upgrade pip
+          python3 -m pip install jsonschema playwright
+          python3 -m playwright install --with-deps chromium
+
+      - name: Record canonical v86 source digest
+        shell: bash
+        run: |
+          set -euo pipefail
+          find website/v86_actual_site -type f -print0 | sort -z | xargs -0 sha256sum | sha256sum > "$RUNNER_TEMP/v86-source.before"
+
+      - name: Build preserved website, Proof Missions 001–008, and Mainnet record
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 scripts/build_goalos_agialpha_ascension_website_v86.py --out site
+          python3 scripts/website/build_proof_gradient_sovereign.py --site site
+          python3 scripts/website/build_proof_mission_002.py --site site
+          python3 scripts/website/build_proof_mission_003.py --site site
+          python3 scripts/website/build_proof_mission_004.py --site site
+          python3 scripts/website/build_proof_mission_005.py --site site
+          python3 scripts/website/build_proof_mission_006.py --site site
+          python3 scripts/website/build_proof_mission_007.py --site site
+          python3 scripts/website/build_proof_mission_008.py --site site
+          python3 scripts/add_goalos_ethereum_mainnet_pages_v87.py \
+            --site site \
+            --registry config/ethereum-mainnet.contracts.json \
+            --release-contracts release/mainnet-2026-06-21/CONTRACTS_MAINNET.json \
+            --release-manifest release/mainnet-2026-06-21/RELEASE_MANIFEST.json \
+            --deployment-evidence release/mainnet-2026-06-21/DEPLOYMENT_EVIDENCE.json
+
+      - name: Build and verify META-Agentic α-AGI
+        run: |
+          SOURCE_DATE_EPOCH=1782172800 python3 scripts/website/build_meta_agentic_alpha_agi.py --site site
+          python3 scripts/website/verify_meta_agentic_alpha_agi.py --site site
+          python3 -m unittest discover -s test -p 'test_meta_agentic_alpha_agi_website.py' -v
+
+      - name: Build and verify AGI Alpha Node v0
+        run: |
+          python3 scripts/website/snapshot_agi_alpha_node_v0_site.py --site site --output "$RUNNER_TEMP/node-prebuild.json"
+          SOURCE_DATE_EPOCH=1782216000 python3 scripts/website/build_agi_alpha_node_v0.py --site site --root .
+          python3 scripts/website/verify_agi_alpha_node_v0.py \
+            --site site \
+            --root . \
+            --baseline "$RUNNER_TEMP/node-prebuild.json" \
+            --output site/qa/agi-alpha-node-v0-static.json
+          python3 -m unittest discover -s test -p 'test_agi_alpha_node_v0_website.py' -v
+
+      - name: Detect and build optional First Real Loop
+        shell: bash
+        run: |
+          set -euo pipefail
+          required=(
+            content/goalos-first-real-loop.json
+            website/first_real_loop/first-real-loop.css
+            website/first_real_loop/first-real-loop.js
+            scripts/website/build_goalos_first_real_loop.py
+            scripts/website/verify_goalos_first_real_loop.py
+            schemas/goalos-first-real-loop-evidence-docket.schema.json
+          )
+          present=0
+          for file in "${required[@]}"; do [[ -s "$file" ]] && present=$((present + 1)); done
+          if (( present == 0 )); then
+            echo 'FIRST_REAL_LOOP_STATE=none' >> "$GITHUB_ENV"
+          elif (( present == ${#required[@]} )); then
+            echo 'FIRST_REAL_LOOP_STATE=complete' >> "$GITHUB_ENV"
+            python3 scripts/website/build_goalos_first_real_loop.py --site site
+            python3 scripts/website/verify_goalos_first_real_loop.py \
+              --site site \
+              --content content/goalos-first-real-loop.json \
+              --schema schemas/goalos-first-real-loop-evidence-docket.schema.json
+            python3 -m unittest discover -s test -p 'test_goalos_first_real_loop.py' -v
+          else
+            echo "Partial First Real Loop installation detected ($present/${#required[@]})."
+            exit 1
+          fi
+
+      - name: Build and verify AGI Jobs v0 (v2)
+        run: |
+          python3 scripts/website/snapshot_agi_jobs_v0_v2_site.py --site site --output "$RUNNER_TEMP/jobs-prebuild.json"
+          SOURCE_DATE_EPOCH=1782259200 python3 scripts/website/build_agi_jobs_v0_v2.py --site site --root .
+          python3 scripts/website/verify_agi_jobs_v0_v2.py \
+            --site site \
+            --root . \
+            --baseline "$RUNNER_TEMP/jobs-prebuild.json" \
+            --schema schemas/agi-jobs-v0-v2-evidence-docket.schema.json \
+            --output site/qa/agi-jobs-v0-v2-static.json
+          python3 -m unittest discover -s test -p 'test_agi_jobs_v0_v2_website.py' -v
+
+      - name: Build and verify Sovereign Machine Economy Ω
+        run: |
+          python3 scripts/website/snapshot_sovereign_machine_economy_site.py --site site --output "$RUNNER_TEMP/economy-prebuild.json"
+          SOURCE_DATE_EPOCH=1782259200 python3 scripts/website/build_sovereign_machine_economy.py --site site --root .
+          python3 scripts/website/verify_sovereign_machine_economy.py \
+            --site site \
+            --root . \
+            --content content/sovereign-machine-economy.json \
+            --schema schemas/sovereign-machine-economy-docket.schema.json \
+            --baseline "$RUNNER_TEMP/economy-prebuild.json" \
+            --output site/qa/sovereign-machine-economy-static.json
+          python3 -m unittest discover -s test -p 'test_sovereign_machine_economy_website.py' -v
+
+      - name: Build and statically verify executable Kernel v3
+        run: |
+          python3 scripts/website/snapshot_sme_kernel_v3_site.py --site site --output "$RUNNER_TEMP/kernel-prebuild.json"
+          SOURCE_DATE_EPOCH=1782259200 python3 scripts/website/build_sme_kernel_v3.py --site site --root .
+          python3 scripts/website/verify_sme_kernel_v3.py \
+            --site site \
+            --root . \
+            --content content/sme-kernel-v3.json \
+            --envelope-schema schemas/sme-kernel-v3-envelope.schema.json \
+            --bundle-schema schemas/sme-kernel-v3-mission-bundle.schema.json \
+            --baseline "$RUNNER_TEMP/kernel-prebuild.json" \
+            --output site/qa/sme-kernel-v3-static.json
+          python3 -m unittest discover -s test -p 'test_sme_kernel_v3_website.py' -v
+
+      - name: Browser-test Kernel v3 state machine, verifier, and fail-closed paths
+        run: python3 scripts/website/visual_check_sme_kernel_v3.py --site site --output site/qa/sme-kernel-v3-browser
+
+      - name: Re-verify every constitutional surface after Kernel reconciliation
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 scripts/website/verify_meta_agentic_alpha_agi.py --site site
+          python3 scripts/website/verify_agi_alpha_node_v0.py --site site --root . --output site/qa/agi-alpha-node-v0-static-post-kernel-v3.json
+          if [[ "${FIRST_REAL_LOOP_STATE:-none}" == 'complete' ]]; then
+            python3 scripts/website/verify_goalos_first_real_loop.py \
+              --site site \
+              --content content/goalos-first-real-loop.json \
+              --schema schemas/goalos-first-real-loop-evidence-docket.schema.json
+          fi
+          python3 scripts/website/verify_agi_jobs_v0_v2.py \
+            --site site --root . \
+            --schema schemas/agi-jobs-v0-v2-evidence-docket.schema.json \
+            --output site/qa/agi-jobs-v0-v2-static-post-kernel-v3.json
+          python3 scripts/website/verify_sovereign_machine_economy.py \
+            --site site --root . \
+            --content content/sovereign-machine-economy.json \
+            --schema schemas/sovereign-machine-economy-docket.schema.json \
+            --output site/qa/sovereign-machine-economy-static-post-kernel-v3.json
+          python3 scripts/website/verify_sme_kernel_v3.py \
+            --site site --root . \
+            --content content/sme-kernel-v3.json \
+            --envelope-schema schemas/sme-kernel-v3-envelope.schema.json \
+            --bundle-schema schemas/sme-kernel-v3-mission-bundle.schema.json \
+            --output site/qa/sme-kernel-v3-static-final.json
+
+      - name: Prove preservation and public-site hygiene
+        shell: bash
+        run: |
+          set -euo pipefail
+          find website/v86_actual_site -type f -print0 | sort -z | xargs -0 sha256sum | sha256sum > "$RUNNER_TEMP/v86-source.after"
+          cmp "$RUNNER_TEMP/v86-source.before" "$RUNNER_TEMP/v86-source.after"
+          test "$(grep -c 'GOALOS_SME_KERNEL_V3_HOME_START' site/index.html)" -eq 1
+          test "$(grep -c 'GOALOS_SME_KERNEL_V3_NAV_START' site/index.html)" -eq 1
+          if find site \( -name '*.zip' -o -name '*.7z' -o -name '*.tar' -o -name '*.gz' -o -name '*.rar' \) -print | grep -q .; then
+            echo 'Archive file found inside public site.'
+            exit 1
+          fi
+          if grep -RIlE 'PRIVATE_MAINNET_DEPLOYER_PRIVATE_KEY|SEED_PHRASE|MNEMONIC|MAINNET_RPC_URL=|ETHERSCAN_API_KEY=' site; then
+            echo 'Private operator material found inside public site.'
+            exit 1
+          fi
+
+      - name: Upload Kernel v3 preview and QA evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: goalos-sme-kernel-v3-preview
+          path: |
+            site/index.html
+            site/sovereign-machine-economy-kernel-v3.html
+            site/sovereign-machine-economy-kernel-v3-protocol.html
+            site/sovereign-machine-economy-kernel-v3-chronicle.html
+            site/sovereign-machine-economy-kernel-v3-verifier.html
+            site/sovereign-machine-economy-kernel-v3-sdk.html
+            site/sme-kernel-v3-manifest.json
+            site/assets/sme-kernel-v3.css
+            site/assets/sme-kernel-v3.js
+            site/assets/sme-kernel-v3-core.js
+            site/assets/sme-kernel-v3-adapters.js
+            site/assets/sme-kernel-v3-worker.js
+            site/data/sme-kernel-v3.json
+            site/downloads/sme-kernel-v3/
+            site/qa/sme-kernel-v3*
+          if-no-files-found: error
+          retention-days: 30
