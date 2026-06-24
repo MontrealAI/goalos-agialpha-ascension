@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://montrealai.github.io/goalos-agialpha-ascension/schemas/goalos-first-real-loop-evidence-docket.schema.json",
+  "title": "GoalOS AGIALPHA Ascension First Real Loop Evidence Docket",
+  "type": "object",
+  "required": ["schemaVersion", "docketId", "releaseId", "lineage", "missionContract", "mark", "sovereign", "jobs", "evidenceSummary", "reusableConstruct", "vNext", "treatmentControl", "successConditions", "goalosRecord", "terminal", "claimBoundary", "runCommitment"],
+  "properties": {
+    "schemaVersion": {"const": "1.0.0"},
+    "docketId": {"const": "GOALOS-FIRST-REAL-LOOP-DOCKET-001"},
+    "releaseId": {"const": "GOALOS-AGIALPHA-FIRST-REAL-LOOP-001"},
+    "runCommitment": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "terminal": {
+      "type": "object",
+      "required": ["state", "authority", "externalActions", "walletConnections", "networkRequests"],
+      "properties": {
+        "state": {"const": "HUMAN_REVIEW_REQUIRED"},
+        "authority": {"const": "NONE_GRANTED"},
+        "externalActions": {"const": 0},
+        "walletConnections": {"const": 0},
+        "networkRequests": {"const": 0}
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": true
+}
