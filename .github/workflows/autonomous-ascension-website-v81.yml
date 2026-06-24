@@ -22,7 +22,7 @@ jobs:
       contents: read
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/configure-pages@v5
+      - uses: actions/configure-pages@v6
       - name: Install optional PDF renderer
         run: sudo apt-get update && sudo apt-get install -y poppler-utils
       - name: Build website
