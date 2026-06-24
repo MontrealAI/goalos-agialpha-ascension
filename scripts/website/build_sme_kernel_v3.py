@@ -52,7 +52,7 @@ def esc(value:Any)->str:return html.escape(str(value),quote=True)
 def validate_content(data:dict[str,Any])->None:
  expected={'schema_version':'3.0.0','release_id':'GOALOS-AGIALPHA-SME-KERNEL-V3-001','release_title':RELEASE_TITLE,'version':'3.0.0-executable-constitutional-kernel','status':'executable-browser-local-constitutional-kernel','doctrine':'Typed state. Signed handoffs. Durable memory. Human authority.'}
  errors=[f'{key} mismatch' for key,value in expected.items() if data.get(key)!=value]
- counts={'hero_metrics':6,'roles':5,'states':17,'envelope_types':10,'adapter_contract':6,'adapters':3,'presets':6,'postures':3,'risks':3,'incidents':5,'review_actions':4,'invariants':10,'threat_controls':8,'claim_boundary':6}
+ counts={'hero_metrics':6,'autonomy_chain':6,'roles':5,'states':17,'envelope_types':10,'adapter_contract':6,'adapters':3,'presets':6,'postures':3,'risks':3,'incidents':5,'review_actions':4,'invariants':10,'threat_controls':8,'claim_boundary':6}
  for key,count in counts.items():
   if not isinstance(data.get(key),list) or len(data[key])!=count:errors.append(f'{key} must contain {count}')
  if [x.get('id') for x in data.get('states',[])]!=['DRAFT','MISSION_COMMITTED','INSTITUTION_PROPOSED','INSTITUTION_CHARTERED','NODE_ADMITTED','EXECUTION_BOUNDED','WORK_EXECUTED','EVIDENCE_SEALED','MARKET_CONVENED','VALIDATION_COMMITTED','VALIDATION_REVEALED','CHALLENGE_WINDOW_OPEN','SETTLEMENT_INTENT_PREPARED','AWAITING_HUMAN_REVIEW','HUMAN_REVIEW_RECORDED','MEMORY_DISPOSITION_RECORDED','COMPLETE']:errors.append('state order mismatch')
@@ -92,11 +92,12 @@ def patch_homepage(path:Path,data:dict[str,Any])->None:
 
 def render(template:str,data:dict[str,Any],page:str)->str:
  metrics=''.join(f'<div class="kv3-metric"><strong>{esc(x["value"])}</strong><span>{esc(x["label"])}</span></div>' for x in data['hero_metrics'])
+ autonomy=''.join(f'<li data-phase="{esc(x["id"])}"><b>{esc(x["index"])}</b><div><strong>{esc(x["label"])} <span aria-hidden="true">{esc(x["icon"])}</span></strong><small>{esc(x["artifact"])}</small></div></li>' for x in data['autonomy_chain'])
  reviews=''.join(f'<button class="kv3-review-action" type="button" data-review-action="{esc(x["id"])}" disabled><strong>{esc(x["label"])}</strong><span>{esc(x["memory"])}</span></button>' for x in data['review_actions'])
  envelopes=''.join(f'<article class="kv3-envelope"><span>{esc(x["issuer"])}</span><h3>{esc(x["id"])}</h3><p>{esc(x["purpose"])}</p></article>' for x in data['envelope_types'])
  states=''.join(f'<article class="kv3-transition-node"><span>{i:02d} · {esc(x["plane"])}</span><strong>{esc(x["label"])}</strong></article>' for i,x in enumerate(data['states'],1))
  embedded=json.dumps(data,ensure_ascii=False,separators=(',',':')).replace('<','\\u003c')
- out=template.replace('@@DATA_JSON@@',embedded).replace('@@HERO_METRICS@@',metrics).replace('@@REVIEW_ACTIONS@@',reviews).replace('@@ENVELOPE_CARDS@@',envelopes).replace('@@STATE_CARDS@@',states)
+ out=template.replace('@@DATA_JSON@@',embedded).replace('@@HERO_METRICS@@',metrics).replace('@@AUTONOMY_CHAIN@@',autonomy).replace('@@REVIEW_ACTIONS@@',reviews).replace('@@ENVELOPE_CARDS@@',envelopes).replace('@@STATE_CARDS@@',states)
  key={'sovereign-machine-economy-kernel-v3.html':'experience','sovereign-machine-economy-kernel-v3-protocol.html':'protocol','sovereign-machine-economy-kernel-v3-chronicle.html':'chronicle','sovereign-machine-economy-kernel-v3-verifier.html':'verifier','sovereign-machine-economy-kernel-v3-sdk.html':'sdk'}[page]
  out=out.replace(f'data-page="{key}"',f'data-page="{key}" aria-current="page"')
  if '@@' in out:raise RuntimeError(f'Unresolved template token in {page}')

@@ -33,6 +33,50 @@
       "label": "external actions"
     }
   ],
+  "autonomy_chain": [
+    {
+      "id": "identify",
+      "index": "01",
+      "label": "IDENTIFY",
+      "icon": "🔍",
+      "artifact": "Opportunity + mission map"
+    },
+    {
+      "id": "learn",
+      "index": "02",
+      "label": "OUT-LEARN",
+      "icon": "📚",
+      "artifact": "Provenance-bound evidence graph"
+    },
+    {
+      "id": "think",
+      "index": "03",
+      "label": "OUT-THINK",
+      "icon": "🧠",
+      "artifact": "Hypotheses + counterfactuals"
+    },
+    {
+      "id": "design",
+      "index": "04",
+      "label": "OUT-DESIGN",
+      "icon": "🎨",
+      "artifact": "Constitutional solution architecture"
+    },
+    {
+      "id": "strategise",
+      "index": "05",
+      "label": "OUT-STRATEGISE",
+      "icon": "♟️",
+      "artifact": "Execution charter + rollback plan"
+    },
+    {
+      "id": "execute",
+      "index": "06",
+      "label": "OUT-EXECUTE",
+      "icon": "⚡",
+      "artifact": "Bounded action + Evidence Docket"
+    }
+  ],
   "roles": [
     {
       "id": "META_ARCHITECT",

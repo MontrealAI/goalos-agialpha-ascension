@@ -31,6 +31,14 @@ def serve(directory: Path) -> Iterator[str]:
 def write_json(path:Path,value:Any)->None:path.parent.mkdir(parents=True,exist_ok=True);path.write_text(json.dumps(value,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
 def record(results:list[dict[str,Any]],label:str,condition:bool,detail:Any='')->None:results.append({'label':label,'status':'PASS' if condition else 'FAIL','detail':detail})
 def overflow(page:Any)->dict[str,Any]:return page.evaluate("""() => ({documentWidth:document.documentElement.scrollWidth,viewportWidth:document.documentElement.clientWidth,bodyWidth:document.body.scrollWidth,overflow:document.documentElement.scrollWidth>document.documentElement.clientWidth+2})""")
+def rect(page:Any,selector:str)->dict[str,float]:
+    return page.locator(selector).evaluate("""el=>{const r=el.getBoundingClientRect();return{x:r.x,y:r.y,width:r.width,height:r.height,right:r.right,bottom:r.bottom}}""")
+def overlap_pairs(page:Any,selector:str,tolerance:float=1.0)->list[dict[str,Any]]:
+    return page.locator(selector).evaluate_all(r"""(els,tolerance)=>{const rows=els.map((el,index)=>{const r=el.getBoundingClientRect();return{index,label:(el.innerText||el.getAttribute('data-phase')||String(index)).trim().replace(/\s+/g,' ').slice(0,72),x:r.x,y:r.y,right:r.right,bottom:r.bottom,width:r.width,height:r.height}});const overlaps=[];for(let i=0;i<rows.length;i++){for(let j=i+1;j<rows.length;j++){const ox=Math.min(rows[i].right,rows[j].right)-Math.max(rows[i].x,rows[j].x);const oy=Math.min(rows[i].bottom,rows[j].bottom)-Math.max(rows[i].y,rows[j].y);if(ox>tolerance&&oy>tolerance)overlaps.push({a:rows[i].label,b:rows[j].label,overlapX:Number(ox.toFixed(2)),overlapY:Number(oy.toFixed(2)),area:Number((ox*oy).toFixed(2))});}}return overlaps;}""",tolerance)
+def containment_report(page:Any,parent_selector:str,child_selector:str,tolerance:float=1.0)->list[dict[str,Any]]:
+    return page.evaluate(r"""({parentSelector,childSelector,tolerance})=>{const parent=document.querySelector(parentSelector);if(!parent)return[{error:'parent missing'}];const p=parent.getBoundingClientRect();return [...document.querySelectorAll(childSelector)].map((el,index)=>{const r=el.getBoundingClientRect();const ok=r.left>=p.left-tolerance&&r.right<=p.right+tolerance&&r.top>=p.top-tolerance&&r.bottom<=p.bottom+tolerance;return{index,label:(el.innerText||String(index)).trim().replace(/\s+/g,' ').slice(0,72),ok,rect:{x:r.x,y:r.y,right:r.right,bottom:r.bottom},parent:{x:p.x,y:p.y,right:p.right,bottom:p.bottom}};}).filter(row=>!row.ok);}""",{'parentSelector':parent_selector,'childSelector':child_selector,'tolerance':tolerance})
+def rectangles_overlap(a:dict[str,float],b:dict[str,float],tolerance:float=1.0)->bool:
+    return min(a['right'],b['right'])-max(a['x'],b['x'])>tolerance and min(a['bottom'],b['bottom'])-max(a['y'],b['y'])>tolerance
 def short(value:Any,n:int=24)->str:
     text=str(value or '');return text if len(text)<=n else text[:n]+'…'
 
@@ -122,7 +130,7 @@ def run(site:Path,output:Path)->dict[str,Any]:
     try:
         from playwright.sync_api import sync_playwright
     except Exception as exc:
-        report={'schema':'goalos.sme.kernel.v3.browser_qa.v1','status':'FAIL','checks_total':1,'checks_passed':0,'checks_failed':1,'checks':[{'label':'playwright-import','status':'FAIL','detail':str(exc)}]};write_json(output/'browser-report.json',report);return report
+        report={'schema':'goalos.sme.kernel.v3.browser_qa.v2','status':'FAIL','checks_total':1,'checks_passed':0,'checks_failed':1,'checks':[{'label':'playwright-import','status':'FAIL','detail':str(exc)}]};write_json(output/'browser-report.json',report);return report
     output.mkdir(parents=True,exist_ok=True)
     results:list[dict[str,Any]]=[];console_errors:list[str]=[];failed_requests:list[str]=[];external_requests:list[str]=[];bundle_source=worker_bundle(site);load_mode={'value':'auto'}
     with serve(site) as base, sync_playwright() as playwright:
@@ -144,6 +152,16 @@ def run(site:Path,output:Path)->dict[str,Any]:
             record(results,'experience-three-adapters',page.locator('.kv3-adapter').count()==3,page.locator('.kv3-adapter').count())
             record(results,'experience-six-metrics',page.locator('.kv3-metric').count()==6,page.locator('.kv3-metric').count())
             record(results,'experience-default-authority-none','NONE_GRANTED' in page.locator('.kv3-boundary').inner_text(),page.locator('.kv3-boundary').inner_text())
+            record(results,'experience-six-autonomous-stages',page.locator('.kv3-autonomy-map>li').count()==6,page.locator('.kv3-autonomy-map>li').count())
+            record(results,'experience-five-separated-authorities',page.locator('.kv3-authority-grid>div').count()==5,page.locator('.kv3-authority-grid>div').count())
+            command_rect=rect(page,'.kv3-command-console');copy_rect=rect(page,'.kv3-hero-grid>div:first-child')
+            stage_overlaps=overlap_pairs(page,'.kv3-autonomy-map>li');authority_overlaps=overlap_pairs(page,'.kv3-authority-grid>div')
+            command_escape=containment_report(page,'.kv3-command-console','.kv3-autonomy-map>li, .kv3-authority-grid>div')
+            record(results,'experience-command-console-substantial',command_rect['width']>=520 and command_rect['height']>=600,command_rect)
+            record(results,'experience-command-console-separate-from-copy',not rectangles_overlap(command_rect,copy_rect),{'console':command_rect,'copy':copy_rect})
+            record(results,'experience-autonomous-stage-cards-no-overlap',not stage_overlaps,stage_overlaps)
+            record(results,'experience-authority-cards-no-overlap',not authority_overlaps,authority_overlaps)
+            record(results,'experience-command-elements-contained',not command_escape,command_escape)
             record(results,'experience-desktop-no-overflow',not overflow(page)['overflow'],overflow(page))
             page.screenshot(path=str(output/'01-kernel-v3-hero-desktop.png'),full_page=False)
 
@@ -207,6 +225,10 @@ def run(site:Path,output:Path)->dict[str,Any]:
             record(results,'sdk-three-adapters',page.locator('.kv3-adapter').count()==3,page.locator('.kv3-adapter').count())
             record(results,'sdk-six-method-contract',all(method in page.locator('body').inner_text() for method in ['initialize','propose','execute','evaluate','produceEvidence','verifyEvidence']),'adapter contract')
             record(results,'sdk-downloads-present',all((site/path).is_file() for path in ['downloads/sme-kernel-v3/sme-kernel-v3-core.js','downloads/sme-kernel-v3/sme-kernel-v3-adapters.js','downloads/sme-kernel-v3/sme-kernel-v3-protocol-manifest.json']),'downloads')
+            sdk_rect=rect(page,'.kv3-sdk-console');sdk_method_overlaps=overlap_pairs(page,'.kv3-method-matrix>div');sdk_escapes=containment_report(page,'.kv3-sdk-console','.kv3-method-matrix>div, .kv3-console-ledger>div')
+            record(results,'sdk-admission-console-substantial',sdk_rect['width']>=500 and sdk_rect['height']>=560,sdk_rect)
+            record(results,'sdk-method-cards-no-overlap',not sdk_method_overlaps,sdk_method_overlaps)
+            record(results,'sdk-console-elements-contained',not sdk_escapes,sdk_escapes)
             page.screenshot(path=str(output/'09-replaceable-adapter-sdk-desktop.png'),full_page=False)
 
             # Incident rehearsal returns a fail-closed terminal before human review.
@@ -231,10 +253,14 @@ def run(site:Path,output:Path)->dict[str,Any]:
             gateway.screenshot(path=str(output/'11-main-website-kernel-v3-gateway-desktop.png'))
 
             page.set_viewport_size({'width':1024,'height':1366});load_surface(page,site,base,PAGES['experience'],bundle_source,load_mode)
+            tablet_stage_overlaps=overlap_pairs(page,'.kv3-autonomy-map>li');tablet_authority_overlaps=overlap_pairs(page,'.kv3-authority-grid>div')
             record(results,'tablet-no-overflow',not overflow(page)['overflow'],overflow(page));record(results,'tablet-form-visible',page.locator('#kv3-mission-form').is_visible(),'')
+            record(results,'tablet-command-cards-no-overlap',not tablet_stage_overlaps and not tablet_authority_overlaps,{'stages':tablet_stage_overlaps,'authorities':tablet_authority_overlaps})
             page.screenshot(path=str(output/'12-kernel-v3-tablet.png'),full_page=False)
             page.set_viewport_size({'width':390,'height':844});load_surface(page,site,base,PAGES['experience'],bundle_source,load_mode)
+            mobile_stage_overlaps=overlap_pairs(page,'.kv3-autonomy-map>li');mobile_authority_overlaps=overlap_pairs(page,'.kv3-authority-grid>div')
             mobile=overflow(page);record(results,'mobile-no-overflow',not mobile['overflow'],mobile);record(results,'mobile-run-visible',page.locator('#kv3-run').is_visible(),'');record(results,'mobile-five-authorities',page.locator('.kv3-identity').count()==5,page.locator('.kv3-identity').count())
+            record(results,'mobile-command-cards-no-overlap',not mobile_stage_overlaps and not mobile_authority_overlaps,{'stages':mobile_stage_overlaps,'authorities':mobile_authority_overlaps})
             page.screenshot(path=str(output/'13-kernel-v3-mobile.png'),full_page=False)
 
             record(results,'console-errors-zero',not console_errors,console_errors)
@@ -243,7 +269,7 @@ def run(site:Path,output:Path)->dict[str,Any]:
             context.close()
         finally: browser.close()
     failed=[x for x in results if x['status']=='FAIL']
-    report={'schema':'goalos.sme.kernel.v3.browser_qa.v1','release':'GOALOS-AGIALPHA-SME-KERNEL-V3-001','status':'PASS' if not failed else 'FAIL','checks_total':len(results),'checks_passed':len(results)-len(failed),'checks_failed':len(failed),'load_mode':load_mode,'checks':results,'diagnostics':{'console_errors':console_errors,'failed_requests':failed_requests,'external_requests':external_requests}}
+    report={'schema':'goalos.sme.kernel.v3.browser_qa.v2','release':'GOALOS-AGIALPHA-SME-KERNEL-V3-001','status':'PASS' if not failed else 'FAIL','checks_total':len(results),'checks_passed':len(results)-len(failed),'checks_failed':len(failed),'load_mode':load_mode,'checks':results,'diagnostics':{'console_errors':console_errors,'failed_requests':failed_requests,'external_requests':external_requests}}
     write_json(output/'browser-report.json',report)
     print(json.dumps({'status':report['status'],'checks_total':report['checks_total'],'checks_passed':report['checks_passed'],'checks_failed':report['checks_failed'],'load_mode':load_mode.get('value'),'output':str(output/'browser-report.json')},indent=2))
     return report

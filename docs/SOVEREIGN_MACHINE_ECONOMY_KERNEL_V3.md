@@ -107,3 +107,14 @@ Kernel v3 performs no live model call, authenticated enterprise action, wallet c
 ## Autonomous build
 
 The production GitHub Action builds all existing GoalOS surfaces first, snapshots the generated site, adds Kernel v3 last, verifies its preservation boundary, runs deterministic tests and browser QA, revalidates every companion manifest, checks canonical v86 byte identity, rejects archives and private operator material, uploads the full Pages artifact, and deploys only after the build job succeeds.
+
+
+## Autonomous end-to-end execution doctrine
+
+Kernel v3 exposes the complete capability chain as a source-generated constitutional contract:
+
+`Identify 🔍 → Out-Learn 📚 → Out-Think 🧠 → Out-Design 🎨 → Out-Strategise ♟️ → Out-Execute ⚡`
+
+Each phase is declared in `content/sme-kernel-v3.json`, rendered by `scripts/website/build_sme_kernel_v3.py`, and validated by both static and Chromium QA. The executive console is grid-based rather than absolutely positioned. Production Actions measure desktop, tablet, and mobile geometry; reject overlapping phase or authority cards; reject escaped elements; and reject a collapsed visual.
+
+The Action—not a direct edit to generated Pages output—remains the sole publication path. Source templates and assets are rebuilt into the temporary `site/` artifact, verified, browser-tested, packaged, and deployed through GitHub Pages.

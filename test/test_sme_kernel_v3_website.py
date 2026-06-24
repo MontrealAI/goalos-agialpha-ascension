@@ -28,7 +28,7 @@ class SMEKernelV3WebsiteTests(unittest.TestCase):
  def test_01_release_contract(self):
   data=json.loads(CONTENT.read_text());self.assertEqual(data['release_title'],'GoalOS AGIALPHA Ascension Sovereign Machine Economy Kernel v3 ⚙️✨');self.assertEqual(data['version'],'3.0.0-executable-constitutional-kernel');self.assertEqual(data['status'],'executable-browser-local-constitutional-kernel')
  def test_02_constitutional_depth(self):
-  d=json.loads(CONTENT.read_text());expected={'hero_metrics':6,'roles':5,'states':17,'envelope_types':10,'adapter_contract':6,'adapters':3,'presets':6,'postures':3,'risks':3,'incidents':5,'review_actions':4,'invariants':10,'threat_controls':8,'claim_boundary':6}
+  d=json.loads(CONTENT.read_text());expected={'hero_metrics':6,'autonomy_chain':6,'roles':5,'states':17,'envelope_types':10,'adapter_contract':6,'adapters':3,'presets':6,'postures':3,'risks':3,'incidents':5,'review_actions':4,'invariants':10,'threat_controls':8,'claim_boundary':6}
   for key,count in expected.items():self.assertEqual(len(d[key]),count,key)
  def test_03_security_default_deny(self):
   s=json.loads(CONTENT.read_text())['security'];
@@ -72,5 +72,18 @@ class SMEKernelV3WebsiteTests(unittest.TestCase):
  def test_16_schemas_are_valid(self):
   import jsonschema
   jsonschema.Draft202012Validator.check_schema(json.loads(ENV_SCHEMA.read_text()));jsonschema.Draft202012Validator.check_schema(json.loads(BUNDLE_SCHEMA.read_text()))
+ def test_17_executive_constellation_is_source_generated_and_collision_guarded(self):
+  template=(ROOT/'website/features/sme-kernel-v3/templates/sovereign-machine-economy-kernel-v3.html').read_text()
+  generated=(self.site/'sovereign-machine-economy-kernel-v3.html').read_text()
+  css=(ROOT/'website/features/sme-kernel-v3/assets/sme-kernel-v3.css').read_text()
+  visual=VISUAL.read_text()
+  self.assertIn('Autonomously. End-to-end.',template)
+  for label in ['IDENTIFY','OUT-LEARN','OUT-THINK','OUT-DESIGN','OUT-STRATEGISE','OUT-EXECUTE']:self.assertIn(label,generated)
+  self.assertEqual(generated.count('data-phase='),6)
+  self.assertEqual(generated.count('<div><i>'),5)
+  self.assertIn('@@AUTONOMY_CHAIN@@',template)
+  self.assertNotIn('class="kv3-orbit"',template)
+  self.assertIn('.kv3-command-console',css);self.assertIn('width:min(100%,620px)',css);self.assertIn('.kv3-autonomy-map',css);self.assertIn('.kv3-authority-grid',css)
+  for label in ['experience-command-console-substantial','experience-autonomous-stage-cards-no-overlap','experience-authority-cards-no-overlap','sdk-method-cards-no-overlap','tablet-command-cards-no-overlap','mobile-command-cards-no-overlap']:self.assertIn(label,visual)
 
 if __name__=='__main__':unittest.main()
