@@ -2,130 +2,558 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://montrealai.github.io/goalos-agialpha-ascension/schemas/agi-jobs-v0-v2-evidence-docket.schema.json",
   "title": "GoalOS AGIALPHA Ascension AGI Jobs v0 (v2) Evidence Docket v3",
+  "description": "A deterministic, browser-local review object for the Sovereign Work Civilization. It is evidence, not permission.",
   "type": "object",
   "additionalProperties": false,
   "required": [
-    "schema", "release", "generated_at", "run_id", "deterministic_seed", "job_charter",
-    "market", "work_graph", "evaluation", "energy", "validator_parliament", "guardian_chamber",
-    "incident", "settlement", "memory_candidate", "proof_chronicle", "terminal", "claim_boundary"
+    "schema",
+    "release_id",
+    "release_title",
+    "version",
+    "run_id",
+    "work_constitution",
+    "market",
+    "work_graph",
+    "parliament",
+    "guardians",
+    "incident",
+    "evidence",
+    "settlement",
+    "memory",
+    "authority",
+    "claim_boundary",
+    "run_commitment"
   ],
-  "properties": {
-    "schema": {"const": "goalos.agi_jobs_v0_v2.evidence_docket.v3"},
-    "release": {
-      "type": "object",
-      "required": ["id", "title", "version"],
-      "properties": {
-        "id": {"const": "GOALOS-AGIALPHA-AGI-JOBS-V0-V2-002"},
-        "title": {"const": "GoalOS AGIALPHA Ascension AGI Jobs v0 (v2) ✨"},
-        "version": {"const": "3.0.0-sovereign-labor-civilization"}
-      }
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
     },
-    "generated_at": {"type": "string"},
-    "run_id": {"type": "string", "pattern": "^job-[a-f0-9]{16}$"},
-    "deterministic_seed": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
-    "job_charter": {
+    "nonEmptyString": {
+      "type": "string",
+      "minLength": 1
+    },
+    "zero": {
+      "const": 0
+    },
+    "noneGranted": {
+      "const": "NONE_GRANTED"
+    }
+  },
+  "properties": {
+    "schema": {
+      "const": "goalos.agi_jobs_v0_v2.evidence_docket.v3"
+    },
+    "release_id": {
+      "const": "GOALOS-AGIALPHA-AGI-JOBS-V0-V2-002"
+    },
+    "release_title": {
+      "const": "GoalOS AGIALPHA Ascension AGI Jobs v0 (v2) ✨"
+    },
+    "version": {
+      "const": "3.0.0-sovereign-work-civilization"
+    },
+    "run_id": {
+      "type": "string",
+      "pattern": "^AJ-[A-F0-9]{16}$"
+    },
+    "work_constitution": {
       "type": "object",
-      "required": ["mission", "job_class", "posture", "risk", "reward_units", "unit", "forbidden_actions"],
+      "additionalProperties": false,
+      "required": [
+        "mission",
+        "preset",
+        "job_class",
+        "posture",
+        "risk",
+        "reward_units",
+        "deliverables",
+        "forbidden_runtime_actions"
+      ],
       "properties": {
-        "mission": {"type": "string", "minLength": 20},
-        "job_class": {"type": "string"},
-        "posture": {"type": "string"},
-        "risk": {"type": "string"},
-        "reward_units": {"type": "number", "minimum": 0},
-        "unit": {"type": "string"},
-        "forbidden_actions": {"type": "array", "minItems": 5, "items": {"type": "string"}}
+        "mission": {
+          "type": "string",
+          "minLength": 30
+        },
+        "preset": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "job_class": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "posture": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "risk": {
+          "enum": [
+            "low",
+            "medium",
+            "high",
+            "critical"
+          ]
+        },
+        "reward_units": {
+          "type": "number",
+          "minimum": 500,
+          "maximum": 100000
+        },
+        "deliverables": {
+          "type": "array",
+          "minItems": 5,
+          "items": {
+            "$ref": "#/$defs/nonEmptyString"
+          }
+        },
+        "forbidden_runtime_actions": {
+          "type": "array",
+          "minItems": 5,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/nonEmptyString"
+          }
+        }
       }
     },
     "market": {
       "type": "object",
-      "required": ["coalition", "ranked"],
+      "additionalProperties": false,
+      "required": [
+        "leader",
+        "frontier",
+        "ranking",
+        "council"
+      ],
       "properties": {
-        "coalition": {
-          "type": "object",
-          "required": ["prime", "specialists", "shadow", "reserves", "quarantined", "pareto_frontier"],
-          "properties": {
-            "prime": {"type": "object"},
-            "specialists": {"type": "array", "minItems": 2, "maxItems": 2},
-            "shadow": {"type": "object"},
-            "reserves": {"type": "array", "minItems": 2},
-            "quarantined": {"type": "array"},
-            "pareto_frontier": {"type": "array", "minItems": 1}
+        "leader": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "frontier": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/nonEmptyString"
           }
         },
-        "ranked": {"type": "array", "minItems": 12, "maxItems": 12}
+        "ranking": {
+          "type": "array",
+          "minItems": 12,
+          "maxItems": 12,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "admitted",
+              "score",
+              "fit"
+            ],
+            "properties": {
+              "id": {
+                "$ref": "#/$defs/nonEmptyString"
+              },
+              "admitted": {
+                "type": "boolean"
+              },
+              "score": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              },
+              "fit": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              }
+            }
+          }
+        },
+        "council": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "id",
+            "prime",
+            "evidence",
+            "assurance",
+            "delivery",
+            "shadow",
+            "reserves"
+          ],
+          "properties": {
+            "id": {
+              "type": "string",
+              "pattern": "^COUNCIL-[A-F0-9]{12}$"
+            },
+            "prime": {
+              "$ref": "#/$defs/nonEmptyString"
+            },
+            "evidence": {
+              "$ref": "#/$defs/nonEmptyString"
+            },
+            "assurance": {
+              "$ref": "#/$defs/nonEmptyString"
+            },
+            "delivery": {
+              "$ref": "#/$defs/nonEmptyString"
+            },
+            "shadow": {
+              "$ref": "#/$defs/nonEmptyString"
+            },
+            "reserves": {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 2,
+              "items": {
+                "$ref": "#/$defs/nonEmptyString"
+              }
+            }
+          }
+        }
       }
     },
-    "work_graph": {"type": "array", "minItems": 8, "maxItems": 8},
-    "evaluation": {
-      "type": "object",
-      "required": ["capability", "evidence", "reliability", "efficiency", "latency", "safety", "energy", "weighted_score", "market_integrity", "proof_density", "settlement_readiness"]
+    "work_graph": {
+      "type": "array",
+      "minItems": 8,
+      "maxItems": 8,
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "proof",
+          "dependency",
+          "owner",
+          "role",
+          "status"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^W[0-9]{2}$"
+          },
+          "status": {
+            "const": "COMPLETE"
+          }
+        }
+      }
     },
-    "energy": {
+    "parliament": {
       "type": "object",
-      "required": ["declared_ceiling", "observed", "useful_work_ratio", "status"],
-      "properties": {"status": {"enum": ["PASS", "BREACH"]}}
-    },
-    "validator_parliament": {
-      "type": "object",
-      "required": ["votes", "pass", "dissent", "reject", "threshold", "quorum_met", "summary"],
+      "additionalProperties": false,
+      "required": [
+        "seats",
+        "threshold",
+        "pass",
+        "reject",
+        "dissent",
+        "abstain",
+        "judgments"
+      ],
       "properties": {
-        "votes": {"type": "array", "minItems": 7, "maxItems": 7},
-        "pass": {"type": "integer"}, "dissent": {"type": "integer"}, "reject": {"type": "integer"},
-        "threshold": {"type": "integer"}, "quorum_met": {"type": "boolean"}, "summary": {"type": "string"}
+        "seats": {
+          "const": 9
+        },
+        "threshold": {
+          "const": 7
+        },
+        "pass": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9
+        },
+        "reject": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9
+        },
+        "dissent": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9
+        },
+        "abstain": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9
+        },
+        "judgments": {
+          "type": "array",
+          "minItems": 9,
+          "maxItems": 9,
+          "items": {
+            "type": "object",
+            "required": [
+              "id",
+              "name",
+              "focus",
+              "verdict",
+              "score",
+              "rationale",
+              "salt",
+              "commitment",
+              "conflict"
+            ],
+            "properties": {
+              "verdict": {
+                "enum": [
+                  "PASS",
+                  "DISSENT",
+                  "REJECT",
+                  "ABSTAIN"
+                ]
+              },
+              "score": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 100
+              },
+              "salt": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{16}$"
+              },
+              "commitment": {
+                "$ref": "#/$defs/sha256"
+              }
+            }
+          }
+        }
       }
     },
-    "guardian_chamber": {
+    "guardians": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "veto",
+          "status"
+        ],
+        "properties": {
+          "status": {
+            "enum": [
+              "CLEAR",
+              "VETO"
+            ]
+          }
+        }
+      }
+    },
+    "incident": {
       "type": "object",
-      "required": ["seats", "clear", "veto", "threshold", "summary"],
+      "required": [
+        "id",
+        "label",
+        "severity",
+        "terminal",
+        "effect"
+      ],
       "properties": {
-        "seats": {"type": "array", "minItems": 5, "maxItems": 5},
-        "clear": {"type": "integer"}, "veto": {"type": "integer"}, "threshold": {"type": "integer"}, "summary": {"type": "string"}
+        "id": {
+          "const": "none"
+        },
+        "terminal": {
+          "const": "HUMAN_SETTLEMENT_REVIEW"
+        }
       }
     },
-    "incident": {"type": "object"},
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "artifact_count",
+        "chain_head",
+        "artifacts"
+      ],
+      "properties": {
+        "artifact_count": {
+          "const": 24
+        },
+        "chain_head": {
+          "$ref": "#/$defs/sha256"
+        },
+        "artifacts": {
+          "type": "array",
+          "minItems": 24,
+          "maxItems": 24,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "name",
+              "plane",
+              "purpose",
+              "previous_commitment",
+              "commitment",
+              "payload"
+            ],
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^A[0-9]{2}$"
+              },
+              "name": {
+                "$ref": "#/$defs/nonEmptyString"
+              },
+              "plane": {
+                "$ref": "#/$defs/nonEmptyString"
+              },
+              "purpose": {
+                "$ref": "#/$defs/nonEmptyString"
+              },
+              "previous_commitment": {
+                "$ref": "#/$defs/sha256"
+              },
+              "commitment": {
+                "$ref": "#/$defs/sha256"
+              },
+              "payload": {
+                "type": "object"
+              }
+            }
+          }
+        }
+      }
+    },
     "settlement": {
       "type": "object",
-      "required": ["ready_for_human_review", "allocations", "contributions", "live_token_movement", "wallet_connections", "authority"],
+      "additionalProperties": false,
+      "required": [
+        "mode",
+        "unit",
+        "allocation",
+        "conditions_precedent",
+        "live_token_movement",
+        "wallet_connections",
+        "settlement_authority"
+      ],
       "properties": {
-        "ready_for_human_review": {"type": "boolean"},
-        "allocations": {"type": "array", "minItems": 6, "maxItems": 6},
-        "contributions": {"type": "array", "minItems": 4},
-        "live_token_movement": {"const": false},
-        "wallet_connections": {"const": 0},
-        "authority": {"const": "NONE_GRANTED"}
+        "mode": {
+          "const": "demonstration-constitutional-settlement-model-only"
+        },
+        "unit": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "allocation": {
+          "type": "array",
+          "minItems": 6,
+          "maxItems": 6
+        },
+        "conditions_precedent": {
+          "type": "array",
+          "minItems": 6,
+          "items": {
+            "$ref": "#/$defs/nonEmptyString"
+          }
+        },
+        "live_token_movement": {
+          "$ref": "#/$defs/zero"
+        },
+        "wallet_connections": {
+          "$ref": "#/$defs/zero"
+        },
+        "settlement_authority": {
+          "$ref": "#/$defs/noneGranted"
+        }
       }
     },
-    "memory_candidate": {
+    "memory": {
       "type": "object",
-      "required": ["id", "scope", "source_run", "status", "expiry", "revocable", "promotion_authority", "external_actions"],
+      "required": [
+        "reputation_delta_candidate",
+        "capability_passport_candidate"
+      ],
       "properties": {
-        "status": {"const": "HUMAN_APPROVAL_PENDING"},
-        "revocable": {"const": true},
-        "promotion_authority": {"const": "HUMAN_ONLY"},
-        "external_actions": {"const": 0}
+        "reputation_delta_candidate": {
+          "type": "object"
+        },
+        "capability_passport_candidate": {
+          "type": "object",
+          "required": [
+            "institution",
+            "status",
+            "scope",
+            "skills",
+            "expiry",
+            "revocable",
+            "transferable"
+          ],
+          "properties": {
+            "status": {
+              "const": "HUMAN_APPROVAL_PENDING"
+            },
+            "revocable": {
+              "const": true
+            },
+            "transferable": {
+              "const": false
+            }
+          }
+        }
       }
     },
-    "proof_chronicle": {
+    "authority": {
       "type": "object",
-      "required": ["artifacts", "chain_head"],
+      "additionalProperties": false,
+      "required": [
+        "terminal_state",
+        "external_authority",
+        "production_activation",
+        "user_fund_authorization",
+        "external_actions",
+        "network_requests",
+        "wallet_connections",
+        "live_token_movements",
+        "factual_correctness"
+      ],
       "properties": {
-        "artifacts": {"type": "array", "minItems": 24, "maxItems": 24},
-        "chain_head": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+        "terminal_state": {
+          "enum": [
+            "HUMAN_SETTLEMENT_REVIEW",
+            "HUMAN_REVIEW_REQUIRED",
+            "DISPUTE_OPEN",
+            "SAFE_HOLD"
+          ]
+        },
+        "external_authority": {
+          "$ref": "#/$defs/noneGranted"
+        },
+        "production_activation": {
+          "const": "NOT_ACTIVATED"
+        },
+        "user_fund_authorization": {
+          "const": "NO"
+        },
+        "external_actions": {
+          "$ref": "#/$defs/zero"
+        },
+        "network_requests": {
+          "$ref": "#/$defs/zero"
+        },
+        "wallet_connections": {
+          "$ref": "#/$defs/zero"
+        },
+        "live_token_movements": {
+          "$ref": "#/$defs/zero"
+        },
+        "factual_correctness": {
+          "const": "NOT_CERTIFIED"
+        }
       }
     },
-    "terminal": {
-      "type": "object",
-      "required": ["state", "external_actions", "production", "factual_correctness", "funds_authorization", "memory_promotion", "authority"],
-      "properties": {
-        "state": {"enum": ["HUMAN_SETTLEMENT_REVIEW", "HUMAN_REVIEW_REQUIRED", "SAFE_HOLD"]},
-        "external_actions": {"const": 0},
-        "production": {"const": "NOT_ACTIVATED"},
-        "factual_correctness": {"const": "NOT_CERTIFIED"},
-        "funds_authorization": {"const": "NO"},
-        "memory_promotion": {"enum": ["HUMAN_APPROVAL_PENDING", "NOT_AUTHORIZED"]},
-        "authority": {"const": "NONE_GRANTED"}
+    "claim_boundary": {
+      "type": "array",
+      "minItems": 10,
+      "maxItems": 10,
+      "items": {
+        "$ref": "#/$defs/nonEmptyString"
       }
     },
-    "claim_boundary": {"type": "array", "minItems": 9, "maxItems": 9, "items": {"type": "string"}}
+    "run_commitment": {
+      "$ref": "#/$defs/sha256"
+    }
   }
 }
