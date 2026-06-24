@@ -15,7 +15,7 @@ jobs:
     permissions:
       contents: read
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - name: Build proof-card atlas locally
         run: python3 scripts/integrate_goalos_agialpha_premium_proof_cards_v23.py --site site --data data/proof-cards/proof-cards-v23.json
       - name: Verify proof-card atlas

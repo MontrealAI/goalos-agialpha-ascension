@@ -13,7 +13,7 @@ jobs:
   smoke:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - name: Build site
         run: python3 scripts/build_goalos_agialpha_final_main_website_v45.py --out site
       - name: Verify site

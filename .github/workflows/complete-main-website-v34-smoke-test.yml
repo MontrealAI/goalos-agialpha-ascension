@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
       - name: Build local site
         run: python3 scripts/build_goalos_agialpha_complete_main_website_v34.py --site site
       - name: Verify local site

@@ -18,7 +18,7 @@ jobs:
   smoke-test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - name: Build existing premium site, augment with proof cards, verify
         shell: bash
         run: |

@@ -19,7 +19,7 @@ jobs:
       contents: read
     steps:
       - name: Check out repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
       - name: Build Triple Proof Card Demand Center
         run: python3 scripts/build_goalos_agialpha_triple_proof_card_site_v8.py --out site
       - name: Verify complete website
