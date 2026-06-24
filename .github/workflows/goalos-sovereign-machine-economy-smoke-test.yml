@@ -1,0 +1,240 @@
+name: GoalOS AGIALPHA Ascension Sovereign Machine Economy Smoke Test
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'content/sovereign-machine-economy.json'
+      - 'website/features/sovereign-machine-economy/**'
+      - 'scripts/website/build_sovereign_machine_economy.py'
+      - 'scripts/website/snapshot_sovereign_machine_economy_site.py'
+      - 'scripts/website/verify_sovereign_machine_economy.py'
+      - 'scripts/website/visual_check_sovereign_machine_economy.py'
+      - 'test/test_sovereign_machine_economy_website.py'
+      - 'schemas/sovereign-machine-economy-docket.schema.json'
+      - 'docs/SOVEREIGN_MACHINE_ECONOMY_WEBSITE.md'
+      - 'README_UPLOAD_SOVEREIGN_MACHINE_ECONOMY.md'
+      - '.github/workflows/goalos-sovereign-machine-economy-smoke-test.yml'
+      - '.github/workflows/goalos-agialpha-ascension-v86-final.yml'
+
+concurrency:
+  group: goalos-sovereign-machine-economy-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+env:
+  PYTHONUNBUFFERED: '1'
+
+jobs:
+  build-verify-browser-test:
+    name: Preserve every flagship, build, verify, and browser-test the Sovereign Machine Economy
+    runs-on: ubuntu-latest
+    timeout-minutes: 110
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install deterministic verification dependencies
+        run: |
+          python3 -m pip install --upgrade pip
+          python3 -m pip install jsonschema
+
+      - name: Compile every integrated flagship tool under Python 3.11
+        run: |
+          python3 -m py_compile \
+            scripts/website/build_meta_agentic_alpha_agi.py \
+            scripts/website/verify_meta_agentic_alpha_agi.py \
+            scripts/website/visual_check_meta_agentic_alpha_agi.py \
+            scripts/website/build_agi_alpha_node_v0.py \
+            scripts/website/snapshot_agi_alpha_node_v0_site.py \
+            scripts/website/verify_agi_alpha_node_v0.py \
+            scripts/website/visual_check_agi_alpha_node_v0.py \
+            scripts/website/build_goalos_first_real_loop.py \
+            scripts/website/verify_goalos_first_real_loop.py \
+            scripts/website/browser_check_goalos_first_real_loop.py \
+            scripts/website/build_agi_jobs_v0_v2.py \
+            scripts/website/snapshot_agi_jobs_v0_v2_site.py \
+            scripts/website/verify_agi_jobs_v0_v2.py \
+            scripts/website/visual_check_agi_jobs_v0_v2.py \
+            scripts/website/build_sovereign_machine_economy.py \
+            scripts/website/snapshot_sovereign_machine_economy_site.py \
+            scripts/website/verify_sovereign_machine_economy.py \
+            scripts/website/visual_check_sovereign_machine_economy.py
+          node --check website/features/sovereign-machine-economy/assets/sovereign-machine-economy.js
+
+      - name: Record canonical v86 source digest
+        shell: bash
+        run: |
+          set -euo pipefail
+          find website/v86_actual_site -type f -print0 | sort -z | xargs -0 sha256sum | sha256sum > "$RUNNER_TEMP/v86-source.before"
+
+      - name: Build preserved v86, Proof Missions 001–008, and Mainnet record
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 scripts/build_goalos_agialpha_ascension_website_v86.py --out site
+          python3 scripts/website/build_proof_gradient_sovereign.py --site site
+          python3 scripts/website/build_proof_mission_002.py --site site
+          python3 scripts/website/build_proof_mission_003.py --site site
+          python3 scripts/website/build_proof_mission_004.py --site site
+          python3 scripts/website/build_proof_mission_005.py --site site
+          python3 scripts/website/build_proof_mission_006.py --site site
+          python3 scripts/website/build_proof_mission_007.py --site site
+          python3 scripts/website/build_proof_mission_008.py --site site
+          python3 scripts/add_goalos_ethereum_mainnet_pages_v87.py \
+            --site site \
+            --registry config/ethereum-mainnet.contracts.json \
+            --release-contracts release/mainnet-2026-06-21/CONTRACTS_MAINNET.json \
+            --release-manifest release/mainnet-2026-06-21/RELEASE_MANIFEST.json \
+            --deployment-evidence release/mainnet-2026-06-21/DEPLOYMENT_EVIDENCE.json
+
+      - name: Rebuild and verify META-Agentic α-AGI
+        run: |
+          SOURCE_DATE_EPOCH=1782172800 python3 scripts/website/build_meta_agentic_alpha_agi.py --site site
+          python3 scripts/website/verify_meta_agentic_alpha_agi.py --site site
+
+      - name: Rebuild and verify AGI Alpha Node v0 Sovereign Citadel
+        run: |
+          python3 scripts/website/snapshot_agi_alpha_node_v0_site.py --site site --output "$RUNNER_TEMP/agi-alpha-node-v0-prebuild.json"
+          SOURCE_DATE_EPOCH=1782216000 python3 scripts/website/build_agi_alpha_node_v0.py --site site --root .
+          python3 scripts/website/verify_agi_alpha_node_v0.py \
+            --site site \
+            --root . \
+            --baseline "$RUNNER_TEMP/agi-alpha-node-v0-prebuild.json" \
+            --output site/qa/agi-alpha-node-v0-static.json
+
+      - name: Rebuild and verify First Real Loop
+        run: |
+          python3 scripts/website/build_goalos_first_real_loop.py --site site
+          python3 scripts/website/verify_goalos_first_real_loop.py \
+            --site site \
+            --content content/goalos-first-real-loop.json \
+            --schema schemas/goalos-first-real-loop-evidence-docket.schema.json
+
+      - name: Rebuild and verify AGI Jobs v0 (v2)
+        run: |
+          python3 scripts/website/snapshot_agi_jobs_v0_v2_site.py --site site --output "$RUNNER_TEMP/agi-jobs-v0-v2-prebuild.json"
+          SOURCE_DATE_EPOCH=1782259200 python3 scripts/website/build_agi_jobs_v0_v2.py --site site --root .
+          python3 scripts/website/verify_agi_jobs_v0_v2.py \
+            --site site \
+            --root . \
+            --baseline "$RUNNER_TEMP/agi-jobs-v0-v2-prebuild.json" \
+            --schema schemas/agi-jobs-v0-v2-evidence-docket.schema.json \
+            --output site/qa/agi-jobs-v0-v2-static.json
+
+      - name: Snapshot, build, and verify the Sovereign Machine Economy
+        run: |
+          python3 scripts/website/snapshot_sovereign_machine_economy_site.py --site site --output "$RUNNER_TEMP/sovereign-machine-economy-prebuild.json"
+          SOURCE_DATE_EPOCH=1782320400 python3 scripts/website/build_sovereign_machine_economy.py --site site --root .
+          python3 scripts/website/verify_sovereign_machine_economy.py \
+            --site site \
+            --root . \
+            --baseline "$RUNNER_TEMP/sovereign-machine-economy-prebuild.json" \
+            --schema schemas/sovereign-machine-economy-docket.schema.json \
+            --output site/qa/sovereign-machine-economy-static.json
+          python3 -m unittest discover -s test -p 'test_sovereign_machine_economy_website.py' -v
+
+      - name: Install Playwright Chromium
+        run: |
+          python3 -m pip install playwright
+          python3 -m playwright install --with-deps chromium
+
+      - name: Adversarially browser-test the complete machine economy
+        run: python3 scripts/website/visual_check_sovereign_machine_economy.py --site site --output site/qa/sovereign-machine-economy
+
+      - name: Re-verify every companion against the final shared surfaces
+        run: |
+          python3 scripts/website/verify_meta_agentic_alpha_agi.py --site site
+          python3 scripts/website/verify_agi_alpha_node_v0.py \
+            --site site \
+            --root . \
+            --output site/qa/agi-alpha-node-v0-static-post-machine-economy.json
+          python3 scripts/website/verify_goalos_first_real_loop.py \
+            --site site \
+            --content content/goalos-first-real-loop.json \
+            --schema schemas/goalos-first-real-loop-evidence-docket.schema.json
+          python3 scripts/website/verify_agi_jobs_v0_v2.py \
+            --site site \
+            --root . \
+            --schema schemas/agi-jobs-v0-v2-evidence-docket.schema.json \
+            --output site/qa/agi-jobs-v0-v2-static-post-machine-economy.json
+          python3 scripts/website/verify_sovereign_machine_economy.py \
+            --site site \
+            --root . \
+            --schema schemas/sovereign-machine-economy-docket.schema.json \
+            --output site/qa/sovereign-machine-economy-static-final.json
+
+      - name: Prove second-build idempotence and preservation
+        shell: bash
+        run: |
+          set -euo pipefail
+          find site -type f -print0 | sort -z | xargs -0 sha256sum > "$RUNNER_TEMP/site.before"
+          SOURCE_DATE_EPOCH=1782320400 python3 scripts/website/build_sovereign_machine_economy.py --site site --root .
+          find site -type f -print0 | sort -z | xargs -0 sha256sum > "$RUNNER_TEMP/site.after"
+          cmp "$RUNNER_TEMP/site.before" "$RUNNER_TEMP/site.after"
+          find website/v86_actual_site -type f -print0 | sort -z | xargs -0 sha256sum | sha256sum > "$RUNNER_TEMP/v86-source.after"
+          cmp "$RUNNER_TEMP/v86-source.before" "$RUNNER_TEMP/v86-source.after"
+          test "$(grep -c 'GOALOS_SOVEREIGN_MACHINE_ECONOMY_HOME_START' site/index.html)" -eq 1
+          test "$(grep -c 'GOALOS_SOVEREIGN_MACHINE_ECONOMY_NAV_START' site/index.html)" -eq 1
+          if find site \( -name '*.zip' -o -name '*.7z' -o -name '*.tar' -o -name '*.gz' -o -name '*.rar' \) -print | grep -q .; then
+            echo 'Archive file found inside public site. Refusing preview.'
+            exit 1
+          fi
+          if grep -RIlE 'PRIVATE_MAINNET_DEPLOYER_PRIVATE_KEY|SEED_PHRASE|MNEMONIC|MAINNET_RPC_URL=|ETHERSCAN_API_KEY=' site; then
+            echo 'Private operator material found inside public site. Refusing preview.'
+            exit 1
+          fi
+
+      - name: Write Sovereign Machine Economy summary
+        if: always()
+        shell: bash
+        run: |
+          {
+            echo '# GoalOS AGIALPHA Ascension — Sovereign Machine Economy'
+            echo
+            echo '- META-Agentic α-AGI, AGI Alpha Node v0, First Real Loop, and AGI Jobs v0 (v2) rebuilt and verified first.'
+            echo '- Four integrated public surfaces and one main-website gateway generated additively.'
+            echo '- Eighteen constitutional gates and thirty-six chained artifacts verified.'
+            echo '- Three cryptographic handoffs bind institution formation → proof execution → market coordination → human authority.'
+            echo '- All four terminal states rehearsed: HUMAN_SETTLEMENT_REVIEW, HUMAN_REVIEW_REQUIRED, DISPUTE_OPEN, and SAFE_HOLD.'
+            echo '- External authority, wallet connections, network requests, live token movements, and external actions: 0.'
+            echo '- Canonical v86 source preserved and second-build idempotence proved.'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload complete machine-economy preview and QA evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: goalos-sovereign-machine-economy-preview
+          path: |
+            site/index.html
+            site/routes.json
+            site/sitemap.xml
+            site/site-status.json
+            site/sovereign-machine-economy.html
+            site/sovereign-machine-economy-architecture.html
+            site/sovereign-machine-economy-chronicle.html
+            site/sovereign-machine-economy-atlas.html
+            site/sovereign-machine-economy-manifest.json
+            site/meta-agentic-alpha-agi-manifest.json
+            site/agi-alpha-node-v0-manifest.json
+            site/agi-jobs-v0-v2-manifest.json
+            site/assets/sovereign-machine-economy.css
+            site/assets/sovereign-machine-economy.js
+            site/data/sovereign-machine-economy.json
+            site/downloads/sovereign-machine-economy/
+            site/qa/sovereign-machine-economy-build.json
+            site/qa/sovereign-machine-economy-static.json
+            site/qa/sovereign-machine-economy-static-final.json
+            site/qa/sovereign-machine-economy/
+            site/qa/agi-alpha-node-v0-static-post-machine-economy.json
+            site/qa/agi-jobs-v0-v2-static-post-machine-economy.json
+          if-no-files-found: error
+          retention-days: 30

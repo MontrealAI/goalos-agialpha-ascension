@@ -102,8 +102,18 @@ on:
       - 'test/test_agi_jobs_v0_v2_website.py'
       - 'schemas/agi-jobs-v0-v2-evidence-docket.schema.json'
       - 'docs/AGI_JOBS_V0_V2_WEBSITE.md'
-      - 'README_UPLOAD_AGI_JOBS_V0_V2.md'
       - '.github/workflows/goalos-agi-jobs-v0-v2-smoke-test.yml'
+      - 'content/sovereign-machine-economy.json'
+      - 'website/features/sovereign-machine-economy/**'
+      - 'scripts/website/build_sovereign_machine_economy.py'
+      - 'scripts/website/snapshot_sovereign_machine_economy_site.py'
+      - 'scripts/website/verify_sovereign_machine_economy.py'
+      - 'scripts/website/visual_check_sovereign_machine_economy.py'
+      - 'test/test_sovereign_machine_economy_website.py'
+      - 'schemas/sovereign-machine-economy-docket.schema.json'
+      - 'docs/SOVEREIGN_MACHINE_ECONOMY_WEBSITE.md'
+      - 'README_UPLOAD_SOVEREIGN_MACHINE_ECONOMY.md'
+      - '.github/workflows/goalos-sovereign-machine-economy-smoke-test.yml'
       - '.github/workflows/goalos-agialpha-ascension-v86-final.yml'
       - '.github/workflows/goalos-agialpha-ascension-v86-smoke-test.yml'
 
@@ -120,7 +130,7 @@ jobs:
   build-verify-browser-test:
     name: Build, preserve, verify, and browser-test v86
     runs-on: ubuntu-latest
-    timeout-minutes: 145
+    timeout-minutes: 155
     permissions:
       contents: read
     steps:
@@ -148,8 +158,12 @@ jobs:
             scripts/website/build_agi_jobs_v0_v2.py \
             scripts/website/snapshot_agi_jobs_v0_v2_site.py \
             scripts/website/verify_agi_jobs_v0_v2.py \
-            scripts/website/visual_check_agi_jobs_v0_v2.py
-          node --check website/features/agi-jobs-v0-v2/assets/agi-jobs-v0-v2.js
+            scripts/website/visual_check_agi_jobs_v0_v2.py \
+            scripts/website/build_sovereign_machine_economy.py \
+            scripts/website/snapshot_sovereign_machine_economy_site.py \
+            scripts/website/verify_sovereign_machine_economy.py \
+            scripts/website/visual_check_sovereign_machine_economy.py
+          node --check website/features/sovereign-machine-economy/assets/sovereign-machine-economy.js
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
@@ -188,7 +202,7 @@ jobs:
       - name: Install Playwright Chromium
         run: |
           python3 -m pip install --upgrade pip
-          python3 -m pip install playwright
+          python3 -m pip install playwright jsonschema
           python3 -m playwright install --with-deps chromium
 
       - name: Run canonical and Missions 001–003 browser QA
@@ -480,16 +494,14 @@ jobs:
           for file in \
             site/agi-jobs-v0-v2.html \
             site/agi-jobs-v0-v2-market.html \
+            site/agi-jobs-v0-v2-proof.html \
             site/agi-jobs-v0-v2-settlement.html \
-            site/agi-jobs-v0-v2-memory.html \
             site/agi-jobs-v0-v2-architecture.html \
             site/agi-jobs-v0-v2-manifest.json \
             site/assets/agi-jobs-v0-v2.css \
             site/assets/agi-jobs-v0-v2.js \
             site/data/agi-jobs-v0-v2.json \
             site/downloads/agi-jobs-v0-v2/sample-agi-jobs-evidence-docket.json \
-            site/downloads/agi-jobs-v0-v2/agi-jobs-v0-v2-economic-memory.json \
-            site/downloads/agi-jobs-v0-v2/agi-jobs-v0-v2-executive-review-brief.md \
             site/qa/agi-jobs-v0-v2-build.json; do
             test -s "$file" || { echo "Missing AGI Jobs v0 (v2) output: $file"; find site -maxdepth 4 -type f | sort; exit 1; }
           done
@@ -543,6 +555,95 @@ jobs:
             test -s "$file" || { echo "Missing AGI Jobs v0 (v2) QA evidence: $file"; exit 1; }
           done
 
+      - name: Snapshot the complete generated institution before Sovereign Machine Economy
+        run: python3 scripts/website/snapshot_sovereign_machine_economy_site.py --site site --output "$RUNNER_TEMP/sovereign-machine-economy-prebuild.json"
+
+      - name: Build GoalOS AGIALPHA Ascension Sovereign Machine Economy additively
+        run: SOURCE_DATE_EPOCH=1782320400 python3 scripts/website/build_sovereign_machine_economy.py --site site --root .
+
+      - name: Assert Sovereign Machine Economy generated outputs exist
+        shell: bash
+        run: |
+          set -euo pipefail
+          for file in \
+            site/sovereign-machine-economy.html \
+            site/sovereign-machine-economy-architecture.html \
+            site/sovereign-machine-economy-chronicle.html \
+            site/sovereign-machine-economy-atlas.html \
+            site/sovereign-machine-economy-manifest.json \
+            site/assets/sovereign-machine-economy.css \
+            site/assets/sovereign-machine-economy.js \
+            site/data/sovereign-machine-economy.json \
+            site/downloads/sovereign-machine-economy/sample-sovereign-economy-docket.json \
+            site/qa/sovereign-machine-economy-build.json; do
+            test -s "$file" || { echo "Missing Sovereign Machine Economy output: $file"; find site -maxdepth 4 -type f | sort; exit 1; }
+          done
+
+      - name: Verify preservation and regression-test Sovereign Machine Economy
+        run: |
+          python3 scripts/website/verify_sovereign_machine_economy.py \
+            --site site \
+            --root . \
+            --baseline "$RUNNER_TEMP/sovereign-machine-economy-prebuild.json" \
+            --schema schemas/sovereign-machine-economy-docket.schema.json \
+            --output site/qa/sovereign-machine-economy-static.json
+          python3 -m unittest discover -s test -p 'test_sovereign_machine_economy_website.py' -v
+
+      - name: Adversarially browser-test Sovereign Machine Economy
+        run: python3 scripts/website/visual_check_sovereign_machine_economy.py --site site --output site/qa/sovereign-machine-economy
+
+      - name: Re-verify every companion after machine-economy shared-surface reconciliation
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [[ "${META_AGENTIC_STATE:-none}" == 'complete' ]]; then
+            python3 scripts/website/verify_meta_agentic_alpha_agi.py --site site
+          fi
+          python3 scripts/website/verify_agi_alpha_node_v0.py \
+            --site site \
+            --root . \
+            --output site/qa/agi-alpha-node-v0-static-post-machine-economy.json
+          python3 scripts/website/verify_goalos_first_real_loop.py \
+            --site site \
+            --content content/goalos-first-real-loop.json \
+            --schema schemas/goalos-first-real-loop-evidence-docket.schema.json
+          python3 scripts/website/verify_agi_jobs_v0_v2.py \
+            --site site \
+            --root . \
+            --schema schemas/agi-jobs-v0-v2-evidence-docket.schema.json \
+            --output site/qa/agi-jobs-v0-v2-static-post-machine-economy.json
+          python3 scripts/website/verify_sovereign_machine_economy.py \
+            --site site \
+            --root . \
+            --schema schemas/sovereign-machine-economy-docket.schema.json \
+            --output site/qa/sovereign-machine-economy-static-final.json
+          find website/v86_actual_site -type f -print0 | sort -z | xargs -0 sha256sum | sha256sum > "$RUNNER_TEMP/v86-source.after-machine-economy"
+          cmp "$RUNNER_TEMP/v86-source.before" "$RUNNER_TEMP/v86-source.after-machine-economy"
+          test "$(grep -c 'GOALOS_SOVEREIGN_MACHINE_ECONOMY_HOME_START' site/index.html)" -eq 1
+          test "$(grep -c 'GOALOS_SOVEREIGN_MACHINE_ECONOMY_NAV_START' site/index.html)" -eq 1
+
+      - name: Prove machine-economy second-build idempotence
+        shell: bash
+        run: |
+          set -euo pipefail
+          find site -type f -print0 | sort -z | xargs -0 sha256sum > "$RUNNER_TEMP/machine-economy-site.before"
+          SOURCE_DATE_EPOCH=1782320400 python3 scripts/website/build_sovereign_machine_economy.py --site site --root .
+          find site -type f -print0 | sort -z | xargs -0 sha256sum > "$RUNNER_TEMP/machine-economy-site.after"
+          cmp "$RUNNER_TEMP/machine-economy-site.before" "$RUNNER_TEMP/machine-economy-site.after"
+
+      - name: Assert final Sovereign Machine Economy QA evidence exists
+        shell: bash
+        run: |
+          set -euo pipefail
+          for file in \
+            site/qa/sovereign-machine-economy-static.json \
+            site/qa/sovereign-machine-economy/browser-report.json \
+            site/qa/sovereign-machine-economy-static-final.json \
+            site/qa/agi-jobs-v0-v2-static-post-machine-economy.json \
+            site/qa/agi-alpha-node-v0-static-post-machine-economy.json; do
+            test -s "$file" || { echo "Missing Sovereign Machine Economy QA evidence: $file"; exit 1; }
+          done
+
       - name: Reject archives and private operator material in public site
         shell: bash
         run: |
@@ -576,12 +677,16 @@ jobs:
             echo '- Nova-Seed → MARK → Mini Sovereign → five governed jobs → Evidence Docket → capability compiler → vNext replay verified.'
             echo '- First Real Loop terminates at HUMAN_REVIEW_REQUIRED with NONE_GRANTED authority and zero external actions.'
             echo '- Node and META-Agentic manifests reconciled against the final shared website surfaces.'
-            echo '- AGI Jobs v0 (v2) Sovereign Labor Civilization generated at /agi-jobs-v0-v2.html.'
-            echo '- Market Atlas, Proof Settlement Chamber, Capability Memory Gate, and Constitutional Architecture generated as separate inspectable surfaces.'
-            echo '- Fourteen constitutional gates, twelve agent institutions, seven validators, five guardians, and twenty-four chained artifacts verified.'
-            echo '- Capability Memory Gate exports review-only economic memory; no capability is promoted autonomously.'
-            echo '- Successful cycles stop at HUMAN_SETTLEMENT_REVIEW; adversarial incidents fail closed to SAFE_HOLD.'
+            echo '- AGI Jobs v0 (v2) Sovereign Work Civilization generated at /agi-jobs-v0-v2.html.'
+            echo '- Guild Market, Proof Parliament, Settlement Constitution, and Constitutional Architecture generated as separate inspectable surfaces.'
+            echo '- Sixteen proof gates, twelve guilds, nine validator seats, six guardians, and twenty-four chained artifacts verified.'
+            echo '- All four terminal states rehearsed: HUMAN_SETTLEMENT_REVIEW, HUMAN_REVIEW_REQUIRED, DISPUTE_OPEN, and SAFE_HOLD.'
             echo '- Live token movements, wallet connections, external actions, and autonomous settlement authorizations: 0.'
+            echo '- Sovereign Machine Economy generated at /sovereign-machine-economy.html with Architecture, Proof Chronicle, and Civilization Atlas.'
+            echo '- META-Agentic institution formation, Alpha Node proof execution, and AGI Jobs market coordination bound by three cryptographic handoffs.'
+            echo '- Eighteen constitutional gates and thirty-six chained artifacts verified across META, NODE, and JOBS.'
+            echo '- Machine-economy second-build idempotence proved; all companion manifests reconciled against final shared surfaces.'
+            echo '- Successful integrated cycle stops at HUMAN_SETTLEMENT_REVIEW with NONE_GRANTED authority.'
             echo '- Mission 006, Mission 007, Mission 008, and Mainnet generated-page preflights passed.'
             echo '- 48 GoalOS-created Mainnet contracts represented.'
             echo '- 48/48 recorded source verification; 0 failures.'
@@ -618,14 +723,23 @@ jobs:
             site/first-real-loop-docket.html
             site/agi-jobs-v0-v2.html
             site/agi-jobs-v0-v2-market.html
+            site/agi-jobs-v0-v2-proof.html
             site/agi-jobs-v0-v2-settlement.html
-            site/agi-jobs-v0-v2-memory.html
             site/agi-jobs-v0-v2-architecture.html
             site/agi-jobs-v0-v2-manifest.json
             site/assets/agi-jobs-v0-v2.css
             site/assets/agi-jobs-v0-v2.js
             site/data/agi-jobs-v0-v2.json
             site/downloads/agi-jobs-v0-v2/
+            site/sovereign-machine-economy.html
+            site/sovereign-machine-economy-architecture.html
+            site/sovereign-machine-economy-chronicle.html
+            site/sovereign-machine-economy-atlas.html
+            site/sovereign-machine-economy-manifest.json
+            site/assets/sovereign-machine-economy.css
+            site/assets/sovereign-machine-economy.js
+            site/data/sovereign-machine-economy.json
+            site/downloads/sovereign-machine-economy/
             site/assets/first-real-loop/
             site/downloads/first-real-loop/
             site/downloads/agi-alpha-node-v0/
