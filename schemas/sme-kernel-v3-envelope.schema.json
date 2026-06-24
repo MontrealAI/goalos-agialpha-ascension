@@ -1,0 +1,120 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://montrealai.github.io/goalos-agialpha-ascension/schemas/sme-kernel-v3-envelope.schema.json",
+  "title": "GoalOS Sovereign Machine Economy Kernel v3 Protocol Envelope",
+  "type": "object",
+  "required": [
+    "protocol",
+    "schemaVersion",
+    "envelopeType",
+    "envelopeId",
+    "missionId",
+    "issuer",
+    "logicalTime",
+    "previousCommitment",
+    "payload",
+    "payloadCommitment",
+    "authority",
+    "signature"
+  ],
+  "properties": {
+    "protocol": {
+      "const": "goalos.sme.kernel.v3"
+    },
+    "schemaVersion": {
+      "const": "3.0.0"
+    },
+    "envelopeType": {
+      "enum": [
+        "MissionCommitment",
+        "InstitutionProposal",
+        "InstitutionCharter",
+        "NodeAdmission",
+        "NodeExecutionReceipt",
+        "EvidenceDocket",
+        "ValidationOpinion",
+        "ChallengeRecord",
+        "SettlementIntent",
+        "HumanReviewCertificate"
+      ]
+    },
+    "envelopeId": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "missionId": {
+      "type": "string",
+      "pattern": "^mission-[a-f0-9]{16}$"
+    },
+    "issuer": {
+      "enum": [
+        "META_ARCHITECT",
+        "NODE_OPERATOR",
+        "MARKET_STEWARD",
+        "INDEPENDENT_VERIFIER",
+        "HUMAN_REVIEWER"
+      ]
+    },
+    "logicalTime": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "previousCommitment": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "payload": {
+      "type": "object"
+    },
+    "payloadCommitment": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "authority": {
+      "type": "object",
+      "required": [
+        "scope",
+        "externalAuthority",
+        "externalActions"
+      ],
+      "properties": {
+        "scope": {
+          "type": "string"
+        },
+        "externalAuthority": {
+          "const": "NONE_GRANTED"
+        },
+        "externalActions": {
+          "const": 0
+        }
+      },
+      "additionalProperties": true
+    },
+    "signature": {
+      "type": "object",
+      "required": [
+        "algorithm",
+        "publicKeyJwk",
+        "value",
+        "status"
+      ],
+      "properties": {
+        "algorithm": {
+          "const": "Ed25519"
+        },
+        "publicKeyJwk": {
+          "type": "object"
+        },
+        "value": {
+          "type": "string",
+          "minLength": 40
+        },
+        "status": {
+          "const": "VERIFIED"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

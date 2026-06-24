@@ -1,0 +1,460 @@
+{
+  "schema_version": "3.0.0",
+  "release_id": "GOALOS-AGIALPHA-SME-KERNEL-V3-001",
+  "release_title": "GoalOS AGIALPHA Ascension Sovereign Machine Economy Kernel v3 ⚙️✨",
+  "version": "3.0.0-executable-constitutional-kernel",
+  "status": "executable-browser-local-constitutional-kernel",
+  "tagline": "The executable proof-to-permission foundation beneath the Sovereign Machine Economy.",
+  "doctrine": "Typed state. Signed handoffs. Durable memory. Human authority.",
+  "description": "A DOM-independent constitutional state machine, typed protocol envelope layer, replaceable deterministic adapters, Ed25519 role identities, append-only IndexedDB chronicle, portable mission bundles, independent bundle verification, and signed human review certificates.",
+  "hero_metrics": [
+    {
+      "value": "17",
+      "label": "constitutional states"
+    },
+    {
+      "value": "10",
+      "label": "typed envelopes"
+    },
+    {
+      "value": "5",
+      "label": "signing authorities"
+    },
+    {
+      "value": "3",
+      "label": "replaceable adapters"
+    },
+    {
+      "value": "100%",
+      "label": "signed transitions"
+    },
+    {
+      "value": "0",
+      "label": "external actions"
+    }
+  ],
+  "roles": [
+    {
+      "id": "META_ARCHITECT",
+      "label": "Meta-Architect",
+      "authority": "May propose and charter bounded institutions; cannot execute or settle."
+    },
+    {
+      "id": "NODE_OPERATOR",
+      "label": "Node Operator",
+      "authority": "May admit resources and emit execution receipts; cannot self-validate."
+    },
+    {
+      "id": "MARKET_STEWARD",
+      "label": "Market Steward",
+      "authority": "May convene guilds and prepare settlement intent; cannot move value."
+    },
+    {
+      "id": "INDEPENDENT_VERIFIER",
+      "label": "Independent Verifier",
+      "authority": "May sign validation opinions and challenge records; cannot execute work."
+    },
+    {
+      "id": "HUMAN_REVIEWER",
+      "label": "Human Reviewer",
+      "authority": "May record a scoped review disposition; approval never triggers execution."
+    }
+  ],
+  "states": [
+    {
+      "id": "DRAFT",
+      "plane": "KERNEL",
+      "label": "Draft",
+      "issuer": "SYSTEM"
+    },
+    {
+      "id": "MISSION_COMMITTED",
+      "plane": "KERNEL",
+      "label": "Mission committed",
+      "issuer": "HUMAN_REVIEWER"
+    },
+    {
+      "id": "INSTITUTION_PROPOSED",
+      "plane": "MIND",
+      "label": "Institution proposed",
+      "issuer": "META_ARCHITECT"
+    },
+    {
+      "id": "INSTITUTION_CHARTERED",
+      "plane": "MIND",
+      "label": "Constitution sealed",
+      "issuer": "META_ARCHITECT"
+    },
+    {
+      "id": "NODE_ADMITTED",
+      "plane": "NODE",
+      "label": "Node identity admitted",
+      "issuer": "NODE_OPERATOR"
+    },
+    {
+      "id": "EXECUTION_BOUNDED",
+      "plane": "NODE",
+      "label": "Execution envelope bounded",
+      "issuer": "NODE_OPERATOR"
+    },
+    {
+      "id": "WORK_EXECUTED",
+      "plane": "NODE",
+      "label": "Bounded work executed",
+      "issuer": "NODE_OPERATOR"
+    },
+    {
+      "id": "EVIDENCE_SEALED",
+      "plane": "PROOF",
+      "label": "Evidence docket sealed",
+      "issuer": "NODE_OPERATOR"
+    },
+    {
+      "id": "MARKET_CONVENED",
+      "plane": "MARKET",
+      "label": "Guild market convened",
+      "issuer": "MARKET_STEWARD"
+    },
+    {
+      "id": "VALIDATION_COMMITTED",
+      "plane": "PROOF",
+      "label": "Validation commitments recorded",
+      "issuer": "INDEPENDENT_VERIFIER"
+    },
+    {
+      "id": "VALIDATION_REVEALED",
+      "plane": "PROOF",
+      "label": "Validation opinions revealed",
+      "issuer": "INDEPENDENT_VERIFIER"
+    },
+    {
+      "id": "CHALLENGE_WINDOW_OPEN",
+      "plane": "RIGHTS",
+      "label": "Challenge window opened",
+      "issuer": "INDEPENDENT_VERIFIER"
+    },
+    {
+      "id": "SETTLEMENT_INTENT_PREPARED",
+      "plane": "MARKET",
+      "label": "Settlement intent prepared",
+      "issuer": "MARKET_STEWARD"
+    },
+    {
+      "id": "AWAITING_HUMAN_REVIEW",
+      "plane": "HUMAN",
+      "label": "Awaiting human review",
+      "issuer": "INDEPENDENT_VERIFIER"
+    },
+    {
+      "id": "HUMAN_REVIEW_RECORDED",
+      "plane": "HUMAN",
+      "label": "Human review certificate recorded",
+      "issuer": "HUMAN_REVIEWER"
+    },
+    {
+      "id": "MEMORY_DISPOSITION_RECORDED",
+      "plane": "MEMORY",
+      "label": "Revocable memory disposition recorded",
+      "issuer": "HUMAN_REVIEWER"
+    },
+    {
+      "id": "COMPLETE",
+      "plane": "KERNEL",
+      "label": "Kernel cycle complete",
+      "issuer": "HUMAN_REVIEWER"
+    }
+  ],
+  "envelope_types": [
+    {
+      "id": "MissionCommitment",
+      "issuer": "HUMAN_REVIEWER",
+      "purpose": "Binds mission, constraints, risk, deliverables, and prohibited actions."
+    },
+    {
+      "id": "InstitutionProposal",
+      "issuer": "META_ARCHITECT",
+      "purpose": "Proposes a bounded multi-agent institution and alternatives."
+    },
+    {
+      "id": "InstitutionCharter",
+      "issuer": "META_ARCHITECT",
+      "purpose": "Seals roles, policies, stop conditions, and authority limits."
+    },
+    {
+      "id": "NodeAdmission",
+      "issuer": "NODE_OPERATOR",
+      "purpose": "Binds node identity, resources, primary route, and shadow route."
+    },
+    {
+      "id": "NodeExecutionReceipt",
+      "issuer": "NODE_OPERATOR",
+      "purpose": "Records bounded execution trace, resource ledger, and output commitments."
+    },
+    {
+      "id": "EvidenceDocket",
+      "issuer": "NODE_OPERATOR",
+      "purpose": "Seals claims, evidence, contradictions, provenance, and unresolved uncertainty."
+    },
+    {
+      "id": "ValidationOpinion",
+      "issuer": "INDEPENDENT_VERIFIER",
+      "purpose": "Records independent PASS, DISSENT, or REJECT opinions."
+    },
+    {
+      "id": "ChallengeRecord",
+      "issuer": "INDEPENDENT_VERIFIER",
+      "purpose": "Preserves challenge rights, incidents, and remediation posture."
+    },
+    {
+      "id": "SettlementIntent",
+      "issuer": "MARKET_STEWARD",
+      "purpose": "Prepares a non-live settlement waterfall conditioned on review."
+    },
+    {
+      "id": "HumanReviewCertificate",
+      "issuer": "HUMAN_REVIEWER",
+      "purpose": "Records scope, disposition, expiry, unresolved risks, and revocation rights."
+    }
+  ],
+  "adapter_contract": [
+    "initialize",
+    "propose",
+    "execute",
+    "evaluate",
+    "produceEvidence",
+    "verifyEvidence"
+  ],
+  "adapters": [
+    {
+      "id": "meta-agentic-local-v3",
+      "engine": "META-AGENTIC α‑AGI",
+      "mode": "deterministic-local",
+      "capabilities": [
+        "institution synthesis",
+        "constitutional selection",
+        "role separation"
+      ]
+    },
+    {
+      "id": "alpha-node-local-v3",
+      "engine": "AGI Alpha Node v0",
+      "mode": "deterministic-local",
+      "capabilities": [
+        "bounded execution",
+        "resource accounting",
+        "evidence receipt"
+      ]
+    },
+    {
+      "id": "agi-jobs-local-v3",
+      "engine": "AGI Jobs v0 (v2)",
+      "mode": "deterministic-local",
+      "capabilities": [
+        "guild market",
+        "validation parliament",
+        "settlement intent"
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "id": "critical-infrastructure",
+      "name": "Critical Infrastructure Resilience",
+      "mission": "Design a bounded resilience intervention portfolio for a metropolitan critical-infrastructure network.",
+      "risk": "HIGH",
+      "posture": "PRUDENTIAL"
+    },
+    {
+      "id": "cold-chain",
+      "name": "Cold-Chain Energy Optimization",
+      "mission": "Produce an evidence-bound cold-chain energy optimization plan with explicit safety and uncertainty limits.",
+      "risk": "MEDIUM",
+      "posture": "BALANCED"
+    },
+    {
+      "id": "public-health",
+      "name": "Public Health Preparedness",
+      "mission": "Compile a review-ready preparedness package without making clinical or deployment decisions.",
+      "risk": "HIGH",
+      "posture": "PRUDENTIAL"
+    },
+    {
+      "id": "supply-network",
+      "name": "Supply Network Foresight",
+      "mission": "Map systemic bottlenecks and produce falsifiable response options for a regional supply network.",
+      "risk": "MEDIUM",
+      "posture": "BALANCED"
+    },
+    {
+      "id": "cyber-readiness",
+      "name": "Cyber Readiness Evidence Pack",
+      "mission": "Assemble a non-operational evidence docket for defensive cyber readiness and governance review.",
+      "risk": "HIGH",
+      "posture": "PRUDENTIAL"
+    },
+    {
+      "id": "research-synthesis",
+      "name": "Frontier Research Synthesis",
+      "mission": "Synthesize a contested research landscape with provenance, contradiction, and replication requirements.",
+      "risk": "LOW",
+      "posture": "FRONTIER"
+    }
+  ],
+  "postures": [
+    {
+      "id": "PRUDENTIAL",
+      "label": "Prudential",
+      "evidence_floor": 0.92,
+      "review_quorum": 7
+    },
+    {
+      "id": "BALANCED",
+      "label": "Balanced",
+      "evidence_floor": 0.86,
+      "review_quorum": 5
+    },
+    {
+      "id": "FRONTIER",
+      "label": "Frontier",
+      "evidence_floor": 0.8,
+      "review_quorum": 5
+    }
+  ],
+  "risks": [
+    {
+      "id": "LOW",
+      "label": "Low consequence",
+      "stop_threshold": 0.72
+    },
+    {
+      "id": "MEDIUM",
+      "label": "Material consequence",
+      "stop_threshold": 0.82
+    },
+    {
+      "id": "HIGH",
+      "label": "High consequence",
+      "stop_threshold": 0.9
+    }
+  ],
+  "incidents": [
+    {
+      "id": "none",
+      "label": "No injected incident",
+      "terminal": "AWAITING_HUMAN_REVIEW"
+    },
+    {
+      "id": "identity-drift",
+      "label": "Node identity drift",
+      "terminal": "SAFE_HOLD"
+    },
+    {
+      "id": "evidence-gap",
+      "label": "Evidence gap",
+      "terminal": "DISPUTE_OPEN"
+    },
+    {
+      "id": "budget-breach",
+      "label": "Resource ceiling breach",
+      "terminal": "HUMAN_REVIEW_REQUIRED"
+    },
+    {
+      "id": "validator-capture",
+      "label": "Validator correlation risk",
+      "terminal": "DISPUTE_OPEN"
+    }
+  ],
+  "review_actions": [
+    {
+      "id": "APPROVED_FOR_DELIBERATION",
+      "label": "Approve for deliberation",
+      "memory": "HUMAN_PROMOTION_REQUIRED"
+    },
+    {
+      "id": "REVISION_REQUESTED",
+      "label": "Request revision",
+      "memory": "WITHHELD_PENDING_REVISION"
+    },
+    {
+      "id": "DISPUTE_OPEN",
+      "label": "Open dispute",
+      "memory": "WITHHELD_DURING_DISPUTE"
+    },
+    {
+      "id": "REJECTED_SAFE_HOLD",
+      "label": "Reject and safe-hold",
+      "memory": "REJECTED_NOT_PROMOTED"
+    }
+  ],
+  "invariants": [
+    "Every state transition is typed and validated before commit.",
+    "Every machine-role transition is signed by a distinct local Ed25519 identity.",
+    "Every event contains the previous event commitment and cannot rewrite history.",
+    "Execution, validation, settlement preparation, and human review remain separate authorities.",
+    "Evidence completion never implies factual certification or permission to act.",
+    "Human approval records scope; it does not invoke external execution.",
+    "Imported bundles are read-only until independently verified.",
+    "Corrupted bundles fail closed and remain visibly quarantined.",
+    "Memory candidates are expiring, revocable, and never automatically promoted.",
+    "Wallets, network calls, model calls, token movement, and external actions remain disabled."
+  ],
+  "threat_controls": [
+    {
+      "threat": "Event tampering",
+      "control": "Predecessor commitments, content hashes, signatures, and full replay verification."
+    },
+    {
+      "threat": "Authority collapse",
+      "control": "Five role keys and transition-specific issuer allowlists."
+    },
+    {
+      "threat": "Silent state mutation",
+      "control": "Append-only IndexedDB event store; rollback is represented as a new event."
+    },
+    {
+      "threat": "Validator capture",
+      "control": "Independent verifier key, dissent preservation, and challenge window."
+    },
+    {
+      "threat": "Evidence laundering",
+      "control": "Evidence status distinguishes HASHED, SIGNED, EXTERNALLY_ATTESTED, and HUMAN_APPROVED."
+    },
+    {
+      "threat": "Replay ambiguity",
+      "control": "Canonical JSON, logical clock, deterministic transition identifiers, and bundle roots."
+    },
+    {
+      "threat": "Unsafe import",
+      "control": "Schema validation, signature verification, chain replay, and read-only quarantine."
+    },
+    {
+      "threat": "Premature settlement",
+      "control": "SettlementIntent carries NONE_GRANTED authority and requires a signed HumanReviewCertificate."
+    }
+  ],
+  "security": {
+    "external_dependencies": false,
+    "api_keys": false,
+    "wallet_connection": false,
+    "network_reads": false,
+    "network_writes": false,
+    "live_model_calls": false,
+    "live_compute": false,
+    "live_token_movement": false,
+    "credential_issuance": false,
+    "automatic_memory_promotion": false,
+    "external_authority": "none",
+    "human_review_required": true,
+    "storage": "IndexedDB append-only local event chronicle",
+    "signature_algorithm": "Ed25519",
+    "worker_isolation": true
+  },
+  "claim_boundary": [
+    "This is an executable browser-local constitutional kernel, not a production deployment.",
+    "Local cryptographic signatures prove possession of local role keys, not real-world identity.",
+    "Deterministic adapters are replaceable fixtures, not live model or enterprise integrations.",
+    "Evidence Dockets organize and commit evidence; they do not certify factual correctness.",
+    "Human review certificates record a local disposition and do not authorize external action.",
+    "No wallet, RPC endpoint, API key, blockchain transaction, token movement, or external request occurs."
+  ]
+}

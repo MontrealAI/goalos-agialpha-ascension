@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://montrealai.github.io/goalos-agialpha-ascension/schemas/sme-kernel-v3-mission-bundle.schema.json",
+  "title": "GoalOS Sovereign Machine Economy Kernel v3 Mission Bundle",
+  "type": "object",
+  "required": [
+    "schema",
+    "protocol",
+    "exportedAtPolicy",
+    "mission",
+    "identities",
+    "events",
+    "bundleRoot",
+    "verificationPolicy"
+  ],
+  "properties": {
+    "schema": {
+      "const": "goalos.sme.kernel.v3.mission_bundle"
+    },
+    "protocol": {
+      "const": "goalos.sme.kernel.v3"
+    },
+    "exportedAtPolicy": {
+      "const": "LOGICAL_CLOCK"
+    },
+    "mission": {
+      "type": "object",
+      "required": [
+        "missionId",
+        "state",
+        "terminalState",
+        "config"
+      ],
+      "additionalProperties": true
+    },
+    "identities": {
+      "type": "array",
+      "minItems": 5,
+      "items": {
+        "type": "object",
+        "required": [
+          "role",
+          "algorithm",
+          "publicKeyJwk",
+          "fingerprint"
+        ],
+        "additionalProperties": true
+      }
+    },
+    "events": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "eventId",
+          "index",
+          "fromState",
+          "toState",
+          "eventCommitment",
+          "envelope"
+        ],
+        "additionalProperties": true
+      }
+    },
+    "bundleRoot": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "verificationPolicy": {
+      "type": "object",
+      "required": [
+        "signatureVerification",
+        "stateReplay",
+        "chainVerification"
+      ],
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}
