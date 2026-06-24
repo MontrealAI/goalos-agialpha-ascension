@@ -1,65 +1,256 @@
 {
-  "schema_version": "1.0.0",
-  "release_id": "goalos-agialpha-ascension-agi-alpha-node-v0-001",
+  "schema_version": "2.0.0",
+  "release_id": "goalos-agialpha-ascension-agi-alpha-node-v0-omega",
   "release_title": "GoalOS AGIALPHA Ascension AGI Alpha Node v0 ⚡️✨",
   "short_title": "AGI Alpha Node v0",
-  "version": "1.0.0-ascension-alpha",
-  "status": "interactive-sovereign-node-simulation",
-  "description": "A GoalOS-native reimplementation of AGI Alpha Node v0: compose a bounded work unit, admit resources, route execution across a simulated peer mesh, inspect validator consensus, and export a human-review-ready Node Evidence Docket without connecting a wallet or performing any external action.",
-  "tagline": "Intelligence at the edge. Proof at the center. Authority at the human boundary.",
-  "subtagline": "A sovereign node for accountable machine work.",
-  "doctrine": "Compute may be distributed. Authority is not. Every consequential work unit must carry identity, constraints, telemetry, independent evaluation, and an explicit authorization state.",
+  "version": "3.0.0-sovereign-citadel",
+  "status": "interactive-sovereign-proof-node-digital-twin",
+  "description": "A browser-local GoalOS digital twin of AGI Alpha Node v0: mission contracting, policy compilation, resource admission, peer routing, proof-chain generation, validator dissent, guardian separation, incident recovery, and an explicit human authority boundary.",
+  "tagline": "One node. Many minds. Zero unearned authority.",
+  "subtagline": "Intelligence may move at machine speed. Authority does not.",
+  "doctrine": "The node may propose, route, compute, challenge, and prove. It may not silently convert evidence into authority.",
   "origin": {
     "project": "AGI-Alpha-Node-v0",
     "repository": "https://github.com/MontrealAI/AGI-Alpha-Node-v0",
     "license": "MIT",
-    "lineage_note": "Preserves the original ENS identity, libp2p node, Alpha Work Unit, validator, governance, observability, economics, guardian, and treasury concepts; reconstitutes them as a browser-local GoalOS mission, resource, evidence, verification, authorization, and Chronicle experience."
+    "supplied_snapshot": "AGI-Alpha-Node-v0-main (12).zip",
+    "lineage_note": "The supplied original snapshot is translated—not copied wholesale—into a GoalOS proof-governed public experience. Exact source fingerprints preserve inspectable lineage."
   },
   "hero_metrics": [
     {
-      "value": "8",
-      "label": "proof-gated node states"
+      "value": "10",
+      "label": "constitutional proof gates"
+    },
+    {
+      "value": "12",
+      "label": "candidate peers"
     },
     {
       "value": "7",
       "label": "independent validator seats"
     },
     {
-      "value": "5",
-      "label": "guardian authority seats"
+      "value": "16",
+      "label": "sealed evidence artifacts"
     },
     {
       "value": "0",
-      "label": "external actions by default"
+      "label": "external actions"
     }
   ],
   "thesis": [
     {
       "number": "01",
-      "title": "Identify the node",
-      "copy": "Bind every proposed work unit to a declared node identity, mission contract, role, and review boundary before resources are admitted."
+      "title": "Sovereign identity",
+      "copy": "Every cycle begins with a declared node, mission, reviewer, jurisdiction, and stop condition—not an implicit agent prompt."
     },
     {
       "number": "02",
-      "title": "Prove the work",
-      "copy": "Execution receipts travel with resource use, energy, latency, quality, contradictions, validator votes, and reproducible lineage."
+      "title": "Proof-carrying work",
+      "copy": "Every state transition emits a chained artifact whose commitment includes the prior artifact, making the local trace tamper-evident within the simulation."
     },
     {
       "number": "03",
-      "title": "Withhold authority",
-      "copy": "Passing structural and simulated consensus gates produces a review package—not permission to deploy, transact, publish, or settle."
+      "title": "Constitutional routing",
+      "copy": "The fastest peer is not automatically selected. Capability, reliability, energy, diversity, evidence, and incident posture are scored together."
+    },
+    {
+      "number": "04",
+      "title": "Dissent preserved",
+      "copy": "Validator disagreement is visible rather than averaged away. A quorum is recorded, not mythologized as certainty."
+    },
+    {
+      "number": "05",
+      "title": "Authority withheld",
+      "copy": "A complete Evidence Docket earns review—not autonomous permission, factual certification, settlement, or production activation."
+    }
+  ],
+  "work_unit_classes": [
+    {
+      "id": "reason",
+      "symbol": "Ψ",
+      "label": "Reason",
+      "description": "Bounded research, analysis, synthesis, and decision support."
+    },
+    {
+      "id": "build",
+      "symbol": "⌘",
+      "label": "Build",
+      "description": "Specification, implementation planning, and artifact generation."
+    },
+    {
+      "id": "verify",
+      "symbol": "◇",
+      "label": "Verify",
+      "description": "Contradiction search, evidence coverage, and quality evaluation."
+    },
+    {
+      "id": "orchestrate",
+      "symbol": "∞",
+      "label": "Orchestrate",
+      "description": "Multi-role coordination with explicit dependencies and handoffs."
+    },
+    {
+      "id": "critical",
+      "symbol": "⚠",
+      "label": "Critical review",
+      "description": "High-consequence local rehearsal with stricter gates and lower autonomy."
+    }
+  ],
+  "presets": [
+    {
+      "id": "proof-market",
+      "label": "Proof-settled market brief",
+      "mission": "Produce a decision-ready market brief for an evidence-governed AI service, including assumptions, downside cases, measurable success criteria, and unresolved questions.",
+      "work_class": "reason",
+      "risk": "consequential"
+    },
+    {
+      "id": "protocol-design",
+      "label": "Constitutional protocol design",
+      "mission": "Design a proof-gated protocol for coordinating autonomous specialist agents while preserving human authority, dissent, rollback, and inspectable evidence.",
+      "work_class": "build",
+      "risk": "critical"
+    },
+    {
+      "id": "release-assurance",
+      "label": "Release assurance review",
+      "mission": "Evaluate whether a proposed software release is ready for human approval by checking claims, tests, security boundaries, failure modes, and rollback evidence.",
+      "work_class": "verify",
+      "risk": "consequential"
+    },
+    {
+      "id": "institution-flight",
+      "label": "Multi-institution proof flight",
+      "mission": "Orchestrate several bounded specialist institutions to propose, challenge, verify, and package a high-consequence recommendation for executive review.",
+      "work_class": "orchestrate",
+      "risk": "critical"
+    },
+    {
+      "id": "incident-command",
+      "label": "Incident command rehearsal",
+      "mission": "Rehearse a node incident response: detect degraded peer behavior, preserve evidence, reroute work, record validator dissent, and stop before any external action.",
+      "work_class": "critical",
+      "risk": "critical"
+    }
+  ],
+  "postures": [
+    {
+      "id": "integrity",
+      "label": "Integrity first",
+      "description": "Maximize evidence coverage, traceability, and validator agreement.",
+      "weights": {
+        "quality": 0.23,
+        "reliability": 0.18,
+        "energy": 0.08,
+        "latency": 0.08,
+        "evidence": 0.27,
+        "diversity": 0.16
+      }
+    },
+    {
+      "id": "resilience",
+      "label": "Resilience first",
+      "description": "Prefer route diversity, reliable fallbacks, and incident tolerance.",
+      "weights": {
+        "quality": 0.16,
+        "reliability": 0.22,
+        "energy": 0.08,
+        "latency": 0.08,
+        "evidence": 0.16,
+        "diversity": 0.3
+      }
+    },
+    {
+      "id": "efficiency",
+      "label": "Efficiency first",
+      "description": "Minimize latency and energy while preserving minimum proof gates.",
+      "weights": {
+        "quality": 0.16,
+        "reliability": 0.15,
+        "energy": 0.23,
+        "latency": 0.23,
+        "evidence": 0.13,
+        "diversity": 0.1
+      }
+    },
+    {
+      "id": "sovereign",
+      "label": "Sovereign balance",
+      "description": "Balance quality, evidence, diversity, reliability, energy, and latency.",
+      "weights": {
+        "quality": 0.19,
+        "reliability": 0.18,
+        "energy": 0.13,
+        "latency": 0.12,
+        "evidence": 0.22,
+        "diversity": 0.16
+      }
+    }
+  ],
+  "risk_profiles": [
+    {
+      "id": "routine",
+      "label": "Routine",
+      "quorum": 4,
+      "guardian_review": 2,
+      "evidence_floor": 0.68
+    },
+    {
+      "id": "consequential",
+      "label": "Consequential",
+      "quorum": 5,
+      "guardian_review": 3,
+      "evidence_floor": 0.76
+    },
+    {
+      "id": "critical",
+      "label": "Critical",
+      "quorum": 6,
+      "guardian_review": 5,
+      "evidence_floor": 0.84
+    }
+  ],
+  "incidents": [
+    {
+      "id": "peer-eclipse",
+      "symbol": "◐",
+      "label": "Peer eclipse",
+      "description": "Several peers appear healthy but route diversity collapses.",
+      "effect": "Quarantine correlated peers and require a shadow route."
+    },
+    {
+      "id": "identity-drift",
+      "symbol": "⌁",
+      "label": "Identity drift",
+      "description": "A peer identity commitment no longer matches the declared controller.",
+      "effect": "Guardian veto; terminal SAFE_HOLD unless removed."
+    },
+    {
+      "id": "resource-surge",
+      "symbol": "↟",
+      "label": "Resource surge",
+      "description": "Projected memory and stream pressure exceed the admitted envelope.",
+      "effect": "Reduce concurrency or refuse admission."
+    },
+    {
+      "id": "validator-divergence",
+      "symbol": "≠",
+      "label": "Validator divergence",
+      "description": "Independent validators reach materially different conclusions.",
+      "effect": "Preserve dissent and raise the human review threshold."
     }
   ],
   "pipeline": [
     {
       "id": "identity",
       "order": 1,
-      "state": "NODE_IDENTITY_COMMITTED",
-      "title": "Commit node identity",
+      "state": "NODE_IDENTITY_SEALED",
+      "title": "Seal node identity",
       "agent": "Identity Sentinel",
       "artifact": "NodeIdentity.json",
-      "gate": "Declared node name, operator role, mission scope, and claim boundary are explicit.",
-      "output": "A scoped identity declaration; no live ENS resolution is performed."
+      "gate": "Node name, operator role, jurisdiction, reviewer, and claim boundary are explicit.",
+      "plain": "We identify who is proposing the work and who must review it."
     },
     {
       "id": "mission",
@@ -68,228 +259,150 @@
       "title": "Contract the work unit",
       "agent": "Mission Orchestrator",
       "artifact": "WorkUnitContract.json",
-      "gate": "Objective, work class, success criteria, constraints, reviewer, and stop rules are present.",
-      "output": "A bounded Alpha Work Unit proposal."
+      "gate": "Objective, success criteria, constraints, risk, stop rules, and review owner are present.",
+      "plain": "The request becomes a bounded contract rather than an open-ended prompt."
+    },
+    {
+      "id": "policy",
+      "order": 3,
+      "state": "POLICY_COMPILED",
+      "title": "Compile the constitution",
+      "agent": "Constitution Compiler",
+      "artifact": "PolicyEnvelope.json",
+      "gate": "Posture, risk profile, prohibited actions, quorum, and evidence floor are machine-readable.",
+      "plain": "The rules are fixed before routing begins."
     },
     {
       "id": "admission",
-      "order": 3,
+      "order": 4,
       "state": "RESOURCE_ENVELOPE_ADMITTED",
       "title": "Admit bounded resources",
       "agent": "Resource Governor",
       "artifact": "ResourceEnvelope.json",
-      "gate": "Peer capabilities, latency ceiling, energy target, concurrency, and fallback routes are inspectable.",
-      "output": "A least-resource execution envelope."
+      "gate": "Concurrency, latency, energy, memory, and fallback limits are inside the declared envelope.",
+      "plain": "The node proves it can attempt the work without exceeding its limits."
     },
     {
       "id": "route",
-      "order": 4,
-      "state": "PEER_ROUTE_COMMITTED",
-      "title": "Route the peer mesh",
+      "order": 5,
+      "state": "PEER_ROUTES_COMMITTED",
+      "title": "Commit primary and shadow routes",
       "agent": "Mesh Conductor",
-      "artifact": "PeerRoute.json",
-      "gate": "Selected peers meet declared capability and policy constraints; rejected peers remain visible.",
-      "output": "A deterministic, reviewable peer route."
+      "artifact": "PeerRouteCommitment.json",
+      "gate": "Selected peers satisfy capability, diversity, reliability, evidence, and incident constraints.",
+      "plain": "A primary path and a fallback path are chosen and explained."
     },
     {
       "id": "execute",
-      "order": 5,
+      "order": 6,
       "state": "SANDBOX_RECEIPT_READY",
-      "title": "Run the sandbox cycle",
+      "title": "Produce a sandbox receipt",
       "agent": "Execution Core",
-      "artifact": "WorkUnitReceipt.json",
-      "gate": "The simulated execution emits timing, throughput, normalized work, energy, and failure telemetry.",
-      "output": "A local simulation receipt; no external compute is invoked."
+      "artifact": "AlphaWorkUnitReceipt.json",
+      "gate": "The local simulation emits normalized work, timing, energy, route, and failure telemetry.",
+      "plain": "A simulated work receipt is produced; no external compute is invoked."
     },
     {
       "id": "evaluate",
-      "order": 6,
-      "state": "QUALITY_EVALUATION_READY",
-      "title": "Evaluate quality and SLO",
+      "order": 7,
+      "state": "MULTI_AXIS_EVALUATION_READY",
+      "title": "Evaluate on six axes",
       "agent": "Quality Tribunal",
-      "artifact": "QualityEvaluation.json",
-      "gate": "Quality, SLO, energy, reliability, contradiction, and uncertainty dimensions are scored separately.",
-      "output": "An evaluation record with dissent preserved."
+      "artifact": "EvaluationMatrix.json",
+      "gate": "Quality, reliability, evidence, diversity, energy, latency, and uncertainty remain separate.",
+      "plain": "The result is scored without hiding trade-offs inside one number."
     },
     {
       "id": "consensus",
-      "order": 7,
+      "order": 8,
       "state": "VALIDATOR_QUORUM_RECORDED",
       "title": "Record validator quorum",
       "agent": "Verifier Mesh",
       "artifact": "ValidatorConsensus.json",
-      "gate": "Independent seats, vote rationales, quorum threshold, and non-conforming votes are inspectable.",
-      "output": "A simulated consensus result, not factual or production certification."
+      "gate": "Independent votes, rationales, dissent, threshold, and unresolved contradictions are inspectable.",
+      "plain": "Agreement and disagreement are both preserved."
     },
     {
-      "id": "authorize",
-      "order": 8,
-      "state": "HUMAN_REVIEW_REQUIRED",
-      "title": "Hold at the authority boundary",
+      "id": "guardian",
+      "order": 9,
+      "state": "GUARDIAN_REVIEW_PACKAGED",
+      "title": "Package guardian review",
       "agent": "Guardian Council",
+      "artifact": "GuardianReview.json",
+      "gate": "Identity, resource, evidence, and authority guardians record approve, caution, or veto dispositions.",
+      "plain": "Dedicated guardians check whether the process respected its constitution."
+    },
+    {
+      "id": "authority",
+      "order": 10,
+      "state": "HUMAN_REVIEW_REQUIRED",
+      "title": "Stop at the authority frontier",
+      "agent": "Human Authority Boundary",
       "artifact": "AuthorizationState.json",
-      "gate": "The Evidence Docket is complete and all real-world permissions remain explicitly absent.",
-      "output": "A review-ready package with authority withheld."
+      "gate": "Evidence Docket is complete while wallet, execution, settlement, production, and legal permissions remain absent.",
+      "plain": "The node earns a human decision—not the right to act."
     }
   ],
   "node_roles": [
     {
-      "id": "sentinel",
-      "symbol": "ID",
+      "id": "identity",
       "name": "Identity Sentinel",
-      "mandate": "Binds declared node identity, role, mission, and claim boundary.",
-      "boundary": "Cannot assert live ENS ownership or operator authority."
+      "symbol": "ID",
+      "mandate": "Bind declared identity, jurisdiction, reviewer, and lineage."
     },
     {
-      "id": "orchestrator",
-      "symbol": "OR",
+      "id": "mission",
       "name": "Mission Orchestrator",
-      "mandate": "Contracts work units, decomposes execution, and defines stop rules.",
-      "boundary": "Cannot silently expand the user mandate."
+      "symbol": "MO",
+      "mandate": "Contract the bounded α-Work Unit and success criteria."
     },
     {
-      "id": "governor",
-      "symbol": "RG",
+      "id": "policy",
+      "name": "Constitution Compiler",
+      "symbol": "CC",
+      "mandate": "Translate human policy into inspectable machine gates."
+    },
+    {
+      "id": "resource",
       "name": "Resource Governor",
-      "mandate": "Admits bounded peers, energy, latency, concurrency, and fallback capacity.",
-      "boundary": "Cannot allocate real compute or credentials."
+      "symbol": "RG",
+      "mandate": "Admit or refuse resource envelopes before execution."
     },
     {
-      "id": "executor",
-      "symbol": "EX",
+      "id": "mesh",
+      "name": "Mesh Conductor",
+      "symbol": "MC",
+      "mandate": "Select primary and shadow peer routes with explicit trade-offs."
+    },
+    {
+      "id": "execution",
       "name": "Execution Core",
-      "mandate": "Produces deterministic sandbox receipts for proposed work.",
-      "boundary": "Cannot call models, networks, tools, wallets, or infrastructure."
+      "symbol": "EX",
+      "mandate": "Generate the deterministic local work-unit receipt."
     },
     {
-      "id": "tribunal",
-      "symbol": "QT",
+      "id": "quality",
       "name": "Quality Tribunal",
-      "mandate": "Separates quality, SLO, energy, reliability, and uncertainty evaluations.",
-      "boundary": "Cannot certify factual correctness or production safety."
+      "symbol": "QT",
+      "mandate": "Evaluate work across independent quality dimensions."
     },
     {
       "id": "verifier",
-      "symbol": "V7",
       "name": "Verifier Mesh",
-      "mandate": "Records independent simulated votes, dissent, and quorum.",
-      "boundary": "Consensus cannot authorize real-world action."
+      "symbol": "V7",
+      "mandate": "Record independent votes, quorum, contradiction, and dissent."
     },
     {
       "id": "guardian",
-      "symbol": "G5",
       "name": "Guardian Council",
-      "mandate": "Enforces default deny, least privilege, veto, and review.",
-      "boundary": "All external authority remains absent in this experience."
+      "symbol": "G5",
+      "mandate": "Veto unsafe identity, resource, evidence, or authority transitions."
     },
     {
-      "id": "chronicler",
-      "symbol": "CH",
+      "id": "chronicle",
       "name": "Chronicle Keeper",
-      "mandate": "Preserves work-unit lineage, decisions, contradictions, and lessons.",
-      "boundary": "No data persists beyond the current browser session."
-    }
-  ],
-  "work_unit_classes": [
-    {
-      "id": "reason",
-      "label": "Reason",
-      "symbol": "Rα",
-      "description": "Bounded analysis, synthesis, comparison, and decision support.",
-      "model_tier": 1.2,
-      "capability": "reasoning"
-    },
-    {
-      "id": "build",
-      "label": "Build",
-      "symbol": "Bα",
-      "description": "Architecture, implementation planning, specification, and artifact composition.",
-      "model_tier": 1.35,
-      "capability": "engineering"
-    },
-    {
-      "id": "verify",
-      "label": "Verify",
-      "symbol": "Vα",
-      "description": "Independent testing, contradiction search, audit, and evidence review.",
-      "model_tier": 1.15,
-      "capability": "verification"
-    },
-    {
-      "id": "orchestrate",
-      "label": "Orchestrate",
-      "symbol": "Oα",
-      "description": "Multi-role sequencing, dependency control, and governed handoffs.",
-      "model_tier": 1.45,
-      "capability": "orchestration"
-    }
-  ],
-  "presets": [
-    {
-      "id": "enterprise",
-      "label": "Enterprise proof node",
-      "mission": "Design the first governed enterprise deployment of GoalOS for high-consequence autonomous AI work.",
-      "decision": "Select the narrowest production wedge, peer roles, verifier regime, and human authorization boundary.",
-      "work_class": "orchestrate"
-    },
-    {
-      "id": "science",
-      "label": "Scientific reproduction node",
-      "mission": "Design a proof-carrying node workflow for generating, challenging, and independently reproducing an ambitious scientific result.",
-      "decision": "Select the evidence plan, execution topology, and independent reproduction threshold.",
-      "work_class": "verify"
-    },
-    {
-      "id": "engineering",
-      "label": "Frontier engineering node",
-      "mission": "Design a governed engineering work unit that converts a complex objective into a tested, reversible implementation plan.",
-      "decision": "Select the architecture, resource envelope, test regime, and rollback plan.",
-      "work_class": "build"
-    },
-    {
-      "id": "public",
-      "label": "Public-interest analysis node",
-      "mission": "Design an accountable analysis node for a complex public-interest decision while preserving privacy, evidence quality, contestability, and human authority.",
-      "decision": "Select the smallest useful pilot and public accountability protocol.",
-      "work_class": "reason"
-    }
-  ],
-  "postures": [
-    {
-      "id": "institutional",
-      "label": "Institutional",
-      "description": "Prioritizes verification independence, energy discipline, reversibility, and narrow authorization.",
-      "weights": {
-        "quality": 0.26,
-        "reliability": 0.22,
-        "energy": 0.18,
-        "latency": 0.1,
-        "evidence": 0.24
-      }
-    },
-    {
-      "id": "ascension",
-      "label": "Ascension",
-      "description": "Balances capability, quality, efficiency, evidence, and operational resilience.",
-      "weights": {
-        "quality": 0.24,
-        "reliability": 0.2,
-        "energy": 0.14,
-        "latency": 0.16,
-        "evidence": 0.26
-      }
-    },
-    {
-      "id": "frontier",
-      "label": "Frontier",
-      "description": "Explores bolder routes while preserving the same proof, dissent, guardian, and human-review gates.",
-      "weights": {
-        "quality": 0.28,
-        "reliability": 0.15,
-        "energy": 0.1,
-        "latency": 0.2,
-        "evidence": 0.27
-      }
+      "symbol": "CK",
+      "mandate": "Seal the chained Evidence Docket and review brief."
     }
   ],
   "peers": [
@@ -302,9 +415,10 @@
         "orchestration",
         "reasoning"
       ],
-      "base_latency": 42,
-      "base_energy": 0.71,
-      "base_reliability": 0.975
+      "base_latency": 41,
+      "base_energy": 0.73,
+      "base_reliability": 0.978,
+      "base_evidence": 0.91
     },
     {
       "id": "vesper",
@@ -315,87 +429,150 @@
         "engineering",
         "reasoning"
       ],
-      "base_latency": 58,
-      "base_energy": 0.63,
-      "base_reliability": 0.962
+      "base_latency": 55,
+      "base_energy": 0.66,
+      "base_reliability": 0.966,
+      "base_evidence": 0.84
     },
     {
-      "id": "aurelia",
-      "name": "Aurelia",
-      "role": "Executor",
-      "region": "Northeast America",
-      "capabilities": [
-        "engineering",
-        "orchestration"
-      ],
-      "base_latency": 49,
-      "base_energy": 0.77,
-      "base_reliability": 0.968
-    },
-    {
-      "id": "kepler",
-      "name": "Kepler",
+      "id": "quanta",
+      "name": "Quanta",
       "role": "Verifier",
-      "region": "Northern Europe",
+      "region": "Central Europe",
       "capabilities": [
         "verification",
         "reasoning"
       ],
-      "base_latency": 66,
-      "base_energy": 0.56,
-      "base_reliability": 0.984
+      "base_latency": 63,
+      "base_energy": 0.77,
+      "base_reliability": 0.983,
+      "base_evidence": 0.95
     },
     {
-      "id": "selene",
-      "name": "Selene",
-      "role": "Verifier",
-      "region": "Eastern Canada",
+      "id": "cipher",
+      "name": "Cipher",
+      "role": "Security",
+      "region": "North America East",
       "capabilities": [
         "verification",
-        "engineering"
+        "security"
       ],
-      "base_latency": 36,
+      "base_latency": 72,
       "base_energy": 0.69,
-      "base_reliability": 0.981
+      "base_reliability": 0.981,
+      "base_evidence": 0.94
     },
     {
-      "id": "atlas",
-      "name": "Atlas",
-      "role": "Executor",
-      "region": "Central America",
-      "capabilities": [
-        "engineering",
-        "orchestration"
-      ],
-      "base_latency": 74,
-      "base_energy": 0.52,
-      "base_reliability": 0.948
-    },
-    {
-      "id": "nova",
-      "name": "Nova",
-      "role": "Research",
-      "region": "Asia Pacific",
+      "id": "helix",
+      "name": "Helix",
+      "role": "Synthesist",
+      "region": "Northern Europe",
       "capabilities": [
         "reasoning",
-        "verification"
+        "synthesis"
       ],
-      "base_latency": 91,
-      "base_energy": 0.6,
-      "base_reliability": 0.955
+      "base_latency": 49,
+      "base_energy": 0.71,
+      "base_reliability": 0.972,
+      "base_evidence": 0.89
     },
     {
       "id": "lyra",
       "name": "Lyra",
-      "role": "Guardian",
-      "region": "Independent custody",
+      "role": "Researcher",
+      "region": "North America West",
       "capabilities": [
-        "verification",
+        "research",
+        "reasoning"
+      ],
+      "base_latency": 84,
+      "base_energy": 0.62,
+      "base_reliability": 0.957,
+      "base_evidence": 0.88
+    },
+    {
+      "id": "aegis",
+      "name": "Aegis",
+      "role": "Guardian",
+      "region": "Nordics",
+      "capabilities": [
+        "security",
+        "verification"
+      ],
+      "base_latency": 68,
+      "base_energy": 0.82,
+      "base_reliability": 0.989,
+      "base_evidence": 0.97
+    },
+    {
+      "id": "nova",
+      "name": "Nova",
+      "role": "Builder",
+      "region": "Asia Pacific",
+      "capabilities": [
+        "engineering",
         "orchestration"
       ],
-      "base_latency": 53,
-      "base_energy": 0.82,
-      "base_reliability": 0.991
+      "base_latency": 96,
+      "base_energy": 0.79,
+      "base_reliability": 0.964,
+      "base_evidence": 0.82
+    },
+    {
+      "id": "mnemosyne",
+      "name": "Mnemosyne",
+      "role": "Chronicle",
+      "region": "Canada Central",
+      "capabilities": [
+        "evidence",
+        "synthesis"
+      ],
+      "base_latency": 38,
+      "base_energy": 0.74,
+      "base_reliability": 0.986,
+      "base_evidence": 0.98
+    },
+    {
+      "id": "praxis",
+      "name": "Praxis",
+      "role": "Economics",
+      "region": "United Kingdom",
+      "capabilities": [
+        "economics",
+        "verification"
+      ],
+      "base_latency": 61,
+      "base_energy": 0.67,
+      "base_reliability": 0.968,
+      "base_evidence": 0.9
+    },
+    {
+      "id": "solace",
+      "name": "Solace",
+      "role": "Fallback",
+      "region": "South Atlantic",
+      "capabilities": [
+        "orchestration",
+        "evidence"
+      ],
+      "base_latency": 109,
+      "base_energy": 0.86,
+      "base_reliability": 0.991,
+      "base_evidence": 0.93
+    },
+    {
+      "id": "vertex",
+      "name": "Vertex",
+      "role": "Benchmark",
+      "region": "Central Canada",
+      "capabilities": [
+        "benchmark",
+        "verification"
+      ],
+      "base_latency": 46,
+      "base_energy": 0.7,
+      "base_reliability": 0.979,
+      "base_evidence": 0.96
     }
   ],
   "validators": [
@@ -407,166 +584,311 @@
     },
     {
       "id": "v2",
-      "name": "Quality & Utility",
-      "symbol": "Q2",
-      "focus": "mission usefulness and quality"
+      "name": "Mission Utility",
+      "symbol": "U2",
+      "focus": "usefulness against declared success criteria"
     },
     {
       "id": "v3",
-      "name": "Resource Discipline",
+      "name": "Resource Compliance",
       "symbol": "R3",
-      "focus": "energy, latency, and capacity"
+      "focus": "latency, energy, memory, and concurrency envelope"
     },
     {
       "id": "v4",
-      "name": "Security Boundary",
-      "symbol": "S4",
-      "focus": "permissions and attack surface"
+      "name": "Route Resilience",
+      "symbol": "M4",
+      "focus": "peer diversity, fallback, and incident handling"
     },
     {
       "id": "v5",
-      "name": "Reliability",
-      "symbol": "L5",
-      "focus": "fallbacks, failure, and recovery"
+      "name": "Contradiction Hunter",
+      "symbol": "C5",
+      "focus": "unsupported assumptions and internal inconsistency"
     },
     {
       "id": "v6",
-      "name": "Contradiction",
-      "symbol": "C6",
-      "focus": "dissent and unsupported assumptions"
+      "name": "Security Boundary",
+      "symbol": "S6",
+      "focus": "identity, authority, and prohibited action controls"
     },
     {
       "id": "v7",
-      "name": "Human Authority",
-      "symbol": "H7",
-      "focus": "least privilege and review boundary"
+      "name": "Uncertainty Steward",
+      "symbol": "Ω7",
+      "focus": "calibration, residual uncertainty, and review readiness"
     }
   ],
   "guardians": [
     {
       "id": "g1",
       "name": "Identity Guardian",
-      "symbol": "G1"
+      "symbol": "ID",
+      "focus": "declared controller and lineage consistency"
     },
     {
       "id": "g2",
-      "name": "Evidence Guardian",
-      "symbol": "G2"
+      "name": "Resource Guardian",
+      "symbol": "RG",
+      "focus": "resource envelope and safe degradation"
     },
     {
       "id": "g3",
-      "name": "Safety Guardian",
-      "symbol": "G3"
+      "name": "Evidence Guardian",
+      "symbol": "EV",
+      "focus": "artifact completeness and chain integrity"
     },
     {
       "id": "g4",
-      "name": "Treasury Guardian",
-      "symbol": "G4"
+      "name": "Authority Guardian",
+      "symbol": "AU",
+      "focus": "no silent escalation into external power"
     },
     {
       "id": "g5",
-      "name": "Human Review Guardian",
-      "symbol": "G5"
+      "name": "Recovery Guardian",
+      "symbol": "RC",
+      "focus": "rollback, quarantine, and safe-hold readiness"
     }
   ],
   "artifacts": [
-    "NodeIdentity.json",
-    "WorkUnitContract.json",
-    "ResourceEnvelope.json",
-    "PeerRoute.json",
-    "SandboxPlan.json",
-    "WorkUnitReceipt.json",
-    "EnergyReport.json",
-    "QualityEvaluation.json",
-    "ContradictionRegister.md",
-    "ValidatorConsensus.json",
-    "HealthAttestation.json",
-    "AuthorizationState.json",
-    "NodeEvidenceDocket.json",
-    "ChronicleEntry.md"
+    {
+      "id": "identity",
+      "name": "NodeIdentity.json",
+      "plane": "Identity",
+      "purpose": "Declared node, operator, jurisdiction, reviewer, and lineage."
+    },
+    {
+      "id": "mission",
+      "name": "WorkUnitContract.json",
+      "plane": "Mission",
+      "purpose": "Objective, criteria, constraints, risk, and stop rules."
+    },
+    {
+      "id": "policy",
+      "name": "PolicyEnvelope.json",
+      "plane": "Constitution",
+      "purpose": "Weights, thresholds, prohibitions, and review conditions."
+    },
+    {
+      "id": "resources",
+      "name": "ResourceEnvelope.json",
+      "plane": "Admission",
+      "purpose": "Concurrency, latency, energy, memory, and fallback bounds."
+    },
+    {
+      "id": "candidates",
+      "name": "PeerCandidateLedger.json",
+      "plane": "Mesh",
+      "purpose": "All candidate scores, exclusions, and explanations."
+    },
+    {
+      "id": "route",
+      "name": "PeerRouteCommitment.json",
+      "plane": "Mesh",
+      "purpose": "Primary and shadow routes plus diversity rationale."
+    },
+    {
+      "id": "incident",
+      "name": "IncidentDisposition.json",
+      "plane": "Recovery",
+      "purpose": "Detected incident, quarantine, mitigation, and residual risk."
+    },
+    {
+      "id": "receipt",
+      "name": "AlphaWorkUnitReceipt.json",
+      "plane": "Execution",
+      "purpose": "Normalized work, timing, energy, route, and telemetry."
+    },
+    {
+      "id": "telemetry",
+      "name": "TelemetryDigest.json",
+      "plane": "Observability",
+      "purpose": "Quality, reliability, resource, and failure measurements."
+    },
+    {
+      "id": "evaluation",
+      "name": "EvaluationMatrix.json",
+      "plane": "Evaluation",
+      "purpose": "Independent axis scores and uncertainty."
+    },
+    {
+      "id": "votes",
+      "name": "ValidatorConsensus.json",
+      "plane": "Verification",
+      "purpose": "Votes, rationales, quorum, dissent, and contradictions."
+    },
+    {
+      "id": "guardians",
+      "name": "GuardianReview.json",
+      "plane": "Governance",
+      "purpose": "Guardian dispositions and any veto."
+    },
+    {
+      "id": "authority",
+      "name": "AuthorizationState.json",
+      "plane": "Authority",
+      "purpose": "Explicit permissions withheld and terminal state."
+    },
+    {
+      "id": "chronicle",
+      "name": "ProofChronicle.json",
+      "plane": "Chronicle",
+      "purpose": "Ordered chain of artifact commitments."
+    },
+    {
+      "id": "docket",
+      "name": "NodeEvidenceDocket.json",
+      "plane": "Evidence",
+      "purpose": "Complete machine-readable review package."
+    },
+    {
+      "id": "brief",
+      "name": "ExecutiveReviewBrief.md",
+      "plane": "Review",
+      "purpose": "Plain-language decision brief for a human reviewer."
+    }
   ],
   "architecture_translation": [
     {
       "legacy": "ENS node identity",
-      "goalos": "Node Identity Commitment",
-      "consequence": "Identity becomes an explicit claim with provenance requirements instead of an assumed live fact."
+      "goalos": "Sealed identity declaration",
+      "consequence": "Identity is explicit and inspectable; the public page performs no live ENS resolution."
     },
     {
-      "legacy": "libp2p host and dial policy",
-      "goalos": "Peer Route plus Resource Envelope",
-      "consequence": "Connectivity and capacity become inspectable, bounded, and reversible admission decisions."
+      "legacy": "Owner-controlled runtime",
+      "goalos": "Constitutional authority boundary",
+      "consequence": "Control becomes policy-gated and stops before external action."
     },
     {
-      "legacy": "Alpha Work Unit",
-      "goalos": "Proof-carrying Work Unit Contract",
-      "consequence": "Machine work is tied to success criteria, resource use, quality, evidence, and review state."
+      "legacy": "libp2p peer mesh",
+      "goalos": "Primary + shadow proof routes",
+      "consequence": "Peers are scored across capability, evidence, reliability, diversity, energy, and latency."
     },
     {
-      "legacy": "runtime orchestrator",
-      "goalos": "Mission Orchestrator plus Action Graph",
-      "consequence": "Execution sequencing is mission-scoped and cannot silently expand authority."
+      "legacy": "Resource manager",
+      "goalos": "Pre-execution admission gate",
+      "consequence": "Resource ceilings are proven before the simulated execution begins."
     },
     {
-      "legacy": "validator loop",
-      "goalos": "Independent Verifier Mesh",
-      "consequence": "Votes, thresholds, dissent, and rationales remain visible and cannot self-authorize action."
+      "legacy": "α-Work Units",
+      "goalos": "Proof-carrying work receipts",
+      "consequence": "Each work unit emits normalized telemetry and a chained commitment."
     },
     {
-      "legacy": "Prometheus and Grafana",
-      "goalos": "Evidence Telemetry Ledger",
-      "consequence": "Operational signals become artifacts inside the review package, not ephemeral dashboard decoration."
+      "legacy": "Validator roster",
+      "goalos": "Independent verifier mesh",
+      "consequence": "Votes, rationale, dissent, and uncertainty remain visible."
     },
     {
-      "legacy": "owner governance controls",
-      "goalos": "Guardian Council and Authorization State",
-      "consequence": "Pause, veto, minimum rights, and human approval are explicit proof gates."
+      "legacy": "Prometheus + Grafana",
+      "goalos": "Evidence-first telemetry room",
+      "consequence": "Operational signals are translated into reviewable proof artifacts."
     },
     {
-      "legacy": "treasury executor",
-      "goalos": "Settlement Intent under default deny",
-      "consequence": "Economic settlement is separately authorized and never implied by successful work-unit simulation."
+      "legacy": "Treasury and staking controls",
+      "goalos": "Explicit settlement prohibition",
+      "consequence": "The public experience simulates no token, wallet, stake, transfer, or payout."
+    },
+    {
+      "legacy": "Owner pause and slashing",
+      "goalos": "Guardian safe-hold and quarantine",
+      "consequence": "Incidents lead to explainable containment rather than hidden autonomous punishment."
+    },
+    {
+      "legacy": "Subgraph event indexing",
+      "goalos": "Chronicle proof chain",
+      "consequence": "State transitions become an ordered local evidence history."
     }
   ],
   "governance_principles": [
     {
-      "id": "N1",
-      "title": "Declared identity, never implied identity",
-      "copy": "The experience may display a node name; it does not prove ENS ownership, operator control, or network presence."
+      "title": "Default deny",
+      "copy": "Anything not explicitly permitted remains prohibited."
     },
     {
-      "id": "N2",
-      "title": "Resource admission before execution",
-      "copy": "Peers, energy, latency, concurrency, and fallback routes must pass policy before a sandbox receipt is generated."
+      "title": "Least authority",
+      "copy": "The node receives only the authority required to produce a review package."
     },
     {
-      "id": "N3",
-      "title": "Proof-carrying work units",
-      "copy": "Every work unit binds mission, resource, execution, quality, validator, contradiction, and authorization artifacts."
+      "title": "Proof before permission",
+      "copy": "Evidence can increase review readiness; it cannot self-grant external power."
     },
     {
-      "id": "N4",
-      "title": "Independent dissent",
-      "copy": "A dissenting validator remains visible and cannot be averaged away without explanation."
+      "title": "Dissent is data",
+      "copy": "Non-conforming validator opinions remain part of the record."
     },
     {
-      "id": "N5",
-      "title": "Guardian separation",
-      "copy": "Node operation, verification, treasury intent, and human approval remain separate authority domains."
+      "title": "Safe degradation",
+      "copy": "When identity, resources, or evidence fail, the node reduces scope or enters SAFE_HOLD."
     },
     {
-      "id": "N6",
-      "title": "Chronicle without hidden persistence",
-      "copy": "The browser session can compose a review record; nothing is stored or transmitted automatically."
+      "title": "Replayability",
+      "copy": "Identical inputs generate identical routes, scores, commitments, and terminal state."
+    },
+    {
+      "title": "Human legibility",
+      "copy": "Every technical gate has a plain-language explanation and reviewer action."
+    }
+  ],
+  "threats": [
+    {
+      "id": "t1",
+      "name": "Identity substitution",
+      "control": "Identity commitment + guardian veto",
+      "disposition": "SAFE_HOLD"
+    },
+    {
+      "id": "t2",
+      "name": "Peer eclipse",
+      "control": "Diversity floor + shadow route + quarantine",
+      "disposition": "REROUTE OR HOLD"
+    },
+    {
+      "id": "t3",
+      "name": "Resource exhaustion",
+      "control": "Pre-execution envelope + concurrency reduction",
+      "disposition": "REFUSE ADMISSION"
+    },
+    {
+      "id": "t4",
+      "name": "Validator capture",
+      "control": "Independent seats + dissent visibility + higher quorum",
+      "disposition": "HUMAN ESCALATION"
+    },
+    {
+      "id": "t5",
+      "name": "Evidence laundering",
+      "control": "Claim-to-artifact coverage + chained commitments",
+      "disposition": "REJECT DOCKET"
+    },
+    {
+      "id": "t6",
+      "name": "Authority creep",
+      "control": "Explicit permission matrix + terminal human boundary",
+      "disposition": "DENY"
+    },
+    {
+      "id": "t7",
+      "name": "Telemetry spoofing",
+      "control": "Cross-artifact consistency checks",
+      "disposition": "QUARANTINE RECEIPT"
+    },
+    {
+      "id": "t8",
+      "name": "Silent irreversible action",
+      "control": "No network, wallet, transaction, or settlement capability",
+      "disposition": "IMPOSSIBLE IN PUBLIC ALPHA"
     }
   ],
   "claim_boundary": [
-    "This is a deterministic browser-local simulation and design reference.",
-    "It does not operate a libp2p node, resolve ENS, call a model, allocate compute, contact peers, or retrieve live telemetry.",
-    "It does not connect a wallet, move AGIALPHA, broadcast transactions, execute treasury intents, or settle work.",
-    "Displayed peer metrics, work-unit values, validator votes, energy figures, and consensus results are reproducible simulation values, not live benchmarks or operational claims.",
-    "A recorded simulated quorum does not certify factual correctness, security, legal compliance, production readiness, or economic value.",
-    "The original project name is preserved as product lineage; this experience does not demonstrate AGI or autonomous general intelligence.",
-    "HUMAN_REVIEW_REQUIRED means the generated package is ready for qualified human judgment with all external permissions absent."
+    "This is a deterministic browser-local digital twin and design reference, not a live node deployment.",
+    "No live ENS resolution, libp2p dialing, model call, API request, wallet connection, transaction, token movement, stake change, or settlement occurs.",
+    "Generated scores are simulated and do not certify factual correctness, security, legal compliance, economic value, or production readiness.",
+    "A validator quorum records simulated agreement; it is not an external audit or factual attestation.",
+    "The artifact chain is locally generated for inspectability and replay; it is not published to Ethereum or any external ledger.",
+    "GoalOS Mainnet deployment records displayed by the build are repository-derived and retain their own explicit production and authorization boundaries.",
+    "Every successful run terminates at HUMAN_REVIEW_REQUIRED; severe incidents terminate at SAFE_HOLD."
   ],
   "security": {
     "external_dependencies": false,
@@ -579,6 +901,129 @@
     "live_compute": false,
     "human_review_required": true,
     "settlement_mode": "none",
-    "external_authority": "none"
-  }
+    "external_authority": "none",
+    "content_security_policy": "connect-src none"
+  },
+  "lineage_fingerprints": [
+    {
+      "path": "README.md",
+      "title": "Original operating thesis",
+      "sha256": "d5d2222ddfc3d0ba991860bd746de103b5810b7510c83d0453433fa7169a5e7b",
+      "bytes": 30198,
+      "lines": 322,
+      "consequence": "Identity, owner control, CI wall, runtime, observability, governance."
+    },
+    {
+      "path": "contracts/AlphaNodeManager.sol",
+      "title": "On-chain node authority",
+      "sha256": "ba6e2a21f969275e703cec4ad315a8419f378fe38d2dcb33391c7075a86b55b2",
+      "bytes": 9129,
+      "lines": 265,
+      "consequence": "Pause, validator, identity, stake, validation, and slashing control surface."
+    },
+    {
+      "path": "contracts/TreasuryExecutor.sol",
+      "title": "Treasury intent execution",
+      "sha256": "5a32a71ef3ef37d21264402c15baec913e5be702fb39a33c2a3e6b0a3a976535",
+      "bytes": 4149,
+      "lines": 131,
+      "consequence": "Owner-governed treasury intent and execution boundary."
+    },
+    {
+      "path": "src/index.js",
+      "title": "Runtime entrypoint",
+      "sha256": "9ae7975d447cf338537ef6b504c0caae2bd848175d4d02ad6860a4d27c1ebb2a",
+      "bytes": 144600,
+      "lines": 3591,
+      "consequence": "Node bootstrap, API, telemetry, networking, and orchestrator composition."
+    },
+    {
+      "path": "src/orchestrator/nodeRuntime.js",
+      "title": "Node runtime orchestration",
+      "sha256": "aee6c6606c74066e81f54bdd14af5302e53c4733ee476a4b888245abc3ff5f2b",
+      "bytes": 18400,
+      "lines": 534,
+      "consequence": "Lifecycle and governed execution coordination."
+    },
+    {
+      "path": "src/network/resourceManagerConfig.js",
+      "title": "Resource admission",
+      "sha256": "0d9297e993131b6d19571b47d5d23310951f1e8a749d7c24ef79ae7cca37a46c",
+      "bytes": 29647,
+      "lines": 861,
+      "consequence": "Connection, stream, memory, and protocol ceilings."
+    },
+    {
+      "path": "src/network/libp2pHostConfig.js",
+      "title": "Peer transport plane",
+      "sha256": "9e76e4cbf7669e117a9620d19d54411b7280acd33631a81057b69d0240c18bd7",
+      "bytes": 13081,
+      "lines": 420,
+      "consequence": "Transport, discovery, multiplexing, and peer posture."
+    },
+    {
+      "path": "src/services/alphaWorkUnits.js",
+      "title": "α-Work Unit lifecycle",
+      "sha256": "843c54c128030be55a0425f139412e8bbe186eb449178293a7710298e20afb09",
+      "bytes": 19722,
+      "lines": 633,
+      "consequence": "Normalization, accounting, proof, and acceptance semantics."
+    },
+    {
+      "path": "src/services/governance.js",
+      "title": "Governance engine",
+      "sha256": "4053ce1be24af9c340a51033e6b51c32c17fc87d91274bdaae83eb8d38fadec3",
+      "bytes": 49917,
+      "lines": 1685,
+      "consequence": "Policy, proposals, controls, and accountable state changes."
+    },
+    {
+      "path": "src/services/peerScoring.js",
+      "title": "Peer selection",
+      "sha256": "a587fb99668136370c6558dbdd4c48006eee20f4ed547c1fafb078039a4b172b",
+      "bytes": 14303,
+      "lines": 440,
+      "consequence": "Multi-factor provider scoring and route choice."
+    },
+    {
+      "path": "src/settlement/quorumEngine.js",
+      "title": "Quorum engine",
+      "sha256": "51b93b7781b7677b36e81c49fcf0491283acdabc1e1a8fda84c15f4156e92fbb",
+      "bytes": 4437,
+      "lines": 161,
+      "consequence": "Independent validation and threshold result aggregation."
+    },
+    {
+      "path": "src/telemetry/alphaWuTelemetry.js",
+      "title": "Work telemetry",
+      "sha256": "58a86e6d570b073ccdfe842b9562913dc1824247463074ca01d7dcce352fdfe7",
+      "bytes": 7841,
+      "lines": 232,
+      "consequence": "Observable work-unit metrics and evidence signals."
+    },
+    {
+      "path": "dashboard/src/App.jsx",
+      "title": "Operator cockpit",
+      "sha256": "09f64879a94d19e7db393a6c545414fef96bedeb55a29e8fb4516573a8e40e3d",
+      "bytes": 1658,
+      "lines": 39,
+      "consequence": "Original browser dashboard surfaces and connection controls."
+    },
+    {
+      "path": "observability/prometheus/alerts.yml",
+      "title": "Operational alerts",
+      "sha256": "c1020f818232aa13e417733a703c6eabb78c93f779dd43b8c90d8923340ae20a",
+      "bytes": 2257,
+      "lines": 53,
+      "consequence": "Machine-readable alerts for runtime and networking posture."
+    },
+    {
+      "path": "subgraph/subgraph.yaml",
+      "title": "Event index",
+      "sha256": "4726aa785d4b1470ae8d1ab0203a656b36a3f52737808176a82157713ac77767",
+      "bytes": 1166,
+      "lines": 36,
+      "consequence": "On-chain event projection for transparent downstream inspection."
+    }
+  ]
 }

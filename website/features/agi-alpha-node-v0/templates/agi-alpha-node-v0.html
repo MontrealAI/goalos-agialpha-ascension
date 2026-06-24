@@ -4,82 +4,78 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="description" content="@@DESCRIPTION@@">
-  <meta name="theme-color" content="#060914">
+  <meta name="theme-color" content="#04050b">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'">
   <title>@@TITLE@@</title>
   <link rel="stylesheet" href="assets/agi-alpha-node-v0.css">
 </head>
 <body class="aan-page">
-  <a class="aan-skip" href="#aan-main">Skip to the node command deck</a>
+  <a class="aan-skip" href="#aan-main">Skip to the sovereign node</a>
+  <div class="aan-noise" aria-hidden="true"></div>
   <header class="aan-topbar">
     <a class="aan-brand" href="index.html" aria-label="GoalOS AGIALPHA Ascension home">
-      <span class="aan-brand-mark" aria-hidden="true"><i></i><b>α</b></span>
+      <span class="aan-brand-seal" aria-hidden="true"><i></i><b>α</b></span>
       <span><strong>GOALOS</strong><small>AGIALPHA ASCENSION</small></span>
     </a>
     <button class="aan-nav-toggle" id="aan-nav-toggle" type="button" aria-expanded="false" aria-controls="aan-nav">Menu</button>
-    <nav class="aan-nav" id="aan-nav" aria-label="Alpha Node sections">
+    <nav class="aan-nav" id="aan-nav" aria-label="AGI Alpha Node navigation">
       <a href="#doctrine">Doctrine</a>
-      <a href="#command-deck">Command deck</a>
-      <a href="#peer-mesh">Peer mesh</a>
-      <a href="#consensus">Consensus</a>
-      <a href="#evidence">Evidence</a>
+      <a href="#node-theatre">Node theatre</a>
+      <a href="#proof-chain">Proof chain</a>
+      <a href="#authority">Authority</a>
       <a href="agi-alpha-node-v0-architecture.html">Architecture</a>
+      <a href="agi-alpha-node-v0-proof-ledger.html">Proof ledger</a>
       <a href="index.html">Main site</a>
     </nav>
   </header>
 
   <main id="aan-main">
     <section class="aan-hero" aria-labelledby="aan-hero-title">
+      <div class="aan-hero-aurora" aria-hidden="true"></div>
       <div class="aan-hero-grid">
         <div class="aan-hero-copy">
-          <p class="aan-eyebrow"><span></span> GOALOS / SOVEREIGN PROOF NODE / NΩ‑01</p>
-          <p class="aan-pretitle">A sovereign node for accountable machine work.</p>
-          <p class="aan-system-label">GOALOS AGIALPHA ASCENSION</p>
+          <p class="aan-eyebrow"><span></span> SOVEREIGN EDGE / PROOF MESH / HUMAN AUTHORITY</p>
+          <p class="aan-pretitle">GoalOS AGIALPHA Ascension presents</p>
           <h1 id="aan-hero-title"><span>AGI ALPHA</span><br><em>NODE v0</em> <i>⚡️✨</i></h1>
-          <p class="aan-tagline">Intelligence at the edge. Proof at the center.<br>Authority at the human boundary.</p>
-          <p class="aan-lead">Compose one bounded work unit. Route it through a deterministic peer mesh. Inspect resource admission, telemetry, quality, dissent, validator quorum, and the final authorization hold—without sending data outside the browser.</p>
+          <p class="aan-tagline">One node. Many minds.<br><strong>Zero unearned authority.</strong></p>
+          <p class="aan-lead">A cinematic, browser-local digital twin of a governed intelligence node. Contract consequential work, compile its constitution, route a primary and shadow peer mesh, preserve dissent, seal a proof chain, and stop at the human frontier.</p>
           <div class="aan-hero-actions">
-            <a class="aan-button aan-button-primary" href="#command-deck">Open the sovereign node <span>↘</span></a>
-            <a class="aan-button aan-button-secondary" href="agi-alpha-node-v0-architecture.html">Read the architecture <span>→</span></a>
+            <a class="aan-button aan-button-primary" href="#node-theatre">Launch a proof flight <span>↘</span></a>
+            <button class="aan-button aan-button-secondary" type="button" id="aan-tour-open">Take the 60-second tour <span>◎</span></button>
           </div>
-          <div class="aan-deny-strip"><b>DEFAULT DENY</b><span>Local deterministic simulation. No ENS resolution, live peer connection, model call, wallet, transaction, settlement, or external action.</span></div>
+          <div class="aan-boundary-strip"><b>PUBLIC ALPHA · DEFAULT DENY</b><span>No live peer dial, model call, ENS resolution, API request, wallet, transaction, settlement, or external action.</span></div>
         </div>
 
-        <div class="aan-core-card" aria-label="Sovereign node core visualization">
-          <div class="aan-core-head"><span>SOVEREIGN NODE CORE</span><b id="aan-hero-status">REVIEW MODE</b></div>
-          <div class="aan-core-visual" aria-hidden="true">
-            <svg viewBox="0 0 620 620" role="img" aria-label="Alpha Node surrounded by governed operating planes">
+        <div class="aan-hero-orb" aria-label="Animated sovereign proof node visualization">
+          <div class="aan-orb-toolbar"><span><i></i> NODE NΩ-01</span><b id="aan-hero-mode">REVIEW MODE</b></div>
+          <div class="aan-orb-stage">
+            <svg viewBox="0 0 760 760" role="img" aria-label="AGI Alpha Node surrounded by constitutional operating planes and peer satellites">
               <defs>
-                <radialGradient id="aan-core-fill" cx="50%" cy="44%" r="62%"><stop offset="0" stop-color="#fff9d6"/><stop offset=".14" stop-color="#ffe66d"/><stop offset=".34" stop-color="#ff9d3d"/><stop offset=".55" stop-color="#8a54ff"/><stop offset=".78" stop-color="#19d7ff"/><stop offset="1" stop-color="#081126" stop-opacity="0"/></radialGradient>
-                <linearGradient id="aan-ring" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffe274"/><stop offset=".35" stop-color="#45f3c5"/><stop offset=".7" stop-color="#45a8ff"/><stop offset="1" stop-color="#a36cff"/></linearGradient>
-                <filter id="aan-glow" x="-80%" y="-80%" width="260%" height="260%"><feGaussianBlur stdDeviation="11" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+                <radialGradient id="aan-vortex" cx="50%" cy="45%" r="58%"><stop offset="0" stop-color="#fff8c9"/><stop offset=".15" stop-color="#ffe66f"/><stop offset=".36" stop-color="#65ffd2"/><stop offset=".62" stop-color="#3ec9ff"/><stop offset=".82" stop-color="#925dff"/><stop offset="1" stop-color="#04050b" stop-opacity="0"/></radialGradient>
+                <linearGradient id="aan-spectrum" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffe56d"/><stop offset=".32" stop-color="#6ef4c5"/><stop offset=".68" stop-color="#49bfff"/><stop offset="1" stop-color="#b27aff"/></linearGradient>
+                <filter id="aan-orb-glow" x="-80%" y="-80%" width="260%" height="260%"><feGaussianBlur stdDeviation="14" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
               </defs>
-              <g class="aan-orbits">
-                <circle cx="310" cy="310" r="238"/><circle cx="310" cy="310" r="184"/><circle cx="310" cy="310" r="132"/>
-                <path d="M72 310H548M310 72V548"/>
-              </g>
-              <g class="aan-orbit-pulse"><circle cx="310" cy="72" r="5"/><circle cx="548" cy="310" r="5"/><circle cx="310" cy="548" r="5"/><circle cx="72" cy="310" r="5"/></g>
-              <g class="aan-satellite" transform="translate(310 73)"><circle r="34"/><text y="5">ID</text></g>
-              <g class="aan-satellite" transform="translate(478 142)"><circle r="34"/><text y="5">OR</text></g>
-              <g class="aan-satellite" transform="translate(547 310)"><circle r="34"/><text y="5">RG</text></g>
-              <g class="aan-satellite" transform="translate(478 478)"><circle r="34"/><text y="5">EX</text></g>
-              <g class="aan-satellite" transform="translate(310 547)"><circle r="34"/><text y="5">QT</text></g>
-              <g class="aan-satellite" transform="translate(142 478)"><circle r="34"/><text y="5">V7</text></g>
-              <g class="aan-satellite" transform="translate(73 310)"><circle r="34"/><text y="5">G5</text></g>
-              <g class="aan-satellite" transform="translate(142 142)"><circle r="34"/><text y="5">CH</text></g>
-              <circle class="aan-core-aura" cx="310" cy="310" r="112" fill="url(#aan-core-fill)"/>
-              <circle class="aan-core-ring" cx="310" cy="310" r="86"/>
-              <path class="aan-core-blade b1" d="M309 211c20 33 24 59 10 85-9 16-13 29-9 41-36-26-48-63-30-96 8-15 18-25 29-30Z"/>
-              <path class="aan-core-blade b2" d="M395 260c-11 36-28 56-57 63-18 4-31 10-39 20 5-44 31-73 68-76 17-2 28 0 28-7Z"/>
-              <path class="aan-core-blade b3" d="M396 358c-36 9-63 5-82-17-12-14-23-22-36-24 40-18 79-8 98 24 9 14 13 25 20 17Z"/>
-              <path class="aan-core-blade b4" d="M311 409c-21-31-26-57-13-84 8-17 12-30 8-42 37 24 51 61 34 95-7 15-17 26-29 31Z"/>
-              <path class="aan-core-blade b5" d="M226 360c9-37 26-57 55-65 18-5 30-11 38-21-3 44-28 74-65 79-17 2-28 1-28 7Z"/>
-              <path class="aan-core-blade b6" d="M224 262c36-11 63-7 83 14 13 14 24 21 37 23-39 20-78 12-99-19-9-14-14-24-21-18Z"/>
-              <path class="aan-bolt" d="M331 243 279 322h36l-27 60 62-85h-38Z"/>
-              <text class="aan-core-node-label" x="310" y="438">1.alpha.node.agi.eth</text>
+              <g class="aan-gridlines"><path d="M80 380H680M380 80V680"/><circle cx="380" cy="380" r="276"/><circle cx="380" cy="380" r="222"/><circle cx="380" cy="380" r="164"/></g>
+              <g class="aan-data-arcs"><path d="M128 277C213 87 537 70 645 270"/><path d="M115 487C244 681 533 683 654 482"/><path d="M271 119C82 236 83 520 275 646"/><path d="M492 116C687 242 684 518 487 649"/></g>
+              <g class="aan-orbit-dots"><circle cx="380" cy="104" r="5"/><circle cx="622" cy="247" r="5"/><circle cx="622" cy="513" r="5"/><circle cx="380" cy="656" r="5"/><circle cx="138" cy="513" r="5"/><circle cx="138" cy="247" r="5"/></g>
+              <g class="aan-satellite" transform="translate(380 92)"><circle r="38"/><text y="6">ID</text></g>
+              <g class="aan-satellite" transform="translate(584 176)"><circle r="38"/><text y="6">CC</text></g>
+              <g class="aan-satellite" transform="translate(668 380)"><circle r="38"/><text y="6">RG</text></g>
+              <g class="aan-satellite" transform="translate(584 584)"><circle r="38"/><text y="6">MC</text></g>
+              <g class="aan-satellite" transform="translate(380 668)"><circle r="38"/><text y="6">EX</text></g>
+              <g class="aan-satellite" transform="translate(176 584)"><circle r="38"/><text y="6">V7</text></g>
+              <g class="aan-satellite" transform="translate(92 380)"><circle r="38"/><text y="6">G5</text></g>
+              <g class="aan-satellite" transform="translate(176 176)"><circle r="38"/><text y="6">CK</text></g>
+              <circle class="aan-orb-aura" cx="380" cy="380" r="145" fill="url(#aan-vortex)"/>
+              <circle class="aan-orb-shell" cx="380" cy="380" r="108"/>
+              <g class="aan-orb-helix" filter="url(#aan-orb-glow)"><path d="M292 341c41-68 136-76 185-16-47 1-78 19-99 53-23 37-51 54-92 50 35-23 50-51 48-86-1-27-12-49-42-1Z"/><path d="M468 421c-40 67-136 75-185 15 47 0 78-18 99-52 23-38 52-55 92-51-35 23-50 51-48 87 1 26 12 48 42 1Z"/></g>
+              <path class="aan-orb-bolt" d="M407 254 326 383h58l-43 123 99-152h-58Z"/>
+              <text class="aan-orb-alpha" x="380" y="402">α</text>
+              <text class="aan-orb-name" x="380" y="537">1.alpha.node.agi.eth</text>
             </svg>
+            <div class="aan-orb-pulse"><span></span><span></span><span></span><span></span></div>
           </div>
-          <div class="aan-core-foot"><span><i class="mint"></i> proof planes</span><span><i class="violet"></i> verifier mesh</span><span><i class="gold"></i> human authority</span></div>
+          <div class="aan-orb-footer"><span><i class="mint"></i> proof planes</span><span><i class="blue"></i> peer routes</span><span><i class="violet"></i> verifier mesh</span><span><i class="gold"></i> human authority</span></div>
         </div>
       </div>
       <div class="aan-metric-ribbon" id="aan-hero-metrics"></div>
@@ -87,146 +83,104 @@
 
     <section class="aan-section aan-doctrine" id="doctrine" aria-labelledby="aan-doctrine-title">
       <div class="aan-section-head">
-        <p class="aan-kicker">NODE DOCTRINE / THE TRUSTED EDGE</p>
-        <h2 id="aan-doctrine-title">The node does not merely compute.<br><em>It proves why its work may be trusted.</em></h2>
+        <p class="aan-kicker">THE NODE DOCTRINE / PROOF BEFORE PERMISSION</p>
+        <h2 id="aan-doctrine-title">Intelligence may move at machine speed.<br><em>Authority does not.</em></h2>
+        <p>The system is designed to create useful work while making its identity, route, resource envelope, evidence, dissent, recovery posture, and final limits visible to a non-technical reviewer.</p>
       </div>
       <div class="aan-thesis-grid" id="aan-thesis-grid"></div>
     </section>
 
-    <section class="aan-section aan-deck-section" id="command-deck" aria-labelledby="aan-deck-title">
-      <div class="aan-section-head aan-section-head-row">
-        <div><p class="aan-kicker">INTERACTIVE / LOCAL / DETERMINISTIC</p><h2 id="aan-deck-title">Sovereign Node Command Deck</h2></div>
-        <div class="aan-runtime-seal"><span id="aan-runtime-dot"></span><b id="aan-runtime-mode">READY FOR A BOUNDED CYCLE</b></div>
+    <section class="aan-section aan-theatre" id="node-theatre" aria-labelledby="aan-theatre-title">
+      <div class="aan-section-head aan-section-head-split">
+        <div><p class="aan-kicker">INTERACTIVE DIGITAL TWIN / LOCAL / DETERMINISTIC</p><h2 id="aan-theatre-title">The Sovereign Node Theatre</h2><p>Choose a mission in ordinary language. The node will explain every gate, route, score, dissent, mitigation, and reason it stops.</p></div>
+        <div class="aan-view-switch" role="group" aria-label="Explanation depth"><button type="button" class="is-active" data-view="executive">Executive</button><button type="button" data-view="technical">Technical</button></div>
       </div>
 
-      <div class="aan-command-grid">
-        <form class="aan-control-panel" id="aan-node-form">
-          <div class="aan-control-head"><span>01</span><div><b>Contract the node cycle</b><small>Nothing leaves this browser.</small></div></div>
+      <div class="aan-node-status" id="aan-node-status">
+        <div><span>NODE STATE</span><b id="aan-state-label">READY</b></div>
+        <div><span>CHAIN HEAD</span><b id="aan-chain-head">—</b></div>
+        <div><span>PRIMARY ROUTE</span><b id="aan-route-label">UNCOMMITTED</b></div>
+        <div><span>AUTHORITY</span><b class="deny">NONE GRANTED</b></div>
+      </div>
+
+      <div class="aan-cockpit">
+        <form class="aan-mission-panel" id="aan-node-form">
+          <div class="aan-panel-heading"><span>01</span><div><b>Contract the mission</b><small>Plain language in. Proof package out.</small></div></div>
           <label>Mission preset<select id="aan-preset" name="preset"></select></label>
           <label>Declared node identity<input id="aan-node-name" name="node_name" value="1.alpha.node.agi.eth" maxlength="72" autocomplete="off"></label>
-          <label>Consequential work unit<textarea id="aan-mission" name="mission" rows="5" maxlength="640"></textarea></label>
-          <div class="aan-two-field">
+          <label>Consequential work unit<textarea id="aan-mission" name="mission" rows="6" maxlength="900"></textarea></label>
+          <div class="aan-field-pair">
             <label>Work class<select id="aan-work-class" name="work_class"></select></label>
-            <label>Operating posture<select id="aan-posture" name="posture"></select></label>
+            <label>Risk profile<select id="aan-risk" name="risk"></select></label>
           </div>
-          <div class="aan-range-block">
-            <div><label for="aan-quorum">Validator quorum</label><output id="aan-quorum-output">5 / 7</output></div>
-            <input id="aan-quorum" name="quorum" type="range" min="4" max="7" value="5">
+          <label>Operating constitution<select id="aan-posture" name="posture"></select><small id="aan-posture-description"></small></label>
+          <div class="aan-range-group">
+            <div><label for="aan-energy">Energy target</label><output id="aan-energy-output">0.72</output></div>
+            <input id="aan-energy" type="range" min="45" max="92" value="72">
           </div>
-          <div class="aan-range-block">
-            <div><label for="aan-energy">Energy target</label><output id="aan-energy-output">0.68 score</output></div>
-            <input id="aan-energy" name="energy" type="range" min="45" max="90" value="68">
+          <div class="aan-range-group">
+            <div><label for="aan-latency">Latency ceiling</label><output id="aan-latency-output">90 ms</output></div>
+            <input id="aan-latency" type="range" min="45" max="150" value="90">
           </div>
-          <div class="aan-range-block">
-            <div><label for="aan-latency">Latency ceiling</label><output id="aan-latency-output">85 ms</output></div>
-            <input id="aan-latency" name="latency" type="range" min="45" max="140" value="85">
-          </div>
-          <div class="aan-control-actions">
-            <button class="aan-button aan-button-primary" id="aan-run" type="submit">Run governed cycle <span>⚡</span></button>
-            <button class="aan-button aan-button-secondary" id="aan-pause" type="button">Place on safe hold</button>
-            <button class="aan-text-button" id="aan-reset" type="button">Reset</button>
-          </div>
-          <p class="aan-form-note">“Run” generates reproducible simulated artifacts only. It does not operate a node, connect peers, resolve ENS, execute compute, or transact.</p>
+          <fieldset class="aan-incidents"><legend>Resilience gauntlet <span>optional</span></legend><p>Select simulated incidents to see the constitution recover or fail closed.</p><div id="aan-incident-grid"></div></fieldset>
+          <div class="aan-form-actions"><button class="aan-button aan-button-primary" id="aan-run" type="submit">Launch proof flight <span>⚡</span></button><button class="aan-button aan-button-secondary" id="aan-hold" type="button">Safe hold</button><button class="aan-text-button" id="aan-reset" type="button">Reset</button></div>
+          <p class="aan-form-note">Keyboard: <kbd>G</kbd> launch · <kbd>H</kbd> safe hold · <kbd>R</kbd> reset · <kbd>?</kbd> help</p>
         </form>
 
-        <div class="aan-runtime-panel">
-          <div class="aan-runtime-topline">
-            <div><span>RUN COMMITMENT</span><b id="aan-run-id">Awaiting mission</b></div>
-            <div><span>AUTHORITY</span><b class="danger" id="aan-authority">NONE GRANTED</b></div>
+        <div class="aan-flight-panel">
+          <div class="aan-panel-heading"><span>02</span><div><b>Observe the proof flight</b><small>Primary route, shadow route, and constitutional gates.</small></div><strong id="aan-runtime-badge">READY</strong></div>
+          <div class="aan-stage-rail" id="aan-stage-rail" aria-label="Proof flight stages"></div>
+          <div class="aan-mesh-shell">
+            <svg id="aan-mesh" viewBox="0 0 900 540" role="img" aria-label="Generated peer mesh and route visualization"></svg>
+            <div class="aan-mesh-legend"><span><i class="primary"></i> primary</span><span><i class="shadow"></i> shadow</span><span><i class="candidate"></i> candidate</span><span><i class="quarantine"></i> quarantined</span></div>
           </div>
-          <div class="aan-stage-rail" id="aan-stage-rail" aria-label="GoalOS proof-gated node states"></div>
-          <div class="aan-runtime-middle">
-            <div class="aan-pulse-panel">
-              <div class="aan-panel-title"><span>NODE PROOF PULSE</span><small>simulated structural signal</small></div>
-              <svg id="aan-pulse-chart" viewBox="0 0 680 220" role="img" aria-label="Node proof pulse chart"><path class="aan-grid-line" d="M30 45H650M30 95H650M30 145H650M30 195H650"/><path class="aan-pulse-area" id="aan-pulse-area" d="M30 190L650 190L650 190L30 190Z"/><path class="aan-pulse-line" id="aan-pulse-line" d="M30 190L650 190"/><g id="aan-pulse-points"></g></svg>
-              <div class="aan-live-metrics">
-                <div><span>α‑WU</span><b id="aan-metric-wu">—</b></div><div><span>QUALITY</span><b id="aan-metric-quality">—</b></div><div><span>ENERGY</span><b id="aan-metric-energy">—</b></div><div><span>QUORUM</span><b id="aan-metric-quorum">—</b></div>
-              </div>
-            </div>
-            <div class="aan-terminal-panel">
-              <div class="aan-panel-title"><span>CHRONICLE STREAM</span><small id="aan-terminal-state">idle</small></div>
-              <ol class="aan-terminal" id="aan-terminal" aria-live="polite"><li><time>00:00</time><span>Node cycle is ready. Compose a bounded work unit.</span></li></ol>
-            </div>
-          </div>
-          <div class="aan-state-banner" id="aan-state-banner" aria-live="polite"><span>STATE</span><b>READY_FOR_MISSION</b><p>All external authority is withheld.</p></div>
+          <div class="aan-flight-metrics" id="aan-flight-metrics"></div>
+          <div class="aan-terminal"><div class="aan-terminal-head"><span>CHRONICLE / LIVE TRACE</span><b id="aan-terminal-count">0 EVENTS</b></div><ol id="aan-terminal-log" aria-live="polite"><li class="muted">Awaiting a bounded mission.</li></ol></div>
         </div>
-      </div>
-    </section>
 
-    <section class="aan-section" id="peer-mesh" aria-labelledby="aan-peer-title">
-      <div class="aan-section-head aan-section-head-row"><div><p class="aan-kicker">RESOURCE ADMISSION / ROUTE PROOF</p><h2 id="aan-peer-title">The peer mesh is selected—not assumed.</h2></div><p>Every route exposes capability fit, latency, energy, reliability, and rejection rationale.</p></div>
-      <div class="aan-mesh-layout">
-        <div class="aan-mesh-canvas">
-          <div class="aan-panel-title"><span>DETERMINISTIC PEER CONSTELLATION</span><small id="aan-mesh-status">awaiting route</small></div>
-          <svg id="aan-mesh-svg" viewBox="0 0 780 560" role="img" aria-label="Simulated peer mesh"></svg>
-          <div class="aan-mesh-legend"><span><i class="accepted"></i> admitted</span><span><i class="standby"></i> standby</span><span><i class="rejected"></i> rejected</span></div>
-        </div>
-        <div class="aan-peer-ledger">
-          <div class="aan-panel-title"><span>ADMISSION LEDGER</span><small>inspect every peer</small></div>
-          <div class="aan-table-wrap"><table><thead><tr><th>Peer</th><th>Role</th><th>Latency</th><th>Energy</th><th>Status</th></tr></thead><tbody id="aan-peer-table"></tbody></table></div>
-          <div class="aan-route-summary" id="aan-route-summary"><b>No route committed.</b><span>Run a governed cycle to generate the Resource Envelope and Peer Route.</span></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="aan-section aan-receipt-section" id="work-unit" aria-labelledby="aan-receipt-title">
-      <div class="aan-section-head"><p class="aan-kicker">PROOF-CARRYING WORK</p><h2 id="aan-receipt-title">One work unit. A complete chain of custody.</h2></div>
-      <div class="aan-receipt-grid">
-        <article class="aan-receipt-card">
-          <div class="aan-receipt-seal"><span>α</span><b>WORK UNIT</b><small>SIMULATED RECEIPT</small></div>
-          <dl>
-            <div><dt>Receipt</dt><dd id="aan-receipt-hash">not generated</dd></div>
-            <div><dt>Class</dt><dd id="aan-receipt-class">—</dd></div>
-            <div><dt>Normalized α‑WU</dt><dd id="aan-receipt-wu">—</dd></div>
-            <div><dt>Execution time</dt><dd id="aan-receipt-time">—</dd></div>
-            <div><dt>Energy estimate</dt><dd id="aan-receipt-energy">—</dd></div>
-            <div><dt>SLO pass</dt><dd id="aan-receipt-slo">—</dd></div>
-          </dl>
-        </article>
-        <article class="aan-equation-card">
-          <p class="aan-kicker">LEGACY IDEA / GOALOS TRANSLATION</p>
-          <h3>α‑WU becomes a proof-bearing unit—not a naked productivity number.</h3>
-          <div class="aan-equation"><span>α‑WU</span><b>=</b><span>time</span><b>×</b><span>throughput</span><b>×</b><span>model tier</span><b>×</b><span>SLO</span><b>×</b><span>quality</span></div>
-          <p>The simulation retains the original normalized-work concept, then binds it to mission scope, resource admission, energy, evaluator evidence, dissent, quorum, and authorization state. The number can inform review; it cannot authorize action.</p>
-          <div class="aan-proof-chain"><span>IDENTITY</span><i>→</i><span>CONTRACT</span><i>→</i><span>RESOURCE</span><i>→</i><span>RECEIPT</span><i>→</i><span>VERDICT</span><i>→</i><span>AUTHORITY</span></div>
-        </article>
-      </div>
-    </section>
-
-    <section class="aan-section" id="consensus" aria-labelledby="aan-consensus-title">
-      <div class="aan-section-head aan-section-head-row"><div><p class="aan-kicker">INDEPENDENT VERIFICATION / DISSENT PRESERVED</p><h2 id="aan-consensus-title">Consensus is recorded. It never self-authorizes.</h2></div><div class="aan-quorum-badge"><span id="aan-quorum-ring">0/7</span><b id="aan-quorum-label">AWAITING VOTES</b></div></div>
-      <div class="aan-validator-grid" id="aan-validator-grid"></div>
-      <div class="aan-consensus-bottom">
-        <article class="aan-contradiction-card"><p class="aan-kicker">CONTRADICTION REGISTER</p><h3 id="aan-contradiction-title">No evaluation yet.</h3><p id="aan-contradiction-copy">The Contradiction Validator will preserve the strongest dissent after a cycle runs.</p></article>
-        <article class="aan-guardian-card"><div><p class="aan-kicker">GUARDIAN COUNCIL / 5 SEATS</p><h3>Threshold visible. Treasury intent withheld.</h3></div><div class="aan-guardian-row" id="aan-guardian-row"></div><p id="aan-guardian-copy">Guardian seats remain unsigned until a review package exists. Even a complete simulated threshold cannot broadcast a transaction.</p></article>
-      </div>
-    </section>
-
-    <section class="aan-section aan-evidence-section" id="evidence" aria-labelledby="aan-evidence-title">
-      <div class="aan-evidence-heading">
-        <div><p class="aan-kicker">NODE EVIDENCE DOCKET / EXPORTABLE REVIEW PACKAGE</p><h2 id="aan-evidence-title">Proof earns review.<br><em>Humans grant permission.</em></h2></div>
-        <div class="aan-auth-card"><span>FINAL AUTHORIZATION STATE</span><b id="aan-final-state">NOT GENERATED</b><p id="aan-final-copy">Run a governed cycle to assemble the docket.</p></div>
-      </div>
-      <div class="aan-evidence-grid">
-        <div class="aan-artifact-ledger"><div class="aan-panel-title"><span>ARTIFACT CHAIN</span><small id="aan-artifact-count">0 / 14 sealed</small></div><ol id="aan-artifact-list"></ol></div>
-        <div class="aan-review-brief">
-          <p class="aan-kicker">EXECUTIVE REVIEW BRIEF</p>
-          <h3 id="aan-review-headline">The node is ready to receive a bounded mission.</h3>
-          <p id="aan-review-summary">No work-unit claim, resource route, validator result, or authorization state has been generated.</p>
-          <dl><div><dt>Factual correctness</dt><dd>NOT CERTIFIED</dd></div><div><dt>Production activation</dt><dd>NOT ACTIVATED</dd></div><div><dt>Funds authorization</dt><dd>NO</dd></div><div><dt>External actions</dt><dd>0</dd></div></dl>
-          <div class="aan-export-actions"><button class="aan-button aan-button-primary" id="aan-download-json" type="button" disabled>Download Evidence Docket</button><button class="aan-button aan-button-secondary" id="aan-download-md" type="button" disabled>Download review brief</button><button class="aan-text-button" id="aan-copy-summary" type="button" disabled>Copy review summary</button></div>
+        <aside class="aan-proof-panel">
+          <div class="aan-panel-heading"><span>03</span><div><b>Inspect the decision</b><small>What happened, why, and what remains human.</small></div></div>
+          <div class="aan-trust-orbit"><svg viewBox="0 0 260 260" aria-label="Simulated review readiness index"><circle class="track" cx="130" cy="130" r="100"/><circle class="value" id="aan-trust-ring" cx="130" cy="130" r="100"/><text x="130" y="122" id="aan-trust-value">—</text><text x="130" y="150">REVIEW READINESS</text></svg><p id="aan-trust-note">Not a factual confidence score.</p></div>
+          <div class="aan-decision-card" id="aan-decision-card"><span>TERMINAL DISPOSITION</span><h3 id="aan-decision-title">No cycle has run.</h3><p id="aan-decision-copy">The node has not produced an evidence chain, validator result, guardian review, or decision package.</p></div>
+          <dl class="aan-proof-facts" id="aan-proof-facts"><div><dt>Factual correctness</dt><dd>NOT CERTIFIED</dd></div><div><dt>Production</dt><dd>NOT ACTIVATED</dd></div><div><dt>Funds</dt><dd>NO AUTHORIZATION</dd></div><div><dt>External actions</dt><dd>0</dd></div></dl>
+          <div class="aan-review-actions"><button class="aan-button aan-button-primary" id="aan-download-json" type="button" disabled>Download Evidence Docket</button><button class="aan-button aan-button-secondary" id="aan-download-md" type="button" disabled>Download review brief</button><button class="aan-text-button" id="aan-copy-summary" type="button" disabled>Copy executive summary</button></div>
           <p class="aan-export-status" id="aan-export-status" aria-live="polite"></p>
-        </div>
+        </aside>
       </div>
     </section>
 
-    <section class="aan-section aan-architecture-cta" aria-labelledby="aan-architecture-cta-title">
-      <div><p class="aan-kicker">SYSTEM DOSSIER / ORIGINAL-TO-GOALOS TRACEABILITY</p><h2 id="aan-architecture-cta-title">From owner-controlled node runtime<br>to a constitutional proof node.</h2><p>Inspect the six operating planes, eight state transitions, artifact interfaces, guardian separation, trust boundaries, and the exact translation from the original AGI Alpha Node v0.</p><a class="aan-button aan-button-primary" href="agi-alpha-node-v0-architecture.html">Open the architecture dossier <span>→</span></a></div>
-      <div class="aan-plane-stack" aria-hidden="true"><span>IDENTITY</span><span>MISSION</span><span>RESOURCE</span><span>EXECUTION</span><span>VERIFICATION</span><span>AUTHORIZATION</span><i>CHRONICLE</i></div>
+    <section class="aan-section aan-proof-chain-section" id="proof-chain" aria-labelledby="aan-proof-chain-title">
+      <div class="aan-section-head aan-section-head-split">
+        <div><p class="aan-kicker">TAMPER-EVIDENT LOCAL CHRONICLE</p><h2 id="aan-proof-chain-title">Every gate leaves a proof.</h2><p>Each artifact commitment includes the previous commitment. The resulting local chain makes the order and dependency of the simulated decision trace inspectable.</p></div>
+        <a class="aan-button aan-button-secondary" href="agi-alpha-node-v0-proof-ledger.html">Open the full proof ledger <span>→</span></a>
+      </div>
+      <div class="aan-chain-headline"><div><span>CHAIN STATUS</span><b id="aan-chain-status">UNSEALED</b></div><div><span>ARTIFACTS</span><b id="aan-artifact-count">0 / 16</b></div><div><span>CHAIN HEAD</span><code id="aan-chain-code">—</code></div></div>
+      <div class="aan-artifact-chain" id="aan-artifact-chain"></div>
+    </section>
+
+    <section class="aan-section aan-council" id="consensus" aria-labelledby="aan-council-title">
+      <div class="aan-section-head"><p class="aan-kicker">INDEPENDENT REVIEW / DISSENT PRESERVED</p><h2 id="aan-council-title">Consensus without manufactured certainty.</h2><p>Seven validators inspect separate failure surfaces. Five guardians inspect the constitution itself. Agreement can advance review readiness; vetoes and contradictions remain visible.</p></div>
+      <div class="aan-council-grid"><div><div class="aan-council-heading"><span>VERIFIER MESH / 7 SEATS</span><b id="aan-quorum-label">QUORUM —</b></div><div class="aan-validator-grid" id="aan-validator-grid"></div></div><div><div class="aan-council-heading"><span>GUARDIAN COUNCIL / 5 SEATS</span><b id="aan-guardian-label">AWAITING</b></div><div class="aan-guardian-grid" id="aan-guardian-grid"></div></div></div>
+    </section>
+
+    <section class="aan-section aan-authority" id="authority" aria-labelledby="aan-authority-title">
+      <div class="aan-authority-grid">
+        <div class="aan-authority-copy"><p class="aan-kicker">THE HUMAN FRONTIER</p><h2 id="aan-authority-title">Proof may earn attention.<br><em>It cannot crown itself authority.</em></h2><p>The public node can build a review-ready package, surface unresolved questions, recommend a disposition, and preserve the reasoning trail. It cannot execute, settle, spend, deploy, bind an institution, or certify the world.</p><blockquote>“A sovereign node is not a node with unlimited power. It is a node whose power is explicit, bounded, inspectable, and revocable.”</blockquote></div>
+        <div class="aan-permission-matrix"><div class="head"><span>CAPABILITY</span><span>PUBLIC ALPHA</span></div><div><b>Compose bounded mission</b><em>ALLOWED</em></div><div><b>Simulate peer routing</b><em>ALLOWED</em></div><div><b>Generate evidence artifacts</b><em>ALLOWED</em></div><div><b>Record simulated quorum</b><em>ALLOWED</em></div><div class="deny"><b>Resolve live ENS / dial peers</b><em>DENIED</em></div><div class="deny"><b>Call models or external APIs</b><em>DENIED</em></div><div class="deny"><b>Connect wallet / move funds</b><em>DENIED</em></div><div class="deny"><b>Activate production authority</b><em>DENIED</em></div></div>
+      </div>
+    </section>
+
+    <section class="aan-section aan-dossier-cta" aria-labelledby="aan-dossier-title">
+      <div><p class="aan-kicker">SYSTEM DOSSIER / EXACT LINEAGE / THREAT MODEL</p><h2 id="aan-dossier-title">From a powerful node runtime<br>to a constitutional proof institution.</h2><p>Inspect the ten operating gates, original-to-GoalOS crosswalk, source fingerprints, threat dispositions, Mainnet record boundary, and additive website integration contract.</p><div class="aan-hero-actions"><a class="aan-button aan-button-primary" href="agi-alpha-node-v0-architecture.html">Open the architecture dossier <span>→</span></a><a class="aan-button aan-button-secondary" href="agi-alpha-node-v0-proof-ledger.html">Inspect the proof ledger <span>◇</span></a></div></div>
+      <div class="aan-citadel-stack" aria-hidden="true"><span>IDENTITY</span><span>MISSION</span><span>CONSTITUTION</span><span>ADMISSION</span><span>ROUTING</span><span>EXECUTION</span><span>EVALUATION</span><span>VERIFICATION</span><span>GUARDIANS</span><span>HUMAN AUTHORITY</span><i>CHRONICLE</i></div>
     </section>
   </main>
 
-  <footer class="aan-footer"><div><b>GOALOS AGIALPHA ASCENSION</b><span>AGI Alpha Node v0 ⚡️✨</span></div><p>Interactive design reference · @@VERSION@@ · Built @@BUILD_DATE@@ · <a href="@@ORIGIN_URL@@">Original project lineage</a></p></footer>
+  <footer class="aan-footer"><div><b>GOALOS AGIALPHA ASCENSION</b><span>AGI Alpha Node v0 ⚡️✨</span></div><p>@@VERSION@@ · Built @@BUILD_DATE@@ · <a href="@@ORIGIN_URL@@">Original project lineage</a> · <a href="index.html">Main website</a></p></footer>
+
+  <dialog class="aan-dialog" id="aan-tour-dialog"><form method="dialog"><button class="aan-dialog-close" aria-label="Close tour">×</button><p class="aan-kicker">60-SECOND TOUR</p><h2>How to experience the node</h2><ol><li><b>Choose a mission.</b><span>Use a preset or write one in ordinary language.</span></li><li><b>Choose a constitution.</b><span>Integrity, resilience, efficiency, or sovereign balance changes route selection.</span></li><li><b>Optionally inject an incident.</b><span>Watch the node recover, quarantine, reroute, or fail closed.</span></li><li><b>Launch the proof flight.</b><span>Ten gates generate a chained evidence record.</span></li><li><b>Review—not execute.</b><span>Download the Evidence Docket and human review brief. External authority remains zero.</span></li></ol><button class="aan-button aan-button-primary" value="close">Enter the node theatre</button></form></dialog>
+  <dialog class="aan-dialog" id="aan-help-dialog"><form method="dialog"><button class="aan-dialog-close" aria-label="Close help">×</button><p class="aan-kicker">COMMAND HELP</p><h2>Keyboard shortcuts</h2><dl><div><dt>G</dt><dd>Launch the current proof flight.</dd></div><div><dt>H</dt><dd>Place the node on safe hold.</dd></div><div><dt>R</dt><dd>Reset the local simulation.</dd></div><div><dt>E</dt><dd>Toggle executive and technical explanation depth.</dd></div><div><dt>?</dt><dd>Open this help.</dd></div></dl><p>Shortcuts do not run while you are typing in a form field.</p></form></dialog>
+
   <script type="application/json" id="aan-release-data">@@DATA_JSON@@</script>
   <script src="assets/agi-alpha-node-v0.js" defer></script>
 </body>

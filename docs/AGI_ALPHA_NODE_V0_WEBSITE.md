@@ -1,201 +1,111 @@
 # GoalOS AGIALPHA Ascension AGI Alpha Node v0 ⚡️✨
 
-## Release identity
+## Sovereign Citadel release
 
-| Field | Value |
-|---|---|
-| Public title | **GoalOS AGIALPHA Ascension AGI Alpha Node v0 ⚡️✨** |
-| Release ID | `goalos-agialpha-ascension-agi-alpha-node-v0-001` |
-| Version | `1.0.0-ascension-alpha` |
-| Status | `interactive-sovereign-node-simulation` |
-| Flagship route | `/agi-alpha-node-v0.html` |
-| Architecture route | `/agi-alpha-node-v0-architecture.html` |
-| Homepage gateway | `/index.html#agi-alpha-node-v0` |
-| Terminal state | `HUMAN_REVIEW_REQUIRED` |
-| External authority | `NONE_GRANTED` |
+This additive website feature reimplements the original **AGI Alpha Node v0** as a GoalOS-native, proof-governed public digital twin. It preserves the original project’s central ideas—declared node identity, bounded runtime resources, peer networking, α‑Work Units, independent validators, observability, guardians, and treasury separation—while translating them into a browser-local constitutional workflow that never grants itself external authority.
 
-## Product thesis
+**Release:** `3.0.0-sovereign-citadel`  
+**Tagline:** **One node. Many minds. Zero unearned authority.**  
+**Public status:** interactive design reference and deterministic digital twin; not a live node deployment.
 
-**Intelligence at the edge. Proof at the center. Authority at the human boundary.**
+## Public surfaces
 
-AGI Alpha Node v0 is reconstituted as a GoalOS-native **sovereign proof node**: a browser-local experience for composing one bounded Alpha Work Unit, admitting a deterministic resource envelope, routing a reviewable peer mesh, generating a reproducible sandbox receipt, evaluating quality and service objectives, recording validator quorum with dissent, and exporting a fourteen-artifact Node Evidence Docket.
+The generator adds three complementary pages:
 
-The experience does not pretend to operate infrastructure that is not present. It resolves no ENS identity, contacts no libp2p peer, calls no model, allocates no compute, connects no wallet, moves no token, submits no transaction, executes no treasury intent, and performs no external action. A complete proof package earns **human review**, not permission.
+| Page | Purpose |
+| --- | --- |
+| `agi-alpha-node-v0.html` | Sovereign Node Theatre: compose a bounded work unit, choose a posture, route primary and shadow peer councils, rehearse incidents, inspect consensus, and export evidence. |
+| `agi-alpha-node-v0-architecture.html` | Constitutional Architecture: ten authority planes, proof gates, source lineage, threat model, and explicit claim boundary. |
+| `agi-alpha-node-v0-proof-ledger.html` | Proof Ledger: sixteen chained artifact classes, reviewer checklist, sample docket, and final human authority boundary. |
 
-## What a visitor can do
+A marked, idempotent gateway is added to `index.html`; the three routes are also registered in `routes.json`, `sitemap.xml`, and `site-status.json`.
 
-1. Select an enterprise, scientific, engineering, or public-interest mission preset—or write a custom mission.
-2. Choose a work class: Reason, Build, Verify, or Orchestrate.
-3. Select an Institutional, Ascension, or Frontier operating posture.
-4. Compose a bounded mission contract with a decision, success criteria, constraints, reviewer, and stop rules.
-5. Run the deterministic eight-state node cycle.
-6. Inspect the admitted and rejected peers, resource envelope, latency, energy, reliability, and fallback policy.
-7. Inspect the normalized Alpha Work Unit receipt and quality/SLO evaluation.
-8. Review seven independent validator seats, quorum, rationales, uncertainty, and preserved dissent.
-9. Inspect five guardian domains while treasury and external authority remain separately withheld.
-10. Download the complete Node Evidence Docket as JSON and the Executive Review Brief as Markdown.
-11. Place the node in Safe Hold without deleting evidence.
+## Constitutional runtime
 
-## Eight proof-gated states
+The public experience is deterministic and entirely browser-local. A successful proof flight advances through ten states:
 
-| # | State | Bounded authority | Sealed artifact |
-|---:|---|---|---|
-| 1 | `NODE_IDENTITY_COMMITTED` | Identity Sentinel | `NodeIdentity.json` |
-| 2 | `WORK_UNIT_CONTRACTED` | Mission Orchestrator | `WorkUnitContract.json` |
-| 3 | `RESOURCE_ENVELOPE_ADMITTED` | Resource Governor | `ResourceEnvelope.json` |
-| 4 | `PEER_ROUTE_COMMITTED` | Mesh Conductor | `PeerRoute.json` |
-| 5 | `SANDBOX_RECEIPT_READY` | Execution Core | `WorkUnitReceipt.json` |
-| 6 | `QUALITY_EVALUATION_READY` | Quality Tribunal | `QualityEvaluation.json` |
-| 7 | `VALIDATOR_QUORUM_RECORDED` | Verifier Mesh | `ValidatorConsensus.json` |
-| 8 | `HUMAN_REVIEW_REQUIRED` | Guardian Council | `AuthorizationState.json` |
+1. `NODE_IDENTITY_SEALED`
+2. `WORK_UNIT_CONTRACTED`
+3. `POLICY_COMPILED`
+4. `RESOURCE_ENVELOPE_ADMITTED`
+5. `PEER_ROUTES_COMMITTED`
+6. `SANDBOX_RECEIPT_READY`
+7. `MULTI_AXIS_EVALUATION_READY`
+8. `VALIDATOR_QUORUM_RECORDED`
+9. `GUARDIAN_REVIEW_PACKAGED`
+10. `HUMAN_REVIEW_REQUIRED`
 
-The complete chain contains fourteen artifacts, including sandbox planning, energy, contradictions, health attestation, the Node Evidence Docket, and a Chronicle entry.
+The node is represented by ten bounded constitutional roles: Identity Sentinel, Mission Orchestrator, Constitution Compiler, Resource Governor, Mesh Conductor, Execution Core, Quality Tribunal, Verifier Mesh, Guardian Council, and Chronicle Keeper.
 
-## Original AGI Alpha Node v0 → GoalOS translation
+For each declared mission, the runtime deterministically:
 
-The reimplementation preserves the original project’s conceptual lineage while changing its public execution model from live owner-operated infrastructure to an inspectable, proof-gated, default-deny GoalOS experience.
+- admits a resource envelope before simulated execution;
+- scores twelve peer institutions across quality, reliability, evidence, route diversity, energy, and latency;
+- commits a four-peer primary route and a three-peer shadow route;
+- records seven validator opinions, including dissent;
+- convenes five guardians;
+- creates a sixteen-artifact SHA-256 commitment chain;
+- exports a Node Evidence Docket and executive review brief;
+- stops at `HUMAN_REVIEW_REQUIRED` or fails closed to `SAFE_HOLD`.
 
-| Original concept | GoalOS Ascension construct | Why the translation matters |
-|---|---|---|
-| ENS node identity | Node Identity Commitment | A displayed name becomes an explicit claim with provenance requirements—not assumed ownership. |
-| libp2p host, dial policy, and resource manager | Peer Route + Resource Envelope | Connectivity, capacity, latency, energy, and fallbacks become reviewable admission decisions. |
-| Alpha Work Unit | Proof-carrying Work Unit Contract | Machine work is bound to mission, success criteria, resources, telemetry, quality, evidence, and review state. |
-| Runtime orchestrator | Mission Orchestrator + proof-gated state machine | Sequencing is mission-scoped and cannot silently expand the user mandate. |
-| Validator loop and quorum engine | Independent Verifier Mesh | Votes, thresholds, rationales, uncertainty, and dissent remain inspectable and cannot self-authorize action. |
-| Prometheus, Grafana, and runtime telemetry | Evidence Telemetry Ledger | Operational signals become sealed review artifacts rather than ephemeral dashboard decoration. |
-| Owner governance controls | Guardian Council + Authorization State | Pause, veto, least privilege, separation of duties, and human review become explicit gates. |
-| Treasury executor and economic settlement | Settlement Intent under default deny | Successful work-unit review never implies authority to move funds or settle value. |
-| Global Synthetic Labor metrics | Normalized Alpha Work Unit receipt | Work, quality, timeliness, energy, and evidence are displayed as deterministic simulation values, not live economic claims. |
-| Offline snapshots and operator records | Node Evidence Docket + Chronicle | The complete review package is portable and locally downloadable without hidden persistence. |
+The resilience gauntlet includes peer eclipse, identity drift, resource surge, and validator divergence. Identity drift and other severe constitutional breaches demonstrate a guardian safe hold rather than fabricated success.
 
-## Deterministic runtime contract
+## Evidence model
 
-The runtime uses the mission contract as a seed for reproducible, browser-local simulation. The same mission, work class, posture, and constraints produce the same peer route, Alpha Work Unit receipt, validator record, artifact hashes, and docket ID.
+The sixteen artifact classes are:
 
-The runtime deliberately separates:
+`NodeIdentity.json`, `WorkUnitContract.json`, `PolicyEnvelope.json`, `ResourceEnvelope.json`, `PeerCandidateLedger.json`, `PeerRouteCommitment.json`, `IncidentDisposition.json`, `AlphaWorkUnitReceipt.json`, `TelemetryDigest.json`, `EvaluationMatrix.json`, `ValidatorConsensus.json`, `GuardianReview.json`, `AuthorizationState.json`, `ProofChronicle.json`, `NodeEvidenceDocket.json`, and `ExecutiveReviewBrief.md`.
 
-- **capability** from **authority**;
-- **simulated quorum** from **factual certification**;
-- **proof-package completeness** from **production readiness**;
-- **guardian review** from **treasury authorization**;
-- **local generation** from **external execution**.
+Each artifact contains its payload hash, previous commitment, and current commitment. This makes browser-local runs replayable and inspectable. The chain is not published to Ethereum and is not represented as an external attestation.
 
-The public JavaScript exposes a read-only QA surface at `window.__AAN_QA__` so automated browser tests can verify state, determinism, downloads, authority boundaries, and artifact integrity without introducing an API.
+## Default-deny security boundary
 
-## Security and claim boundary
+The release contains no external runtime dependencies and its Content Security Policy uses `connect-src 'none'`. It performs no live ENS resolution, peer dialing, model call, API request, WebSocket connection, wallet connection, blockchain transaction, token movement, staking operation, settlement, or external action. It uses no persistent browser storage.
 
-The experience is built under a strict default-deny contract:
-
-| Capability | Public release state |
-|---|---|
-| External JavaScript/CSS dependencies | None |
-| Network reads or writes | None |
-| Model or tool calls | None |
-| Live ENS resolution | None |
-| Wallet or provider connection | None |
-| Token movement or transaction broadcast | None |
-| Treasury execution or settlement | None |
-| Browser persistence | None |
-| External actions | `0` |
-| Factual correctness certification | `NOT_CERTIFIED` |
-| Production activation | `NOT_ACTIVATED` |
-| Funds authorization | `NO` |
-| Terminal state | `HUMAN_REVIEW_REQUIRED` |
-
-A strict Content Security Policy permits only same-origin assets. The verifier rejects network primitives, wallet/provider primitives, storage primitives, external script or stylesheet URLs, misleading production claims, missing boundaries, state-machine drift, manifest drift, and accidental authority escalation.
-
-## Source layout
+The generated review boundary is explicit:
 
 ```text
-content/agi-alpha-node-v0.json
-website/features/agi-alpha-node-v0/templates/agi-alpha-node-v0.html
-website/features/agi-alpha-node-v0/templates/agi-alpha-node-v0-architecture.html
-website/features/agi-alpha-node-v0/assets/agi-alpha-node-v0.css
-website/features/agi-alpha-node-v0/assets/agi-alpha-node-v0.js
-scripts/website/build_agi_alpha_node_v0.py
-scripts/website/verify_agi_alpha_node_v0.py
-scripts/website/visual_check_agi_alpha_node_v0.py
-test/test_agi_alpha_node_v0_website.py
-docs/AGI_ALPHA_NODE_V0_WEBSITE.md
-README_UPLOAD_AGI_ALPHA_NODE_V0.md
+Factual correctness   NOT_CERTIFIED
+Production activation NOT_ACTIVATED
+Funds authorization   NO
+External actions       0
+Final state            HUMAN_REVIEW_REQUIRED or SAFE_HOLD
 ```
 
-The only existing repository files updated by the release are the two autonomous website workflow definitions:
+## Source lineage
 
-```text
-.github/workflows/goalos-agialpha-ascension-v86-final.yml
-.github/workflows/goalos-agialpha-ascension-v86-smoke-test.yml
-```
+The release data records fifteen SHA-256 fingerprints derived from the supplied original repository snapshot. The architecture page maps original Node concepts to their GoalOS constitutional equivalents. This is a traceable reimplementation rather than a claim that the original runtime itself is executing in the browser.
 
-## Generated public outputs
+## Mainnet record
 
-The additive builder writes:
+The build derives its displayed GoalOS Mainnet record from repository evidence at build time. It preserves the repository’s boundaries: 48 GoalOS-created contracts, recorded operator verification of 48/48, 14/14 configured Phase-B grants, production activation `NOT_ACTIVATED`, user-fund authorization `NO`, and source-identity reproduction `PENDING`.
 
-```text
-site/agi-alpha-node-v0.html
-site/agi-alpha-node-v0-architecture.html
-site/assets/agi-alpha-node-v0.css
-site/assets/agi-alpha-node-v0.js
-site/data/agi-alpha-node-v0.json
-site/agi-alpha-node-v0-manifest.json
-site/qa/agi-alpha-node-v0-build.json
-```
+## Additive build contract
 
-It also idempotently adds one navigation link, one homepage gateway, the two routes, sitemap entries, and a release record in `site-status.json`. Repeated builds replace only their own marked integration blocks and do not duplicate them.
+Source files added by this feature:
 
-## Autonomous workflow order
+- `content/agi-alpha-node-v0.json`
+- `website/features/agi-alpha-node-v0/**`
+- `scripts/website/build_agi_alpha_node_v0.py`
+- `scripts/website/snapshot_agi_alpha_node_v0_site.py`
+- `scripts/website/verify_agi_alpha_node_v0.py`
+- `scripts/website/visual_check_agi_alpha_node_v0.py`
+- `test/test_agi_alpha_node_v0_website.py`
+- this document and `README_UPLOAD_AGI_ALPHA_NODE_V0.md`
 
-The production and pull-request workflows retain the complete existing site generation pipeline and add AGI Alpha Node v0 only after the preserved v86 site and existing feature builders have completed:
+Only the two existing GitHub Pages workflows require modification. The generator does not modify `website/v86_actual_site/**`, contracts, deployment records, Proof Missions, package manifests, lockfiles, or prior feature source.
 
-```text
-Preserve/copy canonical website
-→ build existing generated experiences
-→ build META-AGENTIC Institution Foundry
-→ build AGI Alpha Node v0 additively
-→ assert generated outputs
-→ static verification
-→ focused regression tests
-→ Chromium interaction/visual QA
-→ reject private/archive material
-→ package complete Pages artifact
-→ deploy (production workflow only)
-```
+Before the Node is generated, the workflow snapshots the entire already-generated site. Verification then permits changes only to `index.html`, `routes.json`, `sitemap.xml`, `site-status.json`, the new Node outputs, and—when META-Agentic α‑AGI is already installed—its generated companion manifest. The companion manifest is reconciled only for those four shared integration surfaces and is re-verified after Node generation.
 
-## Developer validation
-
-From the repository root:
+## Local commands
 
 ```bash
-python3 scripts/website/build_agi_alpha_node_v0.py --site site
-python3 scripts/website/verify_agi_alpha_node_v0.py --site site
-python3 -m unittest test.test_agi_alpha_node_v0_website -v
-python3 scripts/website/visual_check_agi_alpha_node_v0.py --site site --output site/qa/agi-alpha-node-v0
+python3 scripts/build_goalos_agialpha_ascension_website_v86.py --out site
+python3 scripts/website/snapshot_agi_alpha_node_v0_site.py --site site --output /tmp/agi-alpha-node-v0-prebuild.json
+SOURCE_DATE_EPOCH=1782216000 python3 scripts/website/build_agi_alpha_node_v0.py --site site --root .
+python3 scripts/website/verify_agi_alpha_node_v0.py --site site --root . --baseline /tmp/agi-alpha-node-v0-prebuild.json --output site/qa/agi-alpha-node-v0-static.json
+python3 -m unittest discover -s test -p 'test_agi_alpha_node_v0_website.py' -v
+python3 scripts/website/visual_check_agi_alpha_node_v0.py --site site --output site/qa/agi-alpha-node-v0-browser
 ```
 
-The browser check uses Chromium through Playwright, captures desktop/tablet/mobile evidence, downloads the two review records, verifies deterministic reruns, confirms all authority boundaries, and fails on console errors, page errors, network activity, or horizontal overflow.
-
-## Preservation contract
-
-This release is additive by design:
-
-- no file under `website/v86_actual_site/**` is modified;
-- no contract, deployment record, Mainnet evidence, Proof Mission, package manifest, dependency lockfile, or existing feature source is rewritten;
-- existing generated pages remain byte-identical except for the intentionally marked homepage/navigation/route/status/sitemap integration surfaces;
-- repeated builds are idempotent;
-- rollback is performed by reverting the release pull request, not by deleting generated Pages files manually.
-
-## Acceptance standard
-
-A release is acceptable only when:
-
-- the original website and all prior routes still load;
-- the META-AGENTIC flagship still coexists with the new node;
-- exactly one AGI Alpha Node navigation item and homepage gateway exist;
-- both new routes render without horizontal overflow on desktop, tablet, and mobile;
-- the same mission produces the same peer route, receipt, quorum, and docket;
-- dissent remains visible;
-- fourteen artifacts are sealed;
-- both review records download;
-- terminal state is `HUMAN_REVIEW_REQUIRED`;
-- authority remains `NONE_GRANTED` and external actions remain `0`;
-- the smoke and production workflows remain green.
+The production and pull-request workflows run the Node only after the preserved website, Proof Missions 001–008, Ethereum Mainnet record, and any complete optional META-Agentic release have been generated and checked.

@@ -1,1017 +1,462 @@
 (() => {
   'use strict';
-
   const doc = document;
   const dataNode = doc.getElementById('aan-release-data');
   if (!dataNode) return;
-
   let release;
-  try {
-    release = JSON.parse(dataNode.textContent || '{}');
-  } catch (error) {
-    console.error('AGI Alpha Node release contract could not be parsed.', error);
-    return;
-  }
+  try { release = JSON.parse(dataNode.textContent || '{}'); }
+  catch (error) { console.error('AGI Alpha Node release contract could not be parsed.', error); return; }
 
   const byId = (id) => doc.getElementById(id);
-  const el = (tag, className, text) => {
-    const node = doc.createElement(tag);
-    if (className) node.className = className;
-    if (text !== undefined) node.textContent = text;
-    return node;
-  };
-  const svgEl = (tag, attrs = {}) => {
-    const node = doc.createElementNS('http://www.w3.org/2000/svg', tag);
-    Object.entries(attrs).forEach(([key, value]) => node.setAttribute(key, String(value)));
-    return node;
-  };
-  const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
-  const round = (value, digits = 2) => Number(value.toFixed(digits));
-  const pad = (value) => String(value).padStart(2, '0');
-  const safeText = (value, fallback = '') => String(value ?? fallback).trim();
+  const el = (tag, className = '', text) => { const node = doc.createElement(tag); if (className) node.className = className; if (text !== undefined) node.textContent = String(text); return node; };
+  const svg = (tag, attrs = {}) => { const node = doc.createElementNS('http://www.w3.org/2000/svg', tag); Object.entries(attrs).forEach(([k, v]) => node.setAttribute(k, String(v))); return node; };
+  const clear = (node) => node && node.replaceChildren();
+  const clamp = (v, min, max) => Math.min(max, Math.max(min, v));
+  const round = (v, digits = 2) => Number(Number(v).toFixed(digits));
+  const pad = (v) => String(v).padStart(2, '0');
+  const safe = (v, fallback = '') => String(v ?? fallback).trim();
+  const sleep = (ms) => new Promise((resolve) => window.setTimeout(resolve, ms));
+  const deepClone = (value) => JSON.parse(JSON.stringify(value));
 
+  function stableStringify(value) {
+    if (value === null || typeof value !== 'object') return JSON.stringify(value);
+    if (Array.isArray(value)) return `[${value.map(stableStringify).join(',')}]`;
+    return `{${Object.keys(value).sort().map((key) => `${JSON.stringify(key)}:${stableStringify(value[key])}`).join(',')}}`;
+  }
   function hashString(value) {
     let hash = 2166136261;
     const text = String(value);
-    for (let index = 0; index < text.length; index += 1) {
-      hash ^= text.charCodeAt(index);
-      hash = Math.imul(hash, 16777619);
-    }
+    for (let i = 0; i < text.length; i += 1) { hash ^= text.charCodeAt(i); hash = Math.imul(hash, 16777619); }
     return hash >>> 0;
   }
-
-  function hashHex(value, length = 16) {
-    const text = String(value);
-    const parts = [];
-    let seed = hashString(text);
-    for (let index = 0; parts.join('').length < length; index += 1) {
-      seed = hashString(`${seed}:${text}:${index}`);
-      parts.push(seed.toString(16).padStart(8, '0'));
-    }
-    return parts.join('').slice(0, length);
-  }
-
   function mulberry32(seed) {
     let state = seed >>> 0;
-    return () => {
-      state += 0x6D2B79F5;
-      let value = state;
-      value = Math.imul(value ^ (value >>> 15), value | 1);
-      value ^= value + Math.imul(value ^ (value >>> 7), value | 61);
-      return ((value ^ (value >>> 14)) >>> 0) / 4294967296;
-    };
+    return () => { state += 0x6D2B79F5; let t = state; t = Math.imul(t ^ (t >>> 15), t | 1); t ^= t + Math.imul(t ^ (t >>> 7), t | 61); return ((t ^ (t >>> 14)) >>> 0) / 4294967296; };
   }
-
-  function deterministicTimestamp(seed) {
-    const base = Date.UTC(2026, 5, 23, 0, 0, 0);
-    const offset = seed % (23 * 60 * 60 * 1000);
-    return new Date(base + offset).toISOString();
+  function fallbackHash(value) {
+    const text = String(value); let out = ''; let seed = hashString(text);
+    for (let i = 0; out.length < 64; i += 1) { seed = hashString(`${seed}:${i}:${text}`); out += seed.toString(16).padStart(8, '0'); }
+    return out.slice(0, 64);
   }
-
-  function clear(node) {
-    if (node) node.replaceChildren();
+  async function sha256(value) {
+    const text = String(value);
+    if (window.crypto && window.crypto.subtle && window.TextEncoder) {
+      const bytes = new TextEncoder().encode(text);
+      const digest = await window.crypto.subtle.digest('SHA-256', bytes);
+      return Array.from(new Uint8Array(digest), (b) => b.toString(16).padStart(2, '0')).join('');
+    }
+    return fallbackHash(text);
   }
-
-  function appendText(parent, tag, className, text) {
-    const node = el(tag, className, text);
-    parent.appendChild(node);
-    return node;
+  function deterministicTimestamp(seed, step = 0) {
+    const base = Date.UTC(2026, 5, 23, 12, 0, 0);
+    return new Date(base + ((seed % 10000000) + step * 1379) * 10).toISOString();
   }
-
-  function option(value, label) {
-    const node = el('option', '', label);
-    node.value = value;
-    return node;
-  }
+  function append(parent, tag, className, text) { const node = el(tag, className, text); parent.appendChild(node); return node; }
+  function option(value, label) { const node = el('option', '', label); node.value = value; return node; }
+  function formatPct(value) { return `${Math.round(value * 100)}%`; }
+  function shortHash(value, size = 12) { return value ? `${String(value).slice(0, size)}…` : '—'; }
 
   function setupNavigation() {
-    const toggle = byId('aan-nav-toggle');
-    const nav = byId('aan-nav');
+    const toggle = byId('aan-nav-toggle'); const nav = byId('aan-nav');
     if (!toggle || !nav) return;
-    toggle.addEventListener('click', () => {
-      const open = nav.classList.toggle('is-open');
-      toggle.setAttribute('aria-expanded', String(open));
-    });
-    nav.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => {
-      nav.classList.remove('is-open');
-      toggle.setAttribute('aria-expanded', 'false');
-    }));
+    toggle.addEventListener('click', () => { const open = nav.classList.toggle('is-open'); toggle.setAttribute('aria-expanded', String(open)); });
+    nav.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => { nav.classList.remove('is-open'); toggle.setAttribute('aria-expanded', 'false'); }));
   }
-
-  function renderArchitecture() {
-    const translationGrid = byId('aan-translation-grid');
-    const pipeline = byId('aan-arch-pipeline');
-    const boundaryList = byId('aan-boundary-list');
-    if (!translationGrid || !pipeline || !boundaryList) return false;
-
-    clear(translationGrid);
-    release.architecture_translation.forEach((item, index) => {
-      const card = el('article', 'aan-translation-card');
-      const legacy = el('div');
-      appendText(legacy, 'span', '', `ORIGINAL ${pad(index + 1)}`);
-      appendText(legacy, 'b', '', item.legacy);
-      const arrow = el('i', '', '→');
-      arrow.setAttribute('aria-hidden', 'true');
-      const goalos = el('div');
-      appendText(goalos, 'span', '', 'GOALOS ASCENSION');
-      appendText(goalos, 'b', '', item.goalos);
-      appendText(goalos, 'p', '', item.consequence);
-      card.append(legacy, arrow, goalos);
-      translationGrid.appendChild(card);
+  function renderHeroMetrics() {
+    const target = byId('aan-hero-metrics'); if (!target) return;
+    clear(target); release.hero_metrics.forEach((metric) => { const block = el('div'); append(block, 'b', '', metric.value); append(block, 'span', '', metric.label); target.appendChild(block); });
+  }
+  function setupDialogs() {
+    const tour = byId('aan-tour-dialog'); const tourOpen = byId('aan-tour-open'); const help = byId('aan-help-dialog');
+    if (tour && tourOpen) tourOpen.addEventListener('click', () => tour.showModal ? tour.showModal() : tour.setAttribute('open', ''));
+    doc.querySelectorAll('.aan-dialog-close').forEach((button) => button.addEventListener('click', () => button.closest('dialog')?.close()));
+    doc.addEventListener('keydown', (event) => {
+      const target = event.target;
+      const typing = target && ['INPUT', 'TEXTAREA', 'SELECT'].includes(target.tagName);
+      if (typing) return;
+      if (event.key === '?' && help) { event.preventDefault(); help.showModal ? help.showModal() : help.setAttribute('open', ''); }
     });
-
-    clear(pipeline);
-    release.pipeline.forEach((stage) => {
-      const item = el('li');
-      appendText(item, 'span', '', pad(stage.order));
-      appendText(item, 'b', '', stage.state);
-      appendText(item, 'h3', '', stage.title);
-      appendText(item, 'p', '', stage.gate);
-      appendText(item, 'small', '', stage.artifact);
-      pipeline.appendChild(item);
-    });
-
-    clear(boundaryList);
-    release.claim_boundary.forEach((boundary, index) => {
-      const item = el('li');
-      appendText(item, 'span', '', `B${pad(index + 1)}`);
-      appendText(item, 'p', '', boundary);
-      boundaryList.appendChild(item);
-    });
-    return true;
   }
 
   const runtime = {
-    runToken: 0,
-    safeHold: false,
-    phaseIndex: -1,
-    seed: 0,
-    deterministic_seed: '',
-    config: null,
-    peerRoute: null,
-    receipt: null,
-    evaluation: null,
-    consensus: null,
-    docket: null,
-    brief: '',
-    logs: [],
-    started: false
+    token: 0, running: false, held: false, phase: -1, config: null, seed: 0, rng: null,
+    candidates: [], route: null, receipt: null, evaluation: null, consensus: null, guardians: null,
+    chain: [], docket: null, brief: '', terminal: 'READY', logs: [], view: 'executive'
   };
+  window.__AAN_STATE__ = runtime;
 
-  const ids = {
-    form: byId('aan-node-form'),
-    preset: byId('aan-preset'),
-    nodeName: byId('aan-node-name'),
-    mission: byId('aan-mission'),
-    workClass: byId('aan-work-class'),
-    posture: byId('aan-posture'),
-    quorum: byId('aan-quorum'),
-    energy: byId('aan-energy'),
-    latency: byId('aan-latency'),
-    quorumOutput: byId('aan-quorum-output'),
-    energyOutput: byId('aan-energy-output'),
-    latencyOutput: byId('aan-latency-output'),
-    run: byId('aan-run'),
-    pause: byId('aan-pause'),
-    reset: byId('aan-reset')
-  };
-
-  function renderHero() {
-    const metrics = byId('aan-hero-metrics');
-    const thesis = byId('aan-thesis-grid');
-    if (metrics) {
-      clear(metrics);
-      release.hero_metrics.forEach((metric) => {
-        const block = el('div');
-        appendText(block, 'b', '', metric.value);
-        appendText(block, 'span', '', metric.label);
-        metrics.appendChild(block);
-      });
-    }
-    if (thesis) {
-      clear(thesis);
-      release.thesis.forEach((item) => {
-        const card = el('article');
-        appendText(card, 'span', 'number', item.number);
-        appendText(card, 'h3', '', item.title);
-        appendText(card, 'p', '', item.copy);
-        thesis.appendChild(card);
-      });
-    }
-  }
-
-  function renderControls() {
-    release.presets.forEach((item) => ids.preset.appendChild(option(item.id, item.label)));
-    release.work_unit_classes.forEach((item) => ids.workClass.appendChild(option(item.id, `${item.symbol} · ${item.label}`)));
-    release.postures.forEach((item) => ids.posture.appendChild(option(item.id, item.label)));
-    ids.preset.value = release.presets[0].id;
-    ids.posture.value = 'ascension';
-    applyPreset(ids.preset.value);
-    syncRangeOutputs();
-  }
-
-  function applyPreset(presetId) {
-    const preset = release.presets.find((item) => item.id === presetId) || release.presets[0];
-    ids.mission.value = preset.mission;
-    ids.workClass.value = preset.work_class;
-  }
-
-  function syncRangeOutputs() {
-    ids.quorumOutput.value = `${ids.quorum.value} / 7`;
-    ids.quorumOutput.textContent = `${ids.quorum.value} / 7`;
-    ids.energyOutput.value = `${(Number(ids.energy.value) / 100).toFixed(2)} score`;
-    ids.energyOutput.textContent = `${(Number(ids.energy.value) / 100).toFixed(2)} score`;
-    ids.latencyOutput.value = `${ids.latency.value} ms`;
-    ids.latencyOutput.textContent = `${ids.latency.value} ms`;
-  }
-
-  function renderStageRail() {
-    const rail = byId('aan-stage-rail');
-    clear(rail);
-    release.pipeline.forEach((stage, index) => {
-      const node = el('div', 'aan-stage');
-      node.dataset.stage = String(index);
-      appendText(node, 'span', '', pad(stage.order));
-      appendText(node, 'b', '', stage.state.replaceAll('_', ' '));
-      rail.appendChild(node);
-    });
-  }
-
-  function setStage(index) {
-    runtime.phaseIndex = index;
-    doc.querySelectorAll('.aan-stage').forEach((node, nodeIndex) => {
-      node.classList.toggle('is-complete', nodeIndex < index || (index === release.pipeline.length && nodeIndex < index));
-      node.classList.toggle('is-active', nodeIndex === index);
-    });
-  }
-
-  function renderInitialPeers() {
-    runtime.peerRoute = {
-      peers: release.peers.map((peer) => ({ ...peer, latency: peer.base_latency, energy: peer.base_energy, reliability: peer.base_reliability, status: 'standby', reason: 'Awaiting a contracted work unit.' })),
-      admitted: [],
-      rejected: [],
-      standby: release.peers.map((peer) => peer.id)
-    };
-    renderPeerRoute(runtime.peerRoute, true);
-  }
-
-  function createPeerRoute(config, rng) {
-    const peers = release.peers.map((peer) => {
-      const capabilityFit = peer.capabilities.includes(config.workClass.capability);
-      const latency = Math.max(26, Math.round(peer.base_latency + (rng() - 0.5) * 18));
-      const energy = round(clamp(peer.base_energy + (rng() - 0.5) * 0.12, 0.42, 0.92), 2);
-      const reliability = round(clamp(peer.base_reliability + (rng() - 0.5) * 0.018, 0.91, 0.997), 3);
-      const latencyFit = latency <= config.latency;
-      const energyFit = energy >= config.energyTarget;
-      const roleBoost = peer.role === 'Verifier' || peer.role === 'Guardian' ? 0.05 : 0;
-      const score = (capabilityFit ? 0.35 : 0) + clamp(1 - latency / 180, 0, 1) * 0.2 + energy * 0.2 + reliability * 0.2 + roleBoost;
-      return { ...peer, latency, energy, reliability, capabilityFit, latencyFit, energyFit, score: round(score, 4), status: 'rejected', reason: '' };
-    });
-
-    const ranked = [...peers].sort((a, b) => b.score - a.score || a.id.localeCompare(b.id));
-    const requiredRoles = new Set(['Orchestrator', 'Verifier']);
-    const selected = new Set();
-
-    requiredRoles.forEach((role) => {
-      const match = ranked.find((peer) => peer.role === role && peer.capabilityFit && peer.latency <= config.latency + 18);
-      if (match) selected.add(match.id);
-    });
-    ranked.forEach((peer) => {
-      if (selected.size < 4 && peer.capabilityFit && peer.latencyFit && (peer.energyFit || peer.energy >= config.energyTarget - 0.1)) selected.add(peer.id);
-    });
-    ranked.forEach((peer) => {
-      if (selected.size < 3 && peer.capabilityFit) selected.add(peer.id);
-    });
-    if (!Array.from(selected).some((id) => peers.find((peer) => peer.id === id)?.role === 'Verifier')) {
-      const verifier = ranked.find((peer) => peer.role === 'Verifier');
-      if (verifier) selected.add(verifier.id);
-    }
-
-    peers.forEach((peer) => {
-      if (selected.has(peer.id)) {
-        peer.status = 'accepted';
-        peer.reason = `Admitted: ${peer.capabilityFit ? 'capability fit' : 'fallback fit'}, ${peer.latency} ms, energy ${peer.energy.toFixed(2)}.`;
-      } else if (peer.capabilityFit && (peer.latency <= config.latency + 20 || peer.energy >= config.energyTarget - 0.08)) {
-        peer.status = 'standby';
-        peer.reason = 'Held as a reversible fallback; not needed by the minimum route.';
-      } else {
-        peer.status = 'rejected';
-        const reasons = [];
-        if (!peer.capabilityFit) reasons.push(`missing ${config.workClass.capability} capability`);
-        if (!peer.latencyFit) reasons.push(`latency exceeds ${config.latency} ms`);
-        if (!peer.energyFit) reasons.push(`energy score below ${config.energyTarget.toFixed(2)}`);
-        peer.reason = `Rejected: ${reasons.join('; ') || 'lower policy-adjusted route score'}.`;
-      }
-    });
-
-    const admitted = peers.filter((peer) => peer.status === 'accepted');
-    const standby = peers.filter((peer) => peer.status === 'standby');
-    const rejected = peers.filter((peer) => peer.status === 'rejected');
-    const averageLatency = admitted.reduce((sum, peer) => sum + peer.latency, 0) / admitted.length;
-    const averageEnergy = admitted.reduce((sum, peer) => sum + peer.energy, 0) / admitted.length;
-    const averageReliability = admitted.reduce((sum, peer) => sum + peer.reliability, 0) / admitted.length;
-
+  function requiredCapabilities(workClass) {
     return {
-      route_id: `route_${hashHex(`${config.commitment}:peers`, 12)}`,
-      deterministic_seed: config.deterministic_seed,
-      peers,
-      admitted: admitted.map((peer) => peer.id),
-      standby: standby.map((peer) => peer.id),
-      rejected: rejected.map((peer) => peer.id),
-      route_metrics: {
-        average_latency_ms: round(averageLatency, 1),
-        average_energy_score: round(averageEnergy, 3),
-        average_reliability: round(averageReliability, 4),
-        admitted_count: admitted.length,
-        standby_count: standby.length,
-        rejected_count: rejected.length
-      },
-      external_connections: 0,
-      mode: 'deterministic_browser_simulation'
-    };
+      reason: ['reasoning', 'research', 'synthesis'], build: ['engineering', 'orchestration'], verify: ['verification', 'security', 'benchmark', 'evidence'],
+      orchestrate: ['orchestration', 'synthesis', 'reasoning'], critical: ['security', 'verification', 'orchestration', 'evidence']
+    }[workClass] || ['reasoning'];
   }
+  function capabilityScore(peer, workClass) {
+    const required = requiredCapabilities(workClass);
+    const hits = peer.capabilities.filter((capability) => required.includes(capability)).length;
+    return clamp(0.55 + hits * 0.2 + (peer.role.toLowerCase().includes(workClass) ? 0.08 : 0), 0.45, 0.99);
+  }
+  function selectedIncidentIds(config) { return new Set(config.incidents || []); }
 
-  function renderPeerRoute(route, initial = false) {
-    const table = byId('aan-peer-table');
-    const mesh = byId('aan-mesh-svg');
-    clear(table);
-    clear(mesh);
-
-    route.peers.forEach((peer) => {
-      const row = el('tr');
-      const name = el('td', '', peer.name);
-      name.title = peer.reason;
-      row.append(name, el('td', '', peer.role), el('td', '', `${peer.latency} ms`), el('td', '', peer.energy.toFixed(2)));
-      const statusCell = el('td');
-      statusCell.appendChild(el('span', `aan-peer-status ${peer.status}`, peer.status.toUpperCase()));
-      row.appendChild(statusCell);
-      table.appendChild(row);
+  function createCandidates(config, rng) {
+    const incidents = selectedIncidentIds(config);
+    const posture = release.postures.find((item) => item.id === config.posture) || release.postures[0];
+    const candidates = release.peers.map((peer, index) => {
+      const jitter = () => (rng() - 0.5);
+      const capability = capabilityScore(peer, config.work_class);
+      const latency = Math.round(peer.base_latency * (0.94 + rng() * 0.14));
+      const reliability = clamp(peer.base_reliability + jitter() * 0.012, 0.82, 0.999);
+      const energy = clamp(peer.base_energy + jitter() * 0.08, 0.35, 0.99);
+      const evidence = clamp(peer.base_evidence + jitter() * 0.045, 0.55, 0.999);
+      const latencyScore = clamp(1 - Math.max(0, latency - 30) / Math.max(50, config.latency_ceiling * 1.4), 0.05, 1);
+      const energyScore = clamp(1 - Math.abs(energy - config.energy_target) * 1.8, 0.05, 1);
+      const diversity = clamp(0.72 + ((index * 17 + config.seed) % 23) / 100, 0.6, 0.98);
+      const quality = clamp(capability * 0.58 + evidence * 0.26 + reliability * 0.16, 0, 1);
+      let score = quality * posture.weights.quality + reliability * posture.weights.reliability + energyScore * posture.weights.energy + latencyScore * posture.weights.latency + evidence * posture.weights.evidence + diversity * posture.weights.diversity;
+      let status = 'candidate'; let reason = 'Meets baseline constitutional constraints.';
+      if (latency > config.latency_ceiling * 1.18) { score -= 0.12; reason = 'Latency exceeds preferred ceiling.'; }
+      if (incidents.has('peer-eclipse') && ['orion', 'helix', 'vesper'].includes(peer.id)) { score -= 0.1; reason = 'Correlation risk detected during eclipse rehearsal.'; }
+      if (incidents.has('identity-drift') && peer.id === 'aegis') { status = 'quarantined'; score = 0; reason = 'Identity commitment mismatch; guardian quarantine.'; }
+      return { ...peer, capability, latency, reliability, energy, evidence, diversity, quality, energy_score: energyScore, latency_score: latencyScore, score: clamp(score, 0, 1), status, reason };
     });
-
-    const defs = svgEl('defs');
-    const gradient = svgEl('radialGradient', { id: 'aan-mesh-core-gradient', cx: '50%', cy: '40%', r: '65%' });
-    gradient.append(svgEl('stop', { offset: '0', 'stop-color': '#fff9c6' }), svgEl('stop', { offset: '.45', 'stop-color': '#ffd95d' }), svgEl('stop', { offset: '1', 'stop-color': '#7c47ff' }));
-    defs.appendChild(gradient);
-    mesh.appendChild(defs);
-    const positions = [[390, 62], [610, 130], [700, 315], [585, 480], [390, 510], [190, 480], [78, 315], [170, 128]];
-    route.peers.forEach((peer, index) => {
-      const [x, y] = positions[index];
-      mesh.appendChild(svgEl('line', { x1: 390, y1: 285, x2: x, y2: y, class: `aan-mesh-line ${peer.status}` }));
-    });
-    const core = svgEl('g', { class: 'aan-mesh-core', transform: 'translate(390 285)' });
-    core.append(svgEl('circle', { r: 62 }), svgEl('text', { y: 8 }));
-    core.querySelector('text').textContent = 'α';
-    const sub = svgEl('text', { class: 'sub', y: 31 });
-    sub.textContent = 'NODE NΩ-01';
-    core.appendChild(sub);
-    mesh.appendChild(core);
-    route.peers.forEach((peer, index) => {
-      const [x, y] = positions[index];
-      const group = svgEl('g', { class: `aan-mesh-node ${peer.status}`, transform: `translate(${x} ${y})` });
-      group.appendChild(svgEl('circle', { r: 42 }));
-      const name = svgEl('text', { y: 1 });
-      name.textContent = peer.name.toUpperCase();
-      const role = svgEl('text', { class: 'role', y: 19 });
-      role.textContent = peer.role.toUpperCase();
-      group.append(name, role);
-      mesh.appendChild(group);
-    });
-
-    const status = byId('aan-mesh-status');
-    const summary = byId('aan-route-summary');
-    if (initial) {
-      status.textContent = 'awaiting route';
-      clear(summary);
-      appendText(summary, 'b', '', 'No route committed.');
-      appendText(summary, 'span', '', 'Run a governed cycle to generate the Resource Envelope and Peer Route.');
-    } else {
-      status.textContent = `${route.admitted.length} admitted · ${route.standby.length} standby · ${route.rejected.length} rejected`;
-      clear(summary);
-      appendText(summary, 'b', '', `${route.admitted.length} peers admitted under route ${route.route_id}.`);
-      appendText(summary, 'span', '', `Mean latency ${route.route_metrics.average_latency_ms} ms · energy ${route.route_metrics.average_energy_score.toFixed(3)} · reliability ${(route.route_metrics.average_reliability * 100).toFixed(2)}%. Every non-selected peer retains an inspectable rationale.`);
+    return candidates.sort((a, b) => b.score - a.score || a.id.localeCompare(b.id));
+  }
+  function chooseDistinct(candidates, count, used = new Set()) {
+    const selected = []; const regions = new Set();
+    for (const candidate of candidates) {
+      if (candidate.status === 'quarantined' || used.has(candidate.id)) continue;
+      const regionFamily = candidate.region.split(' ')[0];
+      if (selected.length < count && (!regions.has(regionFamily) || selected.length >= Math.ceil(count / 2))) { selected.push(candidate); regions.add(regionFamily); used.add(candidate.id); }
+      if (selected.length === count) break;
     }
+    for (const candidate of candidates) { if (selected.length === count) break; if (candidate.status !== 'quarantined' && !used.has(candidate.id)) { selected.push(candidate); used.add(candidate.id); } }
+    return selected;
   }
-
-  function calculateAlphaWorkUnit(config, route, rng) {
-    const gpuSeconds = round(11 + rng() * 14 + route.admitted.length * 1.4, 2);
-    const throughputNorm = round(0.86 + rng() * 0.27, 3);
-    const sloPass = route.route_metrics.average_latency_ms <= config.latency ? 1 : 0.88;
-    const routeQuality = clamp(0.66 + route.route_metrics.average_reliability * 0.18 + route.route_metrics.average_energy_score * 0.12 + rng() * 0.06, 0.78, 0.98);
-    const quality = round(routeQuality, 3);
-    const value = round(gpuSeconds * throughputNorm * config.workClass.model_tier * sloPass * quality, 3);
-    const executionMs = Math.round(1680 + rng() * 2600 + route.admitted.length * 170);
-    const energyKwh = round(gpuSeconds * (1.08 - route.route_metrics.average_energy_score) * 0.011, 4);
+  function createRoute(config, candidates, rng) {
+    const used = new Set();
+    const primary = chooseDistinct(candidates, 4, used);
+    const shadow = chooseDistinct(candidates, 3, used);
+    const incidents = selectedIncidentIds(config);
+    const quarantined = candidates.filter((item) => item.status === 'quarantined');
+    const allRegions = new Set([...primary, ...shadow].map((item) => item.region.split(' ')[0])).size;
+    const diversity = clamp(allRegions / 7, 0, 1);
+    const mean = (items, key) => items.reduce((sum, item) => sum + item[key], 0) / Math.max(1, items.length);
+    const primaryLatency = mean(primary, 'latency');
+    const primaryReliability = mean(primary, 'reliability');
+    const primaryEvidence = mean(primary, 'evidence');
+    const routeCommitmentSeed = stableStringify({ node: config.node_name, mission: config.mission, primary: primary.map((p) => p.id), shadow: shadow.map((p) => p.id), incidents: [...incidents].sort() });
     return {
-      receipt_id: `awu_${hashHex(`${config.commitment}:receipt`, 14)}`,
-      work_unit_class: config.workClass.id,
-      work_unit_symbol: config.workClass.symbol,
-      gpu_seconds: gpuSeconds,
-      throughput_normalized: throughputNorm,
-      model_tier: config.workClass.model_tier,
-      slo_pass_multiplier: sloPass,
-      quality_multiplier: quality,
-      alpha_work_units: value,
-      execution_time_ms: executionMs,
-      estimated_energy_kwh: energyKwh,
-      external_compute_calls: 0,
-      mode: 'deterministic_sandbox_receipt'
+      primary, shadow, quarantined, diversity, mean_latency: round(primaryLatency, 1), reliability: round(primaryReliability, 4), evidence: round(primaryEvidence, 4),
+      route_id: `route-${fallbackHash(routeCommitmentSeed).slice(0, 14)}`,
+      shadow_ready: shadow.length >= 3,
+      mitigation: incidents.has('peer-eclipse') ? 'Correlated peers demoted; shadow route diversity elevated.' : incidents.has('identity-drift') ? 'Identity-drift peer quarantined before route commitment.' : 'No incident-specific route mitigation required.',
+      packets: Math.round(120 + rng() * 80)
     };
   }
-
+  function createReceipt(config, route, rng) {
+    const incidents = selectedIncidentIds(config);
+    const resourcePressure = incidents.has('resource-surge') ? 1.28 : 0.78 + rng() * 0.18;
+    const concurrency = incidents.has('resource-surge') ? 2 : 4 + Math.floor(rng() * 3);
+    const duration = Math.round(route.mean_latency * (7.8 + rng() * 2.7));
+    const normalizedWork = round((0.92 + rng() * 0.46) * (config.work_class === 'critical' ? 1.2 : 1), 3);
+    const energy = round(clamp(config.energy_target * (0.86 + rng() * 0.16) * resourcePressure, 0.25, 1.4), 3);
+    const memory = Math.round(410 + rng() * 470 * resourcePressure);
+    const streams = Math.round(12 + rng() * 14 * resourcePressure);
+    const resourceCompliant = !incidents.has('resource-surge') || config.risk !== 'critical';
+    return {
+      work_unit_id: `awu-${fallbackHash(`${config.seed}:${config.mission}`).slice(0, 16)}`, normalized_work_units: normalizedWork, duration_ms: duration,
+      energy_score: energy, memory_mb: memory, streams, concurrency, packets: route.packets, route_id: route.route_id,
+      resource_pressure: round(resourcePressure, 2), resource_compliant: resourceCompliant,
+      mode: 'deterministic-browser-local-simulation', external_compute: false, timestamp: deterministicTimestamp(config.seed, 6)
+    };
+  }
   function createEvaluation(config, route, receipt, rng) {
-    const evidence = round(clamp(0.86 + rng() * 0.1, 0, 0.98), 3);
-    const quality = round(clamp(receipt.quality_multiplier + (rng() - 0.5) * 0.04, 0.76, 0.98), 3);
-    const reliability = round(route.route_metrics.average_reliability, 3);
-    const energy = round(route.route_metrics.average_energy_score, 3);
-    const latency = round(clamp(1 - route.route_metrics.average_latency_ms / 210, 0.5, 0.96), 3);
-    const weights = config.posture.weights;
-    const composite = round(quality * weights.quality + reliability * weights.reliability + energy * weights.energy + latency * weights.latency + evidence * weights.evidence, 3);
-    return {
-      evaluation_id: `eval_${hashHex(`${config.commitment}:quality`, 12)}`,
-      posture: config.posture.id,
-      dimensions: { quality, reliability, energy, latency, evidence },
-      weights,
-      composite,
-      slo_pass: receipt.slo_pass_multiplier === 1,
-      uncertainty: round(0.08 + rng() * 0.07, 3),
-      contradiction: {
-        title: 'Capability evidence remains simulated.',
-        severity: 'material review reservation',
-        statement: 'The cycle demonstrates structural completeness and deterministic traceability, but it does not establish live peer performance, factual correctness, production security, legal fitness, or economic value.'
-      },
-      factual_correctness: 'NOT_CERTIFIED'
-    };
+    const incidents = selectedIncidentIds(config);
+    const candidateQuality = route.primary.reduce((sum, p) => sum + p.quality, 0) / route.primary.length;
+    const quality = clamp(candidateQuality * (0.94 + rng() * 0.055), 0, 1);
+    const reliability = clamp(route.reliability - (incidents.has('peer-eclipse') ? 0.035 : 0), 0, 1);
+    const evidence = clamp(route.evidence - (incidents.has('validator-divergence') ? 0.025 : 0), 0, 1);
+    const diversity = clamp(route.diversity - (incidents.has('peer-eclipse') ? 0.08 : 0), 0, 1);
+    const energy = clamp(1 - Math.max(0, receipt.energy_score - config.energy_target) * 1.8, 0, 1);
+    const latency = clamp(1 - Math.max(0, route.mean_latency - config.latency_ceiling) / config.latency_ceiling, 0, 1);
+    const uncertainty = clamp(0.08 + rng() * 0.08 + config.incidents.length * 0.035 + (config.risk === 'critical' ? 0.03 : 0), 0.05, 0.45);
+    const posture = release.postures.find((item) => item.id === config.posture) || release.postures[0];
+    const readiness = quality * posture.weights.quality + reliability * posture.weights.reliability + energy * posture.weights.energy + latency * posture.weights.latency + evidence * posture.weights.evidence + diversity * posture.weights.diversity;
+    return { quality: round(quality, 3), reliability: round(reliability, 3), evidence: round(evidence, 3), diversity: round(diversity, 3), energy: round(energy, 3), latency: round(latency, 3), uncertainty: round(uncertainty, 3), readiness: round(readiness * (1 - uncertainty * 0.24), 3) };
   }
-
-  function createValidatorConsensus(config, evaluation, rng) {
-    const threshold = config.quorum;
-    const dissentIndex = release.validators.findIndex((validator) => validator.id === 'v6');
-    let supportNeeded = Math.max(0, threshold - 1);
+  function createConsensus(config, evaluation, rng) {
+    const incidents = selectedIncidentIds(config);
+    const risk = release.risk_profiles.find((item) => item.id === config.risk) || release.risk_profiles[1];
+    const axisValues = [evaluation.evidence, evaluation.quality, Math.min(evaluation.energy, evaluation.latency), evaluation.diversity, 1 - evaluation.uncertainty, evaluation.reliability, 1 - evaluation.uncertainty * 0.9];
     const votes = release.validators.map((validator, index) => {
-      if (index === dissentIndex) {
-        return {
-          validator_id: validator.id,
-          name: validator.name,
-          symbol: validator.symbol,
-          status: 'dissent',
-          supports_quorum: true,
-          score: round(clamp(evaluation.composite - 0.07, 0.68, 0.93), 3),
-          rationale: 'Supports structural review readiness while preserving a material reservation: simulated evidence cannot certify live capability or factual correctness.'
-        };
-      }
-      if (supportNeeded > 0) {
-        supportNeeded -= 1;
-        return {
-          validator_id: validator.id,
-          name: validator.name,
-          symbol: validator.symbol,
-          status: 'pass',
-          supports_quorum: true,
-          score: round(clamp(evaluation.composite + (rng() - 0.5) * 0.08, 0.72, 0.98), 3),
-          rationale: `${validator.focus} is structurally represented with explicit limitations and review boundaries.`
-        };
-      }
-      return {
-        validator_id: validator.id,
-        name: validator.name,
-        symbol: validator.symbol,
-        status: 'fail',
-        supports_quorum: false,
-        score: round(clamp(evaluation.composite - 0.13 - rng() * 0.05, 0.55, 0.83), 3),
-        rationale: `Seat withholds support pending independent live evidence for ${validator.focus}.`
-      };
+      let score = clamp(axisValues[index] + (rng() - 0.5) * 0.08, 0, 1);
+      let vote = score >= 0.72 ? 'PASS' : score >= 0.58 ? 'DISSENT' : 'REJECT';
+      let rationale = score >= 0.72 ? 'Gate evidence satisfies the simulated review threshold.' : score >= 0.58 ? 'Material caution remains and must be preserved for human review.' : 'The gate is not sufficiently supported for advancement.';
+      if (incidents.has('validator-divergence') && [1, 4].includes(index)) { vote = 'DISSENT'; score = Math.min(score, 0.67); rationale = 'Divergence rehearsal produced a non-conforming interpretation.'; }
+      if (incidents.has('resource-surge') && index === 2) { vote = config.risk === 'critical' ? 'REJECT' : 'DISSENT'; score = config.risk === 'critical' ? 0.49 : 0.63; rationale = 'Resource pressure exceeded the preferred admission envelope.'; }
+      if (incidents.has('peer-eclipse') && index === 3) { vote = 'DISSENT'; score = Math.min(score, 0.66); rationale = 'Route resilience is acceptable only with the committed shadow path.'; }
+      if (incidents.has('identity-drift') && index === 5) { vote = 'REJECT'; score = 0.21; rationale = 'Identity commitment mismatch requires a guardian safe hold.'; }
+      return { ...validator, vote, score: round(score, 3), rationale };
     });
-    const supportCount = votes.filter((vote) => vote.supports_quorum).length;
-    return {
-      consensus_id: `consensus_${hashHex(`${config.commitment}:validators`, 12)}`,
-      threshold,
-      seats: votes.length,
-      support_count: supportCount,
-      quorum_recorded: supportCount >= threshold,
-      dissent_preserved: votes.some((vote) => vote.status === 'dissent'),
-      votes,
-      authority_conferred: false,
-      factual_correctness: 'NOT_CERTIFIED'
-    };
+    const pass = votes.filter((item) => item.vote === 'PASS').length;
+    const dissent = votes.filter((item) => item.vote === 'DISSENT').length;
+    const reject = votes.filter((item) => item.vote === 'REJECT').length;
+    return { votes, pass, dissent, reject, threshold: risk.quorum, quorum_met: pass >= risk.quorum && reject === 0, summary: `${pass} pass · ${dissent} dissent · ${reject} reject` };
   }
-
-  function buildNodeEvidenceDocket(config, route, receipt, evaluation, consensus) {
-    const artifactHashes = release.artifacts.map((name, index) => ({
-      name,
-      sha256_simulated: hashHex(`${config.commitment}:${name}:${index}`, 64),
-      status: 'SEALED_IN_LOCAL_SIMULATION'
-    }));
-    return {
-      schema: 'goalos.agi_alpha_node_v0.node_evidence_docket.v1',
-      release: release.release_title,
-      release_version: release.version,
-      run_id: config.runId,
-      deterministic_seed: config.deterministic_seed,
-      generated_at_simulated: config.timestamp,
-      mode: 'browser_local_deterministic_simulation',
-      node_identity: {
-        declared_name: config.nodeName,
-        identity_status: 'DECLARED_NOT_RESOLVED',
-        ens_resolution_performed: false,
-        operator_authority_proven: false
-      },
-      work_unit_contract: {
-        mission: config.mission,
-        decision: config.preset.decision,
-        class: config.workClass,
-        posture: config.posture.id,
-        success_criteria: [
-          'All eight GoalOS node states are represented.',
-          'Every peer receives a visible admission rationale.',
-          'Work, energy, quality, contradiction, validator, and authorization artifacts are sealed.',
-          'All external permissions remain absent.'
-        ],
-        stop_rules: ['safe hold requested', 'mission scope becomes ambiguous', 'quorum not recorded', 'external authority would be required']
-      },
-      resource_envelope: {
-        validator_quorum: config.quorum,
-        energy_target: config.energyTarget,
-        latency_ceiling_ms: config.latency,
-        maximum_admitted_peers: 5,
-        external_credentials: 0
-      },
-      peer_route: route,
-      work_unit_receipt: receipt,
-      quality_evaluation: evaluation,
-      validator_consensus: consensus,
-      guardian_council: {
-        threshold: 4,
-        review_signatures_simulated: 4,
-        treasury_guardian_signed: false,
-        external_authority_granted: false,
-        transaction_broadcast: false
-      },
-      authorization_state: {
-        state: 'HUMAN_REVIEW_REQUIRED',
-        authority: 'NONE_GRANTED',
-        factual_correctness: 'NOT_CERTIFIED',
-        production_activation: 'NOT_ACTIVATED',
-        funds_authorization: 'NO',
-        settlement: 'NONE',
-        external_actions: 0
-      },
-      claim_boundary: release.claim_boundary,
-      security: release.security,
-      artifact_chain: artifactHashes,
-      chronicle: {
-        terminal_events: [...runtime.logs],
-        persistence: 'NONE_AFTER_BROWSER_SESSION',
-        network_transmission: 'NONE'
-      }
-    };
-  }
-
-  function createReviewBrief(docket) {
-    const route = docket.peer_route.route_metrics;
-    const receipt = docket.work_unit_receipt;
-    const consensus = docket.validator_consensus;
-    return [
-      '# GoalOS AGIALPHA Ascension AGI Alpha Node v0 — Executive Review Brief',
-      '',
-      `**Run:** ${docket.run_id}`,
-      `**Deterministic seed:** ${docket.deterministic_seed}`,
-      `**Final state:** ${docket.authorization_state.state}`,
-      '',
-      '## Mission',
-      docket.work_unit_contract.mission,
-      '',
-      '## Simulated node result',
-      `- ${route.admitted_count} peers admitted; ${route.standby_count} standby; ${route.rejected_count} rejected.`,
-      `- Mean route latency: ${route.average_latency_ms} ms.`,
-      `- Mean energy score: ${route.average_energy_score}.`,
-      `- Normalized Alpha Work Units: ${receipt.alpha_work_units}.`,
-      `- Validator support: ${consensus.support_count}/${consensus.seats}; threshold ${consensus.threshold}.`,
-      `- Dissent preserved: ${consensus.dissent_preserved ? 'yes' : 'no'}.`,
-      '',
-      '## Authority boundary',
-      '- Factual correctness: NOT CERTIFIED.',
-      '- Production activation: NOT ACTIVATED.',
-      '- Funds authorization: NO.',
-      '- External actions: 0.',
-      '- Authority: NONE GRANTED.',
-      '',
-      'This package is a deterministic browser-local design and review artifact. It is not evidence of a live node, AGI, production performance, security certification, ENS ownership, treasury authorization, or economic settlement.'
-    ].join('\n');
-  }
-
-  function renderValidators(consensus = null) {
-    const grid = byId('aan-validator-grid');
-    clear(grid);
-    release.validators.forEach((validator) => {
-      const vote = consensus?.votes.find((item) => item.validator_id === validator.id);
-      const card = el('article', `aan-validator-card${vote ? ` ${vote.status}` : ''}`);
-      appendText(card, 'span', 'symbol', validator.symbol);
-      appendText(card, 'h3', '', validator.name);
-      appendText(card, 'p', '', vote ? vote.rationale : validator.focus);
-      const voteNode = el('div', 'vote');
-      voteNode.appendChild(el('i'));
-      let label = 'AWAITING';
-      if (vote?.status === 'pass') label = `SUPPORT · ${Math.round(vote.score * 100)}`;
-      if (vote?.status === 'dissent') label = `DISSENT / SUPPORT · ${Math.round(vote.score * 100)}`;
-      if (vote?.status === 'fail') label = `HOLD · ${Math.round(vote.score * 100)}`;
-      voteNode.appendChild(doc.createTextNode(label));
-      card.appendChild(voteNode);
-      grid.appendChild(card);
+  function createGuardians(config, evaluation, consensus) {
+    const incidents = selectedIncidentIds(config);
+    return release.guardians.map((guardian, index) => {
+      let disposition = 'APPROVE'; let rationale = 'Constitutional boundary is intact for human review.';
+      if (index === 0 && incidents.has('identity-drift')) { disposition = 'VETO'; rationale = 'Identity commitment drift remains unresolved.'; }
+      else if (index === 1 && incidents.has('resource-surge')) { disposition = config.risk === 'critical' ? 'VETO' : 'CAUTION'; rationale = 'Resource surge requires constrained scope and explicit review.'; }
+      else if (index === 2 && evaluation.evidence < (release.risk_profiles.find((r) => r.id === config.risk)?.evidence_floor || 0.76)) { disposition = 'CAUTION'; rationale = 'Evidence coverage is below the risk-adjusted floor.'; }
+      else if (index === 3) { disposition = 'APPROVE'; rationale = 'No wallet, execution, settlement, production, or legal authority is present.'; }
+      else if (index === 4 && config.incidents.length) { disposition = consensus.quorum_met ? 'CAUTION' : 'VETO'; rationale = consensus.quorum_met ? 'Recovery path is documented; residual risk remains.' : 'Recovery path did not restore the required quorum.'; }
+      return { ...guardian, disposition, rationale };
     });
-    const ring = byId('aan-quorum-ring');
-    const label = byId('aan-quorum-label');
-    if (consensus) {
-      ring.textContent = `${consensus.support_count}/7`;
-      label.textContent = consensus.quorum_recorded ? `QUORUM ${consensus.threshold} RECORDED` : 'QUORUM NOT MET';
-    } else {
-      ring.textContent = '0/7';
-      label.textContent = 'AWAITING VOTES';
+  }
+  function determineTerminal(config, receipt, consensus, guardians) {
+    const vetoes = guardians.filter((item) => item.disposition === 'VETO');
+    if (!receipt.resource_compliant || !consensus.quorum_met || vetoes.length) {
+      const reasons = [];
+      if (!receipt.resource_compliant) reasons.push('resource envelope not admitted');
+      if (!consensus.quorum_met) reasons.push('validator quorum not met');
+      if (vetoes.length) reasons.push(`${vetoes.length} guardian veto${vetoes.length === 1 ? '' : 'es'}`);
+      return { state: 'SAFE_HOLD', title: 'The node refused to advance.', copy: `Fail-closed disposition: ${reasons.join(', ')}. Evidence is preserved for diagnosis; no external authority exists.` };
     }
+    return { state: 'HUMAN_REVIEW_REQUIRED', title: 'The proof package is ready for a human decision.', copy: 'The route, receipt, evaluation, validator quorum, dissent, guardian review, and chained evidence are complete. Factual correctness and external action remain unapproved.' };
   }
 
-  function renderGuardians(signedCount = 0) {
-    const row = byId('aan-guardian-row');
-    clear(row);
-    release.guardians.forEach((guardian, index) => {
-      const node = el('span', `aan-guardian${index < signedCount ? ' signed' : ''}`, guardian.symbol);
-      node.title = `${guardian.name}${index < signedCount ? ' — simulated review signature' : ' — unsigned'}`;
-      row.appendChild(node);
-    });
-  }
-
-  function renderArtifacts(sealedCount = 0) {
-    const list = byId('aan-artifact-list');
-    clear(list);
-    release.artifacts.forEach((artifact, index) => {
-      list.appendChild(el('li', index < sealedCount ? 'sealed' : '', artifact));
-    });
-    byId('aan-artifact-count').textContent = `${sealedCount} / ${release.artifacts.length} sealed`;
-  }
-
-  function setReceipt(receipt = null) {
-    byId('aan-receipt-hash').textContent = receipt ? receipt.receipt_id : 'not generated';
-    byId('aan-receipt-class').textContent = receipt ? `${receipt.work_unit_symbol} · ${receipt.work_unit_class.toUpperCase()}` : '—';
-    byId('aan-receipt-wu').textContent = receipt ? receipt.alpha_work_units.toFixed(3) : '—';
-    byId('aan-receipt-time').textContent = receipt ? `${receipt.execution_time_ms.toLocaleString()} ms` : '—';
-    byId('aan-receipt-energy').textContent = receipt ? `${receipt.estimated_energy_kwh.toFixed(4)} kWh` : '—';
-    byId('aan-receipt-slo').textContent = receipt ? (receipt.slo_pass_multiplier === 1 ? 'YES' : 'CONDITIONAL') : '—';
-  }
-
-  function setLiveMetrics(receipt = null, evaluation = null, consensus = null, route = null) {
-    byId('aan-metric-wu').textContent = receipt ? receipt.alpha_work_units.toFixed(3) : '—';
-    byId('aan-metric-quality').textContent = evaluation ? `${Math.round(evaluation.dimensions.quality * 100)}%` : '—';
-    byId('aan-metric-energy').textContent = route ? route.route_metrics.average_energy_score.toFixed(3) : '—';
-    byId('aan-metric-quorum').textContent = consensus ? `${consensus.support_count}/7` : '—';
-  }
-
-  function setPulse(values = []) {
-    const line = byId('aan-pulse-line');
-    const area = byId('aan-pulse-area');
-    const points = byId('aan-pulse-points');
-    clear(points);
-    if (!values.length) {
-      line.setAttribute('d', 'M30 190L650 190');
-      area.setAttribute('d', 'M30 190L650 190L650 190L30 190Z');
-      return;
-    }
-    const width = 620;
-    const coords = values.map((value, index) => {
-      const x = 30 + (values.length === 1 ? 0 : index * width / (values.length - 1));
-      const y = 195 - clamp(value, 0, 1) * 150;
-      return [round(x, 1), round(y, 1)];
-    });
-    const path = coords.map(([x, y], index) => `${index ? 'L' : 'M'}${x} ${y}`).join('');
-    line.setAttribute('d', path);
-    area.setAttribute('d', `${path}L${coords[coords.length - 1][0]} 195L${coords[0][0]} 195Z`);
-    coords.forEach(([x, y]) => points.appendChild(svgEl('circle', { class: 'aan-pulse-point', cx: x, cy: y, r: 5 })));
-  }
-
-  function logEvent(message, type = '') {
-    const index = runtime.logs.length;
-    const elapsed = `${pad(Math.floor(index / 60))}:${pad(index % 60)}`;
-    runtime.logs.push({ sequence: index + 1, elapsed, message, type: type || 'info' });
-    const terminal = byId('aan-terminal');
-    const item = el('li', type ? `is-${type}` : '');
-    item.append(el('time', '', elapsed), el('span', '', message));
-    terminal.appendChild(item);
-    terminal.scrollTop = terminal.scrollHeight;
-  }
-
-  function clearTerminal() {
-    runtime.logs = [];
-    const terminal = byId('aan-terminal');
-    clear(terminal);
-  }
-
-  function setRuntimeState(state, copy, mode = 'active') {
-    const banner = byId('aan-state-banner');
-    const stateNode = banner.querySelector('b');
-    const copyNode = banner.querySelector('p');
-    stateNode.textContent = state;
-    copyNode.textContent = copy;
-    banner.classList.toggle('is-complete', state === 'HUMAN_REVIEW_REQUIRED');
-    byId('aan-runtime-mode').textContent = mode === 'hold' ? 'SAFE HOLD / DEFAULT DENY' : state === 'HUMAN_REVIEW_REQUIRED' ? 'EVIDENCE DOCKET COMPLETE' : `CYCLE / ${state.replaceAll('_', ' ')}`;
-    const dot = byId('aan-runtime-dot');
-    dot.classList.toggle('is-hold', mode === 'hold');
-  }
-
-  function collectConfig() {
-    const preset = release.presets.find((item) => item.id === ids.preset.value) || release.presets[0];
-    const workClass = release.work_unit_classes.find((item) => item.id === ids.workClass.value) || release.work_unit_classes[0];
-    const posture = release.postures.find((item) => item.id === ids.posture.value) || release.postures[0];
-    const nodeName = safeText(ids.nodeName.value, '1.alpha.node.agi.eth').slice(0, 72);
-    const mission = safeText(ids.mission.value, preset.mission).slice(0, 640);
-    const quorum = Number(ids.quorum.value);
-    const energyTarget = Number(ids.energy.value) / 100;
-    const latency = Number(ids.latency.value);
-    const seedMaterial = [release.release_id, nodeName, mission, preset.id, workClass.id, posture.id, quorum, energyTarget, latency].join('|');
-    const seed = hashString(seedMaterial);
-    const deterministic_seed = `0x${hashHex(seedMaterial, 16)}`;
-    const runId = `node_${hashHex(`${seedMaterial}:run`, 14)}`;
-    return {
-      preset,
-      workClass,
-      posture,
-      nodeName,
-      mission,
-      quorum,
-      energyTarget,
-      latency,
-      seed,
-      deterministic_seed,
-      commitment: `sha256:${hashHex(seedMaterial, 64)}`,
-      runId,
-      timestamp: deterministicTimestamp(seed)
-    };
-  }
-
-  const sleep = (ms) => new Promise((resolve) => window.setTimeout(resolve, ms));
-
-  async function runCycle(event) {
-    event.preventDefault();
-    if (runtime.safeHold) return;
-    const config = collectConfig();
-    if (config.mission.length < 20) {
-      ids.mission.focus();
-      setRuntimeState('MISSION_REQUIRES_DETAIL', 'Describe a consequential work unit in at least 20 characters.', 'hold');
-      return;
-    }
-
-    const token = ++runtime.runToken;
-    runtime.started = true;
-    runtime.config = config;
-    runtime.seed = config.seed;
-    runtime.deterministic_seed = config.deterministic_seed;
-    runtime.peerRoute = null;
-    runtime.receipt = null;
-    runtime.evaluation = null;
-    runtime.consensus = null;
-    runtime.docket = null;
-    runtime.brief = '';
-    ids.run.disabled = true;
-    ids.pause.disabled = false;
-    byId('aan-run-id').textContent = `${config.runId} / ${config.deterministic_seed}`;
-    byId('aan-authority').textContent = 'NONE GRANTED';
-    byId('aan-hero-status').textContent = 'PROOF CYCLE';
-    clearTerminal();
-    renderValidators();
-    renderGuardians(0);
-    renderArtifacts(0);
-    setReceipt();
-    setLiveMetrics();
-    setPulse([]);
-    byId('aan-download-json').disabled = true;
-    byId('aan-download-md').disabled = true;
-    byId('aan-copy-summary').disabled = true;
-    byId('aan-final-state').textContent = 'IN PROGRESS';
-    byId('aan-final-copy').textContent = 'The node is assembling a structural evidence package.';
-    byId('aan-review-headline').textContent = 'A governed cycle is in progress.';
-    byId('aan-review-summary').textContent = 'Evidence remains incomplete and all external authority is withheld.';
-    byId('aan-export-status').textContent = '';
-    doc.querySelector('.aan-auth-card')?.classList.remove('is-ready');
-    const rng = mulberry32(config.seed);
-    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const delay = reduced ? 20 : 190;
-    const pulse = [];
-    const artifactCounts = [1, 2, 3, 4, 7, 9, 11, 14];
-
-    const stages = [
-      () => {
-        logEvent(`Identity commitment ${config.commitment.slice(0, 24)}… bound to declared node ${config.nodeName}.`, 'good');
-        pulse.push(0.36 + rng() * 0.08);
-      },
-      () => {
-        logEvent(`Work unit contracted as ${config.workClass.symbol} / ${config.workClass.label}; scope expansion prohibited.`, 'good');
-        pulse.push(0.44 + rng() * 0.08);
-      },
-      () => {
-        logEvent(`Resource envelope admitted: latency ≤ ${config.latency} ms, energy ≥ ${config.energyTarget.toFixed(2)}, quorum ${config.quorum}/7.`, 'good');
-        pulse.push(0.53 + rng() * 0.08);
-      },
-      () => {
-        runtime.peerRoute = createPeerRoute(config, rng);
-        renderPeerRoute(runtime.peerRoute);
-        logEvent(`${runtime.peerRoute.admitted.length} peers admitted; ${runtime.peerRoute.rejected.length} rejected with rationale; external connections 0.`, 'good');
-        pulse.push(0.62 + rng() * 0.08);
-      },
-      () => {
-        runtime.receipt = calculateAlphaWorkUnit(config, runtime.peerRoute, rng);
-        setReceipt(runtime.receipt);
-        setLiveMetrics(runtime.receipt, null, null, runtime.peerRoute);
-        logEvent(`Sandbox receipt ${runtime.receipt.receipt_id} produced ${runtime.receipt.alpha_work_units.toFixed(3)} α-WU; live compute calls 0.`, 'good');
-        pulse.push(0.72 + rng() * 0.07);
-      },
-      () => {
-        runtime.evaluation = createEvaluation(config, runtime.peerRoute, runtime.receipt, rng);
-        setLiveMetrics(runtime.receipt, runtime.evaluation, null, runtime.peerRoute);
-        byId('aan-contradiction-title').textContent = runtime.evaluation.contradiction.title;
-        byId('aan-contradiction-copy').textContent = runtime.evaluation.contradiction.statement;
-        logEvent(`Quality evaluation ${Math.round(runtime.evaluation.composite * 100)} / 100 recorded; factual correctness NOT CERTIFIED.`, 'warn');
-        pulse.push(0.79 + rng() * 0.06);
-      },
-      () => {
-        runtime.consensus = createValidatorConsensus(config, runtime.evaluation, rng);
-        renderValidators(runtime.consensus);
-        setLiveMetrics(runtime.receipt, runtime.evaluation, runtime.consensus, runtime.peerRoute);
-        renderGuardians(4);
-        byId('aan-guardian-copy').textContent = 'Four simulated review signatures are recorded. The Treasury Guardian remains unsigned; no transaction, settlement, or external permission can be produced by this experience.';
-        logEvent(`Validator support ${runtime.consensus.support_count}/7 meets threshold ${runtime.consensus.threshold}; dissent preserved; authority conferred false.`, 'warn');
-        pulse.push(0.86 + rng() * 0.05);
-      },
-      () => {
-        runtime.docket = buildNodeEvidenceDocket(config, runtime.peerRoute, runtime.receipt, runtime.evaluation, runtime.consensus);
-        runtime.brief = createReviewBrief(runtime.docket);
-        byId('aan-final-state').textContent = 'HUMAN_REVIEW_REQUIRED';
-        byId('aan-final-copy').textContent = 'Fourteen artifacts are sealed. Production, funds, settlement, and external actions remain explicitly absent.';
-        byId('aan-review-headline').textContent = 'The proof package is complete. Authority remains withheld.';
-        byId('aan-review-summary').textContent = `${runtime.peerRoute.admitted.length} peers were admitted, ${runtime.receipt.alpha_work_units.toFixed(3)} normalized α-WU were simulated, and ${runtime.consensus.support_count}/7 validator seats supported review readiness with dissent preserved. This is not factual or production certification.`;
-        byId('aan-download-json').disabled = false;
-        byId('aan-download-md').disabled = false;
-        byId('aan-copy-summary').disabled = false;
-        doc.querySelector('.aan-auth-card')?.classList.add('is-ready');
-        logEvent('Evidence Docket complete. HUMAN_REVIEW_REQUIRED. External actions 0. Authority NONE GRANTED.', 'hold');
-        pulse.push(0.91 + rng() * 0.04);
-      }
+  async function createArtifactChain(config, route, receipt, evaluation, consensus, guardians, terminal) {
+    const payloads = [
+      { node_name: config.node_name, declared_operator: 'public-review-simulator', jurisdiction: 'human-declared', reviewer: 'human-required', origin: release.origin.repository },
+      { mission: config.mission, work_class: config.work_class, risk: config.risk, success: 'review-ready evidence package', stop: terminal.state },
+      { posture: config.posture, weights: release.postures.find((p) => p.id === config.posture).weights, prohibitions: ['network','wallet','transaction','settlement','production'] },
+      { latency_ceiling_ms: config.latency_ceiling, energy_target: config.energy_target, resource_compliant: receipt.resource_compliant, concurrency: receipt.concurrency, memory_mb: receipt.memory_mb },
+      { candidates: runtime.candidates.map((p) => ({ id: p.id, score: round(p.score, 3), status: p.status, reason: p.reason })) },
+      { route_id: route.route_id, primary: route.primary.map((p) => p.id), shadow: route.shadow.map((p) => p.id), diversity: route.diversity, mitigation: route.mitigation },
+      { incidents: config.incidents, quarantined: route.quarantined.map((p) => p.id), residual_risk: config.incidents.length ? 'human-review-required' : 'baseline' },
+      receipt,
+      { latency_ms: route.mean_latency, reliability: route.reliability, evidence: route.evidence, packets: route.packets, external_network: false },
+      evaluation,
+      consensus,
+      { seats: guardians, vetoes: guardians.filter((g) => g.disposition === 'VETO').map((g) => g.id) },
+      { state: terminal.state, permissions: { external_action: false, production: false, funds: false, factual_certification: false }, human_review_required: true },
+      { pipeline: release.pipeline.map((stage) => stage.state), seed: config.seed, algorithm: window.crypto?.subtle ? 'SHA-256' : 'deterministic-fallback' },
+      { schema: 'goalos.agi_alpha_node_v0.node_evidence_docket.v2', release_id: release.release_id, terminal_state: terminal.state },
+      { title: 'Executive Review Brief', recommendation: terminal.title, unresolved: consensus.votes.filter((v) => v.vote !== 'PASS').map((v) => v.name) }
     ];
-
-    for (let index = 0; index < stages.length; index += 1) {
-      if (token !== runtime.runToken || runtime.safeHold) return;
-      setStage(index);
-      const stage = release.pipeline[index];
-      byId('aan-terminal-state').textContent = `${pad(index + 1)} / ${pad(stages.length)} · ${stage.agent}`;
-      setRuntimeState(stage.state, stage.output);
-      stages[index]();
-      renderArtifacts(artifactCounts[index]);
-      setPulse(pulse);
-      await sleep(delay);
+    let previous = '0'.repeat(64); const chain = [];
+    for (let index = 0; index < release.artifacts.length; index += 1) {
+      const meta = release.artifacts[index]; const payload = payloads[index];
+      const artifactHash = await sha256(stableStringify(payload));
+      const commitment = await sha256(`${previous}:${artifactHash}:${meta.name}`);
+      chain.push({ index: index + 1, id: meta.id, name: meta.name, plane: meta.plane, purpose: meta.purpose, payload, previous_commitment: previous, artifact_hash: artifactHash, commitment });
+      previous = commitment;
     }
-
-    if (token !== runtime.runToken || runtime.safeHold) return;
-    setStage(release.pipeline.length);
-    setRuntimeState('HUMAN_REVIEW_REQUIRED', 'Evidence is ready for qualified human judgment. All external permissions remain absent.');
-    byId('aan-terminal-state').textContent = 'complete / review hold';
-    byId('aan-hero-status').textContent = 'REVIEW PACKAGE';
-    ids.run.disabled = false;
-    window.__AAN_QA__ = {
-      getState: () => ({ ...runtime, docket: runtime.docket }),
-      getDocket: () => runtime.docket,
-      deterministic_seed: config.deterministic_seed,
-      external_actions: 0,
-      authority: 'NONE_GRANTED',
-      factual_correctness: 'NOT_CERTIFIED'
+    return chain;
+  }
+  function createDocket(config, route, receipt, evaluation, consensus, guardians, terminal, chain) {
+    return {
+      schema: 'goalos.agi_alpha_node_v0.node_evidence_docket.v2', release: { id: release.release_id, title: release.release_title, version: release.version },
+      generated_at: deterministicTimestamp(config.seed, 16), deterministic_seed: config.seed, cryptographic_chain: window.crypto?.subtle ? 'SHA-256' : 'deterministic-fallback',
+      node: { identity: config.node_name, origin: release.origin, mode: 'browser-local-digital-twin' }, mission: config,
+      peer_route: { route_id: route.route_id, primary: route.primary.map((p) => ({ id: p.id, name: p.name, region: p.region, score: round(p.score, 3) })), shadow: route.shadow.map((p) => ({ id: p.id, name: p.name, region: p.region, score: round(p.score, 3) })), quarantined: route.quarantined.map((p) => p.id), mitigation: route.mitigation },
+      alpha_work_unit_receipt: receipt, evaluation, validator_consensus: consensus, guardian_review: guardians, terminal_disposition: terminal,
+      proof_chronicle: { artifacts: chain, chain_head: chain.at(-1)?.commitment || null },
+      claim_boundary: release.claim_boundary, authority: { factual_correctness: 'NOT_CERTIFIED', production_activation: 'NOT_ACTIVATED', funds_authorization: 'NO', external_actions: 0, final_state: terminal.state }
     };
   }
-
-  function toggleSafeHold() {
-    runtime.safeHold = !runtime.safeHold;
-    runtime.runToken += 1;
-    ids.pause.textContent = runtime.safeHold ? 'Release safe hold' : 'Place on safe hold';
-    ids.run.disabled = runtime.safeHold;
-    if (runtime.safeHold) {
-      setStage(-1);
-      setRuntimeState('SAFE_HOLD', 'The local cycle is paused. No authority, network, compute, wallet, transaction, or settlement action exists.', 'hold');
-      byId('aan-terminal-state').textContent = 'safe hold';
-      logEvent('Safe hold engaged. Default deny remains in force.', 'hold');
-    } else {
-      setRuntimeState('READY_FOR_MISSION', 'Safe hold released. A new bounded local cycle may be composed.');
-      byId('aan-terminal-state').textContent = 'idle';
-      logEvent('Safe hold released. No previous cycle resumed automatically.', 'warn');
-    }
+  function createBrief(docket) {
+    const nonPass = docket.validator_consensus.votes.filter((item) => item.vote !== 'PASS');
+    const vetoes = docket.guardian_review.filter((item) => item.disposition === 'VETO');
+    return `# GoalOS AGIALPHA Ascension AGI Alpha Node v0 — Executive Review Brief\n\n## Terminal disposition\n\n**${docket.terminal_disposition.state}** — ${docket.terminal_disposition.title}\n\n${docket.terminal_disposition.copy}\n\n## Mission\n\n${docket.mission.mission}\n\n- Node: ${docket.node.identity}\n- Work class: ${docket.mission.work_class}\n- Risk profile: ${docket.mission.risk}\n- Operating constitution: ${docket.mission.posture}\n- Primary route: ${docket.peer_route.primary.map((p) => p.name).join(' → ')}\n- Shadow route: ${docket.peer_route.shadow.map((p) => p.name).join(' → ')}\n- Review readiness: ${formatPct(docket.evaluation.readiness)} (simulated; not factual confidence)\n- Validator result: ${docket.validator_consensus.summary}; threshold ${docket.validator_consensus.threshold}/7\n- Guardian vetoes: ${vetoes.length ? vetoes.map((g) => g.name).join(', ') : 'none'}\n- Chain head: ${docket.proof_chronicle.chain_head}\n\n## Dissent and unresolved review surfaces\n\n${nonPass.length ? nonPass.map((v) => `- **${v.name} — ${v.vote}:** ${v.rationale}`).join('\n') : '- No simulated validator dissent.'}\n\n## Human decision required\n\nReview the identity, mission contract, route diversity, resource envelope, evidence coverage, validator dissent, guardian dispositions, and residual uncertainty. This package grants no external authority.\n\n## Explicit boundary\n\n- Factual correctness: NOT CERTIFIED\n- Production activation: NOT ACTIVATED\n- Funds authorization: NO\n- External actions: 0\n- Final state: ${docket.terminal_disposition.state}\n`;
   }
 
-  function resetRuntime() {
-    runtime.runToken += 1;
-    runtime.safeHold = false;
-    runtime.phaseIndex = -1;
-    runtime.config = null;
-    runtime.peerRoute = null;
-    runtime.receipt = null;
-    runtime.evaluation = null;
-    runtime.consensus = null;
-    runtime.docket = null;
-    runtime.brief = '';
-    ids.pause.textContent = 'Place on safe hold';
-    ids.run.disabled = false;
-    byId('aan-run-id').textContent = 'Awaiting mission';
-    byId('aan-authority').textContent = 'NONE GRANTED';
-    byId('aan-hero-status').textContent = 'REVIEW MODE';
-    setStage(-1);
-    clearTerminal();
-    logEvent('Node cycle is ready. Compose a bounded work unit.');
-    renderInitialPeers();
-    renderValidators();
-    renderGuardians(0);
-    renderArtifacts(0);
-    setReceipt();
-    setLiveMetrics();
-    setPulse([]);
-    setRuntimeState('READY_FOR_MISSION', 'All external authority is withheld.');
-    byId('aan-terminal-state').textContent = 'idle';
-    byId('aan-contradiction-title').textContent = 'No evaluation yet.';
-    byId('aan-contradiction-copy').textContent = 'The Contradiction Validator will preserve the strongest dissent after a cycle runs.';
-    byId('aan-guardian-copy').textContent = 'Guardian seats remain unsigned until a review package exists. Even a complete simulated threshold cannot broadcast a transaction.';
-    byId('aan-final-state').textContent = 'NOT GENERATED';
-    byId('aan-final-copy').textContent = 'Run a governed cycle to assemble the docket.';
-    byId('aan-review-headline').textContent = 'The node is ready to receive a bounded mission.';
-    byId('aan-review-summary').textContent = 'No work-unit claim, resource route, validator result, or authorization state has been generated.';
-    byId('aan-download-json').disabled = true;
-    byId('aan-download-md').disabled = true;
-    byId('aan-copy-summary').disabled = true;
-    byId('aan-export-status').textContent = '';
-    doc.querySelector('.aan-auth-card')?.classList.remove('is-ready');
-    window.__AAN_QA__ = {
-      getState: () => ({ ...runtime }),
-      getDocket: () => runtime.docket,
-      deterministic_seed: '',
-      external_actions: 0,
-      authority: 'NONE_GRANTED',
-      factual_correctness: 'NOT_CERTIFIED'
-    };
+  const ui = {};
+  function collectUI() {
+    Object.assign(ui, {
+      form: byId('aan-node-form'), preset: byId('aan-preset'), nodeName: byId('aan-node-name'), mission: byId('aan-mission'), workClass: byId('aan-work-class'),
+      risk: byId('aan-risk'), posture: byId('aan-posture'), postureDescription: byId('aan-posture-description'), energy: byId('aan-energy'), latency: byId('aan-latency'),
+      energyOutput: byId('aan-energy-output'), latencyOutput: byId('aan-latency-output'), run: byId('aan-run'), hold: byId('aan-hold'), reset: byId('aan-reset')
+    });
   }
-
-  function downloadFile(filename, content, type) {
-    const blob = new Blob([content], { type });
-    const url = URL.createObjectURL(blob);
-    const anchor = el('a');
-    anchor.href = url;
-    anchor.download = filename;
-    anchor.hidden = true;
-    doc.body.appendChild(anchor);
-    anchor.click();
-    anchor.remove();
-    window.setTimeout(() => URL.revokeObjectURL(url), 0);
+  function renderThesis() {
+    const target = byId('aan-thesis-grid'); if (!target) return; clear(target);
+    release.thesis.forEach((item) => { const card = el('article'); append(card, 'span', 'number', item.number); append(card, 'h3', '', item.title); append(card, 'p', '', item.copy); target.appendChild(card); });
   }
-
-  function exportJson() {
-    if (!runtime.docket) return;
-    downloadFile(`${runtime.config.runId}-NodeEvidenceDocket.json`, `${JSON.stringify(runtime.docket, null, 2)}\n`, 'application/json');
-    byId('aan-export-status').textContent = 'Evidence Docket downloaded locally. Nothing was transmitted.';
+  function renderControls() {
+    release.presets.forEach((item) => ui.preset.appendChild(option(item.id, item.label)));
+    release.work_unit_classes.forEach((item) => ui.workClass.appendChild(option(item.id, `${item.symbol} · ${item.label}`)));
+    release.risk_profiles.forEach((item) => ui.risk.appendChild(option(item.id, `${item.label} · quorum ${item.quorum}/7`)));
+    release.postures.forEach((item) => ui.posture.appendChild(option(item.id, item.label)));
+    ui.preset.value = release.presets[0].id; ui.posture.value = 'sovereign'; applyPreset(); syncPosture(); syncRanges();
+    const incidents = byId('aan-incident-grid'); clear(incidents);
+    release.incidents.forEach((item) => { const wrap = el('div', 'aan-incident-option'); const input = el('input'); input.type = 'checkbox'; input.id = `aan-incident-${item.id}`; input.value = item.id; input.name = 'incident'; const label = el('label'); label.htmlFor = input.id; append(label, 'i', '', item.symbol); const text = el('span'); append(text, 'b', '', item.label); append(text, 'small', '', item.description); label.appendChild(text); wrap.append(input, label); incidents.appendChild(wrap); });
   }
-
-  function exportMarkdown() {
-    if (!runtime.brief) return;
-    downloadFile(`${runtime.config.runId}-ExecutiveReviewBrief.md`, `${runtime.brief}\n`, 'text/markdown');
-    byId('aan-export-status').textContent = 'Executive review brief downloaded locally.';
+  function applyPreset() {
+    const preset = release.presets.find((item) => item.id === ui.preset.value) || release.presets[0];
+    ui.mission.value = preset.mission; ui.workClass.value = preset.work_class; ui.risk.value = preset.risk;
   }
+  function syncPosture() { const posture = release.postures.find((item) => item.id === ui.posture.value); ui.postureDescription.textContent = posture?.description || ''; }
+  function syncRanges() { ui.energyOutput.value = (Number(ui.energy.value) / 100).toFixed(2); ui.energyOutput.textContent = (Number(ui.energy.value) / 100).toFixed(2); ui.latencyOutput.value = `${ui.latency.value} ms`; ui.latencyOutput.textContent = `${ui.latency.value} ms`; }
+  function collectConfig() {
+    const incidents = [...doc.querySelectorAll('input[name="incident"]:checked')].map((input) => input.value).sort();
+    const mission = safe(ui.mission.value);
+    const config = { node_name: safe(ui.nodeName.value, '1.alpha.node.agi.eth'), mission, work_class: ui.workClass.value, risk: ui.risk.value, posture: ui.posture.value, energy_target: Number(ui.energy.value) / 100, latency_ceiling: Number(ui.latency.value), incidents };
+    config.seed = hashString(stableStringify(config)); return config;
+  }
+  function renderStageRail() {
+    const target = byId('aan-stage-rail'); clear(target);
+    release.pipeline.forEach((stage, index) => { const item = el('div', 'aan-stage'); item.dataset.stage = String(index); item.title = stage.title; append(item, 'span', '', pad(stage.order)); append(item, 'b', '', stage.id.toUpperCase()); target.appendChild(item); });
+  }
+  function setStage(index, held = false) {
+    runtime.phase = index;
+    doc.querySelectorAll('.aan-stage').forEach((item, i) => { item.classList.toggle('is-complete', i < index); item.classList.toggle('is-active', i === index && !held); item.classList.toggle('is-hold', held && i === index); });
+    const stage = release.pipeline[index]; if (stage) { byId('aan-state-label').textContent = stage.state; byId('aan-runtime-badge').textContent = held ? 'SAFE HOLD' : `GATE ${pad(index + 1)} / 10`; }
+  }
+  function log(message, type = '') {
+    const list = byId('aan-terminal-log'); if (!runtime.logs.length) clear(list);
+    const item = el('li', type, message); list.appendChild(item); runtime.logs.push({ message, type }); list.scrollTop = list.scrollHeight; byId('aan-terminal-count').textContent = `${runtime.logs.length} EVENT${runtime.logs.length === 1 ? '' : 'S'}`;
+  }
+  function resetLog() { runtime.logs = []; const list = byId('aan-terminal-log'); clear(list); list.appendChild(el('li', 'muted', 'Awaiting a bounded mission.')); byId('aan-terminal-count').textContent = '0 EVENTS'; }
+  function renderInitialArtifacts() {
+    const target = byId('aan-artifact-chain'); if (!target) return; clear(target);
+    release.artifacts.forEach((item, index) => { const card = el('article', 'aan-artifact-card'); card.dataset.artifact = String(index); append(card, 'span', '', `${pad(index + 1)} · ${item.plane.toUpperCase()}`); append(card, 'h3', '', item.name); append(card, 'p', 'aan-executive-only', item.purpose); append(card, 'code', 'aan-technical-only', 'UNSEALED'); target.appendChild(card); });
+  }
+  function renderArtifactProgress(chain = [], count = 0) {
+    doc.querySelectorAll('.aan-artifact-card').forEach((card, index) => { const record = chain[index]; const sealed = index < count && record; card.classList.toggle('is-sealed', Boolean(sealed)); const code = card.querySelector('code'); if (code) code.textContent = sealed ? shortHash(record.commitment, 16) : 'UNSEALED'; });
+    byId('aan-artifact-count').textContent = `${Math.min(count, 16)} / 16`;
+    if (count >= 16 && chain.length) { byId('aan-chain-status').textContent = 'SEALED'; byId('aan-chain-code').textContent = chain.at(-1).commitment; byId('aan-chain-head').textContent = shortHash(chain.at(-1).commitment); }
+  }
+  function renderCouncil(consensus = null, guardians = null) {
+    const validatorGrid = byId('aan-validator-grid'); const guardianGrid = byId('aan-guardian-grid'); clear(validatorGrid); clear(guardianGrid);
+    (consensus?.votes || release.validators).forEach((item) => { const card = el('article', `aan-validator${item.vote ? ` is-${item.vote === 'PASS' ? 'pass' : item.vote === 'DISSENT' ? 'dissent' : 'reject'}` : ''}`); append(card, 'i', '', item.symbol); append(card, 'b', '', item.name); append(card, 'small', '', item.rationale || item.focus); append(card, 'em', '', item.vote || 'AWAITING'); validatorGrid.appendChild(card); });
+    (guardians || release.guardians).forEach((item) => { const cls = item.disposition ? ` is-${item.disposition === 'APPROVE' ? 'approve' : item.disposition === 'CAUTION' ? 'caution' : 'veto'}` : ''; const card = el('article', `aan-guardian${cls}`); append(card, 'i', '', item.symbol); append(card, 'b', '', item.name); append(card, 'small', '', item.rationale || item.focus); append(card, 'em', '', item.disposition || 'AWAITING'); guardianGrid.appendChild(card); });
+    byId('aan-quorum-label').textContent = consensus ? `QUORUM ${consensus.pass} / ${consensus.threshold}` : 'QUORUM —';
+    byId('aan-guardian-label').textContent = guardians ? `${guardians.filter((g) => g.disposition === 'VETO').length} VETO` : 'AWAITING';
+  }
+  function renderFlightMetrics(route = null, receipt = null, evaluation = null) {
+    const target = byId('aan-flight-metrics'); clear(target);
+    const values = route && receipt && evaluation ? [
+      [route.mean_latency ? `${route.mean_latency} ms` : '—', 'mean latency'], [formatPct(evaluation.quality), 'quality'], [formatPct(evaluation.evidence), 'evidence'], [formatPct(evaluation.diversity), 'route diversity'], [receipt.energy_score.toFixed(2), 'energy'], [formatPct(evaluation.uncertainty), 'uncertainty']
+    ] : [['—','mean latency'],['—','quality'],['—','evidence'],['—','route diversity'],['—','energy'],['—','uncertainty']];
+    values.forEach(([value, label]) => { const card = el('div'); append(card, 'b', '', value); append(card, 'span', '', label); target.appendChild(card); });
+  }
+  function renderMesh(candidates = [], route = null) {
+    const target = byId('aan-mesh'); if (!target) return; clear(target);
+    const defs = svg('defs'); const grad = svg('linearGradient', { id: 'aan-mesh-grad', x1: '0', y1: '0', x2: '1', y2: '1' }); grad.append(svg('stop', { offset: '0', 'stop-color': '#ffe56d' }), svg('stop', { offset: '.5', 'stop-color': '#66f6c8' }), svg('stop', { offset: '1', 'stop-color': '#43c9ff' })); defs.appendChild(grad); target.appendChild(defs);
+    const center = { x: 450, y: 270 }; const radiusX = 350; const radiusY = 190;
+    const source = candidates.length ? candidates : release.peers.map((peer) => ({ ...peer, score: 0, status: 'candidate' }));
+    const positions = new Map(); source.forEach((peer, index) => { const angle = -Math.PI / 2 + (Math.PI * 2 * index) / source.length; positions.set(peer.id, { x: center.x + Math.cos(angle) * radiusX, y: center.y + Math.sin(angle) * radiusY }); });
+    const rings = svg('g', { class: 'aan-mesh-rings' }); rings.append(svg('ellipse', { cx: center.x, cy: center.y, rx: 350, ry: 190 }), svg('ellipse', { cx: center.x, cy: center.y, rx: 255, ry: 135 }), svg('line', { x1: 80, y1: center.y, x2: 820, y2: center.y })); target.appendChild(rings);
+    source.forEach((peer) => { const pos = positions.get(peer.id); const status = route?.primary.some((p) => p.id === peer.id) ? 'primary' : route?.shadow.some((p) => p.id === peer.id) ? 'shadow' : peer.status === 'quarantined' ? 'quarantine' : 'candidate'; const line = svg('line', { x1: center.x, y1: center.y, x2: pos.x, y2: pos.y, class: `aan-mesh-edge ${status}` }); target.appendChild(line); if (status === 'primary' || status === 'shadow') { const packet = svg('circle', { r: status === 'primary' ? 4 : 3, class: `aan-mesh-packet ${status}` }); const animation = svg('animateMotion', { dur: status === 'primary' ? '2.5s' : '3.4s', repeatCount: 'indefinite', path: `M${center.x},${center.y} L${pos.x},${pos.y}` }); packet.appendChild(animation); target.appendChild(packet); } });
+    const core = svg('g', { class: 'aan-mesh-core' }); core.append(svg('circle', { cx: center.x, cy: center.y, r: 64 }), svg('circle', { cx: center.x, cy: center.y, r: 42, class: 'inner' })); const alpha = svg('text', { x: center.x, y: center.y + 13 }); alpha.textContent = 'α'; core.appendChild(alpha); const coreName = svg('text', { x: center.x, y: center.y + 91, class: 'name' }); coreName.textContent = '1.alpha.node.agi.eth'; core.appendChild(coreName); target.appendChild(core);
+    source.forEach((peer) => { const pos = positions.get(peer.id); const status = route?.primary.some((p) => p.id === peer.id) ? 'primary' : route?.shadow.some((p) => p.id === peer.id) ? 'shadow' : peer.status === 'quarantined' ? 'quarantine' : 'candidate'; const group = svg('g', { class: `aan-peer-node ${status}`, transform: `translate(${pos.x} ${pos.y})` }); group.append(svg('circle', { r: status === 'primary' ? 28 : 23 })); const symbol = svg('text', { y: 4 }); symbol.textContent = peer.name.slice(0, 2).toUpperCase(); group.appendChild(symbol); const name = svg('text', { y: status === 'primary' ? 46 : 41, class: 'name' }); name.textContent = peer.name; group.appendChild(name); const score = svg('text', { y: status === 'primary' ? 60 : 55, class: 'score' }); score.textContent = candidates.length ? `${Math.round(peer.score * 100)}` : '—'; group.appendChild(score); target.appendChild(group); });
+  }
+  function renderDecision(terminal = null) {
+    const card = byId('aan-decision-card'); card.classList.remove('is-review', 'is-hold');
+    if (!terminal) { byId('aan-decision-title').textContent = 'No cycle has run.'; byId('aan-decision-copy').textContent = 'The node has not produced an evidence chain, validator result, guardian review, or decision package.'; return; }
+    card.classList.add(terminal.state === 'SAFE_HOLD' ? 'is-hold' : 'is-review'); byId('aan-decision-title').textContent = terminal.title;
+    byId('aan-decision-copy').textContent = runtime.view === 'technical' ? `${terminal.copy} Terminal state: ${terminal.state}. Chain: ${runtime.chain.at(-1)?.commitment || 'unsealed'}.` : terminal.copy;
+  }
+  function setTrust(value = null, terminal = null) {
+    const ring = byId('aan-trust-ring'); const label = byId('aan-trust-value'); const circumference = 2 * Math.PI * 100;
+    if (value === null) { ring.style.strokeDashoffset = String(circumference); label.textContent = '—'; return; }
+    ring.style.strokeDasharray = String(circumference); ring.style.strokeDashoffset = String(circumference * (1 - clamp(value, 0, 1))); ring.style.stroke = terminal?.state === 'SAFE_HOLD' ? 'var(--aan-rose)' : 'var(--aan-mint)'; label.textContent = `${Math.round(value * 100)}`;
+  }
+  function enableExports(enabled) { ['aan-download-json','aan-download-md','aan-copy-summary'].forEach((id) => { const button = byId(id); if (button) button.disabled = !enabled; }); }
+  function setStatus(state, chain = null, route = null) { byId('aan-state-label').textContent = state; byId('aan-chain-head').textContent = chain ? shortHash(chain) : '—'; byId('aan-route-label').textContent = route ? route.route_id.toUpperCase() : 'UNCOMMITTED'; byId('aan-hero-mode').textContent = state === 'SAFE_HOLD' ? 'SAFE HOLD' : state === 'HUMAN_REVIEW_REQUIRED' ? 'REVIEW READY' : runtime.running ? 'PROOF FLIGHT' : 'REVIEW MODE'; }
 
-  async function copySummary() {
-    if (!runtime.brief) return;
-    const summary = runtime.brief;
+  async function runFlight(event) {
+    event?.preventDefault(); if (runtime.running) return;
+    const config = collectConfig(); if (!config.mission) { ui.mission.focus(); byId('aan-export-status').textContent = 'Enter a bounded mission before launch.'; return; }
+    const token = ++runtime.token; Object.assign(runtime, { running: true, held: false, phase: -1, config, seed: config.seed, rng: mulberry32(config.seed), candidates: [], route: null, receipt: null, evaluation: null, consensus: null, guardians: null, chain: [], docket: null, brief: '', terminal: 'RUNNING' });
+    enableExports(false); resetLog(); renderInitialArtifacts(); renderCouncil(); renderFlightMetrics(); setTrust(null); renderDecision(); setStatus('COMPILING'); ui.run.disabled = true; ui.run.textContent = 'Proof flight running…'; byId('aan-runtime-badge').textContent = 'COMPILING'; byId('aan-chain-status').textContent = 'BUILDING'; byId('aan-chain-code').textContent = '—'; byId('aan-artifact-count').textContent = '0 / 16';
+    const stageDelay = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 20 : 220;
     try {
-      await navigator.clipboard.writeText(summary);
-      byId('aan-export-status').textContent = 'Review summary copied to the clipboard.';
-    } catch (_) {
-      const area = el('textarea');
-      area.value = summary;
-      area.setAttribute('readonly', '');
-      area.style.position = 'fixed';
-      area.style.opacity = '0';
-      doc.body.appendChild(area);
-      area.select();
-      doc.execCommand('copy');
-      area.remove();
-      byId('aan-export-status').textContent = 'Review summary copied to the clipboard.';
-    }
+      const rng = runtime.rng;
+      runtime.candidates = createCandidates(config, rng); runtime.route = createRoute(config, runtime.candidates, rng); runtime.receipt = createReceipt(config, runtime.route, rng); runtime.evaluation = createEvaluation(config, runtime.route, runtime.receipt, rng); runtime.consensus = createConsensus(config, runtime.evaluation, rng); runtime.guardians = createGuardians(config, runtime.evaluation, runtime.consensus); const terminal = determineTerminal(config, runtime.receipt, runtime.consensus, runtime.guardians);
+      runtime.chain = await createArtifactChain(config, runtime.route, runtime.receipt, runtime.evaluation, runtime.consensus, runtime.guardians, terminal);
+      const artifactsByStage = [1,2,3,4,7,9,10,11,12,16];
+      const stageActions = [
+        () => log(`Identity sealed for ${config.node_name}.`, 'ok'),
+        () => log(`Work unit contracted: ${config.work_class} / ${config.risk}.`, 'ok'),
+        () => log(`Constitution compiled: ${config.posture}; external authority = none.`, 'ok'),
+        () => { log(`Resource envelope ${runtime.receipt.resource_compliant ? 'admitted' : 'exceeded'}: ${runtime.receipt.memory_mb} MB · ${runtime.receipt.streams} streams.`, runtime.receipt.resource_compliant ? 'ok' : 'deny'); },
+        () => { renderMesh(runtime.candidates, runtime.route); byId('aan-route-label').textContent = runtime.route.route_id.toUpperCase(); log(`Primary route committed: ${runtime.route.primary.map((p) => p.name).join(' → ')}.`, 'ok'); log(`Shadow route committed: ${runtime.route.shadow.map((p) => p.name).join(' → ')}.`, 'ok'); if (config.incidents.length) log(`Incident disposition: ${runtime.route.mitigation}`, 'warn'); },
+        () => { renderFlightMetrics(runtime.route, runtime.receipt, runtime.evaluation); log(`α-Work Unit receipt ready: ${runtime.receipt.work_unit_id}.`, 'ok'); },
+        () => { setTrust(runtime.evaluation.readiness, terminal); log(`Evaluation ready: ${formatPct(runtime.evaluation.readiness)} review readiness; ${formatPct(runtime.evaluation.uncertainty)} residual uncertainty.`, 'ok'); },
+        () => { renderCouncil(runtime.consensus); log(`Validator mesh: ${runtime.consensus.summary}; threshold ${runtime.consensus.threshold}/7.`, runtime.consensus.quorum_met ? 'ok' : 'deny'); runtime.consensus.votes.filter((v) => v.vote !== 'PASS').forEach((v) => log(`${v.name}: ${v.vote} — ${v.rationale}`, v.vote === 'REJECT' ? 'deny' : 'warn')); },
+        () => { renderCouncil(runtime.consensus, runtime.guardians); const vetoes = runtime.guardians.filter((g) => g.disposition === 'VETO'); log(`Guardian council packaged: ${vetoes.length} veto${vetoes.length === 1 ? '' : 'es'}.`, vetoes.length ? 'deny' : 'ok'); },
+        () => { runtime.terminal = terminal.state; renderDecision(terminal); log(`${terminal.state}: ${terminal.title}`, terminal.state === 'SAFE_HOLD' ? 'deny' : 'warn'); log('Factual correctness remains NOT CERTIFIED. External actions remain 0.', 'warn'); }
+      ];
+      for (let index = 0; index < release.pipeline.length; index += 1) {
+        if (token !== runtime.token) return; setStage(index); stageActions[index](); renderArtifactProgress(runtime.chain, artifactsByStage[index]); await sleep(stageDelay);
+      }
+      runtime.docket = createDocket(config, runtime.route, runtime.receipt, runtime.evaluation, runtime.consensus, runtime.guardians, terminal, runtime.chain); runtime.brief = createBrief(runtime.docket);
+      setStatus(terminal.state, runtime.chain.at(-1).commitment, runtime.route); byId('aan-chain-status').textContent = 'SEALED'; byId('aan-chain-code').textContent = runtime.chain.at(-1).commitment; byId('aan-artifact-count').textContent = '16 / 16'; enableExports(true); byId('aan-export-status').textContent = terminal.state === 'SAFE_HOLD' ? 'Evidence preserved. The node failed closed.' : 'Evidence Docket sealed. Human review is now required.';
+    } catch (error) { console.error(error); runtime.terminal = 'SAFE_HOLD'; setStatus('SAFE_HOLD'); log(`Runtime exception preserved: ${error.message}`, 'deny'); byId('aan-export-status').textContent = 'The local simulation entered SAFE_HOLD.'; }
+    finally { runtime.running = false; ui.run.disabled = false; ui.run.innerHTML = 'Launch proof flight <span>⚡</span>'; byId('aan-runtime-badge').textContent = runtime.terminal === 'SAFE_HOLD' ? 'SAFE HOLD' : 'REVIEW READY'; }
   }
-
+  function safeHold() {
+    runtime.token += 1; runtime.running = false; runtime.held = true; runtime.terminal = 'SAFE_HOLD'; ui.run.disabled = false; ui.run.innerHTML = 'Launch proof flight <span>⚡</span>'; setStage(Math.max(runtime.phase, 0), true); setStatus('SAFE_HOLD', runtime.chain.at(-1)?.commitment, runtime.route); byId('aan-runtime-badge').textContent = 'SAFE HOLD'; log('Manual safe hold engaged. No external action was available or taken.', 'deny'); renderDecision({ state: 'SAFE_HOLD', title: 'The operator placed the node on safe hold.', copy: 'The current local trace is frozen. Restart or reset to begin a new bounded cycle.' }); byId('aan-export-status').textContent = 'Manual safe hold engaged.';
+  }
+  function resetExperience() {
+    runtime.token += 1; Object.assign(runtime, { running: false, held: false, phase: -1, config: null, candidates: [], route: null, receipt: null, evaluation: null, consensus: null, guardians: null, chain: [], docket: null, brief: '', terminal: 'READY' });
+    ui.run.disabled = false; ui.run.innerHTML = 'Launch proof flight <span>⚡</span>'; doc.querySelectorAll('input[name="incident"]').forEach((item) => { item.checked = false; }); renderStageRail(); renderMesh(); renderInitialArtifacts(); renderCouncil(); renderFlightMetrics(); resetLog(); setTrust(null); renderDecision(); setStatus('READY'); byId('aan-runtime-badge').textContent = 'READY'; byId('aan-chain-status').textContent = 'UNSEALED'; byId('aan-chain-code').textContent = '—'; byId('aan-artifact-count').textContent = '0 / 16'; byId('aan-export-status').textContent = ''; enableExports(false);
+  }
+  function download(filename, content, type) { const blob = new Blob([content], { type }); const url = URL.createObjectURL(blob); const anchor = el('a'); anchor.href = url; anchor.download = filename; doc.body.appendChild(anchor); anchor.click(); anchor.remove(); URL.revokeObjectURL(url); }
+  function exportJson() { if (!runtime.docket) return; download(`goalos-agi-alpha-node-v0-${runtime.docket.deterministic_seed}-evidence-docket.json`, `${JSON.stringify(runtime.docket, null, 2)}\n`, 'application/json'); byId('aan-export-status').textContent = 'Evidence Docket downloaded.'; }
+  function exportMarkdown() { if (!runtime.brief) return; download(`goalos-agi-alpha-node-v0-${runtime.seed}-review-brief.md`, runtime.brief, 'text/markdown'); byId('aan-export-status').textContent = 'Executive review brief downloaded.'; }
+  async function copySummary() { if (!runtime.brief) return; try { await navigator.clipboard.writeText(runtime.brief); byId('aan-export-status').textContent = 'Executive summary copied.'; } catch { byId('aan-export-status').textContent = 'Clipboard unavailable; download the review brief instead.'; } }
+  function setView(view) {
+    runtime.view = view; doc.body.dataset.view = view; doc.querySelectorAll('.aan-view-switch button').forEach((button) => button.classList.toggle('is-active', button.dataset.view === view));
+    if (runtime.docket) renderDecision(runtime.docket.terminal_disposition);
+  }
   function setupExperience() {
-    if (!ids.form) return false;
-    renderHero();
-    renderControls();
-    renderStageRail();
-    resetRuntime();
-    ids.preset.addEventListener('change', () => applyPreset(ids.preset.value));
-    [ids.quorum, ids.energy, ids.latency].forEach((input) => input.addEventListener('input', syncRangeOutputs));
-    ids.form.addEventListener('submit', runCycle);
-    ids.pause.addEventListener('click', toggleSafeHold);
-    ids.reset.addEventListener('click', resetRuntime);
-    byId('aan-download-json').addEventListener('click', exportJson);
-    byId('aan-download-md').addEventListener('click', exportMarkdown);
-    byId('aan-copy-summary').addEventListener('click', copySummary);
-    return true;
+    collectUI(); renderThesis(); renderControls(); renderStageRail(); renderMesh(); renderInitialArtifacts(); renderCouncil(); renderFlightMetrics(); resetLog(); setView('executive');
+    ui.preset.addEventListener('change', applyPreset); ui.posture.addEventListener('change', syncPosture); [ui.energy, ui.latency].forEach((input) => input.addEventListener('input', syncRanges)); ui.form.addEventListener('submit', runFlight); ui.hold.addEventListener('click', safeHold); ui.reset.addEventListener('click', resetExperience);
+    byId('aan-download-json').addEventListener('click', exportJson); byId('aan-download-md').addEventListener('click', exportMarkdown); byId('aan-copy-summary').addEventListener('click', copySummary);
+    doc.querySelectorAll('.aan-view-switch button').forEach((button) => button.addEventListener('click', () => setView(button.dataset.view)));
+    doc.addEventListener('keydown', (event) => { const target = event.target; if (target && ['INPUT','TEXTAREA','SELECT'].includes(target.tagName)) return; const key = event.key.toLowerCase(); if (key === 'g') { event.preventDefault(); ui.form.requestSubmit(); } else if (key === 'h') { event.preventDefault(); safeHold(); } else if (key === 'r') { event.preventDefault(); resetExperience(); } else if (key === 'e') { event.preventDefault(); setView(runtime.view === 'executive' ? 'technical' : 'executive'); } });
   }
 
-  setupNavigation();
-  if (!renderArchitecture()) setupExperience();
-  doc.documentElement.dataset.aanReady = 'true';
+  async function renderArchitecture() {
+    const stack = byId('aan-stack-diagram'); if (!stack) return;
+    release.node_roles.forEach((role, index) => { const card = el('article', 'aan-stack-plane'); card.dataset.symbol = role.symbol; append(card, 'span', '', `${pad(index + 1)} · ${role.symbol}`); append(card, 'h3', '', role.name); append(card, 'p', '', role.mandate); stack.appendChild(card); });
+    const pipeline = byId('aan-arch-pipeline'); release.pipeline.forEach((stage) => { const item = el('li'); append(item, 'span', '', pad(stage.order)); const label = el('div'); append(label, 'b', '', stage.state); append(label, 'h3', '', stage.title); item.appendChild(label); append(item, 'p', '', stage.plain); append(item, 'small', '', `${stage.agent} · ${stage.artifact}`); pipeline.appendChild(item); });
+    const translation = byId('aan-translation-grid'); release.architecture_translation.forEach((item, index) => { const card = el('article', 'aan-translation-card'); const legacy = el('div'); append(legacy, 'span', '', `ORIGINAL ${pad(index + 1)}`); append(legacy, 'b', '', item.legacy); const arrow = el('i', '', '→'); const goalos = el('div'); append(goalos, 'span', '', 'GOALOS ASCENSION'); append(goalos, 'b', '', item.goalos); append(goalos, 'p', '', item.consequence); card.append(legacy, arrow, goalos); translation.appendChild(card); });
+    const lineageBody = byId('aan-lineage-table'); release.lineage_fingerprints.forEach((item) => { const row = el('tr'); append(row, 'td', '', item.title); append(row, 'td', '', item.path); append(row, 'td', '', `${item.sha256.slice(0, 14)}… · ${item.lines} lines`); append(row, 'td', '', item.consequence); lineageBody.appendChild(row); });
+    const lineageRoot = await sha256(release.lineage_fingerprints.map((item) => item.sha256).join(':')); byId('aan-lineage-root').textContent = `root ${lineageRoot}`; byId('aan-lineage-count').textContent = String(release.lineage_fingerprints.length);
+    const threats = byId('aan-threat-grid'); release.threats.forEach((item) => { const card = el('article', 'aan-threat-card'); append(card, 'span', '', item.id.toUpperCase()); append(card, 'h3', '', item.name); append(card, 'p', '', item.control); append(card, 'b', '', item.disposition); threats.appendChild(card); });
+    const principles = byId('aan-principle-grid'); release.governance_principles.forEach((item, index) => { const card = el('article', 'aan-principle-card'); append(card, 'span', '', pad(index + 1)); append(card, 'h3', '', item.title); append(card, 'p', '', item.copy); principles.appendChild(card); });
+    const mainnet = byId('aan-mainnet-grid'); const record = release.mainnet_record || { contracts: '48', verification: '48/48', phase_b_grants: '14/14', production_activation: 'NOT_ACTIVATED', user_fund_authorization: 'NO', source_identity: 'PENDING' };
+    [
+      ['GOALOS CONTRACTS', record.contracts ?? 48, 'Repository registry'], ['SOURCE VERIFICATION', record.verification ?? '48/48', 'Recorded operator evidence'], ['PHASE-B GRANTS', record.phase_b_grants ?? '14/14', 'Recorded release state'], ['PRODUCTION', record.production_activation ?? 'NOT_ACTIVATED', 'Explicit boundary'], ['USER FUNDS', record.user_fund_authorization ?? 'NO', 'No authorization'], ['SOURCE IDENTITY', record.source_identity ?? 'PENDING', 'Reproducibility boundary']
+    ].forEach(([label, value, note]) => { const card = el('article', 'aan-mainnet-card'); append(card, 'span', '', label); append(card, 'b', '', value); append(card, 'small', '', note); mainnet.appendChild(card); });
+    const boundaries = byId('aan-boundary-list'); release.claim_boundary.forEach((item) => boundaries.appendChild(el('li', '', item)));
+  }
+
+  function renderLedger() {
+    const catalog = byId('aan-ledger-catalog'); if (!catalog) return;
+    release.artifacts.forEach((item, index) => { const card = el('article', 'aan-ledger-item'); append(card, 'span', '', `${pad(index + 1)} · ${item.plane.toUpperCase()}`); append(card, 'h3', '', item.name); append(card, 'p', '', item.purpose); append(card, 'code', '', `sha256(prev || ${item.id})`); catalog.appendChild(card); });
+    const sample = release.sample_docket || {};
+    const summary = byId('aan-sample-summary'); const fields = [
+      ['FINAL STATE', sample.authority?.final_state || 'HUMAN_REVIEW_REQUIRED'], ['PRIMARY ROUTE', sample.peer_route?.primary?.map((p) => p.name || p).join(' → ') || 'Orion → Mnemosyne → Aegis → Quanta'], ['QUORUM', sample.validator_consensus ? `${sample.validator_consensus.pass}/${sample.validator_consensus.threshold}` : '6/6'], ['READINESS', sample.evaluation ? formatPct(sample.evaluation.readiness) : '88%'], ['CHAIN HEAD', shortHash(sample.proof_chronicle?.chain_head || 'sample-chain-head', 14)]
+    ];
+    fields.forEach(([label, value]) => { const card = el('div'); append(card, 'span', '', label); append(card, 'b', '', value); summary.appendChild(card); });
+    const chain = byId('aan-sample-chain'); (sample.proof_chronicle?.artifacts || release.artifacts.map((item, index) => ({ index: index + 1, name: item.name, commitment: fallbackHash(`${item.id}:${index}`) }))).forEach((item) => { const card = el('div'); append(card, 'span', '', pad(item.index)); append(card, 'b', '', item.name); append(card, 'code', '', shortHash(item.commitment, 14)); chain.appendChild(card); });
+    byId('aan-sample-json').textContent = JSON.stringify(sample, null, 2);
+    const copy = byId('aan-sample-copy'); if (copy) copy.addEventListener('click', async () => { const text = `AGI Alpha Node v0 sample — ${fields.map(([k,v]) => `${k}: ${v}`).join(' · ')}`; try { await navigator.clipboard.writeText(text); byId('aan-sample-status').textContent = 'Sample summary copied.'; } catch { byId('aan-sample-status').textContent = 'Clipboard unavailable.'; } });
+  }
+
+  async function boot() {
+    setupNavigation(); setupDialogs(); renderHeroMetrics();
+    if (byId('aan-node-form')) setupExperience();
+    if (byId('aan-stack-diagram')) await renderArchitecture();
+    if (byId('aan-ledger-catalog')) renderLedger();
+    doc.documentElement.dataset.aanReady = 'true';
+  }
+  boot().catch((error) => { doc.documentElement.dataset.aanReady = 'error'; console.error('AGI Alpha Node boot entered SAFE_HOLD.', error); });
 })();

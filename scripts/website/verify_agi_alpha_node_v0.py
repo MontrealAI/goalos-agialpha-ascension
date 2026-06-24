@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Statically verify GoalOS AGIALPHA Ascension AGI Alpha Node v0."""
+"""Verify the generated GoalOS AGI Alpha Node v0 Sovereign Citadel release."""
 
 from __future__ import annotations
 
@@ -7,14 +7,24 @@ import argparse
 import hashlib
 import json
 import re
-from html.parser import HTMLParser
 from pathlib import Path
 from typing import Any
-from urllib.parse import unquote, urlsplit
 
 RELEASE_TITLE = "GoalOS AGIALPHA Ascension AGI Alpha Node v0 ⚡️✨"
-FEATURE_PAGES = ["agi-alpha-node-v0.html", "agi-alpha-node-v0-architecture.html"]
-NODE_MARKERS = [
+PAGES = ["agi-alpha-node-v0.html", "agi-alpha-node-v0-architecture.html", "agi-alpha-node-v0-proof-ledger.html"]
+NEW_OUTPUTS = {
+    *PAGES,
+    "agi-alpha-node-v0-manifest.json",
+    "assets/agi-alpha-node-v0.css",
+    "assets/agi-alpha-node-v0.js",
+    "data/agi-alpha-node-v0.json",
+    "downloads/agi-alpha-node-v0/sample-node-evidence-docket.json",
+    "qa/agi-alpha-node-v0-build.json",
+}
+SHARED_INTEGRATION_OUTPUTS = {"index.html", "routes.json", "sitemap.xml", "site-status.json"}
+OPTIONAL_COMPANION_MANIFEST = "meta-agentic-alpha-agi-manifest.json"
+ALLOWED_CHANGED = {*SHARED_INTEGRATION_OUTPUTS, OPTIONAL_COMPANION_MANIFEST}
+MARKERS = [
     "GOALOS_AGI_ALPHA_NODE_V0_STYLE_START",
     "GOALOS_AGI_ALPHA_NODE_V0_STYLE_END",
     "GOALOS_AGI_ALPHA_NODE_V0_NAV_START",
@@ -22,364 +32,227 @@ NODE_MARKERS = [
     "GOALOS_AGI_ALPHA_NODE_V0_HOME_START",
     "GOALOS_AGI_ALPHA_NODE_V0_HOME_END",
 ]
-META_MARKERS = [
-    "GOALOS_META_AGENTIC_ALPHA_AGI_STYLE_START",
-    "GOALOS_META_AGENTIC_ALPHA_AGI_STYLE_END",
-    "GOALOS_META_AGENTIC_ALPHA_AGI_NAV_START",
-    "GOALOS_META_AGENTIC_ALPHA_AGI_NAV_END",
-    "GOALOS_META_AGENTIC_ALPHA_AGI_HOME_START",
-    "GOALOS_META_AGENTIC_ALPHA_AGI_HOME_END",
-]
 
 
-class ReferenceParser(HTMLParser):
-    def __init__(self) -> None:
-        super().__init__()
-        self.ids: list[str] = []
-        self.references: list[tuple[str, str]] = []
-        self.scripts: list[str] = []
-        self.styles: list[str] = []
-        self.meta_csp: list[str] = []
-
-    def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
-        values = {key.lower(): value or "" for key, value in attrs}
-        if values.get("id"):
-            self.ids.append(values["id"])
-        for attribute in ("href", "src"):
-            if values.get(attribute):
-                self.references.append((attribute, values[attribute]))
-        if tag.lower() == "script" and values.get("src"):
-            self.scripts.append(values["src"])
-        if tag.lower() == "link" and values.get("rel", "").lower() == "stylesheet" and values.get("href"):
-            self.styles.append(values["href"])
-        if tag.lower() == "meta" and values.get("http-equiv", "").lower() == "content-security-policy":
-            self.meta_csp.append(values.get("content", ""))
+def digest(path: Path) -> str:
+    value = hashlib.sha256()
+    with path.open("rb") as handle:
+        for chunk in iter(lambda: handle.read(1024 * 1024), b""):
+            value.update(chunk)
+    return value.hexdigest()
 
 
-def load_json(path: Path) -> Any:
+def stable_json(value: Any) -> str:
+    return json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
+
+
+def load(path: Path) -> Any:
     with path.open("r", encoding="utf-8") as handle:
         return json.load(handle)
 
 
-def write_json(path: Path, value: Any) -> None:
-    path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(value, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+def run(site: Path, root: Path, baseline: Path | None, output: Path) -> dict[str, Any]:
+    checks: list[dict[str, Any]] = []
 
+    def check(label: str, condition: bool, detail: Any = "") -> None:
+        checks.append({"label": label, "status": "PASS" if condition else "FAIL", "detail": detail})
 
-def sha256(path: Path) -> str:
-    digest = hashlib.sha256()
-    with path.open("rb") as handle:
-        for chunk in iter(lambda: handle.read(1024 * 1024), b""):
-            digest.update(chunk)
-    return digest.hexdigest()
+    check("site-exists", site.is_dir(), str(site))
+    content_path = site / "data" / "agi-alpha-node-v0.json"
+    manifest_path = site / "agi-alpha-node-v0-manifest.json"
+    sample_path = site / "downloads" / "agi-alpha-node-v0" / "sample-node-evidence-docket.json"
+    required = [site / item for item in [*PAGES, "assets/agi-alpha-node-v0.css", "assets/agi-alpha-node-v0.js", "data/agi-alpha-node-v0.json", "downloads/agi-alpha-node-v0/sample-node-evidence-docket.json", "agi-alpha-node-v0-manifest.json"]]
+    for path in required:
+        check(f"required-file:{path.relative_to(site).as_posix()}", path.is_file(), path.stat().st_size if path.is_file() else 0)
+    if not all(path.is_file() for path in required):
+        report = {"schema": "goalos.agi_alpha_node_v0.static_qa.v2", "status": "FAIL", "checks": checks}
+        output.parent.mkdir(parents=True, exist_ok=True); output.write_text(json.dumps(report, indent=2) + "\n")
+        return report
 
+    data = load(content_path)
+    manifest = load(manifest_path)
+    sample = load(sample_path)
+    check("release-title", data.get("release_title") == RELEASE_TITLE, data.get("release_title"))
+    check("release-version", data.get("version") == "3.0.0-sovereign-citadel", data.get("version"))
+    check("release-status", data.get("status") == "interactive-sovereign-proof-node-digital-twin", data.get("status"))
+    check("release-tagline", data.get("tagline") == "One node. Many minds. Zero unearned authority.", data.get("tagline"))
+    expected_counts = {
+        "hero_metrics": 5, "thesis": 5, "work_unit_classes": 5, "presets": 5, "postures": 4, "risk_profiles": 3,
+        "incidents": 4, "pipeline": 10, "node_roles": 10, "peers": 12, "validators": 7, "guardians": 5, "artifacts": 16,
+        "architecture_translation": 10, "governance_principles": 7, "threats": 8, "claim_boundary": 7, "lineage_fingerprints": 15,
+    }
+    for key, count in expected_counts.items():
+        check(f"content-count:{key}", isinstance(data.get(key), list) and len(data[key]) == count, len(data.get(key, [])) if isinstance(data.get(key), list) else None)
+    expected_states = ["NODE_IDENTITY_SEALED", "WORK_UNIT_CONTRACTED", "POLICY_COMPILED", "RESOURCE_ENVELOPE_ADMITTED", "PEER_ROUTES_COMMITTED", "SANDBOX_RECEIPT_READY", "MULTI_AXIS_EVALUATION_READY", "VALIDATOR_QUORUM_RECORDED", "GUARDIAN_REVIEW_PACKAGED", "HUMAN_REVIEW_REQUIRED"]
+    check("pipeline-order", [item.get("state") for item in data["pipeline"]] == expected_states, [item.get("state") for item in data["pipeline"]])
+    for posture in data["postures"]:
+        weights = posture.get("weights", {})
+        check(f"posture-six-axes:{posture['id']}", set(weights) == {"quality", "reliability", "energy", "latency", "evidence", "diversity"}, sorted(weights))
+        check(f"posture-normalized:{posture['id']}", abs(sum(weights.values()) - 1.0) < 1e-9, sum(weights.values()))
+    security = data.get("security", {})
+    for key in ["external_dependencies", "api_keys", "wallet_connection", "network_reads", "network_writes", "local_storage", "live_ens_resolution", "live_compute"]:
+        check(f"security-default-deny:{key}", security.get(key) is False, security.get(key))
+    check("security-human-review", security.get("human_review_required") is True, security.get("human_review_required"))
+    check("security-authority-none", security.get("external_authority") == "none", security.get("external_authority"))
+    mainnet = data.get("mainnet_record", {})
+    check("mainnet-goalos-contracts", mainnet.get("contracts") == 48, mainnet.get("contracts"))
+    check("mainnet-operator-verification", mainnet.get("verification") == "48/48", mainnet.get("verification"))
+    check("mainnet-phase-b-grants", mainnet.get("phase_b_grants") == "14/14", mainnet.get("phase_b_grants"))
+    check("mainnet-production-not-activated", mainnet.get("production_activation") == "NOT_ACTIVATED", mainnet.get("production_activation"))
+    check("mainnet-user-funds-no", mainnet.get("user_fund_authorization") == "NO", mainnet.get("user_fund_authorization"))
+    check("mainnet-source-identity-pending", mainnet.get("source_identity") == "PENDING", mainnet.get("source_identity"))
 
-def check(condition: bool, label: str, checks: list[dict[str, Any]], detail: Any = "") -> None:
-    checks.append({"label": label, "status": "PASS" if condition else "FAIL", "detail": detail})
+    for page_name in PAGES:
+        text = (site / page_name).read_text(encoding="utf-8")
+        check(f"page-no-template-token:{page_name}", "@@" not in text, text.count("@@"))
+        check(f"page-csp-connect-none:{page_name}", "connect-src 'none'" in text, "connect-src 'none'" in text)
+        check(f"page-local-css:{page_name}", 'href="assets/agi-alpha-node-v0.css"' in text, "")
+        check(f"page-local-js:{page_name}", 'src="assets/agi-alpha-node-v0.js"' in text, "")
+        check(f"page-release-data:{page_name}", 'id="aan-release-data"' in text, "")
+        check(f"page-no-external-script:{page_name}", not re.search(r'<script[^>]+src=["\']https?://', text, flags=re.I), "")
+        check(f"page-no-external-style:{page_name}", not re.search(r'<link[^>]+href=["\']https?://', text, flags=re.I), "")
+    main_text = (site / PAGES[0]).read_text(encoding="utf-8")
+    for phrase in [RELEASE_TITLE, "One node. Many minds.", "Zero unearned authority.", "The Sovereign Node Theatre", "HUMAN_REVIEW_REQUIRED", "No live peer dial"]:
+        check(f"experience-copy:{phrase[:28]}", phrase in main_text, phrase)
+    architecture_text = (site / PAGES[1]).read_text(encoding="utf-8")
+    for phrase in ["THE NODE", "HAS A CONSTITUTION.", "TEN CONSTITUTIONAL PLANES", "TRACEABLE REIMPLEMENTATION", "FAIL CLOSED"]:
+        check(f"architecture-copy:{phrase}", phrase in architecture_text, phrase)
+    ledger_text = (site / PAGES[2]).read_text(encoding="utf-8")
+    for phrase in ["THE WORK IS NOT THE PROOF.", "THE TRACE IS.", "16 CLASSES", "HUMAN_REVIEW_REQUIRED"]:
+        check(f"ledger-copy:{phrase}", phrase in ledger_text, phrase)
 
+    js = (site / "assets" / "agi-alpha-node-v0.js").read_text(encoding="utf-8")
+    css = (site / "assets" / "agi-alpha-node-v0.css").read_text(encoding="utf-8")
+    for token in ["fetch(", "XMLHttpRequest", "WebSocket", "EventSource", "sendBeacon", "window.ethereum", "eth_requestAccounts", "localStorage", "sessionStorage"]:
+        check(f"runtime-forbidden:{token}", token not in js, token)
+    for token in ["createArtifactChain", "createConsensus", "createGuardians", "determineTerminal", "SAFE_HOLD", "HUMAN_REVIEW_REQUIRED", "shadow", "quarantined", "window.__AAN_STATE__"]:
+        check(f"runtime-capability:{token}", token in js, token)
+    check("css-no-import", "@import" not in css, "@import" in css)
+    check("css-responsive-mobile", "@media(max-width:430px)" in css, "")
+    check("css-reduced-motion", "prefers-reduced-motion" in css, "")
+    check("css-homepage-gateway", ".aan-home-gateway" in css, "")
+    check("css-dynamic-mesh", ".aan-mesh-edge.primary" in css, "")
 
-def local_target(site: Path, page: Path, reference: str) -> Path | None:
-    parsed = urlsplit(reference)
-    if parsed.scheme or parsed.netloc or reference.startswith(("#", "mailto:", "tel:", "data:")):
-        return None
-    path = unquote(parsed.path)
-    if not path:
-        return None
-    target = (page.parent / path).resolve()
-    try:
-        target.relative_to(site.resolve())
-    except ValueError:
-        return target
-    return target
+    home = (site / "index.html").read_text(encoding="utf-8")
+    for marker in MARKERS:
+        check(f"homepage-marker-once:{marker}", home.count(marker) == 1, home.count(marker))
+    check("homepage-gateway-once", home.count('id="agi-alpha-node-v0"') == 1, home.count('id="agi-alpha-node-v0"'))
+    check("homepage-three-feature-links", all(f'href="{page}"' in home for page in PAGES), [page for page in PAGES if f'href="{page}"' not in home])
+    check("homepage-grand-doctrine", "One node. Many minds. Zero unearned authority." in home, "")
 
+    routes = load(site / "routes.json")
+    check("routes-feature-pages", all(page in routes.get("routes", []) for page in PAGES), routes.get("agi_alpha_node_v0"))
+    sitemap = (site / "sitemap.xml").read_text(encoding="utf-8")
+    for page in PAGES:
+        check(f"sitemap:{page}", sitemap.count(f"./{page}") == 1, sitemap.count(f"./{page}"))
+    status = load(site / "site-status.json").get("agi_alpha_node_v0", {})
+    check("site-status-version", status.get("version") == data.get("version"), status)
+    check("site-status-artifacts", status.get("evidence_artifacts") == 16, status.get("evidence_artifacts"))
+    check("site-status-actions-zero", status.get("external_actions") == 0, status.get("external_actions"))
 
-def finish(site: Path, checks: list[dict[str, Any]]) -> dict[str, Any]:
-    failed = [item for item in checks if item["status"] != "PASS"]
+    check("sample-schema", sample.get("schema") == "goalos.agi_alpha_node_v0.node_evidence_docket.v2", sample.get("schema"))
+    check("sample-terminal", sample.get("terminal_disposition", {}).get("state") == "HUMAN_REVIEW_REQUIRED", sample.get("terminal_disposition"))
+    authority = sample.get("authority", {})
+    check("sample-authority-boundary", authority == {"factual_correctness": "NOT_CERTIFIED", "production_activation": "NOT_ACTIVATED", "funds_authorization": "NO", "external_actions": 0, "final_state": "HUMAN_REVIEW_REQUIRED"}, authority)
+    chain = sample.get("proof_chronicle", {}).get("artifacts", [])
+    check("sample-sixteen-artifacts", len(chain) == 16, len(chain))
+    previous = "0" * 64
+    chain_valid = True
+    for index, artifact in enumerate(chain):
+        artifact_hash = hashlib.sha256(stable_json(artifact.get("payload")).encode("utf-8")).hexdigest()
+        commitment = hashlib.sha256(f"{previous}:{artifact_hash}:{artifact.get('name')}".encode("utf-8")).hexdigest()
+        valid = artifact.get("index") == index + 1 and artifact.get("previous_commitment") == previous and artifact.get("artifact_hash") == artifact_hash and artifact.get("commitment") == commitment
+        check(f"sample-chain-artifact:{index + 1:02d}", valid, artifact.get("name"))
+        chain_valid = chain_valid and valid
+        previous = commitment
+    check("sample-chain-head", chain_valid and sample.get("proof_chronicle", {}).get("chain_head") == previous, previous)
+    check("sample-validator-quorum", sample.get("validator_consensus", {}).get("quorum_met") is True and sample.get("validator_consensus", {}).get("pass") == 6, sample.get("validator_consensus"))
+    check("sample-dissent-preserved", sample.get("validator_consensus", {}).get("dissent") == 1, sample.get("validator_consensus", {}).get("dissent"))
+    check("sample-no-guardian-veto", all(item.get("disposition") != "VETO" for item in sample.get("guardian_review", [])), [item.get("disposition") for item in sample.get("guardian_review", [])])
+
+    check("manifest-schema", manifest.get("schema") == "goalos.agi_alpha_node_v0.website_manifest.v2", manifest.get("schema"))
+    check("manifest-version", manifest.get("version") == data.get("version"), manifest.get("version"))
+    for relative, entry in manifest.get("files", {}).items():
+        path = site / relative
+        check(f"manifest-file:{relative}", path.is_file(), "")
+        if path.is_file():
+            check(f"manifest-hash:{relative}", digest(path) == entry.get("sha256"), {"expected": entry.get("sha256"), "actual": digest(path)})
+            check(f"manifest-size:{relative}", path.stat().st_size == entry.get("bytes"), {"expected": entry.get("bytes"), "actual": path.stat().st_size})
+
+    companion_path = site / OPTIONAL_COMPANION_MANIFEST
+    if companion_path.is_file():
+        companion = load(companion_path)
+        check("companion-manifest-schema", companion.get("schema") == "goalos.meta_agentic_alpha_agi.website_manifest.v2", companion.get("schema"))
+        companion_files = companion.get("files", {})
+        for relative in sorted(SHARED_INTEGRATION_OUTPUTS):
+            target = site / relative
+            entry = companion_files.get(relative, {}) if isinstance(companion_files, dict) else {}
+            check(f"companion-manifest-hash:{relative}", target.is_file() and entry.get("sha256") == digest(target), entry)
+            check(f"companion-manifest-size:{relative}", target.is_file() and entry.get("bytes") == target.stat().st_size, entry)
+        reconciliations = companion.get("integration", {}).get("reconciliations", [])
+        matching = [item for item in reconciliations if isinstance(item, dict) and item.get("release_id") == data.get("release_id")]
+        check("companion-manifest-reconciliation", len(matching) == 1 and set(matching[0].get("files", [])) == SHARED_INTEGRATION_OUTPUTS, matching)
+    else:
+        check("companion-manifest-optional", True, "META-Agentic release not installed")
+
+    canonical = root / "website" / "v86_actual_site"
+    check("canonical-v86-source-present", canonical.is_dir(), str(canonical))
+    for relative in ["index.html", "routes.json", "site-status.json"]:
+        check(f"canonical-v86-no-node-markers:{relative}", "GOALOS_AGI_ALPHA_NODE_V0" not in (canonical / relative).read_text(encoding="utf-8"), relative)
+
+    preservation = {"baseline_supplied": bool(baseline), "removed": [], "unexpected_changed": [], "unchanged": 0, "allowed_changed": []}
+    if baseline:
+        snapshot = load(baseline)
+        baseline_files = snapshot.get("files", {})
+        current_files = {path.relative_to(site).as_posix(): digest(path) for path in site.rglob("*") if path.is_file()}
+        for relative, entry in baseline_files.items():
+            if relative not in current_files:
+                preservation["removed"].append(relative)
+            elif current_files[relative] == entry.get("sha256"):
+                preservation["unchanged"] += 1
+            elif relative in ALLOWED_CHANGED:
+                preservation["allowed_changed"].append(relative)
+            else:
+                preservation["unexpected_changed"].append(relative)
+        added = sorted(set(current_files) - set(baseline_files))
+        unexpected_added = [item for item in added if item not in NEW_OUTPUTS and not item.startswith("qa/agi-alpha-node-v0")]
+        preservation["added"] = added
+        preservation["unexpected_added"] = unexpected_added
+        check("preservation-no-removals", not preservation["removed"], preservation["removed"])
+        check("preservation-no-unexpected-changes", not preservation["unexpected_changed"], preservation["unexpected_changed"])
+        check("preservation-only-declared-additions", not unexpected_added, unexpected_added)
+        check("preservation-declared-integration-surfaces", set(preservation["allowed_changed"]).issubset(ALLOWED_CHANGED), preservation["allowed_changed"])
+        check("preservation-baseline-count", len(baseline_files) == snapshot.get("file_count"), {"listed": len(baseline_files), "declared": snapshot.get("file_count")})
+    else:
+        check("preservation-baseline-optional", True, "No baseline supplied; structural checks still applied.")
+
+    failed = [item for item in checks if item["status"] == "FAIL"]
     report = {
-        "schema": "goalos.agi_alpha_node_v0.static_verification.v1",
+        "schema": "goalos.agi_alpha_node_v0.static_qa.v2",
         "release_title": RELEASE_TITLE,
         "status": "PASS" if not failed else "FAIL",
         "checks_total": len(checks),
         "checks_passed": len(checks) - len(failed),
         "checks_failed": len(failed),
         "checks": checks,
+        "preservation": preservation,
     }
-    qa = site / "qa"
-    write_json(qa / "agi-alpha-node-v0-static-verify.json", report)
-    lines = [
-        "# AGI Alpha Node v0 static verification",
-        "",
-        f"**Status:** {report['status']}",
-        f"**Checks:** {report['checks_passed']} / {report['checks_total']} passed",
-        "",
-        "| Check | Status | Detail |",
-        "|---|---:|---|",
-    ]
-    for item in checks:
-        detail = str(item.get("detail", "")).replace("|", "\\|").replace("\n", " ")
-        lines.append(f"| {item['label']} | {item['status']} | {detail} |")
-    (qa / "agi-alpha-node-v0-static-verification.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
+    output.parent.mkdir(parents=True, exist_ok=True)
+    output.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     return report
 
 
-def verify(site: Path) -> dict[str, Any]:
-    checks: list[dict[str, Any]] = []
-    required = [
-        *FEATURE_PAGES,
-        "assets/agi-alpha-node-v0.css",
-        "assets/agi-alpha-node-v0.js",
-        "data/agi-alpha-node-v0.json",
-        "agi-alpha-node-v0-manifest.json",
-        "index.html",
-        "routes.json",
-        "sitemap.xml",
-        "site-status.json",
-    ]
-    missing = [relative for relative in required if not (site / relative).is_file()]
-    check(not missing, "required-files", checks, "missing: " + ", ".join(missing) if missing else f"{len(required)} required files present")
-    if missing:
-        return finish(site, checks)
-
-    data = load_json(site / "data" / "agi-alpha-node-v0.json")
-    check(isinstance(data, dict), "release-data-object", checks)
-    if not isinstance(data, dict):
-        return finish(site, checks)
-    check(data.get("release_title") == RELEASE_TITLE, "exact-release-title", checks, data.get("release_title"))
-    check(data.get("version") == "1.0.0-ascension-alpha", "release-version", checks, data.get("version"))
-    check(data.get("status") == "interactive-sovereign-node-simulation", "release-status", checks, data.get("status"))
-
-    expected_lengths = {
-        "hero_metrics": 4,
-        "thesis": 3,
-        "pipeline": 8,
-        "node_roles": 8,
-        "work_unit_classes": 4,
-        "presets": 4,
-        "postures": 3,
-        "peers": 8,
-        "validators": 7,
-        "guardians": 5,
-        "artifacts": 14,
-        "architecture_translation": 8,
-        "governance_principles": 6,
-        "claim_boundary": 7,
-    }
-    for key, expected in expected_lengths.items():
-        value = data.get(key)
-        observed = len(value) if isinstance(value, list) else "not-list"
-        check(isinstance(value, list) and len(value) == expected, f"data-{key}", checks, f"expected {expected}; observed {observed}")
-
-    expected_states = [
-        "NODE_IDENTITY_COMMITTED",
-        "WORK_UNIT_CONTRACTED",
-        "RESOURCE_ENVELOPE_ADMITTED",
-        "PEER_ROUTE_COMMITTED",
-        "SANDBOX_RECEIPT_READY",
-        "QUALITY_EVALUATION_READY",
-        "VALIDATOR_QUORUM_RECORDED",
-        "HUMAN_REVIEW_REQUIRED",
-    ]
-    states = [item.get("state") for item in data.get("pipeline", []) if isinstance(item, dict)]
-    check(states == expected_states, "eight-state-order", checks, states)
-    class_ids = [item.get("id") for item in data.get("work_unit_classes", []) if isinstance(item, dict)]
-    check(class_ids == ["reason", "build", "verify", "orchestrate"], "work-class-order", checks, class_ids)
-    role_symbols = [item.get("symbol") for item in data.get("node_roles", []) if isinstance(item, dict)]
-    check(role_symbols == ["ID", "OR", "RG", "EX", "QT", "V7", "G5", "CH"], "node-role-constellation", checks, role_symbols)
-
-    weight_failures: list[str] = []
-    expected_weight_keys = {"quality", "reliability", "energy", "latency", "evidence"}
-    for posture in data.get("postures", []):
-        weights = posture.get("weights", {}) if isinstance(posture, dict) else {}
-        if set(weights) != expected_weight_keys or abs(sum(float(value) for value in weights.values()) - 1.0) > 1e-9:
-            weight_failures.append(str(posture.get("id")))
-    check(not weight_failures, "posture-weight-contract", checks, weight_failures or "all five-dimensional weights sum to 1")
-
-    security = data.get("security", {})
-    expected_security = {
-        "external_dependencies": False,
-        "api_keys": False,
-        "wallet_connection": False,
-        "network_reads": False,
-        "network_writes": False,
-        "local_storage": False,
-        "live_ens_resolution": False,
-        "live_compute": False,
-        "human_review_required": True,
-        "settlement_mode": "none",
-        "external_authority": "none",
-    }
-    for key, expected in expected_security.items():
-        check(isinstance(security, dict) and security.get(key) == expected, f"security-{key}", checks, security.get(key) if isinstance(security, dict) else "not-object")
-
-    page_requirements = {
-        "agi-alpha-node-v0.html": [
-            RELEASE_TITLE,
-            'id="aan-node-form"',
-            'id="aan-stage-rail"',
-            'id="aan-mesh-svg"',
-            'id="aan-peer-table"',
-            'id="aan-validator-grid"',
-            'id="aan-artifact-list"',
-            'id="aan-download-json"',
-            'id="aan-release-data"',
-            "Content-Security-Policy",
-            "connect-src 'none'",
-            "assets/agi-alpha-node-v0.css",
-            "assets/agi-alpha-node-v0.js",
-        ],
-        "agi-alpha-node-v0-architecture.html": [
-            RELEASE_TITLE,
-            'id="aan-system-map"',
-            'id="aan-translation-grid"',
-            'id="aan-arch-pipeline"',
-            'id="aan-boundary-list"',
-            'id="aan-release-data"',
-            "Content-Security-Policy",
-            "connect-src 'none'",
-            "assets/agi-alpha-node-v0.css",
-            "assets/agi-alpha-node-v0.js",
-        ],
-    }
-    for filename, tokens in page_requirements.items():
-        path = site / filename
-        text = path.read_text(encoding="utf-8")
-        missing_tokens = [token for token in tokens if token not in text]
-        check(not missing_tokens, f"page-contract-{filename}", checks, missing_tokens or "all required tokens present")
-        check("@@" not in text, f"template-resolved-{filename}", checks)
-        word_count = len(re.sub(r"<[^>]+>", " ", text).split())
-        check(word_count >= 260, f"substantive-content-{filename}", checks, word_count)
-        parser = ReferenceParser()
-        parser.feed(text)
-        duplicate_ids = sorted({value for value in parser.ids if parser.ids.count(value) > 1})
-        check(not duplicate_ids, f"unique-dom-ids-{filename}", checks, duplicate_ids or len(parser.ids))
-        check(len(parser.meta_csp) == 1 and "connect-src 'none'" in parser.meta_csp[0], f"strict-csp-{filename}", checks, parser.meta_csp)
-        external_scripts = [value for value in parser.scripts if urlsplit(value).scheme or urlsplit(value).netloc]
-        external_styles = [value for value in parser.styles if urlsplit(value).scheme or urlsplit(value).netloc]
-        check(not external_scripts, f"local-scripts-{filename}", checks, external_scripts or parser.scripts)
-        check(not external_styles, f"local-styles-{filename}", checks, external_styles or parser.styles)
-        broken: list[str] = []
-        for _, reference in parser.references:
-            target = local_target(site, path, reference)
-            if target is not None and not target.exists():
-                broken.append(reference)
-        check(not broken, f"local-links-{filename}", checks, sorted(set(broken)) or "all local references resolve")
-
-    javascript = (site / "assets" / "agi-alpha-node-v0.js").read_text(encoding="utf-8")
-    stylesheet = (site / "assets" / "agi-alpha-node-v0.css").read_text(encoding="utf-8")
-    safe_javascript = javascript.replace("http://www.w3.org/2000/svg", "")
-    forbidden_js = {
-        "dynamic-code-eval": r"\beval\s*\(|\bnew\s+Function\s*\(",
-        "network-api": r"\bfetch\s*\(|\bXMLHttpRequest\b|\bWebSocket\s*\(|\bEventSource\s*\(",
-        "persistent-storage": r"\blocalStorage\b|\bsessionStorage\b|\bindexedDB\b",
-        "wallet-provider": r"window\.ethereum|eth_requestAccounts|wallet_requestPermissions",
-        "external-network-target": r"https?://|wss?://",
-        "secret-material": r"BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY|sk-[A-Za-z0-9]{20,}|MNEMONIC|SEED_PHRASE",
-        "document-write": r"document\.write\s*\(",
-    }
-    for label, pattern in forbidden_js.items():
-        match = re.search(pattern, safe_javascript if label == "external-network-target" else javascript, flags=re.IGNORECASE)
-        check(match is None, f"js-{label}", checks, match.group(0) if match else "not present")
-
-    required_js_tokens = [
-        "createPeerRoute",
-        "calculateAlphaWorkUnit",
-        "createValidatorConsensus",
-        "buildNodeEvidenceDocket",
-        "goalos.agi_alpha_node_v0.node_evidence_docket.v1",
-        "HUMAN_REVIEW_REQUIRED",
-        "external_actions: 0",
-        "authority: 'NONE_GRANTED'",
-        "factual_correctness: 'NOT_CERTIFIED'",
-        "deterministic_seed",
-        "dissent_preserved",
-        "external_compute_calls: 0",
-        "external_connections: 0",
-        "authority_conferred: false",
-    ]
-    for token in required_js_tokens:
-        check(token in javascript, f"js-capability-{re.sub(r'[^a-z0-9]+', '-', token.lower()).strip('-')[:60]}", checks, token)
-    check(javascript.count("runtime.runToken") >= 5, "runtime-cancellation-boundary", checks, javascript.count("runtime.runToken"))
-    check("Blob" in javascript and "URL.createObjectURL" in javascript, "local-evidence-export", checks)
-
-    required_css_tokens = [
-        ".aan-home-gateway",
-        ".aan-stage.is-complete",
-        ".aan-mesh-node.accepted",
-        ".aan-validator-card.dissent",
-        ".aan-artifact-ledger li.sealed",
-        "@media (max-width:980px)",
-        "@media (max-width:640px)",
-        "prefers-reduced-motion",
-        ":focus-visible",
-    ]
-    for token in required_css_tokens:
-        check(token in stylesheet, f"css-contract-{re.sub(r'[^a-z0-9]+', '-', token.lower()).strip('-')[:50]}", checks, token)
-
-    index_text = (site / "index.html").read_text(encoding="utf-8")
-    for marker in NODE_MARKERS:
-        check(index_text.count(marker) == 1, f"homepage-node-marker-{marker.lower()}", checks, index_text.count(marker))
-    check(index_text.count('href="agi-alpha-node-v0.html"') >= 2, "homepage-node-links", checks, index_text.count('href="agi-alpha-node-v0.html"'))
-    check('id="agi-alpha-node-v0"' in index_text and "SOVEREIGN PROOF NODE" in index_text, "homepage-gateway-contract", checks)
-    meta_present = any(marker in index_text for marker in META_MARKERS)
-    check(meta_present, "meta-agentic-integration-preserved", checks, "present" if meta_present else "missing")
-    if meta_present:
-        for marker in META_MARKERS:
-            check(index_text.count(marker) == 1, f"homepage-meta-marker-preserved-{marker.lower()}", checks, index_text.count(marker))
-
-    routes = load_json(site / "routes.json")
-    route_list = routes.get("routes", []) if isinstance(routes, dict) else []
-    check(all(page in route_list for page in FEATURE_PAGES), "routes-feature-pages", checks, route_list)
-    route_metadata = routes.get("agi_alpha_node_v0", {}) if isinstance(routes, dict) else {}
-    check(route_metadata.get("external_actions") == 0 and route_metadata.get("pages") == FEATURE_PAGES, "routes-feature-metadata", checks, route_metadata)
-
-    sitemap = (site / "sitemap.xml").read_text(encoding="utf-8")
-    for page in FEATURE_PAGES:
-        check(sitemap.count(f"./{page}") == 1, f"sitemap-{page}", checks, sitemap.count(f"./{page}"))
-
-    status = load_json(site / "site-status.json")
-    node_status = status.get("agi_alpha_node_v0", {}) if isinstance(status, dict) else {}
-    check(node_status.get("status") == "interactive-sovereign-node-simulation", "site-status-release", checks, node_status)
-    check(node_status.get("external_actions") == 0 and node_status.get("human_review_required") is True, "site-status-boundary", checks, node_status)
-
-    manifest = load_json(site / "agi-alpha-node-v0-manifest.json")
-    check(manifest.get("schema") == "goalos.agi_alpha_node_v0.website_manifest.v1", "manifest-schema", checks, manifest.get("schema"))
-    check(manifest.get("release_title") == RELEASE_TITLE, "manifest-title", checks, manifest.get("release_title"))
-    experience = manifest.get("experience", {}) if isinstance(manifest, dict) else {}
-    check(experience.get("final_state") == "HUMAN_REVIEW_REQUIRED" and experience.get("external_actions") == 0, "manifest-authority-boundary", checks, experience)
-    manifest_files = manifest.get("files", {}) if isinstance(manifest, dict) else {}
-    hash_failures: list[str] = []
-    if isinstance(manifest_files, dict):
-        for relative, record in manifest_files.items():
-            path = site / relative
-            if not path.is_file() or not isinstance(record, dict) or sha256(path) != record.get("sha256") or path.stat().st_size != record.get("bytes"):
-                hash_failures.append(relative)
-    else:
-        hash_failures.append("manifest.files-not-object")
-    check(not hash_failures, "manifest-file-integrity", checks, hash_failures or f"{len(manifest_files)} files match")
-
-    archive_files = sorted(path.relative_to(site).as_posix() for path in site.rglob("*") if path.is_file() and path.suffix.lower() in {".zip", ".7z", ".tar", ".gz", ".rar"})
-    check(not archive_files, "no-public-archives", checks, archive_files or "none")
-    sensitive_pattern = re.compile(r"PRIVATE_MAINNET_DEPLOYER_PRIVATE_KEY|SEED_PHRASE|MNEMONIC|MAINNET_RPC_URL=|ETHERSCAN_API_KEY=")
-    sensitive_hits: list[str] = []
-    for path in [site / "agi-alpha-node-v0.html", site / "agi-alpha-node-v0-architecture.html", site / "assets" / "agi-alpha-node-v0.js", site / "data" / "agi-alpha-node-v0.json"]:
-        if sensitive_pattern.search(path.read_text(encoding="utf-8", errors="ignore")):
-            sensitive_hits.append(path.relative_to(site).as_posix())
-    check(not sensitive_hits, "no-private-material", checks, sensitive_hits or "none")
-
-    return finish(site, checks)
-
-
-def parse_args() -> argparse.Namespace:
+def main() -> int:
     root = Path(__file__).resolve().parents[2]
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--site", type=Path, default=root / "site")
-    return parser.parse_args()
-
-
-def main() -> int:
-    args = parse_args()
-    report = verify(args.site.resolve())
-    print(json.dumps(report, ensure_ascii=False, indent=2))
+    parser.add_argument("--root", type=Path, default=root)
+    parser.add_argument("--baseline", type=Path)
+    parser.add_argument("--output", type=Path)
+    args = parser.parse_args()
+    output = args.output or args.site / "qa" / "agi-alpha-node-v0-static.json"
+    report = run(args.site.resolve(), args.root.resolve(), args.baseline.resolve() if args.baseline else None, output.resolve())
+    print(json.dumps({"status": report["status"], "checks_total": report["checks_total"], "checks_passed": report["checks_passed"], "checks_failed": report["checks_failed"], "output": str(output)}, indent=2))
     return 0 if report["status"] == "PASS" else 1
 
 
