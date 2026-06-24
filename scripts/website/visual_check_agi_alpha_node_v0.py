@@ -50,7 +50,8 @@ def inline_homepage(site: Path) -> str:
             css_parts.append(path.read_text(encoding="utf-8"))
     html = re.sub(r'<link\s+[^>]*rel=[\'\"]stylesheet[\'\"][^>]*>\s*', "", html, flags=re.IGNORECASE)
     html = re.sub(r'<script\s+[^>]*src=[\'\"][^\'\"]+[\'\"][^>]*>\s*</script>\s*', "", html, flags=re.IGNORECASE)
-    return html.replace("</head>", f"<style data-qa-inline-styles>\n{'\n'.join(css_parts)}\n</style>\n</head>", 1)
+    combined_css = "\n".join(css_parts)
+    return html.replace("</head>", f"<style data-qa-inline-styles>\n{combined_css}\n</style>\n</head>", 1)
 
 
 def launch_browser(playwright: Any) -> Any:
