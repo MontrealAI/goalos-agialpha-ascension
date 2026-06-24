@@ -1,54 +1,48 @@
-# Install the Sovereign Machine Economy with GitHub Web UI
+# Upload GoalOS Sovereign Machine Economy Ω with GitHub Web UI
 
-This is the non-technical installation path for:
+This release upgrades the existing Constitutional Triad into the **GoalOS AGIALPHA Ascension Sovereign Machine Economy Ω — Constitutional Civilization Engine**.
 
-**GoalOS AGIALPHA Ascension — Sovereign Machine Economy**  
-META-AGENTIC α‑AGI 👁️✨ × AGI Alpha Node v0 ⚡️✨ × AGI Jobs v0 (v2) ✨
+It integrates, without weakening their individual boundaries:
 
-## Before you begin
+- GoalOS AGIALPHA Ascension META-AGENTIC α‑AGI 👁️✨
+- GoalOS AGIALPHA Ascension AGI Alpha Node v0 ⚡️✨
+- GoalOS AGIALPHA Ascension AGI Jobs v0 (v2) ✨
+- GoalOS AGIALPHA Ascension Sovereign Machine Economy 👁️⚡️✨
 
-Use the prepared release package. Do not upload the ZIP itself. Extract it on your computer first.
+The resulting public experience contains six inspectable surfaces, twenty-one constitutional gates, fifteen typed handoff contracts, forty-eight predecessor-linked evidence artifacts, three counterfactual universes, a local Human Review Chamber, and a portable Mission Passport. It remains browser-local and grants itself no external authority.
 
-The installation is additive. It contains new source files plus one necessary update to the existing complete website deployment workflow. It contains no deletions.
+## Upload sequence
 
-## GitHub steps
+1. Create branch `feature/sovereign-machine-economy-omega` from `main`.
+2. At the repository root, upload the **contents** of `01_UPLOAD_TO_REPOSITORY_ROOT`.
+3. Open `.github/workflows` and upload both files from `02_UPLOAD_TO_DOT_GITHUB_WORKFLOWS`.
+4. Replacing the existing Sovereign Machine Economy source and the two prepared workflows is expected and necessary.
+5. Confirm GitHub shows **zero deletions**. When upgrading Constitutional Triad v1, the expected repository diff is two new page templates plus narrowly scoped modifications to the existing feature, documentation, tests, schema, and workflows.
+6. Open a pull request titled `GoalOS AGIALPHA Ascension Sovereign Machine Economy Ω`.
+7. Merge only after **GoalOS AGIALPHA Ascension Sovereign Machine Economy Ω Smoke Test** is green.
+8. Wait for both production jobs to become green: the complete build and the GitHub Pages deployment.
+9. Hard-refresh the live website and open `index.html#sovereign-machine-economy`.
 
-1. Open the `goalos-agialpha-ascension` repository.
-2. Create a branch from `main` named:
+## Public pages after deployment
 
-   `feature/sovereign-machine-economy`
+- `/sovereign-machine-economy.html`
+- `/sovereign-machine-economy-observatory.html`
+- `/sovereign-machine-economy-architecture.html`
+- `/sovereign-machine-economy-ledger.html`
+- `/sovereign-machine-economy-memory.html`
+- `/sovereign-machine-economy-passport.html`
+- `/index.html#sovereign-machine-economy`
 
-3. At the repository root, choose **Add file → Upload files**.
-4. Drag in the contents of `01_UPLOAD_TO_REPOSITORY_ROOT`.
-5. Open `.github/workflows` in GitHub.
-6. Choose **Add file → Upload files** again.
-7. Drag in both files from `02_UPLOAD_TO_DOT_GITHUB_WORKFLOWS`.
-8. Commit the changes to your feature branch.
-9. Open a pull request into `main` using the prepared pull-request text.
-10. Merge only when **GoalOS AGIALPHA Ascension Sovereign Machine Economy Smoke Test** is green.
-11. After merge, wait for both jobs in **GoalOS AGIALPHA Ascension v86 Preserve Actual Website** to turn green:
-    - Build, preserve, verify, and browser-test v86
-    - Deploy v86 to GitHub Pages
-12. Hard-refresh the live website.
+## Preservation law
 
-## What GitHub should show
+The release does not remove or rewrite canonical v86 website source, Solidity, contracts, Ethereum Mainnet evidence, Public Proof Missions, package manifests, lockfiles, prior feature source, or private operator material. Only declared generated integration surfaces and companion-manifest hashes are reconciled inside the temporary Pages artifact.
 
-For a first installation, expect:
+## Authority boundary
 
-- 16 new repository files
-- 1 modified production workflow
-- 0 deletions
+The successful terminal state is `HUMAN_SETTLEMENT_REVIEW`. Adversarial paths stop at `HUMAN_REVIEW_REQUIRED`, `DISPUTE_OPEN`, or `SAFE_HOLD`. In every state:
 
-If GitHub shows unexplained deletions, stop and do not merge.
-
-## Live URLs after deployment
-
-- `https://montrealai.github.io/goalos-agialpha-ascension/sovereign-machine-economy.html`
-- `https://montrealai.github.io/goalos-agialpha-ascension/sovereign-machine-economy-architecture.html`
-- `https://montrealai.github.io/goalos-agialpha-ascension/sovereign-machine-economy-chronicle.html`
-- `https://montrealai.github.io/goalos-agialpha-ascension/sovereign-machine-economy-atlas.html`
-- Homepage gateway: `https://montrealai.github.io/goalos-agialpha-ascension/index.html#sovereign-machine-economy`
-
-## What success looks like
-
-The complete production Action ends green, the four pages load, the homepage contains a `Machine Economy` navigation link and gateway, and the interactive proof flight ends at `HUMAN_SETTLEMENT_REVIEW` with `NONE_GRANTED` authority.
+- external authority is `NONE_GRANTED`;
+- production is `NOT_ACTIVATED`;
+- user-fund authorization is `NO`;
+- automatic memory promotion is `NOT_AUTHORIZED`;
+- wallet connections, network requests, token movements, and external actions remain `0`.

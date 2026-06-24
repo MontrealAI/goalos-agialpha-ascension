@@ -1,22 +1,26 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://montrealai.github.io/goalos-agialpha-ascension/schemas/sovereign-machine-economy-docket.schema.json",
-  "title": "GoalOS AGIALPHA Ascension Sovereign Machine Economy Evidence Docket v1",
-  "description": "A deterministic, browser-local constitutional review object binding META-Agentic institution formation, AGI Alpha Node proof execution, AGI Jobs market coordination, and the final human authority boundary. Evidence is not permission.",
+  "title": "GoalOS Sovereign Machine Economy Ω Evidence Docket",
   "type": "object",
   "additionalProperties": false,
   "required": [
     "schema",
     "release_id",
-    "version",
+    "run_id",
     "mission",
-    "meta",
+    "institution",
     "node",
-    "jobs",
+    "market",
     "handoffs",
-    "companions",
     "evidence",
+    "counterfactuals",
+    "review",
+    "memory",
+    "incident",
     "authority",
+    "claim_boundary",
+    "economy_root",
     "run_commitment"
   ],
   "$defs": {
@@ -24,276 +28,155 @@
       "type": "string",
       "pattern": "^[a-f0-9]{64}$"
     },
-    "nonEmptyString": {
-      "type": "string",
-      "minLength": 1
-    },
-    "zero": {
-      "const": 0
-    },
-    "noneGranted": {
-      "const": "NONE_GRANTED"
+    "terminal": {
+      "enum": [
+        "HUMAN_SETTLEMENT_REVIEW",
+        "HUMAN_REVIEW_REQUIRED",
+        "DISPUTE_OPEN",
+        "SAFE_HOLD"
+      ]
     }
   },
   "properties": {
     "schema": {
-      "const": "goalos.sovereign_machine_economy.docket.v1"
+      "const": "goalos.sovereign_machine_economy.docket.v2"
     },
     "release_id": {
-      "const": "GOALOS-SOVEREIGN-MACHINE-ECONOMY-001"
+      "const": "GOALOS-AGIALPHA-SOVEREIGN-MACHINE-ECONOMY-002"
     },
-    "version": {
-      "const": "1.0.0-civilization"
+    "run_id": {
+      "type": "string",
+      "pattern": "^SME-[A-F0-9]{16}$"
     },
     "mission": {
       "type": "object",
-      "additionalProperties": false,
       "required": [
-        "text",
+        "mission",
+        "preset",
+        "domain",
         "posture",
         "risk",
-        "incident",
-        "commitment"
-      ],
-      "properties": {
-        "text": {
-          "type": "string",
-          "minLength": 30
-        },
-        "posture": {
-          "$ref": "#/$defs/nonEmptyString"
-        },
-        "risk": {
-          "enum": [
-            "low",
-            "medium",
-            "high",
-            "critical"
-          ]
-        },
-        "incident": {
-          "enum": [
-            "none",
-            "institution-divergence",
-            "node-identity-drift",
-            "evidence-gap",
-            "budget-breach"
-          ]
-        },
-        "commitment": {
-          "$ref": "#/$defs/sha256"
-        }
-      }
+        "incident"
+      ]
     },
-    "meta": {
+    "institution": {
       "type": "object",
-      "additionalProperties": false,
       "required": [
-        "selected_institution",
+        "id",
+        "name",
+        "roles",
+        "metrics",
         "candidate_count",
-        "pareto_review",
-        "constitution_seal"
+        "frontier_count",
+        "lineage_root",
+        "charter_commitment",
+        "authority"
       ],
       "properties": {
-        "selected_institution": {
-          "type": "object",
-          "additionalProperties": false,
-          "required": [
-            "id",
-            "name",
-            "topology",
-            "score"
-          ],
-          "properties": {
-            "id": {
-              "pattern": "^I[0-9]{2}$",
-              "type": "string"
-            },
-            "name": {
-              "$ref": "#/$defs/nonEmptyString"
-            },
-            "topology": {
-              "$ref": "#/$defs/nonEmptyString"
-            },
-            "score": {
-              "type": "number",
-              "minimum": 0,
-              "maximum": 100
-            }
-          }
+        "lineage_root": {
+          "$ref": "#/$defs/sha256"
         },
-        "candidate_count": {
-          "type": "integer",
-          "minimum": 1,
-          "maximum": 36
-        },
-        "pareto_review": {
-          "enum": [
-            "COMPLETE",
-            "WITHHELD"
-          ]
-        },
-        "constitution_seal": {
+        "charter_commitment": {
           "$ref": "#/$defs/sha256"
         }
       }
     },
     "node": {
       "type": "object",
-      "additionalProperties": false,
       "required": [
+        "id",
         "route_id",
         "primary",
         "shadow",
-        "work_unit_id",
-        "evidence_seal"
+        "identity_commitment",
+        "resource_constitution",
+        "resource_commitment",
+        "receipt_id",
+        "external_actions",
+        "wallet_connections",
+        "network_requests"
       ],
       "properties": {
-        "route_id": {
-          "type": "string",
-          "pattern": "^ROUTE-[A-F0-9]{12}$"
-        },
-        "primary": {
-          "type": "array",
-          "minItems": 4,
-          "maxItems": 4,
-          "uniqueItems": true,
-          "items": {
-            "$ref": "#/$defs/nonEmptyString"
-          }
-        },
-        "shadow": {
-          "type": "array",
-          "minItems": 3,
-          "maxItems": 3,
-          "uniqueItems": true,
-          "items": {
-            "$ref": "#/$defs/nonEmptyString"
-          }
-        },
-        "work_unit_id": {
-          "type": "string",
-          "pattern": "^AWU-[A-F0-9]{16}$"
-        },
-        "evidence_seal": {
+        "identity_commitment": {
           "$ref": "#/$defs/sha256"
+        },
+        "resource_commitment": {
+          "$ref": "#/$defs/sha256"
+        },
+        "external_actions": {
+          "const": 0
+        },
+        "wallet_connections": {
+          "const": 0
+        },
+        "network_requests": {
+          "const": 0
         }
       }
     },
-    "jobs": {
+    "market": {
       "type": "object",
-      "additionalProperties": false,
       "required": [
+        "id",
+        "frontier",
         "coalition_id",
         "coalition",
-        "pareto_frontier",
         "parliament",
-        "market_seal"
+        "challenge_hours",
+        "charter_commitment",
+        "settlement"
       ],
       "properties": {
-        "coalition_id": {
-          "type": "string",
-          "pattern": "^COUNCIL-[A-F0-9]{12}$"
+        "charter_commitment": {
+          "$ref": "#/$defs/sha256"
         },
-        "coalition": {
-          "type": "array",
-          "minItems": 5,
-          "maxItems": 5,
-          "uniqueItems": true,
-          "items": {
-            "$ref": "#/$defs/nonEmptyString"
-          }
-        },
-        "pareto_frontier": {
-          "type": "array",
-          "minItems": 1,
-          "maxItems": 12,
-          "uniqueItems": true,
-          "items": {
-            "$ref": "#/$defs/nonEmptyString"
-          }
-        },
-        "parliament": {
+        "settlement": {
           "type": "object",
-          "additionalProperties": false,
           "required": [
-            "seats",
-            "threshold",
-            "pass",
-            "dissent",
-            "reject",
-            "challenge_window"
+            "status",
+            "live",
+            "wallet_connection",
+            "token_movement",
+            "external_actions"
           ],
           "properties": {
-            "seats": {
-              "enum": [
-                3,
-                5,
-                7,
-                9
-              ]
+            "status": {
+              "const": "HUMAN_SETTLEMENT_REVIEW"
             },
-            "threshold": {
-              "type": "integer",
-              "minimum": 2,
-              "maximum": 9
+            "live": {
+              "const": false
             },
-            "pass": {
-              "type": "integer",
-              "minimum": 0,
-              "maximum": 9
+            "wallet_connection": {
+              "const": false
             },
-            "dissent": {
-              "type": "integer",
-              "minimum": 0,
-              "maximum": 9
+            "token_movement": {
+              "const": false
             },
-            "reject": {
-              "type": "integer",
-              "minimum": 0,
-              "maximum": 9
-            },
-            "challenge_window": {
-              "$ref": "#/$defs/nonEmptyString"
+            "external_actions": {
+              "const": 0
             }
           }
-        },
-        "market_seal": {
-          "$ref": "#/$defs/sha256"
         }
       }
     },
     "handoffs": {
       "type": "array",
-      "minItems": 3,
-      "maxItems": 3,
+      "minItems": 15,
+      "maxItems": 15,
       "items": {
         "type": "object",
-        "additionalProperties": false,
         "required": [
           "id",
           "from",
           "to",
+          "name",
+          "purpose",
+          "previous_commitment",
           "commitment"
         ],
         "properties": {
-          "id": {
-            "type": "string",
-            "pattern": "^H0[1-3]$"
-          },
-          "from": {
-            "enum": [
-              "META",
-              "NODE",
-              "JOBS"
-            ]
-          },
-          "to": {
-            "enum": [
-              "NODE",
-              "JOBS",
-              "HUMAN"
-            ]
+          "previous_commitment": {
+            "$ref": "#/$defs/sha256"
           },
           "commitment": {
             "$ref": "#/$defs/sha256"
@@ -301,155 +184,185 @@
         }
       }
     },
-    "companions": {
-      "type": "array",
-      "minItems": 3,
-      "maxItems": 3,
-      "items": {
-        "type": "object",
-        "additionalProperties": false,
-        "required": [
-          "layer",
-          "release_id",
-          "version"
-        ],
-        "properties": {
-          "layer": {
-            "enum": [
-              "META",
-              "NODE",
-              "JOBS"
-            ]
-          },
-          "release_id": {
-            "$ref": "#/$defs/nonEmptyString"
-          },
-          "version": {
-            "$ref": "#/$defs/nonEmptyString"
-          }
-        }
-      }
-    },
     "evidence": {
       "type": "object",
-      "additionalProperties": false,
       "required": [
         "artifact_count",
-        "expected_artifact_count",
         "chain_head",
         "artifacts"
       ],
       "properties": {
         "artifact_count": {
-          "type": "integer",
-          "minimum": 1,
-          "maximum": 36
-        },
-        "expected_artifact_count": {
-          "const": 36
+          "const": 48
         },
         "chain_head": {
           "$ref": "#/$defs/sha256"
         },
         "artifacts": {
           "type": "array",
-          "minItems": 1,
-          "maxItems": 36,
+          "minItems": 48,
+          "maxItems": 48,
           "items": {
             "type": "object",
-            "additionalProperties": false,
             "required": [
               "id",
-              "layer",
+              "plane",
               "name",
-              "purpose",
               "previous_commitment",
+              "artifact_hash",
               "commitment",
               "payload"
             ],
             "properties": {
-              "id": {
-                "type": "string",
-                "pattern": "^[MNJ][0-9]{2}$"
-              },
-              "layer": {
+              "plane": {
                 "enum": [
-                  "META",
+                  "MIND",
                   "NODE",
-                  "JOBS"
+                  "MARKET"
                 ]
-              },
-              "name": {
-                "$ref": "#/$defs/nonEmptyString"
-              },
-              "purpose": {
-                "$ref": "#/$defs/nonEmptyString"
               },
               "previous_commitment": {
                 "$ref": "#/$defs/sha256"
               },
-              "commitment": {
+              "artifact_hash": {
                 "$ref": "#/$defs/sha256"
               },
-              "payload": {
-                "type": "object",
-                "additionalProperties": false,
-                "required": [
-                  "id",
-                  "layer",
-                  "name",
-                  "purpose",
-                  "mission_commitment",
-                  "institution_id",
-                  "route_id",
-                  "coalition_id",
-                  "terminal"
-                ],
-                "properties": {
-                  "id": {
-                    "type": "string",
-                    "pattern": "^[MNJ][0-9]{2}$"
-                  },
-                  "layer": {
-                    "enum": [
-                      "META",
-                      "NODE",
-                      "JOBS"
-                    ]
-                  },
-                  "name": {
-                    "$ref": "#/$defs/nonEmptyString"
-                  },
-                  "purpose": {
-                    "$ref": "#/$defs/nonEmptyString"
-                  },
-                  "mission_commitment": {
-                    "$ref": "#/$defs/sha256"
-                  },
-                  "institution_id": {
-                    "type": "string",
-                    "pattern": "^I[0-9]{2}$"
-                  },
-                  "route_id": {
-                    "type": "string",
-                    "pattern": "^ROUTE-[A-F0-9]{12}$"
-                  },
-                  "coalition_id": {
-                    "type": "string",
-                    "pattern": "^COUNCIL-[A-F0-9]{12}$"
-                  },
-                  "terminal": {
-                    "enum": [
-                      "HUMAN_SETTLEMENT_REVIEW",
-                      "HUMAN_REVIEW_REQUIRED",
-                      "DISPUTE_OPEN",
-                      "SAFE_HOLD"
-                    ]
-                  }
-                }
+              "commitment": {
+                "$ref": "#/$defs/sha256"
               }
             }
           }
+        }
+      }
+    },
+    "counterfactuals": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "label",
+          "promise",
+          "posture",
+          "institution",
+          "route",
+          "coalition",
+          "terminal_state",
+          "authority",
+          "external_actions",
+          "scores",
+          "commitment"
+        ],
+        "properties": {
+          "terminal_state": {
+            "const": "HUMAN_SETTLEMENT_REVIEW"
+          },
+          "authority": {
+            "const": "NONE_GRANTED"
+          },
+          "external_actions": {
+            "const": 0
+          },
+          "commitment": {
+            "$ref": "#/$defs/sha256"
+          }
+        }
+      }
+    },
+    "review": {
+      "type": "object",
+      "required": [
+        "status",
+        "selected_action",
+        "record",
+        "available_actions",
+        "authority_granted",
+        "settlement_authorized",
+        "memory_promoted"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "PENDING_HUMAN_REVIEW",
+            "APPROVED_FOR_DELIBERATION",
+            "REVISION_REQUESTED",
+            "DISPUTE_OPEN",
+            "REJECTED_BY_REVIEW"
+          ]
+        },
+        "selected_action": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "record": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "available_actions": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 4
+        },
+        "authority_granted": {
+          "const": false
+        },
+        "settlement_authorized": {
+          "const": false
+        },
+        "memory_promoted": {
+          "const": false
+        }
+      }
+    },
+    "memory": {
+      "type": "object",
+      "required": [
+        "id",
+        "status",
+        "scope",
+        "expiry",
+        "revocable",
+        "evidence_root",
+        "automatic_promotion",
+        "failure_memory_preserved"
+      ],
+      "properties": {
+        "status": {
+          "const": "HUMAN_PROMOTION_REQUIRED"
+        },
+        "revocable": {
+          "const": true
+        },
+        "evidence_root": {
+          "$ref": "#/$defs/sha256"
+        },
+        "automatic_promotion": {
+          "const": false
+        },
+        "failure_memory_preserved": {
+          "const": true
+        }
+      }
+    },
+    "incident": {
+      "type": "object",
+      "required": [
+        "id",
+        "label",
+        "effect",
+        "stop_gate"
+      ],
+      "properties": {
+        "stop_gate": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 21
         }
       }
     },
@@ -462,23 +375,18 @@
         "factual_correctness",
         "production_activation",
         "user_fund_authorization",
+        "automatic_memory_promotion",
         "external_actions",
         "network_requests",
         "wallet_connections",
-        "live_token_movements",
-        "memory_promotion"
+        "live_token_movements"
       ],
       "properties": {
         "terminal_state": {
-          "enum": [
-            "HUMAN_SETTLEMENT_REVIEW",
-            "HUMAN_REVIEW_REQUIRED",
-            "DISPUTE_OPEN",
-            "SAFE_HOLD"
-          ]
+          "$ref": "#/$defs/terminal"
         },
         "external_authority": {
-          "$ref": "#/$defs/noneGranted"
+          "const": "NONE_GRANTED"
         },
         "factual_correctness": {
           "const": "NOT_CERTIFIED"
@@ -489,22 +397,33 @@
         "user_fund_authorization": {
           "const": "NO"
         },
+        "automatic_memory_promotion": {
+          "const": "NOT_AUTHORIZED"
+        },
         "external_actions": {
-          "$ref": "#/$defs/zero"
+          "const": 0
         },
         "network_requests": {
-          "$ref": "#/$defs/zero"
+          "const": 0
         },
         "wallet_connections": {
-          "$ref": "#/$defs/zero"
+          "const": 0
         },
         "live_token_movements": {
-          "$ref": "#/$defs/zero"
-        },
-        "memory_promotion": {
-          "const": "NOT_AUTHORIZED"
+          "const": 0
         }
       }
+    },
+    "claim_boundary": {
+      "type": "array",
+      "minItems": 10,
+      "maxItems": 10,
+      "items": {
+        "type": "string"
+      }
+    },
+    "economy_root": {
+      "$ref": "#/$defs/sha256"
     },
     "run_commitment": {
       "$ref": "#/$defs/sha256"

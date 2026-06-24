@@ -1,120 +1,178 @@
-# GoalOS AGIALPHA Ascension — Sovereign Machine Economy
+# GoalOS AGIALPHA Ascension Sovereign Machine Economy 👁️⚡️✨
 
-## Release identity
+## Constitutional Civilization Engine Ω
 
-**Constellation:** META-AGENTIC α‑AGI 👁️✨ × AGI Alpha Node v0 ⚡️✨ × AGI Jobs v0 (v2) ✨  
-**Release:** `GOALOS-SOVEREIGN-MACHINE-ECONOMY-001`  
-**Version:** `1.0.0-civilization`
+**Release ID:** `GOALOS-AGIALPHA-SOVEREIGN-MACHINE-ECONOMY-002`  
+**Version:** `2.0.0-constitutional-civilization-engine`  
+**Status:** `interactive-constitutional-machine-economy-civilization-engine`  
+**Tagline:** *A mind that builds minds. A node that turns intelligence into proof. A market that turns proof into accountable value.*  
+**Doctrine:** *Minds are formed. Nodes execute. Markets coordinate. Proof earns permission. Humans authorize.*
 
-> A mind that builds minds. A node that turns intelligence into proof. A market that turns proof into accountable value.
+This additive flagship upgrades the Constitutional Triad into a coherent constitutional civilization engine. Three sovereign institutions remain independently inspectable while exchanging typed, predecessor-linked evidence through explicit handoff contracts:
 
-This release integrates the three installed GoalOS flagships into one deterministic, browser-local constitutional machine-economy experience. It does not replace or rewrite any of them. It builds after them, verifies their manifests, adds four new public surfaces, extends only declared shared website surfaces, and reconciles the companion manifest hashes.
+- **GoalOS AGIALPHA Ascension META-AGENTIC α‑AGI 👁️✨** forms, compares, selects, and constitutionally bounds agent institutions.
+- **GoalOS AGIALPHA Ascension AGI Alpha Node v0 ⚡️✨** executes bounded work through a governed peer mesh and emits proof-carrying receipts.
+- **GoalOS AGIALPHA Ascension AGI Jobs v0 (v2) ✨** commissions work, forms markets, convenes proof review, preserves dissent, opens disputes, and prepares accountable settlement.
+- **The Human Constitutional Boundary** records a review disposition without silently converting evidence into execution, settlement, production authority, or public reliance.
 
-## Public surfaces
+## Six public surfaces
 
-| Page | Purpose |
-|---|---|
-| `sovereign-machine-economy.html` | Commission and inspect the complete institution → node → market proof cycle |
-| `sovereign-machine-economy-architecture.html` | Constitutional architecture, handoff protocol, separation of powers, guardians and lineage |
-| `sovereign-machine-economy-chronicle.html` | Searchable 36-artifact cryptographic Proof Chronicle |
-| `sovereign-machine-economy-atlas.html` | Civilization Atlas linking all three flagship institutions and their deeper surfaces |
-| `index.html#sovereign-machine-economy` | Additive flagship gateway on the main GoalOS website |
+The autonomous build adds six pages and one homepage gateway:
 
-The homepage also receives one additive `Machine Economy` navigation entry.
+- `sovereign-machine-economy.html` — the interactive constitutional civilization and twenty-one-gate mission theatre.
+- `sovereign-machine-economy-observatory.html` — three governed counterfactual universes under Prudential, Balanced, and Frontier postures.
+- `sovereign-machine-economy-architecture.html` — the three-engine constitution, rights, authority matrix, threats, rollback controls, and source lineage.
+- `sovereign-machine-economy-ledger.html` — fifteen typed handoffs and a forty-eight-artifact predecessor-linked Proof Chronicle.
+- `sovereign-machine-economy-memory.html` — scoped, expiring, revocable capability memory with promotion questions and rollback law.
+- `sovereign-machine-economy-passport.html` — a portable Mission Passport with deterministic identity glyph, economy root, review state, proof counts, and explicit interpretation boundary.
+- `index.html#sovereign-machine-economy` — an additive homepage gateway and one prominent **Machine Economy Ω** navigation entry.
 
-## Constitutional cycle
+After deployment:
 
-The interactive cycle traverses eighteen gates:
+- `https://montrealai.github.io/goalos-agialpha-ascension/sovereign-machine-economy.html`
+- `https://montrealai.github.io/goalos-agialpha-ascension/sovereign-machine-economy-observatory.html`
+- `https://montrealai.github.io/goalos-agialpha-ascension/sovereign-machine-economy-architecture.html`
+- `https://montrealai.github.io/goalos-agialpha-ascension/sovereign-machine-economy-ledger.html`
+- `https://montrealai.github.io/goalos-agialpha-ascension/sovereign-machine-economy-memory.html`
+- `https://montrealai.github.io/goalos-agialpha-ascension/sovereign-machine-economy-passport.html`
+- `https://montrealai.github.io/goalos-agialpha-ascension/index.html#sovereign-machine-economy`
 
-1. Mission Charter
-2. Institution Population
-3. Pareto Selection
-4. Constitution Seal
-5. Foundry Handoff
-6. Node Identity
-7. Peer Route
-8. Resource Envelope
-9. Alpha Work Unit
-10. Node Validation
-11. Node Evidence Seal
-12. Market Handoff
-13. Market Charter
-14. Guild Competition
-15. Coalition Formation
-16. Proof Parliament
-17. Challenge Window
-18. Human Settlement Review
+## Twenty-one-gate constitutional mission cycle
 
-The Evidence Docket contains 36 chained artifacts: 12 META, 12 NODE and 12 JOBS. Three explicit commitments bind META → NODE → JOBS → HUMAN.
+A successful browser-local cycle:
+
+1. commits the mission identity and human authority boundary;
+2. records success criteria, exclusions, falsification conditions, and protected rights;
+3. generates rival agent institutions;
+4. compares them across evidence, utility, safety, efficiency, novelty, diversity, and reversibility;
+5. selects a bounded institution and preserves rejected alternatives;
+6. seals the institution constitution and revocable authority map;
+7. commits the AGI Alpha Node identity;
+8. admits a least-resource execution envelope;
+9. selects separate primary and shadow peer routes;
+10. compiles a bounded work graph and stop conditions;
+11. executes the digital-twin work graph locally;
+12. seals node evidence, receipts, uncertainty, and route attestations;
+13. transforms the mission into a declared work market;
+14. evaluates twelve guild institutions and forms a bounded coalition;
+15. convenes a seven-seat Proof Parliament;
+16. preserves an independent dissent memorandum;
+17. evaluates guardian vetoes, rights, challenge, and dispute paths;
+18. prepares accountable value without moving funds;
+19. proposes scoped, expiring, revocable capability memory;
+20. compares three counterfactual governed universes;
+21. stops at the Human Review Chamber and records only a local review artifact.
+
+The runtime seals:
+
+- **3 sovereign engines**;
+- **21 cross-engine proof gates**;
+- **15 typed handoff contracts**;
+- **48 predecessor-linked evidence artifacts**;
+- **3 counterfactual universes**;
+- **7 independent validator seats**;
+- **1 preserved dissent memorandum**;
+- **4 local human review dispositions**;
+- **0 external actions**.
+
+## Human Review Chamber
+
+The review chamber supports four browser-local dispositions:
+
+- `APPROVED_FOR_DELIBERATION`
+- `REVISION_REQUESTED`
+- `DISPUTE_OPEN`
+- `REJECTED_SAFE_HOLD`
+
+Each action creates a signed review artifact inside the downloadable Evidence Docket. None grants execution, settlement, production, credential, fund, or external authority.
+
+## Counterfactual Constitutional Observatory
+
+The Observatory runs the same mission through Prudential, Balanced, and Frontier postures. It may select different institutions, routes, coalitions, and utility margins, but four invariants remain non-negotiable:
+
+- authority remains `NONE_GRANTED`;
+- independent dissent remains preserved;
+- challenge and appeal remain open;
+- automatic capability-memory promotion remains prohibited.
+
+The Observatory is a deterministic comparison instrument, not an empirical outcome claim.
+
+## Mission Passport
+
+The Mission Passport binds the mission identifier, economy root, institution, node route, market coalition, validator disposition, human review state, artifact counts, and a deterministic 16×16 identity glyph into one portable review surface.
+
+It establishes internal consistency and traceability of the generated proof package. It does **not** independently certify external facts, scientific validity, legal compliance, production readiness, or authorization.
 
 ## Terminal constitution
 
-| Condition | Terminal state |
-|---|---|
-| Normal evidence-complete run | `HUMAN_SETTLEMENT_REVIEW` |
-| Budget breach | `HUMAN_REVIEW_REQUIRED` |
-| Evidence gap | `DISPUTE_OPEN` |
-| Institution divergence or node identity drift | `SAFE_HOLD` |
+The ordinary proof cycle ends at `HUMAN_SETTLEMENT_REVIEW` with `NONE_GRANTED` authority.
 
-Every path retains `NONE_GRANTED` external authority. The browser experience performs zero wallet connections, zero runtime network requests, zero live token movement and zero external actions.
+Adversarial rehearsals fail closed:
 
-## Source files
+- institution divergence, node identity drift, goal drift, evidence fracture, or validator capture → `SAFE_HOLD`;
+- rights or policy conflict → `DISPUTE_OPEN`;
+- budget or resource rupture → `HUMAN_REVIEW_REQUIRED`.
 
-- `content/sovereign-machine-economy.json`
-- `website/features/sovereign-machine-economy/templates/*.html`
-- `website/features/sovereign-machine-economy/assets/sovereign-machine-economy.css`
-- `website/features/sovereign-machine-economy/assets/sovereign-machine-economy.js`
-- `schemas/sovereign-machine-economy-docket.schema.json`
-- `scripts/website/build_sovereign_machine_economy.py`
-- `scripts/website/snapshot_sovereign_machine_economy_site.py`
-- `scripts/website/verify_sovereign_machine_economy.py`
-- `scripts/website/visual_check_sovereign_machine_economy.py`
-- `test/test_sovereign_machine_economy_website.py`
+No state authorizes production, funds, settlement, credential issuance, external execution, automatic memory promotion, or public reliance.
 
-## Deterministic build order
+## Security and claim boundary
 
-The feature must be built after the preserved v86 website, Proof Missions 001–008, Mainnet record, META-Agentic α‑AGI, AGI Alpha Node v0, First Real Loop and AGI Jobs v0 (v2).
+The experience is deterministic and browser-local. It performs:
 
-```bash
-python3 scripts/website/snapshot_sovereign_machine_economy_site.py \
-  --site site \
-  --output /tmp/sovereign-machine-economy-prebuild.json
+- no model or API call;
+- no RPC or external network request;
+- no wallet connection;
+- no token or fund movement;
+- no live settlement;
+- no credential issuance;
+- no persistent browser storage;
+- no external action;
+- no automatic memory promotion.
 
-SOURCE_DATE_EPOCH=1782320400 python3 scripts/website/build_sovereign_machine_economy.py \
-  --site site \
-  --root .
+The generated Evidence Docket is a structured proof package for review. It does not certify factual correctness or grant authority.
 
-python3 scripts/website/verify_sovereign_machine_economy.py \
-  --site site \
-  --root . \
-  --baseline /tmp/sovereign-machine-economy-prebuild.json \
-  --schema schemas/sovereign-machine-economy-docket.schema.json \
-  --output site/qa/sovereign-machine-economy-static.json
+## Additive integration contract
 
-python3 -m unittest discover -s test \
-  -p 'test_sovereign_machine_economy_website.py' -v
+The feature is generated only into the temporary GitHub Pages `site/` artifact. It does not modify:
 
-python3 scripts/website/visual_check_sovereign_machine_economy.py \
-  --site site \
-  --output site/qa/sovereign-machine-economy
-```
+- `website/v86_actual_site/**`;
+- Solidity or contracts;
+- Ethereum Mainnet deployment evidence;
+- Public Proof Missions 001–008;
+- package manifests or lockfiles;
+- META-Agentic source;
+- AGI Alpha Node source;
+- AGI Jobs source;
+- First Real Loop source;
+- private operator material.
 
-## Additive preservation boundary
+The builder may update only these generated integration surfaces:
 
-New generated outputs are limited to the four public pages, two assets, one public data file, one sample docket, one manifest and the feature QA reports.
+- `index.html`;
+- `routes.json`;
+- `sitemap.xml`;
+- `site-status.json`;
+- installed META-Agentic, AGI Alpha Node, and AGI Jobs manifests whose shared-surface hashes must be reconciled;
+- the feature’s own generated pages, assets, data, manifest, downloads, and QA report.
 
-Existing generated outputs permitted to change are limited to:
+All unrelated pre-existing generated files must remain byte-identical. The verifier compares a complete prebuild snapshot, rejects removals and undeclared changes, checks every manifest hash, validates the forty-eight-link evidence chain, validates the JSON Schema, and re-verifies all companion releases after reconciliation.
 
-- `index.html`
-- `routes.json`
-- `sitemap.xml`
-- `site-status.json`
-- `meta-agentic-alpha-agi-manifest.json`
-- `agi-alpha-node-v0-manifest.json`
-- `agi-jobs-v0-v2-manifest.json`
+## Autonomous Actions
 
-The canonical `website/v86_actual_site/**` source is not modified. Contracts, Mainnet evidence, Proof Missions, prior flagship source, package manifests and lockfiles are outside the feature write boundary.
+### Pull-request smoke test
 
-## Human-review boundary
+`.github/workflows/goalos-sovereign-machine-economy-smoke-test.yml`
 
-The interface is a deterministic constitutional digital twin and evidence workflow. It does not certify factual correctness, activate production, authorize user funds, issue credentials, execute external work, settle value or promote capability memory.
+The smoke test compiles every required civilization-engine tool under Python 3.11 and parses every JavaScript runtime before building anything. It rebuilds the canonical site, Proof Missions, Mainnet record, META-Agentic α‑AGI, AGI Alpha Node v0, and AGI Jobs v0 (v2); preserves and revalidates First Real Loop when fully installed; snapshots the complete generated institution; adds Sovereign Machine Economy last; runs static verification, deterministic tests, schema validation, and Chromium adversarial/responsive QA; re-verifies every companion manifest and canonical-source digest; proves a second installed build is byte-identical; uploads a human-review artifact; and never deploys Pages.
+
+### Production build and deployment
+
+`.github/workflows/goalos-agialpha-ascension-v86-final.yml`
+
+The existing production action receives one narrowly scoped extension. Sovereign Machine Economy Ω is generated after all three source engines and all existing flagships, verified against a complete prebuild snapshot, browser-tested, included in the complete Pages artifact, and deployed through the existing GitHub Pages jobs.
+
+## Upgrade and completeness behavior
+
+This release upgrades Constitutional Triad v1 without deleting anything. It adds the Observatory and Passport templates, replaces the existing Sovereign Machine Economy implementation and tests, and updates only the two workflows required to test and deploy the complete experience.
+
+The integration builder deliberately refuses a partial constitutional runtime: all three required engines and their generated manifests must exist before the Sovereign Machine Economy is assembled. First Real Loop remains optional: a complete installation is preserved and revalidated, absence is accepted, and a partial installation fails closed. This prevents a misleading half-integrated public release.
