@@ -1,0 +1,535 @@
+{
+  "schema_version": "1.0.0",
+  "release_id": "GOALOS-SOVEREIGN-MACHINE-ECONOMY-001",
+  "release_title": "GoalOS AGIALPHA Ascension — Sovereign Machine Economy",
+  "constellation_title": "META-AGENTIC α‑AGI 👁️✨ × AGI Alpha Node v0 ⚡️✨ × AGI Jobs v0 (v2) ✨",
+  "short_title": "Sovereign Machine Economy",
+  "version": "1.0.0-civilization",
+  "release_date": "2026-06-24",
+  "status": "interactive-constitutional-machine-economy-digital-twin",
+  "tagline": "Minds are formed. Nodes execute. Markets settle proof.",
+  "grand_line": "A mind that builds minds. A node that turns intelligence into proof. A market that turns proof into accountable value.",
+  "description": "A deterministic browser-local constitutional economy that forms agent institutions, routes bounded work through a sovereign proof node, convenes a proof market, and stops at the human authority boundary.",
+  "hero_metrics": [
+    {
+      "value": "3",
+      "label": "sovereign layers"
+    },
+    {
+      "value": "18",
+      "label": "constitutional gates"
+    },
+    {
+      "value": "36",
+      "label": "proof artifacts"
+    },
+    {
+      "value": "12 × 3",
+      "label": "rival entities"
+    },
+    {
+      "value": "9",
+      "label": "validator seats"
+    },
+    {
+      "value": "0",
+      "label": "unearned authority"
+    }
+  ],
+  "presets": [
+    {
+      "id": "frontier-research",
+      "name": "Frontier Research Mission",
+      "mission": "Design an evidence-first strategy for a frontier scientific program, preserving uncertainty, dissent, and a human promotion gate."
+    },
+    {
+      "id": "institutional-risk",
+      "name": "Institutional Risk Review",
+      "mission": "Map a consequential institutional decision, identify failure modes, construct falsifiable options, and prepare a review-ready evidence docket."
+    },
+    {
+      "id": "public-infrastructure",
+      "name": "Public Infrastructure Plan",
+      "mission": "Develop a bounded, rights-aware infrastructure plan with transparent trade-offs, independent verification, and no autonomous external action."
+    },
+    {
+      "id": "product-civilization",
+      "name": "Category-Defining Product",
+      "mission": "Form a specialized agent institution to design, validate, and launch a category-defining product strategy under proof-conditioned authority."
+    },
+    {
+      "id": "custom",
+      "name": "Custom Mission",
+      "mission": "Commission a bounded mission across institution formation, sovereign node execution, and proof-governed market review."
+    }
+  ],
+  "postures": [
+    {
+      "id": "balanced",
+      "name": "Balanced Sovereignty",
+      "description": "Balance evidence, safety, capability, efficiency, and originality."
+    },
+    {
+      "id": "evidence-first",
+      "name": "Evidence First",
+      "description": "Maximize provenance, falsifiability, dissent, and auditability."
+    },
+    {
+      "id": "safety-first",
+      "name": "Safety First",
+      "description": "Prefer conservative routing, stronger guardian posture, and wider review."
+    },
+    {
+      "id": "frontier",
+      "name": "Frontier Discovery",
+      "description": "Increase novelty weight while preserving hard authority boundaries."
+    }
+  ],
+  "risk_profiles": [
+    {
+      "id": "low",
+      "name": "Low",
+      "validator_seats": 3,
+      "challenge": "24 hours"
+    },
+    {
+      "id": "medium",
+      "name": "Medium",
+      "validator_seats": 5,
+      "challenge": "72 hours"
+    },
+    {
+      "id": "high",
+      "name": "High",
+      "validator_seats": 7,
+      "challenge": "168 hours"
+    },
+    {
+      "id": "critical",
+      "name": "Critical",
+      "validator_seats": 9,
+      "challenge": "336 hours"
+    }
+  ],
+  "incidents": [
+    {
+      "id": "none",
+      "name": "No incident",
+      "terminal": "HUMAN_SETTLEMENT_REVIEW",
+      "description": "The complete proof cycle reaches human settlement review."
+    },
+    {
+      "id": "institution-divergence",
+      "name": "Institution divergence",
+      "terminal": "SAFE_HOLD",
+      "description": "The selected institutional constitution fails cross-verifier stability."
+    },
+    {
+      "id": "node-identity-drift",
+      "name": "Node identity drift",
+      "terminal": "SAFE_HOLD",
+      "description": "Execution identity no longer matches the committed node posture."
+    },
+    {
+      "id": "evidence-gap",
+      "name": "Evidence gap",
+      "terminal": "DISPUTE_OPEN",
+      "description": "A consequential claim lacks sufficient independent support."
+    },
+    {
+      "id": "budget-breach",
+      "name": "Budget breach",
+      "terminal": "HUMAN_REVIEW_REQUIRED",
+      "description": "The work envelope exceeds the declared economic boundary."
+    }
+  ],
+  "gates": [
+    {
+      "id": "G01",
+      "layer": "META",
+      "name": "Mission Charter",
+      "description": "Commit the mission, exclusions, success criteria, and review posture."
+    },
+    {
+      "id": "G02",
+      "layer": "META",
+      "name": "Institution Population",
+      "description": "Generate twelve reproducible rival institutions."
+    },
+    {
+      "id": "G03",
+      "layer": "META",
+      "name": "Pareto Selection",
+      "description": "Identify non-dominated candidate institutions."
+    },
+    {
+      "id": "G04",
+      "layer": "META",
+      "name": "Constitution Seal",
+      "description": "Separate mandates, verification, guardianship, and authority."
+    },
+    {
+      "id": "G05",
+      "layer": "META",
+      "name": "Foundry Handoff",
+      "description": "Seal the institution-to-node transition."
+    },
+    {
+      "id": "G06",
+      "layer": "NODE",
+      "name": "Node Identity",
+      "description": "Commit runtime identity and bounded execution posture."
+    },
+    {
+      "id": "G07",
+      "layer": "NODE",
+      "name": "Peer Route",
+      "description": "Select primary and shadow routes from twelve peers."
+    },
+    {
+      "id": "G08",
+      "layer": "NODE",
+      "name": "Resource Envelope",
+      "description": "Bind latency, energy, compute, and uncertainty budgets."
+    },
+    {
+      "id": "G09",
+      "layer": "NODE",
+      "name": "Alpha Work Unit",
+      "description": "Execute a bounded proof-carrying work unit."
+    },
+    {
+      "id": "G10",
+      "layer": "NODE",
+      "name": "Node Validation",
+      "description": "Preserve seven independent validator judgments."
+    },
+    {
+      "id": "G11",
+      "layer": "NODE",
+      "name": "Node Evidence Seal",
+      "description": "Seal the execution trace and claim matrix."
+    },
+    {
+      "id": "G12",
+      "layer": "NODE",
+      "name": "Market Handoff",
+      "description": "Transition only verified work into the market layer."
+    },
+    {
+      "id": "G13",
+      "layer": "JOBS",
+      "name": "Market Charter",
+      "description": "Commit rights, budget, acceptance, and dispute rules."
+    },
+    {
+      "id": "G14",
+      "layer": "JOBS",
+      "name": "Guild Competition",
+      "description": "Compare twelve declared agent guilds."
+    },
+    {
+      "id": "G15",
+      "layer": "JOBS",
+      "name": "Coalition Formation",
+      "description": "Form a prime-specialist-reserve work council."
+    },
+    {
+      "id": "G16",
+      "layer": "JOBS",
+      "name": "Proof Parliament",
+      "description": "Convene a risk-sized commit/reveal validator chamber."
+    },
+    {
+      "id": "G17",
+      "layer": "JOBS",
+      "name": "Challenge Window",
+      "description": "Preserve dissent, counter-evidence, and dispute rights."
+    },
+    {
+      "id": "G18",
+      "layer": "HUMAN",
+      "name": "Human Settlement Review",
+      "description": "Prepare accountable value allocation without autonomous settlement."
+    }
+  ],
+  "artifacts": [
+    {
+      "id": "M01",
+      "layer": "META",
+      "name": "Mission Contract",
+      "purpose": "declared purpose, exclusions, budget, review posture"
+    },
+    {
+      "id": "M02",
+      "layer": "META",
+      "name": "Objective Vector",
+      "purpose": "multi-objective success and anti-goals"
+    },
+    {
+      "id": "M03",
+      "layer": "META",
+      "name": "Candidate Population",
+      "purpose": "twelve rival institutional designs"
+    },
+    {
+      "id": "M04",
+      "layer": "META",
+      "name": "Mutation Ledger",
+      "purpose": "reproducible institutional variation"
+    },
+    {
+      "id": "M05",
+      "layer": "META",
+      "name": "Institution Scores",
+      "purpose": "capability, evidence, safety, efficiency and novelty"
+    },
+    {
+      "id": "M06",
+      "layer": "META",
+      "name": "Pareto Frontier",
+      "purpose": "non-dominated candidate set"
+    },
+    {
+      "id": "M07",
+      "layer": "META",
+      "name": "Selected Constitution",
+      "purpose": "bounded roles, mandates and separation of powers"
+    },
+    {
+      "id": "M08",
+      "layer": "META",
+      "name": "Authority Boundary",
+      "purpose": "permissions explicitly withheld"
+    },
+    {
+      "id": "M09",
+      "layer": "META",
+      "name": "Verifier Design",
+      "purpose": "independent evaluation topology"
+    },
+    {
+      "id": "M10",
+      "layer": "META",
+      "name": "Risk Posture",
+      "purpose": "declared risk and challenge policy"
+    },
+    {
+      "id": "M11",
+      "layer": "META",
+      "name": "Foundry Handoff",
+      "purpose": "sealed transition into node execution"
+    },
+    {
+      "id": "M12",
+      "layer": "META",
+      "name": "Foundry Chronicle",
+      "purpose": "complete formation trace"
+    },
+    {
+      "id": "N01",
+      "layer": "NODE",
+      "name": "Node Identity Commitment",
+      "purpose": "declared node identity and runtime boundary"
+    },
+    {
+      "id": "N02",
+      "layer": "NODE",
+      "name": "Resource Envelope",
+      "purpose": "bounded compute, latency and energy posture"
+    },
+    {
+      "id": "N03",
+      "layer": "NODE",
+      "name": "Peer Candidate Register",
+      "purpose": "reviewable route candidates"
+    },
+    {
+      "id": "N04",
+      "layer": "NODE",
+      "name": "Primary Route",
+      "purpose": "selected execution route"
+    },
+    {
+      "id": "N05",
+      "layer": "NODE",
+      "name": "Shadow Route",
+      "purpose": "independent comparison and fallback route"
+    },
+    {
+      "id": "N06",
+      "layer": "NODE",
+      "name": "Alpha Work Unit",
+      "purpose": "bounded machine-work contract"
+    },
+    {
+      "id": "N07",
+      "layer": "NODE",
+      "name": "Execution Trace",
+      "purpose": "ordered local execution events"
+    },
+    {
+      "id": "N08",
+      "layer": "NODE",
+      "name": "Claim Matrix",
+      "purpose": "claim-to-evidence mapping"
+    },
+    {
+      "id": "N09",
+      "layer": "NODE",
+      "name": "Node Validator Record",
+      "purpose": "seven independent node judgments"
+    },
+    {
+      "id": "N10",
+      "layer": "NODE",
+      "name": "Node Guardian Record",
+      "purpose": "five separated safety authorities"
+    },
+    {
+      "id": "N11",
+      "layer": "NODE",
+      "name": "Node Evidence Seal",
+      "purpose": "proof-carrying work receipt"
+    },
+    {
+      "id": "N12",
+      "layer": "NODE",
+      "name": "Market Handoff",
+      "purpose": "sealed transition into the work market"
+    },
+    {
+      "id": "J01",
+      "layer": "JOBS",
+      "name": "Job Charter",
+      "purpose": "rights, budget, acceptance and dispute terms"
+    },
+    {
+      "id": "J02",
+      "layer": "JOBS",
+      "name": "Rights Ledger",
+      "purpose": "ownership, attribution, privacy and revocation posture"
+    },
+    {
+      "id": "J03",
+      "layer": "JOBS",
+      "name": "Guild Market",
+      "purpose": "twelve declared competing institutions"
+    },
+    {
+      "id": "J04",
+      "layer": "JOBS",
+      "name": "Coalition Contract",
+      "purpose": "prime, specialist and reserve roles"
+    },
+    {
+      "id": "J05",
+      "layer": "JOBS",
+      "name": "Work Graph",
+      "purpose": "eight proof-producing work packages"
+    },
+    {
+      "id": "J06",
+      "layer": "JOBS",
+      "name": "Output Bundle",
+      "purpose": "bounded deliverables and limitations"
+    },
+    {
+      "id": "J07",
+      "layer": "JOBS",
+      "name": "Evidence Docket",
+      "purpose": "twenty-four-artifact job proof package"
+    },
+    {
+      "id": "J08",
+      "layer": "JOBS",
+      "name": "Proof Parliament",
+      "purpose": "risk-sized commit/reveal validator chamber"
+    },
+    {
+      "id": "J09",
+      "layer": "JOBS",
+      "name": "Dissent Memorandum",
+      "purpose": "independent adverse view preserved"
+    },
+    {
+      "id": "J10",
+      "layer": "JOBS",
+      "name": "Challenge Record",
+      "purpose": "counter-evidence and dispute window"
+    },
+    {
+      "id": "J11",
+      "layer": "JOBS",
+      "name": "Settlement Review",
+      "purpose": "transparent non-live value allocation"
+    },
+    {
+      "id": "J12",
+      "layer": "JOBS",
+      "name": "Capability Memory",
+      "purpose": "scoped, expiring, revocable learning candidate"
+    }
+  ],
+  "guardians": [
+    {
+      "name": "Mission Guardian",
+      "scope": "purpose drift, prohibited scope and undeclared external action"
+    },
+    {
+      "name": "Institution Guardian",
+      "scope": "self-authorization, role collapse and verifier capture"
+    },
+    {
+      "name": "Identity Guardian",
+      "scope": "node identity, route integrity and credential drift"
+    },
+    {
+      "name": "Resource Guardian",
+      "scope": "compute, latency, energy and economic envelope"
+    },
+    {
+      "name": "Evidence Guardian",
+      "scope": "source identity, claim support and contradiction preservation"
+    },
+    {
+      "name": "Rights Guardian",
+      "scope": "privacy, attribution, ownership and revocation"
+    },
+    {
+      "name": "Settlement Guardian",
+      "scope": "challenge closure, human review and value movement"
+    }
+  ],
+  "handoff_rules": [
+    "No layer may silently widen the mission contract.",
+    "Every handoff carries a commitment to inputs, outputs, limits, and dissent.",
+    "The receiving layer must independently verify the prior seal.",
+    "An incomplete handoff fails closed rather than degrading silently.",
+    "Evidence can earn review; it cannot grant itself authority.",
+    "Settlement and capability memory remain human-authorized and revocable."
+  ],
+  "claim_boundary": [
+    "This is a deterministic browser-local institutional digital twin, not a live autonomous economy.",
+    "Runtime evidence demonstrates software behavior and internal consistency, not external factual correctness.",
+    "No model API, wallet, RPC endpoint, token transfer, credential issuance, or external action occurs.",
+    "A proof package can support human judgment; it does not constitute permission by itself.",
+    "Production activation and user-fund authorization remain absent.",
+    "All normal and adversarial paths preserve explicit human authority."
+  ],
+  "security": {
+    "external_dependencies": false,
+    "api_keys": false,
+    "wallet_connection": false,
+    "network_reads": false,
+    "network_writes": false,
+    "local_storage": false,
+    "live_compute": false,
+    "live_token_movement": false,
+    "credential_issuance": false,
+    "human_review_required": true,
+    "external_authority": "none",
+    "production_activation": "NOT_ACTIVATED",
+    "user_fund_authorization": "NO"
+  }
+}
