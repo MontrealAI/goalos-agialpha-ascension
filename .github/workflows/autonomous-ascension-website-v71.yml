@@ -48,7 +48,7 @@ jobs:
             site/qa/QA_ASCENSION_WEBSITE_v71.json
             site/qa/QA_ASCENSION_WEBSITE_v71.md
       - name: Upload GitHub Pages artifact
-        uses: actions/upload-pages-artifact@v4
+        uses: actions/upload-pages-artifact@v5
         with:
           path: site
   deploy:
