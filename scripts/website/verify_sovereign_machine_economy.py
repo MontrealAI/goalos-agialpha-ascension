@@ -301,7 +301,10 @@ def run(site: Path, root: Path, content_path: Path, schema_path: Path, baseline_
 
     forbidden = ["PRIVATE_MAINNET_DEPLOYER_PRIVATE_KEY", "SEED_PHRASE", "MNEMONIC", "MAINNET_RPC_URL=", "ETHERSCAN_API_KEY="]
     feature_text = "\n".join((site / relative).read_text(encoding="utf-8",errors="ignore") for relative in [*PAGES,"assets/sovereign-machine-economy.js","assets/sovereign-machine-economy.css","data/sovereign-machine-economy.json"])
-    for phrase in forbidden: check(f"secret-scan:{phrase}", phrase not in feature_text, phrase)
+    for phrase in forbidden:
+        present = phrase in feature_text
+        token_id = sha_bytes(phrase.encode("utf-8"))[:12]
+        check(f"secret-scan:{token_id}", not present, "detected" if present else "absent")
     for phrase in ["production authorized","user funds authorized","guaranteed return","guaranteed roi"]:
         check(f"claim-scan:{phrase}", phrase not in feature_text.lower(), phrase)
 
