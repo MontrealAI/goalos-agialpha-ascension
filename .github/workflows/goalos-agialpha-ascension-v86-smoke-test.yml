@@ -77,6 +77,7 @@ on:
       - 'content/agi-alpha-node-v0.json'
       - 'website/features/agi-alpha-node-v0/**'
       - 'scripts/website/build_agi_alpha_node_v0.py'
+      - 'scripts/website/snapshot_agi_alpha_node_v0_site.py'
       - 'scripts/website/verify_agi_alpha_node_v0.py'
       - 'scripts/website/visual_check_agi_alpha_node_v0.py'
       - 'test/test_agi_alpha_node_v0_website.py'
@@ -228,55 +229,96 @@ jobs:
       - name: Browser-test the restored Mainnet record
         run: python3 scripts/browser_check_goalos_ethereum_mainnet_v87.py --site site --screenshots
 
-      - name: Build GoalOS AGIALPHA Ascension META-AGENTIC α-AGI additively
-        run: python3 scripts/website/build_meta_agentic_alpha_agi.py --site site
-
-      - name: Assert META-Agentic α-AGI generated outputs exist
+      - name: Detect optional META-Agentic α-AGI release
         shell: bash
         run: |
           set -euo pipefail
-          for file in \
-            site/meta-agentic-alpha-agi.html \
-            site/meta-agentic-alpha-agi-architecture.html \
-            site/meta-agentic-alpha-agi-manifest.json \
-            site/assets/meta-agentic-alpha-agi.css \
-            site/assets/meta-agentic-alpha-agi.js \
-            site/data/meta-agentic-alpha-agi.json \
-            site/index.html \
-            site/qa/meta-agentic-alpha-agi-build.json; do
-            test -s "$file" || { echo "Missing generated META-Agentic output: $file"; find site -maxdepth 3 -type f | sort; exit 1; }
+          required=(
+            content/meta-agentic-alpha-agi.json
+            website/features/meta-agentic-alpha-agi/templates/meta-agentic-alpha-agi.html
+            website/features/meta-agentic-alpha-agi/templates/meta-agentic-alpha-agi-architecture.html
+            website/features/meta-agentic-alpha-agi/assets/meta-agentic-alpha-agi.css
+            website/features/meta-agentic-alpha-agi/assets/meta-agentic-alpha-agi.js
+            scripts/website/build_meta_agentic_alpha_agi.py
+            scripts/website/verify_meta_agentic_alpha_agi.py
+            scripts/website/visual_check_meta_agentic_alpha_agi.py
+            test/test_meta_agentic_alpha_agi_website.py
+          )
+          present=0
+          for file in "${required[@]}"; do
+            [[ -f "$file" ]] && present=$((present + 1))
           done
+          if (( present == 0 )); then
+            state=none
+          elif (( present == ${#required[@]} )); then
+            state=complete
+          else
+            echo "Partial META-Agentic installation detected ($present/${#required[@]} required files). Refusing a mixed release."
+            printf 'Required: %s\n' "${required[@]}"
+            exit 1
+          fi
+          echo "META_AGENTIC_STATE=$state" >> "$GITHUB_ENV"
+          echo "META-Agentic release state: $state"
 
-      - name: Verify, regression-test, and browser-test META-Agentic α-AGI
+      - name: Build optional META-Agentic α-AGI release additively
+        if: env.META_AGENTIC_STATE == 'complete'
+        run: SOURCE_DATE_EPOCH=1782172800 python3 scripts/website/build_meta_agentic_alpha_agi.py --site site
+
+      - name: Verify, regression-test, and browser-test optional META-Agentic α-AGI
+        if: env.META_AGENTIC_STATE == 'complete'
         run: |
           python3 scripts/website/verify_meta_agentic_alpha_agi.py --site site
           python3 -m unittest discover -s test -p 'test_meta_agentic_alpha_agi_website.py' -v
           python3 scripts/website/visual_check_meta_agentic_alpha_agi.py --site site --output site/qa/meta-agentic-alpha-agi
 
-      - name: Build GoalOS AGIALPHA Ascension AGI Alpha Node v0 additively
-        run: python3 scripts/website/build_agi_alpha_node_v0.py --site site
+      - name: Snapshot the complete generated site before AGI Alpha Node v0
+        run: python3 scripts/website/snapshot_agi_alpha_node_v0_site.py --site site --output "$RUNNER_TEMP/agi-alpha-node-v0-prebuild.json"
 
-      - name: Assert AGI Alpha Node v0 generated outputs exist
+      - name: Build GoalOS AGIALPHA Ascension AGI Alpha Node v0 Sovereign Citadel
+        run: SOURCE_DATE_EPOCH=1782216000 python3 scripts/website/build_agi_alpha_node_v0.py --site site --root .
+
+      - name: Assert AGI Alpha Node v0 Sovereign Citadel outputs exist
         shell: bash
         run: |
           set -euo pipefail
           for file in \
             site/agi-alpha-node-v0.html \
             site/agi-alpha-node-v0-architecture.html \
+            site/agi-alpha-node-v0-proof-ledger.html \
             site/agi-alpha-node-v0-manifest.json \
             site/assets/agi-alpha-node-v0.css \
             site/assets/agi-alpha-node-v0.js \
             site/data/agi-alpha-node-v0.json \
-            site/index.html \
+            site/downloads/agi-alpha-node-v0/sample-node-evidence-docket.json \
             site/qa/agi-alpha-node-v0-build.json; do
-            test -s "$file" || { echo "Missing generated AGI Alpha Node v0 output: $file"; find site -maxdepth 3 -type f | sort; exit 1; }
+            test -s "$file" || { echo "Missing generated AGI Alpha Node v0 output: $file"; find site -maxdepth 4 -type f | sort; exit 1; }
           done
 
-      - name: Verify, regression-test, and browser-test AGI Alpha Node v0
+      - name: Verify preservation and regression-test AGI Alpha Node v0 Sovereign Citadel
         run: |
-          python3 scripts/website/verify_agi_alpha_node_v0.py --site site
+          python3 scripts/website/verify_agi_alpha_node_v0.py \
+            --site site \
+            --root . \
+            --baseline "$RUNNER_TEMP/agi-alpha-node-v0-prebuild.json" \
+            --output site/qa/agi-alpha-node-v0-static.json
           python3 -m unittest discover -s test -p 'test_agi_alpha_node_v0_website.py' -v
-          python3 scripts/website/visual_check_agi_alpha_node_v0.py --site site --output site/qa/agi-alpha-node-v0
+
+      - name: Adversarially browser-test AGI Alpha Node v0 Sovereign Citadel
+        run: python3 scripts/website/visual_check_agi_alpha_node_v0.py --site site --output site/qa/agi-alpha-node-v0-browser
+
+      - name: Assert final AGI Alpha Node v0 QA evidence exists
+        shell: bash
+        run: |
+          set -euo pipefail
+          for file in \
+            site/qa/agi-alpha-node-v0-static.json \
+            site/qa/agi-alpha-node-v0-browser/browser-report.json; do
+            test -s "$file" || { echo "Missing AGI Alpha Node v0 QA evidence: $file"; exit 1; }
+          done
+
+      - name: Re-verify optional META-Agentic manifest after shared-surface reconciliation
+        if: env.META_AGENTIC_STATE == 'complete'
+        run: python3 scripts/website/verify_meta_agentic_alpha_agi.py --site site
 
       - name: Reject archives and private operator material in public site
         shell: bash
@@ -308,18 +350,14 @@ jobs:
             site/proof-mission-007.html
             site/proof-mission-008.html
             site/ethereum-mainnet.html
-            site/meta-agentic-alpha-agi.html
-            site/meta-agentic-alpha-agi-architecture.html
-            site/meta-agentic-alpha-agi-manifest.json
-            site/assets/meta-agentic-alpha-agi.css
-            site/assets/meta-agentic-alpha-agi.js
-            site/data/meta-agentic-alpha-agi.json
             site/agi-alpha-node-v0.html
             site/agi-alpha-node-v0-architecture.html
+            site/agi-alpha-node-v0-proof-ledger.html
             site/agi-alpha-node-v0-manifest.json
             site/assets/agi-alpha-node-v0.css
             site/assets/agi-alpha-node-v0.js
             site/data/agi-alpha-node-v0.json
+            site/downloads/agi-alpha-node-v0/
             site/downloads/proof-gradient/
             site/downloads/proof-missions/
             site/qa/

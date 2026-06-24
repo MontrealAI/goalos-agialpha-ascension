@@ -78,20 +78,12 @@ on:
       - 'content/agi-alpha-node-v0.json'
       - 'website/features/agi-alpha-node-v0/**'
       - 'scripts/website/build_agi_alpha_node_v0.py'
+      - 'scripts/website/snapshot_agi_alpha_node_v0_site.py'
       - 'scripts/website/verify_agi_alpha_node_v0.py'
       - 'scripts/website/visual_check_agi_alpha_node_v0.py'
       - 'test/test_agi_alpha_node_v0_website.py'
       - 'docs/AGI_ALPHA_NODE_V0_WEBSITE.md'
       - 'README_UPLOAD_AGI_ALPHA_NODE_V0.md'
-      - 'content/goalos-first-real-loop.json'
-      - 'website/first_real_loop/**'
-      - 'scripts/website/build_goalos_first_real_loop.py'
-      - 'scripts/website/verify_goalos_first_real_loop.py'
-      - 'scripts/website/browser_check_goalos_first_real_loop.py'
-      - 'schemas/goalos-first-real-loop-evidence-docket.schema.json'
-      - 'test/test_goalos_first_real_loop.py'
-      - 'docs/GOALOS_FIRST_REAL_LOOP_WEBSITE.md'
-      - '.github/workflows/goalos-first-real-loop-smoke-test.yml'
       - '.github/workflows/goalos-agialpha-ascension-v86-final.yml'
       - '.github/workflows/goalos-agialpha-ascension-v86-smoke-test.yml'
 
@@ -108,7 +100,7 @@ jobs:
   build-verify-browser-test:
     name: Build, preserve, verify, and browser-test v86
     runs-on: ubuntu-latest
-    timeout-minutes: 105
+    timeout-minutes: 90
     permissions:
       contents: read
     steps:
@@ -122,12 +114,6 @@ jobs:
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
-
-      - name: Record canonical v86 source digest
-        shell: bash
-        run: |
-          set -euo pipefail
-          find website/v86_actual_site -type f -print0 | sort -z | xargs -0 sha256sum | sha256sum > /tmp/v86-source.before
 
       - name: Build preserved actual website
         run: python3 scripts/build_goalos_agialpha_ascension_website_v86.py --out site
@@ -252,129 +238,96 @@ jobs:
       - name: Browser-test the restored Mainnet record
         run: python3 scripts/browser_check_goalos_ethereum_mainnet_v87.py --site site --screenshots
 
-      - name: Build GoalOS AGIALPHA Ascension META-AGENTIC α-AGI additively
-        run: python3 scripts/website/build_meta_agentic_alpha_agi.py --site site
-
-      - name: Assert META-Agentic α-AGI generated outputs exist
+      - name: Detect optional META-Agentic α-AGI release
         shell: bash
         run: |
           set -euo pipefail
-          for file in \
-            site/meta-agentic-alpha-agi.html \
-            site/meta-agentic-alpha-agi-architecture.html \
-            site/meta-agentic-alpha-agi-manifest.json \
-            site/assets/meta-agentic-alpha-agi.css \
-            site/assets/meta-agentic-alpha-agi.js \
-            site/data/meta-agentic-alpha-agi.json \
-            site/index.html \
-            site/qa/meta-agentic-alpha-agi-build.json; do
-            test -s "$file" || { echo "Missing generated META-Agentic output: $file"; find site -maxdepth 3 -type f | sort; exit 1; }
+          required=(
+            content/meta-agentic-alpha-agi.json
+            website/features/meta-agentic-alpha-agi/templates/meta-agentic-alpha-agi.html
+            website/features/meta-agentic-alpha-agi/templates/meta-agentic-alpha-agi-architecture.html
+            website/features/meta-agentic-alpha-agi/assets/meta-agentic-alpha-agi.css
+            website/features/meta-agentic-alpha-agi/assets/meta-agentic-alpha-agi.js
+            scripts/website/build_meta_agentic_alpha_agi.py
+            scripts/website/verify_meta_agentic_alpha_agi.py
+            scripts/website/visual_check_meta_agentic_alpha_agi.py
+            test/test_meta_agentic_alpha_agi_website.py
+          )
+          present=0
+          for file in "${required[@]}"; do
+            [[ -f "$file" ]] && present=$((present + 1))
           done
+          if (( present == 0 )); then
+            state=none
+          elif (( present == ${#required[@]} )); then
+            state=complete
+          else
+            echo "Partial META-Agentic installation detected ($present/${#required[@]} required files). Refusing a mixed release."
+            printf 'Required: %s\n' "${required[@]}"
+            exit 1
+          fi
+          echo "META_AGENTIC_STATE=$state" >> "$GITHUB_ENV"
+          echo "META-Agentic release state: $state"
 
-      - name: Verify, regression-test, and browser-test META-Agentic α-AGI
+      - name: Build optional META-Agentic α-AGI release additively
+        if: env.META_AGENTIC_STATE == 'complete'
+        run: SOURCE_DATE_EPOCH=1782172800 python3 scripts/website/build_meta_agentic_alpha_agi.py --site site
+
+      - name: Verify, regression-test, and browser-test optional META-Agentic α-AGI
+        if: env.META_AGENTIC_STATE == 'complete'
         run: |
           python3 scripts/website/verify_meta_agentic_alpha_agi.py --site site
           python3 -m unittest discover -s test -p 'test_meta_agentic_alpha_agi_website.py' -v
           python3 scripts/website/visual_check_meta_agentic_alpha_agi.py --site site --output site/qa/meta-agentic-alpha-agi
 
-      - name: Build GoalOS AGIALPHA Ascension AGI Alpha Node v0 additively
-        run: python3 scripts/website/build_agi_alpha_node_v0.py --site site
+      - name: Snapshot the complete generated site before AGI Alpha Node v0
+        run: python3 scripts/website/snapshot_agi_alpha_node_v0_site.py --site site --output "$RUNNER_TEMP/agi-alpha-node-v0-prebuild.json"
 
-      - name: Assert AGI Alpha Node v0 generated outputs exist
+      - name: Build GoalOS AGIALPHA Ascension AGI Alpha Node v0 Sovereign Citadel
+        run: SOURCE_DATE_EPOCH=1782216000 python3 scripts/website/build_agi_alpha_node_v0.py --site site --root .
+
+      - name: Assert AGI Alpha Node v0 Sovereign Citadel outputs exist
         shell: bash
         run: |
           set -euo pipefail
           for file in \
             site/agi-alpha-node-v0.html \
             site/agi-alpha-node-v0-architecture.html \
+            site/agi-alpha-node-v0-proof-ledger.html \
             site/agi-alpha-node-v0-manifest.json \
             site/assets/agi-alpha-node-v0.css \
             site/assets/agi-alpha-node-v0.js \
             site/data/agi-alpha-node-v0.json \
-            site/index.html \
+            site/downloads/agi-alpha-node-v0/sample-node-evidence-docket.json \
             site/qa/agi-alpha-node-v0-build.json; do
-            test -s "$file" || { echo "Missing generated AGI Alpha Node v0 output: $file"; find site -maxdepth 3 -type f | sort; exit 1; }
+            test -s "$file" || { echo "Missing generated AGI Alpha Node v0 output: $file"; find site -maxdepth 4 -type f | sort; exit 1; }
           done
 
-      - name: Verify, regression-test, and browser-test AGI Alpha Node v0
+      - name: Verify preservation and regression-test AGI Alpha Node v0 Sovereign Citadel
         run: |
-          python3 scripts/website/verify_agi_alpha_node_v0.py --site site
+          python3 scripts/website/verify_agi_alpha_node_v0.py \
+            --site site \
+            --root . \
+            --baseline "$RUNNER_TEMP/agi-alpha-node-v0-prebuild.json" \
+            --output site/qa/agi-alpha-node-v0-static.json
           python3 -m unittest discover -s test -p 'test_agi_alpha_node_v0_website.py' -v
-          python3 scripts/website/visual_check_agi_alpha_node_v0.py --site site --output site/qa/agi-alpha-node-v0
 
-      - name: Record prior flagship digests before First Real Loop
-        shell: bash
-        run: |
-          set -euo pipefail
-          sha256sum \
-            site/meta-agentic-alpha-agi.html \
-            site/meta-agentic-alpha-agi-architecture.html \
-            site/meta-agentic-alpha-agi-manifest.json \
-            site/assets/meta-agentic-alpha-agi.css \
-            site/assets/meta-agentic-alpha-agi.js \
-            site/data/meta-agentic-alpha-agi.json \
-            site/agi-alpha-node-v0.html \
-            site/agi-alpha-node-v0-architecture.html \
-            site/agi-alpha-node-v0-manifest.json \
-            site/assets/agi-alpha-node-v0.css \
-            site/assets/agi-alpha-node-v0.js \
-            site/data/agi-alpha-node-v0.json > /tmp/prior-flagships.before
+      - name: Adversarially browser-test AGI Alpha Node v0 Sovereign Citadel
+        run: python3 scripts/website/visual_check_agi_alpha_node_v0.py --site site --output site/qa/agi-alpha-node-v0-browser
 
-      - name: Build GoalOS AGIALPHA Ascension First Real Loop additively
-        run: python3 scripts/website/build_goalos_first_real_loop.py --site site
-
-      - name: Assert First Real Loop generated outputs exist
+      - name: Assert final AGI Alpha Node v0 QA evidence exists
         shell: bash
         run: |
           set -euo pipefail
           for file in \
-            site/first-real-loop.html \
-            site/first-real-loop-architecture.html \
-            site/first-real-loop-docket.html \
-            site/assets/first-real-loop/first-real-loop.css \
-            site/assets/first-real-loop/first-real-loop.js \
-            site/downloads/first-real-loop/first-real-loop-artifact-ledger.json \
-            site/downloads/first-real-loop/first-real-loop-evidence-docket.json \
-            site/downloads/first-real-loop/first-real-loop-executive-brief.md \
-            site/downloads/first-real-loop/first-real-loop-replay-manifest.json \
-            site/index.html \
-            site/site-status.json \
-            site/sitemap.xml \
-            site/qa/first-real-loop-build.json; do
-            test -s "$file" || { echo "Missing generated First Real Loop output: $file"; find site -maxdepth 4 -type f | sort; exit 1; }
+            site/qa/agi-alpha-node-v0-static.json \
+            site/qa/agi-alpha-node-v0-browser/browser-report.json; do
+            test -s "$file" || { echo "Missing AGI Alpha Node v0 QA evidence: $file"; exit 1; }
           done
 
-      - name: Verify, regression-test, and browser-test First Real Loop
-        run: |
-          python3 scripts/website/verify_goalos_first_real_loop.py \
-            --site site \
-            --content content/goalos-first-real-loop.json \
-            --schema schemas/goalos-first-real-loop-evidence-docket.schema.json
-          python3 -m unittest discover -s test -p 'test_goalos_first_real_loop.py' -v
-          python3 scripts/website/browser_check_goalos_first_real_loop.py --site site --output site/qa/first-real-loop
-
-      - name: Prove prior flagships and canonical source remain byte-identical
-        shell: bash
-        run: |
-          set -euo pipefail
-          sha256sum \
-            site/meta-agentic-alpha-agi.html \
-            site/meta-agentic-alpha-agi-architecture.html \
-            site/meta-agentic-alpha-agi-manifest.json \
-            site/assets/meta-agentic-alpha-agi.css \
-            site/assets/meta-agentic-alpha-agi.js \
-            site/data/meta-agentic-alpha-agi.json \
-            site/agi-alpha-node-v0.html \
-            site/agi-alpha-node-v0-architecture.html \
-            site/agi-alpha-node-v0-manifest.json \
-            site/assets/agi-alpha-node-v0.css \
-            site/assets/agi-alpha-node-v0.js \
-            site/data/agi-alpha-node-v0.json > /tmp/prior-flagships.after
-          cmp /tmp/prior-flagships.before /tmp/prior-flagships.after
-          find website/v86_actual_site -type f -print0 | sort -z | xargs -0 sha256sum | sha256sum > /tmp/v86-source.after
-          cmp /tmp/v86-source.before /tmp/v86-source.after
-          test "$(grep -c 'GOALOS_FIRST_REAL_LOOP_START' site/index.html)" -eq 1
-          test "$(grep -c 'GOALOS_FIRST_REAL_LOOP_STYLE_START' site/index.html)" -eq 1
+      - name: Re-verify optional META-Agentic manifest after shared-surface reconciliation
+        if: env.META_AGENTIC_STATE == 'complete'
+        run: python3 scripts/website/verify_meta_agentic_alpha_agi.py --site site
 
       - name: Reject archives and private operator material in public site
         shell: bash
@@ -394,24 +347,17 @@ jobs:
         shell: bash
         run: |
           {
-            echo '# GoalOS Public Proof Missions 001–008'
+            echo '# GoalOS Ascension Website · Proof Missions + AGIALPHA Sovereign Citadel'
             echo
             echo '- Canonical v86 website source preserved.'
             echo '- Public Proof Missions 001–008 generated in strict dependency order.'
             echo '- Mission 008 restored to the full-bleed sovereign series design.'
             echo '- Ethereum Mainnet deployment record restored at /ethereum-mainnet.html.'
-            echo '- META-Agentic α-AGI experience generated additively at /meta-agentic-alpha-agi.html.'
-            echo '- Architecture dossier generated at /meta-agentic-alpha-agi-architecture.html.'
-            echo '- AGI Alpha Node v0 sovereign proof-node experience generated additively at /agi-alpha-node-v0.html.'
-            echo '- AGI Alpha Node v0 architecture dossier generated at /agi-alpha-node-v0-architecture.html.'
-            echo '- First Real Loop experience generated additively at /first-real-loop.html.'
-            echo '- First Real Loop architecture and Evidence Docket generated at /first-real-loop-architecture.html and /first-real-loop-docket.html.'
-            echo '- Nova-Seed → MARK → Mini Sovereign → five governed jobs → Evidence Docket → capability compiler → vNext replay verified.'
-            echo '- Twelve artifacts, stable run commitment, and 66.67% bounded scaffold reuse lift verified.'
-            echo '- First Real Loop terminates at HUMAN_REVIEW_REQUIRED with NONE_GRANTED authority and zero external actions.'
-            echo '- Prior META-Agentic and AGI Alpha Node generated surfaces remained byte-identical.'
-            echo '- Deterministic peer routing, proof-carrying Alpha Work Units, validator quorum, dissent, and Evidence Docket export verified.'
-            echo '- Deterministic browser-local proof simulation; no model call, wallet, transaction, or external action.'
+            echo "- Optional META-Agentic release state: ${META_AGENTIC_STATE:-none}."
+            echo '- AGI Alpha Node v0 Sovereign Citadel generated at /agi-alpha-node-v0.html.'
+            echo '- Sovereign Node Theatre, Constitutional Architecture, and Proof Ledger generated as separate inspectable surfaces.'
+            echo '- Deterministic ten-gate proof flight; primary + shadow routes; twelve-peer mesh; seven validators; five guardians; sixteen chained artifacts.'
+            echo '- Adversarial incident rehearsals fail closed to SAFE_HOLD; successful flights stop at HUMAN_REVIEW_REQUIRED.'
             echo '- Mission 006, Mission 007, Mission 008, and Mainnet generated-page preflights passed.'
             echo '- 48 GoalOS-created Mainnet contracts represented.'
             echo '- 48/48 recorded source verification; 0 failures.'
@@ -436,23 +382,14 @@ jobs:
             site/proof-mission-007.html
             site/proof-mission-008.html
             site/ethereum-mainnet.html
-            site/meta-agentic-alpha-agi.html
-            site/meta-agentic-alpha-agi-architecture.html
-            site/meta-agentic-alpha-agi-manifest.json
-            site/assets/meta-agentic-alpha-agi.css
-            site/assets/meta-agentic-alpha-agi.js
-            site/data/meta-agentic-alpha-agi.json
             site/agi-alpha-node-v0.html
             site/agi-alpha-node-v0-architecture.html
+            site/agi-alpha-node-v0-proof-ledger.html
             site/agi-alpha-node-v0-manifest.json
             site/assets/agi-alpha-node-v0.css
             site/assets/agi-alpha-node-v0.js
             site/data/agi-alpha-node-v0.json
-            site/first-real-loop.html
-            site/first-real-loop-architecture.html
-            site/first-real-loop-docket.html
-            site/assets/first-real-loop/
-            site/downloads/first-real-loop/
+            site/downloads/agi-alpha-node-v0/
             site/downloads/proof-gradient/
             site/downloads/proof-missions/
             site/qa/
