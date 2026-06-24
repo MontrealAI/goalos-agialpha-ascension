@@ -32,7 +32,7 @@ jobs:
       - name: Verify website before deployment
         run: python3 scripts/verify_goalos_agialpha_four_proof_card_site_v9.py --site site
       - name: Upload GitHub Pages artifact
-        uses: actions/upload-pages-artifact@v4
+        uses: actions/upload-pages-artifact@v5
         with:
           path: site
 

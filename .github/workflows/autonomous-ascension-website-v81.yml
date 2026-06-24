@@ -32,7 +32,7 @@ jobs:
       - name: Reject ZIP files in public site
         run: |
           if find site -name "*.zip" -print | grep -q .; then echo "ZIP files found in site"; exit 1; fi
-      - uses: actions/upload-pages-artifact@v4
+      - uses: actions/upload-pages-artifact@v5
         with:
           path: site
   deploy:

@@ -40,7 +40,7 @@ jobs:
         run: |
           if find site -name "*.zip" -print | grep -q .; then
             echo "ZIP file found in public site"; exit 1; fi
-      - uses: actions/upload-pages-artifact@v4
+      - uses: actions/upload-pages-artifact@v5
         with:
           path: site
   deploy:
