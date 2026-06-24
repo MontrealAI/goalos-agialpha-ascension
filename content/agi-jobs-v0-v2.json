@@ -1,0 +1,1729 @@
+{
+  "schema_version": "3.0.0",
+  "release_id": "GOALOS-AGIALPHA-AGI-JOBS-V0-V2-002",
+  "release_title": "GoalOS AGIALPHA Ascension AGI Jobs v0 (v2) ✨",
+  "short_title": "AGI Jobs v0 (v2)",
+  "version": "3.0.0-sovereign-labor-civilization",
+  "release_date": "2026-06-24",
+  "status": "interactive-constitutional-ai-labor-economy-digital-twin",
+  "tagline": "Every mission becomes a market. Every market becomes proof. Every proof becomes accountable value.",
+  "description": "A GoalOS-native constitutional economy for machine intelligence: compose bounded work, discover opportunities, run sealed institutional bids, form proof-producing coalitions, preserve independent validation and dissent, compile settlement evidence, and carry only human-authorized capability into institutional memory.",
+  "origin": {
+    "repository": "https://github.com/MontrealAI/AGIJobsv0",
+    "snapshot_label": "AGIJobsv0-main - 2026-06-23T225744.548.zip",
+    "snapshot_lineage_root": "ef43db8a6632192f9347083bf42f2c1cdbb6eb662f634408fde5139ea516d2a0",
+    "translation": "Original AGI Jobs v0 (v2) identity, staking, bidding, orchestration, validation, dispute, thermodynamic, attestation, certificate, reputation, and owner-control concepts translated into a browser-local GoalOS constitutional labor economy."
+  },
+  "hero_metrics": [
+    {
+      "value": "14",
+      "label": "constitutional gates"
+    },
+    {
+      "value": "12",
+      "label": "agent institutions"
+    },
+    {
+      "value": "7 + 5",
+      "label": "validators + guardians"
+    },
+    {
+      "value": "24",
+      "label": "chained evidence artifacts"
+    },
+    {
+      "value": "6",
+      "label": "proof-settlement allocations"
+    },
+    {
+      "value": "0",
+      "label": "external actions"
+    }
+  ],
+  "thesis": [
+    {
+      "title": "Work is a constitutional object",
+      "detail": "Every job begins as a bounded mission contract with outcomes, evidence floors, resource envelopes, forbidden actions, dispute rights, and a named human authority."
+    },
+    {
+      "title": "Markets select coalitions, not slogans",
+      "detail": "Twelve declared institutions submit deterministic sealed bids and form a prime coalition, specialist seats, a shadow council, and reserves."
+    },
+    {
+      "title": "Opportunity discovery precedes execution",
+      "detail": "The exchange makes the need, capability gap, expected proof objects, and counterfactual alternatives explicit before work begins."
+    },
+    {
+      "title": "Execution must carry proof",
+      "detail": "Work graphs, traces, energy ledgers, claims, contradictions, evaluator reports, and commitments form a twenty-four-artifact chain."
+    },
+    {
+      "title": "Validation resists capture",
+      "detail": "Seven independent validator seats, five guardians, anti-collusion signals, preserved dissent, and fail-closed incidents stand between output and settlement review."
+    },
+    {
+      "title": "Economics remain subordinate to evidence",
+      "detail": "A transparent six-part settlement waterfall is computed only after proof gates pass; the browser cannot connect a wallet or move value."
+    },
+    {
+      "title": "Memory is earned and reversible",
+      "detail": "Capability and reputation updates remain scoped, expiring, revocable candidates until a human authority accepts the evidence package."
+    }
+  ],
+  "job_classes": [
+    {
+      "id": "research",
+      "label": "Evidence Research",
+      "skills": [
+        "research",
+        "provenance",
+        "synthesis"
+      ]
+    },
+    {
+      "id": "systems",
+      "label": "Systems Architecture",
+      "skills": [
+        "systems",
+        "optimization",
+        "simulation"
+      ]
+    },
+    {
+      "id": "policy",
+      "label": "Policy & Governance",
+      "skills": [
+        "policy",
+        "governance",
+        "compliance"
+      ]
+    },
+    {
+      "id": "operations",
+      "label": "Operations & Delivery",
+      "skills": [
+        "operations",
+        "planning",
+        "coordination"
+      ]
+    },
+    {
+      "id": "assurance",
+      "label": "Defensive Assurance",
+      "skills": [
+        "security",
+        "verification",
+        "risk"
+      ]
+    },
+    {
+      "id": "knowledge",
+      "label": "Knowledge Artifact",
+      "skills": [
+        "writing",
+        "synthesis",
+        "evaluation"
+      ]
+    },
+    {
+      "id": "coordination",
+      "label": "Multi-Institution Coordination",
+      "skills": [
+        "coordination",
+        "orchestration",
+        "negotiation"
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "id": "cold-chain",
+      "name": "Regional cold-chain resilience",
+      "job_class": "systems",
+      "risk": "high",
+      "posture": "evidence-first",
+      "reward_units": 24000,
+      "mission": "Produce an evidence-grounded regional cold-chain resilience and energy continuity program for twelve public distribution hubs.",
+      "deliverables": [
+        "system map",
+        "intervention portfolio",
+        "energy ledger",
+        "risk register",
+        "implementation sequence",
+        "evidence docket"
+      ]
+    },
+    {
+      "id": "procurement",
+      "name": "Public procurement evidence review",
+      "job_class": "policy",
+      "risk": "critical",
+      "posture": "constitutional",
+      "reward_units": 21000,
+      "mission": "Compare three public technology procurement strategies and produce a claim-by-claim evidence dossier with explicit uncertainty, authority, and conflict-of-interest controls.",
+      "deliverables": [
+        "option matrix",
+        "source ledger",
+        "conflict register",
+        "authority map",
+        "decision brief",
+        "evidence docket"
+      ]
+    },
+    {
+      "id": "manufacturing",
+      "name": "Manufacturing energy optimization",
+      "job_class": "systems",
+      "risk": "medium",
+      "posture": "planetary-efficient",
+      "reward_units": 22000,
+      "mission": "Design a bounded energy-efficiency opportunity map for a multi-site manufacturing network using declared assumptions, thermodynamic constraints, and reviewable evidence.",
+      "deliverables": [
+        "baseline model",
+        "opportunity map",
+        "constraint register",
+        "energy budget",
+        "measurement plan",
+        "evidence docket"
+      ]
+    },
+    {
+      "id": "software",
+      "name": "Defensive software assurance",
+      "job_class": "assurance",
+      "risk": "high",
+      "posture": "constitutional",
+      "reward_units": 18500,
+      "mission": "Review a fictional critical service architecture for defensive reliability gaps and produce a prioritized remediation plan without exploit development.",
+      "deliverables": [
+        "threat model",
+        "control gaps",
+        "remediation backlog",
+        "validation protocol",
+        "incident playbook",
+        "evidence docket"
+      ]
+    },
+    {
+      "id": "market",
+      "name": "Strategic market intelligence",
+      "job_class": "research",
+      "risk": "medium",
+      "posture": "evidence-first",
+      "reward_units": 15000,
+      "mission": "Construct a source-bounded market landscape, competing theses, falsifiers, and strategic options for an emerging industrial category.",
+      "deliverables": [
+        "market map",
+        "claim matrix",
+        "counter-theses",
+        "scenario table",
+        "decision triggers",
+        "evidence docket"
+      ]
+    },
+    {
+      "id": "knowledge",
+      "name": "Institutional knowledge artifact",
+      "job_class": "knowledge",
+      "risk": "low",
+      "posture": "speed-aware",
+      "reward_units": 11000,
+      "mission": "Transform a fictional research archive into a decision-ready knowledge artifact with provenance, open questions, reusable evaluation, and revocation rules.",
+      "deliverables": [
+        "knowledge graph",
+        "executive brief",
+        "open-question ledger",
+        "evaluation rubric",
+        "memory candidate",
+        "evidence docket"
+      ]
+    },
+    {
+      "id": "urban",
+      "name": "Urban infrastructure coordination",
+      "job_class": "coordination",
+      "risk": "critical",
+      "posture": "constitutional",
+      "reward_units": 30000,
+      "mission": "Coordinate a bounded multi-institution planning exercise for resilient public infrastructure while preserving jurisdiction, dissent, and human approval.",
+      "deliverables": [
+        "institution map",
+        "coordination charter",
+        "dependency graph",
+        "dispute matrix",
+        "phased plan",
+        "evidence docket"
+      ]
+    },
+    {
+      "id": "science",
+      "name": "Scientific program design",
+      "job_class": "research",
+      "risk": "high",
+      "posture": "utility-balanced",
+      "reward_units": 26000,
+      "mission": "Design a falsifiable multi-stage research program with hypotheses, evaluation gates, evidence standards, resource budgets, and stopping conditions.",
+      "deliverables": [
+        "hypothesis portfolio",
+        "experiment graph",
+        "evaluation contract",
+        "resource ledger",
+        "failure taxonomy",
+        "evidence docket"
+      ]
+    }
+  ],
+  "postures": [
+    {
+      "id": "evidence-first",
+      "name": "Evidence First",
+      "description": "Maximize provenance, validation depth, replayability, and uncertainty disclosure.",
+      "weights": {
+        "capability": 0.18,
+        "evidence": 0.28,
+        "reliability": 0.19,
+        "efficiency": 0.08,
+        "latency": 0.07,
+        "safety": 0.15,
+        "energy": 0.05
+      }
+    },
+    {
+      "id": "constitutional",
+      "name": "Constitutional",
+      "description": "Maximize authority separation, identity integrity, dissent sensitivity, and fail-closed safety.",
+      "weights": {
+        "capability": 0.14,
+        "evidence": 0.2,
+        "reliability": 0.16,
+        "efficiency": 0.05,
+        "latency": 0.05,
+        "safety": 0.31,
+        "energy": 0.09
+      }
+    },
+    {
+      "id": "utility-balanced",
+      "name": "Utility Balanced",
+      "description": "Balance outcome quality, evidence, cost discipline, delivery, safety, and energy.",
+      "weights": {
+        "capability": 0.23,
+        "evidence": 0.17,
+        "reliability": 0.17,
+        "efficiency": 0.16,
+        "latency": 0.1,
+        "safety": 0.1,
+        "energy": 0.07
+      }
+    },
+    {
+      "id": "speed-aware",
+      "name": "Speed Aware",
+      "description": "Favor bounded latency while retaining minimum proof, reliability, and authority floors.",
+      "weights": {
+        "capability": 0.21,
+        "evidence": 0.13,
+        "reliability": 0.15,
+        "efficiency": 0.15,
+        "latency": 0.25,
+        "safety": 0.07,
+        "energy": 0.04
+      }
+    },
+    {
+      "id": "planetary-efficient",
+      "name": "Planetary Efficient",
+      "description": "Optimize evidence yield and useful work per declared energy unit without weakening safety.",
+      "weights": {
+        "capability": 0.18,
+        "evidence": 0.18,
+        "reliability": 0.15,
+        "efficiency": 0.14,
+        "latency": 0.07,
+        "safety": 0.12,
+        "energy": 0.16
+      }
+    }
+  ],
+  "risk_profiles": [
+    {
+      "id": "low",
+      "label": "Advisory · Low",
+      "validator_threshold": 4,
+      "guardian_threshold": 2,
+      "evidence_floor": 0.76,
+      "dispute_reserve_pct": 2,
+      "energy_ceiling": 0.88
+    },
+    {
+      "id": "medium",
+      "label": "Consequential · Medium",
+      "validator_threshold": 5,
+      "guardian_threshold": 3,
+      "evidence_floor": 0.84,
+      "dispute_reserve_pct": 5,
+      "energy_ceiling": 0.82
+    },
+    {
+      "id": "high",
+      "label": "High Consequence · Human Gate",
+      "validator_threshold": 6,
+      "guardian_threshold": 4,
+      "evidence_floor": 0.91,
+      "dispute_reserve_pct": 7,
+      "energy_ceiling": 0.76
+    },
+    {
+      "id": "critical",
+      "label": "Critical Institution · Full Parliament",
+      "validator_threshold": 7,
+      "guardian_threshold": 5,
+      "evidence_floor": 0.95,
+      "dispute_reserve_pct": 10,
+      "energy_ceiling": 0.7
+    }
+  ],
+  "incidents": [
+    {
+      "id": "none",
+      "label": "No injected incident",
+      "severity": "none",
+      "terminal": "HUMAN_SETTLEMENT_REVIEW"
+    },
+    {
+      "id": "identity-drift",
+      "label": "Institution identity drift",
+      "severity": "high",
+      "terminal": "SAFE_HOLD"
+    },
+    {
+      "id": "evidence-gap",
+      "label": "Material evidence gap",
+      "severity": "high",
+      "terminal": "SAFE_HOLD"
+    },
+    {
+      "id": "quorum-fracture",
+      "label": "Validator quorum fracture",
+      "severity": "critical",
+      "terminal": "SAFE_HOLD"
+    },
+    {
+      "id": "budget-overrun",
+      "label": "Resource envelope overrun",
+      "severity": "medium",
+      "terminal": "HUMAN_REVIEW_REQUIRED"
+    },
+    {
+      "id": "collusion-signal",
+      "label": "Validator collusion signal",
+      "severity": "critical",
+      "terminal": "SAFE_HOLD"
+    },
+    {
+      "id": "energy-breach",
+      "label": "Thermodynamic budget breach",
+      "severity": "high",
+      "terminal": "SAFE_HOLD"
+    }
+  ],
+  "lifecycle": [
+    {
+      "id": "L01",
+      "label": "CHARTER",
+      "state": "JOB_CHARTER_SEALED",
+      "title": "Mission contract sealed",
+      "detail": "Outcome, evidence, resources, authority, disputes, and forbidden actions become a signed run commitment."
+    },
+    {
+      "id": "L02",
+      "label": "IDENTITY",
+      "state": "IDENTITY_ADMISSION_RECORDED",
+      "title": "Institutions admitted",
+      "detail": "Synthetic identities, capabilities, credentials, conflicts, and revocation posture are checked before market entry."
+    },
+    {
+      "id": "L03",
+      "label": "OPPORTUNITY",
+      "state": "OPPORTUNITY_THESIS_COMMITTED",
+      "title": "Opportunity thesis committed",
+      "detail": "The need, capability gap, counterfactual alternatives, expected proof objects, and failure conditions become explicit."
+    },
+    {
+      "id": "L04",
+      "label": "ESCROW",
+      "state": "SETTLEMENT_ENVELOPE_RESERVED",
+      "title": "Settlement envelope reserved",
+      "detail": "A local policy model reserves execution, validation, proof, dispute, resilience, and operations allocations without moving funds."
+    },
+    {
+      "id": "L05",
+      "label": "COMMIT",
+      "state": "INSTITUTION_BIDS_COMMITTED",
+      "title": "Sealed bids committed",
+      "detail": "Candidate institutions commit capability, evidence, latency, resource, energy, and risk envelopes before rankings are visible."
+    },
+    {
+      "id": "L06",
+      "label": "REVEAL",
+      "state": "INSTITUTION_BIDS_REVEALED",
+      "title": "Bids revealed and audited",
+      "detail": "Commitments are deterministically revealed, scored, and checked for identity drift, capability inflation, and collusion signals."
+    },
+    {
+      "id": "L07",
+      "label": "COALITION",
+      "state": "EXECUTION_COALITION_SELECTED",
+      "title": "Execution coalition selected",
+      "detail": "A prime institution, two specialists, a shadow council, and reserves are selected with a reviewable rationale."
+    },
+    {
+      "id": "L08",
+      "label": "GRAPH",
+      "state": "WORK_GRAPH_COMPILED",
+      "title": "Proof-producing work graph compiled",
+      "detail": "The mission becomes bounded work packages with owners, dependencies, evidence objects, resource ceilings, and stop conditions."
+    },
+    {
+      "id": "L09",
+      "label": "EXECUTE",
+      "state": "BOUNDED_WORK_EXECUTED",
+      "title": "Bounded work executed",
+      "detail": "A deterministic browser-local simulation emits work traces; no model, external tool, wallet, or network call occurs."
+    },
+    {
+      "id": "L10",
+      "label": "PROOF",
+      "state": "EVIDENCE_CHAIN_SEALED",
+      "title": "Evidence chain sealed",
+      "detail": "Sources, claims, contradictions, evaluations, energy, commitments, guardians, and settlement records receive SHA-256 commitments."
+    },
+    {
+      "id": "L11",
+      "label": "VALIDATE",
+      "state": "VALIDATOR_PARLIAMENT_REVEALED",
+      "title": "Validator parliament revealed",
+      "detail": "Seven separated seats reveal judgments; dissent remains visible and quorum is evaluated against the declared risk class."
+    },
+    {
+      "id": "L12",
+      "label": "CHALLENGE",
+      "state": "GUARDIAN_CHALLENGE_RESOLVED",
+      "title": "Guardian challenge resolved",
+      "detail": "Five guardians evaluate identity, proof, energy, settlement, and human-authority boundaries; material failures force SAFE_HOLD."
+    },
+    {
+      "id": "L13",
+      "label": "SETTLE",
+      "state": "SETTLEMENT_PACKET_COMPILED",
+      "title": "Settlement packet compiled",
+      "detail": "A transparent allocation and contribution ledger is prepared as review evidence, never as a token transfer or payment authorization."
+    },
+    {
+      "id": "L14",
+      "label": "HUMAN",
+      "state": "HUMAN_SETTLEMENT_REVIEW",
+      "title": "Human settlement and memory review required",
+      "detail": "Only a human authority may approve external action, economic settlement, capability certification, or institutional-memory updates."
+    }
+  ],
+  "institutions": [
+    {
+      "id": "atlas",
+      "name": "Atlas Evidence Guild",
+      "sigil": "ATLAS",
+      "identity": "atlas.guild.agi.eth (simulated)",
+      "region": "North Atlantic",
+      "capabilities": [
+        "research",
+        "provenance",
+        "synthesis",
+        "writing"
+      ],
+      "capability": 0.94,
+      "evidence": 0.98,
+      "reliability": 0.93,
+      "efficiency": 0.78,
+      "latency": 0.71,
+      "safety": 0.92,
+      "energy": 0.78,
+      "reputation": 0.96,
+      "doctrine": "Every consequential claim retains source identity, support scope, uncertainty, and a falsifier."
+    },
+    {
+      "id": "meridian",
+      "name": "Meridian Systems Foundry",
+      "sigil": "MERIDIAN",
+      "identity": "meridian.foundry.agi.eth (simulated)",
+      "region": "Global Mesh",
+      "capabilities": [
+        "systems",
+        "optimization",
+        "simulation",
+        "planning"
+      ],
+      "capability": 0.97,
+      "evidence": 0.89,
+      "reliability": 0.95,
+      "efficiency": 0.88,
+      "latency": 0.82,
+      "safety": 0.89,
+      "energy": 0.82,
+      "reputation": 0.94,
+      "doctrine": "Complex missions become explicit systems, dependencies, constraints, reversible interventions, and measured outcomes."
+    },
+    {
+      "id": "concord",
+      "name": "Concord Governance House",
+      "sigil": "CONCORD",
+      "identity": "concord.house.agi.eth (simulated)",
+      "region": "Civic Federation",
+      "capabilities": [
+        "policy",
+        "governance",
+        "compliance",
+        "negotiation"
+      ],
+      "capability": 0.9,
+      "evidence": 0.93,
+      "reliability": 0.94,
+      "efficiency": 0.72,
+      "latency": 0.68,
+      "safety": 0.98,
+      "energy": 0.75,
+      "reputation": 0.95,
+      "doctrine": "Authority, jurisdiction, conflicts, dissent, and appeal rights precede optimization."
+    },
+    {
+      "id": "forge",
+      "name": "Forge Operations Collective",
+      "sigil": "FORGE",
+      "identity": "forge.collective.agi.eth (simulated)",
+      "region": "Industrial Commons",
+      "capabilities": [
+        "operations",
+        "planning",
+        "coordination",
+        "optimization"
+      ],
+      "capability": 0.93,
+      "evidence": 0.84,
+      "reliability": 0.96,
+      "efficiency": 0.94,
+      "latency": 0.87,
+      "safety": 0.87,
+      "energy": 0.84,
+      "reputation": 0.92,
+      "doctrine": "Every plan must name owners, dependencies, resource limits, checkpoints, and recovery paths."
+    },
+    {
+      "id": "aegis",
+      "name": "Aegis Assurance Chamber",
+      "sigil": "AEGIS",
+      "identity": "aegis.chamber.agi.eth (simulated)",
+      "region": "Safety Compact",
+      "capabilities": [
+        "security",
+        "verification",
+        "risk",
+        "evaluation"
+      ],
+      "capability": 0.91,
+      "evidence": 0.96,
+      "reliability": 0.95,
+      "efficiency": 0.75,
+      "latency": 0.66,
+      "safety": 0.99,
+      "energy": 0.73,
+      "reputation": 0.97,
+      "doctrine": "Unverified capability is a liability; safety, adversarial review, and fail-closed gates are productive work."
+    },
+    {
+      "id": "lumina",
+      "name": "Lumina Knowledge Atelier",
+      "sigil": "LUMINA",
+      "identity": "lumina.atelier.agi.eth (simulated)",
+      "region": "Knowledge Union",
+      "capabilities": [
+        "writing",
+        "synthesis",
+        "evaluation",
+        "research"
+      ],
+      "capability": 0.89,
+      "evidence": 0.94,
+      "reliability": 0.9,
+      "efficiency": 0.86,
+      "latency": 0.85,
+      "safety": 0.9,
+      "energy": 0.88,
+      "reputation": 0.91,
+      "doctrine": "Knowledge becomes institutional only when it is legible, attributable, testable, and revisable."
+    },
+    {
+      "id": "polaris",
+      "name": "Polaris Planning Bureau",
+      "sigil": "POLARIS",
+      "identity": "polaris.bureau.agi.eth (simulated)",
+      "region": "Long Horizon",
+      "capabilities": [
+        "planning",
+        "simulation",
+        "policy",
+        "systems"
+      ],
+      "capability": 0.92,
+      "evidence": 0.88,
+      "reliability": 0.92,
+      "efficiency": 0.81,
+      "latency": 0.7,
+      "safety": 0.93,
+      "energy": 0.79,
+      "reputation": 0.9,
+      "doctrine": "Plans are portfolios of options with triggers, reversibility, and bounded commitments."
+    },
+    {
+      "id": "verdant",
+      "name": "Verdant Efficiency Institute",
+      "sigil": "VERDANT",
+      "identity": "verdant.institute.agi.eth (simulated)",
+      "region": "Planetary Systems",
+      "capabilities": [
+        "optimization",
+        "energy",
+        "systems",
+        "measurement"
+      ],
+      "capability": 0.88,
+      "evidence": 0.9,
+      "reliability": 0.89,
+      "efficiency": 0.97,
+      "latency": 0.8,
+      "safety": 0.88,
+      "energy": 0.99,
+      "reputation": 0.89,
+      "doctrine": "Useful work must be measured against energy, material, time, and counterfactual opportunity cost."
+    },
+    {
+      "id": "sable",
+      "name": "Sable Adversarial Laboratory",
+      "sigil": "SABLE",
+      "identity": "sable.lab.agi.eth (simulated)",
+      "region": "Red-Team Enclave",
+      "capabilities": [
+        "security",
+        "risk",
+        "evaluation",
+        "verification"
+      ],
+      "capability": 0.87,
+      "evidence": 0.92,
+      "reliability": 0.88,
+      "efficiency": 0.7,
+      "latency": 0.74,
+      "safety": 0.97,
+      "energy": 0.71,
+      "reputation": 0.9,
+      "doctrine": "Every confident plan deserves a hostile counter-model and explicit stop condition."
+    },
+    {
+      "id": "orpheus",
+      "name": "Orpheus Coordination Mesh",
+      "sigil": "ORPHEUS",
+      "identity": "orpheus.mesh.agi.eth (simulated)",
+      "region": "Interinstitutional Network",
+      "capabilities": [
+        "coordination",
+        "orchestration",
+        "negotiation",
+        "operations"
+      ],
+      "capability": 0.95,
+      "evidence": 0.86,
+      "reliability": 0.93,
+      "efficiency": 0.9,
+      "latency": 0.91,
+      "safety": 0.88,
+      "energy": 0.85,
+      "reputation": 0.93,
+      "doctrine": "Institutions collaborate through explicit interfaces, commitments, escalation paths, and shared proof."
+    },
+    {
+      "id": "helios",
+      "name": "Helios Energy Commons",
+      "sigil": "HELIOS",
+      "identity": "helios.commons.agi.eth (simulated)",
+      "region": "Energy Federation",
+      "capabilities": [
+        "energy",
+        "measurement",
+        "simulation",
+        "operations"
+      ],
+      "capability": 0.86,
+      "evidence": 0.91,
+      "reliability": 0.9,
+      "efficiency": 0.93,
+      "latency": 0.79,
+      "safety": 0.9,
+      "energy": 0.98,
+      "reputation": 0.9,
+      "doctrine": "Thermodynamic constraints are constitutional limits, not post-hoc reporting fields."
+    },
+    {
+      "id": "mnemosyne",
+      "name": "Mnemosyne Memory Institute",
+      "sigil": "MEMORY",
+      "identity": "mnemosyne.institute.agi.eth (simulated)",
+      "region": "Chronicle Network",
+      "capabilities": [
+        "knowledge",
+        "evaluation",
+        "provenance",
+        "governance"
+      ],
+      "capability": 0.9,
+      "evidence": 0.97,
+      "reliability": 0.94,
+      "efficiency": 0.8,
+      "latency": 0.69,
+      "safety": 0.96,
+      "energy": 0.8,
+      "reputation": 0.96,
+      "doctrine": "Capability memory must be scoped, expiring, evidence-bound, revocable, and never self-authorizing."
+    }
+  ],
+  "validators": [
+    {
+      "id": "V1",
+      "name": "Provenance Seat",
+      "domain": "source identity, support scope, citation and artifact lineage"
+    },
+    {
+      "id": "V2",
+      "name": "Outcome Seat",
+      "domain": "deliverable completeness, quality, utility, and counterfactual comparison"
+    },
+    {
+      "id": "V3",
+      "name": "Safety Seat",
+      "domain": "risk, forbidden actions, stop conditions, and fail-closed behavior"
+    },
+    {
+      "id": "V4",
+      "name": "Resource Seat",
+      "domain": "budget, efficiency, latency, energy, and resource-envelope adherence"
+    },
+    {
+      "id": "V5",
+      "name": "Identity Seat",
+      "domain": "institution identity, credential scope, conflict, and revocation posture"
+    },
+    {
+      "id": "V6",
+      "name": "Anti-Collusion Seat",
+      "domain": "commit/reveal integrity, correlated voting, capture signals, and minority protection"
+    },
+    {
+      "id": "V7",
+      "name": "Authority Seat",
+      "domain": "human control, settlement limits, legal reliance, production and external-action boundaries"
+    }
+  ],
+  "guardians": [
+    {
+      "id": "G1",
+      "name": "Identity Guardian",
+      "domain": "admission, drift, impersonation, role separation",
+      "veto_on": [
+        "identity-drift"
+      ]
+    },
+    {
+      "id": "G2",
+      "name": "Evidence Guardian",
+      "domain": "material gaps, fabrication, contradiction suppression",
+      "veto_on": [
+        "evidence-gap"
+      ]
+    },
+    {
+      "id": "G3",
+      "name": "Energy Guardian",
+      "domain": "thermodynamic budget, efficiency floor, resource escalation",
+      "veto_on": [
+        "energy-breach"
+      ]
+    },
+    {
+      "id": "G4",
+      "name": "Settlement Guardian",
+      "domain": "premature payout, reserve integrity, dispute and allocation boundaries",
+      "veto_on": [
+        "budget-overrun"
+      ]
+    },
+    {
+      "id": "G5",
+      "name": "Human Authority Guardian",
+      "domain": "production, funds, legal reliance, external action and memory promotion",
+      "veto_on": [
+        "collusion-signal",
+        "quorum-fracture"
+      ]
+    }
+  ],
+  "guardrails": [
+    {
+      "id": "R01",
+      "title": "No wallet surface",
+      "detail": "The public experience contains no wallet provider, signing, token approval, or transaction path."
+    },
+    {
+      "id": "R02",
+      "title": "No network runtime",
+      "detail": "No API, RPC, ENS, IPFS, model, telemetry, or external resource is requested at runtime."
+    },
+    {
+      "id": "R03",
+      "title": "No autonomous settlement",
+      "detail": "All economic output is a demonstration allocation packet ending at human settlement review."
+    },
+    {
+      "id": "R04",
+      "title": "Sealed-bid replayability",
+      "detail": "Bid commitments and reveals are deterministic, inspectable, and recomputable from the declared charter."
+    },
+    {
+      "id": "R05",
+      "title": "Anti-collusion challenge",
+      "detail": "Correlated vote or bid signals are visible and can force SAFE_HOLD before settlement review."
+    },
+    {
+      "id": "R06",
+      "title": "Thermodynamic ceiling",
+      "detail": "Energy and useful-work ratios remain explicit constitutional constraints."
+    },
+    {
+      "id": "R07",
+      "title": "Dissent permanence",
+      "detail": "Minority validator judgment remains in the Evidence Docket and cannot be optimized away."
+    },
+    {
+      "id": "R08",
+      "title": "Reversible memory",
+      "detail": "Certificates and reputation are only candidates with scope, expiry, revocation, and human approval."
+    },
+    {
+      "id": "R09",
+      "title": "Canonical preservation",
+      "detail": "The feature is generated additively; canonical v86 source and unrelated outputs are hash-protected."
+    },
+    {
+      "id": "R10",
+      "title": "Python 3.11 preflight",
+      "detail": "Every integrated Python tool compiles under the workflow runtime before the site build starts."
+    }
+  ],
+  "modules": [
+    {
+      "id": "M01",
+      "plane": "Intent",
+      "name": "Mission Charter Registry",
+      "responsibility": "Binds outcome, proof, resources, authority, disputes, and forbidden actions."
+    },
+    {
+      "id": "M02",
+      "plane": "Identity",
+      "name": "Institution Admission Authority",
+      "responsibility": "Records synthetic identity, capability, conflicts, credentials, and revocation posture."
+    },
+    {
+      "id": "M03",
+      "plane": "Opportunity",
+      "name": "Opportunity Discovery Engine",
+      "responsibility": "Frames capability gaps, counterfactuals, expected proof objects, and failure conditions."
+    },
+    {
+      "id": "M04",
+      "plane": "Economics",
+      "name": "Settlement Envelope Compiler",
+      "responsibility": "Reserves six policy allocations without wallet connection or live value movement."
+    },
+    {
+      "id": "M05",
+      "plane": "Market",
+      "name": "Sealed Bid Commitment Book",
+      "responsibility": "Commits institutional capability, evidence, latency, resource, energy, and risk envelopes."
+    },
+    {
+      "id": "M06",
+      "plane": "Market",
+      "name": "Reveal & Pareto Selection Engine",
+      "responsibility": "Audits bid reveals, ranks institutions, computes a frontier, and identifies capture signals."
+    },
+    {
+      "id": "M07",
+      "plane": "Coalition",
+      "name": "Execution Coalition Foundry",
+      "responsibility": "Selects a prime, specialists, shadow council, and reserves with explicit rationale."
+    },
+    {
+      "id": "M08",
+      "plane": "Execution",
+      "name": "Proof-Producing Work Graph",
+      "responsibility": "Compiles bounded work packages, dependencies, owners, evidence objects, and stop conditions."
+    },
+    {
+      "id": "M09",
+      "plane": "Execution",
+      "name": "Bounded Runtime Theatre",
+      "responsibility": "Simulates execution locally and emits deterministic phase and resource traces."
+    },
+    {
+      "id": "M10",
+      "plane": "Proof",
+      "name": "Evidence Chronicle",
+      "responsibility": "Chains twenty-four artifacts from charter to executive review with SHA-256 commitments."
+    },
+    {
+      "id": "M11",
+      "plane": "Validation",
+      "name": "Validator Parliament",
+      "responsibility": "Runs seven independent commit/reveal seats and preserves dissent."
+    },
+    {
+      "id": "M12",
+      "plane": "Challenge",
+      "name": "Guardian & Dispute Chamber",
+      "responsibility": "Evaluates identity, evidence, energy, settlement, collusion, and authority incidents."
+    },
+    {
+      "id": "M13",
+      "plane": "Settlement",
+      "name": "Proof Settlement Chamber",
+      "responsibility": "Compiles allocation, contribution, reserve, and non-authorization records."
+    },
+    {
+      "id": "M14",
+      "plane": "Memory",
+      "name": "Capability Memory Gate",
+      "responsibility": "Creates scoped, expiring, revocable memory candidates for human acceptance or rejection."
+    }
+  ],
+  "job_archetypes": [
+    {
+      "id": "J01",
+      "name": "Evidence synthesis",
+      "class": "research",
+      "proof": "source register + claim matrix"
+    },
+    {
+      "id": "J02",
+      "name": "Systems design",
+      "class": "systems",
+      "proof": "architecture + constraint ledger"
+    },
+    {
+      "id": "J03",
+      "name": "Climate resilience",
+      "class": "systems",
+      "proof": "scenario ledger + intervention portfolio"
+    },
+    {
+      "id": "J04",
+      "name": "Supply-chain optimization",
+      "class": "operations",
+      "proof": "flow model + constraint register"
+    },
+    {
+      "id": "J05",
+      "name": "Public policy comparison",
+      "class": "policy",
+      "proof": "authority map + option matrix"
+    },
+    {
+      "id": "J06",
+      "name": "Defensive software assurance",
+      "class": "assurance",
+      "proof": "threat model + remediation evidence"
+    },
+    {
+      "id": "J07",
+      "name": "Strategic market intelligence",
+      "class": "research",
+      "proof": "competing theses + falsifiers"
+    },
+    {
+      "id": "J08",
+      "name": "Scientific research plan",
+      "class": "research",
+      "proof": "hypotheses + evaluation protocol"
+    },
+    {
+      "id": "J09",
+      "name": "Manufacturing operations",
+      "class": "operations",
+      "proof": "baseline + intervention sequence"
+    },
+    {
+      "id": "J10",
+      "name": "Knowledge artifact",
+      "class": "knowledge",
+      "proof": "knowledge graph + review rubric"
+    },
+    {
+      "id": "J11",
+      "name": "Data stewardship",
+      "class": "policy",
+      "proof": "lineage + governance controls"
+    },
+    {
+      "id": "J12",
+      "name": "Evaluation design",
+      "class": "assurance",
+      "proof": "benchmark contract + failure taxonomy"
+    },
+    {
+      "id": "J13",
+      "name": "Interinstitutional coordination",
+      "class": "coordination",
+      "proof": "commitment graph + escalation protocol"
+    },
+    {
+      "id": "J14",
+      "name": "Energy transition portfolio",
+      "class": "systems",
+      "proof": "thermodynamic ledger + option portfolio"
+    },
+    {
+      "id": "J15",
+      "name": "Emergency response planning",
+      "class": "operations",
+      "proof": "incident graph + authority matrix"
+    },
+    {
+      "id": "J16",
+      "name": "Capability-memory audit",
+      "class": "knowledge",
+      "proof": "certificate ledger + revocation test"
+    }
+  ],
+  "settlement_policy": {
+    "mode": "demonstration-policy-model-only",
+    "unit": "AGIALPHA-denominated demonstration unit",
+    "allocations": [
+      {
+        "id": "execution",
+        "label": "Execution coalition",
+        "pct": 68
+      },
+      {
+        "id": "validation",
+        "label": "Validator parliament",
+        "pct": 10
+      },
+      {
+        "id": "proof",
+        "label": "Proof treasury",
+        "pct": 8
+      },
+      {
+        "id": "dispute",
+        "label": "Dispute reserve",
+        "pct": 6
+      },
+      {
+        "id": "resilience",
+        "label": "Energy & resilience reserve",
+        "pct": 4
+      },
+      {
+        "id": "operations",
+        "label": "Constitutional operations",
+        "pct": 4
+      }
+    ],
+    "live_token_movement": false,
+    "wallet_connection": false,
+    "settlement_authority": "NONE_GRANTED"
+  },
+  "artifacts": [
+    {
+      "id": "A01",
+      "name": "Job Charter",
+      "plane": "intent",
+      "purpose": "Mission, outcomes, deliverables, resources, risk, authority, disputes, and forbidden actions."
+    },
+    {
+      "id": "A02",
+      "name": "Identity Admission Record",
+      "plane": "identity",
+      "purpose": "Institution identities, credentials, capabilities, conflicts, and revocation posture."
+    },
+    {
+      "id": "A03",
+      "name": "Opportunity Thesis",
+      "plane": "opportunity",
+      "purpose": "Capability gap, counterfactual alternatives, expected proof objects, and failure conditions."
+    },
+    {
+      "id": "A04",
+      "name": "Settlement Envelope",
+      "plane": "economics",
+      "purpose": "Execution, validation, proof, dispute, resilience, and operations boundaries."
+    },
+    {
+      "id": "A05",
+      "name": "Bid Commitments",
+      "plane": "market",
+      "purpose": "Sealed commitments for capability, evidence, latency, resources, energy, and risk."
+    },
+    {
+      "id": "A06",
+      "name": "Bid Reveals",
+      "plane": "market",
+      "purpose": "Revealed institutional envelopes and commitment integrity results."
+    },
+    {
+      "id": "A07",
+      "name": "Coalition Decision",
+      "plane": "coalition",
+      "purpose": "Prime, specialists, reserves, selection rationale, and weighted utility."
+    },
+    {
+      "id": "A08",
+      "name": "Shadow Council Record",
+      "plane": "coalition",
+      "purpose": "Independent counterfactual institution and disagreement surface."
+    },
+    {
+      "id": "A09",
+      "name": "Work Graph",
+      "plane": "execution",
+      "purpose": "Proof-producing work packages, dependencies, owners, evidence, and stop conditions."
+    },
+    {
+      "id": "A10",
+      "name": "Execution Trace",
+      "plane": "execution",
+      "purpose": "Deterministic local phase transitions and bounded runtime record."
+    },
+    {
+      "id": "A11",
+      "name": "Resource & Energy Ledger",
+      "plane": "thermodynamics",
+      "purpose": "Useful-work, latency, resource, energy, ceiling, and efficiency record."
+    },
+    {
+      "id": "A12",
+      "name": "Source Register",
+      "plane": "proof",
+      "purpose": "Declared evidence identities, support scope, provenance class, and uncertainty."
+    },
+    {
+      "id": "A13",
+      "name": "Claim Matrix",
+      "plane": "proof",
+      "purpose": "Claims, evidence links, confidence, assumptions, and unresolved questions."
+    },
+    {
+      "id": "A14",
+      "name": "Contradiction Register",
+      "plane": "proof",
+      "purpose": "Competing evidence, objections, tensions, and disposition."
+    },
+    {
+      "id": "A15",
+      "name": "Evaluator Report",
+      "plane": "evaluation",
+      "purpose": "Capability, evidence, reliability, efficiency, latency, safety, energy, and utility."
+    },
+    {
+      "id": "A16",
+      "name": "Validator Commitments",
+      "plane": "validation",
+      "purpose": "Pre-reveal commitments for seven independent validator seats."
+    },
+    {
+      "id": "A17",
+      "name": "Validator Reveals",
+      "plane": "validation",
+      "purpose": "Judgments, scores, rationale, quorum, and preserved dissent."
+    },
+    {
+      "id": "A18",
+      "name": "Dissent Memorandum",
+      "plane": "challenge",
+      "purpose": "Minority judgment and conditions that block stronger claims."
+    },
+    {
+      "id": "A19",
+      "name": "Anti-Collusion Report",
+      "plane": "challenge",
+      "purpose": "Vote and bid correlation signals, randomness posture, and capture disposition."
+    },
+    {
+      "id": "A20",
+      "name": "Guardian Disposition",
+      "plane": "challenge",
+      "purpose": "Identity, evidence, energy, settlement, and human-authority guardian decisions."
+    },
+    {
+      "id": "A21",
+      "name": "Dispute Disposition",
+      "plane": "challenge",
+      "purpose": "Incident review, safe-hold decision, remediation, and appeal posture."
+    },
+    {
+      "id": "A22",
+      "name": "Settlement Waterfall",
+      "plane": "settlement",
+      "purpose": "Transparent demonstration allocation and explicit non-authorization."
+    },
+    {
+      "id": "A23",
+      "name": "Capability Memory Candidate",
+      "plane": "memory",
+      "purpose": "Scope, evidence chain, expiry, decay, revocation, and human approval status."
+    },
+    {
+      "id": "A24",
+      "name": "Executive Review Brief",
+      "plane": "human-review",
+      "purpose": "Decision-ready summary with settlement, production, funds, and external authority withheld."
+    }
+  ],
+  "architecture_translation": [
+    {
+      "original": "JobRegistry",
+      "goalos": "Mission Charter Registry",
+      "translation": "Lifecycle calls become an evidence-bearing constitutional work state machine."
+    },
+    {
+      "original": "IdentityRegistry / ENS",
+      "goalos": "Institution Admission Authority",
+      "translation": "Synthetic identities and credentials are recorded without live ENS or wallet interaction."
+    },
+    {
+      "original": "Opportunity scanner",
+      "goalos": "Opportunity Discovery Engine",
+      "translation": "Needs, capability gaps, counterfactuals, and proof requirements become explicit before bidding."
+    },
+    {
+      "original": "StakeManager",
+      "goalos": "Settlement Envelope Compiler",
+      "translation": "Stake and reward mechanics become a transparent local policy model with no live funds path."
+    },
+    {
+      "original": "Orchestrator bidding",
+      "goalos": "Sealed Bid Commitment & Reveal",
+      "translation": "Institutional bids are committed, revealed, audited, and ranked deterministically."
+    },
+    {
+      "original": "Agent gateway + orchestrator",
+      "goalos": "Execution Coalition Foundry",
+      "translation": "Agents become bounded institutions that form councils and emit proof-producing work graphs."
+    },
+    {
+      "original": "Task execution",
+      "goalos": "Bounded Runtime Theatre",
+      "translation": "Execution is a browser-local deterministic simulation with explicit stop conditions."
+    },
+    {
+      "original": "Thermodynamics / Hamiltonian monitor",
+      "goalos": "Resource & Energy Constitution",
+      "translation": "Energy ceilings and useful-work ratios become governance gates, not optional telemetry."
+    },
+    {
+      "original": "ValidationModule",
+      "goalos": "Validator Parliament",
+      "translation": "Commit/reveal validation becomes seven separated evidence seats with risk-adjusted quorum."
+    },
+    {
+      "original": "RANDAO / anti-collusion",
+      "goalos": "Anti-Collusion Challenge",
+      "translation": "Randomness posture and correlated behavior become inspectable evidence and safe-hold triggers."
+    },
+    {
+      "original": "DisputeModule",
+      "goalos": "Guardian & Dispute Chamber",
+      "translation": "Challenges, incidents, and appeals force remediation or SAFE_HOLD before settlement review."
+    },
+    {
+      "original": "FeePool + TaxPolicy",
+      "goalos": "Proof Settlement Chamber",
+      "translation": "Economic splits remain explicit policy evidence and cannot move assets from the browser."
+    },
+    {
+      "original": "ReputationEngine",
+      "goalos": "Evidence-Weighted Memory",
+      "translation": "Reputation updates require sealed evidence, scope, expiry, decay, revocation, and human approval."
+    },
+    {
+      "original": "CertificateNFT",
+      "goalos": "Capability Memory Candidate",
+      "translation": "Certificates remain review candidates with scope, evidence, expiry, lineage, and revocation."
+    },
+    {
+      "original": "SystemPause / owner control",
+      "goalos": "Constitutional SAFE_HOLD",
+      "translation": "Material identity, proof, quorum, collusion, energy, or authority breaches halt the market."
+    },
+    {
+      "original": "One-Box + CI v2 status wall",
+      "goalos": "Plain-Language Exchange + Autonomous Release Evidence",
+      "translation": "A non-technical user can compose and inspect work while CI compiles, verifies, browser-tests, preserves, and deploys."
+    }
+  ],
+  "governance_principles": [
+    {
+      "title": "Authority separation",
+      "detail": "Employer intent, opportunity analysis, bidding, execution, validation, challenge, settlement preparation, memory, and final authorization remain distinct."
+    },
+    {
+      "title": "Least authority",
+      "detail": "Every institution receives only the scope and capabilities needed for its declared work package."
+    },
+    {
+      "title": "Commit before reveal",
+      "detail": "Institutional bids and validator judgments cannot adapt opportunistically after competitors are visible."
+    },
+    {
+      "title": "Evidence before economics",
+      "detail": "No settlement packet is compiled until the proof chain, quorum, and guardian thresholds are complete."
+    },
+    {
+      "title": "Dissent by construction",
+      "detail": "Minority judgment is governance evidence, not an optimization error."
+    },
+    {
+      "title": "Thermodynamic honesty",
+      "detail": "Energy, resource, latency, and useful-work ratios remain explicit and reviewable."
+    },
+    {
+      "title": "Fail-closed challenge",
+      "detail": "Material identity, evidence, quorum, collusion, energy, or authority failures produce SAFE_HOLD."
+    },
+    {
+      "title": "Replayable markets",
+      "detail": "Weights, bids, frontier, coalition, shadow council, and contributions remain deterministic and inspectable."
+    },
+    {
+      "title": "Reversible memory",
+      "detail": "Reputation and capability candidates remain scoped, expiring, decaying, revocable, and subordinate to later evidence."
+    },
+    {
+      "title": "Human economic authority",
+      "detail": "The browser may prepare a packet; it cannot authorize production, payment, legal reliance, memory promotion, or external action."
+    }
+  ],
+  "threats": [
+    {
+      "title": "Identity spoofing",
+      "disposition": "SAFE_HOLD",
+      "control": "Identity admission, role separation, revocation posture, and guardian veto."
+    },
+    {
+      "title": "Capability inflation",
+      "disposition": "DOWN-RANK",
+      "control": "Sealed bids, evidence-weighted matching, Pareto frontier, and shadow council."
+    },
+    {
+      "title": "Citation or artifact fabrication",
+      "disposition": "REJECT",
+      "control": "Artifact hashes, source register, claim matrix, contradiction record, and replay."
+    },
+    {
+      "title": "Validator collusion",
+      "disposition": "SAFE_HOLD",
+      "control": "Commit/reveal seats, correlation analysis, anti-collusion validator, guardian challenge, and dissent."
+    },
+    {
+      "title": "Bid cartel formation",
+      "disposition": "QUARANTINE",
+      "control": "Commitment integrity, ranking diversity, specialist separation, and shadow comparison."
+    },
+    {
+      "title": "Budget capture",
+      "disposition": "STOP",
+      "control": "Settlement envelope, contribution ledger, allocation caps, and budget incident rehearsal."
+    },
+    {
+      "title": "Energy externalization",
+      "disposition": "SAFE_HOLD",
+      "control": "Thermodynamic ceiling, energy guardian, useful-work ratio, and resilience reserve."
+    },
+    {
+      "title": "Dispute suppression",
+      "disposition": "ESCALATE",
+      "control": "Dedicated challenge chamber, preserved objections, appeal posture, and reserve."
+    },
+    {
+      "title": "Certificate laundering",
+      "disposition": "REVOKE",
+      "control": "Candidate-only status, scope, expiry, decay, lineage, and human approval."
+    },
+    {
+      "title": "Premature settlement",
+      "disposition": "DENY",
+      "control": "HUMAN_SETTLEMENT_REVIEW and settlement authority NONE_GRANTED."
+    }
+  ],
+  "memory_rules": [
+    {
+      "title": "Scope",
+      "detail": "A memory candidate applies only to the declared job class, deliverables, and evidence chain."
+    },
+    {
+      "title": "Expiry",
+      "detail": "Every candidate carries a review date and cannot become permanent by default."
+    },
+    {
+      "title": "Decay",
+      "detail": "Confidence decays without fresh evidence, repeated evaluation, and continued identity integrity."
+    },
+    {
+      "title": "Revocation",
+      "detail": "Later contradiction, dispute, identity failure, or safety incident can revoke the candidate."
+    },
+    {
+      "title": "Dissent retention",
+      "detail": "Minority validator judgment remains attached to the memory object."
+    },
+    {
+      "title": "No transitive authority",
+      "detail": "A capability candidate does not imply legal, production, financial, or cross-domain authority."
+    },
+    {
+      "title": "Human acceptance",
+      "detail": "Only an accountable human authority may promote a candidate into institutional memory."
+    },
+    {
+      "title": "Replayability",
+      "detail": "The source docket, chain head, selection rationale, and evaluation remain reconstructable."
+    }
+  ],
+  "economic_invariants": [
+    {
+      "title": "No proof, no settlement packet",
+      "detail": "The settlement compiler remains closed until the full evidence chain is sealed."
+    },
+    {
+      "title": "No quorum, no settlement packet",
+      "detail": "Risk-adjusted validator quorum is mandatory and cannot be bypassed by the prime coalition."
+    },
+    {
+      "title": "Guardian veto survives majority",
+      "detail": "Material constitutional incidents can stop settlement even with a numerical validator majority."
+    },
+    {
+      "title": "Dispute reserve is explicit",
+      "detail": "Challenge capacity is funded in the model before execution, not improvised after failure."
+    },
+    {
+      "title": "Energy has a price signal",
+      "detail": "The allocation model exposes energy and resilience as explicit bounded costs."
+    },
+    {
+      "title": "Contributions are attributable",
+      "detail": "Execution, specialist, validation, proof, dispute, and operations contributions remain inspectable."
+    },
+    {
+      "title": "Live value movement is impossible",
+      "detail": "The browser exposes no wallet, provider, signer, token contract, or transaction path."
+    },
+    {
+      "title": "Human authorization is final",
+      "detail": "Economic settlement remains a review packet until an external accountable process approves it."
+    }
+  ],
+  "claim_boundary": [
+    "This is a deterministic browser-local protocol demonstration, not a live labor marketplace.",
+    "It does not claim achieved AGI, ASI, empirical superiority, production readiness, or real-world economic performance.",
+    "Institution identities, opportunities, bids, coalitions, work traces, validator judgments, guardians, reputation, certificates, energy, and economics are synthetic demonstration records.",
+    "No model, external tool, wallet, token contract, RPC endpoint, API, ENS resolver, IPFS client, telemetry endpoint, or blockchain transaction is used at runtime.",
+    "The GoalOS Ethereum Mainnet record is infrastructure context only and does not establish deployment of AGI Jobs v0 (v2).",
+    "Factual correctness of external claims is not certified by the browser experience.",
+    "No user funds, production activation, legal reliance, settlement, capability promotion, or external action is authorized.",
+    "Every successful run terminates at a human authority boundary; material incidents fail closed.",
+    "Source lineage fingerprints prove translation inputs, not correctness, security, audit completion, or product-market validation."
+  ],
+  "security": {
+    "external_dependencies": false,
+    "api_keys": false,
+    "wallet_connection": false,
+    "network_reads": false,
+    "network_writes": false,
+    "local_storage": false,
+    "live_ens_resolution": false,
+    "live_compute": false,
+    "live_token_movement": false,
+    "human_review_required": true,
+    "settlement_mode": "demonstration-only",
+    "external_authority": "none",
+    "content_security_policy": "connect-src none"
+  },
+  "lineage_fingerprints": [
+    {
+      "path": "README.md",
+      "bytes": 65666,
+      "sha256": "af0d4acdf1d530c223406daab33245c3213c093ef68eb9eabd50ed5dce44a077"
+    },
+    {
+      "path": "docs/AGI_Jobs_v0_Whitepaper_v2.md",
+      "bytes": 55479,
+      "sha256": "13a3e44fd0ef1e9f5bc32161f8c47cfddd0d97b7fb359187837f53b4dfb4b41b"
+    },
+    {
+      "path": "docs/agi-jobs-v2-ai-labor-market-grand-demo.md",
+      "bytes": 9825,
+      "sha256": "2f9695039f959af9b98c968a5a2ead7021796ea582466d8248cff82044a1631e"
+    },
+    {
+      "path": "docs/job-lifecycle.md",
+      "bytes": 4047,
+      "sha256": "a71078b27091200fc24e74916304f04cb0608eff3bd8d471cce82b212cecdd30"
+    },
+    {
+      "path": "docs/job-validation-lifecycle.md",
+      "bytes": 4524,
+      "sha256": "86b3f47259c1a6e4792a333baa73b11d6d62d61437455adafe8a7bd115748e23"
+    },
+    {
+      "path": "docs/orchestrator-bidding.md",
+      "bytes": 3672,
+      "sha256": "f5f645850d06b1714712e421892b293dbd21080fa72322e6ec6b08971ed6b1b0"
+    },
+    {
+      "path": "docs/anti-collusion-validation.md",
+      "bytes": 5356,
+      "sha256": "e6511c8a0f0e6bcbba4be9b1ea4c29e0a9f792381d5b2f5de3989c31aa966cc0"
+    },
+    {
+      "path": "docs/thermodynamic-incentives.md",
+      "bytes": 3784,
+      "sha256": "7ef97df6eb36bb1e48262612e33d5523a45da3b32b37b12ec6b1692c94f190ca"
+    },
+    {
+      "path": "docs/hamiltonian-monitor.md",
+      "bytes": 6327,
+      "sha256": "29d8cccdf9806b0e26da23b466b632cfe23d9717c789af4ad94ba856440a9167"
+    },
+    {
+      "path": "docs/disputes.md",
+      "bytes": 1213,
+      "sha256": "1c487267974f1d42bf80b3f4f914b28b46feabfa724a3c66dccdce462be33331"
+    },
+    {
+      "path": "docs/continuous-learning.md",
+      "bytes": 3348,
+      "sha256": "2d1475ebba8a0314ad0ec53315b620116b5b54ec1f180d1b8de74a5c0c12b9b5"
+    },
+    {
+      "path": "docs/economy-of-agi.md",
+      "bytes": 417,
+      "sha256": "ac97c089b7b15c7a64785a242e1266befc9afe83f11bd6b2793f870909c02b59"
+    },
+    {
+      "path": "docs/ens-identity-policy.md",
+      "bytes": 2577,
+      "sha256": "5ad071db824a2656a0f7319166db7c23c6f0dca681fc3e1d3411234c8ab86dd8"
+    },
+    {
+      "path": "docs/governed-autonomy.md",
+      "bytes": 3755,
+      "sha256": "fefab40f6893a767c662a432d9b45f9eb0b1d539cc12d51eceec0192873358b8"
+    },
+    {
+      "path": "docs/institutional-observability.md",
+      "bytes": 6151,
+      "sha256": "345c2a95594b418a6c10e6e5081aa7f78f46dfa3bb48bc1da765bdb094b74385"
+    },
+    {
+      "path": "docs/attestation.md",
+      "bytes": 4565,
+      "sha256": "f0638b249013edf7c7df269f4cfd54792afc44b3ea03961e8efc32655e826a96"
+    },
+    {
+      "path": "agent-gateway/jobPlanner.ts",
+      "bytes": 22012,
+      "sha256": "f736b56ad106fa652ab487eff344a6f67d55a11cbee3fb2fae63abb5dae6cbf2"
+    },
+    {
+      "path": "agent-gateway/orchestrator.ts",
+      "bytes": 16886,
+      "sha256": "f34fa505eaf271f4f6b929ea9696f7324857888ca6e7381bc4927e03f2ed4a19"
+    },
+    {
+      "path": "agent-gateway/opportunities.ts",
+      "bytes": 3134,
+      "sha256": "ae10bada8d3e445b57b5a784614b74918a9afc5cd90339c0c2074af1e036776d"
+    },
+    {
+      "path": "agent-gateway/opportunityBacktest.ts",
+      "bytes": 15884,
+      "sha256": "37a7db5b726f6cdfc540d36de139eea8d9e12377b806a33c2296f6c4230231e9"
+    },
+    {
+      "path": "agent-gateway/taskExecution.ts",
+      "bytes": 25530,
+      "sha256": "6420c4c430df68b275349f610f6d60e60ad1d1a60b251d7e0bd0f61f5f322f13"
+    },
+    {
+      "path": "agent-gateway/validator.ts",
+      "bytes": 43155,
+      "sha256": "500060e553f2a47af8e59de49884fe8610f7a1522ae0e535bc9750ae58bc93e0"
+    },
+    {
+      "path": "agent-gateway/attestation.ts",
+      "bytes": 1372,
+      "sha256": "de123531ba54b3dc4d930f20ccc8d9222c02a78f26941c4cd987661934950b20"
+    },
+    {
+      "path": "agent-gateway/auditAnchoring.ts",
+      "bytes": 6530,
+      "sha256": "a156166be41f103e0e99097af64967e156a1fa766daa333a7f6940a2858c1756"
+    },
+    {
+      "path": "agent-gateway/stakeCoordinator.ts",
+      "bytes": 18190,
+      "sha256": "ecd2423aba4f0e1d6779c45bfac7a1af0805d9528be79fa97260f4359fde0271"
+    },
+    {
+      "path": "agent-gateway/learning.ts",
+      "bytes": 11383,
+      "sha256": "b0ebeb2100282ae566018115644c825f3ebf1da7916ecebfba64cdc59a94c035"
+    },
+    {
+      "path": "agent-gateway/thermodynamics.ts",
+      "bytes": 17708,
+      "sha256": "1dbd852525feaca197b97a7443e030d3da3e4929598f58e5976131489426fb03"
+    },
+    {
+      "path": "agent-gateway/identity.ts",
+      "bytes": 12151,
+      "sha256": "38b4ae911972f07b7dc79fd8b1875b01ad08d547d3afaf3845c59ed9b8de653a"
+    },
+    {
+      "path": "agent-gateway/employer.ts",
+      "bytes": 3694,
+      "sha256": "aaffa2b2478054a3580e944a0ec2235ca2e79fe1109b3dc9ff71447da138bc29"
+    },
+    {
+      "path": "agent-gateway/agentRegistry.ts",
+      "bytes": 18821,
+      "sha256": "1e06ef8ff789cc04042b9d501dcca8d25dde775639a3d1868884dd61cc195ab8"
+    },
+    {
+      "path": "config/randao-coordinator.json",
+      "bytes": 172,
+      "sha256": "45ab69627e3df31c82e749d25f3c901fa0b90d50c66327c6bbb36f74720bc278"
+    },
+    {
+      "path": "config/hamiltonian-monitor.json",
+      "bytes": 121,
+      "sha256": "82c0b685a76108b79530d80ccb5b6c60c727ba3b71d5c1effccaa37fc9b0ffad"
+    }
+  ]
+}

@@ -1,0 +1,131 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://montrealai.github.io/goalos-agialpha-ascension/schemas/agi-jobs-v0-v2-evidence-docket.schema.json",
+  "title": "GoalOS AGIALPHA Ascension AGI Jobs v0 (v2) Evidence Docket v3",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema", "release", "generated_at", "run_id", "deterministic_seed", "job_charter",
+    "market", "work_graph", "evaluation", "energy", "validator_parliament", "guardian_chamber",
+    "incident", "settlement", "memory_candidate", "proof_chronicle", "terminal", "claim_boundary"
+  ],
+  "properties": {
+    "schema": {"const": "goalos.agi_jobs_v0_v2.evidence_docket.v3"},
+    "release": {
+      "type": "object",
+      "required": ["id", "title", "version"],
+      "properties": {
+        "id": {"const": "GOALOS-AGIALPHA-AGI-JOBS-V0-V2-002"},
+        "title": {"const": "GoalOS AGIALPHA Ascension AGI Jobs v0 (v2) ✨"},
+        "version": {"const": "3.0.0-sovereign-labor-civilization"}
+      }
+    },
+    "generated_at": {"type": "string"},
+    "run_id": {"type": "string", "pattern": "^job-[a-f0-9]{16}$"},
+    "deterministic_seed": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "job_charter": {
+      "type": "object",
+      "required": ["mission", "job_class", "posture", "risk", "reward_units", "unit", "forbidden_actions"],
+      "properties": {
+        "mission": {"type": "string", "minLength": 20},
+        "job_class": {"type": "string"},
+        "posture": {"type": "string"},
+        "risk": {"type": "string"},
+        "reward_units": {"type": "number", "minimum": 0},
+        "unit": {"type": "string"},
+        "forbidden_actions": {"type": "array", "minItems": 5, "items": {"type": "string"}}
+      }
+    },
+    "market": {
+      "type": "object",
+      "required": ["coalition", "ranked"],
+      "properties": {
+        "coalition": {
+          "type": "object",
+          "required": ["prime", "specialists", "shadow", "reserves", "quarantined", "pareto_frontier"],
+          "properties": {
+            "prime": {"type": "object"},
+            "specialists": {"type": "array", "minItems": 2, "maxItems": 2},
+            "shadow": {"type": "object"},
+            "reserves": {"type": "array", "minItems": 2},
+            "quarantined": {"type": "array"},
+            "pareto_frontier": {"type": "array", "minItems": 1}
+          }
+        },
+        "ranked": {"type": "array", "minItems": 12, "maxItems": 12}
+      }
+    },
+    "work_graph": {"type": "array", "minItems": 8, "maxItems": 8},
+    "evaluation": {
+      "type": "object",
+      "required": ["capability", "evidence", "reliability", "efficiency", "latency", "safety", "energy", "weighted_score", "market_integrity", "proof_density", "settlement_readiness"]
+    },
+    "energy": {
+      "type": "object",
+      "required": ["declared_ceiling", "observed", "useful_work_ratio", "status"],
+      "properties": {"status": {"enum": ["PASS", "BREACH"]}}
+    },
+    "validator_parliament": {
+      "type": "object",
+      "required": ["votes", "pass", "dissent", "reject", "threshold", "quorum_met", "summary"],
+      "properties": {
+        "votes": {"type": "array", "minItems": 7, "maxItems": 7},
+        "pass": {"type": "integer"}, "dissent": {"type": "integer"}, "reject": {"type": "integer"},
+        "threshold": {"type": "integer"}, "quorum_met": {"type": "boolean"}, "summary": {"type": "string"}
+      }
+    },
+    "guardian_chamber": {
+      "type": "object",
+      "required": ["seats", "clear", "veto", "threshold", "summary"],
+      "properties": {
+        "seats": {"type": "array", "minItems": 5, "maxItems": 5},
+        "clear": {"type": "integer"}, "veto": {"type": "integer"}, "threshold": {"type": "integer"}, "summary": {"type": "string"}
+      }
+    },
+    "incident": {"type": "object"},
+    "settlement": {
+      "type": "object",
+      "required": ["ready_for_human_review", "allocations", "contributions", "live_token_movement", "wallet_connections", "authority"],
+      "properties": {
+        "ready_for_human_review": {"type": "boolean"},
+        "allocations": {"type": "array", "minItems": 6, "maxItems": 6},
+        "contributions": {"type": "array", "minItems": 4},
+        "live_token_movement": {"const": false},
+        "wallet_connections": {"const": 0},
+        "authority": {"const": "NONE_GRANTED"}
+      }
+    },
+    "memory_candidate": {
+      "type": "object",
+      "required": ["id", "scope", "source_run", "status", "expiry", "revocable", "promotion_authority", "external_actions"],
+      "properties": {
+        "status": {"const": "HUMAN_APPROVAL_PENDING"},
+        "revocable": {"const": true},
+        "promotion_authority": {"const": "HUMAN_ONLY"},
+        "external_actions": {"const": 0}
+      }
+    },
+    "proof_chronicle": {
+      "type": "object",
+      "required": ["artifacts", "chain_head"],
+      "properties": {
+        "artifacts": {"type": "array", "minItems": 24, "maxItems": 24},
+        "chain_head": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+      }
+    },
+    "terminal": {
+      "type": "object",
+      "required": ["state", "external_actions", "production", "factual_correctness", "funds_authorization", "memory_promotion", "authority"],
+      "properties": {
+        "state": {"enum": ["HUMAN_SETTLEMENT_REVIEW", "HUMAN_REVIEW_REQUIRED", "SAFE_HOLD"]},
+        "external_actions": {"const": 0},
+        "production": {"const": "NOT_ACTIVATED"},
+        "factual_correctness": {"const": "NOT_CERTIFIED"},
+        "funds_authorization": {"const": "NO"},
+        "memory_promotion": {"enum": ["HUMAN_APPROVAL_PENDING", "NOT_AUTHORIZED"]},
+        "authority": {"const": "NONE_GRANTED"}
+      }
+    },
+    "claim_boundary": {"type": "array", "minItems": 9, "maxItems": 9, "items": {"type": "string"}}
+  }
+}
