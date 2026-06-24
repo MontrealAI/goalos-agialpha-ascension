@@ -29,21 +29,28 @@ jobs:
   build-verify-browser-test:
     name: Preserve every flagship, build, verify, and browser-test First Real Loop
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    timeout-minutes: 75
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up Python
+      - name: Set up Python 3.11
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+
+      - name: Compile the First Real Loop Python entrypoints
+        run: |
+          python3 -m py_compile \
+            scripts/website/build_goalos_first_real_loop.py \
+            scripts/website/verify_goalos_first_real_loop.py \
+            scripts/website/browser_check_goalos_first_real_loop.py
 
       - name: Record canonical v86 source digest
         shell: bash
         run: |
           set -euo pipefail
-          find website/v86_actual_site -type f -print0 | sort -z | xargs -0 sha256sum | sha256sum > /tmp/v86-source.before
+          find website/v86_actual_site -type f -print0 | sort -z | xargs -0 sha256sum | sha256sum > "$RUNNER_TEMP/v86-source.before"
 
       - name: Build the preserved website, eight Proof Missions, and Mainnet record
         shell: bash
@@ -67,63 +74,61 @@ jobs:
 
       - name: Rebuild and verify the installed META-Agentic flagship
         run: |
-          python3 scripts/website/build_meta_agentic_alpha_agi.py --site site
+          SOURCE_DATE_EPOCH=1782172800 python3 scripts/website/build_meta_agentic_alpha_agi.py --site site
           python3 scripts/website/verify_meta_agentic_alpha_agi.py --site site
           python3 -m unittest discover -s test -p 'test_meta_agentic_alpha_agi_website.py' -v
 
-      - name: Rebuild and verify the installed AGI Alpha Node flagship
+      - name: Snapshot the generated site before AGI Alpha Node v0
+        run: python3 scripts/website/snapshot_agi_alpha_node_v0_site.py --site site --output "$RUNNER_TEMP/agi-alpha-node-v0-prebuild.json"
+
+      - name: Rebuild and verify the installed AGI Alpha Node Sovereign Citadel
         run: |
-          python3 scripts/website/build_agi_alpha_node_v0.py --site site
-          python3 scripts/website/verify_agi_alpha_node_v0.py --site site
+          SOURCE_DATE_EPOCH=1782216000 python3 scripts/website/build_agi_alpha_node_v0.py --site site --root .
+          python3 scripts/website/verify_agi_alpha_node_v0.py \
+            --site site \
+            --root . \
+            --baseline "$RUNNER_TEMP/agi-alpha-node-v0-prebuild.json" \
+            --output site/qa/agi-alpha-node-v0-static.json
           python3 -m unittest discover -s test -p 'test_agi_alpha_node_v0_website.py' -v
 
-      - name: Record prior generated flagship digests
+      - name: Record protected flagship digests before First Real Loop
         shell: bash
         run: |
           set -euo pipefail
           sha256sum \
             site/meta-agentic-alpha-agi.html \
             site/meta-agentic-alpha-agi-architecture.html \
-            site/meta-agentic-alpha-agi-manifest.json \
             site/assets/meta-agentic-alpha-agi.css \
             site/assets/meta-agentic-alpha-agi.js \
             site/data/meta-agentic-alpha-agi.json \
             site/agi-alpha-node-v0.html \
             site/agi-alpha-node-v0-architecture.html \
-            site/agi-alpha-node-v0-manifest.json \
+            site/agi-alpha-node-v0-proof-ledger.html \
             site/assets/agi-alpha-node-v0.css \
             site/assets/agi-alpha-node-v0.js \
-            site/data/agi-alpha-node-v0.json > /tmp/prior-flagships.before
+            site/data/agi-alpha-node-v0.json \
+            site/downloads/agi-alpha-node-v0/sample-node-evidence-docket.json > "$RUNNER_TEMP/prior-flagships.before"
 
-      - name: Build First Real Loop additively
-        run: python3 scripts/website/build_goalos_first_real_loop.py --site site
-
-      - name: Verify First Real Loop and deterministic regressions
+      - name: Build and statically verify First Real Loop
         run: |
+          python3 scripts/website/build_goalos_first_real_loop.py --site site
           python3 scripts/website/verify_goalos_first_real_loop.py \
             --site site \
             --content content/goalos-first-real-loop.json \
             --schema schemas/goalos-first-real-loop-evidence-docket.schema.json
           python3 -m unittest discover -s test -p 'test_goalos_first_real_loop.py' -v
 
-      - name: Prove prior generated flagships remain byte-identical
-        shell: bash
+      - name: Verify reconciled companion manifests
         run: |
-          set -euo pipefail
-          sha256sum \
-            site/meta-agentic-alpha-agi.html \
-            site/meta-agentic-alpha-agi-architecture.html \
-            site/meta-agentic-alpha-agi-manifest.json \
-            site/assets/meta-agentic-alpha-agi.css \
-            site/assets/meta-agentic-alpha-agi.js \
-            site/data/meta-agentic-alpha-agi.json \
-            site/agi-alpha-node-v0.html \
-            site/agi-alpha-node-v0-architecture.html \
-            site/agi-alpha-node-v0-manifest.json \
-            site/assets/agi-alpha-node-v0.css \
-            site/assets/agi-alpha-node-v0.js \
-            site/data/agi-alpha-node-v0.json > /tmp/prior-flagships.after
-          cmp /tmp/prior-flagships.before /tmp/prior-flagships.after
+          python3 scripts/website/verify_meta_agentic_alpha_agi.py --site site
+          python3 scripts/website/verify_agi_alpha_node_v0.py \
+            --site site \
+            --root . \
+            --output site/qa/agi-alpha-node-v0-static-post-first-loop.json
+          python3 scripts/website/verify_goalos_first_real_loop.py \
+            --site site \
+            --content content/goalos-first-real-loop.json \
+            --schema schemas/goalos-first-real-loop-evidence-docket.schema.json
 
       - name: Install Playwright Chromium
         run: |
@@ -134,17 +139,23 @@ jobs:
       - name: Browser-test all three flagship experiences
         run: |
           python3 scripts/website/visual_check_meta_agentic_alpha_agi.py --site site --output site/qa/meta-agentic-alpha-agi
-          python3 scripts/website/visual_check_agi_alpha_node_v0.py --site site --output site/qa/agi-alpha-node-v0
-          python3 scripts/website/browser_check_goalos_first_real_loop.py --site site
+          python3 scripts/website/visual_check_agi_alpha_node_v0.py --site site --output site/qa/agi-alpha-node-v0-browser
+          python3 scripts/website/browser_check_goalos_first_real_loop.py --site site --output site/qa/first-real-loop
 
-      - name: Prove source preservation and public-site hygiene
+      - name: Prove protected flagships and canonical source remain byte-identical
         shell: bash
         run: |
           set -euo pipefail
-          find website/v86_actual_site -type f -print0 | sort -z | xargs -0 sha256sum | sha256sum > /tmp/v86-source.after
-          cmp /tmp/v86-source.before /tmp/v86-source.after
+          sha256sum -c "$RUNNER_TEMP/prior-flagships.before"
+          find website/v86_actual_site -type f -print0 | sort -z | xargs -0 sha256sum | sha256sum > "$RUNNER_TEMP/v86-source.after"
+          cmp "$RUNNER_TEMP/v86-source.before" "$RUNNER_TEMP/v86-source.after"
           test "$(grep -c 'GOALOS_FIRST_REAL_LOOP_START' site/index.html)" -eq 1
           test "$(grep -c 'GOALOS_FIRST_REAL_LOOP_STYLE_START' site/index.html)" -eq 1
+
+      - name: Prove public-site hygiene
+        shell: bash
+        run: |
+          set -euo pipefail
           if find site \( -name '*.zip' -o -name '*.7z' -o -name '*.tar' -o -name '*.gz' -o -name '*.rar' \) -print | grep -q .; then
             echo 'Archive file found inside public site. Refusing preview.'
             exit 1
@@ -161,13 +172,12 @@ jobs:
           {
             echo '# GoalOS AGIALPHA Ascension First Real Loop ✨'
             echo
+            echo '- Python 3.11 compilation gate passed before the website build.'
             echo '- Current META-Agentic and AGI Alpha Node flagships rebuilt and revalidated first.'
-            echo '- Their generated pages, assets, manifests, and public data remained byte-identical.'
-            echo '- Canonical v86 source digest preserved.'
-            echo '- Three First Real Loop public pages generated additively.'
-            echo '- Eight proof phases and twelve evidence artifacts verified.'
-            echo '- Stable public run commitment reproduced.'
-            echo '- 66.67% bounded scaffold reuse lift represented with zero added hallucination or safety delta.'
+            echo '- Protected flagship pages, assets, data, and sample evidence remained byte-identical.'
+            echo '- Shared manifests were reconciled to the final homepage, routes, sitemap, and status surfaces.'
+            echo '- Canonical v86 source digest remained byte-identical.'
+            echo '- Three First Real Loop public pages and twelve evidence artifacts were generated.'
             echo '- Terminal state HUMAN_REVIEW_REQUIRED; authority NONE_GRANTED.'
             echo '- External actions, wallet connections, and runtime network requests: 0.'
           } >> "$GITHUB_STEP_SUMMARY"
@@ -179,11 +189,14 @@ jobs:
           name: goalos-first-real-loop-preview
           path: |
             site/index.html
+            site/routes.json
+            site/sitemap.xml
+            site/site-status.json
             site/first-real-loop.html
             site/first-real-loop-architecture.html
             site/first-real-loop-docket.html
-            site/assets/goalos-v86-preserve.css
-            site/assets/goalos-v86-dynamic-ai.js
+            site/meta-agentic-alpha-agi-manifest.json
+            site/agi-alpha-node-v0-manifest.json
             site/assets/first-real-loop/
             site/downloads/first-real-loop/
             site/qa/first-real-loop-build.json
@@ -191,6 +204,7 @@ jobs:
             site/qa/first-real-loop-static.md
             site/qa/first-real-loop/
             site/qa/meta-agentic-alpha-agi/
-            site/qa/agi-alpha-node-v0/
+            site/qa/agi-alpha-node-v0-browser/
+            site/qa/agi-alpha-node-v0-static-post-first-loop.json
           if-no-files-found: error
           retention-days: 30

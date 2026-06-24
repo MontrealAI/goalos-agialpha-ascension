@@ -84,6 +84,15 @@ on:
       - 'test/test_agi_alpha_node_v0_website.py'
       - 'docs/AGI_ALPHA_NODE_V0_WEBSITE.md'
       - 'README_UPLOAD_AGI_ALPHA_NODE_V0.md'
+      - 'content/goalos-first-real-loop.json'
+      - 'website/first_real_loop/**'
+      - 'scripts/website/build_goalos_first_real_loop.py'
+      - 'scripts/website/verify_goalos_first_real_loop.py'
+      - 'scripts/website/browser_check_goalos_first_real_loop.py'
+      - 'schemas/goalos-first-real-loop-evidence-docket.schema.json'
+      - 'test/test_goalos_first_real_loop.py'
+      - 'docs/GOALOS_FIRST_REAL_LOOP_WEBSITE.md'
+      - '.github/workflows/goalos-first-real-loop-smoke-test.yml'
       - '.github/workflows/goalos-agialpha-ascension-v86-final.yml'
       - '.github/workflows/goalos-agialpha-ascension-v86-smoke-test.yml'
 
@@ -100,7 +109,7 @@ jobs:
   build-verify-browser-test:
     name: Build, preserve, verify, and browser-test v86
     runs-on: ubuntu-latest
-    timeout-minutes: 90
+    timeout-minutes: 120
     permissions:
       contents: read
     steps:
@@ -114,6 +123,12 @@ jobs:
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
+
+      - name: Record canonical v86 source digest
+        shell: bash
+        run: |
+          set -euo pipefail
+          find website/v86_actual_site -type f -print0 | sort -z | xargs -0 sha256sum | sha256sum > "$RUNNER_TEMP/v86-source.before"
 
       - name: Build preserved actual website
         run: python3 scripts/build_goalos_agialpha_ascension_website_v86.py --out site
@@ -329,6 +344,99 @@ jobs:
         if: env.META_AGENTIC_STATE == 'complete'
         run: python3 scripts/website/verify_meta_agentic_alpha_agi.py --site site
 
+      - name: Record protected flagship digests before First Real Loop
+        shell: bash
+        run: |
+          set -euo pipefail
+          protected=(
+            site/meta-agentic-alpha-agi.html
+            site/meta-agentic-alpha-agi-architecture.html
+            site/assets/meta-agentic-alpha-agi.css
+            site/assets/meta-agentic-alpha-agi.js
+            site/data/meta-agentic-alpha-agi.json
+            site/agi-alpha-node-v0.html
+            site/agi-alpha-node-v0-architecture.html
+            site/agi-alpha-node-v0-proof-ledger.html
+            site/assets/agi-alpha-node-v0.css
+            site/assets/agi-alpha-node-v0.js
+            site/data/agi-alpha-node-v0.json
+            site/downloads/agi-alpha-node-v0/sample-node-evidence-docket.json
+          )
+          present=()
+          for file in "${protected[@]}"; do
+            [[ -f "$file" ]] && present+=("$file")
+          done
+          (( ${#present[@]} >= 7 )) || { echo 'Expected flagship outputs are missing before First Real Loop.'; exit 1; }
+          sha256sum "${present[@]}" > "$RUNNER_TEMP/prior-flagships.before"
+
+      - name: Build GoalOS AGIALPHA Ascension First Real Loop additively
+        run: python3 scripts/website/build_goalos_first_real_loop.py --site site
+
+      - name: Assert First Real Loop generated outputs exist
+        shell: bash
+        run: |
+          set -euo pipefail
+          for file in \
+            site/first-real-loop.html \
+            site/first-real-loop-architecture.html \
+            site/first-real-loop-docket.html \
+            site/assets/first-real-loop/first-real-loop.css \
+            site/assets/first-real-loop/first-real-loop.js \
+            site/downloads/first-real-loop/first-real-loop-artifact-ledger.json \
+            site/downloads/first-real-loop/first-real-loop-evidence-docket.json \
+            site/downloads/first-real-loop/first-real-loop-executive-brief.md \
+            site/downloads/first-real-loop/first-real-loop-replay-manifest.json \
+            site/index.html \
+            site/routes.json \
+            site/site-status.json \
+            site/sitemap.xml \
+            site/qa/first-real-loop-build.json; do
+            test -s "$file" || { echo "Missing generated First Real Loop output: $file"; find site -maxdepth 4 -type f | sort; exit 1; }
+          done
+
+      - name: Verify, regression-test, and browser-test First Real Loop
+        run: |
+          python3 scripts/website/verify_goalos_first_real_loop.py \
+            --site site \
+            --content content/goalos-first-real-loop.json \
+            --schema schemas/goalos-first-real-loop-evidence-docket.schema.json
+          python3 -m unittest discover -s test -p 'test_goalos_first_real_loop.py' -v
+          python3 scripts/website/browser_check_goalos_first_real_loop.py --site site --output site/qa/first-real-loop
+
+      - name: Verify companion manifests against the final shared surfaces
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 scripts/website/verify_agi_alpha_node_v0.py \
+            --site site \
+            --root . \
+            --output site/qa/agi-alpha-node-v0-static-post-first-loop.json
+          if [[ "${META_AGENTIC_STATE:-none}" == 'complete' ]]; then
+            python3 scripts/website/verify_meta_agentic_alpha_agi.py --site site
+          fi
+          python3 scripts/website/verify_goalos_first_real_loop.py \
+            --site site \
+            --content content/goalos-first-real-loop.json \
+            --schema schemas/goalos-first-real-loop-evidence-docket.schema.json
+
+      - name: Prove protected flagships and canonical source remain byte-identical
+        shell: bash
+        run: |
+          set -euo pipefail
+          cut -d' ' -f3- "$RUNNER_TEMP/prior-flagships.before" | while IFS= read -r file; do
+            test -s "$file" || { echo "Protected flagship output disappeared: $file"; exit 1; }
+          done
+          while IFS= read -r line; do
+            expected="${line%% *}"
+            file="${line#*  }"
+            actual="$(sha256sum "$file" | cut -d' ' -f1)"
+            [[ "$actual" == "$expected" ]] || { echo "Protected flagship output changed unexpectedly: $file"; exit 1; }
+          done < "$RUNNER_TEMP/prior-flagships.before"
+          find website/v86_actual_site -type f -print0 | sort -z | xargs -0 sha256sum | sha256sum > "$RUNNER_TEMP/v86-source.after"
+          cmp "$RUNNER_TEMP/v86-source.before" "$RUNNER_TEMP/v86-source.after"
+          test "$(grep -c 'GOALOS_FIRST_REAL_LOOP_START' site/index.html)" -eq 1
+          test "$(grep -c 'GOALOS_FIRST_REAL_LOOP_STYLE_START' site/index.html)" -eq 1
+
       - name: Reject archives and private operator material in public site
         shell: bash
         run: |
@@ -358,6 +466,10 @@ jobs:
             echo '- Sovereign Node Theatre, Constitutional Architecture, and Proof Ledger generated as separate inspectable surfaces.'
             echo '- Deterministic ten-gate proof flight; primary + shadow routes; twelve-peer mesh; seven validators; five guardians; sixteen chained artifacts.'
             echo '- Adversarial incident rehearsals fail closed to SAFE_HOLD; successful flights stop at HUMAN_REVIEW_REQUIRED.'
+            echo '- First Real Loop generated at /first-real-loop.html with architecture and Evidence Docket companion surfaces.'
+            echo '- Nova-Seed → MARK → Mini Sovereign → five governed jobs → Evidence Docket → capability compiler → vNext replay verified.'
+            echo '- First Real Loop terminates at HUMAN_REVIEW_REQUIRED with NONE_GRANTED authority and zero external actions.'
+            echo '- Node and META-Agentic manifests reconciled against the final shared website surfaces.'
             echo '- Mission 006, Mission 007, Mission 008, and Mainnet generated-page preflights passed.'
             echo '- 48 GoalOS-created Mainnet contracts represented.'
             echo '- 48/48 recorded source verification; 0 failures.'
@@ -389,6 +501,11 @@ jobs:
             site/assets/agi-alpha-node-v0.css
             site/assets/agi-alpha-node-v0.js
             site/data/agi-alpha-node-v0.json
+            site/first-real-loop.html
+            site/first-real-loop-architecture.html
+            site/first-real-loop-docket.html
+            site/assets/first-real-loop/
+            site/downloads/first-real-loop/
             site/downloads/agi-alpha-node-v0/
             site/downloads/proof-gradient/
             site/downloads/proof-missions/
