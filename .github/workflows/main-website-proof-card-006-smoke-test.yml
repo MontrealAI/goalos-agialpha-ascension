@@ -18,7 +18,7 @@ jobs:
     permissions:
       contents: read
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - name: Build local synthetic main website with Proof Cards 001-006
         run: python3 scripts/add_goalos_agialpha_main_site_proof_cards_v12.py --site smoke-site --bootstrap
       - name: Verify Proof Cards 001-006

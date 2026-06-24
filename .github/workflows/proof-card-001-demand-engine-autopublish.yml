@@ -31,7 +31,7 @@ jobs:
     name: Build existing site, add Proof Card 001, verify
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - name: Build current site and add Proof Card 001 demand engine
         run: python3 scripts/build_existing_site_with_proof_card_001.py --out site
       - name: Verify Proof Card 001 site integration

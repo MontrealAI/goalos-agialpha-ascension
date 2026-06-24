@@ -47,7 +47,7 @@ jobs:
       html_page_count: ${{ steps.release_summary.outputs.html_page_count }}
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5

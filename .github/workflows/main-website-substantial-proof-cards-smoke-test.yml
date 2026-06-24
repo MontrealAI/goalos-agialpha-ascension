@@ -20,7 +20,7 @@ jobs:
       contents: read
     steps:
       - name: Check out repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
       - name: Build small local root for integration smoke test
         run: |
           mkdir -p site

@@ -17,7 +17,7 @@ jobs:
   smoke:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Install optional PDF renderer
         run: sudo apt-get update && sudo apt-get install -y poppler-utils
       - name: Build
