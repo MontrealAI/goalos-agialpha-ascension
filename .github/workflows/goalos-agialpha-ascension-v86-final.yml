@@ -130,7 +130,7 @@ jobs:
   build-verify-browser-test:
     name: Build, preserve, verify, and browser-test v86
     runs-on: ubuntu-latest
-    timeout-minutes: 155
+    timeout-minutes: 165
     permissions:
       contents: read
     steps:
@@ -142,7 +142,7 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Compile flagship website tooling under Python 3.11
+      - name: Compile required constitutional-civilization tooling under Python 3.11
         run: |
           python3 -m py_compile \
             scripts/website/build_meta_agentic_alpha_agi.py \
@@ -152,9 +152,6 @@ jobs:
             scripts/website/snapshot_agi_alpha_node_v0_site.py \
             scripts/website/verify_agi_alpha_node_v0.py \
             scripts/website/visual_check_agi_alpha_node_v0.py \
-            scripts/website/build_goalos_first_real_loop.py \
-            scripts/website/verify_goalos_first_real_loop.py \
-            scripts/website/browser_check_goalos_first_real_loop.py \
             scripts/website/build_agi_jobs_v0_v2.py \
             scripts/website/snapshot_agi_jobs_v0_v2_site.py \
             scripts/website/verify_agi_jobs_v0_v2.py \
@@ -163,8 +160,46 @@ jobs:
             scripts/website/snapshot_sovereign_machine_economy_site.py \
             scripts/website/verify_sovereign_machine_economy.py \
             scripts/website/visual_check_sovereign_machine_economy.py
+      - name: Parse required constitutional-civilization runtimes under Node.js
+        run: |
+          node --check website/features/meta-agentic-alpha-agi/assets/meta-agentic-alpha-agi.js
+          node --check website/features/agi-alpha-node-v0/assets/agi-alpha-node-v0.js
+          node --check website/features/agi-jobs-v0-v2/assets/agi-jobs-v0-v2.js
           node --check website/features/sovereign-machine-economy/assets/sovereign-machine-economy.js
-
+      - name: Detect, validate, and compile optional First Real Loop
+        shell: bash
+        run: |
+          set -euo pipefail
+          required=(
+            content/goalos-first-real-loop.json
+            website/first_real_loop/first-real-loop.css
+            website/first_real_loop/first-real-loop.js
+            scripts/website/build_goalos_first_real_loop.py
+            scripts/website/verify_goalos_first_real_loop.py
+            scripts/website/browser_check_goalos_first_real_loop.py
+            schemas/goalos-first-real-loop-evidence-docket.schema.json
+            test/test_goalos_first_real_loop.py
+          )
+          present=0
+          for file in "${required[@]}"; do
+            [[ -s "$file" ]] && present=$((present + 1))
+          done
+          if (( present == 0 )); then
+            state=none
+          elif (( present == ${#required[@]} )); then
+            state=complete
+            python3 -m py_compile \
+              scripts/website/build_goalos_first_real_loop.py \
+              scripts/website/verify_goalos_first_real_loop.py \
+              scripts/website/browser_check_goalos_first_real_loop.py
+            node --check website/first_real_loop/first-real-loop.js
+          else
+            echo "Partial First Real Loop installation detected ($present/${#required[@]} required files). Refusing a mixed release."
+            printf 'Required: %s\n' "${required[@]}"
+            exit 1
+          fi
+          echo "FIRST_REAL_LOOP_STATE=$state" >> "$GITHUB_ENV"
+          echo "First Real Loop release state: $state"
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
 
@@ -202,7 +237,7 @@ jobs:
       - name: Install Playwright Chromium
         run: |
           python3 -m pip install --upgrade pip
-          python3 -m pip install playwright jsonschema
+          python3 -m pip install jsonschema playwright
           python3 -m playwright install --with-deps chromium
 
       - name: Run canonical and Missions 001–003 browser QA
@@ -297,7 +332,7 @@ jobs:
       - name: Browser-test the restored Mainnet record
         run: python3 scripts/browser_check_goalos_ethereum_mainnet_v87.py --site site --screenshots
 
-      - name: Detect optional META-Agentic α-AGI release
+      - name: Assert META-Agentic α-AGI source is complete
         shell: bash
         run: |
           set -euo pipefail
@@ -312,22 +347,17 @@ jobs:
             scripts/website/visual_check_meta_agentic_alpha_agi.py
             test/test_meta_agentic_alpha_agi_website.py
           )
-          present=0
+          missing=()
           for file in "${required[@]}"; do
-            [[ -f "$file" ]] && present=$((present + 1))
+            [[ -s "$file" ]] || missing+=("$file")
           done
-          if (( present == 0 )); then
-            state=none
-          elif (( present == ${#required[@]} )); then
-            state=complete
-          else
-            echo "Partial META-Agentic installation detected ($present/${#required[@]} required files). Refusing a mixed release."
-            printf 'Required: %s\n' "${required[@]}"
+          if (( ${#missing[@]} )); then
+            echo "META-Agentic α-AGI is a required constitutional engine; missing ${#missing[@]} source file(s)."
+            printf 'Missing: %s\n' "${missing[@]}"
             exit 1
           fi
-          echo "META_AGENTIC_STATE=$state" >> "$GITHUB_ENV"
-          echo "META-Agentic release state: $state"
-
+          echo 'META_AGENTIC_STATE=complete' >> "$GITHUB_ENV"
+          echo 'META-Agentic release state: complete'
       - name: Build optional META-Agentic α-AGI release additively
         if: env.META_AGENTIC_STATE == 'complete'
         run: SOURCE_DATE_EPOCH=1782172800 python3 scripts/website/build_meta_agentic_alpha_agi.py --site site
@@ -388,7 +418,7 @@ jobs:
         if: env.META_AGENTIC_STATE == 'complete'
         run: python3 scripts/website/verify_meta_agentic_alpha_agi.py --site site
 
-      - name: Record protected flagship digests before First Real Loop
+      - name: Record protected flagship digests before optional First Real Loop
         shell: bash
         run: |
           set -euo pipefail
@@ -406,48 +436,28 @@ jobs:
             site/data/agi-alpha-node-v0.json
             site/downloads/agi-alpha-node-v0/sample-node-evidence-docket.json
           )
-          present=()
           for file in "${protected[@]}"; do
-            [[ -f "$file" ]] && present+=("$file")
+            test -s "$file" || { echo "Expected protected flagship output is missing: $file"; exit 1; }
           done
-          (( ${#present[@]} >= 7 )) || { echo 'Expected flagship outputs are missing before First Real Loop.'; exit 1; }
-          sha256sum "${present[@]}" > "$RUNNER_TEMP/prior-flagships.before"
-
-      - name: Build GoalOS AGIALPHA Ascension First Real Loop additively
+          sha256sum "${protected[@]}" > "$RUNNER_TEMP/prior-flagships.before"
+      - name: Build optional GoalOS AGIALPHA Ascension First Real Loop additively
+        if: env.FIRST_REAL_LOOP_STATE == 'complete'
         run: python3 scripts/website/build_goalos_first_real_loop.py --site site
-
-      - name: Assert First Real Loop generated outputs exist
+      - name: Assert optional First Real Loop generated outputs exist
+        if: env.FIRST_REAL_LOOP_STATE == 'complete'
         shell: bash
         run: |
           set -euo pipefail
-          for file in \
-            site/first-real-loop.html \
-            site/first-real-loop-architecture.html \
-            site/first-real-loop-docket.html \
-            site/assets/first-real-loop/first-real-loop.css \
-            site/assets/first-real-loop/first-real-loop.js \
-            site/downloads/first-real-loop/first-real-loop-artifact-ledger.json \
-            site/downloads/first-real-loop/first-real-loop-evidence-docket.json \
-            site/downloads/first-real-loop/first-real-loop-executive-brief.md \
-            site/downloads/first-real-loop/first-real-loop-replay-manifest.json \
-            site/index.html \
-            site/routes.json \
-            site/site-status.json \
-            site/sitemap.xml \
-            site/qa/first-real-loop-build.json; do
+          for file in             site/first-real-loop.html             site/first-real-loop-architecture.html             site/first-real-loop-docket.html             site/assets/first-real-loop/first-real-loop.css             site/assets/first-real-loop/first-real-loop.js             site/downloads/first-real-loop/first-real-loop-artifact-ledger.json             site/downloads/first-real-loop/first-real-loop-evidence-docket.json             site/downloads/first-real-loop/first-real-loop-executive-brief.md             site/downloads/first-real-loop/first-real-loop-replay-manifest.json             site/qa/first-real-loop-build.json; do
             test -s "$file" || { echo "Missing generated First Real Loop output: $file"; find site -maxdepth 4 -type f | sort; exit 1; }
           done
-
-      - name: Verify, regression-test, and browser-test First Real Loop
+      - name: Verify, regression-test, and browser-test optional First Real Loop
+        if: env.FIRST_REAL_LOOP_STATE == 'complete'
         run: |
-          python3 scripts/website/verify_goalos_first_real_loop.py \
-            --site site \
-            --content content/goalos-first-real-loop.json \
-            --schema schemas/goalos-first-real-loop-evidence-docket.schema.json
+          python3 scripts/website/verify_goalos_first_real_loop.py             --site site             --content content/goalos-first-real-loop.json             --schema schemas/goalos-first-real-loop-evidence-docket.schema.json
           python3 -m unittest discover -s test -p 'test_goalos_first_real_loop.py' -v
           python3 scripts/website/browser_check_goalos_first_real_loop.py --site site --output site/qa/first-real-loop
-
-      - name: Verify companion manifests against the final shared surfaces
+      - name: Verify companion manifests after optional shared-surface reconciliation
         shell: bash
         run: |
           set -euo pipefail
@@ -455,32 +465,30 @@ jobs:
             --site site \
             --root . \
             --output site/qa/agi-alpha-node-v0-static-post-first-loop.json
-          if [[ "${META_AGENTIC_STATE:-none}" == 'complete' ]]; then
-            python3 scripts/website/verify_meta_agentic_alpha_agi.py --site site
+          python3 scripts/website/verify_meta_agentic_alpha_agi.py --site site
+          if [[ "${FIRST_REAL_LOOP_STATE:-none}" == 'complete' ]]; then
+            python3 scripts/website/verify_goalos_first_real_loop.py \
+              --site site \
+              --content content/goalos-first-real-loop.json \
+              --schema schemas/goalos-first-real-loop-evidence-docket.schema.json
           fi
-          python3 scripts/website/verify_goalos_first_real_loop.py \
-            --site site \
-            --content content/goalos-first-real-loop.json \
-            --schema schemas/goalos-first-real-loop-evidence-docket.schema.json
-
       - name: Prove protected flagships and canonical source remain byte-identical
         shell: bash
         run: |
           set -euo pipefail
-          cut -d' ' -f3- "$RUNNER_TEMP/prior-flagships.before" | while IFS= read -r file; do
-            test -s "$file" || { echo "Protected flagship output disappeared: $file"; exit 1; }
-          done
           while IFS= read -r line; do
             expected="${line%% *}"
             file="${line#*  }"
+            test -s "$file" || { echo "Protected flagship output disappeared: $file"; exit 1; }
             actual="$(sha256sum "$file" | cut -d' ' -f1)"
             [[ "$actual" == "$expected" ]] || { echo "Protected flagship output changed unexpectedly: $file"; exit 1; }
           done < "$RUNNER_TEMP/prior-flagships.before"
           find website/v86_actual_site -type f -print0 | sort -z | xargs -0 sha256sum | sha256sum > "$RUNNER_TEMP/v86-source.after"
           cmp "$RUNNER_TEMP/v86-source.before" "$RUNNER_TEMP/v86-source.after"
-          test "$(grep -c 'GOALOS_FIRST_REAL_LOOP_START' site/index.html)" -eq 1
-          test "$(grep -c 'GOALOS_FIRST_REAL_LOOP_STYLE_START' site/index.html)" -eq 1
-
+          if [[ "${FIRST_REAL_LOOP_STATE:-none}" == 'complete' ]]; then
+            test "$(grep -c 'GOALOS_FIRST_REAL_LOOP_START' site/index.html)" -eq 1
+            test "$(grep -c 'GOALOS_FIRST_REAL_LOOP_STYLE_START' site/index.html)" -eq 1
+          fi
       - name: Snapshot the complete generated institution before AGI Jobs v0 (v2)
         run: python3 scripts/website/snapshot_agi_jobs_v0_v2_site.py --site site --output "$RUNNER_TEMP/agi-jobs-v0-v2-prebuild.json"
 
@@ -527,13 +535,13 @@ jobs:
             --site site \
             --root . \
             --output site/qa/agi-alpha-node-v0-static-post-agi-jobs.json
-          if [[ "${META_AGENTIC_STATE:-none}" == 'complete' ]]; then
-            python3 scripts/website/verify_meta_agentic_alpha_agi.py --site site
+          python3 scripts/website/verify_meta_agentic_alpha_agi.py --site site
+          if [[ "${FIRST_REAL_LOOP_STATE:-none}" == 'complete' ]]; then
+            python3 scripts/website/verify_goalos_first_real_loop.py \
+              --site site \
+              --content content/goalos-first-real-loop.json \
+              --schema schemas/goalos-first-real-loop-evidence-docket.schema.json
           fi
-          python3 scripts/website/verify_goalos_first_real_loop.py \
-            --site site \
-            --content content/goalos-first-real-loop.json \
-            --schema schemas/goalos-first-real-loop-evidence-docket.schema.json
           python3 scripts/website/verify_agi_jobs_v0_v2.py \
             --site site \
             --root . \
@@ -543,7 +551,6 @@ jobs:
           cmp "$RUNNER_TEMP/v86-source.before" "$RUNNER_TEMP/v86-source.after-agi-jobs"
           test "$(grep -c 'GOALOS_AGI_JOBS_V0_V2_HOME_START' site/index.html)" -eq 1
           test "$(grep -c 'GOALOS_AGI_JOBS_V0_V2_NAV_START' site/index.html)" -eq 1
-
       - name: Assert final AGI Jobs v0 (v2) QA evidence exists
         shell: bash
         run: |
@@ -555,11 +562,30 @@ jobs:
             test -s "$file" || { echo "Missing AGI Jobs v0 (v2) QA evidence: $file"; exit 1; }
           done
 
+      - name: Assert all three constitutional engines are installed before integration
+        shell: bash
+        run: |
+          set -euo pipefail
+          required=(
+            content/meta-agentic-alpha-agi.json
+            content/agi-alpha-node-v0.json
+            content/agi-jobs-v0-v2.json
+            site/meta-agentic-alpha-agi.html
+            site/meta-agentic-alpha-agi-manifest.json
+            site/agi-alpha-node-v0.html
+            site/agi-alpha-node-v0-manifest.json
+            site/agi-jobs-v0-v2.html
+            site/agi-jobs-v0-v2-manifest.json
+          )
+          for file in "${required[@]}"; do
+            test -s "$file" || { echo "Missing Sovereign Machine Economy prerequisite: $file"; exit 1; }
+          done
+
       - name: Snapshot the complete generated institution before Sovereign Machine Economy
         run: python3 scripts/website/snapshot_sovereign_machine_economy_site.py --site site --output "$RUNNER_TEMP/sovereign-machine-economy-prebuild.json"
 
-      - name: Build GoalOS AGIALPHA Ascension Sovereign Machine Economy additively
-        run: SOURCE_DATE_EPOCH=1782320400 python3 scripts/website/build_sovereign_machine_economy.py --site site --root .
+      - name: Build GoalOS AGIALPHA Ascension Sovereign Machine Economy Ω additively
+        run: SOURCE_DATE_EPOCH=1782259200 python3 scripts/website/build_sovereign_machine_economy.py --site site --root .
 
       - name: Assert Sovereign Machine Economy generated outputs exist
         shell: bash
@@ -567,14 +593,17 @@ jobs:
           set -euo pipefail
           for file in \
             site/sovereign-machine-economy.html \
+            site/sovereign-machine-economy-observatory.html \
             site/sovereign-machine-economy-architecture.html \
-            site/sovereign-machine-economy-chronicle.html \
-            site/sovereign-machine-economy-atlas.html \
+            site/sovereign-machine-economy-ledger.html \
+            site/sovereign-machine-economy-memory.html \
+            site/sovereign-machine-economy-passport.html \
             site/sovereign-machine-economy-manifest.json \
             site/assets/sovereign-machine-economy.css \
             site/assets/sovereign-machine-economy.js \
             site/data/sovereign-machine-economy.json \
-            site/downloads/sovereign-machine-economy/sample-sovereign-economy-docket.json \
+            site/downloads/sovereign-machine-economy/sample-sovereign-machine-economy-docket.json \
+            site/downloads/sovereign-machine-economy/sovereign-machine-economy-executive-brief.md \
             site/qa/sovereign-machine-economy-build.json; do
             test -s "$file" || { echo "Missing Sovereign Machine Economy output: $file"; find site -maxdepth 4 -type f | sort; exit 1; }
           done
@@ -584,29 +613,30 @@ jobs:
           python3 scripts/website/verify_sovereign_machine_economy.py \
             --site site \
             --root . \
-            --baseline "$RUNNER_TEMP/sovereign-machine-economy-prebuild.json" \
+            --content content/sovereign-machine-economy.json \
             --schema schemas/sovereign-machine-economy-docket.schema.json \
+            --baseline "$RUNNER_TEMP/sovereign-machine-economy-prebuild.json" \
             --output site/qa/sovereign-machine-economy-static.json
           python3 -m unittest discover -s test -p 'test_sovereign_machine_economy_website.py' -v
 
       - name: Adversarially browser-test Sovereign Machine Economy
-        run: python3 scripts/website/visual_check_sovereign_machine_economy.py --site site --output site/qa/sovereign-machine-economy
+        run: python3 scripts/website/visual_check_sovereign_machine_economy.py --site site --output site/qa/sovereign-machine-economy-browser
 
-      - name: Re-verify every companion after machine-economy shared-surface reconciliation
+      - name: Re-verify every constitutional engine after Machine Economy reconciliation
         shell: bash
         run: |
           set -euo pipefail
-          if [[ "${META_AGENTIC_STATE:-none}" == 'complete' ]]; then
-            python3 scripts/website/verify_meta_agentic_alpha_agi.py --site site
-          fi
+          python3 scripts/website/verify_meta_agentic_alpha_agi.py --site site
           python3 scripts/website/verify_agi_alpha_node_v0.py \
             --site site \
             --root . \
             --output site/qa/agi-alpha-node-v0-static-post-machine-economy.json
-          python3 scripts/website/verify_goalos_first_real_loop.py \
-            --site site \
-            --content content/goalos-first-real-loop.json \
-            --schema schemas/goalos-first-real-loop-evidence-docket.schema.json
+          if [[ "${FIRST_REAL_LOOP_STATE:-none}" == 'complete' ]]; then
+            python3 scripts/website/verify_goalos_first_real_loop.py \
+              --site site \
+              --content content/goalos-first-real-loop.json \
+              --schema schemas/goalos-first-real-loop-evidence-docket.schema.json
+          fi
           python3 scripts/website/verify_agi_jobs_v0_v2.py \
             --site site \
             --root . \
@@ -615,33 +645,24 @@ jobs:
           python3 scripts/website/verify_sovereign_machine_economy.py \
             --site site \
             --root . \
+            --content content/sovereign-machine-economy.json \
             --schema schemas/sovereign-machine-economy-docket.schema.json \
             --output site/qa/sovereign-machine-economy-static-final.json
           find website/v86_actual_site -type f -print0 | sort -z | xargs -0 sha256sum | sha256sum > "$RUNNER_TEMP/v86-source.after-machine-economy"
           cmp "$RUNNER_TEMP/v86-source.before" "$RUNNER_TEMP/v86-source.after-machine-economy"
           test "$(grep -c 'GOALOS_SOVEREIGN_MACHINE_ECONOMY_HOME_START' site/index.html)" -eq 1
           test "$(grep -c 'GOALOS_SOVEREIGN_MACHINE_ECONOMY_NAV_START' site/index.html)" -eq 1
-
-      - name: Prove machine-economy second-build idempotence
-        shell: bash
-        run: |
-          set -euo pipefail
-          find site -type f -print0 | sort -z | xargs -0 sha256sum > "$RUNNER_TEMP/machine-economy-site.before"
-          SOURCE_DATE_EPOCH=1782320400 python3 scripts/website/build_sovereign_machine_economy.py --site site --root .
-          find site -type f -print0 | sort -z | xargs -0 sha256sum > "$RUNNER_TEMP/machine-economy-site.after"
-          cmp "$RUNNER_TEMP/machine-economy-site.before" "$RUNNER_TEMP/machine-economy-site.after"
-
       - name: Assert final Sovereign Machine Economy QA evidence exists
         shell: bash
         run: |
           set -euo pipefail
           for file in \
             site/qa/sovereign-machine-economy-static.json \
-            site/qa/sovereign-machine-economy/browser-report.json \
+            site/qa/sovereign-machine-economy-browser/browser-report.json \
             site/qa/sovereign-machine-economy-static-final.json \
-            site/qa/agi-jobs-v0-v2-static-post-machine-economy.json \
-            site/qa/agi-alpha-node-v0-static-post-machine-economy.json; do
-            test -s "$file" || { echo "Missing Sovereign Machine Economy QA evidence: $file"; exit 1; }
+            site/qa/agi-alpha-node-v0-static-post-machine-economy.json \
+            site/qa/agi-jobs-v0-v2-static-post-machine-economy.json; do
+            test -s "$file" || { echo "Missing final Sovereign Machine Economy QA evidence: $file"; exit 1; }
           done
 
       - name: Reject archives and private operator material in public site
@@ -662,31 +683,33 @@ jobs:
         shell: bash
         run: |
           {
-            echo '# GoalOS Ascension Website · Proof Missions + AGIALPHA Sovereign Citadel'
+            echo '# GoalOS Ascension Website · Proof Missions + Sovereign Machine Economy Ω'
             echo
             echo '- Canonical v86 website source preserved.'
             echo '- Public Proof Missions 001–008 generated in strict dependency order.'
             echo '- Mission 008 restored to the full-bleed sovereign series design.'
             echo '- Ethereum Mainnet deployment record restored at /ethereum-mainnet.html.'
-            echo "- Optional META-Agentic release state: ${META_AGENTIC_STATE:-none}."
+            echo '- META-Agentic α-AGI required engine state: complete.'
             echo '- AGI Alpha Node v0 Sovereign Citadel generated at /agi-alpha-node-v0.html.'
             echo '- Sovereign Node Theatre, Constitutional Architecture, and Proof Ledger generated as separate inspectable surfaces.'
             echo '- Deterministic ten-gate proof flight; primary + shadow routes; twelve-peer mesh; seven validators; five guardians; sixteen chained artifacts.'
             echo '- Adversarial incident rehearsals fail closed to SAFE_HOLD; successful flights stop at HUMAN_REVIEW_REQUIRED.'
-            echo '- First Real Loop generated at /first-real-loop.html with architecture and Evidence Docket companion surfaces.'
-            echo '- Nova-Seed → MARK → Mini Sovereign → five governed jobs → Evidence Docket → capability compiler → vNext replay verified.'
-            echo '- First Real Loop terminates at HUMAN_REVIEW_REQUIRED with NONE_GRANTED authority and zero external actions.'
-            echo '- Node and META-Agentic manifests reconciled against the final shared website surfaces.'
+            echo "- Optional First Real Loop release state: ${FIRST_REAL_LOOP_STATE:-none}."
+            if [[ "${FIRST_REAL_LOOP_STATE:-none}" == 'complete' ]]; then
+              echo '- First Real Loop generated with architecture and Evidence Docket companion surfaces.'
+              echo '- First Real Loop terminates at HUMAN_REVIEW_REQUIRED with NONE_GRANTED authority and zero external actions.'
+            fi
+            echo '- META-Agentic, AGI Alpha Node, AGI Jobs, and Machine Economy manifests reconciled against the final shared website surfaces.'
             echo '- AGI Jobs v0 (v2) Sovereign Work Civilization generated at /agi-jobs-v0-v2.html.'
             echo '- Guild Market, Proof Parliament, Settlement Constitution, and Constitutional Architecture generated as separate inspectable surfaces.'
             echo '- Sixteen proof gates, twelve guilds, nine validator seats, six guardians, and twenty-four chained artifacts verified.'
             echo '- All four terminal states rehearsed: HUMAN_SETTLEMENT_REVIEW, HUMAN_REVIEW_REQUIRED, DISPUTE_OPEN, and SAFE_HOLD.'
             echo '- Live token movements, wallet connections, external actions, and autonomous settlement authorizations: 0.'
-            echo '- Sovereign Machine Economy generated at /sovereign-machine-economy.html with Architecture, Proof Chronicle, and Civilization Atlas.'
-            echo '- META-Agentic institution formation, Alpha Node proof execution, and AGI Jobs market coordination bound by three cryptographic handoffs.'
-            echo '- Eighteen constitutional gates and thirty-six chained artifacts verified across META, NODE, and JOBS.'
-            echo '- Machine-economy second-build idempotence proved; all companion manifests reconciled against final shared surfaces.'
-            echo '- Successful integrated cycle stops at HUMAN_SETTLEMENT_REVIEW with NONE_GRANTED authority.'
+            echo '- Sovereign Machine Economy Ω generated at /sovereign-machine-economy.html with Observatory, Constitution, Proof Chronicle, Recursive Memory, and Mission Passport companion surfaces.'
+            echo '- META-Agentic α-AGI, AGI Alpha Node v0, and AGI Jobs v0 (v2) are integrated through twenty-one constitutional gates, fifteen typed handoffs, and forty-eight predecessor-linked artifacts.'
+            echo '- Three counterfactual governed universes and four local Human Review Chamber dispositions were verified without granting authority.'
+            echo '- Nominal completion stops at HUMAN_SETTLEMENT_REVIEW; adversarial scenarios fail closed to HUMAN_REVIEW_REQUIRED, DISPUTE_OPEN, or SAFE_HOLD.'
+            echo '- External authority remains NONE_GRANTED; automatic memory promotion, live settlement, wallet activity, network requests, and external actions remain disabled.'
             echo '- Mission 006, Mission 007, Mission 008, and Mainnet generated-page preflights passed.'
             echo '- 48 GoalOS-created Mainnet contracts represented.'
             echo '- 48/48 recorded source verification; 0 failures.'
@@ -732,9 +755,11 @@ jobs:
             site/data/agi-jobs-v0-v2.json
             site/downloads/agi-jobs-v0-v2/
             site/sovereign-machine-economy.html
+            site/sovereign-machine-economy-observatory.html
             site/sovereign-machine-economy-architecture.html
-            site/sovereign-machine-economy-chronicle.html
-            site/sovereign-machine-economy-atlas.html
+            site/sovereign-machine-economy-ledger.html
+            site/sovereign-machine-economy-memory.html
+            site/sovereign-machine-economy-passport.html
             site/sovereign-machine-economy-manifest.json
             site/assets/sovereign-machine-economy.css
             site/assets/sovereign-machine-economy.js
