@@ -93,6 +93,17 @@ on:
       - 'test/test_goalos_first_real_loop.py'
       - 'docs/GOALOS_FIRST_REAL_LOOP_WEBSITE.md'
       - '.github/workflows/goalos-first-real-loop-smoke-test.yml'
+      - 'content/agi-jobs-v0-v2.json'
+      - 'website/features/agi-jobs-v0-v2/**'
+      - 'scripts/website/build_agi_jobs_v0_v2.py'
+      - 'scripts/website/snapshot_agi_jobs_v0_v2_site.py'
+      - 'scripts/website/verify_agi_jobs_v0_v2.py'
+      - 'scripts/website/visual_check_agi_jobs_v0_v2.py'
+      - 'test/test_agi_jobs_v0_v2_website.py'
+      - 'schemas/agi-jobs-v0-v2-evidence-docket.schema.json'
+      - 'docs/AGI_JOBS_V0_V2_WEBSITE.md'
+      - 'README_UPLOAD_AGI_JOBS_V0_V2.md'
+      - '.github/workflows/goalos-agi-jobs-v0-v2-smoke-test.yml'
       - '.github/workflows/goalos-agialpha-ascension-v86-final.yml'
       - '.github/workflows/goalos-agialpha-ascension-v86-smoke-test.yml'
 
@@ -109,7 +120,7 @@ jobs:
   build-verify-browser-test:
     name: Build, preserve, verify, and browser-test v86
     runs-on: ubuntu-latest
-    timeout-minutes: 120
+    timeout-minutes: 145
     permissions:
       contents: read
     steps:
@@ -120,6 +131,25 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+
+      - name: Compile flagship website tooling under Python 3.11
+        run: |
+          python3 -m py_compile \
+            scripts/website/build_meta_agentic_alpha_agi.py \
+            scripts/website/verify_meta_agentic_alpha_agi.py \
+            scripts/website/visual_check_meta_agentic_alpha_agi.py \
+            scripts/website/build_agi_alpha_node_v0.py \
+            scripts/website/snapshot_agi_alpha_node_v0_site.py \
+            scripts/website/verify_agi_alpha_node_v0.py \
+            scripts/website/visual_check_agi_alpha_node_v0.py \
+            scripts/website/build_goalos_first_real_loop.py \
+            scripts/website/verify_goalos_first_real_loop.py \
+            scripts/website/browser_check_goalos_first_real_loop.py \
+            scripts/website/build_agi_jobs_v0_v2.py \
+            scripts/website/snapshot_agi_jobs_v0_v2_site.py \
+            scripts/website/verify_agi_jobs_v0_v2.py \
+            scripts/website/visual_check_agi_jobs_v0_v2.py
+          node --check website/features/agi-jobs-v0-v2/assets/agi-jobs-v0-v2.js
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
@@ -437,6 +467,82 @@ jobs:
           test "$(grep -c 'GOALOS_FIRST_REAL_LOOP_START' site/index.html)" -eq 1
           test "$(grep -c 'GOALOS_FIRST_REAL_LOOP_STYLE_START' site/index.html)" -eq 1
 
+      - name: Snapshot the complete generated institution before AGI Jobs v0 (v2)
+        run: python3 scripts/website/snapshot_agi_jobs_v0_v2_site.py --site site --output "$RUNNER_TEMP/agi-jobs-v0-v2-prebuild.json"
+
+      - name: Build GoalOS AGIALPHA Ascension AGI Jobs v0 (v2) additively
+        run: SOURCE_DATE_EPOCH=1782259200 python3 scripts/website/build_agi_jobs_v0_v2.py --site site --root .
+
+      - name: Assert AGI Jobs v0 (v2) generated outputs exist
+        shell: bash
+        run: |
+          set -euo pipefail
+          for file in \
+            site/agi-jobs-v0-v2.html \
+            site/agi-jobs-v0-v2-market.html \
+            site/agi-jobs-v0-v2-settlement.html \
+            site/agi-jobs-v0-v2-memory.html \
+            site/agi-jobs-v0-v2-architecture.html \
+            site/agi-jobs-v0-v2-manifest.json \
+            site/assets/agi-jobs-v0-v2.css \
+            site/assets/agi-jobs-v0-v2.js \
+            site/data/agi-jobs-v0-v2.json \
+            site/downloads/agi-jobs-v0-v2/sample-agi-jobs-evidence-docket.json \
+            site/downloads/agi-jobs-v0-v2/agi-jobs-v0-v2-economic-memory.json \
+            site/downloads/agi-jobs-v0-v2/agi-jobs-v0-v2-executive-review-brief.md \
+            site/qa/agi-jobs-v0-v2-build.json; do
+            test -s "$file" || { echo "Missing AGI Jobs v0 (v2) output: $file"; find site -maxdepth 4 -type f | sort; exit 1; }
+          done
+
+      - name: Verify preservation and regression-test AGI Jobs v0 (v2)
+        run: |
+          python3 scripts/website/verify_agi_jobs_v0_v2.py \
+            --site site \
+            --root . \
+            --baseline "$RUNNER_TEMP/agi-jobs-v0-v2-prebuild.json" \
+            --schema schemas/agi-jobs-v0-v2-evidence-docket.schema.json \
+            --output site/qa/agi-jobs-v0-v2-static.json
+          python3 -m unittest discover -s test -p 'test_agi_jobs_v0_v2_website.py' -v
+
+      - name: Adversarially browser-test AGI Jobs v0 (v2)
+        run: python3 scripts/website/visual_check_agi_jobs_v0_v2.py --site site --output site/qa/agi-jobs-v0-v2-browser
+
+      - name: Re-verify every companion after AGI Jobs shared-surface reconciliation
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 scripts/website/verify_agi_alpha_node_v0.py \
+            --site site \
+            --root . \
+            --output site/qa/agi-alpha-node-v0-static-post-agi-jobs.json
+          if [[ "${META_AGENTIC_STATE:-none}" == 'complete' ]]; then
+            python3 scripts/website/verify_meta_agentic_alpha_agi.py --site site
+          fi
+          python3 scripts/website/verify_goalos_first_real_loop.py \
+            --site site \
+            --content content/goalos-first-real-loop.json \
+            --schema schemas/goalos-first-real-loop-evidence-docket.schema.json
+          python3 scripts/website/verify_agi_jobs_v0_v2.py \
+            --site site \
+            --root . \
+            --schema schemas/agi-jobs-v0-v2-evidence-docket.schema.json \
+            --output site/qa/agi-jobs-v0-v2-static-final.json
+          find website/v86_actual_site -type f -print0 | sort -z | xargs -0 sha256sum | sha256sum > "$RUNNER_TEMP/v86-source.after-agi-jobs"
+          cmp "$RUNNER_TEMP/v86-source.before" "$RUNNER_TEMP/v86-source.after-agi-jobs"
+          test "$(grep -c 'GOALOS_AGI_JOBS_V0_V2_HOME_START' site/index.html)" -eq 1
+          test "$(grep -c 'GOALOS_AGI_JOBS_V0_V2_NAV_START' site/index.html)" -eq 1
+
+      - name: Assert final AGI Jobs v0 (v2) QA evidence exists
+        shell: bash
+        run: |
+          set -euo pipefail
+          for file in \
+            site/qa/agi-jobs-v0-v2-static.json \
+            site/qa/agi-jobs-v0-v2-browser/browser-report.json \
+            site/qa/agi-jobs-v0-v2-static-final.json; do
+            test -s "$file" || { echo "Missing AGI Jobs v0 (v2) QA evidence: $file"; exit 1; }
+          done
+
       - name: Reject archives and private operator material in public site
         shell: bash
         run: |
@@ -470,6 +576,12 @@ jobs:
             echo '- Nova-Seed → MARK → Mini Sovereign → five governed jobs → Evidence Docket → capability compiler → vNext replay verified.'
             echo '- First Real Loop terminates at HUMAN_REVIEW_REQUIRED with NONE_GRANTED authority and zero external actions.'
             echo '- Node and META-Agentic manifests reconciled against the final shared website surfaces.'
+            echo '- AGI Jobs v0 (v2) Sovereign Labor Civilization generated at /agi-jobs-v0-v2.html.'
+            echo '- Market Atlas, Proof Settlement Chamber, Capability Memory Gate, and Constitutional Architecture generated as separate inspectable surfaces.'
+            echo '- Fourteen constitutional gates, twelve agent institutions, seven validators, five guardians, and twenty-four chained artifacts verified.'
+            echo '- Capability Memory Gate exports review-only economic memory; no capability is promoted autonomously.'
+            echo '- Successful cycles stop at HUMAN_SETTLEMENT_REVIEW; adversarial incidents fail closed to SAFE_HOLD.'
+            echo '- Live token movements, wallet connections, external actions, and autonomous settlement authorizations: 0.'
             echo '- Mission 006, Mission 007, Mission 008, and Mainnet generated-page preflights passed.'
             echo '- 48 GoalOS-created Mainnet contracts represented.'
             echo '- 48/48 recorded source verification; 0 failures.'
@@ -504,6 +616,16 @@ jobs:
             site/first-real-loop.html
             site/first-real-loop-architecture.html
             site/first-real-loop-docket.html
+            site/agi-jobs-v0-v2.html
+            site/agi-jobs-v0-v2-market.html
+            site/agi-jobs-v0-v2-settlement.html
+            site/agi-jobs-v0-v2-memory.html
+            site/agi-jobs-v0-v2-architecture.html
+            site/agi-jobs-v0-v2-manifest.json
+            site/assets/agi-jobs-v0-v2.css
+            site/assets/agi-jobs-v0-v2.js
+            site/data/agi-jobs-v0-v2.json
+            site/downloads/agi-jobs-v0-v2/
             site/assets/first-real-loop/
             site/downloads/first-real-loop/
             site/downloads/agi-alpha-node-v0/

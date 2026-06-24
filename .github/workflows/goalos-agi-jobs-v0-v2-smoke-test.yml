@@ -1,0 +1,218 @@
+name: GoalOS AGIALPHA Ascension AGI Jobs v0 (v2) Smoke Test
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'content/agi-jobs-v0-v2.json'
+      - 'website/features/agi-jobs-v0-v2/**'
+      - 'scripts/website/build_agi_jobs_v0_v2.py'
+      - 'scripts/website/snapshot_agi_jobs_v0_v2_site.py'
+      - 'scripts/website/verify_agi_jobs_v0_v2.py'
+      - 'scripts/website/visual_check_agi_jobs_v0_v2.py'
+      - 'test/test_agi_jobs_v0_v2_website.py'
+      - 'schemas/agi-jobs-v0-v2-evidence-docket.schema.json'
+      - 'docs/AGI_JOBS_V0_V2_WEBSITE.md'
+      - 'README_UPLOAD_AGI_JOBS_V0_V2.md'
+      - '.github/workflows/goalos-agi-jobs-v0-v2-smoke-test.yml'
+      - '.github/workflows/goalos-agialpha-ascension-v86-final.yml'
+
+concurrency:
+  group: goalos-agi-jobs-v0-v2-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+env:
+  PYTHONUNBUFFERED: '1'
+
+jobs:
+  build-verify-browser-test:
+    name: Preserve every flagship, build, verify, and browser-test AGI Jobs v0 (v2)
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Compile every integrated flagship tool under Python 3.11
+        run: |
+          python3 -m py_compile \
+            scripts/website/build_meta_agentic_alpha_agi.py \
+            scripts/website/verify_meta_agentic_alpha_agi.py \
+            scripts/website/visual_check_meta_agentic_alpha_agi.py \
+            scripts/website/build_agi_alpha_node_v0.py \
+            scripts/website/snapshot_agi_alpha_node_v0_site.py \
+            scripts/website/verify_agi_alpha_node_v0.py \
+            scripts/website/visual_check_agi_alpha_node_v0.py \
+            scripts/website/build_goalos_first_real_loop.py \
+            scripts/website/verify_goalos_first_real_loop.py \
+            scripts/website/browser_check_goalos_first_real_loop.py \
+            scripts/website/build_agi_jobs_v0_v2.py \
+            scripts/website/snapshot_agi_jobs_v0_v2_site.py \
+            scripts/website/verify_agi_jobs_v0_v2.py \
+            scripts/website/visual_check_agi_jobs_v0_v2.py
+          node --check website/features/agi-jobs-v0-v2/assets/agi-jobs-v0-v2.js
+
+      - name: Record canonical v86 source digest
+        shell: bash
+        run: |
+          set -euo pipefail
+          find website/v86_actual_site -type f -print0 | sort -z | xargs -0 sha256sum | sha256sum > "$RUNNER_TEMP/v86-source.before"
+
+      - name: Build the preserved website, eight Proof Missions, and Mainnet record
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 scripts/build_goalos_agialpha_ascension_website_v86.py --out site
+          python3 scripts/website/build_proof_gradient_sovereign.py --site site
+          python3 scripts/website/build_proof_mission_002.py --site site
+          python3 scripts/website/build_proof_mission_003.py --site site
+          python3 scripts/website/build_proof_mission_004.py --site site
+          python3 scripts/website/build_proof_mission_005.py --site site
+          python3 scripts/website/build_proof_mission_006.py --site site
+          python3 scripts/website/build_proof_mission_007.py --site site
+          python3 scripts/website/build_proof_mission_008.py --site site
+          python3 scripts/add_goalos_ethereum_mainnet_pages_v87.py \
+            --site site \
+            --registry config/ethereum-mainnet.contracts.json \
+            --release-contracts release/mainnet-2026-06-21/CONTRACTS_MAINNET.json \
+            --release-manifest release/mainnet-2026-06-21/RELEASE_MANIFEST.json \
+            --deployment-evidence release/mainnet-2026-06-21/DEPLOYMENT_EVIDENCE.json
+
+      - name: Rebuild and verify META-Agentic α-AGI
+        run: |
+          SOURCE_DATE_EPOCH=1782172800 python3 scripts/website/build_meta_agentic_alpha_agi.py --site site
+          python3 scripts/website/verify_meta_agentic_alpha_agi.py --site site
+          python3 -m unittest discover -s test -p 'test_meta_agentic_alpha_agi_website.py' -v
+
+      - name: Rebuild and verify AGI Alpha Node v0 Sovereign Citadel
+        run: |
+          python3 scripts/website/snapshot_agi_alpha_node_v0_site.py --site site --output "$RUNNER_TEMP/agi-alpha-node-v0-prebuild.json"
+          SOURCE_DATE_EPOCH=1782216000 python3 scripts/website/build_agi_alpha_node_v0.py --site site --root .
+          python3 scripts/website/verify_agi_alpha_node_v0.py \
+            --site site \
+            --root . \
+            --baseline "$RUNNER_TEMP/agi-alpha-node-v0-prebuild.json" \
+            --output site/qa/agi-alpha-node-v0-static.json
+          python3 -m unittest discover -s test -p 'test_agi_alpha_node_v0_website.py' -v
+
+      - name: Rebuild and verify First Real Loop
+        run: |
+          python3 scripts/website/build_goalos_first_real_loop.py --site site
+          python3 scripts/website/verify_goalos_first_real_loop.py \
+            --site site \
+            --content content/goalos-first-real-loop.json \
+            --schema schemas/goalos-first-real-loop-evidence-docket.schema.json
+          python3 -m unittest discover -s test -p 'test_goalos_first_real_loop.py' -v
+
+      - name: Snapshot the complete generated institution before AGI Jobs v0 (v2)
+        run: python3 scripts/website/snapshot_agi_jobs_v0_v2_site.py --site site --output "$RUNNER_TEMP/agi-jobs-v0-v2-prebuild.json"
+
+      - name: Build and statically verify AGI Jobs v0 (v2)
+        run: |
+          SOURCE_DATE_EPOCH=1782259200 python3 scripts/website/build_agi_jobs_v0_v2.py --site site --root .
+          python3 scripts/website/verify_agi_jobs_v0_v2.py \
+            --site site \
+            --root . \
+            --baseline "$RUNNER_TEMP/agi-jobs-v0-v2-prebuild.json" \
+            --schema schemas/agi-jobs-v0-v2-evidence-docket.schema.json \
+            --output site/qa/agi-jobs-v0-v2-static.json
+          python3 -m unittest discover -s test -p 'test_agi_jobs_v0_v2_website.py' -v
+
+      - name: Install Playwright Chromium
+        run: |
+          python3 -m pip install --upgrade pip
+          python3 -m pip install playwright
+          python3 -m playwright install --with-deps chromium
+
+      - name: Adversarially browser-test the Sovereign Labor Civilization
+        run: python3 scripts/website/visual_check_agi_jobs_v0_v2.py --site site --output site/qa/agi-jobs-v0-v2-browser
+
+      - name: Re-verify every companion against the final shared surfaces
+        run: |
+          python3 scripts/website/verify_meta_agentic_alpha_agi.py --site site
+          python3 scripts/website/verify_agi_alpha_node_v0.py \
+            --site site \
+            --root . \
+            --output site/qa/agi-alpha-node-v0-static-post-agi-jobs.json
+          python3 scripts/website/verify_goalos_first_real_loop.py \
+            --site site \
+            --content content/goalos-first-real-loop.json \
+            --schema schemas/goalos-first-real-loop-evidence-docket.schema.json
+          python3 scripts/website/verify_agi_jobs_v0_v2.py \
+            --site site \
+            --root . \
+            --schema schemas/agi-jobs-v0-v2-evidence-docket.schema.json \
+            --output site/qa/agi-jobs-v0-v2-static-final.json
+
+      - name: Prove canonical source preservation and public-site hygiene
+        shell: bash
+        run: |
+          set -euo pipefail
+          find website/v86_actual_site -type f -print0 | sort -z | xargs -0 sha256sum | sha256sum > "$RUNNER_TEMP/v86-source.after"
+          cmp "$RUNNER_TEMP/v86-source.before" "$RUNNER_TEMP/v86-source.after"
+          test "$(grep -c 'GOALOS_AGI_JOBS_V0_V2_HOME_START' site/index.html)" -eq 1
+          test "$(grep -c 'GOALOS_AGI_JOBS_V0_V2_NAV_START' site/index.html)" -eq 1
+          if find site \( -name '*.zip' -o -name '*.7z' -o -name '*.tar' -o -name '*.gz' -o -name '*.rar' \) -print | grep -q .; then
+            echo 'Archive file found inside public site. Refusing preview.'
+            exit 1
+          fi
+          if grep -RIlE 'PRIVATE_MAINNET_DEPLOYER_PRIVATE_KEY|SEED_PHRASE|MNEMONIC|MAINNET_RPC_URL=|ETHERSCAN_API_KEY=' site; then
+            echo 'Private operator material found inside public site. Refusing preview.'
+            exit 1
+          fi
+
+      - name: Write AGI Jobs v0 (v2) summary
+        if: always()
+        shell: bash
+        run: |
+          {
+            echo '# GoalOS AGIALPHA Ascension AGI Jobs v0 (v2) ✨'
+            echo
+            echo '- Python 3.11 compilation gate passed before any build.'
+            echo '- META-Agentic, AGI Alpha Node, and First Real Loop rebuilt and verified first.'
+            echo '- Five AGI Jobs public surfaces generated additively.'
+            echo '- Fourteen constitutional gates, twelve institutions, seven validators, five guardians, and twenty-four artifacts verified.'
+            echo '- Capability Memory Gate remains reversible and requires human promotion.'
+            echo '- Successful cycle terminal state: HUMAN_SETTLEMENT_REVIEW.'
+            echo '- Adversarial identity drift terminal state: SAFE_HOLD.'
+            echo '- Live fund movement, wallet connections, external actions, and autonomous settlement authority: 0.'
+            echo '- Canonical v86 source remained byte-identical.'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload AGI Jobs preview and QA evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: goalos-agi-jobs-v0-v2-preview
+          path: |
+            site/index.html
+            site/routes.json
+            site/sitemap.xml
+            site/site-status.json
+            site/agi-jobs-v0-v2.html
+            site/agi-jobs-v0-v2-market.html
+            site/agi-jobs-v0-v2-settlement.html
+            site/agi-jobs-v0-v2-memory.html
+            site/agi-jobs-v0-v2-architecture.html
+            site/agi-jobs-v0-v2-manifest.json
+            site/meta-agentic-alpha-agi-manifest.json
+            site/agi-alpha-node-v0-manifest.json
+            site/assets/agi-jobs-v0-v2.css
+            site/assets/agi-jobs-v0-v2.js
+            site/data/agi-jobs-v0-v2.json
+            site/downloads/agi-jobs-v0-v2/
+            site/qa/agi-jobs-v0-v2-build.json
+            site/qa/agi-jobs-v0-v2-static.json
+            site/qa/agi-jobs-v0-v2-static-final.json
+            site/qa/agi-jobs-v0-v2-browser/
+            site/qa/agi-alpha-node-v0-static-post-agi-jobs.json
+          if-no-files-found: error
+          retention-days: 30
