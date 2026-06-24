@@ -27,7 +27,7 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
       - name: Configure GitHub Pages
-        uses: actions/configure-pages@v5
+        uses: actions/configure-pages@v6
       - name: Build Triple Proof Card Demand Center
         run: python3 scripts/build_goalos_agialpha_triple_proof_card_site_v8.py --out site
       - name: Verify complete website before deployment

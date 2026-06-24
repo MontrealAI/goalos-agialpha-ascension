@@ -201,7 +201,7 @@ jobs:
           echo "FIRST_REAL_LOOP_STATE=$state" >> "$GITHUB_ENV"
           echo "First Real Loop release state: $state"
       - name: Configure GitHub Pages
-        uses: actions/configure-pages@v5
+        uses: actions/configure-pages@v6
 
       - name: Record canonical v86 source digest
         shell: bash
