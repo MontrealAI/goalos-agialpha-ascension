@@ -152,7 +152,7 @@ def common_head(title, description):
 
 def nav(current='experience'):
     links=[('experience','first-real-loop.html','Experience'),('architecture','first-real-loop-architecture.html','Architecture'),('docket','first-real-loop-docket.html','Evidence Docket')]
-    items=''.join(f'<a href="{href}"{(" aria-current=\"page\"" if key==current else "")}>{label}</a>' for key,href,label in links)
+    items=''.join(f'<a href="{href}" aria-current="page">{label}</a>' if key==current else f'<a href="{href}">{label}</a>' for key,href,label in links)
     return f'''<a class="frl-skip" href="#main">Skip to content</a><nav class="frl-nav" aria-label="First Real Loop navigation"><div class="frl-shell frl-navin"><a class="frl-brand" href="index.html"><span class="frl-brand-mark" aria-hidden="true"></span><span>GoalOS · First Real Loop</span></a><div class="frl-navlinks">{items}<a href="index.html">GoalOS Home</a></div></div></nav>'''
 
 
