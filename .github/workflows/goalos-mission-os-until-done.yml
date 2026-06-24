@@ -57,7 +57,7 @@ jobs:
         run: python scripts/mission-os/done_check.py --dir "${{ inputs.output_dir }}"
 
       - name: Upload Mission OS artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: goalos-mission-os-artifacts
           path: ${{ inputs.output_dir }}

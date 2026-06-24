@@ -27,7 +27,7 @@ jobs:
       - name: Verify preview
         run: python scripts/verify_goalos_agialpha_flagship_proof_card_003_site.py
       - name: Upload preview artifact
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v7
         with:
           name: flagship-proof-card-003-site-preview
           path: site

@@ -34,7 +34,7 @@ jobs:
         if: inputs.mode == 'final_check'
       - run: npm run deploy:mainnet:prepare-local
         if: inputs.mode == 'package_operator_instructions'
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: redacted-mainnet-operator-packet
           path: |
