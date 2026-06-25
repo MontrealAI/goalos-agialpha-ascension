@@ -6,6 +6,7 @@ ROOT=Path(__file__).resolve().parents[1]
 BUILD=ROOT/'scripts/website/build_sme_kernel_v3.py';SNAPSHOT=ROOT/'scripts/website/snapshot_sme_kernel_v3_site.py';VERIFY=ROOT/'scripts/website/verify_sme_kernel_v3.py';VISUAL=ROOT/'scripts/website/visual_check_sme_kernel_v3.py'
 CONTENT=ROOT/'content/sme-kernel-v3.json';ENV_SCHEMA=ROOT/'schemas/sme-kernel-v3-envelope.schema.json';BUNDLE_SCHEMA=ROOT/'schemas/sme-kernel-v3-mission-bundle.schema.json'
 PAGES=['sovereign-machine-economy-kernel-v3.html','sovereign-machine-economy-kernel-v3-protocol.html','sovereign-machine-economy-kernel-v3-chronicle.html','sovereign-machine-economy-kernel-v3-verifier.html','sovereign-machine-economy-kernel-v3-sdk.html']
+PUBLICATION_PAGE='sovereign-machine-economy-kernel-v3-paper.html'
 SHARED=['index.html','routes.json','sitemap.xml','site-status.json']
 COMPANIONS=[('meta-agentic-alpha-agi-manifest.json','goalos.meta_agentic_alpha_agi.website_manifest.v2'),('agi-alpha-node-v0-manifest.json','goalos.agi_alpha_node_v0.website_manifest.v2'),('agi-jobs-v0-v2-manifest.json','goalos.agi_jobs_v0_v2.website_manifest.v3'),('sovereign-machine-economy-manifest.json','goalos.sovereign_machine_economy.website_manifest.v2')]
 def sha(path:Path)->str:return hashlib.sha256(path.read_bytes()).hexdigest()
@@ -17,7 +18,7 @@ class SMEKernelV3WebsiteTests(unittest.TestCase):
   index="<!doctype html><html><head><link rel='stylesheet' href='assets/goalos-v86-preserve.css'></head><body><nav><a href='index.html'>Home</a><!-- GOALOS_SOVEREIGN_MACHINE_ECONOMY_NAV_END --></nav><main><section id='preserved'>Preserved</section><!-- GOALOS_SOVEREIGN_MACHINE_ECONOMY_HOME_END --></main></body></html>"
   (cls.site/'index.html').write_text(index,encoding='utf-8');(cls.site/'routes.json').write_text(json.dumps({'version':'test','routes':['index.html']})+'\n');(cls.site/'sitemap.xml').write_text("<?xml version='1.0'?><urlset></urlset>\n");(cls.site/'site-status.json').write_text(json.dumps({'status':'fixture'})+'\n')
   (cls.site/'assets').mkdir();(cls.site/'assets/goalos-v86-preserve.css').write_text('body{margin:0}\n')
-  for page in ['meta-agentic-alpha-agi.html','agi-alpha-node-v0.html','agi-jobs-v0-v2.html','sovereign-machine-economy.html']:(cls.site/page).write_text('<!doctype html><html><body>'+page*80+'</body></html>')
+  for page in ['meta-agentic-alpha-agi.html','agi-alpha-node-v0.html','agi-jobs-v0-v2.html','sovereign-machine-economy.html',PUBLICATION_PAGE]:(cls.site/page).write_text('<!doctype html><html><body>'+page*80+'</body></html>')
   for filename,schema in COMPANIONS:
    files={name:{'sha256':sha(cls.site/name),'bytes':(cls.site/name).stat().st_size} for name in SHARED}
    (cls.site/filename).write_text(json.dumps({'schema':schema,'files':files,'integration':{'reconciliations':[]}},indent=2)+'\n')
@@ -36,6 +37,7 @@ class SMEKernelV3WebsiteTests(unittest.TestCase):
   self.assertEqual(s['signature_algorithm'],'Ed25519');self.assertTrue(s['worker_isolation']);self.assertTrue(s['human_review_required'])
  def test_04_all_public_surfaces_exist(self):
   for page in PAGES:self.assertGreater((self.site/page).stat().st_size,5500,page)
+  self.assertTrue((self.site/PUBLICATION_PAGE).is_file(),PUBLICATION_PAGE)
   for relative in ['assets/sme-kernel-v3.css','assets/sme-kernel-v3.js','assets/sme-kernel-v3-core.js','assets/sme-kernel-v3-adapters.js','assets/sme-kernel-v3-worker.js','data/sme-kernel-v3.json','sme-kernel-v3-manifest.json']:self.assertTrue((self.site/relative).is_file(),relative)
  def test_05_homepage_additive(self):
   raw=(self.site/'index.html').read_text();self.assertIn("<section id='preserved'>Preserved</section>",raw);self.assertEqual(raw.count('GOALOS_SME_KERNEL_V3_HOME_START'),1);self.assertEqual(raw.count('GOALOS_SME_KERNEL_V3_NAV_START'),1);self.assertEqual(raw.count('GOALOS_SME_KERNEL_V3_STYLE_START'),1);self.assertEqual(raw.count('data-goalos-sme-kernel-v3-icon'),1);self.assertIn('Kernel v3',raw)
@@ -54,8 +56,8 @@ class SMEKernelV3WebsiteTests(unittest.TestCase):
  def test_10_static_verifier_and_preservation(self):
   out=Path(self.temp.name)/'static.json';result=subprocess.run([sys.executable,str(VERIFY),'--site',str(self.site),'--root',str(ROOT),'--content',str(CONTENT),'--envelope-schema',str(ENV_SCHEMA),'--bundle-schema',str(BUNDLE_SCHEMA),'--baseline',str(self.baseline),'--output',str(out)],cwd=ROOT,capture_output=True,text=True);self.assertEqual(result.returncode,0,result.stdout+result.stderr);report=json.loads(out.read_text());self.assertEqual(report['status'],'PASS');self.assertFalse(report['preservation']['removed']);self.assertFalse(report['preservation']['unexpected_changed']);self.assertFalse(report['preservation']['unexpected_added'])
  def test_11_core_ed25519_roundtrip(self):
-  script="""global.window=global;global.crypto=require('crypto').webcrypto;require('./website/features/sme-kernel-v3/assets/sme-kernel-v3-core.js');(async()=>{const c=SMEKernelCore;const id=await c.generateIdentity('META_ARCHITECT');const u=await c.createUnsignedEnvelope({envelopeType:'InstitutionProposal',missionId:'mission-1234567890abcdef',issuer:'META_ARCHITECT',logicalTime:1,previousCommitment:'0'.repeat(64),payload:{proof:'bounded'},authorityScope:'TEST'});const e=await c.signEnvelope(u,id);const v=await c.verifyEnvelope(e);if(!v.ok)process.exit(2);e.payload.proof='tampered';const bad=await c.verifyEnvelope(e);if(bad.ok)process.exit(3);console.log('PASS')})().catch(e=>{console.error(e);process.exit(1)});"""
-  result=subprocess.run(['node','-e',script],cwd=ROOT,capture_output=True,text=True);self.assertEqual(result.returncode,0,result.stdout+result.stderr);self.assertIn('PASS',result.stdout)
+  script="""global.window=global;global.crypto=require('crypto').webcrypto;require('./website/features/sme-kernel-v3/assets/sme-kernel-v3-core.js');(async()=>{const c=SMEKernelCore;const id=await c.generateIdentity('META_ARCHITECT');const u=await c.createUnsignedEnvelope({envelopeType:'InstitutionProposal',missionId:'mission-1234567890abcdef',issuer:'META_ARCHITECT',logicalTime:1,previousCommitment:'0'.repeat(64),payload:{proof:'bounded},authorityScope:'TEST'});const e=await c.signEnvelope(u,id);const v=await c.verifyEnvelope(e);if(!v.ok)process.exit(2);e.payload.proof='tampered';const bad=await c.verifyEnvelope(e);if(bad.ok)process.exit(3);console.log('PASS')})().catch(e=>{console.error(e);process.exit(1)});"""
+  result=subprocess.run(['node','-e',script],cwd=ROOT,capture_output=True,text=True);self.assertEqual(result.returncode,0,result.stdout+result.stderr);self.assertIn('PASS', result.stdout)
  def test_12_adapter_contract(self):
   raw=(ROOT/'website/features/sme-kernel-v3/assets/sme-kernel-v3-adapters.js').read_text()
   for name in ['initialize','propose','execute','evaluate','produceEvidence','verifyEvidence','MetaAgenticAdapter','AlphaNodeAdapter','AGIJobsAdapter']:self.assertIn(name,raw)
