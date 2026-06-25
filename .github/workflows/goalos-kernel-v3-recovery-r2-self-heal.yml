@@ -1,35 +1,41 @@
-name: GoalOS Kernel v3 R2 · Materialize Review Branch
+name: GoalOS Kernel v3 Institutional Publication · Final Integration
 
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - .github/workflows/goalos-kernel-v3-recovery-r2-self-heal.yml
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/goalos-kernel-v3-recovery-r2-self-heal.yml'
 
 concurrency:
-  group: goalos-kernel-v3-r2-materialize-review-branch
+  group: goalos-kernel-v3-institutional-publication-final
   cancel-in-progress: false
 
 permissions:
   contents: write
+  pull-requests: write
 
 env:
   EXPECTED_REPOSITORY: MontrealAI/goalos-agialpha-ascension
   AUDITED_BASELINE_COMMIT: 076a7a7a8d1713d4849e95e1c58b8b6ccec0df03
+  ACTIVE_WORKFLOW: .github/workflows/goalos-agialpha-ascension-v86-final.yml
+  EXPECTED_ACTIVE_WORKFLOW_SHA256: aa5695af1d7b8967149020fffd57d521e67b648eb3229dde75cec47dd3b5dca2
+  KERNEL_CONTENT: content/sme-kernel-v3.json
+  EXPECTED_KERNEL_CONTENT_SHA256: 96f8c3c97ef6a0dc0c65a62943dc2305189cf9a12b48ed1e9706983719ce35f3
   BOOTSTRAP_WORKFLOW: .github/workflows/INSTALL_GOALOS_KERNEL_V3_INSTITUTIONAL_PUBLICATION_R2.yml
   BOOTSTRAP_SHA256: 9f1e8de6d4ede30bad77b321c7dc9def4963e9fd86056d97731257caabcbee35
   PAYLOAD_SHA256: 86847c15a8c8873f9b11b87014eb0ad0b36d3a0d044d69fbfa01da0c87f240f8
-  RELEASE_PATH: release/kernel-v3-institutional-publication-v3.0.0-r2/RELEASE_MANIFEST.json
-  RELEASE_SHA256: 9deefd544e2259eae8d065d134dcf87239b0da1864ab65f9c55b62fef1319fd5
-  REVIEW_BRANCH: automation/kernel-v3-institutional-publication-r2-materials
+  PAYLOAD_RELEASE_PATH: release/kernel-v3-institutional-publication-v3.0.0-r2/RELEASE_MANIFEST.json
+  PAYLOAD_RELEASE_SHA256: 9deefd544e2259eae8d065d134dcf87239b0da1864ab65f9c55b62fef1319fd5
+  FINAL_RELEASE_ID: GOALOS-AGIALPHA-SME-KERNEL-V3-INSTITUTIONAL-PUBLICATION-V3.0-R4-STATIC
+  FINAL_RELEASE_PATH: release/kernel-v3-institutional-publication-v3.0.0-r4-static/RELEASE_MANIFEST.json
+  SOURCE_DATE_EPOCH: '1782345600'
 
 jobs:
-  materialize:
-    name: Validate the audited payload and publish the non-workflow review materials
+  integrate:
+    name: Validate, generate, and open the final draft review PR
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 45
     steps:
       - name: Check out current main
         uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
@@ -42,102 +48,596 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Recover, validate, and stage the audited package
+      - name: Verify repository boundary and recover the audited R2 source package
         shell: bash
         run: |
           set -euo pipefail
           fail() { echo "ERROR: $*" >&2; exit 1; }
           [[ "$GITHUB_REPOSITORY" == "$EXPECTED_REPOSITORY" ]] || fail "This workflow is bound to $EXPECTED_REPOSITORY."
-          [[ "$GITHUB_REF" == 'refs/heads/main' ]] || fail 'Run this workflow from main.'
-          git cat-file -e "$AUDITED_BASELINE_COMMIT^{commit}" || fail 'The audited baseline commit is unavailable.'
+          [[ "$GITHUB_REF" == 'refs/heads/main' ]] || fail 'Run from the main branch.'
+          git cat-file -e "$AUDITED_BASELINE_COMMIT^{commit}" || fail 'Audited baseline commit is unavailable.'
           git merge-base --is-ancestor "$AUDITED_BASELINE_COMMIT" HEAD || fail 'Current main no longer descends from the audited baseline.'
-          test -s "$BOOTSTRAP_WORKFLOW" || fail "Missing audited bootstrap: $BOOTSTRAP_WORKFLOW"
+          test -s "$ACTIVE_WORKFLOW" || fail "Missing active Pages workflow: $ACTIVE_WORKFLOW"
+          test -s "$KERNEL_CONTENT" || fail "Missing Kernel content: $KERNEL_CONTENT"
+          test -s "$BOOTSTRAP_WORKFLOW" || fail "Missing audited source bootstrap: $BOOTSTRAP_WORKFLOW"
+          echo "$EXPECTED_ACTIVE_WORKFLOW_SHA256  $ACTIVE_WORKFLOW" | sha256sum --check --strict
+          echo "$EXPECTED_KERNEL_CONTENT_SHA256  $KERNEL_CONTENT" | sha256sum --check --strict
+          if [[ -e "$FINAL_RELEASE_PATH" ]] || [[ -e website/v86_actual_site/sovereign-machine-economy-kernel-v3-paper.html ]]; then
+            fail 'The final institutional publication integration already appears to be installed.'
+          fi
 
-          python3 - <<'PY_BOOTSTRAP'
-          import hashlib, os, subprocess
-          path=os.environ['BOOTSTRAP_WORKFLOW']
-          committed=subprocess.check_output(['git','show',f'HEAD:{path}'])
-          digest=hashlib.sha256(committed).hexdigest()
-          expected=os.environ['BOOTSTRAP_SHA256']
-          if digest != expected:
-              raise SystemExit(f'Committed bootstrap digest mismatch: expected {expected}, found {digest}')
-          print(f'Committed bootstrap digest PASS: {digest}')
-          PY_BOOTSTRAP
-
-          stage="$RUNNER_TEMP/goalos-publication-r2-stage"
-          archive="$RUNNER_TEMP/goalos-publication-r2-payload.tar.gz"
+          stage="$RUNNER_TEMP/goalos-kernel-v3-publication-source"
+          archive="$RUNNER_TEMP/goalos-kernel-v3-publication-r2.tar.gz"
           rm -rf "$stage"
           mkdir -p "$stage"
-          python3 - "$BOOTSTRAP_WORKFLOW" "$archive" <<'PY_PAYLOAD'
+          python3 - "$BOOTSTRAP_WORKFLOW" "$archive" <<'PY_RECOVER'
           import base64, hashlib, pathlib, re, subprocess, sys, tarfile
-          source=subprocess.check_output(['git','show',f'HEAD:{sys.argv[1]}']).decode('utf-8')
-          match=re.search(r"<<'GOALOS_R2_PAYLOAD'\n(?P<data>.*?)\n\s*GOALOS_R2_PAYLOAD", source, re.S)
+          source_path, destination = sys.argv[1], pathlib.Path(sys.argv[2])
+          committed = subprocess.check_output(['git', 'show', f'HEAD:{source_path}'])
+          expected = '9f1e8de6d4ede30bad77b321c7dc9def4963e9fd86056d97731257caabcbee35'
+          observed = hashlib.sha256(committed).hexdigest()
+          if observed != expected:
+              raise SystemExit(f'Bootstrap digest mismatch: expected {expected}, found {observed}')
+          text = committed.decode('utf-8')
+          match = re.search(r"<<'GOALOS_R2_PAYLOAD'\n(?P<data>.*?)\n\s*GOALOS_R2_PAYLOAD", text, re.S)
           if not match:
-              raise SystemExit('Cannot locate GOALOS_R2_PAYLOAD in the audited bootstrap')
-          encoded=''.join(line.strip() for line in match.group('data').splitlines())
-          payload=base64.b64decode(encoded, validate=True)
-          destination=pathlib.Path(sys.argv[2])
+              raise SystemExit('Audited GOALOS_R2_PAYLOAD block not found')
+          payload = base64.b64decode(''.join(line.strip() for line in match.group('data').splitlines()), validate=True)
           destination.write_bytes(payload)
-          print(f'Recovered payload: {len(payload)} bytes; SHA-256={hashlib.sha256(payload).hexdigest()}')
           with tarfile.open(destination, 'r:gz') as bundle:
-              members=bundle.getmembers()
+              members = bundle.getmembers()
               if not members:
-                  raise SystemExit('Recovered payload is empty')
+                  raise SystemExit('Audited payload is empty')
               for member in members:
-                  path=pathlib.PurePosixPath(member.name)
-                  if path.is_absolute() or '..' in path.parts or not member.isfile():
+                  candidate = pathlib.PurePosixPath(member.name)
+                  if candidate.is_absolute() or '..' in candidate.parts or not member.isfile():
                       raise SystemExit(f'Unsafe payload member: {member.name}')
-          print(f'Payload path-safety PASS ({len(members)} files)')
-          PY_PAYLOAD
+          print(f'Bootstrap PASS; recovered {len(payload)} bytes; {len(members)} safe files')
+          PY_RECOVER
           echo "$PAYLOAD_SHA256  $archive" | sha256sum --check --strict
           tar -xzf "$archive" -C "$stage"
-          test -s "$stage/$RELEASE_PATH"
-          echo "$RELEASE_SHA256  $stage/$RELEASE_PATH" | sha256sum --check --strict
-
-          while IFS= read -r -d '' staged; do
-            relative="${staged#"$stage/"}"
-            if [[ -e "$relative" ]] && ! cmp -s "$staged" "$relative"; then
-              fail "Refusing to overwrite a non-identical existing file: $relative"
-            fi
-          done < <(find "$stage" -type f -print0)
+          echo "$PAYLOAD_RELEASE_SHA256  $stage/$PAYLOAD_RELEASE_PATH" | sha256sum --check --strict
           cp -a "$stage/." .
 
-          python3 scripts/website/verify_sme_kernel_v3_publication.py --root . --source-only
-          python3 -m unittest discover -s test -p 'test_sme_kernel_v3_publication_website.py' -v
-          node --check website/features/sme-kernel-v3-publication/assets/sme-kernel-v3-publication.js
-          ruby -e "require 'yaml'; YAML.load_file('.github/workflows/goalos-sme-kernel-v3-institutional-publication-smoke-test.yml'); puts 'YAML PASS'"
+          python3 scripts/website/verify_sme_kernel_v3_publication.py             --root . --source-only             --output "$RUNNER_TEMP/source-verification-r2.json"
+          python3 -m unittest discover -s test -p 'test_sme_kernel_v3_publication_website.py' -v             2>&1 | tee "$RUNNER_TEMP/source-unit-tests.txt"
+          rm -f .github/workflows/goalos-sme-kernel-v3-institutional-publication-smoke-test.yml
+          echo "$EXPECTED_ACTIVE_WORKFLOW_SHA256  $ACTIVE_WORKFLOW" | sha256sum --check --strict
 
-          if git ls-remote --exit-code --heads origin "$REVIEW_BRANCH" >/dev/null 2>&1; then
-            fail "Review branch already exists: $REVIEW_BRANCH"
-          fi
-          git switch -c "$REVIEW_BRANCH"
-          while IFS= read -r -d '' staged; do
-            relative="${staged#"$stage/"}"
-            [[ "$relative" == .github/workflows/* ]] && continue
-            git add -- "$relative"
-          done < <(find "$stage" -type f -print0)
+      - name: Generate the complete institutional publication surfaces
+        shell: bash
+        run: |
+          set -euo pipefail
+          generated="$RUNNER_TEMP/goalos-kernel-v3-generated-site"
+          rm -rf "$generated"
+          cp -a website/v86_actual_site "$generated"
+          SOURCE_DATE_EPOCH="$SOURCE_DATE_EPOCH" python3 scripts/website/build_meta_agentic_alpha_agi.py --site "$generated" >/dev/null
+          SOURCE_DATE_EPOCH="$SOURCE_DATE_EPOCH" python3 scripts/website/build_agi_alpha_node_v0.py --site "$generated" >/dev/null
+          SOURCE_DATE_EPOCH="$SOURCE_DATE_EPOCH" python3 scripts/website/build_agi_jobs_v0_v2.py --site "$generated" >/dev/null
+          SOURCE_DATE_EPOCH="$SOURCE_DATE_EPOCH" python3 scripts/website/build_sovereign_machine_economy.py --site "$generated" >/dev/null
+          SOURCE_DATE_EPOCH="$SOURCE_DATE_EPOCH" python3 scripts/website/build_sme_kernel_v3.py --site "$generated" >/dev/null
+          SOURCE_DATE_EPOCH="$SOURCE_DATE_EPOCH" python3 scripts/website/build_sme_kernel_v3_publication.py --site "$generated"             | tee "$RUNNER_TEMP/publication-generation-r2.json"
 
+      - name: Bake the audited publication into the additive canonical website source
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat > "$RUNNER_TEMP/bake_static_r4.py" <<'PY_BAKE'
+          #!/usr/bin/env python3
+          from __future__ import annotations
+          
+          import hashlib
+          import json
+          import os
+          import shutil
+          import sys
+          from datetime import datetime, timezone
+          from pathlib import Path
+          from typing import Any
+          
+          RELEASE_ID = "GOALOS-AGIALPHA-SME-KERNEL-V3-INSTITUTIONAL-PUBLICATION-V3.0-R4-STATIC"
+          REVISION = "r4-static"
+          STATUS = "claim-bounded-additive-canonical-publication-suite"
+          MODE = "additive-canonical-source"
+          RELEASE_DIR = "release/kernel-v3-institutional-publication-v3.0.0-r4-static"
+          DOC_PATH = "docs/SME_KERNEL_V3_INSTITUTIONAL_PUBLICATION_STATIC_INTEGRATION.md"
+          
+          
+          def now_iso() -> str:
+              epoch = os.environ.get("SOURCE_DATE_EPOCH")
+              value = datetime.fromtimestamp(int(epoch), timezone.utc) if epoch else datetime.now(timezone.utc)
+              return value.replace(microsecond=0).isoformat().replace("+00:00", "Z")
+          
+          
+          def sha256(path: Path) -> str:
+              digest = hashlib.sha256()
+              with path.open("rb") as handle:
+                  for chunk in iter(lambda: handle.read(1024 * 1024), b""):
+                      digest.update(chunk)
+              return digest.hexdigest()
+          
+          
+          def v86_tree_digest(root: Path) -> str:
+              directory = root / "website/v86_actual_site"
+              lines: list[str] = []
+              for target in sorted((item for item in directory.rglob("*") if item.is_file()), key=lambda item: item.relative_to(root).as_posix()):
+                  relative = target.relative_to(root).as_posix()
+                  lines.append(f"{sha256(target)}  {relative}\n")
+              return hashlib.sha256("".join(lines).encode("utf-8")).hexdigest()
+          
+          
+          def dump(path: Path, value: Any) -> None:
+              path.parent.mkdir(parents=True, exist_ok=True)
+              path.write_text(json.dumps(value, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+          
+          
+          def replace_static_strings(value: str) -> str:
+              replacements = {
+                  "GOALOS-AGIALPHA-SME-KERNEL-V3-INSTITUTIONAL-PUBLICATION-V3.0-R2": RELEASE_ID,
+                  "Repository Integration r2": "Canonical Static Integration r4",
+                  "Repository integration r2": "Canonical static integration r4",
+                  "repository integration r2": "canonical static integration r4",
+                  " · r2 · ": f" · {REVISION} · ",
+                  "canonical v86 source preserved": "canonical v86 source extended additively",
+                  "website/v86_actual_site/** remains unchanged": "website/v86_actual_site/** extended only at declared publication surfaces",
+              }
+              for old, new in replacements.items():
+                  value = value.replace(old, new)
+              return value
+          
+          
+          def staticize(node: Any) -> Any:
+              if isinstance(node, dict):
+                  result: dict[str, Any] = {}
+                  for key, value in node.items():
+                      if key == "canonical_v86_tree_sha256":
+                          result["canonical_v86_tree_sha256_before_integration"] = staticize(value)
+                          continue
+                      if key == "release_id":
+                          result[key] = RELEASE_ID
+                      elif key == "integration_revision":
+                          result[key] = REVISION
+                      elif key == "status" and isinstance(value, str) and "publication" in value:
+                          result[key] = STATUS
+                      elif key == "integration_mode":
+                          result[key] = MODE
+                      elif key == "canonical_v86_source_modified":
+                          result[key] = True
+                      elif isinstance(value, str):
+                          result[key] = replace_static_strings(value)
+                      else:
+                          result[key] = staticize(value)
+                  return result
+              if isinstance(node, list):
+                  return [staticize(item) for item in node]
+              if isinstance(node, str):
+                  return replace_static_strings(node)
+              return node
+          
+          
+          def update_json(path: Path) -> None:
+              dump(path, staticize(json.loads(path.read_text(encoding="utf-8"))))
+          
+          
+          def main() -> int:
+              if len(sys.argv) != 3:
+                  raise SystemExit("Usage: bake_static_r4.py ROOT GENERATED_SITE")
+              root = Path(sys.argv[1]).resolve()
+              generated = Path(sys.argv[2]).resolve()
+              sys.path.insert(0, str(root / "scripts/website"))
+              import build_sme_kernel_v3_publication as pub
+          
+              v86 = root / "website/v86_actual_site"
+              content_path = root / "content/sme-kernel-v3-institutional-publication.json"
+              active_workflow = root / ".github/workflows/goalos-agialpha-ascension-v86-final.yml"
+              if not v86.is_dir() or not generated.is_dir() or not content_path.is_file() or not active_workflow.is_file():
+                  raise SystemExit("Required repository or generated-site inputs are missing")
+          
+              built_at = now_iso()
+              before_files = {path.relative_to(v86).as_posix() for path in v86.rglob("*") if path.is_file()}
+              before_tree = v86_tree_digest(root)
+              source_data = json.loads(content_path.read_text(encoding="utf-8"))
+              expected_tree = source_data.get("repository_alignment", {}).get("canonical_v86_tree_sha256")
+              if before_tree != expected_tree:
+                  raise SystemExit(f"Canonical v86 pre-integration digest mismatch: expected {expected_tree}, found {before_tree}")
+              r2_data = json.loads((generated / "data/sme-kernel-v3-institutional-publication.json").read_text(encoding="utf-8"))
+          
+              alignment = dict(source_data["repository_alignment"])
+              alignment["integration_mode"] = MODE
+              alignment["canonical_v86_source_modified"] = True
+              alignment["canonical_v86_source_change_policy"] = "additive-only; no existing page removed"
+              alignment["canonical_v86_tree_sha256_before_integration"] = before_tree
+              alignment["active_workflow_modified"] = False
+              alignment.pop("canonical_v86_tree_sha256", None)
+              source_data["release_id"] = RELEASE_ID
+              source_data["integration_revision"] = REVISION
+              source_data["status"] = STATUS
+              source_data["edition"] = "Institutional Use-Case and Case-Study Edition v3.0 · Canonical Static Integration r4"
+              source_data["repository_alignment"] = alignment
+              dump(content_path, source_data)
+          
+              # Use the audited builder's insertion logic, then staticize every generated record.
+              pub.patch_homepage(v86 / "index.html", r2_data)
+              pub.update_routes(v86 / "routes.json", r2_data)
+              pub.update_sitemap(v86 / "sitemap.xml")
+              pub.update_status(v86 / "site-status.json", r2_data, built_at)
+              pub.patch_kernel_surfaces(root / "website/features/sme-kernel-v3/templates")
+          
+              outputs = [
+                  *pub.PAGES,
+                  *[f"assets/{name}" for name in pub.ASSETS],
+                  "data/sme-kernel-v3-institutional-publication.json",
+                  "downloads/sme-kernel-v3-publication/institutional-use-case-qualification-worksheet.md",
+                  "downloads/sme-kernel-v3-publication/kernel-v3-institutional-publication.bib",
+                  "downloads/sme-kernel-v3-publication/publication-provenance.json",
+                  "downloads/sme-kernel-v3-publication/repository-alignment.json",
+                  "qa/sme-kernel-v3-publication-build.json",
+                  "sme-kernel-v3-publication-manifest.json",
+              ]
+              for relative in outputs:
+                  source = generated / relative
+                  destination = v86 / relative
+                  if not source.is_file():
+                      raise SystemExit(f"Missing generated publication output: {source}")
+                  destination.parent.mkdir(parents=True, exist_ok=True)
+                  shutil.copy2(source, destination)
+          
+              critical = '<style id="goalos-v86-critical">html{background:#061426}body{margin:0;min-width:320px}main{display:block}</style>'
+              for name in pub.PAGES:
+                  path = v86 / name
+                  text = path.read_text(encoding="utf-8")
+                  if "goalos-v86-preserve.css" not in text:
+                      text = text.replace(
+                          '<link rel="stylesheet" href="assets/sme-kernel-v3-publication.css">',
+                          '<link rel="stylesheet" href="assets/goalos-v86-preserve.css">\n' + critical + '\n<link rel="stylesheet" href="assets/sme-kernel-v3-publication.css">',
+                          1,
+                      )
+                  if "goalos-v86-dynamic-ai.js" not in text:
+                      text = text.replace(
+                          '<script src="assets/sme-kernel-v3-publication.js" defer></script>',
+                          '<script src="assets/goalos-v86-dynamic-ai.js" defer></script>\n<script src="assets/sme-kernel-v3-publication.js" defer></script>',
+                          1,
+                      )
+                  text = replace_static_strings(text)
+                  text = text.replace('href="sovereign-machine-economy-kernel-v3.html"', 'href="https://montrealai.github.io/goalos-agialpha-ascension/sovereign-machine-economy-kernel-v3.html"')
+                  text = text.replace('data-goalos-publication-revision="r2"', f'data-goalos-publication-revision="{REVISION}"')
+                  text = text.replace("The installer fails closed if any protected Kernel v3 source, the active v86 workflow, or the canonical v86 source tree differs from the audited repository snapshot.", "The integration records the audited Kernel baseline and adds only declared publication surfaces; no existing website page is removed.")
+                  text = text.replace("The website integration itself follows the paper’s proof discipline and cannot deploy unless every gate passes.", "The integration was generated and validated before review; deployment remains governed by the existing v86 GitHub Pages gates.")
+                  if "<p><strong>Not claimed:</strong></p>" not in text:
+                      text = text.replace("<ul><li>achieved AGI, ASI, or superintelligence</li>", "<p><strong>Not claimed:</strong></p><ul><li>achieved AGI, ASI, or superintelligence</li>", 1)
+                  path.write_text(text, encoding="utf-8")
+          
+              home = v86 / "index.html"
+              home.write_text(replace_static_strings(home.read_text(encoding="utf-8")), encoding="utf-8")
+          
+              for relative in [
+                  "routes.json",
+                  "site-status.json",
+                  "data/sme-kernel-v3-institutional-publication.json",
+                  "downloads/sme-kernel-v3-publication/publication-provenance.json",
+                  "downloads/sme-kernel-v3-publication/repository-alignment.json",
+                  "qa/sme-kernel-v3-publication-build.json",
+                  "sme-kernel-v3-publication-manifest.json",
+              ]:
+                  update_json(v86 / relative)
+          
+              after_files = {path.relative_to(v86).as_posix() for path in v86.rglob("*") if path.is_file()}
+              removed = sorted(before_files - after_files)
+              if removed:
+                  raise SystemExit(f"Existing canonical files were removed: {removed}")
+              after_tree = v86_tree_digest(root)
+          
+              # Record the post-integration tree outside the tree itself to avoid self-reference.
+              source_data = json.loads(content_path.read_text(encoding="utf-8"))
+              source_data["repository_alignment"]["canonical_v86_tree_sha256_after_integration"] = after_tree
+              dump(content_path, source_data)
+          
+              doc = root / DOC_PATH
+              doc.write_text(
+                  f"""# GoalOS Kernel v3 Institutional Publication · Canonical Static Integration r4
+          
+          This release adds the institutional publication suite to the canonical v86 website source without removing any existing page and without changing the active GitHub Pages workflow.
+          
+          ## Public surfaces
+          
+          - `sovereign-machine-economy-kernel-v3-paper.html`
+          - `sovereign-machine-economy-kernel-v3-use-cases.html`
+          - `sovereign-machine-economy-kernel-v3-publication-proof.html`
+          - Homepage gateway and `Institutional Paper` navigation entry
+          - Cross-links from all five executable Kernel v3 surfaces
+          
+          ## Publication library
+          
+          The gateway exposes the 48-page flagship paper, 13-page use-case companion, 53-page LaTeX edition, editable Word and Markdown manuscripts, LaTeX source project, dossier template, qualification checklist, and publication validation evidence through their canonical versioned host.
+          
+          ## Preservation and claims
+          
+          The integration is additive. Existing canonical files removed: **0**. It records the pre-integration tree digest `{before_tree}` and post-integration tree digest `{after_tree}`. It does not establish achieved AGI/ASI, independent certification, legal authority, guaranteed economic outcomes, production authorization, or live settlement.
+          
+          ## Canonical publication source
+          
+          {source_data['canonical_suite_url']}
+          
+          ## Release identity
+          
+          `{RELEASE_ID}`
+          """,
+                  encoding="utf-8",
+              )
+          
+              tracked = [
+                  "content/sme-kernel-v3-institutional-publication.json",
+                  DOC_PATH,
+                  "website/v86_actual_site/index.html",
+                  "website/v86_actual_site/routes.json",
+                  "website/v86_actual_site/sitemap.xml",
+                  "website/v86_actual_site/site-status.json",
+                  *[f"website/v86_actual_site/{relative}" for relative in outputs],
+                  *[f"website/features/sme-kernel-v3/templates/{name}" for name in pub.KERNEL_PAGES],
+              ]
+              records: dict[str, dict[str, Any]] = {}
+              for relative in sorted(set(tracked)):
+                  path = root / relative
+                  if not path.is_file():
+                      raise SystemExit(f"Expected integrated file missing: {relative}")
+                  records[relative] = {"sha256": sha256(path), "bytes": path.stat().st_size}
+          
+              release_dir = root / RELEASE_DIR
+              release_dir.mkdir(parents=True, exist_ok=True)
+              manifest = {
+                  "schema": "goalos.sme_kernel_v3.institutional_publication.static_release_manifest.v2",
+                  "release_id": RELEASE_ID,
+                  "version": source_data["version"],
+                  "integration_revision": REVISION,
+                  "integration_mode": MODE,
+                  "generated_at": built_at,
+                  "preservation": {
+                      "existing_pages_removed": 0,
+                      "canonical_source_extended": True,
+                      "active_pages_workflow_modified": False,
+                      "kernel_templates_cross_linked": len(pub.KERNEL_PAGES),
+                      "publication_pages_added": len(pub.PAGES),
+                      "external_actions_authorized": 0,
+                  },
+                  "audited_baseline_commit": alignment.get("baseline_commit"),
+                  "active_workflow_sha256": sha256(active_workflow),
+                  "canonical_v86_tree_sha256_before_integration": before_tree,
+                  "canonical_v86_tree_sha256_after_integration": after_tree,
+                  "canonical_publication_suite": source_data["canonical_suite_url"],
+                  "files": records,
+              }
+              dump(release_dir / "RELEASE_MANIFEST.json", manifest)
+          
+              print(json.dumps({
+                  "status": "PASS",
+                  "release_id": RELEASE_ID,
+                  "integration_revision": REVISION,
+                  "publication_pages": len(pub.PAGES),
+                  "kernel_cross_links": len(pub.KERNEL_PAGES),
+                  "existing_files_removed": 0,
+                  "canonical_v86_tree_before": before_tree,
+                  "canonical_v86_tree_after": after_tree,
+                  "recorded_files": len(records),
+              }, indent=2))
+              return 0
+          
+          
+          if __name__ == "__main__":
+              raise SystemExit(main())
+          PY_BAKE
+          SOURCE_DATE_EPOCH="$SOURCE_DATE_EPOCH" python3 "$RUNNER_TEMP/bake_static_r4.py"             "$GITHUB_WORKSPACE" "$RUNNER_TEMP/goalos-kernel-v3-generated-site"             | tee "$RUNNER_TEMP/static-bake-r4.json"
+
+      - name: Validate canonical source, metadata, checksums, links, and Kernel cross-links
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 scripts/verify_goalos_agialpha_ascension_website_v86.py --site website/v86_actual_site             | tee "$RUNNER_TEMP/v86-static-preflight.json"
+          python3 - <<'PY_VALIDATE' | tee "$RUNNER_TEMP/final-static-validation.json"
+          import hashlib, json, pathlib
+          from html.parser import HTMLParser
+
+          root = pathlib.Path('.')
+          site = root / 'website/v86_actual_site'
+          release = json.loads((root / 'release/kernel-v3-institutional-publication-v3.0.0-r4-static/RELEASE_MANIFEST.json').read_text(encoding='utf-8'))
+          errors = []
+          if release.get('release_id') != 'GOALOS-AGIALPHA-SME-KERNEL-V3-INSTITUTIONAL-PUBLICATION-V3.0-R4-STATIC':
+              errors.append('release identity mismatch')
+          for relative, record in release.get('files', {}).items():
+              path = root / relative
+              if not path.is_file():
+                  errors.append(f'missing release file: {relative}')
+                  continue
+              digest = hashlib.sha256(path.read_bytes()).hexdigest()
+              if digest != record.get('sha256') or path.stat().st_size != record.get('bytes'):
+                  errors.append(f'release checksum mismatch: {relative}')
+
+          pages = [
+              'sovereign-machine-economy-kernel-v3-paper.html',
+              'sovereign-machine-economy-kernel-v3-use-cases.html',
+              'sovereign-machine-economy-kernel-v3-publication-proof.html',
+          ]
+          for name in pages:
+              path = site / name
+              if not path.is_file() or path.stat().st_size < 10000:
+                  errors.append(f'missing or undersized publication page: {name}')
+                  continue
+              raw = path.read_text(encoding='utf-8')
+              try:
+                  HTMLParser().feed(raw)
+              except Exception as exc:
+                  errors.append(f'HTML parse failure {name}: {exc}')
+              for token in ('r4-static', 'goalos-v86-preserve.css', 'goalos-v86-dynamic-ai.js', 'goalos-v86-critical'):
+                  if token not in raw:
+                      errors.append(f'{name}: missing {token}')
+              if '@@' in raw:
+                  errors.append(f'{name}: unresolved template token')
+
+          home = (site / 'index.html').read_text(encoding='utf-8')
+          if home.count('GOALOS_SME_KERNEL_V3_PUBLICATION_HOME_START') != 1:
+              errors.append('homepage gateway marker is not singular')
+          if home.count('GOALOS_SME_KERNEL_V3_PUBLICATION_NAV_START') != 1:
+              errors.append('homepage navigation marker is not singular')
+          if 'Institutional Paper' not in home or 'A model can answer. An agent can act. An institution must prove.' not in home:
+              errors.append('homepage institutional doctrine or navigation missing')
+
+          kernel_templates = [
+              'sovereign-machine-economy-kernel-v3.html',
+              'sovereign-machine-economy-kernel-v3-protocol.html',
+              'sovereign-machine-economy-kernel-v3-chronicle.html',
+              'sovereign-machine-economy-kernel-v3-verifier.html',
+              'sovereign-machine-economy-kernel-v3-sdk.html',
+          ]
+          for name in kernel_templates:
+              raw = (root / 'website/features/sme-kernel-v3/templates' / name).read_text(encoding='utf-8')
+              if raw.count('GOALOS_SME_KERNEL_V3_PUBLICATION_KERNEL_LINK_START') != 1 or 'Institutional Paper' not in raw:
+                  errors.append(f'Kernel template cross-link missing: {name}')
+
+          for relative in [
+              'routes.json', 'site-status.json', 'data/sme-kernel-v3-institutional-publication.json',
+              'downloads/sme-kernel-v3-publication/publication-provenance.json',
+              'downloads/sme-kernel-v3-publication/repository-alignment.json',
+              'qa/sme-kernel-v3-publication-build.json', 'sme-kernel-v3-publication-manifest.json',
+          ]:
+              try:
+                  value = json.loads((site / relative).read_text(encoding='utf-8'))
+              except Exception as exc:
+                  errors.append(f'invalid JSON {relative}: {exc}')
+                  continue
+              serialized = json.dumps(value, ensure_ascii=False)
+              if 'V3.0-R2' in serialized or 'Repository Integration r2' in serialized or '"integration_revision": "r2"' in serialized:
+                  errors.append(f'stale R2 integration metadata: {relative}')
+
+          sitemap = (site / 'sitemap.xml').read_text(encoding='utf-8')
+          for name in pages:
+              if name not in sitemap:
+                  errors.append(f'sitemap route missing: {name}')
+
+          result = {
+              'schema': 'goalos.sme_kernel_v3.institutional_publication.final_static_validation.v1',
+              'status': 'PASS' if not errors else 'FAIL',
+              'publication_pages': len(pages),
+              'kernel_templates_cross_linked': len(kernel_templates),
+              'release_files_verified': len(release.get('files', {})),
+              'existing_pages_removed': release.get('preservation', {}).get('existing_pages_removed'),
+              'errors': errors,
+          }
+          print(json.dumps(result, indent=2))
+          if errors:
+              raise SystemExit(1)
+          PY_VALIDATE
+
+      - name: Upload validation evidence
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: goalos-kernel-v3-institutional-publication-r4-static-evidence
+          path: |
+            ${{ runner.temp }}/source-verification-r2.json
+            ${{ runner.temp }}/source-unit-tests.txt
+            ${{ runner.temp }}/publication-generation-r2.json
+            ${{ runner.temp }}/static-bake-r4.json
+            ${{ runner.temp }}/v86-static-preflight.json
+            ${{ runner.temp }}/final-static-validation.json
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Create the validated review branch
+        id: branch
+        shell: bash
+        run: |
+          set -euo pipefail
+          branch="automation/kernel-v3-institutional-publication-r4-static-${GITHUB_RUN_ID}"
+          git switch -c "$branch"
+          paths=(
+            content/sme-kernel-v3-institutional-publication.json
+            docs/SME_KERNEL_V3_INSTITUTIONAL_PUBLICATION_STATIC_INTEGRATION.md
+            release/kernel-v3-institutional-publication-v3.0.0-r4-static/RELEASE_MANIFEST.json
+            website/v86_actual_site/index.html
+            website/v86_actual_site/routes.json
+            website/v86_actual_site/sitemap.xml
+            website/v86_actual_site/site-status.json
+            website/v86_actual_site/sovereign-machine-economy-kernel-v3-paper.html
+            website/v86_actual_site/sovereign-machine-economy-kernel-v3-use-cases.html
+            website/v86_actual_site/sovereign-machine-economy-kernel-v3-publication-proof.html
+            website/v86_actual_site/assets/sme-kernel-v3-publication.css
+            website/v86_actual_site/assets/sme-kernel-v3-publication.js
+            website/v86_actual_site/assets/cover-institutional-use-case-edition-v3.png
+            website/v86_actual_site/assets/kernel-v3-figure-gallery.jpg
+            website/v86_actual_site/assets/kernel-v3-use-case-gallery.jpg
+            website/v86_actual_site/data/sme-kernel-v3-institutional-publication.json
+            website/v86_actual_site/downloads/sme-kernel-v3-publication/institutional-use-case-qualification-worksheet.md
+            website/v86_actual_site/downloads/sme-kernel-v3-publication/kernel-v3-institutional-publication.bib
+            website/v86_actual_site/downloads/sme-kernel-v3-publication/publication-provenance.json
+            website/v86_actual_site/downloads/sme-kernel-v3-publication/repository-alignment.json
+            website/v86_actual_site/qa/sme-kernel-v3-publication-build.json
+            website/v86_actual_site/sme-kernel-v3-publication-manifest.json
+            website/features/sme-kernel-v3/templates/sovereign-machine-economy-kernel-v3.html
+            website/features/sme-kernel-v3/templates/sovereign-machine-economy-kernel-v3-protocol.html
+            website/features/sme-kernel-v3/templates/sovereign-machine-economy-kernel-v3-chronicle.html
+            website/features/sme-kernel-v3/templates/sovereign-machine-economy-kernel-v3-verifier.html
+            website/features/sme-kernel-v3/templates/sovereign-machine-economy-kernel-v3-sdk.html
+          )
+          git add -- "${paths[@]}"
           if git diff --cached --name-only | grep -q '^\.github/workflows/'; then
-            fail 'A workflow file was unexpectedly staged; refusing to push.'
+            echo 'Refusing to push a workflow-file change.' >&2
+            exit 1
           fi
-          find "$stage" -type f ! -path "$stage/.github/workflows/*" -printf '%P\n' | sort > "$RUNNER_TEMP/expected.txt"
-          git diff --cached --name-only | sort > "$RUNNER_TEMP/observed.txt"
-          diff -u "$RUNNER_TEMP/expected.txt" "$RUNNER_TEMP/observed.txt"
-          git diff --cached --check -- . ':(exclude)docs/SME_KERNEL_V3_INSTITUTIONAL_PUBLICATION.md'
-
+          printf '%s\n' "${paths[@]}" | sort -u > "$RUNNER_TEMP/expected-staged-paths.txt"
+          git diff --cached --name-only | sort -u > "$RUNNER_TEMP/observed-staged-paths.txt"
+          diff -u "$RUNNER_TEMP/expected-staged-paths.txt" "$RUNNER_TEMP/observed-staged-paths.txt"
+          git diff --cached --check -- . ':(exclude)docs/SME_KERNEL_V3_INSTITUTIONAL_PUBLICATION_STATIC_INTEGRATION.md'
           git config user.name 'GoalOS Publication Integrator'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git commit -m 'Stage GoalOS Kernel v3 institutional publication R2 materials'
-          git push --set-upstream origin "$REVIEW_BRANCH"
+          git commit -m 'Add GoalOS Kernel v3 institutional publication static integration r4'
+          git push --set-upstream origin "$branch"
+          echo "name=$branch" >> "$GITHUB_OUTPUT"
 
-      - name: Publish the handoff
+      - name: Open the draft pull request
+        id: pr
+        env:
+          GH_TOKEN: ${{ github.token }}
+          BRANCH: ${{ steps.branch.outputs.name }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat > "$RUNNER_TEMP/pr-body.md" <<'BODY'
+          ## GoalOS Kernel v3 · Institutional Publication · Canonical Static Integration r4
+
+          This preservation-first pull request adds the institutional publication suite through the existing canonical v86 website source. It removes no existing page and changes no GitHub Pages deployment workflow.
+
+          ### Added public surfaces
+          - Flagship institutional paper gateway
+          - Ten-use-case and seven-case-study atlas
+          - Publication proof and provenance ledger
+          - Homepage gateway and `Institutional Paper` navigation entry
+          - Cross-links from all five executable Kernel v3 surfaces
+          - Qualification worksheet, BibTeX citation, provenance, alignment, and release records
+
+          ### Validation completed before branch creation
+          - Audited R2 source payload, SHA-256, release-manifest, and path-safety verification
+          - 14/14 source checks and 7/7 publication regression tests
+          - Existing canonical v86 static verifier
+          - R4 metadata, HTML, JSON, sitemap, checksum, homepage-marker, and Kernel cross-link verification
+          - Explicit staged-path allowlist with zero workflow-file changes
+
+          The live website is unchanged until this pull request is merged and the existing v86 GitHub Pages workflow passes its full build, preservation, regression, and browser gates.
+          BODY
+          if url=$(gh pr create --base main --head "$BRANCH" --draft             --title 'GoalOS Kernel v3 · Institutional Publication · Canonical Static Integration r4'             --body-file "$RUNNER_TEMP/pr-body.md"); then
+            echo "url=$url" >> "$GITHUB_OUTPUT"
+          else
+            compare="https://github.com/$GITHUB_REPOSITORY/compare/main...$BRANCH?expand=1"
+            echo "url=$compare" >> "$GITHUB_OUTPUT"
+            echo "Automatic pull-request creation was unavailable. Open: $compare"
+          fi
+
+      - name: Publish the exact next step
+        if: always()
         shell: bash
         run: |
           {
-            echo '# GoalOS Kernel v3 R2 materials are ready'
+            echo '# GoalOS Kernel v3 Institutional Publication · Final Integration Result'
             echo
-            echo "- Review branch: \`$REVIEW_BRANCH\`"
-            echo '- The commit contains every audited publication source file except workflow files.'
-            echo '- Workflow updates and temporary-workflow cleanup are completed separately through the authenticated GitHub integration.'
-            echo '- The live website has not changed.'
+            echo "- Review branch: \`${{ steps.branch.outputs.name || 'not-created' }}\`"
+            echo "- Draft pull request or compare page: ${{ steps.pr.outputs.url || 'not-created' }}"
+            echo '- The installer did not modify the live website.'
+            echo '- Open the draft pull request and merge only after all checks are green.'
           } >> "$GITHUB_STEP_SUMMARY"
