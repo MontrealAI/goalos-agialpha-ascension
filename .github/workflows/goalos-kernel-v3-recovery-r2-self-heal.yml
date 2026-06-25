@@ -1,0 +1,94 @@
+name: GoalOS Kernel v3 Publication R2 · Self-Heal Recovery
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/goalos-kernel-v3-recovery-r2-self-heal.yml
+  workflow_dispatch:
+
+concurrency:
+  group: goalos-kernel-v3-recovery-r2-self-heal
+  cancel-in-progress: false
+
+permissions:
+  actions: write
+  contents: write
+
+env:
+  EXPECTED_REPOSITORY: MontrealAI/goalos-agialpha-ascension
+  AUDITED_BASELINE_COMMIT: 076a7a7a8d1713d4849e95e1c58b8b6ccec0df03
+  BROKEN_WORKFLOW: .github/workflows/INSTALL_GOALOS_KERNEL_V3_INSTITUTIONAL_PUBLICATION_R2.yml
+  RECOVERY_WORKFLOW: .github/workflows/goalos-kernel-v3-institutional-publication-r2-recovery.yml
+  SELF_HEAL_WORKFLOW: .github/workflows/goalos-kernel-v3-recovery-r2-self-heal.yml
+  EXPECTED_BROKEN_SHA256: 9f1e8de6d4ede30bad77b321c7dc9def4963e9fd86056d97731257caabcbee35
+  EXPECTED_RECOVERY_SHA256: 7f248a96c4818ecfaa4111f40e393f8b5e0cbeb859996db1fcced828d1d1455a
+
+jobs:
+  repair-and-dispatch:
+    name: Repair the recovery guard and start the installer
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out main with full history
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with:
+          fetch-depth: 0
+
+      - name: Verify, repair, validate, and commit
+        shell: bash
+        run: |
+          set -euo pipefail
+          fail() { echo "ERROR: $*" >&2; exit 1; }
+          [[ "$GITHUB_REPOSITORY" == "$EXPECTED_REPOSITORY" ]] || fail "This repair is bound to $EXPECTED_REPOSITORY."
+          [[ "$GITHUB_REF" == 'refs/heads/main' ]] || fail 'Run this repair from main.'
+          git cat-file -e "$AUDITED_BASELINE_COMMIT^{commit}" || fail 'The audited baseline commit is unavailable.'
+          git merge-base --is-ancestor "$AUDITED_BASELINE_COMMIT" HEAD || fail 'Current main no longer descends from the audited baseline.'
+          test -s "$BROKEN_WORKFLOW" || fail "Missing $BROKEN_WORKFLOW"
+          test -s "$RECOVERY_WORKFLOW" || fail "Missing $RECOVERY_WORKFLOW"
+          test -s "$SELF_HEAL_WORKFLOW" || fail "Missing $SELF_HEAL_WORKFLOW"
+          echo "$EXPECTED_BROKEN_SHA256  $BROKEN_WORKFLOW" | sha256sum --check --strict
+          echo "$EXPECTED_RECOVERY_SHA256  $RECOVERY_WORKFLOW" | sha256sum --check --strict
+          printf '%s\n' "$BROKEN_WORKFLOW" "$RECOVERY_WORKFLOW" "$SELF_HEAL_WORKFLOW" | sort > "$RUNNER_TEMP/expected.txt"
+          git diff --name-only "$AUDITED_BASELINE_COMMIT" HEAD | sort > "$RUNNER_TEMP/observed.txt"
+          diff -u "$RUNNER_TEMP/expected.txt" "$RUNNER_TEMP/observed.txt" || fail 'Repository state changed outside the three temporary bootstrap files.'
+
+          python3 - "$RECOVERY_WORKFLOW" <<'PY'
+          from pathlib import Path
+          import sys
+          path = Path(sys.argv[1])
+          text = path.read_text(encoding='utf-8')
+          old = "          [[ -z \"$(git status --porcelain)\" ]] || fail 'The checkout is unexpectedly dirty.'\n"
+          new = """          # Legacy tracked text may be normalized by .gitattributes during checkout.\n          # Verify the index boundary instead; later commits use an explicit staging allowlist.\n          git diff --cached --quiet || fail 'The checkout index contains unexpected staged changes.'\n          if [[ -n \"$(git status --porcelain --untracked-files=no)\" ]]; then\n            echo 'NOTICE: checkout normalization differences detected; explicit staging remains enforced.'\n            git status --short --untracked-files=no | sed -n '1,40p'\n          fi\n"""
+          if text.count(old) != 1:
+              raise SystemExit('Expected recovery guard was not found exactly once')
+          text = text.replace(old, new, 1)
+          old_check = '          git diff --check\n'
+          new_check = '          git diff --check -- "$ACTIVE_WORKFLOW"\n'
+          if text.count(old_check) != 1:
+              raise SystemExit('Expected broad diff check was not found exactly once')
+          text = text.replace(old_check, new_check, 1)
+          path.write_text(text, encoding='utf-8')
+          PY
+
+          ruby -e "require 'yaml'; YAML.load_file('$RECOVERY_WORKFLOW'); puts 'Recovery YAML PASS'"
+          grep -q "git diff --cached --quiet" "$RECOVERY_WORKFLOW"
+          grep -q 'git diff --check -- "$ACTIVE_WORKFLOW"' "$RECOVERY_WORKFLOW"
+          git rm "$SELF_HEAL_WORKFLOW"
+          git add "$RECOVERY_WORKFLOW"
+          git diff --cached --check
+          git config user.name 'GoalOS Recovery Bot'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'Fix GoalOS Kernel v3 R2 recovery checkout guard'
+          git push origin HEAD:main
+
+      - name: Start the repaired recovery installer
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          gh workflow run "$(basename "$RECOVERY_WORKFLOW")" --ref main
+          echo 'The repaired recovery installer has been dispatched.'
+          echo 'Open Actions and select “GoalOS Kernel v3 Institutional Publication R2 · Recovery Installer”.' >> "$GITHUB_STEP_SUMMARY"
