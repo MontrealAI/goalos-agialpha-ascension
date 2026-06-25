@@ -453,7 +453,7 @@
   },
   "dependencies": {
     "@openzeppelin/contracts": "4.9.6",
-    "solc": "0.8.28"
+    "solc": "0.8.35"
   },
   "devDependencies": {
     "@nomicfoundation/hardhat-ledger": "1.2.2",
