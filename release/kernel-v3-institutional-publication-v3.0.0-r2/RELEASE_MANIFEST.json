@@ -1,0 +1,99 @@
+{
+  "schema": "goalos.sme_kernel_v3.institutional_publication.release_manifest.v2",
+  "release_id": "GOALOS-AGIALPHA-SME-KERNEL-V3-INSTITUTIONAL-PUBLICATION-V3.0-R2",
+  "version": "3.0.0",
+  "integration_revision": "r2",
+  "generated_at": "2026-06-25T00:00:00Z",
+  "repository_alignment": {
+    "repository": "MontrealAI/goalos-agialpha-ascension",
+    "baseline_commit": "076a7a7a8d1713d4849e95e1c58b8b6ccec0df03",
+    "baseline_commit_title": "Add GoalOS SME Kernel v3 — Autonomous End-to-End Constellation v3.2.0",
+    "uploaded_snapshot_sha256": "f14146ea523468353ff5b6cb96538be043c9de3a7c6b71598bbe91616b5fb993",
+    "active_workflow_sha256_before": "aa5695af1d7b8967149020fffd57d521e67b648eb3229dde75cec47dd3b5dca2",
+    "active_workflow_sha256_after": "3329167be2088b38a2a0d7abe2fbb9f9f4845e4576181ee058049d022b32c77f",
+    "kernel_content_sha256": "96f8c3c97ef6a0dc0c65a62943dc2305189cf9a12b48ed1e9706983719ce35f3",
+    "protected_kernel_source_set_sha256": "fc6159ff1e86be5b67f64f5ff5a909e6340c2e6f7dc59f841063d2219889b25d",
+    "protected_kernel_source_file_count": 18,
+    "canonical_v86_tree_sha256": "8c739851e833ba11936039a7ef085a6f5db0b526a467c27c2b9c3aceded9c42e",
+    "kernel_interface_release": "Autonomous End-to-End Constellation v3.2.0",
+    "canonical_v86_source_modified": false
+  },
+  "source_file_count": 12,
+  "source_set_sha256": "23fbc2458be4df5519f01b321a7aa39342e7eaed346c0e2d9940dd0b3e453317",
+  "files": {
+    ".github/workflows/goalos-sme-kernel-v3-institutional-publication-smoke-test.yml": {
+      "sha256": "7c1cd941b5d15b37a3a3611fe2c3fc60a5cc84e2f40ff74cbee6aa8fe98c4fc8",
+      "bytes": 4840
+    },
+    "content/sme-kernel-v3-institutional-publication.json": {
+      "sha256": "ecbf8f032253bb6af93c10a3070dc6054c7aa284b99008a2be6a8a06fe47c530",
+      "bytes": 22102
+    },
+    "docs/SME_KERNEL_V3_INSTITUTIONAL_PUBLICATION.md": {
+      "sha256": "2bbe68964f62dc71eda86085a38389c68ef0196cdcb487629994ae04ecadfcad",
+      "bytes": 6691
+    },
+    "scripts/website/build_sme_kernel_v3_publication.py": {
+      "sha256": "8a0c1fb1e7960df0269f8b8ddd2c035da397acfb1d9170fe14f8d2af196ab1cc",
+      "bytes": 53034
+    },
+    "scripts/website/patch_v86_for_sme_kernel_v3_publication.py": {
+      "sha256": "550118c3a7f62f491ec30cf8993a893ea1ae423c6a8fffd98866644f331a3507",
+      "bytes": 15558
+    },
+    "scripts/website/snapshot_sme_kernel_v3_publication_site.py": {
+      "sha256": "d94d35e3ea168cd4bf07909d9b3e873fd1b72985ba34b58095f02e88c37deeca",
+      "bytes": 1509
+    },
+    "scripts/website/verify_sme_kernel_v3_publication.py": {
+      "sha256": "3125c4deac1d87e87b84f3b2aea877f6f444c3fc3f530551f1c189831bcf5432",
+      "bytes": 33107
+    },
+    "scripts/website/visual_check_sme_kernel_v3_publication.py": {
+      "sha256": "dc8da8cada3595a866b85d9af3cf32b9cec9bec236b05b4df42284b5155d6608",
+      "bytes": 7648
+    },
+    "test/test_sme_kernel_v3_publication_website.py": {
+      "sha256": "06df930772a9898bdeb0d62d8b44157b9051936edb880237a8f2698cd6cf7959",
+      "bytes": 8665
+    },
+    "website/features/sme-kernel-v3-publication/assets/sme-kernel-v3-publication.css": {
+      "sha256": "931da3ab5f5525e8ab933b8b84ed1bcdea621b6f7b5624a2180bad07bce29eb3",
+      "bytes": 25685
+    },
+    "website/features/sme-kernel-v3-publication/assets/sme-kernel-v3-publication.js": {
+      "sha256": "f0c38138d68b28ab1aba70263f5996468cb69ba21cc3fac010ae27f640e45864",
+      "bytes": 838
+    },
+    "website/features/sme-kernel-v3-publication/templates/base.html": {
+      "sha256": "da3541748be097ed62c977fb1c5a7a54294ed7af487858f51277692b3a7e3e04",
+      "bytes": 3206
+    }
+  },
+  "canonical_publication_artifacts": [
+    {
+      "id": "flagship",
+      "sha256": "dff42ca9c80b5b6575548d74ef7a431752aee6c3c933359535fa8b8be1414a45",
+      "bytes": 4864185
+    },
+    {
+      "id": "companion",
+      "sha256": "3a27e34aa77b4c7df57e3e9c68ecab7c20c053d58681905ce1492885dad7ffff",
+      "bytes": 4517120
+    },
+    {
+      "id": "latex",
+      "sha256": "950a4e0cb583022989486ab610739861f3c69fd58ee1a6529a1b26d1a9d5f780",
+      "bytes": 4886677
+    }
+  ],
+  "installation_contract": {
+    "mode": "draft-pull-request",
+    "bootstrap_self_removal": true,
+    "production_build_network_fetches": 0,
+    "existing_pages_removed": 0,
+    "canonical_v86_source_modified": false,
+    "deployment_authority": "existing-reviewed-pages-workflow-only",
+    "visual_delivery": "canonical-versioned-publication-host"
+  }
+}
