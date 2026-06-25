@@ -1,0 +1,219 @@
+{
+  "schema": "goalos.sme_kernel_v3.institutional_publication.build_report.v2",
+  "status": "PASS",
+  "release_id": "GOALOS-AGIALPHA-SME-KERNEL-V3-INSTITUTIONAL-PUBLICATION-V3.0-R4-STATIC",
+  "version": "3.0.0",
+  "integration_revision": "r4-static",
+  "built_at": "2026-06-25T00:00:00Z",
+  "pages": [
+    "sovereign-machine-economy-kernel-v3-paper.html",
+    "sovereign-machine-economy-kernel-v3-use-cases.html",
+    "sovereign-machine-economy-kernel-v3-publication-proof.html"
+  ],
+  "kernel_pages_cross_linked": [
+    "sovereign-machine-economy-kernel-v3.html",
+    "sovereign-machine-economy-kernel-v3-protocol.html",
+    "sovereign-machine-economy-kernel-v3-chronicle.html",
+    "sovereign-machine-economy-kernel-v3-verifier.html",
+    "sovereign-machine-economy-kernel-v3-sdk.html"
+  ],
+  "files_removed": [],
+  "existing_files_changed": [
+    "agi-alpha-node-v0-manifest.json",
+    "agi-jobs-v0-v2-manifest.json",
+    "index.html",
+    "meta-agentic-alpha-agi-manifest.json",
+    "routes.json",
+    "site-status.json",
+    "sitemap.xml",
+    "sme-kernel-v3-manifest.json",
+    "sovereign-machine-economy-kernel-v3-chronicle.html",
+    "sovereign-machine-economy-kernel-v3-protocol.html",
+    "sovereign-machine-economy-kernel-v3-sdk.html",
+    "sovereign-machine-economy-kernel-v3-verifier.html",
+    "sovereign-machine-economy-kernel-v3.html",
+    "sovereign-machine-economy-manifest.json"
+  ],
+  "declared_existing_files_allowed_to_change": [
+    "agi-alpha-node-v0-manifest.json",
+    "agi-jobs-v0-v2-manifest.json",
+    "assets/cover-institutional-use-case-edition-v3.png",
+    "assets/kernel-v3-figure-gallery.jpg",
+    "assets/kernel-v3-use-case-gallery.jpg",
+    "assets/sme-kernel-v3-publication.css",
+    "assets/sme-kernel-v3-publication.js",
+    "data/sme-kernel-v3-institutional-publication.json",
+    "downloads/sme-kernel-v3-publication/institutional-use-case-qualification-worksheet.md",
+    "downloads/sme-kernel-v3-publication/kernel-v3-institutional-publication.bib",
+    "downloads/sme-kernel-v3-publication/publication-provenance.json",
+    "downloads/sme-kernel-v3-publication/repository-alignment.json",
+    "index.html",
+    "meta-agentic-alpha-agi-manifest.json",
+    "qa/sme-kernel-v3-publication-build.json",
+    "routes.json",
+    "site-status.json",
+    "sitemap.xml",
+    "sme-kernel-v3-manifest.json",
+    "sme-kernel-v3-publication-manifest.json",
+    "sovereign-machine-economy-kernel-v3-chronicle.html",
+    "sovereign-machine-economy-kernel-v3-paper.html",
+    "sovereign-machine-economy-kernel-v3-protocol.html",
+    "sovereign-machine-economy-kernel-v3-publication-proof.html",
+    "sovereign-machine-economy-kernel-v3-sdk.html",
+    "sovereign-machine-economy-kernel-v3-use-cases.html",
+    "sovereign-machine-economy-kernel-v3-verifier.html",
+    "sovereign-machine-economy-kernel-v3.html",
+    "sovereign-machine-economy-manifest.json"
+  ],
+  "unexpected_existing_file_changes": [],
+  "companion_manifests_reconciled": [
+    "meta-agentic-alpha-agi-manifest.json",
+    "agi-alpha-node-v0-manifest.json",
+    "agi-jobs-v0-v2-manifest.json",
+    "sovereign-machine-economy-manifest.json",
+    "sme-kernel-v3-manifest.json"
+  ],
+  "repository_alignment": {
+    "schema": "goalos.sme_kernel_v3.institutional_publication.repository_alignment.v1",
+    "status": "PASS",
+    "baseline_commit": "076a7a7a8d1713d4849e95e1c58b8b6ccec0df03",
+    "build_commit": "f7155cf33509a5c6a853194650e7c9d381f64893",
+    "kernel_interface_release": "Autonomous End-to-End Constellation v3.2.0",
+    "integration_revision": "r4-static",
+    "active_workflow": ".github/workflows/goalos-agialpha-ascension-v86-final.yml",
+    "active_workflow_sha256_before_integration": "aa5695af1d7b8967149020fffd57d521e67b648eb3229dde75cec47dd3b5dca2",
+    "active_workflow_sha256_observed": "aa5695af1d7b8967149020fffd57d521e67b648eb3229dde75cec47dd3b5dca2",
+    "kernel_content_sha256": "96f8c3c97ef6a0dc0c65a62943dc2305189cf9a12b48ed1e9706983719ce35f3",
+    "protected_source_set_sha256": "fc6159ff1e86be5b67f64f5ff5a909e6340c2e6f7dc59f841063d2219889b25d",
+    "canonical_v86_tree_sha256_before_integration": "8c739851e833ba11936039a7ef085a6f5db0b526a467c27c2b9c3aceded9c42e",
+    "canonical_v86_source_modified": true,
+    "autonomy_chain": [
+      {
+        "id": "identify",
+        "index": "01",
+        "label": "IDENTIFY",
+        "icon": "🔍",
+        "artifact": "Opportunity + mission map"
+      },
+      {
+        "id": "learn",
+        "index": "02",
+        "label": "OUT-LEARN",
+        "icon": "📚",
+        "artifact": "Provenance-bound evidence graph"
+      },
+      {
+        "id": "think",
+        "index": "03",
+        "label": "OUT-THINK",
+        "icon": "🧠",
+        "artifact": "Hypotheses + counterfactuals"
+      },
+      {
+        "id": "design",
+        "index": "04",
+        "label": "OUT-DESIGN",
+        "icon": "🎨",
+        "artifact": "Constitutional solution architecture"
+      },
+      {
+        "id": "strategise",
+        "index": "05",
+        "label": "OUT-STRATEGISE",
+        "icon": "♟️",
+        "artifact": "Execution charter + rollback plan"
+      },
+      {
+        "id": "execute",
+        "index": "06",
+        "label": "OUT-EXECUTE",
+        "icon": "⚡",
+        "artifact": "Bounded action + Evidence Docket"
+      }
+    ],
+    "kernel_contract": {
+      "version": "3.0.0-executable-constitutional-kernel",
+      "status": "executable-browser-local-constitutional-kernel",
+      "states": 17,
+      "typed_envelopes": 10,
+      "signing_authorities": 5,
+      "external_actions": "0"
+    },
+    "protected_files": {
+      "content/sme-kernel-v3.json": {
+        "sha256": "96f8c3c97ef6a0dc0c65a62943dc2305189cf9a12b48ed1e9706983719ce35f3",
+        "bytes": 14800
+      },
+      "docs/SOVEREIGN_MACHINE_ECONOMY_KERNEL_V3.md": {
+        "sha256": "90ad98852c0c640a2547edab24bc5e46a8714447b9e6f9f76ac5f623dedbb57a",
+        "bytes": 5997
+      },
+      "schemas/sme-kernel-v3-envelope.schema.json": {
+        "sha256": "8a5b72ba563872ef8f8b1b4a0385613389b9d6bbd237c3ece85f19bf02f5aeb3",
+        "bytes": 2596
+      },
+      "schemas/sme-kernel-v3-mission-bundle.schema.json": {
+        "sha256": "375b7462b174648ec6c8cb57f6f569570148c135e1923911cd618dc4a14ce803",
+        "bytes": 1783
+      },
+      "scripts/website/build_sme_kernel_v3.py": {
+        "sha256": "62eb06f6ee76918b285fb7399c8e336529e0c630767d40be5e30117d8f38878a",
+        "bytes": 20419
+      },
+      "scripts/website/verify_sme_kernel_v3.py": {
+        "sha256": "6253c11a16995e4c0d6d5546ff6c7b3c89c1c587c1c255ed86610c96632e1dcf",
+        "bytes": 18153
+      },
+      "scripts/website/visual_check_sme_kernel_v3.py": {
+        "sha256": "f0a59e61b7d92efba7860c11e90febe964135921b0f9776c7b79de58bde24ae0",
+        "bytes": 25993
+      },
+      "test/test_sme_kernel_v3_website.py": {
+        "sha256": "8564706d7cf700bfb17fbe2356197326791867b510aee1f3b3715af38b20ae70",
+        "bytes": 11834
+      },
+      "website/features/sme-kernel-v3/assets/sme-kernel-v3-adapters.js": {
+        "sha256": "cc5f7736cbe4538c6da9783a3368641653a3f4c4656fd1f84e150f5006e6323b",
+        "bytes": 8492
+      },
+      "website/features/sme-kernel-v3/assets/sme-kernel-v3-core.js": {
+        "sha256": "119a704f4d6c78d6390a0910e5a0d42a20896a688f0cefe7a1d334a100b0b3ca",
+        "bytes": 13289
+      },
+      "website/features/sme-kernel-v3/assets/sme-kernel-v3-worker.js": {
+        "sha256": "7d871a86330b9c49ac2a2a293a3f02ff6772f2e7842eca2dcc6fd09caa470245",
+        "bytes": 19515
+      },
+      "website/features/sme-kernel-v3/assets/sme-kernel-v3.css": {
+        "sha256": "14f066d95886f07672a656fb27c9189d9f6feda10b9e2ce8da21f1b5c6d30115",
+        "bytes": 47469
+      },
+      "website/features/sme-kernel-v3/assets/sme-kernel-v3.js": {
+        "sha256": "7b6480af7e42f78f041a28478915071490ce40b1f0d5a7b473d08af6ee4ffae4",
+        "bytes": 16353
+      },
+      "website/features/sme-kernel-v3/templates/sovereign-machine-economy-kernel-v3-chronicle.html": {
+        "sha256": "21bd576ac9d905df878dd3a46b4d834a6ca8657636fa1d0d51a42ea7bd7df4b6",
+        "bytes": 6063
+      },
+      "website/features/sme-kernel-v3/templates/sovereign-machine-economy-kernel-v3-protocol.html": {
+        "sha256": "74b77de9ee0e1ec7b7f8d1674953c50b451bf822c4a13e6013679393591529f1",
+        "bytes": 6373
+      },
+      "website/features/sme-kernel-v3/templates/sovereign-machine-economy-kernel-v3-sdk.html": {
+        "sha256": "85a0e93273bb8919a7885b198b3dd5b94a27c119c9bdeb2375e3fe044976f59d",
+        "bytes": 9876
+      },
+      "website/features/sme-kernel-v3/templates/sovereign-machine-economy-kernel-v3-verifier.html": {
+        "sha256": "c44a9cdc0e673b110496881b67bcbd8e82eb756a26c6b2e8e4017c5bd241d2ff",
+        "bytes": 5964
+      },
+      "website/features/sme-kernel-v3/templates/sovereign-machine-economy-kernel-v3.html": {
+        "sha256": "d5d9be3397dcfb1d67bbe02ba9ac9d7ff57c37d6df98788b3c93e9ca1224679b",
+        "bytes": 12519
+      }
+    },
+    "observed_at": "2026-06-25T00:00:00Z"
+  },
+  "canonical_v86_source_modified": true
+}

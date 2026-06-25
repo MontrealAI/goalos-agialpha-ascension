@@ -59,10 +59,30 @@
     "research.html",
     "resources.html",
     "roadmap.html",
+    "sovereign-machine-economy-kernel-v3-paper.html",
+    "sovereign-machine-economy-kernel-v3-publication-proof.html",
+    "sovereign-machine-economy-kernel-v3-use-cases.html",
     "sovereign-rsi-control-plane.html",
     "start-here.html",
     "system-map.html",
     "use-cases.html",
     "whitepaper.html"
-  ]
+  ],
+  "sme_kernel_v3_institutional_publication": {
+    "release_id": "GOALOS-AGIALPHA-SME-KERNEL-V3-INSTITUTIONAL-PUBLICATION-V3.0-R4-STATIC",
+    "version": "3.0.0",
+    "integration_revision": "r4-static",
+    "pages": [
+      "sovereign-machine-economy-kernel-v3-paper.html",
+      "sovereign-machine-economy-kernel-v3-use-cases.html",
+      "sovereign-machine-economy-kernel-v3-publication-proof.html"
+    ],
+    "use_cases": 10,
+    "case_studies": 7,
+    "autonomy_phases": 6,
+    "kernel_interface_release": "Autonomous End-to-End Constellation v3.2.0",
+    "baseline_commit": "076a7a7a8d1713d4849e95e1c58b8b6ccec0df03",
+    "canonical_suite_url": "https://montrealai.github.io/GoalOS-AGIALPHA-Sovereign-Machine-Economy-Kernel-v3-Paper-Institutional-Use-Case-Edition-v3.0/00_START_HERE.html",
+    "claim_bounded": true
+  }
 }

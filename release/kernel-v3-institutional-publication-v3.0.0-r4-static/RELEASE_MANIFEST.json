@@ -1,0 +1,127 @@
+{
+  "schema": "goalos.sme_kernel_v3.institutional_publication.static_release_manifest.v2",
+  "release_id": "GOALOS-AGIALPHA-SME-KERNEL-V3-INSTITUTIONAL-PUBLICATION-V3.0-R4-STATIC",
+  "version": "3.0.0",
+  "integration_revision": "r4-static",
+  "integration_mode": "additive-canonical-source",
+  "generated_at": "2026-06-25T00:00:00Z",
+  "preservation": {
+    "existing_pages_removed": 0,
+    "canonical_source_extended": true,
+    "active_pages_workflow_modified": false,
+    "kernel_templates_cross_linked": 5,
+    "publication_pages_added": 3,
+    "external_actions_authorized": 0
+  },
+  "audited_baseline_commit": "076a7a7a8d1713d4849e95e1c58b8b6ccec0df03",
+  "active_workflow_sha256": "aa5695af1d7b8967149020fffd57d521e67b648eb3229dde75cec47dd3b5dca2",
+  "canonical_v86_tree_sha256_before_integration": "8c739851e833ba11936039a7ef085a6f5db0b526a467c27c2b9c3aceded9c42e",
+  "canonical_v86_tree_sha256_after_integration": "9a22938f1b34fd64d5eaef8a5fcce883c229b0e1e723d058c5cb7ebf51ac1b8d",
+  "canonical_publication_suite": "https://montrealai.github.io/GoalOS-AGIALPHA-Sovereign-Machine-Economy-Kernel-v3-Paper-Institutional-Use-Case-Edition-v3.0/00_START_HERE.html",
+  "files": {
+    "content/sme-kernel-v3-institutional-publication.json": {
+      "sha256": "caa7394aa1726af5a68c0b912463d897336b82c7f99483a1df6ca82c52ac49af",
+      "bytes": 22163
+    },
+    "docs/SME_KERNEL_V3_INSTITUTIONAL_PUBLICATION_STATIC_INTEGRATION.md": {
+      "sha256": "d01064ff3138b38996bc6e91e4f6a848f56c0fbe382ae479dd855674306109c3",
+      "bytes": 1617
+    },
+    "website/features/sme-kernel-v3/templates/sovereign-machine-economy-kernel-v3-chronicle.html": {
+      "sha256": "2c1dfe6659442eea3408814b70f5a342a0cb7ce9b14a6a72e435015795b033fa",
+      "bytes": 6295
+    },
+    "website/features/sme-kernel-v3/templates/sovereign-machine-economy-kernel-v3-protocol.html": {
+      "sha256": "d14644ff1529f7d346fbbb5ff4ffda8fa273cf009bedf915127bbedc10d59ef9",
+      "bytes": 6605
+    },
+    "website/features/sme-kernel-v3/templates/sovereign-machine-economy-kernel-v3-sdk.html": {
+      "sha256": "041fefdc123dcf5870e7fdb92a95f7f76b9375f51a08bb1939b141d359590624",
+      "bytes": 10108
+    },
+    "website/features/sme-kernel-v3/templates/sovereign-machine-economy-kernel-v3-verifier.html": {
+      "sha256": "b37e5dfc167075194ebd143a34458ddf2f7197ac7416bc480e79281d84f8e77a",
+      "bytes": 6196
+    },
+    "website/features/sme-kernel-v3/templates/sovereign-machine-economy-kernel-v3.html": {
+      "sha256": "132f5714c2454dd793c271d5006e474ccfc1f320efa20cac01686946c75740ea",
+      "bytes": 13005
+    },
+    "website/v86_actual_site/assets/cover-institutional-use-case-edition-v3.png": {
+      "sha256": "f383b7e70942a60595b17d6546dd635f5dc9a58607e79be56a4db861571e7d81",
+      "bytes": 509376
+    },
+    "website/v86_actual_site/assets/kernel-v3-figure-gallery.jpg": {
+      "sha256": "cb472fa56f2bfcbb0b4ed51574dc3194fe9a68ffc36b6f8598909dfa0e5d31b6",
+      "bytes": 718101
+    },
+    "website/v86_actual_site/assets/kernel-v3-use-case-gallery.jpg": {
+      "sha256": "388787e8361a4c2a534590734ccc93b5bb1d7a1063dc8e86c09b177f2284f7c6",
+      "bytes": 426859
+    },
+    "website/v86_actual_site/assets/sme-kernel-v3-publication.css": {
+      "sha256": "931da3ab5f5525e8ab933b8b84ed1bcdea621b6f7b5624a2180bad07bce29eb3",
+      "bytes": 25685
+    },
+    "website/v86_actual_site/assets/sme-kernel-v3-publication.js": {
+      "sha256": "f0c38138d68b28ab1aba70263f5996468cb69ba21cc3fac010ae27f640e45864",
+      "bytes": 838
+    },
+    "website/v86_actual_site/data/sme-kernel-v3-institutional-publication.json": {
+      "sha256": "716bef21c3b22421a2f6bf80d435eaea83ae03bd96a5ebbf6e986cf84b2b23a4",
+      "bytes": 28777
+    },
+    "website/v86_actual_site/downloads/sme-kernel-v3-publication/institutional-use-case-qualification-worksheet.md": {
+      "sha256": "381f9b725d6725bbb460f7a51fb7563403b102082cd70716803b5516e5c9f036",
+      "bytes": 940
+    },
+    "website/v86_actual_site/downloads/sme-kernel-v3-publication/kernel-v3-institutional-publication.bib": {
+      "sha256": "1cbcc2d7c42a9950d5607948e198087bc66ea77b9ef323dbf5d41c72ffc43ed2",
+      "bytes": 492
+    },
+    "website/v86_actual_site/downloads/sme-kernel-v3-publication/publication-provenance.json": {
+      "sha256": "5a3ed66783d51888755a7aae0c29608ff9c55791e69930a799c8019e3290cc69",
+      "bytes": 10218
+    },
+    "website/v86_actual_site/downloads/sme-kernel-v3-publication/repository-alignment.json": {
+      "sha256": "d6ef8b870639a25bdc666491a6ff7444fd0c1e7b4277f240aa952a032c52fe45",
+      "bytes": 6817
+    },
+    "website/v86_actual_site/index.html": {
+      "sha256": "faeeb732868ec9198bfba68d36946d4e94114b6ea94950294906945520976823",
+      "bytes": 75970
+    },
+    "website/v86_actual_site/qa/sme-kernel-v3-publication-build.json": {
+      "sha256": "6085fac3ded05fa875e5a436df73f3b52b4bac473a2fbe94430742117eca29df",
+      "bytes": 9069
+    },
+    "website/v86_actual_site/routes.json": {
+      "sha256": "c0a720a88cc5ecfe2325c3c8244bfd768e8acd99a763c15a344e945bc792aad6",
+      "bytes": 2780
+    },
+    "website/v86_actual_site/site-status.json": {
+      "sha256": "cf9fdddb3c639fdbdb846fc20fbfa9fb5017733ea40b55c3e1e56b2872891940",
+      "bytes": 1328
+    },
+    "website/v86_actual_site/sitemap.xml": {
+      "sha256": "e2ff690fcee6ba26e57dbbbc9871f58fd8823cce938ac10eaa4f04775dd20071",
+      "bytes": 3449
+    },
+    "website/v86_actual_site/sme-kernel-v3-publication-manifest.json": {
+      "sha256": "6a8d3f2ebb3731a3b4f861b1bd67b2e972923ca0f3e65f75f8ef87f1035c680b",
+      "bytes": 13127
+    },
+    "website/v86_actual_site/sovereign-machine-economy-kernel-v3-paper.html": {
+      "sha256": "e30a02a9f4c8a9abada91b4b72a33a04f8e40822731dbd9794e376a109473385",
+      "bytes": 24357
+    },
+    "website/v86_actual_site/sovereign-machine-economy-kernel-v3-publication-proof.html": {
+      "sha256": "e5c6a92533cede6fd69a4fac7e854827457d1e1f3a1040eb53ed0ad7e36fac53",
+      "bytes": 15749
+    },
+    "website/v86_actual_site/sovereign-machine-economy-kernel-v3-use-cases.html": {
+      "sha256": "bbdb54ca53a7b4f31da82282d7858323abfc9caa47db72756d184ca3eb207dd2",
+      "bytes": 19456
+    }
+  }
+}

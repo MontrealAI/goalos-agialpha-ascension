@@ -1,0 +1,666 @@
+{
+  "schema": "goalos.sme_kernel_v3.institutional_publication.v2",
+  "release_id": "GOALOS-AGIALPHA-SME-KERNEL-V3-INSTITUTIONAL-PUBLICATION-V3.0-R4-STATIC",
+  "version": "3.0.0",
+  "integration_revision": "r4-static",
+  "status": "claim-bounded-additive-canonical-publication-suite",
+  "title": "A Constitutional Execution Substrate for Proof-Bearing Autonomous Work",
+  "short_title": "GoalOS Kernel v3 · Institutional Edition",
+  "subtitle": "GoalOS AGIALPHA Ascension · Sovereign Machine Economy Kernel v3",
+  "doctrine": "A model can answer. An agent can act. An institution must prove.",
+  "description": "The repository-aligned institutional edition of the GoalOS Sovereign Machine Economy Kernel v3: executable constitutional architecture, a source-generated six-stage autonomous capability chain, ten institutional use cases, seven worked reference case studies, reproducible publication assets, and explicit proof-to-permission boundaries.",
+  "edition": "Institutional Use-Case and Case-Study Edition v3.0 · Canonical Static Integration r4",
+  "published": "2026-06",
+  "author": {
+    "name": "Vincent Boucher",
+    "role": "President",
+    "organizations": [
+      "MONTREAL.AI",
+      "QUEBEC.AI"
+    ],
+    "note": "Written with AI"
+  },
+  "canonical_suite_url": "https://montrealai.github.io/GoalOS-AGIALPHA-Sovereign-Machine-Economy-Kernel-v3-Paper-Institutional-Use-Case-Edition-v3.0/00_START_HERE.html",
+  "repository_url": "https://github.com/MontrealAI/goalos-agialpha-ascension",
+  "executable_kernel_url": "https://montrealai.github.io/goalos-agialpha-ascension/sovereign-machine-economy-kernel-v3.html",
+  "repository_alignment": {
+    "audit_date": "2026-06-25",
+    "baseline_commit": "076a7a7a8d1713d4849e95e1c58b8b6ccec0df03",
+    "baseline_commit_short": "076a7a7",
+    "baseline_commit_title": "Add GoalOS SME Kernel v3 — Autonomous End-to-End Constellation v3.2.0",
+    "kernel_interface_release": "Autonomous End-to-End Constellation v3.2.0",
+    "active_workflow": ".github/workflows/goalos-agialpha-ascension-v86-final.yml",
+    "active_workflow_sha256": "aa5695af1d7b8967149020fffd57d521e67b648eb3229dde75cec47dd3b5dca2",
+    "kernel_content_sha256": "96f8c3c97ef6a0dc0c65a62943dc2305189cf9a12b48ed1e9706983719ce35f3",
+    "protected_source_set_sha256": "fc6159ff1e86be5b67f64f5ff5a909e6340c2e6f7dc59f841063d2219889b25d",
+    "canonical_v86_tree_sha256_before_integration": "8c739851e833ba11936039a7ef085a6f5db0b526a467c27c2b9c3aceded9c42e",
+    "autonomy_chain_ids": [
+      "identify",
+      "learn",
+      "think",
+      "design",
+      "strategise",
+      "execute"
+    ],
+    "autonomy_chain_labels": [
+      "IDENTIFY",
+      "OUT-LEARN",
+      "OUT-THINK",
+      "OUT-DESIGN",
+      "OUT-STRATEGISE",
+      "OUT-EXECUTE"
+    ],
+    "canonical_v86_source_modified": true,
+    "integration_mode": "additive-canonical-source",
+    "protected_source_file_count": 18
+  },
+  "kernel_metrics": [
+    {
+      "value": "6",
+      "label": "autonomous phases"
+    },
+    {
+      "value": "17",
+      "label": "constitutional states"
+    },
+    {
+      "value": "10",
+      "label": "typed envelopes"
+    },
+    {
+      "value": "5",
+      "label": "signing authorities"
+    },
+    {
+      "value": "100%",
+      "label": "signed transitions"
+    },
+    {
+      "value": "0",
+      "label": "external actions"
+    }
+  ],
+  "artifacts": [
+    {
+      "id": "flagship",
+      "label": "Publication PDF",
+      "format": "PDF",
+      "pages": 48,
+      "url": "https://montrealai.github.io/GoalOS-AGIALPHA-Sovereign-Machine-Economy-Kernel-v3-Paper-Institutional-Use-Case-Edition-v3.0/01_PAPER/GoalOS_AGIALPHA_Sovereign_Machine_Economy_Kernel_v3_Paper_Institutional_Use_Case_Edition_v3.0.pdf",
+      "sha256": "dff42ca9c80b5b6575548d74ef7a431752aee6c3c933359535fa8b8be1414a45",
+      "bytes": 4864185,
+      "description": "Complete architecture, use-case portfolio, reference case studies, figures, tables, benchmarks, limitations, and appendices."
+    },
+    {
+      "id": "companion",
+      "label": "Use Cases & Case Studies",
+      "format": "PDF",
+      "pages": 13,
+      "url": "https://montrealai.github.io/GoalOS-AGIALPHA-Sovereign-Machine-Economy-Kernel-v3-Paper-Institutional-Use-Case-Edition-v3.0/01_PAPER/GoalOS_Kernel_v3_Institutional_Use_Cases_and_Reference_Case_Studies_Companion.pdf",
+      "sha256": "3a27e34aa77b4c7df57e3e9c68ecab7c20c053d58681905ce1492885dad7ffff",
+      "bytes": 4517120,
+      "description": "Boardroom companion for executive briefings, diligence, partner conversations, and use-case qualification workshops."
+    },
+    {
+      "id": "latex",
+      "label": "Native LaTeX Edition",
+      "format": "PDF",
+      "pages": 53,
+      "url": "https://montrealai.github.io/GoalOS-AGIALPHA-Sovereign-Machine-Economy-Kernel-v3-Paper-Institutional-Use-Case-Edition-v3.0/01_PAPER/GoalOS_AGIALPHA_Sovereign_Machine_Economy_Kernel_v3_Paper_LaTeX_Edition_v3.0.pdf",
+      "sha256": "950a4e0cb583022989486ab610739861f3c69fd58ee1a6529a1b26d1a9d5f780",
+      "bytes": 4886677,
+      "description": "XeLaTeX publication edition with reproducible institutional typography."
+    },
+    {
+      "id": "source-suite",
+      "label": "Complete Source Suite",
+      "format": "DOCX · Markdown · LaTeX · Templates · QA",
+      "pages": null,
+      "url": "https://montrealai.github.io/GoalOS-AGIALPHA-Sovereign-Machine-Economy-Kernel-v3-Paper-Institutional-Use-Case-Edition-v3.0/00_START_HERE.html",
+      "sha256": null,
+      "bytes": null,
+      "description": "Editable manuscript formats, source project, dossier template, qualification checklist, figures, and validation evidence."
+    }
+  ],
+  "materials": [
+    {
+      "id": "word",
+      "label": "Editable Word manuscript",
+      "format": "DOCX",
+      "url": "https://montrealai.github.io/GoalOS-AGIALPHA-Sovereign-Machine-Economy-Kernel-v3-Paper-Institutional-Use-Case-Edition-v3.0/02_EDITABLE_SOURCE/GoalOS_AGIALPHA_Sovereign_Machine_Economy_Kernel_v3_Paper_Institutional_Use_Case_Edition_v3.0.docx",
+      "description": "Fully editable institutional manuscript with semantic tables, alternative text, and embedded figures."
+    },
+    {
+      "id": "markdown",
+      "label": "Markdown manuscript",
+      "format": "Markdown",
+      "url": "https://montrealai.github.io/GoalOS-AGIALPHA-Sovereign-Machine-Economy-Kernel-v3-Paper-Institutional-Use-Case-Edition-v3.0/02_EDITABLE_SOURCE/GoalOS_AGIALPHA_Sovereign_Machine_Economy_Kernel_v3_Paper_Institutional_Use_Case_Edition_v3.0.md",
+      "description": "Diffable, source-control-friendly complete manuscript for review and derivative publication workflows."
+    },
+    {
+      "id": "latex-source",
+      "label": "LaTeX source project",
+      "format": "ZIP",
+      "url": "https://montrealai.github.io/GoalOS-AGIALPHA-Sovereign-Machine-Economy-Kernel-v3-Paper-Institutional-Use-Case-Edition-v3.0/01_PAPER/GoalOS_Kernel_v3_LaTeX_Source_Project_v3.0.zip",
+      "description": "XeLaTeX project, bibliography, figures, build script, and reproducible institutional typography."
+    },
+    {
+      "id": "dossier",
+      "label": "Institutional dossier template",
+      "format": "YAML",
+      "url": "https://montrealai.github.io/GoalOS-AGIALPHA-Sovereign-Machine-Economy-Kernel-v3-Paper-Institutional-Use-Case-Edition-v3.0/06_CASE_STUDY_RESOURCES/institutional_case_study_dossier_template.yaml",
+      "description": "Machine-readable structure for qualifying and documenting proof-to-permission institutional missions."
+    },
+    {
+      "id": "qualification",
+      "label": "Use-case qualification checklist",
+      "format": "Markdown",
+      "url": "https://montrealai.github.io/GoalOS-AGIALPHA-Sovereign-Machine-Economy-Kernel-v3-Paper-Institutional-Use-Case-Edition-v3.0/06_CASE_STUDY_RESOURCES/USE_CASE_QUALIFICATION_CHECKLIST.md",
+      "description": "A practical gate for deciding whether a consequential workflow warrants the constitutional kernel."
+    },
+    {
+      "id": "validation",
+      "label": "Publication validation report",
+      "format": "Markdown",
+      "url": "https://montrealai.github.io/GoalOS-AGIALPHA-Sovereign-Machine-Economy-Kernel-v3-Paper-Institutional-Use-Case-Edition-v3.0/05_VALIDATION/VALIDATION_REPORT.md",
+      "description": "Rendered-page, PDF, accessibility, figure, clipping, font, and claim-boundary QA evidence."
+    }
+  ],
+  "metrics": [
+    {
+      "value": "48",
+      "label": "primary pages"
+    },
+    {
+      "value": "53",
+      "label": "LaTeX pages"
+    },
+    {
+      "value": "10",
+      "label": "institutional use cases"
+    },
+    {
+      "value": "7",
+      "label": "worked case studies"
+    },
+    {
+      "value": "20",
+      "label": "figures"
+    },
+    {
+      "value": "57",
+      "label": "tables"
+    }
+  ],
+  "reader_paths": [
+    {
+      "audience": "Executive / investor",
+      "question": "What category is being created, and why might it matter?",
+      "sections": "1–4, 15–21, 24, Conclusion"
+    },
+    {
+      "audience": "Enterprise operator",
+      "question": "How does an objective become a governed decision and bounded action?",
+      "sections": "4–6, 10–12, 16–21"
+    },
+    {
+      "audience": "Protocol engineer",
+      "question": "What are the state machine, envelopes, signatures, Chronicle, and adapters?",
+      "sections": "5–11, 20–22, Appendices A–C"
+    },
+    {
+      "audience": "Risk / governance",
+      "question": "Where does authority sit, how does the system fail closed, and what is not claimed?",
+      "sections": "7, 10–14, 16, 20–23"
+    },
+    {
+      "audience": "Evaluator / auditor",
+      "question": "What evidence is produced, how is it replayed, and what would falsify the thesis?",
+      "sections": "9–14, 17–18, 20–23"
+    },
+    {
+      "audience": "Board / procurement / policy",
+      "question": "Which missions merit proof-gated autonomy, and what should reviewers receive?",
+      "sections": "20–21, Appendices F–G"
+    }
+  ],
+  "lineage": [
+    {
+      "index": "01",
+      "label": "META-AGENTIC α-AGI 👁️✨",
+      "repository": "AGI-Alpha-Agent-v0",
+      "url": "https://github.com/MontrealAI/AGI-Alpha-Agent-v0",
+      "role": "The initial meta-agentic institution-forming agent: goals, roles, coordination, and bounded collective work."
+    },
+    {
+      "index": "02",
+      "label": "AGI Alpha Node v0 ⚡️✨",
+      "repository": "AGI-Alpha-Node-v0",
+      "url": "https://github.com/MontrealAI/AGI-Alpha-Node-v0",
+      "role": "The initial bounded execution node: work, receipts, proof surfaces, and reusable capability."
+    },
+    {
+      "index": "03",
+      "label": "AGI Jobs v0 (v2) ✨",
+      "repository": "AGIJobsv0",
+      "url": "https://github.com/MontrealAI/AGIJobsv0",
+      "role": "The initial agentic work market: missions, validation, challenge, coordination, and settlement intent."
+    },
+    {
+      "index": "04",
+      "label": "GoalOS AGIALPHA Ascension — Sovereign Machine Economy ✨",
+      "repository": "goalos-agialpha-ascension",
+      "url": "https://github.com/MontrealAI/goalos-agialpha-ascension",
+      "role": "The GoalOS-native constitutional synthesis: proof-bearing work, typed authority, durable memory, and fail-closed institutional execution."
+    }
+  ],
+  "architecture": [
+    {
+      "id": "mind",
+      "index": "01",
+      "label": "META-AGENTIC α-AGI",
+      "role": "Forms and charters bounded institutions.",
+      "accent": "plum"
+    },
+    {
+      "id": "node",
+      "index": "02",
+      "label": "AGI Alpha Node v0",
+      "role": "Executes bounded work and emits evidence-bearing receipts.",
+      "accent": "blue"
+    },
+    {
+      "id": "market",
+      "index": "03",
+      "label": "AGI Jobs v0 (v2)",
+      "role": "Coordinates work, validation, challenge, and non-live settlement intent.",
+      "accent": "gold"
+    },
+    {
+      "id": "kernel",
+      "index": "04",
+      "label": "Constitutional Kernel v3",
+      "role": "Enforces typed state, signed handoffs, durable memory, and human authority.",
+      "accent": "emerald"
+    }
+  ],
+  "use_cases": [
+    {
+      "id": "UC-01",
+      "category": "Strategy",
+      "title": "Executive decision intelligence",
+      "summary": "Move consequential strategy from narrative to a source-bound, scenario-tested governed decision state.",
+      "evidence": "Primary-source room, scenario matrix, contradiction register, option portfolio, risk ledger.",
+      "authority": "Executive owner records disposition; no automatic strategic commitment.",
+      "fail_closed": "No clear owner, decision criterion, counterfactual, provenance, or stop condition."
+    },
+    {
+      "id": "UC-02",
+      "category": "Procurement",
+      "title": "AI procurement and vendor authorization",
+      "summary": "Grant only scoped pilot permission after equal-budget tests, policy checks, and exit-readiness review.",
+      "evidence": "Comparable trials, policy and data boundary, security review, pilot certificate, exit plan.",
+      "authority": "Procurement, security, legal, and business owners approve only the declared pilot scope.",
+      "fail_closed": "Unequal evaluation, hidden data dependency, unresolved policy breach, or no exit route."
+    },
+    {
+      "id": "UC-03",
+      "category": "Technology",
+      "title": "Autonomous software delivery",
+      "summary": "Turn patches into test-backed, provenance-bound, rollback-ready release candidates.",
+      "evidence": "Change provenance, tests, reviewer trace, dependency record, release and rollback plan.",
+      "authority": "Authorized human release owner approves deployment; the reference system never auto-deploys.",
+      "fail_closed": "Failing tests, secret exposure, missing provenance, unreviewed dependencies, or no rollback."
+    },
+    {
+      "id": "UC-04",
+      "category": "Security",
+      "title": "Defensive cybersecurity remediation",
+      "summary": "Convert findings into secret-safe, reviewable, minimal defensive change.",
+      "evidence": "Finding proof, minimal patch, test evidence, secret-safe logs, review record, rollback.",
+      "authority": "Security owner authorizes defensive deployment inside an explicit system boundary.",
+      "fail_closed": "Offensive scope, unverified finding, leaked secrets, excessive change, or absent rollback."
+    },
+    {
+      "id": "UC-05",
+      "category": "Science",
+      "title": "Scientific discovery and experimental design",
+      "summary": "Prioritize falsifiable hypotheses, controls, assays, and evidence-producing experiments.",
+      "evidence": "Evidence graph, competing mechanisms, controls, assays, uncertainty, falsification plan, lineage.",
+      "authority": "Principal investigator and applicable ethics or safety bodies authorize physical execution.",
+      "fail_closed": "No competing hypothesis, inadequate controls, non-falsifiable objective, or broken lineage."
+    },
+    {
+      "id": "UC-06",
+      "category": "Infrastructure",
+      "title": "Critical infrastructure and energy resilience",
+      "summary": "Recommend bounded interventions with baseline fidelity, safety, pilot, stop, and rollback conditions.",
+      "evidence": "Baseline, instrumentation, sensitivity analysis, bounded pilot, stop rules, rollback plan.",
+      "authority": "Designated operator and applicable safety or regulatory authority authorize field action.",
+      "fail_closed": "Weak baseline, unsafe envelope, missing instrumentation, no stop rule, or irreversible pilot."
+    },
+    {
+      "id": "UC-07",
+      "category": "Public",
+      "title": "Policy and regulatory mission operations",
+      "summary": "Preserve primary law, plurality, distributional effects, uncertainty, and institutional authority.",
+      "evidence": "Primary sources, stakeholder plurality, impact analysis, dissent record, dependencies, reversal conditions.",
+      "authority": "Only the legally empowered public institution may decide or implement policy.",
+      "fail_closed": "Stale law, single-viewpoint analysis, hidden distributional effects, or no dissent pathway."
+    },
+    {
+      "id": "UC-08",
+      "category": "Capital",
+      "title": "M&A, partnership, and investment diligence",
+      "summary": "Bind strategic claims to dependencies, counterfactuals, integration conditions, and value realization.",
+      "evidence": "Claim-dependency matrix, downside cases, counterfactuals, integration plan, value-realization tests.",
+      "authority": "Investment committee, board, or delegated owner records the transaction decision.",
+      "fail_closed": "Unbound claims, absent downside case, no integration conditions, or unsupported value thesis."
+    },
+    {
+      "id": "UC-09",
+      "category": "Economy",
+      "title": "Proof-gated agentic work markets",
+      "summary": "Commission, execute, validate, challenge, and prepare settlement without unearned authority.",
+      "evidence": "Identity, mission charter, coalition record, receipts, validator opinions, dissent, challenge, settlement intent.",
+      "authority": "Human settlement review remains mandatory; no live value moves in the reference release.",
+      "fail_closed": "Self-validation, hidden coalition, missing challenge rights, unresolved dissent, or automatic settlement."
+    },
+    {
+      "id": "UC-10",
+      "category": "Publication",
+      "title": "Autonomous institutional publication",
+      "summary": "Generate public artifacts from proof-aligned source through deterministic QA and human-review pull requests.",
+      "evidence": "Source lineage, deterministic build, accessibility, link and visual checks, claim review, PR evidence.",
+      "authority": "A human reviewer merges and deploys; generated material cannot publish itself.",
+      "fail_closed": "Source drift, failed QA, inaccessible output, unsafe claims, or absent human review."
+    }
+  ],
+  "case_studies": [
+    {
+      "id": "A",
+      "title": "48-hour market-entry proof mission",
+      "summary": "Decision support with a source room, option portfolio, contradiction register, risks, conditions, and human disposition."
+    },
+    {
+      "id": "B",
+      "title": "Mission-critical AI procurement gate",
+      "summary": "Executed vendor evaluation, policy and data boundary, bounded pilot certificate, and exit plan."
+    },
+    {
+      "id": "C",
+      "title": "Defensive remediation and rollback-ready release",
+      "summary": "Finding proof, minimal patch, tests, secret-safe logs, pull-request review, and rollback."
+    },
+    {
+      "id": "D",
+      "title": "Cold-chain energy resilience",
+      "summary": "Baseline, instrumentation, interventions, sensitivity, pilot controls, delayed outcomes, and revocable capability package."
+    },
+    {
+      "id": "E",
+      "title": "Scientific discovery and experiment design",
+      "summary": "Evidence graph, competing mechanisms, controls, assays, uncertainty, falsification, and lineage memory."
+    },
+    {
+      "id": "F",
+      "title": "Public policy option mission",
+      "summary": "Primary sources, stakeholder plurality, distributional impact, dissent, implementation dependencies, and reversal conditions."
+    },
+    {
+      "id": "G",
+      "title": "Proof-gated agentic work market",
+      "summary": "Identity, coalition selection, node receipt, proof parliament, dissent, challenge, and human settlement review."
+    }
+  ],
+  "validation": [
+    {
+      "value": "48 / 48",
+      "label": "DOCX pages rendered"
+    },
+    {
+      "value": "53 / 53",
+      "label": "LaTeX pages rendered"
+    },
+    {
+      "value": "0",
+      "label": "PDF preflight warnings"
+    },
+    {
+      "value": "0 / 0 / 0",
+      "label": "high / medium / low accessibility findings"
+    },
+    {
+      "value": "0",
+      "label": "dominant black-background figures"
+    },
+    {
+      "value": "0",
+      "label": "observed overlap or clipping defects"
+    },
+    {
+      "value": "100%",
+      "label": "fonts embedded in both major PDFs"
+    },
+    {
+      "value": "PASS",
+      "label": "claim-boundary and falsification review"
+    }
+  ],
+  "claim_boundary": {
+    "positive": "The publication defines a theoretical systems and protocol architecture, an executable browser-local reference implementation, and a falsifiable evaluation program. The use cases and case studies are illustrative reference scenarios.",
+    "not_claimed": [
+      "achieved AGI, ASI, or superintelligence",
+      "empirical state of the art",
+      "independent certification or external audit completion",
+      "legal authority or regulatory approval",
+      "guaranteed ROI or economic return",
+      "production authorization or public production reliance",
+      "live settlement, token movement, or user-fund authorization",
+      "autonomous sovereignty, energy abundance, or civilization-scale capability"
+    ]
+  },
+  "assets": {
+    "cover": {
+      "source_url": "https://montrealai.github.io/GoalOS-AGIALPHA-Sovereign-Machine-Economy-Kernel-v3-Paper-Institutional-Use-Case-Edition-v3.0/04_FIGURES/cover_institutional_use_case_edition_v3.png",
+      "sha256": "f383b7e70942a60595b17d6546dd635f5dc9a58607e79be56a4db861571e7d81",
+      "local": "cover-institutional-use-case-edition-v3.png"
+    },
+    "figure_gallery": {
+      "source_url": "https://montrealai.github.io/GoalOS-AGIALPHA-Sovereign-Machine-Economy-Kernel-v3-Paper-Institutional-Use-Case-Edition-v3.0/01_PAPER/FIGURE_GALLERY.jpg",
+      "sha256": "cb472fa56f2bfcbb0b4ed51574dc3194fe9a68ffc36b6f8598909dfa0e5d31b6",
+      "local": "kernel-v3-figure-gallery.jpg"
+    },
+    "use_case_gallery": {
+      "source_url": "https://montrealai.github.io/GoalOS-AGIALPHA-Sovereign-Machine-Economy-Kernel-v3-Paper-Institutional-Use-Case-Edition-v3.0/01_PAPER/USE_CASE_AND_CASE_STUDY_GALLERY.jpg",
+      "sha256": "388787e8361a4c2a534590734ccc93b5bb1d7a1063dc8e86c09b177f2284f7c6",
+      "local": "kernel-v3-use-case-gallery.jpg"
+    }
+  },
+  "observed_repository_alignment": {
+    "schema": "goalos.sme_kernel_v3.institutional_publication.repository_alignment.v1",
+    "status": "PASS",
+    "baseline_commit": "076a7a7a8d1713d4849e95e1c58b8b6ccec0df03",
+    "build_commit": "f7155cf33509a5c6a853194650e7c9d381f64893",
+    "kernel_interface_release": "Autonomous End-to-End Constellation v3.2.0",
+    "integration_revision": "r4-static",
+    "active_workflow": ".github/workflows/goalos-agialpha-ascension-v86-final.yml",
+    "active_workflow_sha256_before_integration": "aa5695af1d7b8967149020fffd57d521e67b648eb3229dde75cec47dd3b5dca2",
+    "active_workflow_sha256_observed": "aa5695af1d7b8967149020fffd57d521e67b648eb3229dde75cec47dd3b5dca2",
+    "kernel_content_sha256": "96f8c3c97ef6a0dc0c65a62943dc2305189cf9a12b48ed1e9706983719ce35f3",
+    "protected_source_set_sha256": "fc6159ff1e86be5b67f64f5ff5a909e6340c2e6f7dc59f841063d2219889b25d",
+    "canonical_v86_tree_sha256_before_integration": "8c739851e833ba11936039a7ef085a6f5db0b526a467c27c2b9c3aceded9c42e",
+    "canonical_v86_source_modified": true,
+    "autonomy_chain": [
+      {
+        "id": "identify",
+        "index": "01",
+        "label": "IDENTIFY",
+        "icon": "🔍",
+        "artifact": "Opportunity + mission map"
+      },
+      {
+        "id": "learn",
+        "index": "02",
+        "label": "OUT-LEARN",
+        "icon": "📚",
+        "artifact": "Provenance-bound evidence graph"
+      },
+      {
+        "id": "think",
+        "index": "03",
+        "label": "OUT-THINK",
+        "icon": "🧠",
+        "artifact": "Hypotheses + counterfactuals"
+      },
+      {
+        "id": "design",
+        "index": "04",
+        "label": "OUT-DESIGN",
+        "icon": "🎨",
+        "artifact": "Constitutional solution architecture"
+      },
+      {
+        "id": "strategise",
+        "index": "05",
+        "label": "OUT-STRATEGISE",
+        "icon": "♟️",
+        "artifact": "Execution charter + rollback plan"
+      },
+      {
+        "id": "execute",
+        "index": "06",
+        "label": "OUT-EXECUTE",
+        "icon": "⚡",
+        "artifact": "Bounded action + Evidence Docket"
+      }
+    ],
+    "kernel_contract": {
+      "version": "3.0.0-executable-constitutional-kernel",
+      "status": "executable-browser-local-constitutional-kernel",
+      "states": 17,
+      "typed_envelopes": 10,
+      "signing_authorities": 5,
+      "external_actions": "0"
+    },
+    "protected_files": {
+      "content/sme-kernel-v3.json": {
+        "sha256": "96f8c3c97ef6a0dc0c65a62943dc2305189cf9a12b48ed1e9706983719ce35f3",
+        "bytes": 14800
+      },
+      "docs/SOVEREIGN_MACHINE_ECONOMY_KERNEL_V3.md": {
+        "sha256": "90ad98852c0c640a2547edab24bc5e46a8714447b9e6f9f76ac5f623dedbb57a",
+        "bytes": 5997
+      },
+      "schemas/sme-kernel-v3-envelope.schema.json": {
+        "sha256": "8a5b72ba563872ef8f8b1b4a0385613389b9d6bbd237c3ece85f19bf02f5aeb3",
+        "bytes": 2596
+      },
+      "schemas/sme-kernel-v3-mission-bundle.schema.json": {
+        "sha256": "375b7462b174648ec6c8cb57f6f569570148c135e1923911cd618dc4a14ce803",
+        "bytes": 1783
+      },
+      "scripts/website/build_sme_kernel_v3.py": {
+        "sha256": "62eb06f6ee76918b285fb7399c8e336529e0c630767d40be5e30117d8f38878a",
+        "bytes": 20419
+      },
+      "scripts/website/verify_sme_kernel_v3.py": {
+        "sha256": "6253c11a16995e4c0d6d5546ff6c7b3c89c1c587c1c255ed86610c96632e1dcf",
+        "bytes": 18153
+      },
+      "scripts/website/visual_check_sme_kernel_v3.py": {
+        "sha256": "f0a59e61b7d92efba7860c11e90febe964135921b0f9776c7b79de58bde24ae0",
+        "bytes": 25993
+      },
+      "test/test_sme_kernel_v3_website.py": {
+        "sha256": "8564706d7cf700bfb17fbe2356197326791867b510aee1f3b3715af38b20ae70",
+        "bytes": 11834
+      },
+      "website/features/sme-kernel-v3/assets/sme-kernel-v3-adapters.js": {
+        "sha256": "cc5f7736cbe4538c6da9783a3368641653a3f4c4656fd1f84e150f5006e6323b",
+        "bytes": 8492
+      },
+      "website/features/sme-kernel-v3/assets/sme-kernel-v3-core.js": {
+        "sha256": "119a704f4d6c78d6390a0910e5a0d42a20896a688f0cefe7a1d334a100b0b3ca",
+        "bytes": 13289
+      },
+      "website/features/sme-kernel-v3/assets/sme-kernel-v3-worker.js": {
+        "sha256": "7d871a86330b9c49ac2a2a293a3f02ff6772f2e7842eca2dcc6fd09caa470245",
+        "bytes": 19515
+      },
+      "website/features/sme-kernel-v3/assets/sme-kernel-v3.css": {
+        "sha256": "14f066d95886f07672a656fb27c9189d9f6feda10b9e2ce8da21f1b5c6d30115",
+        "bytes": 47469
+      },
+      "website/features/sme-kernel-v3/assets/sme-kernel-v3.js": {
+        "sha256": "7b6480af7e42f78f041a28478915071490ce40b1f0d5a7b473d08af6ee4ffae4",
+        "bytes": 16353
+      },
+      "website/features/sme-kernel-v3/templates/sovereign-machine-economy-kernel-v3-chronicle.html": {
+        "sha256": "21bd576ac9d905df878dd3a46b4d834a6ca8657636fa1d0d51a42ea7bd7df4b6",
+        "bytes": 6063
+      },
+      "website/features/sme-kernel-v3/templates/sovereign-machine-economy-kernel-v3-protocol.html": {
+        "sha256": "74b77de9ee0e1ec7b7f8d1674953c50b451bf822c4a13e6013679393591529f1",
+        "bytes": 6373
+      },
+      "website/features/sme-kernel-v3/templates/sovereign-machine-economy-kernel-v3-sdk.html": {
+        "sha256": "85a0e93273bb8919a7885b198b3dd5b94a27c119c9bdeb2375e3fe044976f59d",
+        "bytes": 9876
+      },
+      "website/features/sme-kernel-v3/templates/sovereign-machine-economy-kernel-v3-verifier.html": {
+        "sha256": "c44a9cdc0e673b110496881b67bcbd8e82eb756a26c6b2e8e4017c5bd241d2ff",
+        "bytes": 5964
+      },
+      "website/features/sme-kernel-v3/templates/sovereign-machine-economy-kernel-v3.html": {
+        "sha256": "d5d9be3397dcfb1d67bbe02ba9ac9d7ff57c37d6df98788b3c93e9ca1224679b",
+        "bytes": 12519
+      }
+    },
+    "observed_at": "2026-06-25T00:00:00Z"
+  },
+  "kernel_autonomy_chain": [
+    {
+      "id": "identify",
+      "index": "01",
+      "label": "IDENTIFY",
+      "icon": "🔍",
+      "artifact": "Opportunity + mission map"
+    },
+    {
+      "id": "learn",
+      "index": "02",
+      "label": "OUT-LEARN",
+      "icon": "📚",
+      "artifact": "Provenance-bound evidence graph"
+    },
+    {
+      "id": "think",
+      "index": "03",
+      "label": "OUT-THINK",
+      "icon": "🧠",
+      "artifact": "Hypotheses + counterfactuals"
+    },
+    {
+      "id": "design",
+      "index": "04",
+      "label": "OUT-DESIGN",
+      "icon": "🎨",
+      "artifact": "Constitutional solution architecture"
+    },
+    {
+      "id": "strategise",
+      "index": "05",
+      "label": "OUT-STRATEGISE",
+      "icon": "♟️",
+      "artifact": "Execution charter + rollback plan"
+    },
+    {
+      "id": "execute",
+      "index": "06",
+      "label": "OUT-EXECUTE",
+      "icon": "⚡",
+      "artifact": "Bounded action + Evidence Docket"
+    }
+  ]
+}
