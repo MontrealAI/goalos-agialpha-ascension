@@ -1,0 +1,269 @@
+name: GoalOS Kernel v3 Institutional Publication R2 · Recovery Installer
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/goalos-kernel-v3-institutional-publication-r2-recovery.yml
+  workflow_dispatch:
+
+concurrency:
+  group: goalos-kernel-v3-institutional-publication-r2-recovery
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  pull-requests: write
+
+env:
+  EXPECTED_REPOSITORY: MontrealAI/goalos-agialpha-ascension
+  AUDITED_BASELINE_COMMIT: 076a7a7a8d1713d4849e95e1c58b8b6ccec0df03
+  BROKEN_WORKFLOW: .github/workflows/INSTALL_GOALOS_KERNEL_V3_INSTITUTIONAL_PUBLICATION_R2.yml
+  RECOVERY_WORKFLOW: .github/workflows/goalos-kernel-v3-institutional-publication-r2-recovery.yml
+  BROKEN_WORKFLOW_SHA256: 9f1e8de6d4ede30bad77b321c7dc9def4963e9fd86056d97731257caabcbee35
+  ACTIVE_WORKFLOW: .github/workflows/goalos-agialpha-ascension-v86-final.yml
+  EXPECTED_ACTIVE_WORKFLOW_SHA256: aa5695af1d7b8967149020fffd57d521e67b648eb3229dde75cec47dd3b5dca2
+  EXPECTED_PATCHED_WORKFLOW_SHA256: 3329167be2088b38a2a0d7abe2fbb9f9f4845e4576181ee058049d022b32c77f
+  EXPECTED_KERNEL_CONTENT_SHA256: 96f8c3c97ef6a0dc0c65a62943dc2305189cf9a12b48ed1e9706983719ce35f3
+  EXPECTED_RELEASE_MANIFEST_SHA256: 9deefd544e2259eae8d065d134dcf87239b0da1864ab65f9c55b62fef1319fd5
+  PAYLOAD_SHA256: 86847c15a8c8873f9b11b87014eb0ad0b36d3a0d044d69fbfa01da0c87f240f8
+  RELEASE_PATH: release/kernel-v3-institutional-publication-v3.0.0-r2/RELEASE_MANIFEST.json
+
+jobs:
+  recover-install-and-open-pr:
+    name: Recover the audited payload and open a draft review PR
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - name: Check out the current main branch
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with:
+          fetch-depth: 0
+
+      - name: Verify the exact repository recovery boundary
+        shell: bash
+        run: |
+          set -euo pipefail
+          fail() { echo "ERROR: $*" >&2; exit 1; }
+          [[ "$GITHUB_REPOSITORY" == "$EXPECTED_REPOSITORY" ]] || fail "This recovery workflow is bound to $EXPECTED_REPOSITORY."
+          [[ "$GITHUB_REF" == 'refs/heads/main' ]] || fail 'Run this workflow from main.'
+          [[ -z "$(git status --porcelain)" ]] || fail 'The checkout is unexpectedly dirty.'
+          git cat-file -e "$AUDITED_BASELINE_COMMIT^{commit}" || fail 'The audited baseline commit is unavailable.'
+          git merge-base --is-ancestor "$AUDITED_BASELINE_COMMIT" HEAD || fail 'Current main no longer descends from the audited baseline.'
+          test -s "$BROKEN_WORKFLOW" || fail "Missing recovery source: $BROKEN_WORKFLOW"
+          test -s "$RECOVERY_WORKFLOW" || fail "Missing recovery workflow: $RECOVERY_WORKFLOW"
+          test -s "$ACTIVE_WORKFLOW" || fail "Missing active Pages workflow: $ACTIVE_WORKFLOW"
+          printf '%s\n' "$BROKEN_WORKFLOW" "$RECOVERY_WORKFLOW" | sort > "$RUNNER_TEMP/expected-bootstrap-paths.txt"
+          git diff --name-only "$AUDITED_BASELINE_COMMIT" HEAD | sort > "$RUNNER_TEMP/observed-bootstrap-paths.txt"
+          diff -u "$RUNNER_TEMP/expected-bootstrap-paths.txt" "$RUNNER_TEMP/observed-bootstrap-paths.txt" || fail 'Main changed outside the two bootstrap files. Stop and refresh the package.'
+          [[ "$(git diff --name-status "$AUDITED_BASELINE_COMMIT" HEAD | awk '{print $1}' | sort -u)" == 'A' ]] || fail 'Both bootstrap files must be additions relative to the audited baseline.'
+          echo "$BROKEN_WORKFLOW_SHA256  $BROKEN_WORKFLOW" | sha256sum --check --strict
+          echo "$EXPECTED_ACTIVE_WORKFLOW_SHA256  $ACTIVE_WORKFLOW" | sha256sum --check --strict
+          echo "$EXPECTED_KERNEL_CONTENT_SHA256  content/sme-kernel-v3.json" | sha256sum --check --strict
+          if grep -q 'GOALOS_SME_KERNEL_V3_PUBLICATION_BUILD_START' "$ACTIVE_WORKFLOW"; then
+            fail 'The institutional publication integration already appears to be installed.'
+          fi
+
+      - name: Set up Python
+        uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6.3.0
+        with:
+          python-version: '3.11'
+
+      - name: Recover and safely materialize the audited R2 source package
+        shell: bash
+        run: |
+          set -euo pipefail
+          stage="$RUNNER_TEMP/goalos-publication-r2-stage"
+          archive="$RUNNER_TEMP/goalos-publication-r2-payload.tar.gz"
+          rm -rf "$stage"
+          mkdir -p "$stage"
+          python3 - "$BROKEN_WORKFLOW" "$archive" <<'PY'
+          import base64, hashlib, pathlib, re, sys, tarfile
+          source = pathlib.Path(sys.argv[1]).read_text(encoding='utf-8')
+          match = re.search(r"<<'GOALOS_R2_PAYLOAD'\n(?P<data>.*?)\n\s*GOALOS_R2_PAYLOAD", source, re.S)
+          if not match:
+              raise SystemExit('Cannot locate the audited GOALOS_R2_PAYLOAD block')
+          encoded = ''.join(line.strip() for line in match.group('data').splitlines())
+          payload = base64.b64decode(encoded, validate=True)
+          destination = pathlib.Path(sys.argv[2])
+          destination.write_bytes(payload)
+          print(f'Recovered payload: {len(payload)} bytes; SHA-256={hashlib.sha256(payload).hexdigest()}')
+          with tarfile.open(destination, 'r:gz') as bundle:
+              members = bundle.getmembers()
+              if not members:
+                  raise SystemExit('Recovered payload is empty')
+              for member in members:
+                  path = pathlib.PurePosixPath(member.name)
+                  if path.is_absolute() or '..' in path.parts or not member.isfile():
+                      raise SystemExit(f'Unsafe payload member: {member.name}')
+          print(f'Payload path-safety PASS ({len(members)} files)')
+          PY
+          echo "$PAYLOAD_SHA256  $archive" | sha256sum --check --strict
+          tar -xzf "$archive" -C "$stage"
+          test -s "$stage/$RELEASE_PATH"
+          echo "$EXPECTED_RELEASE_MANIFEST_SHA256  $stage/$RELEASE_PATH" | sha256sum --check --strict
+          while IFS= read -r -d '' staged; do
+            relative="${staged#"$stage/"}"
+            if [[ -e "$relative" ]] && ! cmp -s "$staged" "$relative"; then
+              echo "Refusing to overwrite a non-identical existing file: $relative" >&2
+              exit 1
+            fi
+          done < <(find "$stage" -type f -print0)
+          cp -a "$stage/." .
+          python3 scripts/website/verify_sme_kernel_v3_publication.py \
+            --root . \
+            --source-only \
+            --output "$RUNNER_TEMP/source-verification-prepatch.json"
+
+      - name: Verify the canonical paper suite and pinned publication visuals
+        shell: bash
+        run: |
+          set -euo pipefail
+          source_dir="$RUNNER_TEMP/goalos-canonical-publication-r2"
+          target='website/features/sme-kernel-v3-publication/assets'
+          mkdir -p "$source_dir"
+          fetch() {
+            curl --fail --location --silent --show-error --retry 4 --retry-delay 2 --retry-all-errors --proto '=https' --tlsv1.2 "$1" --output "$2"
+          }
+          base='https://montrealai.github.io/GoalOS-AGIALPHA-Sovereign-Machine-Economy-Kernel-v3-Paper-Institutional-Use-Case-Edition-v3.0'
+          fetch "$base/01_PAPER/GoalOS_AGIALPHA_Sovereign_Machine_Economy_Kernel_v3_Paper_Institutional_Use_Case_Edition_v3.0.pdf" "$source_dir/flagship-institutional-edition-v3.pdf"
+          fetch "$base/01_PAPER/GoalOS_Kernel_v3_Institutional_Use_Cases_and_Reference_Case_Studies_Companion.pdf" "$source_dir/use-cases-case-studies-companion.pdf"
+          fetch "$base/01_PAPER/GoalOS_AGIALPHA_Sovereign_Machine_Economy_Kernel_v3_Paper_LaTeX_Edition_v3.0.pdf" "$source_dir/native-latex-edition-v3.pdf"
+          fetch "$base/04_FIGURES/cover_institutional_use_case_edition_v3.png" "$source_dir/cover-institutional-use-case-edition-v3.png"
+          fetch "$base/01_PAPER/FIGURE_GALLERY.jpg" "$source_dir/kernel-v3-figure-gallery.jpg"
+          fetch "$base/01_PAPER/USE_CASE_AND_CASE_STUDY_GALLERY.jpg" "$source_dir/kernel-v3-use-case-gallery.jpg"
+          cat > "$source_dir/checksums.sha256" <<'SUMS'
+          dff42ca9c80b5b6575548d74ef7a431752aee6c3c933359535fa8b8be1414a45  flagship-institutional-edition-v3.pdf
+          3a27e34aa77b4c7df57e3e9c68ecab7c20c053d58681905ce1492885dad7ffff  use-cases-case-studies-companion.pdf
+          950a4e0cb583022989486ab610739861f3c69fd58ee1a6529a1b26d1a9d5f780  native-latex-edition-v3.pdf
+          f383b7e70942a60595b17d6546dd635f5dc9a58607e79be56a4db861571e7d81  cover-institutional-use-case-edition-v3.png
+          cb472fa56f2bfcbb0b4ed51574dc3194fe9a68ffc36b6f8598909dfa0e5d31b6  kernel-v3-figure-gallery.jpg
+          388787e8361a4c2a534590734ccc93b5bb1d7a1063dc8e86c09b177f2284f7c6  kernel-v3-use-case-gallery.jpg
+          SUMS
+          (cd "$source_dir" && sha256sum --check --strict checksums.sha256)
+          while read -r expected filename; do
+            actual="$(stat -c '%s' "$source_dir/$filename")"
+            [[ "$actual" == "$expected" ]] || { echo "Byte-size mismatch for $filename" >&2; exit 1; }
+          done <<'SIZES'
+          4864185 flagship-institutional-edition-v3.pdf
+          4517120 use-cases-case-studies-companion.pdf
+          4886677 native-latex-edition-v3.pdf
+          509376 cover-institutional-use-case-edition-v3.png
+          718101 kernel-v3-figure-gallery.jpg
+          426859 kernel-v3-use-case-gallery.jpg
+          SIZES
+          for pdf in flagship-institutional-edition-v3.pdf use-cases-case-studies-companion.pdf native-latex-edition-v3.pdf; do
+            [[ "$(head -c 5 "$source_dir/$pdf")" == '%PDF-' ]] || { echo "Invalid PDF signature: $pdf" >&2; exit 1; }
+          done
+          for image in cover-institutional-use-case-edition-v3.png kernel-v3-figure-gallery.jpg kernel-v3-use-case-gallery.jpg; do
+            cmp -s "$source_dir/$image" "$target/$image" || { echo "Pinned visual differs from canonical source: $image" >&2; exit 1; }
+          done
+
+      - name: Extend and validate the existing v86 preservation pipeline
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 scripts/website/patch_v86_for_sme_kernel_v3_publication.py \
+            --workflow "$ACTIVE_WORKFLOW" \
+            --require-sha256 "$EXPECTED_ACTIVE_WORKFLOW_SHA256"
+          echo "$EXPECTED_PATCHED_WORKFLOW_SHA256  $ACTIVE_WORKFLOW" | sha256sum --check --strict
+          python3 scripts/website/patch_v86_for_sme_kernel_v3_publication.py --workflow "$ACTIVE_WORKFLOW" --check
+          python3 -m py_compile \
+            scripts/website/build_sme_kernel_v3_publication.py \
+            scripts/website/snapshot_sme_kernel_v3_publication_site.py \
+            scripts/website/verify_sme_kernel_v3_publication.py \
+            scripts/website/visual_check_sme_kernel_v3_publication.py \
+            scripts/website/patch_v86_for_sme_kernel_v3_publication.py \
+            test/test_sme_kernel_v3_publication_website.py
+          node --check website/features/sme-kernel-v3-publication/assets/sme-kernel-v3-publication.js
+          python3 scripts/website/verify_sme_kernel_v3_publication.py \
+            --root . \
+            --source-only \
+            --output "$RUNNER_TEMP/source-verification-postpatch.json"
+          python3 -m unittest discover -s test -p 'test_sme_kernel_v3_publication_website.py' -v | tee "$RUNNER_TEMP/unit-tests.txt"
+          ruby -e "require 'yaml'; YAML.load_file('$ACTIVE_WORKFLOW'); YAML.load_file('.github/workflows/goalos-sme-kernel-v3-institutional-publication-smoke-test.yml'); puts 'YAML PASS'"
+          git diff --check
+          test "$(grep -c 'GOALOS_SME_KERNEL_V3_PUBLICATION_BUILD_START' "$ACTIVE_WORKFLOW")" -eq 1
+
+      - name: Upload human-review evidence
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: goalos-kernel-v3-institutional-publication-r2-recovery-evidence
+          path: |
+            ${{ runner.temp }}/source-verification-prepatch.json
+            ${{ runner.temp }}/source-verification-postpatch.json
+            ${{ runner.temp }}/unit-tests.txt
+            ${{ runner.temp }}/goalos-publication-r2-payload.tar.gz
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Commit the validated integration to a dedicated review branch
+        id: branch
+        shell: bash
+        run: |
+          set -euo pipefail
+          branch="automation/kernel-v3-institutional-publication-r2-recovery-${GITHUB_RUN_ID}"
+          stage="$RUNNER_TEMP/goalos-publication-r2-stage"
+          git switch -c "$branch"
+          git rm "$BROKEN_WORKFLOW" "$RECOVERY_WORKFLOW"
+          git add -- "$ACTIVE_WORKFLOW"
+          while IFS= read -r -d '' staged; do
+            git add -- "${staged#"$stage/"}"
+          done < <(find "$stage" -type f -print0)
+          {
+            printf '%s\n' "$BROKEN_WORKFLOW" "$RECOVERY_WORKFLOW" "$ACTIVE_WORKFLOW"
+            find "$stage" -type f -printf '%P\n'
+          } | sort -u > "$RUNNER_TEMP/expected-staged-paths.txt"
+          git diff --cached --name-only | sort -u > "$RUNNER_TEMP/observed-staged-paths.txt"
+          diff -u "$RUNNER_TEMP/expected-staged-paths.txt" "$RUNNER_TEMP/observed-staged-paths.txt"
+          git diff --cached --check
+          git config user.name 'GoalOS Publication Integrator'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'Add repository-aligned Kernel v3 institutional publication R2'
+          git push --set-upstream origin "$branch"
+          echo "name=$branch" >> "$GITHUB_OUTPUT"
+
+      - name: Open a draft pull request for human review
+        id: pr
+        env:
+          GH_TOKEN: ${{ github.token }}
+          BRANCH: ${{ steps.branch.outputs.name }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat > "$RUNNER_TEMP/pr-body.md" <<'BODY'
+          ## GoalOS Kernel v3 · Institutional Publication Suite v3.0 · Recovery R2
+
+          This preservation-first pull request recovers the audited R2 package from the oversized bootstrap file, removes both temporary bootstrap workflows, and adds the institutional publication layer without replacing any existing website page or Pages deployer.
+
+          ### Review sequence
+          1. Inspect **Files changed**, especially the additive v86 workflow patch.
+          2. Review the recovery-evidence artifact from the installer run.
+          3. Click **Ready for review**.
+          4. Merge only after every required check is green.
+
+          The live website is unchanged until this pull request is merged and the existing v86 deployment workflow passes all gates.
+          BODY
+          if url=$(gh pr create --base main --head "$BRANCH" --draft \
+            --title 'GoalOS Kernel v3 · Institutional Publication Suite v3.0 · Recovery R2' \
+            --body-file "$RUNNER_TEMP/pr-body.md"); then
+            echo "url=$url" >> "$GITHUB_OUTPUT"
+          else
+            compare="https://github.com/$GITHUB_REPOSITORY/compare/main...$BRANCH?expand=1"
+            echo "Automatic PR creation was unavailable. Open: $compare"
+            echo "url=$compare" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Publish the next step
+        if: always()
+        shell: bash
+        run: |
+          {
+            echo '# GoalOS Kernel v3 Institutional Publication R2 · Recovery Result'
+            echo
+            echo "- Review branch: \`${{ steps.branch.outputs.name || 'not-created' }}\`"
+            echo "- Draft pull request or compare page: ${{ steps.pr.outputs.url || 'not-created' }}"
+            echo '- The live website was not changed by this recovery run.'
+            echo '- Open the draft pull request, review Files changed, and merge only after all checks are green.'
+          } >> "$GITHUB_STEP_SUMMARY"
