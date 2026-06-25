@@ -1,0 +1,105 @@
+name: GoalOS Kernel v3 Institutional Publication r2 · Source Gate
+
+on:
+  workflow_dispatch:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+    paths:
+      - 'content/sme-kernel-v3-institutional-publication.json'
+      - 'content/sme-kernel-v3.json'
+      - 'website/features/sme-kernel-v3-publication/**'
+      - 'website/features/sme-kernel-v3/**'
+      - 'scripts/website/build_sme_kernel_v3_publication.py'
+      - 'scripts/website/snapshot_sme_kernel_v3_publication_site.py'
+      - 'scripts/website/verify_sme_kernel_v3_publication.py'
+      - 'scripts/website/visual_check_sme_kernel_v3_publication.py'
+      - 'scripts/website/patch_v86_for_sme_kernel_v3_publication.py'
+      - 'scripts/website/build_sme_kernel_v3.py'
+      - 'scripts/website/verify_sme_kernel_v3.py'
+      - 'scripts/website/visual_check_sme_kernel_v3.py'
+      - 'schemas/sme-kernel-v3-*.schema.json'
+      - 'test/test_sme-kernel-v3-publication_website.py'
+      - 'test/test_sme_kernel_v3_website.py'
+      - 'docs/SME_KERNEL_V3_INSTITUTIONAL_PUBLICATION.md'
+      - 'docs/SOVEREIGN_MACHINE_ECONOMY_KERNEL_V3.md'
+      - 'release/kernel-v3-institutional-publication-v3.0.0-r2/RELEASE_MANIFEST.json'
+      - '.github/workflows/goalos-sme-kernel-v3-institutional-publication-smoke-test.yml'
+      - '.github/workflows/goalos-agialpha-ascension-v86-final.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'content/sme-kernel-v3-institutional-publication.json'
+      - 'content/sme-kernel-v3.json'
+      - 'website/features/sme-kernel-v3-publication/**'
+      - 'website/features/sme-kernel-v3/**'
+      - 'scripts/website/build_sme_kernel_v3_publication.py'
+      - 'scripts/website/snapshot_sme_kernel_v3_publication_site.py'
+      - 'scripts/website/verify_sme_kernel_v3_publication.py'
+      - 'scripts/website/visual_check_sme_kernel_v3_publication.py'
+      - 'scripts/website/patch_v86_for_sme_kernel_v3_publication.py'
+      - 'scripts/website/build_sme_kernel_v3.py'
+      - 'scripts/website/verify_sme_kernel_v3.py'
+      - 'scripts/website/visual_check_sme_kernel_v3.py'
+      - 'schemas/sme-kernel-v3-*.schema.json'
+      - 'test/test_sme-kernel-v3-publication_website.py'
+      - 'test/test_sme_kernel_v3_website.py'
+      - 'docs/SME_KERNEL_V3_INSTITUTIONAL_PUBLICATION.md'
+      - 'docs/SOVEREIGN_MACHINE_ECONOMY_KERNEL_V3.md'
+      - 'release/kernel-v3-institutional-publication-v3.0.0-r2/RELEASE_MANIFEST.json'
+      - '.github/workflows/goalos-sme-kernel-v3-institutional-publication-smoke-test.yml'
+      - '.github/workflows/goalos-agialpha-ascension-v86-final.yml'
+
+concurrency:
+  group: goalos-kernel-v3-institutional-publication-r2-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  source-gate:
+    name: Verify pinned source, v3.2.0 alignment, additive build, and v86 integration
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6.3.0
+        with:
+          python-version: '3.11'
+
+      - name: Compile publication tooling and parse browser runtime
+        run: |
+          python3 -m py_compile \
+            scripts/website/build_sme_kernel_v3_publication.py \
+            scripts/website/snapshot_sme_kernel_v3_publication_site.py \
+            scripts/website/verify_sme_kernel_v3_publication.py \
+            scripts/website/visual_check_sme_kernel_v3_publication.py \
+            scripts/website/patch_v86_for_sme_kernel_v3_publication.py \
+            test/test_sme_kernel_v3_publication_website.py
+          node --check website/features/sme-kernel-v3-publication/assets/sme-kernel-v3-publication.js
+
+      - name: Verify versioned source, release manifest, repository alignment, and pinned visual metadata
+        run: python3 scripts/website/verify_sme_kernel_v3_publication.py --root . --source-only
+
+      - name: Exercise the additive builder and full static verifier in isolation
+        run: python3 -m unittest discover -s test -p 'test_sme_kernel_v3_publication_website.py' -v
+
+      - name: Verify the active v86 workflow integration is exact
+        run: python3 scripts/website/patch_v86_for_sme_kernel_v3_publication.py --check
+
+      - name: Reject whitespace errors in the committed change set
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [[ "$GITHUB_EVENT_NAME" == 'pull_request' ]]; then
+            git diff --check "${{ github.event.pull_request.base.sha }}...HEAD"
+          elif git rev-parse HEAD^ >/dev/null 2>&1; then
+            git diff --check HEAD^ HEAD
+          else
+            git show --check --format= HEAD
+          fi
