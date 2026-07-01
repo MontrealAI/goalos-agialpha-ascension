@@ -51,7 +51,7 @@ jobs:
       - name: Production readiness certificate checks
         run: npm run mainnet:production-readiness && npm run mainnet:certificate:validate && npm run mainnet:final-check && npm run mainnet:readiness-require-pass && npm run mainnet:deployment-authorization-require-pass && npm run mainnet:authorization-require-pass
       - name: Upload redacted public evidence
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         if: always()
         with:
           name: mainnet-readiness-public-evidence
@@ -60,7 +60,7 @@ jobs:
             qa/security/**
             docs/architecture/**
       - name: Upload protected audit logs
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         if: always()
         with:
           name: mainnet-readiness-protected-logs

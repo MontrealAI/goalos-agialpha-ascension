@@ -21,7 +21,7 @@ jobs:
           test -n "$ETHERSCAN_API_KEY"
           test -z "$ALLOW_MAINNET_DEPLOYMENT"
           npm run verify:mainnet:all
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         if: always()
         with:
           name: mainnet-verification-evidence

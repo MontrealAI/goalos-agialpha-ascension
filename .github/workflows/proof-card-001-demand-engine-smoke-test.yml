@@ -24,7 +24,7 @@ jobs:
         run: python3 scripts/build_existing_site_with_proof_card_001.py --out site
       - name: Verify generated site
         run: python3 scripts/verify_goalos_agialpha_proof_card_001_site.py
-      - uses: actions/upload-artifact@v5
+      - uses: actions/upload-artifact@v7
         if: always()
         with:
           name: proof-card-001-demand-engine-site

@@ -25,7 +25,7 @@ jobs:
       - name: Verify complete website
         run: python3 scripts/verify_goalos_agialpha_triple_proof_card_site_v8.py --site site
       - name: Upload preview artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: triple-proof-card-demand-center-preview
           path: site

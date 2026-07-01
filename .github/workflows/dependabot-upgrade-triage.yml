@@ -34,7 +34,7 @@ jobs:
           npm run compile:ci
           npm run test:ci
           npm run static-check
-      - uses: actions/upload-artifact@v5
+      - uses: actions/upload-artifact@v7
         if: always()
         with:
           name: dependabot-upgrade-triage

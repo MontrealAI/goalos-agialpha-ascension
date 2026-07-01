@@ -68,7 +68,7 @@ jobs:
           npm run release:mainnet:prepare
           npm run release:mainnet:build
           npm run release:mainnet:check
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: mainnet-2026-06-21-release-packet
           path: release/mainnet-2026-06-21/
